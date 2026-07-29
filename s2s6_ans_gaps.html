@@ -4,12 +4,17 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>SlidPhiLabs — S2S6 ANS Gaps</title>
+<meta property="og:site_name" content="SlidPhiLabs · SPLabs"/>
+<meta property="og:image" content="https://raw.githubusercontent.com/ceedot-rock/splabs-brand/main/assets/splabs-og.png"/>
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ceedot-rock/splabs-brand/main/assets/favicon-32.png"/>
 <style>
   :root { --bg:#070c0a; --panel:#0a1210; --border:#1a2f22; --fg:#c8d6c0; --dim:#6b7f6c; --accent:#aaff00; --hi:#e0ece0; }
   * { box-sizing: border-box; }
   body { margin:0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:var(--bg); color:var(--fg); line-height:1.55; }
   main { max-width: 880px; margin: 0 auto; padding: 28px 18px 60px; }
-  h1 { color:var(--hi); font-size:1.35rem; margin:0 0 6px; }
+  .brand { display:flex; align-items:center; gap:14px; margin-bottom:8px; }
+  .brand img { width:56px; height:56px; border-radius:12px; }
+  h1 { color:var(--hi); font-size:1.35rem; margin:0; }
   h2 { color:var(--hi); font-size:1rem; margin: 28px 0 10px; letter-spacing:0.04em; }
   .sub { color:var(--dim); font-size:0.85rem; margin-bottom:22px; }
   .panel { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:16px 18px; margin:14px 0; }
@@ -31,10 +36,15 @@
 </head>
 <body>
 <main>
-  <h1>SlidPhiLabs · S2S6 ANS Gaps</h1>
-  <p class="sub">Zeckendorf / Tribonacci positions → gap transform → entropy coding toward the Shannon bound</p>
+  <div class="brand">
+    <img src="https://raw.githubusercontent.com/ceedot-rock/splabs-brand/main/assets/splabs-logo-512.png" alt="SPLabs"/>
+    <div>
+      <h1>SlidPhiLabs · S2S6 ANS Gaps</h1>
+      <p class="sub" style="margin:0">Zeckendorf → gaps → entropy coding · SPLabs</p>
+    </div>
+  </div>
   <div class="panel">
-    <p>You’re packing integers as tightly as possible. The theoretical floor is <span class="accent">log₂ M</span> bits (≈13.29 at M=10 000). A plain Fibonacci bitmap wastes budget marking empty positions. Recording only the <em>gaps</em> between used positions yields a skewed alphabet (mean ≈2.7, P(g=2)≈0.5). ANS spends ~1.2 bits per typical gap, landing near <span class="accent">14.8 bits</span> — about 19% better than the classic scan.</p>
+    <p>Shannon floor ≈ <span class="accent">13.29</span> bits at M=10k. Classic Fib ≈ <span class="accent">18.23</span>. Hybrid (one 11 + terminator + low-bits) ≈ <span class="accent">17.45</span> (~4.3% smaller). Gap+ANS path ≈ <span class="accent">14.8</span> — different codec family.</p>
   </div>
   <h2>01 · Live encoder</h2>
   <div class="panel">
@@ -60,7 +70,8 @@
   <pre>function encodeWithANS(n) {
   const pos  = zeckendorf(n);
   const gaps = [pos[0], ...pos.slice(1).map((p,i) => p - pos[i])];
-  // unary-2 baseline; rANS → ~1.2 bits/gap when P(g=2)≈0.5
+  // hybrid path (slid-phi): one 11 + terminator 111 + low-bits binary
+  // gap+ANS path: rANS on gaps ≈1.2 bits/gap when P(g=2)≈0.5
   return { pos, gaps };
 }</pre>
 </main>
