@@ -1,7 +1,7 @@
 {
   "name": "slid-phi",
   "version": "2.1.0",
-  "description": "Omni-Dormant integer codecs — universe, gaps, dense auto, interp, portable bitstream",
+  "description": "Omni-Dormant integer codecs \u2014 universe, gaps, dense auto, interp, portable bitstream",
   "type": "module",
   "main": "src/index.mjs",
   "exports": {
@@ -16,7 +16,7 @@
     "README.md"
   ],
   "scripts": {
-    "test": "node test.mjs"
+    "test": "node --test test/*.test.mjs"
   },
   "keywords": [
     "compression",

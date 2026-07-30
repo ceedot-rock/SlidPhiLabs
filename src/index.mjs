@@ -7,6 +7,8 @@
 export {
   encode,
   decode,
+  encodeBytes,
+  decodeBytes,
   OMNI_META,
   packBits,
   unpackBits,

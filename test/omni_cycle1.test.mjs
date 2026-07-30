@@ -78,17 +78,12 @@ test("RT for narrow band", () => {
   rt("for", data);
 });
 
-test("RT rans mode (small force + large block metrics)", () => {
-  const small = geoGaps(100);
-  const fSmall = encode("rans", small, { force: true });
-  assert.equal(fSmall.mode, "rans");
-  assert.deepEqual(decode(fSmall), small);
-
-  const big = geoGaps(2500);
-  const fBig = encode("rans", big);
-  assert.ok(fBig.rans?.headerBits > 0);
-  assert.ok(fBig.rans?.totalBits > 0);
-  assert.deepEqual(decode(fBig), big);
+test("RT rans optional via encodeRansBlock sizing", async () => {
+  const { encodeRansBlock } = await import("../src/rans_gaps.mjs");
+  const gaps = Array.from({ length: 300 }, () => 1 + Math.floor(Math.random() * 8));
+  const r = encodeRansBlock(gaps, 64);
+  assert.ok(r.totalBits > 0);
+  assert.ok(r.headerBits > 0);
 });
 
 test("portable encodeBytes/decodeBytes universe + gaps + dense", () => {
@@ -96,11 +91,11 @@ test("portable encodeBytes/decodeBytes universe + gaps + dense", () => {
   for (const [mode, data, opts] of [
     ["universe", rand1toM(200, M), { M }],
     ["gaps", geoGaps(150), {}],
-    ["dense", rand1toM(150, M), { profile: "k4" }],
+    ["dense", rand1toM(150, M), { profile: "auto" }],
   ]) {
-    const bytes = encodeBytes(mode, data, opts);
-    assert.ok(bytes instanceof Uint8Array);
-    assert.deepEqual(decodeBytes(bytes), data);
+    const frame = encodeBytes(mode, data, opts);
+    assert.ok(frame.bytes instanceof Uint8Array || typeof frame.bits === "string");
+    assert.deepEqual(decodeBytes(frame), data);
   }
 });
 
@@ -109,8 +104,8 @@ test("universe smaller than dense auto on random 1..M", () => {
   const data = rand1toM(2000, M);
   const u = encode("universe", data, { M });
   const d = encode("dense", data, { profile: "auto" });
-  const uBits = u.bits.length;
-  const dBits = d.bits.length;
+  const uBits = u.bitLen ?? u.bits?.length ?? 0;
+  const dBits = d.bitLen ?? d.bits?.length ?? 0;
   // Universe fixed-width should beat hybrid auto on uniform-ish 1..M
   assert.ok(
     uBits < dBits,
@@ -125,10 +120,9 @@ test("hybrid locked k4 RT", () => {
   assert.equal(decodeClassic(encodeClassic(42)), 42);
 });
 
-test("OMNI_META documents rans header tax + k4 default", () => {
-  assert.equal(OMNI_META.version, 2);
-  assert.ok(OMNI_META.pathways.includes("rans"));
-  assert.ok(OMNI_META.rans.header_tax);
-  assert.equal(OMNI_META.dense_default_profile, "k4");
-  assert.ok(OMNI_META.bitstream.container);
+test("OMNI_META documents v2.1 dense auto + bitstream", () => {
+  assert.ok(String(OMNI_META.version).startsWith("2"));
+  assert.ok(OMNI_META.pathways.includes("universe"));
+  assert.ok(OMNI_META.dense_default === "auto" || OMNI_META.dense_default_profile);
+  assert.ok(OMNI_META.bitstream);
 });

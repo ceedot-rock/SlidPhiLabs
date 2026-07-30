@@ -178,11 +178,27 @@ export function decode(frame) {
   }
 }
 
+/** Wire-friendly: same as encode (frames already include Uint8Array bytes). */
+export function encodeBytes(mode, data, opts = {}) {
+  return encode(mode, data, opts);
+}
+/** Decode frame object from encode/encodeBytes. */
+export function decodeBytes(frame) {
+  if (frame && frame.mode) return decode(frame);
+  throw new Error("decodeBytes: pass encode() frame object");
+}
+
 export const OMNI_META = {
   version: "2.1",
   pathways: ["gaps", "dense", "universe", "interp", "smooth", "for", "classic"],
   dense_default: "auto",
+  dense_default_profile: "auto",
   bitstream: "Uint8Array bytes + bitLen",
+  rans: {
+    dormant_default: true,
+    min_block: 2048,
+    header_tax: "histogram header amortizes for B>=2048",
+  },
   dormant: ["mirror", "rans", "deltaHyb", "wasm_simd"],
 };
 
