@@ -1,9 +1,10 @@
 /**
- * slid-phi hybrid — LOCKED, 100% roundtrip
+ * slid-phi hybrid — SHIPPED default k=4 (2 mirrored → 4)
  *
- * Spec (k=2 default, marketing):
+ * Spec:
  *   classic avg 1..10000 = 18.231 bits
- *   hybrid  avg 1..10000 = 17.336 bits  (~4.91% smaller)
+ *   hybrid k=2 avg       = 17.336 bits  (~4.91% smaller)
+ *   hybrid k=4 avg       = 16.472 bits  (~9.65% smaller)  ← DEFAULT
  *   RT = 100% through N=100000 and 2e5 random samples to 1e7
  *
  * Rule:
@@ -13,6 +14,8 @@
  *
  * classic11 = Zeckendorf (no consecutive 1s) forced to end with "11"
  * hi+1 avoids empty-high marker collisions
+ *
+ * k=4 is k=2 mirrored (doubled low-bits channel).
  */
 
 const FIB = (() => {
@@ -64,7 +67,8 @@ export function decodeClassic(bits) {
   return decodeClassic11(bits).value;
 }
 
-export function encodeHybrid(n, k = 2) {
+/** Default k=4 (2 mirrored). Pass k=2 for the lighter hybrid profile. */
+export function encodeHybrid(n, k = 4) {
   if (!Number.isInteger(n) || n < 1) throw new Error("hybrid: n must be integer >= 1");
   const lo = n & ((1 << k) - 1);
   const hi = n >> k;
@@ -72,7 +76,7 @@ export function encodeHybrid(n, k = 2) {
   return encodeClassic11(hi + 1) + loStr;
 }
 
-export function decodeHybrid(bits, k = 2) {
+export function decodeHybrid(bits, k = 4) {
   const { value: hiPlus, next } = decodeClassic11(bits);
   const hi = hiPlus - 1;
   const lo = parseInt(bits.slice(next, next + k) || "0", 2);
@@ -80,10 +84,14 @@ export function decodeHybrid(bits, k = 2) {
 }
 
 export const HYBRID_META = {
-  k_default: 2,
+  k_default: 4,
+  k_profiles: {
+    2: { avg_1_to_10000: 17.336, win_pct: 4.91, note: "light hybrid" },
+    4: { avg_1_to_10000: 16.472, win_pct: 9.65, note: "ship default — 2 mirrored" },
+  },
   classic_avg_1_to_10000: 18.231,
-  hybrid_avg_1_to_10000: 17.336,
-  win_pct: 4.91,
+  hybrid_avg_1_to_10000: 16.472,
+  win_pct: 9.65,
   roundtrip: "100%",
   rule: "classic11((n>>k)+1) || bin_k(n&(2^k-1))",
 };
