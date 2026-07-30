@@ -1,58 +1,121 @@
-# SlidPhiLabs
+# slid-phi
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ceedot-rock/splabs-brand/main/assets/splabs-logo-512.png" alt="SPLabs" width="120"/>
-</p>
+**Omni-Dormant integer codecs** — Zeckendorf / hybrid Fib roots with pathway routing, portable `Uint8Array` bitstreams.
 
-**SlidPhiLabs** / **slid-phi** — integer compression (Zeckendorf / hybrid Fib + optional gap–ANS path).
+| | |
+|--|--|
+| **npm** | [`slid-phi`](https://www.npmjs.com/package/slid-phi) |
+| **repo** | [ceedot-rock/SlidPhiLabs](https://github.com/ceedot-rock/SlidPhiLabs) |
+| **version** | **2.1.1** |
 
-## Products (Stripe live)
+---
 
-| Product | Price | Payment link |
-|---------|------:|--------------|
+## Install
+
+```bash
+npm i slid-phi
+```
+
+## Quick use
+
+```js
+import {
+  encode,
+  decode,
+  OMNI_META,
+  encodeHybrid,
+  decodeHybrid,
+} from "slid-phi";
+
+// Dense list (default profile = auto)
+const f = encode("dense", [1, 42, 999], { profile: "auto" });
+const back = decode(f);
+
+// Universe when max M is known (best on 1..M)
+const u = encode("universe", data, { M: 10000 });
+
+// Strictly increasing postings
+const g = encode("gaps", [10, 15, 40, 41]);
+
+// Sorted unique → interpolative
+const i = encode("interp", sortedUnique);
+
+// Compat hybrid (k=4 default)
+const bits = encodeHybrid(12345, 4);
+const n = decodeHybrid(bits, 4);
+```
+
+### Pathways (Omni-Dormant v2.1)
+
+| Mode | When | Notes |
+|------|------|--------|
+| `universe` | **M known** | Fixed `ceil(log2 M)` bits |
+| `dense` | M unknown | Hybrid k/auto · **default profile `auto`** |
+| `gaps` | Strictly increasing postings | Classic gap codes |
+| `interp` | Sorted unique | Structure-aware |
+| `smooth` | Smooth series | Double-δ |
+| `for` | Narrow band | Frame of reference |
+| `classic` | Safe default | Zeckendorf / Fib 11 |
+
+**Dormant unless called:** `mirror`, `rans` (B≥2048 research path), `deltaHyb`, `wasm_simd`.
+
+Frames carry **mode + data**. Prefer `bytes` + `bitLen` (`Uint8Array`); some modes also keep a `bits` string for demos.
+
+```js
+import { OMNI_META } from "slid-phi";
+console.log(OMNI_META.pathways, OMNI_META.dense_default);
+```
+
+### Subpath exports
+
+```js
+import { encode, decode } from "slid-phi/omni";
+import { encodeHybrid, HYBRID_META } from "slid-phi/hybrid";
+import { BitWriter, BitReader, packBits } from "slid-phi/bitstream";
+```
+
+---
+
+## Numbers (truth table @ M = 10 000)
+
+Lower avg bits = better. **Never claim below the ideal minimum.**
+
+| Scheme | Avg bits | Notes |
+|--------|----------|--------|
+| **Ideal min** (uniform 1..10k) | **≈13.29** | log₂ M |
+| **universe** (M known) | **14.00** | fixed-width |
+| **dense auto** | **~14.57** | ~20% vs classic 18.23 |
+| **hybrid k=4** | **16.47** | shipped hybrid default |
+| **classic Fib** | **18.23** | strict no-consecutive-1s baseline |
+| **gaps** geo ~p=0.2 | **~4.12** | postings |
+| **gaps** sequential | **~2.00** | |
+| **interp** dense sorted range | **~0.01** | structure-aware |
+| **smooth** double-δ | **~3.6–3.8** | |
+
+Policy: do **not** hybrid tiny geo gaps; do **not** always-on mirror.
+
+---
+
+## Stripe (commercial)
+
+| Product | Price | Link |
+|---------|------:|------|
 | Commercial | $499 | https://buy.stripe.com/28EbJ20kR0OY99r9kA6wE00 |
 | Sponsor | $29 | https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01 |
 | Consulting | $250 | https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02 |
 
-Pricing page: [splabs-brand/docs/pricing-slid-phi.html](https://github.com/ceedot-rock/splabs-brand/blob/main/docs/pricing-slid-phi.html)
+Brand: [splabs-brand](https://github.com/ceedot-rock/splabs-brand)
 
-## Math (reconcile)
+---
 
-At **M = 10,000**:
-
-| Scheme | Avg bits | Notes |
-|--------|----------|--------|
-| Shannon floor | ≈13.29 | log₂ M |
-| Classic Fib bitmap | ≈18.23 | optimal under strict no-consecutive-1s + T=11 |
-| Hybrid (slid-phi) | ≈17.45 | one `11` + terminator `111` + low-bits · **~4.3%** smaller |
-| Gap + ANS (demo path) | ≈14.8 | different codec family · skewed gaps |
-
-Skip any Fib base → coverage 100%→76%. True Tribonacci base deferred for v2 win.
-
-## Demo
-
-Open [`s2s6_ans_gaps.html`](./s2s6_ans_gaps.html) (browser, no build).
-
-```
-npm i slid-phi   # v1.0.3 zero-deps TABLE256 when published/mirrored
-```
-
-Logo assets live in [ceedot-rock/splabs-brand](https://github.com/ceedot-rock/splabs-brand).
-
-## Library (cycle 1)
+## Dev
 
 ```bash
-npm test   # 13 pass — RT all omni modes + bitstream + universe < dense auto
+git clone https://github.com/ceedot-rock/SlidPhiLabs.git
+cd SlidPhiLabs
+npm test
 ```
 
-```js
-import { encode, decode, encodeBytes, decodeBytes, OMNI_META, encodeHybrid } from "slid-phi";
+Primary source: `src/omni.mjs` · entry: `src/index.mjs`.
 
-const f = encode("universe", data, { M: 10000 });
-const bytes = encodeBytes("gaps", postings);
-const back = decodeBytes(bytes);
-```
-
-- **Bitstream:** portable `Uint8Array` container (`packFrame` / `encodeBytes`)
-- **Omni v2 entry:** `encode` / `decode` / `OMNI_META` (k4 dense default; auto opt-in)
-- **rANS:** `mode: "rans"` when called; B≥2048 recommended (header tax documented)
+SPLabs / SlidPhiLabs — compression research + product.

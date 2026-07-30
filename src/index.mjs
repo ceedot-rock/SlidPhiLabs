@@ -1,5 +1,5 @@
 /**
- * slid-phi 2.1.0 — package entry
+ * slid-phi 2.1.1 — package entry
  * Primary: Omni-Dormant v2.1 (dense default=auto, Uint8Array bitstream)
  * Compat: hybrid_locked classic API
  */
