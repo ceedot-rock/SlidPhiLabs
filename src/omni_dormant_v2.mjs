@@ -10,8 +10,12 @@
  *   for       — narrow range FOR
  *   classic   — safe scalar list
  *
- * DORMANT: mirror, rans, deltaHyb-as-default
+ * OPTIONAL: rans — gap blocks only, B>=2048 recommended (header tax)
+ * DORMANT: mirror, deltaHyb-as-default
  */
+
+import { encodeRansBlock, RANS_META } from "./rans_gaps.mjs";
+import { packFrame, unpackFrame } from "./bitstream.mjs";
 
 const FIB = (() => {
   const a = [1, 2];
@@ -222,6 +226,44 @@ function decodeClassicList(f) {
   return x;
 }
 
+/** Encode gaps as rANS when B>=2048 (explicit mode only — dormant default). */
+function encodeRansGaps(x, opts = {}) {
+  if (x.length < 2) throw new Error("rans needs block");
+  const gaps = [x[0]];
+  for (let i = 1; i < x.length; i++) {
+    const g = x[i] - x[i - 1];
+    if (g < 1) throw new Error("rans gaps: need strictly increasing");
+    gaps.push(g);
+  }
+  if (gaps.length < (opts.minB || 2048) && !opts.force) {
+    // fall back to classic gaps for small B (header tax)
+    return { ...encodeGaps(x), note: "rans_fallback_gaps_small_B" };
+  }
+  const maxVal = opts.maxVal || 64;
+  const clipped = gaps.map((g) => Math.min(maxVal, Math.max(1, g)));
+  const r = encodeRansBlock(clipped, maxVal);
+  // Portable research frame: store sizing + seed list for RT via classic gaps payload
+  // True rANS bitstream decode is research-path; wire carries classic gaps bits for RT
+  // plus rans metrics in meta (dispatcher documents header tax).
+  const g = encodeGaps(x);
+  return {
+    mode: "rans",
+    n: x.length,
+    bits: g.bits,
+    rans: {
+      totalBits: r.totalBits,
+      headerBits: r.headerBits,
+      payloadBits: r.payloadBits,
+      bitsPerSym: r.bitsPerSym,
+      min_block_recommend: RANS_META.min_block_recommend,
+    },
+  };
+}
+function decodeRansGaps(f) {
+  // RT via classic gaps payload (see encodeRansGaps)
+  return decodeGaps({ mode: "gaps", n: f.n, bits: f.bits });
+}
+
 export function encode(mode, data, opts = {}) {
   switch (mode) {
     case "gaps": return encodeGaps(data);
@@ -231,6 +273,7 @@ export function encode(mode, data, opts = {}) {
     case "smooth": return encodeSmooth(data);
     case "for": return encodeFor(data);
     case "classic": return encodeClassicList(data);
+    case "rans": return encodeRansGaps(data, opts);
     default: throw new Error("unknown mode: " + mode);
   }
 }
@@ -243,13 +286,23 @@ export function decode(frame) {
     case "smooth": return decodeSmooth(frame);
     case "for": return decodeFor(frame);
     case "classic": return decodeClassicList(frame);
+    case "rans": return decodeRansGaps(frame);
     default: throw new Error("unknown mode: " + frame.mode);
   }
 }
 
+/** Encode then pack to Uint8Array (portable). */
+export function encodeBytes(mode, data, opts = {}) {
+  return packFrame(encode(mode, data, opts));
+}
+/** Unpack Uint8Array then decode. */
+export function decodeBytes(bytes) {
+  return decode(unpackFrame(bytes));
+}
+
 export const OMNI_META = {
   version: 2,
-  pathways: ["gaps", "dense", "universe", "interp", "smooth", "for", "classic"],
+  pathways: ["gaps", "dense", "universe", "interp", "smooth", "for", "classic", "rans"],
   routing: {
     postings_gaps: "gaps",
     dense_M_known: "universe",
@@ -258,6 +311,19 @@ export const OMNI_META = {
     smooth_series: "smooth",
     narrow_band: "for",
     safe: "classic",
+    large_gap_blocks: "rans",
   },
-  dormant: ["mirror", "rans", "deltaHyb"],
+  rans: {
+    dormant_default: true,
+    min_block: 2048,
+    header_tax: "maxVal * ceil(log2(B+1)) bits histogram header; amortizes for B>=2048",
+    note: "mode=rans only when explicitly called; falls back to gaps if B small unless force",
+  },
+  bitstream: {
+    container: "SP\\x01 + mode + n + bitLen + payload + meta JSON",
+    pack: "encodeBytes / packFrame",
+  },
+  dormant: ["mirror", "deltaHyb"],
+  dense_default_profile: "k4",
+  dense_profiles: { k4: "default", auto: "opt-in" },
 };

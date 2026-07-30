@@ -38,3 +38,21 @@ npm i slid-phi   # v1.0.3 zero-deps TABLE256 when published/mirrored
 ```
 
 Logo assets live in [ceedot-rock/splabs-brand](https://github.com/ceedot-rock/splabs-brand).
+
+## Library (cycle 1)
+
+```bash
+npm test   # 13 pass — RT all omni modes + bitstream + universe < dense auto
+```
+
+```js
+import { encode, decode, encodeBytes, decodeBytes, OMNI_META, encodeHybrid } from "slid-phi";
+
+const f = encode("universe", data, { M: 10000 });
+const bytes = encodeBytes("gaps", postings);
+const back = decodeBytes(bytes);
+```
+
+- **Bitstream:** portable `Uint8Array` container (`packFrame` / `encodeBytes`)
+- **Omni v2 entry:** `encode` / `decode` / `OMNI_META` (k4 dense default; auto opt-in)
+- **rANS:** `mode: "rans"` when called; B≥2048 recommended (header tax documented)

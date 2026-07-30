@@ -1,0 +1,21 @@
+{
+  "name": "slid-phi",
+  "version": "1.1.0",
+  "description": "SlidPhiLabs integer compression — Omni-Dormant v2 + hybrid Fib + portable bitstream",
+  "type": "module",
+  "main": "src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./omni": "./src/omni_dormant_v2.mjs",
+    "./hybrid": "./src/hybrid_locked.mjs",
+    "./bitstream": "./src/bitstream.mjs"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "keywords": ["compression", "fibonacci", "zeckendorf", "omni", "slid-phi"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
