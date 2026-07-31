@@ -61,8 +61,6 @@ const n = decodeHybrid(bits, 4);
 
 **Dormant unless called:** `mirror`, `rans` (B≥2048 research path), `deltaHyb`, `wasm_simd`.
 
-Frames carry **mode + data**. Prefer `bytes` + `bitLen` (`Uint8Array`); some modes also keep a `bits` string for demos.
-
 ```js
 import { OMNI_META } from "slid-phi";
 console.log(OMNI_META.pathways, OMNI_META.dense_default);
@@ -98,15 +96,17 @@ Policy: do **not** hybrid tiny geo gaps; do **not** always-on mirror.
 
 ---
 
-## Stripe (commercial)
+## Support & integration (paid)
 
-| Product | Price | Link |
-|---------|------:|------|
-| Commercial | $499 | https://buy.stripe.com/28EbJ20kR0OY99r9kA6wE00 |
-| Sponsor | $29 | https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01 |
-| Consulting | $250 | https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02 |
+MIT covers use of the code. Paid options are **time and guidance**, not a second copy of the same rights:
 
-Brand: [splabs-brand](https://github.com/ceedot-rock/splabs-brand) · Site: [slidphilabs.vercel.app](https://slidphilabs.vercel.app)
+| Offer | Price | What you get |
+|-------|------:|--------------|
+| **Support + Integration** | **$199** | Drop-in help for your stack (postings / time-series / varint swap), pathway choice, benchmark notes, email Q&A | [Buy](https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09) |
+| Sponsor | $29 | Support the project | [Sponsor](https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01) |
+| Consulting (deeper) | $250 | Scoped session / custom path | [Book](https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02) |
+
+Site: [slidphilabs.vercel.app](https://slidphilabs.vercel.app) · Brand: [splabs-brand](https://github.com/ceedot-rock/splabs-brand)
 
 ---
 
