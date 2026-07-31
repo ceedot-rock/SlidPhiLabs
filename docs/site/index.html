@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SlidPhiLabs — Omni-Dormant Integer Codecs</title>
+<meta name="description" content="Integer compression that beats classic Fibonacci by ~20%. Pure JS, MIT. npm: slid-phi."/>
+<meta name="theme-color" content="#0a0c12"/>
+<link rel="canonical" href="https://slidphilabs.vercel.app/"/>
+<meta property="og:title" content="SlidPhiLabs — Omni-Dormant Integer Codecs"/>
+<meta property="og:description" content="Integer compression that beats classic Fibonacci by ~20%. Pure JS, MIT. npm i slid-phi"/>
+<meta property="og:url" content="https://slidphilabs.vercel.app/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="SlidPhiLabs"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SlidPhiLabs — Omni-Dormant Integer Codecs"/>
+<meta name="twitter:description" content="Beat classic Fib by ~20%. Pure JS. MIT. npm i slid-phi"/>
+<meta name="keywords" content="integer compression, fibonacci coding, zeckendorf, slid-phi, omnidorment, bitstream, ANS, varint alternative"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0a0c12;--panel:#12151e;--border:#1e2433;--text:#e8ecf4;--muted:#8b95a8;--accent:#5b8aff;--accent2:#3dd6c6;--good:#3ecf8e;--warn:#f0a030;--code:#0d1018}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:50;background:rgba(10,12,18,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:920px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:1.05rem;color:var(--text)}.logo span{color:var(--accent2)}
+.nav-links{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.nav-links a{color:var(--muted);font-size:.9rem}.nav-links a:hover{color:var(--text);text-decoration:none}
+.btn{display:inline-flex;align-items:center;padding:8px 14px;border-radius:8px;font-size:.88rem;font-weight:600;border:1px solid transparent}
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:#4a7aef;text-decoration:none;color:#fff}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--border)}.btn-ghost:hover{border-color:var(--muted);text-decoration:none;color:var(--text)}
+.hero{padding:56px 0 40px;border-bottom:1px solid var(--border)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--accent2);background:rgba(61,214,198,.08);border:1px solid rgba(61,214,198,.25);padding:4px 10px;border-radius:999px;margin-bottom:16px}
+.badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent2);box-shadow:0 0 8px var(--accent2)}
+h1{font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.lede{font-size:1.1rem;color:var(--muted);max-width:540px;margin-bottom:24px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+#liveStrip{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--muted)}
+#liveStrip strong{color:var(--text)}
+.sep{opacity:.35;margin:0 6px}
+section{padding:44px 0;border-bottom:1px solid var(--border)}
+h2{font-size:1.2rem;font-weight:600;margin-bottom:16px}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:var(--panel)}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--border)}
+th{font-family:'IBM Plex Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:rgba(0,0,0,.25)}
+tr:last-child td{border-bottom:none}
+tr.hl td{background:rgba(61,214,198,.07);color:var(--accent2);font-weight:500}
+td.mono{font-family:'IBM Plex Mono',monospace}
+.pathways{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.path-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+.path-card .n{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.88rem;color:var(--accent);margin-bottom:2px}
+.path-card .w{font-size:.78rem;color:var(--muted)}
+pre{background:var(--code);border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto;font-family:'IBM Plex Mono',monospace;font-size:.84rem;line-height:1.5;margin:10px 0 14px}
+code{font-family:'IBM Plex Mono',monospace;font-size:.88em}
+p code,li code{background:rgba(255,255,255,.06);padding:2px 5px;border-radius:4px}
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.price-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.price-card .lab{font-size:.84rem;color:var(--muted)}
+.price-card .amt{font-family:'IBM Plex Mono',monospace;font-size:1.5rem;font-weight:600}
+.price-card a.btn{margin-top:auto;justify-content:center}
+.update{display:grid;grid-template-columns:100px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.update:last-child{border-bottom:none}
+.update .date{font-family:'IBM Plex Mono',monospace;font-size:.76rem;color:var(--muted);padding-top:2px}
+.update h3{font-size:1rem;margin-bottom:6px}
+.update p,.update ul{font-size:.9rem;color:var(--muted)}
+.update ul{padding-left:18px;margin-top:4px}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.66rem;padding:2px 6px;border-radius:4px;margin-right:6px}
+.tag-ship{background:rgba(62,207,142,.15);color:var(--good)}
+.tag-docs{background:rgba(91,138,255,.15);color:var(--accent)}
+footer{padding:28px 0 40px;border-top:1px solid var(--border);font-size:.84rem;color:var(--muted)}
+footer .inner{max-width:920px;margin:0 auto;padding:0 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+@media(max-width:600px){.update{grid-template-columns:1fr}.nav-links .hs{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="inner">
+  <a class="logo" href="#">SlidPhi<span>Labs</span></a>
+  <div class="nav-links">
+    <a class="hs" href="#numbers">Numbers</a>
+    <a href="#updates">Updates</a>
+    <a href="https://github.com/ceedot-rock/SlidPhiLabs" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn btn-primary" href="https://www.npmjs.com/package/slid-phi" target="_blank" rel="noopener">npm i slid-phi</a>
+  </div>
+</div></nav>
+<header class="hero"><div class="wrap">
+  <div class="badge"><span class="dot"></span> v2.1.1 · MIT · pure JS</div>
+  <h1>Integer codecs that beat classic Fibonacci by ~20%</h1>
+  <p class="lede">Omni-Dormant pathways — Zeckendorf / hybrid Fib roots with structure-aware gap, interpolative, and ANS paths. Portable Uint8Array bitstreams. No external models.</p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="https://www.npmjs.com/package/slid-phi" target="_blank" rel="noopener">Install on npm</a>
+    <a class="btn btn-ghost" href="https://github.com/ceedot-rock/SlidPhiLabs" target="_blank" rel="noopener">View source</a>
+    <a class="btn btn-ghost" href="https://github.com/ceedot-rock/SlidPhiLabs/blob/main/s2s6_ans_gaps.html" target="_blank" rel="noopener">Browser demo</a>
+  </div>
+  <div id="liveStrip">Loading live stats…</div>
+</div></header>
+<section id="numbers"><div class="wrap">
+  <h2>Numbers @ M = 10 000</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Scheme</th><th>Avg bits</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Ideal minimum</td><td class="mono">≈ 13.29</td><td>log₂ M</td></tr>
+      <tr><td>universe (M known)</td><td class="mono">14.00</td><td>fixed-width</td></tr>
+      <tr class="hl"><td>dense-auto</td><td class="mono">~14.57</td><td>~20% better than classic Fib</td></tr>
+      <tr><td>hybrid k=4</td><td class="mono">16.47</td><td>shipped hybrid default</td></tr>
+      <tr><td>classic Fib bitmap</td><td class="mono">18.23</td><td>baseline</td></tr>
+      <tr><td>gaps (geo)</td><td class="mono">~4.12</td><td>postings</td></tr>
+      <tr><td>interp</td><td class="mono">~0.01</td><td>structure-aware</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+<section id="updates"><div class="wrap">
+  <h2>Updates</h2>
+  <div class="update"><div class="date">2026-07-31</div><div>
+    <h3><span class="tag tag-ship">ship</span> MIT + landing + SEO</h3>
+    <ul><li>Site live at slidphilabs.vercel.app</li><li>MIT LICENSE, README homepage, package.json homepage</li></ul>
+  </div></div>
+  <div class="update"><div class="date">2026-07-30</div><div>
+    <h3><span class="tag tag-ship">ship</span> v2.1.1 on npm</h3>
+    <p>Omni-Dormant pathways, Stripe commercial links, truth table published.</p>
+  </div></div>
+</div></section>
+<section id="links"><div class="wrap">
+  <h2>Links</h2>
+  <ul style="list-style:none;font-size:.94rem">
+    <li>→ <a href="https://slidphilabs.vercel.app">Site</a></li>
+    <li>→ <a href="https://github.com/ceedot-rock/SlidPhiLabs">GitHub</a></li>
+    <li>→ <a href="https://www.npmjs.com/package/slid-phi">npm</a></li>
+  </ul>
+</div></section>
+<footer><div class="inner"><div>SlidPhiLabs · MIT</div><div id="year"></div></div></footer>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+(async()=>{const s=document.getElementById('liveStrip');try{const[r,c]=await Promise.all([fetch('https://api.github.com/repos/ceedot-rock/SlidPhiLabs').then(x=>x.json()),fetch('https://api.github.com/repos/ceedot-rock/SlidPhiLabs/commits?per_page=1').then(x=>x.json())]);const last=c[0];const when=last?new Date(last.commit.author.date).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}):'—';s.innerHTML=`<strong>${r.stargazers_count||0}</strong> stars<span class="sep">·</span>npm <strong>slid-phi</strong> @ 2.1.1<span class="sep">·</span>last push <strong>${when}</strong>`;}catch(e){s.innerHTML='npm <strong>slid-phi</strong> @ 2.1.1';}})();
+</script>
+</body>
+</html>
