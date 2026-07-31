@@ -1,5 +1,10 @@
 # slid-phi
 
+[![npm](https://img.shields.io/npm/v/slid-phi)](https://www.npmjs.com/package/slid-phi)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Node](https://img.shields.io/node/v/slid-phi)](https://www.npmjs.com/package/slid-phi)
+[![site](https://img.shields.io/badge/site-slidphilabs.vercel.app-blue)](https://slidphilabs.vercel.app)
+
 **Omni-Dormant integer codecs** — Zeckendorf / hybrid Fib roots with pathway routing, portable `Uint8Array` bitstreams.
 
 | | |
