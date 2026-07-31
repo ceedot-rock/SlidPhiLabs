@@ -4,9 +4,11 @@
 
 | | |
 |--|--|
+| **site** | **[slidphilabs.vercel.app](https://slidphilabs.vercel.app)** |
 | **npm** | [`slid-phi`](https://www.npmjs.com/package/slid-phi) |
 | **repo** | [ceedot-rock/SlidPhiLabs](https://github.com/ceedot-rock/SlidPhiLabs) |
 | **version** | **2.1.1** |
+| **license** | [MIT](./LICENSE) |
 
 ---
 
@@ -104,7 +106,7 @@ Policy: do **not** hybrid tiny geo gaps; do **not** always-on mirror.
 | Sponsor | $29 | https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01 |
 | Consulting | $250 | https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02 |
 
-Brand: [splabs-brand](https://github.com/ceedot-rock/splabs-brand)
+Brand: [splabs-brand](https://github.com/ceedot-rock/splabs-brand) · Site: [slidphilabs.vercel.app](https://slidphilabs.vercel.app)
 
 ---
 
