@@ -115,6 +115,18 @@ Site: [slidphilabs.vercel.app](https://slidphilabs.vercel.app) · Brand: [splabs
 
 ---
 
+## Related (SPLabs / portfolio)
+
+| Project | Role |
+|---------|------|
+| [CuNi](https://github.com/ceedot-rock/cuni) | Exact multi-target language · [Studio](https://cuni-studio.fly.dev/) |
+| [Agent-Rider](https://github.com/ceedot-rock/Agent-Rider) | Multi-agent coordination layer |
+| [quikgater](https://github.com/ceedot-rock/quikgater) | Pay-per-fact web fetch (x402) |
+| [TEACHAiD](https://github.com/ceedot-rock/teachaid) | Interactive beginner school app |
+| [splabs-brand](https://github.com/ceedot-rock/splabs-brand) | Brand assets |
+
+---
+
 ## Dev
 
 ```bash
