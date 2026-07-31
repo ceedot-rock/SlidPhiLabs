@@ -7,7 +7,7 @@
 | **site** | **[slidphilabs.vercel.app](https://slidphilabs.vercel.app)** |
 | **npm** | [`slid-phi`](https://www.npmjs.com/package/slid-phi) |
 | **repo** | [ceedot-rock/SlidPhiLabs](https://github.com/ceedot-rock/SlidPhiLabs) |
-| **version** | **2.1.1** |
+| **version** | **2.1.2** |
 | **license** | [MIT](./LICENSE) |
 
 ---
