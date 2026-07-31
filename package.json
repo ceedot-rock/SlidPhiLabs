@@ -1,6 +1,6 @@
 {
   "name": "slid-phi",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Omni-Dormant integer codecs — universe, gaps, dense auto, interp, portable bitstream",
   "type": "module",
   "main": "src/index.mjs",
