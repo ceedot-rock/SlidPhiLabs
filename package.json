@@ -4,6 +4,10 @@
   "description": "Omni-Dormant integer codecs — universe, gaps, dense auto, interp, portable bitstream",
   "type": "module",
   "main": "src/index.mjs",
+  "homepage": "https://slidphilabs.vercel.app",
+  "bugs": {
+    "url": "https://github.com/ceedot-rock/SlidPhiLabs/issues"
+  },
   "exports": {
     ".": "./src/index.mjs",
     "./omni": "./src/omni.mjs",
@@ -31,7 +35,9 @@
     "zeckendorf",
     "omni",
     "slid-phi",
-    "bitstream"
+    "bitstream",
+    "integer-encoding",
+    "ans"
   ],
   "license": "MIT",
   "repository": {
