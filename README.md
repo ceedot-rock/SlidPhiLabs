@@ -107,9 +107,12 @@ MIT covers use of the code. Paid options are **time and guidance**, not a second
 
 | Offer | Price | What you get |
 |-------|------:|--------------|
+| **Donate to SlidPhiLabs** | **$29.99** | One-time donation supporting open-source compression research | [Donate](https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a) |
 | **Support + Integration** | **$199** | Drop-in help for your stack (postings / time-series / varint swap), pathway choice, benchmark notes, email Q&A | [Buy](https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09) |
 | Sponsor | $29 | Support the project | [Sponsor](https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01) |
 | Consulting (deeper) | $250 | Scoped session / custom path | [Book](https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02) |
+
+**Prefer a simple tip?** → [Donate $29.99 to SlidPhiLabs](https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a)
 
 Site: [slidphilabs.vercel.app](https://slidphilabs.vercel.app) · Brand: [splabs-brand](https://github.com/ceedot-rock/splabs-brand)
 

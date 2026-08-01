@@ -1,7 +1,7 @@
 {
   "name": "slid-phi",
-  "version": "2.1.2",
-  "description": "Omni-Dormant integer codecs — universe, gaps, dense auto, interp, portable bitstream",
+  "version": "2.1.3",
+  "description": "Omni-Dormant integer codecs \u2014 universe, gaps, dense auto, interp, portable bitstream",
   "type": "module",
   "main": "src/index.mjs",
   "homepage": "https://slidphilabs.vercel.app",
@@ -47,5 +47,9 @@
   "engines": {
     "node": ">=18"
   },
-  "author": "ceedot-rock"
+  "author": "ceedot-rock",
+  "funding": {
+    "type": "individual",
+    "url": "https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a"
+  }
 }
