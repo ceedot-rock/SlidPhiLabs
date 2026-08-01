@@ -1,0 +1,42 @@
+{
+  "name": "blackjack-compression",
+  "version": "1.3.0",
+  "description": "Blackjack v4 — Fib ops + Rice + Elias ω + Δ² + Combinadic. Integer streams, bytes, LZ77 files.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node -e \"import('./index.js').then(m => process.exit(m.selfTest() ? 0 : 1))\""
+  },
+  "keywords": [
+    "compression",
+    "fibonacci",
+    "blackjack",
+    "rice",
+    "elias-omega",
+    "combinadic",
+    "delta",
+    "lz77"
+  ],
+  "author": "Corey Tasz",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ceedot-rock/SlidPhiLabs"
+  },
+  "homepage": "https://slidphilabs.vercel.app",
+  "engines": {
+    "node": ">=18"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a"
+  }
+}
