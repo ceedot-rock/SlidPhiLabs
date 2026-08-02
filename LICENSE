@@ -1,17 +1,29 @@
-MIT License
+SlidPhiLabs Proprietary License
+Copyright (c) 2026 SlidPhiLabs / Corey Tasz. All rights reserved.
 
-Copyright (c) 2026 Corey Tasz (ceedot-rock / SlidPhiLabs)
+This software (slid-phi / SlidPhiLabs) and associated documentation (the "Software")
+are the proprietary property of SlidPhiLabs / Corey Tasz.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+PERMISSIONS
+- Evaluation and non-commercial personal use are allowed solely for testing and
+  learning, provided the Software is not redistributed, resold, or offered as a
+  hosted/SaaS codec service.
+- Commercial use, redistribution, sublicensing, or incorporation into a product
+  or service offered to third parties requires a separate written commercial
+  license from SpidPhiLabs / SlidPhiLabs.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+RESTRICTIONS
+- You may not copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software except as expressly permitted above or by a commercial
+  license.
+- You may not remove or alter copyright notices.
 
+COMMERCIAL LICENSING
+Contact: ceedotrock@gmail.com
+Site: https://slidphilabs.vercel.app
+Support / integration and paid tiers: see site pricing and Stripe links.
+
+NO WARRANTY
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -19,3 +31,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+NOTE ON PRIOR VERSIONS
+Versions published under the MIT License remain available under MIT terms as
+originally released. This proprietary license applies to this version and later
+unless a different license is stated.

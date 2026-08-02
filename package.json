@@ -1,7 +1,7 @@
 {
   "name": "slid-phi",
-  "version": "2.1.4",
-  "description": "SlidPhiLabs Omni-Dormant integer codecs \u2014 Zeckendorf / hybrid Fibonacci + optional gap-ANS path. Pure JS, MIT. Support and integration available.",
+  "version": "2.1.5",
+  "description": "SlidPhiLabs Omni-Dormant integer codecs — Zeckendorf / hybrid Fibonacci + optional gap-ANS path. Pure JS. Proprietary license; support and integration available.",
   "type": "module",
   "main": "src/index.mjs",
   "homepage": "https://slidphilabs.vercel.app",
@@ -46,7 +46,7 @@
     "codec",
     "nodejs"
   ],
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ceedot-rock/SlidPhiLabs.git"
