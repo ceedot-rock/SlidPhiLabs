@@ -1,6 +1,6 @@
 # slid-phi
 
-**Omni-Dormant integer codecs** — Zeckendorf / hybrid Fib roots with pathway routing, portable `Uint8Array` bitstreams.
+**SlidPhiLabs Omni-Dormant integer codecs** — pure-JS **Zeckendorf / hybrid Fibonacci** pathways with optional gap-ANS research path. Portable `Uint8Array` bitstreams. MIT.
 
 [![npm](https://img.shields.io/npm/v/slid-phi)](https://www.npmjs.com/package/slid-phi)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -10,10 +10,14 @@
 | | |
 |--|--|
 | **site** | **[slidphilabs.vercel.app](https://slidphilabs.vercel.app)** |
-| **npm** | [`slid-phi`](https://www.npmjs.com/package/slid-phi) |
+| **npm** | [`slid-phi@2.1.4`](https://www.npmjs.com/package/slid-phi) |
 | **repo** | [ceedot-rock/SlidPhiLabs](https://github.com/ceedot-rock/SlidPhiLabs) |
-| **version** | **2.1.2** |
+| **version** | **2.1.4** |
 | **license** | [MIT](./LICENSE) |
+
+### Why this exists
+
+Classic Fibonacci / Zeckendorf integer codes leave headroom on dense universes and structured postings. Omni-Dormant routes each list through the right pathway (universe / dense / gaps / interp / smooth / FOR) so average bits drop ~**20% vs classic Fib** at M=10 000 on the published table — without native deps.
 
 ---
 
@@ -117,6 +121,15 @@ MIT covers use of the code. Paid options are **time and guidance**, not a second
 Site: [slidphilabs.vercel.app](https://slidphilabs.vercel.app) · Brand: [splabs-brand](https://github.com/ceedot-rock/splabs-brand)
 
 ---
+
+## Compression family (same lab)
+
+| Package | Role |
+|---------|------|
+| [zero-range-wave-compression](https://github.com/ceedot-rock/zero-range-wave-compression) | **ZRW v5** — beats gzip/brotli on zeros, ramps & walks |
+| [blackjack-compression](https://www.npmjs.com/package/blackjack-compression) | Blackjack v4 general int/byte/file compressor |
+| [shard-zip](https://www.npmjs.com/package/shard-zip) | Adaptive Fib + Blackjack V2 + CLI |
+| [shard-tsdb](https://www.npmjs.com/package/shard-tsdb) | Time-series DB using this family |
 
 ## Related (SPLabs / portfolio)
 

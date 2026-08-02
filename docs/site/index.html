@@ -3,18 +3,226 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>SlidPhiLabs — Omni-Dormant Integer Codecs</title>
-<meta name="description" content="Integer compression that beats classic Fibonacci by ~20%. MIT open source. Support + integration $199."/>
+<title>SlidPhiLabs — pure JS integer compression · ZRW · Blackjack · Omni-Dormant</title>
+<meta name="description" content="SlidPhiLabs: pure-JS integer compressors. Zero Range Wave beats gzip/brotli on zeros, ramps & walks. Blackjack, shard-zip, slid-phi Omni-Dormant. MIT + optional support."/>
+<meta name="keywords" content="javascript integer compression, pure js compressor, zero range wave, blackjack compression, beat gzip, beat brotli, fibonacci compression, slid-phi, slidphilabs"/>
 <link rel="canonical" href="https://slidphilabs.vercel.app/"/>
-<meta property="og:title" content="SlidPhiLabs — Omni-Dormant Integer Codecs"/>
-<meta property="og:description" content="Beat classic Fib by ~20%. MIT free. Paid support + integration if you need drop-in help."/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="SlidPhiLabs"/>
+<meta property="og:title" content="SlidPhiLabs — pure JS integer compression"/>
+<meta property="og:description" content="ZRW beats gzip/brotli on zeros, ramps & walks. Blackjack family + Omni-Dormant codecs. MIT open source."/>
 <meta property="og:url" content="https://slidphilabs.vercel.app/"/>
+<meta property="og:image" content="https://raw.githubusercontent.com/ceedot-rock/splabs-brand/main/assets/splabs-og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="SlidPhiLabs — pure JS integer compression"/>
+<meta name="twitter:description" content="Zero Range Wave, Blackjack, and Omni-Dormant codecs. Record ratios on integer sequences."/>
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ceedot-rock/splabs-brand/main/assets/splabs-og.png"/>
 <meta name="theme-color" content="#0a0c12"/>
+<meta name="robots" content="index,follow"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SlidPhiLabs",
+  "url": "https://slidphilabs.vercel.app/",
+  "sameAs": [
+    "https://github.com/ceedot-rock/SlidPhiLabs",
+    "https://github.com/ceedot-rock/zero-range-wave-compression",
+    "https://www.npmjs.com/package/slid-phi"
+  ],
+  "description": "Pure-JS integer compression lab: Zero Range Wave, Blackjack, Omni-Dormant codecs."
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0a0c12;--panel:#12151e;--border:#1e2433;--text:#e8ecf4;--muted:#8b95a8;--accent:#5b8aff;--accent2:#3dd6c6;--good:#3ecf8e;--code:#0d1018;--warn:#fbbf24}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{color:var(--accent);text-decoration:none}.wrap{max-width:920px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:50;background:rgba(10,12,18,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:920px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.logo{font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--text)}.logo span{color:var(--accent2)}
+.nav-links{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.nav-links a{color:var(--muted);font-size:.9rem}
+.btn{display:inline-flex;padding:8px 14px;border-radius:8px;font-size:.88rem;font-weight:600;border:1px solid transparent;align-items:center}
+.btn-primary{background:var(--accent);color:#fff}.btn-ghost{background:transparent;color:var(--text);border-color:var(--border)}
+.btn-teal{background:var(--accent2);color:#061018}
+.hero{padding:56px 0 40px;border-bottom:1px solid var(--border)}
+.badge{display:inline-flex;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--accent2);background:rgba(61,214,198,.08);border:1px solid rgba(61,214,198,.25);padding:4px 10px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:700;margin-bottom:12px}
+.lede{font-size:1.1rem;color:var(--muted);max-width:38rem;margin-bottom:24px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px}
+section{padding:40px 0;border-bottom:1px solid var(--border)}
+h2{font-size:1.35rem;font-weight:700;margin-bottom:14px}
+h3{font-size:1.05rem;font-weight:700;margin:18px 0 8px;color:var(--accent2)}
+.note{color:var(--muted);margin-bottom:16px;font-size:.95rem}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin-bottom:12px}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:var(--panel);color:var(--muted);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:none}tr.hl{background:rgba(61,214,198,.06)}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:.88rem}
+pre{background:var(--code);border:1px solid var(--border);border-radius:10px;padding:16px;overflow-x:auto;font-family:'IBM Plex Mono',monospace;font-size:.85rem;line-height:1.5}
+.pricing{display:grid;gap:14px}@media(min-width:720px){.pricing{grid-template-columns:repeat(3,1fr)}}
+.price-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.price-card.featured{border-color:rgba(91,138,255,.45);box-shadow:0 0 0 1px rgba(91,138,255,.15)}
+.amt{font-size:1.6rem;font-weight:700;color:var(--accent2)}
+.desc{color:var(--muted);font-size:.88rem;flex:1}
+.cards{display:grid;gap:14px}@media(min-width:720px){.cards{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px}
+.card h3{margin-top:0}
+.card p{color:var(--muted);font-size:.92rem;margin-bottom:12px}
+.update{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);font-size:.92rem}
+.update:last-child{border-bottom:none}.tag{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--good);background:rgba(62,207,142,.1);border:1px solid rgba(62,207,142,.25);padding:2px 8px;border-radius:999px;flex-shrink:0}
+footer{padding:28px 0;color:var(--muted);font-size:.85rem}
+footer .inner{max-width:920px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+</style>
 </head>
-<body style="font-family:system-ui;background:#0a0c12;color:#e8ecf4;max-width:720px;margin:2rem auto;padding:0 1rem;line-height:1.5">
-<h1>SlidPhiLabs</h1>
-<p>Canonical site: <a href="https://slidphilabs.vercel.app" style="color:#5b8aff">slidphilabs.vercel.app</a></p>
-<p>npm: <code>slid-phi</code> · MIT · Support + Integration <strong>$199</strong></p>
-<p><a href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09" style="color:#3dd6c6">Get support</a></p>
+<body>
+<nav><div class="inner">
+  <div class="logo">SlidPhi<span>Labs</span></div>
+  <div class="nav-links">
+    <a href="#zrw">ZRW</a>
+    <a href="#family">Packages</a>
+    <a href="#numbers">Numbers</a>
+    <a href="#support">Support</a>
+    <a href="https://cuni-studio.fly.dev/" target="_blank" rel="noopener">CuNi</a>
+    <a href="https://github.com/ceedot-rock/SlidPhiLabs" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></nav>
+
+<section class="hero"><div class="wrap">
+  <div class="badge">MIT · pure JS · compression lab</div>
+  <h1>Integer compression that actually fits your data</h1>
+  <p class="lede">SlidPhiLabs ships pure-JavaScript lossless codecs for integer sequences: <strong>Zero Range Wave</strong> (beats gzip/brotli on zeros, ramps &amp; walks), the <strong>Blackjack</strong> family, and <strong>Omni-Dormant</strong> pathway codecs. Code is free. Paid support is optional.</p>
+  <div class="cta-row">
+    <a class="btn btn-teal" href="#zrw">See ZRW benches</a>
+    <a class="btn btn-primary" href="https://www.npmjs.com/package/slid-phi" target="_blank" rel="noopener">npm i slid-phi</a>
+    <a class="btn btn-ghost" href="https://github.com/ceedot-rock/zero-range-wave-compression" target="_blank" rel="noopener">ZRW on GitHub</a>
+  </div>
+</div></section>
+
+<section id="zrw"><div class="wrap">
+  <h2>Zero Range Wave (ZRW) v5</h2>
+  <p class="note">Specialized pure-JS integer-sequence compressor — library, HTTP API (<code>zrw-api</code>), and MCP (<code>zrw-mcp</code>). Built for repetitive and smooth integer streams where generic compressors waste bits.</p>
+  <h3>vs gzip / brotli (lossless RT)</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Input</th><th>ZRW</th><th>brotli</th><th>gzip</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>zeros × 1k</td><td class="mono"><strong>8 B</strong></td><td class="mono">13 B</td><td class="mono">39 B</td></tr>
+      <tr class="hl"><td>ramp × 1k</td><td class="mono"><strong>8 B</strong></td><td class="mono">~1132 B (~141×)</td><td class="mono">~1436 B</td></tr>
+      <tr><td>walk × 10k (s1)</td><td class="mono"><strong>128 B</strong></td><td class="mono">—</td><td class="mono">~5223 B (~40×)</td></tr>
+      <tr><td>walk × 10k (s5)</td><td class="mono"><strong>420 B</strong></td><td class="mono">—</td><td class="mono">~11231 B (~26×)</td></tr>
+    </tbody>
+  </table></div>
+  <pre>npm i github:ceedot-rock/zero-range-wave-compression
+import { compress, decompress, setLicenseKey } from "zero-range-wave-compression";
+setLicenseKey(process.env.ZRW_LICENSE);
+const packed = compress([0,0,0,1,2,3]); // exact RT via decompress</pre>
+  <div class="links">
+    <a class="btn btn-primary" href="https://github.com/ceedot-rock/zero-range-wave-compression" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn btn-ghost" href="https://github.com/ceedot-rock/zero-range-wave-compression/releases/tag/v5.0.0" target="_blank" rel="noopener">Release v5</a>
+    <a class="btn btn-ghost" href="https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b" target="_blank" rel="noopener">Starting $79</a>
+    <a class="btn btn-ghost" href="https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c" target="_blank" rel="noopener">Pro $249</a>
+    <a class="btn btn-ghost" href="https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d" target="_blank" rel="noopener">l33t $699</a>
+  </div>
+  <p class="note" style="margin-top:14px">Free Gate: 25 seats — email ceedotrock@gmail.com subject <code>ZRW FREE</code>.</p>
+</div></section>
+
+<section id="family"><div class="wrap">
+  <h2>Compression family</h2>
+  <p class="note">Same lab, different jobs. All pure JS. Cross-linked from every package README.</p>
+  <div class="cards">
+    <div class="card">
+      <h3>zero-range-wave-compression</h3>
+      <p>Record ratios on zeros, ramps, walks. Lib + API + MCP. Free 25 + paid tiers.</p>
+      <a href="https://github.com/ceedot-rock/zero-range-wave-compression" target="_blank" rel="noopener">GitHub →</a>
+    </div>
+    <div class="card">
+      <h3>blackjack-compression @1.3.5</h3>
+      <p>General Fib/Rice/ω/Δ²/combinadic/LZ77. Full encode/decode RT. Browser + Node.</p>
+      <a href="https://www.npmjs.com/package/blackjack-compression" target="_blank" rel="noopener">npm →</a>
+      · <a href="https://ceedot-rock.github.io/blackjack-compression/" target="_blank" rel="noopener">demo</a>
+    </div>
+    <div class="card">
+      <h3>shard-zip @0.2.4</h3>
+      <p>Adaptive Fibonacci + Blackjack V2, CLI for integer series and bytes.</p>
+      <a href="https://www.npmjs.com/package/shard-zip" target="_blank" rel="noopener">npm →</a>
+    </div>
+    <div class="card">
+      <h3>slid-phi @2.1.4</h3>
+      <p>Omni-Dormant pathways — ~20% vs classic Fib at M=10k on the truth table.</p>
+      <a href="https://www.npmjs.com/package/slid-phi" target="_blank" rel="noopener">npm →</a>
+    </div>
+  </div>
+  <div class="table-wrap" style="margin-top:18px"><table>
+    <thead><tr><th>Package</th><th>Install</th><th>License</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="mono">zero-range-wave-compression</td><td class="mono">github:ceedot-rock/zero-range-wave-compression</td><td>Free Gate + commercial</td></tr>
+      <tr><td class="mono"><a href="https://www.npmjs.com/package/blackjack-compression">blackjack-compression</a></td><td class="mono">npm i blackjack-compression</td><td>MIT</td></tr>
+      <tr><td class="mono"><a href="https://www.npmjs.com/package/shard-zip">shard-zip</a></td><td class="mono">npm i shard-zip</td><td>MIT</td></tr>
+      <tr><td class="mono"><a href="https://www.npmjs.com/package/shard-tsdb">shard-tsdb</a></td><td class="mono">npm i shard-tsdb</td><td>MIT</td></tr>
+      <tr><td class="mono"><a href="https://www.npmjs.com/package/slid-phi">slid-phi</a></td><td class="mono">npm i slid-phi</td><td>MIT</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="numbers"><div class="wrap">
+  <h2>Omni-Dormant numbers @ M = 10 000</h2>
+  <p class="note">Lower avg bits = better. Never claim below the ideal minimum.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Scheme</th><th>Avg bits</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Ideal minimum</td><td class="mono">≈ 13.29</td><td>log₂ M</td></tr>
+      <tr class="hl"><td>dense-auto</td><td class="mono">~14.57</td><td>~20% vs classic Fib 18.23</td></tr>
+      <tr><td>classic Fib</td><td class="mono">18.23</td><td>baseline</td></tr>
+    </tbody>
+  </table></div>
+  <pre>npm i slid-phi
+import { encode, decode } from "slid-phi";
+const f = encode("dense", data, { profile: "auto" });</pre>
+</div></section>
+
+<section id="also"><div class="wrap">
+  <h2>Also from the studio</h2>
+  <p class="note"><a href="https://cuni-studio.fly.dev/" target="_blank" rel="noopener">CuNi Studio</a> — exact multi-target code (Python/Go/JS) or refuse. Free playground + Agent mode.</p>
+</div></section>
+
+<section id="support"><div class="wrap">
+  <h2>Support &amp; integration</h2>
+  <p class="note">MIT covers using the open packages. Paid offers are <strong>time and guidance</strong> — not a second license for the same rights. ZRW has its own commercial tiers (see above).</p>
+  <div class="pricing">
+    <div class="price-card featured">
+      <div>Support + Integration</div>
+      <div class="amt">$199</div>
+      <div class="desc">Drop-in help for postings / time-series / varint swap. Pathway choice, benchmarks, email Q&amp;A.</div>
+      <a class="btn btn-primary" href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09" target="_blank" rel="noopener">Get support</a>
+    </div>
+    <div class="price-card">
+      <div>Donate / Sponsor</div>
+      <div class="amt">$29.99</div>
+      <div class="desc">Support open-source compression research.</div>
+      <a class="btn btn-ghost" href="https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a" target="_blank" rel="noopener">Donate</a>
+    </div>
+    <div class="price-card">
+      <div>Consulting</div>
+      <div class="amt">$250</div>
+      <div class="desc">Scoped session or custom path.</div>
+      <a class="btn btn-ghost" href="https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02" target="_blank" rel="noopener">Book</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="updates"><div class="wrap">
+  <h2>Updates</h2>
+  <div class="update"><span class="tag">seo</span> <strong>2026-08-02</strong> — Heavy SEO overhaul: ZRW section + benches on site · package.json keywords · README rewrites across family · versions ZRW 5.0.1 · blackjack 1.3.5 · shard-zip 0.2.4 · slid-phi 2.1.4.</div>
+  <div class="update"><span class="tag">ship</span> <strong>2026-08-01</strong> — ZRW v5 full product (lib + API + MCP) · Free Gate 25 · Starting/Pro/l33t Stripe.</div>
+  <div class="update"><span class="tag">ship</span> <strong>2026-08-01</strong> — Blackjack family live · demo · slid-phi@2.1.3 · Donate $29.99.</div>
+</div></section>
+
+<footer><div class="inner">
+  <div>SlidPhiLabs · MIT open packages · ZRW Free Gate + commercial · paid support optional</div>
+  <div id="year"></div>
+</div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
 </body>
 </html>
