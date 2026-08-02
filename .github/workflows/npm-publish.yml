@@ -1,0 +1,28 @@
+# Copy to: .github/workflows/npm-publish.yml
+# Requires repo secret: NPM_TOKEN (granular token with publish + 2FA bypass if org requires it)
+
+name: npm-publish
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm ci || npm install
+      - run: npm test --if-present
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
