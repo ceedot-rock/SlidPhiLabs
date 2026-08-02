@@ -85,14 +85,16 @@ footer .inner{max-width:920px;margin:0 auto;padding:0 20px;display:flex;justify-
       </ul>
     </div>
     <div class="card">
-      <h3>Path B — Small donation</h3>
-      <p class="note">One-time support for SlidPhi Labs research.</p>
+      <h3>Path B — Chip in or sponsor</h3>
+      <p class="note">One-time support for SlidPhi Labs research. After paying, submit this form with the <strong>email used at checkout</strong>.</p>
       <ul>
-        <li>Sponsor tier: <strong>$29</strong> (live Stripe link)</li>
-        <li>Or any support amount via the same checkout if you prefer</li>
-        <li>After paying, submit this form with the <strong>email used at checkout</strong></li>
+        <li><strong>$9 chip-in</strong> — enough to unlock Free Gate</li>
+        <li><strong>$29 sponsor</strong> — higher support tier</li>
       </ul>
-      <p style="margin-top:12px"><a class="btn btn-teal" href="https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01" target="_blank" rel="noopener">Donate / Sponsor $29</a></p>
+      <p style="margin-top:12px;display:flex;flex-wrap:wrap;gap:10px">
+        <a class="btn btn-teal" href="https://donate.stripe.com/eVq8wQffL2X60CVfIY6wE0e" target="_blank" rel="noopener">Chip in $9</a>
+        <a class="btn btn-ghost" href="https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01" target="_blank" rel="noopener">Sponsor $29</a>
+      </p>
     </div>
   </div>
 </div></section>
@@ -115,7 +117,7 @@ footer .inner{max-width:920px;margin:0 auto;padding:0 20px;display:flex;justify-
     <label for="path">How are you unlocking?</label>
     <select id="path" name="path" required>
       <option value="review">Path A — Public review (free)</option>
-      <option value="donate">Path B — I donated / sponsored</option>
+      <option value="donate">Path B — I chipped in / sponsored</option>
     </select>
 
     <div id="reviewFields">
@@ -129,7 +131,7 @@ footer .inner{max-width:920px;margin:0 auto;padding:0 20px;display:flex;justify-
         <input id="paidConfirm" name="paidConfirm" type="checkbox" style="width:auto;margin-top:4px"/>
         <span>I completed the Stripe checkout and used the email above</span>
       </label>
-      <p class="note" style="margin-top:8px">Stripe: <a href="https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01" target="_blank" rel="noopener">buy.stripe.com sponsor link</a></p>
+      <p class="note" style="margin-top:8px">Stripe: <a href="https://donate.stripe.com/eVq8wQffL2X60CVfIY6wE0e" target="_blank" rel="noopener">$9 chip-in</a> · <a href="https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01" target="_blank" rel="noopener">$29 sponsor</a></p>
     </div>
 
     <label for="note">Anything else? (optional)</label>
