@@ -1,14 +1,27 @@
 {
   "name": "slid-phi",
-  "version": "2.2.0",
-  "description": "STUB — proprietary SlidPhiLabs Omni-Dormant codecs. Real package after purchase or Try Gate. https://slidphilabs.vercel.app/access",
+  "version": "2.2.1",
+  "description": "Slid Phi Labs Omni-Dormant integer codecs \u2014 Zeckendorf / hybrid Fibonacci + optional gap-ANS path. Pure JS. Support and integration available.",
   "type": "module",
   "main": "src/index.mjs",
-  "exports": { ".": "./src/index.mjs" },
-  "files": ["src/index.mjs", "README.md", "LICENSE"],
-  "keywords": ["slidphilabs", "proprietary", "stub"],
-  "author": "SlidPhiLabs",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "files": [
+    "src/index.mjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "slid phi labs",
+    "proprietary",
+    "stub"
+  ],
+  "author": "Slid Phi Labs",
   "license": "SEE LICENSE IN LICENSE",
-  "homepage": "https://slidphilabs.vercel.app/access",
-  "repository": { "type": "git", "url": "git+https://github.com/ceedot-rock/SlidPhiLabs.git" }
+  "homepage": "https://slidphilabs.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ceedot-rock/SlidPhiLabs.git"
+  }
 }
