@@ -1,1 +1,145 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SlidPhiLabs — ZRW by SlidPhiLabs · pure JS integer compression</title>
+<meta name="description" content="Zero Range Wave (ZRW) by SliidPhiLabs beats gzip/brotli on zeros, ramps and walks. Blackjack, shard-zip, slid-phi. Commercial codecs. Try Gate evaluation."/>
+<meta name="keywords" content="javascript integer compression, zero range wave, ZRW, blackjack compression, slid-phi, slidphilabs, pure js compressor"/>
+<link rel="canonical" href="https://slidphilabs.vercel.app/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="SlidPhiLabs"/>
+<meta property="og:title" content="ZRW by SlidPhiLabs"/>
+<meta property="og:description" content="Beats gzip/brotli on zeros, ramps and walks. Try Gate evaluation. Commercial licenses."/>
+<meta property="og:url" content="https://slidphilabs.vercel.app/"/>
+<meta property="og:image" content="https://raw.githubusercontent.com/ceedot-rock/splabs-brand/main/assets/splabs-og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="theme-color" content="#0a0c12"/>
+<meta name="robots" content="index,follow"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0a0c12;--panel:#12151e;--border:#1e2433;--text:#e8ecf4;--muted:#8b95a8;--accent:#5b8aff;--accent2:#3dd6c6;--code:#0d1018}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{color:var(--accent);text-decoration:none}.wrap{max-width:920px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:50;background:rgba(10,12,18,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:920px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.logo{font-family:'IBM Plex Mono',monospace;font-weight:600}.logo span{color:var(--accent2)}
+.nav-links{display:flex;gap:14px;flex-wrap:wrap}.nav-links a{color:var(--muted);font-size:.9rem}
+.btn{display:inline-flex;padding:8px 14px;border-radius:8px;font-size:.88rem;font-weight:600;border:1px solid transparent}
+.btn-primary{background:var(--accent);color:#fff}.btn-ghost{background:transparent;color:var(--text);border-color:var(--border)}
+.btn-teal{background:var(--accent2);color:#061018}
+.hero{padding:56px 0 40px;border-bottom:1px solid var(--border)}
+.badge{display:inline-flex;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--accent2);background:rgba(61,214,198,.08);border:1px solid rgba(61,214,198,.25);padding:4px 10px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:700;margin-bottom:12px}
+.lede{font-size:1.1rem;color:var(--muted);max-width:40rem;margin-bottom:24px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px}
+section{padding:40px 0;border-bottom:1px solid var(--border)}
+h2{font-size:1.35rem;font-weight:700;margin-bottom:14px}
+h3{font-size:1.05rem;font-weight:700;margin:18px 0 8px;color:var(--accent2)}
+.note{color:var(--muted);margin-bottom:16px;font-size:.95rem}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin-bottom:12px}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:var(--panel);color:var(--muted);font-weight:600;font-size:.8rem}
+tr:last-child td{border-bottom:none}tr.hl{background:rgba(61,214,198,.06)}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:.88rem}
+pre{background:var(--code);border:1px solid var(--border);border-radius:10px;padding:16px;overflow-x:auto;font-family:'IBM Plex Mono',monospace;font-size:.85rem}
+.pricing{display:grid;gap:14px}@media(min-width:720px){.pricing{grid-template-columns:repeat(3,1fr)}}
+.price-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.price-card.featured{border-color:rgba(91,138,255,.45)}
+.amt{font-size:1.6rem;font-weight:700;color:var(--accent2)}
+.desc{color:var(--muted);font-size:.88rem;flex:1}
+.cards{display:grid;gap:14px}@media(min-width:720px){.cards{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px}
+.card h3{margin-top:0}.card p{color:var(--muted);font-size:.92rem;margin-bottom:12px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+footer{padding:28px 0;color:var(--muted);font-size:.85rem}
+footer .inner{max-width:920px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+<nav><div class="inner">
+  <a class="logo" href="/">SlidPhi<span>Labs</span></a>
+  <div class="nav-links">
+    <a href="#zrw">ZRW</a>
+    <a href="#family">Packages</a>
+    <a href="#support">Support</a>
+    <a href="/try">Try Gate</a>
+    <a href="https://cuni-studio.fly.dev/" target="_blank" rel="noopener">CuNi</a>
+    <a href="https://github.com/ceedot-rock/SlidPhiLabs" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></nav>
+
+<section class="hero"><div class="wrap">
+  <div class="badge">ZRW by SliidPhiLabs · commercial · Try Gate</div>
+  <h1>Integer compression that actually fits your data</h1>
+  <p class="lede"><strong>Zero Range Wave (ZRW)</strong> by SlidPhiLabs beats gzip/brotli on zeros, ramps and walks. <strong>Blackjack</strong> and <strong>slid-phi</strong> cover related integer workloads. Evaluate via Try Gate. Commercial use under license.</p>
+  <div class="cta-row">
+    <a class="btn btn-teal" href="/try">Try Gate — unlock access</a>
+    <a class="btn btn-primary" href="#zrw">ZRW benches</a>
+    <a class="btn btn-ghost" href="https://www.npmjs.com/package/zero-range-wave-compression" target="_blank" rel="noopener">npm · ZRW</a>
+  </div>
+</div></section>
+
+<section id="zrw"><div class="wrap">
+  <h2>Zero Range Wave (ZRW) v5 — by SlidPhiLabs</h2>
+  <p class="note">Pure-JS integer compressor. Library · HTTP API · MCP. Proprietary source. Free Gate + paid tiers.</p>
+  <h3>vs gzip / brotli (lossless RT)</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Input</th><th>ZRW</th><th>brotli</th><th>gzip</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>zeros × 1k</td><td class="mono"><strong>8 B</strong></td><td class="mono">13 B</td><td class="mono">39 B</td></tr>
+      <tr class="hl"><td>ramp × 1k</td><td class="mono"><strong>8 B</strong></td><td class="mono">~1132 B (~141×)</td><td class="mono">~1436 B</td></tr>
+      <tr><td>walk × 10k (s1)</td><td class="mono"><strong>128 B</strong></td><td class="mono">—</td><td class="mono">~5223 B (~40×)</td></tr>
+      <tr><td>walk × 10k (s5)</td><td class="mono"><strong>420 B</strong></td><td class="mono">—</td><td class="mono">~11231 B (~26×)</td></tr>
+    </tbody>
+  </table></div>
+  <pre>npm i zero-range-wave-compression
+import { compress, decompress, setLicenseKey } from "zero-range-wave-compression";
+setLicenseKey(process.env.ZRW_LICENSE);
+const packed = compress([0,0,0,1,2,3]);</pre>
+  <div class="links">
+    <a class="btn btn-primary" href="https://www.npmjs.com/package/zero-range-wave-compression" target="_blank" rel="noopener">npm</a>
+    <a class="btn btn-teal" href="/try">Try Gate</a>
+    <a class="btn btn-ghost" href="https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b" target="_blank" rel="noopener">Starting $79</a>
+    <a class="btn btn-ghost" href="https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c" target="_blank" rel="noopener">Pro $249</a>
+    <a class="btn btn-ghost" href="https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d" target="_blank" rel="noopener">l33t $699</a>
+  </div>
+</div></section>
+
+<section id="family"><div class="wrap">
+  <h2>Compression family</h2>
+  <p class="note">Proprietary · evaluation / non-commercial testing allowed. Commercial use requires a license.</p>
+  <div class="cards">
+    <div class="card"><h3>zero-range-wave-compression</h3><p>Record ratios on zeros, ramps, walks. Lib + API + MCP.</p><a href="https://www.npmjs.com/package/zero-range-wave-compression" target="_blank" rel="noopener">npm →</a></div>
+    <div class="card"><h3>blackjack-compression</h3><p>Fib/Rice/ω/Δ²/combinadic/LZ77. Full RT.</p><a href="https://www.npmjs.com/package/blackjack-compression" target="_blank" rel="noopener">npm →</a></div>
+    <div class="card"><h3>shard-zip</h3><p>Adaptive Fib + Blackjack V2 + CLI.</p><a href="https://www.npmjs.com/package/shard-zip" target="_blank" rel="noopener">npm →</a></div>
+    <div class="card"><h3>slid-phi</h3><p>Omni-Dormant pathways · truth table vs Fib.</p><a href="https://www.npmjs.com/package/slid-phi" target="_blank" rel="noopener">npm →</a></div>
+  </div>
+  <div class="table-wrap" style="margin-top:18px"><table>
+    <thead><tr><th>Package</th><th>Install</th><th>License</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="mono">zero-range-wave-compression</td><td class="mono">npm i zero-range-wave-compression</td><td>Free Gate + commercial</td></tr>
+      <tr><td class="mono">blackjack-compression</td><td class="mono">npm i blackjack-compression</td><td>Proprietary</td></tr>
+      <tr><td class="mono">shard-zip</td><td class="mono">npm i shard-zip</td><td>Proprietary</td></tr>
+      <tr><td class="mono">slid-phi</td><td class="mono">npm i slid-phi</td><td>Proprietary</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="support"><div class="wrap">
+  <h2>Support and licensing</h2>
+  <p class="note">Codecs are proprietary. Support offers are time and guidance. ZRW has Free Gate and paid tiers above.</p>
+  <div class="pricing">
+    <div class="price-card featured"><div>Support + Integration</div><div class="amt">$199</div><div class="desc">Pathway choice, benchmarks, email Q&amp;A.</div><a class="btn btn-primary" href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09" target="_blank" rel="noopener">Get support</a></div>
+    <div class="price-card"><div>Donate</div><div class="amt">$29.99</div><div class="desc">Support SlidPhiLabs research.</div><a class="btn btn-ghost" href="https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a" target="_blank" rel="noopener">Donate</a></div>
+    <div class="price-card"><div>Consulting</div><div class="amt">$250</div><div class="desc">Scoped session.</div><a class="btn btn-ghost" href="https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02" target="_blank" rel="noopener">Book</a></div>
+  </div>
+</div></section>
+
+<footer><div class="inner">
+  <div>SlidPhiLabs · ZRW by SlidPhiLabs · proprietary codecs · Try Gate</div>
+  <div>CuNi Studio · <a href="https://cuni-studio.fly.dev/">cuni-studio.fly.dev</a></div>
+</div></footer>
+</body>
+</html>
