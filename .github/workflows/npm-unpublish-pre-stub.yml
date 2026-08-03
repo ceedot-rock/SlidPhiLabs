@@ -1,0 +1,22 @@
+name: npm unpublish pre-stub versions
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type UNPUBLISH to confirm'
+        required: true
+jobs:
+  unpublish:
+    if: github.event.inputs.confirm == 'UNPUBLISH'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Unpublish pre-stub versions (keep 2.2.0+ stub)
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo '//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}' > ~/.npmrc
+          for v in 2.1.0 2.1.1 2.1.2 2.1.3 2.1.4 2.1.5; do
+            echo "Unpublish slid-phi@$v"
+            npm unpublish "slid-phi@$v" --force || true
+          done
+          npm view slid-phi versions --json || true
