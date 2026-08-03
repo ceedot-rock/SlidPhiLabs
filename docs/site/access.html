@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Access — get your SlidPhiLabs package</title>
+<meta name="description" content="How to receive ZRW, blackjack, shard-zip, or slid-phi after purchase or Try Gate."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://slidphilabs.vercel.app/access"/>
+<style>
+:root{--bg:#0a0c12;--panel:#12151e;--border:#1e2433;--text:#e8ecf4;--muted:#8b95a8;--accent:#5b8aff;--accent2:#3dd6c6}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{color:var(--accent)}.wrap{max-width:640px;margin:0 auto;padding:28px 20px}
+h1{font-size:1.6rem;margin-bottom:12px}h2{font-size:1.15rem;margin:28px 0 10px;color:var(--accent2)}
+.note{color:var(--muted);margin-bottom:16px}.step{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px}
+.step strong{display:block;margin-bottom:6px}.num{color:var(--accent2);font-family:monospace;margin-right:6px}
+.btn{display:inline-block;margin:8px 8px 0 0;padding:10px 16px;border-radius:8px;background:var(--accent2);color:#061018;font-weight:600;text-decoration:none}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+code{background:#0d1018;padding:2px 6px;border-radius:4px;font-size:.9em}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p><a href="/">← SliidPhiLabs</a></p>
+  <h1>Get your package</h1>
+  <p class="note">Public npm only installs a <strong>stub</strong> (no codec source). After purchase or Try Gate, you get the real package by email — simple and direct.</p>
+
+  <h2>Path A — You already paid or completed Try Gate</h2>
+  <div class="step"><span class="num">1</span><strong>Email us</strong>
+    Send to <a href="mailto:ceedotrock@gmail.com">ceedotrock@gmail.com</a><br/>
+    Subject: <code>PACKAGE ACCESS</code><br/>
+    Include: package name (ZRW / blackjack / shard-zip / slid-phi), Stripe receipt email or payment link used, or Try Gate confirmation.
+  </div>
+  <div class="step"><span class="num">2</span><strong>We send the real package</strong>
+    Reply within one business day with either:
+    <ul style="margin:8px 0 0 1.2rem;color:var(--muted)">
+      <li>Private download link (zip / tarball), or</li>
+      <li><code>npm install</code> instructions for a private URL / token</li>
+    </ul>
+  </div>
+  <div class="step"><span class="num">3</span><strong>Install locally</strong>
+    <pre style="margin-top:8px;background:#0d1018;padding:12px;border-radius:8px;overflow:auto;font-size:.85rem">npm install ./path-to-package.tgz
+# or follow the private registry command we email you</pre>
+  </div>
+
+  <h2>Path B — Not purchased yet</h2>
+  <div class="step">
+    <a class="btn" href="/try">Try Gate</a>
+    <a class="btn btn-ghost" href="/#zrw">ZRW pricing</a>
+    <a class="btn btn-ghost" href="/#support">Support $199</a>
+  </div>
+
+  <h2>What public npm does</h2>
+  <p class="note"><code>npm i zero-range-wave-compression</code> (and sister packages) installs a stub that points here. Old versions may still exist briefly on the registry until unpublished; do not rely on them for production.</p>
+
+  <footer>SlidPhiLabs · ZRW by SlidPhiLabs · proprietary · ceedotrock@gmail.com</footer>
+</div>
+</body>
+</html>
