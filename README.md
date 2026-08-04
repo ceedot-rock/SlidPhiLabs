@@ -7,6 +7,8 @@
 
 <p align="center"><strong>Slid Phi Labs</strong> — official product branding</p>
 
+<p align="center"><img src="https://raw.githubusercontent.com/ceedot-rock/splabs-brand/main/assets/brand/logos/logo-slid-phi.jpg" alt="product logo" width="280"/></p>
+
 
 **Proprietary.** Public npm does **not** include codec source.
 
