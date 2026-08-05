@@ -10,6 +10,8 @@
 
 **Proprietary.** Public npm does **not** include codec source.
 
+**Site:** [www.slidphilabs.com](https://www.slidphilabs.com) (under construction)
+
 ## Get the real package
 
 1. **Try / Support** — choose an option below
@@ -21,7 +23,9 @@
 | Sponsor | $29 | [Sponsor](https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01) |
 | Consulting (deeper) | $250 | [Book](https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02) |
 
-Site / repo: [github.com/ceedot-rock/SlidPhiLabs](https://github.com/ceedot-rock/SlidPhiLabs)
+Contact: [corey@slidphilabs.com](mailto:corey@slidphilabs.com)
+
+Repo: [github.com/ceedot-rock/SlidPhiLabs](https://github.com/ceedot-rock/SlidPhiLabs)
 
 npm: [`slid-phi`](https://www.npmjs.com/package/slid-phi)
 
