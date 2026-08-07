@@ -668,8 +668,18 @@ export default async function handler(req, res) {
   if (!sku || !CATALOG[sku]) {
     return json(res, 400, {
       error: "Unknown product sku",
-      known: Object.keys(CATALOG),
+      known: Object.keys(CATALOG).filter((k) => !CATALOG[k].retired),
       aliases: Object.keys(ALIASES),
+      suite_free: "Use POST /api/x402-suite with bytes ≤ 1GiB free — try-gate is retired",
+    });
+  }
+  if (CATALOG[sku].retired) {
+    return json(res, 410, {
+      error: "product_retired",
+      sku,
+      message: "Try Gate is retired. Use freemium suite: free first 1 GB then ~1.5¢/GB.",
+      suite: "https://www.slidphilabs.com/pps",
+      x402_suite: "POST /api/x402-suite",
     });
   }
 
