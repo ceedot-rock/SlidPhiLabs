@@ -1,30 +1,31 @@
 # Slid Phi Labs — master brand
 
-## Canonical artwork
-- **Master poster:** `slid-phi-labs-master.jpg` (also `zero-range-wave-slid-phi-labs.jpg`)
-- **Theme:** mystical guardian / third-eye / lotus / mandala / temple sky
-- **Banners on art:** `ZERO-RANGE-WAVE` (top) · `SLID-PHI LABS` (bottom)
+## Theme (locked)
+Mystical guardian era: **gold ornate metal · teal/cyan glow · lotus · wings · mandala · third-eye light · deep cosmic navy (#050b16)**.
 
-## Naming
-| Use | Form |
-|-----|------|
-| Display brand | **Slid Phi Labs** (spaces) |
-| On this poster | **SLID-PHI LABS** (hyphen, all caps) |
-| npm / packages | `slid-phi`, product package names |
-| Domain (canonical) | `www.slidphilabs.com` |
+- Full-bleed square marks (1024²), **no light gray outer frames**, no iOS app-icon chrome.
+- Product logos share house system; product symbol differs, palette does not.
 
-## Products under this brand
-- Zero Range Wave (`zero-range-wave-compression`)
-- Blackjack (`blackjack-compression`)
-- shard-zip / shard-tsdb
-- slid-phi (Omni-Dormant)
-- Related SPLabs surfaces as applicable
+Master poster: `docs/site/assets/slid-phi-labs-master.jpg`
 
-## Usage
-- README hero / social / ads / pitch decks: use master poster
-- Prefer full-bleed poster; do not crop third-eye or banners off
-- Primary raw URL (public repo):
-  `https://raw.githubusercontent.com/ceedot-rock/splabs-brand/main/assets/brand/slid-phi-labs-master.jpg`
+## Product logos (uniform set · 2026-08-07)
 
-## Decision
-2026-08-04: Corey set this art as **the** visual theme for all Slid Phi products.
+| File | Product |
+|------|---------|
+| `logo-slid-phi-labs.jpg` | House mark |
+| `logo-slid-phi.jpg` | SPL Codec / slid-phi |
+| `logo-zero-range-wave.jpg` | Zero Range Wave |
+| `logo-zrqc.jpg` | ZRQC umbrella |
+| `logo-cddg-split.jpg` / `logo-cddg.jpg` | CDDG:Split |
+| `logo-blackjack.jpg` | Blackjack |
+| `logo-shard-zip.jpg` | shard-zip |
+| `logo-shard-tsdb.jpg` | shard-tsdb |
+| `logo-paypersuite.jpg` / `logo-pps.jpg` | Pay Per Suite |
+| `logo-cuni.jpg` | CuNi |
+| `logo-agent-rider.jpg` | Agent^Rider |
+| `logo-quikgater.jpg` | Quikgater |
+
+Site path: `docs/site/assets/logos/`  
+Brand pack: `splabs-brand/assets/brand/logos/`
+
+Cache-bust on site with `?v=13` or higher after deploy.
