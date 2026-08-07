@@ -95,7 +95,7 @@
     "humans_txt": "https://www.slidphilabs.com/humans.txt",
     "security_txt": "https://www.slidphilabs.com/.well-known/security.txt"
   },
-  "one_liner": "One mission · two attack vectors (Pub Facing humans · Agentic Minded agents) · modules Compression + Agent platform. GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.",
+  "one_liner": "One mission · two attack vectors. Suite free first 1 GB · then ~1.5¢/GB. Try Gate retired.",
   "npm": [
     "slid-phi",
     "blackjack-compression",
@@ -121,12 +121,12 @@
     "handle": "@slidphilabs"
   },
   "pricing": {
-    "suite": {
-      "free_cap_gb": 1,
-      "usd_per_gb": 0.015,
-      "path": "/pps",
-      "note": "Try Gate retired"
-    },
+    "model": "freemium_suite_v2",
+    "free_cap_gb": 1,
+    "usd_per_gb_after_free": 0.015,
+    "usd_per_gb_bulk": 0.008,
+    "suite_url": "https://www.slidphilabs.com/pps",
+    "try_gate": "retired",
     "packages": [
       "cddg-split",
       "zrw-n00b",

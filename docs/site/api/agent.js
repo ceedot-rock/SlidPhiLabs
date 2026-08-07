@@ -37,7 +37,7 @@ export default async function handler(req, res) {
 
   const body = {
     name: "Slid Phi Labs — Platform Discovery",
-    version: "1.4.0",
+    version: "1.5.0",
     site: "https://www.slidphilabs.com",
     suite_ui: "https://www.slidphilabs.com/pps",
     mission: "Impressive compression that proves out, and agent systems that stay exact — one team.",

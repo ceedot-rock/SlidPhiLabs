@@ -89,6 +89,14 @@
     {
       "source": "/blog/2026-08-07-access-try-gate-loop/",
       "destination": "/blog/2026-08-07-access-try-gate-loop.html"
+    },
+    {
+      "source": "/blog/2026-08-07-freemium-suite-retires-try-gate",
+      "destination": "/blog/2026-08-07-freemium-suite-retires-try-gate.html"
+    },
+    {
+      "source": "/blog/2026-08-07-freemium-suite-retires-try-gate/",
+      "destination": "/blog/2026-08-07-freemium-suite-retires-try-gate.html"
     }
   ],
   "redirects": [

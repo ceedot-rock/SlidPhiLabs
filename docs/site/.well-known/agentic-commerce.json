@@ -10,8 +10,7 @@
   "buy": "POST https://www.slidphilabs.com/api/x402-products",
   "suite": "POST https://www.slidphilabs.com/api/x402-suite",
   "human_stripe": "https://www.slidphilabs.com/#pricing",
-  "starter_sku": "try-gate",
-  "one_liner": "Modules: Compression (SPL Codec+CDDG) · Agent platform (CuNi+Rider+Quikgater). Commerce: GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.",
+  "one_liner": "Free first 1 GB suite · then ~1.5¢/GB · licenses via catalog · Try Gate retired",
   "agents_txt": "https://www.slidphilabs.com/agents.txt",
   "agents_json": "https://www.slidphilabs.com/agents.json",
   "llms_txt": "https://www.slidphilabs.com/llms.txt",
@@ -58,5 +57,12 @@
     "humans": "https://www.slidphilabs.com/humans",
     "agents": "https://www.slidphilabs.com/agents",
     "map": "https://www.slidphilabs.com/platform.json"
-  }
+  },
+  "starter_path": "https://www.slidphilabs.com/pps",
+  "suite_pricing": {
+    "free_cap_gb": 1,
+    "usd_per_gb_after_free": 0.015,
+    "model": "freemium_suite_v2"
+  },
+  "try_gate": "retired"
 }

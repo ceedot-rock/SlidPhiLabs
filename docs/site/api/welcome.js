@@ -28,6 +28,7 @@ export default async function handler(req, res) {
     mission:
       "Impressive compression that proves out, and agent systems that stay exact. Same products for humans and agents.",
     feel_at_home: {
+      suite_pricing: { free_cap_gb: 1, usd_per_gb: 0.015, path: "https://www.slidphilabs.com/pps", try_gate: "retired" },
       if_you_are_human: {
         door: "https://www.slidphilabs.com/humans",
         free_demo: "https://www.slidphilabs.com/web",

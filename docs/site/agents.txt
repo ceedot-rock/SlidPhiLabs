@@ -12,6 +12,8 @@
 # Module 2 — Agent platform: CuNi · Agent^Rider · Quikgater
 
 Protocols: x402
+Suite: free first 1 GB then ~1.5¢/GB on /pps (Try Gate retired)
+
 
 A2A: https://www.slidphilabs.com/.well-known/agent-card.json
 Commerce: https://www.slidphilabs.com/.well-known/agentic-commerce.json

@@ -1,6 +1,6 @@
 {
   "name": "Slid Phi Labs",
-  "description": "One mission · two attack vectors: Pub Facing (humans) + Agentic Minded (agents). Compression + agent platform. x402 on Solana + Base.",
+  "description": "Slid Phi Labs dual-surface platform. Suite: free first 1 GB then ~1.5¢/GB. License SKUs via x402. Try Gate retired.",
   "url": "https://www.slidphilabs.com",
   "version": "1.4.0",
   "provider": {
@@ -26,6 +26,20 @@
     "application/json"
   ],
   "skills": [
+    {
+      "id": "freemium-suite",
+      "name": "Freemium suite job",
+      "description": "POST /api/x402-suite with bytes≤1GB free; over free pay x402. Humans use /pps.",
+      "tags": [
+        "pricing",
+        "suite",
+        "x402"
+      ],
+      "examples": [
+        "Quote 500MB free",
+        "Quote 9GB usage"
+      ]
+    },
     {
       "id": "choose-surface",
       "name": "Choose platform surface",
@@ -62,7 +76,7 @@
         "purchase"
       ],
       "examples": [
-        "Buy try-gate",
+        "Buy suite free 1GB",
         "Purchase cddg-split with x402"
       ]
     },
@@ -82,8 +96,7 @@
     "payment_header": "X-PAYMENT",
     "discovery": "https://www.slidphilabs.com/api/agent",
     "catalog": "https://www.slidphilabs.com/api/x402-products",
-    "starter_sku": "try-gate",
-    "one_liner": "One mission · two attack vectors (humans + agents). GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.",
+    "one_liner": "Free first 1 GB on /pps · then ~1.5¢/GB · x402 for agents over free · licenses on catalog",
     "modules": {
       "compression": [
         "SPL Codec",
@@ -99,6 +112,12 @@
       "map": "https://www.slidphilabs.com/platform.json",
       "humans": "https://www.slidphilabs.com/humans",
       "agents": "https://www.slidphilabs.com/agents"
-    }
+    },
+    "starter_path": "https://www.slidphilabs.com/pps",
+    "suite_pricing": {
+      "free_cap_gb": 1,
+      "usd_per_gb": 0.015
+    },
+    "try_gate": "retired"
   }
 }
