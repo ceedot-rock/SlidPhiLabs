@@ -5,7 +5,11 @@
   "site": {
     "name": "Slid Phi Labs",
     "url": "https://www.slidphilabs.com",
-    "description": "One mission · two attack vectors (Pub Facing humans · Agentic Minded agents). Modules: Compression (SPL Codec + CDDG) · Agent platform (CuNi · Rider · Quikgater). x402 commerce."
+    "description": "One mission · two attack vectors (Pub Facing humans · Agentic Minded agents). Modules: Compression (SPL Codec + CDDG) · Agent platform (CuNi · Rider · Quikgater). x402 commerce.",
+    "social": {
+      "x": "https://x.com/slidphilabs",
+      "handle": "@slidphilabs"
+    }
   },
   "payments": {
     "x402": {

@@ -44,5 +44,8 @@
 - Suite (Stripe mirror of agent catalog intent): https://www.slidphilabs.com/pps
 - Access after pay: https://www.slidphilabs.com/access
 
+# Social
+- X: https://x.com/slidphilabs (@slidphilabs)
+
 ## Contact
 - corey@slidphilabs.com

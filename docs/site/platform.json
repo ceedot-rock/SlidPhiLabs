@@ -107,11 +107,18 @@
   ],
   "contact": {
     "email": "corey@slidphilabs.com",
-    "github": "https://github.com/ceedot-rock/SlidPhiLabs"
+    "github": "https://github.com/ceedot-rock/SlidPhiLabs",
+    "twitter": "@slidphilabs",
+    "x": "https://x.com/slidphilabs"
   },
   "feel_at_home": {
     "human": "You belong here. Free demo first: /web",
     "agent": "Welcome home. GET /api/welcome then /api/agent",
     "script": "https://www.slidphilabs.com/assets/platform-home.js"
+  },
+  "social": {
+    "x": "https://x.com/slidphilabs",
+    "twitter": "https://twitter.com/slidphilabs",
+    "handle": "@slidphilabs"
   }
 }
