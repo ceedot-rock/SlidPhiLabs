@@ -7,8 +7,8 @@
 | Tier | Rule |
 |------|------|
 | **Free** | First **1 GiB per job** — $0 (showcase) |
-| **Usage** | Bytes over free: **~$0.015/GB** (0.8¢/GB after 50 GB over free) |
-| **Min paid** | $0.15 once over free |
+| **Usage** | Bytes over free: **~ $0.03/GB** (2¢/GB after 50 GB over free) |
+| **Min paid** | $2.00 once over free |
 
 **Try Gate is retired.** Evaluate on free suite — not a $9 chip-in.
 
@@ -33,7 +33,7 @@ computeQuote({ product: "auto", op: "compress", bytes: 100e6 });
 // → free: true, amount_cents: 0
 
 computeQuote({ product: "auto", op: "compress", bytes: 9e9 });
-// → free: false, ~$0.15 class
+// → free: false, ~$2.00 class
 ```
 
 ## MCP

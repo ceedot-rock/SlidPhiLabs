@@ -2,33 +2,32 @@
  * SPL Pay Per Suite — freemium usage pricing (canonical)
  *
  * Free showcase: first FREE_BYTES of every job — $0 (feel the platform).
- * Paid usage: only bytes over free cap, at rates far under typical cloud egress
- * (~$0.05–$0.09/GB class). No surprise $2/9GB marketing fiction.
+ * Paid: min floor covers Stripe + lab intake; per‑GB still under typical
+ * cloud egress class (~$0.05–$0.09/GB) so volume stays a win for buyers
+ * and unit economics work for the lab.
  *
  * License packages (CDDG, ZRW tiers) are separate fixed Stripe SKUs.
  */
 
 export const FREE_BYTES = 1 * 1024 * 1024 * 1024; // 1 GiB free per job
 export const MAX_BYTES = 100 * 1024 * 1024 * 1024; // 100 GiB
-export const MAX_CENTS = 1_000_000; // $10,000 Stripe-ish cap
-/** Minimum charge once over free tier (still << competitor egress on multi‑GB). */
-export const MIN_PAID_CENTS = 15; // $0.15
+export const MAX_CENTS = 1_000_000; // $10,000
+/** Minimum once over free — covers fees + minimal lab cost (not 15¢). */
+export const MIN_PAID_CENTS = 200; // $2.00
 
 /**
- * Optional product adder (cents) only when paid — keeps process SKU slightly higher.
- * Not applied on free tier.
+ * Optional product adder (cents) only when paid.
  */
 export const PRODUCT_ADD_CENTS = {
   auto: 0,
   zrw: 0,
-  "cddg-split": 50, // +$0.50 process path when billable
+  "cddg-split": 100, // +$1.00 process path when billable
   blackjack: 0,
   "shard-zip": 0,
   "shard-tsdb": 0,
   "slid-phi": 0,
 };
 
-/** Mild class mults — shouldn't erase freemium story. */
 export const DATA_MULT = {
   zeros: 0.9,
   ramp: 0.95,
@@ -48,16 +47,16 @@ export const OP_MULT = {
 
 /**
  * Usage fee on billable GiB (after free cap), USD cents.
- *   first 50 GiB over free:  $0.015 / GiB  (1.5¢)
- *   after that:              $0.008 / GiB  (0.8¢)
- * Far under ~5–9¢/GB cloud egress class.
+ *   first 50 GiB over free:  $0.03 / GiB  (3¢)
+ *   after that:              $0.02 / GiB  (2¢)
+ * Still under ~5–9¢/GB cloud egress class on volume.
  */
 export function usageFeeCents(billableBytes) {
   const b = Math.max(0, Number(billableBytes) || 0);
   if (b <= 0) return 0;
   const gb = b / (1024 * 1024 * 1024);
-  if (gb <= 50) return Math.round(gb * 1.5); // $0.015/GB → 1.5 cents
-  return Math.round(50 * 1.5 + (gb - 50) * 0.8);
+  if (gb <= 50) return Math.round(gb * 3); // $0.03/GB
+  return Math.round(50 * 3 + (gb - 50) * 2); // $0.02/GB after
 }
 
 /**
@@ -79,6 +78,14 @@ export function computeQuote({
   const billable = Math.max(0, b - free_bytes);
   const free = billable <= 0;
 
+  const rates = {
+    free_cap_gb: 1,
+    min_paid_usd: 2.0,
+    usd_per_gb_first_50: 0.03,
+    usd_per_gb_after_50: 0.02,
+    note: "Free showcase 1 GB · paid min $2 · per‑GB under typical cloud egress (~$0.05–$0.09/GB)",
+  };
+
   if (free) {
     return {
       ok: true,
@@ -89,7 +96,7 @@ export function computeQuote({
       free: true,
       tier: "free_showcase",
       message:
-        "Free showcase — first 1 GB per job is $0. Feel the platform; pay only for usage above the cap.",
+        "Free showcase — first 1 GB per job is $0. Over free: from $2 min · ~3¢/GB (lab makes money; you stay under egress-class rates).",
       breakdown: {
         product: prod,
         product_add_cents: 0,
@@ -107,12 +114,7 @@ export function computeQuote({
         gb: +(b / (1024 * 1024 * 1024)).toFixed(6),
         min_paid_cents: MIN_PAID_CENTS,
         max_cents: MAX_CENTS,
-        rates: {
-          free_cap_gb: 1,
-          usd_per_gb_first_50: 0.015,
-          usd_per_gb_after_50: 0.008,
-          note: "vs typical cloud egress often ~$0.05–$0.09/GB",
-        },
+        rates,
       },
     };
   }
@@ -131,7 +133,7 @@ export function computeQuote({
     free: false,
     tier: "usage",
     message:
-      "Usage pricing — first 1 GB free, then ~1.5¢/GB (0.8¢/GB after 50 GB over free). Far under typical cloud egress.",
+      "Usage pricing — first 1 GB free, then from $2 min · ~3¢/GB (2¢/GB after 50 GB over free). Built to make money and still undercut egress-class rates at volume.",
     breakdown: {
       product: prod,
       product_add_cents: add,
@@ -149,21 +151,16 @@ export function computeQuote({
       gb: +(b / (1024 * 1024 * 1024)).toFixed(6),
       min_paid_cents: MIN_PAID_CENTS,
       max_cents: MAX_CENTS,
-      rates: {
-        free_cap_gb: 1,
-        usd_per_gb_first_50: 0.015,
-        usd_per_gb_after_50: 0.008,
-        note: "vs typical cloud egress often ~$0.05–$0.09/GB",
-      },
+      rates,
     },
   };
 }
 
-/** Example anchors for docs / UI */
 export const PRICING_EXAMPLES = [
   { gb: 0.5, label: "500 MB", approx: "$0 (free)" },
   { gb: 1, label: "1 GB", approx: "$0 (free cap)" },
-  { gb: 9, label: "9 GB", approx: "~$0.15 (min paid)" },
-  { gb: 50, label: "50 GB", approx: "~$0.75 usage" },
-  { gb: 100, label: "100 GB", approx: "~$1.15 usage" },
+  { gb: 9, label: "9 GB", approx: "$2.00 (min paid)" },
+  { gb: 50, label: "50 GB", approx: "$2.00 (min / light usage)" },
+  { gb: 100, label: "100 GB", approx: "~$2.50 usage" },
+  { gb: 200, label: "200 GB", approx: "~$4.50 usage" },
 ];

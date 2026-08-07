@@ -96,7 +96,7 @@
     "payment_header": "X-PAYMENT",
     "discovery": "https://www.slidphilabs.com/api/agent",
     "catalog": "https://www.slidphilabs.com/api/x402-products",
-    "one_liner": "Free first 1 GB on /pps · then ~1.5¢/GB · x402 for agents over free · licenses on catalog",
+    "one_liner": "Free 1 GB · then from $2 · ~3¢/GB · x402 over free",
     "modules": {
       "compression": [
         "SPL Codec",
@@ -116,7 +116,9 @@
     "starter_path": "https://www.slidphilabs.com/pps",
     "suite_pricing": {
       "free_cap_gb": 1,
-      "usd_per_gb": 0.015
+      "min_paid_usd": 2,
+      "usd_per_gb": 0.03,
+      "usd_per_gb_bulk": 0.02
     },
     "try_gate": "retired"
   }

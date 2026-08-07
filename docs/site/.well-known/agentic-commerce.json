@@ -10,7 +10,7 @@
   "buy": "POST https://www.slidphilabs.com/api/x402-products",
   "suite": "POST https://www.slidphilabs.com/api/x402-suite",
   "human_stripe": "https://www.slidphilabs.com/#pricing",
-  "one_liner": "Free first 1 GB suite · then ~1.5¢/GB · licenses via catalog · Try Gate retired",
+  "one_liner": "Free first 1 GB suite · then ~3¢/GB · licenses via catalog · Try Gate retired",
   "agents_txt": "https://www.slidphilabs.com/agents.txt",
   "agents_json": "https://www.slidphilabs.com/agents.json",
   "llms_txt": "https://www.slidphilabs.com/llms.txt",
@@ -61,8 +61,9 @@
   "starter_path": "https://www.slidphilabs.com/pps",
   "suite_pricing": {
     "free_cap_gb": 1,
-    "usd_per_gb_after_free": 0.015,
-    "model": "freemium_suite_v2"
+    "min_paid_usd": 2,
+    "usd_per_gb_after_free": 0.03,
+    "model": "freemium_suite_v3_money"
   },
   "try_gate": "retired"
 }

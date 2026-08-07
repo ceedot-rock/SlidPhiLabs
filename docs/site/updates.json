@@ -9,6 +9,19 @@
   "description": "Product updates, news, plans, and social pointers. Public outcomes only.",
   "items": [
     {
+      "id": "u-pricing-v3-money",
+      "date": "2026-08-07",
+      "type": "product",
+      "title": "Suite pricing retuned for unit economics",
+      "body": "Still free first 1 GB. Over free: min $2 · ~3¢/GB (2¢ bulk). Undercuts egress-class rates at volume without 15¢ loss-leaders.",
+      "href": "https://www.slidphilabs.com/pps",
+      "href_label": "Open suite",
+      "tags": [
+        "pricing",
+        "product"
+      ]
+    },
+    {
       "id": "u-retire-try-gate",
       "date": "2026-08-07",
       "type": "product",

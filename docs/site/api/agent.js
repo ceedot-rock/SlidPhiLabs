@@ -43,12 +43,14 @@ export default async function handler(req, res) {
     mission: "Impressive compression that proves out, and agent systems that stay exact — one team.",
     slogan: "One mission · two attack vectors · one team",
     one_liner:
-      "One mission · two attack vectors. Suite: free first 1 GB then ~1.5¢/GB. Commerce: GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT (or free suite under 1 GB).",
+      "Free first 1 GB suite · then from $2 min · ~3¢/GB. GET https://www.slidphilabs.com/api/agent · x402 over free · licenses on catalog.",
     starter_path: "https://www.slidphilabs.com/pps",
     suite_pricing: {
       free_cap_gb: 1,
-      usd_per_gb_after_free: 0.015,
-      note: "Try Gate retired — freemium suite is the evaluation path",
+      min_paid_usd: 2.0,
+      usd_per_gb_after_free: 0.03,
+      usd_per_gb_bulk: 0.02,
+      note: "Free 1 GB · over free from $2 min · ~3¢/GB — Try Gate retired",
     },
     platform: {
       map: "https://www.slidphilabs.com/platform.json",

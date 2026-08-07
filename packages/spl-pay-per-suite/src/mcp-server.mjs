@@ -44,7 +44,7 @@ const TOOLS = [
   {
     name: "spl_pps_info",
     description:
-      "SPL Pay Per Suite overview: freemium suite (free first 1 GB then ~1.5¢/GB), Stripe (humans) + x402 (agents), products, data classes, ops. Try Gate retired.",
+      "SPL Pay Per Suite overview: freemium suite (free first 1 GB then ~3¢/GB · min $2), Stripe (humans) + x402 (agents), products, data classes, ops. Try Gate retired.",
     inputSchema: { type: "object", properties: {} },
   },
   {
@@ -82,7 +82,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_requirements",
     description:
-      "Probe POST /api/x402-suite. Free under 1 GB (no pay). Over free → 402 accepts[] for usage pricing (~1.5¢/GB).",
+      "Probe POST /api/x402-suite. Free under 1 GB (no pay). Over free → 402 accepts[] for usage pricing (~3¢/GB · min $2).",
     inputSchema: {
       type: "object",
       properties: {
@@ -117,7 +117,7 @@ const TOOLS = [
   {
     name: "spl_pps_quote",
     description:
-      "Instant freemium quote: free first 1 GB ($0), then ~1.5¢/GB. Inputs: product, dataClass, op, bytes. Returns free flag + USD amount.",
+      "Instant freemium quote: free first 1 GB ($0), then ~3¢/GB · min $2. Inputs: product, dataClass, op, bytes. Returns free flag + USD amount.",
     inputSchema: {
       type: "object",
       properties: {
@@ -204,8 +204,8 @@ async function callTool(name, args = {}) {
           model: "freemium_suite_v2",
           free_cap_bytes: FREE_BYTES,
           free_cap_gb: 1,
-          usd_per_gb_after_free: 0.015,
-          usd_per_gb_bulk: 0.008,
+          usd_per_gb_after_free: 0.03,
+          usd_per_gb_bulk: 0.02,
           min_paid_cents: MIN_PAID_CENTS,
           try_gate: "retired",
         },

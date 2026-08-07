@@ -95,7 +95,7 @@
     "humans_txt": "https://www.slidphilabs.com/humans.txt",
     "security_txt": "https://www.slidphilabs.com/.well-known/security.txt"
   },
-  "one_liner": "One mission · two attack vectors. Suite free first 1 GB · then ~1.5¢/GB. Try Gate retired.",
+  "one_liner": "One mission · two attack vectors. Suite free first 1 GB · then ~3¢/GB min $2. Try Gate retired.",
   "npm": [
     "slid-phi",
     "blackjack-compression",
@@ -121,10 +121,10 @@
     "handle": "@slidphilabs"
   },
   "pricing": {
-    "model": "freemium_suite_v2",
+    "model": "freemium_suite_v3_money",
     "free_cap_gb": 1,
-    "usd_per_gb_after_free": 0.015,
-    "usd_per_gb_bulk": 0.008,
+    "usd_per_gb_after_free": 0.03,
+    "usd_per_gb_bulk": 0.02,
     "suite_url": "https://www.slidphilabs.com/pps",
     "try_gate": "retired",
     "packages": [
@@ -132,6 +132,7 @@
       "zrw-n00b",
       "zrw-pro",
       "zrw-l33t"
-    ]
+    ],
+    "min_paid_usd": 2
   }
 }
