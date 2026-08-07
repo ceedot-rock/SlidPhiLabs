@@ -207,7 +207,7 @@ From `splabs-brand` **BRAND.md**: *gold ornate metal · teal/cyan glow · lotus 
 | Eye blue | `#5ba8ff` | secondary buttons |
 
 **Type:** Cinzel (gold banners / brand) + IBM Plex Sans/Mono  
-**House mark:** `/assets/logos/logo-slid-phi-labs.jpg?v=6`  
+**House mark:** `/assets/logos/logo-slid-phi-labs.jpg?v=13`  
 **Product marks:** `/assets/logos/logo-*.jpg`  
 **Poster:** `/assets/slid-phi-labs-master.jpg` (hero + footer strip)
 
