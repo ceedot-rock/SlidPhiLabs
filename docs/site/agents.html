@@ -145,7 +145,7 @@ footer a{margin-right:12px}
         <li><code>solana-mainnet-beta</code> · USDC · header <code>X-PAYMENT</code></li>
         <li><code>eip155:8453</code> · Base mainnet · USDC</li>
         <li>Client: <code>x402-client payFetch</code> (exact amount from 402 accepts[])</li>
-        <li>Starter SKU: <code>try-gate</code> (~$9)</li>
+        <li>Starter: free suite /pps then x402 usage
         <li>Bulk: suite jobs via <code>/api/x402-suite</code></li>
       </ul>
       <p style="margin-top:12px;color:var(--muted);font-size:.88rem">Human Stripe mirror lives on <a href="/humans">/humans</a> and <a href="/pps">/pps</a> — same catalog intent, different checkout UX.</p>
@@ -158,7 +158,7 @@ footer a{margin-right:12px}
     <ol class="flow">
       <li><strong>Discover</strong> — <code>GET /api/agent</code> (or this page’s linked files).</li>
       <li><strong>List SKUs</strong> — <code>GET /api/x402-products</code>.</li>
-      <li><strong>Request buy</strong> — <code>POST /api/x402-products</code> with <code>{ "sku": "try-gate", "email": "ops@…" }</code> → HTTP 402 + <code>accepts[]</code>.</li>
+      <li><strong>Request buy</strong> — <code>POST /api/x402-products</code> with <code>{ "sku": "suite free 1GB", "email": "ops@…" }</code> → HTTP 402 + <code>accepts[]</code>.</li>
       <li><strong>Pay</strong> — exact USDC on Solana or Base; retry with <code>X-PAYMENT</code>.</li>
       <li><strong>Receive</strong> — <code>order_id</code> + <code>access_url</code> (human Access page works too).</li>
     </ol>

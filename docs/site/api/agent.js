@@ -21,7 +21,6 @@ const STANDING = [
   { sku: "consulting", name: "Consulting", usd: "250.00" },
   { sku: "sponsor", name: "Sponsor", usd: "29.00" },
   { sku: "donate", name: "Donate", usd: "29.99" },
-  { sku: "try-gate", name: "Try Gate chip-in", usd: "9.00" },
 ];
 
 export default async function handler(req, res) {
@@ -44,8 +43,13 @@ export default async function handler(req, res) {
     mission: "Impressive compression that proves out, and agent systems that stay exact — one team.",
     slogan: "One mission · two attack vectors · one team",
     one_liner:
-      "One mission · two attack vectors (Pub Facing humans · Agentic Minded agents) · modules Compression + Agent platform. Commerce: GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.",
-    starter_sku: "try-gate",
+      "One mission · two attack vectors. Suite: free first 1 GB then ~1.5¢/GB. Commerce: GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT (or free suite under 1 GB).",
+    starter_path: "https://www.slidphilabs.com/pps",
+    suite_pricing: {
+      free_cap_gb: 1,
+      usd_per_gb_after_free: 0.015,
+      note: "Try Gate retired — freemium suite is the evaluation path",
+    },
     platform: {
       map: "https://www.slidphilabs.com/platform.json",
       surfaces: {
@@ -56,7 +60,6 @@ export default async function handler(req, res) {
           commerce: "stripe",
           ctas: [
             "https://www.slidphilabs.com/web",
-            "https://www.slidphilabs.com/try",
             "https://www.slidphilabs.com/pps",
             "https://www.slidphilabs.com/standings",
             "https://www.slidphilabs.com/access",
@@ -127,7 +130,6 @@ export default async function handler(req, res) {
         stripe_ui: "https://www.slidphilabs.com/#pricing",
         suite: "https://www.slidphilabs.com/pps",
         access: "https://www.slidphilabs.com/access",
-        try_gate: "https://www.slidphilabs.com/try",
         web: "https://www.slidphilabs.com/web",
       },
       agent: {

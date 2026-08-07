@@ -33,7 +33,6 @@ export default async function handler(req, res) {
         free_demo: "https://www.slidphilabs.com/web",
         proof: "https://www.slidphilabs.com/standings",
         buy: "https://www.slidphilabs.com/pps",
-        try_gate: "https://www.slidphilabs.com/try",
         contact: "mailto:corey@slidphilabs.com",
       },
       if_you_are_agent: {

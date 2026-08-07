@@ -13,7 +13,6 @@
       "description": "Try, buy, measure, partner. Demos, Stripe, suite jobs, standings, Access.",
       "primary_ctas": [
         "https://www.slidphilabs.com/web",
-        "https://www.slidphilabs.com/try",
         "https://www.slidphilabs.com/pps",
         "https://www.slidphilabs.com/standings",
         "https://www.slidphilabs.com/access"
@@ -120,5 +119,19 @@
     "x": "https://x.com/slidphilabs",
     "twitter": "https://twitter.com/slidphilabs",
     "handle": "@slidphilabs"
+  },
+  "pricing": {
+    "suite": {
+      "free_cap_gb": 1,
+      "usd_per_gb": 0.015,
+      "path": "/pps",
+      "note": "Try Gate retired"
+    },
+    "packages": [
+      "cddg-split",
+      "zrw-n00b",
+      "zrw-pro",
+      "zrw-l33t"
+    ]
   }
 }

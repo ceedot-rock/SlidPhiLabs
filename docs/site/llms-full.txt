@@ -42,14 +42,14 @@ Networks: solana-mainnet-beta, eip155:8453 (Base)
 Header: X-PAYMENT
 Catalog: GET/POST https://www.slidphilabs.com/api/x402-products
 Suite job: POST https://www.slidphilabs.com/api/x402-suite
-Starter SKU: try-gate (~$9)
+Starter: free suite first 1 GB on /pps · then ~1.5¢/GB
 Flow: discover → list SKUs → POST buy → 402 accepts[] → pay exact USDC → retry with X-PAYMENT → order_id + access_url
 
 ## Human path (mirror intent)
 1. Free compress on /web
 2. Proof on /standings
 3. Quote on /pps
-4. Optional /try $9
+4. Suite free tier (1 GB) then usage
 5. /access after payment
 Contact: corey@slidphilabs.com
 

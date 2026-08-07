@@ -44,7 +44,6 @@ n## Blog
 - Weekly product blog: https://www.slidphilabs.com/blog
 - JSON: https://www.slidphilabs.com/blog.json
 
-- Try Gate $9: https://www.slidphilabs.com/try
 - Suite (Stripe mirror of agent catalog intent): https://www.slidphilabs.com/pps
 - Access after pay: https://www.slidphilabs.com/access
 

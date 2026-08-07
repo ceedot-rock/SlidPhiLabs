@@ -122,7 +122,8 @@ const CATALOG = {
     blurb: "General lab support",
   },
   "try-gate": {
-    name: "Try Gate chip-in",
+    retired: true,
+    name: "Try Gate (retired — use free suite)",
     amount_cents: 900,
     stripe: "https://donate.stripe.com/eVq8wQffL2X60CVfIY6wE0e",
     kind: "support",
@@ -577,7 +578,9 @@ function orderId(sku) {
 function catalogResponse() {
   const sol = solanaConfig();
   const base = baseConfig();
-  const products = Object.keys(CATALOG).map((sku) => publicProduct(sku));
+  const products = Object.keys(CATALOG)
+    .filter((sku) => !CATALOG[sku].retired)
+    .map((sku) => publicProduct(sku));
   const rails = [];
   if (sol.enabled) {
     rails.push({

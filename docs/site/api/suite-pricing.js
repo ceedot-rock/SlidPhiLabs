@@ -5,7 +5,7 @@
  * Paid usage: only bytes over free cap, at rates far under typical cloud egress
  * (~$0.05–$0.09/GB class). No surprise $2/9GB marketing fiction.
  *
- * License packages (Try Gate, CDDG, ZRW tiers) are separate fixed Stripe SKUs.
+ * License packages (CDDG, ZRW tiers) are separate fixed Stripe SKUs.
  */
 
 export const FREE_BYTES = 1 * 1024 * 1024 * 1024; // 1 GiB free per job

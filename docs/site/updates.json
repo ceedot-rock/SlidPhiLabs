@@ -9,6 +9,19 @@
   "description": "Product updates, news, plans, and social pointers. Public outcomes only.",
   "items": [
     {
+      "id": "u-retire-try-gate",
+      "date": "2026-08-07",
+      "type": "product",
+      "title": "Try Gate retired — free suite is the eval path",
+      "body": "No $9 chip-in. First 1 GB free on /pps, then ~1.5¢/GB. Packages (CDDG/ZRW) unchanged. /try redirects to /pps.",
+      "href": "https://www.slidphilabs.com/pps",
+      "href_label": "Open suite",
+      "tags": [
+        "pricing",
+        "product"
+      ]
+    },
+    {
       "id": "u-pricing-freemium-v2",
       "date": "2026-08-07",
       "type": "product",
@@ -18,20 +31,6 @@
       "href_label": "Open suite",
       "tags": [
         "pricing",
-        "product"
-      ]
-    },
-    {
-      "id": "u-access-try-gate-instant",
-      "date": "2026-08-07",
-      "type": "product",
-      "title": "Try Gate Access loop: instant seat after Stripe verify",
-      "body": "Pay $9 → /access verifies session → entitlement JSON, eval guide, checklist, public demos. Full packages still human-fulfilled. No secret sauce in the pack.",
-      "href": "https://www.slidphilabs.com/access?product=try-gate",
-      "href_label": "Open Access · try-gate",
-      "tags": [
-        "access",
-        "try-gate",
         "product"
       ]
     },

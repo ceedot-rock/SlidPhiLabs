@@ -3,14 +3,6 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/try",
-      "destination": "/try/index.html"
-    },
-    {
-      "source": "/try/",
-      "destination": "/try/index.html"
-    },
-    {
       "source": "/access",
       "destination": "/access/index.html"
     },
@@ -124,7 +116,7 @@
     },
     {
       "source": "/try.html",
-      "destination": "/try",
+      "destination": "/pps",
       "permanent": true
     },
     {
@@ -180,6 +172,16 @@
     {
       "source": "/updates.html",
       "destination": "/updates",
+      "permanent": true
+    },
+    {
+      "source": "/try",
+      "destination": "/pps",
+      "permanent": true
+    },
+    {
+      "source": "/try/",
+      "destination": "/pps",
       "permanent": true
     }
   ],
