@@ -1,0 +1,49 @@
+/* Shared weekly blog styles — Slid Phi Labs */
+:root{
+  --bg:#050b16;--panel:#0c1524;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);
+  --text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;
+  --gold:#e8c547;--poster:url("/assets/slid-phi-labs-master.jpg");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.12;background:linear-gradient(180deg,rgba(5,11,22,.55),rgba(5,11,22,.95)),var(--poster) 50% 18%/cover no-repeat}
+a{color:var(--accent);text-decoration:none}a:hover{color:var(--teal-bright)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+.wrap-wide{max-width:900px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+nav{position:sticky;top:0;z-index:50;background:rgba(5,11,22,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,197,71,.18)}
+nav .inner{max-width:900px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.logo{font-family:'Cinzel',serif;font-weight:700;color:var(--gold);display:inline-flex;gap:10px;align-items:center;font-size:.95rem}
+.logo img{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-gold);object-fit:cover}
+.nav-links{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:.86rem}
+.nav-links a{color:var(--muted)}.nav-links a.active{color:var(--gold)}
+.btn{display:inline-flex;padding:8px 14px;border-radius:9px;font-weight:600;font-size:.82rem}
+.btn-gold{background:linear-gradient(180deg,#f0d56a,var(--gold));color:#1a1404}
+.btn-teal{background:linear-gradient(180deg,#5ef0df,var(--teal));color:#031018}
+.btn-ghost{border:1px solid rgba(61,214,198,.3);color:var(--text)}
+.badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border-gold);padding:5px 12px;border-radius:999px;margin-bottom:12px;background:rgba(232,197,71,.1)}
+h1{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(1.45rem,3vw,2.1rem);line-height:1.25;margin-bottom:12px}
+.meta-line{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--muted);margin-bottom:18px}
+.lead{color:var(--muted);font-size:1.05rem;margin-bottom:20px}
+.ip-note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--gold);padding:10px 14px;background:rgba(12,21,36,.75);border-radius:0 10px 10px 0;margin:18px 0 24px}
+.ip-note strong{color:var(--gold)}
+.prose h2{font-family:'Cinzel',serif;color:var(--gold);font-size:1.15rem;margin:28px 0 10px}
+.prose h3{color:var(--teal-bright);font-size:.98rem;margin:20px 0 8px}
+.prose p{margin:0 0 14px;color:#c8d4e0}
+.prose ul,.prose ol{margin:0 0 16px 1.2rem;color:#c8d4e0}
+.prose li{margin:6px 0}
+.prose time,.prose .date{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted)}
+.timeline{list-style:none;margin:16px 0 24px;padding:0;border-left:2px solid rgba(61,214,198,.35)}
+.timeline li{position:relative;padding:0 0 18px 20px}
+.timeline li::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(232,197,71,.2)}
+.timeline .t-date{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--teal-bright);display:block;margin-bottom:4px}
+.timeline strong{color:var(--text)}
+.post-card{display:block;background:rgba(12,21,36,.92);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px;color:inherit;transition:border-color .15s}
+.post-card:hover{border-color:rgba(232,197,71,.45)}
+.post-card h2{font-family:'Cinzel',serif;color:var(--gold);font-size:1.15rem;margin:0 0 8px}
+.post-card p{color:var(--muted);font-size:.92rem;margin:0}
+.post-card .tags{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.post-card .tag{font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-bright);border:1px solid rgba(61,214,198,.3);padding:2px 8px;border-radius:999px}
+footer{padding:28px 0 40px;border-top:1px solid rgba(232,197,71,.15);color:var(--muted);font-size:.88rem;margin-top:32px}
+footer a{margin-right:12px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+.nav-posts{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:28px 0;font-size:.88rem}

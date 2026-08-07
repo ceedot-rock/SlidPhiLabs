@@ -9,6 +9,32 @@
   "description": "Product updates, news, plans, and social pointers. Public outcomes only.",
   "items": [
     {
+      "id": "u-blog-latest",
+      "date": "2026-08-07",
+      "type": "product",
+      "title": "Blog: Two doors, one lab",
+      "body": "Pub Facing + Agentic Minded weekly write-up with dated ship timeline.",
+      "href": "https://www.slidphilabs.com/blog/2026-08-07-two-doors-one-lab",
+      "href_label": "Read post",
+      "tags": [
+        "blog",
+        "platform"
+      ]
+    },
+    {
+      "id": "u-blog-weekly",
+      "date": "2026-08-07",
+      "type": "news",
+      "title": "Weekly product blog is live",
+      "body": "Three timeline posts covering Try Gate/Access, www-only door, and dual surfaces. Process without secret sauce.",
+      "href": "https://www.slidphilabs.com/blog",
+      "href_label": "Open /blog",
+      "tags": [
+        "blog",
+        "product"
+      ]
+    },
+    {
       "id": "u-2026-08-07-dual",
       "date": "2026-08-07",
       "type": "product",
@@ -16,7 +42,11 @@
       "body": "Pub Facing for humans (/humans) and Agentic Minded for agents (/agents). One mission · two attack vectors · one team.",
       "href": "https://www.slidphilabs.com/humans",
       "href_label": "Open Pub Facing",
-      "tags": ["platform", "humans", "agents"]
+      "tags": [
+        "platform",
+        "humans",
+        "agents"
+      ]
     },
     {
       "id": "u-2026-08-07-x",
@@ -26,7 +56,10 @@
       "body": "News, product notes, and lab chatter. Official handle for Slid Phi Labs.",
       "href": "https://x.com/slidphilabs",
       "href_label": "x.com/slidphilabs",
-      "tags": ["twitter", "x"]
+      "tags": [
+        "twitter",
+        "x"
+      ]
     },
     {
       "id": "u-2026-08-07-discovery",
@@ -36,7 +69,10 @@
       "body": "GET /api/welcome then /api/agent. platform.json map, OpenAPI, llms-full for machine onboarding.",
       "href": "https://www.slidphilabs.com/api/agent",
       "href_label": "GET /api/agent",
-      "tags": ["x402", "agents"]
+      "tags": [
+        "x402",
+        "agents"
+      ]
     },
     {
       "id": "u-2026-08-06-pricing",
@@ -46,7 +82,10 @@
       "body": "SPL Codec suite from ~$0.50 metered. Bulk messaging ~$2 class for 9 GB. Quote on /pps.",
       "href": "https://www.slidphilabs.com/pps",
       "href_label": "Open suite",
-      "tags": ["pricing", "compression"]
+      "tags": [
+        "pricing",
+        "compression"
+      ]
     },
     {
       "id": "u-2026-08-06-x402",
@@ -56,7 +95,10 @@
       "body": "Agent catalog pays USDC on Solana mainnet and Base (eip155:8453). Header X-PAYMENT.",
       "href": "https://www.slidphilabs.com/agents",
       "href_label": "Agentic Minded",
-      "tags": ["x402", "commerce"]
+      "tags": [
+        "x402",
+        "commerce"
+      ]
     },
     {
       "id": "u-2026-08-05-web",
@@ -66,7 +108,10 @@
       "body": "HTML · CSS · JS · JSON live compress/decompress. No account. Compression module front door.",
       "href": "https://www.slidphilabs.com/web",
       "href_label": "Try /web",
-      "tags": ["demo", "compression"]
+      "tags": [
+        "demo",
+        "compression"
+      ]
     },
     {
       "id": "u-2026-08-05-standings",
@@ -76,7 +121,10 @@
       "body": "Outcomes vs gzip/brotli published. Processes stay private. See /standings and /truth.",
       "href": "https://www.slidphilabs.com/standings",
       "href_label": "Standings",
-      "tags": ["proof", "benches"]
+      "tags": [
+        "proof",
+        "benches"
+      ]
     },
     {
       "id": "u-2026-08-04-npm",
@@ -86,7 +134,9 @@
       "body": "slid-phi, blackjack-compression, shard-zip, shard-tsdb, ZRW pack, spl-pay-per-suite — homepage + agentic fields live on registry.",
       "href": "https://www.npmjs.com/package/slid-phi",
       "href_label": "npm slid-phi",
-      "tags": ["npm"]
+      "tags": [
+        "npm"
+      ]
     },
     {
       "id": "u-plan-cinema",
@@ -96,7 +146,10 @@
       "body": "Winged creator points from heavens; finger ignites agentic birth; settle dual doors (human above / agentic below). Keyframes ready — video gen on next host.",
       "href": "https://www.slidphilabs.com/",
       "href_label": "Home",
-      "tags": ["future", "brand"]
+      "tags": [
+        "future",
+        "brand"
+      ]
     },
     {
       "id": "u-plan-access",
@@ -106,7 +159,10 @@
       "body": "Pay → session verify → deliverable. Closing the loop after Stripe / x402 so buyers feel at home faster.",
       "href": "https://www.slidphilabs.com/access",
       "href_label": "Access",
-      "tags": ["future", "commerce"]
+      "tags": [
+        "future",
+        "commerce"
+      ]
     },
     {
       "id": "u-plan-growth",
@@ -116,7 +172,10 @@
       "body": "Show HN / Reddit human posts; keep /api/agent and llms.txt hot for agent crawlers. Share kit in docs.",
       "href": "https://x.com/slidphilabs",
       "href_label": "@slidphilabs",
-      "tags": ["future", "growth"]
+      "tags": [
+        "future",
+        "growth"
+      ]
     }
   ]
 }

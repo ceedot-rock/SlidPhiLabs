@@ -1,0 +1,43 @@
+{
+  "service": "Slid Phi Labs — Weekly Blog",
+  "version": "1.0.0",
+  "updated": "2026-08-07",
+  "canonical": "https://www.slidphilabs.com/blog",
+  "ip_guard": "Public outcomes and shipping process only. No private engine internals, coefficients, or secret sauce.",
+  "social": {
+    "x": "https://x.com/slidphilabs",
+    "handle": "@slidphilabs"
+  },
+  "posts": [
+    {
+      "id": "2026-08-07-dual-surface",
+      "week_of": "2026-08-04",
+      "published": "2026-08-07",
+      "title": "Two doors, one lab: Pub Facing and Agentic Minded",
+      "slug": "2026-08-07-two-doors-one-lab",
+      "url": "https://www.slidphilabs.com/blog/2026-08-07-two-doors-one-lab",
+      "summary": "We shipped dual surfaces so humans and agents each have a home path — same products, different rails. Discovery, welcome, npm agentic metadata, Lab Feed, and @slidphilabs.",
+      "tags": ["platform", "agents", "humans", "x402", "product"]
+    },
+    {
+      "id": "2026-08-04-www-live",
+      "week_of": "2026-08-04",
+      "published": "2026-08-04",
+      "title": "www.slidphilabs.com is the only public door",
+      "slug": "2026-08-04-www-only-public-door",
+      "url": "https://www.slidphilabs.com/blog/2026-08-04-www-only-public-door",
+      "summary": "Canonical domain lock, live commerce links, and cleaning the path so buyers never land on dead Vercel leftovers.",
+      "tags": ["infra", "seo", "commerce"]
+    },
+    {
+      "id": "2026-08-03-proprietary-try",
+      "week_of": "2026-07-28",
+      "published": "2026-08-03",
+      "title": "Proprietary by design: Try Gate, Access, and honest public packages",
+      "slug": "2026-08-03-proprietary-try-gate-access",
+      "url": "https://www.slidphilabs.com/blog/2026-08-03-proprietary-try-gate-access",
+      "summary": "We locked brand and licensing, made Try Gate + Access the evaluation path, and kept public npm honest as a stub — real codec via purchase, not open process dumps.",
+      "tags": ["licensing", "try-gate", "access", "npm", "brand"]
+    }
+  ]
+}

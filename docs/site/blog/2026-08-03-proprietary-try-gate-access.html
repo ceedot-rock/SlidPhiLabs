@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Proprietary by design: Try Gate, Access, honest packages — Slid Phi Labs Blog</title>
+<meta name="description" content="Week of 2026-07-28 to 2026-08-03: proprietary licensing, Try Gate $9, Access delivery path, brand lock, and honest npm stubs. Process without secret sauce."/>
+<link rel="canonical" href="https://www.slidphilabs.com/blog/2026-08-03-proprietary-try-gate-access"/>
+<link rel="me" href="https://x.com/slidphilabs"/>
+<meta name="robots" content="index,follow"/>
+<meta name="lab-modules" content="compression,agent_platform"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:title" content="Proprietary by design: Try Gate, Access, honest packages"/>
+<meta property="og:description" content="How we locked brand and evaluation rails without open-sourcing the process."/>
+<meta property="og:url" content="https://www.slidphilabs.com/blog/2026-08-03-proprietary-try-gate-access"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta property="article:published_time" content="2026-08-03"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@slidphilabs"/>
+<meta name="twitter:creator" content="@slidphilabs"/>
+<meta name="twitter:title" content="Proprietary by design — Slid Phi Labs"/>
+<meta name="twitter:description" content="Try Gate, Access, honest npm. Public process only."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="theme-color" content="#050b16"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=12"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/blog.css"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Proprietary by design: Try Gate, Access, and honest public packages",
+  "datePublished": "2026-08-03",
+  "dateModified": "2026-08-03",
+  "author": { "@type": "Organization", "name": "Slid Phi Labs" },
+  "publisher": { "@type": "Organization", "name": "Slid Phi Labs", "url": "https://www.slidphilabs.com/" },
+  "mainEntityOfPage": "https://www.slidphilabs.com/blog/2026-08-03-proprietary-try-gate-access",
+  "image": "https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg",
+  "description": "Weekly product post: proprietary framing, Try Gate, Access, brand, honest npm stubs."
+}
+</script>
+</head>
+<body>
+<nav><div class="inner">
+  <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=12" alt=""/>Slid Phi Labs</a>
+  <div class="nav-links">
+    <a href="/blog">Blog</a>
+    <a href="/updates">Lab Feed</a>
+    <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
+  </div>
+</div></nav>
+
+<article class="wrap" style="padding:28px 0 8px" id="main">
+  <div class="badge">Weekly · product</div>
+  <h1>Proprietary by design: Try Gate, Access, and honest public packages</h1>
+  <p class="meta-line">Published <time datetime="2026-08-03">2026-08-03</time> · Covers week of <time datetime="2026-07-28">2026-07-28</time> → <time datetime="2026-08-03">2026-08-03</time></p>
+  <p class="lead">This week we stopped pretending the product was “open enough to dump online.” We made the public process clear: evaluate, pay, access — without shipping the private core.</p>
+  <p class="ip-note"><strong>IP Guard:</strong> This post talks about <em>how we ship and sell</em>. It does not publish process internals, engine source, residual coefficients, or any “secret sauce.” Outcomes and rails only.</p>
+
+  <div class="prose">
+    <h2>What “process” means here</h2>
+    <p>When we say process in public, we mean the <strong>buyer and operator path</strong>:</p>
+    <ul>
+      <li>How you try the product (free demo vs paid evaluation seat)</li>
+      <li>How you pay (Stripe for humans)</li>
+      <li>How you get delivery after pay (Access)</li>
+      <li>What you can install from npm without false promises</li>
+    </ul>
+    <p>We do <strong>not</strong> mean the private compression mathematics or implementation details that stay in the lab. Those stay closed. Public benches and demos show <em>what comes out</em> — not how the vault is built.</p>
+
+    <h2>Timeline (this week)</h2>
+    <ul class="timeline">
+      <li>
+        <span class="t-date">2026-08-02</span>
+        <strong>Try Gate $9 goes commercial.</strong>
+        A paid evaluation seat alongside sponsor/donate options. Not a fake waitlist — a real chip-in to start a serious conversation and seat.
+      </li>
+      <li>
+        <span class="t-date">2026-08-02 → 08-03</span>
+        <strong>Licensing cleanup.</strong>
+        Name and license text corrected; proprietary Slid Phi Labs commercial framing replaces MIT-style claims that misled people about what was actually open.
+      </li>
+      <li>
+        <span class="t-date">2026-08-03</span>
+        <strong>Homepage restored around proprietary ZRW + Try Gate.</strong>
+        The site says what we sell: outcomes, evaluation, suite — not “download the secret engine free.”
+      </li>
+      <li>
+        <span class="t-date">2026-08-03</span>
+        <strong>npm honesty.</strong>
+        Public <code>slid-phi</code> is treated as a stub/placeholder on the open registry. Real codec delivery is via purchase / Try Gate — so we don’t overclaim open source.
+      </li>
+      <li>
+        <span class="t-date">2026-08-03</span>
+        <strong>/access process page.</strong>
+        Post-purchase and Try Gate delivery path documented as a clean public flow: pay → land on Access → verify session → receive deliverable steps.
+      </li>
+      <li>
+        <span class="t-date">2026-08-03</span>
+        <strong>Brand lock.</strong>
+        Master poster art, product logo, and “Slid Phi Labs” display names locked across README and site SEO.
+      </li>
+    </ul>
+
+    <h2>How we talk about Compression without leaking the core</h2>
+    <p>Compression is a <strong>module</strong> people can evaluate:</p>
+    <ul>
+      <li><strong>Web mode</strong> — free path for HTML/CSS/JS/JSON-style demos (public outcomes)</li>
+      <li><strong>Suite mode</strong> — metered jobs, quote → pay (price is public; engines under the hood are not)</li>
+      <li><strong>CDDG:Split</strong> — a process <em>product</em> name you can buy; the internal method stays private</li>
+      <li><strong>Standings / truth</strong> — published numbers vs industry baselines where we choose to publish</li>
+    </ul>
+    <p>That is the process you can audit as a buyer: demo → proof → quote → pay → access. The sauce stays in the kitchen.</p>
+
+    <h2>Why this matters</h2>
+    <p>Labs die in two ways: they leak everything and lose leverage, or they hide so hard nobody can buy. This week we chose the middle path — <strong>clear rails, closed core</strong>.</p>
+
+    <div class="cta-row">
+      <a class="btn btn-gold" href="/try">Try Gate $9</a>
+      <a class="btn btn-teal" href="/access">Access</a>
+      <a class="btn btn-ghost" href="/web">Free web demo</a>
+    </div>
+  </div>
+
+  <nav class="nav-posts">
+    <span></span>
+    <a href="/blog/2026-08-04-www-only-public-door">Next: www is the only public door →</a>
+  </nav>
+</article>
+
+<footer class="wrap">
+  <a href="/blog">All posts</a>
+  <a href="/updates">Lab Feed</a>
+  <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
+</footer>
+<script src="/assets/platform-home.js?v=1" defer></script>
+</body>
+</html>

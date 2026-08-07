@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Two doors, one lab: Pub Facing and Agentic Minded — Slid Phi Labs Blog</title>
+<meta name="description" content="Week of 2026-08-04 ending 2026-08-07: dual surfaces for humans and agents, discovery APIs, npm agentic metadata, Lab Feed, @slidphilabs. Process without secret sauce."/>
+<link rel="canonical" href="https://www.slidphilabs.com/blog/2026-08-07-two-doors-one-lab"/>
+<link rel="me" href="https://x.com/slidphilabs"/>
+<meta name="robots" content="index,follow"/>
+<meta name="lab-modules" content="compression,agent_platform"/>
+<meta name="lab-surfaces" content="pub_facing,agentic_minded"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:title" content="Two doors, one lab: Pub Facing and Agentic Minded"/>
+<meta property="og:description" content="Humans and agents each get a home path. Same products. Different rails."/>
+<meta property="og:url" content="https://www.slidphilabs.com/blog/2026-08-07-two-doors-one-lab"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta property="article:published_time" content="2026-08-07"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@slidphilabs"/>
+<meta name="twitter:creator" content="@slidphilabs"/>
+<meta name="twitter:title" content="Two doors, one lab — Slid Phi Labs"/>
+<meta name="twitter:description" content="Pub Facing + Agentic Minded. Weekly product post."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="theme-color" content="#050b16"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=12"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/blog.css"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Two doors, one lab: Pub Facing and Agentic Minded",
+  "datePublished": "2026-08-07",
+  "author": { "@type": "Organization", "name": "Slid Phi Labs" },
+  "publisher": { "@type": "Organization", "name": "Slid Phi Labs", "url": "https://www.slidphilabs.com/" },
+  "mainEntityOfPage": "https://www.slidphilabs.com/blog/2026-08-07-two-doors-one-lab",
+  "image": "https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg",
+  "description": "Dual surfaces, agent discovery, Lab Feed, social handle, npm agentic fields."
+}
+</script>
+</head>
+<body>
+<nav><div class="inner">
+  <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=12" alt=""/>Slid Phi Labs</a>
+  <div class="nav-links">
+    <a href="/blog">Blog</a>
+    <a href="/updates">Lab Feed</a>
+    <a href="/humans">Humans</a>
+    <a href="/agents">Agents</a>
+    <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
+  </div>
+</div></nav>
+
+<article class="wrap" style="padding:28px 0 8px" id="main">
+  <div class="badge">Weekly · platform</div>
+  <h1>Two doors, one lab: Pub Facing and Agentic Minded</h1>
+  <p class="meta-line">Published <time datetime="2026-08-07">2026-08-07</time> · Covers week of <time datetime="2026-08-04">2026-08-04</time> → <time datetime="2026-08-07">2026-08-07</time></p>
+  <p class="lead">One mission. Two attack vectors. One team. This week we stopped forcing humans through agent JSON — and stopped forcing agents through marketing pages alone.</p>
+  <p class="ip-note"><strong>IP Guard:</strong> We describe dual surfaces, discovery rails, and shipping process. We do not publish private compression process or engine source. Outcomes and interfaces only.</p>
+
+  <div class="prose">
+    <h2>The product story (public)</h2>
+    <p>Under both doors sit the same two modules:</p>
+    <ul>
+      <li><strong>Compression</strong> — SPL Codec (web + suite) and CDDG:Split as a process product name you can buy</li>
+      <li><strong>Agent platform</strong> — CuNi, Agent^Rider, Quikgater as the exact multi-runtime / MCP / pay-per-fact stack</li>
+    </ul>
+    <p>What differs is the <em>entry process</em>, not the mission.</p>
+
+    <h2>Timeline (this week’s ships)</h2>
+    <ul class="timeline">
+      <li>
+        <span class="t-date">2026-08-07 (and immediate prep)</span>
+        <strong>Two-module public surface + agentic metadata.</strong>
+        Site and package story aligned: Compression + Agent platform. Commerce discovery for agents via <code>GET /api/agent</code> then x402 <code>X-PAYMENT</code> on Solana and Base mainnet.
+      </li>
+      <li>
+        <span class="t-date">2026-08-07</span>
+        <strong>Pub Facing · Agentic Minded hubs.</strong>
+        <a href="/humans">/humans</a> for people (try, suite, standings, Access). <a href="/agents">/agents</a> for machines (discovery, catalog, MCP pointers). <a href="/platform.json">platform.json</a> maps both.
+      </li>
+      <li>
+        <span class="t-date">2026-08-07</span>
+        <strong>Feel-at-home process.</strong>
+        Door memory, welcome bootstrap (<code>/api/welcome</code>), OpenAPI, llms-full — so returning humans and crawling agents land somewhere that greets them.
+      </li>
+      <li>
+        <span class="t-date">2026-08-07</span>
+        <strong>npm refresh.</strong>
+        Registry packages carry agentic / homepage fields so <code>npm view</code> points at the same story as the site — without shipping private engines in the tarball.
+      </li>
+      <li>
+        <span class="t-date">2026-08-07</span>
+        <strong>Social + Lab Feed.</strong>
+        Official X handle <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a> linked site-wide. Scrolling Lab Feed on the home page and <a href="/updates">/updates</a> for product / plans / social in one timeline we control.
+      </li>
+      <li>
+        <span class="t-date">2026-08-07</span>
+        <strong>Cinema intro (process note, not a leak).</strong>
+        Keyframes from the poster exist (creator points from the heavens; agentic birth at the finger; dual settle). Full cinema video is staged for a host with working video gen — we refuse to ship a half-measure as “done.”
+      </li>
+    </ul>
+
+    <h2>Human process (Pub Facing)</h2>
+    <ol>
+      <li>Free compress on <a href="/web">/web</a></li>
+      <li>Proof on <a href="/standings">/standings</a></li>
+      <li>Quote on <a href="/pps">/pps</a></li>
+      <li>Optional <a href="/try">Try Gate $9</a></li>
+      <li><a href="/access">Access</a> after payment</li>
+    </ol>
+    <p>That is the evaluation process. You never need the private engine to understand the path.</p>
+
+    <h2>Agent process (Agentic Minded)</h2>
+    <ol>
+      <li><code>GET /api/welcome</code> — orientation</li>
+      <li><code>GET /api/agent</code> — source of truth</li>
+      <li><code>GET /api/x402-products</code> — catalog</li>
+      <li><code>POST</code> buy → HTTP 402 → pay USDC → retry with <code>X-PAYMENT</code></li>
+      <li>Receive order / access URL</li>
+    </ol>
+    <p>Agents get machine rails. They do not get a dump of the vault. Same IP Guard as humans — different wire format.</p>
+
+    <h2>What we will never put in this blog</h2>
+    <ul>
+      <li>Private residual / wave math</li>
+      <li>Internal coefficients or peak harness details</li>
+      <li>Full proprietary sources under the guise of “transparency”</li>
+    </ul>
+    <p>What we will keep writing: dates, doors, prices, demos, benches, and how to buy. Impressive Compression….. see for yourself.</p>
+
+    <div class="cta-row">
+      <a class="btn btn-gold" href="/humans">Pub Facing</a>
+      <a class="btn btn-teal" href="/agents">Agentic Minded</a>
+      <a class="btn btn-ghost" href="/updates">Lab Feed</a>
+      <a class="btn btn-ghost" href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
+    </div>
+  </div>
+
+  <nav class="nav-posts">
+    <a href="/blog/2026-08-04-www-only-public-door">← Prev: www is the only public door</a>
+    <span>You’re on the latest weekly post</span>
+  </nav>
+</article>
+
+<footer class="wrap">
+  <a href="/blog">All posts</a>
+  <a href="/blog.json">blog.json</a>
+  <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
+</footer>
+<script src="/assets/platform-home.js?v=1" defer></script>
+</body>
+</html>

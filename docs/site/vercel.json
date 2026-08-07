@@ -57,6 +57,38 @@
     {
       "source": "/updates/",
       "destination": "/updates/index.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/index.html"
+    },
+    {
+      "source": "/blog/",
+      "destination": "/blog/index.html"
+    },
+    {
+      "source": "/blog/2026-08-07-two-doors-one-lab",
+      "destination": "/blog/2026-08-07-two-doors-one-lab.html"
+    },
+    {
+      "source": "/blog/2026-08-07-two-doors-one-lab/",
+      "destination": "/blog/2026-08-07-two-doors-one-lab.html"
+    },
+    {
+      "source": "/blog/2026-08-04-www-only-public-door",
+      "destination": "/blog/2026-08-04-www-only-public-door.html"
+    },
+    {
+      "source": "/blog/2026-08-04-www-only-public-door/",
+      "destination": "/blog/2026-08-04-www-only-public-door.html"
+    },
+    {
+      "source": "/blog/2026-08-03-proprietary-try-gate-access",
+      "destination": "/blog/2026-08-03-proprietary-try-gate-access.html"
+    },
+    {
+      "source": "/blog/2026-08-03-proprietary-try-gate-access/",
+      "destination": "/blog/2026-08-03-proprietary-try-gate-access.html"
     }
   ],
   "redirects": [
@@ -144,6 +176,23 @@
     }
   ],
   "headers": [
+    {
+      "source": "/blog.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
+        }
+      ]
+    },
     {
       "source": "/updates.json",
       "headers": [

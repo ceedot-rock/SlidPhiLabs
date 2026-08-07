@@ -6,7 +6,11 @@ Allow: /humans
 Allow: /agents
 Allow: /platform.json
 Allow: /updates
+Allow: /blog
+Allow: /blog.json
 Allow: /updates.json
+Allow: /blog
+Allow: /blog.json
 Allow: /api/welcome
 Allow: /openapi.yaml
 Allow: /llms-full.txt

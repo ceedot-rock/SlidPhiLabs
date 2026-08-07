@@ -29,4 +29,9 @@
   <url><loc>https://www.slidphilabs.com/.well-known/security.txt</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://www.slidphilabs.com/updates</loc><lastmod>2026-08-07</lastmod><changefreq>daily</changefreq><priority>0.92</priority></url>
   <url><loc>https://www.slidphilabs.com/updates.json</loc><lastmod>2026-08-07</lastmod><changefreq>daily</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.slidphilabs.com/blog</loc><lastmod>2026-08-07</lastmod><changefreq>weekly</changefreq><priority>0.93</priority></url>
+  <url><loc>https://www.slidphilabs.com/blog/2026-08-07-two-doors-one-lab</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.slidphilabs.com/blog/2026-08-04-www-only-public-door</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>
+  <url><loc>https://www.slidphilabs.com/blog/2026-08-03-proprietary-try-gate-access</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>
+  <url><loc>https://www.slidphilabs.com/blog.json</loc><lastmod>2026-08-07</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
