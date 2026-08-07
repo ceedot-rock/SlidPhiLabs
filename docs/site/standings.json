@@ -1,0 +1,530 @@
+{
+  "service": "Slid Phi Labs \u2014 Standings & Records",
+  "version": "1.1.0",
+  "updated": "2026-08-07",
+  "visibility": "public",
+  "ip_guard": "Public outcomes only. No process coefficients or private engines.",
+  "methodology": {
+    "zrw_runtime": "ZeroRangeWave-Full-Pack-v5 index.mjs on host; gzip-9 / brotli-11 via Node zlib; raw = LE int32 buffer",
+    "pack_records": "Authoritative pack self-bench for zeros/ramp/walk generators",
+    "residual": "Host/champion public outcome bands \u2014 not a gzip size race",
+    "industry_context": "GP codecs ranked by role; lab wins are domain-scoped",
+    "update_policy": "Bump updated + append history[] entry when re-running benches or claiming a new record"
+  },
+  "industry_field": [
+    {
+      "rank": 1,
+      "name": "zstd",
+      "role": "Best default general-purpose",
+      "strength": "Speed \u00d7 ratio balance"
+    },
+    {
+      "rank": 2,
+      "name": "brotli",
+      "role": "Web / static assets",
+      "strength": "Strong ratio on text/HTML/JSON"
+    },
+    {
+      "rank": 3,
+      "name": "gzip / deflate",
+      "role": "Ubiquitous baseline",
+      "strength": "Compatibility"
+    },
+    {
+      "rank": 4,
+      "name": "lz4",
+      "role": "Wire / real-time",
+      "strength": "Highest throughput"
+    },
+    {
+      "rank": 5,
+      "name": "snappy",
+      "role": "In-memory / analytics stacks",
+      "strength": "Very fast, modest ratio"
+    },
+    {
+      "rank": 6,
+      "name": "bzip2",
+      "role": "Legacy archives",
+      "strength": "Better ratio than gzip, slow"
+    },
+    {
+      "rank": 7,
+      "name": "xz / lzma",
+      "role": "Max offline ratio",
+      "strength": "Strong size, slow"
+    },
+    {
+      "rank": 8,
+      "name": "zlib",
+      "role": "Deflate library form",
+      "strength": "Same family as gzip"
+    },
+    {
+      "rank": 9,
+      "name": "lzo",
+      "role": "Embedded / legacy fast",
+      "strength": "Fast, modest ratio"
+    },
+    {
+      "rank": 10,
+      "name": "High-ratio knobs (zstd-19 / brotli-q11)",
+      "role": "Size-at-all-costs",
+      "strength": "Best GP size, expensive CPU"
+    },
+    {
+      "rank": 11,
+      "name": "Columnar (Parquet/ORC + zstd/snappy)",
+      "role": "Analytics containers",
+      "strength": "Domain packaging"
+    },
+    {
+      "rank": 12,
+      "name": "Integer specialists (Delta, Gorilla, FastPFor, StreamVByte\u2026)",
+      "role": "Structured integers / TS",
+      "strength": "Beat GP on int patterns \u2014 lab lane"
+    }
+  ],
+  "scorecard": [
+    {
+      "metric": "Web asset size (pick min brotli-11 / gzip-9 after prep)",
+      "lab": "SPL Web Codec",
+      "lab_value": "equals best of brotli-11 & gzip-9 on payload",
+      "competitors": [
+        {
+          "name": "brotli-11",
+          "value": "web-static size leader class"
+        },
+        {
+          "name": "gzip-9",
+          "value": "ubiquitous baseline"
+        },
+        {
+          "name": "zstd",
+          "value": "strong GP \u2014 not yet in Vercel path (Node zlib path first)"
+        }
+      ],
+      "rank": 1,
+      "field": "web data (html/css/js/json)",
+      "status": "leading",
+      "as_of": "2026-08-07",
+      "source": "API strategy: always selects smaller of brotli/gzip"
+    },
+    {
+      "metric": "Size on zeros_10k (int32 raw 40KB)",
+      "lab": "ZRW",
+      "lab_value": "8 B",
+      "competitors": [
+        {
+          "name": "gzip-9",
+          "value": "73 B"
+        },
+        {
+          "name": "brotli-11",
+          "value": "13 B"
+        }
+      ],
+      "rank": 1,
+      "field": "structured integers",
+      "status": "leading",
+      "as_of": "2026-08-07",
+      "source": "host re-run 2026-08-07"
+    },
+    {
+      "metric": "Size on ramp_10k (int32 raw 40KB)",
+      "lab": "ZRW",
+      "lab_value": "8 B",
+      "competitors": [
+        {
+          "name": "gzip-9",
+          "value": "13907 B"
+        },
+        {
+          "name": "brotli-11",
+          "value": "10429 B"
+        }
+      ],
+      "rank": 1,
+      "field": "structured integers",
+      "status": "leading",
+      "as_of": "2026-08-07",
+      "source": "host re-run 2026-08-07"
+    },
+    {
+      "metric": "Size on zeros_1k",
+      "lab": "ZRW",
+      "lab_value": "8 B",
+      "competitors": [
+        {
+          "name": "brotli",
+          "value": "13 B"
+        },
+        {
+          "name": "gzip",
+          "value": "39 B"
+        },
+        {
+          "name": "ZRW v4",
+          "value": "130 B"
+        }
+      ],
+      "rank": 1,
+      "field": "structured integers",
+      "status": "record",
+      "as_of": "2026-08-07",
+      "source": "pack v5 records"
+    },
+    {
+      "metric": "Size on ramp_1k vs brotli",
+      "lab": "ZRW",
+      "lab_value": "8 B (~141\u00d7 smaller than brotli 1132 B)",
+      "competitors": [
+        {
+          "name": "brotli",
+          "value": "1132 B"
+        },
+        {
+          "name": "gzip",
+          "value": "1436 B"
+        }
+      ],
+      "rank": 1,
+      "field": "structured integers",
+      "status": "record",
+      "as_of": "2026-08-07",
+      "source": "pack v5 records"
+    },
+    {
+      "metric": "Size on walk_10k s1 (pack generator)",
+      "lab": "ZRW",
+      "lab_value": "128 B",
+      "competitors": [
+        {
+          "name": "gzip",
+          "value": "~5223 B"
+        },
+        {
+          "name": "ZRW v4",
+          "value": "~2500 B"
+        }
+      ],
+      "rank": 1,
+      "field": "structured integers",
+      "status": "record",
+      "as_of": "2026-08-07",
+      "source": "pack v5 self-bench"
+    },
+    {
+      "metric": "Size on walk_10k s5 (pack generator)",
+      "lab": "ZRW",
+      "lab_value": "420 B",
+      "competitors": [
+        {
+          "name": "gzip",
+          "value": "~11231 B"
+        },
+        {
+          "name": "ZRW v4",
+          "value": "~7163 B"
+        }
+      ],
+      "rank": 1,
+      "field": "structured integers",
+      "status": "record",
+      "as_of": "2026-08-07",
+      "source": "pack v5 self-bench"
+    },
+    {
+      "metric": "Size on high-entropy random int32",
+      "lab": "ZRW",
+      "lab_value": "out of domain / loses",
+      "competitors": [
+        {
+          "name": "brotli-11",
+          "value": "smaller"
+        },
+        {
+          "name": "gzip-9",
+          "value": "smaller than ZRW"
+        }
+      ],
+      "rank": null,
+      "field": "high-entropy integers",
+      "status": "trailing",
+      "as_of": "2026-08-07",
+      "source": "host re-run 2026-08-07"
+    },
+    {
+      "metric": "Size on general JSON/HTML bytes",
+      "lab": "ZRW",
+      "lab_value": "not product claim",
+      "competitors": [
+        {
+          "name": "brotli",
+          "value": "industry lead class"
+        },
+        {
+          "name": "zstd",
+          "value": "industry lead class"
+        },
+        {
+          "name": "gzip",
+          "value": "baseline"
+        }
+      ],
+      "rank": null,
+      "field": "general-purpose bytes",
+      "status": "n/a",
+      "as_of": "2026-08-07",
+      "source": "industry consensus + host text samples"
+    },
+    {
+      "metric": "Residual reduction vs pure discrete baseline",
+      "lab": "CDDG:Split / ZRQC residual",
+      "lab_value": "~64\u201384% residual cut class",
+      "competitors": [
+        {
+          "name": "pure-360 discrete",
+          "value": "baseline"
+        },
+        {
+          "name": "gzip on residuals",
+          "value": "different axis"
+        }
+      ],
+      "rank": 1,
+      "field": "residual process",
+      "status": "leading",
+      "as_of": "2026-08-04",
+      "source": "Host champion / public outcome bands"
+    },
+    {
+      "metric": "Quality vs pure-360",
+      "lab": "CDDG + Mirrored Cost",
+      "lab_value": "~2.05\u00d7\u20132.09\u00d7 quality class",
+      "competitors": [
+        {
+          "name": "pure-360",
+          "value": "1\u00d7 baseline"
+        }
+      ],
+      "rank": 1,
+      "field": "residual process",
+      "status": "leading",
+      "as_of": "2026-08-04",
+      "source": "Host champion notes"
+    },
+    {
+      "metric": "Encode speed (zeros/ramp class)",
+      "lab": "ZRW",
+      "lab_value": "sub-ms\u2013few ms on 10k ints (host)",
+      "competitors": [
+        {
+          "name": "gzip-9",
+          "value": "slower on same buffers"
+        },
+        {
+          "name": "lz4/snappy",
+          "value": "not yet timed head-to-head"
+        }
+      ],
+      "rank": null,
+      "field": "throughput",
+      "status": "partial",
+      "as_of": "2026-08-07",
+      "source": "host timing 2026-08-07"
+    },
+    {
+      "metric": "Blackjack / shards / slid-phi vs industry",
+      "lab": "family codecs",
+      "lab_value": "private engines \u2014 re-bench after unlock",
+      "competitors": [
+        {
+          "name": "gzip/brotli/zstd",
+          "value": "pending private package"
+        }
+      ],
+      "rank": null,
+      "field": "multi-path integers",
+      "status": "pending",
+      "as_of": "2026-08-07",
+      "source": "npm stubs public"
+    }
+  ],
+  "records": [
+    {
+      "id": "web-codec-lock-in",
+      "title": "Product lock: WEB compress/decompress",
+      "value": "Live /web + POST /api/web-codec",
+      "beats": "n/a \u2014 focus declaration + industry-pair selector",
+      "corpus": "html/css/js/json/text",
+      "held_since": "2026-08-07",
+      "status": "active",
+      "product": "SPL Web Codec"
+    },
+    {
+      "id": "zrw-zeros-1k-v5",
+      "title": "ZRW zeros_1k size",
+      "value": "8 B",
+      "beats": "brotli 13 B \u00b7 gzip 39 B \u00b7 v4 130 B",
+      "corpus": "zeros_1k int sequence",
+      "held_since": "2026-08-03",
+      "status": "active",
+      "product": "ZRW v5"
+    },
+    {
+      "id": "zrw-ramp-1k-v5",
+      "title": "ZRW ramp_1k size vs brotli",
+      "value": "8 B (~141\u00d7 vs brotli)",
+      "beats": "brotli 1132 B \u00b7 gzip 1436 B",
+      "corpus": "ramp_1k",
+      "held_since": "2026-08-03",
+      "status": "active",
+      "product": "ZRW v5"
+    },
+    {
+      "id": "zrw-zeros-10k-host",
+      "title": "ZRW zeros_10k size (host re-run)",
+      "value": "8 B",
+      "beats": "brotli 13 B \u00b7 gzip 73 B",
+      "corpus": "zeros_10k int32 LE",
+      "held_since": "2026-08-07",
+      "status": "active",
+      "product": "ZRW v5"
+    },
+    {
+      "id": "zrw-ramp-10k-host",
+      "title": "ZRW ramp_10k size (host re-run)",
+      "value": "8 B",
+      "beats": "gzip ~14 KB \u00b7 brotli ~10 KB",
+      "corpus": "ramp_10k int32 LE",
+      "held_since": "2026-08-07",
+      "status": "active",
+      "product": "ZRW v5"
+    },
+    {
+      "id": "zrw-walk-s1-pack",
+      "title": "ZRW walk_10k s1 size",
+      "value": "128 B",
+      "beats": "gzip ~5223 B \u00b7 v4 ~2500 B",
+      "corpus": "walk_10k s1 (pack generator)",
+      "held_since": "2026-08-03",
+      "status": "active",
+      "product": "ZRW v5"
+    },
+    {
+      "id": "zrw-walk-s5-pack",
+      "title": "ZRW walk_10k s5 size",
+      "value": "420 B",
+      "beats": "gzip ~11231 B \u00b7 v4 ~7163 B",
+      "corpus": "walk_10k s5 (pack generator)",
+      "held_since": "2026-08-03",
+      "status": "active",
+      "product": "ZRW v5"
+    },
+    {
+      "id": "cddg-residual-band",
+      "title": "CDDG residual cut band",
+      "value": "64\u201384% class",
+      "beats": "pure-360 discrete residual baseline",
+      "corpus": "Host residual benches (public outcomes)",
+      "held_since": "2026-08-04",
+      "status": "active",
+      "product": "CDDG:Split / ZRQC"
+    },
+    {
+      "id": "cddg-quality-band",
+      "title": "Quality vs pure-360",
+      "value": "~2.05\u00d7\u20132.09\u00d7",
+      "beats": "pure-360 baseline quality",
+      "corpus": "champion outcomes",
+      "held_since": "2026-08-04",
+      "status": "active",
+      "product": "CDDG + Mirrored Cost"
+    }
+  ],
+  "rankings_summary": [
+    {
+      "domain": "Web payloads (HTML/CSS/JS/JSON)",
+      "lab_rank": 1,
+      "among": "gzip-9, brotli-11 (selected min after type-aware prep)",
+      "leader": "SPL Web Codec (ties industry best of pair)"
+    },
+    {
+      "domain": "Structured integers (zeros/ramps)",
+      "lab_rank": 1,
+      "among": "gzip, brotli (measured); zstd/lz4 pending",
+      "leader": "ZRW"
+    },
+    {
+      "domain": "Pack walks (s1/s5)",
+      "lab_rank": 1,
+      "among": "gzip, prior ZRW v4",
+      "leader": "ZRW"
+    },
+    {
+      "domain": "High-entropy / random ints",
+      "lab_rank": null,
+      "among": "brotli leads measured set",
+      "leader": "brotli class"
+    },
+    {
+      "domain": "General web/text bytes",
+      "lab_rank": null,
+      "among": "industry GP",
+      "leader": "brotli / zstd"
+    },
+    {
+      "domain": "Residual process outcomes",
+      "lab_rank": 1,
+      "among": "pure-360 / discrete baselines",
+      "leader": "CDDG"
+    },
+    {
+      "domain": "Wire throughput (lz4/snappy class)",
+      "lab_rank": null,
+      "among": "not fully timed",
+      "leader": "lz4 class (industry)"
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-08-07",
+      "event": "Locked product focus on WEB data comp/decomp; shipped /web UI + /api/web-codec (brotli-11 vs gzip-9 selector)",
+      "version": "1.1.0"
+    },
+    {
+      "date": "2026-08-07",
+      "event": "Standings tracker launched on site; host re-run ZRW vs gzip/brotli; pack records imported",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-08-04",
+      "event": "CDDG residual / quality public outcome bands recorded from Host champion benches",
+      "version": "pre-tracker"
+    },
+    {
+      "date": "2026-08-03",
+      "event": "ZRW v5 pack records (zeros/ramp/walk) published in pack README",
+      "version": "pre-tracker"
+    }
+  ],
+  "next_updates": [
+    "Add zstd + lz4 CLI head-to-head on same int32 buffers",
+    "Unlock blackjack private package for multi-path table",
+    "Optional Silesia GP context row (not ZRW target domain)"
+  ],
+  "links": {
+    "bench_doc": "https://www.slidphilabs.com/ \u2014 see /standings",
+    "ideas": "https://www.slidphilabs.com/ideas",
+    "agent": "https://www.slidphilabs.com/api/agent",
+    "zrw": "https://www.slidphilabs.com/#zrw",
+    "cddg": "https://www.slidphilabs.com/#cddg-split"
+  },
+  "product_lock": {
+    "focus": "WEB data compress / decompress",
+    "surface": "https://www.slidphilabs.com/web",
+    "api": "https://www.slidphilabs.com/api/web-codec",
+    "as_of": "2026-08-07"
+  }
+}

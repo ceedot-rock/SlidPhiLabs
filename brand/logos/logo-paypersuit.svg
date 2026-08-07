@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 160" width="520" height="160">
+  <rect width="520" height="160" fill="#0a0a0f"/>
+  <path d="M40 50 L55 40 L70 50 L70 75 L55 95 L40 75 Z" fill="#7c6cff"/>
+  <path d="M55 55 L55 85" stroke="#5b9fd4" stroke-width="3" stroke-linecap="round"/>
+  <text x="90" y="92" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="700">
+    <tspan fill="#ffffff">Pay</tspan><tspan fill="#7c6cff">Per</tspan><tspan fill="#ffffff">Suit</tspan>
+  </text>
+  <rect x="178" y="100" width="52" height="4" rx="2" fill="#7c6cff"/>
+</svg>

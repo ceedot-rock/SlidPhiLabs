@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SPL Codec · Suite — any size · Slid Phi Labs</title>
+<meta name="description" content="Compression module · suite mode: any size/shape. Live quote. From $0.50 · ~$2 for 9 GB. Best engine under the hood. Stripe checkout."/>
+<link rel="canonical" href="https://www.slidphilabs.com/pps"/>
+
+<!-- Agentic commerce discovery (machine-readable) -->
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent commerce discovery"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/agents.json" title="agents.json"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/agents.txt" title="agents.txt"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+<link rel="describedby" href="https://www.slidphilabs.com/.well-known/agentic-commerce.json"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/.well-known/agent-card.json" title="A2A agent card"/>
+<meta name="agent-commerce" content="x402"/>
+<meta name="agent-protocols" content="x402"/>
+<meta name="agent-networks" content="solana-mainnet-beta,eip155:8453"/>
+<meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
+<meta name="agent-catalog" content="https://www.slidphilabs.com/api/x402-products"/>
+<meta name="agent-one-liner" content="Agent commerce: GET https://www.slidphilabs.com/api/agent then pay via x402 on Solana or Base mainnet (X-PAYMENT) on catalog POST."/>
+<meta property="og:title" content="SPL Codec · Suite — any size · Slid Phi Labs"/>
+<meta property="og:description" content="Compression module · suite mode: any size/shape. Live quote. From $0.50 · ~$2 for 9 GB. Best engine under the hood. Stripe checkout."/>
+<meta property="og:url" content="https://www.slidphilabs.com/pps"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="SPL Codec · Suite — any size · Slid Phi Labs"/>
+<meta name="twitter:description" content="Compression module · suite mode: any size/shape. Live quote. From $0.50 · ~$2 for 9 GB. Best engine under the hood. Stripe checkout."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="theme-color" content="#050b16"/>
+<meta name="robots" content="index,follow"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-paypersuite.jpg?v=8"/>
+<link rel="alternate icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=6"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#050b16;--bg-deep:#03060e;--panel:#0c1524;--panel2:#122033;
+  --border:rgba(61,214,198,.16);--border-gold:rgba(232,197,71,.38);
+  --text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;
+  --teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--gold-deep:#c9a227;
+  --gold-soft:rgba(232,197,71,.12);--code:#081018;--good:#3ecf8e;--bad:#f87171;--fire:#ff9a3c;
+  --glow-teal:0 0 40px rgba(61,214,198,.2);--glow-gold:0 0 36px rgba(232,197,71,.22);
+  --radius:16px;--ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);
+  line-height:1.55;min-height:100vh;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 55% 42% at 12% 0%, rgba(61,214,198,.09), transparent 55%),
+    radial-gradient(ellipse 50% 38% at 92% 8%, rgba(232,197,71,.07), transparent 50%),
+    radial-gradient(ellipse 40% 30% at 70% 100%, rgba(255,154,60,.05), transparent 50%),
+    linear-gradient(180deg, #03060e 0%, var(--bg) 40%);
+}
+a{color:var(--accent);text-decoration:none}a:hover{color:var(--teal-bright)}
+button,input,select,textarea{font:inherit}
+
+/* —— suite chrome —— */
+.suite-nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(3,6,14,.86);backdrop-filter:blur(18px) saturate(1.25);
+  border-bottom:1px solid rgba(232,197,71,.2);
+}
+.suite-nav .inner{
+  max-width:1100px;margin:0 auto;padding:10px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.suite-brand{display:inline-flex;align-items:center;gap:12px;color:var(--gold);text-decoration:none}
+.suite-brand img{
+  width:44px;height:44px;border-radius:12px;object-fit:cover;
+  border:1.5px solid var(--border-gold);
+  box-shadow:0 0 20px rgba(61,214,198,.25);
+}
+.suite-brand .name{font-family:'Cinzel',serif;font-weight:700;font-size:1rem;letter-spacing:.04em;line-height:1.15}
+.suite-brand .sub{display:block;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--teal-bright);letter-spacing:.08em;font-weight:500}
+.suite-nav-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.suite-nav-actions a.quiet{color:var(--muted);font-size:.86rem;padding:6px 10px;border-radius:8px}
+.suite-nav-actions a.quiet:hover{color:var(--gold);background:var(--gold-soft)}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 18px;border-radius:12px;font-size:.92rem;font-weight:600;
+  border:1px solid transparent;cursor:pointer;line-height:1.2;
+  transition:transform .14s var(--ease), box-shadow .14s, filter .14s, border-color .14s, background .14s;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-gold{
+  background:linear-gradient(180deg,#f5d76e 0%,var(--gold) 42%,var(--gold-deep) 100%);
+  color:#1a1200;font-weight:700;
+  box-shadow:0 0 0 1px rgba(232,197,71,.35), 0 10px 28px rgba(232,197,71,.2);
+}
+.btn-gold:hover{filter:brightness(1.05)}
+.btn-teal{
+  background:linear-gradient(180deg,#5ef0df,var(--teal) 55%,#2bb8aa);
+  color:#031018;box-shadow:0 8px 24px rgba(61,214,198,.2);
+}
+.btn-primary{background:linear-gradient(180deg,#6bb0ff,var(--accent));color:#fff}
+.btn-ghost{
+  background:rgba(255,255,255,.03);color:var(--text);border-color:rgba(61,214,198,.25);
+}
+.btn-ghost:hover{border-color:var(--border-gold);color:var(--gold);background:var(--gold-soft)}
+.btn-block{width:100%}
+.btn-lg{padding:14px 20px;font-size:1rem;border-radius:14px}
+
+.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 72px;position:relative;z-index:1}
+
+/* hero */
+.suite-hero{margin-bottom:28px}
+.suite-hero-top{display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px 28px;margin-bottom:20px}
+.suite-hero-copy{flex:1;min-width:min(100%,280px)}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);background:var(--gold-soft);border:1px solid var(--border-gold);
+  padding:5px 12px;border-radius:999px;margin-bottom:12px;
+}
+.badge::before{
+  content:"";width:7px;height:7px;border-radius:50%;
+  background:var(--teal-bright);box-shadow:0 0 12px var(--teal);animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+.ribbon{
+  font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(.95rem,2vw,1.1rem);font-weight:700;
+  letter-spacing:.05em;margin-bottom:10px;text-shadow:0 0 28px rgba(232,197,71,.4);
+}
+h1{
+  font-size:clamp(1.85rem,4.2vw,2.65rem);font-weight:700;letter-spacing:-.03em;line-height:1.08;margin-bottom:12px;
+  background:linear-gradient(180deg,#fff 0%, #e8d48a 40%, #c8d8e8 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.lede{color:var(--muted);max-width:36rem;font-size:1.05rem;line-height:1.65}
+
+/* step rail */
+.step-rail{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:22px 0 0;
+}
+@media(max-width:640px){.step-rail{grid-template-columns:1fr 1fr}}
+.step-pill{
+  display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;
+  border:1px solid rgba(61,214,198,.12);background:rgba(12,21,36,.55);
+  font-size:.82rem;color:var(--muted);transition:border-color .2s, background .2s, color .2s;
+}
+.step-pill .n{
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-size:.75rem;font-weight:700;color:var(--gold);
+  border:1px solid rgba(232,197,71,.35);background:var(--gold-soft);
+}
+.step-pill.on{
+  border-color:rgba(61,214,198,.4);color:var(--text);
+  background:linear-gradient(165deg, rgba(18,32,51,.9), rgba(12,21,36,.95));
+  box-shadow:0 0 0 1px rgba(61,214,198,.08), var(--glow-teal);
+}
+.step-pill.on .n{background:linear-gradient(180deg,#5ef0df,var(--teal));color:#031018;border-color:transparent}
+.step-pill.done{border-color:rgba(62,207,142,.35);color:var(--text)}
+.step-pill.done .n{background:rgba(62,207,142,.2);color:var(--good);border-color:rgba(62,207,142,.4)}
+
+/* layout */
+.suite-grid{
+  display:grid;gap:20px;align-items:start;
+}
+@media(min-width:900px){
+  .suite-grid{grid-template-columns:1.12fr .88fr;gap:24px}
+  .quote-rail{position:sticky;top:76px}
+}
+
+.panel{
+  background:linear-gradient(165deg, rgba(18,32,51,.92), rgba(8,14,24,.96));
+  border:1px solid var(--border);border-radius:20px;padding:22px 22px 20px;
+  box-shadow:0 20px 50px rgba(0,0,0,.35), inset 0 1px 0 rgba(232,197,71,.06);
+  position:relative;overflow:hidden;
+}
+.panel::before{
+  content:"";position:absolute;top:0;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);opacity:.55;
+}
+.panel h2{
+  font-family:'Cinzel',serif;color:var(--gold);font-size:1.02rem;letter-spacing:.05em;
+  margin-bottom:4px;
+}
+.panel .hint{color:var(--muted);font-size:.88rem;margin-bottom:16px}
+
+/* dropzone */
+.drop{
+  position:relative;border:1.5px dashed rgba(232,197,71,.32);border-radius:16px;
+  padding:28px 18px;text-align:center;color:var(--muted);
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 0%, rgba(61,214,198,.06), transparent 60%),
+    rgba(8,16,24,.65);
+  cursor:pointer;transition:border-color .2s, background .2s, box-shadow .2s, transform .15s;
+  margin-bottom:4px;
+}
+.drop:hover,.drop:focus-visible{
+  border-color:rgba(61,214,198,.5);outline:none;
+  box-shadow:0 0 0 1px rgba(61,214,198,.15), var(--glow-teal);
+}
+.drop.drag{
+  border-color:var(--teal-bright);color:var(--teal-bright);
+  box-shadow:0 0 0 1px rgba(61,214,198,.3), 0 0 40px rgba(61,214,198,.2);
+  transform:scale(1.01);
+}
+.drop.has-file{
+  border-style:solid;border-color:rgba(232,197,71,.45);
+  background:linear-gradient(165deg, rgba(232,197,71,.06), rgba(8,16,24,.8));
+}
+.drop .ico{
+  width:48px;height:48px;margin:0 auto 12px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--gold-soft);border:1px solid var(--border-gold);color:var(--gold);
+  font-size:1.25rem;
+}
+.drop strong{display:block;color:var(--text);font-size:1rem;margin-bottom:4px}
+.drop .meta{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted);margin-top:8px}
+.drop .meta em{color:var(--teal-bright);font-style:normal}
+
+.field-row{display:grid;gap:12px}
+@media(min-width:560px){.field-row.two{grid-template-columns:1fr 1fr}}
+label{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin:14px 0 6px;letter-spacing:.02em}
+label .opt{font-weight:500;opacity:.7}
+input[type="number"],input[type="email"],input[type="text"],select,textarea{
+  width:100%;background:var(--code);border:1px solid rgba(61,214,198,.2);border-radius:11px;
+  color:var(--text);padding:12px 14px;transition:border-color .15s, box-shadow .15s;
+}
+input:focus,select:focus,textarea:focus{
+  outline:none;border-color:rgba(232,197,71,.55);
+  box-shadow:0 0 0 3px rgba(232,197,71,.1);
+}
+.size-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end}
+.size-human{
+  font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--teal-bright);
+  padding:12px 14px;border-radius:11px;border:1px solid rgba(61,214,198,.2);
+  background:rgba(61,214,198,.06);white-space:nowrap;min-width:5.5rem;text-align:center;
+}
+
+/* segment controls */
+.seg{
+  display:flex;flex-wrap:wrap;gap:6px;padding:4px;border-radius:12px;
+  background:rgba(8,16,24,.7);border:1px solid rgba(61,214,198,.12);
+}
+.seg button{
+  flex:1;min-width:calc(33% - 6px);padding:10px 8px;border-radius:9px;border:0;
+  background:transparent;color:var(--muted);cursor:pointer;font-weight:600;font-size:.84rem;
+  transition:background .15s, color .15s, box-shadow .15s;
+}
+.seg button:hover{color:var(--text)}
+.seg button.on{
+  background:linear-gradient(180deg, rgba(232,197,71,.18), rgba(232,197,71,.08));
+  color:var(--gold);box-shadow:inset 0 0 0 1px rgba(232,197,71,.4);
+}
+
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
+.tool-chip{
+  display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 6px;
+  border-radius:12px;border:1px solid rgba(61,214,198,.14);background:rgba(8,16,24,.5);
+  cursor:pointer;color:var(--muted);font-size:.68rem;font-family:'IBM Plex Mono',monospace;
+  text-align:center;transition:border-color .15s, background .15s, color .15s, transform .12s;
+}
+.tool-chip:hover{border-color:rgba(232,197,71,.4);color:var(--text);transform:translateY(-1px)}
+.tool-chip.on{
+  border-color:rgba(232,197,71,.55);color:var(--gold);
+  background:linear-gradient(165deg, rgba(232,197,71,.1), rgba(12,21,36,.9));
+  box-shadow:0 0 20px rgba(232,197,71,.08);
+}
+.tool-chip img{
+  width:40px;height:40px;border-radius:10px;object-fit:cover;
+  border:1px solid rgba(232,197,71,.3);
+}
+.tool-chip.auto-chip .auto-mark{
+  width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-weight:700;font-size:.7rem;color:var(--teal-bright);
+  background:rgba(61,214,198,.1);border:1px solid rgba(61,214,198,.35);
+}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chip{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;
+  font-size:.72rem;font-family:'IBM Plex Mono',monospace;
+  border:1px solid rgba(61,214,198,.28);color:var(--teal-bright);background:rgba(61,214,198,.06);
+}
+.chip.gold{border-color:var(--border-gold);color:var(--gold);background:var(--gold-soft)}
+
+details.adv{
+  margin-top:16px;border-radius:12px;border:1px solid rgba(61,214,198,.12);
+  background:rgba(8,16,24,.4);padding:0 14px;
+}
+details.adv summary{
+  cursor:pointer;padding:12px 0;color:var(--muted);font-size:.88rem;font-weight:600;
+  list-style:none;display:flex;align-items:center;justify-content:space-between;
+}
+details.adv summary::-webkit-details-marker{display:none}
+details.adv summary::after{content:"＋";color:var(--gold);font-size:.9rem}
+details.adv[open] summary::after{content:"－"}
+details.adv .adv-body{padding-bottom:14px}
+
+/* quote rail */
+.quote-rail .panel{
+  border-color:var(--border-gold);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(232,197,71,.08), transparent 55%),
+    linear-gradient(165deg, rgba(18,32,51,.96), rgba(5,11,22,.98));
+  box-shadow:0 24px 60px rgba(0,0,0,.4), var(--glow-gold), inset 0 1px 0 rgba(232,197,71,.12);
+}
+.quote-label{
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:8px;
+}
+.quote-amt{
+  font-family:'IBM Plex Mono',monospace;font-size:clamp(2.4rem,5vw,3.1rem);font-weight:700;
+  color:var(--gold);line-height:1;letter-spacing:-.03em;
+  text-shadow:0 0 32px rgba(232,197,71,.4);
+  transition:transform .25s var(--ease);
+}
+.quote-amt.bump{transform:scale(1.04)}
+.quote-amt .cur{font-size:1rem;color:var(--muted);font-weight:500;margin-left:6px}
+.quote-sub{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted);margin-top:8px}
+.breakdown{margin:16px 0 4px}
+.breakdown div{
+  display:flex;justify-content:space-between;gap:12px;padding:8px 0;
+  border-bottom:1px solid rgba(61,214,198,.08);font-size:.86rem;color:var(--muted);
+}
+.breakdown strong{color:var(--text);font-weight:600;font-family:'IBM Plex Mono',monospace;font-size:.84rem}
+.cta-stack{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.msg{
+  margin-top:12px;padding:12px 14px;border-radius:12px;font-size:.9rem;
+  border:1px solid rgba(61,214,198,.2);background:rgba(12,21,36,.8);
+}
+.msg.ok{border-color:rgba(62,207,142,.4);background:rgba(62,207,142,.08);color:var(--text)}
+.msg.err{border-color:rgba(248,113,113,.4);background:rgba(248,113,113,.08)}
+.msg.warn{border-color:var(--border-gold);background:rgba(232,197,71,.08)}
+.banner-top{
+  display:none;margin-bottom:18px;padding:14px 16px;border-radius:14px;font-size:.95rem;
+  border:1px solid rgba(61,214,198,.25);
+}
+.banner-top.on{display:block}
+.banner-top.ok{border-color:rgba(62,207,142,.45);background:rgba(62,207,142,.1)}
+.banner-top.warn{border-color:var(--border-gold);background:rgba(232,197,71,.08)}
+
+.dev-card{
+  margin-top:16px;padding:16px 18px;border-radius:16px;
+  border:1px solid rgba(61,214,198,.12);background:rgba(8,16,24,.5);
+}
+.dev-card h3{font-size:.88rem;color:var(--gold);font-family:'Cinzel',serif;letter-spacing:.04em;margin-bottom:8px}
+.dev-card pre{
+  margin:8px 0 0;padding:12px;border-radius:10px;background:var(--code);
+  border:1px solid rgba(61,214,198,.15);font-size:.75rem;color:var(--muted);overflow:auto;
+  font-family:'IBM Plex Mono',monospace;line-height:1.5;
+}
+.mono{font-family:'IBM Plex Mono',monospace}
+footer.suite-foot{
+  margin-top:48px;padding-top:22px;border-top:1px solid rgba(232,197,71,.18);
+  color:var(--muted);font-size:.85rem;
+  display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:space-between;align-items:center;
+}
+footer.suite-foot .tag{color:var(--gold);font-family:'Cinzel',serif}
+footer.suite-foot a{color:var(--teal-bright);font-weight:600}
+.legal-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.legal-row img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid rgba(232,197,71,.35)}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "SPL SPL Codec Suite",
+  "url": "https://www.slidphilabs.com/pps",
+  "description": "On-spot project quotes, Stripe checkout, and lab-run compress/decompress jobs.",
+  "isPartOf": { "@type": "WebSite", "url": "https://www.slidphilabs.com/" },
+  "mainEntity": {
+    "@type": "Service",
+    "name": "SPL SPL Codec Suite",
+    "provider": { "@type": "Organization", "name": "Slid Phi Labs", "url": "https://www.slidphilabs.com/" },
+    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "0.50", "description": "From $0.50 live quote · multi-GB cheap" }
+  }
+}
+</script>
+</head>
+<body>
+
+<nav class="suite-nav">
+  <div class="inner">
+    <a class="suite-brand" href="/pps">
+      <img src="/assets/logos/logo-paypersuite.jpg?v=8" width="44" height="44" alt=""/>
+      <span>
+        <span class="name">SPL SPL Codec Suite</span>
+        <span class="sub">QUOTE · PAY · RUN</span>
+      </span>
+    </a>
+    <div class="suite-nav-actions">
+      <a class="quiet" href="/">Lab home</a>
+      <a class="quiet" href="/demos">Demos</a>
+      <a class="btn btn-ghost" href="/access" style="padding:8px 12px;font-size:.85rem">Access</a>
+      <a class="btn btn-teal" href="/try" style="padding:8px 12px;font-size:.85rem">Try Gate</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="suite-hero">
+    <div class="suite-hero-top">
+      <div class="suite-hero-copy">
+        <div class="badge">Live suite · on-spot quote</div>
+        <p class="ribbon">Impressive Compression..... see for yourself</p>
+        <h1>SPL Codec · any size. Best engine. Ship it.</h1>
+        <p class="lede">
+          Drop a file or set size, pick the tool and operation, and the quote updates instantly.
+          Pay on Stripe — we run the best available lab path and deliver results to your inbox.
+        </p>
+      </div>
+    </div>
+    <div class="step-rail" id="stepRail" aria-label="Progress">
+      <div class="step-pill on" data-step="1"><span class="n">1</span><span>Configure</span></div>
+      <div class="step-pill" data-step="2"><span class="n">2</span><span>Quote</span></div>
+      <div class="step-pill" data-step="3"><span class="n">3</span><span>Pay</span></div>
+      <div class="step-pill" data-step="4"><span class="n">4</span><span>Submit</span></div>
+    </div>
+  </header>
+
+  <div id="banner" class="banner-top" role="status"></div>
+
+  <div class="suite-grid">
+    <!-- left: configure -->
+    <div class="panel" id="configPanel">
+      <h2>Your project</h2>
+      <p class="hint">Upload optional — size alone is enough for a quote.</p>
+
+      <div class="drop" id="drop" tabindex="0" role="button" aria-label="Upload project file">
+        <div class="ico" aria-hidden="true">↑</div>
+        <strong>Drop data here</strong>
+        <span>or click to browse · any format</span>
+        <div class="meta" id="fileMeta">No file yet</div>
+      </div>
+      <input type="file" id="file" hidden/>
+
+      <div class="field-row two">
+        <div>
+          <label for="bytes">Size (bytes)</label>
+          <div class="size-row">
+            <input id="bytes" type="number" min="0" step="1" value="0" inputmode="numeric"/>
+            <div class="size-human" id="sizeHuman">0 B</div>
+          </div>
+        </div>
+        <div>
+          <label for="dataClass">Data class</label>
+          <select id="dataClass">
+            <option value="unknown">Unknown / mixed</option>
+            <option value="zeros">Zeros series</option>
+            <option value="ramp">Ramp series</option>
+            <option value="walk">Walk series</option>
+            <option value="mixed_ints">Mixed integers</option>
+            <option value="timeseries">Time series</option>
+            <option value="json_series">JSON / series text</option>
+            <option value="binary">Binary blob</option>
+          </select>
+        </div>
+      </div>
+
+      <label>Operation</label>
+      <div class="seg" id="opSeg" role="group" aria-label="Operation">
+        <button type="button" data-op="compress" class="on">Compress</button>
+        <button type="button" data-op="decompress">Decompress</button>
+        <button type="button" data-op="roundtrip">Round-trip</button>
+      </div>
+      <input type="hidden" id="op" value="compress"/>
+
+      <label>Tool</label>
+      <div class="tool-grid" id="toolGrid" role="listbox" aria-label="Product tool"></div>
+      <input type="hidden" id="product" value="auto"/>
+
+      <div class="chips">
+        <span class="chip gold" id="toolChip">auto</span>
+        <span class="chip" id="classChip">unknown</span>
+        <span class="chip" id="opChip">compress</span>
+      </div>
+
+      <label for="email">Email <span class="opt">(Stripe + delivery)</span></label>
+      <input id="email" type="email" placeholder="you@company.com" autocomplete="email"/>
+
+      <details class="adv">
+        <summary>Notes · agents (x402) · developer tools</summary>
+        <div class="adv-body">
+          <label for="note">Project notes <span class="opt">(optional)</span></label>
+          <textarea id="note" rows="2" maxlength="500" placeholder="Format hints, deadline, preferred tool…"></textarea>
+          <div class="dev-card" style="margin-top:12px">
+            <h3>Humans · Stripe</h3>
+            <pre>npx spl-pps pay ./data.bin --email you@x.com
+# or Pay with Stripe above</pre>
+            <h3 style="margin-top:14px">Agents · x402 (all products + jobs)</h3>
+            <pre>GET  /api/agent
+GET  /api/x402-products          # catalog: CDDG, ZRW tiers, …
+POST /api/x402-products {sku}    # buy standing product → 402
+POST /api/x402-suite             # metered suite job → 402
+# payFetch + X-PAYMENT; Stripe stays for humans
+npx spl-pps catalog
+npx spl-pps buy --sku cddg-split
+npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- right: quote -->
+    <aside class="quote-rail">
+      <div class="panel">
+        <div class="quote-label">Live quote</div>
+        <div class="quote-amt" id="quoteAmtEl">$<span id="amt">9.00</span><span class="cur">USD</span></div>
+        <p class="quote-sub" id="amtSub">From $0.50 · multi-GB is cheap (~$2 for 9 GB) · max $10,000</p>
+        <div class="breakdown" id="breakdown"></div>
+        <div class="cta-stack">
+          <button type="button" class="btn btn-gold btn-lg btn-block" id="payBtn">Pay with Stripe →</button>
+          <button type="button" class="btn btn-primary btn-block" id="jobBtn">Submit project</button>
+          <a class="btn btn-ghost btn-block" href="mailto:corey@slidphilabs.com?subject=SPL%20Pay%20Per%20Suite">Ask a question</a>
+        </div>
+        <div id="payMsg" class="msg" style="display:none"></div>
+        <div id="jobMsg" class="msg" style="display:none"></div>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="suite-foot">
+    <div>
+      <p class="tag">SPL SPL Codec Suite</p>
+      <p>Impressive Compression..... see for yourself</p>
+    </div>
+    <div class="legal-row">
+      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=6" width="28" height="28" alt=""/>
+      <span>© 2026 Slid Phi Labs · <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> · <a href="/">Lab home</a></span>
+    </div>
+  
+    <p class="note agentic-marketing" style="margin-top:12px;font-size:0.9rem">
+      <strong style="color:var(--teal-bright,#3dd6c6)">Agents:</strong>
+      <a href="/api/agent"><code>GET /api/agent</code></a>
+      · <a href="/agents.json">agents.json</a>
+      · <a href="/agents.txt">agents.txt</a>
+      · <a href="/llms.txt">llms.txt</a>
+      — x402 USDC on <strong>Solana</strong> or <strong>Base</strong> mainnet (<code>X-PAYMENT</code>).
+    </p>
+
+  </footer>
+</div>
+
+<script>
+(function () {
+  const PPP_LINK = 'https://buy.stripe.com/aFa00k4B70OYetL0O46wE0g';
+  const PRODUCT_BASE = {
+    auto: 99,
+    zrw: 99,
+    "cddg-split": 299,
+    blackjack: 149,
+    "shard-zip": 149,
+    "shard-tsdb": 149,
+    "slid-phi": 149,
+  };
+  const DATA_MULT = {
+    zeros: 0.9, ramp: 0.95, walk: 1.0, mixed_ints: 1.05,
+    timeseries: 1.05, json_series: 1.0, binary: 1.1, unknown: 1.0,
+  };
+  const OP_MULT = { compress: 1.0, decompress: 0.75, roundtrip: 1.2 };
+  const MIN = 50, MAX = 1000000;
+  const TOOLS = [
+    { id: 'auto', label: 'Auto', logo: null },
+    { id: 'zrw', label: 'ZRW', logo: '/assets/logos/logo-zero-range-wave.jpg?v=6' },
+    { id: 'cddg-split', label: 'CDDG:Split', logo: '/assets/logos/logo-cddg-split.jpg?v=8' },
+    { id: 'blackjack', label: 'Blackjack', logo: '/assets/logos/logo-blackjack.jpg?v=6' },
+    { id: 'shard-zip', label: 'shard-zip', logo: '/assets/logos/logo-shard-zip.jpg?v=6' },
+    { id: 'shard-tsdb', label: 'shard-tsdb', logo: '/assets/logos/logo-shard-tsdb.jpg?v=6' },
+    { id: 'slid-phi', label: 'slid-phi', logo: '/assets/logos/logo-slid-phi.jpg?v=6' },
+  ];
+
+  let fileName = '';
+  let sampleHint = '';
+  let lastQuote = null;
+  let paid = false;
+  let recommendedTool = 'auto';
+
+  const $ = (id) => document.getElementById(id);
+  const bytesEl = $('bytes');
+  const classEl = $('dataClass');
+  const productEl = $('product');
+  const opEl = $('op');
+  const emailEl = $('email');
+  const noteEl = $('note');
+  const drop = $('drop');
+  const fileInput = $('file');
+  const toolGrid = $('toolGrid');
+
+  function fmtBytes(n) {
+    n = Math.max(0, Number(n) || 0);
+    if (n < 1024) return n + ' B';
+    if (n < 1024 * 1024) return (n / 1024).toFixed(n < 10 * 1024 ? 1 : 0) + ' KB';
+    if (n < 1024 * 1024 * 1024) return (n / (1024 * 1024)).toFixed(n < 10 * 1024 * 1024 ? 2 : 1) + ' MB';
+    return (n / (1024 * 1024 * 1024)).toFixed(2) + ' GB';
+  }
+
+  function sizeFee(bytes) {
+    const b = Math.max(0, Number(bytes) || 0);
+    const free = 50 * 1024 * 1024;
+    const billable = Math.max(0, b - free);
+    if (billable <= 0) return 0;
+    const gb = billable / (1024 * 1024 * 1024);
+    if (gb <= 10) return Math.round(gb * 12);
+    if (gb <= 100) return Math.round(10 * 12 + (gb - 10) * 4);
+    return Math.round(10 * 12 + 90 * 4 + (gb - 100) * 1.5);
+  }
+
+  function computeQuote() {
+    const product = productEl.value;
+    const dataClass = classEl.value;
+    const op = opEl.value;
+    const bytes = Math.max(0, Number(bytesEl.value) || 0);
+    const base = PRODUCT_BASE[product] || PRODUCT_BASE.auto;
+    const size = sizeFee(bytes);
+    const mult = (DATA_MULT[dataClass] || 1.15) * (OP_MULT[op] || 1);
+    const cents = Math.min(MAX, Math.max(MIN, Math.round((base + size) * mult)));
+    lastQuote = {
+      amount_cents: cents,
+      amount_display: (cents / 100).toFixed(2),
+      product, dataClass, op, bytes,
+      base, size, mult,
+      mb: +(bytes / (1024 * 1024)).toFixed(4),
+    };
+    return lastQuote;
+  }
+
+  function setSteps() {
+    const hasConfig = (Number(bytesEl.value) || 0) > 0 || !!fileName;
+    const hasEmail = !!emailEl.value.trim();
+    const pills = document.querySelectorAll('.step-pill');
+    pills.forEach((p) => p.classList.remove('on', 'done'));
+    // 1 configure
+    pills[0].classList.add(hasConfig ? 'done' : 'on');
+    // 2 quote always live once config
+    if (hasConfig) pills[1].classList.add(paid ? 'done' : 'on');
+    else pills[1].classList.add('on');
+    // 3 pay
+    if (paid) pills[2].classList.add('done');
+    else if (hasConfig) pills[2].classList.add('on');
+    // 4 submit
+    if (paid && hasEmail) pills[3].classList.add('on');
+  }
+
+  let lastAmt = '';
+  function renderQuote() {
+    const q = computeQuote();
+    const amtEl = $('amt');
+    const quoteAmtEl = $('quoteAmtEl');
+    if (lastAmt && lastAmt !== q.amount_display) {
+      quoteAmtEl.classList.remove('bump');
+      void quoteAmtEl.offsetWidth;
+      quoteAmtEl.classList.add('bump');
+    }
+    lastAmt = q.amount_display;
+    amtEl.textContent = q.amount_display;
+    $('sizeHuman').textContent = fmtBytes(q.bytes);
+    $('breakdown').innerHTML =
+      '<div><span>Product base</span><strong>$' + (q.base / 100).toFixed(2) + '</strong></div>' +
+      '<div><span>Size · ' + fmtBytes(q.bytes) + '</span><strong>$' + (q.size / 100).toFixed(2) + '</strong></div>' +
+      '<div><span>Data × operation</span><strong>×' + q.mult.toFixed(2) + '</strong></div>' +
+      '<div><span>Service</span><strong>SPL SPL Codec Suite</strong></div>';
+    const toolLabel = productEl.value === 'auto' && recommendedTool !== 'auto'
+      ? 'auto → ' + recommendedTool
+      : productEl.value;
+    $('toolChip').textContent = toolLabel;
+    $('classChip').textContent = classEl.value;
+    $('opChip').textContent = opEl.value;
+    setSteps();
+  }
+
+  function selectProduct(id) {
+    productEl.value = id;
+    toolGrid.querySelectorAll('.tool-chip').forEach((el) => {
+      el.classList.toggle('on', el.dataset.id === id);
+    });
+    renderQuote();
+  }
+
+  function buildTools() {
+    toolGrid.innerHTML = '';
+    TOOLS.forEach((t) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'tool-chip' + (t.id === 'auto' ? ' auto-chip' : '') + (t.id === 'auto' ? ' on' : '');
+      b.dataset.id = t.id;
+      b.setAttribute('role', 'option');
+      b.setAttribute('aria-selected', t.id === 'auto' ? 'true' : 'false');
+      if (t.logo) {
+        b.innerHTML = '<img src="' + t.logo + '" width="40" height="40" alt=""/>' +
+          '<span>' + t.label + '</span>';
+      } else {
+        b.innerHTML = '<span class="auto-mark">AUTO</span><span>' + t.label + '</span>';
+      }
+      b.addEventListener('click', () => {
+        toolGrid.querySelectorAll('.tool-chip').forEach((el) => {
+          el.classList.remove('on');
+          el.setAttribute('aria-selected', 'false');
+        });
+        b.classList.add('on');
+        b.setAttribute('aria-selected', 'true');
+        selectProduct(t.id);
+      });
+      toolGrid.appendChild(b);
+    });
+  }
+
+  // op segments
+  document.querySelectorAll('#opSeg button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#opSeg button').forEach((b) => b.classList.remove('on'));
+      btn.classList.add('on');
+      opEl.value = btn.dataset.op;
+      renderQuote();
+    });
+  });
+
+  function classify(u8) {
+    if (!u8 || !u8.length) return { dataClass: 'unknown', tool: 'auto' };
+    const n = Math.min(u8.length, 4096);
+    let zeros = 0, printable = 0;
+    for (let i = 0; i < n; i++) {
+      if (u8[i] === 0) zeros++;
+      if (u8[i] >= 32 && u8[i] < 127) printable++;
+    }
+    if (printable / n > 0.85 && (u8[0] === 0x7b || u8[0] === 0x5b)) {
+      return { dataClass: 'json_series', tool: 'zrw' };
+    }
+    if (u8.length >= 16 && u8.length % 4 === 0) {
+      const view = new DataView(u8.buffer, u8.byteOffset, Math.min(u8.length, 256));
+      const ints = [];
+      for (let i = 0; i + 4 <= view.byteLength; i += 4) ints.push(view.getInt32(i, true));
+      if (ints.every((v) => v === 0)) return { dataClass: 'zeros', tool: 'zrw' };
+      let ramp = true;
+      for (let i = 1; i < Math.min(ints.length, 32); i++) {
+        if (ints[i] !== ints[0] + i) { ramp = false; break; }
+      }
+      if (ramp) return { dataClass: 'ramp', tool: 'zrw' };
+      return { dataClass: 'mixed_ints', tool: 'blackjack' };
+    }
+    if (zeros / n > 0.6) return { dataClass: 'zeros', tool: 'zrw' };
+    return { dataClass: 'binary', tool: 'auto' };
+  }
+
+  async function onFile(file) {
+    if (!file) return;
+    fileName = file.name;
+    bytesEl.value = String(file.size);
+    drop.classList.add('has-file');
+    $('fileMeta').innerHTML = '<em>' + file.name + '</em> · ' + fmtBytes(file.size);
+    const head = new Uint8Array(await file.slice(0, 8192).arrayBuffer());
+    const c = classify(head);
+    classEl.value = c.dataClass;
+    recommendedTool = c.tool;
+    sampleHint = 'class=' + c.dataClass + ' tool~' + c.tool + ' name=' + file.name;
+    if (productEl.value === 'auto') {
+      /* keep auto selection, chips show recommendation */
+    }
+    renderQuote();
+  }
+
+  drop.addEventListener('click', () => fileInput.click());
+  drop.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+  });
+  fileInput.addEventListener('change', () => onFile(fileInput.files[0]));
+  ['dragenter', 'dragover'].forEach((ev) => drop.addEventListener(ev, (e) => {
+    e.preventDefault(); drop.classList.add('drag');
+  }));
+  ['dragleave', 'drop'].forEach((ev) => drop.addEventListener(ev, (e) => {
+    e.preventDefault(); drop.classList.remove('drag');
+  }));
+  drop.addEventListener('drop', (e) => {
+    const f = e.dataTransfer.files && e.dataTransfer.files[0];
+    if (f) onFile(f);
+  });
+
+  [bytesEl, classEl, emailEl].forEach((el) => {
+    el.addEventListener('input', renderQuote);
+    el.addEventListener('change', renderQuote);
+  });
+
+  function show(el, type, html) {
+    el.style.display = 'block';
+    el.className = 'msg ' + type;
+    el.innerHTML = html;
+  }
+
+  function showBanner(type, html) {
+    const b = $('banner');
+    b.className = 'banner-top on ' + type;
+    b.innerHTML = html;
+  }
+
+  $('payBtn').addEventListener('click', async () => {
+    const q = computeQuote();
+    const email = emailEl.value.trim();
+    const payMsg = $('payMsg');
+    $('payBtn').disabled = true;
+    try {
+      const r = await fetch('/api/ppp-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          product: q.product,
+          dataClass: q.dataClass,
+          op: q.op,
+          bytes: q.bytes,
+          email,
+        }),
+      });
+      const data = await r.json();
+      if (data.url) {
+        try {
+          sessionStorage.setItem('spl_pps_quote', JSON.stringify({
+            ...q, email, fileName, sampleHint, recommendedTool,
+          }));
+        } catch (_) {}
+        if (data.mode === 'payment_link') {
+          show(payMsg, 'warn',
+            'Opening Stripe — enter <strong>$' + q.amount_display + '</strong>, then return here to submit.');
+        } else {
+          show(payMsg, 'ok', 'Redirecting to Stripe Checkout…');
+        }
+        setTimeout(() => { location.href = data.url; }, 350);
+      } else {
+        location.href = PPP_LINK;
+      }
+    } catch (e) {
+      show(payMsg, 'err', 'Checkout hiccup — opening Stripe…');
+      setTimeout(() => { location.href = PPP_LINK; }, 400);
+    } finally {
+      $('payBtn').disabled = false;
+    }
+  });
+
+  $('jobBtn').addEventListener('click', async () => {
+    const q = computeQuote();
+    const email = emailEl.value.trim();
+    if (!email) {
+      show($('jobMsg'), 'err', 'Email required so we can deliver results.');
+      emailEl.focus();
+      return;
+    }
+    $('jobBtn').disabled = true;
+    try {
+      const r = await fetch('/api/ppp-job', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          product: q.product,
+          dataClass: q.dataClass,
+          op: q.op,
+          bytes: q.bytes,
+          amount_display: q.amount_display,
+          tool: q.product === 'auto' ? recommendedTool : q.product,
+          fileName,
+          paidConfirm: paid || true,
+          note: noteEl.value.trim(),
+          sampleHint,
+        }),
+      });
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.error || 'Submit failed');
+      show($('jobMsg'), 'ok',
+        '<strong>You’re in the queue.</strong> Job <span class="mono">' + data.job_id + '</span>. ' +
+        'Results go to <strong>' + email + '</strong>.');
+      document.querySelectorAll('.step-pill').forEach((p) => p.classList.add('done'));
+    } catch (e) {
+      show($('jobMsg'), 'err', e.message || String(e));
+    } finally {
+      $('jobBtn').disabled = false;
+    }
+  });
+
+  const params = new URLSearchParams(location.search);
+  if (params.get('paid') === '1') {
+    paid = true;
+    showBanner('ok',
+      '<strong>Payment received.</strong> Confirm details on the left, then hit <strong>Submit project</strong>. Large files can follow by email after job ID.');
+    try {
+      const saved = JSON.parse(sessionStorage.getItem('spl_pps_quote') || 'null');
+      if (saved) {
+        if (saved.bytes != null) bytesEl.value = saved.bytes;
+        if (saved.dataClass) classEl.value = saved.dataClass;
+        if (saved.product) selectProduct(saved.product);
+        if (saved.op) {
+          opEl.value = saved.op;
+          document.querySelectorAll('#opSeg button').forEach((b) => {
+            b.classList.toggle('on', b.dataset.op === saved.op);
+          });
+        }
+        if (saved.email) emailEl.value = saved.email;
+        if (saved.fileName) {
+          fileName = saved.fileName;
+          drop.classList.add('has-file');
+          $('fileMeta').innerHTML = '<em>' + saved.fileName + '</em>';
+        }
+        sampleHint = saved.sampleHint || sampleHint;
+        recommendedTool = saved.recommendedTool || recommendedTool;
+      }
+    } catch (_) {}
+  }
+  if (params.get('cancel') === '1') {
+    showBanner('warn', 'Checkout canceled — tweak the quote and try again when ready.');
+  }
+
+  buildTools();
+  renderQuote();
+})();
+</script>
+</body>
+</html>

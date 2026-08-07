@@ -142,7 +142,7 @@ export default async function handler(req, res) {
     if (issuedCount >= FREE_CAP) {
       return json(res, 403, {
         error:
-          "Free Gate is full (25/25). Please buy Starting Gate or higher — see slidphilabs.vercel.app / ZRW pricing.",
+          "Free Gate is full (25/25). Please buy N00b or higher — see https://www.slidphilabs.com/#pricing — or open SPL Pay Per Suite at /pps.",
       });
     }
 
@@ -222,7 +222,7 @@ export default async function handler(req, res) {
         "100k ops/mo, 10k ints/call, no livestream, non-commercial evaluation",
       products: {
         cuni: "https://cuni-studio.fly.dev/",
-        site: "https://slidphilabs.vercel.app",
+        site: "https://www.slidphilabs.com",
         npm: "zero-range-wave-compression",
       },
     });

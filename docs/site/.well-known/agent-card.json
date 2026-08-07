@@ -1,0 +1,86 @@
+{
+  "name": "Slid Phi Labs",
+  "description": "Two modules: Compression (SPL Codec + CDDG:Split) and Agent platform (CuNi, Agent^Rider, Quikgater). x402 commerce on Solana + Base.",
+  "url": "https://www.slidphilabs.com",
+  "version": "1.2.0",
+  "provider": {
+    "organization": "Slid Phi Labs",
+    "url": "https://www.slidphilabs.com"
+  },
+  "documentationUrl": "https://www.slidphilabs.com/api/agent",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "extensions": [
+      {
+        "uri": "https://www.slidphilabs.com/api/agent",
+        "description": "x402 agentic commerce discovery",
+        "required": false
+      }
+    ]
+  },
+  "defaultInputModes": [
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "discover-commerce",
+      "name": "Discover agent commerce",
+      "description": "GET /api/agent for rails, catalog, and buy examples",
+      "tags": [
+        "x402",
+        "commerce",
+        "discovery"
+      ],
+      "examples": [
+        "How do I buy CDDG:Split as an agent?",
+        "List paid compression SKUs"
+      ]
+    },
+    {
+      "id": "buy-sku",
+      "name": "Buy standing SKU",
+      "description": "POST /api/x402-products with {sku}; pay 402 accepts[] via X-PAYMENT",
+      "tags": [
+        "x402",
+        "purchase"
+      ],
+      "examples": [
+        "Buy try-gate",
+        "Purchase cddg-split with x402"
+      ]
+    },
+    {
+      "id": "suite-job",
+      "name": "Metered suite job",
+      "description": "POST /api/x402-suite with product/dataClass/op/bytes; pay then get job_id",
+      "tags": [
+        "x402",
+        "pps",
+        "compression"
+      ]
+    }
+  ],
+  "commerce": {
+    "protocol": "x402",
+    "payment_header": "X-PAYMENT",
+    "discovery": "https://www.slidphilabs.com/api/agent",
+    "catalog": "https://www.slidphilabs.com/api/x402-products",
+    "starter_sku": "try-gate",
+    "one_liner": "Modules: Compression (SPL Codec+CDDG) \u00b7 Agent platform (CuNi+Rider+Quikgater). Commerce: GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.",
+    "modules": {
+      "compression": [
+        "SPL Codec",
+        "CDDG:Split"
+      ],
+      "agent_platform": [
+        "CuNi",
+        "Agent^Rider",
+        "Quikgater"
+      ]
+    }
+  }
+}

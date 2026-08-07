@@ -1,4 +1,35 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://slidphilabs.vercel.app/sitemap.xml
+# Module 1 — Compression
+Allow: /
+Allow: /web
+Allow: /pps
+Allow: /datacenters
+Allow: /standings
+Allow: /standings.json
+Allow: /truth
+Allow: /demos
+Allow: /try
+Allow: /access
+Allow: /api/web-codec
+Allow: /api/ppp-quote
+Allow: /api/ppp-checkout
+Allow: /api/ppp-job
+
+# Module 2 — Agent platform (links out + lab commerce)
+Allow: /api/agent
+Allow: /api/x402-products
+Allow: /api/x402-suite
+Allow: /api/support-onboard
+
+# Discovery & SEO
+Allow: /llms.txt
+Allow: /agents.txt
+Allow: /agents.json
+Allow: /ideas
+Allow: /ideas.json
+Allow: /assets/
+Allow: /.well-known/
+
+Sitemap: https://www.slidphilabs.com/sitemap.xml

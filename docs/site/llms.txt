@@ -1,0 +1,31 @@
+# Slid Phi Labs
+> Impressive Compression..... see for yourself.
+> **Two modules:** Compression · Agent platform
+
+## Module 1 — Compression
+- SPL Codec (one product, any data): https://www.slidphilabs.com/#codec
+- Web mode: https://www.slidphilabs.com/web
+- Suite (bulk cheap, ~$2 / 9 GB): https://www.slidphilabs.com/pps
+- CDDG:Split (process SKU in this module): https://www.slidphilabs.com/#cddg-split
+- Data Centers widget: https://www.slidphilabs.com/datacenters
+- Standings: https://www.slidphilabs.com/standings
+- Web API: POST https://www.slidphilabs.com/api/web-codec
+- Quote API: POST https://www.slidphilabs.com/api/ppp-quote
+
+## Module 2 — Agent platform
+- CuNi Studio: https://cuni-studio.fly.dev/
+- CuNi GitHub: https://github.com/ceedot-rock/cuni
+- Agent^Rider: https://agentrider.vercel.app/
+- Agent^Rider MCP: https://agentrider.vercel.app/api/mcp
+- Agent^Rider discovery: https://agentrider.vercel.app/api/discovery
+- Quikgater (pay-per-fact fetch, x402): https://github.com/ceedot-rock/quikgater
+- Quikgater worker: https://quikgater-worker.ceedotrock.workers.dev
+
+## Agent commerce (lab)
+- Discovery: https://www.slidphilabs.com/api/agent
+- Catalog: https://www.slidphilabs.com/api/x402-products
+- One line: Modules: Compression (SPL Codec+CDDG) · Agent platform (CuNi+Rider+Quikgater). Commerce: GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.
+- agents.txt / agents.json / llms.txt on www.slidphilabs.com
+
+## Contact
+- corey@slidphilabs.com

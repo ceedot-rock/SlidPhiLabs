@@ -11,7 +11,7 @@
 | Display brand | **Slid Phi Labs** (spaces) |
 | On this poster | **SLID-PHI LABS** (hyphen, all caps) |
 | npm / packages | `slid-phi`, product package names |
-| Domain (legacy) | `slidphilabs.vercel.app` (if revived) |
+| Domain (canonical) | `www.slidphilabs.com` |
 
 ## Products under this brand
 - Zero Range Wave (`zero-range-wave-compression`)

@@ -1,6 +1,6 @@
 {
   "name": "slid-phi",
-  "version": "2.2.2",
+  "version": "2.2.6",
   "description": "Slid Phi Labs Omni-Dormant integer codecs — Zeckendorf / hybrid Fibonacci + optional gap-ANS path. Pure JS. Support and integration available.",
   "type": "module",
   "main": "src/index.mjs",
@@ -15,7 +15,22 @@
   "keywords": [
     "slid phi labs",
     "proprietary",
-    "stub"
+    "stub",
+    "x402",
+    "agentic-commerce",
+    "agent-commerce",
+    "agents.txt",
+    "llms.txt",
+    "solana",
+    "base",
+    "usdc",
+    "slid-phi-labs",
+    "spl-codec",
+    "cddg",
+    "agent-platform",
+    "cuni",
+    "agent-rider",
+    "quikgater"
   ],
   "author": "Slid Phi Labs",
   "license": "SEE LICENSE IN LICENSE",
@@ -23,5 +38,47 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ceedot-rock/SlidPhiLabs.git"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://www.slidphilabs.com/api/agent"
+  },
+  "agentic": {
+    "modules": {
+      "compression": [
+        "SPL Codec",
+        "CDDG:Split"
+      ],
+      "agent_platform": [
+        "CuNi",
+        "Agent^Rider",
+        "Quikgater"
+      ]
+    },
+    "commerce": "x402",
+    "discovery": "https://www.slidphilabs.com/api/agent",
+    "catalog": "https://www.slidphilabs.com/api/x402-products",
+    "web_codec": "https://www.slidphilabs.com/api/web-codec",
+    "site": "https://www.slidphilabs.com",
+    "llms_txt": "https://www.slidphilabs.com/llms.txt",
+    "agents_json": "https://www.slidphilabs.com/agents.json",
+    "one_liner": "Modules: Compression (SPL Codec+CDDG) · Agent platform (CuNi+Rider+Quikgater). Commerce: GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.",
+    "agent_platform": {
+      "cuni": "https://cuni-studio.fly.dev/",
+      "agent_rider": "https://agentrider.vercel.app/",
+      "quikgater": "https://github.com/ceedot-rock/quikgater"
+    }
+  },
+  "x402": {
+    "discovery": "https://www.slidphilabs.com/api/agent",
+    "catalog": "https://www.slidphilabs.com/api/x402-products",
+    "networks": [
+      "solana-mainnet-beta",
+      "eip155:8453"
+    ],
+    "payment_header": "X-PAYMENT"
+  },
+  "bugs": {
+    "url": "https://www.slidphilabs.com"
   }
 }

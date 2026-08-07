@@ -1,0 +1,45 @@
+# Slid Phi Labs
+> Impressive Compression..... see for yourself.
+> Agentic commerce (x402) + human Stripe.
+
+
+## Standings & records
+- Standings UI: https://www.slidphilabs.com/standings
+- Standings JSON (rankings, records, scorecard): https://www.slidphilabs.com/standings.json
+
+## Idea Lab
+- Idea Lab: https://www.slidphilabs.com/ideas
+- Idea Lab JSON (with first-pursued dates): https://www.slidphilabs.com/ideas.json
+
+## Agent commerce (start here)
+- Agent discovery JSON: https://www.slidphilabs.com/api/agent
+- agents.txt: https://www.slidphilabs.com/agents.txt
+- agents.json: https://www.slidphilabs.com/agents.json
+- Catalog (free GET): https://www.slidphilabs.com/api/x402-products
+- Buy standing SKU (POST → 402 → X-PAYMENT): https://www.slidphilabs.com/api/x402-products
+- Metered suite job (POST → 402): https://www.slidphilabs.com/api/x402-suite
+- One line: Agent commerce: GET https://www.slidphilabs.com/api/agent then pay via x402 (X-PAYMENT) on catalog POST.
+
+## Humans
+- Home: https://www.slidphilabs.com/
+- SPL Pay Per Suite: https://www.slidphilabs.com/pps
+- Try Gate ($9 / $29): https://www.slidphilabs.com/try
+- Access / delivery: https://www.slidphilabs.com/access
+- Demos: https://www.slidphilabs.com/demos
+
+## Products (public face)
+- CDDG:Split (lead residual process product)
+- Zero Range Wave (ZRW) tiers N00b / Pro / L33t$aUC3
+- Blackjack, shard-zip, shard-tsdb, slid-phi
+- ZRQC lineage: Continuous Dark-Degree Geometry + Mirrored Cost (public outcomes only; process private)
+
+## Contact
+- corey@slidphilabs.com
+
+## Ecosystem platforms (same lab)
+- CuNi Studio (exact multi-runtime): https://cuni-studio.fly.dev/
+- CuNi agents.json: https://cuni-studio.fly.dev/agents.json
+- Agent^Rider (identity · trust · MCP): https://agentrider.vercel.app/
+- Agent^Rider manifest: https://agentrider.vercel.app/.well-known/agent.json
+- Agent^Rider discovery: https://agentrider.vercel.app/api/discovery
+- Agent^Rider MCP: https://agentrider.vercel.app/api/mcp

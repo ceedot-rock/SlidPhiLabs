@@ -1,0 +1,11 @@
+# agents.txt
+# Standard: https://agents-txt.com
+# JSON: https://www.slidphilabs.com/agents.json
+# Discovery SoT: https://www.slidphilabs.com/api/agent
+
+# Module 1 — Compression: SPL Codec + CDDG
+# Module 2 — Agent platform: CuNi · Agent^Rider · Quikgater
+
+Protocols: x402
+
+A2A: https://www.slidphilabs.com/.well-known/agent-card.json

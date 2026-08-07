@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SPL Codec · Web mode — Slid Phi Labs</title>
+<meta name="description" content="Compression module · web mode: HTML, CSS, JS, JSON compress/decompress. Best of brotli/gzip after prep. Part of SPL Codec."/>
+<link rel="canonical" href="https://www.slidphilabs.com/web"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/web-codec" title="Web Codec API"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent commerce"/>
+<meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
+<meta property="og:title" content="SPL Codec · Web mode — Slid Phi Labs"/>
+<meta property="og:url" content="https://www.slidphilabs.com/web"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="theme-color" content="#050b16"/>
+<meta name="robots" content="index,follow"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=6"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#050b16;--panel:#0c1524;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);--text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--gold-soft:rgba(232,197,71,.12);--code:#081018;--poster:url("/assets/slid-phi-labs-master.jpg?v=3")}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh}
+a{color:var(--accent);text-decoration:none}a:hover{color:var(--teal-bright)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:50;background:rgba(5,11,22,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(232,197,71,.18)}
+nav .inner{max-width:960px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.logo{display:inline-flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-weight:700;color:var(--gold)}
+.logo img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:1.5px solid var(--border-gold)}
+.logo span{color:var(--teal-bright)}
+.nav-links{display:flex;gap:12px;flex-wrap:wrap;font-size:.88rem}
+.nav-links a{color:var(--muted)}.nav-links a:hover{color:var(--gold)}
+.btn{display:inline-flex;padding:10px 14px;border-radius:8px;font-size:.86rem;font-weight:600;border:1px solid transparent;cursor:pointer;font-family:inherit}
+.btn-teal{background:linear-gradient(180deg,#5ef0df,var(--teal));color:#031018}
+.btn-gold{background:linear-gradient(180deg,#f5e6a3,var(--gold));color:#1a1400}
+.btn-ghost{background:transparent;color:var(--text);border-color:rgba(61,214,198,.25)}
+.hero{padding:32px 0 24px;border-bottom:1px solid rgba(232,197,71,.2);
+  background:linear-gradient(105deg, rgba(5,11,22,.94) 0%, rgba(5,11,22,.85) 50%, rgba(5,11,22,.5) 100%), var(--poster) 80% 20%/cover no-repeat}
+.badge{display:inline-flex;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:var(--gold);background:var(--gold-soft);border:1px solid var(--border-gold);padding:4px 12px;border-radius:999px;margin-bottom:12px}
+h1{font-family:'Cinzel',serif;font-size:clamp(1.4rem,3.5vw,2rem);color:var(--gold);margin-bottom:10px}
+.lead{color:var(--muted);max-width:48rem}
+.panel{margin:20px 0;padding:16px;border-radius:14px;background:var(--panel);border:1px solid var(--border)}
+label{display:block;font-size:.8rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-bottom:6px;letter-spacing:.04em}
+textarea{width:100%;min-height:180px;background:var(--code);border:1px solid rgba(61,214,198,.25);color:var(--text);border-radius:10px;padding:12px;font-family:'IBM Plex Mono',monospace;font-size:.82rem;resize:vertical}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0;align-items:center}
+select{background:var(--code);border:1px solid rgba(61,214,198,.25);color:var(--text);padding:10px 12px;border-radius:8px;font:inherit}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:12px}
+.stat{padding:10px;border-radius:10px;border:1px solid var(--border-gold);background:rgba(12,21,36,.9)}
+.stat b{display:block;font-family:'Cinzel',serif;color:var(--teal-bright);font-size:1.1rem}
+.stat span{font-size:.7rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+.out{margin-top:12px;padding:12px;border-radius:10px;background:var(--code);border:1px solid rgba(61,214,198,.2);font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted);white-space:pre-wrap;word-break:break-all;max-height:220px;overflow:auto}
+.err{color:#ff8a7a}
+.ok{color:#3ecf8e}
+footer{border-top:1px solid rgba(232,197,71,.18);padding:28px 0 40px;color:var(--muted);font-size:.88rem;margin-top:32px}
+footer a{color:var(--gold)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chip{font-size:.78rem;padding:6px 10px;border-radius:999px;border:1px solid var(--border);color:var(--muted);background:transparent;cursor:pointer;font-family:'IBM Plex Mono',monospace}
+.chip:hover{border-color:var(--border-gold);color:var(--gold)}
+</style>
+</head>
+<body>
+<nav>
+  <div class="inner">
+    <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=6" width="40" height="40" alt=""/>Slid Phi <span>Labs</span></a>
+    <div class="nav-links">
+      <a href="/web">Web Codec</a>
+      <a href="/standings">Standings</a>
+      <a href="/pps">Pay Per Suite</a>
+      <a href="/demos">Demos</a>
+      <a href="/api/web-codec">API</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badge">SPL CODEC · WEB MODE</div>
+    <h1>SPL Codec · Web</h1>
+    <p class="lead">
+      Compress and decompress <strong style="color:var(--gold)">HTML · CSS · JS · JSON · text</strong>.
+      Type-aware prep, then pick the smaller of <strong>brotli-11</strong> and <strong>gzip-9</strong> — the industry web-size race.
+      Round-trip verified on the server.
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="panel">
+    <label for="type">Type</label>
+    <div class="row">
+      <select id="type">
+        <option value="auto">auto-detect</option>
+        <option value="html">html</option>
+        <option value="css">css</option>
+        <option value="js">js</option>
+        <option value="json">json</option>
+        <option value="text">text</option>
+      </select>
+      <button class="btn btn-gold" type="button" id="btnCompress">Compress</button>
+      <button class="btn btn-teal" type="button" id="btnBench">Bench</button>
+      <button class="btn btn-ghost" type="button" id="btnDecompress">Decompress last</button>
+    </div>
+    <div class="chips">
+      <button type="button" class="chip" data-sample="html">Sample: lab HTML</button>
+      <button type="button" class="chip" data-sample="json">Sample: agents.json</button>
+      <button type="button" class="chip" data-sample="css">Sample: CSS</button>
+      <button type="button" class="chip" data-sample="js">Sample: JS</button>
+    </div>
+    <label for="input">Payload (utf-8)</label>
+    <textarea id="input" placeholder="Paste HTML, CSS, JS, JSON, or text…"></textarea>
+    <div class="stats" id="stats"></div>
+    <div class="out" id="out">Results appear here.</div>
+  </div>
+  <div class="panel">
+    <p style="color:var(--muted);font-size:.92rem">
+      <strong style="color:var(--gold)">API</strong>
+      <code style="color:var(--teal-bright)">POST /api/web-codec</code>
+      · ops: <code>compress</code> · <code>decompress</code> · <code>bench</code><br/>
+      Agents: discovery still <a href="/api/agent">/api/agent</a>.
+      Track standings: <a href="/standings">/standings</a>.
+    </p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><a href="/">Home</a> · <a href="/standings">Standings</a> · <a href="/api/web-codec">Web Codec API</a></p>
+    <p style="margin-top:8px">corey@slidphilabs.com · © 2026 Slid Phi Labs</p>
+  </div>
+</footer>
+
+<script>
+const input = document.getElementById('input');
+const typeEl = document.getElementById('type');
+const out = document.getElementById('out');
+const stats = document.getElementById('stats');
+let lastPacked = null;
+let lastMethod = null;
+
+async function loadSample(kind) {
+  const map = {
+    html: '/assets/web-samples/home.html',
+    json: '/assets/web-samples/agents.json',
+    css: '/assets/web-samples/styles.css',
+    js: '/assets/web-samples/app.js',
+  };
+  const url = map[kind];
+  if (!url) return;
+  const t = await fetch(url).then(r => r.text());
+  input.value = t.slice(0, 120000);
+  typeEl.value = kind === 'html' ? 'html' : kind;
+}
+
+document.querySelectorAll('.chip').forEach(b => {
+  b.addEventListener('click', () => loadSample(b.dataset.sample));
+});
+
+function showStats(s) {
+  if (!s) { stats.innerHTML = ''; return; }
+  stats.innerHTML = `
+    <div class="stat"><b>${s.raw}</b><span>raw B</span></div>
+    <div class="stat"><b>${s.chosen}</b><span>chosen B</span></div>
+    <div class="stat"><b>${s.gzip9}</b><span>gzip-9</span></div>
+    <div class="stat"><b>${s.brotli11}</b><span>brotli-11</span></div>
+    <div class="stat"><b>${(s.ratio*100).toFixed(2)}%</b><span>of raw</span></div>
+  `;
+}
+
+async function post(body) {
+  out.className = 'out';
+  out.textContent = 'Working…';
+  const r = await fetch('/api/web-codec', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const j = await r.json();
+  if (!j.ok) {
+    out.className = 'out err';
+    out.textContent = JSON.stringify(j, null, 2);
+    return j;
+  }
+  out.className = 'out ok';
+  return j;
+}
+
+document.getElementById('btnCompress').onclick = async () => {
+  const j = await post({ op: 'compress', type: typeEl.value, data: input.value, encoding: 'utf8' });
+  if (!j || !j.ok) return;
+  lastPacked = j.payload_base64;
+  lastMethod = j.method;
+  showStats({ ...j.sizes, ratio: j.ratio });
+  out.textContent = JSON.stringify({
+    method: j.method,
+    type: j.type,
+    prep: j.prep,
+    sizes: j.sizes,
+    ratio: j.ratio,
+    percent_of_raw: j.percent_of_raw,
+    payload_base64_preview: (j.payload_base64 || '').slice(0, 120) + '…',
+  }, null, 2);
+};
+
+document.getElementById('btnBench').onclick = async () => {
+  const j = await post({ op: 'bench', type: typeEl.value, data: input.value, encoding: 'utf8' });
+  if (!j || !j.ok) return;
+  showStats({ ...j.sizes, ratio: j.ratio });
+  out.textContent = JSON.stringify(j, null, 2);
+};
+
+document.getElementById('btnDecompress').onclick = async () => {
+  if (!lastPacked) {
+    out.className = 'out err';
+    out.textContent = 'Compress something first.';
+    return;
+  }
+  const j = await post({ op: 'decompress', method: lastMethod, data: lastPacked, encoding: 'base64' });
+  if (!j || !j.ok) return;
+  out.textContent = j.data.slice(0, 4000) + (j.data.length > 4000 ? '\n…' : '');
+  showStats({ raw: j.sizes.raw, chosen: j.sizes.compressed, gzip9: '—', brotli11: '—', ratio: j.sizes.compressed / j.sizes.raw });
+};
+
+// default sample
+loadSample('json');
+</script>
+</body>
+</html>

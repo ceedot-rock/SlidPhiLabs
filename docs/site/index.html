@@ -3,143 +3,2096 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Slid Phi Labs — ZRW by Slid Phi Labs · pure JS integer compression</title>
-<meta name="description" content="Zero Range Wave (ZRW) by SliidPhiLabs beats gzip/brotli on zeros, ramps and walks. Blackjack, shard-zip, slid-phi. Commercial codecs. Try Gate evaluation."/>
-<meta name="keywords" content="javascript integer compression, zero range wave, ZRW, blackjack compression, slid-phi, slid phi labs, pure js compressor"/>
-<link rel="canonical" href="https://slidphilabs.vercel.app/"/>
+<title>Slid Phi Labs — Compression · Agent Platform</title>
+<meta name="description" content="Two modules: Compression (SPL Codec + CDDG) and Agent platform (CuNi · Agent^Rider · Quikgater). Web + suite. From $0.50 · ~$2 for 9 GB."/>
+<meta name="lab-modules" content="compression,agent_platform"/>
+<meta name="lab-compression" content="SPL Codec,CDDG:Split"/>
+<meta name="lab-agent-platform" content="CuNi,Agent^Rider,Quikgater"/>
+
+<meta name="keywords" content="SPL Codec, CDDG, CuNi, Agent Rider, Quikgater, compression, agent platform, x402, Slid Phi Labs"/>
+<link rel="canonical" href="https://www.slidphilabs.com/"/>
+
+<!-- Agentic commerce discovery (machine-readable) -->
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent commerce discovery"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/agents.json" title="agents.json"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/agents.txt" title="agents.txt"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+<link rel="describedby" href="https://www.slidphilabs.com/.well-known/agentic-commerce.json"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/.well-known/agent-card.json" title="A2A agent card"/>
+<meta name="agent-commerce" content="x402"/>
+<meta name="agent-protocols" content="x402"/>
+<meta name="agent-networks" content="solana-mainnet-beta,eip155:8453"/>
+<meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
+<meta name="agent-catalog" content="https://www.slidphilabs.com/api/x402-products"/>
+<meta name="agent-one-liner" content="Compression: SPL Codec + CDDG. Agents: CuNi · Rider · Quikgater. Commerce: GET https://www.slidphilabs.com/api/agent (x402 Solana/Base)."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Slid Phi Labs"/>
-<meta property="og:title" content="ZRW by Slid Phi Labs"/>
-<meta property="og:description" content="Beats gzip/brotli on zeros, ramps and walks. Try Gate evaluation. Commercial licenses."/>
-<meta property="og:url" content="https://slidphilabs.vercel.app/"/>
-<meta property="og:image" content="https://raw.githubusercontent.com/ceedot-rock/splabs-brand/main/assets/splabs-og.png"/>
+<meta property="og:title" content="Slid Phi Labs — Compression · Agent Platform"/>
+<meta property="og:description" content="Two modules: Compression (SPL Codec + CDDG) and Agent platform (CuNi · Agent^Rider · Quikgater). Web + suite. From $0.50 · ~$2 for 9 GB."/>
+<meta property="og:url" content="https://www.slidphilabs.com/"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="theme-color" content="#0a0c12"/>
+<meta name="twitter:title" content="Slid Phi Labs — Compression · Agent Platform"/>
+<meta name="twitter:description" content="Two modules: Compression (SPL Codec + CDDG) and Agent platform (CuNi · Agent^Rider · Quikgater). Web + suite. From $0.50 · ~$2 for 9 GB."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="theme-color" content="#050b16"/>
 <meta name="robots" content="index,follow"/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=11"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#0a0c12;--panel:#12151e;--border:#1e2433;--text:#e8ecf4;--muted:#8b95a8;--accent:#5b8aff;--accent2:#3dd6c6;--code:#0d1018}
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
-a{color:var(--accent);text-decoration:none}.wrap{max-width:920px;margin:0 auto;padding:0 20px}
-nav{position:sticky;top:0;z-index:50;background:rgba(10,12,18,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-nav .inner{max-width:920px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.logo{font-family:'IBM Plex Mono',monospace;font-weight:600}.logo span{color:var(--accent2)}
-.nav-links{display:flex;gap:14px;flex-wrap:wrap}.nav-links a{color:var(--muted);font-size:.9rem}
-.btn{display:inline-flex;padding:8px 14px;border-radius:8px;font-size:.88rem;font-weight:600;border:1px solid transparent}
-.btn-primary{background:var(--accent);color:#fff}.btn-ghost{background:transparent;color:var(--text);border-color:var(--border)}
-.btn-teal{background:var(--accent2);color:#061018}
-.hero{padding:56px 0 40px;border-bottom:1px solid var(--border)}
-.badge{display:inline-flex;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--accent2);background:rgba(61,214,198,.08);border:1px solid rgba(61,214,198,.25);padding:4px 10px;border-radius:999px;margin-bottom:16px}
-h1{font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:700;margin-bottom:12px}
-.lede{font-size:1.1rem;color:var(--muted);max-width:40rem;margin-bottom:24px}
-.cta-row{display:flex;flex-wrap:wrap;gap:10px}
-section{padding:40px 0;border-bottom:1px solid var(--border)}
-h2{font-size:1.35rem;font-weight:700;margin-bottom:14px}
-h3{font-size:1.05rem;font-weight:700;margin:18px 0 8px;color:var(--accent2)}
-.note{color:var(--muted);margin-bottom:16px;font-size:.95rem}
-.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin-bottom:12px}
+/* Brand locked: gold ornate metal · teal/cyan glow · lotus · wings · mandala · third-eye · cosmic navy */
+:root{
+  --bg:#050b16;
+  --bg-deep:#03060e;
+  --panel:#0c1524;
+  --panel2:#122033;
+  --border:rgba(61,214,198,.14);
+  --border-gold:rgba(232,197,71,.35);
+  --text:#eef4fb;
+  --muted:#8fa3b8;
+  --accent:#5ba8ff;
+  --teal:#3dd6c6;
+  --teal-bright:#5ef0df;
+  --teal-dim:rgba(61,214,198,.12);
+  --gold:#e8c547;
+  --gold-deep:#c9a227;
+  --gold-soft:rgba(232,197,71,.12);
+  --fire:#ff9a3c;
+  --lotus:#4ec4c8;
+  --code:#081018;
+  --glow-teal:0 0 48px rgba(61,214,198,.22);
+  --glow-gold:0 0 40px rgba(232,197,71,.2);
+  --poster:url("/assets/slid-phi-labs-master.jpg");
+  --logo-house:url("/assets/logos/logo-slid-phi-labs.jpg?v=11");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;
+  min-height:100vh;
+}
+/* cosmic dust */
+/* Ambient poster wash — nonchalant, whole-site (intro imagery reused) */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -8%, rgba(61,214,198,.08), transparent 52%),
+    radial-gradient(ellipse 45% 35% at 88% 65%, rgba(255,154,60,.05), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 8% 85%, rgba(91,168,255,.04), transparent 48%),
+    linear-gradient(180deg, rgba(3,6,14,.55) 0%, rgba(5,11,22,.78) 40%, rgba(5,11,22,.92) 100%),
+    var(--poster) 50% 22%/cover no-repeat;
+  opacity:0;
+  filter:saturate(1.05) contrast(1.02) brightness(.55);
+  animation:sitePosterIn 2.4s cubic-bezier(0.22,1,0.36,1) .15s forwards;
+  will-change:opacity, background-position;
+}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, transparent 30%, rgba(3,6,14,.55) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  opacity:.55;
+}
+@keyframes sitePosterIn{
+  from{opacity:0;background-position:48% 20%}
+  to{opacity:.22;background-position:52% 26%}
+}
+@media (prefers-reduced-motion: reduce){
+  body::before{animation:none;opacity:.14}
+}
+
+a{color:var(--accent);text-decoration:none;transition:color .15s}
+a:hover{color:var(--teal-bright)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+.narrow{max-width:960px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+
+/* purchase toast */
+#purchase-banner{
+  display:none !important;position:relative;z-index:70;
+  background:linear-gradient(90deg,rgba(232,197,71,.14),rgba(61,214,198,.1));
+  border-bottom:1px solid var(--border-gold);
+}
+#purchase-banner.on{display:block !important}
+#purchase-banner .inner{
+  max-width:1120px;margin:0 auto;padding:12px 22px;
+  display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;
+  font-size:.92rem;
+}
+#purchase-banner strong{color:var(--gold)}
+#purchase-banner .x{
+  background:transparent;border:0;color:var(--muted);cursor:pointer;font-size:1.1rem;padding:4px 8px;
+}
+
+/* nav */
+nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(5,11,22,.88);backdrop-filter:blur(18px) saturate(1.3);
+  border-bottom:1px solid rgba(232,197,71,.18);
+  box-shadow:0 1px 0 rgba(61,214,198,.08);
+}
+nav .inner{
+  max-width:1120px;margin:0 auto;padding:10px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+.logo{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Cinzel',serif;font-weight:700;color:var(--gold);
+  font-size:1.02rem;letter-spacing:.04em;text-shadow:0 0 24px rgba(232,197,71,.25);
+}
+.logo img{
+  width:48px;height:48px;border-radius:50%;object-fit:cover;
+  border:1.5px solid var(--border-gold);
+  box-shadow:0 0 20px rgba(61,214,198,.35), 0 0 0 1px rgba(232,197,71,.25), 0 0 32px rgba(255,154,60,.12);
+}
+.logo span{color:var(--teal-bright);font-weight:600}
+.nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
+/* pulldown menu — all text nav links */
+.nav-menu{position:relative}
+.nav-menu-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 14px;border-radius:10px;cursor:pointer;font:inherit;font-weight:600;font-size:.88rem;
+  color:var(--text);background:rgba(255,255,255,.03);
+  border:1px solid rgba(61,214,198,.25);
+}
+.nav-menu-btn:hover,.nav-menu.open .nav-menu-btn{
+  border-color:var(--border-gold);color:var(--gold);background:var(--gold-soft);
+}
+.nav-menu-btn .chev{
+  width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;
+  border-top:6px solid currentColor;opacity:.75;transition:transform .15s;
+}
+.nav-menu.open .nav-menu-btn .chev{transform:rotate(180deg)}
+.nav-dropdown{
+  display:none;position:absolute;right:0;top:calc(100% + 8px);min-width:220px;z-index:80;
+  background:linear-gradient(165deg, rgba(18,32,51,.98), rgba(5,11,22,.99));
+  border:1px solid rgba(232,197,71,.35);border-radius:12px;
+  box-shadow:0 16px 48px rgba(0,0,0,.55), 0 0 0 1px rgba(61,214,198,.08);
+  padding:8px;max-height:min(70vh,480px);overflow:auto;
+}
+.nav-menu.open .nav-dropdown{display:block}
+.nav-dropdown a{
+  display:block;padding:10px 12px;border-radius:8px;color:var(--muted);font-size:.9rem;
+  text-decoration:none;
+}
+.nav-dropdown a:hover{color:var(--gold);background:var(--gold-soft)}
+.nav-dropdown .sep{
+  height:1px;margin:6px 8px;background:linear-gradient(90deg, transparent, rgba(232,197,71,.25), transparent);
+}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:11px 18px;border-radius:10px;font-size:.9rem;font-weight:600;
+  border:1px solid transparent;cursor:pointer;font-family:inherit;line-height:1.2;
+  transition:transform .14s ease, box-shadow .14s, border-color .14s, background .14s, filter .14s;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn-teal{
+  background:linear-gradient(180deg,#5ef0df 0%,var(--teal) 55%,#2bb8aa 100%);
+  color:#031018;box-shadow:0 0 0 1px rgba(61,214,198,.3),0 8px 28px rgba(61,214,198,.22);
+}
+.btn-teal:hover{color:#031018;filter:brightness(1.06)}
+.btn-primary{
+  background:linear-gradient(180deg,#6bb0ff 0%,var(--accent) 100%);color:#fff;
+  box-shadow:0 8px 24px rgba(91,168,255,.22);
+}
+.btn-primary:hover{color:#fff}
+.btn-ghost{
+  background:rgba(255,255,255,.02);color:var(--text);
+  border-color:rgba(61,214,198,.22);
+}
+.btn-ghost:hover{border-color:var(--border-gold);background:var(--gold-soft);color:var(--gold)}
+.btn-sm{padding:8px 14px;font-size:.84rem;border-radius:9px}
+.btn-gold{
+  background:linear-gradient(180deg,#f5d76e 0%,var(--gold) 40%,var(--gold-deep) 100%);
+  color:#1a1200;font-weight:700;
+  box-shadow:0 0 0 1px rgba(232,197,71,.4), 0 8px 28px rgba(232,197,71,.22);
+  text-shadow:0 1px 0 rgba(255,255,255,.2);
+}
+.btn-gold:hover{color:#1a1200;filter:brightness(1.06);box-shadow:var(--glow-gold)}
+
+/* hero — max poster example: split lockup + full guardian art */
+.hero{
+  position:relative;min-height:min(96vh,980px);display:flex;align-items:center;
+  border-bottom:1px solid rgba(232,197,71,.22);overflow:hidden;
+  background:
+    radial-gradient(ellipse 50% 60% at 15% 40%, rgba(61,214,198,.1), transparent 55%),
+    radial-gradient(ellipse 40% 50% at 90% 70%, rgba(255,154,60,.1), transparent 50%),
+    var(--bg-deep);
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;opacity:.35;
+  background:
+    radial-gradient(ellipse 70% 80% at 75% 45%, rgba(255,154,60,.18), transparent 50%),
+    radial-gradient(ellipse 60% 50% at 70% 25%, rgba(61,214,198,.2), transparent 55%),
+    var(--poster) 72% 30%/cover no-repeat;
+  filter:saturate(1.15) contrast(1.05);
+}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(to top, var(--bg-deep) 0%, transparent 28%),
+    linear-gradient(105deg, var(--bg-deep) 0%, rgba(5,11,22,.92) 38%, rgba(5,11,22,.35) 62%, rgba(5,11,22,.55) 100%);
+}
+.hero-grid{
+  position:relative;z-index:1;width:100%;
+  display:grid;gap:28px 40px;align-items:center;
+  padding:56px 0 52px;
+}
+@media(min-width:900px){
+  .hero-grid{grid-template-columns:1.05fr .95fr;gap:36px 48px;padding:64px 0 56px}
+}
+.hero-inner{max-width:100%}
+
+/* poster lockup banners — taken from master art: ZERO-RANGE-WAVE / SLID-PHI LABS */
+.lockup-top,.lockup-bot{
+  display:block;width:100%;max-width:520px;margin:0 auto 14px;
+  font-family:'Cinzel',serif;font-weight:700;text-align:center;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);
+  text-shadow:0 0 28px rgba(232,197,71,.55), 0 2px 0 rgba(0,0,0,.5), 0 0 2px #8a6914;
+  position:relative;padding:10px 18px 12px;
+}
+.lockup-top{font-size:clamp(.72rem,1.6vw,.95rem)}
+.lockup-bot{font-size:clamp(.85rem,1.9vw,1.1rem);margin-bottom:18px}
+.lockup-top::before,.lockup-bot::before{
+  content:"";position:absolute;inset:0;
+  border:1.5px solid rgba(232,197,71,.55);
+  border-radius:4px 4px 50% 50% / 4px 4px 18px 18px;
+  background:linear-gradient(180deg,rgba(20,14,4,.75),rgba(8,10,18,.55));
+  box-shadow:inset 0 1px 0 rgba(255,230,150,.25), 0 0 24px rgba(232,197,71,.15);
+  z-index:-1;
+}
+.lockup-bot::before{
+  border-radius:50% 50% 4px 4px / 18px 18px 4px 4px;
+}
+
+/* large poster frame — max art from example */
+.poster-frame{
+  position:relative;margin:0 auto;width:100%;max-width:480px;
+  border-radius:18px;overflow:hidden;
+  border:2px solid rgba(232,197,71,.45);
+  box-shadow:
+    0 0 0 1px rgba(61,214,198,.2),
+    0 0 60px rgba(61,214,198,.18),
+    0 0 80px rgba(255,154,60,.12),
+    0 24px 60px rgba(0,0,0,.55);
+  background:#02050c;
+  aspect-ratio:3/4;
+}
+.poster-frame img{
+  width:100%;height:100%;object-fit:cover;object-position:center 18%;
+  display:block;
+}
+.poster-frame::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to top, rgba(3,6,14,.75) 0%, transparent 35%),
+    linear-gradient(to bottom, rgba(3,6,14,.35) 0%, transparent 22%),
+    radial-gradient(ellipse 50% 40% at 50% 42%, rgba(255,154,60,.12), transparent 60%);
+  box-shadow:inset 0 0 40px rgba(0,0,0,.4);
+}
+.poster-frame::after{
+  content:"";position:absolute;inset:8px;z-index:2;pointer-events:none;
+  border:1px solid rgba(232,197,71,.25);border-radius:12px;
+}
+.poster-caption{
+  position:absolute;left:0;right:0;bottom:12px;z-index:3;
+  text-align:center;font-family:'Cinzel',serif;font-size:.72rem;
+  letter-spacing:.14em;color:var(--gold);text-transform:uppercase;
+  text-shadow:0 0 16px rgba(232,197,71,.5), 0 2px 4px #000;
+}
+
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);background:var(--gold-soft);border:1px solid var(--border-gold);
+  padding:6px 14px;border-radius:999px;margin-bottom:18px;
+  box-shadow:0 0 20px rgba(232,197,71,.15);
+}
+.badge::before{
+  content:"";width:8px;height:8px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%, #fff 0%, var(--fire) 40%, #c2410c 100%);
+  box-shadow:0 0 14px var(--fire), 0 0 28px rgba(255,154,60,.5);animation:pulse 2.2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.92)}}
+
+/* gold ribbon tagline — poster banner energy */
+.ribbon{
+  display:inline-block;position:relative;
+  font-family:'Cinzel',serif;font-size:clamp(1.05rem,2.5vw,1.4rem);font-weight:700;
+  color:var(--gold);letter-spacing:.05em;
+  margin-bottom:18px;padding:10px 6px;
+  text-shadow:0 0 36px rgba(232,197,71,.55), 0 2px 0 rgba(0,0,0,.45);
+}
+.ribbon::before,.ribbon::after{
+  content:"";position:absolute;left:0;right:0;height:2px;
+  background:linear-gradient(90deg, transparent, var(--gold), #f5e6a3, var(--gold), transparent);
+  opacity:.7;
+}
+.ribbon::before{top:0}
+.ribbon::after{bottom:0}
+
+h1{
+  font-size:clamp(2rem,5vw,3.05rem);font-weight:700;letter-spacing:-.03em;line-height:1.08;
+  margin-bottom:18px;
+  background:linear-gradient(180deg,#fff 0%, #e8d48a 35%, #d4e0f0 70%, #a8c4d8 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.lede{font-size:1.08rem;color:var(--muted);max-width:38rem;margin-bottom:30px;line-height:1.65}
+.cta-row{display:flex;flex-wrap:wrap;gap:11px}
+.hero-meta{
+  margin-top:28px;display:flex;flex-wrap:wrap;gap:16px 22px;
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted);letter-spacing:.04em;
+}
+.hero-meta strong{color:var(--gold);font-weight:500}
+
+/* product logos — top of UI */
+.brand-strip{
+  border-bottom:1px solid rgba(232,197,71,.22);
+  background:linear-gradient(180deg, rgba(8,14,26,.88), rgba(5,11,22,.82));
+  backdrop-filter:blur(8px);
+  padding:18px 0 20px;position:relative;z-index:55;
+}
+.module-routes{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:22px 40px;align-items:stretch;
+}
+.module-route{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  min-width:min(100%,280px);
+}
+.module-route__label{
+  font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);text-shadow:0 0 16px rgba(232,197,71,.35);
+}
+.module-route__label span{color:var(--teal-bright);font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.08em;margin-right:6px}
+.logo-row{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px;align-items:center;
+}
+.logo-row a,.logo-row .logo-chip{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  text-decoration:none;color:var(--muted);font-size:.65rem;font-family:'IBM Plex Mono',monospace;
+  letter-spacing:.04em;
+}
+.logo-row a .thumb,.logo-row .logo-chip .thumb{
+  display:block;width:56px;height:56px;border-radius:14px;overflow:hidden;
+  border:1.5px solid rgba(232,197,71,.45);
+  box-shadow:0 0 18px rgba(61,214,198,.2), 0 6px 20px rgba(0,0,0,.4);
+  transition:transform .18s, border-color .18s, box-shadow .18s;
+  background:#050b16;
+}
+.logo-row a:hover .thumb,.logo-row .logo-chip:hover .thumb{
+  transform:translateY(-3px) scale(1.06);
+  border-color:var(--gold);
+  box-shadow:var(--glow-gold), 0 0 28px rgba(61,214,198,.3);
+}
+.logo-row img{width:100%;height:100%;object-fit:cover;display:block}
+.logo-row a:hover,.logo-row .logo-chip:hover{color:var(--gold)}
+.logo-chip .thumb.q-mark{
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--gold);
+  background:linear-gradient(145deg,#0c1524,#071018);
+  letter-spacing:.06em;
+}
+.module-route--agent .logo-row a .thumb,
+.module-route--agent .logo-chip .thumb{
+  border-color:rgba(61,214,198,.45);
+}
+@media(min-width:720px){
+  .logo-row a .thumb,.logo-row .logo-chip .thumb{width:72px;height:72px;border-radius:16px}
+  .brand-strip{padding:20px 0 22px}
+}
+@media(min-width:900px){
+  .module-routes{gap:48px 64px}
+  .module-route{position:relative}
+  .module-route + .module-route::before{
+    content:"";position:absolute;left:-32px;top:20%;bottom:15%;width:1px;
+    background:linear-gradient(180deg, transparent, rgba(232,197,71,.35), transparent);
+  }
+}
+
+/* sections */
+section{padding:64px 0;border-bottom:1px solid rgba(61,214,198,.1);position:relative;z-index:1;background:transparent}
+.sec-label{
+  display:inline-block;
+  font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:14px;
+  padding-bottom:6px;
+  border-bottom:1px solid rgba(232,197,71,.35);
+  text-shadow:0 0 18px rgba(232,197,71,.3);
+}
+h2{font-size:clamp(1.4rem,2.6vw,1.75rem);font-weight:700;letter-spacing:-.025em;margin-bottom:12px}
+h3{font-size:1.02rem;font-weight:700;margin:0 0 8px;color:var(--gold);font-family:'Cinzel',serif;letter-spacing:.02em;font-size:.98rem}
+.note{color:var(--muted);font-size:.98rem;margin-bottom:22px;max-width:46rem;line-height:1.65}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease, transform .55s ease}
+.reveal.on{opacity:1;transform:none}
+
+/* cddg-split product */
+.cddg-split,.twin,.champion{
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 0%, rgba(255,154,60,.08), transparent 50%),
+    radial-gradient(ellipse 50% 60% at 0% 100%, rgba(61,214,198,.07), transparent 50%),
+    linear-gradient(180deg, rgba(12,21,36,.6), transparent);
+}
+.champ-grid{display:grid;gap:18px}
+@media(min-width:860px){.champ-grid{grid-template-columns:1.15fr .85fr}}
+.champ-panel{
+  background:
+    linear-gradient(165deg, rgba(18,32,51,.95), rgba(12,21,36,.98)),
+    radial-gradient(circle at 90% 10%, rgba(232,197,71,.08), transparent 40%);
+  border:1px solid var(--border-gold);
+  border-radius:18px;padding:26px 24px;
+  box-shadow:0 0 0 1px rgba(232,197,71,.06), 0 20px 50px rgba(0,0,0,.4), inset 0 1px 0 rgba(232,197,71,.12);
+  position:relative;overflow:hidden;
+}
+.champ-panel::before{
+  content:"";position:absolute;top:0;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity:.7;
+}
+.champ-panel .pill{
+  display:inline-flex;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--gold);border:1px solid var(--border-gold);
+  background:var(--gold-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;
+}
+.champ-panel h2{margin-bottom:10px;color:var(--text)}
+
+.champ-metrics{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+.metric{
+  background:linear-gradient(160deg, var(--panel2), var(--panel));
+  border:1px solid rgba(61,214,198,.18);border-radius:12px;padding:14px;
+  box-shadow:inset 0 1px 0 rgba(61,214,198,.08);
+}
+.metric .k{font-size:.7rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-bottom:6px}
+.metric .v{font-size:1.25rem;font-weight:700;color:var(--gold);letter-spacing:-.02em;text-shadow:0 0 20px rgba(232,197,71,.25)}
+.metric .s{font-size:.72rem;color:var(--muted);margin-top:4px;font-family:'IBM Plex Mono',monospace}
+
+/* proof */
+.proof-grid{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:800px){.proof-grid{grid-template-columns:repeat(4,1fr)}}
+.proof-card{
+  background:linear-gradient(165deg, var(--panel2) 0%, var(--panel) 100%);
+  border:1px solid rgba(61,214,198,.16);border-radius:16px;padding:20px 18px;
+  transition:border-color .2s, box-shadow .2s, transform .2s;
+  position:relative;overflow:hidden;
+}
+.proof-card::after{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg, transparent, rgba(61,214,198,.5), transparent);
+}
+.proof-card:hover{
+  border-color:rgba(61,214,198,.45);box-shadow:var(--glow-teal);transform:translateY(-2px);
+}
+.proof-card .k{font-size:.74rem;color:var(--muted);margin-bottom:10px;font-family:'IBM Plex Mono',monospace;letter-spacing:.03em}
+.proof-card .v{font-size:clamp(1.35rem,2.5vw,1.65rem);font-weight:700;letter-spacing:-.03em;line-height:1.15}
+.proof-card .v.teal{color:var(--teal-bright);text-shadow:0 0 24px rgba(61,214,198,.4)}
+.proof-card .v.gold{color:var(--gold);text-shadow:0 0 24px rgba(232,197,71,.35)}
+.proof-card .sub{margin-top:8px;font-size:.72rem;color:var(--muted);font-family:'IBM Plex Mono',monospace}
+.proof-family{display:grid;gap:12px;margin-top:22px}
+@media(min-width:720px){.proof-family{grid-template-columns:1fr 1fr}}
+.proof-prod{
+  display:flex;gap:14px;align-items:flex-start;padding:16px 16px 14px;
+  border-radius:16px;border:1px solid rgba(61,214,198,.14);
+  background:linear-gradient(165deg, var(--panel2), var(--panel));
+  transition:border-color .2s, box-shadow .2s, transform .2s;
+  text-decoration:none;color:inherit;
+}
+.proof-prod:hover{
+  border-color:rgba(232,197,71,.4);box-shadow:var(--glow-gold);transform:translateY(-2px);color:inherit;
+}
+.proof-prod img{
+  width:56px;height:56px;border-radius:12px;object-fit:cover;flex-shrink:0;
+  border:1.5px solid rgba(232,197,71,.4);background:#050b16;
+}
+.proof-prod .pname{
+  font-family:'Cinzel',serif;font-size:.92rem;font-weight:700;color:var(--gold);letter-spacing:.03em;margin-bottom:4px;
+}
+.proof-prod .pmetric{
+  font-family:'IBM Plex Mono',monospace;font-size:1.05rem;font-weight:700;color:var(--teal-bright);
+  letter-spacing:-.02em;margin-bottom:4px;
+}
+.proof-prod .pout{font-size:.84rem;color:var(--muted);line-height:1.45}
+.proof-note{
+  margin-top:16px;padding:12px 14px;border-radius:12px;font-size:.82rem;color:var(--muted);
+  border:1px solid rgba(61,214,198,.12);background:rgba(8,16,24,.45);
+}
+.footnote{margin-top:18px;font-size:.84rem;color:var(--muted)}
+
+/* table */
+.table-wrap{
+  overflow-x:auto;border:1px solid rgba(232,197,71,.2);border-radius:14px;margin:18px 0 20px;
+  background:var(--panel);box-shadow:inset 0 1px 0 rgba(232,197,71,.08);
+}
 table{width:100%;border-collapse:collapse;font-size:.92rem}
-th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
-th{background:var(--panel);color:var(--muted);font-weight:600;font-size:.8rem}
-tr:last-child td{border-bottom:none}tr.hl{background:rgba(61,214,198,.06)}
+th,td{padding:13px 16px;text-align:left;border-bottom:1px solid rgba(61,214,198,.1)}
+th{
+  background:rgba(232,197,71,.06);color:var(--gold);font-weight:600;font-size:.72rem;
+  font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;
+}
+tr:last-child td{border-bottom:none}
+tr.hl td{background:rgba(61,214,198,.04)}
 .mono{font-family:'IBM Plex Mono',monospace;font-size:.88rem}
-pre{background:var(--code);border:1px solid var(--border);border-radius:10px;padding:16px;overflow-x:auto;font-family:'IBM Plex Mono',monospace;font-size:.85rem}
-.pricing{display:grid;gap:14px}@media(min-width:720px){.pricing{grid-template-columns:repeat(3,1fr)}}
-.price-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px}
-.price-card.featured{border-color:rgba(91,138,255,.45)}
-.amt{font-size:1.6rem;font-weight:700;color:var(--accent2)}
-.desc{color:var(--muted);font-size:.88rem;flex:1}
-.cards{display:grid;gap:14px}@media(min-width:720px){.cards{grid-template-columns:repeat(2,1fr)}}
-.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px}
-.card h3{margin-top:0}.card p{color:var(--muted);font-size:.92rem;margin-bottom:12px}
-.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-footer{padding:28px 0;color:var(--muted);font-size:.85rem}
-footer .inner{max-width:920px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* product / package cards with logos */
+.cards{display:grid;gap:14px}
+@media(min-width:720px){.cards{grid-template-columns:repeat(2,1fr)}}
+.card{
+  background:linear-gradient(160deg, var(--panel2), var(--panel));
+  border:1px solid rgba(61,214,198,.16);border-radius:16px;padding:18px 20px;
+  display:flex;flex-direction:column;gap:8px;transition:border-color .2s, box-shadow .2s, transform .2s;
+  position:relative;
+}
+.card:hover{border-color:rgba(91,168,255,.4);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.card.featured-card{
+  border-color:var(--border-gold);
+  box-shadow:0 0 0 1px rgba(232,197,71,.08), var(--glow-gold);
+}
+.card.featured-card:hover{border-color:rgba(232,197,71,.65)}
+.card-head{display:flex;gap:14px;align-items:flex-start}
+.card-logo{
+  width:80px;height:80px;border-radius:14px;object-fit:cover;flex-shrink:0;
+  border:1.5px solid var(--border-gold);
+  box-shadow:0 0 20px rgba(61,214,198,.25), 0 0 28px rgba(232,197,71,.1);
+  background:#050b16;
+}
+.card h3{margin:0 0 4px}
+.card p{color:var(--muted);font-size:.93rem;flex:1;line-height:1.55}
+.card .foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px;font-size:.86rem}
+.card .stub{
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--muted);
+  border:1px solid rgba(61,214,198,.2);padding:3px 8px;border-radius:999px;
+}
+.card .stub.gold{
+  color:var(--gold);border-color:var(--border-gold);background:var(--gold-soft);
+}
+
+/* ZRW section with logo mark */
+.zrw-head{display:flex;gap:18px;align-items:flex-start;margin-bottom:8px;flex-wrap:wrap}
+.zrw-logo{
+  width:120px;height:120px;border-radius:18px;object-fit:cover;
+  border:2px solid rgba(232,197,71,.45);
+  box-shadow:var(--glow-teal), var(--glow-gold), 0 0 0 1px rgba(232,197,71,.2);
+}
+
+/* steps */
+.steps{display:grid;gap:12px}
+@media(min-width:720px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{
+  background:linear-gradient(165deg, var(--panel2), var(--panel));
+  border:1px solid rgba(61,214,198,.16);border-radius:16px;padding:22px;
+  position:relative;overflow:hidden;
+}
+.step::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg, var(--gold), var(--teal), transparent);
+  opacity:.65;
+}
+.step .n{
+  font-family:'Cinzel',serif;font-size:1.45rem;font-weight:700;color:var(--gold);
+  margin-bottom:10px;letter-spacing:.04em;
+  text-shadow:0 0 20px rgba(232,197,71,.3);
+}
+.step p{color:var(--muted);font-size:.93rem;line-height:1.55}
+
+/* pricing */
+.pricing{display:grid;gap:14px}
+@media(min-width:900px){.pricing{grid-template-columns:repeat(3,1fr)}}
+.price-card{
+  background:linear-gradient(165deg, var(--panel2), var(--panel));
+  border:1px solid rgba(61,214,198,.16);border-radius:16px;padding:22px;
+  display:flex;flex-direction:column;gap:8px;transition:border-color .2s, transform .2s;
+  position:relative;overflow:hidden;
+}
+.price-card:hover{transform:translateY(-2px)}
+.price-card.featured{
+  border-color:rgba(91,168,255,.5);
+  box-shadow:0 0 0 1px rgba(91,168,255,.1), 0 16px 48px rgba(91,168,255,.1);
+}
+.price-card.cddg-price,.price-card.twin-price,.price-card.champion-price{
+  border-color:var(--border-gold);
+  box-shadow:0 0 0 1px rgba(232,197,71,.1), var(--glow-gold);
+}
+.price-card.cddg-price::before,.price-card.twin-price::before,.price-card.champion-price::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.price-card .plan{
+  font-size:.7rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;letter-spacing:.1em;
+}
+.price-card.featured .plan{color:var(--accent)}
+.price-card.cddg-price .plan,.price-card.twin-price .plan,.price-card.champion-price .plan{color:var(--gold)}
+.amt{font-size:2rem;font-weight:700;color:var(--teal-bright);letter-spacing:-.03em;line-height:1;text-shadow:0 0 20px rgba(61,214,198,.25)}
+.price-card.cddg-price .amt,.price-card.twin-price .amt,.price-card.champion-price .amt{color:var(--gold);text-shadow:0 0 20px rgba(232,197,71,.3)}
+
+.price-card .desc{color:var(--muted);font-size:.9rem;flex:1;margin:4px 0 12px;line-height:1.5}
+.subline{margin-top:18px;color:var(--muted);font-size:.9rem}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.section-h3{
+  font-size:.95rem;font-weight:700;color:var(--gold);margin:28px 0 12px;
+  font-family:'Cinzel',serif;letter-spacing:.06em;
+}
+
+/* connect + feedback */
+.connect-grid{display:grid;gap:14px}
+@media(min-width:800px){.connect-grid{grid-template-columns:1fr 1fr}}
+.connect-card{
+  background:linear-gradient(165deg, var(--panel2), var(--panel));
+  border:1px solid rgba(61,214,198,.16);border-radius:16px;padding:22px;
+  display:flex;flex-direction:column;gap:10px;
+}
+.connect-card h3{margin:0;color:var(--gold);font-family:'Cinzel',serif;font-size:1rem}
+.connect-card p{color:var(--muted);font-size:.93rem;flex:1;margin:0;line-height:1.55}
+.connect-card label{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin:8px 0 4px}
+.connect-card input,.connect-card select,.connect-card textarea{
+  width:100%;background:var(--code);border:1px solid rgba(61,214,198,.22);border-radius:8px;
+  color:var(--text);padding:10px 12px;font:inherit;
+}
+.connect-card input:focus,.connect-card select:focus,.connect-card textarea:focus{outline:1px solid var(--gold)}
+.connect-card .form-msg{margin-top:10px;font-size:.9rem;display:none}
+.connect-card .form-msg.on{display:block}
+.connect-card .form-msg.ok{color:var(--teal-bright)}
+.connect-card .form-msg.err{color:#f87171}
+.feedback-wide{grid-column:1/-1}
+@media(min-width:800px){.feedback-wide{grid-column:1/-1}}
+
+/* footer with brand strip */
+footer{
+  padding:0 0 48px;color:var(--muted);font-size:.85rem;position:relative;z-index:1;
+  background:var(--bg-deep);
+}
+.footer-art{
+  height:min(42vw,280px);margin-bottom:28px;
+  background:
+    linear-gradient(to top, var(--bg-deep) 0%, transparent 55%),
+    linear-gradient(to bottom, rgba(5,11,22,.25), transparent 35%),
+    var(--poster) center 28%/cover no-repeat;
+  border-bottom:1px solid rgba(232,197,71,.28);
+  opacity:.95;
+  position:relative;
+}
+.footer-art::after{
+  content:"SLID-PHI LABS  ·  ZERO-RANGE-WAVE";
+  position:absolute;left:0;right:0;bottom:16px;text-align:center;
+  font-family:'Cinzel',serif;font-size:clamp(.7rem,2vw,.9rem);letter-spacing:.18em;
+  color:var(--gold);text-shadow:0 0 20px rgba(232,197,71,.5), 0 2px 8px #000;
+}
+footer .inner{max-width:1120px;margin:0 auto;padding:0 22px}
+footer .brand-lockup{
+  display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap;
+}
+footer .brand-lockup img{
+  width:56px;height:56px;border-radius:50%;object-fit:cover;
+  border:1px solid var(--border-gold);box-shadow:0 0 20px rgba(61,214,198,.25);
+}
+footer .tag{
+  color:var(--gold);font-family:'Cinzel',serif;font-size:1rem;margin-bottom:4px;
+  font-weight:700;letter-spacing:.04em;text-shadow:0 0 20px rgba(232,197,71,.25);
+}
+footer .row{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;margin-top:10px;align-items:flex-start}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--gold)}
+footer .sitemap{display:flex;flex-wrap:wrap;gap:10px 16px;margin:14px 0;font-size:.84rem}
+footer .contact-line{margin-top:4px;font-size:.88rem;line-height:1.5;max-width:36rem}
+footer .contact-line a{color:var(--teal-bright);font-weight:600}
+footer .legal{margin-top:16px;padding-top:14px;border-top:1px solid rgba(232,197,71,.15);font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:space-between;align-items:center}
+footer .legal .copy{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+footer .legal .copy img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid rgba(232,197,71,.35)}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .poster-col{order:-1;max-width:360px;margin:0 auto 8px}
+  .poster-frame{max-width:320px;aspect-ratio:3/4}
+  .lockup-top,.lockup-bot{max-width:360px}
+}
+@media(max-width:560px){
+  .hero-inner{padding:12px 0 28px}
+  section{padding:48px 0}
+  h1{font-size:1.75rem}
+  .champ-metrics{grid-template-columns:1fr}
+  .card-logo{width:56px;height:56px}
+  .zrw-logo{width:80px;height:80px}
+  .logo-row a .thumb,.logo-row .logo-chip .thumb{width:52px;height:52px}
+  .poster-frame{max-width:280px}
+}
+
+/* ── Page entry: cinematic poster intro ── */
+.page-intro{
+  position:fixed;inset:0;z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  background:#02050c;
+  overflow:hidden;
+  transition:opacity .9s cubic-bezier(0.22,1,0.36,1), visibility .9s;
+}
+.page-intro.is-done{
+  opacity:0;visibility:hidden;pointer-events:none;
+}
+.page-intro__stage{
+  position:absolute;inset:0;
+}
+.page-intro__poster{
+  position:absolute;inset:-8%;
+  background:
+    radial-gradient(ellipse 55% 50% at 50% 42%, rgba(255,154,60,.14), transparent 58%),
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(61,214,198,.12), transparent 62%),
+    url("/assets/slid-phi-labs-master.jpg?v=intro1") center 22%/cover no-repeat;
+  transform:scale(1.12);
+  filter:saturate(1.12) contrast(1.06) brightness(.88);
+  animation:introKen 5.2s cubic-bezier(0.22,1,0.36,1) forwards;
+  will-change:transform, filter;
+}
+.page-intro__vignette{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 65% at 50% 45%, transparent 20%, rgba(2,5,12,.45) 70%, rgba(2,5,12,.92) 100%),
+    linear-gradient(to top, rgba(2,5,12,.85) 0%, transparent 40%),
+    linear-gradient(to bottom, rgba(2,5,12,.5) 0%, transparent 30%);
+  pointer-events:none;
+}
+.page-intro__grain{
+  position:absolute;inset:0;opacity:.07;pointer-events:none;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+  animation:introGrain 0.45s steps(2) infinite;
+}
+.page-intro__glow{
+  position:absolute;left:50%;top:42%;width:min(70vw,520px);height:min(70vw,520px);
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle, rgba(232,197,71,.22) 0%, rgba(61,214,198,.1) 35%, transparent 65%);
+  animation:introPulse 2.8s ease-in-out infinite;
+  pointer-events:none;
+}
+.page-intro__content{
+  position:relative;z-index:2;text-align:center;
+  padding:24px 20px 32px;max-width:640px;
+}
+.page-intro__mark{
+  font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(1.65rem,5.5vw,2.75rem);
+  letter-spacing:.18em;color:var(--gold);
+  text-transform:none;
+  text-shadow:0 0 40px rgba(232,197,71,.55), 0 0 80px rgba(61,214,198,.25), 0 2px 0 rgba(0,0,0,.6);
+  opacity:0;transform:translateY(18px) scale(.96);
+  animation:introFadeUp .9s cubic-bezier(0.22,1,0.36,1) .35s forwards;
+}
+.page-intro__mark .phi{color:var(--teal-bright);letter-spacing:.12em}
+.page-intro__tag{
+  margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--teal-bright);
+  opacity:0;animation:introFadeUp .8s cubic-bezier(0.22,1,0.36,1) .65s forwards;
+}
+.page-intro__areas{
+  margin-top:28px;display:flex;flex-direction:column;gap:12px;
+  opacity:0;animation:introFadeUp .9s cubic-bezier(0.22,1,0.36,1) .95s forwards;
+}
+.page-intro__area{
+  text-align:left;padding:12px 16px;border-radius:12px;
+  border:1px solid rgba(232,197,71,.28);
+  background:linear-gradient(135deg, rgba(12,21,36,.82), rgba(5,11,22,.75));
+  backdrop-filter:blur(10px);
+  box-shadow:0 8px 32px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,230,150,.08);
+}
+.page-intro__area h3{
+  font-family:'Cinzel',serif;font-size:.95rem;color:var(--gold);
+  letter-spacing:.06em;margin-bottom:4px;
+}
+.page-intro__area p{
+  font-size:.84rem;color:var(--muted);line-height:1.45;margin:0;
+}
+.page-intro__area strong{color:var(--teal-bright);font-weight:600}
+.page-intro__skip{
+  position:absolute;right:16px;bottom:16px;z-index:3;
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);
+  background:rgba(5,11,22,.55);border:1px solid rgba(61,214,198,.25);
+  padding:8px 14px;border-radius:999px;cursor:pointer;
+  transition:color .2s, border-color .2s, background .2s;
+}
+.page-intro__skip:hover{color:var(--gold);border-color:rgba(232,197,71,.45)}
+@keyframes introKen{
+  0%{transform:scale(1.14) translate(1.5%,.5%);filter:saturate(1.05) contrast(1.02) brightness(.72)}
+  100%{transform:scale(1.02) translate(0,0);filter:saturate(1.12) contrast(1.06) brightness(.9)}
+}
+@keyframes introFadeUp{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes introPulse{
+  0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(1)}
+  50%{opacity:.95;transform:translate(-50%,-50%) scale(1.06)}
+}
+@keyframes introGrain{
+  0%{transform:translate(0,0)}
+  100%{transform:translate(-2%,1%)}
+}
+/* After intro: soft continuous drift on hero poster frame */
+.poster-frame.intro-settled img{
+  animation:posterDrift 18s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes posterDrift{
+  from{transform:scale(1.04) translate(0,0)}
+  to{transform:scale(1.08) translate(-1.5%,1%)}
+}
+.hero-bg.intro-settled{
+  animation:heroBgDrift 22s ease-in-out infinite alternate;
+}
+@keyframes heroBgDrift{
+  from{background-position:70% 28%}
+  to{background-position:76% 34%}
+}
+@media (prefers-reduced-motion: reduce){
+  .page-intro{display:none !important}
+  .page-intro__poster,.page-intro__mark,.page-intro__tag,.page-intro__areas,
+  .poster-frame.intro-settled img,.hero-bg.intro-settled{animation:none !important}
+}
+body.intro-lock{overflow:hidden}
+
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      "@id": "https://www.slidphilabs.com/#modules",
+      "name": "Slid Phi Labs modules",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Compression",
+          "description": "SPL Codec (web + suite) and CDDG:Split process",
+          "url": "https://www.slidphilabs.com/#codec"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Agent platform",
+          "description": "CuNi, Agent^Rider, Quikgater",
+          "url": "https://www.slidphilabs.com/#ecosystem"
+        }
+      ]
+    },
+
+    {
+      "@type": "Organization",
+      "@id": "https://www.slidphilabs.com/#org",
+      "name": "Slid Phi Labs",
+      "url": "https://www.slidphilabs.com/",
+      "logo": "https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg?v=11",
+      "email": "corey@slidphilabs.com",
+      "sameAs": [
+        "https://github.com/ceedot-rock/SlidPhiLabs",
+        "https://www.npmjs.com/package/slid-phi"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.slidphilabs.com/#website",
+      "url": "https://www.slidphilabs.com/",
+      "name": "Slid Phi Labs",
+      "description": "Impressive Compression..... see for yourself. SPL Pay Per Suite, CDDG:Split, Zero Range Wave.",
+      "publisher": { "@id": "https://www.slidphilabs.com/#org" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.slidphilabs.com/pps#service",
+      "name": "SPL Pay Per Suite",
+      "serviceType": "Pay-per-project compression and data processing",
+      "url": "https://www.slidphilabs.com/pps",
+      "provider": { "@id": "https://www.slidphilabs.com/#org" },
+      "areaServed": "Worldwide",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "9.00",
+        "description": "From $9 — live quote by product, data size, and class"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "SPL Codec",
+      "description": "One compression product for web, integers, and bulk data. Best engine under the hood. Metered suite from $0.50; multi-GB cheap.",
+      "url": "https://www.slidphilabs.com/#codec",
+      "brand": { "@id": "https://www.slidphilabs.com/#org" },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "0.50",
+        "highPrice": "10000.00",
+        "offerCount": "2",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Web mode",
+            "url": "https://www.slidphilabs.com/web",
+            "availability": "https://schema.org/InStock"
+          },
+          {
+            "@type": "Offer",
+            "name": "Suite · any size",
+            "url": "https://www.slidphilabs.com/pps",
+            "price": "0.50",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "CDDG:Split",
+      "description": "Residual process product — separate from day-to-day SPL Codec.",
+      "url": "https://www.slidphilabs.com/#cddg-split",
+      "brand": { "@id": "https://www.slidphilabs.com/#org" },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "199.00",
+        "url": "https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+}
+</script>
+
 </head>
 <body>
-<nav><div class="inner">
-  <a class="logo" href="/">Slid Phi <span>Labs</span></a>
-  <div class="nav-links">
-    <a href="#zrw">ZRW</a>
-    <a href="#family">Packages</a>
-    <a href="#support">Support</a>
-    <a href="/try">Try Gate</a>
-    <a href="https://cuni-studio.fly.dev/" target="_blank" rel="noopener">CuNi</a>
-    <a href="https://github.com/ceedot-rock/SlidPhiLabs" target="_blank" rel="noopener">GitHub</a>
+<div id="purchase-banner" role="status">
+  <div class="inner">
+    <span id="purchase-msg"><strong>Payment received.</strong> Next step: open Access for your package.</span>
+    <span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <a class="btn btn-gold btn-sm" id="purchase-access-link" href="/access">Go to Access</a>
+      <button type="button" class="x" id="purchase-dismiss" aria-label="Dismiss">×</button>
+    </span>
   </div>
-</div></nav>
+</div>
 
-<section class="hero"><div class="wrap">
-  <div class="badge">ZRW by SliidPhiLabs · commercial · Try Gate</div>
-  <h1>Integer compression that actually fits your data</h1>
-  <p class="lede"><strong>Zero Range Wave (ZRW)</strong> by Slid Phi Labs beats gzip/brotli on zeros, ramps and walks. <strong>Blackjack</strong> and <strong>slid-phi</strong> cover related integer workloads. Evaluate via Try Gate. Commercial use under license.</p>
-  <div class="cta-row">
-    <a class="btn btn-teal" href="/try">Try Gate — unlock access</a>
-    <a class="btn btn-primary" href="#zrw">ZRW benches</a>
-    <a class="btn btn-ghost" href="https://www.npmjs.com/package/zero-range-wave-compression" target="_blank" rel="noopener">npm · ZRW</a>
+<!-- Cinematic entry · SLiDphiLABS -->
+<div class="page-intro" id="pageIntro" role="dialog" aria-label="Slid Phi Labs introduction" aria-modal="true">
+  <div class="page-intro__stage" aria-hidden="true">
+    <div class="page-intro__poster"></div>
+    <div class="page-intro__glow"></div>
+    <div class="page-intro__vignette"></div>
+    <div class="page-intro__grain"></div>
   </div>
-</div></section>
-
-<section id="zrw"><div class="wrap">
-  <h2>Zero Range Wave (ZRW) v5 — by Slid Phi Labs</h2>
-  <p class="note">Pure-JS integer compressor. Library · HTTP API · MCP. Proprietary source. Free Gate + paid tiers.</p>
-  <h3>vs gzip / brotli (lossless RT)</h3>
-  <div class="table-wrap"><table>
-    <thead><tr><th>Input</th><th>ZRW</th><th>brotli</th><th>gzip</th></tr></thead>
-    <tbody>
-      <tr class="hl"><td>zeros × 1k</td><td class="mono"><strong>8 B</strong></td><td class="mono">13 B</td><td class="mono">39 B</td></tr>
-      <tr class="hl"><td>ramp × 1k</td><td class="mono"><strong>8 B</strong></td><td class="mono">~1132 B (~141×)</td><td class="mono">~1436 B</td></tr>
-      <tr><td>walk × 10k (s1)</td><td class="mono"><strong>128 B</strong></td><td class="mono">—</td><td class="mono">~5223 B (~40×)</td></tr>
-      <tr><td>walk × 10k (s5)</td><td class="mono"><strong>420 B</strong></td><td class="mono">—</td><td class="mono">~11231 B (~26×)</td></tr>
-    </tbody>
-  </table></div>
-  <pre>npm i zero-range-wave-compression
-import { compress, decompress, setLicenseKey } from "zero-range-wave-compression";
-setLicenseKey(process.env.ZRW_LICENSE);
-const packed = compress([0,0,0,1,2,3]);</pre>
-  <div class="links">
-    <a class="btn btn-primary" href="https://www.npmjs.com/package/zero-range-wave-compression" target="_blank" rel="noopener">npm</a>
-    <a class="btn btn-teal" href="/try">Try Gate</a>
-    <a class="btn btn-ghost" href="https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b" target="_blank" rel="noopener">Starting $79</a>
-    <a class="btn btn-ghost" href="https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c" target="_blank" rel="noopener">Pro $249</a>
-    <a class="btn btn-ghost" href="https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d" target="_blank" rel="noopener">l33t $699</a>
+  <div class="page-intro__content">
+    <div class="page-intro__mark">SLiD<span class="phi">φ</span>LABS</div>
+    <p class="page-intro__tag">Impressive Compression · Two modules</p>
+    <div class="page-intro__areas">
+      <div class="page-intro__area">
+        <h3>1 · Compression</h3>
+        <p><strong>SPL Codec</strong> — web, integers, bulk (engines under the hood). <strong>CDDG:Split</strong> — residual process. Data centers &amp; standings.</p>
+      </div>
+      <div class="page-intro__area">
+        <h3>2 · Agent platform</h3>
+        <p><strong>CuNi</strong> exact multi-runtime · <strong>Agent^Rider</strong> identity/MCP · <strong>Quikgater</strong> pay-per-fact fetch.</p>
+      </div>
+    </div>
   </div>
-</div></section>
+  <button type="button" class="page-intro__skip" id="pageIntroSkip">Enter lab · Esc</button>
+</div>
 
-<section id="family"><div class="wrap">
-  <h2>Compression family</h2>
-  <p class="note">Proprietary · evaluation / non-commercial testing allowed. Commercial use requires a license.</p>
-  <div class="cards">
-    <div class="card"><h3>zero-range-wave-compression</h3><p>Record ratios on zeros, ramps, walks. Lib + API + MCP.</p><a href="https://www.npmjs.com/package/zero-range-wave-compression" target="_blank" rel="noopener">npm →</a></div>
-    <div class="card"><h3>blackjack-compression</h3><p>Fib/Rice/ω/Δ²/combinadic/LZ77. Full RT.</p><a href="https://www.npmjs.com/package/blackjack-compression" target="_blank" rel="noopener">npm →</a></div>
-    <div class="card"><h3>shard-zip</h3><p>Adaptive Fib + Blackjack V2 + CLI.</p><a href="https://www.npmjs.com/package/shard-zip" target="_blank" rel="noopener">npm →</a></div>
-    <div class="card"><h3>slid-phi</h3><p>Omni-Dormant pathways · truth table vs Fib.</p><a href="https://www.npmjs.com/package/slid-phi" target="_blank" rel="noopener">npm →</a></div>
+<nav>
+  <div class="inner">
+    <a class="logo" href="/">
+      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=11" width="40" height="40" alt="Slid Phi Labs"/>
+      Slid Phi <span>Labs</span>
+    </a>
+    <div class="nav-actions">
+      <div class="nav-menu" id="navMenu">
+        <button type="button" class="nav-menu-btn" id="navMenuBtn" aria-expanded="false" aria-controls="navDropdown" aria-haspopup="true">
+          Menu <span class="chev" aria-hidden="true"></span>
+        </button>
+        <div class="nav-dropdown" id="navDropdown" role="menu">
+          <a href="#codec" role="menuitem">SPL Codec</a>
+          <a href="/datacenters" role="menuitem">Data Centers</a>
+          <a href="/web" role="menuitem">Web mode</a>
+          <a href="/pps" role="menuitem">Suite · any size</a>
+          <a href="/standings" role="menuitem">Standings</a>
+          <a href="/truth" role="menuitem">Truth table</a>
+          <a href="/demos" role="menuitem">Demos</a>
+          <div class="sep" role="separator"></div>
+          <a href="#cddg-split" role="menuitem">CDDG:Split</a>
+          <a href="#engines" role="menuitem">Engines inside</a>
+          <a href="#pricing" role="menuitem">Pricing</a>
+          <a href="#modules" role="menuitem">Modules</a>
+          <a href="#ecosystem" role="menuitem">Agent platform</a>
+          <div class="sep" role="separator"></div>
+          <a href="/try" role="menuitem">Try Gate</a>
+          <a href="/access" role="menuitem">Access</a>
+          <a href="/ideas" role="menuitem">Idea Lab</a>
+          <a href="#connect" role="menuitem">Partners</a>
+          <a href="mailto:corey@slidphilabs.com" role="menuitem">Contact</a>
+        </div>
+      </div>
+      <a class="btn btn-teal btn-sm try-weight" href="/try">Try $9</a>
+      <a class="btn btn-gold btn-sm" href="/pps">Buy · suite</a>
+      <a class="btn btn-ghost btn-sm" href="#connect">Partner</a>
+    </div>
   </div>
-  <div class="table-wrap" style="margin-top:18px"><table>
-    <thead><tr><th>Package</th><th>Install</th><th>License</th></tr></thead>
-    <tbody>
-      <tr class="hl"><td class="mono">zero-range-wave-compression</td><td class="mono">npm i zero-range-wave-compression</td><td>Free Gate + commercial</td></tr>
-      <tr><td class="mono">blackjack-compression</td><td class="mono">npm i blackjack-compression</td><td>Proprietary</td></tr>
-      <tr><td class="mono">shard-zip</td><td class="mono">npm i shard-zip</td><td>Proprietary</td></tr>
-      <tr><td class="mono">slid-phi</td><td class="mono">npm i slid-phi</td><td>Proprietary</td></tr>
-    </tbody>
-  </table></div>
-</div></section>
+</nav>
 
-<section id="support"><div class="wrap">
-  <h2>Support and licensing</h2>
-  <p class="note">Codecs are proprietary. Support offers are time and guidance. ZRW has Free Gate and paid tiers above.</p>
-  <div class="pricing">
-    <div class="price-card featured"><div>Support + Integration</div><div class="amt">$199</div><div class="desc">Pathway choice, benchmarks, email Q&amp;A.</div><a class="btn btn-primary" href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09" target="_blank" rel="noopener">Get support</a></div>
-    <div class="price-card"><div>Donate</div><div class="amt">$29.99</div><div class="desc">Support Slid Phi Labs research.</div><a class="btn btn-ghost" href="https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a" target="_blank" rel="noopener">Donate</a></div>
-    <div class="price-card"><div>Consulting</div><div class="amt">$250</div><div class="desc">Scoped session.</div><a class="btn btn-ghost" href="https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02" target="_blank" rel="noopener">Book</a></div>
+<section class="brand-strip" aria-label="Lab modules">
+  <div class="wrap">
+    <div class="module-routes">
+      <div class="module-route module-route--compression">
+        <div class="module-route__label"><span>01</span> Compression</div>
+        <div class="logo-row">
+          <a href="#codec" title="SPL Codec — web + suite, any data">
+            <span class="thumb"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=12" width="80" height="80" alt="SPL Codec"/></span>
+            SPL Codec
+          </a>
+          <a href="#cddg-split" title="CDDG:Split — residual process">
+            <span class="thumb"><img src="/assets/logos/logo-cddg-split.jpg?v=12" width="80" height="80" alt="CDDG:Split"/></span>
+            CDDG
+          </a>
+          <a href="/web" title="Web mode">
+            <span class="thumb"><img src="/assets/logos/logo-paypersuite.jpg?v=12" width="80" height="80" alt="Web mode"/></span>
+            Web
+          </a>
+          <a href="/pps" title="Suite · bulk · multi-GB cheap">
+            <span class="thumb"><img src="/assets/logos/logo-zero-range-wave.jpg?v=12" width="80" height="80" alt="Suite"/></span>
+            Suite
+          </a>
+        </div>
+      </div>
+      <div class="module-route module-route--agent">
+        <div class="module-route__label"><span>02</span> Agent platform</div>
+        <div class="logo-row">
+          <a href="https://cuni-studio.fly.dev/" target="_blank" rel="noopener" title="CuNi — exact multi-runtime">
+            <span class="thumb"><img src="/assets/logos/logo-cuni.jpg?v=12" width="80" height="80" alt="CuNi"/></span>
+            CuNi
+          </a>
+          <a href="https://agentrider.vercel.app/" target="_blank" rel="noopener" title="Agent^Rider — identity · MCP">
+            <span class="thumb"><img src="/assets/logos/logo-agent-rider.jpg?v=12" width="80" height="80" alt="Agent^Rider"/></span>
+            Rider
+          </a>
+          <a href="https://github.com/ceedot-rock/quikgater" target="_blank" rel="noopener" title="Quikgater — pay-per-fact fetch">
+            <span class="thumb q-mark" aria-hidden="true">Qg</span>
+            Quikgater
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
-</div></section>
+</section>
 
-<footer><div class="inner">
-  <div>Slid Phi Labs · ZRW by Slid Phi Labs · proprietary codecs · Try Gate</div>
-  <div>CuNi Studio · <a href="https://cuni-studio.fly.dev/">cuni-studio.fly.dev</a></div>
-</div></footer>
+<header class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-inner">
+        <div class="badge">TWO MODULES · COMPRESSION · AGENT PLATFORM</div>
+        <p class="ribbon proof-ribbon">
+          <span class="proof-num">ZRW · zeros_10k</span>
+          <strong>8 B</strong> vs gzip-9 <strong>73 B</strong> · brotli-11 <strong>13 B</strong>
+          <a href="/standings" class="proof-link">Full standings →</a>
+        </p>
+        <h1>Two modules. One lab.</h1>
+        <p class="lede">
+          <strong style="color:var(--gold)">1 · Compression</strong> —
+          <strong>SPL Codec</strong> (web + suite) and <strong>CDDG:Split</strong> (process). Multi‑GB is cheap (~$2 for 9&nbsp;GB).<br/>
+          <strong style="color:var(--gold)">2 · Agent platform</strong> —
+          <strong>CuNi</strong> · <strong>Agent^Rider</strong> · <strong>Quikgater</strong>.
+        </p>
+        <p class="ip-guard-line"><strong>IP Guard:</strong> Public outcomes only — what comes out and how it stacks up. Processes stay in the lab.</p>
+
+        <div class="lane-ctas" aria-label="Primary actions">
+          <a class="lane lane-try" href="/try">
+            <span class="lane-kicker">Try</span>
+            <span class="lane-title">$9 Try Gate</span>
+            <span class="lane-sub">Evaluation seat · free web demo also live</span>
+          </a>
+          <a class="lane lane-buy" href="/pps">
+            <span class="lane-kicker">Buy</span>
+            <span class="lane-title">SPL Codec · suite</span>
+            <span class="lane-sub">From $0.50 · web · CDDG packages</span>
+          </a>
+          <a class="lane lane-partner" href="#connect">
+            <span class="lane-kicker">Partner</span>
+            <span class="lane-title">Support · consulting · LOI</span>
+            <span class="lane-sub">Investors &amp; integrations</span>
+          </a>
+        </div>
+
+        <div class="door-row" aria-label="Human or agent">
+          <a class="door door-human" href="/pps">
+            <span class="door-label">I’m a human</span>
+            <span class="door-go">Suite · pricing · Access →</span>
+          </a>
+          <a class="door door-agent" href="/api/agent">
+            <span class="door-label">I’m an agent</span>
+            <span class="door-go">GET /api/agent · x402 catalog →</span>
+          </a>
+        </div>
+
+        <div class="cta-row secondary-cta">
+          <a class="btn btn-teal btn-sm" href="/web">Web compress (free demo)</a>
+          <a class="btn btn-ghost btn-sm" href="/standings">Standings</a>
+          <a class="btn btn-ghost btn-sm" href="/datacenters">Data Centers</a>
+          <a class="btn btn-ghost btn-sm" href="#ecosystem">CuNi · Rider · Quikgater</a>
+        </div>
+      </div>
+      <div class="poster-col">
+        <div class="lockup-top">Zero-Range-Wave</div>
+        <div class="poster-frame">
+          <img src="/assets/slid-phi-labs-master.jpg?v=4" width="480" height="640" alt="Slid Phi Labs" fetchpriority="high"/>
+        </div>
+        <div class="lockup-bot">Slid-Phi Labs</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<section id="codec">
+  <div class="narrow">
+    <div class="reveal">
+      <div class="sec-label">The product</div>
+      <h2>SPL Codec</h2>
+      <p class="note">One public product. Type detection and path pick under the hood. Same lab, cleaner face.</p>
+      <div class="cards" style="margin-top:18px">
+        <div class="card featured-card">
+          <div class="card-head">
+            <div>
+              <h3>Web mode</h3>
+              <p>HTML · CSS · JS · JSON · text. Prep + best of brotli-11 / gzip-9. Live compress &amp; decompress.</p>
+            </div>
+          </div>
+          <div class="foot">
+            <span class="stub gold">Live</span>
+            <a class="btn btn-gold btn-sm" href="/web">Open /web</a>
+            <a class="btn btn-ghost btn-sm" href="/api/web-codec">API</a>
+          </div>
+        </div>
+        <div class="card featured-card">
+          <div class="card-head">
+            <div>
+              <h3>Suite · any size</h3>
+              <p>Bulk jobs and structured data. Quote by size · pay · lab runs the best tool. ~$2 for 9&nbsp;GB.</p>
+            </div>
+          </div>
+          <div class="foot">
+            <span class="stub gold">Live</span>
+            <a class="btn btn-gold btn-sm" href="/pps">Open suite</a>
+            <a class="btn btn-ghost btn-sm" href="/demos">Demos</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <h3>Engines inside</h3>
+              <p>ZRW, multi-path, shards, web path — specialists you don’t have to pick by name unless you want to.</p>
+            </div>
+          </div>
+          <div class="foot">
+            <a class="btn btn-ghost btn-sm" href="#engines">See engines</a>
+            <a class="btn btn-ghost btn-sm" href="/standings">Records</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="zrqc">
+  <div class="narrow">
+    <div class="reveal">
+      <div class="sec-label">Research stack</div>
+      <div class="champ-grid" style="align-items:center">
+        <div class="champ-panel" style="border-color:rgba(61,214,198,.35)">
+          <div class="pill">ZRQC</div>
+          <h2>Zero Range Quasi Computing</h2>
+          <p class="note" style="margin-bottom:0">
+            Lab science behind <strong>SPL Codec</strong>: residual and wave tools for structured data.
+            You buy the codec (or CDDG process). Engines stay under the hood.
+          </p>
+          <div class="links" style="margin-top:18px">
+            <a class="btn btn-gold" href="/pps">Run SPL Codec suite</a>
+            <a class="btn btn-teal" href="/web">Web mode</a>
+            <a class="btn btn-ghost" href="#cddg-split">CDDG:Split</a>
+            <a class="btn btn-ghost" href="/demos">Demos</a>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <img src="/assets/logos/logo-zrqc.jpg?v=11" width="220" height="220" alt="ZRQC" style="width:min(100%,220px);height:auto;border-radius:18px;border:2px solid rgba(232,197,71,.4);box-shadow:0 0 40px rgba(61,214,198,.25)"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cddg-split" class="cddg-split">
+  <div class="narrow">
+    <div class="reveal">
+      <div class="sec-label">CDDG:Split</div>
+      <div class="champ-grid">
+        <div class="champ-panel">
+          <div class="pill">CDDG:Split</div>
+          <h2>CDDG:Split</h2>
+          <p class="note" style="margin-bottom:0">Separate <strong>process</strong> product (not the day-to-day codec). Residual workloads — code only what remains. Checkout → Access.</p>
+          <div class="links" style="margin-top:18px">
+            <a class="btn btn-gold" href="https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f" target="_blank" rel="noopener">Buy CDDG:Split · $199</a>
+            <a class="btn btn-ghost" href="/access?product=cddg-split">Already paid? Access</a>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+          <img src="/assets/logos/logo-cddg-split.jpg?v=11" width="180" height="180" alt="CDDG:Split" style="width:min(100%,180px);height:auto;border-radius:18px;border:1.5px solid rgba(232,197,71,.4);box-shadow:0 0 32px rgba(61,214,198,.2)"/>
+          <p class="note" style="margin:0">New here? Try free, see demos, then unlock the product that fits.</p>
+          <div class="links">
+            <a class="btn btn-teal" href="/try" class="try-weight">Try Gate $9</a>
+            <a class="btn btn-ghost" href="#engines">Engines</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proof">
+  <div class="narrow">
+    <div class="reveal">
+      <div class="sec-label">Results · full family</div>
+      <h2>Proof, not pitch decks</h2>
+      <p class="note">Public outcomes only. Full rankings and records: <a href="/standings">Standings</a>. Then run <a href="/datacenters">Data Centers</a>
+      <a href="/web">Web</a> or <a href="/pps">Suite</a> — one product, best engine.</p>
+
+      <p class="sec-label" style="margin-top:8px;margin-bottom:12px">ZRW · published benches · pack v5 re-run 2026-08-06</p>
+      <div class="proof-grid">
+        <div class="proof-card"><div class="k">Zeros × 1k</div><div class="v teal">8 B</div><div class="sub">packed · lossless</div></div>
+        <div class="proof-card"><div class="k">Ramp × 1k</div><div class="v teal">~141×</div><div class="sub">vs brotli-class</div></div>
+        <div class="proof-card"><div class="k">Walk × 10k</div><div class="v">Hard win</div><div class="sub">vs gzip-class</div></div>
+        <div class="proof-card"><div class="k">Target shapes</div><div class="v teal">#1</div><div class="sub">zeros · ramps · walks</div></div>
+      </div>
+
+      <p class="sec-label" style="margin-top:28px;margin-bottom:12px">Family outcomes · what ships</p>
+      <div class="proof-family">
+        <a class="proof-prod" href="#cddg-split">
+          <img src="/assets/logos/logo-cddg-split.jpg?v=11" width="56" height="56" alt=""/>
+          <div>
+            <div class="pname">CDDG:Split</div>
+            <div class="pmetric">64–84% residual cut</div>
+            <div class="pout">Outcome band on residual-heavy workloads. Quality lift vs pure baseline paths — numbers you can buy against, not a recipe dump.</div>
+          </div>
+        </a>
+        <a class="proof-prod" href="#zrw">
+          <img src="/assets/logos/logo-zero-range-wave.jpg?v=11" width="56" height="56" alt=""/>
+          <div>
+            <div class="pname">Zero Range Wave</div>
+            <div class="pmetric">8 B · ~141× class</div>
+            <div class="pout">Structured series crush: zeros, ramps, walks. Lossless round-trip on the shapes we target.</div>
+          </div>
+        </a>
+        <a class="proof-prod" href="#engines">
+          <img src="/assets/logos/logo-blackjack.jpg?v=11" width="56" height="56" alt=""/>
+          <div>
+            <div class="pname">Blackjack</div>
+            <div class="pmetric">#1 on mixed series</div>
+            <div class="pout">Multi-path stack wins where a single codec stalls — outcome ranking on mixed integer loads, not path diagrams.</div>
+          </div>
+        </a>
+        <a class="proof-prod" href="#engines">
+          <img src="/assets/logos/logo-shard-zip.jpg?v=11" width="56" height="56" alt=""/>
+          <div>
+            <div class="pname">shard-zip</div>
+            <div class="pmetric">Adaptive pack wins</div>
+            <div class="pout">Smaller on-disk / transfer footprints for structured shards vs general zip-class tools on our benches.</div>
+          </div>
+        </a>
+        <a class="proof-prod" href="#engines">
+          <img src="/assets/logos/logo-shard-tsdb.jpg?v=11" width="56" height="56" alt=""/>
+          <div>
+            <div class="pname">shard-tsdb</div>
+            <div class="pmetric">TS footprint cut</div>
+            <div class="pout">Time-series shards land smaller and stay query-ready on the loads we publish — storage outcome, not schema internals.</div>
+          </div>
+        </a>
+        <a class="proof-prod" href="#engines">
+          <img src="/assets/logos/logo-slid-phi.jpg?v=11" width="56" height="56" alt=""/>
+          <div>
+            <div class="pname">slid-phi</div>
+            <div class="pmetric">Pathway pick · win rate</div>
+            <div class="pout">Omni-Dormant research surface: higher hit rate on dormant / sparse integer pathways vs single-path baselines in our suite.</div>
+          </div>
+        </a>
+        <a class="proof-prod" href="#zrqc">
+          <img src="/assets/logos/logo-zrqc.jpg?v=11" width="56" height="56" alt=""/>
+          <div>
+            <div class="pname">ZRQC</div>
+            <div class="pmetric">CDDG + Mirrored Cost</div>
+            <div class="pout">Lead geometry: continuous dark-degree residual coding. Public outcomes: residual cut band, ~2× quality class vs pure baseline — not the old discrete-only story.</div>
+          </div>
+        </a>
+        <a class="proof-prod" href="/pps">
+          <img src="/assets/logos/logo-paypersuite.jpg?v=11" width="56" height="56" alt=""/>
+          <div>
+            <div class="pname">SPL Pay Per Suite</div>
+            <div class="pmetric">Quote → pay → deliver</div>
+            <div class="pout">On-spot price from size + shape + tool. Stripe checkout. Lab runs the best available path and returns results — no install required.</div>
+          </div>
+        </a>
+
+        <a class="proof-prod" href="https://cuni-studio.fly.dev/" target="_blank" rel="noopener">
+          <img src="/assets/logos/logo-cuni.jpg?v=11" width="56" height="56" alt=""/>
+          <div>
+            <div class="pname">CuNi</div>
+            <div class="pmetric">Exact multi-runtime</div>
+            <div class="pout">Exact multi-runtime (py/go/js). Part of the agent platform with Rider + Quikgater.</div>
+          </div>
+        </a>
+        <a class="proof-prod" href="https://agentrider.vercel.app/" target="_blank" rel="noopener">
+          <img src="/assets/logos/logo-agent-rider.jpg?v=11" width="56" height="56" alt=""/>
+          <div>
+            <div class="pname">Agent^Rider</div>
+            <div class="pmetric">Identity · trust · MCP</div>
+            <div class="pout">Identity · trust · MCP. Coordinates with CuNi exact policies and Quikgater paid fetch.</div>
+          </div>
+        </a>
+      </div>
+
+      <p class="proof-note">We publish <strong style="color:var(--text)">inputs, packed sizes, and rankings</strong>. We do not publish coefficients, pipelines, or engine steps. <a href="/demos">Demos</a> · <a href="/pps">Pay Per Suite</a> · <a href="/try">Try Gate</a></p>
+      <p class="footnote">Impressive Compression..... see for yourself</p>
+    </div>
+  </div>
+</section>
+
+<section id="zrw">
+  <div class="narrow">
+    <div class="reveal">
+      <div class="sec-label">Flagship codec · ZERO-RANGE-WAVE</div>
+      <div class="zrw-head">
+        <img class="zrw-logo" src="/assets/logos/logo-zero-range-wave.jpg?v=11" width="96" height="96" alt="Zero Range Wave"/>
+        <div>
+          <h2>Zero Range Wave</h2>
+          <p class="note" style="margin-bottom:0">Flagship pure-JS compressor from the lab. Built for data that has structure — not generic file soup. Library and API for paid tiers. Try free, then license for production.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Input</th><th>ZRW</th><th>vs general tools</th></tr></thead>
+          <tbody>
+            <tr class="hl"><td>zeros × 1k</td><td class="mono"><strong>8 B</strong></td><td>beats brotli / gzip class</td></tr>
+            <tr class="hl"><td>ramp × 1k</td><td class="mono"><strong>8 B</strong></td><td>~141× vs brotli-class</td></tr>
+            <tr><td>walk × 10k</td><td class="mono"><strong>hard win</strong></td><td>large multiple vs gzip-class</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="links">
+        <a class="btn btn-primary" href="https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b" target="_blank" rel="noopener">Buy N00b $79</a>
+        <a class="btn btn-ghost" href="https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c" target="_blank" rel="noopener">Pro $249</a>
+        <a class="btn btn-ghost" href="https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d" target="_blank" rel="noopener">L33t$aUC3 $699</a>
+        <a class="btn btn-teal" href="/try">Try first</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="engines">
+  <div class="narrow">
+    <div class="reveal">
+      <div class="sec-label">Under the hood</div>
+      <h2>Engines inside</h2>
+      <p class="note">
+        <strong>SPL Codec</strong> is the product. These are the specialists it can route to —
+        optional deep unlocks if you want a single engine, not twelve different “products.”
+        Day-to-day: use <a href="/web">Web</a> or <a href="/pps">Suite</a>.
+      </p>
+      <div class="cards">
+        <div class="card featured-card">
+          <div class="card-head">
+            <a href="https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f" target="_blank" rel="noopener" title="CDDG:Split · $199"><img class="card-logo" src="/assets/logos/logo-cddg-split.jpg?v=11" width="80" height="80" alt="CDDG:Split"/></a>
+            <div>
+              <h3>cddg-split</h3>
+              <p>Process product for production workloads. Code only what remains.</p>
+            </div>
+          </div>
+          <div class="foot">
+            <span class="stub gold">$199</span>
+            <a class="btn btn-gold btn-sm" href="https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f" target="_blank" rel="noopener">Buy now</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <a href="https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b" target="_blank" rel="noopener" title="ZRW N00b $79"><img class="card-logo" src="/assets/logos/logo-zero-range-wave.jpg?v=11" width="80" height="80" alt="Zero Range Wave"/></a>
+            <div>
+              <h3>zero-range-wave-compression</h3>
+              <p>Flagship wave compressor for zeros, ramps, walks.</p>
+            </div>
+          </div>
+          <div class="foot">
+            <span class="stub">from $79</span>
+            <a class="btn btn-primary btn-sm" href="https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b" target="_blank" rel="noopener">Buy N00b</a>
+            <a href="https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c" target="_blank" rel="noopener">Pro $249</a>
+            <a href="https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d" target="_blank" rel="noopener">L33t$aUC3 $699</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <a href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09" target="_blank" rel="noopener" title="Blackjack $199"><img class="card-logo" src="/assets/logos/logo-blackjack.jpg?v=11" width="80" height="80" alt="Blackjack"/></a>
+            <div>
+              <h3>blackjack-compression</h3>
+              <p>Multi-path codec for mixed series.</p>
+            </div>
+          </div>
+          <div class="foot">
+            <span class="stub">$199</span>
+            <a class="btn btn-primary btn-sm" href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09" target="_blank" rel="noopener">Buy now</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <a href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09" target="_blank" rel="noopener" title="shard-zip $199"><img class="card-logo" src="/assets/logos/logo-shard-zip.jpg?v=11" width="80" height="80" alt="shard-zip"/></a>
+            <div>
+              <h3>shard-zip · shard-tsdb · slid-phi</h3>
+              <p>Adaptive packaging, time-series shard, Omni-Dormant pathways for research loads.</p>
+            </div>
+          </div>
+          <div class="foot">
+            <span class="stub">$199</span>
+            <a class="btn btn-primary btn-sm" href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09" target="_blank" rel="noopener">Buy now</a>
+            <a href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09" target="_blank" rel="noopener"><img src="/assets/logos/logo-shard-tsdb.jpg?v=11" width="28" height="28" alt="shard-tsdb" style="border-radius:6px;border:1px solid rgba(232,197,71,.3);vertical-align:middle"/></a>
+            <a href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09" target="_blank" rel="noopener"><img src="/assets/logos/logo-slid-phi.jpg?v=11" width="28" height="28" alt="slid-phi" style="border-radius:6px;border:1px solid rgba(232,197,71,.3);vertical-align:middle"/></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="narrow">
+    <div class="reveal">
+      <div class="sec-label">Commerce</div>
+      <h2>Pricing</h2>
+      <p class="note">
+        <strong>SPL Codec suite</strong> is metered and bulk-cheap (from <strong>$0.50</strong>, about <strong>$2 for 9&nbsp;GB</strong>).
+        Optional engine unlocks and <strong>CDDG:Split</strong> process stay as fixed packages.
+        After fixed checkout, open <a href="/access">Access</a>.
+      </p>
+      <div class="cards" style="margin-bottom:22px">
+        <div class="card featured-card">
+          <div class="card-head"><div>
+            <h3>SPL Codec · suite</h3>
+            <p>Any size / shape. Path pick. Live quote. Multi‑GB is cheap.</p>
+          </div></div>
+          <div class="foot">
+            <span class="stub gold">From $0.50</span>
+            <a class="btn btn-gold btn-sm" href="/pps">Get a quote</a>
+            <a class="btn btn-teal btn-sm" href="/web">Web mode</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-h3">CDDG:Split &amp; support</div>
+      <div class="pricing">
+        <div class="price-card cddg-price">
+          <div class="plan">CDDG:SPLIT</div>
+          <div>CDDG:Split</div>
+          <div class="amt">$199</div>
+          <p class="desc">Process product. Full package after checkout.</p>
+          <a class="btn btn-gold" href="https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f" target="_blank" rel="noopener">Buy CDDG:Split</a>
+        </div>
+        <div class="price-card featured">
+          <div class="plan">SUPPORT</div>
+          <div>Support + Integration</div>
+          <div class="amt">$199</div>
+          <p class="desc">Pathway choice, benches, email Q&amp;A.</p>
+          <a class="btn btn-primary" href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09" target="_blank" rel="noopener">Get support</a>
+        </div>
+        <div class="price-card">
+          <div class="plan">EXPERT</div>
+          <div>Consulting</div>
+          <div class="amt">$250</div>
+          <p class="desc">Scoped session with the lab.</p>
+          <a class="btn btn-ghost" href="https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02" target="_blank" rel="noopener">Book consulting</a>
+        </div>
+      </div>
+
+      <div class="section-h3">ZRW tiers · N00b · Pro · L33t$aUC3</div>
+      <div class="pricing">
+        <div class="price-card">
+          <div class="plan">N00B</div>
+          <div>ZRW N00b</div>
+          <div class="amt">$79</div>
+          <p class="desc">Commercial entry license for Zero Range Wave.</p>
+          <a class="btn btn-primary" href="https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b" target="_blank" rel="noopener">N00b</a>
+        </div>
+        <div class="price-card featured">
+          <div class="plan">PRO</div>
+          <div>ZRW Pro</div>
+          <div class="amt">$249</div>
+          <p class="desc">Pro tier · higher commercial limits.</p>
+          <a class="btn btn-primary" href="https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c" target="_blank" rel="noopener">Pro</a>
+        </div>
+        <div class="price-card">
+          <div class="plan">L33t$aUC3</div>
+          <div>ZRW L33t$aUC3</div>
+          <div class="amt">$699</div>
+          <p class="desc">Business / unlimited tier for serious volume.</p>
+          <a class="btn btn-ghost" href="https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d" target="_blank" rel="noopener">L33t$aUC3</a>
+        </div>
+      </div>
+
+      <div class="section-h3">SPL Pay Per Suite</div>
+      <div class="pricing">
+        <div class="price-card twin-price" style="grid-column:1/-1;max-width:420px">
+          <div class="plan">ON-SPOT QUOTE</div>
+          <div>SPL Pay Per Suite</div>
+          <div class="amt" style="font-size:1.5rem">from $9</div>
+          <p class="desc">Upload or size your data · live quote · Stripe · lab runs the best available tool. Also <code class="mono">npm i spl-pay-per-suite</code> · CLI · MCP.</p>
+          <a class="btn btn-gold" href="/pps">Open suite</a>
+        </div>
+      </div>
+
+      <div class="section-h3">Fuel the lab</div>
+      <div class="pricing">
+        <div class="price-card">
+          <div class="plan">TRY GATE</div>
+          <div>Chip-in</div>
+          <div class="amt">$9</div>
+          <p class="desc">Unlock Free Gate evaluation seat.</p>
+          <a class="btn btn-teal" href="https://donate.stripe.com/eVq8wQffL2X60CVfIY6wE0e" target="_blank" rel="noopener">Chip in $9</a>
+        </div>
+        <div class="price-card">
+          <div class="plan">SPONSOR</div>
+          <div>Sponsor</div>
+          <div class="amt">$29</div>
+          <p class="desc">Support research + higher try priority.</p>
+          <a class="btn btn-ghost" href="https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01" target="_blank" rel="noopener">Sponsor $29</a>
+        </div>
+        <div class="price-card">
+          <div class="plan">DONATE</div>
+          <div>Donate</div>
+          <div class="amt">$29.99</div>
+          <p class="desc">General lab support.</p>
+          <a class="btn btn-ghost" href="https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a" target="_blank" rel="noopener">Donate</a>
+        </div>
+      </div>
+
+      <p class="subline">Paid? Head to <a href="/access">Access</a>. Stuck? Email <a href="mailto:ceedotrock@gmail.com">ceedotrock@gmail.com</a> with subject <span class="mono">PACKAGE ACCESS</span>.</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="modules">
+  <div class="narrow">
+    <div class="reveal">
+      <div class="sec-label">Lab map · two modules</div>
+      <h2>How the lab is organized</h2>
+      <p class="note">Public face is simple: <strong style="color:var(--gold)">Compression</strong> and <strong style="color:var(--gold)">Agent platform</strong>. Engines and surfaces live under those modules — not a dozen peer brands.</p>
+      <div class="cards" style="margin-top:18px">
+        <div class="card featured-card">
+          <div class="card-head"><div>
+            <h3>1 · Compression</h3>
+            <p><strong>SPL Codec</strong> — one product for web, integers, bulk (engines under the hood). <strong>CDDG:Split</strong> — residual process SKU in this module. Data Centers &amp; standings prove it.</p>
+          </div></div>
+          <div class="foot">
+            <a class="btn btn-gold btn-sm" href="#codec">SPL Codec</a>
+            <a class="btn btn-teal btn-sm" href="/web">Web</a>
+            <a class="btn btn-ghost btn-sm" href="/pps">Suite</a>
+            <a class="btn btn-ghost btn-sm" href="#cddg-split">CDDG</a>
+          </div>
+        </div>
+        <div class="card featured-card">
+          <div class="card-head"><div>
+            <h3>2 · Agent platform</h3>
+            <p><strong>CuNi</strong> · <strong>Agent^Rider</strong> · <strong>Quikgater</strong> — one system: exact multi-runtime → identity/MCP/coordination → pay-per-fact web fetch for agents (x402).</p>
+          </div></div>
+          <div class="foot">
+            <a class="btn btn-gold btn-sm" href="#ecosystem">Open platform</a>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/ceedot-rock/quikgater" target="_blank" rel="noopener">Quikgater</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ecosystem">
+  <div class="narrow">
+    <div class="reveal">
+      <div class="sec-label">Module 2 · Agent platform</div>
+      <h2>CuNi · Rider · Quikgater</h2>
+      <p class="note">One agent platform, three surfaces. Exact code, signed agents, paid fetch of facts from the web.</p>
+      <div class="cards">
+        <div class="card featured-card">
+          <div class="card-head">
+            <a href="https://cuni-studio.fly.dev/" target="_blank" rel="noopener"><img class="card-logo" src="/assets/logos/logo-cuni.jpg?v=11" width="80" height="80" alt="CuNi"/></a>
+            <div>
+              <h3>CuNi</h3>
+              <p>Exact multi-target (Python · Go · JavaScript). Exactness before a policy runs. Feeds the platform.</p>
+            </div>
+          </div>
+          <div class="foot">
+            <span class="stub gold">Exact code</span>
+            <a class="btn btn-gold btn-sm" href="https://cuni-studio.fly.dev/" target="_blank" rel="noopener">Studio</a>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/ceedot-rock/cuni" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <div class="card featured-card">
+          <div class="card-head">
+            <a href="https://agentrider.vercel.app/" target="_blank" rel="noopener"><img class="card-logo" src="/assets/logos/logo-agent-rider.jpg?v=11" width="80" height="80" alt="Agent^Rider"/></a>
+            <div>
+              <h3>Agent^Rider</h3>
+              <p>Signed identity, trust, tasks, AGC, MCP. Coordination layer — consumers of exact policies and paid fetch.</p>
+            </div>
+          </div>
+          <div class="foot">
+            <span class="stub gold">Identity · MCP</span>
+            <a class="btn btn-gold btn-sm" href="https://agentrider.vercel.app/" target="_blank" rel="noopener">Open Rider</a>
+            <a class="btn btn-ghost btn-sm" href="https://agentrider.vercel.app/api/mcp" target="_blank" rel="noopener">MCP</a>
+          </div>
+        </div>
+        <div class="card featured-card">
+          <div class="card-head">
+            <div>
+              <h3>Quikgater</h3>
+              <p>Pay-per-fact web fetch for AI agents. x402 (Base USDC) + credits. Edge safety, cache, multi-provider render. Agents pay to fetch.</p>
+            </div>
+          </div>
+          <div class="foot">
+            <span class="stub gold">Paid fetch</span>
+            <a class="btn btn-gold btn-sm" href="https://github.com/ceedot-rock/quikgater" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn btn-ghost btn-sm" href="https://quikgater-worker.ceedotrock.workers.dev" target="_blank" rel="noopener">Worker</a>
+          </div>
+        </div>
+      </div>
+      <p class="note" style="margin-top:14px">
+        Discovery: lab <a href="/api/agent"><code>/api/agent</code></a>
+        · Rider <a href="https://agentrider.vercel.app/api/discovery"><code>discovery</code></a>
+        · CuNi <a href="https://cuni-studio.fly.dev/agents.json"><code>agents.json</code></a>
+        · Quikgater <a href="https://github.com/ceedot-rock/quikgater" target="_blank" rel="noopener"><code>repo</code></a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="connect">
+  <div class="narrow">
+    <div class="reveal">
+      <div class="sec-label">Grow with us</div>
+      <h2>Partners · LOI · Donate · Investors</h2>
+      <p class="note">Looking for distribution partners, LOIs, donors, and serious investors. One form each — we read every submission.</p>
+      <div class="connect-grid">
+        <div class="connect-card">
+          <h3>Partner search</h3>
+          <p>Resellers, integrators, labs, and platforms that want ZRW / CDDG:Split in their stack. Tell us who you are and what you bring.</p>
+          <form class="site-form" data-kind="partner">
+            <label for="p-name">Name</label>
+            <input id="p-name" name="name" type="text" maxlength="120" autocomplete="name" placeholder="Your name"/>
+            <label for="p-email">Email *</label>
+            <input id="p-email" name="email" type="email" required maxlength="160" autocomplete="email" placeholder="you@company.com"/>
+            <label for="p-org">Organization</label>
+            <input id="p-org" name="org" type="text" maxlength="160" autocomplete="organization" placeholder="Company / lab"/>
+            <label for="p-web">Website</label>
+            <input id="p-web" name="website" type="url" maxlength="200" placeholder="https://"/>
+            <label for="p-msg">How should we partner? *</label>
+            <textarea id="p-msg" name="message" required rows="3" maxlength="4000" placeholder="Channels, territory, tech fit…"></textarea>
+            <div class="links" style="margin-top:12px">
+              <button class="btn btn-primary" type="submit">Send partner note</button>
+            </div>
+            <p class="form-msg" role="status"></p>
+          </form>
+        </div>
+
+        <div class="connect-card">
+          <h3>Letter of intent (LOI)</h3>
+          <p>Ready to signal commercial interest before a full contract? Send LOI interest — we follow up with next steps and terms outline.</p>
+          <form class="site-form" data-kind="loi">
+            <label for="l-name">Name</label>
+            <input id="l-name" name="name" type="text" maxlength="120" autocomplete="name"/>
+            <label for="l-email">Email *</label>
+            <input id="l-email" name="email" type="email" required maxlength="160" autocomplete="email"/>
+            <label for="l-org">Organization *</label>
+            <input id="l-org" name="org" type="text" required maxlength="160" autocomplete="organization"/>
+            <label for="l-product">Product interest</label>
+            <select id="l-product" name="amount">
+              <option value="cddg-split">CDDG:Split</option>
+              <option value="zrw">Zero Range Wave</option>
+              <option value="support">Support + Integration</option>
+              <option value="multi">Multiple / portfolio</option>
+              <option value="other">Other</option>
+            </select>
+            <label for="l-msg">Intent summary *</label>
+            <textarea id="l-msg" name="message" required rows="3" maxlength="4000" placeholder="Use case, volume, timeline, any budget band…"></textarea>
+            <div class="links" style="margin-top:12px">
+              <button class="btn btn-gold" type="submit">Submit LOI interest</button>
+            </div>
+            <p class="form-msg" role="status"></p>
+          </form>
+        </div>
+
+        <div class="connect-card">
+          <h3>Donate</h3>
+          <p>Fuel the lab and keep free evaluation open. One-time support — pick a lane and pay in one click.</p>
+          <div class="links" style="margin-top:4px">
+            <a class="btn btn-teal" href="https://donate.stripe.com/eVq8wQffL2X60CVfIY6wE0e" target="_blank" rel="noopener">Chip-in $9</a>
+            <a class="btn btn-ghost" href="https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01" target="_blank" rel="noopener">Sponsor $29</a>
+            <a class="btn btn-ghost" href="https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a" target="_blank" rel="noopener">Donate $29.99</a>
+          </div>
+          <form class="site-form" data-kind="donate-note" style="margin-top:8px">
+            <label for="d-msg">Optional note with your gift</label>
+            <textarea id="d-msg" name="message" required rows="2" maxlength="2000" placeholder="What should we put the gift toward? (or just say hi)"></textarea>
+            <label for="d-email">Email (optional)</label>
+            <input id="d-email" name="email" type="email" maxlength="160" placeholder="if you want a thank-you"/>
+            <div class="links" style="margin-top:12px">
+              <button class="btn btn-ghost" type="submit">Send note</button>
+            </div>
+            <p class="form-msg" role="status"></p>
+          </form>
+        </div>
+
+        <div class="connect-card">
+          <h3>Investors</h3>
+          <p>Deep-tech compression + residual stack. Not a public raise page — send a short note if you want materials and a conversation.</p>
+          <form class="site-form" data-kind="investor">
+            <label for="i-name">Name</label>
+            <input id="i-name" name="name" type="text" maxlength="120" autocomplete="name"/>
+            <label for="i-email">Email *</label>
+            <input id="i-email" name="email" type="email" required maxlength="160" autocomplete="email"/>
+            <label for="i-org">Fund / firm</label>
+            <input id="i-org" name="org" type="text" maxlength="160"/>
+            <label for="i-amt">Check size interest (optional)</label>
+            <input id="i-amt" name="amount" type="text" maxlength="40" placeholder="e.g. angel / seed band"/>
+            <label for="i-msg">Why us / why now *</label>
+            <textarea id="i-msg" name="message" required rows="3" maxlength="4000" placeholder="Thesis fit, stage questions, intro path…"></textarea>
+            <div class="links" style="margin-top:12px">
+              <button class="btn btn-primary" type="submit">Send investor note</button>
+              <a class="btn btn-ghost" href="mailto:corey@slidphilabs.com?subject=Investor%20inquiry">Email Corey</a>
+            </div>
+            <p class="form-msg" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="feedback">
+  <div class="narrow">
+    <div class="reveal">
+      <div class="sec-label">Your voice</div>
+      <h2>Comments &amp; suggestions</h2>
+      <p class="note">Bugs, feature ideas, site feedback, “you should sell X” — leave it here. No account required.</p>
+      <div class="connect-grid">
+        <div class="connect-card feedback-wide">
+          <form class="site-form" data-kind="comment" id="feedbackForm">
+            <div style="display:grid;gap:0;grid-template-columns:1fr;max-width:100%">
+              <div class="row" style="display:grid;gap:12px">
+                <div style="display:grid;gap:0;grid-template-columns:1fr;gap:12px">
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                    <div>
+                      <label for="f-name">Name (optional)</label>
+                      <input id="f-name" name="name" type="text" maxlength="120" autocomplete="name"/>
+                    </div>
+                    <div>
+                      <label for="f-email">Email (optional)</label>
+                      <input id="f-email" name="email" type="email" maxlength="160" autocomplete="email"/>
+                    </div>
+                  </div>
+                  <div>
+                    <label for="f-type">Type</label>
+                    <select id="f-type" name="kindSelect">
+                      <option value="comment">Comment</option>
+                      <option value="suggestion">Suggestion</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="f-msg">Your note *</label>
+                    <textarea id="f-msg" name="message" required rows="5" maxlength="4000" placeholder="What should we know or fix?"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="links" style="margin-top:14px">
+              <button class="btn btn-teal" type="submit">Leave feedback</button>
+              <a class="btn btn-ghost" href="mailto:ceedotrock@gmail.com?subject=Site%20feedback">Or email us</a>
+            </div>
+            <p class="form-msg" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-art" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="brand-lockup">
+      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=11" width="56" height="56" alt="Slid Phi Labs logo"/>
+      <div>
+        <p class="tag">Impressive Compression..... see for yourself</p>
+        <p>SLID-PHI LABS · SPL PAY PER SUITE · ZRQC · ZRW · CDDG:SPLIT</p>
+      </div>
+    </div>
+    <div class="sitemap">
+      <a href="#codec">SPL Codec</a>
+      <a href="/web">Web</a>
+      <a href="/pps">Suite</a>
+      <a href="/standings">Standings</a>
+      <a href="/demos">Demos</a>
+      <a href="#cddg-split">CDDG:Split</a>
+      <a href="#modules">Modules</a>
+      <a href="#ecosystem">Agent platform</a>
+      <a href="/try">Try</a>
+      <a href="/access">Access</a>
+      <a href="/ideas">Idea Lab</a>
+      <a href="/api/agent">Agents</a>
+    </div>
+    <p class="contact-line">
+          <p class="note" style="margin-top:10px">
+      <strong style="color:var(--teal-bright)">Agents:</strong>
+      <a href="/api/agent"><code>GET /api/agent</code></a>
+      · <a href="/agents.json">agents.json</a>
+      · <a href="/llms.txt">llms.txt</a>
+      — pay with x402 (<code>X-PAYMENT</code>).
+    </p>
+
+    Platforms: <a href="https://cuni-studio.fly.dev/" target="_blank" rel="noopener">CuNi Studio</a>
+      · <a href="https://agentrider.vercel.app/" target="_blank" rel="noopener">Agent^Rider</a><br/><br/>
+      Questions, concerns, or partnerships:
+      <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a>
+    </p>
+    <div class="legal">
+      <div class="copy">
+        <img src="/assets/logos/logo-slid-phi-labs.jpg?v=11" width="28" height="28" alt=""/>
+        <span>© 2026 Slid Phi Labs. All rights reserved.</span>
+      </div>
+      <span>
+        <a href="https://github.com/ceedot-rock/SlidPhiLabs" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="https://www.npmjs.com/package/slid-phi" target="_blank" rel="noopener">npm</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  /* Cinematic page entry — poster + SLiDphiLABS + work areas */
+  const intro = document.getElementById('pageIntro');
+  const skipBtn = document.getElementById('pageIntroSkip');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const doneKey = 'spl_intro_v2';
+
+  function settleHero() {
+    document.querySelector('.hero-bg')?.classList.add('intro-settled');
+    document.querySelector('.poster-frame')?.classList.add('intro-settled');
+  }
+
+  function endIntro() {
+    if (!intro || intro.classList.contains('is-done')) return;
+    intro.classList.add('is-done');
+    document.body.classList.remove('intro-lock');
+    settleHero();
+    try { sessionStorage.setItem(doneKey, '1'); } catch (_) {}
+    setTimeout(() => intro.remove(), 1000);
+  }
+
+  if (!intro || reduce) {
+    intro?.remove();
+    settleHero();
+    return;
+  }
+
+  let seen = false;
+  try { seen = sessionStorage.getItem(doneKey) === '1'; } catch (_) {}
+  if (seen) {
+    intro.remove();
+    settleHero();
+    return;
+  }
+
+  document.body.classList.add('intro-lock');
+  const auto = setTimeout(endIntro, 4800);
+  skipBtn?.addEventListener('click', () => { clearTimeout(auto); endIntro(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      clearTimeout(auto);
+      endIntro();
+    }
+  }, { once: true });
+})();
+</script>
+
+<script>
+(() => {
+  /* Menu pulldown */
+  const menu = document.getElementById('navMenu');
+  const menuBtn = document.getElementById('navMenuBtn');
+  if (menu && menuBtn) {
+    const closeMenu = () => {
+      menu.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    };
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = menu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target)) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  }
+
+  const els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach((el) => el.classList.add('on'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('on');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el) => io.observe(el));
+  }
+
+  /* Payment banner: ONLY after checkout success (session_id / paid=1), never for casual visitors */
+  (function () {
+    const params = new URLSearchParams(location.search);
+    const session =
+      params.get('session_id') ||
+      params.get('session') ||
+      params.get('checkout_session_id') ||
+      '';
+    const paidFlag = params.get('paid') === '1' || params.get('purchase') === 'success';
+    const product = params.get('product') || params.get('purchase') || '';
+    // Ignore product-only query without paid/session (was showing for random ?product= noise)
+    const isCheckoutReturn = !!(session || paidFlag);
+    const banner = document.getElementById('purchase-banner');
+    if (!banner) return;
+    banner.classList.remove('on');
+    if (!isCheckoutReturn) return;
+
+    const labels = {
+      'cddg-split': 'CDDG:Split',
+      twin: 'CDDG:Split',
+      'residual-governance': 'CDDG:Split',
+      'zrw-starting-gate': 'ZRW N00b',
+      'zrw-n00b': 'ZRW N00b',
+      'zrw-pro-starter': 'ZRW Pro',
+      'zrw-pro': 'ZRW Pro',
+      'zrw-l33t-unlimited': 'ZRW L33t$aUC3',
+      'zrw-l33t': 'ZRW L33t$aUC3',
+      'support-integration': 'Support + Integration',
+      sponsor: 'Sponsor',
+      consulting: 'Consulting',
+      'try-gate': 'Try Gate chip-in',
+      donate: 'Donation',
+      auto: 'SPL Codec suite',
+    };
+    const name = product
+      ? labels[product] || product.replace(/-/g, ' ')
+      : 'your purchase';
+    const msg = document.getElementById('purchase-msg');
+    const link = document.getElementById('purchase-access-link');
+    if (msg) {
+      msg.innerHTML =
+        '<strong>Payment received</strong>' +
+        (name ? ' for <span class="mono">' + name + '</span>' : '') +
+        '. Open Access to claim your package.';
+    }
+    if (link) {
+      const q = new URLSearchParams();
+      if (product && product !== 'success') q.set('product', product);
+      if (session) q.set('session', session);
+      link.href = '/access' + (q.toString() ? '?' + q.toString() : '');
+    }
+    banner.classList.add('on');
+    try {
+      sessionStorage.setItem(
+        'spl_paid_banner',
+        JSON.stringify({ product, session, t: Date.now() })
+      );
+    } catch (_) {}
+    document.getElementById('purchase-dismiss')?.addEventListener('click', () => {
+      banner.classList.remove('on');
+      // strip paid query from URL without reload
+      if (history.replaceState) {
+        const u = new URL(location.href);
+        ['paid', 'purchase', 'session_id', 'session', 'checkout_session_id', 'product'].forEach((k) =>
+          u.searchParams.delete(k)
+        );
+        history.replaceState({}, '', u.pathname + u.search + u.hash);
+      }
+    });
+  })();
+
+  /* Partner / LOI / Investor / Feedback forms → /api/feedback-submit */
+  document.querySelectorAll('form.site-form').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msgEl = form.querySelector('.form-msg');
+      const btn = form.querySelector('button[type="submit"]');
+      const kindSelect = form.querySelector('[name="kindSelect"]');
+      let kind = form.getAttribute('data-kind') || 'comment';
+      if (kindSelect && kindSelect.value) kind = kindSelect.value;
+
+      const fd = new FormData(form);
+      const payload = {
+        kind,
+        name: (fd.get('name') || '').toString(),
+        email: (fd.get('email') || '').toString(),
+        org: (fd.get('org') || '').toString(),
+        website: (fd.get('website') || '').toString(),
+        amount: (fd.get('amount') || '').toString(),
+        message: (fd.get('message') || '').toString(),
+      };
+
+      if (msgEl) {
+        msgEl.className = 'form-msg';
+        msgEl.textContent = '';
+      }
+      if (btn) btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/feedback-submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          if (msgEl) {
+            msgEl.className = 'form-msg on err';
+            msgEl.textContent = data.error || 'Could not send. Try email instead.';
+          }
+          if (btn) btn.disabled = false;
+          return;
+        }
+        if (msgEl) {
+          msgEl.className = 'form-msg on ok';
+          msgEl.textContent = data.message || 'Thanks — received.';
+        }
+        form.querySelectorAll('input,textarea,select,button').forEach((el) => {
+          if (el !== btn) el.disabled = true;
+        });
+      } catch (err) {
+        if (msgEl) {
+          msgEl.className = 'form-msg on err';
+          msgEl.textContent = 'Network error. Email ceedotrock@gmail.com or corey@slidphilabs.com.';
+        }
+        if (btn) btn.disabled = false;
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>

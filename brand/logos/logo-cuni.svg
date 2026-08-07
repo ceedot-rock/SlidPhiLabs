@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Sponsor">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c1524"/>
+      <stop offset="55%" stop-color="#071018"/>
+      <stop offset="100%" stop-color="#050b16"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5e6a3"/>
+      <stop offset="45%" stop-color="#e8c547"/>
+      <stop offset="100%" stop-color="#c9a227"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5ef0df"/>
+      <stop offset="100%" stop-color="#3dd6c6"/>
+    </linearGradient>
+  </defs>
+  <!-- plate -->
+  <rect width="512" height="512" rx="88" fill="url(#bg)"/>
+  <rect x="22" y="22" width="468" height="468" rx="72" fill="none" stroke="rgba(232,197,71,0.42)" stroke-width="3"/>
+  <rect x="38" y="38" width="436" height="436" rx="62" fill="none" stroke="rgba(61,214,198,0.18)" stroke-width="1.5"/>
+  <!-- subtle orbit -->
+  <circle cx="256" cy="256" r="148" fill="none" stroke="rgba(61,214,198,0.14)" stroke-width="2"/>
+  <circle cx="256" cy="256" r="2.5" fill="#3dd6c6" opacity="0.7"/>
+  <!-- accent tick top -->
+  <line x1="256" y1="72" x2="256" y2="96" stroke="url(#teal)" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+  <!-- sponsor spark -->
+  <path d="M256 270 L266 300 L296 300 L272 318 L282 348 L256 330 L230 348 L240 318 L216 300 L246 300 Z" fill="none" stroke="url(#gold)" stroke-width="2" opacity="0.55"/>
+  <text x="256" y="258" text-anchor="middle" font-family="Georgia, 'Times New Roman', Times, serif" font-size="48" font-weight="700" fill="url(#gold)" letter-spacing="4">Sponsor</text>
+</svg>

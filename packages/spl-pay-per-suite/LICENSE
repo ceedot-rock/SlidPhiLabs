@@ -1,0 +1,5 @@
+Copyright (c) 2026 Slid Phi Labs. All rights reserved.
+
+This package provides client tooling for SPL Pay Per Suite (quotes, checkout links, job intake).
+Proprietary compression engines are not included. Commercial processing is fulfilled by Slid Phi Labs after payment.
+See https://www.slidphilabs.com/pps

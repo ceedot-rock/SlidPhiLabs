@@ -1,6 +1,236 @@
 {
   "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
-    { "source": "/try", "destination": "/try.html" }
+    {
+      "source": "/try",
+      "destination": "/try/index.html"
+    },
+    {
+      "source": "/try/",
+      "destination": "/try/index.html"
+    },
+    {
+      "source": "/access",
+      "destination": "/access/index.html"
+    },
+    {
+      "source": "/access/",
+      "destination": "/access/index.html"
+    },
+    {
+      "source": "/demos",
+      "destination": "/demos/index.html"
+    },
+    {
+      "source": "/demos/",
+      "destination": "/demos/index.html"
+    },
+    {
+      "source": "/pps",
+      "destination": "/pps/index.html"
+    },
+    {
+      "source": "/pps/",
+      "destination": "/pps/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "slidphilabs.com"
+        }
+      ],
+      "destination": "https://www.slidphilabs.com/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "slidphilabs.com"
+        }
+      ],
+      "destination": "https://www.slidphilabs.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/try.html",
+      "destination": "/try",
+      "permanent": true
+    },
+    {
+      "source": "/access.html",
+      "destination": "/access",
+      "permanent": true
+    },
+    {
+      "source": "/demos.html",
+      "destination": "/demos",
+      "permanent": true
+    },
+    {
+      "source": "/pps.html",
+      "destination": "/pps",
+      "permanent": true
+    },
+    {
+      "source": "/ppp",
+      "destination": "/pps",
+      "permanent": false
+    },
+    {
+      "source": "/ppp/",
+      "destination": "/pps",
+      "permanent": false
+    },
+    {
+      "source": "/ppp.html",
+      "destination": "/pps",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/standings.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
+        }
+      ]
+    },
+    {
+      "source": "/ideas.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
+        }
+      ]
+    },
+    {
+      "source": "/agents.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/agents.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/api/agent",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=60"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    }
   ]
 }

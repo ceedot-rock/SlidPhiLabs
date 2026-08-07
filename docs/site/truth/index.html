@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Truth table — public benches · Slid Phi Labs</title>
+<meta name="description" content="Public truth table for Compression outcomes. Live web-codec bench. No private engine."/>
+<meta name="lab-modules" content="compression,agent_platform"/>
+<meta name="lab-compression" content="SPL Codec,CDDG:Split"/>
+<meta name="lab-agent-platform" content="CuNi,Agent^Rider,Quikgater"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:description" content="Public truth table for Compression outcomes. Live web-codec bench. No private engine."/>
+<meta name="twitter:title" content="Truth table — public benches · Slid Phi Labs"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:url" content="https://www.slidphilabs.com/truth"/>
+<meta property="og:description" content="Public truth table for Compression outcomes. Live web-codec bench. No private engine."/>
+<meta property="og:title" content="Truth table — public benches · Slid Phi Labs"/>
+<link rel="canonical" href="https://www.slidphilabs.com/truth"/>
+<meta name="robots" content="index,follow"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=6"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#050b16;--panel:#0c1524;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);--text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--code:#081018;--poster:url("/assets/slid-phi-labs-master.jpg")}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.14;background:linear-gradient(180deg,rgba(5,11,22,.5),rgba(5,11,22,.9)),var(--poster) 50% 20%/cover no-repeat}
+a{color:var(--accent);text-decoration:none}a:hover{color:var(--teal-bright)}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+nav{position:sticky;top:0;z-index:50;background:rgba(5,11,22,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,197,71,.18)}
+nav .inner{max-width:980px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.logo{font-family:'Cinzel',serif;font-weight:700;color:var(--gold);display:inline-flex;gap:10px;align-items:center}
+.logo img{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-gold)}
+.logo span{color:var(--teal-bright)}
+.nav-links a{color:var(--muted);margin-left:12px;font-size:.88rem}
+.hero{padding:32px 0 20px}
+.badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--gold);border:1px solid var(--border-gold);padding:4px 12px;border-radius:999px;margin-bottom:12px}
+h1{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(1.4rem,3vw,2rem);margin-bottom:10px}
+.lead{color:var(--muted);max-width:40rem}
+.card{background:rgba(12,21,36,.92);border:1px solid var(--border);border-radius:14px;padding:16px;margin:16px 0}
+h2{font-family:'Cinzel',serif;color:var(--gold);font-size:1.1rem;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+th,td{text-align:left;padding:8px;border-bottom:1px solid rgba(61,214,198,.12);color:var(--muted)}
+th{color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+td strong{color:var(--text)}
+.win{color:#3ecf8e}
+.btn{display:inline-flex;padding:10px 14px;border-radius:8px;font-weight:600;font-size:.86rem;border:0;cursor:pointer;font-family:inherit}
+.btn-teal{background:linear-gradient(180deg,#5ef0df,var(--teal));color:#031018}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(61,214,198,.3)}
+textarea{width:100%;min-height:120px;background:var(--code);border:1px solid rgba(61,214,198,.25);color:var(--text);border-radius:10px;padding:10px;font-family:'IBM Plex Mono',monospace;font-size:.8rem}
+.out{margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted);white-space:pre-wrap}
+.note{font-size:.85rem;color:var(--muted);margin-top:10px}
+footer{padding:28px 0;border-top:1px solid rgba(232,197,71,.18);color:var(--muted);font-size:.88rem;margin-top:24px}
+</style>
+</head>
+<body>
+<nav><div class="inner">
+  <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=12" alt=""/>Slid Phi <span>Labs</span></a>
+  <div class="nav-links">
+    <a href="/standings">Standings</a>
+    <a href="/web">Web</a>
+    <a href="/pps">Suite</a>
+    <a href="/demos">Demos</a>
+  </div>
+</div></nav>
+<header class="hero wrap">
+  <div class="badge">PUBLIC TRUTH TABLE · NO PRIVATE ENGINE</div>
+  <h1>Truth table</h1>
+  <p class="lead">Published outcomes only. Numbers load from <a href="/standings.json">standings.json</a>. Run a live web-codec bench below.</p>
+  <p class="note" id="updated">Loading…</p>
+</header>
+<main class="wrap">
+  <div class="card">
+    <h2>Published scorecard</h2>
+    <div style="overflow-x:auto"><table>
+      <thead><tr><th>Metric</th><th>Lab</th><th>Value</th><th>Status</th><th>As of</th></tr></thead>
+      <tbody id="rows"><tr><td colspan="5">Loading…</td></tr></tbody>
+    </table></div>
+    <p class="note"><a href="/standings">Full standings UI →</a></p>
+  </div>
+  <div class="card">
+    <h2>Interactive · web payload</h2>
+    <textarea id="payload">{"hello":"slid phi","n":[0,1,2,3,4,5,6,7,8,9],"msg":"truth table live bench"}</textarea>
+    <p style="margin-top:10px"><button class="btn btn-teal" type="button" id="run">Run web-codec bench</button>
+    <a class="btn btn-ghost" href="/web" style="margin-left:8px">Full web UI</a></p>
+    <div class="out" id="out">—</div>
+  </div>
+</main>
+<footer class="wrap">
+  <p><a href="/">Home</a> · <a href="/standings">Standings</a> · IP Guard: public outcomes only.</p>
+</footer>
+<script>
+(async () => {
+  const tbody = document.getElementById('rows');
+  const updated = document.getElementById('updated');
+  try {
+    const d = await fetch('/standings.json?v=' + Date.now(), { cache: 'no-store' }).then(r => r.json());
+    updated.textContent = 'Last updated · ' + (d.updated || '—') + ' · v' + (d.version || '');
+    const rows = (d.scorecard || []).filter(s => s.status === 'leading' || s.status === 'record' || s.status === 'trailing' || s.status === 'partial');
+    tbody.innerHTML = rows.map(s => `<tr>
+      <td><strong>${s.metric}</strong></td>
+      <td>${s.lab}</td>
+      <td class="${s.status==='leading'||s.status==='record'?'win':''}">${s.lab_value}</td>
+      <td>${s.status}</td>
+      <td>${s.as_of}</td>
+    </tr>`).join('') || '<tr><td colspan="5">No rows</td></tr>';
+  } catch (e) {
+    tbody.innerHTML = '<tr><td colspan="5">Failed to load standings.json</td></tr>';
+    updated.textContent = 'Load failed';
+  }
+  document.getElementById('run').onclick = async () => {
+    const out = document.getElementById('out');
+    out.textContent = 'Running…';
+    try {
+      const j = await fetch('/api/web-codec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ op: 'bench', type: 'json', data: document.getElementById('payload').value }),
+      }).then(r => r.json());
+      out.textContent = JSON.stringify(j, null, 2);
+    } catch (e) {
+      out.textContent = String(e);
+    }
+  };
+})();
+</script>
+</body>
+</html>
