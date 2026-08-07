@@ -709,6 +709,53 @@ tr.hl td{background:rgba(61,214,198,.04)}
   font-family:'Cinzel',serif;letter-spacing:.06em;
 }
 
+/* lab feed ticker */
+.lab-ticker{
+  margin:16px 0 18px;overflow:hidden;border-radius:12px;
+  border:1px solid rgba(232,197,71,.28);
+  background:rgba(8,14,26,.85);
+  mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+}
+.lab-ticker__track{
+  display:flex;gap:0;width:max-content;
+  animation:labTicker 48s linear infinite;
+}
+.lab-ticker:hover .lab-ticker__track{animation-play-state:paused}
+.lab-ticker__item{
+  flex:0 0 auto;display:inline-flex;align-items:center;gap:10px;
+  padding:12px 22px;font-size:.86rem;color:var(--muted);white-space:nowrap;
+  border-right:1px solid rgba(61,214,198,.12);
+}
+.lab-ticker__item a{color:var(--gold);font-weight:600}
+.lab-ticker__tag{
+  font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--teal-bright);
+}
+@keyframes labTicker{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+@media (prefers-reduced-motion: reduce){
+  .lab-ticker__track{animation:none;flex-wrap:wrap;width:100%}
+  .lab-ticker{mask-image:none}
+}
+.lab-feed-grid{display:grid;gap:12px;margin-top:4px}
+@media(min-width:720px){.lab-feed-grid{grid-template-columns:repeat(3,1fr)}}
+.lab-feed-card{
+  background:rgba(12,21,36,.9);border:1px solid var(--border);border-radius:12px;
+  padding:14px 14px 12px;display:flex;flex-direction:column;gap:6px;
+  transition:border-color .15s;
+}
+.lab-feed-card:hover{border-color:rgba(232,197,71,.4)}
+.lab-feed-card .lf-type{
+  font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--teal-bright);
+}
+.lab-feed-card .lf-date{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--muted)}
+.lab-feed-card h3{font-size:.95rem;font-weight:600;color:var(--text);margin:0}
+.lab-feed-card p{font-size:.84rem;color:var(--muted);line-height:1.45;flex:1;margin:0}
+.lab-feed-card a.lf-go{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--gold);margin-top:4px}
+
 /* connect + feedback */
 .connect-grid{display:grid;gap:14px}
 @media(min-width:800px){.connect-grid{grid-template-columns:1fr 1fr}}
@@ -1123,6 +1170,7 @@ body.intro-lock{overflow:hidden}
           <a href="/agents" role="menuitem">Agentic Minded · agents</a>
           <a href="/try" role="menuitem">Try Gate</a>
           <a href="/access" role="menuitem">Access</a>
+          <a href="/updates" role="menuitem">Lab Feed</a>
           <a href="/ideas" role="menuitem">Idea Lab</a>
           <a href="#connect" role="menuitem">Partners</a>
           <a href="mailto:corey@slidphilabs.com" role="menuitem">Contact</a>
@@ -1774,6 +1822,31 @@ body.intro-lock{overflow:hidden}
   </div>
 </section>
 
+<section id="lab-feed" aria-labelledby="lab-feed-title">
+  <div class="narrow">
+    <div class="reveal">
+      <div class="sec-label">Lab feed</div>
+      <h2 id="lab-feed-title">News · product · plans · @slidphilabs</h2>
+      <p class="note">Scrolling updates we own — product, proof, future plans — plus a live door to X. Full archive on <a href="/updates">/updates</a> · JSON <a href="/updates.json">/updates.json</a>.</p>
+
+      <div class="lab-ticker" aria-label="Scrolling lab headlines">
+        <div class="lab-ticker__track" id="labTickerTrack"></div>
+      </div>
+
+      <div class="lab-feed-grid" id="labFeedCards">
+        <p class="note" id="labFeedStatus">Loading feed…</p>
+      </div>
+
+      <div class="cta-row" style="margin-top:16px">
+        <a class="btn btn-gold btn-sm" href="/updates">Open full Lab Feed</a>
+        <a class="btn btn-teal btn-sm" href="https://x.com/slidphilabs" target="_blank" rel="noopener me">X · @slidphilabs</a>
+        <a class="btn btn-ghost btn-sm" href="/humans">Pub Facing</a>
+        <a class="btn btn-ghost btn-sm" href="/agents">Agentic Minded</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="connect">
   <div class="narrow">
     <div class="reveal">
@@ -1944,6 +2017,7 @@ body.intro-lock{overflow:hidden}
       <a href="#ecosystem">Agent platform</a>
       <a href="/try">Try</a>
       <a href="/access">Access</a>
+      <a href="/updates">Lab Feed</a>
       <a href="/ideas">Idea Lab</a>
       <a href="/humans">Pub Facing</a>
       <a href="/agents">Agentic Minded</a>
@@ -1979,6 +2053,40 @@ body.intro-lock{overflow:hidden}
 </footer>
 
 <script>
+/* Lab feed: ticker + latest cards */
+(() => {
+  const track = document.getElementById('labTickerTrack');
+  const cards = document.getElementById('labFeedCards');
+  const status = document.getElementById('labFeedStatus');
+  if (!track || !cards) return;
+  const esc = (s) => String(s || '').replace(/[&<>"']/g, (c) =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  fetch('/updates.json', { cache: 'no-store' })
+    .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
+    .then((data) => {
+      const items = (data.items || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+      if (!items.length) throw new Error('empty');
+      const tickerHtml = items.map((i) =>
+        `<span class="lab-ticker__item"><span class="lab-ticker__tag">${esc(i.type)}</span>` +
+        `<a href="${esc(i.href || '/updates')}">${esc(i.title)}</a>` +
+        `<span>· ${esc(i.date)}</span></span>`
+      ).join('');
+      track.innerHTML = tickerHtml + tickerHtml;
+      cards.innerHTML = items.slice(0, 6).map((i) =>
+        `<article class="lab-feed-card">` +
+        `<div style="display:flex;justify-content:space-between;gap:8px;align-items:center">` +
+        `<span class="lf-type">${esc(i.type)}</span><span class="lf-date">${esc(i.date)}</span></div>` +
+        `<h3>${esc(i.title)}</h3><p>${esc(i.body)}</p>` +
+        (i.href ? `<a class="lf-go" href="${esc(i.href)}"${String(i.href).startsWith('http') ? ' target="_blank" rel="noopener"' : ''}>${esc(i.href_label || 'Open')} →</a>` : '') +
+        `</article>`
+      ).join('');
+    })
+    .catch(() => {
+      if (status) status.textContent = 'Feed offline — see /updates or @slidphilabs on X.';
+      track.innerHTML = '<span class="lab-ticker__item"><a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a> · lab feed loading…</span>';
+    });
+})();
+
 (() => {
   /* Cinematic page entry — poster + SLiDphiLABS + work areas */
   const intro = document.getElementById('pageIntro');

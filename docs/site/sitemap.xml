@@ -27,4 +27,6 @@
   <url><loc>https://www.slidphilabs.com/.well-known/agentic-commerce.json</loc><lastmod>2026-08-07</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
   <url><loc>https://www.slidphilabs.com/.well-known/agent-card.json</loc><lastmod>2026-08-07</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
   <url><loc>https://www.slidphilabs.com/.well-known/security.txt</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.slidphilabs.com/updates</loc><lastmod>2026-08-07</lastmod><changefreq>daily</changefreq><priority>0.92</priority></url>
+  <url><loc>https://www.slidphilabs.com/updates.json</loc><lastmod>2026-08-07</lastmod><changefreq>daily</changefreq><priority>0.85</priority></url>
 </urlset>

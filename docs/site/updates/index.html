@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Lab Feed — updates · news · plans · Slid Phi Labs</title>
+<meta name="description" content="Scrolling lab feed: product updates, news, future plans, and X @slidphilabs. Public outcomes from Slid Phi Labs."/>
+<meta name="keywords" content="Slid Phi Labs updates, product news, compression roadmap, @slidphilabs"/>
+<link rel="canonical" href="https://www.slidphilabs.com/updates"/>
+<link rel="me" href="https://x.com/slidphilabs"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/updates.json" title="Lab feed JSON"/>
+<meta name="lab-modules" content="compression,agent_platform"/>
+<meta name="robots" content="index,follow"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:title" content="Lab Feed — updates · news · plans · Slid Phi Labs"/>
+<meta property="og:description" content="Product updates, news, plans, and @slidphilabs in one scrolling feed."/>
+<meta property="og:url" content="https://www.slidphilabs.com/updates"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@slidphilabs"/>
+<meta name="twitter:creator" content="@slidphilabs"/>
+<meta name="twitter:title" content="Lab Feed — Slid Phi Labs"/>
+<meta name="twitter:description" content="Product updates, news, plans, and @slidphilabs."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="theme-color" content="#050b16"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=12"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#050b16;--panel:#0c1524;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);--text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--poster:url("/assets/slid-phi-labs-master.jpg")}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.14;background:linear-gradient(180deg,rgba(5,11,22,.5),rgba(5,11,22,.94)),var(--poster) 50% 20%/cover no-repeat}
+a{color:var(--accent);text-decoration:none}a:hover{color:var(--teal-bright)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+nav{position:sticky;top:0;z-index:50;background:rgba(5,11,22,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,197,71,.18)}
+nav .inner{max-width:720px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.logo{font-family:'Cinzel',serif;font-weight:700;color:var(--gold);display:inline-flex;gap:10px;align-items:center;font-size:.95rem}
+.logo img{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-gold);object-fit:cover}
+.nav-links{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;font-size:.86rem}
+.nav-links a{color:var(--muted)}.nav-links a.active{color:var(--gold)}
+.btn{display:inline-flex;padding:8px 14px;border-radius:9px;font-weight:600;font-size:.82rem}
+.btn-gold{background:linear-gradient(180deg,#f0d56a,var(--gold));color:#1a1404}
+.btn-teal{background:linear-gradient(180deg,#5ef0df,var(--teal));color:#031018}
+.btn-ghost{border:1px solid rgba(61,214,198,.3);color:var(--text)}
+header.hero{padding:28px 0 12px}
+.badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border-gold);padding:5px 12px;border-radius:999px;margin-bottom:12px;background:rgba(232,197,71,.1)}
+h1{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(1.4rem,3vw,2rem);margin-bottom:10px}
+.lead{color:var(--muted);font-size:1rem;max-width:36rem}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+.filters button{font-family:'IBM Plex Mono',monospace;font-size:.72rem;padding:6px 12px;border-radius:999px;border:1px solid rgba(61,214,198,.25);background:transparent;color:var(--muted);cursor:pointer}
+.filters button.on,.filters button:hover{border-color:var(--gold);color:var(--gold);background:rgba(232,197,71,.08)}
+.feed{display:flex;flex-direction:column;gap:12px;padding:12px 0 40px}
+.item{background:rgba(12,21,36,.92);border:1px solid var(--border);border-radius:14px;padding:16px 16px 14px;transition:border-color .15s}
+.item:hover{border-color:rgba(232,197,71,.4)}
+.item-top{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin-bottom:8px}
+.type{font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:6px}
+.type-product{background:rgba(61,214,198,.15);color:var(--teal-bright)}
+.type-news,.type-social{background:rgba(91,168,255,.15);color:#8ec5ff}
+.type-plan{background:rgba(232,197,71,.12);color:var(--gold)}
+.type-proof{background:rgba(62,207,142,.12);color:#3ecf8e}
+.type-agent{background:rgba(61,214,198,.12);color:var(--teal-bright)}
+.date{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted)}
+.item h2{font-size:1.05rem;font-weight:600;margin-bottom:6px;color:var(--text)}
+.item p{color:var(--muted);font-size:.92rem}
+.item .go{display:inline-block;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--gold)}
+.x-panel{margin:8px 0 28px;padding:16px;border:1px solid rgba(61,214,198,.25);border-radius:14px;background:rgba(8,16,28,.75)}
+.x-panel h3{font-family:'Cinzel',serif;color:var(--teal-bright);font-size:1rem;margin-bottom:8px}
+.x-panel p{color:var(--muted);font-size:.9rem;margin-bottom:12px}
+footer{padding:24px 0 40px;border-top:1px solid rgba(232,197,71,.15);color:var(--muted);font-size:.88rem}
+footer a{margin-right:12px}
+#status{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted);margin-top:8px}
+</style>
+</head>
+<body>
+<nav><div class="inner">
+  <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=12" alt=""/>Slid Phi Labs</a>
+  <div class="nav-links">
+    <a class="active" href="/updates">Lab Feed</a>
+    <a href="/humans">Humans</a>
+    <a href="/agents">Agents</a>
+    <a class="btn btn-teal" href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
+  </div>
+</div></nav>
+
+<header class="hero wrap" id="main">
+  <div class="badge">Lab feed · product · news · plans · social</div>
+  <h1>What’s moving in the lab</h1>
+  <p class="lead">Curated updates we control — plus a live lane to <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a> on X. Public outcomes only.</p>
+  <p id="status">Loading feed…</p>
+  <div class="filters" id="filters" aria-label="Filter feed">
+    <button type="button" class="on" data-filter="all">All</button>
+    <button type="button" data-filter="product">Product</button>
+    <button type="button" data-filter="agent">Agents</button>
+    <button type="button" data-filter="proof">Proof</button>
+    <button type="button" data-filter="plan">Plans</button>
+    <button type="button" data-filter="social">Social</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="x-panel">
+    <h3>X · @slidphilabs</h3>
+    <p>Follow for short news and product chatter. Full product history stays on this feed (always available without an X account).</p>
+    <a class="btn btn-teal" href="https://x.com/slidphilabs" target="_blank" rel="noopener me">Open timeline on X</a>
+    <a class="btn btn-ghost" href="https://x.com/slidphilabs" target="_blank" rel="noopener" style="margin-left:8px">Share lab</a>
+  </div>
+  <div class="feed" id="feed" aria-live="polite"></div>
+</main>
+
+<footer class="wrap">
+  <a href="/">Home</a>
+  <a href="/updates.json">updates.json</a>
+  <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
+  <a href="mailto:corey@slidphilabs.com">Contact</a>
+</footer>
+<script src="/assets/platform-home.js?v=1" defer></script>
+<script>
+(function () {
+  const feedEl = document.getElementById('feed');
+  const status = document.getElementById('status');
+  let items = [];
+  let filter = 'all';
+
+  function typeClass(t) {
+    return 'type type-' + (t || 'news');
+  }
+
+  function render() {
+    const list = filter === 'all' ? items : items.filter(function (i) {
+      return i.type === filter || (i.tags || []).indexOf(filter) >= 0;
+    });
+    feedEl.innerHTML = list.map(function (i) {
+      return (
+        '<article class="item" data-type="' + (i.type || '') + '">' +
+          '<div class="item-top">' +
+            '<span class="' + typeClass(i.type) + '">' + (i.type || 'update') + '</span>' +
+            '<span class="date">' + (i.date || '') + '</span>' +
+          '</div>' +
+          '<h2>' + escapeHtml(i.title) + '</h2>' +
+          '<p>' + escapeHtml(i.body) + '</p>' +
+          (i.href ? '<a class="go" href="' + i.href + '"' + (i.href.indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '') + '>' +
+            escapeHtml(i.href_label || 'Open') + ' →</a>' : '') +
+        '</article>'
+      );
+    }).join('');
+    if (!list.length) feedEl.innerHTML = '<p style="color:var(--muted)">No items in this filter.</p>';
+  }
+
+  function escapeHtml(s) {
+    return String(s || '').replace(/[&<>"']/g, function (c) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+    });
+  }
+
+  document.getElementById('filters').addEventListener('click', function (e) {
+    const b = e.target.closest('button[data-filter]');
+    if (!b) return;
+    filter = b.getAttribute('data-filter');
+    document.querySelectorAll('#filters button').forEach(function (x) { x.classList.toggle('on', x === b); });
+    render();
+  });
+
+  fetch('/updates.json', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (data) {
+      items = (data.items || []).slice().sort(function (a, b) {
+        return String(b.date).localeCompare(String(a.date));
+      });
+      status.textContent = items.length + ' updates · last pack ' + (data.updated || '');
+      render();
+    })
+    .catch(function () {
+      status.textContent = 'Could not load updates.json';
+    });
+})();
+</script>
+</body>
+</html>

@@ -49,6 +49,14 @@
     {
       "source": "/agents/",
       "destination": "/agents/index.html"
+    },
+    {
+      "source": "/updates",
+      "destination": "/updates/index.html"
+    },
+    {
+      "source": "/updates/",
+      "destination": "/updates/index.html"
     }
   ],
   "redirects": [
@@ -128,9 +136,31 @@
       "source": "/for-agents",
       "destination": "/agents",
       "permanent": true
+    },
+    {
+      "source": "/updates.html",
+      "destination": "/updates",
+      "permanent": true
     }
   ],
   "headers": [
+    {
+      "source": "/updates.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=120"
+        }
+      ]
+    },
     {
       "source": "/",
       "headers": [

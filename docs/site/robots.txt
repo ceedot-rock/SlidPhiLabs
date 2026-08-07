@@ -5,6 +5,8 @@ Allow: /
 Allow: /humans
 Allow: /agents
 Allow: /platform.json
+Allow: /updates
+Allow: /updates.json
 Allow: /api/welcome
 Allow: /openapi.yaml
 Allow: /llms-full.txt

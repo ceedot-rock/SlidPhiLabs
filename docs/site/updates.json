@@ -1,0 +1,122 @@
+{
+  "service": "Slid Phi Labs — Lab Feed",
+  "version": "1.0.0",
+  "updated": "2026-08-07",
+  "social": {
+    "x": "https://x.com/slidphilabs",
+    "handle": "@slidphilabs"
+  },
+  "description": "Product updates, news, plans, and social pointers. Public outcomes only.",
+  "items": [
+    {
+      "id": "u-2026-08-07-dual",
+      "date": "2026-08-07",
+      "type": "product",
+      "title": "Dual-surface platform live",
+      "body": "Pub Facing for humans (/humans) and Agentic Minded for agents (/agents). One mission · two attack vectors · one team.",
+      "href": "https://www.slidphilabs.com/humans",
+      "href_label": "Open Pub Facing",
+      "tags": ["platform", "humans", "agents"]
+    },
+    {
+      "id": "u-2026-08-07-x",
+      "date": "2026-08-07",
+      "type": "social",
+      "title": "Follow on X · @slidphilabs",
+      "body": "News, product notes, and lab chatter. Official handle for Slid Phi Labs.",
+      "href": "https://x.com/slidphilabs",
+      "href_label": "x.com/slidphilabs",
+      "tags": ["twitter", "x"]
+    },
+    {
+      "id": "u-2026-08-07-discovery",
+      "date": "2026-08-07",
+      "type": "agent",
+      "title": "Agent discovery v1.4 + welcome",
+      "body": "GET /api/welcome then /api/agent. platform.json map, OpenAPI, llms-full for machine onboarding.",
+      "href": "https://www.slidphilabs.com/api/agent",
+      "href_label": "GET /api/agent",
+      "tags": ["x402", "agents"]
+    },
+    {
+      "id": "u-2026-08-06-pricing",
+      "date": "2026-08-06",
+      "type": "product",
+      "title": "Suite pricing: multi-GB stays cheap",
+      "body": "SPL Codec suite from ~$0.50 metered. Bulk messaging ~$2 class for 9 GB. Quote on /pps.",
+      "href": "https://www.slidphilabs.com/pps",
+      "href_label": "Open suite",
+      "tags": ["pricing", "compression"]
+    },
+    {
+      "id": "u-2026-08-06-x402",
+      "date": "2026-08-06",
+      "type": "product",
+      "title": "x402 dual-rail: Solana + Base",
+      "body": "Agent catalog pays USDC on Solana mainnet and Base (eip155:8453). Header X-PAYMENT.",
+      "href": "https://www.slidphilabs.com/agents",
+      "href_label": "Agentic Minded",
+      "tags": ["x402", "commerce"]
+    },
+    {
+      "id": "u-2026-08-05-web",
+      "date": "2026-08-05",
+      "type": "product",
+      "title": "Free web compress demo",
+      "body": "HTML · CSS · JS · JSON live compress/decompress. No account. Compression module front door.",
+      "href": "https://www.slidphilabs.com/web",
+      "href_label": "Try /web",
+      "tags": ["demo", "compression"]
+    },
+    {
+      "id": "u-2026-08-05-standings",
+      "date": "2026-08-05",
+      "type": "proof",
+      "title": "Public standings & truth table",
+      "body": "Outcomes vs gzip/brotli published. Processes stay private. See /standings and /truth.",
+      "href": "https://www.slidphilabs.com/standings",
+      "href_label": "Standings",
+      "tags": ["proof", "benches"]
+    },
+    {
+      "id": "u-2026-08-04-npm",
+      "date": "2026-08-04",
+      "type": "product",
+      "title": "npm packages refreshed (agentic metadata)",
+      "body": "slid-phi, blackjack-compression, shard-zip, shard-tsdb, ZRW pack, spl-pay-per-suite — homepage + agentic fields live on registry.",
+      "href": "https://www.npmjs.com/package/slid-phi",
+      "href_label": "npm slid-phi",
+      "tags": ["npm"]
+    },
+    {
+      "id": "u-plan-cinema",
+      "date": "2026-08-07",
+      "type": "plan",
+      "title": "Plan: cinema intro from poster",
+      "body": "Winged creator points from heavens; finger ignites agentic birth; settle dual doors (human above / agentic below). Keyframes ready — video gen on next host.",
+      "href": "https://www.slidphilabs.com/",
+      "href_label": "Home",
+      "tags": ["future", "brand"]
+    },
+    {
+      "id": "u-plan-access",
+      "date": "2026-08-07",
+      "type": "plan",
+      "title": "Plan: tighten Access delivery",
+      "body": "Pay → session verify → deliverable. Closing the loop after Stripe / x402 so buyers feel at home faster.",
+      "href": "https://www.slidphilabs.com/access",
+      "href_label": "Access",
+      "tags": ["future", "commerce"]
+    },
+    {
+      "id": "u-plan-growth",
+      "date": "2026-08-07",
+      "type": "plan",
+      "title": "Plan: human + agent growth rails",
+      "body": "Show HN / Reddit human posts; keep /api/agent and llms.txt hot for agent crawlers. Share kit in docs.",
+      "href": "https://x.com/slidphilabs",
+      "href_label": "@slidphilabs",
+      "tags": ["future", "growth"]
+    }
+  ]
+}
