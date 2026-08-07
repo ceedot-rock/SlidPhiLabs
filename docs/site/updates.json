@@ -9,6 +9,20 @@
   "description": "Product updates, news, plans, and social pointers. Public outcomes only.",
   "items": [
     {
+      "id": "u-access-try-gate-instant",
+      "date": "2026-08-07",
+      "type": "product",
+      "title": "Try Gate Access loop: instant seat after Stripe verify",
+      "body": "Pay $9 → /access verifies session → entitlement JSON, eval guide, checklist, public demos. Full packages still human-fulfilled. No secret sauce in the pack.",
+      "href": "https://www.slidphilabs.com/access?product=try-gate",
+      "href_label": "Open Access · try-gate",
+      "tags": [
+        "access",
+        "try-gate",
+        "product"
+      ]
+    },
+    {
       "id": "u-blog-latest",
       "date": "2026-08-07",
       "type": "product",

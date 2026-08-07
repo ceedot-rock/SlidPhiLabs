@@ -112,6 +112,13 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 .meta-row{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--muted);margin-top:10px;word-break:break-all}
 .deliver-box{margin-top:14px;padding:14px;background:var(--code);border-radius:10px;border:1px solid rgba(61,214,198,.2);font-size:.93rem;color:var(--muted)}
 .deliver-box strong{color:var(--text)}
+#status-card.ok{border-color:rgba(62,207,142,.45)}
+.step-list{list-style:none;margin:12px 0 0;padding:0}
+.step-list li{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(61,214,198,.1);align-items:flex-start}
+.step-list .n{flex:0 0 22px;height:22px;border-radius:6px;background:rgba(61,214,198,.15);color:var(--teal-bright);font-family:'IBM Plex Mono',monospace;font-size:.72rem;display:flex;align-items:center;justify-content:center}
+.step-list a{color:var(--gold);font-weight:600}
+.step-list .d{font-size:.85rem;color:var(--muted)}
+.pack-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 
 .product-grid{display:grid;gap:10px}
 @media(min-width:560px){.product-grid{grid-template-columns:1fr 1fr}}
@@ -167,8 +174,9 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
   <div class="step"><span class="num">2</span><strong>We confirm payment</strong>
     We match your session / receipt to the product you bought.
   </div>
-  <div class="step"><span class="num">3</span><strong>You get the package</strong>
-    Download link or install instructions — usually within one business day if anything is manual.
+  <div class="step"><span class="num">3</span><strong>You get your deliverable</strong>
+    <strong>Try Gate ($9):</strong> instant evaluation seat + guide on this page after verify.
+    <strong>Full packages:</strong> install instructions after email (usually same day).
   </div>
 
   <h2 id="interim">Need it now?</h2>
@@ -299,9 +307,9 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
     'try-gate': {
       name: 'Try Gate chip-in',
       price: '$9',
-      deliver: 'Free Gate evaluation seat (limits apply). Complete the form on Try Gate if not already.',
+      deliver: 'Instant evaluation seat after payment verify: guide, checklist, entitlement JSON, public demos unlocked.',
       buy: 'https://donate.stripe.com/eVq8wQffL2X60CVfIY6wE0e',
-      blurb: 'Evaluation unlock',
+      blurb: 'Evaluation unlock — instant on Access',
     },
     'donate': {
       name: 'Donate',
@@ -372,33 +380,91 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       (product ? 'product=' + product + ' · ' : '') +
       'session=' + session.slice(0, 18) + (session.length > 18 ? '…' : '');
     actions.innerHTML = '';
-    fetch('/api/access-verify?session=' + encodeURIComponent(session))
+    var verifyUrl =
+      '/api/access-verify?session=' + encodeURIComponent(session) +
+      (product ? '&product=' + encodeURIComponent(product) : '');
+    fetch(verifyUrl)
       .then(function (r) { return r.json().then(function (j) { return { r: r, j: j }; }); })
       .then(function (_ref) {
         var j = _ref.j;
         if (j && j.ok && j.paid) {
           card.classList.remove('pending');
-          card.classList.add('ok');
-          label.textContent = 'Payment confirmed';
-          title.textContent = info ? info.name : (j.product_hint || product || 'Purchase');
+          card.classList.add('ok', 'paid');
+          var d = j.deliverable || {};
+          var sku = j.product_hint || product || '';
+          label.textContent = d.instant ? 'Seat unlocked' : 'Payment confirmed';
+          title.textContent = d.title || (info ? info.name : (sku || 'Purchase'));
           body.innerHTML =
-            'Stripe reports <strong>paid</strong>. ' +
-            (j.email ? 'Checkout email: <code>' + j.email + '</code>. ' : '') +
-            'Your deliverable is ready for fulfillment.';
-          deliver.innerHTML =
-            '<strong>You get:</strong> ' +
-            (info ? info.deliver : 'Your product package.') +
-            '<br/><br/><strong>Install path:</strong> Email ' +
-            '<a href="mailto:ceedotrock@gmail.com?subject=PACKAGE%20ACCESS&body=' +
-            encodeURIComponent(
-              'Subject: PACKAGE ACCESS\n\nProduct: ' + (product || j.product_hint || '(unknown)') +
-              '\nSession: ' + session +
-              '\nEmail used at checkout: ' + (j.email || '') + '\n'
-            ) +
-            '">ceedotrock@gmail.com</a> with subject <code>PACKAGE ACCESS</code> — we reply with private install (usually same day).';
-          actions.innerHTML =
-            '<a class="btn btn-teal" href="mailto:ceedotrock@gmail.com?subject=PACKAGE%20ACCESS">Email PACKAGE ACCESS</a>' +
-            '<a class="btn btn-ghost" href="/">Lab home</a>';
+            (d.summary || 'Stripe reports <strong>paid</strong>.') +
+            (j.email ? ' Checkout email: <code>' + j.email + '</code>.' : '') +
+            (d.seat_id ? ' Seat id: <code>' + d.seat_id + '</code>.' : '');
+
+          var html = '';
+          if (d.instant && d.steps && d.steps.length) {
+            html += '<strong>Start now</strong><ul class="step-list">';
+            d.steps.forEach(function (s) {
+              html += '<li><span class="n">' + s.n + '</span><div>';
+              if (s.href) html += '<a href="' + s.href + '">' + s.title + '</a>';
+              else html += '<strong style="color:var(--text)">' + s.title + '</strong>';
+              if (s.detail) html += '<div class="d">' + s.detail + '</div>';
+              html += '</div></li>';
+            });
+            html += '</ul>';
+          } else {
+            html +=
+              '<strong>You get:</strong> ' +
+              (info ? info.deliver : d.next || 'Your product package.') +
+              '<br/><br/><strong>Next:</strong> ' +
+              (d.next || 'Email PACKAGE ACCESS with your session id.');
+          }
+          if (d.downloads && d.downloads.length) {
+            html += '<div class="pack-links">';
+            d.downloads.forEach(function (dl) {
+              html +=
+                '<a class="btn btn-ghost" style="padding:7px 12px;font-size:.82rem" href="' +
+                dl.href +
+                '" target="_blank" rel="noopener">' +
+                dl.label +
+                '</a>';
+            });
+            html += '</div>';
+          }
+          deliver.innerHTML = html;
+
+          var act = '';
+          if (d.entitlement) {
+            act +=
+              '<button type="button" class="btn btn-teal" id="dl-entitle">Download entitlement JSON</button>';
+          }
+          if (d.instant) {
+            act +=
+              '<a class="btn btn-gold" href="/web">Open web compress</a>' +
+              '<a class="btn btn-ghost" href="/standings">Standings</a>' +
+              '<a class="btn btn-ghost" href="/access/packs/try-gate/eval-guide.md">Eval guide</a>';
+          } else {
+            act +=
+              '<a class="btn btn-teal" href="mailto:ceedotrock@gmail.com?subject=' +
+              encodeURIComponent('PACKAGE ACCESS ' + sku) +
+              '">Email PACKAGE ACCESS</a>' +
+              '<a class="btn btn-ghost" href="/web">Web demo while you wait</a>';
+          }
+          act += '<a class="btn btn-ghost" href="/">Lab home</a>';
+          actions.innerHTML = act;
+
+          var btn = document.getElementById('dl-entitle');
+          if (btn && d.entitlement) {
+            btn.addEventListener('click', function () {
+              var blob = new Blob([JSON.stringify(d.entitlement, null, 2)], {
+                type: 'application/json',
+              });
+              var a = document.createElement('a');
+              a.href = URL.createObjectURL(blob);
+              a.download =
+                'slidphi-try-gate-' + (d.seat_id || 'seat') + '.json';
+              a.click();
+              URL.revokeObjectURL(a.href);
+            });
+          }
         } else if (j && j.ok && !j.paid) {
           label.textContent = 'Payment not complete';
           title.textContent = info ? info.name : 'Checkout open';

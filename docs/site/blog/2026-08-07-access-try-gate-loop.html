@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Try Gate Access loop: pay → verify → instant seat — Slid Phi Labs Blog</title>
+<meta name="description" content="We closed the Try Gate delivery loop: Stripe session verify on Access unlocks an evaluation seat immediately — guide, checklist, entitlement JSON. Process without secret sauce."/>
+<link rel="canonical" href="https://www.slidphilabs.com/blog/2026-08-07-access-try-gate-loop"/>
+<link rel="me" href="https://x.com/slidphilabs"/>
+<meta name="robots" content="index,follow"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:title" content="Try Gate Access loop: pay → verify → instant seat"/>
+<meta property="og:description" content="Instant evaluation seat after Stripe verify. Public demos unlocked. Private engines stay private."/>
+<meta property="og:url" content="https://www.slidphilabs.com/blog/2026-08-07-access-try-gate-loop"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta property="article:published_time" content="2026-08-07"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@slidphilabs"/>
+<meta name="twitter:creator" content="@slidphilabs"/>
+<meta name="twitter:title" content="Try Gate Access loop closed — Slid Phi Labs"/>
+<meta name="twitter:description" content="Pay → verify → instant seat. No secret sauce dump."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="theme-color" content="#050b16"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=12"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/blog.css"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Try Gate Access loop: pay → verify → instant seat",
+  "datePublished": "2026-08-07",
+  "author": { "@type": "Organization", "name": "Slid Phi Labs" },
+  "publisher": { "@type": "Organization", "name": "Slid Phi Labs", "url": "https://www.slidphilabs.com/" },
+  "mainEntityOfPage": "https://www.slidphilabs.com/blog/2026-08-07-access-try-gate-loop",
+  "image": "https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"
+}
+</script>
+</head>
+<body>
+<nav><div class="inner">
+  <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=12" alt=""/>Slid Phi Labs</a>
+  <div class="nav-links">
+    <a href="/blog">Blog</a>
+    <a href="/access?product=try-gate">Access</a>
+    <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
+  </div>
+</div></nav>
+
+<article class="wrap" style="padding:28px 0 8px" id="main">
+  <div class="badge">Weekly · commerce · access</div>
+  <h1>Try Gate Access loop: pay → verify → instant seat</h1>
+  <p class="meta-line">Published <time datetime="2026-08-07">2026-08-07</time> · Same day as dual-surface platform ships</p>
+  <p class="lead">We said the next move was one closed money loop. Here it is: <strong>$9 Try Gate</strong> now unlocks a real evaluation seat on Access the moment Stripe says paid.</p>
+  <p class="ip-note"><strong>IP Guard:</strong> The seat unlocks public process — demos, guides, entitlement record. It does <em>not</em> dump private engines or secret sauce.</p>
+
+  <div class="prose">
+    <h2>The loop (process)</h2>
+    <ol>
+      <li>Buyer opens <a href="/try">/try</a> and chips in $9 (Stripe).</li>
+      <li>Success lands on <code>/access?product=try-gate&amp;session=cs_…</code> (configure Payment Link success URL — see host note).</li>
+      <li><code>GET /api/access-verify</code> reads the Checkout Session.</li>
+      <li>If paid → <strong>instant</strong> deliverable: seat id, entitlement JSON download, eval guide, checklist, step links to web/standings/suite.</li>
+      <li>If full product SKU (CDDG, ZRW tiers) → paid confirmed + structured PACKAGE ACCESS email path for private install.</li>
+    </ol>
+
+    <h2>What “instant” means</h2>
+    <ul>
+      <li>Entitlement JSON you can save (seat id, session, unlocks list)</li>
+      <li><a href="/access/packs/try-gate/eval-guide.md">Evaluation guide</a></li>
+      <li><a href="/access/packs/try-gate/checklist.md">Checklist</a></li>
+      <li>Public tools: <a href="/web">/web</a>, <a href="/standings">/standings</a>, <a href="/truth">/truth</a>, <a href="/pps">/pps</a></li>
+    </ul>
+    <p>What it does not mean: open-sourcing the vault. Licensed packages remain a separate buy + fulfillment step.</p>
+
+    <h2>Why this is the process story</h2>
+    <p>Trust dies when “Access” means “email us forever.” Trust grows when payment maps to something you can hold in under a minute — even if that something is an evaluation seat rather than the private core.</p>
+
+    <div class="cta-row">
+      <a class="btn btn-gold" href="/try">Try Gate $9</a>
+      <a class="btn btn-teal" href="/access?product=try-gate">Access</a>
+      <a class="btn btn-ghost" href="/web">Free web demo</a>
+    </div>
+  </div>
+
+  <nav class="nav-posts">
+    <a href="/blog/2026-08-07-two-doors-one-lab">← Dual surfaces</a>
+    <a href="/blog">All posts</a>
+  </nav>
+</article>
+
+<footer class="wrap">
+  <a href="/blog">Blog</a>
+  <a href="/updates">Lab Feed</a>
+  <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
+</footer>
+<script src="/assets/platform-home.js?v=1" defer></script>
+</body>
+</html>

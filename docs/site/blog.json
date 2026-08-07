@@ -10,6 +10,20 @@
   },
   "posts": [
     {
+      "id": "2026-08-07-access-loop",
+      "week_of": "2026-08-04",
+      "published": "2026-08-07",
+      "title": "Try Gate Access loop: pay → verify → instant seat",
+      "slug": "2026-08-07-access-try-gate-loop",
+      "url": "https://www.slidphilabs.com/blog/2026-08-07-access-try-gate-loop",
+      "summary": "Stripe verify on Access unlocks Try Gate evaluation seat instantly: entitlement JSON, guide, checklist, public demos. No secret sauce.",
+      "tags": [
+        "access",
+        "try-gate",
+        "commerce"
+      ]
+    },
+    {
       "id": "2026-08-07-dual-surface",
       "week_of": "2026-08-04",
       "published": "2026-08-07",
@@ -17,7 +31,13 @@
       "slug": "2026-08-07-two-doors-one-lab",
       "url": "https://www.slidphilabs.com/blog/2026-08-07-two-doors-one-lab",
       "summary": "We shipped dual surfaces so humans and agents each have a home path — same products, different rails. Discovery, welcome, npm agentic metadata, Lab Feed, and @slidphilabs.",
-      "tags": ["platform", "agents", "humans", "x402", "product"]
+      "tags": [
+        "platform",
+        "agents",
+        "humans",
+        "x402",
+        "product"
+      ]
     },
     {
       "id": "2026-08-04-www-live",
@@ -27,7 +47,11 @@
       "slug": "2026-08-04-www-only-public-door",
       "url": "https://www.slidphilabs.com/blog/2026-08-04-www-only-public-door",
       "summary": "Canonical domain lock, live commerce links, and cleaning the path so buyers never land on dead Vercel leftovers.",
-      "tags": ["infra", "seo", "commerce"]
+      "tags": [
+        "infra",
+        "seo",
+        "commerce"
+      ]
     },
     {
       "id": "2026-08-03-proprietary-try",
@@ -37,7 +61,13 @@
       "slug": "2026-08-03-proprietary-try-gate-access",
       "url": "https://www.slidphilabs.com/blog/2026-08-03-proprietary-try-gate-access",
       "summary": "We locked brand and licensing, made Try Gate + Access the evaluation path, and kept public npm honest as a stub — real codec via purchase, not open process dumps.",
-      "tags": ["licensing", "try-gate", "access", "npm", "brand"]
+      "tags": [
+        "licensing",
+        "try-gate",
+        "access",
+        "npm",
+        "brand"
+      ]
     }
   ]
 }
