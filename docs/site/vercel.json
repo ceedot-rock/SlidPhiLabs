@@ -33,6 +33,22 @@
     {
       "source": "/pps/",
       "destination": "/pps/index.html"
+    },
+    {
+      "source": "/humans",
+      "destination": "/humans/index.html"
+    },
+    {
+      "source": "/humans/",
+      "destination": "/humans/index.html"
+    },
+    {
+      "source": "/agents",
+      "destination": "/agents/index.html"
+    },
+    {
+      "source": "/agents/",
+      "destination": "/agents/index.html"
     }
   ],
   "redirects": [
@@ -92,6 +108,26 @@
       "source": "/ppp.html",
       "destination": "/pps",
       "permanent": false
+    },
+    {
+      "source": "/humans.html",
+      "destination": "/humans",
+      "permanent": true
+    },
+    {
+      "source": "/agents.html",
+      "destination": "/agents",
+      "permanent": true
+    },
+    {
+      "source": "/for-humans",
+      "destination": "/humans",
+      "permanent": true
+    },
+    {
+      "source": "/for-agents",
+      "destination": "/agents",
+      "permanent": true
     }
   ],
   "headers": [
@@ -177,6 +213,23 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/platform.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
         }
       ]
     },

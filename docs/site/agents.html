@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Agentic Minded — for agents · Slid Phi Labs</title>
+<meta name="description" content="Agentic Minded surface: GET /api/agent, x402 catalog, agents.json, llms.txt, MCP. Same products humans buy — machine-readable rails."/>
+<meta name="lab-surface" content="agentic_minded"/>
+<meta name="lab-modules" content="compression,agent_platform"/>
+<meta name="lab-compression" content="SPL Codec,CDDG:Split"/>
+<meta name="lab-agent-platform" content="CuNi,Agent^Rider,Quikgater"/>
+<meta name="keywords" content="x402, agents.json, llms.txt, MCP, agent commerce, Slid Phi Labs, Solana, Base, CuNi, Agent Rider"/>
+<link rel="canonical" href="https://www.slidphilabs.com/agents"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent commerce discovery"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/platform.json" title="Platform dual-surface map"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/agents.json" title="agents.json"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:title" content="Agentic Minded — for agents · Slid Phi Labs"/>
+<meta property="og:description" content="Discover, quote, pay (x402), run. One lab. Machine-first door."/>
+<meta property="og:url" content="https://www.slidphilabs.com/agents"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Agentic Minded — for agents · Slid Phi Labs"/>
+<meta name="twitter:description" content="Discover, quote, pay (x402), run. One lab. Machine-first door."/>
+<meta name="agent-commerce" content="x402"/>
+<meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
+<meta name="theme-color" content="#050b16"/>
+<meta name="robots" content="index,follow"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=12"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#050b16;--panel:#0c1524;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);--text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--gold-soft:rgba(232,197,71,.12);--code:#081018;--poster:url("/assets/slid-phi-labs-master.jpg")}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.14;background:linear-gradient(180deg,rgba(5,11,22,.5),rgba(5,11,22,.94)),var(--poster) 50% 22%/cover no-repeat}
+a{color:var(--accent);text-decoration:none}a:hover{color:var(--teal-bright)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+nav{position:sticky;top:0;z-index:50;background:rgba(5,11,22,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(61,214,198,.22)}
+nav .inner{max-width:1040px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.logo{font-family:'Cinzel',serif;font-weight:700;color:var(--gold);display:inline-flex;gap:10px;align-items:center;font-size:.95rem}
+.logo img{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-gold);object-fit:cover}
+.logo span{color:var(--teal-bright)}
+.nav-links{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.nav-links a{color:var(--muted);font-size:.86rem}
+.nav-links a.active{color:var(--teal-bright)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:9px;font-weight:600;font-size:.86rem;border:0;cursor:pointer;font-family:inherit}
+.btn-teal{background:linear-gradient(180deg,#5ef0df,var(--teal));color:#031018}
+.btn-gold{background:linear-gradient(180deg,#f0d56a,var(--gold));color:#1a1404}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(61,214,198,.3)}
+.hero{padding:36px 0 12px}
+.badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-bright);border:1px solid rgba(61,214,198,.4);padding:5px 12px;border-radius:999px;margin-bottom:14px;background:rgba(61,214,198,.08)}
+h1{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(1.55rem,3.4vw,2.25rem);line-height:1.2;margin-bottom:12px}
+.lead{color:var(--muted);max-width:44rem;font-size:1.05rem}
+.lead strong{color:var(--text)}
+.mission{margin:18px 0 8px;padding:14px 16px;border-left:3px solid var(--teal);background:rgba(12,21,36,.75);border-radius:0 12px 12px 0;color:var(--muted);font-size:.95rem}
+.mission em{color:var(--gold);font-style:normal}
+.one-liner{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--teal-bright);background:var(--code);border:1px solid rgba(61,214,198,.25);border-radius:10px;padding:12px 14px;margin:16px 0;word-break:break-word}
+.grid{display:grid;gap:14px;margin:22px 0}
+@media(min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:rgba(12,21,36,.92);border:1px solid var(--border);border-radius:14px;padding:18px}
+.card h2{font-family:'Cinzel',serif;color:var(--gold);font-size:1.05rem;margin-bottom:10px}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-bright);margin-bottom:6px}
+.endpoints{list-style:none}
+.endpoints li{padding:8px 0;border-bottom:1px solid rgba(61,214,198,.1);font-size:.88rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline}
+.endpoints code{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--teal-bright);background:rgba(8,16,24,.8);padding:2px 6px;border-radius:4px}
+.endpoints a{font-family:'IBM Plex Mono',monospace;font-size:.78rem}
+pre{background:var(--code);border:1px solid rgba(61,214,198,.2);border-radius:10px;padding:14px;overflow:auto;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:#b8c9d8;line-height:1.45;margin-top:10px}
+.flow{counter-reset:f;list-style:none;margin-top:8px}
+.flow li{position:relative;padding:10px 0 10px 40px;border-bottom:1px solid rgba(61,214,198,.1);color:var(--muted);font-size:.9rem}
+.flow li::before{counter-increment:f;content:counter(f);position:absolute;left:0;top:10px;width:26px;height:26px;border-radius:6px;background:rgba(61,214,198,.15);color:var(--teal-bright);font-family:'IBM Plex Mono',monospace;font-size:.75rem;display:flex;align-items:center;justify-content:center}
+.flow strong{color:var(--text)}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.alt{margin:24px 0;padding:16px;border:1px dashed rgba(232,197,71,.35);border-radius:14px;background:rgba(8,16,28,.6)}
+.alt h3{font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;margin-bottom:8px}
+.alt p{color:var(--muted);font-size:.9rem}
+footer{padding:28px 0 40px;border-top:1px solid rgba(61,214,198,.18);color:var(--muted);font-size:.88rem;margin-top:12px}
+footer a{margin-right:12px}
+#live{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted);margin-top:8px}
+#live.ok{color:#3ecf8e}#live.err{color:#ff8a7a}
+</style>
+</head>
+<body>
+<nav><div class="inner">
+  <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=12" alt=""/>Slid Phi <span>Labs</span></a>
+  <div class="nav-links">
+    <a href="/humans">Pub Facing</a>
+    <a class="active" href="/agents">Agentic Minded</a>
+    <a href="/api/agent">/api/agent</a>
+    <a href="/platform.json">platform.json</a>
+    <a href="/llms.txt">llms.txt</a>
+    <a class="btn btn-teal" href="/api/agent" style="padding:8px 12px;font-size:.8rem">Discover</a>
+  </div>
+</div></nav>
+
+<header class="hero wrap">
+  <div class="badge">Agentic Minded · attack vector for agents</div>
+  <h1>Discover. Pay. Run. Exact.</h1>
+  <p class="lead">
+    <strong>Same mission</strong> as the human surface — compression that proves out, agent systems that stay exact.
+    This door is machine-first: JSON discovery, x402 USDC (Solana + Base), MCP, llms.txt.
+  </p>
+  <p class="mission">
+    <em>One mission · two attack vectors · one team.</em>
+    Humans click. You call. Both unlock the same lab products.
+  </p>
+  <p class="one-liner">Modules: Compression (SPL Codec+CDDG) · Agent platform (CuNi+Rider+Quikgater). Commerce: GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.</p>
+  <div class="cta-row">
+    <a class="btn btn-teal" href="/api/agent">GET /api/agent</a>
+    <a class="btn btn-ghost" href="/api/x402-products">Catalog</a>
+    <a class="btn btn-ghost" href="/platform.json">platform.json</a>
+    <a class="btn btn-ghost" href="/humans">I’m a human →</a>
+  </div>
+  <p id="live">Checking discovery…</p>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+    <section class="card">
+      <div class="kicker">Bootstrap (copy these)</div>
+      <h2>Canonical endpoints</h2>
+      <ul class="endpoints">
+        <li><code>GET</code> <a href="/api/agent">/api/agent</a> — SoT discovery</li>
+        <li><code>GET</code> <a href="/platform.json">/platform.json</a> — dual surfaces map</li>
+        <li><code>GET</code> <a href="/agents.json">/agents.json</a> · <a href="/agents.txt">/agents.txt</a></li>
+        <li><code>GET</code> <a href="/llms.txt">/llms.txt</a> — LLM/context pack</li>
+        <li><code>GET</code> <a href="/.well-known/agent-card.json">/.well-known/agent-card.json</a></li>
+        <li><code>GET</code> <a href="/.well-known/agentic-commerce.json">/.well-known/agentic-commerce.json</a></li>
+        <li><code>GET/POST</code> <a href="/api/x402-products">/api/x402-products</a> — SKUs + buy</li>
+        <li><code>POST</code> <a href="/api/x402-suite">/api/x402-suite</a> — metered suite job</li>
+        <li><code>POST</code> <a href="/api/web-codec">/api/web-codec</a> — free web path demo</li>
+      </ul>
+    </section>
+    <section class="card">
+      <div class="kicker">Networks</div>
+      <h2>x402 payment rails</h2>
+      <ul class="endpoints">
+        <li><code>solana-mainnet-beta</code> · USDC · header <code>X-PAYMENT</code></li>
+        <li><code>eip155:8453</code> · Base mainnet · USDC</li>
+        <li>Client: <code>x402-client payFetch</code> (exact amount from 402 accepts[])</li>
+        <li>Starter SKU: <code>try-gate</code> (~$9)</li>
+        <li>Bulk: suite jobs via <code>/api/x402-suite</code></li>
+      </ul>
+      <p style="margin-top:12px;color:var(--muted);font-size:.88rem">Human Stripe mirror lives on <a href="/humans">/humans</a> and <a href="/pps">/pps</a> — same catalog intent, different checkout UX.</p>
+    </section>
+  </div>
+
+  <section class="card">
+    <div class="kicker">Happy path</div>
+    <h2>Agent buy flow</h2>
+    <ol class="flow">
+      <li><strong>Discover</strong> — <code>GET /api/agent</code> (or this page’s linked files).</li>
+      <li><strong>List SKUs</strong> — <code>GET /api/x402-products</code>.</li>
+      <li><strong>Request buy</strong> — <code>POST /api/x402-products</code> with <code>{ "sku": "try-gate", "email": "ops@…" }</code> → HTTP 402 + <code>accepts[]</code>.</li>
+      <li><strong>Pay</strong> — exact USDC on Solana or Base; retry with <code>X-PAYMENT</code>.</li>
+      <li><strong>Receive</strong> — <code>order_id</code> + <code>access_url</code> (human Access page works too).</li>
+    </ol>
+    <pre>{
+  "method": "POST",
+  "url": "https://www.slidphilabs.com/api/x402-products",
+  "body": { "sku": "cddg-split", "email": "agent-ops@example.com" },
+  "then": "On 402, pay accepts[0], retry with X-PAYMENT"
+}</pre>
+  </section>
+
+  <div class="grid" style="margin-top:14px">
+    <section class="card">
+      <div class="kicker">Module · Compression</div>
+      <h2>SPL Codec · CDDG</h2>
+      <ul class="endpoints">
+        <li><a href="/web">Web UI</a> · <a href="/api/web-codec">POST /api/web-codec</a></li>
+        <li><a href="/pps">Suite UI</a> · quote <code>POST /api/ppp-quote</code></li>
+        <li><a href="/standings.json">standings.json</a> · <a href="/truth">truth</a></li>
+        <li>npm: <code>slid-phi</code> · <code>blackjack-compression</code> · <code>shard-zip</code> · <code>zero-range-wave-compression</code> · <code>spl-pay-per-suite</code></li>
+      </ul>
+    </section>
+    <section class="card">
+      <div class="kicker">Module · Agent platform</div>
+      <h2>CuNi · Rider · Quikgater</h2>
+      <ul class="endpoints">
+        <li><a href="https://cuni-studio.fly.dev/">CuNi Studio</a> · <a href="https://cuni-studio.fly.dev/agents.json">agents.json</a></li>
+        <li><a href="https://agentrider.vercel.app/">Agent^Rider</a> · <a href="https://agentrider.vercel.app/api/mcp">MCP</a></li>
+        <li><a href="https://agentrider.vercel.app/.well-known/agent.json">Rider agent.json</a></li>
+        <li><a href="https://github.com/ceedot-rock/quikgater">Quikgater</a> · worker <code>GET /v1/costs</code></li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="card" style="margin-top:14px">
+    <div class="kicker">MCP · npm</div>
+    <h2>spl-pay-per-suite tools</h2>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:8px">Package: <code style="color:var(--teal-bright)">spl-pay-per-suite</code> — tools include catalog, buy, quote, checkout helpers. See discovery <code>mcp</code> field on <a href="/api/agent">/api/agent</a>.</p>
+    <pre>npm i spl-pay-per-suite
+# tools: spl_pps_x402_info | catalog | buy | requirements | submit | quote | checkout</pre>
+  </section>
+
+  <div class="alt">
+    <h3>Operators &amp; humans</h3>
+    <p>Prefer buttons, Stripe, and demos? Use <a href="/humans">/humans</a> (Pub Facing). Same team answers <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a>.</p>
+  </div>
+</main>
+
+<footer class="wrap">
+  <p>
+    <a href="/">Home</a>
+    <a href="/humans">Pub Facing</a>
+    <a href="/agents">Agentic Minded</a>
+    <a href="/api/agent">Discovery</a>
+    <a href="mailto:corey@slidphilabs.com">Contact</a>
+  </p>
+  <p style="margin-top:8px">IP Guard: public outcomes only. Agents get rails, not private process. © Slid Phi Labs</p>
+</footer>
+<script>
+(async () => {
+  const el = document.getElementById('live');
+  try {
+    const r = await fetch('/api/agent', { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const j = await r.json();
+    el.textContent = 'Discovery live · v' + (j.version || '?') + ' · ' + (j.one_liner || '').slice(0, 90) + '…';
+    el.className = 'ok';
+  } catch (e) {
+    el.textContent = 'Discovery check failed — try GET /api/agent directly.';
+    el.className = 'err';
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,13 +1,13 @@
 {
   "name": "Slid Phi Labs",
-  "description": "Two modules: Compression (SPL Codec + CDDG:Split) and Agent platform (CuNi, Agent^Rider, Quikgater). x402 commerce on Solana + Base.",
+  "description": "One mission · two attack vectors: Pub Facing (humans) + Agentic Minded (agents). Compression + agent platform. x402 on Solana + Base.",
   "url": "https://www.slidphilabs.com",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "provider": {
     "organization": "Slid Phi Labs",
     "url": "https://www.slidphilabs.com"
   },
-  "documentationUrl": "https://www.slidphilabs.com/api/agent",
+  "documentationUrl": "https://www.slidphilabs.com/agents",
   "capabilities": {
     "streaming": false,
     "pushNotifications": false,
@@ -26,6 +26,19 @@
     "application/json"
   ],
   "skills": [
+    {
+      "id": "choose-surface",
+      "name": "Choose platform surface",
+      "description": "Humans → /humans. Agents → /agents or GET /api/agent. Map → /platform.json",
+      "tags": [
+        "platform",
+        "discovery"
+      ],
+      "examples": [
+        "Am I human or agent path?",
+        "Where is platform.json?"
+      ]
+    },
     {
       "id": "discover-commerce",
       "name": "Discover agent commerce",
@@ -70,7 +83,7 @@
     "discovery": "https://www.slidphilabs.com/api/agent",
     "catalog": "https://www.slidphilabs.com/api/x402-products",
     "starter_sku": "try-gate",
-    "one_liner": "Modules: Compression (SPL Codec+CDDG) \u00b7 Agent platform (CuNi+Rider+Quikgater). Commerce: GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.",
+    "one_liner": "One mission · two attack vectors (humans + agents). GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.",
     "modules": {
       "compression": [
         "SPL Codec",
@@ -81,6 +94,11 @@
         "Agent^Rider",
         "Quikgater"
       ]
+    },
+    "platform": {
+      "map": "https://www.slidphilabs.com/platform.json",
+      "humans": "https://www.slidphilabs.com/humans",
+      "agents": "https://www.slidphilabs.com/agents"
     }
   }
 }

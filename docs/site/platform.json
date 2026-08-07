@@ -1,0 +1,100 @@
+{
+  "name": "Slid Phi Labs",
+  "version": "1.0.0",
+  "site": "https://www.slidphilabs.com",
+  "mission": "Impressive compression that proves out, and agent systems that stay exact — one team.",
+  "slogan": "One mission · two attack vectors · one team",
+  "surfaces": {
+    "pub_facing": {
+      "id": "pub_facing",
+      "label": "Pub Facing",
+      "audience": "humans",
+      "url": "https://www.slidphilabs.com/humans",
+      "description": "Try, buy, measure, partner. Demos, Stripe, suite jobs, standings, Access.",
+      "primary_ctas": [
+        "https://www.slidphilabs.com/web",
+        "https://www.slidphilabs.com/try",
+        "https://www.slidphilabs.com/pps",
+        "https://www.slidphilabs.com/standings",
+        "https://www.slidphilabs.com/access"
+      ],
+      "commerce": "stripe",
+      "contact": "corey@slidphilabs.com"
+    },
+    "agentic_minded": {
+      "id": "agentic_minded",
+      "label": "Agentic Minded",
+      "audience": "agents",
+      "url": "https://www.slidphilabs.com/agents",
+      "description": "Discover, pay (x402), run. Machine-readable catalog, MCP, llms.txt, A2A card.",
+      "primary_ctas": [
+        "https://www.slidphilabs.com/api/agent",
+        "https://www.slidphilabs.com/api/x402-products",
+        "https://www.slidphilabs.com/api/x402-suite",
+        "https://www.slidphilabs.com/agents.json",
+        "https://www.slidphilabs.com/llms.txt"
+      ],
+      "commerce": "x402",
+      "networks": [
+        "solana-mainnet-beta",
+        "eip155:8453"
+      ],
+      "payment_header": "X-PAYMENT"
+    }
+  },
+  "modules": {
+    "compression": {
+      "products": ["SPL Codec", "CDDG:Split"],
+      "urls": {
+        "codec": "https://www.slidphilabs.com/#codec",
+        "web": "https://www.slidphilabs.com/web",
+        "suite": "https://www.slidphilabs.com/pps",
+        "cddg": "https://www.slidphilabs.com/#cddg-split",
+        "standings": "https://www.slidphilabs.com/standings",
+        "standings_json": "https://www.slidphilabs.com/standings.json",
+        "truth": "https://www.slidphilabs.com/truth",
+        "datacenters": "https://www.slidphilabs.com/datacenters",
+        "web_codec_api": "https://www.slidphilabs.com/api/web-codec"
+      }
+    },
+    "agent_platform": {
+      "products": ["CuNi", "Agent^Rider", "Quikgater"],
+      "urls": {
+        "cuni_studio": "https://cuni-studio.fly.dev/",
+        "cuni_github": "https://github.com/ceedot-rock/cuni",
+        "cuni_agents_json": "https://cuni-studio.fly.dev/agents.json",
+        "agent_rider": "https://agentrider.vercel.app/",
+        "agent_rider_mcp": "https://agentrider.vercel.app/api/mcp",
+        "agent_rider_discovery": "https://agentrider.vercel.app/api/discovery",
+        "quikgater_github": "https://github.com/ceedot-rock/quikgater",
+        "quikgater_worker": "https://quikgater-worker.ceedotrock.workers.dev"
+      }
+    }
+  },
+  "discovery": {
+    "agent_api": "https://www.slidphilabs.com/api/agent",
+    "platform_json": "https://www.slidphilabs.com/platform.json",
+    "agents_json": "https://www.slidphilabs.com/agents.json",
+    "agents_txt": "https://www.slidphilabs.com/agents.txt",
+    "llms_txt": "https://www.slidphilabs.com/llms.txt",
+    "agent_card": "https://www.slidphilabs.com/.well-known/agent-card.json",
+    "agentic_commerce": "https://www.slidphilabs.com/.well-known/agentic-commerce.json",
+    "catalog": "https://www.slidphilabs.com/api/x402-products",
+    "suite_job": "https://www.slidphilabs.com/api/x402-suite",
+    "idea_lab": "https://www.slidphilabs.com/ideas",
+    "idea_lab_json": "https://www.slidphilabs.com/ideas.json"
+  },
+  "one_liner": "One mission · two attack vectors (Pub Facing humans · Agentic Minded agents) · modules Compression + Agent platform. GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.",
+  "npm": [
+    "slid-phi",
+    "blackjack-compression",
+    "shard-zip",
+    "shard-tsdb",
+    "zero-range-wave-compression",
+    "spl-pay-per-suite"
+  ],
+  "contact": {
+    "email": "corey@slidphilabs.com",
+    "github": "https://github.com/ceedot-rock/SlidPhiLabs"
+  }
+}

@@ -1,6 +1,12 @@
 # Slid Phi Labs
-> Impressive Compression..... see for yourself.
-> **Two modules:** Compression · Agent platform
+> One mission · two attack vectors · one team
+> Impressive compression that proves out + agent systems that stay exact.
+
+## Dual surfaces (choose door)
+- Pub Facing (humans): https://www.slidphilabs.com/humans
+- Agentic Minded (agents): https://www.slidphilabs.com/agents
+- Platform map (JSON): https://www.slidphilabs.com/platform.json
+- Discovery SoT: https://www.slidphilabs.com/api/agent
 
 ## Module 1 — Compression
 - SPL Codec (one product, any data): https://www.slidphilabs.com/#codec
@@ -9,6 +15,7 @@
 - CDDG:Split (process SKU in this module): https://www.slidphilabs.com/#cddg-split
 - Data Centers widget: https://www.slidphilabs.com/datacenters
 - Standings: https://www.slidphilabs.com/standings
+- Truth table: https://www.slidphilabs.com/truth
 - Web API: POST https://www.slidphilabs.com/api/web-codec
 - Quote API: POST https://www.slidphilabs.com/api/ppp-quote
 
@@ -24,8 +31,15 @@
 ## Agent commerce (lab)
 - Discovery: https://www.slidphilabs.com/api/agent
 - Catalog: https://www.slidphilabs.com/api/x402-products
-- One line: Modules: Compression (SPL Codec+CDDG) · Agent platform (CuNi+Rider+Quikgater). Commerce: GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.
-- agents.txt / agents.json / llms.txt on www.slidphilabs.com
+- Suite jobs: POST https://www.slidphilabs.com/api/x402-suite
+- Networks: solana-mainnet-beta, eip155:8453 (Base) · header X-PAYMENT
+- One line: One mission · two attack vectors (humans + agents) · Compression + Agent platform. GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.
+- agents.txt / agents.json / llms.txt / platform.json on www.slidphilabs.com
+
+## Human commerce
+- Try Gate $9: https://www.slidphilabs.com/try
+- Suite (Stripe mirror of agent catalog intent): https://www.slidphilabs.com/pps
+- Access after pay: https://www.slidphilabs.com/access
 
 ## Contact
 - corey@slidphilabs.com

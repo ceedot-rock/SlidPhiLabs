@@ -1,6 +1,11 @@
 User-agent: *
 Allow: /
 
+# Dual surfaces — Pub Facing (humans) · Agentic Minded (agents)
+Allow: /humans
+Allow: /agents
+Allow: /platform.json
+
 # Module 1 — Compression
 Allow: /
 Allow: /web

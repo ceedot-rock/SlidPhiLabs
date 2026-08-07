@@ -3,16 +3,18 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Slid Phi Labs — Compression · Agent Platform</title>
-<meta name="description" content="Two modules: Compression (SPL Codec + CDDG) and Agent platform (CuNi · Agent^Rider · Quikgater). Web + suite. From $0.50 · ~$2 for 9 GB."/>
+<title>Slid Phi Labs — Pub Facing · Agentic Minded</title>
+<meta name="description" content="One mission, two attack vectors: Pub Facing for humans and Agentic Minded for agents. Compression (SPL Codec + CDDG) · Agent platform (CuNi · Rider · Quikgater). From $0.50 · ~$2 / 9 GB."/>
 <meta name="lab-modules" content="compression,agent_platform"/>
+<meta name="lab-surfaces" content="pub_facing,agentic_minded"/>
 <meta name="lab-compression" content="SPL Codec,CDDG:Split"/>
 <meta name="lab-agent-platform" content="CuNi,Agent^Rider,Quikgater"/>
 
-<meta name="keywords" content="SPL Codec, CDDG, CuNi, Agent Rider, Quikgater, compression, agent platform, x402, Slid Phi Labs"/>
+<meta name="keywords" content="SPL Codec, CDDG, CuNi, Agent Rider, Quikgater, compression, agent platform, x402, Slid Phi Labs, pub facing, agentic"/>
 <link rel="canonical" href="https://www.slidphilabs.com/"/>
 
-<!-- Agentic commerce discovery (machine-readable) -->
+<!-- Dual surface + agentic commerce discovery -->
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/platform.json" title="Platform dual-surface map"/>
 <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent commerce discovery"/>
 <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/agents.json" title="agents.json"/>
 <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/agents.txt" title="agents.txt"/>
@@ -24,16 +26,18 @@
 <meta name="agent-networks" content="solana-mainnet-beta,eip155:8453"/>
 <meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
 <meta name="agent-catalog" content="https://www.slidphilabs.com/api/x402-products"/>
-<meta name="agent-one-liner" content="Compression: SPL Codec + CDDG. Agents: CuNi · Rider · Quikgater. Commerce: GET https://www.slidphilabs.com/api/agent (x402 Solana/Base)."/>
+<meta name="platform-humans" content="https://www.slidphilabs.com/humans"/>
+<meta name="platform-agents" content="https://www.slidphilabs.com/agents"/>
+<meta name="agent-one-liner" content="One mission · two attack vectors (humans + agents). Compression + agent platform. GET https://www.slidphilabs.com/api/agent (x402 Solana/Base)."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Slid Phi Labs"/>
-<meta property="og:title" content="Slid Phi Labs — Compression · Agent Platform"/>
-<meta property="og:description" content="Two modules: Compression (SPL Codec + CDDG) and Agent platform (CuNi · Agent^Rider · Quikgater). Web + suite. From $0.50 · ~$2 for 9 GB."/>
+<meta property="og:title" content="Slid Phi Labs — Pub Facing · Agentic Minded"/>
+<meta property="og:description" content="One mission, two attack vectors: Pub Facing for humans and Agentic Minded for agents. Compression · Agent platform. From $0.50 · ~$2 / 9 GB."/>
 <meta property="og:url" content="https://www.slidphilabs.com/"/>
 <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Slid Phi Labs — Compression · Agent Platform"/>
-<meta name="twitter:description" content="Two modules: Compression (SPL Codec + CDDG) and Agent platform (CuNi · Agent^Rider · Quikgater). Web + suite. From $0.50 · ~$2 for 9 GB."/>
+<meta name="twitter:title" content="Slid Phi Labs — Pub Facing · Agentic Minded"/>
+<meta name="twitter:description" content="One mission, two attack vectors: humans and agents. Compression · Agent platform."/>
 <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta name="theme-color" content="#050b16"/>
 <meta name="robots" content="index,follow"/>
@@ -349,6 +353,72 @@ h1{
   font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted);letter-spacing:.04em;
 }
 .hero-meta strong{color:var(--gold);font-weight:500}
+
+/* Dual doors — Pub Facing / Agentic Minded */
+.door-row{
+  display:grid;gap:12px;margin:0 0 22px;max-width:36rem;
+}
+@media(min-width:560px){.door-row{grid-template-columns:1fr 1fr}}
+.door{
+  display:flex;flex-direction:column;gap:6px;padding:16px 16px 14px;
+  border-radius:14px;text-decoration:none;border:1px solid transparent;
+  transition:transform .15s, border-color .15s, box-shadow .15s;
+}
+.door:hover{transform:translateY(-2px)}
+.door-kicker{
+  font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.1em;
+  text-transform:uppercase;opacity:.85;
+}
+.door-label{
+  font-family:'Cinzel',serif;font-size:1.15rem;font-weight:700;letter-spacing:.02em;
+}
+.door-go{
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;line-height:1.4;opacity:.9;
+}
+.door-human{
+  background:linear-gradient(145deg,rgba(232,197,71,.14),rgba(12,21,36,.9));
+  border-color:rgba(232,197,71,.45);
+  box-shadow:0 0 28px rgba(232,197,71,.1);
+}
+.door-human .door-kicker{color:var(--gold)}
+.door-human .door-label{color:var(--gold)}
+.door-human .door-go{color:var(--muted)}
+.door-human:hover{border-color:var(--gold);box-shadow:var(--glow-gold)}
+.door-agent{
+  background:linear-gradient(145deg,rgba(61,214,198,.12),rgba(12,21,36,.9));
+  border-color:rgba(61,214,198,.45);
+  box-shadow:0 0 28px rgba(61,214,198,.1);
+}
+.door-agent .door-kicker{color:var(--teal-bright)}
+.door-agent .door-label{color:var(--teal-bright)}
+.door-agent .door-go{color:var(--muted)}
+.door-agent:hover{border-color:var(--teal-bright);box-shadow:var(--glow-teal)}
+
+/* Primary lanes */
+.lane-ctas{
+  display:grid;gap:10px;margin:0 0 18px;max-width:36rem;
+}
+@media(min-width:640px){.lane-ctas{grid-template-columns:repeat(3,1fr)}}
+.lane{
+  display:flex;flex-direction:column;gap:4px;padding:12px 12px 11px;
+  border-radius:12px;text-decoration:none;border:1px solid rgba(61,214,198,.18);
+  background:rgba(12,21,36,.75);transition:border-color .15s, transform .15s;
+}
+.lane:hover{transform:translateY(-1px);border-color:rgba(232,197,71,.4)}
+.lane-kicker{
+  font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--teal-bright);
+}
+.lane-title{font-weight:600;font-size:.92rem;color:var(--text)}
+.lane-sub{font-size:.75rem;color:var(--muted);line-height:1.35}
+.lane-try{border-color:rgba(61,214,198,.35)}
+.lane-buy{border-color:rgba(232,197,71,.35)}
+.lane-partner{border-color:rgba(91,168,255,.3)}
+.ip-guard-line{
+  font-size:.82rem;color:var(--muted);margin:-8px 0 20px;max-width:36rem;
+}
+.ip-guard-line strong{color:var(--gold);font-weight:600}
+.proof-ribbon .proof-link{color:var(--teal-bright);margin-left:8px;font-size:.78rem}
 
 /* product logos — top of UI */
 .brand-strip{
@@ -896,8 +966,24 @@ body.intro-lock{overflow:hidden}
       "@id": "https://www.slidphilabs.com/#website",
       "url": "https://www.slidphilabs.com/",
       "name": "Slid Phi Labs",
-      "description": "Impressive Compression..... see for yourself. SPL Pay Per Suite, CDDG:Split, Zero Range Wave.",
+      "description": "One mission, two attack vectors: Pub Facing for humans and Agentic Minded for agents. Compression + agent platform.",
       "publisher": { "@id": "https://www.slidphilabs.com/#org" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.slidphilabs.com/humans#page",
+      "url": "https://www.slidphilabs.com/humans",
+      "name": "Pub Facing — for humans",
+      "isPartOf": { "@id": "https://www.slidphilabs.com/#website" },
+      "audience": { "@type": "Audience", "audienceType": "Humans / operators / buyers" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.slidphilabs.com/agents#page",
+      "url": "https://www.slidphilabs.com/agents",
+      "name": "Agentic Minded — for agents",
+      "isPartOf": { "@id": "https://www.slidphilabs.com/#website" },
+      "audience": { "@type": "Audience", "audienceType": "Software agents / LLM tools" }
     },
     {
       "@type": "Service",
@@ -984,19 +1070,19 @@ body.intro-lock{overflow:hidden}
   </div>
   <div class="page-intro__content">
     <div class="page-intro__mark">SLiD<span class="phi">φ</span>LABS</div>
-    <p class="page-intro__tag">Impressive Compression · Two modules</p>
+    <p class="page-intro__tag">One mission · two attack vectors · one team</p>
     <div class="page-intro__areas">
       <div class="page-intro__area">
-        <h3>1 · Compression</h3>
-        <p><strong>SPL Codec</strong> — web, integers, bulk (engines under the hood). <strong>CDDG:Split</strong> — residual process. Data centers &amp; standings.</p>
+        <h3>Pub Facing</h3>
+        <p><strong>Humans</strong> — try, buy, measure, partner. Demos, Stripe, suite, standings. Compression + agent tools you can click.</p>
       </div>
       <div class="page-intro__area">
-        <h3>2 · Agent platform</h3>
-        <p><strong>CuNi</strong> exact multi-runtime · <strong>Agent^Rider</strong> identity/MCP · <strong>Quikgater</strong> pay-per-fact fetch.</p>
+        <h3>Agentic Minded</h3>
+        <p><strong>Agents</strong> — discover, pay (x402), run. JSON, MCP, llms.txt. Same products, machine rails.</p>
       </div>
     </div>
   </div>
-  <button type="button" class="page-intro__skip" id="pageIntroSkip">Enter lab · Esc</button>
+  <button type="button" class="page-intro__skip" id="pageIntroSkip">Enter platform · Esc</button>
 </div>
 
 <nav>
@@ -1025,6 +1111,9 @@ body.intro-lock{overflow:hidden}
           <a href="#modules" role="menuitem">Modules</a>
           <a href="#ecosystem" role="menuitem">Agent platform</a>
           <div class="sep" role="separator"></div>
+          <div class="sep" role="separator"></div>
+          <a href="/humans" role="menuitem">Pub Facing · humans</a>
+          <a href="/agents" role="menuitem">Agentic Minded · agents</a>
           <a href="/try" role="menuitem">Try Gate</a>
           <a href="/access" role="menuitem">Access</a>
           <a href="/ideas" role="menuitem">Idea Lab</a>
@@ -1032,9 +1121,9 @@ body.intro-lock{overflow:hidden}
           <a href="mailto:corey@slidphilabs.com" role="menuitem">Contact</a>
         </div>
       </div>
-      <a class="btn btn-teal btn-sm try-weight" href="/try">Try $9</a>
+      <a class="btn btn-ghost btn-sm" href="/humans">Humans</a>
+      <a class="btn btn-teal btn-sm try-weight" href="/agents">Agents</a>
       <a class="btn btn-gold btn-sm" href="/pps">Buy · suite</a>
-      <a class="btn btn-ghost btn-sm" href="#connect">Partner</a>
     </div>
   </div>
 </nav>
@@ -1089,20 +1178,33 @@ body.intro-lock{overflow:hidden}
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-inner">
-        <div class="badge">TWO MODULES · COMPRESSION · AGENT PLATFORM</div>
+        <div class="badge">ONE MISSION · TWO ATTACK VECTORS · ONE TEAM</div>
         <p class="ribbon proof-ribbon">
           <span class="proof-num">ZRW · zeros_10k</span>
           <strong>8 B</strong> vs gzip-9 <strong>73 B</strong> · brotli-11 <strong>13 B</strong>
           <a href="/standings" class="proof-link">Full standings →</a>
         </p>
-        <h1>Two modules. One lab.</h1>
+        <h1>Two doors. One platform.</h1>
         <p class="lede">
-          <strong style="color:var(--gold)">1 · Compression</strong> —
-          <strong>SPL Codec</strong> (web + suite) and <strong>CDDG:Split</strong> (process). Multi‑GB is cheap (~$2 for 9&nbsp;GB).<br/>
-          <strong style="color:var(--gold)">2 · Agent platform</strong> —
-          <strong>CuNi</strong> · <strong>Agent^Rider</strong> · <strong>Quikgater</strong>.
+          <strong style="color:var(--gold)">Pub Facing</strong> for humans who try, buy, and partner.
+          <strong style="color:var(--teal-bright)">Agentic Minded</strong> for agents that discover, pay (x402), and run.
+          Under both: <strong>Compression</strong> (SPL Codec + CDDG) and <strong>Agent platform</strong> (CuNi · Rider · Quikgater).
+          Multi‑GB is cheap (~$2 for 9&nbsp;GB).
         </p>
         <p class="ip-guard-line"><strong>IP Guard:</strong> Public outcomes only — what comes out and how it stacks up. Processes stay in the lab.</p>
+
+        <div class="door-row door-row--hero" aria-label="Choose your surface">
+          <a class="door door-human" href="/humans">
+            <span class="door-kicker">Attack vector · humans</span>
+            <span class="door-label">Pub Facing</span>
+            <span class="door-go">Try · suite · standings · Access →</span>
+          </a>
+          <a class="door door-agent" href="/agents">
+            <span class="door-kicker">Attack vector · agents</span>
+            <span class="door-label">Agentic Minded</span>
+            <span class="door-go">GET /api/agent · x402 · MCP →</span>
+          </a>
+        </div>
 
         <div class="lane-ctas" aria-label="Primary actions">
           <a class="lane lane-try" href="/try">
@@ -1122,22 +1224,12 @@ body.intro-lock{overflow:hidden}
           </a>
         </div>
 
-        <div class="door-row" aria-label="Human or agent">
-          <a class="door door-human" href="/pps">
-            <span class="door-label">I’m a human</span>
-            <span class="door-go">Suite · pricing · Access →</span>
-          </a>
-          <a class="door door-agent" href="/api/agent">
-            <span class="door-label">I’m an agent</span>
-            <span class="door-go">GET /api/agent · x402 catalog →</span>
-          </a>
-        </div>
-
         <div class="cta-row secondary-cta">
           <a class="btn btn-teal btn-sm" href="/web">Web compress (free demo)</a>
           <a class="btn btn-ghost btn-sm" href="/standings">Standings</a>
           <a class="btn btn-ghost btn-sm" href="/datacenters">Data Centers</a>
           <a class="btn btn-ghost btn-sm" href="#ecosystem">CuNi · Rider · Quikgater</a>
+          <a class="btn btn-ghost btn-sm" href="/platform.json">platform.json</a>
         </div>
       </div>
       <div class="poster-col">

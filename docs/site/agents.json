@@ -5,7 +5,7 @@
   "site": {
     "name": "Slid Phi Labs",
     "url": "https://www.slidphilabs.com",
-    "description": "Two modules: (1) Compression \u2014 SPL Codec + CDDG:Split. (2) Agent platform \u2014 CuNi, Agent^Rider, Quikgater. x402 agent commerce."
+    "description": "One mission · two attack vectors (Pub Facing humans · Agentic Minded agents). Modules: Compression (SPL Codec + CDDG) · Agent platform (CuNi · Rider · Quikgater). x402 commerce."
   },
   "payments": {
     "x402": {
@@ -30,14 +30,14 @@
   "a2a": [
     {
       "url": "https://www.slidphilabs.com/.well-known/agent-card.json",
-      "description": "Slid Phi Labs agentic commerce card \u2014 discovery + x402 buy path"
+      "description": "Slid Phi Labs agentic commerce card — discovery + x402 buy path"
     }
   ],
   "discovery": {
     "agent_api": "https://www.slidphilabs.com/api/agent",
     "catalog": "https://www.slidphilabs.com/api/x402-products",
     "suite_job": "https://www.slidphilabs.com/api/x402-suite",
-    "one_liner": "Modules: Compression (SPL Codec+CDDG) \u00b7 Agent platform (CuNi+Rider+Quikgater). Commerce: GET https://www.slidphilabs.com/api/agent then pay via x402 (X-PAYMENT).",
+    "one_liner": "One mission · two attack vectors (humans + agents) · Compression + Agent platform. Commerce: GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.",
     "ecosystem": {
       "cuni_studio": "https://cuni-studio.fly.dev/",
       "cuni_agents_json": "https://cuni-studio.fly.dev/agents.json",
@@ -47,7 +47,7 @@
       "agent_rider_discovery": "https://agentrider.vercel.app/api/discovery",
       "quikgater_github": "https://github.com/ceedot-rock/quikgater",
       "quikgater_worker": "https://quikgater-worker.ceedotrock.workers.dev",
-      "agent_platform": "CuNi \u00b7 Agent^Rider \u00b7 Quikgater"
+      "agent_platform": "CuNi · Agent^Rider · Quikgater"
     },
     "idea_lab": "https://www.slidphilabs.com/ideas",
     "idea_lab_json": "https://www.slidphilabs.com/ideas.json",
@@ -73,6 +73,17 @@
         "quikgater_worker": "https://quikgater-worker.ceedotrock.workers.dev"
       }
     },
-    "truth": "https://www.slidphilabs.com/truth"
+    "truth": "https://www.slidphilabs.com/truth",
+    "platform_json": "https://www.slidphilabs.com/platform.json",
+    "humans": "https://www.slidphilabs.com/humans",
+    "agents_hub": "https://www.slidphilabs.com/agents"
+  },
+  "platform": {
+    "slogan": "One mission · two attack vectors · one team",
+    "surfaces": {
+      "pub_facing": "https://www.slidphilabs.com/humans",
+      "agentic_minded": "https://www.slidphilabs.com/agents",
+      "map": "https://www.slidphilabs.com/platform.json"
+    }
   }
 }

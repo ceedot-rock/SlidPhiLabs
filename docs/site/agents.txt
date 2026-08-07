@@ -1,11 +1,19 @@
 # agents.txt
 # Standard: https://agents-txt.com
 # JSON: https://www.slidphilabs.com/agents.json
+# Platform map: https://www.slidphilabs.com/platform.json
 # Discovery SoT: https://www.slidphilabs.com/api/agent
+# Human hub: https://www.slidphilabs.com/humans
+# Agent hub: https://www.slidphilabs.com/agents
 
+# Mission: One mission · two attack vectors · one team
+# Surfaces: Pub Facing (humans) · Agentic Minded (agents)
 # Module 1 — Compression: SPL Codec + CDDG
 # Module 2 — Agent platform: CuNi · Agent^Rider · Quikgater
 
 Protocols: x402
 
 A2A: https://www.slidphilabs.com/.well-known/agent-card.json
+Commerce: https://www.slidphilabs.com/.well-known/agentic-commerce.json
+Catalog: https://www.slidphilabs.com/api/x402-products
+llms: https://www.slidphilabs.com/llms.txt

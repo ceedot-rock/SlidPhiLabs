@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.slidphilabs.com/</loc><lastmod>2026-08-07</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.slidphilabs.com/humans</loc><lastmod>2026-08-07</lastmod><changefreq>daily</changefreq><priority>0.995</priority></url>
+  <url><loc>https://www.slidphilabs.com/agents</loc><lastmod>2026-08-07</lastmod><changefreq>daily</changefreq><priority>0.995</priority></url>
+  <url><loc>https://www.slidphilabs.com/platform.json</loc><lastmod>2026-08-07</lastmod><changefreq>daily</changefreq><priority>0.99</priority></url>
   <url><loc>https://www.slidphilabs.com/web</loc><lastmod>2026-08-07</lastmod><changefreq>daily</changefreq><priority>0.99</priority></url>
   <url><loc>https://www.slidphilabs.com/pps</loc><lastmod>2026-08-07</lastmod><changefreq>daily</changefreq><priority>0.99</priority></url>
   <url><loc>https://www.slidphilabs.com/datacenters</loc><lastmod>2026-08-07</lastmod><changefreq>weekly</changefreq><priority>0.97</priority></url>
