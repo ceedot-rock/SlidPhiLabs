@@ -1,73 +1,12 @@
 /**
  * PPP checkout — POST /api/ppp-checkout
- * Prefer Stripe Checkout Session with exact quoted amount when STRIPE_SECRET_KEY is set.
- * Otherwise returns the PPP Payment Link (customer enters the quoted amount).
+ * Freemium: $0 under 1 GB free cap (no Stripe). Paid usage → Checkout Session.
  */
+import { computeQuote } from "./suite-pricing.js";
+
 const PPP_PAYMENT_LINK =
   process.env.PPP_PAYMENT_LINK ||
   "https://buy.stripe.com/aFa00k4B70OYetL0O46wE0g";
-
-const PRODUCT_BASE = {
-  auto: 2900,
-  zrw: 2900,
-  "cddg-split": 4900,
-  blackjack: 3900,
-  "shard-zip": 3900,
-  "shard-tsdb": 3900,
-  "slid-phi": 3900,
-};
-const DATA_MULT = {
-  zeros: 0.85,
-  ramp: 0.95,
-  walk: 1.05,
-  mixed_ints: 1.15,
-  timeseries: 1.2,
-  json_series: 1.1,
-  binary: 1.25,
-  unknown: 1.15,
-};
-const OP_MULT = { compress: 1.0, decompress: 0.85, roundtrip: 1.35 };
-const MIN_CENTS = 900;
-const MAX_CENTS = 1000000;
-
-function sizeFeeCents(bytes) {
-  const mb = Math.max(0, Number(bytes) || 0) / (1024 * 1024);
-  if (mb <= 0) return 0;
-  if (mb <= 1) return Math.round(mb * 800);
-  if (mb <= 10) return 800 + Math.round((mb - 1) * 450);
-  if (mb <= 100) return 800 + 9 * 450 + Math.round((mb - 10) * 220);
-  return 800 + 9 * 450 + 90 * 220 + Math.round((mb - 100) * 90);
-}
-
-function computeQuote({ product = "auto", dataClass = "unknown", op = "compress", bytes = 0 } = {}) {
-  const prod = PRODUCT_BASE[product] != null ? product : "auto";
-  const cls = DATA_MULT[dataClass] != null ? dataClass : "unknown";
-  const operation = OP_MULT[op] != null ? op : "compress";
-  const b = Math.max(0, Math.min(Number(bytes) || 0, 5 * 1024 * 1024 * 1024));
-  const base = PRODUCT_BASE[prod];
-  const size = sizeFeeCents(b);
-  const raw = Math.round((base + size) * DATA_MULT[cls] * OP_MULT[operation]);
-  const cents = Math.min(MAX_CENTS, Math.max(MIN_CENTS, raw));
-  return {
-    ok: true,
-    currency: "usd",
-    amount_cents: cents,
-    amount_display: (cents / 100).toFixed(2),
-    breakdown: {
-      product: prod,
-      product_base_cents: base,
-      size_cents: size,
-      data_class: cls,
-      data_multiplier: DATA_MULT[cls],
-      op: operation,
-      op_multiplier: OP_MULT[operation],
-      bytes: b,
-      mb: +(b / (1024 * 1024)).toFixed(4),
-      min_cents: MIN_CENTS,
-      max_cents: MAX_CENTS,
-    },
-  };
-}
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -159,6 +98,29 @@ export default async function handler(req, res) {
   const email = String(body.email || "").trim().slice(0, 120);
   const origin = siteOrigin(req);
 
+  // Free showcase — no Stripe
+  if (quote.free || quote.amount_cents === 0) {
+    const token =
+      "free_" +
+      Date.now().toString(36) +
+      "_" +
+      Math.random().toString(36).slice(2, 10);
+    return json(res, 200, {
+      ok: true,
+      mode: "free_showcase",
+      free: true,
+      token,
+      quote,
+      access_url:
+        origin +
+        "/access?product=suite-free&free=1&token=" +
+        encodeURIComponent(token),
+      next: "Free under 1 GB cap — submit the job from /pps (no payment). Upgrade is automatic when size exceeds free.",
+      instructions:
+        "This quote is $0 (free showcase). Submit your project on the suite page without Stripe.",
+    });
+  }
+
   try {
     const session = await createCheckoutSession({
       amountCents: quote.amount_cents,
@@ -170,6 +132,7 @@ export default async function handler(req, res) {
       return json(res, 200, {
         ok: true,
         mode: "checkout_session",
+        free: false,
         url: session.url,
         session_id: session.id,
         quote,
@@ -185,6 +148,7 @@ export default async function handler(req, res) {
   return json(res, 200, {
     ok: true,
     mode: "payment_link",
+    free: false,
     url: link.toString(),
     quote,
     instructions:

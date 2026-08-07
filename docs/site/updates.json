@@ -9,6 +9,19 @@
   "description": "Product updates, news, plans, and social pointers. Public outcomes only.",
   "items": [
     {
+      "id": "u-pricing-freemium-v2",
+      "date": "2026-08-07",
+      "type": "product",
+      "title": "Suite pricing redesigned: free 1 GB, then ~1.5¢/GB",
+      "body": "Freemium showcase cap (first 1 GiB free per job). Paid usage ~1.5¢/GB (0.8¢ after 50 GB over free) — far under typical cloud egress. Old ~$2/9GB slogan retired.",
+      "href": "https://www.slidphilabs.com/pps",
+      "href_label": "Open suite",
+      "tags": [
+        "pricing",
+        "product"
+      ]
+    },
+    {
       "id": "u-access-try-gate-instant",
       "date": "2026-08-07",
       "type": "product",

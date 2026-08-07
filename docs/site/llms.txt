@@ -14,7 +14,7 @@
 ## Module 1 — Compression
 - SPL Codec (one product, any data): https://www.slidphilabs.com/#codec
 - Web mode: https://www.slidphilabs.com/web
-- Suite (bulk cheap, ~$2 / 9 GB): https://www.slidphilabs.com/pps
+- Suite (free first 1 GB · then ~1.5¢/GB): https://www.slidphilabs.com/pps
 - CDDG:Split (process SKU in this module): https://www.slidphilabs.com/#cddg-split
 - Data Centers widget: https://www.slidphilabs.com/datacenters
 - Standings: https://www.slidphilabs.com/standings

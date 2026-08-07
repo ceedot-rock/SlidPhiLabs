@@ -24,7 +24,7 @@ OpenAPI: https://www.slidphilabs.com/openapi.yaml
 ### 1 · Compression
 Products: SPL Codec, CDDG:Split
 - Web UI: https://www.slidphilabs.com/web
-- Suite UI: https://www.slidphilabs.com/pps (bulk cheap; ~$2 / 9 GB class messaging)
+- Suite UI: https://www.slidphilabs.com/pps (free first 1 GB · then ~1.5¢/GB (under cloud egress))
 - CDDG: https://www.slidphilabs.com/#cddg-split
 - Standings: https://www.slidphilabs.com/standings (+ standings.json)
 - Truth: https://www.slidphilabs.com/truth

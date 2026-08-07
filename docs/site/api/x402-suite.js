@@ -15,6 +15,8 @@
  *   X402_DEV_BYPASS      if "1", accept X-PAYMENT-DEV: ok for dry-run (staging only)
  *   NOTION_TOKEN         optional job log
  */
+import { computeQuote } from "./suite-pricing.js";
+
 const DB = (
   process.env.NOTION_GROK_NOTES_DB ||
   process.env.NOTION_GROK_NOTES_PAGE_ID ||
@@ -24,34 +26,6 @@ const DB = (
   "$1-$2-$3-$4-$5"
 );
 const NOTION_VERSION = "2022-06-28";
-
-const PRODUCT_BASE = {
-  auto: 99,
-  zrw: 99,
-  "cddg-split": 299,
-  blackjack: 149,
-  "shard-zip": 149,
-  "shard-tsdb": 149,
-  "slid-phi": 149,
-};
-const DATA_MULT = {
-  zeros: 0.9,
-  ramp: 0.95,
-  walk: 1.0,
-  mixed_ints: 1.05,
-  timeseries: 1.05,
-  json_series: 1.0,
-  binary: 1.1,
-  unknown: 1.0,
-};
-const OP_MULT = {
-  compress: 1.0,
-  decompress: 0.75,
-  roundtrip: 1.2,
-};
-const MIN_CENTS = 50;
-const MAX_CENTS = 1_000_000;
-const MAX_BYTES = 100 * 1024 * 1024 * 1024; // 100 GB
 
 // USDC mainnet mint (override with X402_ASSET). Devnet USDC often custom.
 const DEFAULT_USDC_MAINNET = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v";
@@ -82,46 +56,6 @@ function clean(s, max = 2000) {
   return String(s || "")
     .trim()
     .slice(0, max);
-}
-
-function sizeFeeCents(bytes) {
-  const b = Math.max(0, Number(bytes) || 0);
-  const free = 50 * 1024 * 1024;
-  const billable = Math.max(0, b - free);
-  if (billable <= 0) return 0;
-  const gb = billable / (1024 * 1024 * 1024);
-  if (gb <= 10) return Math.round(gb * 12);
-  if (gb <= 100) return Math.round(10 * 12 + (gb - 10) * 4);
-  return Math.round(10 * 12 + 90 * 4 + (gb - 100) * 1.5);
-}
-
-function computeQuote({ product = "auto", dataClass = "unknown", op = "compress", bytes = 0 } = {}) {
-  const prod = PRODUCT_BASE[product] != null ? product : "auto";
-  const cls = DATA_MULT[dataClass] != null ? dataClass : "unknown";
-  const operation = OP_MULT[op] != null ? op : "compress";
-  const b = Math.max(0, Math.min(Number(bytes) || 0, MAX_BYTES));
-  const base = PRODUCT_BASE[prod];
-  const size = sizeFeeCents(b);
-  const raw = Math.round((base + size) * DATA_MULT[cls] * OP_MULT[operation]);
-  const cents = Math.min(MAX_CENTS, Math.max(MIN_CENTS, raw));
-  return {
-    ok: true,
-    service: "SPL Pay Per Suite",
-    currency: "usd",
-    amount_cents: cents,
-    amount_display: (cents / 100).toFixed(2),
-    breakdown: {
-      product: prod,
-      product_base_cents: base,
-      size_cents: size,
-      data_class: cls,
-      data_multiplier: DATA_MULT[cls],
-      op: operation,
-      op_multiplier: OP_MULT[operation],
-      bytes: b,
-      mb: +(b / (1024 * 1024)).toFixed(4),
-    },
-  };
 }
 
 function networkConfig() {
@@ -539,8 +473,23 @@ export default async function handler(req, res) {
 
   const quote = computeQuote({ product, dataClass, op, bytes });
   const requirements = buildAccepts(quote);
-  const accept0 = requirements.accepts[0];
+  const accept0 = requirements.accepts?.[0];
   const { payTo } = networkConfig();
+
+  // Free showcase — first 1 GB, no x402 payment
+  if (quote.free || quote.amount_cents === 0) {
+    const jobId = "free_" + Date.now().toString(36);
+    return json(res, 200, {
+      ok: true,
+      free: true,
+      paid: false,
+      job_id: jobId,
+      quote,
+      message:
+        "Free showcase under 1 GB cap — no payment. Job accepted for lab intake.",
+      access_url: "https://www.slidphilabs.com/access?product=suite-free&free=1",
+    });
+  }
 
   // Dev bypass for staging agents
   const devHdr = req.headers["x-payment-dev"] || req.headers["X-PAYMENT-DEV"];
