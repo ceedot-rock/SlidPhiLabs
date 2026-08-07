@@ -1,0 +1,10 @@
+Contact: mailto:corey@slidphilabs.com
+Preferred-Languages: en
+Canonical: https://www.slidphilabs.com/.well-known/security.txt
+Policy: https://www.slidphilabs.com/humans
+Acknowledgments: https://www.slidphilabs.com
+Hiring: mailto:corey@slidphilabs.com
+Expires: 2027-08-07T00:00:00.000Z
+
+# Dual surface: report human UX issues via email; agent API issues same inbox.
+# Do not exfiltrate; responsible disclosure preferred.

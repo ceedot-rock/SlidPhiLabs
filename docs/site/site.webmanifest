@@ -1,0 +1,37 @@
+{
+  "name": "Slid Phi Labs",
+  "short_name": "SlidPhi",
+  "description": "One mission · two attack vectors · one team. Pub Facing + Agentic Minded.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050b16",
+  "theme_color": "#050b16",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/assets/logos/logo-slid-phi-labs.jpg?v=12",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Pub Facing",
+      "short_name": "Humans",
+      "url": "/humans",
+      "description": "Human door"
+    },
+    {
+      "name": "Agentic Minded",
+      "short_name": "Agents",
+      "url": "/agents",
+      "description": "Agent door"
+    },
+    {
+      "name": "Web compress",
+      "url": "/web",
+      "description": "Free demo"
+    }
+  ]
+}

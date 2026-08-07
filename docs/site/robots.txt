@@ -5,6 +5,10 @@ Allow: /
 Allow: /humans
 Allow: /agents
 Allow: /platform.json
+Allow: /api/welcome
+Allow: /openapi.yaml
+Allow: /llms-full.txt
+Allow: /humans.txt
 
 # Module 1 — Compression
 Allow: /

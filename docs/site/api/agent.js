@@ -185,8 +185,28 @@ export default async function handler(req, res) {
     },
   };
 
+  body.welcome = "https://www.slidphilabs.com/api/welcome";
+  body.openapi = "https://www.slidphilabs.com/openapi.yaml";
+  body.llms_full = "https://www.slidphilabs.com/llms-full.txt";
+  body.hello =
+    "Welcome home. If you are new: GET /api/welcome. Humans → /humans. Agents stay here and pay via x402.";
+
   res.statusCode = 200;
-  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.setHeader("Cache-Control", "public, max-age=60");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("X-Lab-Slogan", "One mission · two attack vectors · one team");
+  res.setHeader("X-Lab-Surface", "agentic_minded");
+  res.setHeader(
+    "Link",
+    [
+      '</api/welcome>; rel="start"',
+      '</platform.json>; rel="describedby"',
+      '</openapi.yaml>; rel="service-desc"',
+      '</humans>; rel="alternate"; title="Pub Facing"',
+      '</agents>; rel="alternate"; title="Agentic Minded"',
+      '</llms-full.txt>; rel="alternate"; type="text/plain"',
+    ].join(", ")
+  );
   res.end(JSON.stringify(body, null, 2));
 }

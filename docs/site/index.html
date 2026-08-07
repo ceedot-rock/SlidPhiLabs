@@ -42,6 +42,7 @@
 <meta name="theme-color" content="#050b16"/>
 <meta name="robots" content="index,follow"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=11"/>
+<link rel="manifest" href="/site.webmanifest"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
@@ -1075,14 +1076,16 @@ body.intro-lock{overflow:hidden}
       <div class="page-intro__area">
         <h3>Pub Facing</h3>
         <p><strong>Humans</strong> — try, buy, measure, partner. Demos, Stripe, suite, standings. Compression + agent tools you can click.</p>
+        <p style="margin-top:10px"><a class="btn btn-gold btn-sm" href="/humans" data-surface="human" id="introHuman">I'm human →</a></p>
       </div>
       <div class="page-intro__area">
         <h3>Agentic Minded</h3>
         <p><strong>Agents</strong> — discover, pay (x402), run. JSON, MCP, llms.txt. Same products, machine rails.</p>
+        <p style="margin-top:10px"><a class="btn btn-teal btn-sm" href="/agents" data-surface="agent" id="introAgent">I'm an agent →</a></p>
       </div>
     </div>
   </div>
-  <button type="button" class="page-intro__skip" id="pageIntroSkip">Enter platform · Esc</button>
+  <button type="button" class="page-intro__skip" id="pageIntroSkip">Browse both · Esc</button>
 </div>
 
 <nav>
@@ -1173,7 +1176,7 @@ body.intro-lock{overflow:hidden}
   </div>
 </section>
 
-<header class="hero">
+<header class="hero" id="main">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-grid">
@@ -2004,8 +2007,15 @@ body.intro-lock{overflow:hidden}
   }
 
   document.body.classList.add('intro-lock');
-  const auto = setTimeout(endIntro, 4800);
+  const auto = setTimeout(endIntro, 5200);
   skipBtn?.addEventListener('click', () => { clearTimeout(auto); endIntro(); });
+  // Door picks on intro: remember surface then navigate (let default link work)
+  document.getElementById('introHuman')?.addEventListener('click', () => {
+    try { localStorage.setItem('spl_surface', 'human'); localStorage.setItem('spl_intro_seen', '1'); } catch (_) {}
+  });
+  document.getElementById('introAgent')?.addEventListener('click', () => {
+    try { localStorage.setItem('spl_surface', 'agent'); localStorage.setItem('spl_intro_seen', '1'); } catch (_) {}
+  });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -2186,5 +2196,6 @@ body.intro-lock{overflow:hidden}
   });
 })();
 </script>
+<script src="/assets/platform-home.js?v=1" defer></script>
 </body>
 </html>

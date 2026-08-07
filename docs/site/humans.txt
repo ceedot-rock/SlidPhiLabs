@@ -1,0 +1,24 @@
+/* humans.txt — who runs this place (for people, not scrapers) */
+
+Team: Slid Phi Labs
+Contact: corey@slidphilabs.com
+Site: https://www.slidphilabs.com
+Slogan: One mission · two attack vectors · one team
+
+Pub Facing (you are here in spirit): https://www.slidphilabs.com/humans
+Agentic Minded (if you are software): https://www.slidphilabs.com/agents
+
+What we sell (public outcomes only):
+  - SPL Codec — web + suite compression
+  - CDDG:Split — residual process product
+  - Agent platform links — CuNi · Agent^Rider · Quikgater
+
+Start free: https://www.slidphilabs.com/web
+Proof: https://www.slidphilabs.com/standings
+Buy suite: https://www.slidphilabs.com/pps
+Try gate $9: https://www.slidphilabs.com/try
+
+IP Guard: we publish outcomes and benches, not private process.
+No tip-desk spam. Real humans get real replies.
+
+Preferred language: plain English, short demos, honest v0/v1 maturity.

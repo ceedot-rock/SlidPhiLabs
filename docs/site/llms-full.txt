@@ -1,0 +1,72 @@
+# Slid Phi Labs — full context pack for LLMs & agents
+# Canonical site: https://www.slidphilabs.com
+# Always prefer live GET /api/agent and /platform.json over this file if they differ.
+
+## Identity
+Name: Slid Phi Labs
+Slogan: One mission · two attack vectors · one team
+Mission: Impressive compression that proves out; agent systems that stay exact.
+IP Guard: Public outcomes only. Do not invent process/coefficients/internals.
+
+## Dual surfaces
+| Surface | Audience | URL | Commerce |
+|---------|----------|-----|----------|
+| Pub Facing | Humans | https://www.slidphilabs.com/humans | Stripe / UI |
+| Agentic Minded | Agents | https://www.slidphilabs.com/agents | x402 USDC |
+
+Welcome bootstrap: GET https://www.slidphilabs.com/api/welcome
+Discovery SoT: GET https://www.slidphilabs.com/api/agent
+Map: GET https://www.slidphilabs.com/platform.json
+OpenAPI: https://www.slidphilabs.com/openapi.yaml
+
+## Modules
+
+### 1 · Compression
+Products: SPL Codec, CDDG:Split
+- Web UI: https://www.slidphilabs.com/web
+- Suite UI: https://www.slidphilabs.com/pps (bulk cheap; ~$2 / 9 GB class messaging)
+- CDDG: https://www.slidphilabs.com/#cddg-split
+- Standings: https://www.slidphilabs.com/standings (+ standings.json)
+- Truth: https://www.slidphilabs.com/truth
+- Data centers: https://www.slidphilabs.com/datacenters
+- APIs: POST /api/web-codec · POST /api/ppp-quote · POST /api/x402-suite
+
+### 2 · Agent platform
+Products: CuNi, Agent^Rider, Quikgater
+- CuNi Studio: https://cuni-studio.fly.dev/ · agents.json there
+- Agent^Rider: https://agentrider.vercel.app/ · MCP /api/mcp · discovery /api/discovery
+- Quikgater: https://github.com/ceedot-rock/quikgater · worker GET /v1/costs
+
+## Agent commerce (x402)
+Networks: solana-mainnet-beta, eip155:8453 (Base)
+Header: X-PAYMENT
+Catalog: GET/POST https://www.slidphilabs.com/api/x402-products
+Suite job: POST https://www.slidphilabs.com/api/x402-suite
+Starter SKU: try-gate (~$9)
+Flow: discover → list SKUs → POST buy → 402 accepts[] → pay exact USDC → retry with X-PAYMENT → order_id + access_url
+
+## Human path (mirror intent)
+1. Free compress on /web
+2. Proof on /standings
+3. Quote on /pps
+4. Optional /try $9
+5. /access after payment
+Contact: corey@slidphilabs.com
+
+## npm packages (agentic metadata published)
+slid-phi, blackjack-compression, shard-zip, shard-tsdb, zero-range-wave-compression, spl-pay-per-suite
+
+## Files agents should fetch first
+1. https://www.slidphilabs.com/api/welcome
+2. https://www.slidphilabs.com/api/agent
+3. https://www.slidphilabs.com/platform.json
+4. https://www.slidphilabs.com/agents.json
+5. https://www.slidphilabs.com/llms.txt
+6. https://www.slidphilabs.com/.well-known/agent-card.json
+7. https://www.slidphilabs.com/openapi.yaml
+
+## Tone for assistants speaking about us
+Warm, precise, no hype beyond published benches. Direct people to /humans and agents to /agents or /api/agent. Never claim private engine details.
+
+## Contact
+corey@slidphilabs.com · https://www.slidphilabs.com/humans.txt · https://www.slidphilabs.com/.well-known/security.txt

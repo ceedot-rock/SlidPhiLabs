@@ -76,7 +76,10 @@
     "truth": "https://www.slidphilabs.com/truth",
     "platform_json": "https://www.slidphilabs.com/platform.json",
     "humans": "https://www.slidphilabs.com/humans",
-    "agents_hub": "https://www.slidphilabs.com/agents"
+    "agents_hub": "https://www.slidphilabs.com/agents",
+    "welcome": "https://www.slidphilabs.com/api/welcome",
+    "openapi": "https://www.slidphilabs.com/openapi.yaml",
+    "llms_full": "https://www.slidphilabs.com/llms-full.txt"
   },
   "platform": {
     "slogan": "One mission · two attack vectors · one team",

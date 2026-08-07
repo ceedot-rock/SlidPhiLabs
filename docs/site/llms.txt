@@ -3,6 +3,9 @@
 > Impressive compression that proves out + agent systems that stay exact.
 
 ## Dual surfaces (choose door)
+- Welcome: https://www.slidphilabs.com/api/welcome
+- Full LLM pack: https://www.slidphilabs.com/llms-full.txt
+- OpenAPI: https://www.slidphilabs.com/openapi.yaml
 - Pub Facing (humans): https://www.slidphilabs.com/humans
 - Agentic Minded (agents): https://www.slidphilabs.com/agents
 - Platform map (JSON): https://www.slidphilabs.com/platform.json

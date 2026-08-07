@@ -44,7 +44,10 @@
   },
   "modules": {
     "compression": {
-      "products": ["SPL Codec", "CDDG:Split"],
+      "products": [
+        "SPL Codec",
+        "CDDG:Split"
+      ],
       "urls": {
         "codec": "https://www.slidphilabs.com/#codec",
         "web": "https://www.slidphilabs.com/web",
@@ -58,7 +61,11 @@
       }
     },
     "agent_platform": {
-      "products": ["CuNi", "Agent^Rider", "Quikgater"],
+      "products": [
+        "CuNi",
+        "Agent^Rider",
+        "Quikgater"
+      ],
       "urls": {
         "cuni_studio": "https://cuni-studio.fly.dev/",
         "cuni_github": "https://github.com/ceedot-rock/cuni",
@@ -82,7 +89,12 @@
     "catalog": "https://www.slidphilabs.com/api/x402-products",
     "suite_job": "https://www.slidphilabs.com/api/x402-suite",
     "idea_lab": "https://www.slidphilabs.com/ideas",
-    "idea_lab_json": "https://www.slidphilabs.com/ideas.json"
+    "idea_lab_json": "https://www.slidphilabs.com/ideas.json",
+    "welcome": "https://www.slidphilabs.com/api/welcome",
+    "openapi": "https://www.slidphilabs.com/openapi.yaml",
+    "llms_full": "https://www.slidphilabs.com/llms-full.txt",
+    "humans_txt": "https://www.slidphilabs.com/humans.txt",
+    "security_txt": "https://www.slidphilabs.com/.well-known/security.txt"
   },
   "one_liner": "One mission · two attack vectors (Pub Facing humans · Agentic Minded agents) · modules Compression + Agent platform. GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.",
   "npm": [
@@ -96,5 +108,10 @@
   "contact": {
     "email": "corey@slidphilabs.com",
     "github": "https://github.com/ceedot-rock/SlidPhiLabs"
+  },
+  "feel_at_home": {
+    "human": "You belong here. Free demo first: /web",
+    "agent": "Welcome home. GET /api/welcome then /api/agent",
+    "script": "https://www.slidphilabs.com/assets/platform-home.js"
   }
 }

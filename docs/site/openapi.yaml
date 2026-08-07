@@ -1,0 +1,155 @@
+openapi: 3.0.3
+info:
+  title: Slid Phi Labs — Agent commerce & platform
+  description: |
+    Dual-surface lab: Pub Facing (humans) + Agentic Minded (agents).
+    One mission · two attack vectors · one team.
+    Start: GET /api/welcome then GET /api/agent.
+  version: 1.4.0
+  contact:
+    name: Slid Phi Labs
+    email: corey@slidphilabs.com
+    url: https://www.slidphilabs.com
+  x-logo:
+    url: https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg
+servers:
+  - url: https://www.slidphilabs.com
+    description: Production
+tags:
+  - name: home
+    description: Feel-at-home bootstrap
+  - name: discovery
+    description: Platform & agent discovery
+  - name: commerce
+    description: x402 catalog & suite jobs
+  - name: compression
+    description: Web codec demo API
+paths:
+  /api/welcome:
+    get:
+      tags: [home]
+      summary: Welcome home (agent-friendly bootstrap)
+      operationId: welcome
+      responses:
+        "200":
+          description: Friendly dual-surface orientation
+          content:
+            application/json:
+              schema:
+                type: object
+  /api/agent:
+    get:
+      tags: [discovery]
+      summary: Source-of-truth agent discovery (v1.4+)
+      operationId: agentDiscovery
+      responses:
+        "200":
+          description: Platform map, rails, catalog pointers, buy examples
+          content:
+            application/json:
+              schema:
+                type: object
+  /platform.json:
+    get:
+      tags: [discovery]
+      summary: Dual-surface platform map
+      operationId: platformMap
+      responses:
+        "200":
+          description: surfaces + modules + discovery URLs
+  /api/x402-products:
+    get:
+      tags: [commerce]
+      summary: List standing SKUs
+      operationId: listProducts
+      responses:
+        "200":
+          description: Product catalog
+    post:
+      tags: [commerce]
+      summary: Buy SKU (returns 402 until paid)
+      operationId: buyProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [sku]
+              properties:
+                sku:
+                  type: string
+                  example: try-gate
+                email:
+                  type: string
+                  format: email
+      parameters:
+        - name: X-PAYMENT
+          in: header
+          required: false
+          schema:
+            type: string
+          description: x402 payment payload after 402 challenge
+      responses:
+        "402":
+          description: Payment required — pay accepts[] then retry with X-PAYMENT
+        "200":
+          description: Paid — order_id + access_url
+  /api/x402-suite:
+    post:
+      tags: [commerce]
+      summary: Metered suite compression job (x402)
+      operationId: suiteJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product:
+                  type: string
+                  example: auto
+                dataClass:
+                  type: string
+                  example: zeros
+                op:
+                  type: string
+                  example: compress
+                bytes:
+                  type: integer
+                  example: 1048576
+                email:
+                  type: string
+      responses:
+        "402":
+          description: Pay metered quote
+        "200":
+          description: job_id issued
+  /api/web-codec:
+    post:
+      tags: [compression]
+      summary: Free web-mode compress/decompress demo
+      operationId: webCodec
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Codec result
+  /api/ppp-quote:
+    post:
+      tags: [compression]
+      summary: Human/agent suite quote (metered)
+      operationId: pppQuote
+      responses:
+        "200":
+          description: Quote JSON
+components:
+  securitySchemes:
+    x402Payment:
+      type: apiKey
+      in: header
+      name: X-PAYMENT
+      description: x402 exact USDC payment proof (Solana mainnet or Base)

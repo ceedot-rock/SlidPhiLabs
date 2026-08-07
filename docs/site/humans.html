@@ -23,6 +23,7 @@
 <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta name="theme-color" content="#050b16"/>
 <meta name="robots" content="index,follow"/>
+<link rel="manifest" href="/site.webmanifest"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=12"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
@@ -76,8 +77,8 @@ footer a{margin-right:12px}
 <nav><div class="inner">
   <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=12" alt=""/>Slid Phi <span>Labs</span></a>
   <div class="nav-links">
-    <a class="active" href="/humans">Pub Facing</a>
-    <a href="/agents">Agentic Minded</a>
+    <a class="active" href="/humans" data-surface="human">Pub Facing</a>
+    <a href="/agents" data-surface="agent">Agentic Minded</a>
     <a href="/web">Web</a>
     <a href="/pps">Suite</a>
     <a href="/try">Try $9</a>
@@ -85,7 +86,7 @@ footer a{margin-right:12px}
   </div>
 </div></nav>
 
-<header class="hero wrap">
+<header class="hero wrap" id="main">
   <div class="badge">Pub Facing · attack vector for humans</div>
   <h1>Built for people who ship.</h1>
   <p class="lead">
@@ -95,6 +96,10 @@ footer a{margin-right:12px}
   <p class="mission">
     <em>One mission · two attack vectors · one team.</em>
     You try outcomes. Agents automate the rails. Both buy into the same products.
+  </p>
+  <p class="mission" style="border-left-color:var(--teal)">
+    <em>You belong here.</em>
+    Free demo first. Proof next. Buy when it pays for itself. We answer real mail — not tip desks.
   </p>
   <div class="cta-row">
     <a class="btn btn-teal" href="/web">Free web compress</a>
@@ -188,11 +193,12 @@ footer a{margin-right:12px}
   <p>
     <a href="/">Home</a>
     <a href="/humans">Pub Facing</a>
-    <a href="/agents">Agentic Minded</a>
+    <a href="/agents" data-surface="agent">Agentic Minded</a>
     <a href="/ideas">Idea Lab</a>
     <a href="mailto:corey@slidphilabs.com">Contact</a>
   </p>
   <p style="margin-top:8px">IP Guard: public outcomes only. Processes stay private. © Slid Phi Labs</p>
 </footer>
+<script src="/assets/platform-home.js?v=1" defer></script>
 </body>
 </html>
