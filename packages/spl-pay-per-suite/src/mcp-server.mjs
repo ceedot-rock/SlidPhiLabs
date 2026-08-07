@@ -36,38 +36,40 @@ import {
   PRODUCT_BASE,
   DATA_MULT,
   OP_MULT,
+  FREE_BYTES,
+  MIN_PAID_CENTS,
 } from "./index.mjs";
 
 const TOOLS = [
   {
     name: "spl_pps_info",
     description:
-      "SPL Pay Per Suite overview: service name, site URL, Stripe (humans) + x402 (agents), products, data classes, ops.",
+      "SPL Pay Per Suite overview: freemium suite (free first 1 GB then ~1.5¢/GB), Stripe (humans) + x402 (agents), products, data classes, ops. Try Gate retired.",
     inputSchema: { type: "object", properties: {} },
   },
   {
     name: "spl_pps_x402_info",
     description:
-      "Agentic commerce discovery: standing product catalog + suite job endpoints, headers, flow. Stripe remains for humans.",
+      "Agentic commerce discovery: standing product catalog + freemium suite jobs (free under 1 GB), headers, flow. Stripe remains for humans.",
     inputSchema: { type: "object", properties: {} },
   },
   {
     name: "spl_pps_x402_catalog",
     description:
-      "List all standing Slid Phi Labs products agents can buy via x402 (CDDG:Split, ZRW tiers, Blackjack, shards, support, etc.) with USD prices.",
+      "List standing Slid Phi Labs license products agents can buy via x402 (CDDG:Split, ZRW tiers, Blackjack, shards, support, etc.). No try-gate — use freemium suite for eval.",
     inputSchema: { type: "object", properties: {} },
   },
   {
     name: "spl_pps_x402_buy",
     description:
-      "Buy a standing product via x402. Without paymentHeader → returns 402 requirements. With paymentHeader (or devBypass) → order_id + access_url.",
+      "Buy a standing license product via x402. Without paymentHeader → returns 402 requirements. With paymentHeader (or devBypass) → order_id + access_url. Not for suite jobs — use spl_pps_x402_submit.",
     inputSchema: {
       type: "object",
       properties: {
         sku: {
           type: "string",
           description:
-            "cddg-split | zrw-n00b | zrw-pro | zrw-l33t | blackjack | shard-zip | shard-tsdb | slid-phi | support-integration | consulting | sponsor | donate | try-gate",
+            "cddg-split | zrw-n00b | zrw-pro | zrw-l33t | blackjack | shard-zip | shard-tsdb | slid-phi | support-integration | consulting | sponsor | donate",
         },
         email: { type: "string" },
         note: { type: "string" },
@@ -80,14 +82,14 @@ const TOOLS = [
   {
     name: "spl_pps_x402_requirements",
     description:
-      "Probe POST /api/x402-suite (metered job) without paying. Returns 402 accepts[] for suite compress/decompress jobs.",
+      "Probe POST /api/x402-suite. Free under 1 GB (no pay). Over free → 402 accepts[] for usage pricing (~1.5¢/GB).",
     inputSchema: {
       type: "object",
       properties: {
         product: { type: "string" },
         dataClass: { type: "string" },
         op: { type: "string" },
-        bytes: { type: "number" },
+        bytes: { type: "number", description: "≤1GiB free; over free requires payment" },
         email: { type: "string" },
         note: { type: "string" },
       },
@@ -96,7 +98,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_submit",
     description:
-      "Submit metered suite job via x402 (not fixed SKU). Pass paymentHeader after paying, or devBypass for staging.",
+      "Submit freemium suite job via x402. Under 1 GB free (no paymentHeader). Over free: pass paymentHeader after paying, or devBypass for staging.",
     inputSchema: {
       type: "object",
       properties: {
@@ -107,7 +109,7 @@ const TOOLS = [
         email: { type: "string" },
         note: { type: "string" },
         fileName: { type: "string" },
-        paymentHeader: { type: "string", description: "Base64 X-PAYMENT proof" },
+        paymentHeader: { type: "string", description: "Base64 X-PAYMENT proof (only if over free cap)" },
         devBypass: { type: "boolean", description: "Staging only if server allows" },
       },
     },
@@ -115,7 +117,7 @@ const TOOLS = [
   {
     name: "spl_pps_quote",
     description:
-      "Instant quote for an SPL Pay Per Suite project. Inputs: product, dataClass, op, bytes. Returns USD amount and breakdown.",
+      "Instant freemium quote: free first 1 GB ($0), then ~1.5¢/GB. Inputs: product, dataClass, op, bytes. Returns free flag + USD amount.",
     inputSchema: {
       type: "object",
       properties: {
@@ -129,7 +131,7 @@ const TOOLS = [
             "zeros | ramp | walk | mixed_ints | timeseries | json_series | binary | unknown",
         },
         op: { type: "string", description: "compress | decompress | roundtrip" },
-        bytes: { type: "number", description: "Payload size in bytes" },
+        bytes: { type: "number", description: "Payload size in bytes (≤1GiB = free)" },
         remote: { type: "boolean", description: "If true, use live site API" },
       },
     },
@@ -137,7 +139,7 @@ const TOOLS = [
   {
     name: "spl_pps_checkout",
     description:
-      "Create Stripe checkout URL for the quoted SPL Pay Per Suite amount. Prefer after spl_pps_quote.",
+      "Checkout for suite quote. Under 1 GB returns free_showcase (no Stripe). Over free returns Stripe Checkout URL.",
     inputSchema: {
       type: "object",
       properties: {
@@ -152,7 +154,7 @@ const TOOLS = [
   {
     name: "spl_pps_submit_job",
     description:
-      "Submit a Pay Per Suite job after payment. Lab runs the best available tool and emails results. Requires email.",
+      "Submit a Pay Per Suite job (free under 1 GB after free_showcase, or after paid). Lab runs best tool and emails results. Requires email.",
     inputSchema: {
       type: "object",
       properties: {
@@ -198,6 +200,15 @@ async function callTool(name, args = {}) {
       return {
         service: SERVICE_NAME,
         site: SITE_PPS,
+        pricing: {
+          model: "freemium_suite_v2",
+          free_cap_bytes: FREE_BYTES,
+          free_cap_gb: 1,
+          usd_per_gb_after_free: 0.015,
+          usd_per_gb_bulk: 0.008,
+          min_paid_cents: MIN_PAID_CENTS,
+          try_gate: "retired",
+        },
         pay_human: STRIPE_PAYMENT_LINK,
         pay_agent_products: X402_PRODUCTS_URL,
         pay_agent_jobs: X402_SUITE_URL,
@@ -207,6 +218,7 @@ async function callTool(name, args = {}) {
         ops: Object.keys(OP_MULT),
         npm: "spl-pay-per-suite",
         cli: "npx spl-pay-per-suite quote|pay|job|x402|catalog|buy",
+        discovery: "https://www.slidphilabs.com/api/agent",
       };
     case "spl_pps_x402_info":
       return agentDiscovery();

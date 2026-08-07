@@ -1,7 +1,7 @@
 {
   "name": "spl-pay-per-suite",
-  "version": "1.1.2",
-  "description": "SPL Pay Per Suite — on-spot quotes, Stripe (humans) + x402 agentic commerce (machines). Library, CLI, and MCP.",
+  "version": "1.1.3",
+  "description": "SPL Pay Per Suite — freemium (free first 1 GB · then ~1.5¢/GB), Stripe + x402. Library, CLI, MCP. Try Gate retired.",
   "type": "module",
   "main": "src/index.mjs",
   "exports": {
@@ -46,7 +46,9 @@
     "agent-platform",
     "cuni",
     "agent-rider",
-    "quikgater"
+    "quikgater",
+    "freemium",
+    "usage-pricing"
   ],
   "author": "Slid Phi Labs",
   "license": "SEE LICENSE IN LICENSE",
@@ -82,12 +84,21 @@
     "site": "https://www.slidphilabs.com",
     "llms_txt": "https://www.slidphilabs.com/llms.txt",
     "agents_json": "https://www.slidphilabs.com/agents.json",
-    "one_liner": "Modules: Compression (SPL Codec+CDDG) · Agent platform (CuNi+Rider+Quikgater). Commerce: GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.",
+    "one_liner": "Free first 1 GB suite · then ~1.5¢/GB (Try Gate retired). Compression+agent platform. GET https://www.slidphilabs.com/api/agent · x402 or free suite under 1 GB.",
     "agent_platform": {
       "cuni": "https://cuni-studio.fly.dev/",
       "agent_rider": "https://agentrider.vercel.app/",
       "quikgater": "https://github.com/ceedot-rock/quikgater"
-    }
+    },
+    "suite": "https://www.slidphilabs.com/pps",
+    "suite_pricing": {
+      "free_cap_gb": 1,
+      "usd_per_gb_after_free": 0.015,
+      "try_gate": "retired",
+      "model": "freemium_suite_v2"
+    },
+    "welcome": "https://www.slidphilabs.com/api/welcome",
+    "platform_json": "https://www.slidphilabs.com/platform.json"
   },
   "x402": {
     "discovery": "https://www.slidphilabs.com/api/agent",

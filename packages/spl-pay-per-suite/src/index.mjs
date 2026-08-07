@@ -5,23 +5,37 @@
 import {
   computeQuote,
   classifyBytes,
+  usageFeeCents,
   STRIPE_PAYMENT_LINK,
   SITE_PPS,
   API_BASE,
   PRODUCT_BASE,
+  PRODUCT_ADD_CENTS,
   DATA_MULT,
   OP_MULT,
+  FREE_BYTES,
+  MIN_PAID_CENTS,
+  MIN_CENTS,
+  MAX_CENTS,
+  MAX_BYTES,
 } from "./quote.mjs";
 
 export {
   computeQuote,
   classifyBytes,
+  usageFeeCents,
   STRIPE_PAYMENT_LINK,
   SITE_PPS,
   API_BASE,
   PRODUCT_BASE,
+  PRODUCT_ADD_CENTS,
   DATA_MULT,
   OP_MULT,
+  FREE_BYTES,
+  MIN_PAID_CENTS,
+  MIN_CENTS,
+  MAX_CENTS,
+  MAX_BYTES,
 };
 
 export const SERVICE_NAME = "SPL Pay Per Suite";
