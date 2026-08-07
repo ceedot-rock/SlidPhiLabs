@@ -388,12 +388,15 @@ class OmniWave:
         else:
             meta["engine"] = "general_lz_entropy"
 
-        meta["use_lz"] = use_lz
-        if use_lz:
+        # Toy LZ77 is O(n·match) — fine for demos; skip on large payloads (entropy is enough).
+        meta["use_lz"] = use_lz and len(transformed) <= 256 * 1024
+        if meta["use_lz"]:
             intermediate = lz77_encode(transformed)
             meta["transforms"].append({"type": "lz77"})
         else:
             intermediate = transformed
+            if use_lz and meta.get("engine") and "+lz+" in str(meta["engine"]):
+                meta["engine"] = str(meta["engine"]).replace("+lz+", "+")
 
         payload = entropy_encode(intermediate)
         return self._frame(payload, meta), meta
