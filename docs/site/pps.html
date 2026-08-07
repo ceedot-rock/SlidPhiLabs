@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="lab-pricing" content="freemium_suite_v2"/>
+<meta name="lab-pricing" content="freemium_suite_v4_undercut"/>
 <meta name="lab-eval-path" content="https://www.slidphilabs.com/pps"/>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>SPL Codec Suite — free first 1 GB · then ~3¢/GB · min $2 · Slid Phi Labs</title>
-<meta name="description" content="Live quote suite. First 1 GB free per job to showcase the platform. Then ~3¢/GB · min $2 (far under typical cloud egress). License packages separate."/>
+<title>SPL Codec Suite — free first 100 GB · then ~5¢/GB under ~9¢ egress · Slid Phi Labs</title>
+<meta name="description" content="Live quote suite. First 100 GB free per job to showcase the platform. Then ~5¢/GB under ~9¢ egress (far under typical cloud egress). License packages separate."/>
 <link rel="canonical" href="https://www.slidphilabs.com/pps"/>
 
 <!-- Agentic commerce discovery (machine-readable) -->
@@ -21,9 +21,9 @@
 <meta name="agent-networks" content="solana-mainnet-beta,eip155:8453"/>
 <meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
 <meta name="agent-catalog" content="https://www.slidphilabs.com/api/x402-products"/>
-<meta name="agent-one-liner" content="Free first 1 GB suite · then ~3¢/GB · min $2 · dual surfaces · GET /api/agent · Try Gate retired."/>
-<meta property="og:title" content="SPL Codec Suite — free first 1 GB · then ~3¢/GB · min $2 · Slid Phi Labs"/>
-<meta property="og:description" content="Live quote suite. First 1 GB free per job to showcase the platform. Then ~3¢/GB · min $2 (far under typical cloud egress). License packages separate."/>
+<meta name="agent-one-liner" content="Free first 100 GB suite · then ~5¢/GB under ~9¢ egress · GET /api/agent · Try Gate retired."/>
+<meta property="og:title" content="SPL Codec Suite — free first 100 GB · then ~5¢/GB under ~9¢ egress · Slid Phi Labs"/>
+<meta property="og:description" content="Live quote suite. First 100 GB free per job to showcase the platform. Then ~5¢/GB under ~9¢ egress (far under typical cloud egress). License packages separate."/>
 <meta property="og:url" content="https://www.slidphilabs.com/pps"/>
 <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta property="og:type" content="website"/>
@@ -31,8 +31,8 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@slidphilabs"/>
 <meta name="twitter:creator" content="@slidphilabs"/>
-<meta name="twitter:title" content="SPL Codec Suite — free first 1 GB · then ~3¢/GB · min $2 · Slid Phi Labs"/>
-<meta name="twitter:description" content="Live quote suite. First 1 GB free per job to showcase the platform. Then ~3¢/GB · min $2 (far under typical cloud egress). License packages separate."/>
+<meta name="twitter:title" content="SPL Codec Suite — free first 100 GB · then ~5¢/GB under ~9¢ egress · Slid Phi Labs"/>
+<meta name="twitter:description" content="Live quote suite. First 100 GB free per job to showcase the platform. Then ~5¢/GB under ~9¢ egress (far under typical cloud egress). License packages separate."/>
 <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta name="theme-color" content="#050b16"/>
 <meta name="robots" content="index,follow"/>
@@ -379,7 +379,7 @@ footer.suite-foot a{color:var(--teal-bright);font-weight:600}
     "@type": "Service",
     "name": "SPL SPL Codec Suite",
     "provider": { "@type": "Organization", "name": "Slid Phi Labs", "url": "https://www.slidphilabs.com/" },
-    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "0", "description": "Free first 1 GB live quote · multi-GB cheap" }
+    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "0", "description": "Free first 100 GB live quote · multi-GB cheap" }
   }
 }
 </script>
@@ -513,7 +513,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
       <div class="panel">
         <div class="quote-label">Live quote</div>
         <div class="quote-amt" id="quoteAmtEl">$<span id="amt">9.00</span><span class="cur">USD</span></div>
-        <p class="quote-sub" id="amtSub">Free first 1 GB · multi-GB is cheap (free 1 GB then ~3¢/GB · min $2) · max $10,000</p>
+        <p class="quote-sub" id="amtSub">Free first 100 GB · multi-GB is cheap (free 1 GB then ~5¢/GB under ~9¢ egress) · max $10,000</p>
         <div class="breakdown" id="breakdown"></div>
         <div class="cta-stack">
           <button type="button" class="btn btn-gold btn-lg btn-block" id="payBtn">Pay with Stripe →</button>
@@ -552,9 +552,9 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
 (function () {
   const PPP_LINK = 'https://buy.stripe.com/aFa00k4B70OYetL0O46wE0g';
   /* Freemium usage — match api/suite-pricing.js */
-  const FREE_BYTES = 1 * 1024 * 1024 * 1024; // 1 GB free
+  const FREE_BYTES = 100 * 1024 * 1024 * 1024; // 100 GB free
   const PRODUCT_ADD = {
-    auto: 0, zrw: 0, "cddg-split": 100, blackjack: 0,
+    auto: 0, zrw: 0, "cddg-split": 25, blackjack: 0,
     "shard-zip": 0, "shard-tsdb": 0, "slid-phi": 0,
   };
   const DATA_MULT = {
@@ -562,7 +562,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
     timeseries: 1.05, json_series: 1.0, binary: 1.1, unknown: 1.0,
   };
   const OP_MULT = { compress: 1.0, decompress: 0.75, roundtrip: 1.15 };
-  const MIN_PAID = 200, MAX = 1000000; // $2 min
+  const MIN_PAID = 5, MAX = 1000000; // $0.05 min
   const TOOLS = [
     { id: 'auto', label: 'Auto', logo: null },
     { id: 'zrw', label: 'ZRW', logo: '/assets/logos/logo-zero-range-wave.jpg?v=13' },
@@ -601,8 +601,8 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
   function usageFee(billableBytes) {
     const gb = Math.max(0, Number(billableBytes) || 0) / (1024 * 1024 * 1024);
     if (gb <= 0) return 0;
-    if (gb <= 50) return Math.round(gb * 3); // $0.03/GB
-    return Math.round(50 * 3 + (gb - 50) * 2); // $0.02/GB after
+    if (gb <= 100) return Math.round(gb * 5); // $0.05/GB under ~$0.09 egress
+    return Math.round(100 * 5 + (gb - 100) * 4); // $0.04/GB after
   }
 
   function computeQuote() {
@@ -675,17 +675,17 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
     if (q.free) {
       $('breakdown').innerHTML =
         '<div><span>Free showcase</span><strong>$0.00</strong></div>' +
-        '<div><span>Free cap</span><strong>1 GB / job</strong></div>' +
+        '<div><span>Free cap</span><strong>100 GB / job</strong></div>' +
         '<div><span>Size · ' + fmtBytes(q.bytes) + '</span><strong>included</strong></div>' +
-        '<div><span>Then</span><strong>~3¢/GB · min $2 (min $2 · under egress at volume)</strong></div>';
-      if ($('amtSub')) $('amtSub').textContent = 'FREE under 1 GB · showcase the platform · no Stripe';
+        '<div><span>Then</span><strong>~5¢/GB under ~9¢ egress (under first paid egress ~9¢/GB)</strong></div>';
+      if ($('amtSub')) $('amtSub').textContent = 'FREE under 100 GB · showcase the platform · no Stripe';
     } else {
       $('breakdown').innerHTML =
-        '<div><span>Free first 1 GB</span><strong>$0.00</strong></div>' +
+        '<div><span>Free first 100 GB</span><strong>$0.00</strong></div>' +
         '<div><span>Usage · ' + fmtBytes(q.billable) + '</span><strong>$' + (q.size / 100).toFixed(2) + '</strong></div>' +
         '<div><span>Product add</span><strong>$' + (q.base / 100).toFixed(2) + '</strong></div>' +
         '<div><span>Data × op</span><strong>×' + q.mult.toFixed(2) + '</strong></div>';
-      if ($('amtSub')) $('amtSub').textContent = 'Usage · ~3¢/GB · min $2 after free · min $2 · under egress at volume · max $10,000';
+      if ($('amtSub')) $('amtSub').textContent = 'Usage · ~5¢/GB under ~9¢ egress after free · under first paid egress ~9¢/GB · max $10,000';
     }
     const toolLabel = productEl.value === 'auto' && recommendedTool !== 'auto'
       ? 'auto → ' + recommendedTool
@@ -824,7 +824,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
     const btn = $('payBtn');
     if (!btn) return;
     if (q.free) {
-      btn.textContent = 'Continue free (under 1 GB) →';
+      btn.textContent = 'Continue free (under 100 GB) →';
       btn.classList.remove('btn-gold');
       btn.classList.add('btn-teal');
     } else {
@@ -862,8 +862,8 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
       if (data.mode === 'free_showcase' || data.free || q.free) {
         paid = true;
         show(payMsg, 'ok',
-          '<strong>Free showcase</strong> — under 1 GB cap. No payment. Enter email and <strong>Submit project</strong>.');
-        showBanner('ok', 'Free tier active — first 1 GB is $0. Submit your job below.');
+          '<strong>Free showcase</strong> — under 100 GB cap. No payment. Enter email and <strong>Submit project</strong>.');
+        showBanner('ok', 'Free tier active — first 100 GB is $0. Submit your job below.');
         setSteps();
         return;
       }
@@ -882,7 +882,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
     } catch (e) {
       if (q.free) {
         paid = true;
-        show(payMsg, 'ok', 'Free under 1 GB — submit project below.');
+        show(payMsg, 'ok', 'Free under 100 GB — submit project below.');
         setSteps();
       } else {
         show(payMsg, 'err', 'Checkout hiccup — opening Stripe…');

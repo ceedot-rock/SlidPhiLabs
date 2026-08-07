@@ -13,10 +13,10 @@
       "id": "2026-08-07-freemium-retire-try-gate",
       "week_of": "2026-08-04",
       "published": "2026-08-07",
-      "title": "Try Gate retired: free first 1 GB, then usage",
+      "title": "Try Gate retired: free first 100 GB, then usage",
       "slug": "2026-08-07-freemium-suite-retires-try-gate",
       "url": "https://www.slidphilabs.com/blog/2026-08-07-freemium-suite-retires-try-gate",
-      "summary": "$9 Try Gate removed. Freemium suite is the eval path: free first 1 GB per job, then ~1.5¢/GB under cloud egress.",
+      "summary": "$9 Try Gate removed. Freemium suite is the eval path: free first 100 GB per job, then ~1.5¢/GB under cloud egress.",
       "tags": [
         "pricing",
         "freemium",

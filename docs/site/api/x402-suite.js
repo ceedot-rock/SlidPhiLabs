@@ -476,7 +476,7 @@ export default async function handler(req, res) {
   const accept0 = requirements.accepts?.[0];
   const { payTo } = networkConfig();
 
-  // Free showcase — first 1 GB, no x402 payment
+  // Free showcase — first 100 GB, no x402 payment
   if (quote.free || quote.amount_cents === 0) {
     const jobId = "free_" + Date.now().toString(36);
     return json(res, 200, {
@@ -486,7 +486,7 @@ export default async function handler(req, res) {
       job_id: jobId,
       quote,
       message:
-        "Free showcase under 1 GB cap — no payment. Job accepted for lab intake.",
+        "Free showcase under 100 GB cap — no payment. Job accepted for lab intake.",
       access_url: "https://www.slidphilabs.com/access?product=suite-free&free=1",
     });
   }

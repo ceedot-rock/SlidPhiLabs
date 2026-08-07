@@ -37,20 +37,21 @@ export default async function handler(req, res) {
 
   const body = {
     name: "Slid Phi Labs — Platform Discovery",
-    version: "1.5.0",
+    version: "1.6.0",
     site: "https://www.slidphilabs.com",
     suite_ui: "https://www.slidphilabs.com/pps",
     mission: "Impressive compression that proves out, and agent systems that stay exact — one team.",
     slogan: "One mission · two attack vectors · one team",
     one_liner:
-      "Free first 1 GB suite · then from $2 min · ~3¢/GB. GET https://www.slidphilabs.com/api/agent · x402 over free · licenses on catalog.",
+      "Free first 100 GB suite (equal free-tier $0) · then ~5c/GB under ~9c first paid egress. GET https://www.slidphilabs.com/api/agent · Try Gate retired.",
     starter_path: "https://www.slidphilabs.com/pps",
     suite_pricing: {
-      free_cap_gb: 1,
-      min_paid_usd: 2.0,
-      usd_per_gb_after_free: 0.03,
-      usd_per_gb_bulk: 0.02,
-      note: "Free 1 GB · over free from $2 min · ~3¢/GB — Try Gate retired",
+      free_cap_gb: 100,
+      min_paid_usd: 0.05,
+      usd_per_gb_after_free: 0.05,
+      usd_per_gb_bulk: 0.04,
+      first_paid_egress_ref_usd: 0.09,
+      note: "Equal at $0 through 100 GB free-tier size; then under ~9¢/GB first paid egress. Try Gate retired",
     },
     platform: {
       map: "https://www.slidphilabs.com/platform.json",

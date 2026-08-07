@@ -5,7 +5,7 @@
   "site": {
     "name": "Slid Phi Labs",
     "url": "https://www.slidphilabs.com",
-    "description": "Slid Phi Labs — free first 1 GB suite · then ~1.5¢/GB. Compression + agent platform. Dual surfaces humans/agents. Try Gate retired.",
+    "description": "Free first 100 GB suite (equal free-tier $0) · then ~5c/GB under ~9c first paid egress. GET https://www.slidphilabs.com/api/agent. Try Gate retired.",
     "social": {
       "x": "https://x.com/slidphilabs",
       "handle": "@slidphilabs"
@@ -26,9 +26,15 @@
     },
     "required": false,
     "pricing": {
-      "amount": "9.00",
-      "currency": "USDC",
-      "note": "Starter SKU try-gate; full catalog at /api/x402-products"
+      "model": "freemium_suite_v4_undercut",
+      "free_cap_gb": 100,
+      "min_paid_usd": 0.05,
+      "usd_per_gb_after_free": 0.05,
+      "usd_per_gb_bulk": 0.04,
+      "first_paid_egress_ref_usd": 0.09,
+      "try_gate": "retired",
+      "suite_url": "https://www.slidphilabs.com/pps",
+      "rule": "Equal at $0 through free-tier size (100 GB); under first paid egress (~9c/GB)"
     }
   },
   "a2a": [
@@ -41,7 +47,7 @@
     "agent_api": "https://www.slidphilabs.com/api/agent",
     "catalog": "https://www.slidphilabs.com/api/x402-products",
     "suite_job": "https://www.slidphilabs.com/api/x402-suite",
-    "one_liner": "Suite free 1 GB · then from $2 · ~3¢/GB. GET /api/agent.",
+    "one_liner": "Free first 100 GB suite (equal free-tier $0) · then ~5c/GB under ~9c first paid egress. GET https://www.slidphilabs.com/api/agent. Try Gate retired.",
     "ecosystem": {
       "cuni_studio": "https://cuni-studio.fly.dev/",
       "cuni_agents_json": "https://cuni-studio.fly.dev/agents.json",
@@ -95,12 +101,14 @@
     }
   },
   "pricing": {
-    "model": "freemium_suite_v3_money",
-    "free_cap_gb": 1,
-    "usd_per_gb_after_free": 0.03,
-    "suite": "https://www.slidphilabs.com/pps",
+    "model": "freemium_suite_v4_undercut",
+    "free_cap_gb": 100,
+    "min_paid_usd": 0.05,
+    "usd_per_gb_after_free": 0.05,
+    "usd_per_gb_bulk": 0.04,
+    "first_paid_egress_ref_usd": 0.09,
     "try_gate": "retired",
-    "usd_per_gb_bulk": 0.02,
-    "min_paid_usd": 2
+    "suite_url": "https://www.slidphilabs.com/pps",
+    "rule": "Equal at $0 through free-tier size (100 GB); under first paid egress (~9c/GB)"
   }
 }

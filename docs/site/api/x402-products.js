@@ -677,7 +677,7 @@ export default async function handler(req, res) {
     return json(res, 410, {
       error: "product_retired",
       sku,
-      message: "Try Gate is retired. Use freemium suite: free first 1 GB then ~1.5¢/GB.",
+      message: "Try Gate is retired. Use freemium suite: free first 100 GB then ~1.5¢/GB.",
       suite: "https://www.slidphilabs.com/pps",
       x402_suite: "POST /api/x402-suite",
     });

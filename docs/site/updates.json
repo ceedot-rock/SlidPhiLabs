@@ -13,7 +13,7 @@
       "date": "2026-08-07",
       "type": "product",
       "title": "Suite pricing retuned for unit economics",
-      "body": "Still free first 1 GB. Over free: min $2 · ~3¢/GB (2¢ bulk). Undercuts egress-class rates at volume without 15¢ loss-leaders.",
+      "body": "Still free first 100 GB. Over free: under first paid egress · ~5¢/GB (2¢ bulk). Undercuts egress-class rates at volume without 15¢ loss-leaders.",
       "href": "https://www.slidphilabs.com/pps",
       "href_label": "Open suite",
       "tags": [
@@ -26,7 +26,7 @@
       "date": "2026-08-07",
       "type": "product",
       "title": "Try Gate retired — free suite is the eval path",
-      "body": "No $9 chip-in. First 1 GB free on /pps, then ~1.5¢/GB. Packages (CDDG/ZRW) unchanged. /try redirects to /pps.",
+      "body": "No $9 chip-in. First 100 GB free on /pps, then ~1.5¢/GB. Packages (CDDG/ZRW) unchanged. /try redirects to /pps.",
       "href": "https://www.slidphilabs.com/pps",
       "href_label": "Open suite",
       "tags": [

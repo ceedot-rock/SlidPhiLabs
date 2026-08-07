@@ -1,24 +1,17 @@
 /**
- * SPL Pay Per Suite — local quote (matches site freemium money model).
- * Free first 1 GiB · over free: min $2 · ~3¢/GB (2¢ after 50 GB over free).
- * Try Gate retired.
+ * SPL Pay Per Suite — local quote (matches site).
+ * Free first 100 GiB (equal when competitor free-tier size is $0).
+ * Over free: under first paid egress (~$0.09/GB) at ~5¢/GB.
  */
-
-export const FREE_BYTES = 1 * 1024 * 1024 * 1024;
-export const MAX_BYTES = 100 * 1024 * 1024 * 1024;
+export const FREE_BYTES = 100 * 1024 * 1024 * 1024;
+export const MAX_BYTES = 1024 * 1024 * 1024 * 1024;
 export const MAX_CENTS = 1_000_000;
-export const MIN_PAID_CENTS = 200; // $2.00
-/** @deprecated free tier can be $0 */
+export const MIN_PAID_CENTS = 5;
 export const MIN_CENTS = 0;
 
 export const PRODUCT_ADD_CENTS = {
-  auto: 0,
-  zrw: 0,
-  "cddg-split": 100,
-  blackjack: 0,
-  "shard-zip": 0,
-  "shard-tsdb": 0,
-  "slid-phi": 0,
+  auto: 0, zrw: 0, "cddg-split": 25, blackjack: 0,
+  "shard-zip": 0, "shard-tsdb": 0, "slid-phi": 0,
 };
 export const PRODUCT_BASE = PRODUCT_ADD_CENTS;
 
@@ -40,8 +33,8 @@ export function usageFeeCents(billableBytes) {
   const b = Math.max(0, Number(billableBytes) || 0);
   if (b <= 0) return 0;
   const gb = b / (1024 * 1024 * 1024);
-  if (gb <= 50) return Math.round(gb * 3);
-  return Math.round(50 * 3 + (gb - 50) * 2);
+  if (gb <= 100) return Math.round(gb * 5);
+  return Math.round(100 * 5 + (gb - 100) * 4);
 }
 
 export function computeQuote({
@@ -58,61 +51,49 @@ export function computeQuote({
   const billable = Math.max(0, b - free_bytes);
   const free = billable <= 0;
   const rates = {
-    free_cap_gb: 1,
-    min_paid_usd: 2.0,
-    usd_per_gb_first_50: 0.03,
-    usd_per_gb_after_50: 0.02,
+    free_cap_gb: 100,
+    min_paid_usd: 0.05,
+    usd_per_gb_first_100: 0.05,
+    usd_per_gb_after_100: 0.04,
+    first_paid_egress_ref: 0.09,
   };
 
   if (free) {
     return {
-      ok: true,
-      service: "SPL Pay Per Suite",
-      currency: "usd",
-      amount_cents: 0,
-      amount_display: "0.00",
-      free: true,
-      tier: "free_showcase",
-      message: "Free showcase — first 1 GB $0. Over free: from $2 min · ~3¢/GB.",
+      ok: true, service: "SPL Pay Per Suite", currency: "usd",
+      amount_cents: 0, amount_display: "0.00", free: true, tier: "free_match",
+      message: "Free through 100 GB (equal when competitor free-tier size is $0).",
       breakdown: {
         product: prod, product_add_cents: 0, product_base_cents: 0,
-        free_bytes, free_gb: 1, billable_bytes: 0, usage_cents: 0, size_cents: 0,
+        free_bytes, free_gb: 100, billable_bytes: 0, usage_cents: 0, size_cents: 0,
         data_class: cls, data_multiplier: DATA_MULT[cls],
         op: operation, op_multiplier: OP_MULT[operation],
         bytes: b, mb: +(b/1024/1024).toFixed(4), gb: +(b/1024/1024/1024).toFixed(6),
         min_cents: 0, min_paid_cents: MIN_PAID_CENTS, max_cents: MAX_CENTS, rates,
       },
-      pay_url: STRIPE_PAYMENT_LINK,
-      suite_url: SITE_PPS,
+      pay_url: STRIPE_PAYMENT_LINK, suite_url: SITE_PPS,
     };
   }
-
   const usage = usageFeeCents(billable);
   const add = PRODUCT_ADD_CENTS[prod] || 0;
   const raw = Math.round((usage + add) * DATA_MULT[cls] * OP_MULT[operation]);
   const cents = Math.min(MAX_CENTS, Math.max(MIN_PAID_CENTS, raw));
   return {
-    ok: true,
-    service: "SPL Pay Per Suite",
-    currency: "usd",
-    amount_cents: cents,
-    amount_display: (cents / 100).toFixed(2),
-    free: false,
-    tier: "usage",
-    message: "Usage — free 1 GB, then from $2 min · ~3¢/GB (2¢ after 50 GB over free).",
+    ok: true, service: "SPL Pay Per Suite", currency: "usd",
+    amount_cents: cents, amount_display: (cents / 100).toFixed(2),
+    free: false, tier: "usage_undercut",
+    message: "Over free: ~5¢/GB (under first paid egress ~9¢/GB).",
     breakdown: {
       product: prod, product_add_cents: add, product_base_cents: add,
-      free_bytes, free_gb: 1, billable_bytes: billable, usage_cents: usage, size_cents: usage,
+      free_bytes, free_gb: 100, billable_bytes: billable, usage_cents: usage, size_cents: usage,
       data_class: cls, data_multiplier: DATA_MULT[cls],
       op: operation, op_multiplier: OP_MULT[operation],
       bytes: b, mb: +(b/1024/1024).toFixed(4), gb: +(b/1024/1024/1024).toFixed(6),
       min_cents: MIN_PAID_CENTS, min_paid_cents: MIN_PAID_CENTS, max_cents: MAX_CENTS, rates,
     },
-    pay_url: STRIPE_PAYMENT_LINK,
-    suite_url: SITE_PPS,
+    pay_url: STRIPE_PAYMENT_LINK, suite_url: SITE_PPS,
   };
 }
-
 
 export function classifyBytes(buf) {
   if (!buf || !buf.length) return { dataClass: "unknown", tool: "auto", confidence: 0 };

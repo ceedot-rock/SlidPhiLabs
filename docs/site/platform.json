@@ -93,9 +93,10 @@
     "openapi": "https://www.slidphilabs.com/openapi.yaml",
     "llms_full": "https://www.slidphilabs.com/llms-full.txt",
     "humans_txt": "https://www.slidphilabs.com/humans.txt",
-    "security_txt": "https://www.slidphilabs.com/.well-known/security.txt"
+    "security_txt": "https://www.slidphilabs.com/.well-known/security.txt",
+    "one_liner": "Free first 100 GB suite (equal free-tier $0) · then ~5c/GB under ~9c first paid egress. GET https://www.slidphilabs.com/api/agent. Try Gate retired."
   },
-  "one_liner": "One mission · two attack vectors. Suite free first 1 GB · then ~3¢/GB min $2. Try Gate retired.",
+  "one_liner": "Free first 100 GB suite (equal free-tier $0) · then ~5c/GB under ~9c first paid egress. GET https://www.slidphilabs.com/api/agent. Try Gate retired.",
   "npm": [
     "slid-phi",
     "blackjack-compression",
@@ -121,18 +122,14 @@
     "handle": "@slidphilabs"
   },
   "pricing": {
-    "model": "freemium_suite_v3_money",
-    "free_cap_gb": 1,
-    "usd_per_gb_after_free": 0.03,
-    "usd_per_gb_bulk": 0.02,
-    "suite_url": "https://www.slidphilabs.com/pps",
+    "model": "freemium_suite_v4_undercut",
+    "free_cap_gb": 100,
+    "min_paid_usd": 0.05,
+    "usd_per_gb_after_free": 0.05,
+    "usd_per_gb_bulk": 0.04,
+    "first_paid_egress_ref_usd": 0.09,
     "try_gate": "retired",
-    "packages": [
-      "cddg-split",
-      "zrw-n00b",
-      "zrw-pro",
-      "zrw-l33t"
-    ],
-    "min_paid_usd": 2
+    "suite_url": "https://www.slidphilabs.com/pps",
+    "rule": "Equal at $0 through free-tier size (100 GB); under first paid egress (~9c/GB)"
   }
 }

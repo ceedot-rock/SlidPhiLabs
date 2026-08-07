@@ -1,6 +1,6 @@
 /**
  * PPP checkout — POST /api/ppp-checkout
- * Freemium: $0 under 1 GB free cap (no Stripe). Paid usage → Checkout Session.
+ * Freemium: $0 under 100 GB free cap (no Stripe). Paid usage → Checkout Session.
  */
 import { computeQuote } from "./suite-pricing.js";
 
@@ -115,7 +115,7 @@ export default async function handler(req, res) {
         origin +
         "/access?product=suite-free&free=1&token=" +
         encodeURIComponent(token),
-      next: "Free under 1 GB cap — submit the job from /pps (no payment). Upgrade is automatic when size exceeds free.",
+      next: "Free under 100 GB cap — submit the job from /pps (no payment). Upgrade is automatic when size exceeds free.",
       instructions:
         "This quote is $0 (free showcase). Submit your project on the suite page without Stripe.",
     });

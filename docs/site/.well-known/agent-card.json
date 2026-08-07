@@ -1,6 +1,6 @@
 {
   "name": "Slid Phi Labs",
-  "description": "Slid Phi Labs dual-surface platform. Suite: free first 1 GB then ~1.5¢/GB. License SKUs via x402. Try Gate retired.",
+  "description": "Slid Phi Labs. Free first 100 GB suite; then ~5c/GB under first paid egress (~9c/GB). Dual surface. Try Gate retired.",
   "url": "https://www.slidphilabs.com",
   "version": "1.4.0",
   "provider": {
@@ -96,7 +96,7 @@
     "payment_header": "X-PAYMENT",
     "discovery": "https://www.slidphilabs.com/api/agent",
     "catalog": "https://www.slidphilabs.com/api/x402-products",
-    "one_liner": "Free 1 GB · then from $2 · ~3¢/GB · x402 over free",
+    "one_liner": "Free first 100 GB suite (equal free-tier $0) · then ~5c/GB under ~9c first paid egress. GET https://www.slidphilabs.com/api/agent. Try Gate retired.",
     "modules": {
       "compression": [
         "SPL Codec",
@@ -115,10 +115,15 @@
     },
     "starter_path": "https://www.slidphilabs.com/pps",
     "suite_pricing": {
-      "free_cap_gb": 1,
-      "min_paid_usd": 2,
-      "usd_per_gb": 0.03,
-      "usd_per_gb_bulk": 0.02
+      "model": "freemium_suite_v4_undercut",
+      "free_cap_gb": 100,
+      "min_paid_usd": 0.05,
+      "usd_per_gb_after_free": 0.05,
+      "usd_per_gb_bulk": 0.04,
+      "first_paid_egress_ref_usd": 0.09,
+      "try_gate": "retired",
+      "suite_url": "https://www.slidphilabs.com/pps",
+      "rule": "Equal at $0 through free-tier size (100 GB); under first paid egress (~9c/GB)"
     },
     "try_gate": "retired"
   }

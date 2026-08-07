@@ -24,7 +24,7 @@ OpenAPI: https://www.slidphilabs.com/openapi.yaml
 ### 1 · Compression
 Products: SPL Codec, CDDG:Split
 - Web UI: https://www.slidphilabs.com/web
-- Suite UI: https://www.slidphilabs.com/pps (free first 1 GB · then ~3¢/GB · min $2 (under cloud egress))
+- Suite UI: https://www.slidphilabs.com/pps (free first 100 GB · then ~5¢/GB under ~9¢ egress (under cloud egress))
 - CDDG: https://www.slidphilabs.com/#cddg-split
 - Standings: https://www.slidphilabs.com/standings (+ standings.json)
 - Truth: https://www.slidphilabs.com/truth
@@ -42,7 +42,7 @@ Networks: solana-mainnet-beta, eip155:8453 (Base)
 Header: X-PAYMENT
 Catalog: GET/POST https://www.slidphilabs.com/api/x402-products
 Suite job: POST https://www.slidphilabs.com/api/x402-suite
-Starter: free suite first 1 GB on /pps · then ~3¢/GB · min $2
+Starter: free suite first 1 GB on /pps · then ~5¢/GB under ~9¢ egress
 Flow: discover → list SKUs → POST buy → 402 accepts[] → pay exact USDC → retry with X-PAYMENT → order_id + access_url
 
 ## Human path (mirror intent)
