@@ -1,47 +1,25 @@
-# blackjack-compression
+# blackjack-compression (public stub)
 
-**v4** — Fibonacci operator coding + Rice + Elias ω + Δ² + Combinadic.
+**Proprietary.** Public surface is a stub only.
 
-[![npm](https://img.shields.io/npm/v/blackjack-compression)](https://www.npmjs.com/package/blackjack-compression)
+Fibonacci operator coding + Rice + Elias ω + Δ² + Combinadic engines are delivered after freemium use or purchase.
 
-## Install
+## Get the real package
 
-```bash
-npm i blackjack-compression
-```
+- **Free first 100 GB / job** → [https://www.slidphilabs.com/pps](https://www.slidphilabs.com/pps)
+- **Access / support / private install** → [https://www.slidphilabs.com/access](https://www.slidphilabs.com/access)
+- Agent rail (x402) → [https://www.slidphilabs.com/api/agent](https://www.slidphilabs.com/api/agent)
 
-## API
+Support + Integration $199 · Sponsor $29 · Consulting $250
 
-```js
-import {
-  compress, decompress,
-  compressBytes, decompressBytes,
-  compressFileV3, decompressFileV3,
-  compressSet, decompressSet,
-  AdaptiveCodec, BlackjackCodec,
-} from "blackjack-compression";
+## Live benches (structured integers)
 
-const wire = compress([10, 11, 12, 12, 13]);
-const back = decompress(wire);
+See the lab scorecard: [www.slidphilabs.com/standings](https://www.slidphilabs.com/standings)
 
-// sorted unique IDs (combinadic)
-const setWire = compressSet([1, 5, 10, 100]);
-const ids = decompressSet(setWire);
+Flagship (ZRW family):
+- zeros_10k → **8 B** (gzip-9 73 B · brotli-11 13 B)
+- zeros_1M → **10 B** (gzip-9 3910 B · brotli-11 14 B)
 
-// general files (LZ77 + v4)
-const out = compressFileV3(uint8);
-```
+Domain-honest comparison: [`docs/BENCH_VS_INDUSTRY.md`](../../docs/BENCH_VS_INDUSTRY.md)
 
-## v4 layers
-
-| Layer | Role |
-|-------|------|
-| Blackjack ops | repeat / inc / dec / d2 / rice / normal |
-| Rice | geometric residuals |
-| Elias ω | unbounded ints (e.g. > 2³⁰) |
-| Δ² | second-order prediction |
-| Combinadic | sorted unique sets |
-
-## License
-
-MIT
+© Slid Phi Labs · All rights reserved
