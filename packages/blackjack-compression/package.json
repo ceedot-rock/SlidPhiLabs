@@ -1,42 +1,36 @@
 {
   "name": "blackjack-compression",
-  "version": "1.3.0",
-  "description": "Blackjack v4 — Fib ops + Rice + Elias ω + Δ² + Combinadic. Integer streams, bytes, LZ77 files.",
+  "version": "1.3.1",
+  "description": "Blackjack compression — proprietary (Slid Phi Labs). Public package is a stub. Real engine after freemium or purchase.",
   "type": "module",
-  "main": "index.js",
+  "main": "stub.mjs",
   "exports": {
-    ".": "./index.js"
+    ".": "./stub.mjs"
   },
   "files": [
-    "index.js",
+    "stub.mjs",
     "README.md",
     "LICENSE"
   ],
-  "scripts": {
-    "test": "node -e \"import('./index.js').then(m => process.exit(m.selfTest() ? 0 : 1))\""
-  },
   "keywords": [
     "compression",
-    "fibonacci",
-    "blackjack",
-    "rice",
-    "elias-omega",
-    "combinadic",
-    "delta",
-    "lz77"
+    "proprietary",
+    "stub",
+    "slid-phi-labs",
+    "blackjack"
   ],
-  "author": "Corey Tasz",
-  "license": "MIT",
+  "author": "Slid Phi Labs",
+  "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
     "url": "https://github.com/ceedot-rock/SlidPhiLabs"
   },
   "homepage": "https://www.slidphilabs.com",
-  "engines": {
-    "node": ">=18"
-  },
   "funding": {
     "type": "individual",
-    "url": "https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a"
+    "url": "https://www.slidphilabs.com/pps"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
