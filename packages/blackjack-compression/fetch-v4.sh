@@ -1,11 +1,9 @@
 #!/bin/bash
-set -e
-cd "$(dirname "$0")"
-BASE=https://raw.githubusercontent.com/ceedot-rock/SlidPhiLabs/main/packages/blackjack-compression
-echo Fetching v4 b64 parts...
-rm -f /tmp/bj.b64
-for i in 0 1 2 3; do curl -fsSL "$BASE/b64/$i.txt" >> /tmp/bj.b64; done
-base64 -d /tmp/bj.b64 > index.js
-echo Wrote index.js $(wc -c < index.js) bytes
-node -e "import('./index.js').then(m=>process.exit(m.selfTest()?0:1))"
-echo OK
+echo "IP Guard active."
+echo "blackjack-compression engine is proprietary."
+echo "Public repo no longer ships the codec payload."
+echo ""
+echo "Free first 100 GB / job  →  https://www.slidphilabs.com/pps"
+echo "Access / private install →  https://www.slidphilabs.com/access"
+echo "Agent rail (x402)        →  https://www.slidphilabs.com/api/agent"
+exit 1
