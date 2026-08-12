@@ -1,0 +1,15 @@
+{
+  "title": "cddg-split TRUE8 — Public Silesia-style bench",
+  "docket": "SLID-PHI-CDDG-SPLIT-TRUE8",
+  "geometry": "Continuous-1088 Strong + TRUE8",
+  "date": "2026-08-12",
+  "note": "Public demonstration. Exact production residual coefficients remain private (IP Guard).",
+  "method": "Dormant runs (zeros/0xFF/repeat/ramp ≥32B) packed as TRUE8 uint64 counts (8B). Active remainder zlib-9. Lossless.",
+  "rows": [
+    {"file": "dickens", "raw": 52328, "runs": 3, "dormant_raw": 4628, "true8": 24, "active_zstd": 199, "cddg_total": 223, "ratio_pct": 0.4, "saving_vs_zlib": -8},
+    {"file": "mozilla", "raw": 21548, "runs": 3, "dormant_raw": 15288, "true8": 24, "active_zstd": 109, "cddg_total": 133, "ratio_pct": 0.6, "saving_vs_zlib": 7},
+    {"file": "ramp_10k", "raw": 10000, "runs": 39, "dormant_raw": 9984, "true8": 312, "active_zstd": 24, "cddg_total": 336, "ratio_pct": 3.4, "saving_vs_zlib": 34},
+    {"file": "x-ray", "raw": 11000, "runs": 3, "dormant_raw": 9400, "true8": 24, "active_zstd": 29, "cddg_total": 53, "ratio_pct": 0.5, "saving_vs_zlib": 4},
+    {"file": "zeros_1M", "raw": 1000000, "runs": 1, "dormant_raw": 1000000, "true8": 8, "active_zstd": 8, "cddg_total": 16, "ratio_pct": 0.0, "saving_vs_zlib": 975}
+  ]
+}
