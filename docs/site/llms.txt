@@ -1,6 +1,7 @@
 # TRU8 · Chamber · Slid Phi Labs
-> Chamber security: 24-hour free trial · $199 permanent unlock
-> TRU8 compression: public demos free with credit
+> Chamber (json-chamber): 24-hour free trial · $99 permanent unlock
+> TRU8 + chamber (tru8-chamber): $1,900 / project / year (proprietary)
+> TRU8 compression demos: free with credit
 
 ## Products
 - Site: https://www.slidphilabs.com/
@@ -9,20 +10,28 @@
 - **Chamber Format Spec v1:** https://github.com/ceedot-rock/json-chamber-sdk/blob/main/CHAMBER-FORMAT-v1.md
 - TRU8 demos: https://www.slidphilabs.com/demos
 - License / Trial terms: https://www.slidphilabs.com/license
-- Permanent unlock (Chamber): $199 one-time Stripe → https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09
+- json-chamber unlock: $99 one-time → https://www.slidphilabs.com/chamber
+- tru8-chamber studio: $1,900 / project / year → mailto:license@slidphilabs.com
 - Credit line (TRU8 public surfaces): Powered by TRU8 · Slid Phi Labs
-- Commercial inquiry: mailto:license@slidphilabs.com
+- Commercial inquiry: mailto:license@slidphilabs.com · corey@slidphilabs.com
 
-## Chamber (security product)
+## Chamber / json-chamber (security product)
 - φ-split keyword shares + AES-256-GCM
 - 24-hour evaluation from first run (hard cut, no grace)
 - Tamper-evident HMAC-signed license under ~/.chamber/
 - After expiry or license edit the chamber hard-kills
-- One-time $199 unlock removes the kill-switch forever
+- One-time $99 unlock removes the kill-switch forever
 - Pure security — no TRU8 compression engine inside
+- BSL-1.1 open source (Change Date 2030-08-13 → Apache-2.0)
 - Page: https://www.slidphilabs.com/chamber
 - SDK: https://github.com/ceedot-rock/json-chamber-sdk
 - Format (wire only): https://github.com/ceedot-rock/json-chamber-sdk/blob/main/CHAMBER-FORMAT-v1.md
+
+## Pricing tiers
+| SKU | What | Price |
+|-----|------|-------|
+| json-chamber | JSON cloaking only | $99 one-time / domain |
+| tru8-chamber | TRU8 + chamber (smaller bundles + cloaking) | $1,900 / project / year |
 
 ## Chamber Format v1 (interoperability)
 - Sealed JSON object: v, algo, k_words, r_words, nonce, tag, ct
@@ -34,12 +43,13 @@
 ## Chamber trial model
 - 24 hours fully functional from first run on the machine
 - After 24h (or license tamper) the box permanently shuts off
-- One-time $199 Stripe payment removes the kill-switch forever
+- One-time $99 Stripe payment removes the kill-switch forever
 
 ## TRU8 (compression — separate product)
 - Public demos free with credit
 - T_ZERO / T_DICT / T_TRISUM_HOT public tokens
 - Suite (metered): free first 100 GB · then ~5¢/GB · /pps
+- Studio bundling with chamber = tru8-chamber tier (proprietary)
 
 ## Agents
 - Discovery: https://www.slidphilabs.com/api/agent
@@ -47,4 +57,4 @@
 - Welcome: https://www.slidphilabs.com/api/welcome
 
 ## Scope
-Chamber = security (24h trial → $199). Format = open wire shape. TRU8 = compression (demos free with credit). Production residual engine requires commercial license.
+json-chamber = security ($99). tru8-chamber = TRU8+security ($1,900/yr, closed). Format = open wire shape. TRU8 residual engine never open-sourced.
