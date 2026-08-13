@@ -5,7 +5,8 @@
 
 ## Product
 - Site: https://www.slidphilabs.com/
-- Product: TRU8 Black-Box (7-day trial from first run)
+- **Chamber (security product):** https://www.slidphilabs.com/chamber
+- Product: TRU8 Black-Box / TRU8 Chamber (7-day trial from first run)
 - Permanent unlock: $199 one-time Stripe → https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09
 - GitHub demo: https://github.com/ceedot-rock/TRU8
 - Demos: https://www.slidphilabs.com/demos
@@ -19,6 +20,12 @@
 - After expiry (or license tamper) the box permanently shuts off
 - One-time $199 Stripe payment removes the kill-switch forever
 - Public demos remain free with the credit line
+
+## TRU8 Chamber (security product)
+- Compress + AES-256-GCM encrypt + outer HMAC
+- Tamper-evident signed license
+- Hard kill-switch after trial or license edit
+- Page: https://www.slidphilabs.com/chamber
 
 ## Public tokens
 - T_ZERO 0x00 — dormant run → 8 B
