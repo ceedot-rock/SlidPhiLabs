@@ -2,8 +2,8 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "TRU8 is the public compression product face. Chamber security. SPLZ Engine under active build. Free 100 GB suite. Dual doors. GET /api/agent · /standings.json.",
-  "version": "1.13.0",
+  "description": "TRU8 is the public compression product face. Chamber security. TruGame under active build. Free 100 GB suite. Dual doors. GET /api/agent · /standings.json.",
+  "version": "1.13.1",
   "updated": "2026-08-13",
   "standard": "https://agents-txt.com",
   "site": "https://www.slidphilabs.com",
@@ -26,8 +26,7 @@
       "suite": "https://www.slidphilabs.com/pps",
       "github": "https://github.com/ceedot-rock/TRU8",
       "demos": "https://www.slidphilabs.com/demos",
-      "license": "mailto:corey@slidphilabs.com",
-      "historical_engine": "OmniWave / SPL Codec (licensed, not the public face)"
+      "license": "mailto:license@slidphilabs.com"
     },
     {
       "id": "chamber",
@@ -39,15 +38,15 @@
       "studio": "$1,900/project/year tru8-chamber"
     },
     {
-      "id": "splz-engine",
-      "name": "SPLZ Engine",
+      "id": "trugame",
+      "name": "TruGame",
       "role": "game_engine",
       "status": "building",
       "url": "https://www.slidphilabs.com/",
       "chamber": "https://www.slidphilabs.com/chamber",
       "demos": "https://www.slidphilabs.com/demos",
       "olympiad": "https://www.slidphilabs.com/olympiad",
-      "license": "mailto:corey@slidphilabs.com?subject=SPLZ%20Engine",
+      "license": "mailto:license@slidphilabs.com?subject=TruGame",
       "note": "Officially building. Compression-aware game engine (TRU8 asset path + Chamber seal). Source private."
     },
     {
@@ -55,8 +54,7 @@
       "name": "Duosurface reporting",
       "role": "secret_shopper",
       "url": "https://www.slidphilabs.com/api/duos",
-      "ui": "https://www.slidphilabs.com/duos",
-      "note": "Dual-surface residual grades: web door + agent door"
+      "ui": "https://www.slidphilabs.com/duos"
     },
     {
       "id": "spl-olympiad",

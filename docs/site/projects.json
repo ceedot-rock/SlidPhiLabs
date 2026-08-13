@@ -23,15 +23,15 @@
       "status": "live",
       "role": "studio residual + chamber",
       "price": "$1,900/project/year",
-      "url": "mailto:corey@slidphilabs.com"
+      "url": "mailto:license@slidphilabs.com"
     },
     {
-      "id": "splz-engine",
-      "name": "SPLZ Engine",
+      "id": "trugame",
+      "name": "TruGame",
       "status": "building",
       "role": "game engine",
       "note": "Officially building. Compression-aware asset pipeline + Chamber seal. Source private.",
-      "url": "mailto:corey@slidphilabs.com?subject=SPLZ%20Engine"
+      "url": "mailto:license@slidphilabs.com?subject=TruGame"
     },
     {
       "id": "olympiad",

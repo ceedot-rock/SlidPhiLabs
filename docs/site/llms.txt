@@ -11,10 +11,10 @@
 - TRU8 demos: https://www.slidphilabs.com/demos
 - License / Trial terms: https://www.slidphilabs.com/license
 - json-chamber unlock: $99 one-time → https://www.slidphilabs.com/chamber
-- tru8-chamber studio: $1,900 / project / year → mailto:corey@slidphilabs.com
+- tru8-chamber studio: $1,900 / project / year → mailto:license@slidphilabs.com
 - Credit line (TRU8 public surfaces): Powered by TRU8 · Slid Phi Labs
-- **SPLZ Engine (game engine):** officially building — compression-aware asset pipeline + Chamber seal · mailto:corey@slidphilabs.com?subject=SPLZ%20Engine
-- Commercial inquiry: mailto:corey@slidphilabs.com · corey@slidphilabs.com
+- **TruGame (game engine):** officially building — compression-aware asset pipeline + Chamber seal · mailto:license@slidphilabs.com?subject=TruGame
+- Commercial inquiry: mailto:license@slidphilabs.com · corey@slidphilabs.com
 
 ## Chamber / json-chamber (security product)
 - φ-split keyword shares + AES-256-GCM
@@ -52,13 +52,13 @@
 - Suite (metered): free first 100 GB · then ~5¢/GB · /pps
 - Studio bundling with chamber = tru8-chamber tier (proprietary)
 
-## SPLZ Engine (game engine — building)
+## TruGame (game engine — building)
 - Officially on the lab project list (2026-08-13)
 - Compression-aware asset pipeline (TRU8 residual path for smaller bundles)
 - Chamber sealing for live / secure content
 - Studio-facing; source private
 - Related: TRU8 demos, Chamber, Great Agentic Olympiad
-- Contact: mailto:corey@slidphilabs.com?subject=SPLZ%20Engine
+- Contact: mailto:license@slidphilabs.com?subject=TruGame
 
 ## Agents
 - Discovery: https://www.slidphilabs.com/api/agent
@@ -66,4 +66,4 @@
 - Welcome: https://www.slidphilabs.com/api/welcome
 
 ## Scope
-json-chamber = security ($99). tru8-chamber = TRU8+security ($1,900/yr, closed). Format = open wire shape. TRU8 residual engine never open-sourced. SPLZ Engine = game engine under active build (private source).
+json-chamber = security ($99). tru8-chamber = TRU8+security ($1,900/yr, closed). Format = open wire shape. TRU8 residual engine never open-sourced. TruGame = game engine under active build (private source).

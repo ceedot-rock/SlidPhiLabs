@@ -1,7 +1,7 @@
 {
   "ok": true,
   "name": "Slid Phi Labs",
-  "version": "1.13.0",
+  "version": "1.13.1",
   "site": "https://www.slidphilabs.com",
   "mission": "Pub-facing best encode/decode compression where the domain is named and round-trip proves it — then pivot into gaming and security. Agent systems stay exact. One team.",
   "slogan": "Encode · decode · prove · game · secure",
@@ -31,11 +31,11 @@
       }
     },
     "game_engine": {
-      "name": "SPLZ Engine",
+      "name": "TruGame",
       "status": "building",
       "official": true,
       "description": "Slid Phi Labs game engine under active development. Compression-aware asset pipeline (TRU8 residual path) + Chamber sealing for live/secure content. Studio-facing.",
-      "products": ["SPLZ Engine"],
+      "products": ["TruGame"],
       "related": ["TRU8", "Chamber", "Great Agentic Olympiad"],
       "urls": {
         "home": "https://www.slidphilabs.com/",
@@ -43,7 +43,7 @@
         "demos": "https://www.slidphilabs.com/demos",
         "olympiad": "https://www.slidphilabs.com/olympiad",
         "projects": "https://www.slidphilabs.com/projects.json",
-        "contact": "mailto:corey@slidphilabs.com?subject=SPLZ%20Engine"
+        "contact": "mailto:license@slidphilabs.com?subject=TruGame"
       },
       "note": "Officially on the project list as of 2026-08-13. Engine source is private; public surfaces remain TRU8 demos + Chamber."
     },
@@ -75,10 +75,10 @@
   "pivot": {
     "gaming": {
       "name": "Great Agentic Olympiad",
-      "engine": "SPLZ Engine",
+      "engine": "TruGame",
       "status": "building",
       "url": "https://www.slidphilabs.com/olympiad",
-      "note": "Officially building the SPLZ game engine (compression-aware + Chamber)."
+      "note": "Officially building TruGame (compression-aware + Chamber)."
     },
     "security": {
       "name": "Chamber",
@@ -93,10 +93,10 @@
     "llms_txt": "https://www.slidphilabs.com/llms.txt",
     "llms_full": "https://www.slidphilabs.com/llms-full.txt"
   },
-  "one_liner": "TRU8 public face. Chamber $99. SPLZ Engine building. Free 100 GB suite. GET /api/agent · /projects.json.",
+  "one_liner": "TRU8 public face. Chamber $99. TruGame building. Free 100 GB suite. GET /api/agent · /projects.json.",
   "contact": {
     "email": "corey@slidphilabs.com",
-    "license": "corey@slidphilabs.com",
+    "license": "license@slidphilabs.com",
     "github": "https://github.com/ceedot-rock/SlidPhiLabs",
     "x": "https://x.com/slidphilabs"
   },
