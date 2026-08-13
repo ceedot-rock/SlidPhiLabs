@@ -37,6 +37,24 @@ const TRANSFER_TOPIC =
 
 /** Standing products — cents match public Stripe catalog */
 const CATALOG = {
+  "tru8-commercial": {
+    name: "tru8-chamber project license",
+    amount_cents: 190000,
+    stripe: null,
+    kind: "project-license",
+    blurb:
+      "$1,900/project/year license: TRU8 production + Chamber on one project. Not a per-user seat. Entitlement on /access; human PACKAGE ACCESS — not a residual dump.",
+    access: "https://www.slidphilabs.com/access?product=tru8-commercial",
+    fulfill_email: "corey@slidphilabs.com",
+  },
+  "json-chamber": {
+    name: "json-chamber unlock",
+    amount_cents: 9900,
+    stripe: "https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09",
+    kind: "unlock",
+    blurb: "Chamber security unlock: $99 one-time per domain after 24h trial. Not compression. Not a seat.",
+    access: "https://www.slidphilabs.com/access?product=json-chamber",
+  },
   "cddg-split": {
     name: "CDDG:Split",
     amount_cents: 19900,
@@ -133,7 +151,7 @@ const CATALOG = {
     amount_cents: 900,
     stripe: "https://donate.stripe.com/eVq8wQffL2X60CVfIY6wE0e",
     kind: "support",
-    blurb: "Unlock Free Gate evaluation seat",
+    blurb: "Retired. Use Suite meter on /pps (100 GB free). Not a Chamber unlock. Not a TRU8 license.",
   },
   "gao-entry": {
     name: "Great Agentic Olympiad Entry",
@@ -173,6 +191,13 @@ const ALIASES = {
   olympiad: "gao-entry",
   "olympiad-entry": "gao-entry",
   "great-agentic-olympiad": "gao-entry",
+  tru8: "tru8-commercial",
+  "tru8-chamber": "tru8-commercial",
+  license: "tru8-commercial",
+  studio: "tru8-commercial",
+  commercial: "tru8-commercial",
+  chamber: "json-chamber",
+  unlock: "json-chamber",
 };
 
 function cors(res) {

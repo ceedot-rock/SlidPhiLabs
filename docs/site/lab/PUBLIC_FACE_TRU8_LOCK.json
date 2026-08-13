@@ -2,12 +2,40 @@
   "id": "PUBLIC_FACE_TRU8_LOCK",
   "sealed": "2026-08-12",
   "role": "source of truth — do not regress public-face claims",
+  "wording": {
+    "rule": "Name the product AND that product's job/payment in the same line. Do not mash Chamber + TRU8 into one seat, one price, or one verb.",
+    "do_not_lead_with": "buy a seat",
+    "glossary": {
+      "TRU8": "compression — public demos free with credit; production residual is a commercial license",
+      "Chamber": "security unlock — json-chamber, 24h trial then $99 one-time per domain; not compression; not a seat",
+      "tru8-chamber": "project license — TRU8 production + Chamber for one project, $1,900/year; not a per-user seat",
+      "Suite": "metered encode/decode jobs — 100 GB free then ~5¢/GB; not a seat; not the product face",
+      "Access": "entitlement claim after payment — not a codec dump",
+      "seat": "only a named human or agent identity (campus / Access named rail / Olympiad roster). Never the public SKU word for Chamber, TRU8, Suite, or tru8-chamber",
+      "support-oss": "$199 blackjack / shard-* = support for the already-public library; not a secret extra engine"
+    }
+  },
   "product": {
     "public_face": "TRU8",
     "credit_line": "Powered by TRU8 · Slid Phi Labs",
     "demos_free_with_credit": true,
     "production_residual": "commercially licensed",
     "continuous_1088_strong": "commercially licensed",
+    "chamber": {
+      "sku": "json-chamber",
+      "job": "security unlock",
+      "trial_hours": 24,
+      "price_usd": 99,
+      "unit": "per domain",
+      "not": ["compression", "seat", "meter"]
+    },
+    "tru8_chamber": {
+      "sku": "tru8-commercial",
+      "job": "project license",
+      "price_usd": 1900,
+      "unit": "per project / year",
+      "not": ["per-user seat", "suite meter"]
+    },
     "license_email": "corey@slidphilabs.com",
     "github_demo": "https://github.com/ceedot-rock/TRU8",
     "site": "https://www.slidphilabs.com/",
@@ -51,7 +79,7 @@
     "contact": {
       "humans": "corey@slidphilabs.com",
       "commercial": "corey@slidphilabs.com",
-      "fallback": "ceedotrock@gmail.com"
+      "fallback": "corey@slidphilabs.com"
     },
     "site": "https://www.slidphilabs.com"
   },

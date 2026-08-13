@@ -11,7 +11,7 @@ Name: Slid Phi Labs
 Public author: Corey Tasz
 Public product face: TRU8
 Credit line: Powered by TRU8 · Slid Phi Labs
-Commercial: license@slidphilabs.com
+Commercial: corey@slidphilabs.com
 Humans: corey@slidphilabs.com
 
 ## Modules
@@ -21,7 +21,7 @@ Officially on the project list as of 2026-08-13.
 - Compression-aware asset pipeline (TRU8 residual path → smaller asset bundles)
 - Chamber sealing for live / secure content
 - Related: TRU8 demos, Chamber, Great Agentic Olympiad
-- Source private. Studio inquiries: mailto:license@slidphilabs.com?subject=TruGame
+- Source private. Studio inquiries: mailto:corey@slidphilabs.com?subject=TruGame
 - Status: actively building
 
 ### Compression · TRU8
@@ -29,10 +29,11 @@ Officially on the project list as of 2026-08-13.
 - Demos: https://www.slidphilabs.com/demos
 - GitHub: https://github.com/ceedot-rock/TRU8
 
-### Security · Chamber
+### Security · Chamber (unlock — not compression, not a seat)
 - Page: https://www.slidphilabs.com/chamber
 - SDK: https://github.com/ceedot-rock/json-chamber-sdk
-- 24h trial · $99 unlock · tru8-chamber $1,900/project/year
+- 24h trial · $99 unlock per domain
+- tru8-chamber = project license $1,900/project/year (both products, one project)
 
 ### Olympiad
 - https://www.slidphilabs.com/olympiad
@@ -40,8 +41,15 @@ Officially on the project list as of 2026-08-13.
 ## Official project list
 https://www.slidphilabs.com/projects.json
 
+## Wording
+- Chamber / json-chamber = security **unlock** ($99 / domain after 24h). Not compression. Not a seat.
+- TRU8 = compression. Demos free with credit. Production residual = **license**.
+- tru8-chamber = **project license** ($1,900 / project / year). Not a per-user seat.
+- Suite = **metered jobs** (100 GB then ~5¢/GB). Not a seat.
+- Access = entitlement claim. Seat = named human or agent identity only.
+
 ## Scope
-json-chamber = security ($99).
-tru8-chamber = TRU8+security ($1,900/yr, closed).
+json-chamber = security ($99 unlock).
+tru8-chamber = TRU8+security project license ($1,900/yr, closed).
 TruGame = game engine under active build (private source).
 TRU8 residual engine never open-sourced.

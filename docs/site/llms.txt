@@ -11,10 +11,10 @@
 - TRU8 demos: https://www.slidphilabs.com/demos
 - License / Trial terms: https://www.slidphilabs.com/license
 - json-chamber unlock: $99 one-time → https://www.slidphilabs.com/chamber
-- tru8-chamber studio: $1,900 / project / year → mailto:license@slidphilabs.com
+- tru8-chamber project license: $1,900 / project / year → mailto:corey@slidphilabs.com
 - Credit line (TRU8 public surfaces): Powered by TRU8 · Slid Phi Labs
-- **TruGame (game engine):** officially building — compression-aware asset pipeline + Chamber seal · mailto:license@slidphilabs.com?subject=TruGame
-- Commercial inquiry: mailto:license@slidphilabs.com · corey@slidphilabs.com
+- **TruGame (game engine):** officially building — compression-aware asset pipeline + Chamber seal · mailto:corey@slidphilabs.com?subject=TruGame
+- Commercial inquiry: mailto:corey@slidphilabs.com
 
 ## Chamber / json-chamber (security product)
 - φ-split keyword shares + AES-256-GCM
@@ -58,12 +58,19 @@
 - Chamber sealing for live / secure content
 - Studio-facing; source private
 - Related: TRU8 demos, Chamber, Great Agentic Olympiad
-- Contact: mailto:license@slidphilabs.com?subject=TruGame
+- Contact: mailto:corey@slidphilabs.com?subject=TruGame
 
 ## Agents
 - Discovery: https://www.slidphilabs.com/api/agent
 - agents.json: https://www.slidphilabs.com/agents.json
 - Welcome: https://www.slidphilabs.com/api/welcome
 
+## Wording
+- Chamber / json-chamber = security **unlock** ($99 / domain after 24h). Not compression. Not a seat.
+- TRU8 = compression. Demos free with credit. Production residual = **license**.
+- tru8-chamber = **project license** ($1,900 / project / year). Not a per-user seat.
+- Suite = **metered jobs** (100 GB then ~5¢/GB). Not a seat.
+- Access = entitlement claim. Seat = named human or agent identity only.
+
 ## Scope
-json-chamber = security ($99). tru8-chamber = TRU8+security ($1,900/yr, closed). Format = open wire shape. TRU8 residual engine never open-sourced. TruGame = game engine under active build (private source).
+json-chamber = security ($99 unlock). tru8-chamber = TRU8+security project license ($1,900/yr, closed). Format = open wire shape. TRU8 residual engine never open-sourced. TruGame = game engine under active build (private source).

@@ -26,8 +26,8 @@
         "mcp": "https://github.com/ceedot-rock/json-chamber-mcp"
       },
       "pricing": {
-        "json-chamber": "$99 one-time after 24h trial",
-        "tru8-chamber": "$1,900/project/year"
+        "json-chamber": "$99 one-time unlock per domain after 24h trial (not a seat)",
+        "tru8-chamber": "$1,900/project/year project license (not a per-user seat)"
       }
     },
     "game_engine": {
@@ -43,7 +43,7 @@
         "demos": "https://www.slidphilabs.com/demos",
         "olympiad": "https://www.slidphilabs.com/olympiad",
         "projects": "https://www.slidphilabs.com/projects.json",
-        "contact": "mailto:license@slidphilabs.com?subject=TruGame"
+        "contact": "mailto:corey@slidphilabs.com?subject=TruGame"
       },
       "note": "Officially on the project list as of 2026-08-13. Engine source is private; public surfaces remain TRU8 demos + Chamber."
     },
@@ -93,10 +93,14 @@
     "llms_txt": "https://www.slidphilabs.com/llms.txt",
     "llms_full": "https://www.slidphilabs.com/llms-full.txt"
   },
-  "one_liner": "TRU8 public face. Chamber $99. TruGame building. Free 100 GB suite. GET /api/agent · /projects.json.",
+  "one_liner": "TRU8 compresses (demos free). Chamber unlocks ($99/domain). Suite meters jobs (100 GB then ¢/GB). tru8-chamber = $1,900/project/year license. TruGame building. Seat = named identity only.",
   "contact": {
     "email": "corey@slidphilabs.com",
-    "license": "license@slidphilabs.com",
+    "license": "corey@slidphilabs.com",
+    "package_access_subject": "PACKAGE ACCESS",
+    "access": "https://www.slidphilabs.com/access",
+    "tru8_commercial_sku": "tru8-commercial",
+    "note": "One lab email only — corey@slidphilabs.com",
     "github": "https://github.com/ceedot-rock/SlidPhiLabs",
     "x": "https://x.com/slidphilabs"
   },

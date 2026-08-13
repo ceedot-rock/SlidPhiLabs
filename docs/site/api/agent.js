@@ -152,7 +152,7 @@ export default async function handler(req, res) {
       prove: "https://www.slidphilabs.com/standings.json",
     },
     one_liner:
-      "TRU8 is the public product face. Free 100 GB suite. Dual doors. GET /api/agent · /standings.json. x402 auto-claim not wired.",
+      "TRU8 compresses (demos free). Chamber unlocks ($99/domain). Suite meters jobs (100 GB then ¢/GB). Seat = named identity only. GET /api/agent. x402 auto-claim not wired.",
     starter_path: "https://www.slidphilabs.com/pps",
     suite_pricing: {
       free_cap_gb: 100,

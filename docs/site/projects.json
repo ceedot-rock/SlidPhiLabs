@@ -6,24 +6,24 @@
       "id": "tru8",
       "name": "TRU8",
       "status": "live",
-      "role": "compression public face",
+      "role": "compression — demos free; production residual is a license",
       "url": "https://www.slidphilabs.com/"
     },
     {
       "id": "chamber",
       "name": "Chamber",
       "status": "live",
-      "role": "security product",
-      "price": "$99 after 24h trial",
+      "role": "security unlock — 24h trial then $99/domain; not a seat",
+      "price": "$99 unlock after 24h trial",
       "url": "https://www.slidphilabs.com/chamber"
     },
     {
       "id": "tru8-chamber",
       "name": "tru8-chamber",
       "status": "live",
-      "role": "studio residual + chamber",
-      "price": "$1,900/project/year",
-      "url": "mailto:license@slidphilabs.com"
+      "role": "project license — TRU8 production + Chamber, one project / year; not a per-user seat",
+      "price": "$1,900/project/year license",
+      "url": "mailto:corey@slidphilabs.com"
     },
     {
       "id": "trugame",
@@ -31,7 +31,7 @@
       "status": "building",
       "role": "game engine",
       "note": "Officially building. Compression-aware asset pipeline + Chamber seal. Source private.",
-      "url": "mailto:license@slidphilabs.com?subject=TruGame"
+      "url": "mailto:corey@slidphilabs.com?subject=TruGame"
     },
     {
       "id": "olympiad",

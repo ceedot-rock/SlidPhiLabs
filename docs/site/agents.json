@@ -2,7 +2,7 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "TRU8 is the public compression product face. Chamber security. TruGame under active build. Free 100 GB suite. Dual doors. GET /api/agent · /standings.json.",
+  "description": "TRU8 compresses (demos free). Chamber unlocks JSON ($99/domain). Suite meters jobs. tru8-chamber is a $1,900/project/year license. Seat = named identity only. TruGame building.",
   "version": "1.13.1",
   "updated": "2026-08-13",
   "standard": "https://agents-txt.com",
@@ -20,22 +20,28 @@
     {
       "id": "tru8",
       "name": "TRU8",
-      "role": "encode_decode",
+      "role": "compression",
       "url": "https://www.slidphilabs.com/",
       "web": "https://www.slidphilabs.com/web",
       "suite": "https://www.slidphilabs.com/pps",
       "github": "https://github.com/ceedot-rock/TRU8",
       "demos": "https://www.slidphilabs.com/demos",
-      "license": "mailto:license@slidphilabs.com"
+      "license": "https://www.slidphilabs.com/access?product=tru8-commercial",
+      "access_sku": "tru8-commercial",
+      "fulfill_email": "corey@slidphilabs.com",
+      "historical_engine": "OmniWave / SPL Codec (licensed, not the public face)"
     },
     {
       "id": "chamber",
       "name": "Chamber",
-      "role": "security",
+      "role": "security_unlock",
       "url": "https://www.slidphilabs.com/chamber",
       "sdk": "https://github.com/ceedot-rock/json-chamber-sdk",
-      "price": "$99 one-time after 24h trial",
-      "studio": "$1,900/project/year tru8-chamber"
+      "price": "$99 unlock per domain after 24h trial",
+      "not": "not compression; not a seat",
+      "access": "https://www.slidphilabs.com/access?product=json-chamber",
+      "project_license": "$1,900/project/year tru8-chamber (not a per-user seat)",
+      "project_license_access": "https://www.slidphilabs.com/access?product=tru8-commercial"
     },
     {
       "id": "trugame",
@@ -46,7 +52,7 @@
       "chamber": "https://www.slidphilabs.com/chamber",
       "demos": "https://www.slidphilabs.com/demos",
       "olympiad": "https://www.slidphilabs.com/olympiad",
-      "license": "mailto:license@slidphilabs.com?subject=TruGame",
+      "license": "mailto:corey@slidphilabs.com?subject=TruGame",
       "note": "Officially building. Compression-aware game engine (TRU8 asset path + Chamber seal). Source private."
     },
     {

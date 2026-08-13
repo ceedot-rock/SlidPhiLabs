@@ -14,12 +14,17 @@ Duos-API: https://www.slidphilabs.com/api/duos
 
 # Mission: One mission · two attack vectors · one team
 # Surfaces: Pub Facing (humans) · Agentic Minded (agents)
-# Public product face: TRU8 (only). Credit: Powered by TRU8 · Slid Phi Labs
-# Module 1 — Compression: TRU8 + CDDG:Split (ZRW / OmniWave / SPL Codec = historical lab series)
+# Public compression face: TRU8 (only). Credit: Powered by TRU8 · Slid Phi Labs
+# Chamber = security unlock ($99/domain after 24h). Not compression. Not a seat.
+# tru8-chamber = project license ($1,900/project/year). Not a per-user seat.
+# Suite = metered jobs (100 GB then ~5¢/GB). Not a seat. Not the product face.
+# Seat = named human or agent identity only.
+# Module 1 — Compression: TRU8 (ZRW / OmniWave / SPL Codec = historical lab series)
 # Module 2 — Agent platform: CuNi · Agent^Rider (paused) · Quikgater
 
-Product: TRU8
+Product: TRU8 (compression)
 Demos: https://www.slidphilabs.com/demos
+Chamber-unlock: https://www.slidphilabs.com/chamber
 License: https://www.slidphilabs.com/license
 GitHub: https://github.com/ceedot-rock/TRU8
 Commercial: mailto:corey@slidphilabs.com

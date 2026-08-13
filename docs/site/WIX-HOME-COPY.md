@@ -12,8 +12,8 @@
 
 | Field | Value |
 |--------|--------|
-| **Title** | TRU8 — Less is more · Slid Phi Labs |
-| **Description** | TRU8 is the public product face. Public demos free with credit. Production residual licensed. Suite: first 100 GB free, then ~5¢/GB. |
+| **Title** | Slid Phi Labs — Chamber unlock · TRU8 compression · Suite meter |
+| **Description** | Chamber unlocks JSON ($99/domain after 24h). TRU8 compresses (demos free). Suite meters jobs (100 GB then ¢/GB). Not seats. |
 | **Keywords** | TRU8, slid phi labs, compression, residual, CDDG, suite |
 | **Canonical** | https://www.slidphilabs.com/ |
 | **OG image** | Master poster (full, no crop of third-eye / banners) |
@@ -55,7 +55,7 @@ When Stripe lands on `/?purchase=PRODUCT` or `/?purchase=…&session=…`:
 TRU8 — true minimal units for repetition
 
 **Lede:**  
-TRU8 is the only public compression product face. Public demos free with credit. Production residual commercially licensed via corey@slidphilabs.com. Suite on /pps is a metered job rail (100 GB free, then ~5¢/GB) — not the product face. Try Gate is retired.
+Chamber is a security unlock ($99 / domain after 24h) — not compression, not a seat. TRU8 is the only public compression product face: demos free with credit; production residual is a commercial license via corey@slidphilabs.com. tru8-chamber is a $1,900/project/year license (both products, one project). Suite on /pps is a metered job rail (100 GB free, then ~5¢/GB) — not a seat, not the product face. Try Gate is retired.
 
 **CTAs:**  
 1. **See for yourself** → `/try` (teal)  
@@ -181,7 +181,7 @@ Show “Checkout session received” + deliverable + mailto PACKAGE ACCESS prefi
 **When product only:**  
 Show buy CTA + already-paid email path.
 
-**Interim keyword:** **PACKAGE ACCESS** → ceedotrock@gmail.com
+**Keyword:** **PACKAGE ACCESS** → corey@slidphilabs.com only
 
 **Do not** put the real engine on public npm or a permanent public URL.
 

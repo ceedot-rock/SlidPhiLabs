@@ -160,7 +160,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       <div class="badge">BUY → ACCESS → YOUR PACKAGE</div>
       <p class="ribbon">Impressive Compression..... see for yourself</p>
       <h1>Access</h1>
-      <p class="note" style="margin-bottom:0">Bought a package? Claim entitlement here. Access is <strong>not</strong> a public codec dump. Stripe session verify works. <strong>x402 auto-claim is not wired</strong> — agents email proof or use <code>/access?product=</code> + order id. OSS SKUs (blackjack / shard-*) do not ship a secret extra engine.</p>
+      <p class="note" style="margin-bottom:0">Claim entitlement after you pay. Access is <strong>not</strong> a codec dump and not a seat unless the SKU is a named identity. Chamber = unlock. tru8-chamber = project license. Suite = meter. <strong>x402 auto-claim is not wired</strong> — email proof or use <code>/access?product=</code> + order id.</p>
     </div>
   </div>
 
@@ -170,7 +170,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
     <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> or
     <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> with order id.
     blackjack / shard-zip / shard-tsdb $199 SKUs are support for the already-public OSS library — no secret extra engine tarball.
-    TRU8 production residual is licensed separately.
+    Chamber is a $99 domain unlock. tru8-chamber is a $1,900/project/year license. Suite is a meter. TRU8 production residual is a commercial license.
   </div>
 
   <div id="status-card" role="status">
@@ -407,12 +407,14 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
           card.classList.add('ok', 'paid');
           var d = j.deliverable || {};
           var sku = j.product_hint || product || '';
-          label.textContent = d.instant ? 'Seat unlocked' : 'Payment confirmed';
+          var namedSeat = sku === 'try-gate' || sku === 'gao-entry';
+          var idLabel = namedSeat ? 'Seat id' : 'Entitlement id';
+          label.textContent = d.instant && namedSeat ? 'Named seat unlocked' : 'Payment confirmed';
           title.textContent = d.title || (info ? info.name : (sku || 'Purchase'));
           body.innerHTML =
             (d.summary || 'Stripe reports <strong>paid</strong>.') +
             (j.email ? ' Checkout email: <code>' + j.email + '</code>.' : '') +
-            (d.seat_id ? ' Seat id: <code>' + d.seat_id + '</code>.' : '');
+            (d.seat_id ? ' ' + idLabel + ': <code>' + d.seat_id + '</code>.' : '');
 
           var html = '';
           if (d.instant && d.steps && d.steps.length) {

@@ -1,10 +1,22 @@
 /**
- * GET /api/access-verify?session=cs_...&product=try-gate
+ * GET /api/access-verify?session=cs_...&product=tru8-commercial
  * Confirms Stripe Checkout Session paid status and returns a real deliverable
- * pack for the Access page (Try Gate = instant seat; full SKUs = paid + package request).
+ * pack for the Access page.
+ *
+ * SKUs:
+ *   try-gate        — legacy instant eval seat
+ *   tru8-commercial — TRU8 / tru8-chamber project license (human-fulfilled; not residual dump)
+ *   json-chamber    — $99 Chamber unlock (support path after Stripe)
+ *   other full SKUs — paid_confirmed + PACKAGE ACCESS mail
  *
  * Env: STRIPE_SECRET_KEY or STRIPE_RESTRICTED_KEY (checkout.sessions read).
+ *
+ * One lab email only: corey@slidphilabs.com (PACKAGE ACCESS + commercial).
  */
+
+const FULFILL_EMAIL = "corey@slidphilabs.com";
+const BASE = "https://www.slidphilabs.com";
+
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
@@ -18,7 +30,27 @@ function simpleSeatId(sessionId, sku) {
     h ^= s.charCodeAt(i);
     h = Math.imul(h, 16777619);
   }
-  return "tg_" + (h >>> 0).toString(16).padStart(8, "0");
+  const prefix = sku === "tru8-commercial" ? "t8_" : "tg_";
+  return prefix + (h >>> 0).toString(16).padStart(8, "0");
+}
+
+function packageMailto(product, sessionId, email) {
+  return (
+    "mailto:" +
+    FULFILL_EMAIL +
+    "?subject=" +
+    encodeURIComponent("PACKAGE ACCESS " + product) +
+    "&body=" +
+    encodeURIComponent(
+      "Product: " +
+        product +
+        "\nSession: " +
+        sessionId +
+        "\nEmail: " +
+        (email || "") +
+        "\n"
+    )
+  );
 }
 
 function normalizeSku(raw) {
@@ -39,6 +71,19 @@ function normalizeSku(raw) {
     "zrw-pro-starter": "zrw-pro",
     "zrw-l33t-unlimited": "zrw-l33t",
     support: "support-integration",
+    // TRU8 commercial loop
+    tru8: "tru8-commercial",
+    "tru8-chamber": "tru8-commercial",
+    "tru8_chamber": "tru8-commercial",
+    license: "tru8-commercial",
+    studio: "tru8-commercial",
+    commercial: "tru8-commercial",
+    "project-license": "tru8-commercial",
+    // Chamber security unlock
+    chamber: "json-chamber",
+    "json-chamber": "json-chamber",
+    "chamber-unlock": "json-chamber",
+    unlock: "json-chamber",
   };
   return aliases[s] || s || null;
 }
@@ -53,7 +98,7 @@ function buildDeliverable({ paid, sku, sessionId, email, amountTotal, currency }
   }
 
   const product = sku || "unknown";
-  const base = "https://www.slidphilabs.com";
+  const base = BASE;
 
   // --- Try Gate: instant evaluation seat (no private engine dump) ---
   if (product === "try-gate") {
@@ -90,7 +135,7 @@ function buildDeliverable({ paid, sku, sessionId, email, amountTotal, currency }
         "Residual coefficients or internal math",
       ],
       human_followup: {
-        email: "ceedotrock@gmail.com",
+        email: FULFILL_EMAIL,
         subject: "TRY GATE SEAT " + seat_id,
       },
     };
@@ -137,12 +182,135 @@ function buildDeliverable({ paid, sku, sessionId, email, amountTotal, currency }
         },
         {
           n: 4,
-          title: "Upgrade when ready",
-          href: "/#pricing",
-          detail: "CDDG:Split or ZRW tiers for licensed packages.",
+          title: "TRU8 commercial when ready",
+          href: "/access?product=tru8-commercial",
+          detail: "tru8-chamber project license — residual path, human-fulfilled.",
         },
       ],
       next: "Download your entitlement JSON on this page, then run the checklist.",
+    };
+  }
+
+  // --- TRU8 commercial / tru8-chamber: entitlement + human package (not residual dump) ---
+  if (product === "tru8-commercial") {
+    const seat_id = simpleSeatId(sessionId, "tru8-commercial");
+    const entitlement = {
+      type: "slid_phi_labs_entitlement",
+      version: "1.0",
+      sku: "tru8-commercial",
+      name: "TRU8 Commercial / tru8-chamber project license",
+      seat_id,
+      session_id: sessionId,
+      email: email || null,
+      paid: true,
+      amount_total: amountTotal,
+      currency: currency || "usd",
+      list_price_usd: 1900,
+      term: "project_year",
+      issued_at: new Date().toISOString(),
+      issuer: base,
+      ip_guard:
+        "Commercial entitlement only. Residual engine and private coefficients ship via human PACKAGE ACCESS — never as a public download from this page.",
+      ships: {
+        entitlement_json: true,
+        what_ships: base + "/access/packs/tru8-commercial/what-ships.md",
+        checklist: base + "/access/packs/tru8-commercial/checklist.md",
+        public_demos: base + "/demos",
+        license_page: base + "/license",
+        support_window: "project year (human onboarding)",
+      },
+      does_not_include: [
+        "Instant residual engine tarball on this page",
+        "Public dump of T_SPARSE / Continuous-1088 / closed coefficients",
+        "Unlimited redistribution of proprietary sources",
+      ],
+      human_followup: {
+        email: FULFILL_EMAIL,
+        subject: "PACKAGE ACCESS tru8-commercial " + seat_id,
+      },
+    };
+
+    return {
+      state: "paid_confirmed",
+      sku: "tru8-commercial",
+      title: "tru8-chamber project license — payment confirmed",
+      instant: false,
+      seat_id,
+      summary:
+        "Stripe reports paid for the tru8-chamber project license ($1,900/project/year — not a per-user seat). Download your entitlement JSON. Private residual package is fulfilled by the lab (usually same day) — Access is not a codec dump.",
+      entitlement,
+      downloads: [
+        {
+          id: "what-ships",
+          label: "What ships",
+          href: "/access/packs/tru8-commercial/what-ships.md",
+        },
+        {
+          id: "checklist",
+          label: "Fulfillment checklist",
+          href: "/access/packs/tru8-commercial/checklist.md",
+        },
+      ],
+      steps: [
+        {
+          n: 1,
+          title: "Email PACKAGE ACCESS",
+          href: packageMailto("tru8-commercial", sessionId, email),
+          detail:
+            "To " +
+            FULFILL_EMAIL +
+            " only. Include product, session, checkout email, project name.",
+        },
+        {
+          n: 2,
+          title: "Read what ships",
+          href: "/access/packs/tru8-commercial/what-ships.md",
+          detail: "Entitlement + residual package scope — no public secret dump.",
+        },
+        {
+          n: 3,
+          title: "Public demos while you wait",
+          href: "/demos",
+          detail: "TRU8 public tokens stay free with credit.",
+        },
+      ],
+      next:
+        "Email " +
+        FULFILL_EMAIL +
+        " subject PACKAGE ACCESS tru8-commercial with this session id (usually same day).",
+    };
+  }
+
+  // --- json-chamber $99 unlock ---
+  if (product === "json-chamber") {
+    const seat_id = simpleSeatId(sessionId, "json-chamber");
+    return {
+      state: "paid_confirmed",
+      sku: "json-chamber",
+      title: "json-chamber unlock — payment confirmed",
+      instant: false,
+      seat_id,
+      summary:
+        "Stripe reports paid for Chamber permanent unlock ($99 / domain — not a user seat, not compression). Lab sends VerifiedDR / unlock steps by email (usually same day).",
+      steps: [
+        {
+          n: 1,
+          title: "Email PACKAGE ACCESS",
+          href: packageMailto("json-chamber", sessionId, email),
+          detail: "Include domain / install host if known.",
+        },
+        {
+          n: 2,
+          title: "Chamber product page",
+          href: "/chamber",
+          detail: "Docs and trial path.",
+        },
+      ],
+      next:
+        "Email " +
+        FULFILL_EMAIL +
+        " subject PACKAGE ACCESS json-chamber with this session id.",
+      downloads: [],
     };
   }
 
@@ -169,19 +337,7 @@ function buildDeliverable({ paid, sku, sessionId, email, amountTotal, currency }
       {
         n: 1,
         title: "Email PACKAGE ACCESS",
-        href:
-          "mailto:ceedotrock@gmail.com?subject=" +
-          encodeURIComponent("PACKAGE ACCESS " + product) +
-          "&body=" +
-          encodeURIComponent(
-            "Product: " +
-              product +
-              "\nSession: " +
-              sessionId +
-              "\nEmail: " +
-              (email || "") +
-              "\n"
-          ),
+        href: packageMailto(product, sessionId, email),
         detail: "Include product, session id, checkout email.",
       },
       {
@@ -192,12 +348,14 @@ function buildDeliverable({ paid, sku, sessionId, email, amountTotal, currency }
       {
         n: 3,
         title: "Use public demos while you wait",
-        href: "/web",
-        detail: "Web compress + standings stay open.",
+        href: "/demos",
+        detail: "TRU8 public demos + Chamber trial stay open.",
       },
     ],
     next:
-      "Email ceedotrock@gmail.com subject PACKAGE ACCESS with this session id for install package (usually same day).",
+      "Email " +
+      FULFILL_EMAIL +
+      " subject PACKAGE ACCESS with this session id for install package (usually same day).",
     downloads: [],
   };
 }
@@ -254,10 +412,12 @@ export default async function handler(req, res) {
         ""
     );
 
-    // Heuristic: $9 amounts often try-gate if no metadata
+    // Heuristic when Stripe metadata missing
     let sku = productHint;
     if (!sku && paid && amountTotal === 900) sku = "try-gate";
     if (!sku && paid && amountTotal === 2900) sku = "sponsor";
+    if (!sku && paid && amountTotal === 9900) sku = "json-chamber";
+    if (!sku && paid && amountTotal === 190000) sku = "tru8-commercial";
 
     const deliverable = buildDeliverable({
       paid,

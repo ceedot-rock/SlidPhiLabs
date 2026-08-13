@@ -9,14 +9,16 @@ Credit: Powered by TRU8 · Slid Phi Labs
 Pub Facing (you are here in spirit): https://www.slidphilabs.com/humans
 Agentic Minded (if you are software): https://www.slidphilabs.com/agents
 
-What we sell (public outcomes only):
-  - TRU8 — the only public compression product face (demos free with credit)
-  - CDDG:Split — residual process product (licensed)
-  - ZRW / OmniWave / SPL Codec — historical lab engines + standings series (licensed, not the homepage face)
-  - Suite — metered encode/decode jobs on /pps (not the product face)
-  - Agent platform links — CuNi · Agent^Rider (paused) · Quikgater
+What we sell (public outcomes only) — each word is the buy:
+  - Chamber (json-chamber) — SECURITY unlock. 24h trial, then $99 / domain. Not compression. Not a seat.
+  - TRU8 — COMPRESSION. Public demos free with credit. Production residual = commercial license.
+  - tru8-chamber — PROJECT LICENSE. TRU8 + Chamber, $1,900 / project / year. Not a per-user seat.
+  - Suite — METERED JOBS on /pps. 100 GB free, then ~5¢/GB. Not a seat. Not the product face.
+  - Access — entitlement claim after pay. Not a codec dump.
+  - CDDG:Split / ZRW / OmniWave — historical lab series (licensed). Not the homepage face.
+  - Agent rails — CuNi · Agent^Rider (paused) · Quikgater. A "seat" is only a named human or agent identity.
 
-Start free: https://www.slidphilabs.com/  (TRU8) · https://www.slidphilabs.com/demos
+Start: Chamber trial https://www.slidphilabs.com/chamber · TRU8 demos https://www.slidphilabs.com/demos
 Historical web codec door: https://www.slidphilabs.com/web
 Proof: https://www.slidphilabs.com/standings
 Buy suite: https://www.slidphilabs.com/pps
