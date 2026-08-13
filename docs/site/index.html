@@ -94,10 +94,20 @@
     align-items: center;
     gap: 10px;
   }
+  .logo-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: url('/assets/logos/slid-phi-labs-eye.jpg') center center / min(70vmin, 640px) no-repeat;
+    opacity: 0.2;
+  }
+  body > header, body > main, body > footer { position: relative; z-index: 1; }
 </style>
 <link rel="stylesheet" href="/assets/tru8/chat.css?v=1"/>
 </head>
 <body>
+<div class="logo-bg" aria-hidden="true"></div>
 <header class="site-nav" role="banner">
   <div class="inner">
     <a class="brand" href="/" aria-label="Slid Phi Labs / TRU8 home">
