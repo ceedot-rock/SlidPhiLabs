@@ -3,6 +3,14 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/chamber",
+      "destination": "/chamber.html"
+    },
+    {
+      "source": "/chamber/",
+      "destination": "/chamber.html"
+    },
+    {
       "source": "/stand/",
       "destination": "/standings.html"
     },
@@ -182,23 +190,13 @@
   "redirects": [
     {
       "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "slidphilabs.com"
-        }
-      ],
+      "has": [{"type": "host", "value": "slidphilabs.com"}],
       "destination": "https://www.slidphilabs.com/",
       "permanent": true
     },
     {
       "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "slidphilabs.com"
-        }
-      ],
+      "has": [{"type": "host", "value": "slidphilabs.com"}],
       "destination": "https://www.slidphilabs.com/:path*",
       "permanent": true
     },
@@ -223,46 +221,6 @@
       "permanent": true
     },
     {
-      "source": "/ppp",
-      "destination": "/pps",
-      "permanent": false
-    },
-    {
-      "source": "/ppp/",
-      "destination": "/pps",
-      "permanent": false
-    },
-    {
-      "source": "/ppp.html",
-      "destination": "/pps",
-      "permanent": false
-    },
-    {
-      "source": "/humans.html",
-      "destination": "/humans",
-      "permanent": true
-    },
-    {
-      "source": "/agents.html",
-      "destination": "/agents",
-      "permanent": true
-    },
-    {
-      "source": "/for-humans",
-      "destination": "/humans",
-      "permanent": true
-    },
-    {
-      "source": "/for-agents",
-      "destination": "/agents",
-      "permanent": true
-    },
-    {
-      "source": "/updates.html",
-      "destination": "/updates",
-      "permanent": true
-    },
-    {
       "source": "/try",
       "destination": "/pps",
       "permanent": true
@@ -277,401 +235,24 @@
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Slid-Engine",
-          "value": "alive"
-        },
-        {
-          "key": "X-Slid-Flagship",
-          "value": "ZRW-8B"
-        },
-        {
-          "key": "X-Slid-Position",
-          "value": "Exact codecs. Agentic infrastructure. Compression that knows it is alive."
-        }
-      ]
-    },
-    {
-      "source": "/blog.json",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300"
-        }
-      ]
-    },
-    {
-      "source": "/updates.json",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=120"
-        }
-      ]
-    },
-    {
-      "source": "/",
-      "headers": [
-        {
-          "key": "Link",
-          "value": "</api/welcome>; rel=\"start\", </platform.json>; rel=\"describedby\", </api/agent>; rel=\"service-doc\", </humans>; rel=\"alternate\"; title=\"Pub Facing\", </agents>; rel=\"alternate\"; title=\"Agentic Minded\", </llms.txt>; rel=\"alternate\"; type=\"text/plain\""
-        },
-        {
-          "key": "X-Lab-Slogan",
-          "value": "Compression that knows it is alive \u00b7 two doors \u00b7 one team"
-        },
-        {
-          "key": "X-Slid-Engine",
-          "value": "alive"
-        },
-        {
-          "key": "X-Slid-Flagship",
-          "value": "ZRW-8B"
-        }
-      ]
-    },
-    {
-      "source": "/api/welcome",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=60"
-        }
-      ]
-    },
-    {
-      "source": "/site.webmanifest",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/manifest+json"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400"
-        }
-      ]
-    },
-    {
-      "source": "/openapi.yaml",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/yaml; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
-    },
-    {
-      "source": "/llms-full.txt",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/plain; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
-    },
-    {
-      "source": "/humans.txt",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/plain; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
-    },
-    {
-      "source": "/standings.json",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300"
-        }
-      ]
-    },
-    {
-      "source": "/olympiad.json",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=120"
-        },
-        {
-          "key": "X-GAO-Sponsor",
-          "value": "Slid Phi Labs \u00b7 slidphilabs.com"
-        }
-      ]
-    },
-    {
-      "source": "/toys.json",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=120"
-        }
-      ]
-    },
-    {
-      "source": "/olympiad-records.json",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300"
-        },
-        {
-          "key": "X-GAO-Sponsor",
-          "value": "Slid Phi Labs \u00b7 slidphilabs.com"
-        }
-      ]
-    },
-    {
-      "source": "/api/olympiad",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=60"
-        },
-        {
-          "key": "X-GAO-Sponsor",
-          "value": "Slid Phi Labs \u00b7 slidphilabs.com"
-        }
-      ]
-    },
-    {
-      "source": "/ideas.json",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300"
-        }
-      ]
-    },
-    {
-      "source": "/agents.txt",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/plain; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
-    },
-    {
-      "source": "/agents.json",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
-    },
-    {
-      "source": "/llms.txt",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/plain; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
-    },
-    {
-      "source": "/platform.json",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json; charset=utf-8"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300"
-        }
-      ]
-    },
-    {
-      "source": "/.well-known/(.*)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
-    },
-    {
-      "source": "/api/agent",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=60"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
+        {"key": "X-Slid-Engine", "value": "alive"},
+        {"key": "X-Content-Type-Options", "value": "nosniff"},
+        {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
+        {"key": "Cache-Control", "value": "public, max-age=0, must-revalidate"}
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400"
-        }
+        {"key": "Cache-Control", "value": "public, max-age=86400"}
       ]
     },
     {
-      "source": "/api/phi/metrics",
+      "source": "/llms.txt",
       "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        },
-        {
-          "key": "X-Slid-Engine",
-          "value": "alive"
-        },
-        {
-          "key": "X-Slid-Flagship",
-          "value": "ZRW-8B"
-        }
+        {"key": "Content-Type", "value": "text/plain; charset=utf-8"},
+        {"key": "Access-Control-Allow-Origin", "value": "*"},
+        {"key": "Cache-Control", "value": "public, max-age=3600"}
       ]
     }
   ]
