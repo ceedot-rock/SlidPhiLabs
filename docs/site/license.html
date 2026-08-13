@@ -10,21 +10,22 @@
 <link rel="canonical" href="https://www.slidphilabs.com/license"/>
 <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent discovery"/>
 <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
-<link rel="icon" type="image/svg+xml" href="/assets/tru8/favicon.svg"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/slid-phi-labs-eye-64.jpg"/>
+<link rel="apple-touch-icon" href="/assets/logos/slid-phi-labs-eye-180.jpg"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="TRU8 · Slid Phi Labs"/>
 <meta property="og:title" content="TRU8 Black-Box Trial — 7 days free"/>
 <meta property="og:description" content="Fully functional black-box for 7 days. Then $199 one-time unlock. Public demos free with credit."/>
 <meta property="og:url" content="https://www.slidphilabs.com/license"/>
-<meta property="og:image" content="https://www.slidphilabs.com/assets/tru8/og.png"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/logos/slid-phi-labs-eye.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="TRU8 Black-Box Trial"/>
 <meta name="twitter:description" content="7-day free black-box trial. Permanent unlock $199 via Stripe."/>
-<meta name="twitter:image" content="https://www.slidphilabs.com/assets/tru8/og.png"/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/logos/slid-phi-labs-eye.jpg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/assets/tru8/site.css?v=2"/>
+<link rel="stylesheet" href="/assets/tru8/site.css?v=3"/>
 <link rel="stylesheet" href="/assets/tru8/chat.css?v=1"/>
 <script type="application/ld+json">
 {
@@ -35,6 +36,7 @@
       "@id": "https://www.slidphilabs.com/#org",
       "name": "Slid Phi Labs",
       "url": "https://www.slidphilabs.com/",
+      "logo": "https://www.slidphilabs.com/assets/logos/slid-phi-labs-eye.jpg",
       "email": "license@slidphilabs.com",
       "sameAs": [
         "https://github.com/ceedot-rock/TRU8",
@@ -67,12 +69,33 @@
   ]
 }
 </script>
+<style>
+  .brand-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 0 12px rgba(0, 220, 220, 0.35);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .logo-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: url('/assets/logos/slid-phi-labs-eye.jpg') center center / min(70vmin, 640px) no-repeat;
+    opacity: 0.2;
+  }
+  body > header, body > main, body > footer { position: relative; z-index: 1; }
+</style>
 </head>
 <body>
+<div class="logo-bg" aria-hidden="true"></div>
 <header class="site-nav" role="banner">
   <div class="inner">
-    <a class="brand" href="/" aria-label="TRU8 home">
-      <span class="brand-mark" aria-hidden="true">8</span>
+    <a class="brand" href="/" aria-label="Slid Phi Labs / TRU8 home">
+      <img class="brand-logo" src="/assets/logos/slid-phi-labs-eye-64.jpg" width="36" height="36" alt="Slid Phi Labs"/>
       <span><span class="tru">TRU</span><span class="eight">8</span></span>
     </a>
     <nav class="nav-links" aria-label="Primary">
