@@ -21,6 +21,8 @@ Allow: /
 Allow: /tru8
 Allow: /about
 Allow: /license
+Allow: /chamber
+Allow: /license
 Allow: /web
 Allow: /pps
 Allow: /datacenters
