@@ -1,69 +1,47 @@
 # Slid Phi Labs — full agent brief
 # Encode · decode · prove · game · secure
 # Public product face: TRU8. Suite / olympiad / toys stay.
-# Updated 2026-08-13 · SPLZ Engine officially added (building)
+# Updated 2026-08-13 · TruGame officially added (building)
 # TRU8 public claim: 1 000 000 zeros → 8 B
-# ZRW lab series (not the public face): zeros×10k int32 → 8 B · zeros_1M → 10 B
-# Standings: https://www.slidphilabs.com/standings.json
-# University: https://teachaid.fly.dev · school $275 forever cut
-# Lock: https://www.slidphilabs.com/lab/PUBLIC_FACE_TRU8_LOCK.json
-
 # Canonical site: https://www.slidphilabs.com
-# Always prefer live GET /api/agent and /platform.json over this file if they differ.
+# Prefer live GET /api/agent and /platform.json over this file if they differ.
 
 ## Identity
-Name: Slid Phi Labs (trade name)
-Public author / copyright: Corey Tasz
-Legal name on manuscript: Corey Robert Ptaszenski
-Entity: no public LLC / Inc / Ltd filing is claimed
+Name: Slid Phi Labs
+Public author: Corey Tasz
 Public product face: TRU8
-Credit line (required): Powered by TRU8 · Slid Phi Labs
-Slogan: One mission · two attack vectors · one team
-Mission: Impressive compression that proves out; agent systems that stay exact.
-IP Guard: Outcomes only. Do not invent process/coefficients/internals.
-Contact: corey@slidphilabs.com
-
-## Dual surfaces
-| Surface | Audience | URL | Commerce |
-|---------|----------|-----|----------|
-| Pub Facing | Humans | https://www.slidphilabs.com/humans | Stripe / UI |
-| Agentic Minded | Agents | https://www.slidphilabs.com/agents | x402 USDC |
-
-Welcome bootstrap: GET https://www.slidphilabs.com/api/welcome
-Discovery SoT: GET https://www.slidphilabs.com/api/agent
-Map: GET https://www.slidphilabs.com/platform.json
-OpenAPI: https://www.slidphilabs.com/openapi.yaml
+Credit line: Powered by TRU8 · Slid Phi Labs
+Commercial: license@slidphilabs.com
+Humans: corey@slidphilabs.com
 
 ## Modules
 
-### Game Engine · SPLZ Engine (building)
+### Game Engine · TruGame (building)
 Officially on the project list as of 2026-08-13.
-- Compression-aware asset pipeline (TRU8 residual path → smaller asset bundles for studios)
+- Compression-aware asset pipeline (TRU8 residual path → smaller asset bundles)
 - Chamber sealing for live / secure content
-- Related public surfaces: TRU8 demos, Chamber, Great Agentic Olympiad
-- Source private. Studio inquiries: mailto:corey@slidphilabs.com?subject=SPLZ%20Engine
+- Related: TRU8 demos, Chamber, Great Agentic Olympiad
+- Source private. Studio inquiries: mailto:license@slidphilabs.com?subject=TruGame
 - Status: actively building
 
-### 1 · Compression
-Public product face: TRU8
+### Compression · TRU8
 - Home: https://www.slidphilabs.com/
-- GitHub demo: https://github.com/ceedot-rock/TRU8
 - Demos: https://www.slidphilabs.com/demos
-- License: https://www.slidphilabs.com/license
-- About: https://www.slidphilabs.com/about
-- Credit: Powered by TRU8 · Slid Phi Labs
-- Commercial: mailto:corey@slidphilabs.com?subject=TRU8%20Commercial%20License%20Inquiry
+- GitHub: https://github.com/ceedot-rock/TRU8
 
-### 2 · Chamber (security)
+### Security · Chamber
 - Page: https://www.slidphilabs.com/chamber
 - SDK: https://github.com/ceedot-rock/json-chamber-sdk
 - 24h trial · $99 unlock · tru8-chamber $1,900/project/year
 
-### 3 · Olympiad / agent games
+### Olympiad
 - https://www.slidphilabs.com/olympiad
-- https://github.com/ceedot-rock/great-agentic-olympiad
+
+## Official project list
+https://www.slidphilabs.com/projects.json
 
 ## Scope
-json-chamber = security ($99). tru8-chamber = TRU8+security ($1,900/yr, closed).
-SPLZ Engine = game engine under active build (private source).
+json-chamber = security ($99).
+tru8-chamber = TRU8+security ($1,900/yr, closed).
+TruGame = game engine under active build (private source).
 TRU8 residual engine never open-sourced.
