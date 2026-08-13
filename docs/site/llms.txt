@@ -6,6 +6,7 @@
 - Site: https://www.slidphilabs.com/
 - **Chamber (security product):** https://www.slidphilabs.com/chamber
 - Chamber SDK: https://github.com/ceedot-rock/json-chamber-sdk
+- **Chamber Format Spec v1:** https://github.com/ceedot-rock/json-chamber-sdk/blob/main/CHAMBER-FORMAT-v1.md
 - TRU8 demos: https://www.slidphilabs.com/demos
 - License / Trial terms: https://www.slidphilabs.com/license
 - Permanent unlock (Chamber): $199 one-time Stripe → https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09
@@ -21,6 +22,14 @@
 - Pure security — no TRU8 compression engine inside
 - Page: https://www.slidphilabs.com/chamber
 - SDK: https://github.com/ceedot-rock/json-chamber-sdk
+- Format (wire only): https://github.com/ceedot-rock/json-chamber-sdk/blob/main/CHAMBER-FORMAT-v1.md
+
+## Chamber Format v1 (interoperability)
+- Sealed JSON object: v, algo, k_words, r_words, nonce, tag, ct
+- algo = chamber-aes256gcm-phi · AAD = chamber-v1
+- 2-of-2 φ-split · 64-word keyword encoding
+- License / trial / unlock are out of scope of the format
+- Suggested media type (informative): application/chamber+json
 
 ## Chamber trial model
 - 24 hours fully functional from first run on the machine
@@ -38,4 +47,4 @@
 - Welcome: https://www.slidphilabs.com/api/welcome
 
 ## Scope
-Chamber = security (24h trial → $199). TRU8 = compression (demos free with credit). Production residual engine requires commercial license.
+Chamber = security (24h trial → $199). Format = open wire shape. TRU8 = compression (demos free with credit). Production residual engine requires commercial license.
