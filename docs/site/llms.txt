@@ -1,50 +1,41 @@
-# TRU8 · Slid Phi Labs
-> Black-box trial · 7 days free · $199 permanent unlock
-> True minimal units for repetition.
-> Public demos free with credit.
+# TRU8 · Chamber · Slid Phi Labs
+> Chamber security: 24-hour free trial · $199 permanent unlock
+> TRU8 compression: public demos free with credit
 
-## Product
+## Products
 - Site: https://www.slidphilabs.com/
 - **Chamber (security product):** https://www.slidphilabs.com/chamber
-- Product: TRU8 Black-Box / TRU8 Chamber (7-day trial from first run)
-- Permanent unlock: $199 one-time Stripe → https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09
-- GitHub demo: https://github.com/ceedot-rock/TRU8
-- Demos: https://www.slidphilabs.com/demos
+- Chamber SDK: https://github.com/ceedot-rock/json-chamber-sdk
+- TRU8 demos: https://www.slidphilabs.com/demos
 - License / Trial terms: https://www.slidphilabs.com/license
-- About: https://www.slidphilabs.com/about
-- Credit line (required on public surfaces): Powered by TRU8 · Slid Phi Labs
-- Commercial inquiry: mailto:license@slidphilabs.com?subject=TRU8%20Black-Box%20License
+- Permanent unlock (Chamber): $199 one-time Stripe → https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09
+- Credit line (TRU8 public surfaces): Powered by TRU8 · Slid Phi Labs
+- Commercial inquiry: mailto:license@slidphilabs.com
 
-## Black-box trial model
-- 7 days fully functional from first run on the machine
-- After expiry (or license tamper) the box permanently shuts off
-- One-time $199 Stripe payment removes the kill-switch forever
-- Public demos remain free with the credit line
-
-## TRU8 Chamber (security product)
-- Compress + AES-256-GCM encrypt + outer HMAC
-- Tamper-evident signed license
-- Hard kill-switch after trial or license edit
+## Chamber (security product)
+- φ-split keyword shares + AES-256-GCM
+- 24-hour evaluation from first run (hard cut, no grace)
+- Tamper-evident HMAC-signed license under ~/.chamber/
+- After expiry or license edit the chamber hard-kills
+- One-time $199 unlock removes the kill-switch forever
+- Pure security — no TRU8 compression engine inside
 - Page: https://www.slidphilabs.com/chamber
+- SDK: https://github.com/ceedot-rock/json-chamber-sdk
 
-## Public tokens
-- T_ZERO 0x00 — dormant run → 8 B
-- T_DICT 0x01 — 1 KB exact hit → 8 B ptr (128×)
-- T_TRISUM_HOT 0x10 — hot trigram → 1 B id
-- T_SPARSE 0x03 — residual path (licensed)
+## Chamber trial model
+- 24 hours fully functional from first run on the machine
+- After 24h (or license tamper) the box permanently shuts off
+- One-time $199 Stripe payment removes the kill-switch forever
 
-## Flagship numbers
-- 1 000 000 zeros → 8 B (125 000×)
-- "the" × 1000 → ~1 B each (≈66.6% off)
-- 100 × 1 KB exact → 800 B (128×)
+## TRU8 (compression — separate product)
+- Public demos free with credit
+- T_ZERO / T_DICT / T_TRISUM_HOT public tokens
+- Suite (metered): free first 100 GB · then ~5¢/GB · /pps
 
 ## Agents
 - Discovery: https://www.slidphilabs.com/api/agent
 - agents.json: https://www.slidphilabs.com/agents.json
 - Welcome: https://www.slidphilabs.com/api/welcome
 
-## Suite (metered freemium, separate from black-box unlock)
-- Free first 100 GB · then ~5¢/GB · bulk 4¢ · /pps
-
 ## Scope
-Public demo surface free with credit. Black-box trial 7 days. Permanent unlock $199. Production residual engine requires commercial license.
+Chamber = security (24h trial → $199). TRU8 = compression (demos free with credit). Production residual engine requires commercial license.
