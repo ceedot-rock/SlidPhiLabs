@@ -55,7 +55,7 @@ When Stripe lands on `/?purchase=PRODUCT` or `/?purchase=…&session=…`:
 TRU8 — true minimal units for repetition
 
 **Lede:**  
-TRU8 is the only public compression product face. Public demos free with credit. Production residual commercially licensed via license@slidphilabs.com. Suite on /pps is a metered job rail (100 GB free, then ~5¢/GB) — not the product face. Try Gate is retired.
+TRU8 is the only public compression product face. Public demos free with credit. Production residual commercially licensed via corey@slidphilabs.com. Suite on /pps is a metered job rail (100 GB free, then ~5¢/GB) — not the product face. Try Gate is retired.
 
 **CTAs:**  
 1. **See for yourself** → `/try` (teal)  

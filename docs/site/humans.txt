@@ -2,7 +2,6 @@
 
 Team: Slid Phi Labs
 Contact: corey@slidphilabs.com
-Commercial: license@slidphilabs.com
 Site: https://www.slidphilabs.com
 Slogan: One mission · two attack vectors · one team
 Credit: Powered by TRU8 · Slid Phi Labs

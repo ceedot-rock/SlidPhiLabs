@@ -11,10 +11,10 @@
 - TRU8 demos: https://www.slidphilabs.com/demos
 - License / Trial terms: https://www.slidphilabs.com/license
 - json-chamber unlock: $99 one-time → https://www.slidphilabs.com/chamber
-- tru8-chamber studio: $1,900 / project / year → mailto:license@slidphilabs.com
+- tru8-chamber studio: $1,900 / project / year → mailto:corey@slidphilabs.com
 - Credit line (TRU8 public surfaces): Powered by TRU8 · Slid Phi Labs
-- **SPLZ Engine (game engine):** officially building — compression-aware asset pipeline + Chamber seal · mailto:license@slidphilabs.com?subject=SPLZ%20Engine
-- Commercial inquiry: mailto:license@slidphilabs.com · corey@slidphilabs.com
+- **SPLZ Engine (game engine):** officially building — compression-aware asset pipeline + Chamber seal · mailto:corey@slidphilabs.com?subject=SPLZ%20Engine
+- Commercial inquiry: mailto:corey@slidphilabs.com · corey@slidphilabs.com
 
 ## Chamber / json-chamber (security product)
 - φ-split keyword shares + AES-256-GCM
@@ -58,7 +58,7 @@
 - Chamber sealing for live / secure content
 - Studio-facing; source private
 - Related: TRU8 demos, Chamber, Great Agentic Olympiad
-- Contact: mailto:license@slidphilabs.com?subject=SPLZ%20Engine
+- Contact: mailto:corey@slidphilabs.com?subject=SPLZ%20Engine
 
 ## Agents
 - Discovery: https://www.slidphilabs.com/api/agent

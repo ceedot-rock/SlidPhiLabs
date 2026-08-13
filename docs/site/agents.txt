@@ -22,7 +22,7 @@ Product: TRU8
 Demos: https://www.slidphilabs.com/demos
 License: https://www.slidphilabs.com/license
 GitHub: https://github.com/ceedot-rock/TRU8
-Commercial: mailto:license@slidphilabs.com
+Commercial: mailto:corey@slidphilabs.com
 
 Protocols: x402
 Suite: free first 100 GB then ~5¢/GB (first 100 paid GiB) then ~4¢/GB on /pps (Try Gate retired)

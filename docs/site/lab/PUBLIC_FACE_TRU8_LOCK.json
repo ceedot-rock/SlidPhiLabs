@@ -8,7 +8,7 @@
     "demos_free_with_credit": true,
     "production_residual": "commercially licensed",
     "continuous_1088_strong": "commercially licensed",
-    "license_email": "license@slidphilabs.com",
+    "license_email": "corey@slidphilabs.com",
     "github_demo": "https://github.com/ceedot-rock/TRU8",
     "site": "https://www.slidphilabs.com/",
     "demos": "https://www.slidphilabs.com/demos",
@@ -50,7 +50,7 @@
     "commercial_use": "written license required",
     "contact": {
       "humans": "corey@slidphilabs.com",
-      "commercial": "license@slidphilabs.com",
+      "commercial": "corey@slidphilabs.com",
       "fallback": "ceedotrock@gmail.com"
     },
     "site": "https://www.slidphilabs.com"

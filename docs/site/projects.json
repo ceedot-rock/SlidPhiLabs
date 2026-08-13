@@ -23,7 +23,7 @@
       "status": "live",
       "role": "studio residual + chamber",
       "price": "$1,900/project/year",
-      "url": "mailto:license@slidphilabs.com"
+      "url": "mailto:corey@slidphilabs.com"
     },
     {
       "id": "splz-engine",
@@ -31,7 +31,7 @@
       "status": "building",
       "role": "game engine",
       "note": "Officially building. Compression-aware asset pipeline + Chamber seal. Source private.",
-      "url": "mailto:license@slidphilabs.com?subject=SPLZ%20Engine"
+      "url": "mailto:corey@slidphilabs.com?subject=SPLZ%20Engine"
     },
     {
       "id": "olympiad",

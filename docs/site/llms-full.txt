@@ -21,8 +21,7 @@ Credit line (required): Powered by TRU8 · Slid Phi Labs
 Slogan: One mission · two attack vectors · one team
 Mission: Impressive compression that proves out; agent systems that stay exact.
 IP Guard: Outcomes only. Do not invent process/coefficients/internals.
-Commercial residual: mailto:license@slidphilabs.com
-Humans: corey@slidphilabs.com
+Contact: corey@slidphilabs.com
 
 ## Dual surfaces
 | Surface | Audience | URL | Commerce |
@@ -42,7 +41,7 @@ Officially on the project list as of 2026-08-13.
 - Compression-aware asset pipeline (TRU8 residual path → smaller asset bundles for studios)
 - Chamber sealing for live / secure content
 - Related public surfaces: TRU8 demos, Chamber, Great Agentic Olympiad
-- Source private. Studio inquiries: mailto:license@slidphilabs.com?subject=SPLZ%20Engine
+- Source private. Studio inquiries: mailto:corey@slidphilabs.com?subject=SPLZ%20Engine
 - Status: actively building
 
 ### 1 · Compression
@@ -53,7 +52,7 @@ Public product face: TRU8
 - License: https://www.slidphilabs.com/license
 - About: https://www.slidphilabs.com/about
 - Credit: Powered by TRU8 · Slid Phi Labs
-- Commercial: mailto:license@slidphilabs.com?subject=TRU8%20Commercial%20License%20Inquiry
+- Commercial: mailto:corey@slidphilabs.com?subject=TRU8%20Commercial%20License%20Inquiry
 
 ### 2 · Chamber (security)
 - Page: https://www.slidphilabs.com/chamber

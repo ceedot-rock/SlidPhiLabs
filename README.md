@@ -27,7 +27,7 @@ Public demos are **free with credit**: `Powered by TRU8 · Slid Phi Labs`.
 
 ## Commercial residual
 
-Production residual / Continuous-1088 Strong is **commercially licensed**. Email [license@slidphilabs.com](mailto:license@slidphilabs.com). Humans: [corey@slidphilabs.com](mailto:corey@slidphilabs.com).
+Production residual / Continuous-1088 Strong is **commercially licensed**. One inbox: [corey@slidphilabs.com](mailto:corey@slidphilabs.com).
 
 ## What `/access` actually is
 

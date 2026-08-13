@@ -100,7 +100,7 @@ export default async function handler(req, res) {
     }),
     agent_roster: [
       { id: "spl-platform", name: "Platform Discovery", url: "https://www.slidphilabs.com/api/agent" },
-      { id: "tru8", name: "TRU8", url: "https://www.slidphilabs.com/", github: "https://github.com/ceedot-rock/TRU8", demos: "https://www.slidphilabs.com/demos", license: "mailto:license@slidphilabs.com" },
+      { id: "tru8", name: "TRU8", url: "https://www.slidphilabs.com/", github: "https://github.com/ceedot-rock/TRU8", demos: "https://www.slidphilabs.com/demos", license: "mailto:corey@slidphilabs.com" },
       { id: "spl-duos", name: "Duosurface reporting", url: "https://www.slidphilabs.com/api/duos", ui: "https://www.slidphilabs.com/duos" },
       { id: "teachaid", name: "TEACHAiD", url: "https://teachaid.fly.dev/api/agent" },
       { id: "team-mesh", name: "Team Mesh", url: "https://spl-team-mesh.fly.dev/api/agent" },
@@ -269,7 +269,7 @@ export default async function handler(req, res) {
       product: "TRU8",
       home: "https://www.slidphilabs.com/",
       demos: "https://www.slidphilabs.com/demos",
-      license: "mailto:license@slidphilabs.com",
+      license: "mailto:corey@slidphilabs.com",
       github: "https://github.com/ceedot-rock/TRU8",
       credit: "Powered by TRU8 · Slid Phi Labs",
       public_claim: "1 000 000 zeros → 8 B",
@@ -281,7 +281,7 @@ export default async function handler(req, res) {
       entity_claimed: "none — no public LLC/Inc/Ltd filing is claimed",
       roles: ["author", "copyright holder", "inventor"],
       not_a_title: "founder",
-      commercial: "license@slidphilabs.com",
+      commercial: "corey@slidphilabs.com",
       humans: "corey@slidphilabs.com",
     },
     liveness: {
@@ -309,7 +309,7 @@ export default async function handler(req, res) {
       web: "https://www.slidphilabs.com/api/web-codec",
       github: "https://github.com/ceedot-rock/TRU8",
       demos: "https://www.slidphilabs.com/demos",
-      license: "mailto:license@slidphilabs.com",
+      license: "mailto:corey@slidphilabs.com",
       ops: ["compress", "decompress", "profile", "route", "bench"],
       paths: ["zrw", "float", "text", "delta", "high_entropy", "general"],
       example: {

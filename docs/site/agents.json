@@ -26,7 +26,7 @@
       "suite": "https://www.slidphilabs.com/pps",
       "github": "https://github.com/ceedot-rock/TRU8",
       "demos": "https://www.slidphilabs.com/demos",
-      "license": "mailto:license@slidphilabs.com",
+      "license": "mailto:corey@slidphilabs.com",
       "historical_engine": "OmniWave / SPL Codec (licensed, not the public face)"
     },
     {
@@ -47,7 +47,7 @@
       "chamber": "https://www.slidphilabs.com/chamber",
       "demos": "https://www.slidphilabs.com/demos",
       "olympiad": "https://www.slidphilabs.com/olympiad",
-      "license": "mailto:license@slidphilabs.com?subject=SPLZ%20Engine",
+      "license": "mailto:corey@slidphilabs.com?subject=SPLZ%20Engine",
       "note": "Officially building. Compression-aware game engine (TRU8 asset path + Chamber seal). Source private."
     },
     {
