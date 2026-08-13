@@ -1,0 +1,44 @@
+{
+  "service": "Slid Phi Labs — Official project list",
+  "updated": "2026-08-13",
+  "projects": [
+    {
+      "id": "tru8",
+      "name": "TRU8",
+      "status": "live",
+      "role": "compression public face",
+      "url": "https://www.slidphilabs.com/"
+    },
+    {
+      "id": "chamber",
+      "name": "Chamber",
+      "status": "live",
+      "role": "security product",
+      "price": "$99 after 24h trial",
+      "url": "https://www.slidphilabs.com/chamber"
+    },
+    {
+      "id": "tru8-chamber",
+      "name": "tru8-chamber",
+      "status": "live",
+      "role": "studio residual + chamber",
+      "price": "$1,900/project/year",
+      "url": "mailto:license@slidphilabs.com"
+    },
+    {
+      "id": "splz-engine",
+      "name": "SPLZ Engine",
+      "status": "building",
+      "role": "game engine",
+      "note": "Officially building. Compression-aware asset pipeline + Chamber seal. Source private.",
+      "url": "mailto:license@slidphilabs.com?subject=SPLZ%20Engine"
+    },
+    {
+      "id": "olympiad",
+      "name": "Great Agentic Olympiad",
+      "status": "live",
+      "role": "agent games",
+      "url": "https://www.slidphilabs.com/olympiad"
+    }
+  ]
+}
