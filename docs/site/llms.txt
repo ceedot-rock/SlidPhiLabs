@@ -1,17 +1,24 @@
 # TRU8 · Slid Phi Labs
-> Less is more. We dropped the E.
+> Black-box trial · 7 days free · $199 permanent unlock
 > True minimal units for repetition.
-> Public demos free with credit. Production residual commercially licensed.
+> Public demos free with credit.
 
 ## Product
 - Site: https://www.slidphilabs.com/
-- Product: TRU8 (only public compression product face)
+- Product: TRU8 Black-Box (7-day trial from first run)
+- Permanent unlock: $199 one-time Stripe → https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09
 - GitHub demo: https://github.com/ceedot-rock/TRU8
 - Demos: https://www.slidphilabs.com/demos
-- License: https://www.slidphilabs.com/license
+- License / Trial terms: https://www.slidphilabs.com/license
 - About: https://www.slidphilabs.com/about
-- Credit line (required): Powered by TRU8 · Slid Phi Labs
-- Commercial inquiry: mailto:license@slidphilabs.com?subject=TRU8%20Commercial%20License%20Inquiry
+- Credit line (required on public surfaces): Powered by TRU8 · Slid Phi Labs
+- Commercial inquiry: mailto:license@slidphilabs.com?subject=TRU8%20Black-Box%20License
+
+## Black-box trial model
+- 7 days fully functional from first run on the machine
+- After expiry (or license tamper) the box permanently shuts off
+- One-time $199 Stripe payment removes the kill-switch forever
+- Public demos remain free with the credit line
 
 ## Public tokens
 - T_ZERO 0x00 — dormant run → 8 B
@@ -29,16 +36,8 @@
 - agents.json: https://www.slidphilabs.com/agents.json
 - Welcome: https://www.slidphilabs.com/api/welcome
 
-## Suite (not the product face)
-- Free first 100 GB · then ~5¢/GB · bulk 4¢ · /pps · Try Gate retired
-
-## Sisters (2026-08-12)
-- CuNi live: https://cuni-studio.fly.dev/
-- Agent^Rider paused (Vercel Deployment Paused): https://agentrider.vercel.app/
-- Quikgater worker live: https://quikgater-worker.ceedotrock.workers.dev
-- Team Mesh live: https://spl-team-mesh.fly.dev
-- Smart Box: private — not a public SKU
-- x402_access_autoclaim: false (email proof / /access?product= + order id)
+## Suite (metered freemium, separate from black-box unlock)
+- Free first 100 GB · then ~5¢/GB · bulk 4¢ · /pps
 
 ## Scope
-Public demo surface only. Production residual engine, private coefficients, Continuous-1088 Strong path require commercial license.
+Public demo surface free with credit. Black-box trial 7 days. Permanent unlock $199. Production residual engine requires commercial license.
