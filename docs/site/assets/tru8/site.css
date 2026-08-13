@@ -57,6 +57,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  position: relative;
 }
 
 /* ambient mesh */
@@ -70,6 +71,17 @@ body::before {
     radial-gradient(ellipse 70% 50% at 85% -10%, rgba(0, 194, 199, 0.12), transparent 55%),
     radial-gradient(ellipse 50% 40% at -5% 90%, rgba(0, 194, 199, 0.06), transparent 50%),
     radial-gradient(ellipse 40% 30% at 50% 50%, rgba(255, 255, 255, 0.015), transparent 60%);
+}
+
+/* Slid Phi Labs eye logo — 80% transparent background on ALL pages */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: url("/assets/logos/slid-phi-labs-eye.jpg") center center / min(70vmin, 640px) no-repeat;
+  opacity: 0.2;
 }
 
 a {
@@ -87,6 +99,25 @@ svg {
   margin-inline: auto;
   position: relative;
   z-index: 1;
+}
+
+/* Explicit logo-bg div (optional; body::after covers all pages) */
+.logo-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: url("/assets/logos/slid-phi-labs-eye.jpg") center center / min(70vmin, 640px) no-repeat;
+  opacity: 0.2;
+}
+
+.brand-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 0 12px rgba(0, 220, 220, 0.35);
 }
 
 /* ---------- nav ---------- */
