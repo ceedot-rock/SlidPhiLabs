@@ -1,0 +1,109 @@
+{
+  "ok": true,
+  "ritual": "json_keys_full_jk01",
+  "keys": {
+    "K1": "canonicalize",
+    "K2": "structure_skeleton",
+    "K3": "typed_residual_planes",
+    "K4": "dual_ab_33_66",
+    "K5": "cadence_33_66_999",
+    "K6": "mirror_verify",
+    "K7": "publish_gate_vs_brotli11"
+  },
+  "axiom": "structure then typed residual · ZRW int planes · publish only if < brotli-11",
+  "rows": [
+    {
+      "file": "zeros_10k_array",
+      "ok": true,
+      "raw": 20001,
+      "jk": 17,
+      "gzip9": 61,
+      "brotli11": 19,
+      "beats_brotli": true,
+      "beats_gzip": true,
+      "publish": true,
+      "path": "json_keys_jk01_pure_i32a",
+      "ms": 158.541
+    },
+    {
+      "file": "zeros_10k_object",
+      "ok": true,
+      "raw": 20029,
+      "jk": 774,
+      "gzip9": 89,
+      "brotli11": 59,
+      "beats_brotli": false,
+      "beats_gzip": false,
+      "publish": false,
+      "path": "json_keys_jk01",
+      "ms": 73.419
+    },
+    {
+      "file": "ramp_1k_object",
+      "ok": true,
+      "raw": 3913,
+      "jk": 786,
+      "gzip9": 1891,
+      "brotli11": 1314,
+      "beats_brotli": true,
+      "beats_gzip": true,
+      "publish": true,
+      "path": "json_keys_jk01",
+      "ms": 119.213
+    },
+    {
+      "file": "ramp_1k_array",
+      "ok": true,
+      "raw": 3891,
+      "jk": 17,
+      "gzip9": 1853,
+      "brotli11": 1368,
+      "beats_brotli": true,
+      "beats_gzip": true,
+      "publish": true,
+      "path": "json_keys_jk01_pure_i32a",
+      "ms": 496.165
+    },
+    {
+      "file": "nested_users",
+      "ok": true,
+      "raw": 114,
+      "jk": 1382,
+      "gzip9": 101,
+      "brotli11": 87,
+      "beats_brotli": false,
+      "beats_gzip": false,
+      "publish": false,
+      "path": "json_keys_jk01",
+      "ms": 135.549
+    },
+    {
+      "file": "mixed_small",
+      "ok": true,
+      "raw": 36,
+      "jk": 927,
+      "gzip9": 56,
+      "brotli11": 40,
+      "beats_brotli": false,
+      "beats_gzip": false,
+      "publish": false,
+      "path": "json_keys_jk01",
+      "ms": 22.932
+    }
+  ],
+  "publish": {
+    "any_beats_brotli11": true,
+    "published_files": [
+      "zeros_10k_array",
+      "ramp_1k_object",
+      "ramp_1k_array"
+    ],
+    "withheld": [
+      "zeros_10k_object",
+      "nested_users",
+      "mixed_small"
+    ]
+  },
+  "all_roundtrip": true,
+  "at": "2026-08-08T21:15:30.460Z"
+}

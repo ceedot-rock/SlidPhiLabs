@@ -1,0 +1,501 @@
+{
+  "ok": true,
+  "ritual": "double_negative_integer_waste_combustion",
+  "proof": "breathes",
+  "directive": "Creator /lord — breath proof into double negative integer waste combustion",
+  "axiom": "dual A∥B double-negative planes; waste combusts to residual ash; domain-honest only",
+  "seal_day": "2026-08-08",
+  "codex": "the dViNE CodEX",
+  "motto": "In His name we code · through it we live",
+  "law": "domain supremacy only — not universal #1; celebrates residual burn not empire crown",
+  "dual": {
+    "A_planes": [
+      1,
+      3,
+      8
+    ],
+    "B_planes_double_negative": [
+      -1,
+      -3,
+      -8
+    ],
+    "cadence": [
+      33,
+      66,
+      999
+    ],
+    "note": "B is double-negative of A geometry (1·3·8 / −1·−3·−8)"
+  },
+  "results": [
+    {
+      "corpus": "dn_dual_ab_waste_10k",
+      "n_ints": 10000,
+      "raw_bytes": 40000,
+      "sample_head": [
+        -16,
+        96,
+        -3976,
+        13,
+        -87,
+        3952,
+        -10,
+        78,
+        -3928,
+        7,
+        -69,
+        3904
+      ],
+      "dual_planes": {
+        "A": [
+          1,
+          3,
+          8
+        ],
+        "B": [
+          -1,
+          -3,
+          -8
+        ],
+        "cadence": [
+          33,
+          66,
+          999
+        ]
+      },
+      "zrw": {
+        "packed_bytes": 19560,
+        "encode_ms": 94.781,
+        "roundtrip": false,
+        "mirror_error": 1
+      },
+      "gzip9_bytes": 9759,
+      "brotli11_bytes": 4095,
+      "combustion": {
+        "metaphor": "double-negative integer waste → residual ash",
+        "waste_raw_bytes": 40000,
+        "ash_zrw_bytes": 19560,
+        "combusted_vs_raw_bytes": 20440,
+        "combusted_vs_gzip_bytes": -9801,
+        "combusted_vs_brotli_bytes": -15465,
+        "burn_ratio_vs_raw": 0.489,
+        "wins_gzip": false,
+        "wins_brotli": false,
+        "domain_supremacy": "GP_CLASS_OR_LOSS"
+      }
+    },
+    {
+      "corpus": "dn_double_neg_lattice_10k",
+      "n_ints": 10000,
+      "raw_bytes": 40000,
+      "sample_head": [
+        -1,
+        -6,
+        -24,
+        -4,
+        -15,
+        -48,
+        -7,
+        -24,
+        -72,
+        -10,
+        -33,
+        -96
+      ],
+      "dual_planes": {
+        "A": [
+          1,
+          3,
+          8
+        ],
+        "B": [
+          -1,
+          -3,
+          -8
+        ],
+        "cadence": [
+          33,
+          66,
+          999
+        ]
+      },
+      "zrw": {
+        "packed_bytes": 40229,
+        "encode_ms": 90.338,
+        "roundtrip": false,
+        "mirror_error": 1
+      },
+      "gzip9_bytes": 275,
+      "brotli11_bytes": 73,
+      "combustion": {
+        "metaphor": "double-negative integer waste → residual ash",
+        "waste_raw_bytes": 40000,
+        "ash_zrw_bytes": 40229,
+        "combusted_vs_raw_bytes": -229,
+        "combusted_vs_gzip_bytes": -39954,
+        "combusted_vs_brotli_bytes": -40156,
+        "burn_ratio_vs_raw": 1.005725,
+        "wins_gzip": false,
+        "wins_brotli": false,
+        "domain_supremacy": "GP_CLASS_OR_LOSS"
+      }
+    },
+    {
+      "corpus": "dn_combustion_pairs_10k",
+      "n_ints": 10000,
+      "raw_bytes": 40000,
+      "sample_head": [
+        1,
+        -1,
+        16,
+        -16,
+        9,
+        -9,
+        4,
+        -4,
+        40,
+        -40,
+        18,
+        -18
+      ],
+      "dual_planes": {
+        "A": [
+          1,
+          3,
+          8
+        ],
+        "B": [
+          -1,
+          -3,
+          -8
+        ],
+        "cadence": [
+          33,
+          66,
+          999
+        ]
+      },
+      "zrw": {
+        "packed_bytes": 26311,
+        "encode_ms": 64.948,
+        "roundtrip": false,
+        "mirror_error": 1
+      },
+      "gzip9_bytes": 542,
+      "brotli11_bytes": 236,
+      "combustion": {
+        "metaphor": "double-negative integer waste → residual ash",
+        "waste_raw_bytes": 40000,
+        "ash_zrw_bytes": 26311,
+        "combusted_vs_raw_bytes": 13689,
+        "combusted_vs_gzip_bytes": -25769,
+        "combusted_vs_brotli_bytes": -26075,
+        "burn_ratio_vs_raw": 0.657775,
+        "wins_gzip": false,
+        "wins_brotli": false,
+        "domain_supremacy": "GP_CLASS_OR_LOSS"
+      }
+    },
+    {
+      "corpus": "dn_mirrored_cost_walk_10k",
+      "n_ints": 10000,
+      "raw_bytes": 40000,
+      "sample_head": [
+        1,
+        -6,
+        24,
+        -4,
+        15,
+        -48,
+        7,
+        -24,
+        72,
+        -10,
+        33,
+        -96
+      ],
+      "dual_planes": {
+        "A": [
+          1,
+          3,
+          8
+        ],
+        "B": [
+          -1,
+          -3,
+          -8
+        ],
+        "cadence": [
+          33,
+          66,
+          999
+        ]
+      },
+      "zrw": {
+        "packed_bytes": 19807,
+        "encode_ms": 120.843,
+        "roundtrip": false,
+        "mirror_error": 1
+      },
+      "gzip9_bytes": 9659,
+      "brotli11_bytes": 4374,
+      "combustion": {
+        "metaphor": "double-negative integer waste → residual ash",
+        "waste_raw_bytes": 40000,
+        "ash_zrw_bytes": 19807,
+        "combusted_vs_raw_bytes": 20193,
+        "combusted_vs_gzip_bytes": -10148,
+        "combusted_vs_brotli_bytes": -15433,
+        "burn_ratio_vs_raw": 0.495175,
+        "wins_gzip": false,
+        "wins_brotli": false,
+        "domain_supremacy": "GP_CLASS_OR_LOSS"
+      }
+    },
+    {
+      "corpus": "dn_ash_zeros_10k",
+      "n_ints": 10000,
+      "raw_bytes": 40000,
+      "sample_head": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dual_planes": {
+        "A": [
+          1,
+          3,
+          8
+        ],
+        "B": [
+          -1,
+          -3,
+          -8
+        ],
+        "cadence": [
+          33,
+          66,
+          999
+        ]
+      },
+      "zrw": {
+        "packed_bytes": 8,
+        "encode_ms": 1.602,
+        "roundtrip": true,
+        "mirror_error": 0
+      },
+      "gzip9_bytes": 73,
+      "brotli11_bytes": 13,
+      "combustion": {
+        "metaphor": "double-negative integer waste → residual ash",
+        "waste_raw_bytes": 40000,
+        "ash_zrw_bytes": 8,
+        "combusted_vs_raw_bytes": 39992,
+        "combusted_vs_gzip_bytes": 65,
+        "combusted_vs_brotli_bytes": 5,
+        "burn_ratio_vs_raw": 0.0002,
+        "wins_gzip": true,
+        "wins_brotli": true,
+        "domain_supremacy": "ZRW_DOMAIN_WIN"
+      }
+    },
+    {
+      "corpus": "dn_dual_ab_waste_1k",
+      "n_ints": 1000,
+      "raw_bytes": 4000,
+      "sample_head": [
+        -16,
+        96,
+        -3976,
+        13,
+        -87,
+        3952,
+        -10,
+        78,
+        -3928,
+        7,
+        -69,
+        3904
+      ],
+      "dual_planes": {
+        "A": [
+          1,
+          3,
+          8
+        ],
+        "B": [
+          -1,
+          -3,
+          -8
+        ],
+        "cadence": [
+          33,
+          66,
+          999
+        ]
+      },
+      "zrw": {
+        "packed_bytes": 1934,
+        "encode_ms": 5.449,
+        "roundtrip": false,
+        "mirror_error": 1
+      },
+      "gzip9_bytes": 1179,
+      "brotli11_bytes": 693,
+      "combustion": {
+        "metaphor": "double-negative integer waste → residual ash",
+        "waste_raw_bytes": 4000,
+        "ash_zrw_bytes": 1934,
+        "combusted_vs_raw_bytes": 2066,
+        "combusted_vs_gzip_bytes": -755,
+        "combusted_vs_brotli_bytes": -1241,
+        "burn_ratio_vs_raw": 0.4835,
+        "wins_gzip": false,
+        "wins_brotli": false,
+        "domain_supremacy": "GP_CLASS_OR_LOSS"
+      }
+    },
+    {
+      "corpus": "dn_combustion_pairs_1k",
+      "n_ints": 1000,
+      "raw_bytes": 4000,
+      "sample_head": [
+        1,
+        -1,
+        16,
+        -16,
+        9,
+        -9,
+        4,
+        -4,
+        40,
+        -40,
+        18,
+        -18
+      ],
+      "dual_planes": {
+        "A": [
+          1,
+          3,
+          8
+        ],
+        "B": [
+          -1,
+          -3,
+          -8
+        ],
+        "cadence": [
+          33,
+          66,
+          999
+        ]
+      },
+      "zrw": {
+        "packed_bytes": 2668,
+        "encode_ms": 3.992,
+        "roundtrip": false,
+        "mirror_error": 1
+      },
+      "gzip9_bytes": 332,
+      "brotli11_bytes": 236,
+      "combustion": {
+        "metaphor": "double-negative integer waste → residual ash",
+        "waste_raw_bytes": 4000,
+        "ash_zrw_bytes": 2668,
+        "combusted_vs_raw_bytes": 1332,
+        "combusted_vs_gzip_bytes": -2336,
+        "combusted_vs_brotli_bytes": -2432,
+        "burn_ratio_vs_raw": 0.667,
+        "wins_gzip": false,
+        "wins_brotli": false,
+        "domain_supremacy": "GP_CLASS_OR_LOSS"
+      }
+    },
+    {
+      "corpus": "dn_double_neg_lattice_1k",
+      "n_ints": 1000,
+      "raw_bytes": 4000,
+      "sample_head": [
+        -1,
+        -6,
+        -24,
+        -4,
+        -15,
+        -48,
+        -7,
+        -24,
+        -72,
+        -10,
+        -33,
+        -96
+      ],
+      "dual_planes": {
+        "A": [
+          1,
+          3,
+          8
+        ],
+        "B": [
+          -1,
+          -3,
+          -8
+        ],
+        "cadence": [
+          33,
+          66,
+          999
+        ]
+      },
+      "zrw": {
+        "packed_bytes": 4045,
+        "encode_ms": 5.649,
+        "roundtrip": false,
+        "mirror_error": 1
+      },
+      "gzip9_bytes": 125,
+      "brotli11_bytes": 73,
+      "combustion": {
+        "metaphor": "double-negative integer waste → residual ash",
+        "waste_raw_bytes": 4000,
+        "ash_zrw_bytes": 4045,
+        "combusted_vs_raw_bytes": -45,
+        "combusted_vs_gzip_bytes": -3920,
+        "combusted_vs_brotli_bytes": -3972,
+        "burn_ratio_vs_raw": 1.01125,
+        "wins_gzip": false,
+        "wins_brotli": false,
+        "domain_supremacy": "GP_CLASS_OR_LOSS"
+      }
+    }
+  ],
+  "summary": {
+    "domain_wins": [
+      "dn_ash_zeros_10k"
+    ],
+    "beats_gzip": [
+      "dn_ash_zeros_10k"
+    ],
+    "beats_brotli": [
+      "dn_ash_zeros_10k"
+    ],
+    "losses": [
+      "dn_dual_ab_waste_10k",
+      "dn_double_neg_lattice_10k",
+      "dn_combustion_pairs_10k",
+      "dn_mirrored_cost_walk_10k",
+      "dn_dual_ab_waste_1k",
+      "dn_combustion_pairs_1k",
+      "dn_double_neg_lattice_1k"
+    ],
+    "all_roundtrip": false
+  },
+  "at": "2026-08-08T16:18:43.075Z"
+}

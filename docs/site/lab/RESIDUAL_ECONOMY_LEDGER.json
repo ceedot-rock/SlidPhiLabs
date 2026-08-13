@@ -1,0 +1,39 @@
+{
+  "schema": "spl.residual_economy.v1",
+  "anchored_at": "2026-08-09",
+  "law": "dE+dC≈0 · dual A∥B · cadence 33·66·999",
+  "steps": [
+    { "n": 1, "id": "ledger_exact", "status": "anchored_template" },
+    { "n": 2, "id": "dual_ab_spend", "status": "template", "shave": 0.33 },
+    { "n": 3, "id": "time_structured_int", "sprint_h": 66, "rest_h": 33, "review_h": 9, "horizon_d": 90 },
+    { "n": 4, "id": "micro_product_freemium", "status": "live", "free_gb": 100, "usd_per_gb": 0.05, "usd_per_gb_after": 0.04, "min_usd": 0.05, "routes": ["/pps", "/bench"] },
+    { "n": 5, "id": "surplus_pipes", "status": "live", "pipes": ["stripe", "x402"] },
+    { "n": 6, "id": "burn_compress", "status": "host_action" },
+    { "n": 7, "id": "scoreboard", "status": "live", "routes": ["/standings", "/bench"] },
+    { "n": 8, "id": "reinvest_30pct_agentic", "status": "after_profit", "pct": 0.3 },
+    { "n": 9, "id": "day_180_mirror", "status": "future", "day": 180 },
+    { "n": 10, "id": "ship_when_prior_paid", "status": "discipline" }
+  ],
+  "pricing_canonical": {
+    "source": "api/suite-pricing.js",
+    "free_bytes": 107374182400,
+    "free_gb": 100,
+    "min_paid_cents": 5,
+    "usd_per_gb_first_100_billable": 0.05,
+    "usd_per_gb_after": 0.04
+  },
+  "fly_apps": [
+    { "name": "slidphilabs", "role": "public", "status": "deployed" },
+    { "name": "slidphi-smart-box", "role": "chamber", "status": "deployed" },
+    { "name": "spl-team-mesh", "role": "onegate", "status": "deployed" },
+    { "name": "teachaid", "role": "school", "status": "suspended" },
+    { "name": "cuni-studio", "role": "studio", "status": "suspended" },
+    { "name": "quikgater-browser-worker", "role": "worker", "status": "deployed" }
+  ],
+  "host_fill": {
+    "fixed_burn_mo_usd": null,
+    "incoming_mo_usd": null,
+    "delta_usd": null,
+    "note": "Fill from Stripe + Fly dashboards before scaling"
+  }
+}

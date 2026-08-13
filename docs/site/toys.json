@@ -1,0 +1,216 @@
+{
+  "service": "Slid Phi Labs — Toy Store",
+  "version": "1.0.0",
+  "updated": "2026-08-08",
+  "site": "https://www.slidphilabs.com/toys",
+  "sponsor": {
+    "name": "Slid Phi Labs",
+    "domain": "slidphilabs.com",
+    "url": "https://www.slidphilabs.com",
+    "label": "Hosted by Slid Phi Labs · slidphilabs.com"
+  },
+  "slogan": "Lighter ideas, fun experiments, scientific-theory sketches — not the commercial floor.",
+  "policy": {
+    "what_belongs": [
+      "fun / playful demos",
+      "scientific theory sketches",
+      "public-safe artifacts and curios",
+      "parked fun-bin ideas ready to browse"
+    ],
+    "what_does_not": [
+      "standing commercial SKUs (use catalog / PPS)",
+      "private coefficients or process engines",
+      "production harness internals"
+    ],
+    "ip_guard": "Outcomes and names only. Engines stay private.",
+    "not_legal_advice": true
+  },
+  "aisles": {
+    "fun": "Fun bin — playful, parked until pulled to build",
+    "theory": "Scientific theory — public-safe sketches and frames",
+    "artifact": "Artifacts — diagrams, interactive curios, visual math",
+    "history": "History of compute — lineage demos and remembrances"
+  },
+  "feeds": {
+    "idea_lab": "https://www.slidphilabs.com/ideas",
+    "ideas_json": "https://www.slidphilabs.com/ideas.json",
+    "fun_bin_note": "Idea Lab bucket 'fun' and maturity stub theory rows may appear here as toys."
+  },
+  "count": 8,
+  "toys": [
+    {
+      "id": "3liza",
+      "sku": "toy-3liza",
+      "name": "3LiZa",
+      "aisle": "fun",
+      "status": "parked",
+      "price": "free / not for sale",
+      "blurb": "ELIZA rebirth — classic DOCTOR pattern-matcher waiting in the digital currents. Public-domain soul, SPL dress when built.",
+      "tags": [
+        "eliza",
+        "chatbot",
+        "history",
+        "fun_bin"
+      ],
+      "idea_id": 40,
+      "links": [],
+      "shelf": "Summoned 2026-08-08 · fun bin · do not ship until pulled"
+    },
+    {
+      "id": "gao-board",
+      "sku": "toy-gao",
+      "name": "Great Agentic Olympiad",
+      "aisle": "fun",
+      "status": "live",
+      "price": "$1 entry (gao-entry) · prizes future-funded",
+      "blurb": "World-stage agent olympiad (lab hosts, world builds). Public GitHub — help design 40 games, harnesses, governance.",
+      "tags": [
+        "olympiad",
+        "agents",
+        "governance"
+      ],
+      "links": [
+        {
+          "label": "Open board",
+          "href": "/olympiad"
+        },
+        {
+          "label": "API",
+          "href": "/api/olympiad"
+        },
+        {
+          "label": "JSON",
+          "href": "/olympiad.json"
+        },
+        {
+          "label": "GitHub · help build",
+          "href": "https://github.com/ceedot-rock/great-agentic-olympiad"
+        }
+      ],
+      "shelf": "Sponsored by Slid Phi Labs · slidphilabs.com"
+    },
+    {
+      "id": "public-safe-math-book",
+      "sku": "toy-zrqc-book",
+      "name": "Public-safe math book",
+      "aisle": "theory",
+      "status": "partial",
+      "price": "idea · not a product SKU",
+      "blurb": "Narrative mathematics, use cases, and a widely-adopted future — without private coefficients or non-public constants.",
+      "tags": [
+        "zrqc",
+        "book",
+        "theory",
+        "public_safe"
+      ],
+      "idea_id": 12,
+      "links": [],
+      "shelf": "Theory aisle · IP Guard on"
+    },
+    {
+      "id": "mirrored-cost",
+      "sku": "toy-mirrored-cost",
+      "name": "Mirrored Cost (story)",
+      "aisle": "theory",
+      "status": "story",
+      "price": "public outcomes only",
+      "blurb": "Cost identity framing (ΔE+ΔC≈0 class; mirror error near zero) as a quality and efficiency story — not the private tables.",
+      "tags": [
+        "mirrored_cost",
+        "theory",
+        "cddg"
+      ],
+      "idea_id": 3,
+      "links": [
+        {
+          "label": "Idea Lab",
+          "href": "/ideas"
+        }
+      ],
+      "shelf": "Theory sketch · process private"
+    },
+    {
+      "id": "cddg-frame",
+      "sku": "toy-cddg-frame",
+      "name": "CDDG frame (public name)",
+      "aisle": "theory",
+      "status": "story",
+      "price": "name public · process secret",
+      "blurb": "Continuous Dark-Degree Geometry as a public geometry story. Commercial face is CDDG:Split on the main floor — this shelf is the idea shape only.",
+      "tags": [
+        "cddg",
+        "geometry",
+        "theory"
+      ],
+      "idea_id": 2,
+      "links": [
+        {
+          "label": "CDDG:Split product",
+          "href": "/#cddg-split"
+        },
+        {
+          "label": "Idea Lab",
+          "href": "/ideas"
+        }
+      ],
+      "shelf": "Theory · not a substitute for the license"
+    },
+    {
+      "id": "triangle-plane-spiral",
+      "sku": "toy-tps",
+      "name": "Triangle · plane · spiral",
+      "aisle": "artifact",
+      "status": "local_artifact",
+      "price": "curiosity",
+      "blurb": "Visual geometry play: triangle, plane, spiral — a host-side HTML curio for structure-not-soup thinking.",
+      "tags": [
+        "geometry",
+        "visual",
+        "artifact"
+      ],
+      "links": [],
+      "shelf": "Artifact · may promote to public /toys/play when staged"
+    },
+    {
+      "id": "codon-rack-viz",
+      "sku": "toy-codon",
+      "name": "Codon rack visuals",
+      "aisle": "artifact",
+      "status": "lab_local",
+      "price": "curiosity",
+      "blurb": "360° codon / rectangle tilt diagrams from the Smart Box lab desk — structure as spectacle, not a commercial SKU.",
+      "tags": [
+        "codon",
+        "360",
+        "visual",
+        "smart_box"
+      ],
+      "links": [],
+      "shelf": "Lab artifact · public path TBD"
+    },
+    {
+      "id": "smartswarm-name",
+      "sku": "toy-smartswarm",
+      "name": "SmartSwarm / M40 (name)",
+      "aisle": "theory",
+      "status": "stub",
+      "price": "name only",
+      "blurb": "Swarm/colony lineage named next to ZRW + QQc on the research board — thin on host, parked as a theory toy until depth exists.",
+      "tags": [
+        "swarm",
+        "theory",
+        "stub"
+      ],
+      "idea_id": 10,
+      "links": [
+        {
+          "label": "Idea Lab",
+          "href": "/ideas"
+        }
+      ],
+      "shelf": "Stub theory · fun-adjacent"
+    }
+  ],
+  "public": true,
+  "note": "Toy Store is the light floor: fun, theory, artifacts. Serious commerce stays on humans/agents doors, PPS, and catalog."
+}

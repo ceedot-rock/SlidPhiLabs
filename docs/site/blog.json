@@ -3,12 +3,27 @@
   "version": "1.0.0",
   "updated": "2026-08-07",
   "canonical": "https://www.slidphilabs.com/blog",
-  "ip_guard": "Public outcomes and shipping process only. No private engine internals, coefficients, or secret sauce.",
+  "ip_guard": "Outcomes and shipping process only. No private engine internals, coefficients, or secret sauce.",
   "social": {
     "x": "https://x.com/slidphilabs",
     "handle": "@slidphilabs"
   },
   "posts": [
+    {
+      "id": "2026-08-07-why-8b-matters",
+      "week_of": "2026-08-04",
+      "published": "2026-08-07",
+      "title": "Why 8 B matters — and the site that now breathes",
+      "slug": "2026-08-07-why-8b-matters",
+      "url": "https://www.slidphilabs.com/blog/2026-08-07-why-8b-matters",
+      "summary": "ZRW zeros×10k → 8 B vs gzip 73 B / brotli 13 B. Verify round-trip. Live proof bar, standings first paint, /api/phi/metrics.",
+      "tags": [
+        "proof",
+        "zrw",
+        "standings",
+        "product"
+      ]
+    },
     {
       "id": "2026-08-07-freemium-retire-try-gate",
       "week_of": "2026-08-04",

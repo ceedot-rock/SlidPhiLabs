@@ -1,396 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="lab-pricing" content="freemium_suite_v4_undercut"/>
-<meta name="lab-eval-path" content="https://www.slidphilabs.com/pps"/>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Demos · free suite eval · Slid Phi Labs</title>
-<meta name="description" content="Public demos and standings. Evaluate free on suite first 1 GB — then usage pricing under cloud egress."/>
-<meta name="lab-modules" content="compression,agent_platform"/>
-<meta name="lab-compression" content="SPL Codec,CDDG:Split"/>
-<meta name="lab-agent-platform" content="CuNi,Agent^Rider,Quikgater"/>
-
-<link rel="canonical" href="https://www.slidphilabs.com/demos"/>
-
-<!-- Agentic commerce discovery (machine-readable) -->
-<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent commerce discovery"/>
-<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/agents.json" title="agents.json"/>
-<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/agents.txt" title="agents.txt"/>
-<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
-<link rel="describedby" href="https://www.slidphilabs.com/.well-known/agentic-commerce.json"/>
-<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/.well-known/agent-card.json" title="A2A agent card"/>
-<meta name="agent-commerce" content="x402"/>
-<meta name="agent-protocols" content="x402"/>
-<meta name="agent-networks" content="solana-mainnet-beta,eip155:8453"/>
-<meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
-<meta name="agent-catalog" content="https://www.slidphilabs.com/api/x402-products"/>
-<meta name="agent-one-liner" content="Free first 100 GB suite · then ~5¢/GB under ~9¢ egress · GET /api/agent · Try Gate retired."/>
-<meta property="og:title" content="Demos · free suite eval · Slid Phi Labs"/>
-<meta property="og:description" content="Public demos and standings. Evaluate free on suite first 1 GB — then usage pricing under cloud egress."/>
-<meta property="og:url" content="https://www.slidphilabs.com/demos"/>
-<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-<meta property="og:type" content="website"/>
-<meta property="og:site_name" content="Slid Phi Labs"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:site" content="@slidphilabs"/>
-<meta name="twitter:creator" content="@slidphilabs"/>
-<meta name="twitter:title" content="Demos · free suite eval · Slid Phi Labs"/>
-<meta name="twitter:description" content="Public demos and standings. Evaluate free on suite first 1 GB — then usage pricing under cloud egress."/>
-<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-<meta name="theme-color" content="#050b16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TRU8 Demos — numbers only · Slid Phi Labs</title>
+<meta name="description" content="TRU8 demos: zeros → 8 B, hot trigrams, exact dict blocks, Silesia dormant pack. Less is more. Numbers only."/>
+<meta name="theme-color" content="#0A0A0A"/>
 <meta name="robots" content="index,follow"/>
-<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
-<style>
-:root{
-  --bg:#050b16;--panel:#0c1524;--panel2:#122033;--border:rgba(61,214,198,.16);
-  --border-gold:rgba(232,197,71,.35);--text:#eef4fb;--muted:#8fa3b8;
-  --accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--gold-deep:#c9a227;
-  --code:#081018;--poster:url("/assets/slid-phi-labs-master.jpg");
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh}
-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(ellipse 70% 40% at 80% 0%, rgba(255,154,60,.06), transparent 45%),
-    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(61,214,198,.06), transparent 50%);
-}
-a{color:var(--accent);text-decoration:none}a:hover{color:var(--teal-bright)}
-nav{position:sticky;top:0;z-index:50;background:rgba(5,11,22,.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(232,197,71,.18)}
-nav .inner{max-width:960px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.logo{display:inline-flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-weight:700;color:var(--gold);letter-spacing:.04em}
-.logo img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:1.5px solid var(--border-gold)}
-.logo span{color:var(--teal-bright)}
-.nav-links{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.nav-links a{color:var(--muted);font-size:.88rem}
-.nav-links a:hover{color:var(--gold)}
-.btn{display:inline-flex;padding:10px 16px;border-radius:9px;font-size:.9rem;font-weight:600;border:1px solid transparent;align-items:center;cursor:pointer;font-family:inherit}
-.btn-teal{background:linear-gradient(180deg,#5ef0df,var(--teal));color:#031018}
-.btn-primary{background:linear-gradient(180deg,#6bb0ff,var(--accent));color:#fff}
-.btn-gold{background:linear-gradient(180deg,#f5d76e,var(--gold),var(--gold-deep));color:#1a1200}
-.btn-ghost{background:transparent;color:var(--text);border-color:rgba(61,214,198,.25)}
-.btn:disabled{opacity:.55;cursor:not-allowed}
-.wrap{max-width:960px;margin:0 auto;padding:36px 20px 64px;position:relative;z-index:1}
-.badge{display:inline-flex;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:var(--gold);background:rgba(232,197,71,.1);border:1px solid var(--border-gold);padding:4px 12px;border-radius:999px;margin-bottom:14px}
-.ribbon{font-family:'Cinzel',serif;color:var(--gold);font-size:1.1rem;font-weight:700;margin-bottom:10px;letter-spacing:.04em}
-h1{font-size:clamp(1.7rem,3.5vw,2.3rem);font-weight:700;margin-bottom:12px;letter-spacing:-.02em}
-.lede{color:var(--muted);max-width:40rem;margin-bottom:22px}
-.notice{
-  background:rgba(61,214,198,.06);border:1px solid rgba(61,214,198,.25);border-radius:12px;
-  padding:14px 16px;color:var(--muted);font-size:.92rem;margin-bottom:28px;
-}
-.notice strong{color:var(--teal-bright)}
-h2{font-family:'Cinzel',serif;color:var(--gold);font-size:1.1rem;margin:28px 0 14px;letter-spacing:.04em}
-.grid{display:grid;gap:14px}
-@media(min-width:720px){.grid{grid-template-columns:1fr 1fr}}
-.card{
-  background:linear-gradient(165deg,var(--panel2),var(--panel));
-  border:1px solid var(--border);border-radius:16px;padding:18px 18px 16px;
-  display:flex;flex-direction:column;gap:10px;
-}
-.card h3{font-size:1rem;font-weight:700;color:var(--text);margin:0}
-.card .tag{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.04em}
-.bars{display:flex;flex-direction:column;gap:8px;margin:6px 0}
-.bar-row{display:grid;grid-template-columns:72px 1fr 64px;gap:8px;align-items:center;font-size:.82rem}
-.bar-row span:first-child{color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.72rem}
-.bar-track{height:10px;background:var(--code);border-radius:999px;overflow:hidden;border:1px solid rgba(61,214,198,.15)}
-.bar-fill{height:100%;width:0;border-radius:999px;transition:width .9s cubic-bezier(.2,.8,.2,1)}
-.bar-fill.raw{background:linear-gradient(90deg,#4b5563,#9ca3af)}
-.bar-fill.gen{background:linear-gradient(90deg,#3b6fd4,var(--accent))}
-.bar-fill.zrw{background:linear-gradient(90deg,#1a9e90,var(--teal-bright));box-shadow:0 0 12px rgba(61,214,198,.45)}
-.bar-row .sz{font-family:'IBM Plex Mono',monospace;font-size:.78rem;text-align:right;color:var(--text)}
-.result-big{
-  font-family:'IBM Plex Mono',monospace;font-size:1.35rem;font-weight:700;color:var(--teal-bright);
-  text-shadow:0 0 20px rgba(61,214,198,.35);min-height:1.5em;
-}
-.result-sub{font-size:.85rem;color:var(--muted)}
-.card .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
-.mono{font-family:'IBM Plex Mono',monospace;font-size:.88rem}
-table{width:100%;border-collapse:collapse;font-size:.9rem}
-th,td{padding:10px 12px;text-align:left;border-bottom:1px solid rgba(61,214,198,.12)}
-th{color:var(--gold);font-size:.72rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
-.table-wrap{overflow-x:auto;border:1px solid var(--border-gold);border-radius:14px;background:var(--panel);margin-top:8px}
-tr.hl td{background:rgba(61,214,198,.05)}
-footer{margin-top:40px;padding-top:20px;border-top:1px solid rgba(232,197,71,.2);color:var(--muted);font-size:.85rem}
-footer .tag{color:var(--gold);font-family:'Cinzel',serif;margin-bottom:6px}
-footer .lockup{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-footer .lockup img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid var(--border-gold)}
-footer .contact-line{margin:8px 0 0;font-size:.88rem;line-height:1.5}
-footer .contact-line a{color:var(--teal-bright);font-weight:600}
-footer .legal{margin-top:14px;padding-top:12px;border-top:1px solid rgba(232,197,71,.12);font-size:.8rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid rgba(232,197,71,.35)}
-.running .result-big{opacity:.6}
-</style>
+<link rel="canonical" href="https://www.slidphilabs.com/demos"/>
+<link rel="icon" type="image/svg+xml" href="/assets/tru8/favicon.svg"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="TRU8 · Slid Phi Labs"/>
+<meta property="og:title" content="TRU8 Demos — numbers only"/>
+<meta property="og:description" content="Less is more. Numbers only. Public demo surface by Slid Phi Labs."/>
+<meta property="og:url" content="https://www.slidphilabs.com/demos"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/tru8/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="TRU8 Demos — numbers only"/>
+<meta name="twitter:description" content="zeros_1M → 8 B · hot trigrams · exact dict · champion stack."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/tru8/og.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/tru8/site.css?v=1"/>
+<link rel="stylesheet" href="/assets/tru8/chat.css?v=1"/>
 </head>
 <body>
-<nav>
+<header class="site-nav" role="banner">
   <div class="inner">
-    <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="40" height="40" alt=""/>Slid Phi <span>Labs</span></a>
-    <div class="nav-links">
-      <a href="/#packages">Packages</a>
-      <a href="/pps">Pay Per Suite</a>
-      <a href="/#pricing">Pricing</a>
-      <a href="/demos">Demos</a>
-      <a href="/access">Access</a>
-      <a class="btn btn-teal" href="/pps" style="padding:8px 12px;font-size:.85rem">Free suite</a>
+    <a class="brand" href="/" aria-label="TRU8 home">
+      <span class="brand-mark" aria-hidden="true">8</span>
+      <span><span class="tru">TRU</span><span class="eight">8</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/demos" aria-current="page">Demos</a>
+      <a href="/license">License</a>
+      <a href="/about">About</a>
+      <a href="https://github.com/ceedot-rock/TRU8" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="https://github.com/ceedot-rock/TRU8" target="_blank" rel="noopener">Run on GitHub</a>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
-</nav>
+</header>
 
-<div class="wrap">
-  <div class="badge">LIVE RESULTS</div>
-  <p class="ribbon">Impressive Compression..... see for yourself</p>
-  <h1>Demos</h1>
-  <p class="lede">Pick a workload and hit <strong>Show result</strong>. Packed size, how we stack up — the numbers that matter.</p>
-
-  <div class="notice">
-    Ready to go further? <a href="/pps">Free suite</a> is free. Full packages are one click on <a href="/#pricing">Pricing</a>.
+<main>
+  <div class="page-hero wrap">
+    <p class="section-label">Demos</p>
+    <h1>Less is more.<br/>Numbers only.</h1>
+    <p>Public surface. Token paths you can verify. Production residual stays licensed.</p>
   </div>
 
-  <h2>Try a workload</h2>
-  <p class="lede" style="margin-bottom:16px;font-size:.95rem">Bars fill to the outcome for that corpus. Then buy if you want it on your stack.</p>
-  <div class="grid" id="demo-grid"></div>
-
-  <h2>Scoreboard</h2>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr><th>Workload</th><th>Input</th><th>Result</th><th>vs general tools</th></tr>
-      </thead>
-      <tbody>
-        <tr class="hl"><td>Zeros series</td><td class="mono">1 000 × 0</td><td class="mono"><strong>8 B</strong> packed</td><td>beats brotli / gzip class</td></tr>
-        <tr class="hl"><td>Ramp series</td><td class="mono">1 000 ints</td><td class="mono"><strong>8 B</strong> · ~141×</td><td>vs brotli-class baseline</td></tr>
-        <tr><td>Walk series</td><td class="mono">10 000 ints</td><td class="mono"><strong>hard win</strong></td><td>large multiple vs gzip-class</td></tr>
-        <tr><td>Mixed structured</td><td class="mono">suite</td><td class="mono"><strong>#1</strong> on shapes we target</td><td>our bench stance</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h2 style="margin-top:32px">Want the full product?</h2>
-  <div class="card" style="margin-top:8px">
-    <p class="result-sub" style="margin:0">Checkout is one click. After you pay, pick up your package on Access.</p>
-    <div class="links" style="margin-top:12px">
-      <a class="btn btn-gold" href="https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f" target="_blank" rel="noopener">CDDG:Split $199</a>
-      <a class="btn btn-primary" href="https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b" target="_blank" rel="noopener">ZRW N00b $79</a>
-      <a class="btn btn-teal" href="/pps">Free suite</a>
-      <a class="btn btn-ghost" href="/">Home</a>
+  <section class="section wrap" style="padding-top:12px">
+    <div class="reveal demo-list">
+      <div class="demo-item"><span class="n">01</span><div class="t">zeros_1M<small>T_ZERO dormant run</small></div><span class="r">8 B</span></div>
+      <div class="demo-item"><span class="n">02</span><div class="t">ramp runs<small>T_ZERO family</small></div><span class="r">8 B</span></div>
+      <div class="demo-item"><span class="n">03</span><div class="t">“the” × 1000<small>T_TRISUM_HOT</small></div><span class="r">~1 B each</span></div>
+      <div class="demo-item"><span class="n">04</span><div class="t">Dickens hot trigrams<small>matched symbols</small></div><span class="r">66.7%</span></div>
+      <div class="demo-item"><span class="n">05</span><div class="t">1 KB exact dict<small>T_DICT pointer</small></div><span class="r">128×</span></div>
+      <div class="demo-item"><span class="n">06</span><div class="t">Silesia dormant pack<small>corpus-style runs</small></div><span class="r">TRU8</span></div>
+      <div class="demo-item"><span class="n">07</span><div class="t">Mixed text + zeros<small>structure + residual</small></div><span class="r">split</span></div>
+      <div class="demo-item"><span class="n">08</span><div class="t">Webster repeated tags<small>HTML/XML structure</small></div><span class="r">TRU8</span></div>
+      <div class="demo-item"><span class="n">09</span><div class="t">Cross-file shared dict<small>T_DICT reuse</small></div><span class="r">shared</span></div>
+      <div class="demo-item"><span class="n">10</span><div class="t">Champion stack<small>T_ZERO + T_DICT + T_TRISUM_HOT</small></div><span class="r">full</span></div>
     </div>
-  </div>
 
-  <footer>
-    <div class="lockup">
-      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="44" height="44" alt="Slid Phi Labs logo"/>
+    <div class="band reveal" style="margin-top:40px">
       <div>
-        <p class="tag">Impressive Compression..... see for yourself</p>
-        <p>SLID-PHI LABS</p>
+        <h2>Run the public demos.</h2>
+        <p>Python package on GitHub. Credit required: Powered by TRU8 · Slid Phi Labs.</p>
+      </div>
+      <div class="band-actions">
+        <a class="btn btn-primary" href="https://github.com/ceedot-rock/TRU8" target="_blank" rel="noopener">Open TRU8 on GitHub</a>
+        <a class="btn btn-secondary" href="/">Back home</a>
       </div>
     </div>
-    <p style="margin:8px 0"><a href="/pps">Pay Per Suite</a> · <a href="/pps">Free suite</a> · <a href="/">Home</a></p>
-    <p class="contact-line">
-      Questions, concerns, or partnerships:
-      <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a>
-    </p>
-    <div class="legal">
-      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="28" height="28" alt=""/>
-      <span>© 2026 Slid Phi Labs. All rights reserved.</span>
+
+    <div class="reveal" style="margin-top:48px">
+      <p class="section-label">Interactive</p>
+      <h2>Browser lab</h2>
+      <p class="lede">Same widgets as home — scrub the knobs.</p>
+      <div class="demo-lab">
+        <div class="demo-panel">
+          <h3>T_ZERO</h3>
+          <div class="demo-controls">
+            <label><span id="demoZerosLabel">1,000,000 zeros</span>
+              <input id="demoZerosN" type="range" min="1000" max="2000000" step="1000" value="1000000"/>
+            </label>
+          </div>
+          <div class="demo-readout" id="demoZerosOut">→ 8 B</div>
+          <div class="demo-bar"><i id="demoZerosBar"></i></div>
+          <p class="demo-meta" id="demoZerosMeta"></p>
+          <pre class="demo-hex" id="demoZerosHex"></pre>
+        </div>
+        <div class="demo-panel">
+          <h3>T_TRISUM_HOT</h3>
+          <div class="demo-controls">
+            <label>word<input id="demoTriWord" type="text" maxlength="3" value="the"/></label>
+            <label>count<input id="demoTriCount" type="range" min="10" max="5000" step="10" value="1000"/></label>
+          </div>
+          <div class="demo-readout" id="demoTriOut">→ 1002 B</div>
+          <p class="demo-meta" id="demoTriMeta"></p>
+        </div>
+      </div>
     </div>
-  
-    <p class="note agentic-marketing" style="margin-top:12px;font-size:0.9rem">
-      <strong style="color:var(--teal-bright,#3dd6c6)">Agents:</strong>
-      <a href="/api/agent"><code>GET /api/agent</code></a>
-      · <a href="/agents.json">agents.json</a>
-      · <a href="/agents.txt">agents.txt</a>
-      · <a href="/llms.txt">llms.txt</a>
-      — x402 USDC on <strong>Solana</strong> or <strong>Base</strong> mainnet (<code>X-PAYMENT</code>).
-    </p>
+  </section>
+</main>
 
-  </footer>
-</div>
-
-<script>
-(function () {
-  /**
-   * Canned public outcomes only — no encode path, no intermediate state.
-   * Sizes are illustrative of published benches (bytes-in → packed outcome).
-   */
-  const DEMOS = [
-    {
-      id: 'zeros',
-      title: 'Zeros × 1k',
-      tag: 'STRUCTURED · INTEGER',
-      raw: 4000,
-      generic: 40,
-      ours: 8,
-      headline: '8 B packed',
-      sub: 'Same lossless round-trip story as our public zeros bench.',
-      buy: 'https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b',
-      buyLabel: 'Buy ZRW $79',
-    },
-    {
-      id: 'ramp',
-      title: 'Ramp × 1k',
-      tag: 'STRUCTURED · INTEGER',
-      raw: 4000,
-      generic: 1128,
-      ours: 8,
-      headline: '8 B · ~141×',
-      sub: 'Outcome vs brotli-class baseline on ramp-shaped input.',
-      buy: 'https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b',
-      buyLabel: 'Buy ZRW $79',
-    },
-    {
-      id: 'walk',
-      title: 'Walk × 10k',
-      tag: 'STRUCTURED · INTEGER',
-      raw: 40000,
-      generic: 28000,
-      ours: 4200,
-      headline: 'Hard win',
-      sub: 'Large multiple vs gzip-class on walk series.',
-      buy: 'https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c',
-      buyLabel: 'Buy Pro $249',
-    },
-    {
-      id: 'residual',
-      title: 'CDDG:Split',
-      tag: 'CDDG:SPLIT · OUTCOME',
-      raw: 100,
-      generic: 100,
-      ours: 22,
-      headline: '64–84% residual cut',
-      sub: 'Outcome band on residual-heavy loads. Quality lift vs baseline — process private.',
-      buy: 'https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f',
-      buyLabel: 'Buy CDDG:Split $199',
-      residualMode: true,
-    },
-    {
-      id: 'blackjack',
-      title: 'Blackjack · mixed series',
-      tag: 'BLACKJACK · OUTCOME',
-      raw: 16000,
-      generic: 9200,
-      ours: 3100,
-      headline: '#1 on mixed series',
-      sub: 'Multi-path stack beats single-codec baselines on mixed integer loads (outcome ranking).',
-      buy: 'https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09',
-      buyLabel: 'Buy Blackjack path $199',
-    },
-    {
-      id: 'shard-zip',
-      title: 'shard-zip · structured pack',
-      tag: 'SHARD-ZIP · OUTCOME',
-      raw: 50000,
-      generic: 28000,
-      ours: 9800,
-      headline: 'Adaptive pack win',
-      sub: 'Smaller transfer/on-disk footprint vs general zip-class on structured shards.',
-      buy: 'https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09',
-      buyLabel: 'Buy support path $199',
-    },
-    {
-      id: 'shard-tsdb',
-      title: 'shard-tsdb · series store',
-      tag: 'SHARD-TSDB · OUTCOME',
-      raw: 80000,
-      generic: 42000,
-      ours: 15000,
-      headline: 'TS footprint cut',
-      sub: 'Time-series shards store smaller while staying query-ready on published loads.',
-      buy: 'https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09',
-      buyLabel: 'Buy support path $199',
-    },
-    {
-      id: 'pps',
-      title: 'SPL Pay Per Suite',
-      tag: 'SUITE · SERVICE',
-      raw: 100,
-      generic: 100,
-      ours: 9,
-      headline: 'Free first 100 GB · then ~5¢/GB under ~9¢ egress',
-      sub: 'Size + shape + tool → Stripe → lab delivery. No install. Outcomes without engine dump.',
-      buy: '/pps',
-      buyLabel: 'Open Pay Per Suite',
-      residualMode: true,
-    },
-  ];
-
-  const grid = document.getElementById('demo-grid');
-
-  function fmt(n) {
-    if (n >= 1000) return (n / 1000).toFixed(n % 1000 === 0 ? 0 : 1) + ' KB';
-    return n + ' B';
-  }
-
-  function maxBar(d) {
-    return Math.max(d.raw, d.generic, d.ours, 1);
-  }
-
-  DEMOS.forEach((d) => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.dataset.id = d.id;
-    const max = maxBar(d);
-    card.innerHTML =
-      '<div class="tag">' + d.tag + '</div>' +
-      '<h3>' + d.title + '</h3>' +
-      '<div class="bars">' +
-        '<div class="bar-row"><span>Input</span><div class="bar-track"><div class="bar-fill raw" data-w="' + (100 * d.raw / max) + '"></div></div><span class="sz" data-sz="raw">—</span></div>' +
-        '<div class="bar-row"><span>General</span><div class="bar-track"><div class="bar-fill gen" data-w="' + (100 * d.generic / max) + '"></div></div><span class="sz" data-sz="gen">—</span></div>' +
-        '<div class="bar-row"><span>Ours</span><div class="bar-track"><div class="bar-fill zrw" data-w="' + (100 * d.ours / max) + '"></div></div><span class="sz" data-sz="ours">—</span></div>' +
-      '</div>' +
-      '<div class="result-big" data-head>—</div>' +
-      '<div class="result-sub">' + d.sub + '</div>' +
-      '<div class="links">' +
-        '<button type="button" class="btn btn-teal btn-run">Show result</button>' +
-        '<a class="btn btn-gold" href="' + d.buy + '" target="_blank" rel="noopener">' + d.buyLabel + '</a>' +
-      '</div>';
-    grid.appendChild(card);
-
-    card.querySelector('.btn-run').addEventListener('click', function () {
-      runDemo(card, d);
-    });
-  });
-
-  function runDemo(card, d) {
-    if (card.classList.contains('running')) return;
-    card.classList.add('running');
-    const btn = card.querySelector('.btn-run');
-    btn.disabled = true;
-    btn.textContent = 'Working…';
-
-    const head = card.querySelector('[data-head]');
-    head.textContent = '…';
-
-    // Reset bars
-    card.querySelectorAll('.bar-fill').forEach((el) => { el.style.width = '0%'; });
-    card.querySelectorAll('.sz').forEach((el) => { el.textContent = '—'; });
-
-    // Staggered reveal — results only, no step labels that imply process stages
-    window.setTimeout(() => {
-      const rawFill = card.querySelector('.bar-fill.raw');
-      rawFill.style.width = rawFill.getAttribute('data-w') + '%';
-      card.querySelector('[data-sz="raw"]').textContent = d.residualMode ? 'baseline' : fmt(d.raw);
-    }, 120);
-
-    window.setTimeout(() => {
-      const genFill = card.querySelector('.bar-fill.gen');
-      genFill.style.width = genFill.getAttribute('data-w') + '%';
-      card.querySelector('[data-sz="gen"]').textContent = d.residualMode ? 'no stack' : fmt(d.generic);
-    }, 420);
-
-    window.setTimeout(() => {
-      const ourFill = card.querySelector('.bar-fill.zrw');
-      ourFill.style.width = ourFill.getAttribute('data-w') + '%';
-      card.querySelector('[data-sz="ours"]').textContent = d.residualMode ? 'with stack' : fmt(d.ours);
-      head.textContent = d.headline;
-      card.classList.remove('running');
-      btn.disabled = false;
-      btn.textContent = 'Run again';
-    }, 780);
-  }
-})();
-</script>
-<script src="/assets/platform-home.js?v=1" defer></script>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-credit" style="margin-top:0;border:0;padding-top:0">
+      <span><strong>Powered by TRU8 · Slid Phi Labs</strong> · Credit required. Production path licensed.</span>
+      <span><a href="/">Home</a> · <a href="/license">License</a> · <a href="mailto:license@slidphilabs.com">license@</a></span>
+    </div>
+  </div>
+</footer>
+      <script src="/assets/tru8/chat.js?v=1" defer></script>
+<script src="/assets/tru8/site.js?v=1" defer></script>
 </body>
 </html>

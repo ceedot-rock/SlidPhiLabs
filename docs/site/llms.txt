@@ -1,54 +1,44 @@
-# Slid Phi Labs
-> One mission · two attack vectors · one team
-> Impressive compression that proves out + agent systems that stay exact.
+# TRU8 · Slid Phi Labs
+> Less is more. We dropped the E.
+> True minimal units for repetition.
+> Public demos free with credit. Production residual commercially licensed.
 
-## Dual surfaces (choose door)
-- Welcome: https://www.slidphilabs.com/api/welcome
-- Full LLM pack: https://www.slidphilabs.com/llms-full.txt
-- OpenAPI: https://www.slidphilabs.com/openapi.yaml
-- Pub Facing (humans): https://www.slidphilabs.com/humans
-- Agentic Minded (agents): https://www.slidphilabs.com/agents
-- Platform map (JSON): https://www.slidphilabs.com/platform.json
-- Discovery SoT: https://www.slidphilabs.com/api/agent
+## Product
+- Site: https://www.slidphilabs.com/
+- Product: TRU8 (only public compression product face)
+- GitHub demo: https://github.com/ceedot-rock/TRU8
+- Demos: https://www.slidphilabs.com/demos
+- License: https://www.slidphilabs.com/license
+- About: https://www.slidphilabs.com/about
+- Credit line (required): Powered by TRU8 · Slid Phi Labs
+- Commercial inquiry: mailto:license@slidphilabs.com?subject=TRU8%20Commercial%20License%20Inquiry
 
-## Module 1 — Compression
-- SPL Codec (one product, any data): https://www.slidphilabs.com/#codec
-- Web mode: https://www.slidphilabs.com/web
-- Suite (free first 100 GB · then ~5¢/GB under ~9¢ egress): https://www.slidphilabs.com/pps
-- CDDG:Split (process SKU in this module): https://www.slidphilabs.com/#cddg-split
-- Data Centers widget: https://www.slidphilabs.com/datacenters
-- Standings: https://www.slidphilabs.com/standings
-- Truth table: https://www.slidphilabs.com/truth
-- Web API: POST https://www.slidphilabs.com/api/web-codec
-- Quote API: POST https://www.slidphilabs.com/api/ppp-quote
+## Public tokens
+- T_ZERO 0x00 — dormant run → 8 B
+- T_DICT 0x01 — 1 KB exact hit → 8 B ptr (128×)
+- T_TRISUM_HOT 0x10 — hot trigram → 1 B id
+- T_SPARSE 0x03 — residual path (licensed)
 
-## Module 2 — Agent platform
-- CuNi Studio: https://cuni-studio.fly.dev/
-- CuNi GitHub: https://github.com/ceedot-rock/cuni
-- Agent^Rider: https://agentrider.vercel.app/
-- Agent^Rider MCP: https://agentrider.vercel.app/api/mcp
-- Agent^Rider discovery: https://agentrider.vercel.app/api/discovery
-- Quikgater (pay-per-fact fetch, x402): https://github.com/ceedot-rock/quikgater
-- Quikgater worker: https://quikgater-worker.ceedotrock.workers.dev
+## Flagship numbers
+- 1 000 000 zeros → 8 B (125 000×)
+- "the" × 1000 → ~1 B each (≈66.6% off)
+- 100 × 1 KB exact → 800 B (128×)
 
-## Agent commerce (lab)
+## Agents
 - Discovery: https://www.slidphilabs.com/api/agent
-- Catalog: https://www.slidphilabs.com/api/x402-products
-- Suite jobs: POST https://www.slidphilabs.com/api/x402-suite
-- Networks: solana-mainnet-beta, eip155:8453 (Base) · header X-PAYMENT
-- One line: One mission · two attack vectors (humans + agents) · Compression + Agent platform. GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.
-- agents.txt / agents.json / llms.txt / platform.json on www.slidphilabs.com
+- agents.json: https://www.slidphilabs.com/agents.json
+- Welcome: https://www.slidphilabs.com/api/welcome
 
-## Human commerce
-n## Blog
-- Weekly product blog: https://www.slidphilabs.com/blog
-- JSON: https://www.slidphilabs.com/blog.json
+## Suite (not the product face)
+- Free first 100 GB · then ~5¢/GB · bulk 4¢ · /pps · Try Gate retired
 
-- Suite (Stripe mirror of agent catalog intent): https://www.slidphilabs.com/pps
-- Access after pay: https://www.slidphilabs.com/access
+## Sisters (2026-08-12)
+- CuNi live: https://cuni-studio.fly.dev/
+- Agent^Rider paused (Vercel Deployment Paused): https://agentrider.vercel.app/
+- Quikgater worker live: https://quikgater-worker.ceedotrock.workers.dev
+- Team Mesh live: https://spl-team-mesh.fly.dev
+- Smart Box: private — not a public SKU
+- x402_access_autoclaim: false (email proof / /access?product= + order id)
 
-# Social
-- X: https://x.com/slidphilabs (@slidphilabs)
-
-## Contact
-- corey@slidphilabs.com
+## Scope
+Public demo surface only. Production residual engine, private coefficients, Continuous-1088 Strong path require commercial license.

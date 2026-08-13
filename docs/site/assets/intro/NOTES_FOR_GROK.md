@@ -61,7 +61,7 @@ Door memory already exists: `assets/platform-home.js` (`data-surface="human"|"ag
 ## Platform context (don’t break)
 
 - Dual surface live: `/humans` · `/agents` · `/platform.json` · `/api/welcome` · `/api/agent`  
-- Modules: Compression (SPL Codec+CDDG) · Agent platform (CuNi·Rider·Quikgater)  
+- Modules: Compression (TRU8 public face + CDDG; ZRW/OmniWave/SPL Codec = historical lab series) · Agent platform (CuNi·Rider paused·Quikgater)  
 - Public outcomes only — no private process in the video.
 
 ---

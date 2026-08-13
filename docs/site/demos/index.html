@@ -6,9 +6,9 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Demos · free suite eval · Slid Phi Labs</title>
-<meta name="description" content="Public demos and standings. Evaluate free on suite first 1 GB — then usage pricing under cloud egress."/>
+<meta name="description" content="Public demos and standings. Evaluate free on suite first 100 GB — then usage pricing under cloud egress."/>
 <meta name="lab-modules" content="compression,agent_platform"/>
-<meta name="lab-compression" content="SPL Codec,CDDG:Split"/>
+<meta name="lab-compression" content="TRU8,CDDG:Split"/>
 <meta name="lab-agent-platform" content="CuNi,Agent^Rider,Quikgater"/>
 
 <link rel="canonical" href="https://www.slidphilabs.com/demos"/>
@@ -27,7 +27,7 @@
 <meta name="agent-catalog" content="https://www.slidphilabs.com/api/x402-products"/>
 <meta name="agent-one-liner" content="Free first 100 GB suite · then ~5¢/GB under ~9¢ egress · GET /api/agent · Try Gate retired."/>
 <meta property="og:title" content="Demos · free suite eval · Slid Phi Labs"/>
-<meta property="og:description" content="Public demos and standings. Evaluate free on suite first 1 GB — then usage pricing under cloud egress."/>
+<meta property="og:description" content="Public demos and standings. Evaluate free on suite first 100 GB — then usage pricing under cloud egress."/>
 <meta property="og:url" content="https://www.slidphilabs.com/demos"/>
 <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta property="og:type" content="website"/>
@@ -36,11 +36,12 @@
 <meta name="twitter:site" content="@slidphilabs"/>
 <meta name="twitter:creator" content="@slidphilabs"/>
 <meta name="twitter:title" content="Demos · free suite eval · Slid Phi Labs"/>
-<meta name="twitter:description" content="Public demos and standings. Evaluate free on suite first 1 GB — then usage pricing under cloud egress."/>
+<meta name="twitter:description" content="Public demos and standings. Evaluate free on suite first 100 GB — then usage pricing under cloud egress."/>
 <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta name="theme-color" content="#050b16"/>
 <meta name="robots" content="index,follow"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+<link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
@@ -126,7 +127,10 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 <body>
 <nav>
   <div class="inner">
-    <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="40" height="40" alt=""/>Slid Phi <span>Labs</span></a>
+    <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
+      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="40" height="40" alt=""/>
+      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+    </a>
     <div class="nav-links">
       <a href="/#packages">Packages</a>
       <a href="/pps">Pay Per Suite</a>
@@ -211,7 +215,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 <script>
 (function () {
   /**
-   * Canned public outcomes only — no encode path, no intermediate state.
+   * Canned outcomes only — no encode path, no intermediate state.
    * Sizes are illustrative of published benches (bytes-in → packed outcome).
    */
   const DEMOS = [
@@ -273,7 +277,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       ours: 3100,
       headline: '#1 on mixed series',
       sub: 'Multi-path stack beats single-codec baselines on mixed integer loads (outcome ranking).',
-      buy: 'https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09',
+      buy: 'https://buy.stripe.com/00w00k6Jf8hqgBTaoE6wE0h',
       buyLabel: 'Buy Blackjack path $199',
     },
     {
@@ -285,7 +289,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       ours: 9800,
       headline: 'Adaptive pack win',
       sub: 'Smaller transfer/on-disk footprint vs general zip-class on structured shards.',
-      buy: 'https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09',
+      buy: 'https://buy.stripe.com/3cI7sMd7D8hq1GZaoE6wE0i',
       buyLabel: 'Buy support path $199',
     },
     {
@@ -297,7 +301,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       ours: 15000,
       headline: 'TS footprint cut',
       sub: 'Time-series shards store smaller while staying query-ready on published loads.',
-      buy: 'https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09',
+      buy: 'https://buy.stripe.com/9B628sd7DeFO99r9kA6wE0j',
       buyLabel: 'Buy support path $199',
     },
     {

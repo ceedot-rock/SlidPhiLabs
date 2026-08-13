@@ -1,9 +1,11 @@
 # Slid Phi Labs — Idea Register
 
-**As of:** 2026-08-07  
+**As of:** 2026-08-08  
 **Live public lab:** https://www.slidphilabs.com/ideas · JSON: https://www.slidphilabs.com/ideas.json (includes first-pursued dates)
 **Purpose:** One-line inventory of distinct ideas (worked-out or not).  
 **Not legal advice.** Status is recall + board/repo state, not a patent claim chart.
+**Fun bin:** playful / parked ideas — **do not ship** until explicitly pulled from the bin.  
+**Toy Store (public):** https://www.slidphilabs.com/toys · JSON https://www.slidphilabs.com/toys.json — light floor for fun, scientific-theory sketches, and public-safe artifacts (feeds from fun bin + theory stubs).
 
 **Legend**
 
@@ -88,16 +90,28 @@
 
 ---
 
+## F. Fun bin (parked / playful) → Toy Store shelf
+
+Public shelf: **[Toy Store](https://www.slidphilabs.com/toys)** · `toys.json`.  
+Aisles: **fun** · **theory** · **artifact** · **history**. Commercial SKUs stay off this floor.
+
+| # | Name | One sentence | Surface | Vehicle | Maturity |
+|---|------|--------------|---------|---------|----------|
+| 40 | **3LiZa** | ELIZA rebirth — classic DOCTOR pattern-matcher reborn as lab demo / agent toy (public-domain soul, SPL dress). Summoned 2026-08-08; **parked — do not build until pulled.** | fun bin · Toy Store | demo · fun | stub |
+
+---
+
 ## Counts
 
 | Bucket | Count |
 |--------|------:|
 | Math / process | 12 |
 | Codec / product | 9 |
-| Platforms | 4 |
+| Platforms | 5 |
 | Commerce / agentic | 8 |
 | Brand / IP strategy | 5 |
-| **Total rows** | **38** |
+| Fun bin | 1 |
+| **Total rows** | **40** |
 
 | Maturity | ~Count |
 |----------|-------:|

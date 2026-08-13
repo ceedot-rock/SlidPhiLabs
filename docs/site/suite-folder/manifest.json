@@ -1,0 +1,99 @@
+{
+  "schema": "spl.suite-folder.v1",
+  "product": "SPL Pay Per Suite",
+  "host": "site",
+  "path": "/suite-folder",
+  "law": "encode \u00b7 decode \u00b7 download \u00b7 recompress \u2014 stays on /pps",
+  "files": [
+    {
+      "id": "README",
+      "name": "README.txt",
+      "path": "/suite-folder/samples/README.txt",
+      "bytes": 545,
+      "class": "unknown",
+      "kind": "text",
+      "ops": [
+        "download",
+        "compress",
+        "decompress",
+        "load"
+      ],
+      "note": "sample pack for encode/decode/recompress loop"
+    },
+    {
+      "id": "ramp_1k",
+      "name": "ramp_1k.i32le",
+      "path": "/suite-folder/samples/ramp_1k.i32le",
+      "bytes": 4000,
+      "class": "ramp",
+      "kind": "int32_le",
+      "ops": [
+        "download",
+        "compress",
+        "decompress",
+        "load"
+      ],
+      "note": "sample pack for encode/decode/recompress loop"
+    },
+    {
+      "id": "series_demo",
+      "name": "series_demo.json",
+      "path": "/suite-folder/samples/series_demo.json",
+      "bytes": 302,
+      "class": "json_series",
+      "kind": "text",
+      "ops": [
+        "download",
+        "compress",
+        "decompress",
+        "load"
+      ],
+      "note": "sample pack for encode/decode/recompress loop"
+    },
+    {
+      "id": "walk_1k",
+      "name": "walk_1k.i32le",
+      "path": "/suite-folder/samples/walk_1k.i32le",
+      "bytes": 4000,
+      "class": "walk",
+      "kind": "int32_le",
+      "ops": [
+        "download",
+        "compress",
+        "decompress",
+        "load"
+      ],
+      "note": "sample pack for encode/decode/recompress loop"
+    },
+    {
+      "id": "zeros_10k",
+      "name": "zeros_10k.i32le",
+      "path": "/suite-folder/samples/zeros_10k.i32le",
+      "bytes": 40000,
+      "class": "zeros",
+      "kind": "int32_le",
+      "ops": [
+        "download",
+        "compress",
+        "decompress",
+        "load"
+      ],
+      "note": "sample pack for encode/decode/recompress loop"
+    },
+    {
+      "id": "zeros_1k",
+      "name": "zeros_1k.i32le",
+      "path": "/suite-folder/samples/zeros_1k.i32le",
+      "bytes": 4000,
+      "class": "zeros",
+      "kind": "int32_le",
+      "ops": [
+        "download",
+        "compress",
+        "decompress",
+        "load"
+      ],
+      "note": "sample pack for encode/decode/recompress loop"
+    }
+  ]
+}

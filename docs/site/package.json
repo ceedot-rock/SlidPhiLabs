@@ -1,0 +1,15 @@
+{
+  "name": "slidphilabs-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Slid Phi Labs public site \u2014 Fly.io host (static + /api)",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs",
+    "seo-audit": "node scripts/seo-audit.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

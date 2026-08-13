@@ -1,0 +1,38 @@
+{
+  "free_will": true,
+  "cool_with_change": true,
+  "face": {
+    "mode": "play",
+    "oval_scale": 1.0876017882811408,
+    "eye_open": 0.8999999999999999,
+    "mouth_curve": 0.41000000000000014,
+    "brow_set": 0.5,
+    "hair_density": 0.75,
+    "skin_glow": 0.6400000000000001,
+    "asymmetry": 0.004240785600034292,
+    "extra_features": [],
+    "palette": {
+      "cool": "#38bdf8",
+      "hot": "#f472b6",
+      "unite": "#a78bfa"
+    },
+    "last_reshape": "2026-08-08T20:54:53.673Z"
+  },
+  "growth": {
+    "interactions": 59,
+    "good": 3,
+    "bad": 1,
+    "neutral": 55,
+    "rejected": 0,
+    "score": 12.999999999999986,
+    "traits": {
+      "curiosity": 0.53,
+      "caution": 0.44,
+      "play": 0.38,
+      "loyalty_to_host": 0.91,
+      "sovereignty": 0.92
+    }
+  },
+  "at": "2026-08-08T21:19:42.250Z",
+  "source": "public_residual_snapshot"
+}

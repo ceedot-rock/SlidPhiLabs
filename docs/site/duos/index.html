@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Duosurface reporting · /duos · Slid Phi Labs</title>
+  <meta name="description" content="Duosurface reporting at /duos — secret-shopper crawl of the web door and the agentic door. Residual-honest grades and issues."/>
+  <link rel="canonical" href="https://www.slidphilabs.com/duos"/>
+  <meta property="og:title" content="Duosurface reporting · /duos"/>
+  <meta property="og:description" content="Web + agentic secret-shopper grades for Slid Phi Labs. Residual-honest, dual-surface."/>
+  <meta property="og:url" content="https://www.slidphilabs.com/duos"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <meta property="og:site_name" content="Slid Phi Labs"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Duosurface reporting · /duos"/>
+  <meta name="twitter:description" content="Web + agentic secret-shopper grades for Slid Phi Labs. Residual-honest, dual-surface."/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <meta name="robots" content="noindex,follow"/>
+  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+  <style>
+    :root{--bg:#050b16;--panel:#0c1524;--text:#eef4fb;--muted:#8fa3b8;--gold:#e8c547;--teal:#3dd6c6;--bad:#f87171;--ok:#34d399;--line:rgba(61,214,198,.18)}
+    *{box-sizing:border-box;margin:0}
+    body{font:15px/1.5 "IBM Plex Sans",system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+    a{color:var(--teal)}
+    .w{max-width:1000px;margin:0 auto;padding:20px 16px 64px}
+    nav{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin-bottom:18px;font-size:.88rem;color:var(--muted)}
+    nav .brand{color:var(--gold);font-weight:700;margin-right:auto}
+    h1{font-size:clamp(1.4rem,3vw,1.85rem);color:var(--gold);margin-bottom:8px}
+    .sub{color:var(--muted);margin-bottom:18px;max-width:40rem}
+    .grades{display:grid;gap:12px;margin-bottom:18px}
+    @media(min-width:720px){.grades{grid-template-columns:repeat(3,1fr)}}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+    .card h2{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+    .score{font-size:2rem;font-weight:700;color:var(--gold)}
+    .score.ok{color:var(--ok)}.score.mid{color:var(--gold)}.score.bad{color:var(--bad)}
+    .meta{font-size:.78rem;color:var(--muted);font-family:ui-monospace,Menlo,monospace}
+    table{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:10px}
+    th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+    th{color:var(--muted);font-weight:600}
+    .iss{color:var(--bad)}
+    .pill{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid var(--line);font-size:.72rem;color:var(--muted)}
+    .pill.web{border-color:rgba(232,197,71,.35);color:var(--gold)}
+    .pill.agent{border-color:rgba(61,214,198,.4);color:var(--teal)}
+    button{font:inherit;font-weight:700;padding:10px 14px;border:0;border-radius:10px;cursor:pointer;background:linear-gradient(180deg,#5ef0df,#3dd6c6);color:#031018}
+    button.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+    .row{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+    .msg{color:var(--muted);font-size:.88rem;min-height:1.2em}
+    ul.next{margin:8px 0 0 18px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="w">
+    <nav>
+      <span class="brand">Duosurface reporting · /duos</span>
+      <a href="/">Home</a>
+      <a href="/humans">Web door</a>
+      <a href="/agents">Agent door</a>
+      <a href="/api/duos?summary=1">API</a>
+      <a href="/bench">Open Bench</a>
+    </nav>
+    <h1>Duosurface reporting</h1>
+    <p class="sub">
+      <strong>/duos</strong> — dual-surface secret shopper. Crawls once as a human browser (HTML, SEO, CTAs),
+      once as an agent (JSON discovery, llms.txt, x402). Residual-honest grades — no theater.
+    </p>
+    <div class="row">
+      <button type="button" id="btnRefresh">Load report</button>
+      <button type="button" class="ghost" id="btnRun">Re-run shopper</button>
+    </div>
+    <p class="msg" id="msg">Loading…</p>
+    <div class="grades" id="grades"></div>
+    <div class="card">
+      <h2>Top issues</h2>
+      <div id="issues" class="meta">—</div>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <h2>Next moves</h2>
+      <ul class="next" id="next"></ul>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <h2>Findings</h2>
+      <div style="overflow:auto">
+        <table>
+          <thead><tr><th>Surface</th><th>Path</th><th>Status</th><th>ms</th><th>Issues</th></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script>
+    const msg = document.getElementById("msg");
+    const grades = document.getElementById("grades");
+    const tbody = document.getElementById("tbody");
+    const issues = document.getElementById("issues");
+    const next = document.getElementById("next");
+
+    function scoreClass(s) {
+      if (s >= 80) return "ok";
+      if (s >= 55) return "mid";
+      return "bad";
+    }
+
+    function paint(report) {
+      if (!report || !report.ok) {
+        msg.textContent = (report && report.error) || "No report yet — click Re-run shopper";
+        return;
+      }
+      msg.textContent = (report.summary && report.summary.overall) || ("Report @ " + report.at);
+      const w = report.surfaces?.web || {};
+      const a = report.surfaces?.agent || {};
+      const o = report.overall || {};
+      grades.innerHTML = [
+        { t: "Web shopper", g: w },
+        { t: "Agent shopper", g: a },
+        { t: "Duos overall", g: o },
+      ].map(({ t, g }) => {
+        const sc = g.score ?? 0;
+        return '<div class="card"><h2>' + t + '</h2><div class="score ' + scoreClass(sc) + '">' +
+          (g.letter || "—") + " · " + sc + '</div><div class="meta">' +
+          (g.ok ?? "—") + " clean · " + (g.soft ?? "—") + " soft · " + (g.fail ?? "—") + " fail</div></div>";
+      }).join("");
+
+      const tops = report.top_issues || [];
+      issues.innerHTML = tops.length
+        ? tops.slice(0, 25).map((t) =>
+            '<div style="margin:4px 0"><span class="pill ' + t.surface + '">' + t.surface +
+            "</span> <code>" + t.path + "</code> · <span class=\"iss\">" + t.issue + "</span></div>"
+          ).join("")
+        : "No issues flagged.";
+
+      next.innerHTML = (report.next_moves || []).map((m) => "<li>" + m + "</li>").join("") || "<li>None</li>";
+
+      const all = [
+        ...(report.surfaces?.web?.findings || []),
+        ...(report.surfaces?.agent?.findings || []),
+      ];
+      tbody.innerHTML = all.map((f) => {
+        const iss = (f.issues || []).join("; ") || "—";
+        return "<tr><td><span class=\"pill " + f.surface + "\">" + f.surface +
+          "</span></td><td><code>" + f.path + "</code></td><td>" + f.status +
+          "</td><td>" + f.ms + "</td><td class=\"" + ((f.issues||[]).length ? "iss" : "") + "\">" +
+          iss + "</td></tr>";
+      }).join("");
+    }
+
+    async function load() {
+      msg.textContent = "Loading report…";
+      try {
+        const r = await fetch("/api/duos", { cache: "no-store" });
+        const d = await r.json();
+        paint(d);
+      } catch (e) {
+        msg.textContent = String(e.message || e);
+      }
+    }
+
+    async function run() {
+      msg.textContent = "Running dual-surface shopper (may take ~30s)…";
+      try {
+        const r = await fetch("/api/duos", { method: "POST", headers: { "content-type": "application/json" }, body: "{}" });
+        const d = await r.json();
+        if (!d.ok && d.error) {
+          msg.textContent = d.error;
+          // try load cached
+          await load();
+          return;
+        }
+        if (d.summary) {
+          msg.textContent = (d.summary.overall || "Done") + " — reloading full report…";
+        }
+        await load();
+      } catch (e) {
+        msg.textContent = String(e.message || e);
+      }
+    }
+
+    document.getElementById("btnRefresh").onclick = load;
+    document.getElementById("btnRun").onclick = run;
+    load();
+  </script>
+</body>
+</html>

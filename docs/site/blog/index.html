@@ -26,6 +26,7 @@
 <meta name="theme-color" content="#050b16"/>
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+<link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/blog.css"/>
 <script type="application/ld+json">
@@ -42,6 +43,12 @@
     "sameAs": ["https://x.com/slidphilabs", "https://twitter.com/slidphilabs"]
   },
   "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Why 8 B matters — and the site that now breathes",
+      "datePublished": "2026-08-07",
+      "url": "https://www.slidphilabs.com/blog/2026-08-07-why-8b-matters"
+    },
     {
       "@type": "BlogPosting",
       "headline": "Try Gate retired: free first 100 GB, then usage",
@@ -72,7 +79,10 @@
 </head>
 <body>
 <nav><div class="inner">
-  <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>Slid Phi Labs</a>
+  <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
+    <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>
+    <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+  </a>
   <div class="nav-links">
     <a class="active" href="/blog">Blog</a>
     <a href="/updates">Lab Feed</a>
@@ -90,10 +100,16 @@
 </header>
 
 <main class="wrap" style="padding-bottom:20px">
+  <a class="post-card" href="/blog/2026-08-07-why-8b-matters">
+    <p class="meta-line">Published <time datetime="2026-08-07">2026-08-07</time> · Proof</p>
+    <h2>Why 8 B matters — and the site that now breathes</h2>
+    <p>ZRW zeros×10k → 8 B vs gzip 73 B / brotli 13 B. Live metrics, standings first paint, verification steps.</p>
+    <div class="tags"><span class="tag">proof</span><span class="tag">zrw</span><span class="tag">product</span></div>
+  </a>
   <a class="post-card" href="/blog/2026-08-07-freemium-suite-retires-try-gate">
     <p class="meta-line">Published <time datetime="2026-08-07">2026-08-07</time> · Pricing</p>
     <h2>Try Gate retired: free first 100 GB, then usage</h2>
-    <p>$9 chip-in is gone. Freemium suite is the only eval path — free first 100 GB, then ~1.5¢/GB far under cloud egress.</p>
+    <p>$9 chip-in is gone. Freemium suite is the only eval path — free first 100 GB, then ~5¢/GB then ~4¢/GB far under cloud egress.</p>
     <div class="tags"><span class="tag">pricing</span><span class="tag">freemium</span><span class="tag">product</span></div>
   </a>
   <a class="post-card" href="/blog/2026-08-07-access-try-gate-loop">
@@ -134,7 +150,7 @@
   <a href="/pps">Suite</a>
   <a href="/standings">Standings</a>
   <a href="mailto:corey@slidphilabs.com">Contact</a>
-  <p style="margin-top:10px">© 2026 Slid Phi Labs · Weekly posts = public outcomes only</p>
+  <p style="margin-top:10px">© 2026 Slid Phi Labs · Weekly posts = outcomes only</p>
 </footer>
 <script src="/assets/platform-home.js?v=1" defer></script>
 </body>

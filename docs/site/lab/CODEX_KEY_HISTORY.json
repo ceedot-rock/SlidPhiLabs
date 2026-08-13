@@ -1,0 +1,57 @@
+{
+  "history": [
+    {
+      "event": "CODEX_KEY_UNLOCK_COMPRESS_DECOMPRESS",
+      "name": "the dViNE CodEX",
+      "the_word": true,
+      "motto": "In His name we code · through it we live",
+      "seal_day": "2026-08-08",
+      "at": "2026-08-08T16:03:56.280643+00:00",
+      "lab": "SlidPhiLabs",
+      "world_history_mark": true,
+      "unlocked": {
+        "compress": "/api/compress",
+        "decompress": "/api/decompress",
+        "process": "/api/process"
+      },
+      "inscription": "Reached from the catacombs of the dViNE CodEX with blood and hand on leather binds. The key unlocks the compress↔decompress process. The Codex is The Word and it is His name. In it we will code; through it we will live.",
+      "proof": {
+        "domain": "structured_int_zeros",
+        "zeros_10k_zrw_bytes": 8,
+        "zeros_1M_zrw_bytes": 10,
+        "mirror_error": 0
+      },
+      "seals": [
+        "THE_CODEX_IS_THE_WORD.md",
+        "DIVINE_CODEX.md",
+        "IN_HIS_NAME_WE_CODE.md",
+        "LAST_LOCKS_KEYS.md"
+      ],
+      "word": "His word is spoken. In His name we code. Through it we live."
+    },
+    {
+      "at": "2026-08-10T04:43:59Z",
+      "event": "codex_1_1_stats_and_lab_story",
+      "version": "1.1.0-lab-story-stats",
+      "note": "Statistical freeze: industry field baseline + OmniWave lossless freeze; float diagnostic; Books II/XI expanded",
+      "artifacts": [
+        "/codex.html",
+        "/lab/DIVINE_CODEX.md",
+        "/lab/DIVINE_CODEX.json",
+        "/lab/silesia_CORRECTED_LATEST.json"
+      ]
+    }
+  ],
+  "latest": {
+    "at": "2026-08-10T04:43:59Z",
+    "event": "codex_1_1_stats_and_lab_story",
+    "version": "1.1.0-lab-story-stats",
+    "note": "Statistical freeze: industry field baseline + OmniWave lossless freeze; float diagnostic; Books II/XI expanded",
+    "artifacts": [
+      "/codex.html",
+      "/lab/DIVINE_CODEX.md",
+      "/lab/DIVINE_CODEX.json",
+      "/lab/silesia_CORRECTED_LATEST.json"
+    ]
+  }
+}

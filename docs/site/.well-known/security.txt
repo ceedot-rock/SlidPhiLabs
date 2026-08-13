@@ -1,3 +1,4 @@
+Contact: mailto:license@slidphilabs.com
 Contact: mailto:corey@slidphilabs.com
 Preferred-Languages: en
 Canonical: https://www.slidphilabs.com/.well-known/security.txt

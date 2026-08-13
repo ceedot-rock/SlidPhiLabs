@@ -19,9 +19,18 @@ RESTRICTIONS
 - You may not remove or alter copyright notices.
 
 COMMERCIAL LICENSING
-Contact: ceedotrock@gmail.com
+Primary: license@slidphilabs.com
+Humans: corey@slidphilabs.com
+Fallback: ceedotrock@gmail.com
 Site: https://www.slidphilabs.com
 Support / integration and paid tiers: see site pricing and Stripe links.
+
+LEGAL IDENTITY
+- Operates as the trade name Slid Phi Labs.
+- Public author / copyright: Corey Tasz.
+- Legal name on manuscript: Corey Robert Ptaszenski.
+- No public LLC / Inc / Ltd filing is claimed.
+- Commercial use requires a written license.
 
 NO WARRANTY
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -36,3 +45,9 @@ NOTE ON PRIOR VERSIONS
 Versions published under the MIT License remain available under MIT terms as
 originally released. This proprietary license applies to this version and later
 unless a different license is stated.
+
+NOTE ON OSS PACKAGES
+blackjack-compression, shard-zip, and shard-tsdb remain separately licensed
+open-source libraries on npm. A $199 site SKU for those names is commercial
+support / integration / indemnification for the already-public library — not a
+private extra engine.

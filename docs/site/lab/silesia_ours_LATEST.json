@@ -1,0 +1,699 @@
+{
+  "ok": true,
+  "corpus": "silesia",
+  "note": "Re-bench: OUR engine OmniWave (SPL Codec) + ZRW force (honest) + industry baselines. Prior run was industry-only — incomplete for lab claim.",
+  "files": 12,
+  "total_raw": 211938580,
+  "engines": {
+    "ours": [
+      "omniwave",
+      "zrw_force"
+    ],
+    "industry": [
+      "gzip-9",
+      "brotli-11",
+      "zstd-3",
+      "zstd-19"
+    ]
+  },
+  "totals": {
+    "omniwave": {
+      "compressed": 35152020,
+      "ratio": 6.0292,
+      "pct": 16.59,
+      "enc_ms": 1374853.96,
+      "enc_MBps": 0.15
+    },
+    "brotli-11": {
+      "compressed": 50332587,
+      "ratio": 4.2108,
+      "pct": 23.75,
+      "enc_ms": 21089592.67,
+      "enc_MBps": 0.01
+    },
+    "zstd-19": {
+      "compressed": 52895350,
+      "ratio": 4.0068,
+      "pct": 24.96,
+      "enc_ms": 335718.09,
+      "enc_MBps": 0.6
+    },
+    "zstd-3": {
+      "compressed": 66216569,
+      "ratio": 3.2007,
+      "pct": 31.24,
+      "enc_ms": 5156.4,
+      "enc_MBps": 39.2
+    },
+    "gzip-9": {
+      "compressed": 67643417,
+      "ratio": 3.1332,
+      "pct": 31.92,
+      "enc_ms": 49564.2,
+      "enc_MBps": 4.08
+    }
+  },
+  "size_rank": [
+    {
+      "codec": "omniwave",
+      "compressed": 35152020,
+      "ratio": 6.0292
+    },
+    {
+      "codec": "brotli-11",
+      "compressed": 50332587,
+      "ratio": 4.2108
+    },
+    {
+      "codec": "zstd-19",
+      "compressed": 52895350,
+      "ratio": 4.0068
+    },
+    {
+      "codec": "zstd-3",
+      "compressed": 66216569,
+      "ratio": 3.2007
+    },
+    {
+      "codec": "gzip-9",
+      "compressed": 67643417,
+      "ratio": 3.1332
+    }
+  ],
+  "omni_beats_brotli_count": 4,
+  "rows": [
+    {
+      "file": "dickens",
+      "raw": 10192446,
+      "profile": {
+        "entropy": 4.5322,
+        "zero_ratio": 0,
+        "zrw_score": 0.0193,
+        "auto_route": "text"
+      },
+      "codecs": {
+        "gzip-9": {
+          "compressed": 3854747,
+          "ratio": 2.6441,
+          "enc_ms": 1413.04,
+          "enc_MBps": 6.88
+        },
+        "brotli-11": {
+          "compressed": 2853158,
+          "ratio": 3.5723,
+          "enc_ms": 34314.51,
+          "enc_MBps": 0.28
+        },
+        "zstd-3": {
+          "compressed": 3664984,
+          "ratio": 2.781,
+          "enc_ms": 579.64,
+          "enc_MBps": 16.77
+        },
+        "zstd-19": {
+          "compressed": 2849945,
+          "ratio": 3.5764,
+          "enc_ms": 30535.89,
+          "enc_MBps": 0.32
+        },
+        "omniwave": {
+          "compressed": 2853158,
+          "ratio": 3.5723,
+          "enc_ms": 100189.66,
+          "enc_MBps": 0.1,
+          "path": "text+bare",
+          "method": "brotli-11",
+          "engine": "omniwave"
+        },
+        "zrw_force": {
+          "ok": false,
+          "reason": "not_int32_aligned_or_no_zrw"
+        }
+      },
+      "omni_vs_brotli11": 0,
+      "omni_beats_brotli11": false
+    },
+    {
+      "file": "mozilla",
+      "raw": 51220480,
+      "profile": {
+        "entropy": 6.6124,
+        "zero_ratio": 0.1592,
+        "zrw_score": 0.1015,
+        "auto_route": "float"
+      },
+      "codecs": {
+        "gzip-9": {
+          "compressed": 19044408,
+          "ratio": 2.6895,
+          "enc_ms": 21822,
+          "enc_MBps": 2.24
+        },
+        "brotli-11": {
+          "compressed": 14077215,
+          "ratio": 3.6385,
+          "enc_ms": 369708.52,
+          "enc_MBps": 0.13
+        },
+        "zstd-3": {
+          "compressed": 18281292,
+          "ratio": 2.8018,
+          "enc_ms": 1114.43,
+          "enc_MBps": 43.83
+        },
+        "zstd-19": {
+          "compressed": 15071672,
+          "ratio": 3.3985,
+          "enc_ms": 49538.98,
+          "enc_MBps": 0.99
+        },
+        "omniwave": {
+          "compressed": 6689695,
+          "ratio": 7.6566,
+          "enc_ms": 13244.66,
+          "enc_MBps": 3.69,
+          "path": "float+bare",
+          "method": "gzip-9",
+          "engine": "omniwave"
+        },
+        "zrw_force": {
+          "ok": false,
+          "reason": "too_many_ints"
+        }
+      },
+      "omni_vs_brotli11": 7387520,
+      "omni_beats_brotli11": true
+    },
+    {
+      "file": "mr",
+      "raw": 9970564,
+      "profile": {
+        "entropy": 5.6482,
+        "zero_ratio": 0.2959,
+        "zrw_score": 0.2047,
+        "auto_route": "float"
+      },
+      "codecs": {
+        "gzip-9": {
+          "compressed": 3660806,
+          "ratio": 2.7236,
+          "enc_ms": 3757.8,
+          "enc_MBps": 2.53
+        },
+        "brotli-11": {
+          "compressed": 2825713,
+          "ratio": 3.5285,
+          "enc_ms": 58814.88,
+          "enc_MBps": 0.16
+        },
+        "zstd-3": {
+          "compressed": 3548071,
+          "ratio": 2.8101,
+          "enc_ms": 263.61,
+          "enc_MBps": 36.07
+        },
+        "zstd-19": {
+          "compressed": 3106737,
+          "ratio": 3.2093,
+          "enc_ms": 14753.36,
+          "enc_MBps": 0.64
+        },
+        "omniwave": {
+          "compressed": 10790,
+          "ratio": 924.056,
+          "enc_ms": 353.13,
+          "enc_MBps": 26.93,
+          "path": "float+bare",
+          "method": "gzip-9",
+          "engine": "omniwave"
+        },
+        "zrw_force": {
+          "ok": false,
+          "reason": "too_many_ints"
+        }
+      },
+      "omni_vs_brotli11": 2814923,
+      "omni_beats_brotli11": true
+    },
+    {
+      "file": "nci",
+      "raw": 33553445,
+      "profile": {
+        "entropy": 2.4348,
+        "zero_ratio": 0,
+        "zrw_score": 0.1001,
+        "auto_route": "text"
+      },
+      "codecs": {
+        "gzip-9": {
+          "compressed": 2988013,
+          "ratio": 11.2294,
+          "enc_ms": 4861.93,
+          "enc_MBps": 6.58
+        },
+        "brotli-11": {
+          "compressed": 1616326,
+          "ratio": 20.7591,
+          "enc_ms": 172373.95,
+          "enc_MBps": 0.19
+        },
+        "zstd-3": {
+          "compressed": 2835400,
+          "ratio": 11.8338,
+          "enc_ms": 482.87,
+          "enc_MBps": 66.27
+        },
+        "zstd-19": {
+          "compressed": 1664988,
+          "ratio": 20.1524,
+          "enc_ms": 79520.14,
+          "enc_MBps": 0.4
+        },
+        "omniwave": {
+          "compressed": 1616326,
+          "ratio": 20.7591,
+          "enc_ms": 384886.88,
+          "enc_MBps": 0.08,
+          "path": "text+bare",
+          "method": "brotli-11",
+          "engine": "omniwave"
+        },
+        "zrw_force": {
+          "ok": false,
+          "reason": "not_int32_aligned_or_no_zrw"
+        }
+      },
+      "omni_vs_brotli11": 0,
+      "omni_beats_brotli11": false
+    },
+    {
+      "file": "ooffice",
+      "raw": 6152192,
+      "profile": {
+        "entropy": 6.6679,
+        "zero_ratio": 0.106,
+        "zrw_score": 0.0596,
+        "auto_route": "float"
+      },
+      "codecs": {
+        "gzip-9": {
+          "compressed": 3092938,
+          "ratio": 1.9891,
+          "enc_ms": 1576.11,
+          "enc_MBps": 3.72
+        },
+        "brotli-11": {
+          "compressed": 2479758,
+          "ratio": 2.481,
+          "enc_ms": 43489.83,
+          "enc_MBps": 0.13
+        },
+        "zstd-3": {
+          "compressed": 3128288,
+          "ratio": 1.9666,
+          "enc_ms": 146.51,
+          "enc_MBps": 40.05
+        },
+        "zstd-19": {
+          "compressed": 2595377,
+          "ratio": 2.3704,
+          "enc_ms": 5844.23,
+          "enc_MBps": 1
+        },
+        "omniwave": {
+          "compressed": 1444668,
+          "ratio": 4.2586,
+          "enc_ms": 2700.87,
+          "enc_MBps": 2.17,
+          "path": "float+bare",
+          "method": "gzip-9",
+          "engine": "omniwave"
+        },
+        "zrw_force": {
+          "ok": false,
+          "reason": "ZRW: max 10000 ints/call on Free Gate (got 1538048). Upgrade: https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b"
+        }
+      },
+      "omni_vs_brotli11": 1035090,
+      "omni_beats_brotli11": true
+    },
+    {
+      "file": "osdb",
+      "raw": 10085684,
+      "profile": {
+        "entropy": 6.4083,
+        "zero_ratio": 0.0695,
+        "zrw_score": 0.0299,
+        "auto_route": "text"
+      },
+      "codecs": {
+        "gzip-9": {
+          "compressed": 3673189,
+          "ratio": 2.7458,
+          "enc_ms": 918.36,
+          "enc_MBps": 10.47
+        },
+        "brotli-11": {
+          "compressed": 2825123,
+          "ratio": 3.57,
+          "enc_ms": 42956,
+          "enc_MBps": 0.22
+        },
+        "zstd-3": {
+          "compressed": 3501634,
+          "ratio": 2.8803,
+          "enc_ms": 190.83,
+          "enc_MBps": 50.4
+        },
+        "zstd-19": {
+          "compressed": 3100177,
+          "ratio": 3.2533,
+          "enc_ms": 12184.42,
+          "enc_MBps": 0.79
+        },
+        "omniwave": {
+          "compressed": 2825123,
+          "ratio": 3.57,
+          "enc_ms": 82959.26,
+          "enc_MBps": 0.12,
+          "path": "text+bare",
+          "method": "brotli-11",
+          "engine": "omniwave"
+        },
+        "zrw_force": {
+          "ok": false,
+          "reason": "too_many_ints"
+        }
+      },
+      "omni_vs_brotli11": 0,
+      "omni_beats_brotli11": false
+    },
+    {
+      "file": "reymont",
+      "raw": 6627202,
+      "profile": {
+        "entropy": 4.8451,
+        "zero_ratio": 0,
+        "zrw_score": 0.0198,
+        "auto_route": "text"
+      },
+      "codecs": {
+        "gzip-9": {
+          "compressed": 1823208,
+          "ratio": 3.6349,
+          "enc_ms": 2549.33,
+          "enc_MBps": 2.48
+        },
+        "brotli-11": {
+          "compressed": 1335805,
+          "ratio": 4.9612,
+          "enc_ms": 26796.59,
+          "enc_MBps": 0.24
+        },
+        "zstd-3": {
+          "compressed": 1937977,
+          "ratio": 3.4196,
+          "enc_ms": 176.63,
+          "enc_MBps": 35.78
+        },
+        "zstd-19": {
+          "compressed": 1348462,
+          "ratio": 4.9146,
+          "enc_ms": 11311.88,
+          "enc_MBps": 0.56
+        },
+        "omniwave": {
+          "compressed": 1335805,
+          "ratio": 4.9612,
+          "enc_ms": 61038.56,
+          "enc_MBps": 0.1,
+          "path": "text+bare",
+          "method": "brotli-11",
+          "engine": "omniwave"
+        },
+        "zrw_force": {
+          "ok": false,
+          "reason": "not_int32_aligned_or_no_zrw"
+        }
+      },
+      "omni_vs_brotli11": 0,
+      "omni_beats_brotli11": false
+    },
+    {
+      "file": "samba",
+      "raw": 21606400,
+      "profile": {
+        "entropy": 6.0837,
+        "zero_ratio": 0.0514,
+        "zrw_score": 0.0515,
+        "auto_route": "text"
+      },
+      "codecs": {
+        "gzip-9": {
+          "compressed": 5402722,
+          "ratio": 3.9992,
+          "enc_ms": 1877.76,
+          "enc_MBps": 10.97
+        },
+        "brotli-11": {
+          "compressed": 3823126,
+          "ratio": 5.6515,
+          "enc_ms": 67757.32,
+          "enc_MBps": 0.3
+        },
+        "zstd-3": {
+          "compressed": 4957768,
+          "ratio": 4.3581,
+          "enc_ms": 189.61,
+          "enc_MBps": 108.67
+        },
+        "zstd-19": {
+          "compressed": 3894675,
+          "ratio": 5.5477,
+          "enc_ms": 20076.38,
+          "enc_MBps": 1.03
+        },
+        "omniwave": {
+          "compressed": 3823126,
+          "ratio": 5.6515,
+          "enc_ms": 136836.72,
+          "enc_MBps": 0.15,
+          "path": "text+bare",
+          "method": "brotli-11",
+          "engine": "omniwave"
+        },
+        "zrw_force": {
+          "ok": false,
+          "reason": "too_many_ints"
+        }
+      },
+      "omni_vs_brotli11": 0,
+      "omni_beats_brotli11": false
+    },
+    {
+      "file": "sao",
+      "raw": 7251944,
+      "profile": {
+        "entropy": 7.3648,
+        "zero_ratio": 0.0076,
+        "zrw_score": 0.0048,
+        "auto_route": "high_entropy"
+      },
+      "codecs": {
+        "gzip-9": {
+          "compressed": 5325932,
+          "ratio": 1.3616,
+          "enc_ms": 1059.17,
+          "enc_MBps": 6.53
+        },
+        "brotli-11": {
+          "compressed": 4589967,
+          "ratio": 1.58,
+          "enc_ms": 32872.52,
+          "enc_MBps": 0.21
+        },
+        "zstd-3": {
+          "compressed": 5531939,
+          "ratio": 1.3109,
+          "enc_ms": 321.44,
+          "enc_MBps": 21.52
+        },
+        "zstd-19": {
+          "compressed": 5000576,
+          "ratio": 1.4502,
+          "enc_ms": 6597.16,
+          "enc_MBps": 1.05
+        },
+        "omniwave": {
+          "compressed": 5325932,
+          "ratio": 1.3616,
+          "enc_ms": 2906.49,
+          "enc_MBps": 2.38,
+          "path": "high_entropy+bare",
+          "method": "gzip-9",
+          "engine": "omniwave"
+        },
+        "zrw_force": {
+          "ok": false,
+          "reason": "ZRW: max 10000 ints/call on Free Gate (got 1812986). Upgrade: https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b"
+        }
+      },
+      "omni_vs_brotli11": -735965,
+      "omni_beats_brotli11": false
+    },
+    {
+      "file": "webster",
+      "raw": 41458703,
+      "profile": {
+        "entropy": 4.9727,
+        "zero_ratio": 0,
+        "zrw_score": 0.0136,
+        "auto_route": "text"
+      },
+      "codecs": {
+        "gzip-9": {
+          "compressed": 12073487,
+          "ratio": 3.4339,
+          "enc_ms": 7525.69,
+          "enc_MBps": 5.25
+        },
+        "brotli-11": {
+          "compressed": 8788708,
+          "ratio": 4.7173,
+          "enc_ms": 20148193.55,
+          "enc_MBps": 0
+        },
+        "zstd-3": {
+          "compressed": 12107198,
+          "ratio": 3.4243,
+          "enc_ms": 995.94,
+          "enc_MBps": 39.7
+        },
+        "zstd-19": {
+          "compressed": 8679705,
+          "ratio": 4.7765,
+          "enc_ms": 72978.39,
+          "enc_MBps": 0.54
+        },
+        "omniwave": {
+          "compressed": 8788708,
+          "ratio": 4.7173,
+          "enc_ms": 521302.23,
+          "enc_MBps": 0.08,
+          "path": "text+bare",
+          "method": "brotli-11",
+          "engine": "omniwave"
+        },
+        "zrw_force": {
+          "ok": false,
+          "reason": "not_int32_aligned_or_no_zrw"
+        }
+      },
+      "omni_vs_brotli11": 0,
+      "omni_beats_brotli11": false
+    },
+    {
+      "file": "xml",
+      "raw": 5345280,
+      "profile": {
+        "entropy": 5.5194,
+        "zero_ratio": 0.0039,
+        "zrw_score": 0.0146,
+        "auto_route": "text"
+      },
+      "codecs": {
+        "gzip-9": {
+          "compressed": 658917,
+          "ratio": 8.1122,
+          "enc_ms": 747.06,
+          "enc_MBps": 6.82
+        },
+        "brotli-11": {
+          "compressed": 430390,
+          "ratio": 12.4196,
+          "enc_ms": 24576.99,
+          "enc_MBps": 0.21
+        },
+        "zstd-3": {
+          "compressed": 636016,
+          "ratio": 8.4043,
+          "enc_ms": 224.54,
+          "enc_MBps": 22.7
+        },
+        "zstd-19": {
+          "compressed": 453209,
+          "ratio": 11.7943,
+          "enc_ms": 10175.48,
+          "enc_MBps": 0.5
+        },
+        "omniwave": {
+          "compressed": 430390,
+          "ratio": 12.4196,
+          "enc_ms": 67394.52,
+          "enc_MBps": 0.08,
+          "path": "text+bare",
+          "method": "brotli-11",
+          "engine": "omniwave"
+        },
+        "zrw_force": {
+          "ok": false,
+          "reason": "ZRW: max 10000 ints/call on Free Gate (got 1336320). Upgrade: https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b"
+        }
+      },
+      "omni_vs_brotli11": 0,
+      "omni_beats_brotli11": false
+    },
+    {
+      "file": "x-ray",
+      "raw": 8474240,
+      "profile": {
+        "entropy": 7.9841,
+        "zero_ratio": 0.0045,
+        "zrw_score": 0.0044,
+        "auto_route": "float"
+      },
+      "codecs": {
+        "gzip-9": {
+          "compressed": 6045050,
+          "ratio": 1.4018,
+          "enc_ms": 1455.95,
+          "enc_MBps": 5.55
+        },
+        "brotli-11": {
+          "compressed": 4687298,
+          "ratio": 1.8079,
+          "enc_ms": 67738,
+          "enc_MBps": 0.12
+        },
+        "zstd-3": {
+          "compressed": 6086002,
+          "ratio": 1.3924,
+          "enc_ms": 470.36,
+          "enc_MBps": 17.18
+        },
+        "zstd-19": {
+          "compressed": 5129827,
+          "ratio": 1.652,
+          "enc_ms": 22201.78,
+          "enc_MBps": 0.36
+        },
+        "omniwave": {
+          "compressed": 8299,
+          "ratio": 1021.1158,
+          "enc_ms": 1040.98,
+          "enc_MBps": 7.76,
+          "path": "float+bare",
+          "method": "gzip-9",
+          "engine": "omniwave"
+        },
+        "zrw_force": {
+          "ok": false,
+          "reason": "too_many_ints"
+        }
+      },
+      "omni_vs_brotli11": 4678999,
+      "omni_beats_brotli11": true
+    }
+  ],
+  "at": "2026-08-09T03:30:17.812Z"
+}

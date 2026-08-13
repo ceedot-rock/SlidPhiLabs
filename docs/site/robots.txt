@@ -16,8 +16,11 @@ Allow: /openapi.yaml
 Allow: /llms-full.txt
 Allow: /humans.txt
 
-# Module 1 — Compression
+# Module 1 — Compression (public product face: TRU8)
 Allow: /
+Allow: /tru8
+Allow: /about
+Allow: /license
 Allow: /web
 Allow: /pps
 Allow: /datacenters
@@ -28,6 +31,7 @@ Allow: /demos
 Allow: /try
 Allow: /access
 Allow: /api/web-codec
+Allow: /api/omniwave
 Allow: /api/ppp-quote
 Allow: /api/ppp-checkout
 Allow: /api/ppp-job
@@ -44,6 +48,12 @@ Allow: /agents.txt
 Allow: /agents.json
 Allow: /ideas
 Allow: /ideas.json
+Allow: /toys
+Allow: /toys.json
+Allow: /olympiad
+Allow: /olympiad.json
+Allow: /olympiad-records.json
+Allow: /api/olympiad
 Allow: /assets/
 Allow: /.well-known/
 

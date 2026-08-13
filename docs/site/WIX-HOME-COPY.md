@@ -12,9 +12,9 @@
 
 | Field | Value |
 |--------|--------|
-| **Title** | Slid Phi Labs — Impressive Compression |
-| **Description** | Impressive Compression..... see for yourself. Zero Range Wave, Residual Governance (CDDG + Mirrored Cost), Try Gate, commercial licenses. |
-| **Keywords** | slid phi labs, impressive compression, zero range wave, ZRW, residual governance, CDDG, integer compression, try gate |
+| **Title** | TRU8 — Less is more · Slid Phi Labs |
+| **Description** | TRU8 is the public product face. Public demos free with credit. Production residual licensed. Suite: first 100 GB free, then ~5¢/GB. |
+| **Keywords** | TRU8, slid phi labs, compression, residual, CDDG, suite |
 | **Canonical** | https://www.slidphilabs.com/ |
 | **OG image** | Master poster (full, no crop of third-eye / banners) |
 
@@ -31,7 +31,7 @@
 | Packages | #packages |
 | Pricing | #pricing |
 | Access | /access |
-| **Try Gate** (teal button) | /try |
+| **TRU8 / Demos** (teal button) | /demos |
 
 ---
 
@@ -46,16 +46,16 @@ When Stripe lands on `/?purchase=PRODUCT` or `/?purchase=…&session=…`:
 
 ## 1. Hero
 
-**Badge:** `COMMERCIAL · TRY GATE · PROPRIETARY`
+**Badge:** `TRU8 · PUBLIC DEMOS FREE · PRODUCTION LICENSED`
 
 **Tagline:**  
-**Impressive Compression..... see for yourself**
+**Less is more. We dropped the E.**
 
 **H1:**  
-Integer compression that actually fits your data
+TRU8 — true minimal units for repetition
 
 **Lede:**  
-Zero Range Wave, Residual Governance, and the Slid Phi Labs codec family hit structured integer workloads hard. Public registry is a stub. Real engines move through Try Gate and license. Don’t take our word for it.
+TRU8 is the only public compression product face. Public demos free with credit. Production residual commercially licensed via license@slidphilabs.com. Suite on /pps is a metered job rail (100 GB free, then ~5¢/GB) — not the product face. Try Gate is retired.
 
 **CTAs:**  
 1. **See for yourself** → `/try` (teal)  
@@ -143,7 +143,12 @@ Hierarchy is the attractor. Code only what remains. Residual Governance packages
 | Product | Price | Checkout |
 |---------|------:|----------|
 | Residual Governance | $199 | https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f |
-| Support + Integration | $199 | https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09 |
+| Support + Integration | $199 | https://buy.stripe.com/8x28wQebH41a85n2Wc6wE0l |
+| Blackjack | $199 | https://buy.stripe.com/00w00k6Jf8hqgBTaoE6wE0h |
+| shard-zip | $199 | https://buy.stripe.com/3cI7sMd7D8hq1GZaoE6wE0i |
+| shard-tsdb | $199 | https://buy.stripe.com/9B628sd7DeFO99r9kA6wE0j |
+| slid-phi | $199 | https://buy.stripe.com/dRm6oI6JfgNWetL8gw6wE0k |
+| GAO entry | $1 | https://buy.stripe.com/8x24gAd7D7dm2L31S86wE0m |
 | Consulting | $250 | https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02 |
 
 ### ZRW gates

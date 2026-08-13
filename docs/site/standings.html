@@ -5,26 +5,35 @@
 <meta name="lab-eval-path" content="https://www.slidphilabs.com/pps"/>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Standings · public proof · free suite · Slid Phi Labs</title>
-<meta name="description" content="Published compression outcomes. Free suite first 1 GB on /pps. Process stays private."/>
+<title>Standings v1.2 · ZRW 8 B · zeros_1M 10 B · Silesia · Slid Phi Labs</title>
+<meta name="description" content="Lab series standings. Public product face is TRU8. ZRW zeros×10k → 8 B; zeros_1M → 10 B. OmniWave Silesia lossless ~3.13–3.60× trails brotli-11 ~4.21×. Outcomes only."/>
+<meta name="keywords" content="standings, ZRW, OmniWave, Silesia, compression records, domain supremacy, Slid Phi Labs, 8 B, zeros_1M"/>
 <link rel="canonical" href="https://www.slidphilabs.com/standings"/>
-<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/standings.json" title="Standings JSON"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/standings.json" title="Standings JSON v1.2.0"/>
 <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent commerce discovery"/>
 <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/agents.json" title="agents.json"/>
 <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
 <meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
+<meta name="standings-version" content="1.2.0"/>
+<meta name="standings-updated" content="2026-08-09"/>
+<meta name="lab-flagship" content="ZRW zeros×10k → 8 B"/>
+<meta name="lab-cadence" content="33,66,999"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Slid Phi Labs"/>
-<meta property="og:title" content="Standings · public proof · free suite · Slid Phi Labs"/>
-<meta property="og:description" content="Published compression outcomes. Free suite first 1 GB on /pps. Process stays private."/>
+<meta property="og:title" content="Standings v1.2 · ZRW 8 B · zeros_1M 10 B · Slid Phi Labs"/>
+<meta property="og:description" content="Lab series standings. Public product face is TRU8. ZRW zeros×10k → 8 B; OmniWave does not beat brotli on Silesia. Free suite first 100 GB."/>
 <meta property="og:url" content="https://www.slidphilabs.com/standings"/>
-<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/og-alive.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@slidphilabs"/>
 <meta name="twitter:creator" content="@slidphilabs"/>
+<meta name="twitter:title" content="Standings v1.2 · ZRW 8 B · zeros_1M 10 B"/>
+<meta name="twitter:description" content="Proof board. Domain supremacy. Dual doors. Gift circle. Outcomes only."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/og-alive.jpg"/>
 <meta name="theme-color" content="#050b16"/>
 <meta name="robots" content="index,follow"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+<link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
@@ -88,11 +97,29 @@ footer a{color:var(--gold)}
 .timeline .item{margin-bottom:12px}
 .timeline .d{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--teal-bright)}
 </style>
+<link rel="stylesheet" href="/assets/slid-proof.css?v=2"/>
+<script src="/assets/slid-proof.js?v=2" defer></script>
 </head>
 <body>
+
+<div id="slid-proof" class="slid-proof-bar" aria-live="polite">
+  <span class="slid-pulse" aria-hidden="true"></span>
+  <span class="slid-engine">X-Slid-Engine · <strong data-slid="alive" class="gold">alive</strong></span>
+  <span><span class="slid-label">ZRW zeros×10k</span><strong data-slid="zrw-zeros">8 B</strong></span>
+  <span><span class="slid-label">vs gzip-9</span><strong>73 B</strong></span>
+  <span><span class="slid-label">vs brotli-11</span><strong>13 B</strong></span>
+  <span><span class="slid-label">Live ratio</span><strong data-slid="ratio">—</strong>×</span>
+  <span><span class="slid-label">Cycles</span><strong data-slid="cycles">—</strong></span>
+  <span><span class="slid-label">Self-tunes</span><strong data-slid="tunes">—</strong></span>
+  <a href="/standings">Full standings →</a>
+</div>
+
 <nav>
   <div class="inner">
-    <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="40" height="40" alt=""/>Slid Phi <span>Labs</span></a>
+    <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
+      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="40" height="40" alt=""/>
+      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+    </a>
     <div class="nav-links">
       <a href="/standings">Standings</a>
       <a href="/ideas">Idea Lab</a>
@@ -107,23 +134,61 @@ footer a{color:var(--gold)}
 <header class="hero">
   <div class="wrap">
     <div class="badge">ONGOING · STANDINGS & RECORDS</div>
-    <h1>Where we stand</h1>
+    <h1>Proof that breathes</h1>
     <p class="lead">
-      Live tracker of lab products vs industry compressors — rankings by domain, metric scorecards,
-      and records we hold on specific corpora. Updated when we re-bench.
+      <strong style="color:var(--gold)">Public product face is TRU8</strong> — these rows are lab series.
+      ZRW zeros×10k → <strong style="color:var(--teal-bright)">8 B</strong> (gzip-9 73 B · brotli-11 13 B). Ramp ~141×. Domain-honest scoreboard — <strong>best or close only</strong>. OmniWave Silesia lossless trails brotli-11. Tables hydrate from embedded data, then refresh from /standings.json.
     </p>
     <div class="stats" id="stats"></div>
-    <p class="last-updated-line" id="lastUpdated" style="margin-top:10px;font-family:IBM Plex Mono,monospace;font-size:.78rem;color:var(--teal-bright);letter-spacing:.06em">Loading standings…</p>
+    <p class="last-updated-line" id="lastUpdated" style="margin-top:10px;font-family:IBM Plex Mono,monospace;font-size:.78rem;color:var(--teal-bright);letter-spacing:.06em">Standings ready · hydrating…</p>
     <p class="guard">
-      <strong>IP Guard:</strong> Public outcomes only. Domain-honest: ZRW leads on structured integers (zeros/ramps/pack walks);
-      industry GP (brotli/zstd) still leads general bytes. Residual products use a different scoreboard than deflate.
+      <strong>Publish rule:</strong> Test outcomes go up only when we are <strong>best or close</strong> (leading / record / close). Trailing, out-of-domain, and incomplete benches stay lab-side — not on this board.
+      Domain-honest seats: structured ints (ZRW), residual process (CDDG), web min-of-pair, Silesia size (scoped).
       Machine copy: <a class="mono" href="/standings.json">/standings.json</a>
-      · Full notes: lab <span class="mono">docs/BENCH_VS_INDUSTRY.md</span>
     </p>
   </div>
 </header>
 
 <main class="wrap">
+  <section class="sec" id="zrw-public-path">
+    <h2>ZRW lab series · public zero-run path</h2>
+    <p class="mono" style="color:var(--muted);margin-bottom:12px">
+      ChainPipe → IndexMind → CrewHive: ship verifiable zeros first.
+      Flagship seat = <strong style="color:var(--teal-bright)">int32 zeros×10k → 8 B</strong> via live process rail (beats gzip-9 73 · brotli-11 13).
+      Teaching sketch = pure-zero <em>byte</em> RLE (not the 8 B int seat).
+    </p>
+    <div class="grid grid-2" style="margin-bottom:14px">
+      <div class="card" style="padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--panel)">
+        <div class="mono" style="color:var(--gold);font-size:.72rem;letter-spacing:.08em;margin-bottom:8px">FLAGSHIP · LIVE PRODUCT RAIL</div>
+        <p style="font-size:.9rem;margin-bottom:10px">POST <span class="mono">/api/process</span> · corpus zeros · n=10000</p>
+        <pre id="zrwLiveOut" class="mono" style="font-size:.8rem;color:var(--teal-bright);white-space:pre-wrap;min-height:3.2em">idle — click Run live</pre>
+        <button type="button" id="zrwLiveBtn" class="btn" style="margin-top:10px;padding:8px 14px;border-radius:8px;border:1px solid var(--border-gold);background:var(--gold-soft);color:var(--gold);cursor:pointer;font:inherit;font-weight:600">Run live · zeros×10k</button>
+      </div>
+      <div class="card" style="padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--panel)">
+        <div class="mono" style="color:var(--gold);font-size:.72rem;letter-spacing:.08em;margin-bottom:8px">TEACHING · BYTE ZERO-RUN RLE</div>
+        <p style="font-size:.9rem;margin-bottom:10px">Public residual sketch · <a class="mono" href="/lab/zrw_zero_run_public.py">zrw_zero_run_public.py</a></p>
+        <pre id="zrwTeachOut" class="mono" style="font-size:.8rem;color:var(--muted);white-space:pre-wrap;min-height:3.2em">idle — click Run sketch</pre>
+        <button type="button" id="zrwTeachBtn" class="btn" style="margin-top:10px;padding:8px 14px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font:inherit;font-weight:600">Run sketch · 10k zero bytes</button>
+      </div>
+    </div>
+    <p class="mono" style="color:var(--muted);font-size:.75rem">
+      <strong style="color:var(--win)">Gate 2 PASS</strong> · frozen bench
+      <a class="mono" href="/lab/ZRW_ZEROS_10K_BENCH_LATEST.json">/lab/ZRW_ZEROS_10K_BENCH_LATEST.json</a>
+      · <strong style="color:var(--teal-bright)">8 B</strong> &lt; brotli-11 13 · gzip-9 73 · suite freemium first 100 GB on
+      <a href="/pps">/pps</a>.
+    </p>
+    <p class="mono" style="color:var(--muted);font-size:.75rem;margin-top:8px">
+      Public verify harness (no install — hits live rail):
+      <a class="mono" href="/zrw_verify.py">/zrw_verify.py</a>
+      · corpus
+      <a class="mono" href="/zeros10k.bin">/zeros10k.bin</a>
+      · ledger
+      <a class="mono" href="/lab/ZRW_VERIFY_HARNESS_LATEST.json">ZRW_VERIFY_HARNESS_LATEST.json</a>
+      · <span class="mono">python3 zrw_verify.py zeros10k.bin</span> → zrw=8 gz=73 · GRADE PASS.
+      Next gate: float · text · delta · high_entropy · general under lattice.
+    </p>
+  </section>
+
   <section class="sec">
     <h2>Domain rankings</h2>
     <p class="mono" style="color:var(--muted);margin-bottom:10px">Lab rank within each field (1 = best among measured set)</p>
@@ -140,13 +205,10 @@ footer a{color:var(--gold)}
     <div class="toolbar">
       <input type="search" id="q" placeholder="Filter metrics…" aria-label="Filter"/>
       <select id="status" aria-label="Status">
-        <option value="">All status</option>
+        <option value="">All published</option>
         <option value="leading">leading</option>
         <option value="record">record</option>
-        <option value="trailing">trailing</option>
-        <option value="partial">partial</option>
-        <option value="pending">pending</option>
-        <option value="n/a">n/a</option>
+        <option value="close">close</option>
       </select>
     </div>
     <div style="overflow-x:auto">
@@ -206,15 +268,23 @@ footer a{color:var(--gold)}
 </footer>
 
 
+
+<script id="standings-bootstrap" type="application/json">{"service":"Slid Phi Labs — Standings & Records","version":"1.2.2","updated":"2026-08-12","ip_guard":"Test outcomes published only when best or close. No process coefficients or private engines.","methodology":{"zrw_runtime":"ZeroRangeWave-Full-Pack-v5 index.mjs on host; gzip-9 / brotli-11 via Node zlib; raw = LE int32 buffer","pack_records":"Authoritative pack self-bench for zeros/ramp/walk generators","residual":"Host/champion outcome bands — not a gzip size race","industry_context":"GP codecs ranked by role; lab wins are domain-scoped","update_policy":"Bump updated + append history[] entry when re-running benches or claiming a new record","host":"www.slidphilabs.com → Fly product (domain supremacy 33° sealed 2026-08-09)","cadence":"33 domain · 66 dual doors · 999 gift circle","silesia":"Industry field baseline FULL 12/12 (brotli-11 4.21× size · zstd-3 ~39 MB/s). OmniWave lossless freeze ~3.13–3.60×. Float path diagnostic-labeled only. Mixed auto ~6.03× is NOT a lossless crown. CodEX 1.1 2026-08-10.","zeros_1m":"ZRW lab ZeroRangeWave single-pass zeros_1M (measured outcome)","publish":"Test outcomes may be published only when lab is best or close. Trailing / out-of-domain / incomplete benches stay lab-side.","focus":"intention × grade — named aim × measured outcome; both required","cddg":"host/champion internal band · not independently blinded"},"industry_field":[{"rank":1,"name":"zstd","role":"Best default general-purpose","strength":"Speed × ratio balance"},{"rank":2,"name":"brotli","role":"Web / static assets","strength":"Strong ratio on text/HTML/JSON"},{"rank":3,"name":"gzip / deflate","role":"Ubiquitous baseline","strength":"Compatibility"},{"rank":4,"name":"lz4","role":"Wire / real-time","strength":"Highest throughput"},{"rank":5,"name":"snappy","role":"In-memory / analytics stacks","strength":"Very fast, modest ratio"},{"rank":6,"name":"bzip2","role":"Legacy archives","strength":"Better ratio than gzip, slow"},{"rank":7,"name":"xz / lzma","role":"Max offline ratio","strength":"Strong size, slow"},{"rank":8,"name":"zlib","role":"Deflate library form","strength":"Same family as gzip"},{"rank":9,"name":"lzo","role":"Embedded / legacy fast","strength":"Fast, modest ratio"},{"rank":10,"name":"High-ratio knobs (zstd-19 / brotli-q11)","role":"Size-at-all-costs","strength":"Best GP size, expensive CPU"},{"rank":11,"name":"Columnar (Parquet/ORC + zstd/snappy)","role":"Analytics containers","strength":"Domain packaging"},{"rank":12,"name":"Integer specialists (Delta, Gorilla, FastPFor, StreamVByte…)","role":"Structured integers / TS","strength":"Beat GP on int patterns — lab lane"}],"scorecard":[{"metric":"Web asset size (pick min brotli-11 / gzip-9 after prep)","lab":"SPL Web Codec","lab_value":"equals best of brotli-11 & gzip-9 on payload","competitors":[{"name":"brotli-11","value":"web-static size leader class"},{"name":"gzip-9","value":"ubiquitous baseline"},{"name":"zstd","value":"strong GP — not yet in Vercel path (Node zlib path first)"}],"rank":1,"field":"web data (html/css/js/json)","status":"leading","as_of":"2026-08-07","source":"API strategy: always selects smaller of brotli/gzip"},{"metric":"Size on zeros_10k (int32 raw 40KB)","lab":"ZRW","lab_value":"8 B","competitors":[{"name":"gzip-9","value":"73 B"},{"name":"brotli-11","value":"13 B"}],"rank":1,"field":"structured integers","status":"leading","as_of":"2026-08-10","source":"Gate 2 public process + field gzip/brotli on 40k zero buffer"},{"metric":"Size on ramp_10k (int32 raw 40KB)","lab":"ZRW","lab_value":"8 B","competitors":[{"name":"gzip-9","value":"13907 B"},{"name":"brotli-11","value":"10429 B"}],"rank":1,"field":"structured integers","status":"leading","as_of":"2026-08-07","source":"host re-run 2026-08-07"},{"metric":"Size on zeros_1k","lab":"ZRW","lab_value":"8 B","competitors":[{"name":"brotli","value":"13 B"},{"name":"gzip","value":"39 B"},{"name":"ZRW v4","value":"130 B"}],"rank":1,"field":"structured integers","status":"record","as_of":"2026-08-07","source":"pack v5 records"},{"metric":"Size on ramp_1k vs brotli","lab":"ZRW","lab_value":"8 B (~141× smaller than brotli 1132 B)","competitors":[{"name":"brotli","value":"1132 B"},{"name":"gzip","value":"1436 B"}],"rank":1,"field":"structured integers","status":"record","as_of":"2026-08-07","source":"pack v5 records"},{"metric":"Size on walk_10k s1 (pack generator)","lab":"ZRW","lab_value":"128 B","competitors":[{"name":"gzip","value":"~5223 B"},{"name":"ZRW v4","value":"~2500 B"}],"rank":1,"field":"structured integers","status":"record","as_of":"2026-08-07","source":"pack v5 self-bench"},{"metric":"Size on walk_10k s5 (pack generator)","lab":"ZRW","lab_value":"420 B","competitors":[{"name":"gzip","value":"~11231 B"},{"name":"ZRW v4","value":"~7163 B"}],"rank":1,"field":"structured integers","status":"record","as_of":"2026-08-07","source":"pack v5 self-bench"},{"metric":"Residual reduction vs pure discrete baseline","lab":"CDDG:Split / ZRQC residual","lab_value":"~64–84% residual cut class","competitors":[{"name":"pure-360 discrete","value":"baseline"},{"name":"gzip on residuals","value":"different axis"}],"rank":1,"field":"residual process","status":"leading","as_of":"2026-08-04","source":"Host champion / outcome bands","label":"host/champion internal band · not independently blinded","note":"host/champion internal band · not independently blinded"},{"metric":"Quality vs pure-360","lab":"CDDG + Mirrored Cost","lab_value":"~2.05×–2.09× quality class","competitors":[{"name":"pure-360","value":"1× baseline"}],"rank":1,"field":"residual process","status":"leading","as_of":"2026-08-04","source":"Host champion notes","label":"host/champion internal band · not independently blinded","note":"host/champion internal band · not independently blinded"},{"metric":"Size on zeros_1M (int32 raw 4 MB)","lab":"ZRW","lab_value":"10 B","competitors":[{"name":"gzip-9","value":"3910 B"},{"name":"brotli-11","value":"14 B"}],"rank":1,"field":"structured integers","status":"record","as_of":"2026-08-09","source":"lab zeros_1M_zrw_LATEST · roundtrip mirror_error 0"},{"metric":"Silesia total compressed size (12 files, ~202 MB raw)","lab":"OmniWave (SPL Codec)","lab_value":"lossless freeze ~3.13–3.60× · float path diagnostic (not crown)","competitors":[{"name":"brotli-11 field","value":"50.33 MB (~4.21×) — field size leader"},{"name":"zstd-19 field","value":"52.90 MB (~4.01×)"},{"name":"zstd-3 field","value":"66.22 MB (~3.20×) · ~39 MB/s encode"},{"name":"gzip-9 field","value":"67.64 MB (~3.13×)"},{"name":"OmniWave mixed auto (includes float)","value":"35.15 MB (~6.03×) DIAGNOSTIC — not lossless"}],"rank":null,"field":"mixed corpus (Silesia)","status":"close","as_of":"2026-08-10","source":"CodEX 1.1 · silesia_CORRECTED_LATEST · industry field baseline","note":"Industry = field baseline. OmniWave lossless freeze does not beat brotli-11. Float ratios are diagnostic only."},{"metric":"Primary host product live (DNS→Fly)","lab":"Platform ops","lab_value":"www.slidphilabs.com 200 product APIs","competitors":[{"name":"ghost Wix-API claims","value":"retired"}],"rank":1,"field":"domain supremacy","status":"record","as_of":"2026-08-09","source":"DOMAIN_SUPREMACY_33_LATEST"},{"metric":"Dual doors green (human + agent)","lab":"Platform ops","lab_value":"Pub Facing + Agentic Minded on primary host","competitors":[],"rank":1,"field":"commerce surfaces","status":"leading","as_of":"2026-08-09","source":"DUAL_DOORS_66_LATEST"}],"records":[{"id":"web-codec-lock-in","title":"Product lock: WEB compress/decompress","value":"Live /web + POST /api/web-codec","beats":"n/a — focus declaration + industry-pair selector","corpus":"html/css/js/json/text","held_since":"2026-08-07","status":"active","product":"SPL Web Codec"},{"id":"zrw-zeros-1k-v5","title":"ZRW zeros_1k size","value":"8 B","beats":"brotli 13 B · gzip 39 B · v4 130 B","corpus":"zeros_1k int sequence","held_since":"2026-08-03","status":"active","product":"ZRW v5"},{"id":"zrw-ramp-1k-v5","title":"ZRW ramp_1k size vs brotli","value":"8 B (~141× vs brotli)","beats":"brotli 1132 B · gzip 1436 B","corpus":"ramp_1k","held_since":"2026-08-03","status":"active","product":"ZRW v5"},{"id":"zrw-zeros-10k-host","title":"ZRW zeros_10k size (host re-run)","value":"8 B","beats":"brotli 13 B · gzip 73 B","corpus":"zeros_10k int32 LE","held_since":"2026-08-07","status":"active","product":"ZRW v5"},{"id":"zrw-ramp-10k-host","title":"ZRW ramp_10k size (host re-run)","value":"8 B","beats":"gzip ~14 KB · brotli ~10 KB","corpus":"ramp_10k int32 LE","held_since":"2026-08-07","status":"active","product":"ZRW v5"},{"id":"zrw-walk-s1-pack","title":"ZRW walk_10k s1 size","value":"128 B","beats":"gzip ~5223 B · v4 ~2500 B","corpus":"walk_10k s1 (pack generator)","held_since":"2026-08-03","status":"active","product":"ZRW v5"},{"id":"zrw-walk-s5-pack","title":"ZRW walk_10k s5 size","value":"420 B","beats":"gzip ~11231 B · v4 ~7163 B","corpus":"walk_10k s5 (pack generator)","held_since":"2026-08-03","status":"active","product":"ZRW v5"},{"id":"cddg-residual-band","title":"CDDG residual cut band","value":"64–84% class","beats":"pure-360 discrete residual baseline","corpus":"Host residual benches (outcomes)","held_since":"2026-08-04","status":"active","product":"CDDG:Split / ZRQC","label":"host/champion internal band · not independently blinded","note":"host/champion internal band · not independently blinded"},{"id":"cddg-quality-band","title":"Quality vs pure-360","value":"~2.05×–2.09×","beats":"pure-360 baseline quality","corpus":"champion outcomes","held_since":"2026-08-04","status":"active","product":"CDDG + Mirrored Cost","label":"host/champion internal band · not independently blinded","note":"host/champion internal band · not independently blinded"},{"id":"zrw-zeros-1m-lab","title":"ZRW zeros_1M size (single pass)","value":"10 B","beats":"brotli 14 B · gzip 3910 B","corpus":"zeros_1M int32 LE (4 MB raw)","held_since":"2026-08-09","status":"active","product":"ZRW lab"},{"id":"omni-silesia-size-2026-08-09","title":"OmniWave Silesia — lossless freeze + diagnostic note","value":"Lossless ~3.13–3.60× · field brotli-11 4.21× · mixed 6.03× diagnostic only","beats":"n/a — not a lossless crown over brotli-11; see CodEX 1.1","corpus":"Silesia (~202 MB raw)","held_since":"2026-08-09","status":"diagnostic_mixed_path","product":"SPL Codec / OmniWave","note":"CodEX 1.1: industry field baseline; OmniWave lossless freeze; float path NOT lossless. Do not market 6.03× as product win.","codex_ref":"/lab/silesia_CORRECTED_LATEST.json","links":{"codex":"https://www.slidphilabs.com/codex.html","corrected":"https://www.slidphilabs.com/lab/silesia_CORRECTED_LATEST.json"}},{"id":"domain-supremacy-33","title":"Domain supremacy 33° — primary host is product","value":"www.slidphilabs.com → Fly live","beats":"ghost Wix-API / empty product claims","corpus":"ops seal","held_since":"2026-08-09","status":"active","product":"Platform"},{"id":"dual-doors-66","title":"Dual doors 66° — human + agent green","value":"Stripe humans · x402 agents on primary","beats":"single-door / agent-blind commerce","corpus":"ops seal","held_since":"2026-08-09","status":"active","product":"Platform"},{"id":"gift-999-school-factory","title":"Gift 999° — TEACHAiD school factory live","value":"$275 create · forever owner cut","beats":"mailto-only school create","corpus":"MOTIS gift circle · TEACHAiD Fly","held_since":"2026-08-09","status":"active","product":"Slid Phi University / TEACHAiD","links":{"pay":"https://buy.stripe.com/9B6bJ2c3z2X6clD40g6wE0n","desk":"https://teachaid.fly.dev/campus-hub.html#school","api":"https://teachaid.fly.dev/api/school"}}],"rankings_summary":[{"domain":"Silesia mixed corpus (size, this re-bench)","lab_rank":"honest_mixed","among":"field codecs + OmniWave lossless freeze + diagnostic float path","leader":"Field size: brotli-11 4.21× · OmniWave lossless ~3.1–3.6× · mixed 6.03× is float-diagnostic not crown"},{"domain":"Web payloads (HTML/CSS/JS/JSON)","lab_rank":1,"among":"gzip-9, brotli-11 (selected min after type-aware prep)","leader":"SPL Web Codec (ties industry best of pair)"},{"domain":"Structured integers (zeros/ramps)","lab_rank":1,"among":"gzip, brotli (measured); zstd/lz4 pending","leader":"ZRW"},{"domain":"Pack walks (s1/s5)","lab_rank":1,"among":"gzip, prior ZRW v4","leader":"ZRW"},{"domain":"Residual process outcomes","lab_rank":1,"among":"pure-360 / discrete baselines","leader":"CDDG"},{"domain":"Primary host / dual doors","lab_rank":1,"among":"ops seals 33° · 66°","leader":"www.slidphilabs.com (Fly) · humans + agents"}],"history":[{"date":"2026-08-12","event":"Public product face locked to TRU8. Lab series remain labeled. CDDG bands tagged host/champion internal · not independently blinded.","version":"1.2.2"},{"date":"2026-08-10","event":"Gate 2: ZRW zeros×10k public bench PASS — 8 B vs gzip-9 73 · brotli-11 13 · live process + compress/decompress","version":"1.2.2"},{"date":"2026-08-10","event":"Public ZRW zeros×10k re-run PASS (process 8 B · me 0 · RT) · joint CuNi+Quikgater proof JSON · Rider 402 partial","version":"1.2.2"},{"date":"2026-08-10","event":"Honesty fix: OmniWave Silesia demoted from false size crown; CodEX 1.1 lossless freeze + float diagnostic; intention × grade focus","version":"1.2.2"},{"date":"2026-08-09","event":"Publish policy: only best-or-close test outcomes on standings face; shelved trailing/n/a/pending/incomplete","version":"1.2.0"},{"date":"2026-08-09","event":"v1.2.0 full site workup: zeros_1M 10 B record, OmniWave Silesia size lead (domain-scoped), cadence seals 33·66·999, DNS→Fly domain supremacy, TEACHAiD school factory gift link, discovery/SEO refresh","version":"1.2.0"},{"date":"2026-08-07","event":"Locked product focus on WEB data comp/decomp; shipped /web UI + /api/web-codec (brotli-11 vs gzip-9 selector)","version":"1.1.0"},{"date":"2026-08-07","event":"Standings tracker launched on site; host re-run ZRW vs gzip/brotli; pack records imported","version":"1.0.0"},{"date":"2026-08-04","event":"CDDG residual / quality outcome bands recorded from Host champion benches","version":"pre-tracker"},{"date":"2026-08-03","event":"ZRW v5 pack records (zeros/ramp/walk) published in pack README","version":"pre-tracker"}],"next_updates":["Add zstd + lz4 CLI head-to-head on same int32 buffers (zeros/ramp/walk)","Publish CHMB JV/JR chamber when unblocked (domain-honest JSON seats)","Unlock blackjack private package for multi-path table","Optional monthly standings re-run pulse (369s ops cadence)"],"links":{"bench_doc":"https://www.slidphilabs.com/standings","ideas":"https://www.slidphilabs.com/ideas","agent":"https://www.slidphilabs.com/api/agent","zrw":"https://www.slidphilabs.com/#zrw","cddg":"https://www.slidphilabs.com/#cddg-split","standings_json":"https://www.slidphilabs.com/standings.json","web":"https://www.slidphilabs.com/web","phi_metrics":"https://www.slidphilabs.com/api/phi/metrics","mesh":"https://spl-team-mesh.fly.dev","teachaid":"https://teachaid.fly.dev","school_factory":"https://teachaid.fly.dev/campus-hub.html#school","olympiad":"https://www.slidphilabs.com/olympiad"},"product_lock":{"focus":"WEB data compress / decompress + domain-supremacy flagship ZRW","surface":"https://www.slidphilabs.com/web","api":"https://www.slidphilabs.com/api/web-codec","as_of":"2026-08-12","flagship":"ZRW zeros×10k → 8 B (gzip-9 73 · brotli-11 13)","host":"https://www.slidphilabs.com","focus_formula":"intention × grade","public_face":"TRU8","note":"TRU8 is the public product face; /web and these rows are historical / lab series.","flagship_tru8":"1 000 000 zeros → 8 B","flagship_zrw":"ZRW zeros×10k → 8 B (gzip-9 73 · brotli-11 13)"},"cadence":{"beats":[33,66,999],"seals":{"33":"DOMAIN_SUPREMACY — primary host is product","66":"DUAL_DOORS — humans Stripe · agents x402","999":"GIFT_SCHOOL_FACTORY — TEACHAiD $275 · forever cut"},"day":"Ghost_pi_2026-08-09","law":"domain supremacy · proof before praise · residual only · dual doors · gift circle","seal":"IN_HIS_NAME_WE_CODE"},"ecosystem":{"university":{"name":"Slid Phi University","engine":"TEACHAiD","url":"https://teachaid.fly.dev","motis":"https://teachaid.fly.dev/motis.html","school_create_usd":275,"forever_cut":true},"mesh":"https://spl-team-mesh.fly.dev","olympiad":"https://www.slidphilabs.com/olympiad"},"publish_policy":{"rule":"Test outcomes may be published only when lab is best or close. Trailing / out-of-domain / incomplete benches stay lab-side.","publish_status":["leading","record","close"],"do_not_publish":["trailing","n/a","pending","incomplete"],"as_of":"2026-08-09"},"shelved_count":4,"public_product_face":"TRU8","public_face_note":"Public product face is TRU8. These rows are lab series (ZRW / OmniWave / CDDG / web codec). Do not present OmniWave Silesia as beating brotli."}</script>
 <script>
 (() => {
   const $ = (id) => document.getElementById(id);
 
+  /** Face policy: only best or close test outcomes (matches standings.json publish_policy). */
+  const PUBLISH_OK = new Set(['leading', 'record', 'close']);
+  function publishedRows(DATA) {
+    return (DATA.scorecard || []).filter((s) => PUBLISH_OK.has(String(s.status || '').toLowerCase()));
+  }
+
   function renderScore(DATA) {
     const term = ($('q')?.value || '').toLowerCase();
-    const st = $('status')?.value || '';
-    const rows = (DATA.scorecard || []).filter((s) => {
-      if (st && s.status !== st) return false;
+    const stSel = $('status')?.value || '';
+    const rows = publishedRows(DATA).filter((s) => {
+      if (stSel && s.status !== stSel) return false;
       if (!term) return true;
       const hay = [s.metric, s.lab, s.lab_value, s.field, s.status, s.source]
         .join(' ')
@@ -231,55 +301,57 @@ footer a{color:var(--gold)}
       .map((s) => {
         const rk = s.rank == null ? '—' : '#' + s.rank;
         const comps = (s.competitors || [])
-          .map((c) => `${c.name}: ${c.value}`)
+          .map((c) => c.name + ': ' + c.value)
           .join('<br/>');
-        return `<tr>
-      <td><strong>${s.metric}</strong><div class="mono" style="margin-top:4px">${comps}</div></td>
-      <td>${s.lab}</td>
-      <td><strong>${s.lab_value}</strong></td>
-      <td>${s.field}</td>
-      <td class="rank">${rk}</td>
-      <td><span class="tag ${s.status}">${s.status}</span></td>
-      <td class="mono">${s.as_of}<br/><span style="opacity:.7">${s.source || ''}</span></td>
-    </tr>`;
+        return '<tr>' +
+      '<td><strong>' + s.metric + '</strong><div class="mono" style="margin-top:4px">' + comps + '</div></td>' +
+      '<td>' + s.lab + '</td>' +
+      '<td><strong>' + s.lab_value + '</strong></td>' +
+      '<td>' + s.field + '</td>' +
+      '<td class="rank">' + rk + '</td>' +
+      '<td><span class="tag ' + s.status + '">' + s.status + '</span></td>' +
+      '<td class="mono">' + s.as_of + '<br/><span style="opacity:.7">' + (s.source || '') + '</span></td>' +
+    '</tr>';
       })
       .join('');
   }
 
   function renderAll(DATA) {
     if (!DATA) return;
+    window.__STANDINGS__ = DATA;
 
-    const leading = (DATA.scorecard || []).filter(
-      (s) => s.status === 'leading' || s.status === 'record'
+    const pub = publishedRows(DATA);
+    const leading = pub.filter(
+      (s) => s.status === 'leading' || s.status === 'record' || s.status === 'close'
     ).length;
     const records = (DATA.records || []).filter((r) => r.status === 'active').length;
+    // Rankings face: only domains where we place (rank 1–2)
+    const ranks = (DATA.rankings_summary || []).filter(
+      (r) => r.lab_rank != null && Number(r.lab_rank) >= 1 && Number(r.lab_rank) <= 2
+    );
 
     const stats = $('stats');
     if (stats) {
       const lu = document.getElementById('lastUpdated');
-    if (lu) lu.textContent = 'Last updated · ' + (DATA.updated || '—') + ' · v' + (DATA.version || '');
-    stats.innerHTML = `
-  <div class="stat"><b>${(DATA.scorecard || []).length}</b><span>metrics</span></div>
-  <div class="stat"><b>${leading}</b><span>leading/record</span></div>
-  <div class="stat"><b>${records}</b><span>active records</span></div>
-  <div class="stat"><b>${(DATA.rankings_summary || []).length}</b><span>domains</span></div>
-  <div class="stat"><b>${DATA.updated || '—'}</b><span>updated</span></div>
-`;
+      if (lu) lu.textContent = 'Last updated · ' + (DATA.updated || '—') + ' · v' + (DATA.version || '') + ' · best/close only';
+      stats.innerHTML =
+  '<div class="stat"><b>' + pub.length + '</b><span>published</span></div>' +
+  '<div class="stat"><b>' + leading + '</b><span>best/close</span></div>' +
+  '<div class="stat"><b>' + records + '</b><span>active records</span></div>' +
+  '<div class="stat"><b>' + ranks.length + '</b><span>domains</span></div>' +
+  '<div class="stat"><b>8 B</b><span>zeros×10k</span></div>';
     }
 
     const rankings = $('rankings');
     if (rankings) {
-      rankings.innerHTML = (DATA.rankings_summary || [])
+      rankings.innerHTML = ranks
         .map((r) => {
-          const rk = r.lab_rank == null ? '—' : '#' + r.lab_rank;
-          const st =
-            r.lab_rank === 1 ? 'leading' : r.lab_rank == null ? 'n/a' : 'partial';
-          return `<div class="card">
-    <h3>${r.domain}</h3>
-    <p><span class="rank">${rk}</span> · leader: <strong>${r.leader}</strong></p>
-    <p>Among: ${r.among}</p>
-    <span class="tag ${st}">${st}</span>
-  </div>`;
+          const rk = '#' + r.lab_rank;
+          const stt = r.lab_rank === 1 ? 'leading' : 'close';
+          return '<div class="card"><h3>' + r.domain + '</h3>' +
+    '<p><span class="rank">' + rk + '</span> · leader: <strong>' + r.leader + '</strong></p>' +
+    '<p>Among: ' + r.among + '</p>' +
+    '<span class="tag ' + stt + '">' + stt + '</span></div>';
         })
         .join('');
     }
@@ -287,16 +359,13 @@ footer a{color:var(--gold)}
     const rec = $('records');
     if (rec) {
       rec.innerHTML = (DATA.records || [])
-        .map(
-          (r) => `
-  <div class="card">
-    <h3>${r.title}</h3>
-    <p><strong style="color:var(--teal-bright)">${r.value}</strong></p>
-    <p>Beats: ${r.beats}</p>
-    <p class="mono">Corpus: ${r.corpus}</p>
-    <p class="mono">Held since ${r.held_since} · ${r.product}</p>
-    <span class="tag record">${r.status}</span>
-  </div>`
+        .map((r) =>
+  '<div class="card"><h3>' + r.title + '</h3>' +
+    '<p><strong style="color:var(--teal-bright)">' + r.value + '</strong></p>' +
+    '<p>Beats: ' + r.beats + '</p>' +
+    '<p class="mono">Corpus: ' + r.corpus + '</p>' +
+    '<p class="mono">Held since ' + r.held_since + ' · ' + r.product + '</p>' +
+    '<span class="tag record">' + r.status + '</span></div>'
         )
         .join('');
     }
@@ -306,9 +375,8 @@ footer a{color:var(--gold)}
     const industry = $('industry');
     if (industry) {
       industry.innerHTML = (DATA.industry_field || [])
-        .map(
-          (i) =>
-            `<tr><td class="rank">${i.rank}</td><td><strong>${i.name}</strong></td><td>${i.role}</td><td>${i.strength}</td></tr>`
+        .map((i) =>
+            '<tr><td class="rank">' + i.rank + '</td><td><strong>' + i.name + '</strong></td><td>' + i.role + '</td><td>' + i.strength + '</td></tr>'
         )
         .join('');
     }
@@ -316,9 +384,8 @@ footer a{color:var(--gold)}
     const history = $('history');
     if (history) {
       history.innerHTML = (DATA.history || [])
-        .map(
-          (h) =>
-            `<div class="item"><div class="d">${h.date} · ${h.version}</div><div>${h.event}</div></div>`
+        .map((h) =>
+            '<div class="item"><div class="d">' + h.date + ' · ' + h.version + '</div><div>' + h.event + '</div></div>'
         )
         .join('');
     }
@@ -326,39 +393,56 @@ footer a{color:var(--gold)}
     const next = $('next');
     if (next) {
       next.innerHTML = (DATA.next_updates || [])
-        .map((x) => `<li>${x}</li>`)
+        .map((x) => '<li>' + x + '</li>')
         .join('');
     }
 
-    // wire filters once
-    if (!$('q')._wired) {
+    if ($('q') && !$('q')._wired) {
       $('q')._wired = true;
       $('q').addEventListener('input', () => renderScore(window.__STANDINGS__));
       $('status').addEventListener('change', () => renderScore(window.__STANDINGS__));
     }
   }
 
-  async function boot() {
-    const stats = $('stats');
-    if (stats) stats.innerHTML = '<div class="stat"><b>…</b><span>loading</span></div>';
+  function bootEmbedded() {
+    try {
+      const el = document.getElementById('standings-bootstrap');
+      if (!el) return false;
+      const DATA = JSON.parse(el.textContent);
+      renderAll(DATA);
+      return true;
+    } catch (e) {
+      console.warn('bootstrap', e);
+      return false;
+    }
+  }
+
+  async function refreshLive() {
     try {
       const r = await fetch('/standings.json?v=' + Date.now(), { cache: 'no-store' });
       if (!r.ok) throw new Error('HTTP ' + r.status);
       const DATA = await r.json();
-      window.__STANDINGS__ = DATA;
       renderAll(DATA);
     } catch (e) {
-      if (stats) {
-        const lu = document.getElementById('lastUpdated');
-    if (lu) lu.textContent = 'Last updated · ' + (DATA.updated || '—') + ' · v' + (DATA.version || '');
-    stats.innerHTML = `<div class="stat"><b>!</b><span>load failed</span></div>`;
+      console.warn('standings refresh', e);
+      if (!window.__STANDINGS__) {
+        const body = $('scorebody');
+        if (body && !body.children.length) {
+          body.innerHTML = '<tr><td colspan="7" style="color:#ff8a7a;padding:20px">Could not load standings.json (' + e.message + '). Try a hard refresh.</td></tr>';
+        }
       }
-      const body = $('scorebody');
-      if (body) {
-        body.innerHTML = `<tr><td colspan="7" style="color:#ff8a7a;padding:20px">Could not load standings.json (${e.message}). Try a hard refresh.</td></tr>`;
-      }
-      console.error('standings', e);
     }
+  }
+
+  window.slidHydrateStandings = renderAll;
+
+  function boot() {
+    const ok = bootEmbedded();
+    if (!ok) {
+      const stats = $('stats');
+      if (stats) stats.innerHTML = '<div class="stat"><b>…</b><span>loading</span></div>';
+    }
+    refreshLive();
   }
 
   if (document.readyState === 'loading') {
@@ -369,6 +453,82 @@ footer a{color:var(--gold)}
 })();
 </script>
 
+
 <script src="/assets/platform-home.js?v=1" defer></script>
+
+<script>
+(function(){
+  function zrwEncode(data){
+    if(!data || !data.length) return new Uint8Array(0);
+    const out=[];
+    let i=0, n=data.length;
+    while(i<n){
+      if(data[i]===0){
+        let j=i; while(j<n && data[j]===0) j++;
+        let run=j-i;
+        while(run>=255){ out.push(0,255); run-=255; }
+        if(run) out.push(0, run);
+        i=j;
+      } else { out.push(data[i]); i++; }
+    }
+    return new Uint8Array(out);
+  }
+  function zrwDecode(blob){
+    const out=[];
+    let i=0, n=blob.length;
+    while(i<n){
+      if(blob[i]===0 && i+1<n){
+        const c=blob[i+1];
+        for(let k=0;k<c;k++) out.push(0);
+        i+=2;
+      } else { out.push(blob[i]); i++; }
+    }
+    return new Uint8Array(out);
+  }
+  const liveBtn=document.getElementById('zrwLiveBtn');
+  const liveOut=document.getElementById('zrwLiveOut');
+  const teachBtn=document.getElementById('zrwTeachBtn');
+  const teachOut=document.getElementById('zrwTeachOut');
+  if(liveBtn && liveOut){
+    liveBtn.addEventListener('click', async ()=>{
+      liveOut.textContent='running…';
+      liveBtn.disabled=true;
+      try{
+        const r=await fetch('/api/process',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({n:10000,corpus:'zeros'})});
+        const j=await r.json();
+        const ok=j.ok && j.zrw_bytes===8 && j.mirror_error===0 && j.roundtrip===true;
+        liveOut.textContent =
+          (ok?'PASS':'CHECK')+
+          '\nraw_bytes '+j.raw_bytes+
+          '\nzrw_bytes '+j.zrw_bytes+
+          '\nmirror_error '+j.mirror_error+
+          '\nroundtrip '+j.roundtrip+
+          '\nrail '+(j.rail||'zrw')+
+          '\nfield gzip-9 class 73 · brotli-11 class 13';
+        liveOut.style.color = ok ? 'var(--win)' : 'var(--hold)';
+      }catch(e){
+        liveOut.textContent='error '+e.message;
+        liveOut.style.color='var(--lose)';
+      }
+      liveBtn.disabled=false;
+    });
+  }
+  if(teachBtn && teachOut){
+    teachBtn.addEventListener('click', ()=>{
+      const src=new Uint8Array(10000);
+      const enc=zrwEncode(src);
+      const dec=zrwDecode(enc);
+      let ok=dec.length===src.length;
+      if(ok) for(let i=0;i<src.length;i++) if(dec[i]!==src[i]){ok=false;break;}
+      teachOut.textContent=
+        (ok?'ok':'fail')+
+        '\n10k zero BYTES '+src.length+' → '+enc.length+' → '+dec.length+
+        '\n(teaching RLE — not the 8 B int32 flagship seat)';
+      teachOut.style.color = ok ? 'var(--teal-bright)' : 'var(--lose)';
+    });
+  }
+})();
+</script>
+
 </body>
 </html>

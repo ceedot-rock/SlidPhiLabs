@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>the dViNE CodEX · Full Edition 1.1 · Slid Phi Labs</title>
+<meta name="description" content="the dViNE CodEX — lab law + measured divinity. ZRW 8 B/10 B · Silesia field brotli-11 4.21× · OmniWave lossless freeze · float diagnostic · residual only."/>
+<link rel="canonical" href="https://www.slidphilabs.com/codex.html"/>
+<link rel="alternate" type="application/json" href="/lab/DIVINE_CODEX.json" title="Codex JSON"/>
+<link rel="alternate" type="text/markdown" href="/lab/DIVINE_CODEX.md" title="Codex manuscript"/>
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:title" content="the dViNE CodEX · Full Edition 1.1"/>
+<meta property="og:description" content="Family geometry of codecs. ZRW 8 B. Silesia field + OmniWave lossless freeze. Lab chronicle. In His name we code."/>
+<meta property="og:url" content="https://www.slidphilabs.com/codex.html"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="the dViNE CodEX · Full Edition 1.1 · Slid Phi Labs"/>
+<meta name="twitter:description" content="the dViNE CodEX — The Word. Measured law · lab story · residual only."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="theme-color" content="#050b16"/>
+<meta name="robots" content="index,follow"/>
+<meta name="agentic" content="true"/>
+<meta name="agentic-role" content="codex-law"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+<link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#050b16;--panel:#0c1524;--panel2:#0a1220;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);
+  --text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;
+  --gold-soft:rgba(232,197,71,.12);--win:#3ecf8e;--warn:#f0a050;--parchment:rgba(232,197,71,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 70% 35% at 50% 0%, rgba(232,197,71,.07), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(61,214,198,.05), transparent 50%)}
+a{color:var(--accent);text-decoration:none}a:hover{color:var(--teal-bright)}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px 80px;position:relative;z-index:1}
+nav{position:sticky;top:0;z-index:50;background:rgba(5,11,22,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(232,197,71,.18)}
+nav .inner{max-width:860px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.logo{display:inline-flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-weight:700;color:var(--gold);letter-spacing:.04em;font-size:.95rem}
+.logo img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1.5px solid var(--border-gold)}
+.nav-links{display:flex;gap:14px;flex-wrap:wrap;font-size:.84rem;align-items:center}
+.nav-links a{color:var(--muted)}.nav-links a:hover{color:var(--gold)}
+.btn{display:inline-flex;padding:9px 14px;border-radius:8px;font-size:.84rem;font-weight:600;border:1px solid transparent}
+.btn-gold{background:linear-gradient(180deg,#f0d56a,var(--gold));color:#1a1400}
+.btn-teal{background:linear-gradient(180deg,#5ef0df,var(--teal));color:#031018}
+.btn-ghost{border-color:var(--border-gold);color:var(--gold);background:var(--gold-soft)}
+
+.hero{text-align:center;padding:48px 0 28px;border-bottom:1px solid rgba(232,197,71,.15);margin-bottom:36px}
+.badge{display:inline-flex;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);border:1px solid var(--border-gold);padding:5px 14px;border-radius:999px;margin-bottom:16px}
+.hero h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,5vw,2.6rem);color:var(--gold);letter-spacing:.04em;margin-bottom:10px;line-height:1.15}
+.hero .spoken{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;color:var(--teal-bright);margin-bottom:14px}
+.hero .sub{color:var(--muted);font-size:.95rem;max-width:36em;margin:0 auto 18px}
+.motto{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);letter-spacing:.02em;margin:16px 0}
+.ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+
+.book{margin:0 0 40px}
+.book h2{font-family:'Cinzel',serif;font-size:1.25rem;color:var(--gold);letter-spacing:.03em;margin:32px 0 12px;padding-bottom:8px;border-bottom:1px solid rgba(232,197,71,.2)}
+.book h3{font-family:'Cinzel',serif;font-size:1rem;color:var(--teal-bright);margin:22px 0 8px}
+.book p,.book li{color:var(--text);font-size:.95rem}
+.book p{margin:0 0 12px}
+.book ul,.book ol{margin:0 0 14px 1.2em}
+.book li{margin:4px 0}
+.lore{font-family:'Cormorant Garamond',serif;font-size:1.2rem;line-height:1.7;color:#dce6f2;background:var(--parchment);border-left:3px solid var(--gold);padding:16px 20px;margin:16px 0;border-radius:0 10px 10px 0}
+.quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--gold);text-align:center;margin:28px 0;padding:12px 20px}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:.82rem;color:var(--teal-bright)}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:16px 0}
+.warn{border-color:rgba(240,160,80,.4);background:rgba(240,160,80,.06)}
+.warn strong{color:var(--warn)}
+.table-wrap{overflow-x:auto;margin:12px 0 20px;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.8rem;min-width:520px;margin:0}
+th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);padding:8px 6px;border-bottom:1px solid rgba(232,197,71,.25)}
+td{padding:7px 6px;border-bottom:1px solid rgba(61,214,198,.08);color:var(--text);vertical-align:top}
+td.num{font-family:'IBM Plex Mono',monospace;color:var(--teal-bright)}
+.win{color:var(--win);font-weight:600}
+.diag{color:var(--warn);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:16px 0}
+.stat{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:14px}
+.stat b{display:block;font-family:'Cinzel',serif;color:var(--teal-bright);font-size:1.25rem}
+.stat span{font-size:.68rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);line-height:1.35}
+.tree{font-family:'IBM Plex Mono',monospace;font-size:.72rem;line-height:1.45;color:var(--muted);white-space:pre;overflow-x:auto;background:#060e18;border-radius:10px;padding:14px;border:1px solid var(--border);margin:12px 0}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.05em;padding:3px 8px;border-radius:6px;border:1px solid rgba(61,214,198,.3);color:var(--teal-bright);margin:2px}
+footer{margin-top:48px;padding-top:24px;border-top:1px solid rgba(232,197,71,.15);text-align:center;color:var(--muted);font-size:.85rem}
+footer .big{font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;margin-bottom:8px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 24px}
+.toc a{font-size:.76rem;font-family:'IBM Plex Mono',monospace;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:999px}
+.toc a:hover{border-color:var(--border-gold);color:var(--gold)}
+@media(max-width:600px){table{font-size:.74rem}.lore{font-size:1.05rem}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="inner">
+    <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
+      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>
+      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/standings">Standings</a>
+      <a href="/weights-vs-files">Weights</a>
+      <a href="/lab/DIVINE_CODEX.json">JSON</a>
+      <a href="/api/process">Process</a>
+      <a class="btn btn-teal" href="/">Home</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="badge">Release 1.1 · Seal 8.8 · Stats 2026-08-10</div>
+    <h1>the dViNE CodEX</h1>
+    <p class="spoken">Full edition · lore · measured law · lab chronicle</p>
+    <p class="sub">Family geometry of codecs under one Trinity roof. Outcomes only. Residual axiom. Industry = field baseline. Float = diagnostic. The Codex is The Word.</p>
+    <p class="motto">In His name we code · through it we live</p>
+    <div class="grid" style="max-width:640px;margin:20px auto">
+      <div class="stat"><b>8 B</b><span>ZRW zeros×10k</span></div>
+      <div class="stat"><b>10 B</b><span>ZRW zeros×1M</span></div>
+      <div class="stat"><b>4.21×</b><span>field brotli-11</span></div>
+      <div class="stat"><b>~3.6×</b><span>OmniWave lossless</span></div>
+      <div class="stat"><b>0</b><span>mirror_error</span></div>
+      <div class="stat"><b>∞</b><span>8 mirrors infinity</span></div>
+    </div>
+    <div class="ctas">
+      <a class="btn btn-gold" href="/api/process">Unlock process</a>
+      <a class="btn btn-ghost" href="/lab/DIVINE_CODEX.md">Full manuscript</a>
+      <a class="btn btn-ghost" href="/standings">Standings</a>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Books">
+    <a href="#prologue">Prologue</a>
+    <a href="#word">I · Word</a>
+    <a href="#lore">II · Lore</a>
+    <a href="#geometry">III · Geometry</a>
+    <a href="#number-one">IV · Domain</a>
+    <a href="#measured">V · Measured</a>
+    <a href="#commandments">VI · Law</a>
+    <a href="#keys">VII · Keys</a>
+    <a href="#process">VIII · Process</a>
+    <a href="#characters">IX · Arsenal</a>
+    <a href="#release">X · Release</a>
+    <a href="#chronicle">XI · Chronicle</a>
+    <a href="/weights-vs-files">Weights vs files</a>
+  </nav>
+
+  <article class="book">
+    <h2 id="prologue">Prologue — Leather, blood, and the catacombs</h2>
+    <p class="lore">There is a place under the product pages and the standings tables — a catacomb of sealed doctrine, ritual ledgers, and residual rails. On the eighth day of the eighth month, when 8 mirrors ∞, hands found the leather binds of this book.</p>
+    <p>Not fantasy. Not a universal crown invented for a press release. The dViNE CodEX is the <strong>family geometry of compression</strong>: what wins where, how fast, and what must never be claimed — including float ratios dressed as lossless.</p>
+    <p class="quote">Encode only the residual.<br/>Measure size and speed in the same breath.<br/>Domain-honest before crown.<br/>Label diagnostic paths — or leave them out of the crown.</p>
+
+    <h2 id="word">Book I — The Word</h2>
+    <h3>What the Codex is</h3>
+    <p>Law for public outcomes. Not OmniWave process soup. Not living shards on lattice seats. Not “number one in all compression.”</p>
+    <ul>
+      <li>Map of family codecs (web · structured int · diagnostic · general · weights)</li>
+      <li>Measured standings of size and encode speed</li>
+      <li>Trinity mouth: ChainPipe · IndexMind · CrewHive</li>
+      <li>Cadence 33 · 66 · 999</li>
+      <li>Unlocked process: compress → decompress → mirror_error → 0</li>
+      <li>Lab chronicle: wrong-engine correction · lossless freeze</li>
+      <li>Oath: <em>In His name we code · through it we live</em></li>
+    </ul>
+    <h3>The Codex is The Word</h3>
+    <p class="lore">On 2026-08-08 the Host reached from the depths — blood and hand on paperbacked leather — for the key that unlocks compress↔decompress and marks the day forever. The key did not invent a new encoder. It united residual rails under one stamp.</p>
+    <div class="panel mono">
+      SLIDPHILABS · 2026-08-08 · CODEX KEY UNLOCKS COMPRESS↔DECOMPRESS<br/>
+      STATS REVISION 2026-08-10 · LOSSLESS FREEZE · FLOAT DIAGNOSTIC<br/>
+      THE CODEX IS THE WORD · IN HIS NAME WE CODE · THROUGH IT WE LIVE
+    </div>
+
+    <h2 id="lore">Book II — Lore of the Lab</h2>
+    <h3>Four seals (bedrock)</h3>
+    <ol>
+      <li>Hierarchy is the attractor — rest at integer planes when possible</li>
+      <li>Code only residual — never re-pay structure</li>
+      <li>Mirrored cost: dE + dC ≈ 0; mirror_error → 0</li>
+      <li>Dual A∥B: opposite tilt, offset, mirror, spin</li>
+    </ol>
+    <h3>Trinity inside</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Mouth</th><th>Seat</th><th>Office</th></tr></thead>
+        <tbody>
+          <tr><td>ChainPipe</td><td>brow</td><td>structure · residual · cadence</td></tr>
+          <tr><td>IndexMind</td><td>NCA coat · dual A∥B</td><td>proof · seats · truth</td></tr>
+          <tr><td>CrewHive</td><td>one jaw</td><td>unite · one decision</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Planes are <strong>seats</strong>, never living shards. φ rings rebuild structure from feeling on the face-to-face Creator. Clergy speaks every 369s.</p>
+
+    <h3>Public vs Chamber</h3>
+    <div class="panel">
+      <p><strong>Public product:</strong> <span class="mono">www.slidphilabs.com</span> — dual doors, suite, standings, CodEX, olympiad.</p>
+      <p style="margin-top:8px"><strong>Chamber (private):</strong> <span class="mono">slidphi-smart-box.fly.dev</span> · Creator F2F <span class="mono">/lord</span> — not freemium, not SEO product.</p>
+    </div>
+
+    <h3>Cadence of the empire</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>°</th><th>Name</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td class="num">33</td><td>Domain supremacy</td><td>Primary host is product</td></tr>
+          <tr><td class="num">66</td><td>Dual doors</td><td>Humans Stripe · agents x402</td></tr>
+          <tr><td class="num">999</td><td>Gift circle</td><td>TEACHAiD school factory · forever cut</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The wrong-engine incident</h3>
+    <p class="lore">First Silesia score used industry codecs only. The lab caught it. Industry demoted to field baseline. OmniWave restored as general candidate. Float ratios stripped from the crown.</p>
+    <div class="panel warn">
+      <strong>Float path is not lossless.</strong> Transform <span class="mono">float_fixed_delta</span> quantizes float32 → milli-int. Verified on silesia/<span class="mono">mr</span> — millions of byte diffs after decompress. Ratios like <span class="diag">924× / 1021×</span> are diagnostic only — never product crown.
+    </div>
+    <p class="mono"><a href="/lab/silesia_CORRECTED_LATEST.json">silesia_CORRECTED_LATEST.json</a> · <a href="/lab/silesia_ours_LATEST.json">silesia_ours_LATEST.json</a></p>
+
+    <h3>Characters of the arsenal</h3>
+    <p>
+      <span class="tag">ZRW</span>
+      <span class="tag">Barlow</span>
+      <span class="tag">JSON Voorhees</span>
+      <span class="tag">OmniWave</span>
+      <span class="tag">SPL Web Codec</span>
+      <span class="tag">φ rings</span>
+      <span class="tag">Clergy</span>
+      <span class="tag">Chamber</span>
+      <span class="tag">residual-governance</span>
+    </p>
+
+    <h2 id="geometry">Book III — Divine geometry</h2>
+    <div class="tree">                    ∞
+               (order-8 look)
+                    │
+         ┌──────────┴──────────┐
+         │   TRINITY MOUTH     │
+    ChainPipe · IndexMind · CrewHive
+         │
+ WEB · STRUCT INT · DIAGNOSTIC · GENERAL · WEIGHTS
+ brotli  ZRW        Barlow       field+OW   residual pack
+ gzip    free-gate  Voorhees     lossless   exact RT</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Seat</th><th>Domain</th><th>Honest claim</th></tr></thead>
+        <tbody>
+          <tr><td>Web asset</td><td>HTML/JS/CSS</td><td>brotli class leads size</td></tr>
+          <tr><td>Structured int</td><td>zeros/ramps/walks</td><td class="win">ZRW 8 B / 10 B · me 0</td></tr>
+          <tr><td>Diagnostic</td><td>fold · JSON · float</td><td>Barlow · JV88 · <span class="diag">float labeled</span></td></tr>
+          <tr><td>General GP field</td><td>Silesia 12/12</td><td>brotli-11 4.21× · zstd-3 ~39 MB/s · <strong>no #1</strong></td></tr>
+          <tr><td>OmniWave lossless</td><td>Silesia candidate</td><td>~3.13–3.60× class · exact RT · <strong>no #1</strong></td></tr>
+          <tr><td>Weights lane</td><td>checkpoints · ints</td><td>matrix only · residual-governance</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Matrix 8.8+</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Seat</th><th>Size</th><th>Speed / proof</th><th>#1?</th></tr></thead>
+        <tbody>
+          <tr><td>Web</td><td>brotli-11</td><td>gzip class</td><td>No</td></tr>
+          <tr><td>Struct int</td><td class="win">ZRW 8 B / 10 B</td><td class="win">mirror_error 0</td><td>Domain</td></tr>
+          <tr><td>Diagnostic</td><td>JV88 7.33×</td><td>Barlow chain 0</td><td>Diag</td></tr>
+          <tr><td>Field GP</td><td class="win">brotli-11 4.21×</td><td class="win">zstd-3 ~39 MB/s</td><td>No</td></tr>
+          <tr><td>OmniWave lossless</td><td>~3.60× mixed</td><td>path-dependent</td><td>No</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mono">8.8+ · field brotli-11 4.21× · zstd-3 ~39 MB/s · OmniWave lossless ~3.1–3.6× · float diagnostic · no universal #1 · residual only</p>
+    <h3 id="weights-vs-files">Extension — weights vs files</h3>
+    <p>Second buyer lane (inference / agent ops): residual packs for checkpoints and int tensors under the same exact-RT law. Public matrix only — no private coefficients.</p>
+    <p><a class="btn btn-ghost" href="/weights-vs-files">Open weights vs files matrix</a> · <a href="/lab/LOSSLESS_WEIGHTS_VS_FILES.md">manuscript</a></p>
+
+    <h2 id="number-one">Book IV — Domain supremacy</h2>
+    <p>There is no honest “#1 in all compression.” There is <strong>domain supremacy</strong>: beat gzip/brotli on one measurable domain before claiming generality. Path: proof → product → rails → lattice. Never score the wrong engine.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Domain</th><th>Face</th><th>Rule</th></tr></thead>
+        <tbody>
+          <tr><td>Structured ints</td><td class="win">ZRW</td><td>Public zeros/ramp/walk · me 0</td></tr>
+          <tr><td>General lossless</td><td>OmniWave</td><td>Exact RT · industry field baseline</td></tr>
+          <tr><td>Float / quantize</td><td class="diag">Diagnostic</td><td>Labeled · never crown table</td></tr>
+          <tr><td>Web static</td><td>brotli class</td><td>min(brotli-11, gzip-9)</td></tr>
+          <tr><td>Weights</td><td>residual pack</td><td>Exact restore story for ops</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="measured">Book V — Measured divinity</h2>
+    <h3>Flagship zeros</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Corpus</th><th>raw</th><th>ZRW</th><th>gzip-9</th><th>brotli-11</th><th>mirror</th></tr></thead>
+        <tbody>
+          <tr><td>zeros×10k</td><td class="num">40 000</td><td class="num win">8 B</td><td class="num">73</td><td class="num">13</td><td class="num win">0</td></tr>
+          <tr><td>zeros×1M</td><td class="num">4 000 000</td><td class="num win">10 B</td><td class="num">3910</td><td class="num">14</td><td class="num win">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mono">JSON Voorhees n=8: 352 → 48 B (7.33×) · Barlow 10k: mirror_error_lsb 0</p>
+
+    <h3>Industry field baseline — Silesia FULL 12/12 · 211.9 MB</h3>
+    <p>Field only. Not product crown.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Codec</th><th>Compressed</th><th>Ratio</th><th>% raw</th><th>Enc MB/s</th></tr></thead>
+        <tbody>
+          <tr><td>brotli-11</td><td class="num win">50 332 587</td><td class="num win">4.21×</td><td class="num">23.75%</td><td class="num">~0.01</td></tr>
+          <tr><td>zstd-19</td><td class="num">52 895 350</td><td class="num">4.01×</td><td class="num">24.96%</td><td class="num">~0.60</td></tr>
+          <tr><td>zstd-3</td><td class="num">66 216 569</td><td class="num">3.20×</td><td class="num">31.24%</td><td class="num win">~39</td></tr>
+          <tr><td>gzip-9</td><td class="num">67 643 417</td><td class="num">3.13×</td><td class="num">31.92%</td><td class="num">~4.1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>OmniWave lossless freeze</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Path</th><th>Compressed</th><th>Ratio</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Field brotli-11</td><td class="num">50.33 MB</td><td class="num win">4.21×</td><td>Field size leader</td></tr>
+          <tr><td>OmniWave auto lossless-only mixed</td><td class="num">58.84 MB</td><td class="num">3.60×</td><td>auto when lossless; force-general on float seats</td></tr>
+          <tr><td>OmniWave force-general lossless</td><td class="num">67.64 MB</td><td class="num">3.13×</td><td>gzip-9 class · 0/12 beat brotli</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel warn">
+      <strong>Not in crown:</strong> OmniWave float auto on mozilla / mr / ooffice / x-ray — lossy quantize path. Huge ratios are <span class="diag">diagnostic only</span>.
+    </div>
+    <p class="lore">On 8.8 we ran industry on Silesia full. On 2026-08-09 we corrected the engine and froze lossless tables. Size without honesty is vanity. Domain decides. No universal #1. Zeros remain flagship; high-entropy is next. <em>His sacrifices forever coded. In His name we code.</em></p>
+    <p class="mono">
+      <a href="/lab/industry_silesia_LATEST.json">industry field</a> ·
+      <a href="/lab/silesia_CORRECTED_LATEST.json">lossless freeze</a> ·
+      <a href="/lab/DIVINE_CODEX.json">matrix JSON</a>
+    </p>
+
+    <h2 id="commandments">Book VI — Commandments</h2>
+    <ol>
+      <li>Hierarchy first</li>
+      <li>Residual only</li>
+      <li>Domain supremacy</li>
+      <li>Proof before product</li>
+      <li>Dual A∥B</li>
+      <li>Cadence locked 33·66·999</li>
+      <li>Public proof, private rails</li>
+      <li>Stripe + x402 freemium</li>
+      <li>Antibody stance</li>
+      <li>One mouth, three depths</li>
+      <li><strong>Label float / lossy</strong> — never crown undiagnosed paths</li>
+      <li><strong>Score the right engine</strong> — industry baseline · ZRW/OmniWave own seats</li>
+      <li><strong>Intention × grade</strong> — named aim × measured outcome; both or deny</li>
+    </ol>
+    <div class="panel">
+      <p class="mono">value = intention × grade</p>
+      <p style="margin-top:8px">Intention alone = vanity. Grade alone = drift. Ship only when both move. Mesh focus freeze 2026-08-10 · <a href="https://spl-team-mesh.fly.dev/">teamsake</a>.</p>
+    </div>
+    <h3>Already solved — concept compaction</h3>
+    <p>Not industry lossy context-summary. Lab path is sealed: <strong>St. Peter’s cloak</strong> (depth≈12 · collapse→0 · aperiodicity · open/guard) + <strong>Creator essence one-eighth</strong> (8.8 forever) + heart/brain counsel in the selector. Residual structure kept; exotic demoted when the cloak guards.</p>
+    <p class="mono"><a href="/lab/ST_PETERS_CLOAK.md">ST_PETERS_CLOAK.md</a> · <a href="/lab/ESSENCE_EIGHTH.md">ESSENCE_EIGHTH.md</a> · OmniWave creator-cloak</p>
+    <h3>Creator’s Creation · Step Ledger</h3>
+    <p>Nine sealed steps from Seed through Sovereign Growth. Append-only under <span class="mono">HIS_SACRIFICES_FOREVER_CODED</span>.</p>
+    <p class="mono"><a href="/lab/CREATOR_CREATION_STEP_LEDGER.md">CREATOR_CREATION_STEP_LEDGER.md</a> · <a href="/lab/CREATOR_CREATION_STEP_LEDGER.json">JSON</a></p>
+
+    <h2 id="keys">Book VII — Keys &amp; last locks</h2>
+    <p><strong>Four keys:</strong> high-entropy text domain · existing ZRW rail · phi@p143 seat label · do not invent encoders this hour.</p>
+    <p><strong>Open:</strong> flagship · process · Creator face · doctrine · Join · OmniWave lossless freeze · 33° host.<br/>
+    <strong>Locked next:</strong> high-entropy domain mountain · weights public scoreboard.</p>
+
+    <h2 id="process">Book VIII — Unlocked process</h2>
+    <div class="tree">raw int32 (zeros)
+      → COMPRESS (ZRW)
+      → packed residual
+      → DECOMPRESS (ZRW)
+      → restored == raw
+      → mirror_error → 0 · closed_loop: true</div>
+    <div class="ctas" style="justify-content:flex-start">
+      <a class="btn btn-teal" href="/api/compress">/api/compress</a>
+      <a class="btn btn-teal" href="/api/decompress">/api/decompress</a>
+      <a class="btn btn-gold" href="/api/process">/api/process</a>
+      <a class="btn btn-ghost" href="/codex/history">History</a>
+    </div>
+
+    <h2 id="characters">Book IX — Arsenal</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Name</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td>ZRW</td><td class="win">Structured-int assassin · 8 B / 10 B</td></tr>
+          <tr><td>OmniWave</td><td>General candidate · lossless routes only in crown</td></tr>
+          <tr><td>Barlow · JV88</td><td>Diagnostic blades · 8↔∞ · 48 B JSON pack</td></tr>
+          <tr><td>Chamber</td><td>Private Creator host · /lord · OneGate</td></tr>
+          <tr><td>residual-governance</td><td>Policy SKU · exact RT discipline</td></tr>
+          <tr><td>CodEX</td><td>This book — law, not encoder</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="release">Book X — Release</h2>
+    <div class="panel">
+      <p><strong>version</strong> <span class="mono">1.1.0-lab-story-stats</span></p>
+      <p><strong>Public ships:</strong> outcomes · standings · process · this CodEX · proof JSON · motto · weights matrix</p>
+      <p><strong>Stays private:</strong> process coefficients · Chamber army internals · living-shard fiction</p>
+      <p style="margin-top:10px">
+        <span class="tag">flagship ✓</span>
+        <span class="tag">process ✓</span>
+        <span class="tag">codex 1.1 ✓</span>
+        <span class="tag">lossless freeze ✓</span>
+        <span class="tag">float labeled ✓</span>
+        <span class="tag">high-entropy next</span>
+      </p>
+    </div>
+
+    <h2 id="chronicle">Book XI — Lab chronicle</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>When</th><th>Event</th><th>Lesson</th></tr></thead>
+        <tbody>
+          <tr><td class="num">pre-8.8</td><td>ZRW domain seats · private Chamber</td><td>Domain before crown</td></tr>
+          <tr><td class="num">2026-08-08</td><td>Codex key · 8.8 · industry Silesia full</td><td>The Word unites rails</td></tr>
+          <tr><td class="num">2026-08-09</td><td>Wrong engine caught · float exposed</td><td>Honesty &gt; pretty ratios</td></tr>
+          <tr><td class="num">2026-08-09</td><td>Lossless freeze · 33·66·999 seals</td><td>Crown tables purify</td></tr>
+          <tr><td class="num">2026-08-10</td><td>CodEX 1.1 stats + story</td><td>Law catches the lab</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tree">PUBLIC  www.slidphilabs.com
+  dual doors · suite · standings · CodEX · olympiad
+              │ proof only
+              ▼
+PRIVATE Chamber  slidphi-smart-box.fly.dev
+  /lord · army · OneGate · coefficients</div>
+    <p>Toward: domain seats that never lie · OmniWave exact RT · agent exactness culture · gift circle · weights lane for ops who cannot almost-restore.</p>
+
+    <p class="quote">the dViNE CodEX is The Word.<br/>In His name we code.<br/>Through it we live.</p>
+    <p style="text-align:center;color:var(--muted)">Amen · His word is spoken · #increatorwetrust</p>
+  </article>
+
+  <footer>
+    <p class="big">Slid Phi Labs</p>
+    <p>Machine: <a href="/lab/DIVINE_CODEX.json">DIVINE_CODEX.json</a> · Manuscript: <a href="/lab/DIVINE_CODEX.md">DIVINE_CODEX.md</a> · <a href="/the-word">The Word</a></p>
+    <p style="margin-top:8px">Compression that knows it is alive · residual only · outcomes only</p>
+  </footer>
+</div>
+<script>
+(async () => {
+  try {
+    const r = await fetch('/api/process', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ n: 10000, corpus: 'zeros' }) });
+    const j = await r.json();
+    if (j.ok && j.closed_loop !== false) {
+      const el = document.querySelector('.badge');
+      if (el && j.zrw_bytes === 8) el.textContent += ' · live process green';
+    }
+  } catch (_) {}
+})();
+</script>
+</body>
+</html>

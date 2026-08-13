@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Truth table — public benches · Slid Phi Labs</title>
 <meta name="description" content="Public truth table for Compression outcomes. Live web-codec bench. No private engine."/>
 <meta name="lab-modules" content="compression,agent_platform"/>
-<meta name="lab-compression" content="SPL Codec,CDDG:Split"/>
+<meta name="lab-compression" content="TRU8,CDDG:Split"/>
 <meta name="lab-agent-platform" content="CuNi,Agent^Rider,Quikgater"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
@@ -21,6 +25,7 @@
 <link rel="canonical" href="https://www.slidphilabs.com/truth"/>
 <meta name="robots" content="index,follow"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+<link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{--bg:#050b16;--panel:#0c1524;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);--text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--code:#081018;--poster:url("/assets/slid-phi-labs-master.jpg")}
@@ -57,7 +62,10 @@ footer{padding:28px 0;border-top:1px solid rgba(232,197,71,.18);color:var(--mute
 </head>
 <body>
 <nav><div class="inner">
-  <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>Slid Phi <span>Labs</span></a>
+  <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
+      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>
+      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+    </a>
   <div class="nav-links">
     <a href="/standings">Standings</a>
     <a href="/web">Web</a>
@@ -89,7 +97,7 @@ footer{padding:28px 0;border-top:1px solid rgba(232,197,71,.18);color:var(--mute
   </div>
 </main>
 <footer class="wrap">
-  <p><a href="/">Home</a> · <a href="/standings">Standings</a> · IP Guard: public outcomes only.</p>
+  <p><a href="/">Home</a> · <a href="/standings">Standings</a> · IP Guard: outcomes only.</p>
 </footer>
 <script>
 (async () => {

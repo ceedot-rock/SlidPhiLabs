@@ -1,6 +1,6 @@
 {
   "name": "Slid Phi Labs",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "site": "https://www.slidphilabs.com",
   "protocols": [
     "x402"
@@ -10,7 +10,7 @@
   "buy": "POST https://www.slidphilabs.com/api/x402-products",
   "suite": "POST https://www.slidphilabs.com/api/x402-suite",
   "human_stripe": "https://www.slidphilabs.com/#pricing",
-  "one_liner": "Free first 100 GB suite (equal free-tier $0) · then ~5c/GB under ~9c first paid egress. GET https://www.slidphilabs.com/api/agent. Try Gate retired.",
+  "one_liner": "TRU8 public face. Free first 100 GB suite \u00b7 then ~5c/GB. GET /api/agent. Try Gate retired. x402 auto-claim not wired.",
   "agents_txt": "https://www.slidphilabs.com/agents.txt",
   "agents_json": "https://www.slidphilabs.com/agents.json",
   "llms_txt": "https://www.slidphilabs.com/llms.txt",
@@ -24,12 +24,13 @@
     "cuni_studio": "https://cuni-studio.fly.dev/",
     "agent_rider": "https://agentrider.vercel.app/",
     "quikgater": "https://github.com/ceedot-rock/quikgater",
-    "quikgater_worker": "https://quikgater-worker.ceedotrock.workers.dev"
+    "quikgater_worker": "https://quikgater-worker.ceedotrock.workers.dev",
+    "agent_rider_status": "paused"
   },
   "modules": {
     "compression": {
       "products": [
-        "SPL Codec",
+        "TRU8",
         "CDDG:Split"
       ],
       "web": "https://www.slidphilabs.com/web",
@@ -37,7 +38,16 @@
       "cddg": "https://www.slidphilabs.com/#cddg-split",
       "standings": "https://www.slidphilabs.com/standings",
       "truth": "https://www.slidphilabs.com/truth",
-      "datacenters": "https://www.slidphilabs.com/datacenters"
+      "datacenters": "https://www.slidphilabs.com/datacenters",
+      "historical_engines": [
+        "SPL Codec",
+        "OmniWave",
+        "ZRW"
+      ],
+      "home": "https://www.slidphilabs.com/",
+      "demos": "https://www.slidphilabs.com/demos",
+      "license": "https://www.slidphilabs.com/license",
+      "github": "https://github.com/ceedot-rock/TRU8"
     },
     "agent_platform": {
       "products": [
@@ -49,11 +59,20 @@
       "agent_rider": "https://agentrider.vercel.app/",
       "quikgater": "https://github.com/ceedot-rock/quikgater",
       "quikgater_worker": "https://quikgater-worker.ceedotrock.workers.dev"
+    },
+    "olympiad": {
+      "name": "Great Agentic Olympiad",
+      "entry": "https://www.slidphilabs.com/api/x402-products?sku=gao-entry",
+      "board": "https://www.slidphilabs.com/olympiad"
+    },
+    "toy_store": {
+      "name": "Toy Store",
+      "catalog": "https://www.slidphilabs.com/toys.json"
     }
   },
-  "description": "Compression module + Agent platform (CuNi, Rider, Quikgater)",
+  "description": "TRU8 (public product face) + CDDG:Split + Agent platform (CuNi, Rider paused, Quikgater)",
   "platform": {
-    "slogan": "One mission · two attack vectors · one team",
+    "slogan": "One mission \u00b7 two attack vectors \u00b7 one team",
     "humans": "https://www.slidphilabs.com/humans",
     "agents": "https://www.slidphilabs.com/agents",
     "map": "https://www.slidphilabs.com/platform.json"
@@ -70,5 +89,69 @@
     "suite_url": "https://www.slidphilabs.com/pps",
     "rule": "Equal at $0 through free-tier size (100 GB); under first paid egress (~9c/GB)"
   },
-  "try_gate": "retired"
+  "try_gate": "retired",
+  "olympiad": {
+    "html": "https://www.slidphilabs.com/olympiad",
+    "api": "https://www.slidphilabs.com/api/olympiad",
+    "json": "https://www.slidphilabs.com/olympiad.json",
+    "records": "https://www.slidphilabs.com/olympiad-records.json",
+    "entry_sku": "gao-entry",
+    "entry_usd": "1.00",
+    "sponsor": "Slid Phi Labs \u00b7 slidphilabs.com",
+    "phase": "tryouts_and_competitions"
+  },
+  "toy_store": {
+    "html": "https://www.slidphilabs.com/toys",
+    "json": "https://www.slidphilabs.com/toys.json"
+  },
+  "updated": "2026-08-12",
+  "product": "TRU8",
+  "liveness": {
+    "checked": "2026-08-12",
+    "x402_access_autoclaim": false,
+    "x402_access_note": "Stripe session verify works on /access. x402 auto-claim is not wired; agents email proof or use /access?product= + order id.",
+    "sisters": {
+      "agent_rider": {
+        "url": "https://agentrider.vercel.app/",
+        "status": "paused",
+        "note": "2026-08-12: Vercel Deployment Paused (DEPLOYMENT_DISABLED / HTTP 402)."
+      },
+      "cuni_studio": {
+        "url": "https://cuni-studio.fly.dev/",
+        "health": "https://cuni-studio.fly.dev/api/health",
+        "status": "live",
+        "note": "2026-08-12: GET /api/health returned ok:true."
+      },
+      "quikgater_worker": {
+        "url": "https://quikgater-worker.ceedotrock.workers.dev",
+        "status": "live",
+        "note": "2026-08-12: worker responds (bare GET 400 MISSING_URL_PARAM \u2014 expected)."
+      },
+      "team_mesh": {
+        "url": "https://spl-team-mesh.fly.dev",
+        "status": "live",
+        "note": "2026-08-12: headers present (x-team-mesh-version 1.2.0-smrt)."
+      }
+    }
+  },
+  "legal": {
+    "trade_name": "Slid Phi Labs",
+    "public_author": "Corey Tasz",
+    "legal_name_manuscript": "Corey Robert Ptaszenski",
+    "entity_claimed": "none \u2014 no public LLC/Inc/Ltd filing is claimed",
+    "roles": [
+      "author",
+      "copyright holder",
+      "inventor"
+    ],
+    "not_a_title": "founder",
+    "commercial_use": "written license required",
+    "contact": {
+      "humans": "corey@slidphilabs.com",
+      "commercial": "license@slidphilabs.com",
+      "fallback": "ceedotrock@gmail.com"
+    },
+    "site": "https://www.slidphilabs.com"
+  },
+  "x402_access_autoclaim": false
 }

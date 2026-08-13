@@ -3,6 +3,22 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/stand/",
+      "destination": "/standings.html"
+    },
+    {
+      "source": "/stand",
+      "destination": "/standings.html"
+    },
+    {
+      "source": "/x-oauth/callback",
+      "destination": "/x-oauth/callback/index.html"
+    },
+    {
+      "source": "/x-oauth/callback/",
+      "destination": "/x-oauth/callback/index.html"
+    },
+    {
       "source": "/access",
       "destination": "/access/index.html"
     },
@@ -17,6 +33,14 @@
     {
       "source": "/demos/",
       "destination": "/demos/index.html"
+    },
+    {
+      "source": "/bench",
+      "destination": "/bench/index.html"
+    },
+    {
+      "source": "/bench/",
+      "destination": "/bench/index.html"
     },
     {
       "source": "/pps",
@@ -35,12 +59,60 @@
       "destination": "/humans/index.html"
     },
     {
+      "source": "/convert",
+      "destination": "/convert.html"
+    },
+    {
+      "source": "/convert/",
+      "destination": "/convert.html"
+    },
+    {
+      "source": "/freemium",
+      "destination": "/convert.html"
+    },
+    {
+      "source": "/freemium/",
+      "destination": "/convert.html"
+    },
+    {
+      "source": "/join",
+      "destination": "/join.html"
+    },
+    {
+      "source": "/join/",
+      "destination": "/join.html"
+    },
+    {
+      "source": "/join-the-work",
+      "destination": "/join.html"
+    },
+    {
+      "source": "/join-the-work/",
+      "destination": "/join.html"
+    },
+    {
       "source": "/agents",
       "destination": "/agents/index.html"
     },
     {
       "source": "/agents/",
       "destination": "/agents/index.html"
+    },
+    {
+      "source": "/olympiad",
+      "destination": "/olympiad.html"
+    },
+    {
+      "source": "/olympiad/",
+      "destination": "/olympiad.html"
+    },
+    {
+      "source": "/toys",
+      "destination": "/toys.html"
+    },
+    {
+      "source": "/toys/",
+      "destination": "/toys.html"
     },
     {
       "source": "/updates",
@@ -57,6 +129,14 @@
     {
       "source": "/blog/",
       "destination": "/blog/index.html"
+    },
+    {
+      "source": "/blog/2026-08-07-why-8b-matters",
+      "destination": "/blog/2026-08-07-why-8b-matters.html"
+    },
+    {
+      "source": "/blog/2026-08-07-why-8b-matters/",
+      "destination": "/blog/2026-08-07-why-8b-matters.html"
     },
     {
       "source": "/blog/2026-08-07-two-doors-one-lab",
@@ -195,6 +275,23 @@
   ],
   "headers": [
     {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Slid-Engine",
+          "value": "alive"
+        },
+        {
+          "key": "X-Slid-Flagship",
+          "value": "ZRW-8B"
+        },
+        {
+          "key": "X-Slid-Position",
+          "value": "Exact codecs. Agentic infrastructure. Compression that knows it is alive."
+        }
+      ]
+    },
+    {
       "source": "/blog.json",
       "headers": [
         {
@@ -237,7 +334,15 @@
         },
         {
           "key": "X-Lab-Slogan",
-          "value": "One mission · two attack vectors · one team"
+          "value": "Compression that knows it is alive \u00b7 two doors \u00b7 one team"
+        },
+        {
+          "key": "X-Slid-Engine",
+          "value": "alive"
+        },
+        {
+          "key": "X-Slid-Flagship",
+          "value": "ZRW-8B"
         }
       ]
     },
@@ -332,6 +437,82 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=300"
+        }
+      ]
+    },
+    {
+      "source": "/olympiad.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=120"
+        },
+        {
+          "key": "X-GAO-Sponsor",
+          "value": "Slid Phi Labs \u00b7 slidphilabs.com"
+        }
+      ]
+    },
+    {
+      "source": "/toys.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=120"
+        }
+      ]
+    },
+    {
+      "source": "/olympiad-records.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
+        },
+        {
+          "key": "X-GAO-Sponsor",
+          "value": "Slid Phi Labs \u00b7 slidphilabs.com"
+        }
+      ]
+    },
+    {
+      "source": "/api/olympiad",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=60"
+        },
+        {
+          "key": "X-GAO-Sponsor",
+          "value": "Slid Phi Labs \u00b7 slidphilabs.com"
         }
       ]
     },
@@ -469,6 +650,27 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/api/phi/metrics",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "X-Slid-Engine",
+          "value": "alive"
+        },
+        {
+          "key": "X-Slid-Flagship",
+          "value": "ZRW-8B"
         }
       ]
     }

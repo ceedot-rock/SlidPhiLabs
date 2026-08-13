@@ -38,25 +38,31 @@ import {
   OP_MULT,
   FREE_BYTES,
   MIN_PAID_CENTS,
+  SUITE_PRICING,
 } from "./index.mjs";
+
+const SUITE_LINE =
+  "Free first 100 GB per job · then ~5¢/GB (4¢ after 100 paid GB) · min $0.05 · under ~9¢ cloud egress. Try Gate retired.";
 
 const TOOLS = [
   {
     name: "spl_pps_info",
     description:
-      "SPL Pay Per Suite overview: freemium suite (free first 1 GB then ~3¢/GB · min $2), Stripe (humans) + x402 (agents), products, data classes, ops. Try Gate retired.",
+      "SPL Pay Per Suite overview: " +
+      SUITE_LINE +
+      " Stripe (humans) + x402 (agents). Standing SKUs: CDDG $199 · ZRW $79/$249/$699 · blackjack/shards/slid-phi/support $199 · consulting $250.",
     inputSchema: { type: "object", properties: {} },
   },
   {
     name: "spl_pps_x402_info",
     description:
-      "Agentic commerce discovery: standing product catalog + freemium suite jobs (free under 1 GB), headers, flow. Stripe remains for humans.",
+      "Agentic commerce discovery: standing product catalog + freemium suite jobs (free under 100 GB), headers, flow. Stripe remains for humans.",
     inputSchema: { type: "object", properties: {} },
   },
   {
     name: "spl_pps_x402_catalog",
     description:
-      "List standing Slid Phi Labs license products agents can buy via x402 (CDDG:Split, ZRW tiers, Blackjack, shards, support, etc.). No try-gate — use freemium suite for eval.",
+      "List standing Slid Phi Labs license products agents can buy via x402 (CDDG:Split $199, ZRW tiers $79/$249/$699, Blackjack/shards/slid-phi/support $199, consulting $250, etc.). Freemium suite for eval.",
     inputSchema: { type: "object", properties: {} },
   },
   {
@@ -69,7 +75,7 @@ const TOOLS = [
         sku: {
           type: "string",
           description:
-            "cddg-split | zrw-n00b | zrw-pro | zrw-l33t | blackjack | shard-zip | shard-tsdb | slid-phi | support-integration | consulting | sponsor | donate",
+            "cddg-split($199) | zrw-n00b($79) | zrw-pro($249) | zrw-l33t($699) | blackjack($199) | shard-zip($199) | shard-tsdb($199) | slid-phi($199) | support-integration($199) | consulting($250) | sponsor($29) | donate($29.99) | gao-entry($1)",
         },
         email: { type: "string" },
         note: { type: "string" },
@@ -82,14 +88,17 @@ const TOOLS = [
   {
     name: "spl_pps_x402_requirements",
     description:
-      "Probe POST /api/x402-suite. Free under 1 GB (no pay). Over free → 402 accepts[] for usage pricing (~3¢/GB · min $2).",
+      "Probe POST /api/x402-suite. Free under 100 GB (no pay). Over free → 402 accepts[] for usage (~5¢/GB then 4¢ · min $0.05).",
     inputSchema: {
       type: "object",
       properties: {
         product: { type: "string" },
         dataClass: { type: "string" },
         op: { type: "string" },
-        bytes: { type: "number", description: "≤1GiB free; over free requires payment" },
+        bytes: {
+          type: "number",
+          description: "Payload bytes (≤100 GiB free; over free requires payment)",
+        },
         email: { type: "string" },
         note: { type: "string" },
       },
@@ -98,7 +107,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_submit",
     description:
-      "Submit freemium suite job via x402. Under 1 GB free (no paymentHeader). Over free: pass paymentHeader after paying, or devBypass for staging.",
+      "Submit freemium suite job via x402. Under 100 GB free (no paymentHeader). Over free: pass paymentHeader after paying, or devBypass for staging.",
     inputSchema: {
       type: "object",
       properties: {
@@ -109,7 +118,10 @@ const TOOLS = [
         email: { type: "string" },
         note: { type: "string" },
         fileName: { type: "string" },
-        paymentHeader: { type: "string", description: "Base64 X-PAYMENT proof (only if over free cap)" },
+        paymentHeader: {
+          type: "string",
+          description: "Base64 X-PAYMENT proof (only if over free 100 GB cap)",
+        },
         devBypass: { type: "boolean", description: "Staging only if server allows" },
       },
     },
@@ -117,7 +129,7 @@ const TOOLS = [
   {
     name: "spl_pps_quote",
     description:
-      "Instant freemium quote: free first 1 GB ($0), then ~3¢/GB · min $2. Inputs: product, dataClass, op, bytes. Returns free flag + USD amount.",
+      "Instant freemium quote: free first 100 GB ($0), then ~5¢/GB (4¢ bulk) · min $0.05. Inputs: product, dataClass, op, bytes. Returns free flag + USD amount.",
     inputSchema: {
       type: "object",
       properties: {
@@ -131,7 +143,10 @@ const TOOLS = [
             "zeros | ramp | walk | mixed_ints | timeseries | json_series | binary | unknown",
         },
         op: { type: "string", description: "compress | decompress | roundtrip" },
-        bytes: { type: "number", description: "Payload size in bytes (≤1GiB = free)" },
+        bytes: {
+          type: "number",
+          description: "Payload size in bytes (≤100 GiB = free)",
+        },
         remote: { type: "boolean", description: "If true, use live site API" },
       },
     },
@@ -139,7 +154,7 @@ const TOOLS = [
   {
     name: "spl_pps_checkout",
     description:
-      "Checkout for suite quote. Under 1 GB returns free_showcase (no Stripe). Over free returns Stripe Checkout URL.",
+      "Checkout for suite quote. Under 100 GB returns free_showcase (no Stripe). Over free returns Stripe Checkout URL.",
     inputSchema: {
       type: "object",
       properties: {
@@ -154,7 +169,7 @@ const TOOLS = [
   {
     name: "spl_pps_submit_job",
     description:
-      "Submit a Pay Per Suite job (free under 1 GB after free_showcase, or after paid). Lab runs best tool and emails results. Requires email.",
+      "Submit a Pay Per Suite job (free under 100 GB after free_showcase, or after paid). Lab runs best tool and emails results. Requires email.",
     inputSchema: {
       type: "object",
       properties: {
@@ -180,7 +195,10 @@ const TOOLS = [
     inputSchema: {
       type: "object",
       properties: {
-        sample_base64: { type: "string", description: "Base64 of file head (≤8KB recommended)" },
+        sample_base64: {
+          type: "string",
+          description: "Base64 of file head (≤8KB recommended)",
+        },
       },
       required: ["sample_base64"],
     },
@@ -200,15 +218,23 @@ async function callTool(name, args = {}) {
       return {
         service: SERVICE_NAME,
         site: SITE_PPS,
-        pricing: {
-          model: "freemium_suite_v2",
-          free_cap_bytes: FREE_BYTES,
-          free_cap_gb: 1,
-          usd_per_gb_after_free: 0.03,
-          usd_per_gb_bulk: 0.02,
-          min_paid_cents: MIN_PAID_CENTS,
-          try_gate: "retired",
+        pricing: { ...SUITE_PRICING, free_cap_bytes: FREE_BYTES, min_paid_cents: MIN_PAID_CENTS },
+        standing_skus_usd: {
+          "cddg-split": 199,
+          "zrw-n00b": 79,
+          "zrw-pro": 249,
+          "zrw-l33t": 699,
+          blackjack: 199,
+          "shard-zip": 199,
+          "shard-tsdb": 199,
+          "slid-phi": 199,
+          "support-integration": 199,
+          consulting: 250,
+          sponsor: 29,
+          donate: 29.99,
+          "gao-entry": 1,
         },
+        catalog: X402_PRODUCTS_URL,
         pay_human: STRIPE_PAYMENT_LINK,
         pay_agent_products: X402_PRODUCTS_URL,
         pay_agent_jobs: X402_SUITE_URL,
@@ -218,7 +244,10 @@ async function callTool(name, args = {}) {
         ops: Object.keys(OP_MULT),
         npm: "spl-pay-per-suite",
         cli: "npx spl-pay-per-suite quote|pay|job|x402|catalog|buy",
-        discovery: "https://www.slidphilabs.com/api/agent",
+        discovery: "https://slidphilabs.fly.dev/api/agent",
+        pay_ui: "https://slidphilabs.fly.dev/pay",
+        canonical_doc: "docs/NPM_PRICING.md",
+        one_liner: SUITE_LINE,
       };
     case "spl_pps_x402_info":
       return agentDiscovery();

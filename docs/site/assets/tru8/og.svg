@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+  <circle cx="980" cy="120" r="220" fill="#00C2C7" opacity="0.08"/>
+  <circle cx="160" cy="520" r="180" fill="#00C2C7" opacity="0.05"/>
+  <text x="80" y="280" font-family="Inter, system-ui, sans-serif" font-size="140" font-weight="700" letter-spacing="-0.05em" fill="#FFFFFF">TRU</text>
+  <text x="420" y="280" font-family="Inter, system-ui, sans-serif" font-size="140" font-weight="700" letter-spacing="-0.05em" fill="#00C2C7">8</text>
+  <text x="80" y="360" font-family="Inter, system-ui, sans-serif" font-size="42" font-weight="500" fill="#FFFFFF">Less is more.</text>
+  <text x="80" y="420" font-family="Inter, system-ui, sans-serif" font-size="28" fill="#6B6B6B">We dropped the E. · Slid Phi Labs</text>
+  <text x="80" y="560" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="22" fill="#00C2C7">1 000 000 zeros → 8 B · 125 000×</text>
+</svg>

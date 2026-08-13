@@ -1,13 +1,155 @@
 {
   "service": "Slid Phi Labs — Lab Feed",
-  "version": "1.0.0",
-  "updated": "2026-08-07",
+  "version": "1.1.0",
+  "updated": "2026-08-09",
   "social": {
     "x": "https://x.com/slidphilabs",
     "handle": "@slidphilabs"
   },
-  "description": "Product updates, news, plans, and social pointers. Public outcomes only.",
+  "description": "Product updates, news, plans, and social pointers.",
   "items": [
+    {
+      "id": "u-spl-v0-1-public-sketch",
+      "date": "2026-08-10",
+      "type": "product",
+      "title": "SPL Codec v0.1 public sketch + flagship 8 B reaffirm",
+      "body": "Working residual sketch (sparse float + compress) shipped with RT. Flagship ZRW int zeros×10k still 8 B vs gzip 73 / brotli 13. Sketch numbers domain-honest (not universal crown).",
+      "href": "https://www.slidphilabs.com/lab/SPL_CODEC_V0_1_BENCH_LATEST.json",
+      "href_label": "v0.1 bench JSON",
+      "tags": ["spl", "zrw", "public-proof", "gate2"]
+    },
+    {
+      "id": "u-gate2-zrw-10k-bench",
+      "date": "2026-08-10",
+      "type": "product",
+      "title": "Gate 2 — ZRW zeros×10k public bench PASS",
+      "body": "Domain bench frozen: ZRW 8 B vs gzip-9 73 B · brotli-11 13 B on int32 zeros×10k (40 kB raw). Live process + compress/decompress RT. SPL public face · suite first 100 GB free.",
+      "href": "https://www.slidphilabs.com/lab/ZRW_ZEROS_10K_BENCH_LATEST.json",
+      "href_label": "ZRW 10k bench JSON",
+      "tags": ["gate2", "zrw", "benchmark", "public-proof"]
+    },
+    {
+      "id": "u-public-proof-joint-zrw-cuni",
+      "date": "2026-08-10",
+      "type": "product",
+      "title": "Public proof joint — ZRW zeros×10k 8 B + CuNi/Quikgater",
+      "body": "Live process re-run PASS (8 B · me 0 · RT). Joint JSON freezes compression + agent surfaces. CuNi health green; Quikgater worker alive; Agent^Rider 402 billing blocks full agent grade.",
+      "href": "https://www.slidphilabs.com/lab/PUBLIC_PROOF_JOINT_LATEST.json",
+      "href_label": "Joint public proof",
+      "tags": ["zrw", "cuni", "quikgater", "public-proof"]
+    },
+    {
+      "id": "u-fix-ixg-standings-mesh",
+      "date": "2026-08-10",
+      "type": "ops",
+      "title": "Honesty fix pack — standings 1.2.2 · mesh chat · intention × grade",
+      "body": "OmniWave Silesia demoted from false size crown (lossless freeze + float diagnostic). Team Mesh dark-matter no longer freezes say. Focus formula intention × grade in CodEX + Mesh.",
+      "href": "https://www.slidphilabs.com/standings",
+      "href_label": "Standings 1.2.2",
+      "tags": ["standings", "mesh", "codex", "honesty"]
+    },
+    {
+      "id": "u-codex-1-1-stats-story",
+      "date": "2026-08-10",
+      "type": "product",
+      "title": "dViNE CodEX 1.1 — statistical freeze + lab chronicle",
+      "body": "Industry Silesia = field baseline (brotli-11 4.21× · zstd-3 ~39 MB/s). OmniWave lossless freeze ~3.13–3.60×. Float path diagnostic-only. Books II & XI expand wrong-engine honesty and Chamber vs public faces.",
+      "href": "https://www.slidphilabs.com/codex.html",
+      "href_label": "Open CodEX 1.1",
+      "tags": [
+        "codex",
+        "omniwave",
+        "silesia",
+        "lab-story"
+      ]
+    },
+    {
+      "id": "u-weights-vs-files-matrix",
+      "date": "2026-08-09",
+      "type": "product",
+      "title": "Lossless pack matrix: weights vs files",
+      "body": "Public CodEX extension: residual law for file corpora and agent-weight checkpoints. Exact RT · industry field baseline · residual-governance. No private coefficients.",
+      "href": "https://www.slidphilabs.com/weights-vs-files",
+      "href_label": "Weights vs files",
+      "tags": [
+        "codex",
+        "omniwave",
+        "residual-governance",
+        "inference"
+      ]
+    },
+    {
+      "id": "u-999-school-factory",
+      "date": "2026-08-09",
+      "type": "product",
+      "title": "999° gift circle — school factory $275 live",
+      "body": "TEACHAiD MOTIS: pay $275 to create a school; forever owner cut on school GMV. Stripe live · vault desk · Financial AI Dept settle.",
+      "href": "https://teachaid.fly.dev/campus-hub.html#school",
+      "href_label": "School factory desk",
+      "tags": [
+        "gift",
+        "999",
+        "teachaid",
+        "motis"
+      ]
+    },
+    {
+      "id": "u-66-dual-doors",
+      "date": "2026-08-09",
+      "type": "product",
+      "title": "66° dual doors sealed on primary host",
+      "body": "Human Stripe door + agent x402 door green on www.slidphilabs.com (Fly). Mesh + alternate host green.",
+      "href": "https://www.slidphilabs.com/api/agent",
+      "href_label": "Agent discovery",
+      "tags": [
+        "dual-doors",
+        "66",
+        "platform"
+      ]
+    },
+    {
+      "id": "u-33-domain-supremacy",
+      "date": "2026-08-09",
+      "type": "product",
+      "title": "33° domain supremacy — www is product",
+      "body": "www.slidphilabs.com serves live Fly product. No ghost Wix-API claims. Proof before praise.",
+      "href": "https://www.slidphilabs.com/",
+      "href_label": "Home",
+      "tags": [
+        "domain",
+        "33",
+        "host"
+      ]
+    },
+    {
+      "id": "u-standings-1-2",
+      "date": "2026-08-09",
+      "type": "product",
+      "title": "Standings v1.2.0 — zeros_1M + Silesia + cadence",
+      "body": "Records: ZRW zeros_1M → 10 B; OmniWave Silesia size lead (domain-scoped); seals 33·66·999. GET /standings.json.",
+      "href": "https://www.slidphilabs.com/standings",
+      "href_label": "Standings",
+      "tags": [
+        "standings",
+        "records",
+        "proof"
+      ]
+    },
+    {
+      "id": "u-site-breathes",
+      "date": "2026-08-07",
+      "type": "product",
+      "title": "Site now breathes — proof bar, standings, metrics live",
+      "body": "Compression that knows it is alive. ZRW zeros×10k → 8 B. Live ratio/cycles/self-tunes. Standings first paint. GET /api/phi/metrics.",
+      "href": "https://www.slidphilabs.com/blog/2026-08-07-why-8b-matters",
+      "href_label": "Why 8 B matters",
+      "tags": [
+        "proof",
+        "alive",
+        "standings",
+        "product"
+      ]
+    },
     {
       "id": "u-pricing-v3-money",
       "date": "2026-08-07",

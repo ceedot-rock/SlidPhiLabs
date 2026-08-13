@@ -1,0 +1,766 @@
+{
+  "schema": "spl.weak_vector_battery.v1",
+  "at": "2026-08-09T19:52:52Z",
+  "base": "https://slidphilabs.fly.dev",
+  "raw_per_vector": 16384,
+  "law": "claimable only with exact roundtrip; dE+dC\u22480",
+  "vectors": [
+    {
+      "vector": "float_smooth",
+      "raw_bytes": 16384,
+      "gzip9_bytes": 15067,
+      "gzip9_ratio": 0.919617,
+      "brotli11_bytes": 15067,
+      "brotli11_ratio": 0.919617,
+      "engines": {
+        "zrw_public": {
+          "packed_bytes": 17747,
+          "ratio_to_raw": 1.083191,
+          "ratio_to_gzip": 1.177872,
+          "better_than_gzip_pct": -17.79,
+          "roundtrip": false,
+          "mirror_error": 1,
+          "claimable": false,
+          "ms": 264.7397750406526,
+          "path": "zrw",
+          "error": null
+        },
+        "omni_auto": {
+          "path": "float+bare",
+          "method": "brotli-11",
+          "packed_bytes": 6655,
+          "ratio_to_raw": 0.406189,
+          "ratio_to_gzip": 0.441694,
+          "better_than_gzip_pct": 55.83,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 210.711
+        },
+        "omni_general": {
+          "path": "general+bare",
+          "method": "brotli-11",
+          "packed_bytes": 14822,
+          "ratio_to_raw": 0.904663,
+          "ratio_to_gzip": 0.983739,
+          "better_than_gzip_pct": 1.63,
+          "roundtrip": true,
+          "claimable": true,
+          "beats_gzip": true,
+          "ms": 276.158
+        },
+        "omni_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 13017,
+          "ratio_to_raw": 0.794495,
+          "ratio_to_gzip": 0.863941,
+          "better_than_gzip_pct": 13.61,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 283.274
+        },
+        "omni_float": {
+          "path": "float+bare",
+          "method": "brotli-11",
+          "packed_bytes": 6655,
+          "ratio_to_raw": 0.406189,
+          "ratio_to_gzip": 0.441694,
+          "better_than_gzip_pct": 55.83,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 237.048
+        },
+        "omni_zrw_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 13017,
+          "ratio_to_raw": 0.794495,
+          "ratio_to_gzip": 0.863941,
+          "better_than_gzip_pct": 13.61,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 266.985
+        }
+      },
+      "weak": true,
+      "best_claimable": {
+        "engine": "omni_general",
+        "packed_bytes": 14822,
+        "path": "general+bare",
+        "method": "brotli-11",
+        "better_than_gzip_pct": 1.63,
+        "ratio_to_gzip": 0.983739
+      },
+      "still_weak_vs_gzip": false
+    },
+    {
+      "vector": "float_noisy",
+      "raw_bytes": 16384,
+      "gzip9_bytes": 15234,
+      "gzip9_ratio": 0.92981,
+      "brotli11_bytes": 15234,
+      "brotli11_ratio": 0.92981,
+      "engines": {
+        "zrw_public": {
+          "packed_bytes": 18144,
+          "ratio_to_raw": 1.107422,
+          "ratio_to_gzip": 1.19102,
+          "better_than_gzip_pct": -19.1,
+          "roundtrip": false,
+          "mirror_error": 1,
+          "claimable": false,
+          "ms": 263.23053397936746,
+          "path": "zrw",
+          "error": null
+        },
+        "omni_auto": {
+          "path": "float+bare",
+          "method": "brotli-11",
+          "packed_bytes": 7705,
+          "ratio_to_raw": 0.470276,
+          "ratio_to_gzip": 0.505777,
+          "better_than_gzip_pct": 49.42,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 208.154
+        },
+        "omni_general": {
+          "path": "general+bare",
+          "method": "brotli-11",
+          "packed_bytes": 15166,
+          "ratio_to_raw": 0.925659,
+          "ratio_to_gzip": 0.995536,
+          "better_than_gzip_pct": 0.45,
+          "roundtrip": true,
+          "claimable": true,
+          "beats_gzip": true,
+          "ms": 249.659
+        },
+        "omni_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 14778,
+          "ratio_to_raw": 0.901978,
+          "ratio_to_gzip": 0.970067,
+          "better_than_gzip_pct": 2.99,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 226.77
+        },
+        "omni_float": {
+          "path": "float+bare",
+          "method": "brotli-11",
+          "packed_bytes": 7705,
+          "ratio_to_raw": 0.470276,
+          "ratio_to_gzip": 0.505777,
+          "better_than_gzip_pct": 49.42,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 232.596
+        },
+        "omni_zrw_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 14778,
+          "ratio_to_raw": 0.901978,
+          "ratio_to_gzip": 0.970067,
+          "better_than_gzip_pct": 2.99,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 277.648
+        }
+      },
+      "weak": true,
+      "best_claimable": {
+        "engine": "omni_general",
+        "packed_bytes": 15166,
+        "path": "general+bare",
+        "method": "brotli-11",
+        "better_than_gzip_pct": 0.45,
+        "ratio_to_gzip": 0.995536
+      },
+      "still_weak_vs_gzip": false
+    },
+    {
+      "vector": "high_entropy",
+      "raw_bytes": 16384,
+      "gzip9_bytes": 409,
+      "gzip9_ratio": 0.024963,
+      "brotli11_bytes": 409,
+      "brotli11_ratio": 0.024963,
+      "engines": {
+        "zrw_public": {
+          "packed_bytes": 17412,
+          "ratio_to_raw": 1.062744,
+          "ratio_to_gzip": 42.572127,
+          "better_than_gzip_pct": -4157.21,
+          "roundtrip": false,
+          "mirror_error": 1,
+          "claimable": false,
+          "ms": 221.17168101249263,
+          "path": "zrw",
+          "error": null
+        },
+        "omni_auto": {
+          "path": "general+bare",
+          "method": "brotli-11",
+          "packed_bytes": 274,
+          "ratio_to_raw": 0.016724,
+          "ratio_to_gzip": 0.669927,
+          "better_than_gzip_pct": 33.01,
+          "roundtrip": true,
+          "claimable": true,
+          "beats_gzip": true,
+          "ms": 173.75
+        },
+        "omni_general": {
+          "path": "general+bare",
+          "method": "brotli-11",
+          "packed_bytes": 274,
+          "ratio_to_raw": 0.016724,
+          "ratio_to_gzip": 0.669927,
+          "better_than_gzip_pct": 33.01,
+          "roundtrip": true,
+          "claimable": true,
+          "beats_gzip": true,
+          "ms": 176.886
+        },
+        "omni_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 128,
+          "ratio_to_raw": 0.007812,
+          "ratio_to_gzip": 0.312958,
+          "better_than_gzip_pct": 68.7,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 199.101
+        },
+        "omni_float": {
+          "path": "float+bare",
+          "method": "brotli-11",
+          "packed_bytes": 122,
+          "ratio_to_raw": 0.007446,
+          "ratio_to_gzip": 0.298289,
+          "better_than_gzip_pct": 70.17,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 170.028
+        },
+        "omni_zrw_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 128,
+          "ratio_to_raw": 0.007812,
+          "ratio_to_gzip": 0.312958,
+          "better_than_gzip_pct": 68.7,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 210.908
+        }
+      },
+      "weak": true,
+      "best_claimable": {
+        "engine": "omni_auto",
+        "packed_bytes": 274,
+        "path": "general+bare",
+        "method": "brotli-11",
+        "better_than_gzip_pct": 33.01,
+        "ratio_to_gzip": 0.669927
+      },
+      "still_weak_vs_gzip": false
+    },
+    {
+      "vector": "mixed",
+      "raw_bytes": 16384,
+      "gzip9_bytes": 5691,
+      "gzip9_ratio": 0.347351,
+      "brotli11_bytes": 5691,
+      "brotli11_ratio": 0.347351,
+      "engines": {
+        "zrw_public": {
+          "packed_bytes": 23000,
+          "ratio_to_raw": 1.403809,
+          "ratio_to_gzip": 4.041469,
+          "better_than_gzip_pct": -304.15,
+          "roundtrip": false,
+          "mirror_error": 1,
+          "claimable": false,
+          "ms": 265.47508395742625,
+          "path": "zrw",
+          "error": null
+        },
+        "omni_auto": {
+          "path": "general+bare",
+          "method": "brotli-11",
+          "packed_bytes": 5587,
+          "ratio_to_raw": 0.341003,
+          "ratio_to_gzip": 0.981726,
+          "better_than_gzip_pct": 1.83,
+          "roundtrip": true,
+          "claimable": true,
+          "beats_gzip": true,
+          "ms": 222.694
+        },
+        "omni_general": {
+          "path": "general+bare",
+          "method": "brotli-11",
+          "packed_bytes": 5587,
+          "ratio_to_raw": 0.341003,
+          "ratio_to_gzip": 0.981726,
+          "better_than_gzip_pct": 1.83,
+          "roundtrip": true,
+          "claimable": true,
+          "beats_gzip": true,
+          "ms": 210.502
+        },
+        "omni_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 5027,
+          "ratio_to_raw": 0.306824,
+          "ratio_to_gzip": 0.883325,
+          "better_than_gzip_pct": 11.67,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 180.72
+        },
+        "omni_float": {
+          "path": "float+bare",
+          "method": "brotli-11",
+          "packed_bytes": 2483,
+          "ratio_to_raw": 0.15155,
+          "ratio_to_gzip": 0.436303,
+          "better_than_gzip_pct": 56.37,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 208.869
+        },
+        "omni_zrw_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 5027,
+          "ratio_to_raw": 0.306824,
+          "ratio_to_gzip": 0.883325,
+          "better_than_gzip_pct": 11.67,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 251.92
+        }
+      },
+      "weak": true,
+      "best_claimable": {
+        "engine": "omni_auto",
+        "packed_bytes": 5587,
+        "path": "general+bare",
+        "method": "brotli-11",
+        "better_than_gzip_pct": 1.83,
+        "ratio_to_gzip": 0.981726
+      },
+      "still_weak_vs_gzip": false
+    },
+    {
+      "vector": "angular_rotation",
+      "raw_bytes": 16384,
+      "gzip9_bytes": 9176,
+      "gzip9_ratio": 0.560059,
+      "brotli11_bytes": 9176,
+      "brotli11_ratio": 0.560059,
+      "engines": {
+        "zrw_public": {
+          "packed_bytes": 20270,
+          "ratio_to_raw": 1.237183,
+          "ratio_to_gzip": 2.209024,
+          "better_than_gzip_pct": -120.9,
+          "roundtrip": false,
+          "mirror_error": 1,
+          "claimable": false,
+          "ms": 229.05269800685346,
+          "path": "zrw",
+          "error": null
+        },
+        "omni_auto": {
+          "path": "float+bare",
+          "method": "brotli-11",
+          "packed_bytes": 13,
+          "ratio_to_raw": 0.000793,
+          "ratio_to_gzip": 0.001417,
+          "better_than_gzip_pct": 99.86,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 182.491
+        },
+        "omni_general": {
+          "path": "general+bare",
+          "method": "brotli-11",
+          "packed_bytes": 9122,
+          "ratio_to_raw": 0.556763,
+          "ratio_to_gzip": 0.994115,
+          "better_than_gzip_pct": 0.59,
+          "roundtrip": true,
+          "claimable": true,
+          "beats_gzip": true,
+          "ms": 272.995
+        },
+        "omni_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 153,
+          "ratio_to_raw": 0.009338,
+          "ratio_to_gzip": 0.016674,
+          "better_than_gzip_pct": 98.33,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 172.805
+        },
+        "omni_float": {
+          "path": "float+bare",
+          "method": "brotli-11",
+          "packed_bytes": 13,
+          "ratio_to_raw": 0.000793,
+          "ratio_to_gzip": 0.001417,
+          "better_than_gzip_pct": 99.86,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 174.123
+        },
+        "omni_zrw_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 153,
+          "ratio_to_raw": 0.009338,
+          "ratio_to_gzip": 0.016674,
+          "better_than_gzip_pct": 98.33,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 208.817
+        }
+      },
+      "weak": true,
+      "best_claimable": {
+        "engine": "omni_general",
+        "packed_bytes": 9122,
+        "path": "general+bare",
+        "method": "brotli-11",
+        "better_than_gzip_pct": 0.59,
+        "ratio_to_gzip": 0.994115
+      },
+      "still_weak_vs_gzip": false
+    },
+    {
+      "vector": "text_json",
+      "raw_bytes": 16384,
+      "gzip9_bytes": 130,
+      "gzip9_ratio": 0.007935,
+      "brotli11_bytes": 130,
+      "brotli11_ratio": 0.007935,
+      "engines": {
+        "zrw_public": {
+          "packed_bytes": 27921,
+          "ratio_to_raw": 1.704163,
+          "ratio_to_gzip": 214.776923,
+          "better_than_gzip_pct": -21377.69,
+          "roundtrip": false,
+          "mirror_error": 1,
+          "claimable": false,
+          "ms": 378.75814200378954,
+          "path": "zrw",
+          "error": null
+        },
+        "omni_auto": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 172,
+          "ratio_to_raw": 0.010498,
+          "ratio_to_gzip": 1.323077,
+          "better_than_gzip_pct": -32.31,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 251.514
+        },
+        "omni_general": {
+          "path": "general+bare",
+          "method": "brotli-11",
+          "packed_bytes": 69,
+          "ratio_to_raw": 0.004211,
+          "ratio_to_gzip": 0.530769,
+          "better_than_gzip_pct": 46.92,
+          "roundtrip": true,
+          "claimable": true,
+          "beats_gzip": true,
+          "ms": 169.99
+        },
+        "omni_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 172,
+          "ratio_to_raw": 0.010498,
+          "ratio_to_gzip": 1.323077,
+          "better_than_gzip_pct": -32.31,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 205.655
+        },
+        "omni_float": {
+          "path": "float+bare",
+          "method": "brotli-11",
+          "packed_bytes": 38,
+          "ratio_to_raw": 0.002319,
+          "ratio_to_gzip": 0.292308,
+          "better_than_gzip_pct": 70.77,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 192.501
+        },
+        "omni_zrw_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 172,
+          "ratio_to_raw": 0.010498,
+          "ratio_to_gzip": 1.323077,
+          "better_than_gzip_pct": -32.31,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 244.345
+        }
+      },
+      "weak": true,
+      "best_claimable": {
+        "engine": "omni_general",
+        "packed_bytes": 69,
+        "path": "general+bare",
+        "method": "brotli-11",
+        "better_than_gzip_pct": 46.92,
+        "ratio_to_gzip": 0.530769
+      },
+      "still_weak_vs_gzip": false
+    },
+    {
+      "vector": "structured_ramp",
+      "raw_bytes": 16384,
+      "gzip9_bytes": 1007,
+      "gzip9_ratio": 0.061462,
+      "brotli11_bytes": 1007,
+      "brotli11_ratio": 0.061462,
+      "engines": {
+        "zrw_public": {
+          "packed_bytes": 1175,
+          "ratio_to_raw": 0.071716,
+          "ratio_to_gzip": 1.166832,
+          "better_than_gzip_pct": -16.68,
+          "roundtrip": true,
+          "mirror_error": 0,
+          "claimable": false,
+          "ms": 277.2728059790097,
+          "path": "zrw",
+          "error": null
+        },
+        "omni_auto": {
+          "path": "zrw",
+          "method": "zrw-v5-chunked",
+          "packed_bytes": 1353,
+          "ratio_to_raw": 0.082581,
+          "ratio_to_gzip": 1.343595,
+          "better_than_gzip_pct": -34.36,
+          "roundtrip": true,
+          "claimable": true,
+          "beats_gzip": false,
+          "ms": 191.323
+        },
+        "omni_general": {
+          "path": "general+bare",
+          "method": "brotli-11",
+          "packed_bytes": 909,
+          "ratio_to_raw": 0.055481,
+          "ratio_to_gzip": 0.902681,
+          "better_than_gzip_pct": 9.73,
+          "roundtrip": true,
+          "claimable": true,
+          "beats_gzip": true,
+          "ms": 216.019
+        },
+        "omni_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 17,
+          "ratio_to_raw": 0.001038,
+          "ratio_to_gzip": 0.016882,
+          "better_than_gzip_pct": 98.31,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 201.39
+        },
+        "omni_float": {
+          "path": "float+bare",
+          "method": "brotli-11",
+          "packed_bytes": 13,
+          "ratio_to_raw": 0.000793,
+          "ratio_to_gzip": 0.01291,
+          "better_than_gzip_pct": 98.71,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 202.94
+        },
+        "omni_zrw_delta": {
+          "path": "zrw",
+          "method": "zrw-v5-chunked",
+          "packed_bytes": 1353,
+          "ratio_to_raw": 0.082581,
+          "ratio_to_gzip": 1.343595,
+          "better_than_gzip_pct": -34.36,
+          "roundtrip": true,
+          "claimable": true,
+          "beats_gzip": false,
+          "ms": 196.117
+        }
+      },
+      "weak": false,
+      "best_claimable": {
+        "engine": "omni_general",
+        "packed_bytes": 909,
+        "path": "general+bare",
+        "method": "brotli-11",
+        "better_than_gzip_pct": 9.73,
+        "ratio_to_gzip": 0.902681
+      },
+      "still_weak_vs_gzip": false
+    },
+    {
+      "vector": "sparse_spikes",
+      "raw_bytes": 16384,
+      "gzip9_bytes": 845,
+      "gzip9_ratio": 0.051575,
+      "brotli11_bytes": 845,
+      "brotli11_ratio": 0.051575,
+      "engines": {
+        "zrw_public": {
+          "packed_bytes": 1676,
+          "ratio_to_raw": 0.102295,
+          "ratio_to_gzip": 1.983432,
+          "better_than_gzip_pct": -98.34,
+          "roundtrip": false,
+          "mirror_error": 1,
+          "claimable": false,
+          "ms": 165.75522703351453,
+          "path": "zrw",
+          "error": null
+        },
+        "omni_auto": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 998,
+          "ratio_to_raw": 0.060913,
+          "ratio_to_gzip": 1.181065,
+          "better_than_gzip_pct": -18.11,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 218.389
+        },
+        "omni_general": {
+          "path": "general+bare",
+          "method": "brotli-11",
+          "packed_bytes": 631,
+          "ratio_to_raw": 0.038513,
+          "ratio_to_gzip": 0.746746,
+          "better_than_gzip_pct": 25.33,
+          "roundtrip": true,
+          "claimable": true,
+          "beats_gzip": true,
+          "ms": 242.431
+        },
+        "omni_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 998,
+          "ratio_to_raw": 0.060913,
+          "ratio_to_gzip": 1.181065,
+          "better_than_gzip_pct": -18.11,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 223.246
+        },
+        "omni_float": {
+          "path": "float+bare",
+          "method": "brotli-11",
+          "packed_bytes": 117,
+          "ratio_to_raw": 0.007141,
+          "ratio_to_gzip": 0.138462,
+          "better_than_gzip_pct": 86.15,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 182.775
+        },
+        "omni_zrw_delta": {
+          "path": "delta+bare",
+          "method": "brotli-11",
+          "packed_bytes": 998,
+          "ratio_to_raw": 0.060913,
+          "ratio_to_gzip": 1.181065,
+          "better_than_gzip_pct": -18.11,
+          "roundtrip": false,
+          "claimable": false,
+          "beats_gzip": false,
+          "ms": 244.417
+        }
+      },
+      "weak": true,
+      "best_claimable": {
+        "engine": "omni_general",
+        "packed_bytes": 631,
+        "path": "general+bare",
+        "method": "brotli-11",
+        "better_than_gzip_pct": 25.33,
+        "ratio_to_gzip": 0.746746
+      },
+      "still_weak_vs_gzip": false
+    }
+  ],
+  "summary": {
+    "weak_vector_count": 7,
+    "now_beats_gzip_claimable": [
+      "float_smooth",
+      "float_noisy",
+      "high_entropy",
+      "mixed",
+      "angular_rotation",
+      "text_json",
+      "sparse_spikes"
+    ],
+    "still_weak_vs_gzip": [],
+    "control_structured_ramp": {
+      "engine": "omni_general",
+      "packed_bytes": 909,
+      "path": "general+bare",
+      "method": "brotli-11",
+      "better_than_gzip_pct": 9.73,
+      "ratio_to_gzip": 0.902681
+    }
+  }
+}

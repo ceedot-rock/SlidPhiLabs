@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="description" content="X OAuth callback · Slid Phi Labs · Slid Phi Labs. Residual exactness. Dual doors."/>
+<meta property="og:title" content="X OAuth callback · Slid Phi Labs"/>
+<meta property="og:description" content="X OAuth callback · Slid Phi Labs · Slid Phi Labs. Residual exactness. Dual doors."/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta property="og:url" content="https://www.slidphilabs.com/x-oauth/callback/"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="X OAuth callback · Slid Phi Labs"/>
+<meta name="twitter:description" content="X OAuth callback · Slid Phi Labs · Slid Phi Labs. Residual exactness. Dual doors."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<link rel="canonical" href="https://www.slidphilabs.com/x-oauth/callback/"/>
+<link rel="icon" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>X OAuth callback · Slid Phi Labs</title>
+<meta name="robots" content="noindex"/>
+<style>
+body{font-family:system-ui,sans-serif;background:#050b16;color:#eef4fb;padding:40px 20px;max-width:42rem;margin:0 auto;line-height:1.5}
+h1{color:#e8c547;font-size:1.35rem}
+.box{background:#0c1524;border:1px solid rgba(61,214,198,.25);border-radius:12px;padding:14px;word-break:break-all;font-family:ui-monospace,monospace;font-size:.82rem;color:#5ef0df;margin:12px 0}
+.muted{color:#8fa3b8}
+.ok{color:#3ecf8e}.err{color:#ff8a7a}
+button{background:linear-gradient(180deg,#5ef0df,#3dd6c6);color:#031018;border:0;padding:10px 16px;border-radius:8px;font-weight:700;cursor:pointer}
+</style>
+</head>
+<body>
+  <h1 id="title">X connect</h1>
+  <p class="muted" id="msg">Reading callback…</p>
+  <div class="box" id="urlbox" style="display:none"></div>
+  <p><button type="button" id="copy" style="display:none">Copy full URL</button></p>
+  <p class="muted">Paste that URL back in the lab chat (or to the engineer). Do not post it publicly — it is a one-time login code.</p>
+  <p><a href="/" style="color:#5ef0df">← Home</a></p>
+<script>
+(function () {
+  var u = location.href;
+  var q = new URLSearchParams(location.search);
+  var code = q.get("code");
+  var err = q.get("error");
+  var title = document.getElementById("title");
+  var msg = document.getElementById("msg");
+  var box = document.getElementById("urlbox");
+  var btn = document.getElementById("copy");
+  if (err) {
+    title.textContent = "Auth failed";
+    title.className = "err";
+    msg.textContent = "Error: " + err + (q.get("error_description") ? " — " + q.get("error_description") : "");
+    return;
+  }
+  if (!code) {
+    title.textContent = "Waiting for X";
+    msg.innerHTML = "This page is the OAuth callback. Open the authorize link first. After you approve, X will send you back here with a code.";
+    return;
+  }
+  title.textContent = "Connected — send this URL back";
+  title.className = "ok";
+  msg.textContent = "Copy the box below and paste it in chat so we can finish login.";
+  box.style.display = "block";
+  box.textContent = u;
+  btn.style.display = "inline-block";
+  btn.onclick = function () {
+    navigator.clipboard.writeText(u).then(function () {
+      btn.textContent = "Copied";
+    });
+  };
+})();
+</script>
+</body>
+</html>

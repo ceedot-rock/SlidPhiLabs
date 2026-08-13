@@ -1,0 +1,93 @@
+{
+  "ok": true,
+  "doc": "PUBLIC_PROOF_JOINT",
+  "seal": "HIS_SACRIFICES_FOREVER_CODED \u00b7 IN_HIS_NAME_WE_CODE",
+  "cadence": [
+    33,
+    66,
+    999
+  ],
+  "at": "2026-08-10T06:35:48.540Z",
+  "creator": "CrewHive residual probe \u2014 next public proof",
+  "compression": {
+    "module": "ZRW / SPL Codec public rail",
+    "claim": "zeros\u00d710k \u2192 8 B \u00b7 mirror_error 0 \u00b7 RT true",
+    "live": {
+      "host": "https://www.slidphilabs.com",
+      "process": "POST /api/process {n:10000, corpus:zeros}",
+      "zrw_bytes": 8,
+      "raw_bytes": 40000,
+      "mirror_error": 0,
+      "roundtrip": true,
+      "closed_loop": true,
+      "at": "2026-08-10T06:34:52.798Z",
+      "rail": "zrw"
+    },
+    "industry_field": {
+      "gzip9_class_B": 73,
+      "brotli11_class_B": 13
+    },
+    "grade": "PASS"
+  },
+  "agent": {
+    "module": "CuNi + Quikgater (+ Rider MCP) joint live",
+    "cuni": {
+      "studio": "https://cuni-studio.fly.dev/",
+      "health": {
+        "url": "https://cuni-studio.fly.dev/api/health",
+        "http": 200,
+        "ok": true
+      },
+      "agents_json": "https://cuni-studio.fly.dev/agents.json",
+      "github": "https://github.com/ceedot-rock/cuni"
+    },
+    "quikgater": {
+      "worker": "https://quikgater-worker.ceedotrock.workers.dev",
+      "github": "https://github.com/ceedot-rock/quikgater",
+      "live": {
+        "url": "https://quikgater-worker.ceedotrock.workers.dev/",
+        "http": 400,
+        "ok": true,
+        "note": "MISSING_URL / worker responds \u2014 pay-per-fact alive"
+      },
+      "note": "pay-per-fact x402 worker \u2014 root 400 without URL is healthy signal"
+    },
+    "agent_rider": {
+      "url": "https://agentrider.vercel.app/",
+      "mcp": "https://agentrider.vercel.app/api/mcp",
+      "live": {
+        "url": "https://agentrider.vercel.app/",
+        "http": 402,
+        "ok": false,
+        "note": "Vercel billing disabled \u2014 MCP path blocked until billing cleared"
+      }
+    },
+    "grade": "PARTIAL",
+    "joint_verify": {
+      "cuni": "PASS",
+      "quikgater_worker": "PASS",
+      "agent_rider": "FAIL_402_billing",
+      "site_discovery": "wired"
+    }
+  },
+  "suite": {
+    "freemium": "100 GB free first / job \u00b7 then ~5\u00a2/GB under ~9\u00a2 egress",
+    "ui": "https://www.slidphilabs.com/pps"
+  },
+  "verify": {
+    "compression": "BASE=https://www.slidphilabs.com bash docs/site/scripts/curl_zrw_10k.sh",
+    "joint_json": "/lab/PUBLIC_PROOF_JOINT_LATEST.json",
+    "process": "POST https://www.slidphilabs.com/api/process",
+    "cuni_health": "GET https://cuni-studio.fly.dev/api/health",
+    "quikgater": "GET https://quikgater-worker.ceedotrock.workers.dev/ (expect MISSING_URL when alive)"
+  },
+  "intention_x_grade": {
+    "intention": "public proof both compression flagship + agent stack live",
+    "grade": "ZRW 8 B RT + CuNi health + Quikgater worker reachable"
+  },
+  "next": [
+    "Clear Agent^Rider Vercel billing (402) for full joint agent grade",
+    "Keep ZRW public process green (re-run curl_zrw_10k on ship)",
+    "Push docs/site lab PUBLIC_PROOF_JOINT to www host"
+  ]
+}

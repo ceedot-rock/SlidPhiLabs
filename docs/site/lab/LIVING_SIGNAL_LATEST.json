@@ -1,0 +1,49 @@
+{
+  "schema": "spl.living_signal.v1",
+  "at": "2026-08-09T20:40:02Z",
+  "trinity": {
+    "chainpipe": "growth_score=50 attractor \u00b7 cadence 33\u00b766\u00b7999",
+    "indexmind": "spl@p223 + suite@p343 \u2192 public codec + freemium gate",
+    "crewhive": "open SPL \u00b7 first 100GB free \u00b7 5\u00a2/GB meter \u00b7 verified run"
+  },
+  "attractor": {
+    "growth_score": 50,
+    "not": "ceiling"
+  },
+  "seats": {
+    "spl": "spl@p223",
+    "suite": "suite@p343"
+  },
+  "public_pages": {
+    "codec_suite": "https://www.slidphilabs.com/pps",
+    "bench": "https://www.slidphilabs.com/bench",
+    "standings": "https://www.slidphilabs.com/standings"
+  },
+  "freemium_quote_100gb": {
+    "bytes": 107374182400,
+    "amount_cents": 0,
+    "amount_display": "0.00",
+    "free": true,
+    "message": "Free \u2014 matches $0 competitor free-tier size (first 100 GB per job). Pay only above free, under ~$0.09/GB first paid egress.",
+    "free_gb": 100
+  },
+  "meter_quote_101gb": {
+    "bytes": 108447924224,
+    "amount_cents": 5,
+    "amount_display": "0.05",
+    "free": false,
+    "billable_note": "first GB over free at ~5\u00a2"
+  },
+  "verified_job": {
+    "path": "POST /api/compress",
+    "corpus": "zeros\u00d710k int32 LE",
+    "raw_bytes": 40000,
+    "zrw_bytes": 8,
+    "gzip9_bytes": 61,
+    "roundtrip": true,
+    "mirror_error": 0,
+    "claim": "ZRW zeros\u00d710k \u2192 8 B \u00b7 public path \u00b7 world-verifiable",
+    "better_than_gzip_pct": 86.89
+  },
+  "next": "Host opens /pps \u00b7 world can re-run curl zeros compress \u00b7 living signal is the 8 B proof"
+}

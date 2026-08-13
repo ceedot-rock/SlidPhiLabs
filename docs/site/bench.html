@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Open Bench · SPL · ZRW · gzip · brotli · Slid Phi Labs</title>
+<meta name="description" content="Self-serve compression proof: structured, float, and mixed streams through SPL OmniWave, ZRW, gzip-9, and brotli-11. Ratio + wall-clock. Freemium first 100 GB."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://www.slidphilabs.com/bench"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:title" content="Open Bench · SPL vs gzip vs brotli"/>
+<meta property="og:description" content="Verify structured · float · mixed before you pay. First 100 GB freemium."/>
+<meta property="og:url" content="https://www.slidphilabs.com/bench"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Open Bench · SPL vs gzip vs brotli"/>
+<meta name="twitter:description" content="Verify structured · float · mixed before you pay. First 100 GB freemium."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="theme-color" content="#050b16"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#050b16;--panel:#0c1524;--line:rgba(255,255,255,.08);
+  --text:#eef4fb;--muted:#8fa3b8;--teal:#3dd6c6;--gold:#e8c547;--cyan:#5ba8ff;--ok:#3dd68c;--bad:#f07178;
+  --font:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;
+  background-image:radial-gradient(900px 500px at 10% -10%,rgba(91,168,255,.12),transparent),
+  radial-gradient(700px 400px at 100% 0%,rgba(61,214,198,.08),transparent);}
+a{color:var(--cyan);text-decoration:none}a:hover{color:var(--gold)}
+.wrap{max-width:980px;margin:0 auto;padding:28px 18px 80px}
+header{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:flex-start;margin-bottom:28px}
+.brand{font-weight:700;letter-spacing:-.02em}
+.brand span{color:var(--gold)}
+.nav{display:flex;flex-wrap:wrap;gap:10px;font-size:.85rem;color:var(--muted)}
+h1{font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 8px;letter-spacing:-.03em}
+.lead{color:var(--muted);line-height:1.55;max-width:52rem;margin:0 0 22px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 18px 14px;margin:0 0 16px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+label{font-size:.78rem;color:var(--muted)}
+select,button{font:inherit}
+select{background:#070d18;border:1px solid var(--line);color:var(--text);padding:10px 12px;border-radius:10px}
+button{appearance:none;border:0;border-radius:999px;padding:11px 18px;font-weight:600;cursor:pointer;
+  background:linear-gradient(135deg,#4a7fd4,var(--teal));color:#041018}
+button:disabled{opacity:.45;cursor:not-allowed}
+button.ghost{background:transparent;border:1px solid var(--line);color:var(--text)}
+.pill{display:inline-flex;padding:4px 10px;border-radius:999px;border:1px solid var(--line);font-size:.72rem;color:var(--muted)}
+.pill.on{border-color:rgba(232,197,71,.4);color:var(--gold)}
+.pill.ok{border-color:rgba(61,214,140,.4);color:var(--ok)}
+.log{font-family:var(--mono);font-size:.78rem;max-height:180px;overflow:auto;background:#070d18;border-radius:12px;padding:12px;border:1px solid var(--line);color:var(--muted);white-space:pre-wrap}
+.grid{display:grid;gap:14px}
+@media(min-width:800px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;min-height:200px}
+.card h2{margin:0 0 6px;font-size:1rem;color:var(--gold)}
+.card .note{font-size:.75rem;color:var(--muted);margin:0 0 12px;line-height:1.4}
+table{width:100%;border-collapse:collapse;font-size:.78rem;font-family:var(--mono)}
+th,td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:500}
+td.win{color:var(--ok);font-weight:600}
+.footer{margin-top:28px;font-size:.82rem;color:var(--muted);line-height:1.5}
+.cta{display:inline-flex;margin-top:10px;padding:10px 16px;border-radius:999px;background:linear-gradient(135deg,var(--gold),#b8892e);color:#1a1205;font-weight:700}
+.err{color:var(--bad)}
+.status{font-size:.85rem;color:var(--muted);min-height:1.2em;margin:8px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">Slid Phi <span>Labs</span> · Open Bench</div>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/standings">Standings</a>
+      <a href="/pps">Suite · 100 GB free</a>
+      <a href="/api/bench?meta=1">API meta</a>
+      <a href="/demos">Demos</a>
+    </nav>
+  </header>
+
+  <h1>Prove it before you pay</h1>
+  <p class="lead">
+    Live synthetic streams — <strong>structured</strong>, <strong>float</strong>, and <strong>mixed</strong> (text · float · high-entropy) —
+    through <strong>SPL OmniWave</strong>, <strong>ZRW</strong>, <strong>gzip-9</strong>, and <strong>brotli-11</strong>.
+    Ratio + wall-clock, self-serve. Freemium suite: first <strong>100 GB</strong> free; this page uses public slices so the proof is free too.
+  </p>
+
+  <div class="panel">
+    <div class="controls">
+      <div>
+        <label for="size">Bytes / class</label><br/>
+        <select id="size">
+          <option value="16384">16 KiB</option>
+          <option value="65536" selected>64 KiB</option>
+          <option value="131072">128 KiB</option>
+          <option value="262144">256 KiB</option>
+        </select>
+      </div>
+      <button type="button" id="runStream">Stream NDJSON bench</button>
+      <button type="button" class="ghost" id="runJson">Full JSON</button>
+      <span class="pill on" id="modePill">idle</span>
+      <span class="pill" id="wallPill">wall —</span>
+    </div>
+    <p class="status" id="status">Ready. Structured = int32 ramp · residual integer plane · float/mixed = OmniWave routes.</p>
+    <div class="log" id="log" aria-live="polite"></div>
+  </div>
+
+  <div class="grid" id="cards">
+    <div class="card" data-class="structured">
+      <h2>Structured</h2>
+      <p class="note">int32 ramp · residual integer plane</p>
+      <div class="body muted">Run bench…</div>
+    </div>
+    <div class="card" data-class="float">
+      <h2>Float</h2>
+      <p class="note">float32 series · OmniWave float path</p>
+      <div class="body muted">Run bench…</div>
+    </div>
+    <div class="card" data-class="mixed">
+      <h2>Mixed</h2>
+      <p class="note">text · float · high-entropy tail</p>
+      <div class="body muted">Run bench…</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Open API: <code>GET /api/bench?stream=1&amp;bytes=65536</code> (NDJSON) · <code>GET /api/bench</code> (JSON) · <code>?meta=1</code>.</p>
+    <p>Domain supremacy: ZRW wins structured ints; OmniWave covers float/delta/high-entropy routes gzip never sees as first-class. Compare ratios yourself.</p>
+    <a class="cta" href="/pps">Open freemium suite · 100 GB</a>
+  </div>
+</div>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const logEl = $("log");
+  const status = $("status");
+  const modePill = $("modePill");
+  const wallPill = $("wallPill");
+
+  function log(line) {
+    logEl.textContent += line + "\n";
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+  function clearLog() { logEl.textContent = ""; }
+
+  function engineRows(engines) {
+    if (!engines || !engines.length) return "<p class='muted'>No data</p>";
+    const ranked = engines
+      .filter((e) => e.packed_bytes != null && !e.error && !e.skipped)
+      .slice()
+      .sort((a, b) => a.packed_bytes - b.packed_bytes);
+    const win = ranked[0] && ranked[0].engine;
+    let html = "<table><thead><tr><th>Engine</th><th>Bytes</th><th>Ratio</th><th>Enc ms</th><th>Dec ms</th></tr></thead><tbody>";
+    for (const e of engines) {
+      if (e.skipped) {
+        html += `<tr><td>${e.engine}</td><td colspan="4" class="muted">skipped · ${e.reason || ""}</td></tr>`;
+        continue;
+      }
+      if (e.error) {
+        html += `<tr><td>${e.engine}</td><td colspan="4" class="err">${e.error}</td></tr>`;
+        continue;
+      }
+      const cls = e.engine === win ? "win" : "";
+      html += `<tr>
+        <td class="${cls}">${e.engine}${e.path ? " · " + e.path : ""}</td>
+        <td class="${cls}">${e.packed_bytes}</td>
+        <td>${e.ratio}</td>
+        <td>${e.encode_ms ?? "—"}</td>
+        <td>${e.decode_ms ?? "—"}</td>
+      </tr>`;
+    }
+    html += "</tbody></table>";
+    return html;
+  }
+
+  function paintClass(summary) {
+    const card = document.querySelector(`.card[data-class="${summary.class}"]`);
+    if (!card) return;
+    const body = card.querySelector(".body");
+    const w = summary.winner
+      ? `<p class="pill ok" style="margin:0 0 10px">smallest pack · ${summary.winner.engine} · ${summary.winner.packed_bytes} B · ${summary.winner.encode_ms} ms encode</p>`
+      : "";
+    let vg = "";
+    if (summary.vs_gzip && summary.winner) {
+      const g = summary.vs_gzip.gzip_bytes;
+      const win = summary.vs_gzip.winner_bytes;
+      const pct = summary.vs_gzip.better_than_gzip;
+      if (win < g && pct > 0) {
+        vg = `<p class="note">${summary.winner.engine} packed ${pct}% smaller than gzip-9 (${win} B vs ${g} B)</p>`;
+      } else if (win === g) {
+        vg = `<p class="note">Tied gzip-9 on size (${win} B)</p>`;
+      } else {
+        vg = `<p class="note">gzip-9 was smaller this run (${g} B vs best ${win} B) — domain may favor general compressors</p>`;
+      }
+    }
+    body.innerHTML = w + vg + engineRows(summary.engines);
+  }
+
+  async function runStream() {
+    clearLog();
+    modePill.textContent = "streaming";
+    modePill.className = "pill on";
+    status.textContent = "Streaming NDJSON from /api/bench…";
+    $("runStream").disabled = true;
+    $("runJson").disabled = true;
+    const bytes = $("size").value;
+    const t0 = performance.now();
+    try {
+      const r = await fetch(`/api/bench?stream=1&bytes=${bytes}`, {
+        headers: { Accept: "application/x-ndjson" },
+      });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const reader = r.body.getReader();
+      const dec = new TextDecoder();
+      let buf = "";
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += dec.decode(value, { stream: true });
+        const lines = buf.split("\n");
+        buf = lines.pop() || "";
+        for (const line of lines) {
+          if (!line.trim()) continue;
+          let ev;
+          try { ev = JSON.parse(line); } catch { log("bad line: " + line.slice(0, 80)); continue; }
+          if (ev.event === "start") log(`start · ${ev.bytes_per_class} B/class · freemium ${ev.freemium_gb} GB`);
+          else if (ev.event === "class_start") log(`→ ${ev.class} (${ev.raw_bytes} B) ${ev.note || ""}`);
+          else if (ev.event === "engine") {
+            const bit = ev.skipped
+              ? `skip ${ev.reason}`
+              : ev.error
+                ? `err ${ev.error}`
+                : `${ev.packed_bytes} B · r=${ev.ratio} · ${ev.encode_ms} ms`;
+            log(`   ${ev.engine}${ev.path ? "/" + ev.path : ""} · ${bit}`);
+          } else if (ev.event === "class_done") {
+            paintClass(ev);
+            log(`✓ ${ev.class} best size · ${ev.winner ? ev.winner.engine + " " + ev.winner.packed_bytes + " B" : "—"}`);
+          } else if (ev.event === "done") {
+            wallPill.textContent = "wall " + ev.wall_ms + " ms";
+            status.textContent = "Done. Compare packed sizes (smaller is better) · freemium suite for real jobs (100 GB free).";
+            modePill.textContent = "done";
+            modePill.className = "pill ok";
+          }
+        }
+      }
+    } catch (e) {
+      status.innerHTML = '<span class="err">' + (e.message || e) + "</span>";
+      modePill.textContent = "error";
+    } finally {
+      $("runStream").disabled = false;
+      $("runJson").disabled = false;
+      wallPill.textContent = "wall " + (performance.now() - t0).toFixed(0) + " ms client";
+    }
+  }
+
+  async function runJson() {
+    clearLog();
+    modePill.textContent = "json";
+    status.textContent = "Fetching full JSON report…";
+    $("runStream").disabled = true;
+    $("runJson").disabled = true;
+    const bytes = $("size").value;
+    try {
+      const r = await fetch(`/api/bench?bytes=${bytes}`);
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || "bench failed");
+      wallPill.textContent = "wall " + d.wall_ms + " ms";
+      for (const c of d.classes || []) {
+        paintClass(c);
+        log(`${c.class}: best size · ${c.winner ? c.winner.engine + " " + c.winner.packed_bytes + " B" : "—"}`);
+      }
+      status.textContent = "JSON report complete · freemium first " + (d.freemium && d.freemium.first_gb) + " GB on suite.";
+      modePill.className = "pill ok";
+      modePill.textContent = "done";
+    } catch (e) {
+      status.innerHTML = '<span class="err">' + (e.message || e) + "</span>";
+    } finally {
+      $("runStream").disabled = false;
+      $("runJson").disabled = false;
+    }
+  }
+
+  $("runStream").onclick = () => runStream();
+  $("runJson").onclick = () => runJson();
+})();
+</script>
+</body>
+</html>

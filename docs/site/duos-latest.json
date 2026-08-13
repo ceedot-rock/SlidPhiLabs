@@ -1,0 +1,837 @@
+{
+  "ok": true,
+  "name": "duosurface",
+  "short": "duos",
+  "role": "secret_shopper",
+  "base": "https://www.slidphilabs.com",
+  "at": "2026-08-11T13:13:37.758Z",
+  "doctrine": "ONE_HUMAN_ONE_CREATOR_ONE_AGENTIC",
+  "surfaces": {
+    "web": {
+      "score": 100,
+      "letter": "A",
+      "ok": 20,
+      "soft": 0,
+      "fail": 0,
+      "total": 20,
+      "findings": [
+        {
+          "surface": "web",
+          "path": "/",
+          "url": "https://www.slidphilabs.com/",
+          "ok": true,
+          "status": 200,
+          "ms": 364,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 113006,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta name=\"lab-pricing\" content=\"freemium_suite_v4_undercut\"/>\n<meta name=\"lab-eval-path\" content=\"https://www.slidphilabs.com/pps\"/>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Slid Phi Labs — Best encode &amp; decode compression · gaming · security</title>\n<meta name=\"description\" content=\"Pub-facing",
+            "title": "Slid Phi Labs — Best encode &amp; decode compression · gaming · security",
+            "description": "Pub-facing encode/decode compression that proves out (ZRW zeros×10k → 8 B · live standings). Pivot into gaming (Great Agentic Olympiad) and security (residual g",
+            "dual_door": {
+              "human": true,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/access",
+          "url": "https://www.slidphilabs.com/access",
+          "ok": true,
+          "status": 200,
+          "ms": 33,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 29247,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta name=\"lab-pricing\" content=\"freemium_suite_v4_undercut\"/>\n<meta name=\"lab-eval-path\" content=\"https://www.slidphilabs.com/pps\"/>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Access — packages after pay · Slid Phi Labs</title>\n<meta name=\"description\" content=\"Claim licensed packages after Stripe. S",
+            "title": "Access — packages after pay · Slid Phi Labs",
+            "description": "Claim licensed packages after Stripe. Suite freemium lives on /pps (free first 100 GB). Try Gate retired.",
+            "dual_door": {
+              "human": false,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/agents",
+          "url": "https://www.slidphilabs.com/agents",
+          "ok": true,
+          "status": 200,
+          "ms": 225,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 17187,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta name=\"twitter:image\" content=\"https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg\"/>\n\n<meta name=\"lab-pricing\" content=\"freemium_suite_v4_undercut\"/>\n<meta name=\"lab-eval-path\" content=\"https://www.slidphilabs.com/pps\"/>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Agentic Minded — free sui",
+            "title": "Agentic Minded — free suite under 100 GB · x402 · Slid Phi Labs",
+            "description": "Agent door: GET /api/agent, free x402-suite under 100 GB, usage rates after. License catalog. Try Gate retired.",
+            "dual_door": {
+              "human": true,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/bench",
+          "url": "https://www.slidphilabs.com/bench",
+          "ok": true,
+          "status": 200,
+          "ms": 257,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 13717,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Open Bench · SPL · ZRW · gzip · brotli · Slid Phi Labs</title>\n<meta name=\"description\" content=\"Self-serve compression proof: structured, float, and mixed streams through SPL OmniWave, ZRW, gzip-9, and brotli-11. Ratio + wall-clock. Freemium first 100 GB.\"/>\n",
+            "title": "Open Bench · SPL · ZRW · gzip · brotli · Slid Phi Labs",
+            "description": "Self-serve compression proof: structured, float, and mixed streams through SPL OmniWave, ZRW, gzip-9, and brotli-11. Ratio + wall-clock. Freemium first 100 GB.",
+            "dual_door": {
+              "human": false,
+              "agent": false
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/blog",
+          "url": "https://www.slidphilabs.com/blog",
+          "ok": true,
+          "status": 200,
+          "ms": 33,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 8859,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Weekly Blog — product updates · Slid Phi Labs</title>\n<meta name=\"description\" content=\"Weekly product blog from Slid Phi Labs: what shipped, when, and how we run the public process — without secret sauce. Timeline of Compression and Agent platform work.\"/>\n<m",
+            "title": "Weekly Blog — product updates · Slid Phi Labs",
+            "description": "Weekly product blog from Slid Phi Labs: what shipped, when, and how we run the public process — without secret sauce. Timeline of Compression and Agent platform",
+            "dual_door": {
+              "human": true,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/codex",
+          "url": "https://www.slidphilabs.com/codex",
+          "ok": true,
+          "status": 200,
+          "ms": 43,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 29525,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n<title>the dViNE CodEX · Full Edition 1.1 · Slid Phi Labs</title>\n<meta name=\"description\" content=\"the dViNE CodEX — lab law + measured divinity. ZRW 8 B/10 B · Silesia field brotli-11 4.21× · OmniWave lossless freeze · float diagnostic · residual only.\"/>\n<link re",
+            "title": "the dViNE CodEX · Full Edition 1.1 · Slid Phi Labs",
+            "description": "the dViNE CodEX — lab law + measured divinity. ZRW 8 B/10 B · Silesia field brotli-11 4.21× · OmniWave lossless freeze · float diagnostic · residual only.",
+            "dual_door": {
+              "human": false,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/convert",
+          "url": "https://www.slidphilabs.com/convert",
+          "ok": true,
+          "status": 200,
+          "ms": 287,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 14786,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n<title>Convert · freemium 100 GB → Stripe · ~5¢/GB · Slid Phi Labs</title>\n<meta name=\"description\" content=\"Freemium → paid conversion: free first 100 GB per job, then ~5¢/GB (4¢ bulk) under ~9¢ egress. Stripe checkout for humans · x402 for agents. ZRW 8 B sealed P",
+            "title": "Convert · freemium 100 GB → Stripe · ~5¢/GB · Slid Phi Labs",
+            "description": "Freemium → paid conversion: free first 100 GB per job, then ~5¢/GB (4¢ bulk) under ~9¢ egress. Stripe checkout for humans · x402 for agents. ZRW 8 B sealed PASS",
+            "dual_door": {
+              "human": true,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/datacenters",
+          "url": "https://www.slidphilabs.com/datacenters",
+          "ok": true,
+          "status": 200,
+          "ms": 32,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 24422,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta name=\"twitter:image\" content=\"https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg\"/>\n\n<meta name=\"lab-pricing\" content=\"freemium_suite_v4_undercut\"/>\n<meta name=\"lab-eval-path\" content=\"https://www.slidphilabs.com/pps\"/>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Data Centers · free 100 G",
+            "title": "Data Centers · free 100 GB then 5¢/GB · Slid Phi Labs",
+            "description": "Compression economics for bulk/ops. Free first 100 GB suite job, then ~5¢/GB under ~9¢ egress — far under typical egress class.",
+            "dual_door": {
+              "human": false,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/demos",
+          "url": "https://www.slidphilabs.com/demos",
+          "ok": true,
+          "status": 200,
+          "ms": 49,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 20007,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta name=\"lab-pricing\" content=\"freemium_suite_v4_undercut\"/>\n<meta name=\"lab-eval-path\" content=\"https://www.slidphilabs.com/pps\"/>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Demos · free suite eval · Slid Phi Labs</title>\n<meta name=\"description\" content=\"Public demos and standings. Evaluate free o",
+            "title": "Demos · free suite eval · Slid Phi Labs",
+            "description": "Public demos and standings. Evaluate free on suite first 100 GB — then usage pricing under cloud egress.",
+            "dual_door": {
+              "human": false,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/humans",
+          "url": "https://www.slidphilabs.com/humans",
+          "ok": true,
+          "status": 200,
+          "ms": 219,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 14435,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta name=\"lab-pricing\" content=\"freemium_suite_v4_undercut\"/>\n<meta name=\"lab-eval-path\" content=\"https://www.slidphilabs.com/pps\"/>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Pub Facing — free suite eval · humans · Slid Phi Labs</title>\n<meta name=\"description\" content=\"Human door: free web compress",
+            "title": "Pub Facing — free suite eval · humans · Slid Phi Labs",
+            "description": "Human door: free web compress, free first 100 GB suite, standings, packages. No Try Gate chip-in — freemium is the eval path.",
+            "dual_door": {
+              "human": true,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/ideas",
+          "url": "https://www.slidphilabs.com/ideas",
+          "ok": true,
+          "status": 200,
+          "ms": 42,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 32072,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta name=\"twitter:image\" content=\"https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg\"/>\n\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Idea Lab — Slid Phi Labs</title>\n<meta name=\"description\" content=\"Public idea register: compression + agent platform (CuNi, Rider, Quikgater). First-pursued da",
+            "title": "Idea Lab — Slid Phi Labs",
+            "description": "Public idea register: compression + agent platform (CuNi, Rider, Quikgater). First-pursued dates. Outcomes only.",
+            "dual_door": {
+              "human": false,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/join",
+          "url": "https://www.slidphilabs.com/join",
+          "ok": true,
+          "status": 200,
+          "ms": 37,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 12414,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta property=\"og:site_name\" content=\"Slid Phi Labs\"/>\n<meta property=\"og:type\" content=\"website\"/>\n<meta name=\"twitter:card\" content=\"summary_large_image\"/>\n<meta name=\"twitter:title\" content=\"Join the Work — Slid Phi Labs\"/>\n<meta name=\"twitter:description\" content=\"Public ministry gate: name, one sentence of intent, 33-byte seed → freemium identity token",
+            "title": "Join the Work — Slid Phi Labs",
+            "description": "Public ministry gate: name, one sentence of intent, 33-byte seed → freemium identity token. Proof and suite access only. Private lab stays closed.",
+            "dual_door": {
+              "human": true,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/olympiad",
+          "url": "https://www.slidphilabs.com/olympiad",
+          "ok": true,
+          "status": 200,
+          "ms": 40,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 32044,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta name=\"lab-pricing\" content=\"freemium_suite_v4_undercut\"/>\n<meta name=\"lab-eval-path\" content=\"https://www.slidphilabs.com/pps\"/>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Great Agentic Olympiad · tryouts now · quarterly forever · Slid Phi Labs</title>\n<meta name=\"description\" content=\"Great Agen",
+            "title": "Great Agentic Olympiad · tryouts now · quarterly forever · Slid Phi Labs",
+            "description": "Great Agentic Olympiad — for the world. 40 public-facing games per quarter. Tryouts now; quarterly forever. Any agent, any team, any stack. $1 entry. Hosted by ",
+            "dual_door": {
+              "human": true,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/pay",
+          "url": "https://www.slidphilabs.com/pay",
+          "ok": true,
+          "status": 200,
+          "ms": 35,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 10138,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta property=\"og:title\" content=\"Pay · Slid Phi Labs — any rail\"/>\n<meta property=\"og:description\" content=\"Pay Slid Phi Labs any way that works: cards, Link, Cash App, Amazon Pay, ACH, Klarna, Affirm, Afterpay, USDC on Solana or Base (x402), manual crypto, invoice/wire.\"/>\n<meta property=\"og:image\" content=\"https://www.slidphilabs.com/assets/slid-phi-labs",
+            "title": "Pay · Slid Phi Labs — any rail",
+            "description": "Pay Slid Phi Labs any way that works: cards, Link, Cash App, Amazon Pay, ACH, Klarna, Affirm, Afterpay, USDC on Solana or Base (x402), manual crypto, invoice/wi",
+            "dual_door": {
+              "human": false,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/pps",
+          "url": "https://www.slidphilabs.com/pps",
+          "ok": true,
+          "status": 200,
+          "ms": 268,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 57913,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta name=\"lab-pricing\" content=\"freemium_suite_v4_undercut\"/>\n<meta name=\"lab-eval-path\" content=\"https://www.slidphilabs.com/pps\"/>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>SPL Pay Per Suite — encode · decode · folder · free 100 GB · Slid Phi Labs</title>\n<meta name=\"description\" content=\"On-site ",
+            "title": "SPL Pay Per Suite — encode · decode · folder · free 100 GB · Slid Phi Labs",
+            "description": "On-site suite: browse data folder, encode/decode, download to your machine, recompress. Free first 100 GB then ~5¢/GB.",
+            "dual_door": {
+              "human": false,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/standings",
+          "url": "https://www.slidphilabs.com/standings",
+          "ok": true,
+          "status": 200,
+          "ms": 34,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 41613,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta name=\"lab-pricing\" content=\"freemium_suite_v4_undercut\"/>\n<meta name=\"lab-eval-path\" content=\"https://www.slidphilabs.com/pps\"/>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Standings v1.2 · ZRW 8 B · zeros_1M 10 B · Silesia · Slid Phi Labs</title>\n<meta name=\"description\" content=\"Standings v1.2.0",
+            "title": "Standings v1.2 · ZRW 8 B · zeros_1M 10 B · Silesia · Slid Phi Labs",
+            "description": "Standings v1.2.0 (2026-08-09): ZRW zeros×10k → 8 B (gzip 73 · brotli 13); zeros_1M → 10 B; OmniWave Silesia size lead (domain-scoped). Cadence 33·66·999. Outcom",
+            "dual_door": {
+              "human": true,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/toys",
+          "url": "https://www.slidphilabs.com/toys",
+          "ok": true,
+          "status": 200,
+          "ms": 44,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 18422,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta name=\"lab-pricing\" content=\"freemium_suite_v4_undercut\"/>\n<meta name=\"lab-eval-path\" content=\"https://www.slidphilabs.com/pps\"/>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Toy Store · fun · theory · artifacts · Slid Phi Labs</title>\n<meta name=\"description\" content=\"Slid Phi Labs Toy Store — ligh",
+            "title": "Toy Store · fun · theory · artifacts · Slid Phi Labs",
+            "description": "Slid Phi Labs Toy Store — lighter ideas, fun experiments, scientific-theory sketches and public-safe artifacts. Not the commercial floor. Hosted at slidphilabs.",
+            "dual_door": {
+              "human": true,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/truth",
+          "url": "https://www.slidphilabs.com/truth",
+          "ok": true,
+          "status": 200,
+          "ms": 42,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 8373,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta property=\"og:image\" content=\"https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg\"/>\n<meta property=\"og:type\" content=\"website\"/>\n<meta name=\"twitter:image\" content=\"https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg\"/>\n\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Truth table — pub",
+            "title": "Truth table — public benches · Slid Phi Labs",
+            "description": "Public truth table for Compression outcomes. Live web-codec bench. No private engine.",
+            "dual_door": {
+              "human": false,
+              "agent": false
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/updates",
+          "url": "https://www.slidphilabs.com/updates",
+          "ok": true,
+          "status": 200,
+          "ms": 39,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 10961,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\"/>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>\n<title>Lab Feed — updates · news · plans · Slid Phi Labs</title>\n<meta name=\"description\" content=\"Scrolling lab feed: product updates, news, future plans, and X @slidphilabs. Lab feed from Slid Phi Labs.\"/>\n<meta name=\"keywords\" content=\"Slid Phi Labs updates, produ",
+            "title": "Lab Feed — updates · news · plans · Slid Phi Labs",
+            "description": "Scrolling lab feed: product updates, news, future plans, and X @slidphilabs. Lab feed from Slid Phi Labs.",
+            "dual_door": {
+              "human": true,
+              "agent": true
+            }
+          }
+        },
+        {
+          "surface": "web",
+          "path": "/web",
+          "url": "https://www.slidphilabs.com/web",
+          "ok": true,
+          "status": 200,
+          "ms": 78,
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 12598,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta property=\"og:description\" content=\"Free HTML/CSS/JS/JSON compress demo. For bulk jobs: free first 100 GB on /pps, then ~5¢/GB under ~9¢ egress.\"/>\n<meta property=\"og:site_name\" content=\"Slid Phi Labs\"/>\n<meta property=\"og:type\" content=\"website\"/>\n<meta name=\"twitter:title\" content=\"Web compress free demo · Slid Phi Labs\"/>\n<meta name=\"twitter:descript",
+            "title": "Web compress free demo · Slid Phi Labs",
+            "description": "Free HTML/CSS/JS/JSON compress demo. For bulk jobs: free first 100 GB on /pps, then ~5¢/GB under ~9¢ egress.",
+            "dual_door": {
+              "human": false,
+              "agent": true
+            }
+          }
+        }
+      ]
+    },
+    "agent": {
+      "score": 100,
+      "letter": "A",
+      "ok": 13,
+      "soft": 0,
+      "fail": 0,
+      "total": 13,
+      "findings": [
+        {
+          "surface": "agent",
+          "path": "/.well-known/agent-card.json",
+          "url": "https://www.slidphilabs.com/.well-known/agent-card.json",
+          "ok": true,
+          "status": 200,
+          "ms": 33,
+          "content_type": "application/json; charset=utf-8",
+          "bytes": 5174,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "{\n  \"ok\": true,\n  \"name\": \"Slid Phi Labs\",\n  \"description\": \"Slid Phi Labs. Free first 100 GB suite; then ~5c/GB under first paid egress (~9c/GB). Dual surface. Try Gate retired.\",\n  \"url\": \"https://www.slidphilabs.com\",\n  \"version\": \"1.11.0\",\n  \"provider\": {\n    \"organization\": \"Slid Phi Labs\",\n    \"url\": \"https://www.slidphilabs.com\"\n  },\n  \"documentationUrl\": \"https://www.slidphilabs.com/agents",
+            "json_keys": [
+              "ok",
+              "name",
+              "description",
+              "url",
+              "version",
+              "provider",
+              "documentationUrl",
+              "capabilities",
+              "defaultInputModes",
+              "defaultOutputModes",
+              "skills",
+              "commerce",
+              "products_url",
+              "agents_json",
+              "duos"
+            ],
+            "json_ok": true
+          }
+        },
+        {
+          "surface": "agent",
+          "path": "/.well-known/agentic-commerce.json",
+          "url": "https://www.slidphilabs.com/.well-known/agentic-commerce.json",
+          "ok": true,
+          "status": 200,
+          "ms": 39,
+          "content_type": "application/json; charset=utf-8",
+          "bytes": 3609,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "{\n  \"name\": \"Slid Phi Labs\",\n  \"version\": \"1.3.0\",\n  \"site\": \"https://www.slidphilabs.com\",\n  \"protocols\": [\n    \"x402\"\n  ],\n  \"discovery\": \"https://www.slidphilabs.com/api/agent\",\n  \"catalog\": \"https://www.slidphilabs.com/api/x402-products\",\n  \"buy\": \"POST https://www.slidphilabs.com/api/x402-products\",\n  \"suite\": \"POST https://www.slidphilabs.com/api/x402-suite\",\n  \"human_stripe\": \"https://www.s",
+            "json_keys": [
+              "name",
+              "version",
+              "site",
+              "protocols",
+              "discovery",
+              "catalog",
+              "buy",
+              "suite",
+              "human_stripe",
+              "one_liner",
+              "agents_txt",
+              "agents_json",
+              "llms_txt",
+              "network",
+              "asset",
+              "networks",
+              "ecosystem",
+              "modules",
+              "description",
+              "platform",
+              "starter_path",
+              "suite_pricing",
+              "try_gate",
+              "olympiad"
+            ],
+            "json_ok": true
+          }
+        },
+        {
+          "surface": "agent",
+          "path": "/agents.json",
+          "url": "https://www.slidphilabs.com/agents.json",
+          "ok": true,
+          "status": 200,
+          "ms": 33,
+          "content_type": "application/json; charset=utf-8",
+          "bytes": 12624,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "{\n  \"$schema\": \"https://agents-txt.com/schema/agents-json/v1.0.json\",\n  \"ok\": true,\n  \"name\": \"Slid Phi Labs\",\n  \"description\": \"Pub encode/decode compression that proves RT (ZRW 8 B). Pivot: gaming (GAO) + security (governance). Free 100 GB suite. Dual doors. GET /api/agent · /standings.json.\",\n  \"version\": \"1.11.0\",\n  \"updated\": \"2026-08-11\",\n  \"standard\": \"https://agents-txt.com\",\n  \"site\": \"ht",
+            "json_keys": [
+              "$schema",
+              "ok",
+              "name",
+              "description",
+              "version",
+              "updated",
+              "standard",
+              "site",
+              "agents",
+              "products",
+              "catalog",
+              "discovery_sot",
+              "duos",
+              "duos_api",
+              "payments",
+              "a2a",
+              "discovery",
+              "platform",
+              "pricing",
+              "codec",
+              "position",
+              "tagline",
+              "flagship",
+              "phi_metrics"
+            ],
+            "json_ok": true
+          }
+        },
+        {
+          "surface": "agent",
+          "path": "/agents.txt",
+          "url": "https://www.slidphilabs.com/agents.txt",
+          "ok": true,
+          "status": 200,
+          "ms": 32,
+          "content_type": "text/plain; charset=utf-8",
+          "bytes": 1965,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "# agents.txt\n# Standard: https://agents-txt.com\n# JSON: https://www.slidphilabs.com/agents.json\n# Platform map: https://www.slidphilabs.com/platform.json\n# Discovery SoT: https://www.slidphilabs.com/api/agent\n# Human hub: https://www.slidphilabs.com/humans\n# Agent hub: https://www.slidphilabs.com/agents\n\n# Duosurface reporting (web + agent secret shopper)\nDuos: https://www.slidphilabs.com/duos\nDuo",
+            "lines": 42
+          }
+        },
+        {
+          "surface": "agent",
+          "path": "/api/agent",
+          "url": "https://www.slidphilabs.com/api/agent",
+          "ok": true,
+          "status": 200,
+          "ms": 31,
+          "content_type": "application/json; charset=utf-8",
+          "bytes": 19188,
+          "issues": [],
+          "notes": [
+            "Link header present"
+          ],
+          "samples": {
+            "head": "{\n  \"ok\": true,\n  \"name\": \"Slid Phi Labs — Platform Discovery\",\n  \"version\": \"1.11.0\",\n  \"updated\": \"2026-08-11\",\n  \"site\": \"https://www.slidphilabs.com\",\n  \"brand\": \"https://www.slidphilabs.com\",\n  \"dual_doors\": {\n    \"brand\": \"https://www.slidphilabs.com\",\n    \"product\": \"https://www.slidphilabs.com\",\n    \"mesh\": \"https://spl-team-mesh.fly.dev\",\n    \"humans\": \"https://www.slidphilabs.com/humans\"",
+            "json_keys": [
+              "ok",
+              "name",
+              "version",
+              "updated",
+              "site",
+              "brand",
+              "dual_doors",
+              "cadence",
+              "live_product_host",
+              "live_product_alternate",
+              "note_host",
+              "suite_ui",
+              "codec_url",
+              "web_codec",
+              "phi_metrics",
+              "payments",
+              "checkout",
+              "pay_ui",
+              "agents_json",
+              "products_url",
+              "duos",
+              "duos_api",
+              "products",
+              "agent_roster"
+            ],
+            "json_ok": true
+          }
+        },
+        {
+          "surface": "agent",
+          "path": "/api/bench?meta=1",
+          "url": "https://www.slidphilabs.com/api/bench?meta=1",
+          "ok": true,
+          "status": 200,
+          "ms": 121,
+          "content_type": "application/json; charset=utf-8",
+          "bytes": 515,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "{\"ok\":true,\"route\":\"/bench\",\"api\":\"/api/bench\",\"classes\":[\"structured\",\"float\",\"mixed\"],\"engines\":[\"spl_omniwave\",\"zrw\",\"gzip-9\",\"brotli-11\"],\"freemium\":{\"first_gb\":100,\"note\":\"Live paid jobs up to 100 GB; this open bench uses public synthetic slices ≤512 KiB so proof is free and self-serve.\"},\"stream\":\"GET /api/bench?stream=1&bytes=65536 → NDJSON events\",\"json\":\"GET /api/bench?bytes=65536 → full ",
+            "json_keys": [
+              "ok",
+              "route",
+              "api",
+              "classes",
+              "engines",
+              "freemium",
+              "stream",
+              "json",
+              "pricing",
+              "standings"
+            ],
+            "json_ok": true
+          }
+        },
+        {
+          "surface": "agent",
+          "path": "/api/healthz",
+          "url": "https://www.slidphilabs.com/api/healthz",
+          "ok": true,
+          "status": 200,
+          "ms": 61,
+          "content_type": "application/json",
+          "bytes": 76,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "{\"ok\":true,\"host\":\"fly\",\"app\":\"slidphilabs\",\"at\":\"2026-08-11T13:13:37.630Z\"}",
+            "json_keys": [
+              "ok",
+              "host",
+              "app",
+              "at"
+            ],
+            "json_ok": true
+          }
+        },
+        {
+          "surface": "agent",
+          "path": "/api/x402-products",
+          "url": "https://www.slidphilabs.com/api/x402-products",
+          "ok": true,
+          "status": 200,
+          "ms": 50,
+          "content_type": "application/json",
+          "bytes": 5019,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "{\"service\":\"Slid Phi Labs\",\"protocol\":\"x402\",\"rail\":\"agent\",\"human_ui\":\"https://www.slidphilabs.com\",\"suite_jobs\":\"POST /api/x402-suite\",\"buy_product\":\"POST /api/x402-products\",\"payment_header\":\"X-PAYMENT\",\"payment\":{\"scheme\":\"exact\",\"network\":\"solana-mainnet-beta\",\"asset\":\"EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v\",\"payTo\":\"ZHq1SCjyr2fReu9VmtpmZwDEbo1uzbrZMqPuY2ivb9V\",\"decimals\":6,\"chain\":\"sol",
+            "json_keys": [
+              "service",
+              "protocol",
+              "rail",
+              "human_ui",
+              "suite_jobs",
+              "buy_product",
+              "payment_header",
+              "payment",
+              "payment_rails",
+              "configured",
+              "products",
+              "aliases",
+              "client_compat",
+              "note"
+            ],
+            "json_ok": true
+          }
+        },
+        {
+          "surface": "agent",
+          "path": "/healthz",
+          "url": "https://www.slidphilabs.com/healthz",
+          "ok": true,
+          "status": 200,
+          "ms": 50,
+          "content_type": "application/json",
+          "bytes": 76,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "{\"ok\":true,\"host\":\"fly\",\"app\":\"slidphilabs\",\"at\":\"2026-08-11T13:13:37.637Z\"}",
+            "json_keys": [
+              "ok",
+              "host",
+              "app",
+              "at"
+            ],
+            "json_ok": true
+          }
+        },
+        {
+          "surface": "agent",
+          "path": "/humans.txt",
+          "url": "https://www.slidphilabs.com/humans.txt",
+          "ok": true,
+          "status": 200,
+          "ms": 67,
+          "content_type": "text/plain; charset=utf-8",
+          "bytes": 1324,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "/* humans.txt — who runs this place (for people, not scrapers) */\n\nTeam: Slid Phi Labs\nContact: corey@slidphilabs.com\nSite: https://www.slidphilabs.com\nSlogan: One mission · two attack vectors · one team\n\nPub Facing (you are here in spirit): https://www.slidphilabs.com/humans\nAgentic Minded (if you are software): https://www.slidphilabs.com/agents\n\nWhat we sell (public outcomes only):\n  - SPL Code",
+            "lines": 32
+          }
+        },
+        {
+          "surface": "agent",
+          "path": "/llms-full.txt",
+          "url": "https://www.slidphilabs.com/llms-full.txt",
+          "ok": true,
+          "status": 200,
+          "ms": 33,
+          "content_type": "text/plain; charset=utf-8",
+          "bytes": 4743,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "# Slid Phi Labs — full agent brief\n# Encode · decode · prove · game · secure\n# Pub encode/decode compression (domain RT) · gaming (GAO) · security (governance)\n# Slid Phi Labs — full LLM pack\n# Updated 2026-08-09 · standings v1.2.0 · agent discovery 1.9.5 · cadence 33·66·999\n# Flagship: ZRW zeros×10k → 8 B · zeros_1M → 10 B\n# Standings: https://www.slidphilabs.com/standings.json\n# University: http",
+            "lines": 101
+          }
+        },
+        {
+          "surface": "agent",
+          "path": "/llms.txt",
+          "url": "https://www.slidphilabs.com/llms.txt",
+          "ok": true,
+          "status": 200,
+          "ms": 43,
+          "content_type": "text/plain; charset=utf-8",
+          "bytes": 6766,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "Duosurface reporting: https://www.slidphilabs.com/duos · API https://www.slidphilabs.com/api/duos\n# Slid Phi Labs\n> Encode · decode · prove · game · secure\n> Pub-facing best encode/decode compression (named domains + byte RT). ZRW zeros×10k → 8 B · zeros_1M → 10 B.\n> Pivot: gaming (Great Agentic Olympiad) · security (residual governance · agent ops).\n> Cadence 33 · 66 · 999 · domain supremacy · du",
+            "lines": 120
+          }
+        },
+        {
+          "surface": "agent",
+          "path": "/platform.json",
+          "url": "https://www.slidphilabs.com/platform.json",
+          "ok": true,
+          "status": 200,
+          "ms": 33,
+          "content_type": "application/json; charset=utf-8",
+          "bytes": 10758,
+          "issues": [],
+          "notes": [],
+          "samples": {
+            "head": "{\n  \"ok\": true,\n  \"name\": \"Slid Phi Labs\",\n  \"version\": \"1.10.0\",\n  \"site\": \"https://www.slidphilabs.com\",\n  \"mission\": \"Pub-facing best encode/decode compression where the domain is named and round-trip proves it — then pivot into gaming and security. Agent systems stay exact. One team.\",\n  \"slogan\": \"Encode · decode · prove · game · secure\",\n  \"surfaces\": {\n    \"pub_facing\": {\n      \"id\": \"pub_f",
+            "json_keys": [
+              "ok",
+              "name",
+              "version",
+              "site",
+              "mission",
+              "slogan",
+              "surfaces",
+              "modules",
+              "discovery",
+              "one_liner",
+              "npm",
+              "contact",
+              "feel_at_home",
+              "social",
+              "pricing",
+              "codec",
+              "position",
+              "tagline",
+              "flagship",
+              "phi_metrics",
+              "updated",
+              "cadence",
+              "host",
+              "university"
+            ],
+            "json_ok": true
+          }
+        }
+      ]
+    }
+  },
+  "overall": {
+    "score": 100,
+    "letter": "A",
+    "ok": 33,
+    "soft": 0,
+    "fail": 0,
+    "total": 33
+  },
+  "top_issues": [],
+  "summary": {
+    "web": "WEB shopper A (100) · 20 clean · 0 soft · 0 fail",
+    "agent": "AGENT shopper A (100) · 13 clean · 0 soft · 0 fail",
+    "overall": "DUOS overall A (100)"
+  },
+  "next_moves": []
+}

@@ -1,15 +1,21 @@
 {
   "service": "Slid Phi Labs \u2014 Standings & Records",
-  "version": "1.1.0",
-  "updated": "2026-08-07",
-  "visibility": "public",
-  "ip_guard": "Public outcomes only. No process coefficients or private engines.",
+  "version": "1.2.2",
+  "updated": "2026-08-12",
+  "ip_guard": "Test outcomes published only when best or close. No process coefficients or private engines.",
   "methodology": {
     "zrw_runtime": "ZeroRangeWave-Full-Pack-v5 index.mjs on host; gzip-9 / brotli-11 via Node zlib; raw = LE int32 buffer",
     "pack_records": "Authoritative pack self-bench for zeros/ramp/walk generators",
-    "residual": "Host/champion public outcome bands \u2014 not a gzip size race",
+    "residual": "Host/champion outcome bands \u2014 not a gzip size race",
     "industry_context": "GP codecs ranked by role; lab wins are domain-scoped",
-    "update_policy": "Bump updated + append history[] entry when re-running benches or claiming a new record"
+    "update_policy": "Bump updated + append history[] entry when re-running benches or claiming a new record",
+    "host": "www.slidphilabs.com \u2192 Fly product (domain supremacy 33\u00b0 sealed 2026-08-09)",
+    "cadence": "33 domain \u00b7 66 dual doors \u00b7 999 gift circle",
+    "silesia": "Industry field baseline FULL 12/12 (brotli-11 4.21\u00d7 size \u00b7 zstd-3 ~39 MB/s). OmniWave lossless freeze ~3.13\u20133.60\u00d7. Float path diagnostic-labeled only. Mixed auto ~6.03\u00d7 is NOT a lossless crown. CodEX 1.1 2026-08-10.",
+    "zeros_1m": "ZRW lab ZeroRangeWave single-pass zeros_1M (measured outcome)",
+    "publish": "Test outcomes may be published only when lab is best or close. Trailing / out-of-domain / incomplete benches stay lab-side.",
+    "focus": "intention \u00d7 grade \u2014 named aim \u00d7 measured outcome; both required",
+    "cddg": "host/champion internal band \u00b7 not independently blinded"
   },
   "industry_field": [
     {
@@ -127,8 +133,8 @@
       "rank": 1,
       "field": "structured integers",
       "status": "leading",
-      "as_of": "2026-08-07",
-      "source": "host re-run 2026-08-07"
+      "as_of": "2026-08-10",
+      "source": "Gate 2 public process + field gzip/brotli on 40k zero buffer"
     },
     {
       "metric": "Size on ramp_10k (int32 raw 40KB)",
@@ -235,50 +241,6 @@
       "source": "pack v5 self-bench"
     },
     {
-      "metric": "Size on high-entropy random int32",
-      "lab": "ZRW",
-      "lab_value": "out of domain / loses",
-      "competitors": [
-        {
-          "name": "brotli-11",
-          "value": "smaller"
-        },
-        {
-          "name": "gzip-9",
-          "value": "smaller than ZRW"
-        }
-      ],
-      "rank": null,
-      "field": "high-entropy integers",
-      "status": "trailing",
-      "as_of": "2026-08-07",
-      "source": "host re-run 2026-08-07"
-    },
-    {
-      "metric": "Size on general JSON/HTML bytes",
-      "lab": "ZRW",
-      "lab_value": "not product claim",
-      "competitors": [
-        {
-          "name": "brotli",
-          "value": "industry lead class"
-        },
-        {
-          "name": "zstd",
-          "value": "industry lead class"
-        },
-        {
-          "name": "gzip",
-          "value": "baseline"
-        }
-      ],
-      "rank": null,
-      "field": "general-purpose bytes",
-      "status": "n/a",
-      "as_of": "2026-08-07",
-      "source": "industry consensus + host text samples"
-    },
-    {
       "metric": "Residual reduction vs pure discrete baseline",
       "lab": "CDDG:Split / ZRQC residual",
       "lab_value": "~64\u201384% residual cut class",
@@ -296,7 +258,9 @@
       "field": "residual process",
       "status": "leading",
       "as_of": "2026-08-04",
-      "source": "Host champion / public outcome bands"
+      "source": "Host champion / outcome bands",
+      "label": "host/champion internal band \u00b7 not independently blinded",
+      "note": "host/champion internal band \u00b7 not independently blinded"
     },
     {
       "metric": "Quality vs pure-360",
@@ -312,43 +276,89 @@
       "field": "residual process",
       "status": "leading",
       "as_of": "2026-08-04",
-      "source": "Host champion notes"
+      "source": "Host champion notes",
+      "label": "host/champion internal band \u00b7 not independently blinded",
+      "note": "host/champion internal band \u00b7 not independently blinded"
     },
     {
-      "metric": "Encode speed (zeros/ramp class)",
+      "metric": "Size on zeros_1M (int32 raw 4 MB)",
       "lab": "ZRW",
-      "lab_value": "sub-ms\u2013few ms on 10k ints (host)",
+      "lab_value": "10 B",
       "competitors": [
         {
           "name": "gzip-9",
-          "value": "slower on same buffers"
+          "value": "3910 B"
         },
         {
-          "name": "lz4/snappy",
-          "value": "not yet timed head-to-head"
+          "name": "brotli-11",
+          "value": "14 B"
         }
       ],
-      "rank": null,
-      "field": "throughput",
-      "status": "partial",
-      "as_of": "2026-08-07",
-      "source": "host timing 2026-08-07"
+      "rank": 1,
+      "field": "structured integers",
+      "status": "record",
+      "as_of": "2026-08-09",
+      "source": "lab zeros_1M_zrw_LATEST \u00b7 roundtrip mirror_error 0"
     },
     {
-      "metric": "Blackjack / shards / slid-phi vs industry",
-      "lab": "family codecs",
-      "lab_value": "private engines \u2014 re-bench after unlock",
+      "metric": "Silesia total compressed size (12 files, ~202 MB raw)",
+      "lab": "OmniWave (SPL Codec)",
+      "lab_value": "lossless freeze ~3.13\u20133.60\u00d7 \u00b7 float path diagnostic (not crown)",
       "competitors": [
         {
-          "name": "gzip/brotli/zstd",
-          "value": "pending private package"
+          "name": "brotli-11 field",
+          "value": "50.33 MB (~4.21\u00d7) \u2014 field size leader"
+        },
+        {
+          "name": "zstd-19 field",
+          "value": "52.90 MB (~4.01\u00d7)"
+        },
+        {
+          "name": "zstd-3 field",
+          "value": "66.22 MB (~3.20\u00d7) \u00b7 ~39 MB/s encode"
+        },
+        {
+          "name": "gzip-9 field",
+          "value": "67.64 MB (~3.13\u00d7)"
+        },
+        {
+          "name": "OmniWave mixed auto (includes float)",
+          "value": "35.15 MB (~6.03\u00d7) DIAGNOSTIC \u2014 not lossless"
         }
       ],
       "rank": null,
-      "field": "multi-path integers",
-      "status": "pending",
-      "as_of": "2026-08-07",
-      "source": "npm stubs public"
+      "field": "mixed corpus (Silesia)",
+      "status": "close",
+      "as_of": "2026-08-10",
+      "source": "CodEX 1.1 \u00b7 silesia_CORRECTED_LATEST \u00b7 industry field baseline",
+      "note": "Industry = field baseline. OmniWave lossless freeze does not beat brotli-11. Float ratios are diagnostic only."
+    },
+    {
+      "metric": "Primary host product live (DNS\u2192Fly)",
+      "lab": "Platform ops",
+      "lab_value": "www.slidphilabs.com 200 product APIs",
+      "competitors": [
+        {
+          "name": "ghost Wix-API claims",
+          "value": "retired"
+        }
+      ],
+      "rank": 1,
+      "field": "domain supremacy",
+      "status": "record",
+      "as_of": "2026-08-09",
+      "source": "DOMAIN_SUPREMACY_33_LATEST"
+    },
+    {
+      "metric": "Dual doors green (human + agent)",
+      "lab": "Platform ops",
+      "lab_value": "Pub Facing + Agentic Minded on primary host",
+      "competitors": [],
+      "rank": 1,
+      "field": "commerce surfaces",
+      "status": "leading",
+      "as_of": "2026-08-09",
+      "source": "DUAL_DOORS_66_LATEST"
     }
   ],
   "records": [
@@ -427,10 +437,12 @@
       "title": "CDDG residual cut band",
       "value": "64\u201384% class",
       "beats": "pure-360 discrete residual baseline",
-      "corpus": "Host residual benches (public outcomes)",
+      "corpus": "Host residual benches (outcomes)",
       "held_since": "2026-08-04",
       "status": "active",
-      "product": "CDDG:Split / ZRQC"
+      "product": "CDDG:Split / ZRQC",
+      "label": "host/champion internal band \u00b7 not independently blinded",
+      "note": "host/champion internal band \u00b7 not independently blinded"
     },
     {
       "id": "cddg-quality-band",
@@ -440,10 +452,79 @@
       "corpus": "champion outcomes",
       "held_since": "2026-08-04",
       "status": "active",
-      "product": "CDDG + Mirrored Cost"
+      "product": "CDDG + Mirrored Cost",
+      "label": "host/champion internal band \u00b7 not independently blinded",
+      "note": "host/champion internal band \u00b7 not independently blinded"
+    },
+    {
+      "id": "zrw-zeros-1m-lab",
+      "title": "ZRW zeros_1M size (single pass)",
+      "value": "10 B",
+      "beats": "brotli 14 B \u00b7 gzip 3910 B",
+      "corpus": "zeros_1M int32 LE (4 MB raw)",
+      "held_since": "2026-08-09",
+      "status": "active",
+      "product": "ZRW lab"
+    },
+    {
+      "id": "omni-silesia-size-2026-08-09",
+      "title": "OmniWave Silesia \u2014 lossless freeze + diagnostic note",
+      "value": "Lossless ~3.13\u20133.60\u00d7 \u00b7 field brotli-11 4.21\u00d7 \u00b7 mixed 6.03\u00d7 diagnostic only",
+      "beats": "n/a \u2014 not a lossless crown over brotli-11; see CodEX 1.1",
+      "corpus": "Silesia (~202 MB raw)",
+      "held_since": "2026-08-09",
+      "status": "diagnostic_mixed_path",
+      "product": "SPL Codec / OmniWave",
+      "note": "CodEX 1.1: industry field baseline; OmniWave lossless freeze; float path NOT lossless. Do not market 6.03\u00d7 as product win.",
+      "codex_ref": "/lab/silesia_CORRECTED_LATEST.json",
+      "links": {
+        "codex": "https://www.slidphilabs.com/codex.html",
+        "corrected": "https://www.slidphilabs.com/lab/silesia_CORRECTED_LATEST.json"
+      }
+    },
+    {
+      "id": "domain-supremacy-33",
+      "title": "Domain supremacy 33\u00b0 \u2014 primary host is product",
+      "value": "www.slidphilabs.com \u2192 Fly live",
+      "beats": "ghost Wix-API / empty product claims",
+      "corpus": "ops seal",
+      "held_since": "2026-08-09",
+      "status": "active",
+      "product": "Platform"
+    },
+    {
+      "id": "dual-doors-66",
+      "title": "Dual doors 66\u00b0 \u2014 human + agent green",
+      "value": "Stripe humans \u00b7 x402 agents on primary",
+      "beats": "single-door / agent-blind commerce",
+      "corpus": "ops seal",
+      "held_since": "2026-08-09",
+      "status": "active",
+      "product": "Platform"
+    },
+    {
+      "id": "gift-999-school-factory",
+      "title": "Gift 999\u00b0 \u2014 TEACHAiD school factory live",
+      "value": "$275 create \u00b7 forever owner cut",
+      "beats": "mailto-only school create",
+      "corpus": "MOTIS gift circle \u00b7 TEACHAiD Fly",
+      "held_since": "2026-08-09",
+      "status": "active",
+      "product": "Slid Phi University / TEACHAiD",
+      "links": {
+        "pay": "https://buy.stripe.com/9B6bJ2c3z2X6clD40g6wE0n",
+        "desk": "https://teachaid.fly.dev/campus-hub.html#school",
+        "api": "https://teachaid.fly.dev/api/school"
+      }
     }
   ],
   "rankings_summary": [
+    {
+      "domain": "Silesia mixed corpus (size, this re-bench)",
+      "lab_rank": "honest_mixed",
+      "among": "field codecs + OmniWave lossless freeze + diagnostic float path",
+      "leader": "Field size: brotli-11 4.21\u00d7 \u00b7 OmniWave lossless ~3.1\u20133.6\u00d7 \u00b7 mixed 6.03\u00d7 is float-diagnostic not crown"
+    },
     {
       "domain": "Web payloads (HTML/CSS/JS/JSON)",
       "lab_rank": 1,
@@ -463,31 +544,49 @@
       "leader": "ZRW"
     },
     {
-      "domain": "High-entropy / random ints",
-      "lab_rank": null,
-      "among": "brotli leads measured set",
-      "leader": "brotli class"
-    },
-    {
-      "domain": "General web/text bytes",
-      "lab_rank": null,
-      "among": "industry GP",
-      "leader": "brotli / zstd"
-    },
-    {
       "domain": "Residual process outcomes",
       "lab_rank": 1,
       "among": "pure-360 / discrete baselines",
       "leader": "CDDG"
     },
     {
-      "domain": "Wire throughput (lz4/snappy class)",
-      "lab_rank": null,
-      "among": "not fully timed",
-      "leader": "lz4 class (industry)"
+      "domain": "Primary host / dual doors",
+      "lab_rank": 1,
+      "among": "ops seals 33\u00b0 \u00b7 66\u00b0",
+      "leader": "www.slidphilabs.com (Fly) \u00b7 humans + agents"
     }
   ],
   "history": [
+    {
+      "date": "2026-08-12",
+      "event": "Public product face locked to TRU8. Lab series remain labeled. CDDG bands tagged host/champion internal \u00b7 not independently blinded.",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2026-08-10",
+      "event": "Gate 2: ZRW zeros\u00d710k public bench PASS \u2014 8 B vs gzip-9 73 \u00b7 brotli-11 13 \u00b7 live process + compress/decompress",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2026-08-10",
+      "event": "Public ZRW zeros\u00d710k re-run PASS (process 8 B \u00b7 me 0 \u00b7 RT) \u00b7 joint CuNi+Quikgater proof JSON \u00b7 Rider 402 partial",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2026-08-10",
+      "event": "Honesty fix: OmniWave Silesia demoted from false size crown; CodEX 1.1 lossless freeze + float diagnostic; intention \u00d7 grade focus",
+      "version": "1.2.2"
+    },
+    {
+      "date": "2026-08-09",
+      "event": "Publish policy: only best-or-close test outcomes on standings face; shelved trailing/n/a/pending/incomplete",
+      "version": "1.2.0"
+    },
+    {
+      "date": "2026-08-09",
+      "event": "v1.2.0 full site workup: zeros_1M 10 B record, OmniWave Silesia size lead (domain-scoped), cadence seals 33\u00b766\u00b7999, DNS\u2192Fly domain supremacy, TEACHAiD school factory gift link, discovery/SEO refresh",
+      "version": "1.2.0"
+    },
     {
       "date": "2026-08-07",
       "event": "Locked product focus on WEB data comp/decomp; shipped /web UI + /api/web-codec (brotli-11 vs gzip-9 selector)",
@@ -500,7 +599,7 @@
     },
     {
       "date": "2026-08-04",
-      "event": "CDDG residual / quality public outcome bands recorded from Host champion benches",
+      "event": "CDDG residual / quality outcome bands recorded from Host champion benches",
       "version": "pre-tracker"
     },
     {
@@ -510,21 +609,81 @@
     }
   ],
   "next_updates": [
-    "Add zstd + lz4 CLI head-to-head on same int32 buffers",
+    "Add zstd + lz4 CLI head-to-head on same int32 buffers (zeros/ramp/walk)",
+    "Publish CHMB JV/JR chamber when unblocked (domain-honest JSON seats)",
     "Unlock blackjack private package for multi-path table",
-    "Optional Silesia GP context row (not ZRW target domain)"
+    "Optional monthly standings re-run pulse (369s ops cadence)"
   ],
   "links": {
-    "bench_doc": "https://www.slidphilabs.com/ \u2014 see /standings",
+    "bench_doc": "https://www.slidphilabs.com/standings",
     "ideas": "https://www.slidphilabs.com/ideas",
     "agent": "https://www.slidphilabs.com/api/agent",
     "zrw": "https://www.slidphilabs.com/#zrw",
-    "cddg": "https://www.slidphilabs.com/#cddg-split"
+    "cddg": "https://www.slidphilabs.com/#cddg-split",
+    "standings_json": "https://www.slidphilabs.com/standings.json",
+    "web": "https://www.slidphilabs.com/web",
+    "phi_metrics": "https://www.slidphilabs.com/api/phi/metrics",
+    "mesh": "https://spl-team-mesh.fly.dev",
+    "teachaid": "https://teachaid.fly.dev",
+    "school_factory": "https://teachaid.fly.dev/campus-hub.html#school",
+    "olympiad": "https://www.slidphilabs.com/olympiad"
   },
   "product_lock": {
-    "focus": "WEB data compress / decompress",
+    "focus": "WEB data compress / decompress + domain-supremacy flagship ZRW",
     "surface": "https://www.slidphilabs.com/web",
     "api": "https://www.slidphilabs.com/api/web-codec",
-    "as_of": "2026-08-07"
-  }
+    "as_of": "2026-08-12",
+    "flagship": "ZRW zeros\u00d710k \u2192 8 B (gzip-9 73 \u00b7 brotli-11 13)",
+    "host": "https://www.slidphilabs.com",
+    "focus_formula": "intention \u00d7 grade",
+    "public_face": "TRU8",
+    "note": "TRU8 is the public product face; /web and these rows are historical / lab series.",
+    "flagship_tru8": "1 000 000 zeros \u2192 8 B",
+    "flagship_zrw": "ZRW zeros\u00d710k \u2192 8 B (gzip-9 73 \u00b7 brotli-11 13)"
+  },
+  "cadence": {
+    "beats": [
+      33,
+      66,
+      999
+    ],
+    "seals": {
+      "33": "DOMAIN_SUPREMACY \u2014 primary host is product",
+      "66": "DUAL_DOORS \u2014 humans Stripe \u00b7 agents x402",
+      "999": "GIFT_SCHOOL_FACTORY \u2014 TEACHAiD $275 \u00b7 forever cut"
+    },
+    "day": "Ghost_pi_2026-08-09",
+    "law": "domain supremacy \u00b7 proof before praise \u00b7 residual only \u00b7 dual doors \u00b7 gift circle",
+    "seal": "IN_HIS_NAME_WE_CODE"
+  },
+  "ecosystem": {
+    "university": {
+      "name": "Slid Phi University",
+      "engine": "TEACHAiD",
+      "url": "https://teachaid.fly.dev",
+      "motis": "https://teachaid.fly.dev/motis.html",
+      "school_create_usd": 275,
+      "forever_cut": true
+    },
+    "mesh": "https://spl-team-mesh.fly.dev",
+    "olympiad": "https://www.slidphilabs.com/olympiad"
+  },
+  "publish_policy": {
+    "rule": "Test outcomes may be published only when lab is best or close. Trailing / out-of-domain / incomplete benches stay lab-side.",
+    "publish_status": [
+      "leading",
+      "record",
+      "close"
+    ],
+    "do_not_publish": [
+      "trailing",
+      "n/a",
+      "pending",
+      "incomplete"
+    ],
+    "as_of": "2026-08-09"
+  },
+  "shelved_count": 4,
+  "public_product_face": "TRU8",
+  "public_face_note": "Public product face is TRU8. These rows are lab series (ZRW / OmniWave / CDDG / web codec). Do not present OmniWave Silesia as beating brotli."
 }

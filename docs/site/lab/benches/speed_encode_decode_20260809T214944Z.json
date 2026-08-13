@@ -1,0 +1,582 @@
+{
+  "schema": "spl.speed_encode_decode.v1",
+  "at": "2026-08-09T21:33:46Z",
+  "base": "https://slidphilabs.fly.dev",
+  "warm": 1,
+  "runs": 7,
+  "note": "wall-clock includes HTTP RTT to public OmniWave",
+  "matrices": [
+    {
+      "size": 65536,
+      "rows": [
+        {
+          "vector": "structured_step64",
+          "route": "zrw",
+          "raw_bytes": 65536,
+          "path": "zrw",
+          "method": "zrw-v5-stride16",
+          "packed_bytes": 377,
+          "payload_bytes": 196,
+          "gzip9_bytes": 1842,
+          "ratio_to_raw": 0.005753,
+          "ratio_to_gzip": 0.204669,
+          "dataset_print_id": "dpi_91992cd84856e6",
+          "barrel_rest": "zrw",
+          "encode": {
+            "n": 7,
+            "min_ms": 353.527,
+            "med_ms": 1225.32,
+            "mean_ms": 1371.893,
+            "max_ms": 3162.082,
+            "p90_ms": 1913.522
+          },
+          "decode": {
+            "n": 7,
+            "min_ms": 3118.819,
+            "med_ms": 5731.055,
+            "mean_ms": 5397.368,
+            "max_ms": 7893.28,
+            "p90_ms": 6184.698
+          },
+          "encode_via_print": {
+            "n": 7,
+            "min_ms": 408.12,
+            "med_ms": 1137.101,
+            "mean_ms": 951.936,
+            "max_ms": 1598.302,
+            "p90_ms": 1298.656
+          },
+          "throughput_MBps": {
+            "encode_med": 0.051,
+            "decode_med": 0.011
+          },
+          "roundtrip": true
+        },
+        {
+          "vector": "zeros",
+          "route": "zrw",
+          "raw_bytes": 65536,
+          "path": "zrw",
+          "method": "zrw-v5-chunked",
+          "packed_bytes": 197,
+          "payload_bytes": 28,
+          "gzip9_bytes": 84,
+          "ratio_to_raw": 0.003006,
+          "ratio_to_gzip": 2.345238,
+          "dataset_print_id": "dpi_9ef58f7d53a521",
+          "barrel_rest": "zrw",
+          "encode": {
+            "n": 7,
+            "min_ms": 365.493,
+            "med_ms": 465.514,
+            "mean_ms": 652.377,
+            "max_ms": 1626.81,
+            "p90_ms": 702.167
+          },
+          "decode": {
+            "n": 7,
+            "min_ms": 6407.319,
+            "med_ms": 6774.241,
+            "mean_ms": 7010.439,
+            "max_ms": 8517.176,
+            "p90_ms": 7264.065
+          },
+          "encode_via_print": {
+            "n": 7,
+            "min_ms": 389.667,
+            "med_ms": 1022.369,
+            "mean_ms": 969.137,
+            "max_ms": 1686.796,
+            "p90_ms": 1332.71
+          },
+          "throughput_MBps": {
+            "encode_med": 0.134,
+            "decode_med": 0.009
+          },
+          "roundtrip": true
+        },
+        {
+          "vector": "unit_ramp",
+          "route": "zrw",
+          "raw_bytes": 65536,
+          "path": "zrw",
+          "method": "zrw-v5-stride8",
+          "packed_bytes": 302,
+          "payload_bytes": 124,
+          "gzip9_bytes": 22697,
+          "ratio_to_raw": 0.004608,
+          "ratio_to_gzip": 0.013306,
+          "dataset_print_id": "dpi_5e85ecf97e5f52",
+          "barrel_rest": "zrw",
+          "encode": {
+            "n": 7,
+            "min_ms": 328.272,
+            "med_ms": 599.834,
+            "mean_ms": 725.149,
+            "max_ms": 1311.461,
+            "p90_ms": 965.089
+          },
+          "decode": {
+            "n": 7,
+            "min_ms": 1812.587,
+            "med_ms": 5439.943,
+            "mean_ms": 5043.054,
+            "max_ms": 6619.97,
+            "p90_ms": 5639.344
+          },
+          "encode_via_print": {
+            "n": 7,
+            "min_ms": 314.294,
+            "med_ms": 840.633,
+            "mean_ms": 876.97,
+            "max_ms": 1376.194,
+            "p90_ms": 1312.686
+          },
+          "throughput_MBps": {
+            "encode_med": 0.104,
+            "decode_med": 0.011
+          },
+          "roundtrip": true
+        },
+        {
+          "vector": "float_smooth",
+          "route": "auto",
+          "raw_bytes": 65536,
+          "path": "float",
+          "method": "brotli-11",
+          "packed_bytes": 54702,
+          "payload_bytes": 54583,
+          "gzip9_bytes": 60226,
+          "ratio_to_raw": 0.834686,
+          "ratio_to_gzip": 0.908279,
+          "dataset_print_id": "dpi_99b2c33dee0d00",
+          "barrel_rest": "zrw",
+          "encode": {
+            "n": 7,
+            "min_ms": 1093.359,
+            "med_ms": 1544.754,
+            "mean_ms": 2443.442,
+            "max_ms": 5615.621,
+            "p90_ms": 3199.718
+          },
+          "decode": {
+            "n": 7,
+            "min_ms": 1947.235,
+            "med_ms": 3636.261,
+            "mean_ms": 3695.464,
+            "max_ms": 6758.445,
+            "p90_ms": 3919.318
+          },
+          "encode_via_print": {
+            "n": 7,
+            "min_ms": 1070.526,
+            "med_ms": 1358.473,
+            "mean_ms": 1400.297,
+            "max_ms": 1650.179,
+            "p90_ms": 1626.307
+          },
+          "throughput_MBps": {
+            "encode_med": 0.04,
+            "decode_med": 0.017
+          },
+          "roundtrip": true
+        },
+        {
+          "vector": "text_json",
+          "route": "auto",
+          "raw_bytes": 65536,
+          "path": "raw_brotli-11+bare",
+          "method": "brotli-11",
+          "packed_bytes": 61,
+          "payload_bytes": 61,
+          "gzip9_bytes": 257,
+          "ratio_to_raw": 0.000931,
+          "ratio_to_gzip": 0.237354,
+          "dataset_print_id": "dpi_f10cafd5be0a5d",
+          "barrel_rest": "zrw",
+          "encode": {
+            "n": 7,
+            "min_ms": 520.081,
+            "med_ms": 778.161,
+            "mean_ms": 1099.272,
+            "max_ms": 2218.536,
+            "p90_ms": 2062.801
+          },
+          "decode": {
+            "n": 7,
+            "min_ms": 354.218,
+            "med_ms": 1806.216,
+            "mean_ms": 1970.615,
+            "max_ms": 5986.559,
+            "p90_ms": 2074.6
+          },
+          "encode_via_print": {
+            "n": 7,
+            "min_ms": 703.6,
+            "med_ms": 807.394,
+            "mean_ms": 1030.691,
+            "max_ms": 1950.168,
+            "p90_ms": 1417.815
+          },
+          "throughput_MBps": {
+            "encode_med": 0.08,
+            "decode_med": 0.035
+          },
+          "roundtrip": true
+        },
+        {
+          "vector": "mixed",
+          "route": "auto",
+          "raw_bytes": 65536,
+          "path": "general+bare",
+          "method": "brotli-11",
+          "packed_bytes": 16144,
+          "payload_bytes": 16144,
+          "gzip9_bytes": 21608,
+          "ratio_to_raw": 0.246338,
+          "ratio_to_gzip": 0.747131,
+          "dataset_print_id": "dpi_d02ab7d7a55a87",
+          "barrel_rest": "zrw",
+          "encode": {
+            "n": 7,
+            "min_ms": 549.839,
+            "med_ms": 859.9,
+            "mean_ms": 1189.542,
+            "max_ms": 2615.76,
+            "p90_ms": 1543.971
+          },
+          "decode": {
+            "n": 7,
+            "min_ms": 568.345,
+            "med_ms": 2655.454,
+            "mean_ms": 2113.479,
+            "max_ms": 2908.258,
+            "p90_ms": 2840.311
+          },
+          "encode_via_print": {
+            "n": 7,
+            "min_ms": 399.718,
+            "med_ms": 1053.2,
+            "mean_ms": 945.288,
+            "max_ms": 1619.116,
+            "p90_ms": 1335.378
+          },
+          "throughput_MBps": {
+            "encode_med": 0.073,
+            "decode_med": 0.024
+          },
+          "roundtrip": true
+        },
+        {
+          "vector": "urandom",
+          "route": "auto",
+          "raw_bytes": 65536,
+          "path": "high_entropy+bare",
+          "method": "brotli-11",
+          "packed_bytes": 65540,
+          "payload_bytes": 65540,
+          "gzip9_bytes": 65562,
+          "ratio_to_raw": 1.000061,
+          "ratio_to_gzip": 0.999664,
+          "dataset_print_id": "dpi_9483c7852205d7",
+          "barrel_rest": "zrw",
+          "encode": {
+            "n": 7,
+            "min_ms": 1240.092,
+            "med_ms": 1362.455,
+            "mean_ms": 1400.611,
+            "max_ms": 1597.485,
+            "p90_ms": 1577.237
+          },
+          "decode": {
+            "n": 7,
+            "min_ms": 1749.294,
+            "med_ms": 3616.461,
+            "mean_ms": 3598.969,
+            "max_ms": 4810.318,
+            "p90_ms": 4250.035
+          },
+          "encode_via_print": {
+            "n": 7,
+            "min_ms": 1313.563,
+            "med_ms": 1383.559,
+            "mean_ms": 1378.256,
+            "max_ms": 1424.139,
+            "p90_ms": 1421.812
+          },
+          "throughput_MBps": {
+            "encode_med": 0.046,
+            "decode_med": 0.017
+          },
+          "roundtrip": true
+        }
+      ]
+    }
+  ],
+  "size_sweep": [
+    {
+      "vector": "structured_step64",
+      "route": "zrw",
+      "raw_bytes": 16384,
+      "path": "zrw",
+      "method": "zrw-v5-stride16",
+      "packed_bytes": 375,
+      "payload_bytes": 196,
+      "gzip9_bytes": 500,
+      "ratio_to_raw": 0.022888,
+      "ratio_to_gzip": 0.75,
+      "dataset_print_id": "dpi_2aa399b33813c5",
+      "barrel_rest": "zrw",
+      "encode": {
+        "n": 7,
+        "min_ms": 204.516,
+        "med_ms": 253.127,
+        "mean_ms": 267.485,
+        "max_ms": 418.73,
+        "p90_ms": 263.64
+      },
+      "decode": {
+        "n": 7,
+        "min_ms": 1216.457,
+        "med_ms": 1450.877,
+        "mean_ms": 1418.11,
+        "max_ms": 1571.412,
+        "p90_ms": 1524.639
+      },
+      "encode_via_print": {
+        "n": 7,
+        "min_ms": 216.412,
+        "med_ms": 240.248,
+        "mean_ms": 278.196,
+        "max_ms": 448.472,
+        "p90_ms": 294.198
+      },
+      "throughput_MBps": {
+        "encode_med": 0.062,
+        "decode_med": 0.011
+      },
+      "roundtrip": true,
+      "size_class": 16384
+    },
+    {
+      "vector": "float_smooth",
+      "route": "auto",
+      "raw_bytes": 16384,
+      "path": "float",
+      "method": "brotli-11",
+      "packed_bytes": 13896,
+      "payload_bytes": 13777,
+      "gzip9_bytes": 15067,
+      "ratio_to_raw": 0.848145,
+      "ratio_to_gzip": 0.92228,
+      "dataset_print_id": "dpi_fe7deb8e381f7b",
+      "barrel_rest": "zrw",
+      "encode": {
+        "n": 7,
+        "min_ms": 424.508,
+        "med_ms": 578.653,
+        "mean_ms": 551.691,
+        "max_ms": 658.401,
+        "p90_ms": 639.143
+      },
+      "decode": {
+        "n": 7,
+        "min_ms": 318.099,
+        "med_ms": 368.914,
+        "mean_ms": 530.408,
+        "max_ms": 998.47,
+        "p90_ms": 724.784
+      },
+      "encode_via_print": {
+        "n": 7,
+        "min_ms": 410.604,
+        "med_ms": 507.061,
+        "mean_ms": 514.963,
+        "max_ms": 725.889,
+        "p90_ms": 521.872
+      },
+      "throughput_MBps": {
+        "encode_med": 0.027,
+        "decode_med": 0.042
+      },
+      "roundtrip": true,
+      "size_class": 16384
+    },
+    {
+      "vector": "structured_step64",
+      "route": "zrw",
+      "raw_bytes": 65536,
+      "path": "zrw",
+      "method": "zrw-v5-stride16",
+      "packed_bytes": 377,
+      "payload_bytes": 196,
+      "gzip9_bytes": 1842,
+      "ratio_to_raw": 0.005753,
+      "ratio_to_gzip": 0.204669,
+      "dataset_print_id": "dpi_91992cd8d18a07",
+      "barrel_rest": "zrw",
+      "encode": {
+        "n": 7,
+        "min_ms": 305.263,
+        "med_ms": 363.174,
+        "mean_ms": 417.083,
+        "max_ms": 776.778,
+        "p90_ms": 461.861
+      },
+      "decode": {
+        "n": 7,
+        "min_ms": 4595.981,
+        "med_ms": 5902.31,
+        "mean_ms": 5800.98,
+        "max_ms": 6702.907,
+        "p90_ms": 6472.621
+      },
+      "encode_via_print": {
+        "n": 7,
+        "min_ms": 355.537,
+        "med_ms": 912.219,
+        "mean_ms": 912.445,
+        "max_ms": 1318.768,
+        "p90_ms": 1313.294
+      },
+      "throughput_MBps": {
+        "encode_med": 0.172,
+        "decode_med": 0.011
+      },
+      "roundtrip": true,
+      "size_class": 65536
+    },
+    {
+      "vector": "float_smooth",
+      "route": "auto",
+      "raw_bytes": 65536,
+      "path": "float",
+      "method": "brotli-11",
+      "packed_bytes": 54702,
+      "payload_bytes": 54583,
+      "gzip9_bytes": 60226,
+      "ratio_to_raw": 0.834686,
+      "ratio_to_gzip": 0.908279,
+      "dataset_print_id": "dpi_99b2c33dd07e7f",
+      "barrel_rest": "zrw",
+      "encode": {
+        "n": 7,
+        "min_ms": 1123.141,
+        "med_ms": 1324.836,
+        "mean_ms": 1389.944,
+        "max_ms": 2054.814,
+        "p90_ms": 1408.541
+      },
+      "decode": {
+        "n": 7,
+        "min_ms": 1017.943,
+        "med_ms": 3500.358,
+        "mean_ms": 3336.117,
+        "max_ms": 4801.412,
+        "p90_ms": 4013.145
+      },
+      "encode_via_print": {
+        "n": 7,
+        "min_ms": 1031.104,
+        "med_ms": 1185.51,
+        "mean_ms": 1242.859,
+        "max_ms": 1588.857,
+        "p90_ms": 1416.423
+      },
+      "throughput_MBps": {
+        "encode_med": 0.047,
+        "decode_med": 0.018
+      },
+      "roundtrip": true,
+      "size_class": 65536
+    },
+    {
+      "vector": "structured_step64",
+      "route": "zrw",
+      "raw_bytes": 262144,
+      "path": "zrw",
+      "method": "zrw-v5-stride16",
+      "packed_bytes": 377,
+      "payload_bytes": 196,
+      "gzip9_bytes": 7233,
+      "ratio_to_raw": 0.001438,
+      "ratio_to_gzip": 0.052122,
+      "dataset_print_id": "dpi_ef9c29734db4a9",
+      "barrel_rest": "zrw",
+      "encode": {
+        "n": 7,
+        "min_ms": 1906.422,
+        "med_ms": 2352.872,
+        "mean_ms": 3746.994,
+        "max_ms": 7410.199,
+        "p90_ms": 7232.964
+      },
+      "decode": {
+        "n": 7,
+        "min_ms": 21302.123,
+        "med_ms": 22858.74,
+        "mean_ms": 24177.305,
+        "max_ms": 27928.745,
+        "p90_ms": 27005.109
+      },
+      "encode_via_print": {
+        "n": 7,
+        "min_ms": 4857.184,
+        "med_ms": 5124.386,
+        "mean_ms": 5222.215,
+        "max_ms": 6255.169,
+        "p90_ms": 5251.484
+      },
+      "throughput_MBps": {
+        "encode_med": 0.106,
+        "decode_med": 0.011
+      },
+      "roundtrip": true,
+      "size_class": 262144
+    },
+    {
+      "vector": "float_smooth",
+      "route": "auto",
+      "raw_bytes": 262144,
+      "path": "float",
+      "method": "brotli-11",
+      "packed_bytes": 217641,
+      "payload_bytes": 217522,
+      "gzip9_bytes": 240924,
+      "ratio_to_raw": 0.830235,
+      "ratio_to_gzip": 0.90336,
+      "dataset_print_id": "dpi_96504991ab2348",
+      "barrel_rest": "zrw",
+      "encode": {
+        "n": 7,
+        "min_ms": 5433.319,
+        "med_ms": 6182.419,
+        "mean_ms": 9618.282,
+        "max_ms": 24424.751,
+        "p90_ms": 11356.492
+      },
+      "decode": {
+        "n": 7,
+        "min_ms": 13950.372,
+        "med_ms": 15695.36,
+        "mean_ms": 20312.158,
+        "max_ms": 50346.097,
+        "p90_ms": 16943.82
+      },
+      "encode_via_print": {
+        "n": 7,
+        "min_ms": 5604.653,
+        "med_ms": 5797.619,
+        "mean_ms": 5800.536,
+        "max_ms": 6142.544,
+        "p90_ms": 5950.5
+      },
+      "throughput_MBps": {
+        "encode_med": 0.04,
+        "decode_med": 0.016
+      },
+      "roundtrip": true,
+      "size_class": 262144
+    }
+  ]
+}

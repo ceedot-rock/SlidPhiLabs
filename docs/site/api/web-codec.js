@@ -1,19 +1,23 @@
 /**
- * SPL Web Codec — compress / decompress for web payloads (HTML, CSS, JS, JSON, text)
+ * SPL Web Codec — public face of one product (OmniWave decision engine under the hood)
  *
  * POST /api/web-codec
  *   { op: "compress"|"decompress"|"bench", type?: "auto"|"html"|"css"|"js"|"json"|"text",
- *     data: string, encoding?: "utf8"|"base64" }
+ *     data: string, encoding?: "utf8"|"base64", engine?: "omni"|"classic" }
  *
- * Strategy (public):
- *  1) Light type-aware prep (whitespace / comment strip — reversible-safe only)
- *  2) Encode with gzip-9 + brotli-11; pick smallest
- *  3) Optional: if JSON has dense int arrays, ZRW those columns (when available) — reserved
+ * Default engine=omni: profile → route → ZRW/float/text/delta/general (gzip/brotli).
+ * classic: previous min(gzip,brotli) only.
  *
- * IP Guard: no private residual engines. Uses platform zlib + published strategy.
+ * IP Guard: outcomes + path labels. Process private.
  */
 import zlib from "zlib";
 import { promisify } from "util";
+import {
+  omniCompressLossless,
+  omniDecompress,
+  omniBench,
+  isOmniFrame,
+} from "./lib/omniwave.js";
 
 const gzip = promisify(zlib.gzip);
 const gunzip = promisify(zlib.gunzip);
@@ -110,16 +114,25 @@ async function decompressBuffer(buf, method) {
 function productInfo() {
   return {
     service: "SPL Web Codec",
-    version: "1.0.0",
-    focus: "Web data compress / decompress (HTML · CSS · JS · JSON · text)",
+    version: "2.1.0-creator-cloak",
+    product: "TRU8 / historical web codec door",
+    engine: "omniwave",
+    focus: "Compress / decompress — auto-routed (web, ints, floats, general)",
     endpoint: "POST /api/web-codec",
+    also: "POST /api/omniwave",
     ops: ["compress", "decompress", "bench"],
-    methods: ["brotli-11", "gzip-9"],
+    methods: ["omniwave", "brotli-11", "gzip-9", "zrw-v5", "json_keys"],
     strategy:
-      "Type-aware light prep + pick smallest of brotli-11 (text mode) vs gzip-9. Domain: web assets, not residual process IP.",
+      "OmniWave: profile → Creator heart+brain + St. Peter's cloak counsel → route → ZRW / json_keys / specialists / min(gzip,brotli).",
+    counsel: {
+      heart: "Creator free will · cool · love · growth",
+      brain: "caution · curiosity · residual-first · domain supremacy",
+      cloak: "st_peters_cloak · depth≈12 · collapse→0 · aperiodicity forced",
+    },
     ui: "https://www.slidphilabs.com/web",
+    suite: "https://www.slidphilabs.com/pps",
     standings: "https://www.slidphilabs.com/standings",
-    note: "Locked product focus: web payload size and round-trip. Industry baseline is brotli for web static.",
+    note: "engine=classic for legacy min(gzip,brotli) only. creator_counsel=false to disable counsel.",
   };
 }
 
@@ -156,56 +169,115 @@ export default async function handler(req, res) {
     return json(res, 400, { error: "Missing data (utf8 string or base64)" });
   }
 
+  const engine = String(body.engine || "omni").toLowerCase();
+
   try {
     if (op === "compress") {
       let text =
         encoding === "base64"
           ? Buffer.from(String(data), "base64").toString("utf8")
           : String(data);
-      // size limit ~2MB
       if (Buffer.byteLength(text, "utf8") > 2_000_000) {
         return json(res, 413, { error: "Payload too large (max ~2MB utf8)" });
       }
       const type = detectType(text, body.type);
       const { text: prepped, notes } = prep(text, type);
       const buf = Buffer.from(prepped, "utf8");
-      const result = await compressBuffer(buf);
+
+      if (engine === "classic") {
+        const result = await compressBuffer(buf);
+        return json(res, 200, {
+          ok: true,
+          op: "compress",
+          engine: "classic",
+          type,
+          prep: notes,
+          method: result.method,
+          sizes: result.sizes,
+          ratio: Number(result.ratio.toFixed(6)),
+          percent_of_raw: Number((result.ratio * 100).toFixed(3)),
+          payload_base64: result.packed.toString("base64"),
+          payload_encoding: "base64",
+          decompress_hint: {
+            op: "decompress",
+            method: result.method,
+            encoding: "base64",
+            engine: "classic",
+          },
+        });
+      }
+
+      const r = await omniCompressLossless(buf, {
+        creator_counsel: body.creator_counsel !== false,
+        creator: body.creator || undefined,
+      });
+      const classic = await compressBuffer(buf);
       return json(res, 200, {
         ok: true,
         op: "compress",
+        engine: "omniwave",
+        product: "TRU8 / historical web codec",
         type,
         prep: notes,
-        method: result.method,
-        sizes: result.sizes,
-        ratio: Number(result.ratio.toFixed(6)),
-        percent_of_raw: Number((result.ratio * 100).toFixed(3)),
-        payload_base64: result.packed.toString("base64"),
+        path: r.meta.path,
+        method: r.method,
+        creator_counsel: r.meta.creator_counsel || null,
+        sizes: {
+          raw: buf.length,
+          omni: r.packed.length,
+          gzip9: classic.sizes.gzip9,
+          brotli11: classic.sizes.brotli11,
+          chosen: r.packed.length,
+        },
+        ratio: Number((r.packed.length / Math.max(1, buf.length)).toFixed(6)),
+        percent_of_raw: Number(
+          ((r.packed.length / Math.max(1, buf.length)) * 100).toFixed(3)
+        ),
+        ms: r.meta.ms,
+        zrw: r.meta.zrw,
+        payload_base64: r.packed.toString("base64"),
         payload_encoding: "base64",
+        frame: "OMWV",
         decompress_hint: {
           op: "decompress",
-          method: result.method,
+          method: r.method,
           encoding: "base64",
+          engine: "omni",
         },
       });
     }
 
     if (op === "decompress") {
-      const method = body.method || "brotli-11";
+      const method = body.method || "auto";
       const buf =
         encoding === "base64" || !encoding
           ? Buffer.from(String(data), "base64")
           : Buffer.from(String(data), "utf8");
-      if (buf.length > 2_000_000) {
+      if (buf.length > 3_000_000) {
         return json(res, 413, { error: "Payload too large" });
       }
-      const out = await decompressBuffer(buf, method);
-      const text = out.toString("utf8");
+
+      if (engine !== "classic" && isOmniFrame(buf)) {
+        const out = await omniDecompress(buf);
+        return json(res, 200, {
+          ok: true,
+          op: "decompress",
+          engine: "omniwave",
+          method: "omniwave",
+          sizes: { compressed: buf.length, raw: out.length },
+          data: out.toString("utf8"),
+          encoding: "utf8",
+        });
+      }
+
+      const out = await decompressBuffer(buf, method === "auto" ? undefined : method);
       return json(res, 200, {
         ok: true,
         op: "decompress",
+        engine: "classic",
         method,
         sizes: { compressed: buf.length, raw: out.length },
-        data: text,
+        data: out.toString("utf8"),
         encoding: "utf8",
       });
     }
@@ -221,29 +293,55 @@ export default async function handler(req, res) {
       const type = detectType(text, body.type);
       const { text: prepped, notes } = prep(text, type);
       const buf = Buffer.from(prepped, "utf8");
-      const t0 = Date.now();
-      const result = await compressBuffer(buf);
-      const encMs = Date.now() - t0;
-      const t1 = Date.now();
-      const round = await decompressBuffer(result.packed, result.method);
-      const decMs = Date.now() - t1;
-      const ok = round.equals(buf);
+
+      if (engine === "classic") {
+        const t0 = Date.now();
+        const result = await compressBuffer(buf);
+        const encMs = Date.now() - t0;
+        const t1 = Date.now();
+        const round = await decompressBuffer(result.packed, result.method);
+        const decMs = Date.now() - t1;
+        return json(res, 200, {
+          ok: true,
+          op: "bench",
+          engine: "classic",
+          type,
+          prep: notes,
+          method: result.method,
+          sizes: result.sizes,
+          ratio: Number(result.ratio.toFixed(6)),
+          encode_ms: encMs,
+          decode_ms: decMs,
+          roundtrip: round.equals(buf),
+          vs_industry: {
+            brotli11_bytes: result.sizes.brotli11,
+            gzip9_bytes: result.sizes.gzip9,
+            chosen: result.method,
+          },
+        });
+      }
+
+      const b = await omniBench(buf);
       return json(res, 200, {
         ok: true,
         op: "bench",
+        engine: "omniwave",
+        product: "TRU8 / historical web codec",
         type,
         prep: notes,
-        method: result.method,
-        sizes: result.sizes,
-        ratio: Number(result.ratio.toFixed(6)),
-        encode_ms: encMs,
-        decode_ms: decMs,
-        roundtrip: ok,
+        path: b.path,
+        method: b.method,
+        sizes: b.sizes,
+        ratios: b.ratios,
+        encode_ms: b.ms,
+        roundtrip: b.ok,
+        feats: b.feats,
+        zrw: b.zrw,
         vs_industry: {
-          note: "brotli-11 is the web-static size leader class; we select min(brotli-11, gzip-9) after prep",
-          brotli11_bytes: result.sizes.brotli11,
-          gzip9_bytes: result.sizes.gzip9,
-          chosen: result.method,
+          note: "OmniWave routes; sizes vs gzip-9 / brotli-11 on same payload",
+          omni_bytes: b.sizes.omni,
+          brotli11_bytes: b.sizes.brotli11,
+          gzip9_bytes: b.sizes.gzip9,
         },
       });
     }

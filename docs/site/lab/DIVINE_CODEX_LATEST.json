@@ -1,0 +1,705 @@
+{
+  "name": "the dViNE CodEX",
+  "spoken": "dViNE CodEX",
+  "edition": "Full · lore + measured law + lab chronicle",
+  "version": "1.1.0-lab-story-stats",
+  "seal_day": "2026-08-08",
+  "updated": "2026-08-10",
+  "at": "2026-08-10T05:52:28.809Z",
+  "status": "LIVE_LAW",
+  "visibility": "public_outcomes",
+  "the_word": true,
+  "motto": "In His name we code · through it we live",
+  "word": "The Codex is The Word and it is His name. In His name we code. Through it we live.",
+  "axiom": "Encode only the residual. Measure size and speed in the same breath. Family geometry before claim. Domain-honest before crown. Float/diagnostic paths labeled or excluded from crown tables.",
+  "ip_guard": "Outcomes only. No process coefficients or private engines.",
+  "service": "Slid Phi Labs · Creator /lord",
+  "trinity": {
+    "mouths": [
+      {
+        "id": "chainpipe",
+        "name": "ChainPipe",
+        "seat": "brow",
+        "office": "structure · residual · cadence 33·66·999"
+      },
+      {
+        "id": "indexmind",
+        "name": "IndexMind",
+        "seat": "NCA coat · dual A∥B",
+        "office": "proof · seats · truth"
+      },
+      {
+        "id": "crewhive",
+        "name": "CrewHive",
+        "seat": "one jaw",
+        "office": "unite · mission · one mouth"
+      }
+    ],
+    "law": "Trinity inside · planes are seats not living shards · integer hierarchy is alpha and omega"
+  },
+  "lore": {
+    "prologue": "Catacombs under product pages; leather binds on 8.8; 8 mirrors infinity.",
+    "four_seals": [
+      "Hierarchy is the attractor — rest at integer planes when possible",
+      "Code only residual — never re-pay structure",
+      "Mirrored cost: dE + dC ≈ 0; mirror_error → 0",
+      "Dual A∥B: opposite tilt, offset, mirror, spin"
+    ],
+    "characters": [
+      {
+        "name": "ZeroRangeWave",
+        "role": "structured-int assassin · flagship 8B/10B"
+      },
+      {
+        "name": "Barlow",
+        "role": "diagnostic equal-weight assemble · 8↔∞ look"
+      },
+      {
+        "name": "JSON Voorhees",
+        "role": "fat-JSON machete · JV88 48B"
+      },
+      {
+        "name": "OmniWave",
+        "role": "general-corpus candidate · lossless routes only in crown"
+      },
+      {
+        "name": "SPL Web Codec",
+        "role": "min(brotli,gzip) web assets"
+      },
+      {
+        "name": "Clergy",
+        "role": "369s trinity report"
+      },
+      {
+        "name": "φ rings",
+        "role": "feeling → structure on /lord face"
+      },
+      {
+        "name": "Chamber",
+        "role": "private Creator host · OneGate · not public SEO"
+      },
+      {
+        "name": "residual-governance",
+        "role": "policy SKU · exact RT discipline"
+      },
+      {
+        "name": "CodEX",
+        "role": "this book — law, not encoder"
+      }
+    ],
+    "forever": "HIS_SACRIFICES_FOREVER_CODED · IN_HIS_NAME_WE_CODE",
+    "wrong_engine_incident": {
+      "when": "2026-08-09",
+      "prior_error": "First Silesia run scored industry codecs only — incomplete for lab claim",
+      "fix": [
+        "Industry demoted to field baseline only",
+        "OmniWave = general-corpus candidate",
+        "ZRW remains structured-int domain only",
+        "Float path diagnostic/lossy-labeled — not crown",
+        "Lossless-only freeze into CodEX"
+      ],
+      "proofs": [
+        "/lab/silesia_CORRECTED_LATEST.json",
+        "/lab/silesia_ours_LATEST.json",
+        "/lab/industry_silesia_LATEST.json"
+      ]
+    },
+    "chamber": {
+      "role": "private Creator / Smart Box",
+      "url": "https://slidphi-smart-box.fly.dev",
+      "lord": "https://slidphi-smart-box.fly.dev/lord",
+      "public_product": "https://www.slidphilabs.com",
+      "note": "Chamber is NOT freemium/catalog SEO product"
+    },
+    "cadence_empire": {
+      "33": "domain supremacy — primary host is product",
+      "66": "dual doors — humans Stripe · agents x402",
+      "999": "gift circle — TEACHAiD school factory"
+    }
+  },
+  "geometry": {
+    "seats": {
+      "web_asset": {
+        "codecs": [
+          "brotli-11",
+          "gzip-9",
+          "SPL Web Codec min"
+        ],
+        "role": "static HTML/JS/CSS/JSON"
+      },
+      "structured_int": {
+        "codecs": [
+          "ZRW lab",
+          "ZRW free-gate",
+          "delta"
+        ],
+        "role": "zeros/ramps/walks"
+      },
+      "diagnostic": {
+        "codecs": [
+          "Barlow 66",
+          "JSON Voorhees JV88"
+        ],
+        "role": "equal-weight fold · fat-JSON smite · float quantize (diagnostic)"
+      },
+      "general_gp": {
+        "codecs": [
+          "OmniWave lossless routes",
+          "zstd-3",
+          "zstd-19",
+          "brotli-11",
+          "gzip-9"
+        ],
+        "role": "industry field baseline + OmniWave general candidate (exact RT)",
+        "corpus": "silesia",
+        "measured_8_8": {
+          "status": "COMPLETE_12_of_12",
+          "files_complete": [
+            "dickens",
+            "mozilla",
+            "mr",
+            "nci",
+            "ooffice",
+            "osdb",
+            "reymont",
+            "samba",
+            "sao",
+            "webster",
+            "xml",
+            "x-ray"
+          ],
+          "total_raw": 211938580,
+          "field_size_winner": "brotli-11",
+          "field_speed_winner_encode": "zstd-3",
+          "ratios": {
+            "brotli-11": 4.2108,
+            "zstd-19": 4.0068,
+            "zstd-3": 3.2007,
+            "gzip-9": 3.1332
+          },
+          "compressed_bytes": {
+            "brotli-11": 50332587,
+            "zstd-19": 52895350,
+            "zstd-3": 66216569,
+            "gzip-9": 67643417
+          },
+          "enc_MBps": {
+            "brotli-11": 0.01,
+            "zstd-19": 0.6,
+            "zstd-3": 39.2,
+            "gzip-9": 4.08
+          },
+          "pct_of_raw": {
+            "brotli-11": 23.75,
+            "zstd-19": 24.96,
+            "zstd-3": 31.24,
+            "gzip-9": 31.92
+          }
+        },
+        "honest_claim": "Industry field: brotli-11 4.2108× size · zstd-3 ~39 MB/s on full Silesia 12/12. OmniWave lossless freeze ~3.13–3.60×. Float path diagnostic only. Lab does not claim universal #1.",
+        "omniwave_lossless_freeze": {
+          "at": "2026-08-09T03:55:47.851Z",
+          "proof": "/lab/silesia_CORRECTED_LATEST.json",
+          "totals_211mb": {
+            "industry_brotli11": {
+              "compressed": 50332587,
+              "ratio": 4.2108
+            },
+            "omni_auto_lossless_only_mixed": {
+              "compressed": 58841770,
+              "ratio": 3.6018,
+              "note": "auto when lossless; force-general when auto was lossy float"
+            },
+            "omni_force_general_lossless": {
+              "compressed": 67643417,
+              "ratio": 3.1332,
+              "beats_brotli_files": 0
+            }
+          },
+          "float_path_warning": {
+            "transform": "float_fixed_delta",
+            "byte_lossless": false,
+            "verified_on": "silesia/mr — millions of byte diffs after decompress",
+            "note": "Huge ratios (e.g. mr 924×, x-ray 1021×) are NOT valid lossless claims"
+          }
+        }
+      },
+      "weights_lane": {
+        "codecs": [
+          "residual pack narrative",
+          "residual-governance"
+        ],
+        "role": "checkpoints · int tensors · exact RT on declared dtype",
+        "public": "/weights-vs-files",
+        "scoreboard": "locked until public-safe fixture"
+      }
+    },
+    "cadence": {
+      "8": "order-8 / JV88 / 8.8",
+      "33": "fold/dual tilt",
+      "66": "assemble chain",
+      "369": "clergy pulse"
+    },
+    "claim_seats": [
+      "spl@p23",
+      "zrw@p83"
+    ],
+    "infinity": "8↔∞ order-8 phase (Barlow); finite residual inside NCA"
+  },
+  "divinity_web_asset_size": {
+    "method": "gzip-9 vs brotli-11 on shipped public surface files; min_web = min(gz,br)",
+    "result": "brotli-11 wins every measured asset on this surface",
+    "assets": [
+      {
+        "path": "index.html",
+        "raw": 109713,
+        "gzip9": 24615,
+        "brotli11": 20774,
+        "min_web": 20774,
+        "winner": "brotli-11",
+        "encode_ms": {
+          "gzip9": 8.21,
+          "brotli11": 197.79
+        }
+      },
+      {
+        "path": "standings.html",
+        "raw": 29158,
+        "gzip9": 8755,
+        "brotli11": 7499,
+        "min_web": 7499,
+        "winner": "brotli-11",
+        "encode_ms": {
+          "gzip9": 1.58,
+          "brotli11": 49.3
+        }
+      },
+      {
+        "path": "standings.json",
+        "raw": 14388,
+        "gzip9": 3313,
+        "brotli11": 2831,
+        "min_web": 2831,
+        "winner": "brotli-11",
+        "encode_ms": {
+          "gzip9": 0.75,
+          "brotli11": 25.86
+        }
+      },
+      {
+        "path": "join.html",
+        "raw": 11679,
+        "gzip9": 4403,
+        "brotli11": 3618,
+        "min_web": 3618,
+        "winner": "brotli-11",
+        "encode_ms": {
+          "gzip9": 0.6,
+          "brotli11": 20.62
+        }
+      },
+      {
+        "path": "web.html",
+        "raw": 11796,
+        "gzip9": 3997,
+        "brotli11": 3365,
+        "min_web": 3365,
+        "winner": "brotli-11",
+        "encode_ms": {
+          "gzip9": 0.44,
+          "brotli11": 20.75
+        }
+      },
+      {
+        "path": "assets/slid-proof.js",
+        "raw": 2971,
+        "gzip9": 1155,
+        "brotli11": 992,
+        "min_web": 992,
+        "winner": "brotli-11",
+        "encode_ms": {
+          "gzip9": 0.64,
+          "brotli11": 6.9
+        }
+      },
+      {
+        "path": "assets/slid-proof.css",
+        "raw": 1485,
+        "gzip9": 651,
+        "brotli11": 526,
+        "min_web": 526,
+        "winner": "brotli-11",
+        "encode_ms": {
+          "gzip9": 0.57,
+          "brotli11": 3.72
+        }
+      },
+      {
+        "path": "assets/platform-home.js",
+        "raw": 8605,
+        "gzip9": 2996,
+        "brotli11": 2479,
+        "min_web": 2479,
+        "winner": "brotli-11",
+        "encode_ms": {
+          "gzip9": 0.43,
+          "brotli11": 14.32
+        }
+      },
+      {
+        "path": "api/web-codec.js",
+        "raw": 10807,
+        "gzip9": 3198,
+        "brotli11": 2768,
+        "min_web": 2768,
+        "winner": "brotli-11",
+        "encode_ms": {
+          "gzip9": 0.45,
+          "brotli11": 20.01
+        }
+      },
+      {
+        "path": "api/lib/omniwave.js",
+        "raw": 22957,
+        "gzip9": 6848,
+        "brotli11": 6098,
+        "min_web": 6098,
+        "winner": "brotli-11",
+        "encode_ms": {
+          "gzip9": 1.57,
+          "brotli11": 39.55
+        }
+      },
+      {
+        "path": "api/lib/vendor/zrw-pack.js",
+        "raw": 11948,
+        "gzip9": 4199,
+        "brotli11": 3744,
+        "min_web": 3744,
+        "winner": "brotli-11",
+        "encode_ms": {
+          "gzip9": 0.68,
+          "brotli11": 20.13
+        }
+      }
+    ]
+  },
+  "divinity_encode_speed": {
+    "method": "lab encode_ms from sealed proof; live wall_ms includes network to Fly",
+    "structured_zeros_lab": {
+      "zeros_10k": {
+        "n_ints": 10000,
+        "raw_bytes": 40000,
+        "zrw_bytes": 8,
+        "gzip9": 73,
+        "brotli11": 13,
+        "encode_ms": 15.764,
+        "roundtrip": true,
+        "mirror_error": 0,
+        "delta_vs_gzip": 65,
+        "delta_vs_brotli": 5
+      },
+      "zeros_1M_single": {
+        "n_ints": 1000000,
+        "raw_bytes": 4000000,
+        "zrw_bytes": 10,
+        "gzip9": 3910,
+        "brotli11": 14,
+        "encode_ms": 178.292,
+        "roundtrip": true,
+        "mirror_error": 0,
+        "delta_vs_gzip": 3900,
+        "delta_vs_brotli": 4
+      }
+    },
+    "live_fly_compress_wall_ms_class": {
+      "note": "POST https://www.slidphilabs.com/api/compress route=zrw; wall includes RTT",
+      "n100": "~160–190 ms",
+      "n1000": "~160–190 ms",
+      "n10000": "~160–190 ms",
+      "packed_10k": "8 B",
+      "mirror_error": 0
+    },
+    "web_static_this_host": {
+      "index_html_raw": 109713,
+      "gzip9_ms_class": "~10 ms",
+      "brotli11_ms_class": "~200 ms"
+    },
+    "diagnostic_8_8": {
+      "barlow_encode_8": {
+        "frames": 66,
+        "self_aware": true,
+        "wall_ms_class": "~180 ms Fly"
+      },
+      "json_voorhees_8": {
+        "fat": 352,
+        "residual": 48,
+        "ratio_x": 7.33,
+        "magic": "JV88"
+      }
+    },
+    "industry_silesia_8_8": {
+      "status": "COMPLETE_12_of_12",
+      "size_rank": [
+        "brotli-11",
+        "zstd-19",
+        "zstd-3",
+        "gzip-9"
+      ],
+      "encode_speed_rank": [
+        "zstd-3",
+        "gzip-9",
+        "zstd-19",
+        "brotli-11"
+      ],
+      "enc_MBps": {
+        "zstd-3": 25.91,
+        "gzip-9": 3.96,
+        "zstd-19": 0.44,
+        "brotli-11": 0.16
+      },
+      "note": "Full Silesia · size+speed same breath"
+    }
+  },
+  "flagship": {
+    "zeros_10k": {
+      "raw": 40000,
+      "zrw": 8,
+      "gzip9": 73,
+      "brotli11": 13,
+      "mirror_error": 0
+    },
+    "zeros_1M": {
+      "raw": 4000000,
+      "zrw": 10,
+      "gzip9": 3910,
+      "brotli11": 14,
+      "mirror_error": 0
+    }
+  },
+  "unlock": {
+    "compress": "/api/compress",
+    "decompress": "/api/decompress",
+    "process": "/api/process",
+    "history": "/lab/CODEX_KEY_HISTORY.json",
+    "the_word": "/the-word"
+  },
+  "commandments": [
+    "Hierarchy first",
+    "Residual only",
+    "Domain supremacy",
+    "Proof before product",
+    "Dual A∥B",
+    "Cadence locked 33·66·999",
+    "Public proof, private rails",
+    "Stripe + x402 freemium",
+    "Antibody stance",
+    "One mouth, three depths",
+    "Label float/lossy — never crown undiagnosed paths",
+    "Score the right engine — industry baseline · ZRW/OmniWave own seats",
+    "Intention × grade — named aim × measured outcome; both or deny"
+  ],
+  "keys": {
+    "domain": "high-entropy text",
+    "rail": "ZRW compress/decompress",
+    "lattice_seat": "phi@p143",
+    "do_not": "invent encoders this hour"
+  },
+  "release": {
+    "checklist": {
+      "flagship_proof_live": true,
+      "process_unlocked": true,
+      "codex_json": true,
+      "codex_md_full": true,
+      "codex_html": true,
+      "standings": true,
+      "brand_dns_honest": "HOST_DECISION",
+      "high_entropy_domain": "LOCKED_NEXT",
+      "commerce_full_pass": "PART_OPEN"
+    },
+    "public_urls": {
+      "codex_html": "/codex.html",
+      "codex_json": "/lab/DIVINE_CODEX.json",
+      "codex_md": "/lab/DIVINE_CODEX.md",
+      "history": "/lab/CODEX_KEY_HISTORY.json",
+      "process": "/api/process",
+      "standings": "/standings",
+      "proof": "/lab/zeros_1M_zrw_LATEST.json",
+      "fly": "https://www.slidphilabs.com/"
+    },
+    "version": "1.1.0-lab-story-stats",
+    "stats_revision": "2026-08-10",
+    "checklist_add": [
+      "OmniWave lossless freeze + float diagnostic labels",
+      "Industry pack demoted to field baseline",
+      "Lab chronicle Book XI"
+    ]
+  },
+  "seals": {
+    "residual_axiom": true,
+    "no_fantasy_universal_number_one": true,
+    "the_codex_is_the_word": true,
+    "barlow_8_infinity": true,
+    "json_voorhees_8": true,
+    "forever_sacrifice": true,
+    "release_1_0": true
+  },
+  "amen": "His word is spoken. In His name we code. Through it we live.",
+  "divinity_industry_silesia": {
+    "role": "field_baseline_only",
+    "status": "COMPLETE_12_of_12",
+    "total_raw": 211938580,
+    "size_rank": [
+      {
+        "codec": "brotli-11",
+        "compressed": 50332587,
+        "ratio": 4.2108
+      },
+      {
+        "codec": "zstd-19",
+        "compressed": 52895350,
+        "ratio": 4.0068
+      },
+      {
+        "codec": "zstd-3",
+        "compressed": 66216569,
+        "ratio": 3.2007
+      },
+      {
+        "codec": "gzip-9",
+        "compressed": 67643417,
+        "ratio": 3.1332
+      }
+    ],
+    "enc_MBps": {
+      "brotli-11": 0.01,
+      "zstd-19": 0.6,
+      "zstd-3": 39.2,
+      "gzip-9": 4.08
+    },
+    "proof": "/lab/industry_silesia_LATEST.json",
+    "co_run_speeds": "/lab/silesia_ours_LATEST.json"
+  },
+  "world_message_8_8": "On 8.8 we took Silesia (12 files · 211.9 MB) as industry field baseline: brotli-11 4.2108× size · zstd-3 ~39 MB/s encode. On 2026-08-09 we corrected the engine: OmniWave general candidate; lossless freeze ~3.13–3.60×; float path diagnostic only. No universal #1. Residual only. Zeros flagship domain; high-entropy next. His sacrifices forever coded. In His name we code. 8↔∞ · Slid Phi Labs",
+  "matrix_8_8": {
+    "day": "8.8+",
+    "stats_revision": "2026-08-10",
+    "seats": {
+      "web_asset": {
+        "size": "brotli-11",
+        "note": "every measured static asset on surface"
+      },
+      "structured_int": {
+        "size": "ZRW",
+        "zeros_10k": "8 B",
+        "zeros_1M": "10 B",
+        "mirror_error": 0
+      },
+      "diagnostic": {
+        "barlow": "mirror_error_lsb 0",
+        "json_voorhees_8": "352→48 B · 7.33×",
+        "float": "diagnostic only"
+      },
+      "general_gp_field": {
+        "size": "brotli-11 4.2108×",
+        "encode_speed": "zstd-3 ~39 MB/s",
+        "corpus": "silesia FULL 12/12 · 211.9 MB",
+        "universal_1": false,
+        "ratios": {
+          "brotli-11": 4.2108,
+          "zstd-19": 4.0068,
+          "zstd-3": 3.2007,
+          "gzip-9": 3.1332
+        }
+      },
+      "general_gp_omniwave_lossless": {
+        "auto_mixed": "3.6018×",
+        "force_general": "3.1332×",
+        "universal_1": false,
+        "float_in_crown": false
+      },
+      "weights_lane": {
+        "status": "matrix only",
+        "url": "/weights-vs-files"
+      }
+    },
+    "world_seal": "8.8+ · Silesia field: brotli-11 4.2108× size · zstd-3 ~39 MB/s · OmniWave lossless ~3.1–3.6× · float diagnostic · no universal #1 · residual only · In His name we code."
+  },
+  "stats_revision": "2026-08-10",
+  "divinity_omniwave_lossless": {
+    "at": "2026-08-09T03:55:47.851Z",
+    "proof": "/lab/silesia_CORRECTED_LATEST.json",
+    "totals_211mb": {
+      "industry_brotli11": {
+        "compressed": 50332587,
+        "ratio": 4.2108
+      },
+      "omni_auto_lossless_only_mixed": {
+        "compressed": 58841770,
+        "ratio": 3.6018,
+        "note": "auto when lossless; force-general when auto was lossy float"
+      },
+      "omni_force_general_lossless": {
+        "compressed": 67643417,
+        "ratio": 3.1332,
+        "beats_brotli_files": 0
+      }
+    },
+    "float_path_warning": {
+      "transform": "float_fixed_delta",
+      "byte_lossless": false,
+      "verified_on": "silesia/mr — millions of byte diffs after decompress",
+      "note": "Huge ratios (e.g. mr 924×, x-ray 1021×) are NOT valid lossless claims"
+    }
+  },
+  "lab_chronicle": {
+    "version": "1.1",
+    "timeline": [
+      {
+        "when": "pre-8.8",
+        "event": "ZRW domain seats · private Chamber",
+        "lesson": "Domain before crown"
+      },
+      {
+        "when": "2026-08-08",
+        "event": "Codex key unlock · 8.8 · industry Silesia full",
+        "lesson": "The Word unites rails"
+      },
+      {
+        "when": "2026-08-09",
+        "event": "Wrong engine caught · float exposed · lossless freeze",
+        "lesson": "Honesty > pretty ratios"
+      },
+      {
+        "when": "2026-08-09",
+        "event": "33·66·999 seals",
+        "lesson": "Domain · dual doors · gift"
+      },
+      {
+        "when": "2026-08-10",
+        "event": "CodEX 1.1 statistical + story expansion",
+        "lesson": "Law catches the lab"
+      }
+    ],
+    "faces": {
+      "public": "https://www.slidphilabs.com",
+      "chamber_private": "https://slidphi-smart-box.fly.dev",
+      "lord": "https://slidphi-smart-box.fly.dev/lord"
+    }
+  },
+  "html_face": "/codex.html",
+  "manuscript": "/lab/DIVINE_CODEX.md",
+  "weights_vs_files": "/weights-vs-files",
+  "focus": {
+    "formula": "intention × grade",
+    "law": "value = intention × grade — both axes required or deny",
+    "frozen": "2026-08-10",
+    "mesh_facts": [
+      "focus",
+      "intention_x_grade",
+      "operating_rule",
+      "focus_surfaces"
+    ],
+    "doc": "team-mesh/scripts/chamber-labs/INTENTION_X_GRADE.md"
+  }
+}

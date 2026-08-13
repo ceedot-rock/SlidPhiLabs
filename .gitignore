@@ -1,0 +1,14 @@
+.secrets/
+.grok/
+__pycache__/
+*.pyc
+lab/benches/
+*.pt
+node_modules/
+
+# Host-only engines (IP Guard) — live on Fly, not in public git
+docs/site/api/lib/vendor/zrw-pack.js
+docs/site/api/lib/omniwave.js
+docs/site/api/lib/dark_parallel_omni.js
+docs/site/api/lib/barrel_cone.js
+docs/site/api/lib/creator_cloak_selector.js

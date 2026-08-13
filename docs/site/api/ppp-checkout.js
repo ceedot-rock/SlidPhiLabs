@@ -27,7 +27,31 @@ function siteOrigin(req) {
 }
 
 async function createCheckoutSession({ amountCents, quote, email, origin }) {
-  const key = process.env.STRIPE_SECRET_KEY;
+  // Prefer shared multi-method builder (cards, Link, Cash App, ACH, BNPL, …)
+  try {
+    const { createStripeCheckoutSession } = await import("./lib/payments-rails.js");
+    return await createStripeCheckoutSession({
+      amountCents,
+      name: `SPL Pay Per Suite — ${quote.breakdown.op} · ${quote.breakdown.product}`,
+      description: `${quote.breakdown.mb} MB · ${quote.breakdown.data_class} · multi-method`,
+      sku: "ppp",
+      email,
+      origin,
+      metadata: {
+        product: quote.breakdown.product,
+        op: quote.breakdown.op,
+        data_class: quote.breakdown.data_class,
+        bytes: String(quote.breakdown.bytes),
+      },
+      successPath: "/access",
+      cancelPath: "/pps?cancel=1",
+    });
+  } catch {
+    /* fall through to legacy single-key path */
+  }
+
+  const key =
+    process.env.STRIPE_SECRET_KEY || process.env.STRIPE_RESTRICTED_KEY;
   if (!key) return null;
 
   const params = new URLSearchParams();
@@ -45,6 +69,17 @@ async function createCheckoutSession({ amountCents, quote, email, origin }) {
     "line_items[0][price_data][product_data][description]",
     `${quote.breakdown.mb} MB · ${quote.breakdown.data_class} · SPL Pay Per Suite`
   );
+  // Broad methods (same set as universal checkout)
+  [
+    "card",
+    "link",
+    "cashapp",
+    "amazon_pay",
+    "us_bank_account",
+    "klarna",
+    "affirm",
+    "afterpay_clearpay",
+  ].forEach((m, i) => params.set(`payment_method_types[${i}]`, m));
   params.set("metadata[sku]", "ppp");
   params.set("metadata[product]", quote.breakdown.product);
   params.set("metadata[op]", quote.breakdown.op);
@@ -52,6 +87,7 @@ async function createCheckoutSession({ amountCents, quote, email, origin }) {
   params.set("metadata[bytes]", String(quote.breakdown.bytes));
   if (email) params.set("customer_email", email);
   params.set("submit_type", "pay");
+  params.set("allow_promotion_codes", "true");
 
   const r = await fetch("https://api.stripe.com/v1/checkout/sessions", {
     method: "POST",

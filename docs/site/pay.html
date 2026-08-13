@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta property="og:title" content="Pay · Slid Phi Labs — any rail"/>
+<meta property="og:description" content="Pay Slid Phi Labs any way that works: cards, Link, Cash App, Amazon Pay, ACH, Klarna, Affirm, Afterpay, USDC on Solana or Base (x402), manual crypto, invoice/wire."/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta property="og:url" content="https://www.slidphilabs.com/pay"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Pay · Slid Phi Labs — any rail"/>
+<meta name="twitter:description" content="Pay Slid Phi Labs any way that works: cards, Link, Cash App, Amazon Pay, ACH, Klarna, Affirm, Afterpay, USDC on Solana or Base (x402), manual crypto, invoice/wire."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<link rel="icon" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pay · Slid Phi Labs — any rail</title>
+<meta name="description" content="Pay Slid Phi Labs any way that works: cards, Link, Cash App, Amazon Pay, ACH, Klarna, Affirm, Afterpay, USDC on Solana or Base (x402), manual crypto, invoice/wire."/>
+<meta name="agent-commerce" content="x402,stripe,crypto,invoice"/>
+<link rel="canonical" href="https://www.slidphilabs.com/pay"/>
+<style>
+  :root {
+    --bg: #050b16;
+    --card: #0d1524;
+    --gold: #d4a84b;
+    --cyan: #5b9fd4;
+    --violet: #7c6cff;
+    --text: #e8eef7;
+    --muted: #8b9bb4;
+    --ok: #3dd68c;
+    --bad: #f07178;
+    --line: rgba(255,255,255,.08);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: radial-gradient(1200px 600px at 20% -10%, #1a1040 0%, transparent 55%),
+                radial-gradient(900px 500px at 100% 0%, #0a2a40 0%, transparent 50%),
+                var(--bg);
+    color: var(--text); min-height: 100vh; line-height: 1.5;
+  }
+  a { color: var(--cyan); }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 28px 18px 80px; }
+  h1 { font-size: 1.75rem; margin: 0 0 6px; letter-spacing: .02em; }
+  .sub { color: var(--muted); margin: 0 0 22px; max-width: 52ch; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 18px 16px; margin-bottom: 14px;
+  }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: var(--gold); margin-bottom: 8px; }
+  label { display: block; font-size: .85rem; color: var(--muted); margin: 10px 0 4px; }
+  select, input {
+    width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line);
+    background: #0a101c; color: var(--text); font-size: 1rem;
+  }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 640px) { .row { grid-template-columns: 1fr; } }
+  .rails { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  button, .btn {
+    appearance: none; border: 0; border-radius: 999px; padding: 10px 16px; font-weight: 600;
+    cursor: pointer; font-size: .92rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-gold { background: linear-gradient(135deg, #e8c36a, #b8892e); color: #1a1205; }
+  .btn-primary { background: linear-gradient(135deg, var(--violet), #4a7fd4); color: #fff; }
+  .btn-ghost { background: transparent; border: 1px solid var(--line); color: var(--text); }
+  .btn-ok { background: rgba(61,214,140,.15); color: var(--ok); border: 1px solid rgba(61,214,140,.35); }
+  .msg { margin-top: 14px; padding: 12px; border-radius: 10px; background: #0a101c; border: 1px solid var(--line); font-size: .92rem; white-space: pre-wrap; word-break: break-word; }
+  .msg.err { border-color: rgba(240,113,120,.4); color: #ffc9cc; }
+  .msg.ok { border-color: rgba(61,214,140,.35); }
+  .pill { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: .72rem; background: rgba(124,108,255,.15); color: #c8c0ff; margin: 2px; }
+  .pill.on { background: rgba(61,214,140,.12); color: var(--ok); }
+  .pill.off { background: rgba(240,113,120,.1); color: #f5a8ad; }
+  ul.methods { margin: 8px 0 0; padding-left: 1.1rem; color: var(--muted); font-size: .9rem; }
+  footer { margin-top: 28px; color: var(--muted); font-size: .85rem; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .85em; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p style="margin:0 0 12px"><a href="/">← Labs</a> · <a href="/access">Access</a> · <a href="/api/payments">JSON matrix</a> · <a href="/agents">Agents</a></p>
+    <h1>Pay any way that works</h1>
+    <p class="sub">
+      <strong>TRU8</strong> commercial license:
+      <a href="mailto:license@slidphilabs.com">license@slidphilabs.com</a>
+      · Suite meter on <a href="/pps">/pps</a> (100 GB free, then ~5¢/GB).
+      Then ZRW historical engine licenses, then OSS-support SKUs (blackjack / shard-* $199 = support, not a secret engine).
+      Cards, wallets, bank, BNPL, USDC (Solana / Base), manual crypto, or invoice. Claim on Access after proof — x402 auto-claim is not wired.
+    </p>
+
+    <div class="card">
+      <div class="kicker">Checkout</div>
+      <div class="row">
+        <div>
+          <label for="sku">Product</label>
+          <select id="sku"></select>
+        </div>
+        <div>
+          <label for="email">Email (for receipt / Access)</label>
+          <input id="email" type="email" placeholder="you@company.com" autocomplete="email"/>
+        </div>
+      </div>
+      <p style="margin:12px 0 0; color:var(--muted); font-size:.9rem">
+        Amount: <strong id="amount" style="color:var(--text)">—</strong>
+        · Stripe session includes multiple methods when available.
+      </p>
+      <div class="rails">
+        <button type="button" class="btn-gold" id="payStripe">Pay with Stripe (cards · wallets · bank · BNPL)</button>
+        <button type="button" class="btn-primary" id="payLink">Static Payment Link</button>
+        <button type="button" class="btn-ghost" id="payCrypto">Crypto addresses</button>
+        <button type="button" class="btn-ghost" id="payInvoice">Invoice / wire</button>
+        <button type="button" class="btn-ok" id="payAgent">Agent x402 path</button>
+      </div>
+      <div id="out" class="msg" hidden></div>
+    </div>
+
+    <div class="card">
+      <div class="kicker">Live rails</div>
+      <div id="railStatus">Loading payment matrix…</div>
+      <ul class="methods" id="methodList"></ul>
+    </div>
+
+    <div class="card">
+      <div class="kicker">Agents</div>
+      <p style="margin:0; color:var(--muted); font-size:.92rem">
+        <code>GET /api/payments</code> · <code>POST /api/checkout</code> · <code>POST /api/x402-products</code> with <code>X-PAYMENT</code> after 402.
+        Discovery: <a href="/api/agent">/api/agent</a>
+      </p>
+    </div>
+
+    <footer>
+      Contact <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> for custom amounts, enterprise ACH, or rails we haven’t listed.
+      Free suite under 100 GB: <a href="/pps">/pps</a>.
+    </footer>
+  </div>
+<script>
+(async () => {
+  const out = document.getElementById('out');
+  const skuEl = document.getElementById('sku');
+  const amountEl = document.getElementById('amount');
+  const emailEl = document.getElementById('email');
+  const railStatus = document.getElementById('railStatus');
+  const methodList = document.getElementById('methodList');
+
+  function show(msg, ok) {
+    out.hidden = false;
+    out.className = 'msg ' + (ok ? 'ok' : 'err');
+    out.textContent = typeof msg === 'string' ? msg : JSON.stringify(msg, null, 2);
+  }
+
+  let matrix = null;
+  try {
+    const r = await fetch('/api/payments', { cache: 'no-store' });
+    matrix = await r.json();
+  } catch (e) {
+    railStatus.textContent = 'Could not load /api/payments — try again on Fly product host.';
+    return;
+  }
+
+  const products = matrix.products || [];
+  skuEl.innerHTML = products.map(p =>
+    `<option value="${p.sku}">${p.name} · $${p.amount_usd}</option>`
+  ).join('');
+
+  const params = new URLSearchParams(location.search);
+  if (params.get('sku')) skuEl.value = params.get('sku');
+  if (params.get('cancel') === '1') show('Checkout canceled — pick another rail anytime.', true);
+
+  function syncAmount() {
+    const p = products.find(x => x.sku === skuEl.value);
+    amountEl.textContent = p ? `$${p.amount_usd} USD` : '—';
+  }
+  skuEl.addEventListener('change', syncAmount);
+  syncAmount();
+
+  const rails = matrix.rails || [];
+  railStatus.innerHTML = rails.map(r =>
+    `<span class="pill ${r.configured ? 'on' : 'off'}">${r.configured ? 'ON' : 'OFF'} · ${r.name}</span>`
+  ).join(' ');
+
+  const stripeRail = rails.find(r => r.id === 'stripe_checkout');
+  if (stripeRail && stripeRail.methods) {
+    methodList.innerHTML = stripeRail.methods.map(m => `<li>${m.label || m.id}</li>`).join('');
+  }
+
+  async function checkout(rail) {
+    out.hidden = true;
+    const body = {
+      sku: skuEl.value,
+      email: emailEl.value || undefined,
+      rail,
+    };
+    try {
+      const r = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      const d = await r.json();
+      if (!r.ok) {
+        show(d.error || d, false);
+        return;
+      }
+      if (d.url && (rail === 'stripe' || rail === 'link' || d.mode === 'stripe_checkout' || d.mode === 'payment_link' || d.mode === 'payment_link_fallback')) {
+        show(`Redirecting… ${d.mode}\nMethods: ${(d.payment_method_types || []).join(', ') || 'Payment Link'}`, true);
+        location.href = d.url;
+        return;
+      }
+      show(d, true);
+    } catch (e) {
+      show(String(e.message || e), false);
+    }
+  }
+
+  document.getElementById('payStripe').onclick = () => checkout('stripe');
+  document.getElementById('payLink').onclick = () => checkout('link');
+  document.getElementById('payCrypto').onclick = () => checkout('crypto');
+  document.getElementById('payInvoice').onclick = () => checkout('invoice');
+  document.getElementById('payAgent').onclick = () => checkout('x402');
+})();
+</script>
+</body>
+</html>

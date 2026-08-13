@@ -1,0 +1,8 @@
+.vercel
+.git
+node_modules
+*.md
+scripts/amp
+assets/intro
+**/HOST_*.md
+**/.DS_Store

@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "sketch": "spl_v0_1_sparse",
+  "compressor": "gzip-9",
+  "nnz": 4619,
+  "zeros": 5381,
+  "spl_packed": 23748,
+  "gzip9_full_array": 20077,
+  "brotli11_full_array": null,
+  "delta_vs_gzip": -3671,
+  "roundtrip": true,
+  "flagship_int32_zeros": {
+    "domain": "structured_int_zeros",
+    "claim": "ZRW zeros\u00d710k \u2192 8 B",
+    "field": {
+      "gzip9": 73,
+      "brotli11": 13
+    },
+    "verify": "POST https://www.slidphilabs.com/api/process",
+    "local": "https://github.com/ceedot-rock/slidphi  make local && make verify",
+    "standings": "https://www.slidphilabs.com/standings#zrw-public-path"
+  },
+  "law": "residual only \u00b7 domain-honest \u00b7 no universal #1",
+  "at": "2026-08-10T17:28:44Z",
+  "source": "https://www.slidphilabs.com/lab/spl_codec_v0_1_public.py",
+  "live_flagship": {
+    "zrw_bytes": 8,
+    "mirror_error": 0,
+    "roundtrip": true,
+    "gzip9_field": 73,
+    "brotli11_field": 13,
+    "beats_field": true,
+    "grade": "PASS"
+  }
+}

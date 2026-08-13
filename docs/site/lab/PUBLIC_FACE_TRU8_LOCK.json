@@ -1,0 +1,130 @@
+{
+  "id": "PUBLIC_FACE_TRU8_LOCK",
+  "sealed": "2026-08-12",
+  "role": "source of truth — do not regress public-face claims",
+  "product": {
+    "public_face": "TRU8",
+    "credit_line": "Powered by TRU8 · Slid Phi Labs",
+    "demos_free_with_credit": true,
+    "production_residual": "commercially licensed",
+    "continuous_1088_strong": "commercially licensed",
+    "license_email": "license@slidphilabs.com",
+    "github_demo": "https://github.com/ceedot-rock/TRU8",
+    "site": "https://www.slidphilabs.com/",
+    "demos": "https://www.slidphilabs.com/demos",
+    "license_page": "https://www.slidphilabs.com/license",
+    "about": "https://www.slidphilabs.com/about",
+    "historical_lab_names": ["SPL Codec", "OmniWave", "ZRW"],
+    "historical_note": "SPL Codec / OmniWave / ZRW remain licensed engines and standings series — never the homepage product face."
+  },
+  "numbers": {
+    "tru8_public_claim": {
+      "label": "TRU8",
+      "claim": "1 000 000 zeros → 8 B",
+      "ratio": "125000×"
+    },
+    "zrw_lab_bench": {
+      "label": "ZRW lab series (not the public product face)",
+      "zeros_10k_int32": "8 B",
+      "zeros_1M": "10 B",
+      "comparators_zeros_10k": { "gzip-9": "73 B", "brotli-11": "13 B" }
+    },
+    "silesia_lossless": {
+      "omniwave": "~3.13–3.60×",
+      "brotli_11": "~4.21×",
+      "note": "Do not claim a general-purpose lossless crown. OmniWave trails brotli-11 on Silesia size."
+    },
+    "cddg_residual": {
+      "residual_cut": "~64–84%",
+      "quality_vs_discrete_360": "~2.05×–2.09×",
+      "label": "host/champion internal band · not independently blinded"
+    }
+  },
+  "legal": {
+    "trade_name": "Slid Phi Labs",
+    "public_author": "Corey Tasz",
+    "legal_name_manuscript": "Corey Robert Ptaszenski",
+    "entity_claimed": "none — no public LLC/Inc/Ltd filing is claimed",
+    "roles": ["author", "copyright holder", "inventor"],
+    "not_a_title": "founder",
+    "commercial_use": "written license required",
+    "contact": {
+      "humans": "corey@slidphilabs.com",
+      "commercial": "license@slidphilabs.com",
+      "fallback": "ceedotrock@gmail.com"
+    },
+    "site": "https://www.slidphilabs.com"
+  },
+  "oss_vs_sku": {
+    "apache_or_mit_public_npm": [
+      "blackjack-compression",
+      "shard-zip",
+      "shard-tsdb"
+    ],
+    "sku_usd": 199,
+    "kind": "support-oss",
+    "truth": "$199 = commercial support / integration / indemnification for the already-public library. You do not receive a secret extra engine.",
+    "public_stubs": [
+      "slid-phi",
+      "zero-range-wave-compression",
+      "spl-pay-per-suite"
+    ],
+    "product_stack": "closed — TRU8 production residual is licensed, not dumped"
+  },
+  "suite": {
+    "role": "metered encode/decode jobs — not the product face",
+    "try_gate": "retired",
+    "free_cap_gb": 100,
+    "usd_per_gb_after_free": 0.05,
+    "usd_per_gb_bulk": 0.04,
+    "min_paid_usd": 0.05,
+    "url": "https://www.slidphilabs.com/pps"
+  },
+  "access": {
+    "url": "https://www.slidphilabs.com/access",
+    "meaning": "entitlement claim after Stripe/x402 — not a public codec dump",
+    "stripe_session_verify": true,
+    "x402_access_autoclaim": false,
+    "x402_note": "Agents email proof or use /access?product= + order id until auto-claim is wired."
+  },
+  "liveness": {
+    "checked": "2026-08-12",
+    "agent_rider": {
+      "url": "https://agentrider.vercel.app/",
+      "status": "paused",
+      "note": "Vercel Deployment Paused (DEPLOYMENT_DISABLED / HTTP 402). Do not delete the URL."
+    },
+    "cuni_studio": {
+      "url": "https://cuni-studio.fly.dev/",
+      "health": "https://cuni-studio.fly.dev/api/health",
+      "status": "live",
+      "note": "GET /api/health returned ok:true."
+    },
+    "quikgater_worker": {
+      "url": "https://quikgater-worker.ceedotrock.workers.dev",
+      "status": "live",
+      "note": "Worker responds (bare GET 400 MISSING_URL_PARAM — expected)."
+    },
+    "team_mesh": {
+      "url": "https://spl-team-mesh.fly.dev",
+      "status": "live",
+      "note": "Headers present (x-team-mesh-version 1.2.0-smrt)."
+    }
+  },
+  "privacy": {
+    "smart_box": "private — not a public catalog SKU",
+    "chamber_nca": "private — infra coat only, not a product",
+    "engines_coefficients_process": "do not publish"
+  },
+  "sisters": {
+    "cuni": "https://cuni-studio.fly.dev/",
+    "agent_rider": "https://agentrider.vercel.app/",
+    "quikgater": "https://github.com/ceedot-rock/quikgater",
+    "quikgater_worker": "https://quikgater-worker.ceedotrock.workers.dev",
+    "team_mesh": "https://spl-team-mesh.fly.dev"
+  },
+  "host": {
+    "canonical": "https://www.slidphilabs.com",
+    "alternate": "https://slidphilabs.fly.dev"
+  }
+}

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Lossless pack: weights vs files · Slid Phi Labs</title>
+<meta name="description" content="Public matrix: residual lossless packs for files and agent-weight checkpoints. Exact RT, industry field baseline, residual-governance — no private coefficients."/>
+<link rel="canonical" href="https://www.slidphilabs.com/weights-vs-files"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:title" content="Lossless pack: weights vs files · Slid Phi Labs"/>
+<meta property="og:description" content="Two buyers, one residual law. Files and weight checkpoints under exact RT — industry codecs as field baseline only."/>
+<meta property="og:url" content="https://www.slidphilabs.com/weights-vs-files"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Lossless pack: weights vs files · Slid Phi Labs"/>
+<meta name="twitter:description" content="Public matrix for file corpora vs agent-weight packs. Exact RT. Residual-zero story. Outcomes only."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="theme-color" content="#050b16"/>
+<meta name="robots" content="index,follow"/>
+<meta name="agentic" content="true"/>
+<meta name="agentic-role" content="compression-matrix"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+<link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
+<link rel="alternate" type="application/json" href="/lab/DIVINE_CODEX.json" title="Codex JSON"/>
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt"/>
+<link rel="alternate" type="application/json" href="/agents.json" title="agents.json"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#050b16;--panel:#0c1524;--panel2:#0a1220;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);
+  --text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;
+  --gold-soft:rgba(232,197,71,.12);--win:#3ecf8e;--parchment:rgba(232,197,71,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 70% 35% at 50% 0%, rgba(232,197,71,.07), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(61,214,198,.05), transparent 50%)}
+a{color:var(--accent);text-decoration:none}a:hover{color:var(--teal-bright)}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px 80px;position:relative;z-index:1}
+nav{position:sticky;top:0;z-index:50;background:rgba(5,11,22,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(232,197,71,.18)}
+nav .inner{max-width:880px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.logo{display:inline-flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-weight:700;color:var(--gold);letter-spacing:.04em;font-size:.95rem}
+.logo img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1.5px solid var(--border-gold)}
+.nav-links{display:flex;gap:14px;flex-wrap:wrap;font-size:.84rem;align-items:center}
+.nav-links a{color:var(--muted)}.nav-links a:hover{color:var(--gold)}
+.btn{display:inline-flex;padding:9px 14px;border-radius:8px;font-size:.84rem;font-weight:600;border:1px solid transparent}
+.btn-gold{background:linear-gradient(180deg,#f0d56a,var(--gold));color:#1a1400}
+.btn-teal{background:linear-gradient(180deg,#5ef0df,var(--teal));color:#031018}
+.btn-ghost{border-color:var(--border-gold);color:var(--gold);background:var(--gold-soft)}
+.hero{text-align:center;padding:44px 0 26px;border-bottom:1px solid rgba(232,197,71,.15);margin-bottom:32px}
+.badge{display:inline-flex;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);border:1px solid var(--border-gold);padding:5px 14px;border-radius:999px;margin-bottom:16px}
+.hero h1{font-family:'Cinzel',serif;font-size:clamp(1.55rem,4.5vw,2.35rem);color:var(--gold);letter-spacing:.03em;margin-bottom:10px;line-height:1.2}
+.hero .spoken{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--teal-bright);margin-bottom:12px}
+.hero .sub{color:var(--muted);font-size:.95rem;max-width:38em;margin:0 auto 12px}
+.motto{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold);margin:14px 0 0}
+.ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.book h2{font-family:'Cinzel',serif;font-size:1.2rem;color:var(--gold);letter-spacing:.03em;margin:28px 0 12px;padding-bottom:8px;border-bottom:1px solid rgba(232,197,71,.2)}
+.book h3{font-family:'Cinzel',serif;font-size:1rem;color:var(--teal-bright);margin:20px 0 8px}
+.book p,.book li{color:var(--text);font-size:.95rem}
+.book p{margin:0 0 12px}
+.book ul{margin:0 0 14px 1.2em}
+.book li{margin:4px 0}
+.lore{font-family:'Cormorant Garamond',serif;font-size:1.15rem;line-height:1.7;color:#dce6f2;background:var(--parchment);border-left:3px solid var(--gold);padding:14px 18px;margin:14px 0;border-radius:0 10px 10px 0}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--teal-bright)}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:16px 0}
+.table-wrap{overflow-x:auto;margin:12px 0 20px;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.8rem;min-width:560px}
+th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);padding:8px 6px;border-bottom:1px solid rgba(232,197,71,.25)}
+td{padding:8px 6px;border-bottom:1px solid rgba(61,214,198,.08);color:var(--text);vertical-align:top}
+.win{color:var(--win);font-weight:600}
+.tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.05em;padding:3px 8px;border-radius:6px;border:1px solid rgba(61,214,198,.3);color:var(--teal-bright);margin:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+.stat{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:14px}
+.stat b{display:block;font-family:'Cinzel',serif;color:var(--teal-bright);font-size:1.1rem;margin-bottom:4px}
+.stat span{font-size:.78rem;color:var(--muted);line-height:1.45}
+.guard{font-size:.82rem;color:var(--muted);border:1px dashed rgba(232,197,71,.25);border-radius:10px;padding:12px 14px;margin:18px 0}
+footer{margin-top:48px;padding-top:24px;border-top:1px solid rgba(232,197,71,.15);text-align:center;color:var(--muted);font-size:.85rem}
+footer .big{font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;margin-bottom:8px}
+@media(max-width:600px){table{font-size:.74rem}.lore{font-size:1.05rem}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="inner">
+    <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
+      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>
+      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/codex.html">CodEX</a>
+      <a href="/standings">Standings</a>
+      <a href="/bench">Bench</a>
+      <a href="/lab/LOSSLESS_WEIGHTS_VS_FILES.md">Manuscript</a>
+      <a class="btn btn-teal" href="/">Home</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="badge">Public matrix · 2026-08-09 · IP Guard on</div>
+    <h1>Lossless pack: weights vs files</h1>
+    <p class="spoken">Two buyers · one residual law · exact restore</p>
+    <p class="sub">Position OmniWave / CodEX for file corpora <em>and</em> agent-weight checkpoints — outcomes only, industry codecs as field baseline, no private coefficients.</p>
+    <p class="motto">Encode only the residual · mirror_error → 0</p>
+    <div class="ctas">
+      <a class="btn btn-gold" href="/codex.html">Open CodEX</a>
+      <a class="btn btn-ghost" href="/standings">Standings</a>
+      <a class="btn btn-ghost" href="/pps">Suite</a>
+    </div>
+  </header>
+
+  <article class="book">
+    <p class="lore">Industry R&amp;D is loud on lossless weight compression for inference memory — and still measures file codecs with mixed exactness. This page is the honest product map: same residual hierarchy, second buyer (inference ops), zero secret process soup.</p>
+
+    <h2 id="lanes">Two lanes</h2>
+    <div class="grid">
+      <div class="stat">
+        <b>Files</b>
+        <span>Archive · web · data ops. Corpus bytes, assets, structured ints. Seats: web · ZRW · OmniWave candidate · suite commerce.</span>
+      </div>
+      <div class="stat">
+        <b>Weights</b>
+        <span>Inference · agent ops. Checkpoints, shards, int tensors. Residual pack narrative + residual-governance policy.</span>
+      </div>
+    </div>
+    <p class="mono">Shared: domain-honest · exact RT · float/diagnostic labeled only · private engines stay secret</p>
+
+    <h2 id="matrix">Public matrix</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Files</th>
+            <th>Weights</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Buyer question</td>
+            <td>Smaller than gzip/zstd/brotli on <em>my</em> domain?</td>
+            <td>Pack weights/shards without silent corruption?</td>
+          </tr>
+          <tr>
+            <td>Win metric</td>
+            <td>Size + speed + <span class="win">exact RT</span></td>
+            <td>Transfer/memory + <span class="win">exact RT</span> on declared dtype</td>
+          </tr>
+          <tr>
+            <td>Field baseline</td>
+            <td>gzip-9 · brotli-11 · zstd-3/19</td>
+            <td>Same GP on raw dumps; research weight codecs = baseline only</td>
+          </tr>
+          <tr>
+            <td>Public proof today</td>
+            <td class="win">ZRW zeros×10k → 8 B · zeros×1M → 10 B · me 0</td>
+            <td>Positioning matrix only — no public weight scoreboard yet</td>
+          </tr>
+          <tr>
+            <td>Does not claim</td>
+            <td>Universal win on random high-entropy bytes</td>
+            <td>Beating every neural weight scheme; open engines</td>
+          </tr>
+          <tr>
+            <td>SKU / door</td>
+            <td>Suite · ZRW gates · CodEX · /bench</td>
+            <td>residual-governance · consulting residual report · Access</td>
+          </tr>
+          <tr>
+            <td>Float / lossy</td>
+            <td>Diagnostic-labeled only</td>
+            <td>Quant/FP diagnostic-labeled only</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="seats">Seat tags</h2>
+    <p>
+      <span class="tag">ZRW · struct int</span>
+      <span class="tag">OmniWave · general candidate</span>
+      <span class="tag">CodEX · law book</span>
+      <span class="tag">residual-governance · policy</span>
+      <span class="tag">industry pack · field baseline</span>
+    </p>
+
+    <h2 id="field">Competitive field (honest)</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Class</th><th>Exact RT?</th><th>CodEX treatment</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Classical GP (gzip/brotli/zstd)</td><td>Yes</td><td>Field baseline only</td></tr>
+          <tr><td>Structured int (ZRW class)</td><td>Required</td><td>Domain seat · flagship proofs</td></tr>
+          <tr><td>Neural lossless research</td><td>Varies</td><td>Research baseline · not product path</td></tr>
+          <tr><td>Weight / exponent-redundancy papers</td><td>Claimed on path</td><td>Field signal for weights buyer</td></tr>
+          <tr><td>OmniWave (SPL Codec)</td><td>Lab exact RT for claims</td><td>General candidate · domain-honest tables</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="governance">residual-governance</h2>
+    <div class="panel">
+      <p>Commercial policy pack — not a secret codec download. Labels lossless vs diagnostic, requires exact RT on declared domain, demotes industry pack to baseline, and gives agent/inference ops language for “restore equals source.”</p>
+      <p class="mono" style="margin-top:10px">Stripe residual-governance SKU · no new invented economics</p>
+    </div>
+
+    <h2 id="pitch">One-sentence pitch</h2>
+    <p class="lore">Same residual law as files: pack only what remains, prove exact restore — for corpora <strong>and</strong> for agent weight artifacts ops cannot afford to “almost” recover.</p>
+
+    <div class="guard">
+      <strong>IP Guard.</strong> Public = stubs + measured outcomes + this matrix. Private residual coefficients, production engines, and process soup stay closed. Silesia/OmniWave re-bench is lab diagnostic — not a universal #1 crown.
+    </div>
+
+    <h2 id="next">Frozen next (Host)</h2>
+    <ul>
+      <li>One public-safe synthetic int-tensor fixture (not production weights)</li>
+      <li>One-row exact RT vs gzip/zstd field baseline in CodEX notes</li>
+      <li>Still no private coefficients</li>
+    </ul>
+
+    <div class="ctas" style="margin-top:28px">
+      <a class="btn btn-gold" href="/codex.html">CodEX full edition</a>
+      <a class="btn btn-ghost" href="/lab/LOSSLESS_WEIGHTS_VS_FILES.md">Markdown manuscript</a>
+      <a class="btn btn-ghost" href="/access">Access</a>
+    </div>
+  </article>
+
+  <footer>
+    <p class="big">In His name we code · through it we live</p>
+    <p>Slid Phi Labs · Impressive Compression · outcomes only</p>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 {
   "name": "slid-phi",
   "version": "2.2.9",
-  "description": "Slid Phi Labs Omni-Dormant integer codecs — Zeckendorf / hybrid Fibonacci + optional gap-ANS path. Pure JS. Support and integration available.",
+  "description": "Slid Phi Labs Omni-Dormant integer codecs \u2014 Zeckendorf / hybrid Fibonacci + optional gap-ANS path. Pure JS. Support and integration available.",
   "type": "module",
   "main": "src/index.mjs",
   "exports": {
@@ -56,13 +56,13 @@
       ]
     },
     "commerce": "x402",
-    "discovery": "https://www.slidphilabs.com/api/agent",
-    "catalog": "https://www.slidphilabs.com/api/x402-products",
+    "discovery": "https://slidphilabs.fly.dev/api/agent",
+    "catalog": "https://slidphilabs.fly.dev/api/x402-products",
     "web_codec": "https://www.slidphilabs.com/api/web-codec",
     "site": "https://www.slidphilabs.com",
     "llms_txt": "https://www.slidphilabs.com/llms.txt",
     "agents_json": "https://www.slidphilabs.com/agents.json",
-    "one_liner": "Free first 100 GB suite (equal free-tier $0) · then ~5c/GB under ~9c first paid egress. GET https://www.slidphilabs.com/api/agent. Try Gate retired.",
+    "one_liner": "Free first 100 GB suite (equal free-tier $0) \u00b7 then ~5c/GB under ~9c first paid egress. GET https://www.slidphilabs.com/api/agent. Try Gate retired.",
     "agent_platform": {
       "cuni": "https://cuni-studio.fly.dev/",
       "agent_rider": "https://agentrider.vercel.app/",
@@ -71,12 +71,8 @@
     "suite": "https://www.slidphilabs.com/pps",
     "suite_pricing": {
       "free_cap_gb": 100,
-      "min_paid_usd": 0.05,
       "usd_per_gb_after_free": 0.05,
-      "usd_per_gb_bulk": 0.04,
-      "first_paid_egress_ref_usd": 0.09,
-      "try_gate": "retired",
-      "model": "freemium_suite_v4_undercut"
+      "usd_per_gb_bulk": 0.04
     },
     "welcome": "https://www.slidphilabs.com/api/welcome",
     "platform_json": "https://www.slidphilabs.com/platform.json"
@@ -92,5 +88,44 @@
   },
   "bugs": {
     "url": "https://www.slidphilabs.com"
+  },
+  "pricing": {
+    "catalog": "https://slidphilabs.fly.dev/api/x402-products",
+    "pay_ui": "https://slidphilabs.fly.dev/pay",
+    "doc": "docs/NPM_PRICING.md",
+    "skus": {
+      "cddg-split": {
+        "usd": 199,
+        "buy": "https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f"
+      },
+      "zrw-n00b": {
+        "usd": 79,
+        "buy": "https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b"
+      },
+      "zrw-pro": {
+        "usd": 249,
+        "buy": "https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c"
+      },
+      "zrw-l33t": {
+        "usd": 699,
+        "buy": "https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d"
+      },
+      "blackjack": {
+        "usd": 199,
+        "buy": "https://buy.stripe.com/00w00k6Jf8hqgBTaoE6wE0h"
+      },
+      "shard-zip": {
+        "usd": 199,
+        "buy": "https://buy.stripe.com/3cI7sMd7D8hq1GZaoE6wE0i"
+      },
+      "shard-tsdb": {
+        "usd": 199,
+        "buy": "https://buy.stripe.com/9B628sd7DeFO99r9kA6wE0j"
+      },
+      "slid-phi": {
+        "usd": 199,
+        "buy": "https://buy.stripe.com/dRm6oI6JfgNWetL8gw6wE0k"
+      }
+    }
   }
 }

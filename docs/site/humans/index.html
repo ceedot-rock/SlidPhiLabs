@@ -9,7 +9,7 @@
 <meta name="description" content="Human door: free web compress, free first 100 GB suite, standings, packages. No Try Gate chip-in — freemium is the eval path."/>
 <meta name="lab-surface" content="pub_facing"/>
 <meta name="lab-modules" content="compression,agent_platform"/>
-<meta name="lab-compression" content="SPL Codec,CDDG:Split"/>
+<meta name="lab-compression" content="TRU8,CDDG:Split"/>
 <meta name="lab-agent-platform" content="CuNi,Agent^Rider,Quikgater"/>
 <meta name="keywords" content="Slid Phi Labs, humans, pub facing, compression, try gate, suite, CDDG, CuNi"/>
 <link rel="canonical" href="https://www.slidphilabs.com/humans"/>
@@ -29,6 +29,7 @@
 <meta name="robots" content="index,follow"/>
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+<link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{--bg:#050b16;--panel:#0c1524;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);--text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--gold-soft:rgba(232,197,71,.12);--poster:url("/assets/slid-phi-labs-master.jpg")}
@@ -76,10 +77,27 @@ h1{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(1.55rem,3.4vw,2.
 footer{padding:28px 0 40px;border-top:1px solid rgba(232,197,71,.18);color:var(--muted);font-size:.88rem;margin-top:12px}
 footer a{margin-right:12px}
 </style>
+<link rel="stylesheet" href="/assets/slid-proof.css?v=1"/>
+<script src="/assets/slid-proof.js?v=1" defer></script>
 </head>
 <body>
+
+<div id="slid-proof" class="slid-proof-bar" aria-live="polite">
+  <span class="slid-pulse" aria-hidden="true"></span>
+  <span class="slid-engine">X-Slid-Engine · <strong data-slid="alive" class="gold">alive</strong></span>
+  <span><span class="slid-label">ZRW zeros×10k</span><strong data-slid="zrw-zeros">8 B</strong></span>
+  <span><span class="slid-label">vs gzip-9</span><strong>73 B</strong></span>
+  <span><span class="slid-label">vs brotli-11</span><strong>13 B</strong></span>
+  <span><span class="slid-label">Live ratio</span><strong data-slid="ratio">—</strong>×</span>
+  <span><span class="slid-label">Path</span><strong data-slid="path">zrw</strong></span>
+  <a href="/standings">Full standings →</a>
+</div>
+
 <nav><div class="inner">
-  <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>Slid Phi <span>Labs</span></a>
+  <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
+      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>
+      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+    </a>
   <div class="nav-links">
     <a class="active" href="/humans" data-surface="human">Pub Facing</a>
     <a href="/agents" data-surface="agent">Agentic Minded</a>
@@ -91,25 +109,26 @@ footer a{margin-right:12px}
 </div></nav>
 
 <header class="hero wrap" id="main">
-  <div class="badge">Pub Facing · attack vector for humans</div>
-  <h1>Built for people who ship.</h1>
+  <div class="badge">Pub Facing · humans · 8 B proof</div>
+  <h1>Compression that knows it is alive.</h1>
   <p class="lead">
-    <strong>Same mission</strong> as our agent surface — impressive compression, exact multi-runtime agents, one team.
-    This door is for humans: demos, Stripe, suites, standings, partners.
+    <strong style="color:var(--teal-bright)">ZRW → 8 B on zeros×10k</strong> (gzip 73 B · brotli 13 B · ramp ~141×).
+    <strong style="color:var(--gold)">TRU8 is the product</strong> (<a href="/">home</a> · <a href="/demos">demos</a> · <a href="/license">license</a>).
+    This door is for humans: free demos, standings, suite, packages, Access.
   </p>
   <p class="mission">
-    <em>One mission · two attack vectors · one team.</em>
-    You try outcomes. Agents automate the rails. Both buy into the same products.
+    <em>Five-minute path:</em>
+    Try free web → See standings → Quote suite → Access after pay.
+    Same outcomes agents discover on the other door.
   </p>
   <p class="mission" style="border-left-color:var(--teal)">
-    <em>You belong here.</em>
-    Free demo first. Proof next. Buy when it pays for itself. We answer real mail — not tip desks.
+    <em>IP Guard:</em> Outcomes only. Processes stay in the lab. Contact: corey@slidphilabs.com
   </p>
   <div class="cta-row">
-    <a class="btn btn-teal" href="/web">Free web compress</a>
-    <a class="btn btn-gold" href="/pps">Free first 100 GB</a>
-    <a class="btn btn-ghost" href="/pps">Suite · any size</a>
-    <a class="btn btn-ghost" href="/agents">I’m an agent →</a>
+    <a class="btn btn-teal" href="/web">Try free web</a>
+    <a class="btn btn-gold" href="/standings">See standings</a>
+    <a class="btn btn-ghost" href="/pps">Quote suite</a>
+    <a class="btn btn-ghost" href="/agents">Agents →</a>
   </div>
 </header>
 
@@ -123,13 +142,13 @@ footer a{margin-right:12px}
     </a>
     <a class="card block" href="/pps">
       <div class="kicker">02 · Evaluate free</div>
-      <h2>Free suite · first 1 GB</h2>
+      <h2>Free suite · first 100 GB</h2>
       <p>No chip-in. Quote a job up to 100 GB free, then ~5¢/GB under ~9¢ egress. Feel the platform.</p>
       <div class="go">Open suite →</div>
     </a>
     <a class="card block" href="/pps">
       <div class="kicker">03 · Ship bulk</div>
-      <h2>SPL Codec suite</h2>
+      <h2>Metered suite</h2>
       <p>Metered jobs free first 100 GB. Free first 100 GB per job, then ~5¢/GB under ~9¢ egress. Quote → pay → job.</p>
       <div class="go">Open suite →</div>
     </a>
@@ -154,7 +173,7 @@ footer a{margin-right:12px}
     <a class="card block span2" href="#modules">
       <div class="kicker">Modules · both surfaces share these</div>
       <h2>Compression + Agent platform</h2>
-      <p><strong style="color:var(--text)">Compression:</strong> SPL Codec · CDDG:Split.
+      <p><strong style="color:var(--text)">Compression:</strong> TRU8 · CDDG:Split.
         <strong style="color:var(--text)">Agent platform:</strong> CuNi Studio · Agent^Rider · Quikgater — free to explore; agents wire MCP/x402 on the other door.</p>
       <div class="go">Scroll modules →</div>
     </a>
@@ -167,7 +186,7 @@ footer a{margin-right:12px}
       <li><strong>Compress something live</strong> on <a href="/web">/web</a> — feel the product, no card.</li>
       <li><strong>Check the scoreboard</strong> at <a href="/standings">/standings</a> — ZRW zeros vs gzip/brotli.</li>
       <li><strong>Quote a suite job</strong> on <a href="/pps">/pps</a> — see bulk-cheap pricing for your bytes.</li>
-      <li><strong>Suite free tier</strong> — first 1 GB per job at $0, then usage pricing.</li>
+      <li><strong>Suite free tier</strong> — first 100 GB per job at $0, then usage pricing.</li>
       <li><strong>Partner / integrate</strong> — email <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> or use Access after purchase.</li>
     </ol>
   </section>
@@ -178,7 +197,7 @@ footer a{margin-right:12px}
     <div class="grid" style="margin:0">
       <div>
         <p style="color:var(--teal-bright);font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;margin-bottom:8px">COMPRESSION</p>
-        <p style="color:var(--muted);font-size:.9rem;margin-bottom:8px"><a href="/#codec">SPL Codec</a> · <a href="/#cddg-split">CDDG:Split</a> · <a href="/demos">Demos</a> · <a href="/truth">Truth table</a></p>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:8px"><a href="/">TRU8</a> · <a href="/#cddg-split">CDDG:Split</a> · <a href="/demos">Demos</a> · <a href="/truth">Truth table</a></p>
       </div>
       <div>
         <p style="color:var(--teal-bright);font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;margin-bottom:8px">AGENT PLATFORM</p>
@@ -202,7 +221,7 @@ footer a{margin-right:12px}
     <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
     <a href="mailto:corey@slidphilabs.com">Contact</a>
   </p>
-  <p style="margin-top:8px">IP Guard: public outcomes only. Processes stay private. © Slid Phi Labs</p>
+  <p style="margin-top:8px">IP Guard: outcomes only. Processes stay private. © Slid Phi Labs</p>
 </footer>
 <script src="/assets/platform-home.js?v=1" defer></script>
 </body>

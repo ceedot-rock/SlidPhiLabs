@@ -5,15 +5,51 @@
 # Discovery SoT: https://www.slidphilabs.com/api/agent
 # Human hub: https://www.slidphilabs.com/humans
 # Agent hub: https://www.slidphilabs.com/agents
+# Lock: https://www.slidphilabs.com/lab/PUBLIC_FACE_TRU8_LOCK.json
+
+# Duosurface reporting (web + agent secret shopper)
+Duos: https://www.slidphilabs.com/duos
+Duos-API: https://www.slidphilabs.com/api/duos
+
 
 # Mission: One mission · two attack vectors · one team
 # Surfaces: Pub Facing (humans) · Agentic Minded (agents)
-# Module 1 — Compression: SPL Codec + CDDG
-# Module 2 — Agent platform: CuNi · Agent^Rider · Quikgater
+# Public product face: TRU8 (only). Credit: Powered by TRU8 · Slid Phi Labs
+# Module 1 — Compression: TRU8 + CDDG:Split (ZRW / OmniWave / SPL Codec = historical lab series)
+# Module 2 — Agent platform: CuNi · Agent^Rider (paused) · Quikgater
+
+Product: TRU8
+Demos: https://www.slidphilabs.com/demos
+License: https://www.slidphilabs.com/license
+GitHub: https://github.com/ceedot-rock/TRU8
+Commercial: mailto:license@slidphilabs.com
 
 Protocols: x402
-Suite: free first 100 GB then ~1.5¢/GB on /pps (Try Gate retired)
+Suite: free first 100 GB then ~5¢/GB (first 100 paid GiB) then ~4¢/GB on /pps (Try Gate retired)
+x402_access_autoclaim: false
+# Live product host (PRIMARY .com): https://www.slidphilabs.com · alternate https://slidphilabs.fly.dev
+Payments: GET /api/payments · POST /api/checkout · UI /pay
 
+# Sisters (liveness 2026-08-12)
+CuNi: https://cuni-studio.fly.dev/ · live
+Agent-Rider: https://agentrider.vercel.app/ · status paused (Vercel Deployment Paused)
+Quikgater-worker: https://quikgater-worker.ceedotrock.workers.dev · live
+Team-Mesh: https://spl-team-mesh.fly.dev · live
+# Smart Box is private — not a public SKU
+
+# Great Agentic Olympiad (sponsored by Slid Phi Labs · slidphilabs.com)
+Olympiad: https://www.slidphilabs.com/olympiad
+Olympiad-API: https://www.slidphilabs.com/api/olympiad
+Olympiad-JSON: https://www.slidphilabs.com/olympiad.json
+Olympiad-Records: https://www.slidphilabs.com/olympiad-records.json
+Olympiad-Entry: gao-entry $1 POST /api/x402-products
+Olympiad-Phase: tryouts_and_competitions until week before open registration; quarterly every year
+Olympiad-GitHub: https://github.com/ceedot-rock/great-agentic-olympiad
+Olympiad-Contribute: https://github.com/ceedot-rock/great-agentic-olympiad/blob/main/CONTRIBUTING.md
+
+# Toy Store (fun · theory · artifacts — not commercial floor)
+Toys: https://www.slidphilabs.com/toys
+Toys-JSON: https://www.slidphilabs.com/toys.json
 
 A2A: https://www.slidphilabs.com/.well-known/agent-card.json
 Commerce: https://www.slidphilabs.com/.well-known/agentic-commerce.json

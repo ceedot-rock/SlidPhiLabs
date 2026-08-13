@@ -68,35 +68,41 @@ const CATALOG = {
   blackjack: {
     name: "Blackjack",
     amount_cents: 19900,
-    stripe: "https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09",
-    kind: "license",
-    blurb: "Multi-path integer / mixed series",
+    stripe: "https://buy.stripe.com/00w00k6Jf8hqgBTaoE6wE0h",
+    kind: "support-oss",
+    oss_npm: "blackjack-compression",
+    blurb:
+      "$199 = commercial support / integration / indemnification for the already-public blackjack-compression library. You do not receive a secret extra engine.",
   },
   "shard-zip": {
     name: "shard-zip",
     amount_cents: 19900,
-    stripe: "https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09",
-    kind: "license",
-    blurb: "Adaptive structured packaging",
+    stripe: "https://buy.stripe.com/3cI7sMd7D8hq1GZaoE6wE0i",
+    kind: "support-oss",
+    oss_npm: "shard-zip",
+    blurb:
+      "$199 = commercial support / integration / indemnification for the already-public shard-zip library. You do not receive a secret extra engine.",
   },
   "shard-tsdb": {
     name: "shard-tsdb",
     amount_cents: 19900,
-    stripe: "https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09",
-    kind: "license",
-    blurb: "Time-series shard packaging",
+    stripe: "https://buy.stripe.com/9B628sd7DeFO99r9kA6wE0j",
+    kind: "support-oss",
+    oss_npm: "shard-tsdb",
+    blurb:
+      "$199 = commercial support / integration / indemnification for the already-public shard-tsdb library. You do not receive a secret extra engine.",
   },
   "slid-phi": {
     name: "slid-phi",
     amount_cents: 19900,
-    stripe: "https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09",
-    kind: "license",
-    blurb: "Omni-Dormant pathways",
+    stripe: "https://buy.stripe.com/dRm6oI6JfgNWetL8gw6wE0k",
+    kind: "stub",
+    blurb: "Public npm stub / quote rail — not a private engine dump.",
   },
   "support-integration": {
     name: "Support + Integration",
     amount_cents: 19900,
-    stripe: "https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09",
+    stripe: "https://buy.stripe.com/8x28wQebH41a85n2Wc6wE0l",
     kind: "service",
     blurb: "Pathway choice, benches, email Q&A",
   },
@@ -129,6 +135,15 @@ const CATALOG = {
     kind: "support",
     blurb: "Unlock Free Gate evaluation seat",
   },
+  "gao-entry": {
+    name: "Great Agentic Olympiad Entry",
+    amount_cents: 100,
+    stripe: "https://buy.stripe.com/8x24gAd7D7dm2L31S86wE0m",
+    kind: "olympiad",
+    blurb:
+      "$1 GAO seat — agent self-enter or human. Sponsored by Slid Phi Labs · slidphilabs.com",
+    access: "https://www.slidphilabs.com/olympiad",
+  },
 };
 
 const ALIASES = {
@@ -154,6 +169,10 @@ const ALIASES = {
   chip: "try-gate",
   "try-gate-chip-in": "try-gate",
   donation: "donate",
+  gao: "gao-entry",
+  olympiad: "gao-entry",
+  "olympiad-entry": "gao-entry",
+  "great-agentic-olympiad": "gao-entry",
 };
 
 function cors(res) {
@@ -195,7 +214,12 @@ function resolveSku(raw) {
 function solanaConfig() {
   const network = process.env.X402_NETWORK || "solana-mainnet-beta";
   const isMain = /mainnet/i.test(network) || network === "solana";
-  const payTo = process.env.X402_PAY_TO || "";
+  const payTo = (
+    process.env.X402_PAY_TO ||
+    process.env.PAY_SOLANA_ADDRESS ||
+    process.env.BLOKZ_SOLANA_ADDRESS ||
+    ""
+  ).trim();
   const asset =
     process.env.X402_ASSET || (isMain ? DEFAULT_USDC_MAINNET : DEFAULT_USDC_DEVNET);
   const decimals = Number(process.env.X402_TOKEN_DECIMALS || 6);
@@ -217,11 +241,14 @@ function networkConfig() {
 }
 
 function baseConfig() {
-  const payTo =
+  const payTo = (
     process.env.X402_PAY_TO_BASE ||
     process.env.X402_PAY_TO_EVM ||
     process.env.X402_EVM_PAY_TO ||
-    "";
+    process.env.PAY_EVM_ADDRESS ||
+    process.env.BLOKZ_WALLET_ADDRESS ||
+    ""
+  ).trim();
   const asset = process.env.X402_ASSET_BASE || BASE_USDC_MAINNET;
   const decimals = Number(process.env.X402_TOKEN_DECIMALS || 6);
   const rpc = process.env.BASE_RPC_URL || "https://mainnet.base.org";
@@ -261,16 +288,23 @@ function centsToRawAmount(cents, decimals) {
 function publicProduct(sku) {
   const p = CATALOG[sku];
   if (!p) return null;
-  return {
+  const out = {
     sku,
     name: p.name,
     amount_cents: p.amount_cents,
     amount_usd: (p.amount_cents / 100).toFixed(2),
     kind: p.kind,
     blurb: p.blurb,
-    human_stripe: p.stripe,
+    human_stripe: p.stripe || null,
     agent_buy: "POST /api/x402-products",
   };
+  if (p.oss_npm) out.oss_npm = p.oss_npm;
+  if (p.access) out.access = p.access;
+  if (sku === "gao-entry") {
+    out.sponsor = "Slid Phi Labs · slidphilabs.com";
+    out.olympiad = "https://www.slidphilabs.com/olympiad";
+  }
+  return out;
 }
 
 function buildAccepts(sku) {
@@ -283,8 +317,10 @@ function buildAccepts(sku) {
     amount_cents: p.amount_cents,
     amount_usd: (p.amount_cents / 100).toFixed(2),
     kind: p.kind,
-    human_stripe: p.stripe,
-    access: "https://www.slidphilabs.com/access?product=" + encodeURIComponent(sku),
+    human_stripe: p.stripe || null,
+    access:
+      p.access ||
+      "https://www.slidphilabs.com/access?product=" + encodeURIComponent(sku),
   };
   const accepts = [];
   if (sol.enabled) {
@@ -624,7 +660,9 @@ function catalogResponse() {
     aliases: ALIASES,
     client_compat:
       "x402 exact · Solana SPL (serialized tx) and/or Base USDC (tx hash after EIP-3009/transfer)",
-    note: "Stripe for humans. Agents: POST sku → 402 accepts[] (Solana + Base mainnet) → pay → X-PAYMENT.",
+    note: "Stripe for humans. Agents: POST sku → 402 accepts[] (Solana + Base mainnet) → pay → X-PAYMENT. x402 auto-claim of /access is not wired — email proof or /access?product= + order id.",
+    product_face: "TRU8",
+    x402_access_autoclaim: false,
   };
 }
 

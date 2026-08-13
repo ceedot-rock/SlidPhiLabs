@@ -1,0 +1,153 @@
+{
+  "base": "https://slidphilabs.fly.dev",
+  "at": "2026-08-09T21:29:57Z",
+  "tests": [
+    {
+      "name": "GET /api/omniwave",
+      "pass": true,
+      "detail": {
+        "version": "1.4.0-barrel-cone",
+        "ops": [
+          "compress",
+          "decompress",
+          "profile",
+          "route",
+          "bench",
+          "barrel",
+          "print",
+          "prints"
+        ],
+        "barrel_rest": "zrw"
+      }
+    },
+    {
+      "name": "compress returns dataset_print_id",
+      "pass": true,
+      "detail": "dpi_dd3c48156fc45b"
+    },
+    {
+      "name": "fire_print has no data payload",
+      "pass": true,
+      "detail": [
+        "path",
+        "method",
+        "zrw_mode",
+        "transform_types",
+        "barrel_loaded",
+        "barrel_rest",
+        "structural_fp",
+        "structural_fp_sha",
+        "feats_summary",
+        "raw_bytes"
+      ]
+    },
+    {
+      "name": "print_set has structural_fp",
+      "pass": true,
+      "detail": "c4d7b427"
+    },
+    {
+      "name": "print_set has path/method",
+      "pass": true,
+      "detail": {
+        "path": "zrw",
+        "method": "zrw-v5-stride16"
+      }
+    },
+    {
+      "name": "barrel telemetry present",
+      "pass": true,
+      "detail": {
+        "loaded": "zrw",
+        "rest": "zrw",
+        "fires": 2
+      }
+    },
+    {
+      "name": "compress\u2192decompress roundtrip",
+      "pass": true,
+      "detail": {
+        "raw": 8192,
+        "restored": 8192,
+        "path": "zrw"
+      }
+    },
+    {
+      "name": "op=print retrieves print set",
+      "pass": true,
+      "detail": "dpi_dd3c48156fc45b"
+    },
+    {
+      "name": "retrieved print has no data",
+      "pass": true,
+      "detail": [
+        "path",
+        "method",
+        "zrw_mode",
+        "transform_types",
+        "barrel_loaded",
+        "barrel_rest",
+        "structural_fp",
+        "structural_fp_sha",
+        "feats_summary",
+        "raw_bytes"
+      ]
+    },
+    {
+      "name": "op=prints lists fires",
+      "pass": true,
+      "detail": {
+        "n": 2,
+        "has_dpi": true
+      }
+    },
+    {
+      "name": "encode via dataset_print_id",
+      "pass": true,
+      "detail": {
+        "path": "zrw",
+        "method": "zrw-v5-stride16",
+        "new_print_id": "dpi_dd3c4815835dec",
+        "used_recipe_route": "zrw"
+      }
+    },
+    {
+      "name": "print-id encode roundtrip",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "op=barrel",
+      "pass": true,
+      "detail": {
+        "compress_rest": "zrw",
+        "compress_fires": 4,
+        "decompress_rest": "zrw-v5-stride16"
+      }
+    },
+    {
+      "name": "zrw path fired on structured ramp",
+      "pass": true,
+      "detail": "zrw"
+    },
+    {
+      "name": "structured packs smaller than gzip (or framed still < 3x gzip)",
+      "pass": true,
+      "detail": {
+        "zrw_or_framed": 180,
+        "gzip": 249,
+        "method": "zrw-v5-stride16"
+      }
+    },
+    {
+      "name": "unknown print soft-fallback still compresses",
+      "pass": true,
+      "detail": "text+bare"
+    }
+  ],
+  "summary": {
+    "passed": 16,
+    "failed": 0,
+    "total": 16
+  }
+}

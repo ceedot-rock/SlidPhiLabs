@@ -18,6 +18,7 @@ import {
   MIN_CENTS,
   MAX_CENTS,
   MAX_BYTES,
+  SUITE_PRICING,
 } from "./quote.mjs";
 
 export {
@@ -36,6 +37,7 @@ export {
   MIN_CENTS,
   MAX_CENTS,
   MAX_BYTES,
+  SUITE_PRICING,
 };
 
 export const SERVICE_NAME = "SPL Pay Per Suite";

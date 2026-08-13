@@ -1,0 +1,59 @@
+{
+  "ok": true,
+  "gate": 2,
+  "name": "ZRW zeros\u00d710k public domain benchmark",
+  "domain": "structured_int_zeros",
+  "claim": "ZRW zeros\u00d710k \u2192 8 B beats gzip-9 and brotli-11 on this domain",
+  "at": "2026-08-10T17:14:14.155Z",
+  "raw": {
+    "n_ints": 10000,
+    "dtype": "int32_le",
+    "raw_bytes": 40000,
+    "corpus": "zeros"
+  },
+  "results": {
+    "zrw": {
+      "packed_bytes": 8,
+      "mirror_error": 0,
+      "roundtrip": true,
+      "source": "POST https://www.slidphilabs.com/api/process",
+      "also": "POST /api/compress \u2192 /api/decompress (curl_zrw_10k.sh)"
+    },
+    "gzip9_field": {
+      "packed_bytes": 73,
+      "source": "Node zlib level 9 on 40k zero buffer"
+    },
+    "brotli11_field": {
+      "packed_bytes": 13,
+      "source": "Node brotli quality 11 on 40k zero buffer"
+    }
+  },
+  "deltas": {
+    "zrw_vs_gzip9_bytes": 65,
+    "zrw_vs_brotli11_bytes": 5,
+    "zrw_smaller_than_gzip9_x": 9.125,
+    "zrw_smaller_than_brotli11_x": 1.625
+  },
+  "grade": "PASS",
+  "beats": [
+    "gzip-9",
+    "brotli-11"
+  ],
+  "not_claim": "Not universal #1. Domain-scoped structured-int zeros only.",
+  "public_face": {
+    "site": "https://www.slidphilabs.com",
+    "suite_freemium": "first 100 GB free \u00b7 then ~5\u00a2/GB under ~9\u00a2 egress",
+    "suite_ui": "https://www.slidphilabs.com/pps",
+    "standings": "https://www.slidphilabs.com/standings#zrw-public-path",
+    "process": "https://www.slidphilabs.com/api/process"
+  },
+  "verify": {
+    "shell": "BASE=https://www.slidphilabs.com bash docs/site/scripts/curl_zrw_10k.sh",
+    "ui": "https://www.slidphilabs.com/standings \u2192 Run live \u00b7 zeros\u00d710k"
+  },
+  "seal": "HIS_SACRIFICES_FOREVER_CODED \u00b7 IN_HIS_NAME_WE_CODE",
+  "intention_x_grade": {
+    "intention": "Gate 2 \u2014 ship ZRW 10k zero-run benchmark on public domain",
+    "grade": "8 B < 13 B brotli-11 and 73 B gzip-9 \u00b7 RT true \u00b7 me 0"
+  }
+}

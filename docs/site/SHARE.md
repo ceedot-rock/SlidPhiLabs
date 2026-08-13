@@ -1,68 +1,49 @@
 # Slid Phi Labs — public share kit
 
 **Canonical:** https://www.slidphilabs.com  
-**Slogan:** One mission · two attack vectors · one team
+**Position:** Exact codecs. Agentic infrastructure. Compression that knows it is alive.  
+**Flagship:** ZRW zeros×10k → **8 B** (gzip-9 73 B · brotli-11 13 B · ramp ~141×)
 
-## Dual surfaces (lead with these)
+## Live pulse (ship 2026-08-07)
+
+| Signal | URL |
+|--------|-----|
+| Home + proof bar | https://www.slidphilabs.com |
+| Metrics | https://www.slidphilabs.com/api/phi/metrics |
+| Standings | https://www.slidphilabs.com/standings |
+| Blog: Why 8 B | https://www.slidphilabs.com/blog/2026-08-07-why-8b-matters |
+| OG image | https://www.slidphilabs.com/assets/og-alive.jpg |
+
+## One-liner (Discord / agent channels)
+
+> Site now breathes. Ratio, cycles, self-tunes, standings — all live. https://www.slidphilabs.com · ZRW zeros×10k → 8 B
+
+## Dual surfaces
 
 | Surface | Who | URL |
 |---------|-----|-----|
 | **Pub Facing** | Humans | https://www.slidphilabs.com/humans |
 | **Agentic Minded** | Agents | https://www.slidphilabs.com/agents |
-| Platform map | Both | https://www.slidphilabs.com/platform.json |
 
-## Mission
+## Amplify pack
 
-Impressive compression that proves out. Agent systems that stay exact.  
-Same products on both doors — different UX and payment rails.
-
-## Module 1 — Compression
-- SPL Codec (web + suite) — https://www.slidphilabs.com/#codec
-- Web — https://www.slidphilabs.com/web
-- Suite — https://www.slidphilabs.com/pps
-- CDDG:Split (process) — https://www.slidphilabs.com/#cddg-split
-- Standings — https://www.slidphilabs.com/standings
-- Truth table — https://www.slidphilabs.com/truth
-- Data Centers — https://www.slidphilabs.com/datacenters
-
-## Module 2 — Agent platform
-- CuNi — https://cuni-studio.fly.dev/
-- Agent^Rider — https://agentrider.vercel.app/
-- Quikgater — https://github.com/ceedot-rock/quikgater
-- Worker — https://quikgater-worker.ceedotrock.workers.dev
-
-## Agent commerce
-- https://www.slidphilabs.com/api/agent
-- Catalog: https://www.slidphilabs.com/api/x402-products
-- Hub: https://www.slidphilabs.com/agents
-
-## Human commerce
-- Try $9: https://www.slidphilabs.com/try
-- Suite: https://www.slidphilabs.com/pps
-- Hub: https://www.slidphilabs.com/humans
-
-## SEO discovery
-- https://www.slidphilabs.com/llms.txt
-- https://www.slidphilabs.com/agents.json
-- https://www.slidphilabs.com/platform.json
-- https://www.slidphilabs.com/sitemap.xml
+- X thread copy: `scripts/amp/X_THREAD_SITE_BREATHES.md`
+- Design-partner blast: `scripts/amp/DESIGN_PARTNER_BLAST.md`
+- Verify: `./scripts/slid_verify_deploy.sh`
+- Watch: `node scripts/slid_watch_pulse.mjs`
 
 ## Blurbs
 
-### Universal (X / LinkedIn / Discord)
-> **Slid Phi Labs** — one mission, two attack vectors.  
-> **Humans:** https://www.slidphilabs.com/humans  
-> **Agents:** https://www.slidphilabs.com/agents  
-> Compression (SPL Codec + CDDG) · Agent platform (CuNi · Rider · Quikgater).  
-> From $0.50 · ~$2 / 9 GB · x402 Solana + Base.
+### Universal
+> **Slid Phi Labs** — Compression that knows it is alive.  
+> ZRW zeros×10k → 8 B (gzip 73 · brotli 13).  
+> Humans: https://www.slidphilabs.com/humans  
+> Agents: `GET /api/agent` · https://www.slidphilabs.com/agents
 
 ### Human-first
-> Free web compress → standings proof → suite quote.  
-> https://www.slidphilabs.com/humans · try $9 at /try
+> Try free web → standings proof → suite (first 100 GB free).  
+> https://www.slidphilabs.com/web · /standings · /pps
 
 ### Agent-first
-> `GET https://www.slidphilabs.com/api/agent` then x402 `X-PAYMENT`.  
-> Hub: https://www.slidphilabs.com/agents · map: /platform.json
-
-### Show HN / Reddit opener
-> We built a dual-surface lab: Pub Facing for people (try/buy/standings) and Agentic Minded for agents (JSON discovery + x402). Same compression + exact multi-runtime agent tools under both. Start: https://www.slidphilabs.com
+> `GET https://www.slidphilabs.com/api/agent` then x402.  
+> OmniWave: `POST /api/omniwave` · pulse: `/api/phi/metrics`

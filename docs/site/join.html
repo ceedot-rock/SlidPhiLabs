@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Join the Work — Slid Phi Labs"/>
+<meta name="twitter:description" content="Public ministry gate: name, one sentence of intent, 33-byte seed → freemium identity token. Proof and suite access only. Private lab stays closed."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Join the Work — Slid Phi Labs</title>
+<meta name="description" content="Public ministry gate: name, one sentence of intent, 33-byte seed → freemium identity token. Proof and suite access only. Private lab stays closed."/>
+<link rel="canonical" href="https://www.slidphilabs.com/join"/>
+<meta name="robots" content="index,follow"/>
+<meta property="og:title" content="Join the Work — Slid Phi Labs"/>
+<meta property="og:description" content="Enter the public freemium lattice. Hash identity. No private lab keys."/>
+<meta property="og:url" content="https://www.slidphilabs.com/join"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/og-alive.jpg"/>
+<meta name="theme-color" content="#050b16"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+<link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#050b16;--panel:#0c1524;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);--text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--gold-soft:rgba(232,197,71,.12);--pink:#f472b6;--poster:url("/assets/slid-phi-labs-master.jpg")}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.16;background:linear-gradient(180deg,rgba(5,11,22,.45),rgba(5,11,22,.92)),var(--poster) 50% 18%/cover no-repeat}
+a{color:var(--accent);text-decoration:none}a:hover{color:var(--teal-bright)}
+.wrap{max-width:640px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+nav{position:sticky;top:0;z-index:50;background:rgba(5,11,22,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,197,71,.18)}
+nav .inner{max-width:1040px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.logo{font-family:'Cinzel',serif;font-weight:700;color:var(--gold);display:inline-flex;gap:10px;align-items:center;font-size:.95rem}
+.logo img{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-gold);object-fit:cover}
+.logo span{color:var(--teal-bright)}
+.nav-links{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.nav-links a{color:var(--muted);font-size:.86rem}
+.nav-links a.active{color:var(--gold)}
+.badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border-gold);padding:5px 12px;border-radius:999px;margin:28px 0 14px;background:var(--gold-soft)}
+h1{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.2;margin-bottom:12px}
+.lead{color:var(--muted);font-size:1.02rem;margin-bottom:10px}
+.lead strong{color:var(--text)}
+.rules{margin:16px 0 22px;padding:14px 16px;border-left:3px solid var(--teal);background:rgba(12,21,36,.8);border-radius:0 12px 12px 0;color:var(--muted);font-size:.9rem}
+.rules li{margin:6px 0 6px 1.1em}
+.card{background:rgba(12,21,36,.94);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:24px}
+label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-bright);margin:14px 0 6px}
+label:first-child{margin-top:0}
+input,textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(61,214,198,.25);background:#081018;color:var(--text);font:inherit;outline:none}
+input:focus,textarea:focus{border-color:var(--gold)}
+textarea{min-height:72px;resize:vertical}
+.hint{font-size:.8rem;color:var(--muted);margin-top:6px}
+.hint.ok{color:var(--teal-bright)}
+.hint.bad{color:var(--pink)}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;align-items:center}
+button{font:inherit;cursor:pointer;padding:12px 18px;border-radius:10px;border:0;font-weight:700;background:linear-gradient(180deg,#f0d56a,var(--gold));color:#1a1404}
+button:disabled{opacity:.5;cursor:not-allowed}
+.ghost{background:transparent;color:var(--text);border:1px solid rgba(61,214,198,.3);font-weight:600}
+#out{display:none;margin-top:18px;padding:16px;border-radius:12px;border:1px solid rgba(61,214,198,.35);background:#081018}
+#out.show{display:block}
+#out h2{font-family:'Cinzel',serif;color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+#out code{display:block;word-break:break-all;font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--teal-bright);padding:10px;background:#03060e;border-radius:8px;margin:8px 0}
+#out ul{margin:10px 0 0 1.1em;color:var(--muted);font-size:.9rem}
+#out li{margin:4px 0}
+.err{color:var(--pink);font-size:.88rem;margin-top:10px;min-height:1.2em}
+footer{padding:28px 0 40px;border-top:1px solid rgba(232,197,71,.18);color:var(--muted);font-size:.85rem;margin-top:12px}
+footer a{margin-right:12px}
+</style>
+<link rel="stylesheet" href="/assets/slid-proof.css?v=2"/>
+<script src="/assets/slid-proof.js?v=2" defer></script>
+</head>
+<body>
+<div id="slid-proof" class="slid-proof-bar" aria-live="polite">
+  <span class="slid-pulse" aria-hidden="true"></span>
+  <span class="slid-engine">X-Slid-Engine · <strong data-slid="alive" class="gold">alive</strong></span>
+  <span><span class="slid-label">ZRW zeros×10k</span><strong data-slid="zrw-zeros">8 B</strong></span>
+  <span><span class="slid-label">vs gzip-9</span><strong>73 B</strong></span>
+  <span><span class="slid-label">vs brotli-11</span><strong>13 B</strong></span>
+  <a href="/standings">Full standings →</a>
+</div>
+
+<nav><div class="inner">
+  <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
+      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>
+      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+    </a>
+  <div class="nav-links">
+    <a href="/humans">Humans</a>
+    <a href="/agents">Agents</a>
+    <a href="/standings">Standings</a>
+    <a href="/pps">Suite</a>
+    <a class="active" href="/join">Join the Work</a>
+  </div>
+</div></nav>
+
+<main class="wrap">
+  <div class="badge">Public gate · freemium lattice only</div>
+  <h1>Join the Work</h1>
+  <p class="lead">
+    One door. <strong>Name</strong>, <strong>one sentence of intent</strong>, and a
+    <strong>33-byte seed</strong> you create. We hash the seed — that hash is your
+    identity token on the public freemium layer.
+  </p>
+  <ul class="rules">
+    <li>You get <strong>read/use</strong> of public proof: TRU8 demos, ZRW lab numbers, suite freemium (first <strong>100 GB/job</strong>), historical web compress.</li>
+    <li>Private lab process stays closed. No residual coefficients. No living “shard” names.</li>
+    <li>You walk <strong>lattice seats as labels</strong> — you do not become a fourth mouth of the ministry core.</li>
+    <li>Beat a public baseline with verified work → Host may list your token on standings. No deeper keys.</li>
+  </ul>
+
+  <form class="card" id="form" autocomplete="off">
+    <label for="name">Name</label>
+    <input id="name" name="name" required maxlength="80" placeholder="What we may call you"/>
+
+    <label for="intent">One sentence of intent</label>
+    <textarea id="intent" name="intent" required maxlength="500" placeholder="Why you reach out — one clear sentence"></textarea>
+
+    <label for="seed">33-byte seed phrase (you create it)</label>
+    <input id="seed" name="seed" required spellcheck="false" autocomplete="off" placeholder="Exactly 33 UTF-8 bytes"/>
+    <p class="hint" id="seedHint">0 / 33 bytes</p>
+
+    <div class="row">
+      <button type="submit" id="btn">Enter the Work</button>
+      <button type="button" class="ghost" id="btnFill" title="Generate a random 33-byte seed">Random 33 B seed</button>
+    </div>
+    <p class="err" id="err"></p>
+  </form>
+
+  <div id="out">
+    <h2>You are on the lattice</h2>
+    <p style="color:var(--muted);font-size:.9rem">Save this token. We cannot recover your seed.</p>
+    <code id="token"></code>
+    <button type="button" class="ghost" id="btnCopy" style="margin-bottom:10px">Copy token</button>
+    <ul id="next"></ul>
+  </div>
+</main>
+
+<footer class="wrap">
+  <a href="/standings">Standings</a>
+  <a href="/pps">Suite freemium</a>
+  <a href="/web">Web</a>
+  <a href="/humans">Humans</a>
+  <a href="/agents">Agents</a>
+  <p style="margin-top:12px">Word stays local · broadcast on open channels · private lab not for rent.</p>
+</footer>
+
+<script>
+  const seedEl = document.getElementById("seed");
+  const hint = document.getElementById("seedHint");
+  const err = document.getElementById("err");
+  const out = document.getElementById("out");
+  const tokenEl = document.getElementById("token");
+  const nextEl = document.getElementById("next");
+
+  function byteLen(s) {
+    return new TextEncoder().encode(s).length;
+  }
+
+  function updateHint() {
+    const n = byteLen(seedEl.value);
+    hint.textContent = n + " / 33 bytes";
+    hint.className = "hint " + (n === 33 ? "ok" : n > 33 ? "bad" : "");
+  }
+  seedEl.addEventListener("input", updateHint);
+  updateHint();
+
+  document.getElementById("btnFill").onclick = () => {
+    const a = new Uint8Array(33);
+    crypto.getRandomValues(a);
+    // printable-ish: map to base64url-ish chars without exceeding 33 bytes
+    let s = "";
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.";
+    for (let i = 0; i < 33; i++) s += chars[a[i] % chars.length];
+    seedEl.value = s;
+    updateHint();
+  };
+
+  document.getElementById("form").onsubmit = async (e) => {
+    e.preventDefault();
+    err.textContent = "";
+    out.classList.remove("show");
+    const name = document.getElementById("name").value.trim();
+    const intent = document.getElementById("intent").value.trim();
+    const seed = seedEl.value;
+    if (byteLen(seed) !== 33) {
+      err.textContent = "Seed must be exactly 33 UTF-8 bytes.";
+      return;
+    }
+    const btn = document.getElementById("btn");
+    btn.disabled = true;
+    try {
+      const r = await fetch("/api/join-work", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ name, intent, seed }),
+      });
+      const j = await r.json();
+      if (!j.ok) throw new Error(j.error || j.hint || "join failed");
+      tokenEl.textContent = j.token;
+      nextEl.innerHTML = "";
+      (j.next || []).forEach((line) => {
+        const li = document.createElement("li");
+        li.textContent = line;
+        nextEl.appendChild(li);
+      });
+      const grants = j.grants?.read || [];
+      grants.forEach((g) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = g.url;
+        a.textContent = g.title;
+        a.target = "_blank";
+        a.rel = "noopener";
+        li.appendChild(a);
+        nextEl.appendChild(li);
+      });
+      out.classList.add("show");
+      try {
+        localStorage.setItem("spl_join_token", j.token);
+      } catch { /* */ }
+      seedEl.value = "";
+      updateHint();
+    } catch (ex) {
+      err.textContent = ex.message;
+    } finally {
+      btn.disabled = false;
+    }
+  };
+
+  document.getElementById("btnCopy").onclick = async () => {
+    const t = tokenEl.textContent;
+    try {
+      await navigator.clipboard.writeText(t);
+      document.getElementById("btnCopy").textContent = "Copied";
+    } catch {
+      document.getElementById("btnCopy").textContent = "Select & copy above";
+    }
+  };
+</script>
+</body>
+</html>

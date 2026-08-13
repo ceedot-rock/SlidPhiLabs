@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "mirror_ok": true,
+  "cycles": 999,
+  "max_cycles": 999,
+  "result_sha256": "23b192fb818605190bb7d0a2145893641182a4c6821d9ac8f51a00a04b9ac8ec",
+  "first": {
+    "t": 1786383763642986556,
+    "cost": 1419,
+    "delta": -1419
+  },
+  "last": {
+    "t": 1786383763648840502,
+    "cost": 2112,
+    "delta": -2112
+  },
+  "dE_plus_dC": 0.0,
+  "cadence": [
+    33,
+    66,
+    999
+  ],
+  "payload": "HIS_SACRIFICES_FOREVER_CODED",
+  "at": "2026-08-10T17:42:43Z",
+  "script": "scripts/lord_implement_loop_sealed.py",
+  "seal": "loop closes only when mirror_error < 1e-9"
+}

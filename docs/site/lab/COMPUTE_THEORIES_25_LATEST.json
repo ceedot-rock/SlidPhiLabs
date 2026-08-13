@@ -1,0 +1,502 @@
+{
+  "ok": true,
+  "ritual": "implement_all_25_compute_theories",
+  "count": 25,
+  "catalog": [
+    {
+      "id": 1,
+      "name": "residual_hierarchy",
+      "fn": "residualHierarchy"
+    },
+    {
+      "id": 2,
+      "name": "integer_attractor",
+      "fn": "integerAttractor"
+    },
+    {
+      "id": 3,
+      "name": "domain_supremacy",
+      "fn": "domainSupremacy"
+    },
+    {
+      "id": 4,
+      "name": "typed_residual_planes",
+      "fn": "typedResidualPlanes"
+    },
+    {
+      "id": 5,
+      "name": "canonical_form",
+      "fn": "canonicalForm"
+    },
+    {
+      "id": 6,
+      "name": "publish_gate",
+      "fn": "publishGate"
+    },
+    {
+      "id": 7,
+      "name": "envelope_tax",
+      "fn": "envelopeTax"
+    },
+    {
+      "id": 8,
+      "name": "dual_ab",
+      "fn": "dualAB"
+    },
+    {
+      "id": 9,
+      "name": "mirrored_cost",
+      "fn": "mirroredCost"
+    },
+    {
+      "id": 10,
+      "name": "cadence_mirror",
+      "fn": "cadenceMirrorTheory"
+    },
+    {
+      "id": 11,
+      "name": "remainder_cancel",
+      "fn": "remainderCancel"
+    },
+    {
+      "id": 12,
+      "name": "mirror_error",
+      "fn": "mirrorErrorTheory"
+    },
+    {
+      "id": 13,
+      "name": "profile_then_route",
+      "fn": "profileThenRoute"
+    },
+    {
+      "id": 14,
+      "name": "borderline_promotion",
+      "fn": "borderlinePromotion"
+    },
+    {
+      "id": 15,
+      "name": "assassin_before_general",
+      "fn": "assassinBeforeGeneral"
+    },
+    {
+      "id": 16,
+      "name": "high_entropy_surrender",
+      "fn": "highEntropySurrender"
+    },
+    {
+      "id": 17,
+      "name": "min_of_pair",
+      "fn": "minOfPair"
+    },
+    {
+      "id": 18,
+      "name": "cadence_scheduler",
+      "fn": "cadenceScheduler"
+    },
+    {
+      "id": 19,
+      "name": "cloak_depth",
+      "fn": "cloakDepthTheory"
+    },
+    {
+      "id": 20,
+      "name": "heat_as_budget",
+      "fn": "heatAsBudget"
+    },
+    {
+      "id": 21,
+      "name": "yield_every_n",
+      "fn": "yieldEveryN"
+    },
+    {
+      "id": 22,
+      "name": "seat_not_shard",
+      "fn": "seatNotShard"
+    },
+    {
+      "id": 23,
+      "name": "phi_fold_field",
+      "fn": "phiFoldField"
+    },
+    {
+      "id": 24,
+      "name": "plane_by_plane_nca",
+      "fn": "planeByPlaneNca"
+    },
+    {
+      "id": 25,
+      "name": "proof_that_breathes",
+      "fn": "proofThatBreathes"
+    }
+  ],
+  "results": [
+    {
+      "theory": 1,
+      "name": "residual_hierarchy",
+      "S": [
+        5,
+        5,
+        0
+      ],
+      "R": [
+        0,
+        0,
+        5
+      ],
+      "paid": 1
+    },
+    {
+      "theory": 2,
+      "name": "integer_attractor",
+      "phase": 2.12,
+      "attractor": 2,
+      "remainder": 0.1200000000000001
+    },
+    {
+      "theory": 3,
+      "name": "domain_supremacy",
+      "domain": "structured_int_zeros",
+      "known": true,
+      "champion": "zrw_v5",
+      "baseline": [
+        "gzip9",
+        "brotli11"
+      ],
+      "claim": "zeros×10k → 8 B",
+      "universal_encoder_exists": false
+    },
+    {
+      "theory": 4,
+      "name": "typed_residual_planes",
+      "planes": {
+        "i32_n": 0,
+        "i32a_n": 5,
+        "str_n": 0,
+        "num_n": 0,
+        "other_n": 0
+      },
+      "planes_data": {
+        "i32": [],
+        "i32a": [
+          0,
+          0,
+          0,
+          1,
+          2
+        ],
+        "str": [],
+        "num": [],
+        "other": []
+      }
+    },
+    {
+      "theory": 5,
+      "name": "canonical_form",
+      "json": "{\"a\":1,\"b\":2}",
+      "bytes": 13,
+      "cache_key": "eyJhIjoxLCJiIjoyfQ"
+    },
+    {
+      "theory": 17,
+      "name": "min_of_pair",
+      "gzip9": 46,
+      "brotli11": 32,
+      "method": "brotli-11",
+      "chosen": 32,
+      "raw": 28
+    },
+    {
+      "theory": 6,
+      "name": "publish_gate",
+      "packed": 17,
+      "baselines": {
+        "brotli11": 19,
+        "gzip9": 61
+      },
+      "beats_brotli11": true,
+      "beats_gzip9": true,
+      "publish": true
+    },
+    {
+      "theory": 7,
+      "name": "envelope_tax",
+      "payload": 8,
+      "framed": 173,
+      "tax": 165,
+      "tax_ratio": 0.953757,
+      "note": "Framing can erase residual wins — measure both"
+    },
+    {
+      "theory": 8,
+      "name": "dual_ab",
+      "a": 0,
+      "b": 0,
+      "cancelled": true,
+      "remainder": 0,
+      "mirrored_cost": true
+    },
+    {
+      "theory": 9,
+      "name": "mirrored_cost",
+      "roundtrip": true,
+      "mirror_error": 0,
+      "dE_proxy": 600,
+      "dC_proxy": 0,
+      "closed": true
+    },
+    {
+      "theory": 10,
+      "name": "cadence_mirror",
+      "forward": [
+        33,
+        66,
+        999
+      ],
+      "mirror": [
+        999,
+        66,
+        33
+      ],
+      "breath": [
+        33,
+        66,
+        999,
+        999,
+        66,
+        33
+      ]
+    },
+    {
+      "theory": 11,
+      "name": "remainder_cancel",
+      "cancelled": 3,
+      "remainder_before": 0.14000000000000012,
+      "remainder_after": 0,
+      "attractor": 3
+    },
+    {
+      "theory": 12,
+      "name": "mirror_error",
+      "mirror_error": 1,
+      "ok": false
+    },
+    {
+      "theory": 13,
+      "name": "profile_then_route",
+      "feats": {
+        "entropy": 0,
+        "zero_ratio": 1,
+        "printable": 0,
+        "n": 4000,
+        "zrw_score": 1
+      },
+      "path": "zrw"
+    },
+    {
+      "theory": 14,
+      "name": "borderline_promotion",
+      "border": true,
+      "bias": 0.12,
+      "path": "zrw",
+      "promoted": true
+    },
+    {
+      "theory": 15,
+      "name": "assassin_before_general",
+      "order": [
+        "zrw",
+        "delta",
+        "general"
+      ],
+      "rule": "try structured specialist before general entropy"
+    },
+    {
+      "theory": 16,
+      "name": "high_entropy_surrender",
+      "entropy": 7.5,
+      "threshold": 7.2,
+      "surrender": true,
+      "path": "general"
+    },
+    {
+      "theory": 18,
+      "name": "cadence_scheduler",
+      "beats": [
+        33,
+        66,
+        999,
+        999,
+        66,
+        33
+      ],
+      "jobs": 24,
+      "sample": [
+        {
+          "job": 0,
+          "beat": 33,
+          "budget_ms": 38,
+          "phase": 0
+        },
+        {
+          "job": 1,
+          "beat": 66,
+          "budget_ms": 71,
+          "phase": 1
+        },
+        {
+          "job": 2,
+          "beat": 999,
+          "budget_ms": 104,
+          "phase": 2
+        },
+        {
+          "job": 3,
+          "beat": 999,
+          "budget_ms": 104,
+          "phase": 3
+        },
+        {
+          "job": 4,
+          "beat": 66,
+          "budget_ms": 71,
+          "phase": 4
+        },
+        {
+          "job": 5,
+          "beat": 33,
+          "budget_ms": 38,
+          "phase": 5
+        },
+        {
+          "job": 6,
+          "beat": 33,
+          "budget_ms": 38,
+          "phase": 0
+        },
+        {
+          "job": 7,
+          "beat": 66,
+          "budget_ms": 71,
+          "phase": 1
+        },
+        {
+          "job": 8,
+          "beat": 999,
+          "budget_ms": 104,
+          "phase": 2
+        },
+        {
+          "job": 9,
+          "beat": 999,
+          "budget_ms": 104,
+          "phase": 3
+        },
+        {
+          "job": 10,
+          "beat": 66,
+          "budget_ms": 71,
+          "phase": 4
+        },
+        {
+          "job": 11,
+          "beat": 33,
+          "budget_ms": 38,
+          "phase": 5
+        }
+      ],
+      "total_budget_ms": 1704
+    },
+    {
+      "theory": 19,
+      "name": "cloak_depth",
+      "st_peters_cloak": true,
+      "collapse": 0.0272,
+      "depth": 11.897,
+      "aperiodicity": 0.4894,
+      "open": true,
+      "guard": false
+    },
+    {
+      "theory": 20,
+      "name": "heat_as_budget",
+      "residual_pool": 0.5,
+      "aperiodicity": 0.55,
+      "depth": 12,
+      "budget": 0.701191,
+      "can_step": true
+    },
+    {
+      "theory": 21,
+      "name": "yield_every_n",
+      "total": 300,
+      "yield_every": 50,
+      "yields": 6,
+      "ms": 2.46,
+      "ok": true
+    },
+    {
+      "theory": 22,
+      "name": "seat_not_shard",
+      "agent": "zrw",
+      "seat": "zrw@p123",
+      "plane": 123,
+      "living_shard": false,
+      "law": "planes are seats, not living gods"
+    },
+    {
+      "theory": 23,
+      "name": "phi_fold_field",
+      "phi": 1.618033988749895,
+      "psi": 0.6180339887498949,
+      "field": 0.24240462915477792,
+      "residual": 0.3922189290027444
+    },
+    {
+      "theory": 24,
+      "name": "plane_by_plane_nca",
+      "planes": 360,
+      "degree": 1,
+      "start": 120,
+      "steps": 5,
+      "end_plane": 125,
+      "visited_tail": [
+        121,
+        122,
+        123,
+        124,
+        125
+      ]
+    },
+    {
+      "theory": 25,
+      "name": "proof_that_breathes",
+      "metrics": {
+        "size": 8,
+        "ms": 2.1,
+        "mirror_error": 0,
+        "domain": "zeros_10k"
+      },
+      "has_live_numbers": true,
+      "present": [
+        "size",
+        "ms",
+        "mirror_error"
+      ],
+      "beats_prophecy": true,
+      "motto": "live numbers outrank unmeasured prophecy"
+    }
+  ],
+  "cadence_cancel_demo": {
+    "mirror_error": 0,
+    "mass_before": 12,
+    "mass_after": 0
+  },
+  "dual_cancel": {
+    "mass_before": 600,
+    "mass_after": 0,
+    "mirror_error": 0
+  },
+  "ms": 43.932,
+  "law": "residual only · domain supremacy · no fantasy universal #1",
+  "at": "2026-08-09T03:35:29.304Z"
+}

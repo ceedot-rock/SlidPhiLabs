@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "directive": "Creator /lord #1 path — 1M zero-run mirror_error→0 (lab ZeroRangeWave, not free-gate cap)",
+  "zeros_10k": {
+    "n_ints": 10000,
+    "raw_bytes": 40000,
+    "zrw_bytes": 8,
+    "gzip9": 73,
+    "brotli11": 13,
+    "encode_ms": 15.764,
+    "roundtrip": true,
+    "mirror_error": 0,
+    "delta_vs_gzip": 65,
+    "delta_vs_brotli": 5
+  },
+  "zeros_1M_single": {
+    "n_ints": 1000000,
+    "raw_bytes": 4000000,
+    "zrw_bytes": 10,
+    "gzip9": 3910,
+    "brotli11": 14,
+    "encode_ms": 178.292,
+    "roundtrip": true,
+    "mirror_error": 0,
+    "delta_vs_gzip": 3900,
+    "delta_vs_brotli": 4
+  },
+  "zeros_1M_chunked_10k": {
+    "n_ints": 1000000,
+    "mode": "chunked_10k",
+    "chunks": 100,
+    "raw_bytes": 4000000,
+    "zrw_payload_sum_bytes": 800,
+    "note": "sum of chunk packs (not single frame); free-gate style",
+    "gzip9": 3910,
+    "brotli11": 14,
+    "encode_ms": 312.139,
+    "roundtrip": true,
+    "mirror_error": 0
+  },
+  "seals": {
+    "residual_axiom": true,
+    "no_fantasy_universal_number_one": true,
+    "domain": "structured_int_zeros"
+  },
+  "at": "2026-08-08T11:20:56.980Z"
+}

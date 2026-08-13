@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "corpus": "zeros_10k",
+  "n_ints": 10000,
+  "raw_bytes": 40000,
+  "zrw_bytes": 8,
+  "gzip9": 73,
+  "brotli11": 13,
+  "mirror_error": 0,
+  "roundtrip": true,
+  "grade": "PASS",
+  "at": "2026-08-10T17:14:14.155Z",
+  "full_bench": "/lab/ZRW_ZEROS_10K_BENCH_LATEST.json"
+}

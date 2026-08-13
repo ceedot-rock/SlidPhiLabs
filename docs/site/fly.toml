@@ -1,0 +1,34 @@
+# Slid Phi Labs public site on Fly.io
+# Deploy:  export FLY_API_TOKEN=… && fly deploy --remote-only
+# App URL: https://slidphilabs.fly.dev
+# Custom domain: fly certs add www.slidphilabs.com  (after DNS)
+
+app = "slidphilabs"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+  PORT = "8080"
+  HOST = "0.0.0.0"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "10s"
+    method = "GET"
+    path = "/healthz"
+
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1

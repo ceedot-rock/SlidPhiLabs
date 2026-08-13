@@ -5,8 +5,8 @@
 <meta name="lab-eval-path" content="https://www.slidphilabs.com/pps"/>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>SPL Codec Suite — free first 100 GB · then ~5¢/GB under ~9¢ egress · Slid Phi Labs</title>
-<meta name="description" content="Live quote suite. First 100 GB free per job to showcase the platform. Then ~5¢/GB under ~9¢ egress (far under typical cloud egress). License packages separate."/>
+<title>SPL Pay Per Suite — encode · decode · folder · free 100 GB · Slid Phi Labs</title>
+<meta name="description" content="On-site suite: browse data folder, encode/decode, download to your machine, recompress. Free first 100 GB then ~5¢/GB."/>
 <link rel="canonical" href="https://www.slidphilabs.com/pps"/>
 
 <!-- Agentic commerce discovery (machine-readable) -->
@@ -22,8 +22,8 @@
 <meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
 <meta name="agent-catalog" content="https://www.slidphilabs.com/api/x402-products"/>
 <meta name="agent-one-liner" content="Free first 100 GB suite · then ~5¢/GB under ~9¢ egress · GET /api/agent · Try Gate retired."/>
-<meta property="og:title" content="SPL Codec Suite — free first 100 GB · then ~5¢/GB under ~9¢ egress · Slid Phi Labs"/>
-<meta property="og:description" content="Live quote suite. First 100 GB free per job to showcase the platform. Then ~5¢/GB under ~9¢ egress (far under typical cloud egress). License packages separate."/>
+<meta property="og:title" content="SPL Pay Per Suite — encode · decode · data folder"/>
+<meta property="og:description" content="On-site suite folder: encode, decode, download, recompress. Free first 100 GB then ~5¢/GB."/>
 <meta property="og:url" content="https://www.slidphilabs.com/pps"/>
 <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta property="og:type" content="website"/>
@@ -31,8 +31,8 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@slidphilabs"/>
 <meta name="twitter:creator" content="@slidphilabs"/>
-<meta name="twitter:title" content="SPL Codec Suite — free first 100 GB · then ~5¢/GB under ~9¢ egress · Slid Phi Labs"/>
-<meta name="twitter:description" content="Live quote suite. First 100 GB free per job to showcase the platform. Then ~5¢/GB under ~9¢ egress (far under typical cloud egress). License packages separate."/>
+<meta name="twitter:title" content="SPL Pay Per Suite — encode · decode · data folder"/>
+<meta name="twitter:description" content="On-site suite folder: encode, decode, download, recompress. Free first 100 GB then ~5¢/GB."/>
 <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta name="theme-color" content="#050b16"/>
 <meta name="robots" content="index,follow"/>
@@ -366,20 +366,48 @@ footer.suite-foot .tag{color:var(--gold);font-family:'Cinzel',serif}
 footer.suite-foot a{color:var(--teal-bright);font-weight:600}
 .legal-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .legal-row img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid rgba(232,197,71,.35)}
+
+/* suite data folder */
+.folder-panel{margin-top:28px}
+.folder-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:14px}
+.folder-head h2{margin:0}
+.folder-table{width:100%;border-collapse:collapse;font-size:.88rem}
+.folder-table th{
+  text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid rgba(232,197,71,.25);
+}
+.folder-table td{padding:10px;border-bottom:1px solid rgba(61,214,198,.1);vertical-align:middle}
+.folder-table tr:hover td{background:rgba(61,214,198,.04)}
+.folder-name{font-family:'IBM Plex Mono',monospace;color:var(--text);font-weight:600}
+.folder-meta{color:var(--muted);font-size:.78rem}
+.folder-actions{display:flex;flex-wrap:wrap;gap:6px}
+.folder-actions .btn{padding:7px 10px;font-size:.78rem;border-radius:9px}
+.session-box{
+  margin-top:16px;padding:14px 16px;border-radius:14px;
+  border:1px dashed rgba(61,214,198,.28);background:rgba(8,16,24,.55);
+}
+.session-box h3{font-size:.88rem;color:var(--teal-bright);font-family:'Cinzel',serif;margin-bottom:8px}
+.session-list{display:flex;flex-direction:column;gap:8px}
+.session-row{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;
+  padding:10px 12px;border-radius:10px;background:rgba(12,21,36,.8);border:1px solid rgba(61,214,198,.12);
+}
+.session-row .nm{font-family:'IBM Plex Mono',monospace;font-size:.82rem}
+.session-empty{color:var(--muted);font-size:.88rem}
 </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "SPL SPL Codec Suite",
+  "name": "SPL Pay Per Suite",
   "url": "https://www.slidphilabs.com/pps",
-  "description": "On-spot project quotes, Stripe checkout, and lab-run compress/decompress jobs.",
+  "description": "On-site encode/decode data folder, download, recompress, live quotes, Stripe.",
   "isPartOf": { "@type": "WebSite", "url": "https://www.slidphilabs.com/" },
   "mainEntity": {
     "@type": "Service",
-    "name": "SPL SPL Codec Suite",
+    "name": "SPL Pay Per Suite",
     "provider": { "@type": "Organization", "name": "Slid Phi Labs", "url": "https://www.slidphilabs.com/" },
-    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "0", "description": "Free first 100 GB live quote · multi-GB cheap" }
+    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "0", "description": "Free first 100 GB · encode/decode folder on site" }
   }
 }
 </script>
@@ -391,8 +419,8 @@ footer.suite-foot a{color:var(--teal-bright);font-weight:600}
     <a class="suite-brand" href="/pps">
       <img src="/assets/logos/logo-paypersuite.jpg?v=13" width="44" height="44" alt=""/>
       <span>
-        <span class="name">SPL SPL Codec Suite</span>
-        <span class="sub">QUOTE · PAY · RUN</span>
+        <span class="name">SPL Pay Per Suite</span>
+        <span class="sub">ENCODE · DECODE · FOLDER</span>
       </span>
     </a>
     <div class="suite-nav-actions">
@@ -408,12 +436,13 @@ footer.suite-foot a{color:var(--teal-bright);font-weight:600}
   <header class="suite-hero">
     <div class="suite-hero-top">
       <div class="suite-hero-copy">
-        <div class="badge">Live suite · on-spot quote</div>
-        <p class="ribbon">Impressive Compression..... see for yourself</p>
-        <h1>SPL Codec · any size. Best engine. Ship it.</h1>
+        <div class="badge">Metered suite · not the TRU8 product face</div>
+        <p class="ribbon">TRU8 is the product → <a href="/" style="color:inherit">home</a> · <a href="/demos" style="color:inherit">demos</a></p>
+        <h1>Pay Per Suite · data that encodes &amp; decodes</h1>
         <p class="lede">
-          Drop a file or set size, pick the tool and operation, and the quote updates instantly.
-          Pay on Stripe — we run the best available lab path and deliver results to your inbox.
+          Suite is a live metered encode/decode service — not the public product face.
+          Browse the <strong>suite data folder</strong>, download samples, encode, decode, recompress.
+          Quote still free for the first <strong>100 GB</strong>, then ~5¢/GB under ~9¢ egress.
         </p>
       </div>
     </div>
@@ -513,7 +542,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
       <div class="panel">
         <div class="quote-label">Live quote</div>
         <div class="quote-amt" id="quoteAmtEl">$<span id="amt">9.00</span><span class="cur">USD</span></div>
-        <p class="quote-sub" id="amtSub">Free first 100 GB · multi-GB is cheap (free 1 GB then ~5¢/GB under ~9¢ egress) · max $10,000</p>
+        <p class="quote-sub" id="amtSub">Free first 100 GB · multi-GB is cheap (free 100 GB then ~5¢/GB under ~9¢ egress) · max $10,000</p>
         <div class="breakdown" id="breakdown"></div>
         <div class="cta-stack">
           <button type="button" class="btn btn-gold btn-lg btn-block" id="payBtn">Pay with Stripe →</button>
@@ -526,10 +555,54 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
     </aside>
   </div>
 
+  <!-- Suite data folder: encode · decode · download · recompress (stays on site) -->
+  <section class="panel folder-panel" id="suiteFolder" aria-label="Suite data folder">
+    <div class="folder-head">
+      <div>
+        <h2>Suite data folder</h2>
+        <p class="hint" style="margin:0">
+          Lab samples + your <strong>session drive</strong> (this browser). Download to disk, compress, decompress, recompress.
+        </p>
+      </div>
+      <div class="folder-actions">
+        <button type="button" class="btn btn-ghost" id="folderRefresh">Refresh</button>
+        <a class="btn btn-teal" href="/suite-folder/manifest.json" target="_blank" rel="noopener">manifest.json</a>
+      </div>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="folder-table" id="folderTable">
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Class</th>
+            <th>Size</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="folderBody">
+          <tr><td colspan="4" class="session-empty">Loading folder…</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="session-box">
+      <h3>Session drive · encode / decode results</h3>
+      <p class="hint" style="margin-bottom:10px">
+        Files you compress or decompress here stay in this browser session until you clear them. Download any onto your machine, then load again to recompress.
+      </p>
+      <div class="session-list" id="sessionList">
+        <div class="session-empty" id="sessionEmpty">No session files yet — compress a sample above.</div>
+      </div>
+      <div class="folder-actions" style="margin-top:12px">
+        <button type="button" class="btn btn-ghost" id="sessionClear">Clear session drive</button>
+      </div>
+      <div id="folderMsg" class="msg" style="display:none;margin-top:12px"></div>
+    </div>
+  </section>
+
   <footer class="suite-foot">
     <div>
-      <p class="tag">SPL SPL Codec Suite</p>
-      <p>Impressive Compression..... see for yourself</p>
+      <p class="tag">SPL Pay Per Suite</p>
+      <p>Encode · decode · download · recompress on-site</p>
     </div>
     <div class="legal-row">
       <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="28" height="28" alt=""/>
@@ -693,6 +766,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
     $('toolChip').textContent = toolLabel;
     $('classChip').textContent = classEl.value;
     $('opChip').textContent = opEl.value;
+    if (typeof refreshPayBtn === 'function') refreshPayBtn();
     setSteps();
   }
 
@@ -965,6 +1039,328 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
   if (params.get('cancel') === '1') {
     showBanner('warn', 'Checkout canceled — tweak the quote and try again when ready.');
   }
+
+  // ── Suite data folder + session drive (stays on site) ─────────────
+  const SESSION_KEY = 'spl_pps_session_drive_v1';
+  /** @type {{id:string,name:string,mime:string,b64:string,bytes:number,kind:string,from:string,at:string}[]} */
+  let sessionDrive = [];
+
+  function folderMsg(kind, html) {
+    const el = $('folderMsg');
+    if (!el) return;
+    el.style.display = 'block';
+    el.className = 'msg ' + (kind || '');
+    el.innerHTML = html;
+  }
+
+  function loadSession() {
+    try {
+      sessionDrive = JSON.parse(sessionStorage.getItem(SESSION_KEY) || '[]');
+      if (!Array.isArray(sessionDrive)) sessionDrive = [];
+    } catch (_) {
+      sessionDrive = [];
+    }
+  }
+  function saveSession() {
+    try {
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify(sessionDrive.slice(-24)));
+    } catch (_) {}
+  }
+
+  function b64FromBuf(buf) {
+    const u8 = buf instanceof Uint8Array ? buf : new Uint8Array(buf);
+    let s = '';
+    const chunk = 0x8000;
+    for (let i = 0; i < u8.length; i += chunk) {
+      s += String.fromCharCode.apply(null, u8.subarray(i, i + chunk));
+    }
+    return btoa(s);
+  }
+  function bufFromB64(b64) {
+    const bin = atob(b64);
+    const u8 = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+    return u8;
+  }
+
+  function downloadBlob(name, u8, mime) {
+    const blob = new Blob([u8], { type: mime || 'application/octet-stream' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  }
+
+  function addSessionFile({ name, u8, kind, from }) {
+    const id = 's_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 6);
+    sessionDrive.unshift({
+      id,
+      name,
+      mime: kind === 'text' ? 'text/plain' : 'application/octet-stream',
+      b64: b64FromBuf(u8),
+      bytes: u8.byteLength,
+      kind: kind || 'binary',
+      from: from || 'encode',
+      at: new Date().toISOString(),
+    });
+    saveSession();
+    renderSession();
+    return id;
+  }
+
+  function renderSession() {
+    const list = $('sessionList');
+    const empty = $('sessionEmpty');
+    if (!list) return;
+    list.querySelectorAll('.session-row').forEach((n) => n.remove());
+    if (!sessionDrive.length) {
+      if (empty) empty.style.display = 'block';
+      return;
+    }
+    if (empty) empty.style.display = 'none';
+    sessionDrive.forEach((f) => {
+      const row = document.createElement('div');
+      row.className = 'session-row';
+      row.innerHTML =
+        '<div><span class="nm">' + f.name + '</span><div class="folder-meta">' +
+        fmtBytes(f.bytes) + ' · ' + (f.from || '') + ' · ' + (f.at || '').slice(11, 19) +
+        '</div></div>';
+      const acts = document.createElement('div');
+      acts.className = 'folder-actions';
+      const dl = document.createElement('button');
+      dl.type = 'button';
+      dl.className = 'btn btn-teal';
+      dl.textContent = 'Download';
+      dl.onclick = () => downloadBlob(f.name, bufFromB64(f.b64), f.mime);
+      const load = document.createElement('button');
+      load.type = 'button';
+      load.className = 'btn btn-ghost';
+      load.textContent = 'Load → quote';
+      load.onclick = () => loadBytesIntoQuote(f.name, bufFromB64(f.b64), f.kind === 'text' ? 'json_series' : 'unknown');
+      const dec = document.createElement('button');
+      dec.type = 'button';
+      dec.className = 'btn btn-ghost';
+      dec.textContent = 'Decode';
+      dec.onclick = () => decodeSession(f);
+      const re = document.createElement('button');
+      re.type = 'button';
+      re.className = 'btn btn-gold';
+      re.textContent = 'Recompress';
+      re.onclick = () => encodeBuf(f.name.replace(/\.(zrw|packed|bin)$/i, '') + '_re.i32le', bufFromB64(f.b64), 'session');
+      acts.append(dl, load, dec, re);
+      row.appendChild(acts);
+      list.appendChild(row);
+    });
+  }
+
+  function loadBytesIntoQuote(name, u8, dataClass) {
+    fileName = name;
+    bytesEl.value = String(u8.byteLength);
+    drop.classList.add('has-file');
+    $('fileMeta').innerHTML = '<em>' + name + '</em> · loaded from folder';
+    const c = classify(u8);
+    classEl.value = dataClass || c.dataClass;
+    recommendedTool = c.tool;
+    if (productEl.value === 'auto') {
+      /* keep auto; chip shows recommend */
+    }
+    sampleHint = 'suite-folder:' + name;
+    renderQuote();
+    folderMsg('ok', 'Loaded <strong>' + name + '</strong> into quote (' + fmtBytes(u8.byteLength) + ').');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  async function fetchSample(path) {
+    const r = await fetch(path);
+    if (!r.ok) throw new Error('fetch failed ' + r.status);
+    const ab = await r.arrayBuffer();
+    return new Uint8Array(ab);
+  }
+
+  async function encodeBuf(baseName, u8, source) {
+    folderMsg('warn', 'Encoding…');
+    try {
+      // Prefer ZRW int32 path when aligned
+      if (u8.byteLength % 4 === 0 && u8.byteLength > 0) {
+        const r = await fetch('/api/compress', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/octet-stream' },
+          body: u8,
+        });
+        const j = await r.json().catch(() => ({}));
+        if (r.ok && j.packed_b64) {
+          const packed = bufFromB64(j.packed_b64);
+          const outName = (baseName || 'data').replace(/\.[^.]+$/, '') + '.zrw.bin';
+          addSessionFile({ name: outName, u8: packed, kind: 'binary', from: 'compress:' + (source || 'folder') });
+          folderMsg('ok',
+            'Encoded <strong>' + fmtBytes(u8.byteLength) + ' → ' + fmtBytes(packed.byteLength) + '</strong>' +
+            (j.path ? ' · path <code>' + j.path + '</code>' : '') +
+            ' · in session drive — download or decode.');
+          return;
+        }
+      }
+      // text / web-codec fallback
+      const text = new TextDecoder().decode(u8);
+      const r2 = await fetch('/api/web-codec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ op: 'compress', type: 'auto', data: text, encoding: 'utf8' }),
+      });
+      const j2 = await r2.json().catch(() => ({}));
+      if (!r2.ok) throw new Error(j2.error || 'encode failed');
+      const packed = typeof j2.data === 'string'
+        ? new TextEncoder().encode(j2.data)
+        : bufFromB64(j2.packed_b64 || j2.data_b64 || '');
+      const outName = (baseName || 'data') + '.webcodec.bin';
+      addSessionFile({ name: outName, u8: packed.length ? packed : new TextEncoder().encode(JSON.stringify(j2)), kind: 'binary', from: 'web-codec' });
+      folderMsg('ok', 'Encoded via web-codec · result in session drive.');
+    } catch (e) {
+      folderMsg('err', e.message || String(e));
+    }
+  }
+
+  async function decodeSession(f) {
+    folderMsg('warn', 'Decoding…');
+    try {
+      const u8 = bufFromB64(f.b64);
+      const r = await fetch('/api/decompress', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ packed_b64: f.b64 }),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && (j.ints || j.data_b64 || j.raw_b64)) {
+        let out;
+        if (Array.isArray(j.ints)) {
+          const buf = new ArrayBuffer(j.ints.length * 4);
+          const view = new DataView(buf);
+          j.ints.forEach((v, i) => view.setInt32(i * 4, v | 0, true));
+          out = new Uint8Array(buf);
+        } else {
+          out = bufFromB64(j.data_b64 || j.raw_b64);
+        }
+        const name = f.name.replace(/\.zrw(\.bin)?$/i, '') + '.decoded.i32le';
+        addSessionFile({ name, u8: out, kind: 'binary', from: 'decompress' });
+        folderMsg('ok', 'Decoded → <strong>' + name + '</strong> (' + fmtBytes(out.byteLength) + ') in session drive.');
+        return;
+      }
+      // web-codec decompress try
+      const text = new TextDecoder().decode(u8);
+      const r2 = await fetch('/api/web-codec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ op: 'decompress', data: text, encoding: 'utf8' }),
+      });
+      const j2 = await r2.json().catch(() => ({}));
+      if (!r2.ok) throw new Error(j.error || j2.error || 'decode failed');
+      const out2 = new TextEncoder().encode(typeof j2.data === 'string' ? j2.data : JSON.stringify(j2));
+      addSessionFile({ name: f.name + '.decoded.txt', u8: out2, kind: 'text', from: 'web-decode' });
+      folderMsg('ok', 'Decoded via web-codec · in session drive.');
+    } catch (e) {
+      folderMsg('err', e.message || String(e));
+    }
+  }
+
+  async function renderFolder() {
+    const body = $('folderBody');
+    if (!body) return;
+    body.innerHTML = '<tr><td colspan="4" class="session-empty">Loading folder…</td></tr>';
+    try {
+      const r = await fetch('/suite-folder/manifest.json');
+      const man = await r.json();
+      const files = (man.files || []).filter((f) => f.name !== 'README.txt');
+      body.innerHTML = '';
+      files.forEach((f) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td><div class="folder-name">' + f.name + '</div><div class="folder-meta">' + (f.kind || '') + '</div></td>' +
+          '<td class="folder-meta">' + (f.class || '') + '</td>' +
+          '<td class="folder-meta">' + fmtBytes(f.bytes) + '</td>';
+        const td = document.createElement('td');
+        const acts = document.createElement('div');
+        acts.className = 'folder-actions';
+
+        const aDl = document.createElement('a');
+        aDl.className = 'btn btn-teal';
+        aDl.href = f.path;
+        aDl.download = f.name;
+        aDl.textContent = 'Download';
+
+        const bLoad = document.createElement('button');
+        bLoad.type = 'button';
+        bLoad.className = 'btn btn-ghost';
+        bLoad.textContent = 'Load → quote';
+        bLoad.onclick = async () => {
+          try {
+            const u8 = await fetchSample(f.path);
+            loadBytesIntoQuote(f.name, u8, f.class);
+          } catch (e) {
+            folderMsg('err', e.message || String(e));
+          }
+        };
+
+        const bEnc = document.createElement('button');
+        bEnc.type = 'button';
+        bEnc.className = 'btn btn-gold';
+        bEnc.textContent = 'Encode';
+        bEnc.onclick = async () => {
+          try {
+            const u8 = await fetchSample(f.path);
+            await encodeBuf(f.name, u8, 'lab-sample');
+          } catch (e) {
+            folderMsg('err', e.message || String(e));
+          }
+        };
+
+        const bUse = document.createElement('button');
+        bUse.type = 'button';
+        bUse.className = 'btn btn-ghost';
+        bUse.textContent = 'Use + encode';
+        bUse.onclick = async () => {
+          try {
+            const u8 = await fetchSample(f.path);
+            loadBytesIntoQuote(f.name, u8, f.class);
+            await encodeBuf(f.name, u8, 'lab-sample');
+          } catch (e) {
+            folderMsg('err', e.message || String(e));
+          }
+        };
+
+        acts.append(aDl, bLoad, bEnc, bUse);
+        td.appendChild(acts);
+        tr.appendChild(td);
+        body.appendChild(tr);
+      });
+      // README row
+      const trR = document.createElement('tr');
+      trR.innerHTML =
+        '<td colspan="3"><div class="folder-name">README.txt</div><div class="folder-meta">how to encode · decode · recompress</div></td>';
+      const tdR = document.createElement('td');
+      tdR.innerHTML = '<a class="btn btn-ghost" href="/suite-folder/samples/README.txt" download>Download</a>';
+      trR.appendChild(tdR);
+      body.appendChild(trR);
+    } catch (e) {
+      body.innerHTML = '<tr><td colspan="4" class="session-empty">Folder unavailable: ' + (e.message || e) + '</td></tr>';
+    }
+  }
+
+  if ($('folderRefresh')) $('folderRefresh').onclick = () => { renderFolder(); renderSession(); };
+  if ($('sessionClear')) {
+    $('sessionClear').onclick = () => {
+      sessionDrive = [];
+      saveSession();
+      renderSession();
+      folderMsg('ok', 'Session drive cleared.');
+    };
+  }
+
+  // also encode user-dropped file into session when op is compress and they click a helper
+  // (drop already loads quote; add button via file meta is enough)
+
+  loadSession();
+  renderSession();
+  renderFolder();
 
   buildTools();
   renderQuote();

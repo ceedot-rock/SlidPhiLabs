@@ -1,0 +1,329 @@
+{
+  "ok": true,
+  "correction": true,
+  "prior_error": "First Silesia run scored industry codecs only (gzip/brotli/zstd), not OmniWave/SPL or ZRW. Incomplete for lab.",
+  "engines": {
+    "right_for_silesia_general": "OmniWave (SPL Codec) — profile→route",
+    "right_for_structured_ints": "ZRW — zeros/ramp/walk domain only",
+    "not_for_silesia_claim": "ZRW force on general files / Fly /api/compress always-zrw"
+  },
+  "float_path_warning": {
+    "transform": "float_fixed_delta",
+    "behavior": "quantize float32 → milli-int (round * 1000) then delta",
+    "byte_lossless": false,
+    "verified_on": "silesia/mr — 4.37M byte diffs after decompress",
+    "note": "Huge ratios (e.g. mr 924×) are NOT valid lossless claims"
+  },
+  "totals_211mb": {
+    "raw": 211938580,
+    "industry_brotli11": {
+      "compressed": 50332587,
+      "ratio": 4.2108
+    },
+    "industry_gzip9": {
+      "compressed": 67643417,
+      "ratio": 3.1332
+    },
+    "omni_force_general_lossless": {
+      "compressed": 67643417,
+      "ratio": 3.1332
+    },
+    "omni_auto_lossless_only_mixed": {
+      "compressed": 58841770,
+      "ratio": 3.6018,
+      "note": "auto when lossless; force-general when auto was lossy float"
+    }
+  },
+  "omni_force_general_beats_brotli": 0,
+  "rows": [
+    {
+      "file": "dickens",
+      "raw": 10192446,
+      "auto_route": "text",
+      "brotli11": 2853158,
+      "gzip9": 3854747,
+      "omni_auto": {
+        "compressed": 2853158,
+        "ratio": 3.5723,
+        "path": "text+bare",
+        "method": "brotli-11",
+        "lossless": true,
+        "lossy_reason": null
+      },
+      "omni_force_general": {
+        "compressed": 3854747,
+        "ratio": 2.6441,
+        "path": "general+bare",
+        "method": "gzip-9",
+        "lossless": true,
+        "beats_brotli11": false,
+        "delta_vs_brotli": -1001589
+      }
+    },
+    {
+      "file": "mozilla",
+      "raw": 51220480,
+      "auto_route": "float",
+      "brotli11": 14077215,
+      "gzip9": 19044408,
+      "omni_auto": {
+        "compressed": 6689695,
+        "ratio": 7.6566,
+        "path": "float+bare",
+        "method": "gzip-9",
+        "lossless": false,
+        "lossy_reason": "float_fixed_delta quantize *1000"
+      },
+      "omni_force_general": {
+        "compressed": 19044408,
+        "ratio": 2.6895,
+        "path": "general+bare",
+        "method": "gzip-9",
+        "lossless": true,
+        "beats_brotli11": false,
+        "delta_vs_brotli": -4967193
+      }
+    },
+    {
+      "file": "mr",
+      "raw": 9970564,
+      "auto_route": "float",
+      "brotli11": 2825713,
+      "gzip9": 3660806,
+      "omni_auto": {
+        "compressed": 10790,
+        "ratio": 924.056,
+        "path": "float+bare",
+        "method": "gzip-9",
+        "lossless": false,
+        "lossy_reason": "float_fixed_delta quantize *1000"
+      },
+      "omni_force_general": {
+        "compressed": 3660806,
+        "ratio": 2.7236,
+        "path": "general+bare",
+        "method": "gzip-9",
+        "lossless": true,
+        "beats_brotli11": false,
+        "delta_vs_brotli": -835093
+      }
+    },
+    {
+      "file": "nci",
+      "raw": 33553445,
+      "auto_route": "text",
+      "brotli11": 1616326,
+      "gzip9": 2988013,
+      "omni_auto": {
+        "compressed": 1616326,
+        "ratio": 20.7591,
+        "path": "text+bare",
+        "method": "brotli-11",
+        "lossless": true,
+        "lossy_reason": null
+      },
+      "omni_force_general": {
+        "compressed": 2988013,
+        "ratio": 11.2294,
+        "path": "general+bare",
+        "method": "gzip-9",
+        "lossless": true,
+        "beats_brotli11": false,
+        "delta_vs_brotli": -1371687
+      }
+    },
+    {
+      "file": "ooffice",
+      "raw": 6152192,
+      "auto_route": "float",
+      "brotli11": 2479758,
+      "gzip9": 3092938,
+      "omni_auto": {
+        "compressed": 1444668,
+        "ratio": 4.2586,
+        "path": "float+bare",
+        "method": "gzip-9",
+        "lossless": false,
+        "lossy_reason": "float_fixed_delta quantize *1000"
+      },
+      "omni_force_general": {
+        "compressed": 3092938,
+        "ratio": 1.9891,
+        "path": "general+bare",
+        "method": "gzip-9",
+        "lossless": true,
+        "beats_brotli11": false,
+        "delta_vs_brotli": -613180
+      }
+    },
+    {
+      "file": "osdb",
+      "raw": 10085684,
+      "auto_route": "text",
+      "brotli11": 2825123,
+      "gzip9": 3673189,
+      "omni_auto": {
+        "compressed": 2825123,
+        "ratio": 3.57,
+        "path": "text+bare",
+        "method": "brotli-11",
+        "lossless": true,
+        "lossy_reason": null
+      },
+      "omni_force_general": {
+        "compressed": 3673189,
+        "ratio": 2.7458,
+        "path": "general+bare",
+        "method": "gzip-9",
+        "lossless": true,
+        "beats_brotli11": false,
+        "delta_vs_brotli": -848066
+      }
+    },
+    {
+      "file": "reymont",
+      "raw": 6627202,
+      "auto_route": "text",
+      "brotli11": 1335805,
+      "gzip9": 1823208,
+      "omni_auto": {
+        "compressed": 1335805,
+        "ratio": 4.9612,
+        "path": "text+bare",
+        "method": "brotli-11",
+        "lossless": true,
+        "lossy_reason": null
+      },
+      "omni_force_general": {
+        "compressed": 1823208,
+        "ratio": 3.6349,
+        "path": "general+bare",
+        "method": "gzip-9",
+        "lossless": true,
+        "beats_brotli11": false,
+        "delta_vs_brotli": -487403
+      }
+    },
+    {
+      "file": "samba",
+      "raw": 21606400,
+      "auto_route": "text",
+      "brotli11": 3823126,
+      "gzip9": 5402722,
+      "omni_auto": {
+        "compressed": 3823126,
+        "ratio": 5.6515,
+        "path": "text+bare",
+        "method": "brotli-11",
+        "lossless": true,
+        "lossy_reason": null
+      },
+      "omni_force_general": {
+        "compressed": 5402722,
+        "ratio": 3.9992,
+        "path": "general+bare",
+        "method": "gzip-9",
+        "lossless": true,
+        "beats_brotli11": false,
+        "delta_vs_brotli": -1579596
+      }
+    },
+    {
+      "file": "sao",
+      "raw": 7251944,
+      "auto_route": "high_entropy",
+      "brotli11": 4589967,
+      "gzip9": 5325932,
+      "omni_auto": {
+        "compressed": 5325932,
+        "ratio": 1.3616,
+        "path": "high_entropy+bare",
+        "method": "gzip-9",
+        "lossless": true,
+        "lossy_reason": null
+      },
+      "omni_force_general": {
+        "compressed": 5325932,
+        "ratio": 1.3616,
+        "path": "general+bare",
+        "method": "gzip-9",
+        "lossless": true,
+        "beats_brotli11": false,
+        "delta_vs_brotli": -735965
+      }
+    },
+    {
+      "file": "webster",
+      "raw": 41458703,
+      "auto_route": "text",
+      "brotli11": 8788708,
+      "gzip9": 12073487,
+      "omni_auto": {
+        "compressed": 8788708,
+        "ratio": 4.7173,
+        "path": "text+bare",
+        "method": "brotli-11",
+        "lossless": true,
+        "lossy_reason": null
+      },
+      "omni_force_general": {
+        "compressed": 12073487,
+        "ratio": 3.4339,
+        "path": "general+bare",
+        "method": "gzip-9",
+        "lossless": true,
+        "beats_brotli11": false,
+        "delta_vs_brotli": -3284779
+      }
+    },
+    {
+      "file": "xml",
+      "raw": 5345280,
+      "auto_route": "text",
+      "brotli11": 430390,
+      "gzip9": 658917,
+      "omni_auto": {
+        "compressed": 430390,
+        "ratio": 12.4196,
+        "path": "text+bare",
+        "method": "brotli-11",
+        "lossless": true,
+        "lossy_reason": null
+      },
+      "omni_force_general": {
+        "compressed": 658917,
+        "ratio": 8.1122,
+        "path": "general+bare",
+        "method": "gzip-9",
+        "lossless": true,
+        "beats_brotli11": false,
+        "delta_vs_brotli": -228527
+      }
+    },
+    {
+      "file": "x-ray",
+      "raw": 8474240,
+      "auto_route": "float",
+      "brotli11": 4687298,
+      "gzip9": 6045050,
+      "omni_auto": {
+        "compressed": 8299,
+        "ratio": 1021.1158,
+        "path": "float+bare",
+        "method": "gzip-9",
+        "lossless": false,
+        "lossy_reason": "float_fixed_delta quantize *1000"
+      },
+      "omni_force_general": {
+        "compressed": 6045050,
+        "ratio": 1.4018,
+        "path": "general+bare",
+        "method": "gzip-9",
+        "lossless": true,
+        "beats_brotli11": false,
+        "delta_vs_brotli": -1357752
+      }
+    }
+  ],
+  "at": "2026-08-09T03:55:47.851Z"
+}

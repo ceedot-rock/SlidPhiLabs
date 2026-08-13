@@ -2,21 +2,42 @@
 
 Team: Slid Phi Labs
 Contact: corey@slidphilabs.com
+Commercial: license@slidphilabs.com
 Site: https://www.slidphilabs.com
 Slogan: One mission · two attack vectors · one team
+Credit: Powered by TRU8 · Slid Phi Labs
 
 Pub Facing (you are here in spirit): https://www.slidphilabs.com/humans
 Agentic Minded (if you are software): https://www.slidphilabs.com/agents
 
 What we sell (public outcomes only):
-  - SPL Codec — web + suite compression
-  - CDDG:Split — residual process product
-  - Agent platform links — CuNi · Agent^Rider · Quikgater
+  - TRU8 — the only public compression product face (demos free with credit)
+  - CDDG:Split — residual process product (licensed)
+  - ZRW / OmniWave / SPL Codec — historical lab engines + standings series (licensed, not the homepage face)
+  - Suite — metered encode/decode jobs on /pps (not the product face)
+  - Agent platform links — CuNi · Agent^Rider (paused) · Quikgater
 
-Start free: https://www.slidphilabs.com/web
+Start free: https://www.slidphilabs.com/  (TRU8) · https://www.slidphilabs.com/demos
+Historical web codec door: https://www.slidphilabs.com/web
 Proof: https://www.slidphilabs.com/standings
 Buy suite: https://www.slidphilabs.com/pps
-Eval: free first 100 GB on https://www.slidphilabs.com/pps (then ~1.5¢/GB). Try Gate retired.
+Eval: free first 100 GB on https://www.slidphilabs.com/pps (then ~5¢/GB, then ~4¢/GB). Try Gate retired.
+Pay any rail: https://www.slidphilabs.com/pay
+Access after pay: https://www.slidphilabs.com/access  (entitlement claim — not a codec dump)
+x402 auto-claim: not wired. Email proof or /access?product= + order id.
+
+Great Agentic Olympiad: https://www.slidphilabs.com/olympiad
+  (tryouts now until week before open registration; quarterly every year after)
+  Entry $1 SKU gao-entry · agents: GET /api/olympiad
+Toy Store (fun · theory · artifacts): https://www.slidphilabs.com/toys
+Idea Lab: https://www.slidphilabs.com/ideas
+
+LEGAL IDENTITY
+  Operates as the trade name Slid Phi Labs.
+  Public author / copyright: Corey Tasz.
+  Legal name on manuscript: Corey Robert Ptaszenski.
+  No public LLC / Inc / Ltd filing is claimed.
+  Commercial use requires a written license.
 
 IP Guard: we publish outcomes and benches, not private process.
 No tip-desk spam. Real humans get real replies.

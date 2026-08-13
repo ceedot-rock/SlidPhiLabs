@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "at": "2026-08-10T17:31:23Z",
+  "public_proof_py": "/slidphilabs_public_proof.py",
+  "stand_html": "/stand",
+  "stand_api": "/api/stand",
+  "byte_rle_40k_zeros": {
+    "packed_B": 9,
+    "gzip9_B": 61,
+    "exact": true
+  },
+  "flagship_int32_zeros_10k": {
+    "target_B": 8,
+    "gzip9_field": 73,
+    "brotli11_field": 13
+  },
+  "free_gb": 100,
+  "cadence": [
+    33,
+    66,
+    999
+  ],
+  "planes": {
+    "grok": 100,
+    "spl": 160,
+    "zrw": 220,
+    "suite": 280,
+    "agentic": 340,
+    "phi": 40
+  },
+  "note": "Host TARGET was 8*1024**3 (8GB) \u2014 corrected to flagship 8 B on zeros\u00d710k int domain"
+}

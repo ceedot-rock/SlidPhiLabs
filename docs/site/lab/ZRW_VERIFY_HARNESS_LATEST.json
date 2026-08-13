@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "rows": [
+    {
+      "file": "zeros10k.i32le(synth)",
+      "raw": 40000,
+      "zrw": 8,
+      "gz": 73,
+      "br": null,
+      "lz": 136,
+      "ms": 190.6,
+      "roundtrip": true,
+      "mirror_error": 0,
+      "sha256_raw": "e7e2dcff542de953",
+      "api": "https://www.slidphilabs.com",
+      "grade": "PASS",
+      "claim": "ZRW zeros\u00d710k \u2192 8 B"
+    }
+  ],
+  "law": "residual only \u00b7 domain-honest",
+  "at": "2026-08-10T17:32:55Z",
+  "harness": "/zrw_verify.py",
+  "mit": true,
+  "no_install": "stdlib + live POST /api/compress|/api/process"
+}

@@ -1,37 +1,38 @@
 {
-  "name": "Slid Phi Labs",
-  "short_name": "SlidPhi",
-  "description": "One mission · two attack vectors · one team. Pub Facing + Agentic Minded.",
+  "name": "TRU8 · Slid Phi Labs",
+  "short_name": "TRU8",
+  "description": "Less is more. We dropped the E. True minimal units for repetition.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#050b16",
-  "theme_color": "#050b16",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
   "lang": "en",
   "icons": [
     {
-      "src": "/assets/logos/logo-slid-phi-labs.jpg?v=12",
-      "sizes": "512x512",
-      "type": "image/jpeg",
+      "src": "/assets/tru8/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/tru8/og.png",
+      "sizes": "1200x630",
+      "type": "image/png",
       "purpose": "any"
     }
   ],
   "shortcuts": [
     {
-      "name": "Pub Facing",
-      "short_name": "Humans",
-      "url": "/humans",
-      "description": "Human door"
+      "name": "Demos",
+      "short_name": "Demos",
+      "url": "/demos",
+      "description": "TRU8 public demos"
     },
     {
-      "name": "Agentic Minded",
-      "short_name": "Agents",
-      "url": "/agents",
-      "description": "Agent door"
-    },
-    {
-      "name": "Web compress",
-      "url": "/web",
-      "description": "Free demo"
+      "name": "License",
+      "short_name": "License",
+      "url": "/license",
+      "description": "Commercial license"
     }
   ]
 }

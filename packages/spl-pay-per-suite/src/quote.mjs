@@ -9,6 +9,22 @@ export const MAX_CENTS = 1_000_000;
 export const MIN_PAID_CENTS = 5;
 export const MIN_CENTS = 0;
 
+/** Canonical suite rates — MCP, package.json, site, API must match */
+export const SUITE_PRICING = {
+  model: "freemium_suite_v4_undercut",
+  free_cap_gb: 100,
+  free_cap_bytes: FREE_BYTES,
+  usd_per_gb_after_free: 0.05,
+  usd_per_gb_first_100: 0.05,
+  usd_per_gb_bulk: 0.04,
+  min_paid_usd: 0.05,
+  min_paid_cents: MIN_PAID_CENTS,
+  first_paid_egress_ref_usd: 0.09,
+  try_gate: "retired",
+  human_one_liner:
+    "Free first 100 GB per job · then ~5¢/GB (4¢ after 100 paid GB) · min $0.05 · under ~9¢ cloud egress",
+};
+
 export const PRODUCT_ADD_CENTS = {
   auto: 0, zrw: 0, "cddg-split": 25, blackjack: 0,
   "shard-zip": 0, "shard-tsdb": 0, "slid-phi": 0,
@@ -26,8 +42,10 @@ export const OP_MULT = {
 export const STRIPE_PAYMENT_LINK =
   process.env.SPL_PPS_PAYMENT_LINK ||
   "https://buy.stripe.com/aFa00k4B70OYetL0O46wE0g";
-export const SITE_PPS = process.env.SPL_PPS_SITE || "https://www.slidphilabs.com/pps";
-export const API_BASE = process.env.SPL_PPS_API || "https://www.slidphilabs.com";
+export const SITE_PPS =
+  process.env.SPL_PPS_SITE || "https://www.slidphilabs.com/pps";
+export const API_BASE =
+  process.env.SPL_PPS_API || "https://www.slidphilabs.com";
 
 export function usageFeeCents(billableBytes) {
   const b = Math.max(0, Number(billableBytes) || 0);

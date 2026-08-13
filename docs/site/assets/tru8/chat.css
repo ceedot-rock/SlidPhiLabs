@@ -1,0 +1,198 @@
+/* TRU8 AI guide — SpaceXAI */
+.tru8-chat-root {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 80;
+  font-family: var(--font, Inter, system-ui, sans-serif);
+}
+.tru8-chat-fab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 194, 199, 0.45);
+  background: #0a0a0a;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s;
+}
+.tru8-chat-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(0, 194, 199, 0.2);
+}
+.tru8-chat-fab .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00c2c7;
+  box-shadow: 0 0 10px #00c2c7;
+}
+.tru8-chat-panel {
+  position: absolute;
+  right: 0;
+  bottom: 56px;
+  width: min(380px, calc(100vw - 28px));
+  height: min(520px, calc(100vh - 100px));
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+.tru8-chat-root.open .tru8-chat-panel {
+  display: flex;
+  animation: tru8ChatIn 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes tru8ChatIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.tru8-chat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0a0a0a;
+}
+.tru8-chat-head h2 {
+  font-size: 0.95rem;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: #fff;
+}
+.tru8-chat-head h2 span {
+  color: #00c2c7;
+}
+.tru8-chat-head p {
+  margin: 2px 0 0;
+  font-size: 0.72rem;
+  color: #6b6b6b;
+}
+.tru8-chat-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.tru8-chat-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
+.tru8-msg {
+  max-width: 92%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.tru8-msg.user {
+  align-self: flex-end;
+  background: #00c2c7;
+  color: #0a0a0a;
+  border-bottom-right-radius: 4px;
+}
+.tru8-msg.bot {
+  align-self: flex-start;
+  background: #1a1a1a;
+  color: #e8e8e8;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom-left-radius: 4px;
+}
+.tru8-msg.bot.error {
+  border-color: rgba(255, 100, 100, 0.35);
+  color: #ffb4b4;
+}
+.tru8-msg.typing {
+  color: #6b6b6b;
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+}
+.tru8-chat-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0a0a0a;
+}
+.tru8-chat-form input {
+  flex: 1;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #111;
+  color: #fff;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 0.9rem;
+  outline: none;
+}
+.tru8-chat-form input:focus {
+  border-color: rgba(0, 194, 199, 0.55);
+}
+.tru8-chat-form button {
+  border-radius: 999px;
+  border: 0;
+  background: #fff;
+  color: #0a0a0a;
+  font-weight: 600;
+  padding: 0 16px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+}
+.tru8-chat-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.tru8-chat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 14px 10px;
+}
+.tru8-chip {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  color: #9a9a9a;
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.tru8-chip:hover {
+  color: #00c2c7;
+  border-color: rgba(0, 194, 199, 0.4);
+}
+@media (max-width: 520px) {
+  .tru8-chat-root {
+    right: 12px;
+    bottom: 12px;
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "spl.micro_action.rotation_693.v1",
+  "at": "2026-08-09T19:51:59Z",
+  "micro_action": "compress one 693\u00d7 rotation block on public SPL path; log ratio vs gzip",
+  "block": {
+    "name": "693x_rotation",
+    "n_samples": 693,
+    "encoding": "int32_le milli-degree residual + dual A\u2225B sense",
+    "raw_bytes": 2772,
+    "cadence_echo": "693=33\u00d721 \u00b7 tilt \u00b133\u00b0 \u00b7 phase 66"
+  },
+  "baselines": {
+    "gzip9_bytes": 1921,
+    "gzip9_ratio_to_raw": 0.693001
+  },
+  "public_paths": {
+    "POST /api/compress (ZRW)": {
+      "packed_bytes": 3439,
+      "ratio_to_raw": 1.24062,
+      "ratio_to_gzip": 1.790213,
+      "better_than_gzip_pct": -79.02,
+      "roundtrip": false,
+      "mirror_error": 1,
+      "claimable": false,
+      "note": "domain miss \u2014 angular residual expands under ZRW"
+    },
+    "POST /api/omniwave route=general (SPL Codec lossless)": {
+      "path": "general+bare",
+      "method": "brotli-11",
+      "packed_bytes": 1692,
+      "ratio_to_raw": 0.61039,
+      "ratio_to_gzip": 0.880791,
+      "better_than_gzip_pct": 11.92,
+      "encode_ms": 184.296,
+      "roundtrip": true,
+      "claimable": true
+    },
+    "POST /api/omniwave route=delta (not claimable bare)": {
+      "path": "delta+bare",
+      "method": "brotli-11",
+      "packed_bytes": 134,
+      "roundtrip": false,
+      "claimable": false,
+      "note": "smaller wire size but bare frame drops transform reverse \u2014 unpaid residue"
+    }
+  },
+  "winner_claimable": {
+    "engine": "SPL OmniWave \u00b7 general",
+    "packed_bytes": 1692,
+    "gzip9_bytes": 1921,
+    "raw_bytes": 2772,
+    "ratio_to_raw": 0.61039,
+    "ratio_to_gzip": 0.880791,
+    "better_than_gzip_pct": 11.92,
+    "roundtrip": true,
+    "public_url": "https://slidphilabs.fly.dev/api/omniwave"
+  },
+  "residual_note": "dE+dC\u22480: only claim lossless path. Float auto 13 B was fantasy (zeros on reverse)."
+}

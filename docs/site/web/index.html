@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta property="og:description" content="Free HTML/CSS/JS/JSON compress demo. For bulk jobs: free first 100 GB on /pps, then ~5¢/GB under ~9¢ egress."/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:title" content="TRU8 / historical web codec door · Slid Phi Labs"/>
+<meta name="twitter:description" content="Free HTML/CSS/JS/JSON compress demo. For bulk jobs: free first 100 GB on /pps, then ~5¢/GB under ~9¢ egress."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+
 <meta name="lab-pricing" content="freemium_suite_v4_undercut"/>
 <meta name="lab-eval-path" content="https://www.slidphilabs.com/pps"/>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Web compress free demo · Slid Phi Labs</title>
+<title>TRU8 / historical web codec door · Slid Phi Labs</title>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@slidphilabs"/>
 <meta name="twitter:creator" content="@slidphilabs"/>
@@ -14,12 +21,14 @@
 <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/web-codec" title="Web Codec API"/>
 <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent commerce"/>
 <meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
-<meta property="og:title" content="Web compress free demo · Slid Phi Labs"/>
+<meta name="lab-compression" content="TRU8,CDDG:Split"/>
+<meta property="og:title" content="TRU8 / historical web codec door · Slid Phi Labs"/>
 <meta property="og:url" content="https://www.slidphilabs.com/web"/>
 <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta name="theme-color" content="#050b16"/>
 <meta name="robots" content="index,follow"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+<link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{--bg:#050b16;--panel:#0c1524;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);--text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--gold-soft:rgba(232,197,71,.12);--code:#081018;--poster:url("/assets/slid-phi-labs-master.jpg?v=3")}
@@ -61,11 +70,28 @@ footer a{color:var(--gold)}
 .chip{font-size:.78rem;padding:6px 10px;border-radius:999px;border:1px solid var(--border);color:var(--muted);background:transparent;cursor:pointer;font-family:'IBM Plex Mono',monospace}
 .chip:hover{border-color:var(--border-gold);color:var(--gold)}
 </style>
+<link rel="stylesheet" href="/assets/slid-proof.css?v=1"/>
+<script src="/assets/slid-proof.js?v=1" defer></script>
 </head>
 <body>
+
+<div id="slid-proof" class="slid-proof-bar" aria-live="polite">
+  <span class="slid-pulse" aria-hidden="true"></span>
+  <span class="slid-engine">X-Slid-Engine · <strong data-slid="alive" class="gold">alive</strong></span>
+  <span><span class="slid-label">ZRW zeros×10k</span><strong data-slid="zrw-zeros">8 B</strong></span>
+  <span><span class="slid-label">vs gzip-9</span><strong>73 B</strong></span>
+  <span><span class="slid-label">vs brotli-11</span><strong>13 B</strong></span>
+  <span><span class="slid-label">Live ratio</span><strong data-slid="ratio">—</strong>×</span>
+  <span><span class="slid-label">Path</span><strong data-slid="path">zrw</strong></span>
+  <a href="/standings">Full standings →</a>
+</div>
+
 <nav>
   <div class="inner">
-    <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="40" height="40" alt=""/>Slid Phi <span>Labs</span></a>
+    <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
+      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="40" height="40" alt=""/>
+      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+    </a>
     <div class="nav-links">
       <a href="/web">Web Codec</a>
       <a href="/standings">Standings</a>
@@ -78,11 +104,11 @@ footer a{color:var(--gold)}
 
 <header class="hero">
   <div class="wrap">
-    <div class="badge">SPL CODEC · WEB MODE</div>
-    <h1>SPL Codec · Web</h1>
+    <div class="badge">HISTORICAL WEB CODEC DOOR · NOT THE TRU8 HOME</div>
+    <h1>TRU8 / historical web codec</h1>
     <p class="lead">
-      Compress and decompress <strong style="color:var(--gold)">HTML · CSS · JS · JSON · text</strong>.
-      Type-aware prep, then pick the smaller of <strong>brotli-11</strong> and <strong>gzip-9</strong> — the industry web-size race.
+      <strong style="color:var(--gold)">TRU8 is the product</strong> — <a href="/">home</a> · <a href="/demos">demos</a>.
+      This page is the older HTML/CSS/JS/JSON compress door (type-aware prep, then min of <strong>brotli-11</strong> / <strong>gzip-9</strong>).
       Round-trip verified on the server.
     </p>
   </div>

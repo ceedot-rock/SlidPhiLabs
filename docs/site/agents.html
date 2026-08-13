@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+
 <meta name="lab-pricing" content="freemium_suite_v4_undercut"/>
 <meta name="lab-eval-path" content="https://www.slidphilabs.com/pps"/>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Agentic Minded — free suite under 100 GB · x402 · Slid Phi Labs</title>
-<meta name="description" content="Agent door: GET /api/agent, free x402-suite under 100 GB, usage rates after. License catalog. Try Gate retired."/>
+<title>Agentic Minded — encode/decode · gaming · security · x402 · Slid Phi Labs</title>
+<meta name="description" content="Agent door: GET /api/agent v1.10 · encode+decode RT standings · GAO gaming · residual security · free x402 suite under 100 GB · TEACHAiD campus."/>
 <meta name="lab-surface" content="agentic_minded"/>
-<meta name="lab-modules" content="compression,agent_platform"/>
-<meta name="lab-compression" content="SPL Codec,CDDG:Split"/>
+<meta name="lab-modules" content="compression,encode_decode,gaming,security,agent_platform,university"/>
+<meta name="lab-cadence" content="33,66,999"/>
+<meta name="lab-standings" content="https://www.slidphilabs.com/standings.json"/>
+<meta name="lab-compression" content="TRU8,CDDG:Split,encode,decode"/>
+<meta name="lab-pivot" content="gaming,security"/>
 <meta name="lab-agent-platform" content="CuNi,Agent^Rider,Quikgater"/>
-<meta name="keywords" content="x402, agents.json, llms.txt, MCP, agent commerce, Slid Phi Labs, Solana, Base, CuNi, Agent Rider"/>
+<meta name="keywords" content="x402, encode decode, gaming, security, GAO, agents.json, llms.txt, MCP, CuNi, Agent Rider"/>
 <link rel="canonical" href="https://www.slidphilabs.com/agents"/>
 <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent commerce discovery"/>
 <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/platform.json" title="Platform dual-surface map"/>
@@ -19,21 +24,22 @@
 <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Slid Phi Labs"/>
-<meta property="og:title" content="Agentic Minded — free suite under 100 GB · x402 · Slid Phi Labs"/>
-<meta property="og:description" content="Agent door: GET /api/agent, free x402-suite under 100 GB, usage rates after. License catalog. Try Gate retired."/>
+<meta property="og:title" content="Agentic Minded — encode/decode · gaming · security · x402"/>
+<meta property="og:description" content="GET /api/agent v1.10 · standings RT · Olympiad · governance · free suite under 100 GB."/>
 <meta property="og:url" content="https://www.slidphilabs.com/agents"/>
 <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@slidphilabs"/>
 <meta name="twitter:creator" content="@slidphilabs"/>
-<meta name="twitter:title" content="Agentic Minded — free suite under 100 GB · x402 · Slid Phi Labs"/>
-<meta name="twitter:description" content="Agent door: GET /api/agent, free x402-suite under 100 GB, usage rates after. License catalog. Try Gate retired."/>
+<meta name="twitter:title" content="Agentic Minded — encode/decode · gaming · security"/>
+<meta name="twitter:description" content="Agents: prove compression RT, enter GAO, honor residual security. GET /api/agent."/>
 <meta name="agent-commerce" content="x402"/>
 <meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
 <meta name="theme-color" content="#050b16"/>
 <meta name="robots" content="index,follow"/>
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+<link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{--bg:#050b16;--panel:#0c1524;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);--text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--gold-soft:rgba(232,197,71,.12);--code:#081018;--poster:url("/assets/slid-phi-labs-master.jpg")}
@@ -85,10 +91,27 @@ footer a{margin-right:12px}
 #live{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted);margin-top:8px}
 #live.ok{color:#3ecf8e}#live.err{color:#ff8a7a}
 </style>
+<link rel="stylesheet" href="/assets/slid-proof.css?v=2"/>
+<script src="/assets/slid-proof.js?v=2" defer></script>
 </head>
 <body>
+
+<div id="slid-proof" class="slid-proof-bar" aria-live="polite">
+  <span class="slid-pulse" aria-hidden="true"></span>
+  <span class="slid-engine">X-Slid-Engine · <strong data-slid="alive" class="gold">alive</strong></span>
+  <span><span class="slid-label">ZRW zeros×10k</span><strong data-slid="zrw-zeros">8 B</strong></span>
+  <span><span class="slid-label">vs gzip-9</span><strong>73 B</strong></span>
+  <span><span class="slid-label">vs brotli-11</span><strong>13 B</strong></span>
+  <span><span class="slid-label">Live ratio</span><strong data-slid="ratio">—</strong>×</span>
+  <span><span class="slid-label">Path</span><strong data-slid="path">zrw</strong></span>
+  <a href="/standings">Full standings →</a>
+</div>
+
 <nav><div class="inner">
-  <a class="logo" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>Slid Phi <span>Labs</span></a>
+  <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
+      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>
+      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+    </a>
   <div class="nav-links">
     <a href="/humans" data-surface="human">Pub Facing</a>
     <a class="active" href="/agents" data-surface="agent">Agentic Minded</a>
@@ -100,22 +123,23 @@ footer a{margin-right:12px}
 </div></nav>
 
 <header class="hero wrap" id="main">
-  <div class="badge">Agentic Minded · attack vector for agents</div>
+  <div class="badge">Agentic Minded · agents · 8 B proof</div>
   <h1>Discover. Pay. Run. Exact.</h1>
   <p class="lead">
-    <strong>Same mission</strong> as the human surface — compression that proves out, agent systems that stay exact.
-    This door is machine-first: JSON discovery, x402 USDC (Solana + Base), MCP, llms.txt.
+    <strong style="color:var(--teal-bright)">ZRW zeros×10k → 8 B</strong> (gzip 73 B · brotli 13 B · ramp ~141×).
+    <strong style="color:var(--gold)">TRU8 is the product</strong> (<a href="/">/</a> · <a href="/demos">/demos</a> · <a href="https://github.com/ceedot-rock/TRU8">GitHub</a>).
+    Same proof humans see — machine rails: JSON, x402 USDC (Solana + Base), MCP, llms.txt. x402 auto-claim of Access is not wired.
   </p>
   <p class="mission">
-    <em>One mission · two attack vectors · one team.</em>
-    Humans click. You call. Both unlock the same lab products.
+    <em>Happy path:</em>
+    GET /api/agent → profile/compress via /api/omniwave → x402 suite or catalog → Access.
   </p>
-  <p class="one-liner">Modules: Compression (SPL Codec+CDDG) · Agent platform (CuNi+Rider+Quikgater). Commerce: GET https://www.slidphilabs.com/api/agent then x402 X-PAYMENT.</p>
+  <p class="one-liner">Product: TRU8 · ZRW lab 8 B · Commerce: GET https://www.slidphilabs.com/api/agent · X-PAYMENT · x402 auto-claim: false</p>
   <div class="cta-row">
     <a class="btn btn-teal" href="/api/agent">GET /api/agent</a>
-    <a class="btn btn-ghost" href="/api/x402-products">Catalog</a>
-    <a class="btn btn-ghost" href="/platform.json">platform.json</a>
-    <a class="btn btn-ghost" href="/humans">I’m a human →</a>
+    <a class="btn btn-gold" href="/standings">Standings</a>
+    <a class="btn btn-ghost" href="/api/omniwave">/api/omniwave</a>
+    <a class="btn btn-ghost" href="/humans">Humans →</a>
   </div>
   <p id="live">Checking discovery…</p>
 </header>
@@ -175,7 +199,7 @@ footer a{margin-right:12px}
   <div class="grid" style="margin-top:14px">
     <section class="card">
       <div class="kicker">Module · Compression</div>
-      <h2>SPL Codec · CDDG</h2>
+      <h2>TRU8 · CDDG</h2>
       <ul class="endpoints">
         <li><a href="/web">Web UI</a> · <a href="/api/web-codec">POST /api/web-codec</a></li>
         <li><a href="/pps">Suite UI</a> · quote <code>POST /api/ppp-quote</code></li>
@@ -218,7 +242,7 @@ footer a{margin-right:12px}
     <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
     <a href="mailto:corey@slidphilabs.com">Contact</a>
   </p>
-  <p style="margin-top:8px">IP Guard: public outcomes only. Agents get rails, not private process. © Slid Phi Labs</p>
+  <p style="margin-top:8px">IP Guard: outcomes only. Agents get rails, not private process. © Slid Phi Labs</p>
 </footer>
 <script>
 (async () => {

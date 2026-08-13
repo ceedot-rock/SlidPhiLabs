@@ -1,0 +1,99 @@
+{
+  "schema": "spl.float_delta_fix_verify.v1",
+  "at": "2026-08-09T19:57:41Z",
+  "fix": "1.3.0-lossless-frame: never bare with transforms; float uses XOR lossless",
+  "rows": [
+    {
+      "vector": "float_smooth",
+      "route": "auto",
+      "path": "float",
+      "method": "brotli-11",
+      "packed": 13899,
+      "gzip": 15067,
+      "roundtrip": true,
+      "beats_gzip": true,
+      "delta_pct": 7.75,
+      "ms": 471.3,
+      "frame_hint": "OMWV"
+    },
+    {
+      "vector": "float_smooth",
+      "route": "float",
+      "path": "float",
+      "method": "brotli-11",
+      "packed": 13899,
+      "gzip": 15067,
+      "roundtrip": true,
+      "beats_gzip": true,
+      "delta_pct": 7.75,
+      "ms": 282.5,
+      "frame_hint": "OMWV"
+    },
+    {
+      "vector": "angular",
+      "route": "auto",
+      "path": "float",
+      "method": "brotli-11",
+      "packed": 2223,
+      "gzip": 9176,
+      "roundtrip": true,
+      "beats_gzip": true,
+      "delta_pct": 75.77,
+      "ms": 291.3,
+      "frame_hint": "OMWV"
+    },
+    {
+      "vector": "angular",
+      "route": "delta",
+      "path": "delta",
+      "method": "brotli-11",
+      "packed": 265,
+      "gzip": 9176,
+      "roundtrip": true,
+      "beats_gzip": true,
+      "delta_pct": 97.11,
+      "ms": 201.5,
+      "frame_hint": "OMWV"
+    },
+    {
+      "vector": "delta_ramp",
+      "route": "delta",
+      "path": "delta",
+      "method": "brotli-11",
+      "packed": 129,
+      "gzip": 1007,
+      "roundtrip": true,
+      "beats_gzip": true,
+      "delta_pct": 87.19,
+      "ms": 185.2,
+      "frame_hint": "OMWV"
+    },
+    {
+      "vector": "mixed",
+      "route": "auto",
+      "path": "general+bare",
+      "method": "brotli-11",
+      "packed": 4610,
+      "gzip": 5661,
+      "roundtrip": true,
+      "beats_gzip": true,
+      "delta_pct": 18.57,
+      "ms": 232.4,
+      "frame_hint": "bare?"
+    },
+    {
+      "vector": "urandom",
+      "route": "auto",
+      "path": "high_entropy+bare",
+      "method": "brotli-11",
+      "packed": 16388,
+      "gzip": 16395,
+      "roundtrip": true,
+      "beats_gzip": true,
+      "delta_pct": 0.04,
+      "ms": 436.8,
+      "frame_hint": "bare?"
+    }
+  ],
+  "all_forced_float_delta_rt": true
+}
