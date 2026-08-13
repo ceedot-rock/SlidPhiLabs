@@ -2,7 +2,7 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "TRU8 compresses (demos free). Chamber unlocks JSON ($99/domain). Suite meters jobs. tru8-chamber is a $1,900/project/year license. Seat = named identity only. TruGame building.",
+  "description": "TruChamber seats: Day $24.99 · Month $175 · Year $1,750 (TRU8 included). Suite meters jobs. TruGame building.",
   "version": "1.13.1",
   "updated": "2026-08-13",
   "standard": "https://agents-txt.com",
@@ -32,16 +32,14 @@
       "historical_engine": "OmniWave / SPL Codec (licensed, not the public face)"
     },
     {
-      "id": "chamber",
-      "name": "Chamber",
-      "role": "security_unlock",
+      "id": "truchamber",
+      "name": "TruChamber",
+      "role": "product_seats",
       "url": "https://www.slidphilabs.com/chamber",
       "sdk": "https://github.com/ceedot-rock/json-chamber-sdk",
-      "price": "$99 unlock per domain after 24h trial",
-      "not": "not compression; not a seat",
-      "access": "https://www.slidphilabs.com/access?product=json-chamber",
-      "project_license": "$1,900/project/year tru8-chamber (not a per-user seat)",
-      "project_license_access": "https://www.slidphilabs.com/access?product=tru8-commercial"
+      "price": "Day $24.99 · Month $175 · Year $1,750",
+      "includes": "TRU8 on a purchased seat",
+      "access": "https://www.slidphilabs.com/access?product=truchamber-month"
     },
     {
       "id": "trugame",

@@ -19,15 +19,18 @@
       "note": "TRU8 is the only public compression product face."
     },
     "chamber": {
-      "products": ["json-chamber", "tru8-chamber"],
+      "products": ["TruChamber"],
       "urls": {
         "page": "https://www.slidphilabs.com/chamber",
         "sdk": "https://github.com/ceedot-rock/json-chamber-sdk",
-        "mcp": "https://github.com/ceedot-rock/json-chamber-mcp"
+        "mcp": "https://github.com/ceedot-rock/json-chamber-mcp",
+        "pricing": "https://www.slidphilabs.com/pricing.json"
       },
       "pricing": {
-        "json-chamber": "$99 one-time unlock per domain after 24h trial (not a seat)",
-        "tru8-chamber": "$1,900/project/year project license (not a per-user seat)"
+        "trial": "3-hour black box, free",
+        "truchamber-day": "$24.99 / 24 hours (includes TRU8)",
+        "truchamber-month": "$175 / calendar month (includes TRU8)",
+        "truchamber-year": "$1,750 / calendar year (includes TRU8; two months free vs 12× monthly)"
       }
     },
     "game_engine": {
@@ -81,7 +84,7 @@
       "note": "Officially building TruGame (compression-aware + Chamber)."
     },
     "security": {
-      "name": "Chamber",
+      "name": "TruChamber",
       "url": "https://www.slidphilabs.com/chamber"
     }
   },
@@ -93,7 +96,7 @@
     "llms_txt": "https://www.slidphilabs.com/llms.txt",
     "llms_full": "https://www.slidphilabs.com/llms-full.txt"
   },
-  "one_liner": "TRU8 compresses (demos free). Chamber unlocks ($99/domain). Suite meters jobs (100 GB then ¢/GB). tru8-chamber = $1,900/project/year license. TruGame building. Seat = named identity only.",
+  "one_liner": "TruChamber seats: Day $24.99 · Month $175 · Year $1,750 (TRU8 included). 3-hour black box free. Suite meters jobs (100 GB then ¢/GB). TruGame building.",
   "contact": {
     "email": "corey@slidphilabs.com",
     "license": "corey@slidphilabs.com",
@@ -105,9 +108,13 @@
     "x": "https://x.com/slidphilabs"
   },
   "pricing": {
-    "json_chamber_usd": 99,
-    "tru8_chamber_usd_per_project_year": 1900,
+    "trial_hours": 3,
+    "truchamber_day_usd": 24.99,
+    "truchamber_month_usd": 175,
+    "truchamber_year_usd": 1750,
     "free_cap_gb": 100,
-    "usd_per_gb_after_free": 0.05
+    "usd_per_gb_after_free": 0.05,
+    "usd_per_gb_bulk": 0.04,
+    "table": "https://www.slidphilabs.com/pricing.json"
   }
 }

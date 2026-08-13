@@ -10,15 +10,15 @@ Pub Facing (you are here in spirit): https://www.slidphilabs.com/humans
 Agentic Minded (if you are software): https://www.slidphilabs.com/agents
 
 What we sell (public outcomes only) — each word is the buy:
-  - Chamber (json-chamber) — SECURITY unlock. 24h trial, then $99 / domain. Not compression. Not a seat.
-  - TRU8 — COMPRESSION. Public demos free with credit. Production residual = commercial license.
-  - tru8-chamber — PROJECT LICENSE. TRU8 + Chamber, $1,900 / project / year. Not a per-user seat.
-  - Suite — METERED JOBS on /pps. 100 GB free, then ~5¢/GB. Not a seat. Not the product face.
+  - TruChamber — THE PRODUCT. 3h black box, then a seat: Day $24.99 · Month $175 · Year $1,750. Seat includes TRU8.
+  - TRU8 — COMPRESSION TOOL. Public demos free with credit. Production path comes with the TruChamber seat.
+  - Suite — METERED JOBS on /pps. 100 GB free, then ~5¢/GB. Not a TruChamber seat.
   - Access — entitlement claim after pay. Not a codec dump.
-  - CDDG:Split / ZRW / OmniWave — historical lab series (licensed). Not the homepage face.
-  - Agent rails — CuNi · Agent^Rider (paused) · Quikgater. A "seat" is only a named human or agent identity.
+  - CDDG:Split / ZRW / OmniWave — historical lab series (licensed). Not TruChamber. Not TRU8.
+  - Agent rails — CuNi · Agent^Rider (paused) · Quikgater.
+  - Services — OSS support $199 · Consulting $250 · Sponsor $29 · Donate $29.99 · Olympiad $1.
 
-Start: Chamber trial https://www.slidphilabs.com/chamber · TRU8 demos https://www.slidphilabs.com/demos
+Start: TruChamber https://www.slidphilabs.com/chamber · TRU8 demos https://www.slidphilabs.com/demos · prices https://www.slidphilabs.com/pricing.json
 Historical web codec door: https://www.slidphilabs.com/web
 Proof: https://www.slidphilabs.com/standings
 Buy suite: https://www.slidphilabs.com/pps

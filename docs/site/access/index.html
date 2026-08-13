@@ -9,7 +9,7 @@
 <meta name="description" content="Claim entitlement after Chamber unlock, suite job, or project license. Not a codec dump. Not a seat unless the SKU is a named identity."/>
 <meta name="lab-modules" content="compression,chamber"/>
 <meta name="lab-compression" content="TRU8"/>
-<meta name="lab-sku" content="tru8-commercial,json-chamber"/>
+<meta name="lab-sku" content="truchamber-day,truchamber-month,truchamber-year"/>
 
 <meta name="robots" content="index,follow"/>
 <link rel="canonical" href="https://www.slidphilabs.com/access"/>
@@ -148,7 +148,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       <a href="/demos">Demos</a>
       <a href="/license">License</a>
       <a href="/chamber">Chamber</a>
-      <a class="btn btn-teal" href="/access?product=tru8-commercial" style="padding:8px 12px;font-size:.85rem">TRU8 commercial</a>
+      <a class="btn btn-teal" href="/access?product=truchamber-year" style="padding:8px 12px;font-size:.85rem">Year seat</a>
     </div>
   </div>
 </nav>
@@ -156,10 +156,10 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
   <div class="access-hero">
     <img class="access-poster" src="/assets/slid-phi-labs-master.jpg?v=3" width="100" height="133" alt="Slid Phi Labs master poster"/>
     <div>
-      <div class="badge">BUY → ACCESS → ENTITLEMENT → PACKAGE</div>
+      <div class="badge">BUY SEAT → ACCESS → ENTITLEMENT → PACKAGE</div>
       <p class="ribbon">Impressive Compression..... see for yourself</p>
       <h1>Access</h1>
-      <p class="note" style="margin-bottom:0">Claim entitlement after you pay. Access is <strong>not</strong> a codec dump and not a seat unless the SKU is a named identity. Chamber = unlock. tru8-chamber = project license. Suite = meter. <strong>x402 auto-claim is not wired.</strong></p>
+      <p class="note" style="margin-bottom:0">Claim a <strong>TruChamber</strong> seat after pay. Day $24.99 · Month $175 · Year $1,750 (TRU8 ships with the seat). Access is <strong>not</strong> a residual dump. Stripe verify live. <strong>x402 auto-claim not wired.</strong> One email: <code>corey@slidphilabs.com</code>.</p>
     </div>
   </div>
 
@@ -167,7 +167,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
     <strong>Honest delivery · one email</strong>
     Stripe verify is live. Packages ship after subject <code>PACKAGE ACCESS</code> to
     <a href="mailto:corey@slidphilabs.com?subject=PACKAGE%20ACCESS">corey@slidphilabs.com</a>
-    only — no other lab inboxes. TRU8 residual never auto-downloads from this page. Chamber $99 is SKU <code>json-chamber</code> (unlock, not a seat). tru8-chamber is a project license.
+    only. TRU8 residual never auto-downloads here. Seats: <code>truchamber-day</code> · <code>truchamber-month</code> · <code>truchamber-year</code>. SoT: <a href="/pricing.json">pricing.json</a>.
   </div>
 
   <div id="status-card" role="status">
@@ -187,17 +187,16 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
     Stripe session verify matches session → product (metadata or amount heuristic).
   </div>
   <div class="step"><span class="num">3</span><strong>You get your deliverable</strong>
-    <strong>tru8-commercial (project license):</strong> entitlement JSON + pack docs now; residual package after email (usually same day).<br/>
-    <strong>json-chamber $99 (unlock):</strong> VerifiedDR steps by email after verify. Per domain. Not a seat.<br/>
-    <strong>Suite (meter):</strong> jobs on <a href="/pps">/pps</a> — 100 GB then ¢/GB.<br/>
+    <strong>TruChamber seats:</strong> entitlement JSON + pack docs now; license + TRU8 path after email (usually same day).<br/>
+    <strong>Suite (meter):</strong> jobs on <a href="/pps">/pps</a> — 100 GB then ¢/GB (not a seat).<br/>
     <strong>TRU8 demos:</strong> free with credit on <a href="/demos">/demos</a>.
   </div>
 
   <h2 id="interim">Need the package now?</h2>
   <div class="step"><span class="num">1</span><strong>Email PACKAGE ACCESS</strong>
     To <a href="mailto:corey@slidphilabs.com?subject=PACKAGE%20ACCESS">corey@slidphilabs.com</a> only<br/>
-    Subject: <code>PACKAGE ACCESS</code> + SKU (e.g. <code>tru8-commercial</code>)<br/>
-    Include: product, checkout email, session id <code>cs_…</code>, project name (for commercial).
+    Subject: <code>PACKAGE ACCESS</code> + SKU (e.g. <code>truchamber-year</code>)<br/>
+    Include: product, checkout email, session id <code>cs_…</code>.
   </div>
   <div class="step"><span class="num">2</span><strong>We reply with install / license</strong>
     Typically within one business day. Not a public residual URL.
@@ -212,14 +211,15 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 
   <h2>Not purchased yet?</h2>
   <div class="links">
-    <a class="btn btn-gold" href="/access?product=tru8-commercial">tru8-chamber project license · $1,900/yr</a>
-    <a class="btn btn-primary" href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09" target="_blank" rel="noopener">Chamber unlock · $99</a>
-    <a class="btn btn-teal" href="/demos">Free TRU8 demos</a>
+    <a class="btn btn-gold" href="/access?product=truchamber-year">Year · $1,750</a>
+    <a class="btn btn-primary" href="/access?product=truchamber-month">Month · $175</a>
+    <a class="btn btn-teal" href="/access?product=truchamber-day">Day · $24.99</a>
+    <a class="btn btn-ghost" href="/demos">Free TRU8 demos</a>
     <a class="btn btn-ghost" href="/license">License</a>
   </div>
 
-  <h2>Primary commercial loop</h2>
-  <p class="note">Demo → proof → license → Access entitlement → human residual package. OSS libraries (blackjack / shard-*) stay feeder support SKUs — no secret extra engine in the $199 tier.</p>
+  <h2>Primary loop</h2>
+  <p class="note">Black box 3h → seat → Access entitlement → PACKAGE ACCESS to corey@ → TruChamber + TRU8 with seat. SoT: <a href="/pricing.json">pricing.json</a>.</p>
 
   <footer>
     <div class="lockup">
@@ -254,20 +254,42 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 (function () {
   const FULFILL = 'corey@slidphilabs.com';
   const CATALOG = {
-    'tru8-commercial': {
-      name: 'tru8-chamber project license',
-      price: '$1,900/project/year',
+    'truchamber-year': {
+      name: 'TruChamber Yearly',
+      price: '$1,750/year',
       champ: true,
-      deliver: 'Entitlement JSON + pack docs now; residual project license package by human PACKAGE ACCESS (not a public dump).',
-      buy: 'mailto:corey@slidphilabs.com?subject=TRU8%20Commercial%20%241900%20project%20year&body=Project%20name%3A%0AContact%3A%0A',
-      blurb: 'Project license — TRU8 production + Chamber, one project / year. Not a per-user seat.',
+      deliver: 'Entitlement JSON + pack docs now; TruChamber yearly seat includes TRU8 (human PACKAGE ACCESS, not a public dump).',
+      buy: 'mailto:corey@slidphilabs.com?subject=TruChamber%20Yearly%201750',
+      blurb: 'Yearly seat — two months free vs 12 × $175. Includes TRU8.',
+    },
+    'tru8-commercial': {
+      name: 'TruChamber Yearly',
+      price: '$1,750/year',
+      champ: true,
+      deliver: 'Entitlement JSON + pack docs now; TruChamber yearly seat includes TRU8 (human PACKAGE ACCESS, not a public dump).',
+      buy: 'mailto:corey@slidphilabs.com?subject=TruChamber%20Yearly%201750',
+      blurb: 'Yearly seat — two months free vs 12 × $175. Includes TRU8.',
+    },
+    'truchamber-day': {
+      name: 'TruChamber Day Pass',
+      price: '$24.99',
+      deliver: '24-hour TruChamber seat. Includes TRU8.',
+      buy: 'mailto:corey@slidphilabs.com?subject=TruChamber%20Day%20Pass%2024.99',
+      blurb: 'Day seat after the 3-hour black box.',
+    },
+    'truchamber-month': {
+      name: 'TruChamber Monthly',
+      price: '$175/month',
+      deliver: 'Calendar-month TruChamber seat. Includes TRU8.',
+      buy: 'mailto:corey@slidphilabs.com?subject=TruChamber%20Monthly%20175',
+      blurb: 'Monthly seat. 12 × $175 = $2,100.',
     },
     'json-chamber': {
-      name: 'json-chamber unlock',
-      price: '$99 one-time',
-      deliver: 'Permanent Chamber unlock steps after Stripe (VerifiedDR path).',
-      buy: 'https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09',
-      blurb: 'Security unlock — 24h trial then $99 per domain. Not compression. Not a seat.',
+      name: 'json-chamber unlock (retired)',
+      price: 'retired',
+      deliver: 'Retired public offer. Use a TruChamber seat (day / month / year).',
+      buy: '/chamber',
+      blurb: 'Retired — $99 forever unlock undercut the seats.',
     },
     'cddg-split': {
       name: 'CDDG:Split',
@@ -396,13 +418,21 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
     sauc3: 'zrw-l33t-unlimited',
     unlimited: 'zrw-l33t-unlimited',
     support: 'support-integration',
-    tru8: 'tru8-commercial',
-    'tru8-chamber': 'tru8-commercial',
-    license: 'tru8-commercial',
-    studio: 'tru8-commercial',
-    commercial: 'tru8-commercial',
-    chamber: 'json-chamber',
-    unlock: 'json-chamber',
+    tru8: 'truchamber-year',
+    'tru8-chamber': 'truchamber-year',
+    'tru8-commercial': 'truchamber-year',
+    license: 'truchamber-year',
+    studio: 'truchamber-year',
+    commercial: 'truchamber-year',
+    chamber: 'truchamber-year',
+    unlock: 'truchamber-year',
+    day: 'truchamber-day',
+    month: 'truchamber-month',
+    year: 'truchamber-year',
+    yearly: 'truchamber-year',
+    monthly: 'truchamber-month',
+    seat: 'truchamber-year',
+    truchamber: 'truchamber-year',
   };
   if (aliases[product]) product = aliases[product];
   const session = params.get('session') || params.get('checkout_session_id') || '';
@@ -498,9 +528,9 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
               encodeURIComponent('PACKAGE ACCESS ' + sku) +
               '">Email PACKAGE ACCESS</a>' +
               '<a class="btn btn-ghost" href="/demos">Demos while you wait</a>';
-            if (sku === 'tru8-commercial') {
+            if (String(sku).indexOf('truchamber') === 0 || sku === 'tru8-commercial') {
               act +=
-                '<a class="btn btn-ghost" href="/access/packs/tru8-commercial/what-ships.md">What ships</a>';
+                '<a class="btn btn-ghost" href="/access/packs/truchamber/what-ships.md">What ships</a>';
             }
           }
           act += '<a class="btn btn-ghost" href="/">Lab home</a>';

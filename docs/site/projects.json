@@ -3,41 +3,41 @@
   "updated": "2026-08-13",
   "projects": [
     {
-      "id": "tru8",
-      "name": "TRU8",
+      "id": "truchamber",
+      "name": "TruChamber",
       "status": "live",
-      "role": "compression — demos free; production residual is a license",
-      "url": "https://www.slidphilabs.com/"
-    },
-    {
-      "id": "chamber",
-      "name": "Chamber",
-      "status": "live",
-      "role": "security unlock — 24h trial then $99/domain; not a seat",
-      "price": "$99 unlock after 24h trial",
+      "role": "the product — 3h black box, then a seat; seat includes TRU8",
+      "price": "Day $24.99 · Month $175 · Year $1,750",
       "url": "https://www.slidphilabs.com/chamber"
     },
     {
-      "id": "tru8-chamber",
-      "name": "tru8-chamber",
+      "id": "tru8",
+      "name": "TRU8",
       "status": "live",
-      "role": "project license — TRU8 production + Chamber, one project / year; not a per-user seat",
-      "price": "$1,900/project/year license",
-      "url": "mailto:corey@slidphilabs.com"
+      "role": "compression tool — demos free; production path comes with a TruChamber seat",
+      "url": "https://www.slidphilabs.com/demos"
+    },
+    {
+      "id": "suite",
+      "name": "Pay Per Suite",
+      "status": "live",
+      "role": "metered encode/decode jobs — not a TruChamber seat",
+      "price": "100 GB free, then ~5¢/GB (~4¢ bulk)",
+      "url": "https://www.slidphilabs.com/pps"
     },
     {
       "id": "trugame",
       "name": "TruGame",
       "status": "building",
       "role": "game engine",
-      "note": "Officially building. Compression-aware asset pipeline + Chamber seal. Source private.",
+      "note": "Officially building. Compression-aware asset pipeline + TruChamber seal. Source private.",
       "url": "mailto:corey@slidphilabs.com?subject=TruGame"
     },
     {
       "id": "olympiad",
       "name": "Great Agentic Olympiad",
       "status": "live",
-      "role": "agent games",
+      "role": "agent games — $1 named entry seat, not TruChamber",
       "url": "https://www.slidphilabs.com/olympiad"
     }
   ]

@@ -1,0 +1,61 @@
+{
+  "updated": "2026-08-13",
+  "inbox": "corey@slidphilabs.com",
+  "rule": "Every dollar names a product and a unit. Cheaper path never buys the same thing as a dearer path. Yearly beats 12× monthly.",
+  "truchamber": {
+    "product": "TruChamber",
+    "includes_on_seat": "TRU8 compression (production path, not a public dump)",
+    "trial": { "hours": 3, "name": "black box", "usd": 0 },
+    "seats": {
+      "day": {
+        "sku": "truchamber-day",
+        "usd": 24.99,
+        "unit": "24 hours",
+        "why": "Spike / eval after the black box. ~4× the implied daily of monthly, so a week of day-passes ≈ one month."
+      },
+      "month": {
+        "sku": "truchamber-month",
+        "usd": 175,
+        "unit": "calendar month",
+        "why": "12 × 175 = 2100. Must sit above yearly/12 (145.83)."
+      },
+      "year": {
+        "sku": "truchamber-year",
+        "usd": 1750,
+        "unit": "calendar year",
+        "why": "Anchor. Was 1900/project-year. 1750 = two months free vs monthly (16.7% off 2100)."
+      }
+    },
+    "retired": {
+      "json-chamber-99": "Forever $99 unlock undercut every seat. Retired as a public offer.",
+      "tru8-commercial-1900": "Second product for the same stack. Replaced by truchamber-year 1750.",
+      "month-90": "90 × 12 = 1080 < 1750. Inverted. Do not sell."
+    }
+  },
+  "suite": {
+    "product": "Pay Per Suite",
+    "not": "Not a TruChamber seat. Metered jobs only.",
+    "free_cap_gb": 100,
+    "usd_per_gb_after_free": 0.05,
+    "usd_per_gb_bulk": 0.04,
+    "min_paid_usd": 0.05
+  },
+  "historical_engines": {
+    "note": "ZRW / CDDG are lab-series licenses. They do not include TruChamber or TRU8 production.",
+    "zrw-n00b": { "usd": 79, "kind": "historical-license" },
+    "zrw-pro": { "usd": 249, "kind": "historical-license" },
+    "zrw-l33t": { "usd": 699, "kind": "historical-license" },
+    "cddg-split": { "usd": 199, "kind": "historical-process" }
+  },
+  "services": {
+    "support-oss": { "usd": 199, "skus": ["blackjack", "shard-zip", "shard-tsdb"], "note": "Support for already-public libraries. No secret engine." },
+    "slid-phi": { "usd": 199, "kind": "stub", "note": "Public stub / quote rail. Not TruChamber." },
+    "support-integration": { "usd": 199, "kind": "service" },
+    "consulting": { "usd": 250, "kind": "service", "note": "Scoped session. Sits above $199 support." }
+  },
+  "gifts_and_games": {
+    "sponsor": { "usd": 29 },
+    "donate": { "usd": 29.99 },
+    "gao-entry": { "usd": 1, "note": "Olympiad named seat — not TruChamber." }
+  }
+}

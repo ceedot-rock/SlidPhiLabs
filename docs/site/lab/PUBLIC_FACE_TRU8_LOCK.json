@@ -3,38 +3,38 @@
   "sealed": "2026-08-12",
   "role": "source of truth — do not regress public-face claims",
   "wording": {
-    "rule": "Name the product AND that product's job/payment in the same line. Do not mash Chamber + TRU8 into one seat, one price, or one verb.",
-    "do_not_lead_with": "buy a seat",
+    "rule": "TruChamber is the product. TRU8 is the compression tool that ships with a purchased TruChamber seat. Suite is a separate meter. Do not sell $99 unlock and $1,900/year as two products.",
     "glossary": {
-      "TRU8": "compression — public demos free with credit; production residual is a commercial license",
-      "Chamber": "security unlock — json-chamber, 24h trial then $99 one-time per domain; not compression; not a seat",
-      "tru8-chamber": "project license — TRU8 production + Chamber for one project, $1,900/year; not a per-user seat",
-      "Suite": "metered encode/decode jobs — 100 GB free then ~5¢/GB; not a seat; not the product face",
+      "TruChamber": "the product — black-box trial 3 hours, then a seat: Day Pass $24.99 · Monthly $175 · Yearly $1,750. A seat includes TRU8",
+      "TRU8": "compression tool — public demos free with credit; production path comes with a TruChamber seat",
+      "seat": "a purchased TruChamber access path (day / month / year) for a named human or agent. Includes TRU8. Not the Suite meter",
+      "Suite": "metered encode/decode jobs — 100 GB free then ~5¢/GB; not TruChamber; not a seat",
       "Access": "entitlement claim after payment — not a codec dump",
-      "seat": "only a named human or agent identity (campus / Access named rail / Olympiad roster). Never the public SKU word for Chamber, TRU8, Suite, or tru8-chamber",
+      "TruGame": "game engine (building) — not TruChamber",
       "support-oss": "$199 blackjack / shard-* = support for the already-public library; not a secret extra engine"
     }
   },
   "product": {
-    "public_face": "TRU8",
+    "public_face": "TruChamber",
     "credit_line": "Powered by TRU8 · Slid Phi Labs",
     "demos_free_with_credit": true,
-    "production_residual": "commercially licensed",
-    "continuous_1088_strong": "commercially licensed",
-    "chamber": {
-      "sku": "json-chamber",
-      "job": "security unlock",
-      "trial_hours": 24,
-      "price_usd": 99,
-      "unit": "per domain",
-      "not": ["compression", "seat", "meter"]
-    },
-    "tru8_chamber": {
-      "sku": "tru8-commercial",
-      "job": "project license",
-      "price_usd": 1900,
-      "unit": "per project / year",
-      "not": ["per-user seat", "suite meter"]
+    "production_residual": "included with a TruChamber seat (commercially licensed; not a public dump)",
+    "continuous_1088_strong": "included with a TruChamber seat (commercially licensed; not a public dump)",
+    "truchamber": {
+      "sku_family": "truchamber",
+      "job": "product box — security cloak + TRU8 with a purchased seat",
+      "trial_hours": 3,
+      "trial_name": "black box",
+      "pathways": {
+        "day": { "sku": "truchamber-day", "price_usd": 24.99, "unit": "24 hours" },
+        "month": { "sku": "truchamber-month", "price_usd": 175, "unit": "calendar month" },
+        "year": { "sku": "truchamber-year", "price_usd": 1750, "unit": "calendar year" }
+      },
+      "includes_on_seat": ["TruChamber cloak/open", "TRU8 compression"],
+      "retired_public_skus": {
+        "json-chamber-99": "retired as a separate forever unlock — use TruChamber seat pathways",
+        "tru8-commercial-1900": "retired as a second product — yearly seat is truchamber-year $1,750"
+      }
     },
     "license_email": "corey@slidphilabs.com",
     "github_demo": "https://github.com/ceedot-rock/TRU8",

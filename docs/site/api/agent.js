@@ -152,7 +152,7 @@ export default async function handler(req, res) {
       prove: "https://www.slidphilabs.com/standings.json",
     },
     one_liner:
-      "TRU8 compresses (demos free). Chamber unlocks ($99/domain). Suite meters jobs (100 GB then ¢/GB). Seat = named identity only. GET /api/agent. x402 auto-claim not wired.",
+      "TruChamber seats: Day $24.99 · Month $175 · Year $1,750 (TRU8 included). 3-hour black box free. Suite meters jobs. GET /api/agent. x402 auto-claim not wired.",
     starter_path: "https://www.slidphilabs.com/pps",
     suite_pricing: {
       free_cap_gb: 100,
