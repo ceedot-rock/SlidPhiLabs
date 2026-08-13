@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TRU8 Chamber — Black-Box Security Product · 7-day trial · $199 unlock</title>
+<meta name="description" content="TRU8 Chamber is a black-box security product: compress + encrypt data under a 7-day free trial. After expiry the box shuts off. Permanent unlock $199 via Stripe. Tamper-evident license."/>
+<meta name="theme-color" content="#0A0A0A"/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://www.slidphilabs.com/chamber"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/slid-phi-labs-eye-64.jpg"/>
+<link rel="apple-touch-icon" href="/assets/logos/slid-phi-labs-eye-180.jpg"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="TRU8 · Slid Phi Labs"/>
+<meta property="og:title" content="TRU8 Chamber — Black-Box Security Product"/>
+<meta property="og:description" content="7-day free black-box trial. Compress + encrypt. Permanent unlock $199. Tamper-evident kill-switch."/>
+<meta property="og:url" content="https://www.slidphilabs.com/chamber"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/logos/slid-phi-labs-eye.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="TRU8 Chamber — Black-Box Security"/>
+<meta name="twitter:description" content="7-day free trial. Then $199 permanent unlock. Compress + AES-256-GCM seal."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/logos/slid-phi-labs-eye.jpg"/>
+<meta name="product" content="TRU8 Chamber"/>
+<meta name="product-line" content="Black-box security · 7-day trial · $199 unlock"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent discovery"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/tru8/site.css?v=3"/>
+<style>
+  .brand-logo {
+    width: 36px; height: 36px; border-radius: 50%;
+    object-fit: cover; display: block;
+    box-shadow: 0 0 12px rgba(0, 220, 220, 0.35);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  /* Background logo at ~80% transparent */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("/assets/logos/slid-phi-labs-eye.jpg") center 20% / min(70vmin, 520px) no-repeat;
+    opacity: 0.20;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body > * { position: relative; z-index: 1; }
+  .chamber-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .chamber-card {
+    background: rgba(12,16,20,0.85);
+    border: 1px solid rgba(0,220,220,0.18);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .chamber-card h3 { margin: 0 0 8px; font-size: 1.05rem; }
+  .chamber-card p { margin: 0; color: var(--gray, #9aa4b2); font-size: 0.92rem; line-height: 1.45; }
+  .price-row {
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+    margin-top: 20px;
+  }
+  .price-tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 1.6rem; font-weight: 600;
+    color: #5eead4;
+  }
+  .trial-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(0,220,220,0.12);
+    border: 1px solid rgba(0,220,220,0.35);
+    color: #5eead4;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.slidphilabs.com/#org",
+      "name": "Slid Phi Labs",
+      "url": "https://www.slidphilabs.com/",
+      "logo": "https://www.slidphilabs.com/assets/logos/slid-phi-labs-eye.jpg",
+      "email": "license@slidphilabs.com"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "TRU8 Chamber",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Any",
+      "description": "Black-box security chamber: compress + AES-256-GCM encrypt under a 7-day free trial. Permanent unlock $199.",
+      "url": "https://www.slidphilabs.com/chamber",
+      "author": { "@id": "https://www.slidphilabs.com/#org" },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "7-day black-box trial",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Permanent black-box unlock",
+          "price": "199",
+          "priceCurrency": "USD",
+          "url": "https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/assets/tru8/chat.css?v=1"/>
+</head>
+<body>
+<header class="site-nav" role="banner">
+  <div class="inner">
+    <a class="brand" href="/" aria-label="Slid Phi Labs / TRU8 home">
+      <img class="brand-logo" src="/assets/logos/slid-phi-labs-eye-64.jpg" width="36" height="36" alt="Slid Phi Labs"/>
+      <span><span class="tru">TRU</span><span class="eight">8</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/chamber" aria-current="page">Chamber</a>
+      <a href="/demos">Demos</a>
+      <a href="/license">License</a>
+      <a href="https://github.com/ceedot-rock/TRU8" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09">Unlock $199</a>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="hero-kicker"><span class="trial-badge">SECURITY PRODUCT</span></p>
+    <h1 class="hero-title">TRU<span class="eight">8</span> Chamber</h1>
+    <p class="hero-line">Black-box security.</p>
+    <p class="hero-line" style="color:var(--gray);font-weight:500">7 days free. Then $199 to keep the box open.</p>
+    <p class="hero-sub">Compress + encrypt under a live license. After the trial (or any tamper) the chamber permanently shuts off until you unlock.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09">Unlock Chamber · $199</a>
+      <a class="btn btn-secondary" href="/license">Trial terms</a>
+    </div>
+  </section>
+
+  <section class="section wrap" id="what">
+    <div class="reveal">
+      <p class="section-label">What the Chamber does</p>
+      <h2>Sealed black-box for sensitive data.</h2>
+      <p class="lede">Install. Run. Pack and unpack under a live license. The engine stays gated. The license is tamper-evident.</p>
+      <div class="chamber-grid">
+        <div class="chamber-card">
+          <h3>Pack</h3>
+          <p>Deflate → AES-256-GCM → outer HMAC. Returns a sealed blob with integrity tags.</p>
+        </div>
+        <div class="chamber-card">
+          <h3>Unpack</h3>
+          <p>Verify MAC + auth tag, decrypt, inflate. Length and integrity checked on every open.</p>
+        </div>
+        <div class="chamber-card">
+          <h3>Kill-switch</h3>
+          <p>7 days from first run. After expiry or license file tamper the box refuses all operational tools.</p>
+        </div>
+        <div class="chamber-card">
+          <h3>Unlock</h3>
+          <p>One-time $199 Stripe payment. Set the purchased key and the chamber stays alive permanently.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="trial">
+    <div class="reveal">
+      <p class="section-label">Black-box trial</p>
+      <h2>How the trial works</h2>
+      <div class="tokens">
+        <div class="token-row">
+          <span class="token-id">DAY 0</span>
+          <span class="token-name">First run<small>signed license written · trial starts</small></span>
+          <span class="token-out">→ live</span>
+        </div>
+        <div class="token-row">
+          <span class="token-id">DAY 1–7</span>
+          <span class="token-name">Fully functional<small>pack / unpack / status tools</small></span>
+          <span class="token-out">→ open</span>
+        </div>
+        <div class="token-row">
+          <span class="token-id">DAY 7+</span>
+          <span class="token-name">Box shuts off<small>or any license tamper</small></span>
+          <span class="token-out">→ killed</span>
+        </div>
+        <div class="token-row">
+          <span class="token-id">UNLOCK</span>
+          <span class="token-name">$199 one-time<small>Stripe · permanent key</small></span>
+          <span class="token-out">→ forever</span>
+        </div>
+      </div>
+      <div class="price-row">
+        <span class="price-tag">$199</span>
+        <a class="btn btn-primary" href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09">Unlock now</a>
+        <a class="btn btn-secondary" href="/license">Full terms</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="security">
+    <div class="reveal">
+      <p class="section-label">Security model</p>
+      <h2>Designed as a security product.</h2>
+      <div class="chamber-grid">
+        <div class="chamber-card">
+          <h3>Tamper-evident license</h3>
+          <p>HMAC-SHA256 signed license file. Any edit fails the signature and triggers permanent shutdown.</p>
+        </div>
+        <div class="chamber-card">
+          <h3>Device-bound trial</h3>
+          <p>First-run timestamp and device hash. Moving the license or resetting clocks does not extend the trial.</p>
+        </div>
+        <div class="chamber-card">
+          <h3>AEAD + outer MAC</h3>
+          <p>AES-256-GCM for confidentiality and authenticity, plus an outer HMAC over the sealed envelope.</p>
+        </div>
+        <div class="chamber-card">
+          <h3>Hard kill path</h3>
+          <p>On expiry the chamber writes a KILLED marker and refuses every operational call until a purchased key is supplied.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="band reveal">
+      <div>
+        <h2>Start the 7-day Chamber trial.</h2>
+        <p>Fully functional black-box security from first run. One $199 payment unlocks it permanently.</p>
+        <p style="margin-top:12px" class="credit-pill">Powered by TRU8 · Slid Phi Labs</p>
+      </div>
+      <div class="band-actions">
+        <a class="btn btn-primary" href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09">Unlock · $199</a>
+        <a class="btn btn-secondary" href="/license">Trial terms</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><span class="tru">TRU</span><span class="eight">8</span></div>
+        <p class="footer-note">Chamber · black-box security · 7-day trial · $199 unlock</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="/">Home</a>
+        <a href="/chamber">Chamber</a>
+        <a href="/demos">Demos</a>
+        <a href="/license">License / Trial</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://github.com/ceedot-rock/TRU8" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:license@slidphilabs.com">license@slidphilabs.com</a>
+        <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
+      </div>
+    </div>
+    <div class="footer-credit">
+      <span><strong>Powered by TRU8 · Slid Phi Labs</strong> · Black-box trial 7 days · Unlock $199</span>
+      <span>© 2026 Slid Phi Labs</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/tru8/chat.js?v=1" defer></script>
+<script src="/assets/tru8/site.js?v=1" defer></script>
+</body>
+</html>
