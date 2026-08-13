@@ -1,0 +1,108 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-08-13",
+  "site": "https://www.slidphilabs.com",
+  "brand": "Slid Phi Labs",
+  "product": "TRU8 Black-Box",
+  "logo": "https://www.slidphilabs.com/assets/logos/slid-phi-labs-eye.jpg",
+  "logo_64": "https://www.slidphilabs.com/assets/logos/slid-phi-labs-eye-64.jpg",
+  "logo_180": "https://www.slidphilabs.com/assets/logos/slid-phi-labs-eye-180.jpg",
+  "theme_color": "#0A0A0A",
+  "twitter": "@slidphilabs",
+  "unlock_url": "https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09",
+  "unlock_price_usd": 199,
+  "trial_days": 7,
+  "default": {
+    "title": "TRU8 Black-Box Trial — 7 days free · $199 unlock · Slid Phi Labs",
+    "description": "TRU8 black-box trial: fully functional for 7 days from first run. Then permanent unlock with one-time $199 Stripe payment. Public demos free.",
+    "og_title": "TRU8 Black-Box Trial — 7 days free",
+    "og_description": "Fully functional black-box for 7 days. Permanent unlock $199. Public demos free with credit.",
+    "twitter_title": "TRU8 Black-Box Trial — 7 days free",
+    "twitter_description": "Fully functional for 7 days. Then $199 one-time unlock via Stripe. Public demos free.",
+    "og_image": "https://www.slidphilabs.com/assets/logos/slid-phi-labs-eye.jpg",
+    "canonical": "https://www.slidphilabs.com/",
+    "product_line": "7-day free trial · $199 permanent unlock"
+  },
+  "routes": {
+    "/": {
+      "title": "TRU8 Black-Box Trial — 7 days free · $199 unlock · Slid Phi Labs",
+      "description": "TRU8 black-box trial: fully functional for 7 days from first run. Then permanent unlock with one-time $199 Stripe payment. Public demos free.",
+      "canonical": "https://www.slidphilabs.com/",
+      "product_line": "7-day free trial · $199 permanent unlock"
+    },
+    "/license": {
+      "title": "TRU8 Black-Box Trial — 7 days free · $199 unlock · Slid Phi Labs",
+      "description": "TRU8 black-box trial terms: 7 days fully functional, then permanent unlock with $199 one-time Stripe payment. Public demos free with credit.",
+      "canonical": "https://www.slidphilabs.com/license",
+      "og_title": "TRU8 Black-Box Trial — License",
+      "product_line": "Trial terms · $199 unlock"
+    },
+    "/demos": {
+      "title": "TRU8 Demos — Black-Box Trial · Slid Phi Labs",
+      "description": "Public TRU8 demos free with credit. Black-box trial 7 days free, then $199 permanent unlock.",
+      "canonical": "https://www.slidphilabs.com/demos"
+    },
+    "/about": {
+      "title": "About Slid Phi Labs — TRU8 Black-Box",
+      "description": "Slid Phi Labs builds TRU8, a black-box compression chamber with a 7-day free trial and $199 permanent unlock.",
+      "canonical": "https://www.slidphilabs.com/about"
+    },
+    "/pps": {
+      "title": "Pay Per Suite — TRU8 · Slid Phi Labs",
+      "description": "Metered suite: first 100 GB free, then ~5¢/GB. Black-box trial available separately.",
+      "canonical": "https://www.slidphilabs.com/pps"
+    },
+    "/access": {
+      "title": "Access — TRU8 Black-Box Unlock · Slid Phi Labs",
+      "description": "Claim access after $199 black-box unlock or suite purchase. Stripe session verify.",
+      "canonical": "https://www.slidphilabs.com/access"
+    },
+    "/agents": {
+      "title": "Agents — TRU8 Black-Box · Slid Phi Labs",
+      "description": "Agent discovery, x402 catalog, MCP. Black-box trial 7 days · $199 unlock for humans.",
+      "canonical": "https://www.slidphilabs.com/agents"
+    },
+    "/humans": {
+      "title": "Humans — TRU8 Black-Box Trial · Slid Phi Labs",
+      "description": "7-day free black-box trial. Permanent unlock $199 via Stripe. Public demos free.",
+      "canonical": "https://www.slidphilabs.com/humans"
+    }
+  },
+  "schema": {
+    "organization": {
+      "@type": "Organization",
+      "@id": "https://www.slidphilabs.com/#org",
+      "name": "Slid Phi Labs",
+      "url": "https://www.slidphilabs.com/",
+      "logo": "https://www.slidphilabs.com/assets/logos/slid-phi-labs-eye.jpg",
+      "email": "license@slidphilabs.com",
+      "sameAs": ["https://x.com/slidphilabs", "https://github.com/ceedot-rock/TRU8"]
+    },
+    "software": {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.slidphilabs.com/#tru8",
+      "name": "TRU8 Black-Box",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "description": "Black-box compression chamber. 7-day free trial from first run, then permanent unlock with one-time $199 payment.",
+      "url": "https://www.slidphilabs.com/",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "7-day black-box trial",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Fully functional black-box for 7 days from first run on the machine."
+        },
+        {
+          "@type": "Offer",
+          "name": "Permanent unlock",
+          "price": "199",
+          "priceCurrency": "USD",
+          "url": "https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09",
+          "description": "One-time Stripe payment removes the kill-switch permanently."
+        }
+      ]
+    }
+  }
+}
