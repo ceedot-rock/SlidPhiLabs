@@ -1,45 +1,37 @@
-# TruChamber · TRU8 · Slid Phi Labs
-> TruChamber: 3-hour black box · Day $24.99 · Month $175 · Year $1,750
-> A seat includes TRU8. Yearly is two months free vs 12 × $175 = $2,100.
-> TRU8 public demos: free with credit
+# TRU8 · Chamber · Slid Phi Labs
+> Chamber (json-chamber): 24-hour free trial · $99 permanent unlock
+> TRU8 + chamber (tru8-chamber): $1,900 / project / year (proprietary)
+> TRU8 compression demos: free with credit
 
 ## Products
 - Site: https://www.slidphilabs.com/
-- **TruChamber (the product):** https://www.slidphilabs.com/chamber
-- SDK: https://github.com/ceedot-rock/json-chamber-sdk
+- **Chamber (security product):** https://www.slidphilabs.com/chamber
+- Chamber SDK: https://github.com/ceedot-rock/json-chamber-sdk
 - **Chamber Format Spec v1:** https://github.com/ceedot-rock/json-chamber-sdk/blob/main/CHAMBER-FORMAT-v1.md
 - TRU8 demos: https://www.slidphilabs.com/demos
-- License / seats: https://www.slidphilabs.com/license
-- Pricing table: https://www.slidphilabs.com/pricing.json
-- TruChamber seats: Day $24.99 · Month $175 · Year $1,750 → mailto:corey@slidphilabs.com
+- License / Trial terms: https://www.slidphilabs.com/license
+- json-chamber unlock: $99 one-time → https://www.slidphilabs.com/chamber
+- tru8-chamber studio: $1,900 / project / year → mailto:license@slidphilabs.com
 - Credit line (TRU8 public surfaces): Powered by TRU8 · Slid Phi Labs
-- **TruGame (game engine):** officially building — compression-aware asset pipeline + Chamber seal · mailto:corey@slidphilabs.com?subject=TruGame
-- Commercial inquiry: mailto:corey@slidphilabs.com
+- Commercial inquiry: mailto:license@slidphilabs.com · support: mailto:support@slidphilabs.com
 
-## TruChamber (the product)
+## Chamber / json-chamber (security product)
 - φ-split keyword shares + AES-256-GCM
-- 3-hour black-box evaluation from first run (hard cut, no grace)
+- 24-hour evaluation from first run (hard cut, no grace)
 - Tamper-evident HMAC-signed license under ~/.chamber/
-- After expiry or license edit the box hard-kills
-- A purchased seat includes TRU8 (not a public dump)
-- BSL-1.1 open source box (Change Date 2030-08-13 → Apache-2.0)
+- After expiry or license edit the chamber hard-kills
+- One-time $99 unlock removes the kill-switch forever
+- Pure security — no TRU8 compression engine inside
+- BSL-1.1 open source (Change Date 2030-08-13 → Apache-2.0)
 - Page: https://www.slidphilabs.com/chamber
+- SDK: https://github.com/ceedot-rock/json-chamber-sdk
+- Format (wire only): https://github.com/ceedot-rock/json-chamber-sdk/blob/main/CHAMBER-FORMAT-v1.md
 
 ## Pricing tiers
 | SKU | What | Price |
 |-----|------|-------|
-| (trial) | black box | 3 hours · $0 |
-| truchamber-day | seat + TRU8 | $24.99 / 24h |
-| truchamber-month | seat + TRU8 | $175 / month |
-| truchamber-year | seat + TRU8 | $1,750 / year |
-| suite | metered jobs | 100 GB free, then ~5¢/GB |
-| zrw-n00b / pro / l33t | historical ZRW | $79 / $249 / $699 |
-| cddg-split | historical process | $199 |
-| blackjack / shard-* | OSS support | $199 |
-| support-integration | service | $199 |
-| consulting | scoped session | $250 |
-| sponsor / donate | gifts | $29 / $29.99 |
-| gao-entry | Olympiad named seat | $1 |
+| json-chamber | JSON cloaking only | $99 one-time / domain |
+| tru8-chamber | TRU8 + chamber (smaller bundles + cloaking) | $1,900 / project / year |
 
 ## Chamber Format v1 (interoperability)
 - Sealed JSON object: v, algo, k_words, r_words, nonce, tag, ct
@@ -48,36 +40,21 @@
 - License / trial / unlock are out of scope of the format
 - Suggested media type (informative): application/chamber+json
 
-## TruChamber trial model
-- 3 hours fully functional from first run on the machine
-- After 3h (or license tamper) the box permanently shuts off
-- Buy a seat (day / month / year) — includes TRU8
+## Chamber trial model
+- 24 hours fully functional from first run on the machine
+- After 24h (or license tamper) the box permanently shuts off
+- One-time $99 Stripe payment removes the kill-switch forever
 
-## TRU8 (compression tool)
+## TRU8 (compression — separate product)
 - Public demos free with credit
 - T_ZERO / T_DICT / T_TRISUM_HOT public tokens
-- Production path comes with a TruChamber seat
-- Suite (metered): free first 100 GB · then ~5¢/GB · /pps — not a seat
-
-## TruGame (game engine — building)
-- Officially on the lab project list (2026-08-13)
-- Compression-aware asset pipeline (TRU8 residual path for smaller bundles)
-- Chamber sealing for live / secure content
-- Studio-facing; source private
-- Related: TRU8 demos, Chamber, Great Agentic Olympiad
-- Contact: mailto:corey@slidphilabs.com?subject=TruGame
+- Suite (metered): free first 100 GB · then ~5¢/GB · /pps
+- Studio bundling with chamber = tru8-chamber tier (proprietary)
 
 ## Agents
 - Discovery: https://www.slidphilabs.com/api/agent
 - agents.json: https://www.slidphilabs.com/agents.json
 - Welcome: https://www.slidphilabs.com/api/welcome
 
-## Wording
-- TruChamber = the **product**. 3h black box, then a **seat** (day / month / year). Seat includes TRU8.
-- TRU8 = compression tool. Demos free. Production path comes with the seat.
-- Suite = **metered jobs** (100 GB then ~5¢/GB). Not a TruChamber seat.
-- Historical ZRW / CDDG dollars do not buy TruChamber or TRU8.
-- Access = entitlement claim. Not a codec dump.
-
 ## Scope
-TruChamber seats include TRU8 (closed production path). Format = open wire shape. Residual engine never open-sourced. TruGame = game engine under active build (private source). Retired: $99 forever unlock, $1,900 second product, $90/mo inverted ladder.
+json-chamber = security ($99). tru8-chamber = TRU8+security ($1,900/yr, closed). Format = open wire shape. TRU8 residual engine never open-sourced.
