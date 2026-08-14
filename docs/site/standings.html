@@ -6,7 +6,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Standings v1.2 · ZRW 8 B · zeros_1M 10 B · Silesia · Slid Phi Labs</title>
-<meta name="description" content="Lab series standings. Public product face is TRU8. ZRW zeros×10k → 8 B; zeros_1M → 10 B. OmniWave Silesia lossless ~3.13–3.60× trails brotli-11 ~4.21×. Outcomes only."/>
+<meta name="description" content="Lab series standings. The product is TruChamber. TRU8 is the compression tool on a seat. ZRW zeros×10k → 8 B. Outcomes only."/>
 <meta name="keywords" content="standings, ZRW, OmniWave, Silesia, compression records, domain supremacy, Slid Phi Labs, 8 B, zeros_1M"/>
 <link rel="canonical" href="https://www.slidphilabs.com/standings"/>
 <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/standings.json" title="Standings JSON v1.2.0"/>
@@ -34,6 +34,7 @@
 <meta name="robots" content="index,follow"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
 <link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
@@ -114,29 +115,33 @@ footer a{color:var(--gold)}
   <a href="/standings">Full standings →</a>
 </div>
 
-<nav>
+<header class="site-nav" role="banner">
   <div class="inner">
-    <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
-      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="40" height="40" alt=""/>
-      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+    <a class="brand" href="/" aria-label="Slid Phi Labs home">
+      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
+      <span>Slid Phi Labs</span>
     </a>
-    <div class="nav-links">
-      <a href="/standings">Standings</a>
-      <a href="/ideas">Idea Lab</a>
-      <a href="/pps">Pay Per Suite</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/chamber">TruChamber</a>
       <a href="/demos">Demos</a>
-      <a href="/#zrw">ZRW</a>
-      <a class="btn btn-teal btn-sm" href="/api/agent">Agents</a>
+      <a href="/pps">Suite</a>
+      <a href="/license">License</a>
+      <a href="/about">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/chamber">See seats</a>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
-</nav>
+</header>
 
 <header class="hero">
   <div class="wrap">
     <div class="badge">ONGOING · STANDINGS & RECORDS</div>
-    <h1>Proof that breathes</h1>
+    <h1>Lab benches. Not the store.</h1>
     <p class="lead">
-      <strong style="color:var(--gold)">Public product face is TRU8</strong> — these rows are lab series.
+      <strong style="color:var(--gold)">The product is TruChamber</strong> — these rows are lab series.
       ZRW zeros×10k → <strong style="color:var(--teal-bright)">8 B</strong> (gzip-9 73 B · brotli-11 13 B). Ramp ~141×. Domain-honest scoreboard — <strong>best or close only</strong>. OmniWave Silesia lossless trails brotli-11. Tables hydrate from embedded data, then refresh from /standings.json.
     </p>
     <div class="stats" id="stats"></div>
@@ -530,5 +535,6 @@ footer a{color:var(--gold)}
 })();
 </script>
 
+<script src="/assets/site-header.js?v=1" defer></script>
 </body>
 </html>

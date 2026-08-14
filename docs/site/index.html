@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Chamber · 24h trial · $99 · Slid Phi Labs</title>
-<meta name="description" content="Chamber security: 24-hour free trial then $99 unlock. TRU8 demos free with credit. tru8-chamber $1,900/project/year. One lab."/>
+<title>Slid Phi Labs — TruChamber seats · TRU8 inside · Suite meter</title>
+<meta name="description" content="TruChamber is the product. 3-hour black-box trial, then Day $24.99 · Month $175 · Year $1,750. A seat includes TRU8. Suite meters jobs (100 GB then ¢/GB)."/>
 <meta name="theme-color" content="#0A0A0A"/>
 <meta name="robots" content="index,follow"/>
 <link rel="canonical" href="https://www.slidphilabs.com/"/>
@@ -12,23 +12,24 @@
 <link rel="apple-touch-icon" href="/assets/logos/logo-slid-phi-labs.jpg"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Slid Phi Labs"/>
-<meta property="og:title" content="Chamber · Slid Phi Labs"/>
-<meta property="og:description" content="Chamber: 24h trial · $99. TRU8 demos free with credit. One voice."/>
+<meta property="og:title" content="Slid Phi Labs · TruChamber"/>
+<meta property="og:description" content="One product. Three seats. Day $24.99 · Month $175 · Year $1,750. TRU8 comes with the seat."/>
 <meta property="og:url" content="https://www.slidphilabs.com/"/>
 <meta property="og:image" content="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@slidphilabs"/>
-<meta name="twitter:title" content="Chamber · Slid Phi Labs"/>
-<meta name="twitter:description" content="Chamber 24h · $99 unlock. TRU8 demos free with credit."/>
+<meta name="twitter:title" content="Slid Phi Labs · TruChamber"/>
+<meta name="twitter:description" content="3-hour black box. Day $24.99 · Month $175 · Year $1,750. TRU8 included."/>
 <meta name="twitter:image" content="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
-<meta name="product" content="Chamber"/>
-<meta name="product-line" content="Chamber security · TRU8 demos · one voice"/>
+<meta name="product" content="Slid Phi Labs"/>
+<meta name="product-line" content="TruChamber · TRU8 with seat · Suite meter"/>
 <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent discovery"/>
 <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/tru8/site.css?v=6"/>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -39,42 +40,50 @@
       "name": "Slid Phi Labs",
       "url": "https://www.slidphilabs.com/",
       "logo": "https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg",
-      "email": "support@slidphilabs.com",
-      "sameAs": ["https://x.com/slidphilabs", "https://github.com/ceedot-rock/TRU8"]
+      "email": "corey@slidphilabs.com",
+      "sameAs": ["https://x.com/slidphilabs", "https://github.com/ceedot-rock/TRU8", "https://github.com/ceedot-rock/json-chamber-sdk"]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.slidphilabs.com/#truchamber",
+      "name": "TruChamber",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Any",
+      "description": "The product. 3-hour black-box trial, then a seat. A seat includes TRU8 compression.",
+      "url": "https://www.slidphilabs.com/chamber",
+      "author": { "@id": "https://www.slidphilabs.com/#org" },
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "24.99",
+        "highPrice": "1750",
+        "priceCurrency": "USD",
+        "offerCount": "3",
+        "description": "Day Pass $24.99 · Monthly $175 · Yearly $1,750. Yearly is two months free vs 12× monthly."
+      }
     },
     {
       "@type": "SoftwareApplication",
       "@id": "https://www.slidphilabs.com/#tru8",
-      "name": "Chamber / TRU8",
+      "name": "TRU8",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Any",
-      "description": "True minimal units for repetition. Public demos free with credit. Chamber is the separate 24-hour security product.",
-      "url": "https://www.slidphilabs.com/",
+      "description": "Compression tool. Public demos free with credit. Production path comes with a TruChamber seat.",
+      "url": "https://www.slidphilabs.com/demos",
       "author": { "@id": "https://www.slidphilabs.com/#org" },
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "Public TRU8 demos",
-          "price": "0",
-          "priceCurrency": "USD",
-          "description": "Public demos free with credit: Powered by Slid Phi Labs."
-        },
-        {
-          "@type": "Offer",
-          "name": "Chamber permanent unlock",
-          "price": "99",
-          "priceCurrency": "USD",
-          "url": "https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09",
-          "description": "24-hour Chamber trial, then one-time $99 unlock. tru8-chamber $1,900/project/year."
-        }
-      ]
+      "offers": {
+        "@type": "Offer",
+        "name": "Public TRU8 demos",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free with credit: Powered by TRU8 · Slid Phi Labs."
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://www.slidphilabs.com/#website",
       "url": "https://www.slidphilabs.com/",
-      "name": "Chamber / TRU8",
-      "description": "Less is more. We dropped the E. Chamber is the security door.",
+      "name": "Slid Phi Labs",
+      "description": "TruChamber seats include TRU8. Suite meters jobs.",
       "publisher": { "@id": "https://www.slidphilabs.com/#org" }
     }
   ]
@@ -107,21 +116,19 @@
 <header class="site-nav" role="banner">
   <div class="inner">
     <a class="brand" href="/" aria-label="Slid Phi Labs home">
-      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt="Slid Phi Labs"/>
+      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
       <span>Slid Phi Labs</span>
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="/" aria-current="page">Home</a>
-      <a href="/chamber">Chamber</a>
+      <a href="/">Home</a>
+      <a href="/chamber">TruChamber</a>
       <a href="/demos">Demos</a>
       <a href="/pps">Suite</a>
       <a href="/license">License</a>
       <a href="/about">About</a>
-      <a href="https://github.com/ceedot-rock/TRU8" target="_blank" rel="noopener">GitHub</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-secondary btn-sm" href="/demos">View demos</a>
-      <a class="btn btn-primary btn-sm" href="/chamber">Chamber · 24h</a>
+      <a class="btn btn-primary btn-sm" href="/chamber">See seats</a>
       <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -129,15 +136,15 @@
 
 <main>
   <section class="hero wrap">
-    <p class="hero-kicker">Slid Phi Labs · one voice</p>
-    <h1 class="hero-title">TRU<span class="eight">8</span></h1>
-    <p class="hero-line">Less is more. We dropped the E.</p>
-    <p class="hero-line" style="color:var(--gray);font-weight:500">Chamber is the security door. 24 hours. Then $99.</p>
-    <p class="hero-sub">Public TRU8 demos free with credit. Chamber $99 · tru8-chamber $1,900/yr. Suite: first 100 GB free, then ~5¢/GB.</p>
+    <p class="hero-kicker">TruChamber · TRU8 · Suite</p>
+    <h1 class="hero-title">TruChamber</h1>
+    <p class="hero-line">Seal JSON. Compress with TRU8. Pay for a seat.</p>
+    <p class="hero-line" style="color:var(--gray);font-weight:500">3-hour black box, then Day $24.99 · Month $175 · Year $1,750. A seat includes TRU8.</p>
+    <p class="hero-sub">Yearly is two months free ($1,750 vs 12 × $175 = $2,100). Suite meters jobs on /pps (100 GB then ~5¢/GB) — not a seat.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="/chamber">Open Chamber</a>
+      <a class="btn btn-primary" href="/chamber">TruChamber</a>
       <a class="btn btn-secondary" href="/demos">TRU8 demos</a>
-      <a class="btn btn-secondary" href="/pps">Suite 100 GB</a>
+      <a class="btn btn-secondary" href="/pps">Suite jobs</a>
     </div>
   </section>
 
@@ -164,34 +171,39 @@
   <section class="section wrap" id="what">
     <div class="reveal">
       <p class="section-label">What it is</p>
-      <h2>Compression that names the domain. Security that shuts on time.</h2>
-      <p class="lede">Chamber is the security product: fully functional for 24 hours from first run. Hard cut at 24h. One $99 payment unlocks Chamber permanently. TRU8 demos stay free with credit. tru8-chamber is $1,900/project/year.</p>
+      <h2>TruChamber is the product. TRU8 rides the seat.</h2>
+      <p class="lede">Three hours in the <strong>black box</strong> (free). Then buy a <strong>seat</strong> — Day $24.99, Month $175, or Year $1,750. A seat includes TRU8 compression. Suite is a separate <strong>meter</strong> (100 GB then ~5¢/GB). Historical ZRW / CDDG dollars are other engines, not this product.</p>
       <div class="tokens">
         <div class="token-row">
-          <span class="token-id">TRIAL</span>
-          <span class="token-name">24 hours free<small>Chamber fully functional from first run</small></span>
+          <span class="token-id">BOX</span>
+          <span class="token-name">3-hour black box<small>free trial from first run</small></span>
           <span class="token-out">→ live</span>
         </div>
         <div class="token-row">
-          <span class="token-id">KILL</span>
-          <span class="token-name">After expiry<small>or any license tamper</small></span>
-          <span class="token-out">→ shut off</span>
+          <span class="token-id">DAY</span>
+          <span class="token-name">$24.99<small>24-hour seat · includes TRU8</small></span>
+          <span class="token-out">→ pass</span>
         </div>
         <div class="token-row">
-          <span class="token-id">UNLOCK</span>
-          <span class="token-name">$99 one-time<small>Stripe · permanent</small></span>
-          <span class="token-out">→ forever</span>
+          <span class="token-id">MONTH</span>
+          <span class="token-name">$175<small>calendar month · 12× = $2,100</small></span>
+          <span class="token-out">→ seat</span>
+        </div>
+        <div class="token-row">
+          <span class="token-id">YEAR</span>
+          <span class="token-name">$1,750<small>two months free vs monthly</small></span>
+          <span class="token-out">→ best</span>
         </div>
       </div>
-      <p class="lede" style="margin-top:24px;margin-bottom:0">Public demos remain free with the credit line.</p>
+      <p class="lede" style="margin-top:24px;margin-bottom:0">TRU8 public demos stay free with credit: Powered by TRU8 · Slid Phi Labs. Suite jobs live on /pps (meter, not a TruChamber seat).</p>
     </div>
   </section>
 
   <section class="section wrap" id="live">
     <div class="reveal">
-      <p class="section-label">Live</p>
+      <p class="section-label">TRU8 · compression demos</p>
       <h2>Feel the numbers.</h2>
-      <p class="lede">Public token paths only — run them in the browser. No upload. No account.</p>
+      <p class="lede">These tokens are public TRU8 demos. Production TRU8 comes with a TruChamber seat. Browser only — no upload, no account.</p>
       <div class="demo-lab">
         <div class="demo-panel">
           <h3>T_ZERO · dormant run</h3>
@@ -239,7 +251,7 @@
 
   <section class="section wrap" id="cards">
     <div class="reveal">
-      <p class="section-label">Demos</p>
+      <p class="section-label">TRU8 tokens</p>
       <h2>One idea each.</h2>
       <div class="cards" style="margin-top:8px">
         <article class="card">
@@ -270,13 +282,13 @@
   <section class="wrap">
     <div class="band reveal">
       <div>
-        <h2>Start the 24-hour Chamber trial.</h2>
-        <p>Install Chamber, use it fully for 24 hours. Hard cut after that. One $99 Stripe payment unlocks it permanently.</p>
-        <p style="margin-top:12px" class="credit-pill">Powered by Slid Phi Labs</p>
+        <h2>3-hour black box. Then pick a seat.</h2>
+        <p>Day $24.99 · Month $175 · Year $1,750. Yearly saves $350 vs paying monthly all year. A seat includes TRU8. Inbox corey@slidphilabs.com — Stripe links for the new seats are not wired yet.</p>
+        <p style="margin-top:12px" class="credit-pill">Powered by TRU8 · Slid Phi Labs</p>
       </div>
       <div class="band-actions">
-        <a class="btn btn-primary" href="https://buy.stripe.com/7sYbJ27NjfJSbhz8gw6wE09">Unlock · $99</a>
-        <a class="btn btn-secondary" href="/license">Trial terms</a>
+        <a class="btn btn-primary" href="/chamber">See seats</a>
+        <a class="btn btn-secondary" href="/license">Terms</a>
       </div>
     </div>
   </section>
@@ -287,29 +299,27 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand">Slid Phi Labs</div>
-        <p class="footer-note">Chamber · 24-hour trial · $99 permanent unlock — by Slid Phi Labs. TRU8 demos free with credit.</p>
+        <p class="footer-note">TruChamber = the product · TRU8 comes with the seat · Suite = meter. Inbox: corey@slidphilabs.com</p>
       </div>
       <div class="footer-col">
         <h4>Product</h4>
         <a href="/">Home</a>
-        <a href="/chamber">Chamber</a>
+        <a href="/chamber">TruChamber</a>
         <a href="/demos">Demos</a>
-        <a href="/license">License / Trial</a>
+        <a href="/license">License / seats</a>
         <a href="/about">About</a>
       </div>
       <div class="footer-col">
-        <h4>Contact us</h4>
-        <a href="mailto:license@slidphilabs.com">license@ — commercial / $1,900</a>
-        <a href="mailto:support@slidphilabs.com">support@ — access &amp; help</a>
-        <a href="mailto:chamber@slidphilabs.com">chamber@ — Chamber product</a>
-        <a href="mailto:tru8@slidphilabs.com">tru8@ — TRU8 engine</a>
-        <a href="mailto:trugame@slidphilabs.com">trugame@ — TruGame</a>
-        <a href="https://github.com/ceedot-rock/TRU8" target="_blank" rel="noopener">GitHub</a>
+        <h4>Connect</h4>
+        <a href="https://github.com/ceedot-rock/json-chamber-sdk" target="_blank" rel="noopener">Chamber SDK</a>
+        <a href="https://github.com/ceedot-rock/TRU8" target="_blank" rel="noopener">TRU8 GitHub</a>
+        <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a>
         <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
+        <a href="/api/agent">Agents API</a>
       </div>
     </div>
     <div class="footer-credit">
-      <span><strong>Powered by Slid Phi Labs</strong> · Chamber 24h trial · Unlock $99</span>
+      <span><strong>Slid Phi Labs</strong> · TruChamber Day $24.99 · Month $175 · Year $1,750 · Suite ¢/GB</span>
       <span>© 2026 Slid Phi Labs</span>
     </div>
   </div>
@@ -317,5 +327,6 @@
 <script src="/assets/dynamic-meta.js" defer></script>
 <script src="/assets/tru8/chat.js?v=1" defer></script>
 <script src="/assets/tru8/site.js?v=1" defer></script>
+<script src="/assets/site-header.js?v=1" defer></script>
 </body>
 </html>

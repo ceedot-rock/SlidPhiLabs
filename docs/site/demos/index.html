@@ -42,6 +42,7 @@
 <meta name="robots" content="index,follow"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
 <link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
@@ -125,22 +126,26 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 </style>
 </head>
 <body>
-<nav>
+<header class="site-nav" role="banner">
   <div class="inner">
-    <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
-      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="40" height="40" alt=""/>
-      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+    <a class="brand" href="/" aria-label="Slid Phi Labs home">
+      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
+      <span>Slid Phi Labs</span>
     </a>
-    <div class="nav-links">
-      <a href="/#packages">Packages</a>
-      <a href="/pps">Pay Per Suite</a>
-      <a href="/#pricing">Pricing</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/chamber">TruChamber</a>
       <a href="/demos">Demos</a>
-      <a href="/access">Access</a>
-      <a class="btn btn-teal" href="/pps" style="padding:8px 12px;font-size:.85rem">Free suite</a>
+      <a href="/pps">Suite</a>
+      <a href="/license">License</a>
+      <a href="/about">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/chamber">See seats</a>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
-</nav>
+</header>
 
 <div class="wrap">
   <div class="badge">LIVE RESULTS</div>
@@ -396,5 +401,6 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 })();
 </script>
 <script src="/assets/platform-home.js?v=1" defer></script>
+<script src="/assets/site-header.js?v=1" defer></script>
 </body>
 </html>

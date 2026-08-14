@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="lab-pricing" content="blackbox_24h_v1"/>
-<meta name="lab-products" content="json-chamber,tru8-chamber,chamber,trugame"/>
+<meta name="lab-pricing" content="freemium_suite_v4_undercut"/>
 <meta name="lab-eval-path" content="https://www.slidphilabs.com/pps"/>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Access — Black Box trials & unlock · Slid Phi Labs</title>
-<meta name="description" content="24h Black Box trial, then Stripe unlock. json-chamber $99 · tru8-chamber $1,900/project/year · Chamber security · TruGame engine. Claim after pay. Support: corey@slidphilabs.com"/>
+<title>Access — packages after pay · Slid Phi Labs</title>
+<meta name="description" content="Claim entitlement after Stripe. Not a codec dump. x402 auto-claim not wired. Suite freemium on /pps (free first 100 GB)."/>
 <meta name="lab-modules" content="compression,agent_platform"/>
 <meta name="lab-compression" content="TRU8,CDDG:Split"/>
 <meta name="lab-agent-platform" content="CuNi,Agent^Rider,Quikgater"/>
@@ -28,8 +27,8 @@
 <meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
 <meta name="agent-catalog" content="https://www.slidphilabs.com/api/x402-products"/>
 <meta name="agent-one-liner" content="Free first 100 GB suite · then ~5¢/GB under ~9¢ egress · GET /api/agent · Try Gate retired."/>
-<meta property="og:title" content="Access — Black Box trials & unlock · Slid Phi Labs"/>
-<meta property="og:description" content="24h Black Box trial → Stripe unwrap. json-chamber $99 · tru8-chamber $1,900/yr · Chamber · TruGame. corey@slidphilabs.com"/>
+<meta property="og:title" content="Access — packages after pay · Slid Phi Labs"/>
+<meta property="og:description" content="Claim entitlement after Stripe. Not a codec dump. x402 auto-claim not wired. Suite freemium on /pps (free first 100 GB)."/>
 <meta property="og:url" content="https://www.slidphilabs.com/access"/>
 <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta property="og:type" content="website"/>
@@ -37,12 +36,13 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@slidphilabs"/>
 <meta name="twitter:creator" content="@slidphilabs"/>
-<meta name="twitter:title" content="Access — Black Box trials & unlock · Slid Phi Labs"/>
-<meta name="twitter:description" content="24h Black Box trial → Stripe unwrap. json-chamber $99 · tru8-chamber $1,900/yr. corey@slidphilabs.com"/>
+<meta name="twitter:title" content="Access — packages after pay · Slid Phi Labs"/>
+<meta name="twitter:description" content="Claim entitlement after Stripe. Not a codec dump. x402 auto-claim not wired. Suite freemium on /pps (free first 100 GB)."/>
 <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta name="theme-color" content="#050b16"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
 <link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
@@ -138,37 +138,44 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 </style>
 </head>
 <body>
-<nav>
+<header class="site-nav" role="banner">
   <div class="inner">
-    <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
-      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="36" height="36" alt=""/>
-      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+    <a class="brand" href="/" aria-label="Slid Phi Labs home">
+      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
+      <span>Slid Phi Labs</span>
     </a>
-    <div class="nav-links">
+    <nav class="nav-links" aria-label="Primary">
       <a href="/">Home</a>
+      <a href="/chamber">TruChamber</a>
       <a href="/demos">Demos</a>
-      <a href="/license">24h trial</a>
-      <a href="/chamber">Chamber</a>
-      <a class="btn btn-teal" href="/access?product=json-chamber" style="padding:8px 12px;font-size:.85rem">Unlock $99</a>
+      <a href="/pps">Suite</a>
+      <a href="/license">License</a>
+      <a href="/about">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/chamber">See seats</a>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
-</nav>
+</header>
 <div class="wrap">
   <div class="access-hero">
     <img class="access-poster" src="/assets/slid-phi-labs-master.jpg?v=3" width="100" height="133" alt="Slid Phi Labs master poster"/>
     <div>
-      <div class="badge">BLACK BOX 24H → STRIPE UNWRAP → PACKAGE</div>
-      <p class="ribbon">Impressive Compression..... see for yourself</p>
+      <div class="badge">After pay · claim the entitlement you bought</div>
+      <p class="ribbon">Not a dump. Not a second product.</p>
       <h1>Access</h1>
-      <p class="note" style="margin-bottom:0">Claim after Stripe unlock. <strong>Black Box</strong> runs 24 hours free, then paid unwrap. Access is <strong>not</strong> a public codec dump. Stripe session verify works. Email proof or use <code>/access?product=</code> + order id. Contact <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a>.</p>
+      <p class="note" style="margin-bottom:0">Pay for a TruChamber seat (Day $24.99 · Month $175 · Year $1,750) or a Suite job, then this page opens the pack you bought. A seat includes TRU8. Support: <code>corey@slidphilabs.com</code>.</p>
     </div>
   </div>
 
   <div class="step" style="border-color:var(--border-gold);margin-bottom:20px">
-    <strong>Honest delivery · one email</strong>
-    24h trial on the sealed package, then Stripe unwrap. Session verify is live.
-    Email <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> with order id for manual claim.
-    <strong>json-chamber</strong> $99 one-time · <strong>tru8-chamber</strong> $1,900/project/year · <strong>Chamber</strong> security product · <strong>TruGame</strong> engine eval.
+    <strong>Honest delivery</strong>
+    Stripe session verify is live. x402 auto-claim is <em>not</em> wired — email
+    <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> or
+    <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> with order id.
+    blackjack / shard-zip / shard-tsdb $199 SKUs are support for the already-public OSS library — no secret extra engine tarball.
+    TruChamber seats: Day $24.99 · Month $175 · Year $1,750 (includes TRU8). Suite is a meter (100 GB then ~5¢/GB). Historical $99 / $1,900 SKUs are retired.
   </div>
 
   <div id="status-card" role="status">
@@ -181,28 +188,29 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
   </div>
 
   <h2>How it works</h2>
-  <div class="step"><span class="num">1</span><strong>Start the 24h Black Box</strong>
-    Download the sealed trial. It self-expires after 24 hours without purchase.
+  <div class="step"><span class="num">1</span><strong>Buy on Stripe</strong>
+    Checkout with your email. You’ll land back here (or on the home page) after payment.
   </div>
-  <div class="step"><span class="num">2</span><strong>Unwrap with Stripe</strong>
-    Pay for the SKU. Prefer success URL back here with <code>session={CHECKOUT_SESSION_ID}</code>.
+  <div class="step"><span class="num">2</span><strong>We confirm payment</strong>
+    We match your session / receipt to the product you bought.
   </div>
-  <div class="step"><span class="num">3</span><strong>Claim the package</strong>
-    We match session / receipt → install instructions (usually same day). Manual path: email <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a>.
+  <div class="step"><span class="num">3</span><strong>You get your deliverable</strong>
+    <strong>Suite free tier:</strong> first 100 GB free on <a href="/pps">/pps</a> — no chip-in.
+    <strong>Full packages:</strong> install instructions after email (usually same day).
   </div>
 
-  <h2 id="interim">Need the package now?</h2>
-  <div class="step"><span class="num">1</span><strong>Email PACKAGE ACCESS</strong>
+  <h2 id="interim">Need it now?</h2>
+  <div class="step"><span class="num">1</span><strong>Email us</strong>
     To <a href="mailto:corey@slidphilabs.com?subject=PACKAGE%20ACCESS">corey@slidphilabs.com</a><br/>
-    Subject: <code>PACKAGE ACCESS</code> + SKU (e.g. <code>json-chamber</code>)<br/>
-    Include: product, checkout email, session id <code>cs_…</code>.
+    Subject: <code>PACKAGE ACCESS</code><br/>
+    Include: product name, the email you used at checkout, and your receipt or session id if you have it.
   </div>
-  <div class="step"><span class="num">2</span><strong>We reply with install / license</strong>
-    Typically within one business day. Not a public residual URL.
+  <div class="step"><span class="num">2</span><strong>We reply with your install</strong>
+    Download or <code>npm install</code> instructions — typically within one business day.
   </div>
   <div class="step"><span class="num">3</span><strong>Install</strong>
-    <pre># follow the command or signed path we email you
-# Access never auto-hosts closed residual engines</pre>
+    <pre>npm install ./path-to-package.tgz
+# or follow the command we email you</pre>
   </div>
 
   <h2>Products → deliverables</h2>
@@ -210,28 +218,26 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 
   <h2>Not purchased yet?</h2>
   <div class="links">
-    <a class="btn btn-teal" href="/license">Start 24h Black Box</a>
-    <a class="btn btn-gold" href="/license">json-chamber $99</a>
-    <a class="btn btn-primary" href="/chamber">Chamber security</a>
-    <a class="btn btn-ghost" href="/demos">Free TRU8 demos</a>
-    <a class="btn btn-ghost" href="/license">License</a>
+    <a class="btn btn-gold" href="https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f" target="_blank" rel="noopener">CDDG:Split $199</a>
+    <a class="btn btn-primary" href="https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b" target="_blank" rel="noopener">ZRW N00b $79</a>
+    <a class="btn btn-teal" href="/pps">Free suite</a>
+    <a class="btn btn-ghost" href="/#pricing">Full pricing</a>
   </div>
 
-  <h2>Primary loop</h2>
-  <p class="note">Black Box 24h → Stripe unwrap → Access entitlement → PACKAGE ACCESS to corey@ → sealed package. SoT: pricing on this page + <a href="/pricing.json">pricing.json</a>.</p>
+  <h2>npm packages</h2>
+  <p class="note">Browse the family on npm for docs and discoverability. Full licensed packages ship after checkout — start with the logos or <a href="/#pricing">Pricing</a>, then return here.</p>
 
   <footer>
     <div class="lockup">
       <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="44" height="44" alt="Slid Phi Labs logo"/>
       <div>
         <p class="tag">Impressive Compression..... see for yourself</p>
-        <p>SLID-PHI LABS · <a href="/">Home</a> · <a href="/license">License</a> · <a href="/demos">Demos</a></p>
+        <p>SLID-PHI LABS · <a href="/">Home</a> · <a href="/pps">Pay Per Suite</a></p>
       </div>
     </div>
     <p class="contact-line">
-      One email:
+      Questions, concerns, or partnerships:
       <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a>
-      · subject <code>PACKAGE ACCESS</code>
     </p>
     <div class="legal">
       <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="28" height="28" alt=""/>
@@ -251,66 +257,86 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 </div>
 <script>
 (function () {
-  const FULFILL = 'corey@slidphilabs.com';
   const CATALOG = {
-    'json-chamber': {
-      name: 'json-chamber (Black Box)',
-      price: '$99 one-time',
+    'cddg-split': {
+      name: 'CDDG:Split',
+      price: '$199',
       champ: true,
-      deliver: '24h Black Box trial → Stripe unwrap → json-chamber package + license. φ-split seal, no TRU8 residual.',
-      buy: 'mailto:corey@slidphilabs.com?subject=json-chamber%20%2499%20unlock',
-      blurb: '24h free · then $99 one-time unlock',
+      deliver: 'CDDG:Split package + license / install instructions.',
+      buy: 'https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f',
+      blurb: 'Process product',
     },
-    'tru8-chamber': {
-      name: 'tru8-chamber',
-      price: '$1,900 / project / year',
+    'residual-governance': {
+      name: 'CDDG:Split',
+      price: '$199',
       champ: true,
-      deliver: 'Project license for TRU8 chamber. Stripe unwrap of the sealed Black Box. Same path as json-chamber $99.',
-      buy: 'mailto:corey@slidphilabs.com?subject=tru8-chamber%20%241900%20project%20year',
-      blurb: 'Full TRU8 + Chamber for one project year',
+      deliver: 'CDDG:Split package + license / install instructions.',
+      buy: 'https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f',
+      blurb: 'Process product',
     },
-    'chamber': {
-      name: 'Chamber (security product)',
-      price: 'see catalog',
-      deliver: 'Chamber security product page + Black Box trial path.',
-      buy: '/chamber',
-      blurb: 'Security product · Black Box trial available',
+    'twin': {
+      name: 'CDDG:Split',
+      price: '$199',
+      champ: true,
+      deliver: 'CDDG:Split package + license / install instructions.',
+      buy: 'https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f',
+      blurb: 'Process product',
     },
-    'trugame': {
-      name: 'TruGame engine',
-      price: 'eval / contact',
-      deliver: 'TruGame v0.4 engine eval package (ECS / physics / streamer / netcode).',
-      buy: 'mailto:corey@slidphilabs.com?subject=TruGame%20engine%20eval',
-      blurb: 'Game engine eval · Black Box path',
+    'zrw-starting-gate': {
+      name: 'ZRW N00b',
+      price: '$79',
+      deliver: 'ZRW N00b package / license key.',
+      buy: 'https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b',
+      blurb: 'N00b tier — Zero Range Wave',
     },
-    // legacy diverted
-    'truchamber-year': {
-      name: 'Legacy TruChamber Yearly (diverted)',
-      price: 'use tru8-chamber',
-      deliver: 'Retired. Use tru8-chamber $1,900/project/year.',
-      buy: 'mailto:corey@slidphilabs.com?subject=tru8-chamber%20%241900',
-      blurb: 'Diverted to tru8-chamber',
+    'zrw-pro-starter': {
+      name: 'ZRW Pro',
+      price: '$249',
+      deliver: 'ZRW Pro package / higher commercial limits.',
+      buy: 'https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c',
+      blurb: 'Pro tier',
     },
-    'truchamber-day': {
-      name: 'Legacy day seat (diverted)',
-      price: 'use Black Box 24h',
-      deliver: 'Retired. Start the 24h Black Box instead.',
-      buy: '/license',
-      blurb: 'Diverted to 24h Black Box',
+    'zrw-l33t-unlimited': {
+      name: 'ZRW L33t$aUC3',
+      price: '$699',
+      deliver: 'ZRW L33t$aUC3 business / unlimited tier package.',
+      buy: 'https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d',
+      blurb: 'Business / unlimited — L33t$aUC3',
     },
-    'truchamber-month': {
-      name: 'Legacy monthly (diverted)',
-      price: 'use tru8-chamber',
-      deliver: 'Retired. Use tru8-chamber.',
-      buy: 'mailto:corey@slidphilabs.com?subject=tru8-chamber',
-      blurb: 'Diverted',
+    'support-integration': {
+      name: 'Support + Integration',
+      price: '$199',
+      deliver: 'Calendar / intake + email onboarding for pathway choice and benches.',
+      buy: 'https://buy.stripe.com/8x28wQebH41a85n2Wc6wE0l',
+      blurb: 'Pathway + benches + Q&A',
+    },
+    'sponsor': {
+      name: 'Sponsor',
+      price: '$29',
+      deliver: 'Thank-you + optional sponsor badge. Fuels the lab.',
+      buy: 'https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01',
+      blurb: 'Support research',
+    },
+    'consulting': {
+      name: 'Consulting',
+      price: '$250',
+      deliver: 'Booking / intake link for a scoped lab session.',
+      buy: 'https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02',
+      blurb: 'Scoped expert session',
     },
     'try-gate': {
-      name: 'Try Gate (retired)',
-      price: 'retired',
-      deliver: 'Try Gate is retired. Use 24h Black Box.',
-      buy: '/license',
-      blurb: 'Retired — use Black Box 24h',
+      name: 'Try Gate chip-in',
+      price: '$9',
+      deliver: 'Legacy Try Gate (retired). Prefer free suite on /pps. If you already paid, seat tools still unlock below.',
+      buy: 'https://donate.stripe.com/eVq8wQffL2X60CVfIY6wE0e',
+      blurb: 'Legacy Try Gate (retired)',
+    },
+    'donate': {
+      name: 'Donate',
+      price: '$29.99',
+      deliver: 'Thank-you note. No package unless separately purchased.',
+      buy: 'https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a',
+      blurb: 'General lab support',
     },
   };
 
@@ -324,7 +350,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       '<div class="price">' + p.price + ' · <span class="mono">' + key + '</span></div>' +
       '<div class="blurb">' + p.blurb + '</div>' +
       '<div class="links" style="margin-top:6px">' +
-        '<a class="btn ' + (p.champ ? 'btn-gold' : 'btn-ghost') + '" style="padding:7px 12px;font-size:.82rem" href="' + p.buy + '" target="_blank" rel="noopener">' + (p.buy.startsWith('mailto') || p.buy.startsWith('http') ? 'Buy / Contact' : 'Open') + '</a>' +
+        '<a class="btn ' + (p.champ ? 'btn-gold' : 'btn-ghost') + '" style="padding:7px 12px;font-size:.82rem" href="' + p.buy + '" target="_blank" rel="noopener">Buy</a>' +
         '<a class="btn btn-ghost" style="padding:7px 12px;font-size:.82rem" href="?product=' + key + '">Open</a>' +
       '</div>';
     grid.appendChild(el);
@@ -333,17 +359,21 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
   const params = new URLSearchParams(location.search);
   let product = params.get('product') || params.get('purchase') || '';
   const aliases = {
-    residual: 'json-chamber',
-    'json-chamber': 'json-chamber',
-    tru8: 'tru8-chamber',
-    'tru8-chamber': 'tru8-chamber',
-    chamber: 'chamber',
-    trugame: 'trugame',
-    day: 'json-chamber',
-    unlock: 'json-chamber',
-    year: 'tru8-chamber',
-    seat: 'tru8-chamber',
-    'try-gate': 'try-gate',
+    residual: 'cddg-split',
+    'residual-governance': 'cddg-split',
+    twin: 'cddg-split',
+    cddg: 'cddg-split',
+    split: 'cddg-split',
+    zrw: 'zrw-starting-gate',
+    starting: 'zrw-starting-gate',
+    n00b: 'zrw-starting-gate',
+    noob: 'zrw-starting-gate',
+    pro: 'zrw-pro-starter',
+    l33t: 'zrw-l33t-unlimited',
+    'l33t-sauc3': 'zrw-l33t-unlimited',
+    sauc3: 'zrw-l33t-unlimited',
+    unlimited: 'zrw-l33t-unlimited',
+    support: 'support-integration',
   };
   if (aliases[product]) product = aliases[product];
   const session = params.get('session') || params.get('checkout_session_id') || '';
@@ -382,28 +412,81 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
           card.classList.add('ok', 'paid');
           var d = j.deliverable || {};
           var sku = j.product_hint || product || '';
-          label.textContent = 'Payment confirmed';
+          var namedSeat = sku === 'try-gate' || sku === 'gao-entry';
+          var idLabel = namedSeat ? 'Seat id' : 'Entitlement id';
+          label.textContent = d.instant && namedSeat ? 'Named seat unlocked' : 'Payment confirmed';
           title.textContent = d.title || (info ? info.name : (sku || 'Purchase'));
           body.innerHTML =
             (d.summary || 'Stripe reports <strong>paid</strong>.') +
-            (j.email ? ' Checkout email: <code>' + j.email + '</code>.' : '');
+            (j.email ? ' Checkout email: <code>' + j.email + '</code>.' : '') +
+            (d.seat_id ? ' ' + idLabel + ': <code>' + d.seat_id + '</code>.' : '');
 
           var html = '';
-          html +=
-            '<strong>You get:</strong> ' +
-            (info ? info.deliver : d.next || 'Your product package.') +
-            '<br/><br/><strong>Next:</strong> ' +
-            (d.next || 'Email PACKAGE ACCESS with your session id.');
+          if (d.instant && d.steps && d.steps.length) {
+            html += '<strong>Start now</strong><ul class="step-list">';
+            d.steps.forEach(function (s) {
+              html += '<li><span class="n">' + s.n + '</span><div>';
+              if (s.href) html += '<a href="' + s.href + '">' + s.title + '</a>';
+              else html += '<strong style="color:var(--text)">' + s.title + '</strong>';
+              if (s.detail) html += '<div class="d">' + s.detail + '</div>';
+              html += '</div></li>';
+            });
+            html += '</ul>';
+          } else {
+            html +=
+              '<strong>You get:</strong> ' +
+              (info ? info.deliver : d.next || 'Your product package.') +
+              '<br/><br/><strong>Next:</strong> ' +
+              (d.next || 'Email PACKAGE ACCESS with your session id.');
+          }
+          if (d.downloads && d.downloads.length) {
+            html += '<div class="pack-links">';
+            d.downloads.forEach(function (dl) {
+              html +=
+                '<a class="btn btn-ghost" style="padding:7px 12px;font-size:.82rem" href="' +
+                dl.href +
+                '" target="_blank" rel="noopener">' +
+                dl.label +
+                '</a>';
+            });
+            html += '</div>';
+          }
           deliver.innerHTML = html;
 
           var act = '';
-          act +=
-            '<a class="btn btn-teal" href="mailto:' + FULFILL + '?subject=' +
-            encodeURIComponent('PACKAGE ACCESS ' + sku) +
-            '">Email PACKAGE ACCESS</a>' +
-            '<a class="btn btn-ghost" href="/demos">Demos while you wait</a>';
+          if (d.entitlement) {
+            act +=
+              '<button type="button" class="btn btn-teal" id="dl-entitle">Download entitlement JSON</button>';
+          }
+          if (d.instant) {
+            act +=
+              '<a class="btn btn-gold" href="/web">Open web compress</a>' +
+              '<a class="btn btn-ghost" href="/standings">Standings</a>' +
+              '<a class="btn btn-ghost" href="/access/packs/try-gate/eval-guide.md">Eval guide</a>';
+          } else {
+            act +=
+              '<a class="btn btn-teal" href="mailto:corey@slidphilabs.com?subject=' +
+              encodeURIComponent('PACKAGE ACCESS ' + sku) +
+              '">Email PACKAGE ACCESS</a>' +
+              '<a class="btn btn-ghost" href="/web">Web demo while you wait</a>';
+          }
           act += '<a class="btn btn-ghost" href="/">Lab home</a>';
           actions.innerHTML = act;
+
+          var btn = document.getElementById('dl-entitle');
+          if (btn && d.entitlement) {
+            btn.addEventListener('click', function () {
+              var blob = new Blob([JSON.stringify(d.entitlement, null, 2)], {
+                type: 'application/json',
+              });
+              var a = document.createElement('a');
+              a.href = URL.createObjectURL(blob);
+              a.download =
+                'slidphi-try-gate-' + (d.seat_id || 'seat') + '.json';
+              a.click();
+              URL.revokeObjectURL(a.href);
+            });
+          }
         } else if (j && j.ok && !j.paid) {
           label.textContent = 'Payment not complete';
           title.textContent = info ? info.name : 'Checkout open';
@@ -411,7 +494,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
           deliver.innerHTML = info && info.buy
             ? '<a class="btn btn-gold" href="' + info.buy + '" target="_blank" rel="noopener">Complete purchase</a>'
             : '';
-          actions.innerHTML = '<a class="btn btn-ghost" href="/license">License</a>';
+          actions.innerHTML = '<a class="btn btn-ghost" href="/#pricing">Pricing</a>';
         } else {
           label.textContent = 'Could not verify automatically';
           title.textContent = info ? info.name : (product || 'Purchase');
@@ -422,30 +505,30 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
           deliver.innerHTML =
             '<strong>You get:</strong> ' +
             (info ? info.deliver : 'Your product package.') +
-            '<br/><br/>Email <a href="mailto:' + FULFILL + '?subject=PACKAGE%20ACCESS">' + FULFILL + '</a> subject <code>PACKAGE ACCESS</code> with session <code>' +
+            '<br/><br/>Email <a href="mailto:corey@slidphilabs.com?subject=PACKAGE%20ACCESS">corey@slidphilabs.com</a> subject <code>PACKAGE ACCESS</code> with session <code>' +
             session.slice(0, 24) + '…</code>.';
           actions.innerHTML =
-            '<a class="btn btn-teal" href="mailto:' + FULFILL + '?subject=PACKAGE%20ACCESS">Email PACKAGE ACCESS</a>' +
+            '<a class="btn btn-teal" href="mailto:corey@slidphilabs.com?subject=PACKAGE%20ACCESS">Email PACKAGE ACCESS</a>' +
             '<a class="btn btn-ghost" href="/">Lab home</a>';
         }
       })
       .catch(function () {
         label.textContent = 'Verify offline';
         body.innerHTML =
-          'Could not reach verify API. Email <a href="mailto:' + FULFILL + '?subject=PACKAGE%20ACCESS">PACKAGE ACCESS</a> with your session id.';
+          'Could not reach verify API. Email <a href="mailto:corey@slidphilabs.com?subject=PACKAGE%20ACCESS">PACKAGE ACCESS</a> with your session id.';
         actions.innerHTML =
-          '<a class="btn btn-teal" href="mailto:' + FULFILL + '?subject=PACKAGE%20ACCESS">Email PACKAGE ACCESS</a>';
+          '<a class="btn btn-teal" href="mailto:corey@slidphilabs.com?subject=PACKAGE%20ACCESS">Email PACKAGE ACCESS</a>';
       });
   } else if (info) {
     card.classList.add('pending');
     label.textContent = 'Product selected';
     title.textContent = info.name;
-    body.textContent = 'Ready to buy, or already paid? Use Buy below — or email PACKAGE ACCESS with your receipt if payment already cleared.';
+    body.textContent = 'Ready to buy, or already paid? Use Buy below — or email us with your receipt if payment already cleared.';
     deliver.innerHTML = '<strong>You get:</strong> ' + info.deliver;
     meta.textContent = 'product=' + product;
     actions.innerHTML =
-      '<a class="btn ' + (info.champ ? 'btn-gold' : 'btn-primary') + '" href="' + info.buy + '" target="_blank" rel="noopener">Buy / Contact</a>' +
-      '<a class="btn btn-ghost" href="mailto:' + FULFILL + '?subject=PACKAGE%20ACCESS">Already paid?</a>';
+      '<a class="btn ' + (info.champ ? 'btn-gold' : 'btn-primary') + '" href="' + info.buy + '" target="_blank" rel="noopener">Buy ' + info.price + '</a>' +
+      '<a class="btn btn-ghost" href="mailto:corey@slidphilabs.com?subject=PACKAGE%20ACCESS">Already paid?</a>';
   } else {
     card.classList.add('pending');
     label.textContent = 'Unknown product';
@@ -454,7 +537,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
     deliver.innerHTML = '<strong>Next:</strong> email us with subject <code>PACKAGE ACCESS</code>.';
     meta.textContent = 'product=' + product;
     actions.innerHTML =
-      '<a class="btn btn-teal" href="mailto:' + FULFILL + '?subject=PACKAGE%20ACCESS">Email us</a>' +
+      '<a class="btn btn-teal" href="mailto:corey@slidphilabs.com?subject=PACKAGE%20ACCESS">Email us</a>' +
       '<a class="btn btn-ghost" href="/#pricing">See pricing</a>';
   }
 
@@ -462,5 +545,6 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 })();
 </script>
 <script src="/assets/platform-home.js?v=1" defer></script>
+<script src="/assets/site-header.js?v=1" defer></script>
 </body>
 </html>

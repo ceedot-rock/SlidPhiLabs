@@ -40,6 +40,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
 <link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{--bg:#050b16;--panel:#0c1524;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);--text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--gold-soft:rgba(232,197,71,.12);--code:#081018;--poster:url("/assets/slid-phi-labs-master.jpg")}
@@ -107,35 +108,41 @@ footer a{margin-right:12px}
   <a href="/standings">Full standings →</a>
 </div>
 
-<nav><div class="inner">
-  <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
-      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>
-      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+<header class="site-nav" role="banner">
+  <div class="inner">
+    <a class="brand" href="/" aria-label="Slid Phi Labs home">
+      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
+      <span>Slid Phi Labs</span>
     </a>
-  <div class="nav-links">
-    <a href="/humans" data-surface="human">Pub Facing</a>
-    <a class="active" href="/agents" data-surface="agent">Agentic Minded</a>
-    <a href="/api/agent">/api/agent</a>
-    <a href="/platform.json">platform.json</a>
-    <a href="/llms.txt">llms.txt</a>
-    <a class="btn btn-teal" href="/api/agent" style="padding:8px 12px;font-size:.8rem">Discover</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/chamber">TruChamber</a>
+      <a href="/demos">Demos</a>
+      <a href="/pps">Suite</a>
+      <a href="/license">License</a>
+      <a href="/about">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/chamber">See seats</a>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
   </div>
-</div></nav>
+</header>
 
 <header class="hero wrap" id="main">
-  <div class="badge">Agentic Minded · agents · 8 B proof</div>
-  <h1>Discover. Pay. Run. Exact.</h1>
+  <div class="badge">Agent door · same seats as /humans</div>
+  <h1>Agents buy the same seats humans do.</h1>
   <p class="lead">
-    <strong style="color:var(--gold)">TruChamber</strong> seats
-    (<a href="/chamber">Day $24.99 · Month $175 · Year $1,750</a>) include TRU8.
-    <strong>Suite</strong> meters jobs (<a href="/pps">/pps</a>).
-    Same proof humans see — JSON, x402 USDC, MCP. x402 auto-claim of Access is not wired.
+    <strong style="color:var(--gold)">TruChamber</strong>
+    (<a href="/chamber">Day $24.99 · Month $175 · Year $1,750</a>) includes TRU8.
+    <strong>Suite</strong> meters jobs (<a href="/pps">100 GB then ~5¢/GB</a>).
+    Discover on <a href="/api/agent">GET /api/agent</a>. x402 paid POST returns claim_token + access_url.
   </p>
   <p class="mission">
     <em>Happy path:</em>
     GET /api/agent → profile/compress via /api/omniwave → x402 suite or catalog → Access.
   </p>
-  <p class="one-liner">TruChamber Day $24.99 · Month $175 · Year $1,750 (TRU8 included) · Suite = meter · GET /api/agent · x402 auto-claim: false</p>
+  <p class="one-liner">TruChamber Day $24.99 · Month $175 · Year $1,750 (TRU8 included) · Suite = meter · GET /api/agent · x402 auto-claim: true</p>
   <div class="cta-row">
     <a class="btn btn-teal" href="/api/agent">GET /api/agent</a>
     <a class="btn btn-gold" href="/standings">Standings</a>
@@ -261,5 +268,6 @@ footer a{margin-right:12px}
 })();
 </script>
 <script src="/assets/platform-home.js?v=1" defer></script>
+<script src="/assets/site-header.js?v=1" defer></script>
 </body>
 </html>

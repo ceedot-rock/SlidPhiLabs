@@ -25,6 +25,7 @@
 <meta name="theme-color" content="#050b16"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
 <link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/blog.css"/>
 <script type="application/ld+json">
@@ -43,17 +44,26 @@
 </script>
 </head>
 <body>
-<nav><div class="inner">
-  <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
-    <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>
-    <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
-  </a>
-  <div class="nav-links">
-    <a href="/blog">Blog</a>
-    <a href="/updates">Lab Feed</a>
-    <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
+<header class="site-nav" role="banner">
+  <div class="inner">
+    <a class="brand" href="/" aria-label="Slid Phi Labs home">
+      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
+      <span>Slid Phi Labs</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/chamber">TruChamber</a>
+      <a href="/demos">Demos</a>
+      <a href="/pps">Suite</a>
+      <a href="/license">License</a>
+      <a href="/about">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/chamber">See seats</a>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
   </div>
-</div></nav>
+</header>
 
 <article class="wrap" style="padding:28px 0 8px" id="main">
   <div class="badge">Weekly · product</div>
@@ -140,5 +150,6 @@
   <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
 </footer>
 <script src="/assets/platform-home.js?v=1" defer></script>
+<script src="/assets/site-header.js?v=1" defer></script>
 </body>
 </html>

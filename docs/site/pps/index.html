@@ -411,34 +411,38 @@ footer.suite-foot a{color:var(--teal-bright);font-weight:600}
   }
 }
 </script>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
 </head>
 <body>
 
-<nav class="suite-nav">
+<header class="site-nav" role="banner">
   <div class="inner">
-    <a class="suite-brand" href="/pps">
-      <img src="/assets/logos/logo-paypersuite.jpg?v=13" width="44" height="44" alt=""/>
-      <span>
-        <span class="name">SPL Pay Per Suite</span>
-        <span class="sub">ENCODE · DECODE · FOLDER</span>
-      </span>
+    <a class="brand" href="/" aria-label="Slid Phi Labs home">
+      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
+      <span>Slid Phi Labs</span>
     </a>
-    <div class="suite-nav-actions">
-      <a class="quiet" href="/">Lab home</a>
-      <a class="quiet" href="/demos">Demos</a>
-      <a class="btn btn-ghost" href="/access" style="padding:8px 12px;font-size:.85rem">Access</a>
-      <a class="btn btn-teal" href="/pps" style="padding:8px 12px;font-size:.85rem">Free suite</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/chamber">TruChamber</a>
+      <a href="/demos">Demos</a>
+      <a href="/pps">Suite</a>
+      <a href="/license">License</a>
+      <a href="/about">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/chamber">See seats</a>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
-</nav>
+</header>
 
 <div class="wrap">
   <header class="suite-hero">
     <div class="suite-hero-top">
       <div class="suite-hero-copy">
-        <div class="badge">Metered jobs · not a seat · not Chamber · not the TRU8 face</div>
-        <p class="ribbon">TruChamber seats → <a href="/chamber" style="color:inherit">Day $24.99 · Month $175 · Year $1,750</a> · TRU8 demos → <a href="/demos" style="color:inherit">/demos</a></p>
-        <h1>Pay Per Suite · metered encode / decode jobs</h1>
+        <div class="badge">Suite · metered jobs · not a TruChamber seat</div>
+        <p class="ribbon">Need a seat? TruChamber Day $24.99 · Month $175 · Year $1,750 → <a href="/chamber" style="color:inherit">/chamber</a>. Free TRU8 demos → <a href="/demos" style="color:inherit">/demos</a></p>
+        <h1>Suite meters encode / decode jobs</h1>
         <p class="lede">
           Suite meters jobs — first <strong>100 GB</strong> free, then ~5¢/GB under ~9¢ egress.
           Not a user seat. Not a Chamber unlock. Not a TRU8 production license.
@@ -1367,5 +1371,6 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
 })();
 </script>
 <script src="/assets/platform-home.js?v=1" defer></script>
+<script src="/assets/site-header.js?v=1" defer></script>
 </body>
 </html>

@@ -32,7 +32,7 @@ body{margin:0;font-family:var(--font);background:var(--bg);color:var(--text);min
   radial-gradient(700px 400px at 100% 0%,rgba(61,214,198,.08),transparent);}
 a{color:var(--cyan);text-decoration:none}a:hover{color:var(--gold)}
 .wrap{max-width:980px;margin:0 auto;padding:28px 18px 80px}
-header{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:flex-start;margin-bottom:28px}
+header.page-head{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:flex-start;margin-bottom:28px}
 .brand{font-weight:700;letter-spacing:-.02em}
 .brand span{color:var(--gold)}
 .nav{display:flex;flex-wrap:wrap;gap:10px;font-size:.85rem;color:var(--muted)}
@@ -65,19 +65,30 @@ td.win{color:var(--ok);font-weight:600}
 .err{color:var(--bad)}
 .status{font-size:.85rem;color:var(--muted);min-height:1.2em;margin:8px 0}
 </style>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="brand">Slid Phi <span>Labs</span> · Open Bench</div>
-    <nav class="nav">
+<header class="site-nav" role="banner">
+  <div class="inner">
+    <a class="brand" href="/" aria-label="Slid Phi Labs home">
+      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
+      <span>Slid Phi Labs</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
       <a href="/">Home</a>
-      <a href="/standings">Standings</a>
-      <a href="/pps">Suite · 100 GB free</a>
-      <a href="/api/bench?meta=1">API meta</a>
+      <a href="/chamber">TruChamber</a>
       <a href="/demos">Demos</a>
+      <a href="/pps">Suite</a>
+      <a href="/license">License</a>
+      <a href="/about">About</a>
     </nav>
-  </header>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/chamber">See seats</a>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="wrap">
 
   <h1>Prove it before you pay</h1>
   <p class="lead">
@@ -285,5 +296,6 @@ td.win{color:var(--ok);font-weight:600}
   $("runJson").onclick = () => runJson();
 })();
 </script>
+<script src="/assets/site-header.js?v=1" defer></script>
 </body>
 </html>

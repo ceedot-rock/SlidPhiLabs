@@ -1,0 +1,173 @@
+/* Shared Slid Phi Labs chrome — every public page */
+header.site-nav {
+  --sh-black: #0a0a0a;
+  --sh-white: #ffffff;
+  --sh-teal: #00c2c7;
+  --sh-gray: #9a9a9a;
+  --sh-line: rgba(255, 255, 255, 0.08);
+  --sh-line-strong: rgba(255, 255, 255, 0.14);
+  --sh-nav-h: 68px;
+  --sh-max: 1120px;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  min-height: var(--sh-nav-h);
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  background: rgba(10, 10, 10, 0.78);
+  border-bottom: 1px solid var(--sh-line);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+header.site-nav *,
+header.site-nav *::before,
+header.site-nav *::after {
+  box-sizing: border-box;
+}
+header.site-nav.scrolled {
+  background: rgba(10, 10, 10, 0.92);
+  border-bottom-color: var(--sh-line-strong);
+}
+header.site-nav .inner {
+  width: min(100% - 32px, var(--sh-max));
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+}
+header.site-nav a.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.03em;
+  color: var(--sh-white);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+header.site-nav .brand-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 0 12px rgba(0, 220, 220, 0.35);
+}
+header.site-nav nav.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+  position: static;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+header.site-nav nav.nav-links a {
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--sh-gray);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  transition: color 0.15s, background 0.15s;
+}
+header.site-nav nav.nav-links a:hover,
+header.site-nav nav.nav-links a[aria-current="page"] {
+  color: var(--sh-white);
+  background: rgba(255, 255, 255, 0.06);
+}
+header.site-nav nav.nav-links a[aria-current="page"] {
+  color: var(--sh-teal);
+}
+header.site-nav .nav-cta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+header.site-nav .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.86rem;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-family: inherit;
+  white-space: nowrap;
+}
+header.site-nav .btn-primary {
+  background: var(--sh-white);
+  color: var(--sh-black);
+}
+header.site-nav .btn-primary:hover {
+  box-shadow: 0 0 0 3px rgba(0, 194, 199, 0.2);
+}
+header.site-nav .nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--sh-line);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--sh-white);
+  cursor: pointer;
+  place-items: center;
+}
+header.site-nav .nav-toggle span,
+header.site-nav .nav-toggle span::before,
+header.site-nav .nav-toggle span::after {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  position: relative;
+}
+header.site-nav .nav-toggle span::before,
+header.site-nav .nav-toggle span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+header.site-nav .nav-toggle span::before { top: -6px; }
+header.site-nav .nav-toggle span::after { top: 6px; }
+
+@media (max-width: 860px) {
+  header.site-nav nav.nav-links,
+  header.site-nav .nav-cta .btn {
+    display: none;
+  }
+  header.site-nav .nav-toggle {
+    display: grid;
+  }
+  header.site-nav.open nav.nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.97);
+    border-bottom: 1px solid var(--sh-line);
+    padding: 12px 16px 20px;
+    gap: 4px;
+  }
+  header.site-nav.open nav.nav-links a {
+    padding: 12px 14px;
+  }
+  header.site-nav.open .nav-cta .btn {
+    display: none;
+  }
+}

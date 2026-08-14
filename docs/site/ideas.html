@@ -38,6 +38,7 @@
 <meta name="robots" content="index,follow"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
 <link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
@@ -148,24 +149,26 @@ footer a{color:var(--gold)}
 </style>
 </head>
 <body>
-<nav>
+<header class="site-nav" role="banner">
   <div class="inner">
-    <a class="logo" href="/">
-      <span class="logo-visual" aria-hidden="true"></span>
-      <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" width="40" height="40" alt="Slid Phi Labs"/>
-      <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
+    <a class="brand" href="/" aria-label="Slid Phi Labs home">
+      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
+      <span>Slid Phi Labs</span>
     </a>
-    <div class="nav-links">
-      <a href="/ideas">Idea Lab</a>
-      <a href="/toys">Toy Store</a>
-      <a href="/pps">Pay Per Suite</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/chamber">TruChamber</a>
       <a href="/demos">Demos</a>
-      <a href="/pps">Free suite</a>
-      <a href="/#ecosystem">Ecosystem</a>
-      <a class="btn btn-teal btn-sm" href="/api/agent">Agents</a>
+      <a href="/pps">Suite</a>
+      <a href="/license">License</a>
+      <a href="/about">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/chamber">See seats</a>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
-</nav>
+</header>
 
 <header class="hero">
   <div class="wrap">
@@ -326,5 +329,6 @@ renderChips();
 render();
 </script>
 <script src="/assets/platform-home.js?v=1" defer></script>
+<script src="/assets/site-header.js?v=1" defer></script>
 </body>
 </html>

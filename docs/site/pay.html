@@ -75,9 +75,30 @@
   footer { margin-top: 28px; color: var(--muted); font-size: .85rem; }
   code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .85em; }
 </style>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
 </head>
 <body>
-  <div class="wrap">
+  <header class="site-nav" role="banner">
+  <div class="inner">
+    <a class="brand" href="/" aria-label="Slid Phi Labs home">
+      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
+      <span>Slid Phi Labs</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/chamber">TruChamber</a>
+      <a href="/demos">Demos</a>
+      <a href="/pps">Suite</a>
+      <a href="/license">License</a>
+      <a href="/about">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/chamber">See seats</a>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="wrap">
     <p style="margin:0 0 12px"><a href="/">← Labs</a> · <a href="/access">Access</a> · <a href="/api/payments">JSON matrix</a> · <a href="/agents">Agents</a></p>
     <h1>Pay any way that works</h1>
     <p class="sub">
@@ -86,7 +107,7 @@
       <strong>Suite</strong> meter: <a href="/pps">/pps</a> (100 GB free, then ~5¢/GB).
       Historical ZRW $79/$249/$699 and CDDG $199 are other engines.
       OSS-support SKUs (blackjack / shard-* $199 = support, not a secret engine).
-      Cards, wallets, bank, BNPL, USDC (Solana / Base), manual crypto, or invoice. Claim on Access after proof — x402 auto-claim is not wired.
+      Cards, wallets, bank, BNPL, USDC (Solana / Base), manual crypto, or invoice. Claim on Access after proof — x402 auto-claim is ON (claim_token).
     </p>
 
     <div class="card">
@@ -220,5 +241,6 @@
   document.getElementById('payAgent').onclick = () => checkout('x402');
 })();
 </script>
+<script src="/assets/site-header.js?v=1" defer></script>
 </body>
 </html>

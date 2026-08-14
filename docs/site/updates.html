@@ -27,6 +27,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
 <link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{--bg:#050b16;--panel:#0c1524;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);--text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--poster:url("/assets/slid-phi-labs-master.jpg")}
@@ -75,18 +76,26 @@ footer a{margin-right:12px}
 </style>
 </head>
 <body>
-<nav><div class="inner">
-  <a class="logo" href="/"><span class="logo-visual" aria-hidden="true"></span>
-    <img src="/assets/logos/logo-slid-phi-labs.jpg?v=13" alt=""/>
-    <span class="logo-word"><span class="logo-slid">Slid Phi</span><span class="logo-labs">Labs</span></span>
-  </a>
-  <div class="nav-links">
-    <a class="active" href="/updates">Lab Feed</a>
-    <a href="/humans">Humans</a>
-    <a href="/agents">Agents</a>
-    <a class="btn btn-teal" href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
+<header class="site-nav" role="banner">
+  <div class="inner">
+    <a class="brand" href="/" aria-label="Slid Phi Labs home">
+      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
+      <span>Slid Phi Labs</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/chamber">TruChamber</a>
+      <a href="/demos">Demos</a>
+      <a href="/pps">Suite</a>
+      <a href="/license">License</a>
+      <a href="/about">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/chamber">See seats</a>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
   </div>
-</div></nav>
+</header>
 
 <header class="hero wrap" id="main">
   <div class="badge">Lab feed · product · news · plans · social</div>
@@ -180,5 +189,6 @@ footer a{margin-right:12px}
     });
 })();
 </script>
+<script src="/assets/site-header.js?v=1" defer></script>
 </body>
 </html>
