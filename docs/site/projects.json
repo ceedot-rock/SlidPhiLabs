@@ -30,8 +30,8 @@
       "id": "trugame",
       "name": "TruGame",
       "status": "building",
-      "role": "game engine",
-      "note": "Officially building. Compression-aware asset pipeline + TruChamber seal. Source private.",
+      "role": "game engine — pack sim state, seal the save, run the sim",
+      "note": "Building. Source private. Inquire corey@slidphilabs.com subject TruGame.",
       "url": "mailto:corey@slidphilabs.com?subject=TruGame"
     },
     {

@@ -17,12 +17,9 @@ Humans: corey@slidphilabs.com
 ## Modules
 
 ### Game Engine · TruGame (building)
-Officially on the project list as of 2026-08-13.
-- Compression-aware asset pipeline (TRU8 residual path → smaller asset bundles)
-- Chamber sealing for live / secure content
-- Related: TRU8 demos, Chamber, Great Agentic Olympiad
-- Source private. Studio inquiries: mailto:corey@slidphilabs.com?subject=TruGame
-- Status: actively building
+TruGame — game engine. Packs sim state with TRU8, seals the save with Chamber.
+- Source private. Inquire: mailto:corey@slidphilabs.com?subject=TruGame
+- Workbench: Sports-sims packages/trugame + sim-nfl
 
 ### Compression · TRU8
 - Home: https://www.slidphilabs.com/
@@ -49,5 +46,5 @@ https://www.slidphilabs.com/projects.json
 
 ## Scope
 TRU8 Year includes Chamber. Chamber-only does not include TRU8.
-TruGame = game engine under active build (private source).
+TruGame = game engine (building). Inquire corey@ subject TruGame.
 TRU8 residual engine never open-sourced.

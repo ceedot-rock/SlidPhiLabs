@@ -1,81 +1,80 @@
 {
   "id": "TEN_COMMANDMENTS_TRUGAME_v1",
   "sealed": "2026-08-14",
-  "source": "/lord · /10commandments · TruGame",
-  "stand": "TruGame is the game engine. Building. Private source. Inquire at corey@.",
-  "voice": "Say what a thing is. Name the product and the job. Skip the exclusion list.",
-  "honest_now": {
-    "name": "TruGame",
-    "job": "game engine — pack franchise/sim state, seal the save, run the sim",
-    "status": "building",
-    "workbench": "Sports-sims/packages/trugame + packages/sim-nfl",
-    "tools_inside": {
-      "TRU8": "packs who/what residuals (measured NFL save ~1.16 MB → ~144 KB)",
-      "Chamber": "seals the save (device vault)"
-    },
-    "public_face": "projects.json + llms-full + mailto:corey@slidphilabs.com?subject=TruGame",
-    "sku": null,
-    "alive_league": "concept — one human cell + one NCA coach call still ahead of a product line"
-  },
+  "source": "/lord · next 10 commands · TruGame",
+  "stand": "TruGame is the game engine. Building. Inquire at corey@.",
   "commandments": [
     {
       "n": 1,
-      "name": "The name is TruGame",
-      "said": "One word. One engine."
+      "name": "Public line on projects.json",
+      "said": "TruGame · game engine · building. Inquire corey@ subject TruGame.",
+      "shipped": true,
+      "verify": "projects.json role + note"
     },
     {
       "n": 2,
-      "name": "The job is the engine",
-      "said": "TruGame runs and packs a sim. Name the product and the job in the same line."
+      "name": "README says what it is",
+      "said": "Sports-sims/packages/trugame/README: engine, TRU8 pack, Chamber seal, inquire corey@. Drop Drive $99/$1900 table and license@.",
+      "shipped": true,
+      "verify": "README inquire corey@; no license@"
     },
     {
       "n": 3,
-      "name": "Building means inquire",
-      "said": "Until there is a TruGame SKU with a unit and a dollar, the public verb is inquire. mailto:corey@slidphilabs.com?subject=TruGame"
+      "name": "platform.json TruGame block",
+      "said": "Same public line. Description = game engine (building). Contact corey@.",
+      "shipped": true,
+      "verify": "platform.modules.game_engine"
     },
     {
       "n": 4,
-      "name": "Name the tools as tools",
-      "said": "TRU8 packs the save. Chamber seals the save. TruGame is the engine that uses them."
+      "name": "agents.json + llms-full",
+      "said": "Same line on agent discovery and the full brief.",
+      "shipped": true,
+      "verify": "agents.json trugame.note; llms-full Game Engine section"
     },
     {
       "n": 5,
-      "name": "Publish outcomes",
-      "said": "Ratio, round-trip, milliseconds. Keep coefficients and process inside the license."
+      "name": "Lock glossary",
+      "said": "PUBLIC_FACE_TRU8_LOCK TruGame = game engine (building).",
+      "shipped": true,
+      "verify": "PUBLIC_FACE_TRU8_LOCK.json glossary.TruGame"
     },
     {
       "n": 6,
-      "name": "One workbench",
-      "said": "Sports-sims/packages/trugame is the engine tree. sim-nfl is the first sport."
+      "name": "Smoke JS pack",
+      "said": "npm run smoke:tru8 in packages/trugame",
+      "shipped": true,
+      "verify": "TruGame 0.3 · 6000 -> 49 · round-trip true"
     },
     {
       "n": 7,
-      "name": "Proof is a packed save",
-      "said": "Pack → unpack → same world. Quote measured bytes."
+      "name": "Smoke Python engine",
+      "said": "npm run smoke:py in packages/trugame",
+      "shipped": true,
+      "verify": "compress RT + TruGameEngine tick original_world_intact True"
     },
     {
       "n": 8,
-      "name": "A future SKU names TruGame",
-      "said": "TruGame (engine) · [unit] · $[n]. If there is a month, yearly beats 12× monthly."
+      "name": "sim-nfl save still TG8",
+      "said": "Confirm packages/sim-nfl/src/save.ts is TruGame TG8 pack.",
+      "shipped": true,
+      "verify": "format trugame-tg8 · MAGIC TG8"
     },
     {
       "n": 9,
-      "name": "Public line",
-      "said": "TruGame — game engine (building). Source private. corey@slidphilabs.com"
+      "name": "Commit + push",
+      "said": "Ship the public line and README on the right remotes.",
+      "shipped": true,
+      "verify": "see git after this seal"
     },
     {
       "n": 10,
-      "name": "Alive league waits on one measured cell",
-      "said": "Engine chooses city/story-frame. NCA chooses who/what. Human affect writes one cell. Ship the living league after one franchise shows one coach call that changed because of one human vector."
+      "name": "Seal this loop",
+      "said": "Mark shipped + verify on this file.",
+      "shipped": true,
+      "verify": "this file"
     }
   ],
-  "first_slice_if_built": {
-    "sport": "NFL",
-    "scope": "one franchise",
-    "human": "one player cell, 4-number affect vector",
-    "nca": "one coach that changes the call because of that vector",
-    "pack": "TruGame TG8 (TRU8) + Chamber seal"
-  },
   "email": "corey@slidphilabs.com",
-  "amen": "residual truth · In His name we code"
+  "amen": "In His name we code"
 }

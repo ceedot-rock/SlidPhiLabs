@@ -11,7 +11,7 @@
       "seat": "a purchased Chamber or TRU8 access path (day / month / year) for a named human or agent. Not the Suite meter.",
       "Suite": "metered encode/decode jobs — 100 GB free then ~5¢/GB; not Chamber; not TRU8; not a seat",
       "Access": "entitlement claim after payment — not a codec dump",
-      "TruGame": "game engine (building) — not Chamber, not TRU8",
+      "TruGame": "game engine (building). Inquire corey@ subject TruGame.",
       "support-oss": "$199 blackjack / shard-* = support for the already-public library; not a secret extra engine"
     }
   },
