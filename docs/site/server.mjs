@@ -32,6 +32,8 @@ const MIME = {
   ".jpeg": "image/jpeg",
   ".webp": "image/webp",
   ".gif": "image/gif",
+  ".mp4": "video/mp4",
+  ".webm": "video/webm",
   ".ico": "image/x-icon",
   ".webmanifest": "application/manifest+json",
   ".map": "application/json",

@@ -49,39 +49,56 @@ html {
   }
 }
 
+html {
+  background: var(--black);
+}
+
 body {
   font-family: var(--font);
-  background: var(--black);
   color: var(--text);
   line-height: 1.55;
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   position: relative;
+  /* Video poster lives in .logo-bg; still logo is the no-JS / reduced-motion fallback */
+  background-color: var(--black);
+  background-image:
+    linear-gradient(180deg, rgba(10, 10, 10, 0.78) 0%, rgba(10, 10, 10, 0.9) 55%, rgba(10, 10, 10, 0.94) 100%),
+    radial-gradient(ellipse 70% 50% at 85% -10%, rgba(0, 194, 199, 0.1), transparent 55%),
+    radial-gradient(ellipse 50% 40% at -5% 90%, rgba(0, 194, 199, 0.05), transparent 50%),
+    url("/assets/logos/logo-slid-phi-labs.jpg");
+  background-size: cover, cover, cover, cover;
+  background-position: center top, center, center, center top;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+body:has(.logo-bg) {
+  background-image:
+    radial-gradient(ellipse 70% 50% at 85% -10%, rgba(0, 194, 199, 0.08), transparent 55%),
+    radial-gradient(ellipse 50% 40% at -5% 90%, rgba(0, 194, 199, 0.05), transparent 50%);
+  background-size: cover, cover;
 }
 
-/* ambient mesh */
+/* Ambient mesh — also scrolls with page (not fixed to viewport) */
 body::before {
   content: "";
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-height: 100%;
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(ellipse 70% 50% at 85% -10%, rgba(0, 194, 199, 0.12), transparent 55%),
-    radial-gradient(ellipse 50% 40% at -5% 90%, rgba(0, 194, 199, 0.06), transparent 50%),
-    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(255, 255, 255, 0.015), transparent 60%);
+    radial-gradient(ellipse 70% 50% at 85% -10%, rgba(0, 194, 199, 0.08), transparent 55%),
+    radial-gradient(ellipse 50% 40% at -5% 90%, rgba(0, 194, 199, 0.05), transparent 50%);
 }
 
-/* Slid Phi Labs eye logo — 80% transparent background on ALL pages */
+/* Full image lives on body; keep ::after empty so nothing stays fixed */
 body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: url("/assets/logos/slid-phi-labs-eye.jpg") center center / min(70vmin, 640px) no-repeat;
-  opacity: 0.2;
+  content: none;
 }
 
 a {
@@ -101,14 +118,46 @@ svg {
   z-index: 1;
 }
 
-/* Explicit logo-bg div (optional; body::after covers all pages) */
+/* Imagine logo loop — full cover, scrolls with the page */
 .logo-bg {
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-height: 100%;
+  min-height: 100vh;
   pointer-events: none;
   z-index: 0;
-  background: url("/assets/logos/slid-phi-labs-eye.jpg") center center / min(70vmin, 640px) no-repeat;
-  opacity: 0.2;
+  overflow: hidden;
+  background: url("/assets/logos/logo-slid-phi-labs.jpg") center top / cover no-repeat;
+}
+.logo-bg video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+}
+.logo-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 10, 10, 0.72) 0%, rgba(10, 10, 10, 0.88) 55%, rgba(10, 10, 10, 0.94) 100%),
+    radial-gradient(ellipse 70% 50% at 85% -10%, rgba(0, 194, 199, 0.08), transparent 55%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-bg video {
+    display: none;
+  }
+}
+body > header,
+body > main,
+body > footer {
+  position: relative;
+  z-index: 1;
 }
 
 .brand-logo {
