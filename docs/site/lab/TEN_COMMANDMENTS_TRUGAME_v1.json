@@ -1,16 +1,9 @@
 {
   "id": "TEN_COMMANDMENTS_TRUGAME_v1",
   "sealed": "2026-08-14",
-  "source": "/lord · /10commandments · TruGame only",
-  "stand": "TruGame is the game engine. Building. Private source. Not Chamber. Not TRU8. Not for sale yet. Inbox corey@.",
-  "not": [
-    "Not a Chamber seat",
-    "Not a TRU8 Day/Month/Year",
-    "Not Suite",
-    "Not the Olympiad $1 entry",
-    "Not SPLZ",
-    "Not TruGames (plural)"
-  ],
+  "source": "/lord · /10commandments · TruGame",
+  "stand": "TruGame is the game engine. Building. Private source. Inquire at corey@.",
+  "voice": "Say what a thing is. Name the product and the job. Skip the exclusion list.",
   "honest_now": {
     "name": "TruGame",
     "job": "game engine — pack franchise/sim state, seal the save, run the sim",
@@ -18,63 +11,62 @@
     "workbench": "Sports-sims/packages/trugame + packages/sim-nfl",
     "tools_inside": {
       "TRU8": "packs who/what residuals (measured NFL save ~1.16 MB → ~144 KB)",
-      "Chamber": "seals the save (device vault). Seal-as-impl, not the product you buy."
+      "Chamber": "seals the save (device vault)"
     },
     "public_face": "projects.json + llms-full + mailto:corey@slidphilabs.com?subject=TruGame",
-    "no_sku": true,
-    "no_buy_button": true,
-    "alive_league": "concept only — one human cell + one NCA coach call not shipped as a product"
+    "sku": null,
+    "alive_league": "concept — one human cell + one NCA coach call still ahead of a product line"
   },
   "commandments": [
     {
       "n": 1,
       "name": "The name is TruGame",
-      "said": "One word, one engine. Not TruGames. Not SPLZ. Not TruChamber. Not 'the Chamber game'."
+      "said": "One word. One engine."
     },
     {
       "n": 2,
       "name": "The job is the engine",
-      "said": "TruGame runs and packs a sim. Chamber cloaks JSON. TRU8 compresses. Suite meters jobs. Name the product and the job in the same line."
+      "said": "TruGame runs and packs a sim. Name the product and the job in the same line."
     },
     {
       "n": 3,
-      "name": "Building means no buy button",
-      "said": "Until there is a TruGame SKU with a unit and a dollar, the only public verb is inquire. mailto:corey@slidphilabs.com?subject=TruGame"
+      "name": "Building means inquire",
+      "said": "Until there is a TruGame SKU with a unit and a dollar, the public verb is inquire. mailto:corey@slidphilabs.com?subject=TruGame"
     },
     {
       "n": 4,
-      "name": "Tools are not the product",
-      "said": "TRU8 packs. Chamber seals. Those are implementations inside TruGame. Buying TRU8 Year or Chamber Year does not buy TruGame. Do not reuse those SKUs."
+      "name": "Name the tools as tools",
+      "said": "TRU8 packs the save. Chamber seals the save. TruGame is the engine that uses them."
     },
     {
       "n": 5,
-      "name": "No engine leak",
-      "said": "Publish outcomes and bytes (ratio, RT, ms). Do not publish coefficients, champion process, Drive dumps, or residual-gov internals."
+      "name": "Publish outcomes",
+      "said": "Ratio, round-trip, milliseconds. Keep coefficients and process inside the license."
     },
     {
       "n": 6,
       "name": "One workbench",
-      "said": "Sports-sims/packages/trugame is the engine tree. sim-nfl is the first sport. Do not start a third repo to look busy."
+      "said": "Sports-sims/packages/trugame is the engine tree. sim-nfl is the first sport."
     },
     {
       "n": 7,
       "name": "Proof is a packed save",
-      "said": "The residual proof is franchise/state pack → unpack → same world. Quote measured bytes. Do not quote Chamber or TRU8 storefront prices as TruGame proof."
+      "said": "Pack → unpack → same world. Quote measured bytes."
     },
     {
       "n": 8,
-      "name": "No seat until a TruGame SKU exists",
-      "said": "If we sell it later, the line must be: TruGame (engine) · [unit] · $[n]. Not a mashed Chamber+TRU8 seat. Yearly must beat 12× monthly if there is a month."
+      "name": "A future SKU names TruGame",
+      "said": "TruGame (engine) · [unit] · $[n]. If there is a month, yearly beats 12× monthly."
     },
     {
       "n": 9,
-      "name": "Public pages stay one honest line",
-      "said": "Everywhere: TruGame — game engine (building). Source private. Not Chamber. Not TRU8. corey@. Kill license@ and $99/$1,900 from the TruGame README."
+      "name": "Public line",
+      "said": "TruGame — game engine (building). Source private. corey@slidphilabs.com"
     },
     {
       "n": 10,
-      "name": "Alive league is not the product yet",
-      "said": "Engine chooses city/story-frame. NCA chooses who/what. Human affect writes one cell. Do not sell a living league until one franchise shows one coach call that changed because of one human vector."
+      "name": "Alive league waits on one measured cell",
+      "said": "Engine chooses city/story-frame. NCA chooses who/what. Human affect writes one cell. Ship the living league after one franchise shows one coach call that changed because of one human vector."
     }
   ],
   "first_slice_if_built": {
@@ -82,8 +74,7 @@
     "scope": "one franchise",
     "human": "one player cell, 4-number affect vector",
     "nca": "one coach that changes the call because of that vector",
-    "pack": "TruGame TG8 (TRU8) + Chamber seal",
-    "not_yet": "fans, media, full league consciousness"
+    "pack": "TruGame TG8 (TRU8) + Chamber seal"
   },
   "email": "corey@slidphilabs.com",
   "amen": "residual truth · In His name we code"
