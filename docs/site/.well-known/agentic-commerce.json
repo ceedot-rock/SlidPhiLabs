@@ -1,6 +1,6 @@
 {
   "name": "Slid Phi Labs",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "site": "https://www.slidphilabs.com",
   "protocols": [
     "x402"
@@ -9,8 +9,8 @@
   "catalog": "https://www.slidphilabs.com/api/x402-products",
   "buy": "POST https://www.slidphilabs.com/api/x402-products",
   "suite": "POST https://www.slidphilabs.com/api/x402-suite",
-  "human_stripe": "https://www.slidphilabs.com/#pricing",
-  "one_liner": "TRU8 public face. Free first 100 GB suite \u00b7 then ~5c/GB. GET /api/agent. Try Gate retired. x402 auto-claim not wired.",
+  "human_stripe": "https://www.slidphilabs.com/license",
+  "one_liner": "Two products. Chamber (security) Day $12.50 · Month $87.50 · Year $950. TRU8 (compression) Day $24.99 · Month $175 · Year $1,900 (year = both). Suite meters jobs. GET /api/agent.",
   "agents_txt": "https://www.slidphilabs.com/agents.txt",
   "agents_json": "https://www.slidphilabs.com/agents.json",
   "llms_txt": "https://www.slidphilabs.com/llms.txt",
@@ -28,11 +28,19 @@
     "agent_rider_status": "paused"
   },
   "modules": {
+    "chamber": {
+      "products": ["Chamber"],
+      "page": "https://www.slidphilabs.com/chamber",
+      "skus": ["chamber-day", "chamber-month", "chamber-year"],
+      "prices": "Day $12.50 · Month $87.50 · Year $950",
+      "note": "Security only. No TRU8."
+    },
     "compression": {
       "products": [
-        "TRU8",
-        "CDDG:Split"
+        "TRU8"
       ],
+      "skus": ["tru8-day", "tru8-month", "tru8-year"],
+      "prices": "Day $24.99 · Month $175 · Year $1,900 (year = both)",
       "web": "https://www.slidphilabs.com/web",
       "suite": "https://www.slidphilabs.com/pps",
       "cddg": "https://www.slidphilabs.com/#cddg-split",

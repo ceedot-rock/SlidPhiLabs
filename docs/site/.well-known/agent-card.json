@@ -1,9 +1,9 @@
 {
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "TRU8 \u00b7 Slid Phi Labs. Free first 100 GB suite; then ~5c/GB. Dual surface. Try Gate retired. x402 auto-claim not wired.",
+  "description": "Two products. Chamber (security) Day $12.50 · Month $87.50 · Year $950. TRU8 (compression) Day $24.99 · Month $175 · Year $1,900 (year = both). Suite meters jobs.",
   "url": "https://www.slidphilabs.com",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "provider": {
     "organization": "Slid Phi Labs",
     "url": "https://www.slidphilabs.com"
@@ -140,11 +140,13 @@
     "payment_header": "X-PAYMENT",
     "discovery": "https://www.slidphilabs.com/api/agent",
     "catalog": "https://www.slidphilabs.com/api/x402-products",
-    "one_liner": "TRU8 public face. Free first 100 GB suite \u00b7 then ~5c/GB. GET /api/agent. Try Gate retired.",
+    "one_liner": "Two products. Chamber (security) Day $12.50 · Month $87.50 · Year $950. TRU8 (compression) Day $24.99 · Month $175 · Year $1,900 (year = both). Suite meters jobs. GET /api/agent.",
     "modules": {
       "compression": [
-        "TRU8",
-        "CDDG:Split"
+        "TRU8"
+      ],
+      "security": [
+        "Chamber"
       ],
       "agent_platform": [
         "CuNi",

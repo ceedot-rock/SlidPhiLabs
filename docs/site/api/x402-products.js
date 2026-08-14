@@ -794,7 +794,7 @@ function catalogResponse() {
     client_compat:
       "x402 exact · Solana SPL (serialized tx) and/or Base USDC (tx hash after EIP-3009/transfer)",
     note: "Stripe for humans. Agents: POST sku → 402 accepts[] (Solana + Base) → pay → X-PAYMENT → claim_token + entitlement. Open access_url or GET /api/access-verify?claim=spl1.…",
-    product_face: "TruChamber",
+    product_face: "Chamber + TRU8",
     x402_access_autoclaim: true,
     access_claim: "GET /api/access-verify?claim=<claim_token>&product=<sku>",
     fulfill_email: "corey@slidphilabs.com",
