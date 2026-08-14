@@ -1,6 +1,6 @@
 {
-  "version": "1.2.0",
-  "updated": "2026-08-13",
+  "version": "1.3.0",
+  "updated": "2026-08-14",
   "site": "https://www.slidphilabs.com",
   "brand": "Slid Phi Labs",
   "inbox": "corey@slidphilabs.com",
@@ -8,78 +8,81 @@
   "theme_color": "#0A0A0A",
   "twitter": "@slidphilabs",
   "glossary": {
-    "TruChamber": "the product — 3-hour black-box trial, then a seat: Day $24.99 · Month $175 · Year $1,750. Seat includes TRU8",
-    "TRU8": "compression tool — demos free with credit; production path comes with a TruChamber seat",
-    "Suite": "metered encode/decode jobs — 100 GB free then ~5¢/GB; not TruChamber",
+    "Chamber": "security product — 3-hour black box, then Day $12.50 · Month $87.50 · Year $950. No TRU8.",
+    "TRU8": "compression product — demos free; Day $24.99 · Month $175 · Year $1,900 (year = both products).",
+    "Suite": "metered encode/decode jobs — 100 GB free then ~5¢/GB; not Chamber; not TRU8",
     "Access": "entitlement claim after payment — not a codec dump",
-    "seat": "purchased TruChamber access (day / month / year) for a named human or agent; includes TRU8"
+    "seat": "a purchased Chamber or TRU8 access path (day / month / year)"
   },
   "trial_hours": 3,
   "trial_name": "black box",
   "buy_email": "corey@slidphilabs.com",
   "pathways": {
-    "day": { "sku": "truchamber-day", "price_usd": 24.99 },
-    "month": { "sku": "truchamber-month", "price_usd": 175 },
-    "year": { "sku": "truchamber-year", "price_usd": 1750 }
+    "chamber-day": { "sku": "chamber-day", "price_usd": 12.5 },
+    "chamber-month": { "sku": "chamber-month", "price_usd": 87.5 },
+    "chamber-year": { "sku": "chamber-year", "price_usd": 950 },
+    "tru8-day": { "sku": "tru8-day", "price_usd": 24.99 },
+    "tru8-month": { "sku": "tru8-month", "price_usd": 175 },
+    "tru8-year": { "sku": "tru8-year", "price_usd": 1900 }
   },
   "default": {
-    "title": "Slid Phi Labs — TruChamber seats · TRU8 inside · Suite meter",
-    "description": "TruChamber is the product. 3-hour black-box trial, then Day $24.99 · Month $175 · Year $1,750. A seat includes TRU8 compression. Suite meters jobs (100 GB then ¢/GB).",
-    "og_title": "Slid Phi Labs · TruChamber",
-    "og_description": "One product. Three seats. TRU8 comes with the seat.",
-    "twitter_title": "Slid Phi Labs · TruChamber",
-    "twitter_description": "3-hour black box. Day $24.99 · Month $175 · Year $1,750. TRU8 included.",
+    "title": "Slid Phi Labs — Chamber security · TRU8 compression",
+    "description": "Two products. Chamber (security): Day $12.50 · Month $87.50 · Year $950. TRU8 (compression): Day $24.99 · Month $175 · Year $1,900 (year = both). Suite meters jobs.",
+    "og_title": "Slid Phi Labs · Chamber + TRU8",
+    "og_description": "Chamber security (half). TRU8 compression. TRU8 Year $1,900 = both products.",
+    "twitter_title": "Slid Phi Labs · Chamber + TRU8",
+    "twitter_description": "Chamber Day/Month/Year. TRU8 Day/Month/Year. TRU8 Year = both.",
     "og_image": "https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg",
     "canonical": "https://www.slidphilabs.com/",
-    "product_line": "TruChamber · TRU8 with seat · Suite meter"
+    "product_line": "Chamber security · TRU8 compression · Suite meter"
   },
   "routes": {
     "/": {
-      "title": "Slid Phi Labs — TruChamber seats · TRU8 inside · Suite meter",
-      "description": "TruChamber is the product. 3-hour black-box trial, then Day $24.99 · Month $175 · Year $1,750. A seat includes TRU8. Suite meters jobs.",
+      "title": "Slid Phi Labs — Chamber security · TRU8 compression",
+      "description": "Two products. Chamber Day $12.50 · Month $87.50 · Year $950. TRU8 Day $24.99 · Month $175 · Year $1,900 (year = both).",
       "canonical": "https://www.slidphilabs.com/",
-      "product_line": "TruChamber · TRU8 with seat · Suite meter"
+      "product_line": "Chamber security · TRU8 compression · Suite meter"
     },
     "/chamber": {
-      "title": "TruChamber — 3-hour black box · Day $24.99 · Month $175 · Year $1,750",
-      "description": "TruChamber is the product. Try 3 hours in the black box. Buy a seat (day / month / year). A seat includes TRU8 compression.",
+      "title": "Chamber — security product · Day $12.50 · Month $87.50 · Year $950",
+      "description": "Chamber is security. 3-hour black box, then a Chamber seat. No TRU8. Both products = TRU8 Year $1,900.",
       "canonical": "https://www.slidphilabs.com/chamber",
-      "product_line": "TruChamber seats"
+      "product_line": "Chamber security"
     },
     "/license": {
-      "title": "License — TruChamber seats · Day $24.99 · Month $175 · Year $1,750",
-      "description": "One product, three seats. 3-hour black-box trial. Day Pass $24.99. Monthly $175. Yearly $1,750. TRU8 ships with the seat.",
+      "title": "License — Chamber + TRU8 · two ladders",
+      "description": "Chamber $12.50 / $87.50 / $950. TRU8 $24.99 / $175 / $1,900 (year = both).",
       "canonical": "https://www.slidphilabs.com/license",
-      "product_line": "TruChamber seats"
+      "product_line": "Chamber + TRU8"
     },
     "/demos": {
       "title": "TRU8 Demos — compression tokens · Slid Phi Labs",
-      "description": "Public TRU8 compression demos (T_ZERO, T_DICT, T_TRISUM_HOT). Free with credit. Production TRU8 comes with a TruChamber seat.",
+      "description": "Public TRU8 compression demos. Free with credit. Production: Day $24.99 · Month $175 · Year $1,900.",
       "canonical": "https://www.slidphilabs.com/demos"
     },
     "/about": {
-      "title": "About Slid Phi Labs — TruChamber · TRU8 · Suite",
-      "description": "TruChamber is the product. TRU8 is the compression tool that comes with a seat. Suite meters encode/decode jobs.",
+      "title": "About Slid Phi Labs — Chamber · TRU8 · Suite",
+      "description": "Chamber is security. TRU8 is compression. Suite meters jobs.",
       "canonical": "https://www.slidphilabs.com/about"
     },
     "/pps": {
-      "title": "Pay Per Suite — metered jobs · not TruChamber · Slid Phi Labs",
-      "description": "Suite is metered encode/decode jobs: first 100 GB free, then ~5¢/GB. Not a TruChamber seat.",
+      "title": "Pay Per Suite — metered jobs · not a seat · Slid Phi Labs",
+      "description": "Suite is metered encode/decode jobs: first 100 GB free, then ~5¢/GB. Not Chamber. Not TRU8.",
       "canonical": "https://www.slidphilabs.com/pps"
     },
     "/access": {
-      "title": "Access — TruChamber seat claim after payment · Slid Phi Labs",
-      "description": "Claim a TruChamber seat (day / month / year) after payment. Not a codec dump. TRU8 comes with the seat.",
+      "title": "Access — claim Chamber or TRU8 after payment · Slid Phi Labs",
+      "description": "Claim the Chamber or TRU8 plan you paid for. Not a codec dump.",
       "canonical": "https://www.slidphilabs.com/access"
     },
     "/agents": {
-      "title": "Agents — TruChamber seats and x402 jobs · Slid Phi Labs",
-      "description": "Agent discovery and x402. TruChamber seats: day / month / year. Suite jobs are metered.",
+      "title": "Agents — Chamber, TRU8, and x402 jobs · Slid Phi Labs",
+      "description": "Agent discovery and x402. Same Chamber and TRU8 plans humans buy. Suite is metered.",
       "canonical": "https://www.slidphilabs.com/agents"
     },
     "/humans": {
-      "title": "Humans — TruChamber seats · TRU8 included · Suite meter",
-      "description": "TruChamber: 3-hour black box, then Day $24.99 · Month $175 · Year $1,750. TRU8 comes with the seat. Suite 100 GB then ¢/GB.",
+      "title": "Humans — Chamber · TRU8 · Suite · Slid Phi Labs",
+      "description": "Chamber $12.50 / $87.50 / $950. TRU8 $24.99 / $175 / $1,900 (year = both). Suite 100 GB then ¢/GB.",
       "canonical": "https://www.slidphilabs.com/humans"
     }
   }

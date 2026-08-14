@@ -146,14 +146,14 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="/">Home</a>
-      <a href="/chamber">TruChamber</a>
-      <a href="/demos">Demos</a>
+      <a href="/chamber">Chamber</a>
+      <a href="/demos">TRU8</a>
       <a href="/pps">Suite</a>
       <a href="/license">License</a>
       <a href="/about">About</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-primary btn-sm" href="/chamber">See seats</a>
+      <a class="btn btn-primary btn-sm" href="https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C" target="_blank" rel="noopener">TRU8 Year · $1,900</a>
       <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -165,7 +165,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       <div class="badge">After pay · claim the entitlement you bought</div>
       <p class="ribbon">Not a dump. Not a second product.</p>
       <h1>Access</h1>
-      <p class="note" style="margin-bottom:0">Pay for a TruChamber seat (Day $24.99 · Month $175 · Year $1,750) or a Suite job, then this page opens the pack you bought. A seat includes TRU8. Support: <code>corey@slidphilabs.com</code>.</p>
+      <p class="note" style="margin-bottom:0">Pay for Chamber (security) or TRU8 (compression), then this page opens the pack you bought. Chamber Year $950 = security only. TRU8 Year $1,900 = both. Support: <code>corey@slidphilabs.com</code>.</p>
     </div>
   </div>
 
@@ -200,7 +200,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 
   <h2 id="interim">Already paid?</h2>
   <div class="step"><span class="num">1</span><strong>Open Access with your session</strong>
-    <code>/access?product=truchamber-year&amp;session=cs_…</code> (from Stripe redirect) or paste session id.
+    <code>/access?product=tru8-year&amp;session=cs_…</code> (from Stripe redirect) or paste session id.
     Package Access opens when payment verifies — download entitlement + pack guide.
   </div>
   <div class="step"><span class="num">2</span><strong>Install from the open pack</strong>
@@ -215,9 +215,9 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 
   <h2>Not purchased yet?</h2>
   <div class="links">
-    <a class="btn btn-gold" href="/chamber">TruChamber Year · $1,750</a>
-    <a class="btn btn-primary" href="/chamber">Month · $175</a>
-    <a class="btn btn-teal" href="/chamber">Day · $24.99</a>
+    <a class="btn btn-gold" href="https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C" target="_blank" rel="noopener">TRU8 Year · $1,900</a>
+    <a class="btn btn-primary" href="https://buy.stripe.com/7sYfZid7D55edpHcwM6wE0z" target="_blank" rel="noopener">Chamber Year · $950</a>
+    <a class="btn btn-teal" href="/license">All six plans</a>
     <a class="btn btn-ghost" href="/demos">Free TRU8 demos</a>
   </div>
 
@@ -257,70 +257,70 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 (function () {
   const FULFILL = 'corey@slidphilabs.com';
   const CATALOG = {
-    'truchamber-year': {
-      name: 'TruChamber · Year',
-      price: '$1,750/year',
-      champ: true,
-      deliver: 'TruChamber seat for one year. Includes TRU8 production. Two months free vs 12 × $175.',
-      buy: '/chamber',
-      blurb: 'Best rate · seat includes TRU8',
-    },
-    'truchamber-month': {
-      name: 'TruChamber · Month',
-      price: '$175/month',
-      deliver: 'TruChamber seat for one calendar month. Includes TRU8 production.',
-      buy: '/chamber',
-      blurb: 'Seat includes TRU8',
-    },
-    'truchamber-day': {
-      name: 'TruChamber · Day',
-      price: '$24.99/day',
-      deliver: 'TruChamber seat for 24 hours. Includes TRU8 production.',
-      buy: '/chamber',
-      blurb: 'Seat includes TRU8',
-    },
     'tru8-year': {
-      name: 'TruChamber · Year',
-      price: '$1,750/year',
+      name: 'TRU8 · Year (both products)',
+      price: '$1,900/year',
       champ: true,
-      deliver: 'Alias of truchamber-year. Seat includes TRU8.',
-      buy: '/chamber',
-      blurb: 'Seat includes TRU8',
-    },
-    'chamber-year': {
-      name: 'TruChamber · Year',
-      price: '$1,750/year',
-      deliver: 'Alias of truchamber-year. Seat includes TRU8.',
-      buy: '/chamber',
-      blurb: 'Seat includes TRU8',
+      deliver: 'TRU8 production + Chamber security for one year. Both products.',
+      buy: 'https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C',
+      blurb: 'Full stack · both products',
     },
     'tru8-month': {
-      name: 'TruChamber · Month',
+      name: 'TRU8 · Month',
       price: '$175/month',
-      deliver: 'Alias of truchamber-month. Seat includes TRU8.',
-      buy: '/chamber',
-      blurb: 'Seat includes TRU8',
+      deliver: 'TRU8 production only for one calendar month. No Chamber seat.',
+      buy: 'https://buy.stripe.com/8x23cw9Vr0OY85n54k6wE0B',
+      blurb: 'Compression only',
     },
     'tru8-day': {
-      name: 'TruChamber · Day',
+      name: 'TRU8 · Day',
       price: '$24.99/day',
-      deliver: 'Alias of truchamber-day. Seat includes TRU8.',
-      buy: '/chamber',
-      blurb: 'Seat includes TRU8',
+      deliver: 'TRU8 production only for 24 hours. No Chamber seat.',
+      buy: 'https://buy.stripe.com/4gM3cw0kR9lu4Tb54k6wE0A',
+      blurb: 'Compression only',
+    },
+    'chamber-year': {
+      name: 'Chamber · Year',
+      price: '$950/year',
+      champ: true,
+      deliver: 'Security only for one year. Half of TRU8 Year. No TRU8 production.',
+      buy: 'https://buy.stripe.com/7sYfZid7D55edpHcwM6wE0z',
+      blurb: 'Security only · half',
     },
     'chamber-month': {
-      name: 'TruChamber · Month',
-      price: '$175/month',
-      deliver: 'Alias of truchamber-month. Seat includes TRU8.',
-      buy: '/chamber',
-      blurb: 'Seat includes TRU8',
+      name: 'Chamber · Month',
+      price: '$87.50/month',
+      deliver: 'Security only. Half of TRU8 Month. No TRU8 production.',
+      buy: 'https://buy.stripe.com/3cI5kEffL0OY4TbfIY6wE0y',
+      blurb: 'Security only · half',
     },
     'chamber-day': {
-      name: 'TruChamber · Day',
+      name: 'Chamber · Day',
+      price: '$12.50/day',
+      deliver: 'Security only. Half of TRU8 Day. No TRU8 production.',
+      buy: 'https://buy.stripe.com/14A4gAebHcxG0CV9kA6wE0x',
+      blurb: 'Security only · half',
+    },
+    'truchamber-year': {
+      name: 'TRU8 · Year (legacy alias)',
+      price: '$1,900/year',
+      deliver: 'Alias of tru8-year. Both products for one year.',
+      buy: 'https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C',
+      blurb: 'Alias → tru8-year',
+    },
+    'truchamber-month': {
+      name: 'TRU8 · Month (legacy alias)',
+      price: '$175/month',
+      deliver: 'Alias of tru8-month. Compression only.',
+      buy: 'https://buy.stripe.com/8x23cw9Vr0OY85n54k6wE0B',
+      blurb: 'Alias → tru8-month',
+    },
+    'truchamber-day': {
+      name: 'TRU8 · Day (legacy alias)',
       price: '$24.99/day',
-      deliver: 'Alias of truchamber-day. Seat includes TRU8.',
-      buy: '/chamber',
-      blurb: 'Seat includes TRU8',
+      deliver: 'Alias of tru8-day. Compression only.',
+      buy: 'https://buy.stripe.com/4gM3cw0kR9lu4Tb54k6wE0A',
+      blurb: 'Alias → tru8-day',
     },
     'cddg-split': {
       name: 'CDDG:Split',

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Slid Phi Labs — TruChamber seats · TRU8 inside · Suite meter</title>
-<meta name="description" content="TruChamber is the product. 3-hour black-box trial, then Day $24.99 · Month $175 · Year $1,750. A seat includes TRU8. Suite meters jobs (100 GB then ¢/GB)."/>
+<title>Slid Phi Labs — Chamber security · TRU8 compression</title>
+<meta name="description" content="Two products. Chamber (security): Day $12.50 · Month $87.50 · Year $950. TRU8 (compression): Day $24.99 · Month $175 · Year $1,900 (year = both products). Suite meters jobs."/>
 <meta name="theme-color" content="#0A0A0A"/>
 <meta name="robots" content="index,follow"/>
 <link rel="canonical" href="https://www.slidphilabs.com/"/>
@@ -12,17 +12,17 @@
 <link rel="apple-touch-icon" href="/assets/logos/logo-slid-phi-labs.jpg"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Slid Phi Labs"/>
-<meta property="og:title" content="Slid Phi Labs · TruChamber"/>
-<meta property="og:description" content="One product. Three seats. Day $24.99 · Month $175 · Year $1,750. TRU8 comes with the seat."/>
+<meta property="og:title" content="Slid Phi Labs · Chamber + TRU8"/>
+<meta property="og:description" content="Chamber security (half). TRU8 compression. TRU8 Year $1,900 = both products for one year."/>
 <meta property="og:url" content="https://www.slidphilabs.com/"/>
 <meta property="og:image" content="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@slidphilabs"/>
-<meta name="twitter:title" content="Slid Phi Labs · TruChamber"/>
-<meta name="twitter:description" content="3-hour black box. Day $24.99 · Month $175 · Year $1,750. TRU8 included."/>
+<meta name="twitter:title" content="Slid Phi Labs · Chamber + TRU8"/>
+<meta name="twitter:description" content="Chamber Day/Month/Year. TRU8 Day/Month/Year. TRU8 Year = both products."/>
 <meta name="twitter:image" content="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
 <meta name="product" content="Slid Phi Labs"/>
-<meta name="product-line" content="TruChamber · TRU8 with seat · Suite meter"/>
+<meta name="product-line" content="Chamber security · TRU8 compression · Suite meter"/>
 <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent discovery"/>
 <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -45,20 +45,20 @@
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://www.slidphilabs.com/#truchamber",
-      "name": "TruChamber",
+      "@id": "https://www.slidphilabs.com/#chamber",
+      "name": "Chamber",
       "applicationCategory": "SecurityApplication",
       "operatingSystem": "Any",
-      "description": "The product. 3-hour black-box trial, then a seat. A seat includes TRU8 compression.",
+      "description": "Security product. 3-hour black box, then Day $12.50 · Month $87.50 · Year $950. No TRU8 production.",
       "url": "https://www.slidphilabs.com/chamber",
       "author": { "@id": "https://www.slidphilabs.com/#org" },
       "offers": {
         "@type": "AggregateOffer",
-        "lowPrice": "24.99",
-        "highPrice": "1750",
+        "lowPrice": "12.50",
+        "highPrice": "950",
         "priceCurrency": "USD",
         "offerCount": "3",
-        "description": "Day Pass $24.99 · Monthly $175 · Yearly $1,750. Yearly is two months free vs 12× monthly."
+        "description": "Chamber Day $12.50 · Month $87.50 · Year $950. Half the matching TRU8 tier. No TRU8."
       }
     },
     {
@@ -67,15 +67,16 @@
       "name": "TRU8",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Any",
-      "description": "Compression tool. Public demos free with credit. Production path comes with a TruChamber seat.",
+      "description": "Compression product. Demos free with credit. Day $24.99 · Month $175 · Year $1,900 (year = Chamber + TRU8).",
       "url": "https://www.slidphilabs.com/demos",
       "author": { "@id": "https://www.slidphilabs.com/#org" },
       "offers": {
-        "@type": "Offer",
-        "name": "Public TRU8 demos",
-        "price": "0",
+        "@type": "AggregateOffer",
+        "lowPrice": "0",
+        "highPrice": "1900",
         "priceCurrency": "USD",
-        "description": "Free with credit: Powered by TRU8 · Slid Phi Labs."
+        "offerCount": "4",
+        "description": "Public demos free. Production Day $24.99 · Month $175 · Year $1,900 (year = both products)."
       }
     },
     {
@@ -83,7 +84,7 @@
       "@id": "https://www.slidphilabs.com/#website",
       "url": "https://www.slidphilabs.com/",
       "name": "Slid Phi Labs",
-      "description": "TruChamber seats include TRU8. Suite meters jobs.",
+      "description": "Chamber security. TRU8 compression. Suite meters jobs.",
       "publisher": { "@id": "https://www.slidphilabs.com/#org" }
     }
   ]
@@ -121,14 +122,14 @@
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="/">Home</a>
-      <a href="/chamber">TruChamber</a>
-      <a href="/demos">Demos</a>
+      <a href="/chamber">Chamber</a>
+      <a href="/demos">TRU8</a>
       <a href="/pps">Suite</a>
       <a href="/license">License</a>
       <a href="/about">About</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-primary btn-sm" href="/chamber">See seats</a>
+      <a class="btn btn-primary btn-sm" href="https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C" target="_blank" rel="noopener">TRU8 Year · $1,900</a>
       <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -136,15 +137,15 @@
 
 <main>
   <section class="hero wrap">
-    <p class="hero-kicker">TruChamber · TRU8 · Suite</p>
-    <h1 class="hero-title">TruChamber</h1>
-    <p class="hero-line">Seal JSON. Compress with TRU8. Pay for a seat.</p>
-    <p class="hero-line" style="color:var(--gray);font-weight:500">3-hour black box, then Day $24.99 · Month $175 · Year $1,750. A seat includes TRU8.</p>
-    <p class="hero-sub">Yearly is two months free ($1,750 vs 12 × $175 = $2,100). Suite meters jobs on /pps (100 GB then ~5¢/GB) — not a seat.</p>
+    <p class="hero-kicker">Two products · Chamber · TRU8 · Suite</p>
+    <h1 class="hero-title">Chamber + TRU8</h1>
+    <p class="hero-line">Chamber seals JSON. TRU8 compresses. Each has its own Day · Month · Year.</p>
+    <p class="hero-line" style="color:var(--gray);font-weight:500"><strong style="color:var(--text)">Chamber</strong> (security) Day $12.50 · Month $87.50 · Year $950 — no TRU8. <strong style="color:var(--text)">TRU8</strong> (compression) Day $24.99 · Month $175 · Year $1,900 — year = both products.</p>
+    <p class="hero-sub">Chamber is half the matching TRU8 tier. TRU8 Year ($1,900) beats 12 × $175. Suite on /pps meters jobs (100 GB then ~5¢/GB) — not a seat.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="/chamber">TruChamber</a>
-      <a class="btn btn-secondary" href="/demos">TRU8 demos</a>
-      <a class="btn btn-secondary" href="/pps">Suite jobs</a>
+      <a class="btn btn-primary" href="https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C" target="_blank" rel="noopener">TRU8 Year · $1,900</a>
+      <a class="btn btn-secondary" href="/chamber">Chamber only</a>
+      <a class="btn btn-secondary" href="/demos">Free TRU8 demos</a>
     </div>
   </section>
 
@@ -170,32 +171,32 @@
 
   <section class="section wrap" id="what">
     <div class="reveal">
-      <p class="section-label">What it is</p>
-      <h2>TruChamber is the product. TRU8 rides the seat.</h2>
-      <p class="lede">Three hours in the <strong>black box</strong> (free). Then buy a <strong>seat</strong> — Day $24.99, Month $175, or Year $1,750. A seat includes TRU8 compression. Suite is a separate <strong>meter</strong> (100 GB then ~5¢/GB). Historical ZRW / CDDG dollars are other engines, not this product.</p>
+      <p class="section-label">Two products</p>
+      <h2>Chamber is security. TRU8 is compression.</h2>
+      <p class="lede">Each product has Day · Month · Year. Chamber is half the matching TRU8 price and does <strong>not</strong> include TRU8. TRU8 Day and Month are compression only. <strong>TRU8 Year $1,900</strong> is both products for one year. Suite is a separate <strong>meter</strong> (100 GB then ~5¢/GB).</p>
       <div class="tokens">
         <div class="token-row">
-          <span class="token-id">BOX</span>
-          <span class="token-name">3-hour black box<small>free trial from first run</small></span>
-          <span class="token-out">→ live</span>
+          <span class="token-id">CH DAY</span>
+          <span class="token-name">$12.50<small>Chamber security · 24 hours · no TRU8</small></span>
+          <span class="token-out">→ half</span>
         </div>
         <div class="token-row">
-          <span class="token-id">DAY</span>
-          <span class="token-name">$24.99<small>24-hour seat · includes TRU8</small></span>
-          <span class="token-out">→ pass</span>
-        </div>
-        <div class="token-row">
-          <span class="token-id">MONTH</span>
-          <span class="token-name">$175<small>calendar month · 12× = $2,100</small></span>
+          <span class="token-id">CH YR</span>
+          <span class="token-name">$950<small>Chamber security · year · half of $1,900</small></span>
           <span class="token-out">→ seat</span>
         </div>
         <div class="token-row">
-          <span class="token-id">YEAR</span>
-          <span class="token-name">$1,750<small>two months free vs monthly</small></span>
-          <span class="token-out">→ best</span>
+          <span class="token-id">T8 DAY</span>
+          <span class="token-name">$24.99<small>TRU8 compression · 24 hours · no Chamber</small></span>
+          <span class="token-out">→ pack</span>
+        </div>
+        <div class="token-row">
+          <span class="token-id">T8 YR</span>
+          <span class="token-name">$1,900<small>both products · full year · beats 12 × $175</small></span>
+          <span class="token-out">→ both</span>
         </div>
       </div>
-      <p class="lede" style="margin-top:24px;margin-bottom:0">TRU8 public demos stay free with credit: Powered by TRU8 · Slid Phi Labs. Suite jobs live on /pps (meter, not a TruChamber seat).</p>
+      <p class="lede" style="margin-top:24px;margin-bottom:0">TRU8 public demos stay free with credit: Powered by TRU8 · Slid Phi Labs. Suite jobs live on /pps (meter, not a Chamber or TRU8 seat).</p>
     </div>
   </section>
 
@@ -203,7 +204,7 @@
     <div class="reveal">
       <p class="section-label">TRU8 · compression demos</p>
       <h2>Feel the numbers.</h2>
-      <p class="lede">These tokens are public TRU8 demos. Production TRU8 comes with a TruChamber seat. Browser only — no upload, no account.</p>
+      <p class="lede">These tokens are public TRU8 demos. Production TRU8 is a TRU8 Day / Month / Year plan. Browser only — no upload, no account.</p>
       <div class="demo-lab">
         <div class="demo-panel">
           <h3>T_ZERO · dormant run</h3>
@@ -282,12 +283,12 @@
   <section class="wrap">
     <div class="band reveal">
       <div>
-        <h2>3-hour black box. Then pick a seat.</h2>
-        <p>Day $24.99 · Month $175 · Year $1,750. Yearly saves $350 vs paying monthly all year. A seat includes TRU8. Inbox corey@slidphilabs.com — Stripe links for the new seats are not wired yet.</p>
+        <h2>Pick the product. Then pick the term.</h2>
+        <p>Chamber Year $950 = security only. TRU8 Year $1,900 = both products. Stripe is live. Inbox corey@slidphilabs.com.</p>
         <p style="margin-top:12px" class="credit-pill">Powered by TRU8 · Slid Phi Labs</p>
       </div>
       <div class="band-actions">
-        <a class="btn btn-primary" href="/chamber">See seats</a>
+        <a class="btn btn-primary" href="/license">See prices</a>
         <a class="btn btn-secondary" href="/license">Terms</a>
       </div>
     </div>
@@ -299,12 +300,12 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand">Slid Phi Labs</div>
-        <p class="footer-note">TruChamber = the product · TRU8 comes with the seat · Suite = meter. Inbox: corey@slidphilabs.com</p>
+        <p class="footer-note">Chamber = security · TRU8 = compression · TRU8 Year = both · Suite = meter. Inbox: corey@slidphilabs.com</p>
       </div>
       <div class="footer-col">
         <h4>Product</h4>
         <a href="/">Home</a>
-        <a href="/chamber">TruChamber</a>
+        <a href="/chamber">Chamber</a>
         <a href="/demos">Demos</a>
         <a href="/license">License / seats</a>
         <a href="/about">About</a>
@@ -319,7 +320,7 @@
       </div>
     </div>
     <div class="footer-credit">
-      <span><strong>Slid Phi Labs</strong> · TruChamber Day $24.99 · Month $175 · Year $1,750 · Suite ¢/GB</span>
+      <span><strong>Slid Phi Labs</strong> · Chamber $12.50 / $87.50 / $950 · TRU8 $24.99 / $175 / $1,900 · Suite ¢/GB</span>
       <span>© 2026 Slid Phi Labs</span>
     </div>
   </div>

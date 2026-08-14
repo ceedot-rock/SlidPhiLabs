@@ -2,7 +2,7 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "TruChamber seats: Day $24.99 · Month $175 · Year $1,750 (TRU8 included). Suite meters jobs. TruGame building.",
+  "description": "Two products: Chamber (security Day/Month/Year) + TRU8 (compression Day/Month/Year). TRU8 Year $1900 = both products + seat.",
   "version": "1.13.1",
   "updated": "2026-08-13",
   "standard": "https://agents-txt.com",
@@ -26,20 +26,44 @@
       "suite": "https://www.slidphilabs.com/pps",
       "github": "https://github.com/ceedot-rock/TRU8",
       "demos": "https://www.slidphilabs.com/demos",
-      "license": "https://www.slidphilabs.com/access?product=tru8-commercial",
-      "access_sku": "tru8-commercial",
+      "comes_with": "TRU8 Day/Month = compression only. TRU8 Year = both products. Not included on chamber-only SKUs.",
+      "access": "https://www.slidphilabs.com/access?product=tru8-year",
       "fulfill_email": "corey@slidphilabs.com",
-      "historical_engine": "OmniWave / SPL Codec (licensed, not the public face)"
+      "historical_engine": "OmniWave / SPL Codec (licensed, not the public face)",
+      "price": "Day $24.99 \u00b7 Month $175 \u00b7 Year $1,900 (year = both products + seat)",
+      "skus": [
+        "tru8-day",
+        "tru8-month",
+        "tru8-year"
+      ],
+      "stripe": {
+        "day": "https://buy.stripe.com/4gM3cw0kR9lu4Tb54k6wE0A",
+        "month": "https://buy.stripe.com/8x23cw9Vr0OY85n54k6wE0B",
+        "year": "https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C"
+      },
+      "note": "TRU8 Year includes Chamber seat for the full year."
     },
     {
-      "id": "truchamber",
-      "name": "TruChamber",
+      "id": "chamber",
+      "name": "Chamber",
       "role": "product_seats",
       "url": "https://www.slidphilabs.com/chamber",
       "sdk": "https://github.com/ceedot-rock/json-chamber-sdk",
-      "price": "Day $24.99 · Month $175 · Year $1,750",
-      "includes": "TRU8 on a purchased seat",
-      "access": "https://www.slidphilabs.com/access?product=truchamber-month"
+      "price": "Day $12.50 \u00b7 Month $87.50 \u00b7 Year $950 (security only, half)",
+      "includes": "Full stack = Chamber + TRU8. Chamber-only = security, half price, no TRU8 production.",
+      "skus": [
+        "chamber-day",
+        "chamber-month",
+        "chamber-year"
+      ],
+      "stripe": {
+        "day": "https://buy.stripe.com/14A4gAebHcxG0CV9kA6wE0x",
+        "month": "https://buy.stripe.com/3cI5kEffL0OY4TbfIY6wE0y",
+        "year": "https://buy.stripe.com/7sYfZid7D55edpHcwM6wE0z"
+      },
+      "access": "https://www.slidphilabs.com/access?product=chamber-year",
+      "pricing_sot": "https://www.slidphilabs.com/pricing.json",
+      "fulfill_email": "corey@slidphilabs.com"
     },
     {
       "id": "trugame",

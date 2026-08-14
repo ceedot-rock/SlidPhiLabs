@@ -3,25 +3,26 @@
   "updated": "2026-08-13",
   "projects": [
     {
-      "id": "truchamber",
-      "name": "TruChamber",
+      "id": "chamber",
+      "name": "Chamber",
       "status": "live",
-      "role": "the product — 3h black box, then a seat; seat includes TRU8",
-      "price": "Day $24.99 · Month $175 · Year $1,750",
+      "role": "security product — 3h black box, then a Chamber seat; no TRU8",
+      "price": "Day $12.50 · Month $87.50 · Year $950",
       "url": "https://www.slidphilabs.com/chamber"
     },
     {
       "id": "tru8",
       "name": "TRU8",
       "status": "live",
-      "role": "compression tool — demos free; production path comes with a TruChamber seat",
+      "role": "compression product — demos free; Day/Month compression only; Year = both products",
+      "price": "Day $24.99 · Month $175 · Year $1,900",
       "url": "https://www.slidphilabs.com/demos"
     },
     {
       "id": "suite",
       "name": "Pay Per Suite",
       "status": "live",
-      "role": "metered encode/decode jobs — not a TruChamber seat",
+      "role": "metered encode/decode jobs — not Chamber, not TRU8",
       "price": "100 GB free, then ~5¢/GB (~4¢ bulk)",
       "url": "https://www.slidphilabs.com/pps"
     },

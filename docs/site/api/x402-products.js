@@ -17,7 +17,15 @@
  *   X402_ASSET_BASE    Base USDC (default Circle mainnet)
  *   X402_NETWORK       solana-mainnet-beta (default)
  *   SOLANA_RPC_URL, BASE_RPC_URL, X402_DEV_BYPASS
+ *   X402_CLAIM_SECRET  optional HMAC for Access claim (falls back to STRIPE_* keys)
  */
+
+import { signClaim } from "./lib/x402-claim.mjs";
+import {
+  buildDeliverable,
+  normalizeSku as accessNormalizeSku,
+} from "./access-verify.js";
+
 const DB = (
   process.env.NOTION_GROK_NOTES_DB ||
   process.env.NOTION_GROK_NOTES_PAGE_ID ||
@@ -37,45 +45,98 @@ const TRANSFER_TOPIC =
 
 /** Standing products — cents match public Stripe catalog */
 const CATALOG = {
-  "truchamber-day": {
-    name: "TruChamber Day Pass",
+  "chamber-day": {
+    name: "Chamber · Day",
+    amount_cents: 1250,
+    stripe: "https://buy.stripe.com/14A4gAebHcxG0CV9kA6wE0x",
+    kind: "chamber",
+    blurb: "Security only · $12.50 · no TRU8 production",
+    access: "https://www.slidphilabs.com/access?product=chamber-day",
+    fulfill_email: "corey@slidphilabs.com",
+  },
+  "chamber-month": {
+    name: "Chamber · Month",
+    amount_cents: 8750,
+    stripe: "https://buy.stripe.com/3cI5kEffL0OY4TbfIY6wE0y",
+    kind: "chamber",
+    blurb: "Security only · $87.50 · no TRU8 production",
+    access: "https://www.slidphilabs.com/access?product=chamber-month",
+    fulfill_email: "corey@slidphilabs.com",
+  },
+  "chamber-year": {
+    name: "Chamber · Year",
+    amount_cents: 95000,
+    stripe: "https://buy.stripe.com/7sYfZid7D55edpHcwM6wE0z",
+    kind: "chamber",
+    blurb: "Security only · $950 · half of TRU8 Year · no TRU8 production",
+    access: "https://www.slidphilabs.com/access?product=chamber-year",
+    fulfill_email: "corey@slidphilabs.com",
+  },
+  "tru8-day": {
+    name: "TRU8 · Day",
     amount_cents: 2499,
-    stripe: null,
-    kind: "seat",
-    blurb:
-      "TruChamber seat · 24 hours. Includes TRU8. After the 3-hour black-box trial. Email corey@slidphilabs.com — Stripe link not wired yet.",
-    access: "https://www.slidphilabs.com/access?product=truchamber-day",
+    stripe: "https://buy.stripe.com/4gM3cw0kR9lu4Tb54k6wE0A",
+    kind: "tru8",
+    blurb: "TRU8 production only · $24.99 · no Chamber seat",
+    access: "https://www.slidphilabs.com/access?product=tru8-day",
     fulfill_email: "corey@slidphilabs.com",
   },
-  "truchamber-month": {
-    name: "TruChamber Monthly",
+  "tru8-month": {
+    name: "TRU8 · Month",
     amount_cents: 17500,
-    stripe: null,
-    kind: "seat",
-    blurb:
-      "TruChamber seat · calendar month $175. Includes TRU8. 12× = $2,100; yearly $1,750 is two months free.",
-    access: "https://www.slidphilabs.com/access?product=truchamber-month",
+    stripe: "https://buy.stripe.com/8x23cw9Vr0OY85n54k6wE0B",
+    kind: "tru8",
+    blurb: "TRU8 production only · $175 · no Chamber seat",
+    access: "https://www.slidphilabs.com/access?product=tru8-month",
     fulfill_email: "corey@slidphilabs.com",
   },
-  "truchamber-year": {
-    name: "TruChamber Yearly",
-    amount_cents: 175000,
-    stripe: null,
-    kind: "seat",
-    blurb:
-      "TruChamber seat · calendar year $1,750. Includes TRU8. Best rate (16.7% off 12× monthly).",
-    access: "https://www.slidphilabs.com/access?product=truchamber-year",
+  "tru8-year": {
+    name: "TRU8 · Year (both products + seat)",
+    amount_cents: 190000,
+    stripe: "https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C",
+    kind: "both",
+    blurb: "Both products + seat for full year · $1,900 · Chamber + TRU8",
+    access: "https://www.slidphilabs.com/access?product=tru8-year",
     fulfill_email: "corey@slidphilabs.com",
   },
   "tru8-commercial": {
-    name: "TruChamber Yearly (legacy sku)",
-    amount_cents: 175000,
-    stripe: null,
-    kind: "seat",
-    retired_as: "truchamber-year",
-    blurb:
-      "Alias of truchamber-year $1,750. Old $1,900 second product is retired.",
-    access: "https://www.slidphilabs.com/access?product=truchamber-year",
+    name: "TRU8 · Year (legacy alias)",
+    amount_cents: 190000,
+    stripe: "https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C",
+    kind: "both",
+    retired_as: "tru8-year",
+    blurb: "Alias of tru8-year $1,900 — both products for one year.",
+    access: "https://www.slidphilabs.com/access?product=tru8-year",
+    fulfill_email: "corey@slidphilabs.com",
+  },
+  "truchamber-day": {
+    name: "TRU8 · Day (legacy alias)",
+    amount_cents: 2499,
+    stripe: "https://buy.stripe.com/4gM3cw0kR9lu4Tb54k6wE0A",
+    kind: "tru8",
+    retired_as: "tru8-day",
+    blurb: "Alias of tru8-day.",
+    access: "https://www.slidphilabs.com/access?product=tru8-day",
+    fulfill_email: "corey@slidphilabs.com",
+  },
+  "truchamber-month": {
+    name: "TRU8 · Month (legacy alias)",
+    amount_cents: 17500,
+    stripe: "https://buy.stripe.com/8x23cw9Vr0OY85n54k6wE0B",
+    kind: "tru8",
+    retired_as: "tru8-month",
+    blurb: "Alias of tru8-month.",
+    access: "https://www.slidphilabs.com/access?product=tru8-month",
+    fulfill_email: "corey@slidphilabs.com",
+  },
+  "truchamber-year": {
+    name: "TRU8 · Year (legacy alias)",
+    amount_cents: 190000,
+    stripe: "https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C",
+    kind: "both",
+    retired_as: "tru8-year",
+    blurb: "Alias of tru8-year $1,900 — both products for one year.",
+    access: "https://www.slidphilabs.com/access?product=tru8-year",
     fulfill_email: "corey@slidphilabs.com",
   },
   "json-chamber": {
@@ -85,7 +146,7 @@ const CATALOG = {
     kind: "retired",
     retired: true,
     blurb:
-      "Retired public offer. $99 forever unlock undercut TruChamber seats. Use Day $24.99 / Month $175 / Year $1,750.",
+      "Retired public offer. $99 forever unlock undercut every paid tier. Use Chamber or TRU8 Day/Month/Year.",
     access: "https://www.slidphilabs.com/chamber",
   },
   "cddg-split": {
@@ -230,10 +291,14 @@ const ALIASES = {
   studio: "truchamber-year",
   commercial: "truchamber-year",
   "tru8-commercial": "truchamber-year",
-  chamber: "truchamber-month",
-  truchamber: "truchamber-month",
+  chamber: "chamber-year",
+  truchamber: "chamber-year",
   "tru-chamber": "truchamber-month",
   unlock: "truchamber-day",
+  security: "chamber-year",
+  "chamber-only": "chamber-year",
+  both: "truchamber-year",
+  full: "truchamber-year",
   day: "truchamber-day",
   "day-pass": "truchamber-day",
   month: "truchamber-month",
@@ -728,9 +793,11 @@ function catalogResponse() {
     aliases: ALIASES,
     client_compat:
       "x402 exact · Solana SPL (serialized tx) and/or Base USDC (tx hash after EIP-3009/transfer)",
-    note: "Stripe for humans. Agents: POST sku → 402 accepts[] (Solana + Base mainnet) → pay → X-PAYMENT. x402 auto-claim of /access is not wired — email proof or /access?product= + order id.",
-    product_face: "TRU8",
-    x402_access_autoclaim: false,
+    note: "Stripe for humans. Agents: POST sku → 402 accepts[] (Solana + Base) → pay → X-PAYMENT → claim_token + entitlement. Open access_url or GET /api/access-verify?claim=spl1.…",
+    product_face: "TruChamber",
+    x402_access_autoclaim: true,
+    access_claim: "GET /api/access-verify?claim=<claim_token>&product=<sku>",
+    fulfill_email: "corey@slidphilabs.com",
   };
 }
 
@@ -845,18 +912,52 @@ export default async function handler(req, res) {
   }
 
   const id = orderId(sku);
+  const net = paymentResult.network || accept0.network;
+  const tx = paymentResult.signature || null;
+
+  const signed = signClaim({
+    order_id: id,
+    sku,
+    email: email || null,
+    tx,
+    network: net,
+    amount_cents: p.amount_cents,
+  });
+
+  const deliverable = buildDeliverable({
+    paid: true,
+    sku: accessNormalizeSku(sku) || sku,
+    sessionId: id,
+    email: email || null,
+    amountTotal: p.amount_cents,
+    currency: "usd",
+  });
+  if (deliverable.entitlement) {
+    deliverable.entitlement.rail = "x402";
+    deliverable.entitlement.order_id = id;
+    deliverable.entitlement.tx = tx;
+    deliverable.entitlement.network = net;
+  }
+
+  const claimToken = signed.ok ? signed.token : null;
+  const accessUrl =
+    `https://www.slidphilabs.com/access?product=${encodeURIComponent(sku)}` +
+    (claimToken ? `&claim=${encodeURIComponent(claimToken)}` : "");
+
   const title = `X402-PRODUCT ${id} · ${p.name}`;
   const detail = [
     `Order: ${id}`,
-    `Rail: x402 agentic product`,
+    `Rail: x402 agentic product · auto-claim ON`,
     `SKU: ${sku}`,
     `Name: ${p.name}`,
     `Amount: $${(p.amount_cents / 100).toFixed(2)}`,
     `Email: ${email || "(none)"}`,
-    `Tx: ${paymentResult.signature || "(n/a)"}`,
-    `Network: ${paymentResult.network || accept0.network}`,
+    `Tx: ${tx || "(n/a)"}`,
+    `Network: ${net}`,
+    `Claim: ${claimToken ? "issued" : "FAILED " + (signed.error || "")}`,
+    `Access: ${accessUrl}`,
     `Note: ${note || "(none)"}`,
-    `Deliver: license / access — see /access?product=${sku}`,
+    `PACKAGE ACCESS → corey@slidphilabs.com`,
   ].join("\n");
 
   let notion = { ok: false };
@@ -868,8 +969,8 @@ export default async function handler(req, res) {
 
   const paymentResponse = {
     success: true,
-    transaction: paymentResult.signature,
-    network: paymentResult.network || accept0.network,
+    transaction: tx,
+    network: net,
   };
 
   return json(
@@ -878,13 +979,26 @@ export default async function handler(req, res) {
     {
       ok: true,
       rail: "x402",
+      auto_claim: true,
       order_id: id,
       sku,
       product: publicProduct(sku),
       payment: paymentResponse,
+      claim_token: claimToken,
+      claim_expires_at: signed.ok ? signed.expires_at : null,
+      claim_error: signed.ok ? null : signed.error,
+      entitlement: deliverable.entitlement || null,
+      deliverable,
       notion: notion.ok,
-      access_url: `https://www.slidphilabs.com/access?product=${encodeURIComponent(sku)}`,
-      message: `Payment accepted for ${p.name}. Claim package on Access (email if provided).`,
+      access_url: accessUrl,
+      access_verify:
+        claimToken
+          ? `https://www.slidphilabs.com/api/access-verify?product=${encodeURIComponent(sku)}&claim=${encodeURIComponent(claimToken)}`
+          : null,
+      package_access_email: "corey@slidphilabs.com",
+      message: claimToken
+        ? `Payment accepted for ${p.name}. Access auto-claim ready — open access_url or use claim_token with GET /api/access-verify.`
+        : `Payment accepted for ${p.name}. Claim token failed (${signed.error}); email PACKAGE ACCESS to corey@slidphilabs.com with order ${id}.`,
     },
     {
       "PAYMENT-RESPONSE": Buffer.from(JSON.stringify(paymentResponse)).toString("base64"),

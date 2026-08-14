@@ -29,11 +29,11 @@ Officially on the project list as of 2026-08-13.
 - Demos: https://www.slidphilabs.com/demos
 - GitHub: https://github.com/ceedot-rock/TRU8
 
-### Security · Chamber (unlock — not compression, not a seat)
+### Security · Chamber
 - Page: https://www.slidphilabs.com/chamber
 - SDK: https://github.com/ceedot-rock/json-chamber-sdk
-- 3-hour black box · Day $24.99 · Month $175 · Year $1,750
-- A TruChamber seat includes TRU8
+- 3-hour black box · Day $12.50 · Month $87.50 · Year $950
+- Security only. No TRU8. Half the matching TRU8 tier.
 
 ### Olympiad
 - https://www.slidphilabs.com/olympiad
@@ -42,12 +42,12 @@ Officially on the project list as of 2026-08-13.
 https://www.slidphilabs.com/projects.json
 
 ## Wording
-- TruChamber = the product. 3h black box, then Day $24.99 · Month $175 · Year $1,750. Seat includes TRU8.
-- TRU8 = compression tool. Demos free. Production path comes with the seat.
-- Suite = metered jobs (100 GB then ~5¢/GB). Not a TruChamber seat.
+- Chamber = security. Day $12.50 · Month $87.50 · Year $950. No TRU8.
+- TRU8 = compression. Day $24.99 · Month $175 · Year $1,900 (year = both products).
+- Suite = metered jobs (100 GB then ~5¢/GB). Not a Chamber or TRU8 seat.
 - Access = entitlement claim. Not a codec dump.
 
 ## Scope
-TruChamber seats include TRU8 (closed production path).
+TRU8 Year includes Chamber. Chamber-only does not include TRU8.
 TruGame = game engine under active build (private source).
 TRU8 residual engine never open-sourced.

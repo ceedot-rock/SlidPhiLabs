@@ -1,60 +1,43 @@
-# TRU8 · Chamber · Slid Phi Labs
-> Chamber (json-chamber): 24-hour free trial · $99 permanent unlock
-> TRU8 + chamber (tru8-chamber): $1,900 / project / year (proprietary)
-> TRU8 compression demos: free with credit
+# Chamber · TRU8 · Slid Phi Labs
+> Two products. Each has Day · Month · Year.
+> Chamber (security): Day $12.50 · Month $87.50 · Year $950. No TRU8.
+> TRU8 (compression): Day $24.99 · Month $175 · Year $1,900. Year = both products.
+> TRU8 public demos: free with credit. Suite: meter, not a seat.
 
 ## Products
 - Site: https://www.slidphilabs.com/
-- **Chamber (security product):** https://www.slidphilabs.com/chamber
+- Chamber (security): https://www.slidphilabs.com/chamber
 - Chamber SDK: https://github.com/ceedot-rock/json-chamber-sdk
-- **Chamber Format Spec v1:** https://github.com/ceedot-rock/json-chamber-sdk/blob/main/CHAMBER-FORMAT-v1.md
 - TRU8 demos: https://www.slidphilabs.com/demos
-- License / Trial terms: https://www.slidphilabs.com/license
-- json-chamber unlock: $99 one-time → https://www.slidphilabs.com/chamber
-- tru8-chamber studio: $1,900 / project / year → mailto:license@slidphilabs.com
-- Credit line (TRU8 public surfaces): Powered by TRU8 · Slid Phi Labs
-- Commercial inquiry: mailto:license@slidphilabs.com · support: mailto:support@slidphilabs.com
+- License / prices: https://www.slidphilabs.com/license
+- Pricing SoT: https://www.slidphilabs.com/pricing.json
+- Inbox (all): mailto:corey@slidphilabs.com
+- Credit line: Powered by TRU8 · Slid Phi Labs
 
-## Chamber / json-chamber (security product)
+## Chamber (security)
 - φ-split keyword shares + AES-256-GCM
-- 24-hour evaluation from first run (hard cut, no grace)
-- Tamper-evident HMAC-signed license under ~/.chamber/
-- After expiry or license edit the chamber hard-kills
-- One-time $99 unlock removes the kill-switch forever
-- Pure security — no TRU8 compression engine inside
-- BSL-1.1 open source (Change Date 2030-08-13 → Apache-2.0)
-- Page: https://www.slidphilabs.com/chamber
-- SDK: https://github.com/ceedot-rock/json-chamber-sdk
-- Format (wire only): https://github.com/ceedot-rock/json-chamber-sdk/blob/main/CHAMBER-FORMAT-v1.md
+- 3-hour black box from first run (hard cut)
+- Day $12.50 · Month $87.50 · Year $950
+- Half the matching TRU8 tier
+- No TRU8 production on this ladder
+- SKUs: chamber-day | chamber-month | chamber-year
 
-## Pricing tiers
-| SKU | What | Price |
-|-----|------|-------|
-| json-chamber | JSON cloaking only | $99 one-time / domain |
-| tru8-chamber | TRU8 + chamber (smaller bundles + cloaking) | $1,900 / project / year |
-
-## Chamber Format v1 (interoperability)
-- Sealed JSON object: v, algo, k_words, r_words, nonce, tag, ct
-- algo = chamber-aes256gcm-phi · AAD = chamber-v1
-- 2-of-2 φ-split · 64-word keyword encoding
-- License / trial / unlock are out of scope of the format
-- Suggested media type (informative): application/chamber+json
-
-## Chamber trial model
-- 24 hours fully functional from first run on the machine
-- After 24h (or license tamper) the box permanently shuts off
-- One-time $99 Stripe payment removes the kill-switch forever
-
-## TRU8 (compression — separate product)
+## TRU8 (compression)
 - Public demos free with credit
-- T_ZERO / T_DICT / T_TRISUM_HOT public tokens
-- Suite (metered): free first 100 GB · then ~5¢/GB · /pps
-- Studio bundling with chamber = tru8-chamber tier (proprietary)
+- T_ZERO / T_DICT / T_TRISUM_HOT
+- Day $24.99 and Month $175 = compression only
+- Year $1,900 = Chamber + TRU8 for one year
+- SKUs: tru8-day | tru8-month | tru8-year
+- Legacy aliases: truchamber-* → tru8-*
+
+## Suite (not a seat)
+- First 100 GB free, then ~5¢/GB (~4¢ bulk)
+- https://www.slidphilabs.com/pps
 
 ## Agents
 - Discovery: https://www.slidphilabs.com/api/agent
+- Catalog: https://www.slidphilabs.com/api/x402-products
 - agents.json: https://www.slidphilabs.com/agents.json
-- Welcome: https://www.slidphilabs.com/api/welcome
 
 ## Scope
-json-chamber = security ($99). tru8-chamber = TRU8+security ($1,900/yr, closed). Format = open wire shape. TRU8 residual engine never open-sourced.
+Chamber = security. TRU8 = compression. TRU8 Year = both. Suite = meter. Residual engine never open-sourced.

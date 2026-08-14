@@ -1,7 +1,7 @@
 {
-  "service": "Slid Phi Labs — Lab Feed",
-  "version": "1.1.0",
-  "updated": "2026-08-09",
+  "service": "Slid Phi Labs \u2014 Lab Feed",
+  "version": "1.2.0",
+  "updated": "2026-08-13",
   "social": {
     "x": "https://x.com/slidphilabs",
     "handle": "@slidphilabs"
@@ -9,51 +9,96 @@
   "description": "Product updates, news, plans, and social pointers.",
   "items": [
     {
+      "id": "u-two-product-split",
+      "date": "2026-08-14",
+      "type": "product",
+      "title": "Two products — Chamber + TRU8",
+      "body": "Chamber (security) Day $12.50 · Month $87.50 · Year $950. TRU8 (compression) Day $24.99 · Month $175 · Year $1,900 (year = both). Suite still meters jobs. SoT pricing.json.",
+      "href": "https://www.slidphilabs.com/license",
+      "href_label": "Prices",
+      "tags": ["chamber", "tru8", "pricing"]
+    },
+    {
+      "id": "u-truchamber-stripe-seats",
+      "date": "2026-08-13",
+      "type": "product",
+      "title": "TruChamber seats \u2014 Stripe live",
+      "body": "Day $24.99 \u00b7 Month $175 \u00b7 Year $1,750 Payment Links live. Success \u2192 /access?product=truchamber-*&session=cs_\u2026. TRU8 ships with the seat. PACKAGE ACCESS \u2192 corey@slidphilabs.com. SoT pricing.json.",
+      "href": "https://www.slidphilabs.com/access?product=truchamber-year",
+      "href_label": "Access \u00b7 Year seat",
+      "tags": [
+        "truchamber",
+        "stripe",
+        "access",
+        "seats"
+      ]
+    },
+    {
       "id": "u-spl-v0-1-public-sketch",
       "date": "2026-08-10",
       "type": "product",
       "title": "SPL Codec v0.1 public sketch + flagship 8 B reaffirm",
-      "body": "Working residual sketch (sparse float + compress) shipped with RT. Flagship ZRW int zeros×10k still 8 B vs gzip 73 / brotli 13. Sketch numbers domain-honest (not universal crown).",
+      "body": "Working residual sketch (sparse float + compress) shipped with RT. Flagship ZRW int zeros\u00d710k still 8 B vs gzip 73 / brotli 13. Sketch numbers domain-honest (not universal crown).",
       "href": "https://www.slidphilabs.com/lab/SPL_CODEC_V0_1_BENCH_LATEST.json",
       "href_label": "v0.1 bench JSON",
-      "tags": ["spl", "zrw", "public-proof", "gate2"]
+      "tags": [
+        "spl",
+        "zrw",
+        "public-proof",
+        "gate2"
+      ]
     },
     {
       "id": "u-gate2-zrw-10k-bench",
       "date": "2026-08-10",
       "type": "product",
-      "title": "Gate 2 — ZRW zeros×10k public bench PASS",
-      "body": "Domain bench frozen: ZRW 8 B vs gzip-9 73 B · brotli-11 13 B on int32 zeros×10k (40 kB raw). Live process + compress/decompress RT. SPL public face · suite first 100 GB free.",
+      "title": "Gate 2 \u2014 ZRW zeros\u00d710k public bench PASS",
+      "body": "Domain bench frozen: ZRW 8 B vs gzip-9 73 B \u00b7 brotli-11 13 B on int32 zeros\u00d710k (40 kB raw). Live process + compress/decompress RT. SPL public face \u00b7 suite first 100 GB free.",
       "href": "https://www.slidphilabs.com/lab/ZRW_ZEROS_10K_BENCH_LATEST.json",
       "href_label": "ZRW 10k bench JSON",
-      "tags": ["gate2", "zrw", "benchmark", "public-proof"]
+      "tags": [
+        "gate2",
+        "zrw",
+        "benchmark",
+        "public-proof"
+      ]
     },
     {
       "id": "u-public-proof-joint-zrw-cuni",
       "date": "2026-08-10",
       "type": "product",
-      "title": "Public proof joint — ZRW zeros×10k 8 B + CuNi/Quikgater",
-      "body": "Live process re-run PASS (8 B · me 0 · RT). Joint JSON freezes compression + agent surfaces. CuNi health green; Quikgater worker alive; Agent^Rider 402 billing blocks full agent grade.",
+      "title": "Public proof joint \u2014 ZRW zeros\u00d710k 8 B + CuNi/Quikgater",
+      "body": "Live process re-run PASS (8 B \u00b7 me 0 \u00b7 RT). Joint JSON freezes compression + agent surfaces. CuNi health green; Quikgater worker alive; Agent^Rider 402 billing blocks full agent grade.",
       "href": "https://www.slidphilabs.com/lab/PUBLIC_PROOF_JOINT_LATEST.json",
       "href_label": "Joint public proof",
-      "tags": ["zrw", "cuni", "quikgater", "public-proof"]
+      "tags": [
+        "zrw",
+        "cuni",
+        "quikgater",
+        "public-proof"
+      ]
     },
     {
       "id": "u-fix-ixg-standings-mesh",
       "date": "2026-08-10",
       "type": "ops",
-      "title": "Honesty fix pack — standings 1.2.2 · mesh chat · intention × grade",
-      "body": "OmniWave Silesia demoted from false size crown (lossless freeze + float diagnostic). Team Mesh dark-matter no longer freezes say. Focus formula intention × grade in CodEX + Mesh.",
+      "title": "Honesty fix pack \u2014 standings 1.2.2 \u00b7 mesh chat \u00b7 intention \u00d7 grade",
+      "body": "OmniWave Silesia demoted from false size crown (lossless freeze + float diagnostic). Team Mesh dark-matter no longer freezes say. Focus formula intention \u00d7 grade in CodEX + Mesh.",
       "href": "https://www.slidphilabs.com/standings",
       "href_label": "Standings 1.2.2",
-      "tags": ["standings", "mesh", "codex", "honesty"]
+      "tags": [
+        "standings",
+        "mesh",
+        "codex",
+        "honesty"
+      ]
     },
     {
       "id": "u-codex-1-1-stats-story",
       "date": "2026-08-10",
       "type": "product",
-      "title": "dViNE CodEX 1.1 — statistical freeze + lab chronicle",
-      "body": "Industry Silesia = field baseline (brotli-11 4.21× · zstd-3 ~39 MB/s). OmniWave lossless freeze ~3.13–3.60×. Float path diagnostic-only. Books II & XI expand wrong-engine honesty and Chamber vs public faces.",
+      "title": "dViNE CodEX 1.1 \u2014 statistical freeze + lab chronicle",
+      "body": "Industry Silesia = field baseline (brotli-11 4.21\u00d7 \u00b7 zstd-3 ~39 MB/s). OmniWave lossless freeze ~3.13\u20133.60\u00d7. Float path diagnostic-only. Books II & XI expand wrong-engine honesty and Chamber vs public faces.",
       "href": "https://www.slidphilabs.com/codex.html",
       "href_label": "Open CodEX 1.1",
       "tags": [
@@ -68,7 +113,7 @@
       "date": "2026-08-09",
       "type": "product",
       "title": "Lossless pack matrix: weights vs files",
-      "body": "Public CodEX extension: residual law for file corpora and agent-weight checkpoints. Exact RT · industry field baseline · residual-governance. No private coefficients.",
+      "body": "Public CodEX extension: residual law for file corpora and agent-weight checkpoints. Exact RT \u00b7 industry field baseline \u00b7 residual-governance. No private coefficients.",
       "href": "https://www.slidphilabs.com/weights-vs-files",
       "href_label": "Weights vs files",
       "tags": [
@@ -82,8 +127,8 @@
       "id": "u-999-school-factory",
       "date": "2026-08-09",
       "type": "product",
-      "title": "999° gift circle — school factory $275 live",
-      "body": "TEACHAiD MOTIS: pay $275 to create a school; forever owner cut on school GMV. Stripe live · vault desk · Financial AI Dept settle.",
+      "title": "999\u00b0 gift circle \u2014 school factory $275 live",
+      "body": "TEACHAiD MOTIS: pay $275 to create a school; forever owner cut on school GMV. Stripe live \u00b7 vault desk \u00b7 Financial AI Dept settle.",
       "href": "https://teachaid.fly.dev/campus-hub.html#school",
       "href_label": "School factory desk",
       "tags": [
@@ -97,7 +142,7 @@
       "id": "u-66-dual-doors",
       "date": "2026-08-09",
       "type": "product",
-      "title": "66° dual doors sealed on primary host",
+      "title": "66\u00b0 dual doors sealed on primary host",
       "body": "Human Stripe door + agent x402 door green on www.slidphilabs.com (Fly). Mesh + alternate host green.",
       "href": "https://www.slidphilabs.com/api/agent",
       "href_label": "Agent discovery",
@@ -111,7 +156,7 @@
       "id": "u-33-domain-supremacy",
       "date": "2026-08-09",
       "type": "product",
-      "title": "33° domain supremacy — www is product",
+      "title": "33\u00b0 domain supremacy \u2014 www is product",
       "body": "www.slidphilabs.com serves live Fly product. No ghost Wix-API claims. Proof before praise.",
       "href": "https://www.slidphilabs.com/",
       "href_label": "Home",
@@ -125,8 +170,8 @@
       "id": "u-standings-1-2",
       "date": "2026-08-09",
       "type": "product",
-      "title": "Standings v1.2.0 — zeros_1M + Silesia + cadence",
-      "body": "Records: ZRW zeros_1M → 10 B; OmniWave Silesia size lead (domain-scoped); seals 33·66·999. GET /standings.json.",
+      "title": "Standings v1.2.0 \u2014 zeros_1M + Silesia + cadence",
+      "body": "Records: ZRW zeros_1M \u2192 10 B; OmniWave Silesia size lead (domain-scoped); seals 33\u00b766\u00b7999. GET /standings.json.",
       "href": "https://www.slidphilabs.com/standings",
       "href_label": "Standings",
       "tags": [
@@ -139,8 +184,8 @@
       "id": "u-site-breathes",
       "date": "2026-08-07",
       "type": "product",
-      "title": "Site now breathes — proof bar, standings, metrics live",
-      "body": "Compression that knows it is alive. ZRW zeros×10k → 8 B. Live ratio/cycles/self-tunes. Standings first paint. GET /api/phi/metrics.",
+      "title": "Site now breathes \u2014 proof bar, standings, metrics live",
+      "body": "Compression that knows it is alive. ZRW zeros\u00d710k \u2192 8 B. Live ratio/cycles/self-tunes. Standings first paint. GET /api/phi/metrics.",
       "href": "https://www.slidphilabs.com/blog/2026-08-07-why-8b-matters",
       "href_label": "Why 8 B matters",
       "tags": [
@@ -155,7 +200,7 @@
       "date": "2026-08-07",
       "type": "product",
       "title": "Suite pricing retuned for unit economics",
-      "body": "Still free first 100 GB. Over free: under first paid egress · ~5¢/GB (2¢ bulk). Undercuts egress-class rates at volume without 15¢ loss-leaders.",
+      "body": "Still free first 100 GB. Over free: under first paid egress \u00b7 ~5\u00a2/GB (2\u00a2 bulk). Undercuts egress-class rates at volume without 15\u00a2 loss-leaders.",
       "href": "https://www.slidphilabs.com/pps",
       "href_label": "Open suite",
       "tags": [
@@ -167,8 +212,8 @@
       "id": "u-retire-try-gate",
       "date": "2026-08-07",
       "type": "product",
-      "title": "Try Gate retired — free suite is the eval path",
-      "body": "No $9 chip-in. First 100 GB free on /pps, then ~1.5¢/GB. Packages (CDDG/ZRW) unchanged. /try redirects to /pps.",
+      "title": "Try Gate retired \u2014 free suite is the eval path",
+      "body": "No $9 chip-in. First 100 GB free on /pps, then ~1.5\u00a2/GB. Packages (CDDG/ZRW) unchanged. /try redirects to /pps.",
       "href": "https://www.slidphilabs.com/pps",
       "href_label": "Open suite",
       "tags": [
@@ -180,8 +225,8 @@
       "id": "u-pricing-freemium-v2",
       "date": "2026-08-07",
       "type": "product",
-      "title": "Suite pricing redesigned: free 1 GB, then ~1.5¢/GB",
-      "body": "Freemium showcase cap (first 1 GiB free per job). Paid usage ~1.5¢/GB (0.8¢ after 50 GB over free) — far under typical cloud egress. Old ~$2/9GB slogan retired.",
+      "title": "Suite pricing redesigned: free 1 GB, then ~1.5\u00a2/GB",
+      "body": "Freemium showcase cap (first 1 GiB free per job). Paid usage ~1.5\u00a2/GB (0.8\u00a2 after 50 GB over free) \u2014 far under typical cloud egress. Old ~$2/9GB slogan retired.",
       "href": "https://www.slidphilabs.com/pps",
       "href_label": "Open suite",
       "tags": [
@@ -220,7 +265,7 @@
       "date": "2026-08-07",
       "type": "product",
       "title": "Dual-surface platform live",
-      "body": "Pub Facing for humans (/humans) and Agentic Minded for agents (/agents). One mission · two attack vectors · one team.",
+      "body": "Pub Facing for humans (/humans) and Agentic Minded for agents (/agents). One mission \u00b7 two attack vectors \u00b7 one team.",
       "href": "https://www.slidphilabs.com/humans",
       "href_label": "Open Pub Facing",
       "tags": [
@@ -233,7 +278,7 @@
       "id": "u-2026-08-07-x",
       "date": "2026-08-07",
       "type": "social",
-      "title": "Follow on X · @slidphilabs",
+      "title": "Follow on X \u00b7 @slidphilabs",
       "body": "News, product notes, and lab chatter. Official handle for Slid Phi Labs.",
       "href": "https://x.com/slidphilabs",
       "href_label": "x.com/slidphilabs",
@@ -286,7 +331,7 @@
       "date": "2026-08-05",
       "type": "product",
       "title": "Free web compress demo",
-      "body": "HTML · CSS · JS · JSON live compress/decompress. No account. Compression module front door.",
+      "body": "HTML \u00b7 CSS \u00b7 JS \u00b7 JSON live compress/decompress. No account. Compression module front door.",
       "href": "https://www.slidphilabs.com/web",
       "href_label": "Try /web",
       "tags": [
@@ -312,7 +357,7 @@
       "date": "2026-08-04",
       "type": "product",
       "title": "npm packages refreshed (agentic metadata)",
-      "body": "slid-phi, blackjack-compression, shard-zip, shard-tsdb, ZRW pack, spl-pay-per-suite — homepage + agentic fields live on registry.",
+      "body": "slid-phi, blackjack-compression, shard-zip, shard-tsdb, ZRW pack, spl-pay-per-suite \u2014 homepage + agentic fields live on registry.",
       "href": "https://www.npmjs.com/package/slid-phi",
       "href_label": "npm slid-phi",
       "tags": [
@@ -324,7 +369,7 @@
       "date": "2026-08-07",
       "type": "plan",
       "title": "Plan: cinema intro from poster",
-      "body": "Winged creator points from heavens; finger ignites agentic birth; settle dual doors (human above / agentic below). Keyframes ready — video gen on next host.",
+      "body": "Winged creator points from heavens; finger ignites agentic birth; settle dual doors (human above / agentic below). Keyframes ready \u2014 video gen on next host.",
       "href": "https://www.slidphilabs.com/",
       "href_label": "Home",
       "tags": [
@@ -337,7 +382,7 @@
       "date": "2026-08-07",
       "type": "plan",
       "title": "Plan: tighten Access delivery",
-      "body": "Pay → session verify → deliverable. Closing the loop after Stripe / x402 so buyers feel at home faster.",
+      "body": "Pay \u2192 session verify \u2192 deliverable. Closing the loop after Stripe / x402 so buyers feel at home faster.",
       "href": "https://www.slidphilabs.com/access",
       "href_label": "Access",
       "tags": [

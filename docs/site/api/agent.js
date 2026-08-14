@@ -16,6 +16,12 @@ const OSS_BLURB =
   "$199 = commercial support / integration / indemnification for the already-public library. You do not receive a secret extra engine.";
 
 const STANDING = [
+  { sku: "chamber-day", name: "Chamber · Day", usd: "12.50", kind: "chamber", blurb: "Security only. 24 hours. No TRU8 production." },
+  { sku: "chamber-month", name: "Chamber · Month", usd: "87.50", kind: "chamber", blurb: "Security only. Calendar month. No TRU8 production." },
+  { sku: "chamber-year", name: "Chamber · Year", usd: "950.00", kind: "chamber", blurb: "Security only. Half of TRU8 Year. No TRU8 production." },
+  { sku: "tru8-day", name: "TRU8 · Day", usd: "24.99", kind: "tru8", blurb: "Compression only. 24 hours. No Chamber seat." },
+  { sku: "tru8-month", name: "TRU8 · Month", usd: "175.00", kind: "tru8", blurb: "Compression only. Calendar month. No Chamber seat." },
+  { sku: "tru8-year", name: "TRU8 · Year", usd: "1900.00", kind: "both", blurb: "Both products + seat for one year. Chamber + TRU8." },
   { sku: "cddg-split", name: "CDDG:Split", usd: "199.00", kind: "license" },
   { sku: "zrw-n00b", name: "ZRW N00b", usd: "79.00", kind: "license", blurb: "Historical ZRW engine license (lab series, not the TRU8 public face)" },
   { sku: "zrw-pro", name: "ZRW Pro", usd: "249.00", kind: "license", blurb: "Historical ZRW engine license (lab series, not the TRU8 public face)" },
@@ -51,8 +57,8 @@ export default async function handler(req, res) {
   const body = {
     ok: true,
     name: "Slid Phi Labs — Platform Discovery",
-    version: "1.12.0",
-    updated: "2026-08-12",
+    version: "1.13.0",
+    updated: "2026-08-14",
     site: "https://www.slidphilabs.com",
     brand: "https://www.slidphilabs.com",
     dual_doors: {
@@ -152,7 +158,7 @@ export default async function handler(req, res) {
       prove: "https://www.slidphilabs.com/standings.json",
     },
     one_liner:
-      "TruChamber seats: Day $24.99 · Month $175 · Year $1,750 (TRU8 included). 3-hour black box free. Suite meters jobs. GET /api/agent. x402 auto-claim not wired.",
+      "Two products. Chamber (security): Day $12.50 · Month $87.50 · Year $950. TRU8 (compression): Day $24.99 · Month $175 · Year $1,900 (year = both). Suite meters jobs. GET /api/agent.",
     starter_path: "https://www.slidphilabs.com/pps",
     suite_pricing: {
       free_cap_gb: 100,
@@ -286,7 +292,7 @@ export default async function handler(req, res) {
     },
     liveness: {
       checked: "2026-08-12",
-      x402_access_autoclaim: false,
+      x402_access_autoclaim: true,
       agent_rider: {
         url: "https://agentrider.vercel.app/",
         status: "paused",
@@ -299,7 +305,7 @@ export default async function handler(req, res) {
       },
       team_mesh: { url: "https://spl-team-mesh.fly.dev", status: "live" },
     },
-    x402_access_autoclaim: false,
+    x402_access_autoclaim: true,
     codec: {
       product: "TRU8",
       engine: "TRU8",
@@ -413,7 +419,8 @@ export default async function handler(req, res) {
       "GET /api/x402-products → list SKUs",
       "POST /api/x402-products { sku, email? } → 402 + accepts[]",
       "Pay maxAmountRequired (SPL) via x402-client payFetch",
-      "200 + order_id + access_url",
+      "Retry with X-PAYMENT → 200 + order_id + claim_token + entitlement + access_url",
+      "GET /api/access-verify?claim=<claim_token>&product=<sku> → Access deliverable",
     ],
     flow_suite_job: [
       "POST /api/x402-suite { product, dataClass, op, bytes, email? } → 402 (metered quote)",

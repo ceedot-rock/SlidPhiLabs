@@ -3,23 +3,32 @@
   "name": "Slid Phi Labs",
   "version": "1.13.1",
   "site": "https://www.slidphilabs.com",
-  "mission": "Pub-facing best encode/decode compression where the domain is named and round-trip proves it — then pivot into gaming and security. Agent systems stay exact. One team.",
-  "slogan": "Encode · decode · prove · game · secure",
+  "mission": "Pub-facing best encode/decode compression where the domain is named and round-trip proves it \u2014 then pivot into gaming and security. Agent systems stay exact. One team.",
+  "slogan": "Encode \u00b7 decode \u00b7 prove \u00b7 game \u00b7 secure",
   "updated": "2026-08-13",
   "modules": {
     "compression": {
-      "products": ["TRU8", "CDDG:Split"],
+      "products": [
+        "TRU8",
+        "CDDG:Split"
+      ],
       "urls": {
         "home": "https://www.slidphilabs.com/",
         "demos": "https://www.slidphilabs.com/demos",
         "github": "https://github.com/ceedot-rock/TRU8",
         "standings": "https://www.slidphilabs.com/standings"
       },
-      "historical_engines": ["SPL Codec", "OmniWave", "ZRW"],
+      "historical_engines": [
+        "SPL Codec",
+        "OmniWave",
+        "ZRW"
+      ],
       "note": "TRU8 is the only public compression product face."
     },
     "chamber": {
-      "products": ["TruChamber"],
+      "products": [
+        "Chamber"
+      ],
       "urls": {
         "page": "https://www.slidphilabs.com/chamber",
         "sdk": "https://github.com/ceedot-rock/json-chamber-sdk",
@@ -28,9 +37,25 @@
       },
       "pricing": {
         "trial": "3-hour black box, free",
-        "truchamber-day": "$24.99 / 24 hours (includes TRU8)",
-        "truchamber-month": "$175 / calendar month (includes TRU8)",
-        "truchamber-year": "$1,750 / calendar year (includes TRU8; two months free vs 12× monthly)"
+        "chamber-day": "$12.50 / 24 hours (security only, no TRU8)",
+        "chamber-month": "$87.50 / calendar month (security only, no TRU8)",
+        "chamber-year": "$950 / calendar year (security only; half of TRU8 Year)"
+      }
+    },
+    "tru8": {
+      "products": [
+        "TRU8"
+      ],
+      "urls": {
+        "demos": "https://www.slidphilabs.com/demos",
+        "github": "https://github.com/ceedot-rock/TRU8",
+        "pricing": "https://www.slidphilabs.com/pricing.json"
+      },
+      "pricing": {
+        "demos": "free with credit",
+        "tru8-day": "$24.99 / 24 hours (compression only, no Chamber)",
+        "tru8-month": "$175 / calendar month (compression only, no Chamber)",
+        "tru8-year": "$1,900 / calendar year (both products)"
       }
     },
     "game_engine": {
@@ -38,8 +63,14 @@
       "status": "building",
       "official": true,
       "description": "Slid Phi Labs game engine under active development. Compression-aware asset pipeline (TRU8 residual path) + Chamber sealing for live/secure content. Studio-facing.",
-      "products": ["TruGame"],
-      "related": ["TRU8", "Chamber", "Great Agentic Olympiad"],
+      "products": [
+        "TruGame"
+      ],
+      "related": [
+        "TRU8",
+        "Chamber",
+        "Great Agentic Olympiad"
+      ],
       "urls": {
         "home": "https://www.slidphilabs.com/",
         "chamber": "https://www.slidphilabs.com/chamber",
@@ -59,16 +90,24 @@
       "entry_usd": "1.00"
     },
     "agent_platform": {
-      "products": ["CuNi", "Agent^Rider", "Quikgater"]
+      "products": [
+        "CuNi",
+        "Agent^Rider",
+        "Quikgater"
+      ]
     },
     "toy_store": {
       "name": "Toy Store",
-      "urls": {"html": "https://www.slidphilabs.com/toys"}
+      "urls": {
+        "html": "https://www.slidphilabs.com/toys"
+      }
     },
     "university": {
       "name": "Slid Phi University",
       "engine": "TEACHAiD",
-      "urls": {"app": "https://teachaid.fly.dev"}
+      "urls": {
+        "app": "https://teachaid.fly.dev"
+      }
     },
     "mesh": {
       "name": "Team Mesh",
@@ -96,25 +135,31 @@
     "llms_txt": "https://www.slidphilabs.com/llms.txt",
     "llms_full": "https://www.slidphilabs.com/llms-full.txt"
   },
-  "one_liner": "TruChamber seats: Day $24.99 · Month $175 · Year $1,750 (TRU8 included). 3-hour black box free. Suite meters jobs (100 GB then ¢/GB). TruGame building.",
+  "one_liner": "Chamber security (Day/Month/Year half) \u00b7 TRU8 compression (Day/Month/Year) \u00b7 TRU8 Year $1900 = both products + seat",
   "contact": {
     "email": "corey@slidphilabs.com",
     "license": "corey@slidphilabs.com",
     "package_access_subject": "PACKAGE ACCESS",
     "access": "https://www.slidphilabs.com/access",
-    "tru8_commercial_sku": "tru8-commercial",
-    "note": "One lab email only — corey@slidphilabs.com",
+    "primary_sku": "truchamber-year",
+    "seat_skus": [
+      "truchamber-day",
+      "truchamber-month",
+      "truchamber-year"
+    ],
+    "note": "One lab email only \u2014 corey@slidphilabs.com",
     "github": "https://github.com/ceedot-rock/SlidPhiLabs",
-    "x": "https://x.com/slidphilabs"
+    "x": "https://x.com/slidphilabs",
+    "chamber_only_sku": "chamber-year"
   },
   "pricing": {
-    "trial_hours": 3,
-    "truchamber_day_usd": 24.99,
-    "truchamber_month_usd": 175,
-    "truchamber_year_usd": 1750,
-    "free_cap_gb": 100,
-    "usd_per_gb_after_free": 0.05,
-    "usd_per_gb_bulk": 0.04,
+    "chamber_day": 12.5,
+    "chamber_month": 87.5,
+    "chamber_year": 950,
+    "tru8_day": 24.99,
+    "tru8_month": 175,
+    "tru8_year": 1900,
+    "tru8_year_includes": "both products + seat for full year",
     "table": "https://www.slidphilabs.com/pricing.json"
   }
 }

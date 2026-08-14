@@ -44,6 +44,42 @@ export const STRIPE_METHOD_LABELS = {
 
 /** Standing SKUs — keep in sync with x402-products.js CATALOG */
 export const PRODUCT_CATALOG = {
+  "chamber-day": {
+    name: "Chamber · Day",
+    amount_cents: 1250,
+    stripe: "https://buy.stripe.com/14A4gAebHcxG0CV9kA6wE0x",
+    kind: "chamber",
+  },
+  "chamber-month": {
+    name: "Chamber · Month",
+    amount_cents: 8750,
+    stripe: "https://buy.stripe.com/3cI5kEffL0OY4TbfIY6wE0y",
+    kind: "chamber",
+  },
+  "chamber-year": {
+    name: "Chamber · Year",
+    amount_cents: 95000,
+    stripe: "https://buy.stripe.com/7sYfZid7D55edpHcwM6wE0z",
+    kind: "chamber",
+  },
+  "tru8-day": {
+    name: "TRU8 · Day",
+    amount_cents: 2499,
+    stripe: "https://buy.stripe.com/4gM3cw0kR9lu4Tb54k6wE0A",
+    kind: "tru8",
+  },
+  "tru8-month": {
+    name: "TRU8 · Month",
+    amount_cents: 17500,
+    stripe: "https://buy.stripe.com/8x23cw9Vr0OY85n54k6wE0B",
+    kind: "tru8",
+  },
+  "tru8-year": {
+    name: "TRU8 · Year (both products)",
+    amount_cents: 190000,
+    stripe: "https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C",
+    kind: "both",
+  },
   "cddg-split": {
     name: "CDDG:Split",
     amount_cents: 19900,
@@ -153,6 +189,15 @@ export const SKU_ALIASES = {
   ppp: "suite",
   suite: "suite",
   "pay-per-suite": "suite",
+  chamber: "chamber-year",
+  "chamber-only": "chamber-year",
+  tru8: "tru8-year",
+  both: "tru8-year",
+  truchamber: "tru8-year",
+  "truchamber-day": "tru8-day",
+  "truchamber-month": "tru8-month",
+  "truchamber-year": "tru8-year",
+  "tru8-commercial": "tru8-year",
 };
 
 export function resolveSku(raw) {

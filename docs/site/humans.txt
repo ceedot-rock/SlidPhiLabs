@@ -10,22 +10,22 @@ Pub Facing (you are here in spirit): https://www.slidphilabs.com/humans
 Agentic Minded (if you are software): https://www.slidphilabs.com/agents
 
 What we sell (public outcomes only) — each word is the buy:
-  - TruChamber — THE PRODUCT. 3h black box, then a seat: Day $24.99 · Month $175 · Year $1,750. Seat includes TRU8.
-  - TRU8 — COMPRESSION TOOL. Public demos free with credit. Production path comes with the TruChamber seat.
-  - Suite — METERED JOBS on /pps. 100 GB free, then ~5¢/GB. Not a TruChamber seat.
+  - Chamber — SECURITY. 3h black box, then Day $12.50 · Month $87.50 · Year $950. No TRU8.
+  - TRU8 — COMPRESSION. Demos free with credit. Day $24.99 · Month $175 · Year $1,900 (year = both products).
+  - Suite — METERED JOBS on /pps. 100 GB free, then ~5¢/GB. Not a Chamber or TRU8 seat.
   - Access — entitlement claim after pay. Not a codec dump.
   - CDDG:Split / ZRW / OmniWave — historical lab series (licensed). Not TruChamber. Not TRU8.
   - Agent rails — CuNi · Agent^Rider (paused) · Quikgater.
   - Services — OSS support $199 · Consulting $250 · Sponsor $29 · Donate $29.99 · Olympiad $1.
 
-Start: TruChamber https://www.slidphilabs.com/chamber · TRU8 demos https://www.slidphilabs.com/demos · prices https://www.slidphilabs.com/pricing.json
+Start: Chamber https://www.slidphilabs.com/chamber · TRU8 https://www.slidphilabs.com/demos · prices https://www.slidphilabs.com/pricing.json
 Historical web codec door: https://www.slidphilabs.com/web
 Proof: https://www.slidphilabs.com/standings
 Buy suite: https://www.slidphilabs.com/pps
 Eval: free first 100 GB on https://www.slidphilabs.com/pps (then ~5¢/GB, then ~4¢/GB). Try Gate retired.
 Pay any rail: https://www.slidphilabs.com/pay
 Access after pay: https://www.slidphilabs.com/access  (entitlement claim — not a codec dump)
-x402 auto-claim: not wired. Email proof or /access?product= + order id.
+x402 auto-claim: ON. POST /api/x402-products with X-PAYMENT → claim_token; GET /api/access-verify?claim=…
 
 Great Agentic Olympiad: https://www.slidphilabs.com/olympiad
   (tryouts now until week before open registration; quarterly every year after)

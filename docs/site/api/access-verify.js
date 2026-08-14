@@ -1,42 +1,92 @@
 /**
- * GET /api/access-verify?session=cs_...&product=truchamber-year
- * Confirms Stripe Checkout Session paid status and returns deliverable pack.
+ * GET /api/access-verify?session=cs_...&product=tru8-year
+ * GET /api/access-verify?claim=spl1....&product=chamber-year
+ *
+ * Rails:
+ *   Stripe  — Checkout Session paid (cs_…)
+ *   x402    — HMAC claim token issued after X-PAYMENT verify
  *
  * Primary SKUs (SoT: /pricing.json):
- *   truchamber-day   $24.99
- *   truchamber-month $175
- *   truchamber-year  $1,750  (includes TRU8 production path)
- *
- * Legacy: try-gate instant seat; historical packages → PACKAGE ACCESS
- * Retired aliases: tru8-commercial → truchamber-year; json-chamber → seats
+ *   TRU8 (compression): tru8-day $24.99 | tru8-month $175 | tru8-year $1,900 (year = both products)
+ *   Chamber (security): chamber-day $12.50 | chamber-month $87.50 | chamber-year $950
+ *   Aliases: truchamber-* → tru8-*
  *
  * One email only: corey@slidphilabs.com
- * Env: STRIPE_SECRET_KEY or STRIPE_RESTRICTED_KEY (checkout.sessions read).
  */
+
+import { verifyClaim } from "./lib/x402-claim.mjs";
 
 const FULFILL_EMAIL = "corey@slidphilabs.com";
 const BASE = "https://www.slidphilabs.com";
 
-const TRUCHAMBER = {
-  "truchamber-day": {
-    name: "TruChamber Day Pass",
+/** Two products × Day/Month/Year. TRU8 Year = both products + seat for full year. */
+const SEATS = {
+  "chamber-day": {
+    name: "Chamber · Day",
+    list_usd: 12.5,
+    unit: "24 hours",
+    amount_cents: 1250,
+    product: "chamber",
+    stack: "chamber",
+    includes: ["Chamber security only"],
+    does_not_include: ["TRU8 production path"],
+  },
+  "chamber-month": {
+    name: "Chamber · Month",
+    list_usd: 87.5,
+    unit: "calendar month",
+    amount_cents: 8750,
+    product: "chamber",
+    stack: "chamber",
+    includes: ["Chamber security only"],
+    does_not_include: ["TRU8 production path"],
+  },
+  "chamber-year": {
+    name: "Chamber · Year",
+    list_usd: 950,
+    unit: "calendar year",
+    amount_cents: 95000,
+    product: "chamber",
+    stack: "chamber",
+    includes: ["Chamber security only"],
+    does_not_include: ["TRU8 production path"],
+  },
+  "tru8-day": {
+    name: "TRU8 · Day",
     list_usd: 24.99,
     unit: "24 hours",
     amount_cents: 2499,
+    product: "tru8",
+    stack: "tru8",
+    includes: ["TRU8 production path"],
+    does_not_include: ["Chamber security seat"],
   },
-  "truchamber-month": {
-    name: "TruChamber Monthly",
+  "tru8-month": {
+    name: "TRU8 · Month",
     list_usd: 175,
     unit: "calendar month",
     amount_cents: 17500,
+    product: "tru8",
+    stack: "tru8",
+    includes: ["TRU8 production path"],
+    does_not_include: ["Chamber security seat"],
   },
-  "truchamber-year": {
-    name: "TruChamber Yearly",
-    list_usd: 1750,
+  "tru8-year": {
+    name: "TRU8 · Year (both products + seat)",
+    list_usd: 1900,
     unit: "calendar year",
-    amount_cents: 175000,
+    amount_cents: 190000,
+    product: "tru8",
+    stack: "both",
+    includes: [
+      "TRU8 production path",
+      "Chamber security seat",
+      "Both products for the full year",
+    ],
+    does_not_include: [],
   },
 };
+const TRUCHAMBER = SEATS;
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -52,7 +102,8 @@ function simpleSeatId(sessionId, sku) {
     h = Math.imul(h, 16777619);
   }
   let prefix = "tg_";
-  if (sku.startsWith("truchamber-")) prefix = "tc_";
+  if (sku.startsWith("tru8-") || sku.startsWith("truchamber-")) prefix = "t8_";
+  else if (sku.startsWith("chamber-")) prefix = "ch_";
   else if (sku === "tru8-commercial") prefix = "t8_";
   return prefix + (h >>> 0).toString(16).padStart(8, "0");
 }
@@ -76,7 +127,7 @@ function packageMailto(product, sessionId, email) {
   );
 }
 
-function normalizeSku(raw) {
+export function normalizeSku(raw) {
   const s = String(raw || "")
     .trim()
     .toLowerCase();
@@ -94,40 +145,61 @@ function normalizeSku(raw) {
     "zrw-pro-starter": "zrw-pro",
     "zrw-l33t-unlimited": "zrw-l33t",
     support: "support-integration",
-    // TruChamber seats (primary)
-    day: "truchamber-day",
-    "day-pass": "truchamber-day",
-    "truchamber-day-pass": "truchamber-day",
-    month: "truchamber-month",
-    monthly: "truchamber-month",
-    year: "truchamber-year",
-    yearly: "truchamber-year",
-    annual: "truchamber-year",
-    truchamber: "truchamber-year",
-    seat: "truchamber-year",
-    // retired → year seat
-    tru8: "truchamber-year",
-    "tru8-commercial": "truchamber-year",
-    "tru8-chamber": "truchamber-year",
-    "tru8_chamber": "truchamber-year",
-    license: "truchamber-year",
-    studio: "truchamber-year",
-    commercial: "truchamber-year",
-    "project-license": "truchamber-year",
-    chamber: "truchamber-year",
-    "json-chamber": "truchamber-year",
-    "chamber-unlock": "truchamber-year",
-    unlock: "truchamber-year",
+    // Chamber product
+    "chamber-day": "chamber-day",
+    "chamber-month": "chamber-month",
+    "chamber-year": "chamber-year",
+    chamber: "chamber-year",
+    security: "chamber-year",
+    "security-only": "chamber-year",
+    "chamber-only": "chamber-year",
+    "json-chamber": "chamber-year",
+    unlock: "chamber-year",
+    // TRU8 product
+    "tru8-day": "tru8-day",
+    "tru8-month": "tru8-month",
+    "tru8-year": "tru8-year",
+    tru8: "tru8-year",
+    day: "tru8-day",
+    month: "tru8-month",
+    year: "tru8-year",
+    yearly: "tru8-year",
+    annual: "tru8-year",
+    both: "tru8-year",
+    full: "tru8-year",
+    seat: "tru8-year",
+    truchamber: "tru8-year",
+    "truchamber-day": "tru8-day",
+    "truchamber-month": "tru8-month",
+    "truchamber-year": "tru8-year",
+    "tru8-commercial": "tru8-year",
+    "tru8-chamber": "tru8-year",
+    license: "tru8-year",
+    studio: "tru8-year",
+    commercial: "tru8-year",
+    // legacy
+    "day-pass": "tru8-day",
+    monthly: "tru8-month",
+    residual: "cddg-split",
   };
   return aliases[s] || s || null;
 }
 
 function buildTruchamberDeliverable({ paid, sku, sessionId, email, amountTotal, currency }) {
-  const meta = TRUCHAMBER[sku];
+  const meta = SEATS[sku];
   const seat_id = simpleSeatId(sessionId, sku);
+  const both = meta.stack === "both";
+  const isChamber = meta.stack === "chamber";
+  const isTru8Only = meta.stack === "tru8";
+  const includes = meta.includes || [];
+  const doesNot = (meta.does_not_include || []).concat([
+    "Instant residual engine tarball on this page",
+    "Suite meter credit (use /pps separately)",
+  ]);
+  const pack = both ? "tru8" : isChamber ? "chamber" : "tru8";
   const entitlement = {
     type: "slid_phi_labs_entitlement",
-    version: "1.1",
+    version: "1.2",
     sku,
     name: meta.name,
     seat_id,
@@ -138,89 +210,106 @@ function buildTruchamberDeliverable({ paid, sku, sessionId, email, amountTotal, 
     currency: currency || "usd",
     list_price_usd: meta.list_usd,
     unit: meta.unit,
+    stack: meta.stack,
     issued_at: new Date().toISOString(),
     issuer: BASE,
-    product: "TruChamber",
-    includes: [
-      "TruChamber cloak/open under live license",
-      "TRU8 production path with this seat (not a public residual dump)",
-    ],
-    ip_guard:
-      "Seat entitlement only. Residual / production TRU8 ships via human PACKAGE ACCESS — never as a public download from Access.",
+    product: both ? "TRU8 Year (both products)" : isChamber ? "Chamber" : "TRU8",
+    includes,
+    package_access: "open",
+    ip_guard: both
+      ? "TRU8 Year = Chamber seat + TRU8 production for full year. Package Access opens on payment confirm."
+      : isChamber
+        ? "Chamber security only. Half price. No TRU8 production. Package Access open on payment."
+        : "TRU8 production only for this term. Chamber seat not included (buy TRU8 Year for both).",
     ships: {
       entitlement_json: true,
-      what_ships: BASE + "/access/packs/truchamber/what-ships.md",
-      checklist: BASE + "/access/packs/truchamber/checklist.md",
+      package_access: "open_on_payment",
+      what_ships: BASE + "/access/packs/" + pack + "/what-ships.md",
+      checklist: BASE + "/access/packs/" + pack + "/checklist.md",
       pricing: BASE + "/pricing.json",
       public_demos: BASE + "/demos",
       chamber: BASE + "/chamber",
+      sdk: "https://github.com/ceedot-rock/json-chamber-sdk",
     },
-    does_not_include: [
-      "Instant residual engine tarball on this page",
-      "Public dump of closed coefficients",
-      "Suite meter credit (use /pps separately)",
-    ],
+    does_not_include: doesNot,
     human_followup: {
       email: FULFILL_EMAIL,
-      subject: "PACKAGE ACCESS " + sku + " " + seat_id,
+      subject: "SUPPORT " + sku + " " + seat_id,
+      note: "Optional help only — Package Access already open after payment.",
     },
   };
 
   return {
-    state: "paid_confirmed",
+    state: "package_open",
+    package_access: "open",
     sku,
-    title: meta.name + " — payment confirmed",
-    instant: false,
+    title: meta.name + " — Package Access OPEN",
+    instant: true,
     seat_id,
     summary:
-      "Stripe reports paid for " +
-      meta.name +
-      " (" +
-      meta.unit +
-      "). Download entitlement JSON. Package / license key ships from corey@ (usually same day). Access is not a residual dump.",
+      "Payment confirmed. Package Access is open now — no extra email gate. " +
+      (both
+        ? "TRU8 Year = Chamber seat + TRU8 for the full year (both products)."
+        : isChamber
+          ? "Chamber security only — half price. No TRU8 production."
+          : "TRU8 production only for this term. Chamber not included.") +
+      " Download your entitlement and install pack below.",
     entitlement,
     downloads: [
       {
         id: "what-ships",
-        label: "What ships",
-        href: "/access/packs/truchamber/what-ships.md",
+        label: "Open package guide",
+        href: "/access/packs/" + pack + "/what-ships.md",
       },
       {
         id: "checklist",
-        label: "Fulfillment checklist",
-        href: "/access/packs/truchamber/checklist.md",
+        label: "Install checklist",
+        href: "/access/packs/" + pack + "/checklist.md",
+      },
+      {
+        id: "sdk",
+        label: "Chamber SDK",
+        href: "https://github.com/ceedot-rock/json-chamber-sdk",
       },
     ],
     steps: [
       {
         n: 1,
-        title: "Email PACKAGE ACCESS",
-        href: packageMailto(sku, sessionId, email),
-        detail: "To " + FULFILL_EMAIL + " only. Include product, session, checkout email.",
+        title: "Download entitlement JSON",
+        detail: "Your Package Access proof (seat_id " + seat_id + "). Use the button on this page.",
       },
       {
         n: 2,
-        title: "Read what ships",
-        href: "/access/packs/truchamber/what-ships.md",
-        detail: "Seat scope + TRU8 with seat — no public secret dump.",
+        title: "Open package guide",
+        href: "/access/packs/" + pack + "/what-ships.md",
+        detail: both
+          ? "Both products full year — install path."
+          : isChamber
+            ? "Chamber security install path."
+            : "TRU8 production install path.",
       },
       {
         n: 3,
-        title: "Public demos while you wait",
-        href: "/demos",
-        detail: "TRU8 public tokens free with credit.",
+        title: isChamber || both ? "Get Chamber SDK" : "TRU8 demos + production path",
+        href: isChamber || both
+          ? "https://github.com/ceedot-rock/json-chamber-sdk"
+          : "/demos",
+        detail:
+          "Install from the open pack. Support (optional): " +
+          FULFILL_EMAIL +
+          " subject SUPPORT " +
+          sku +
+          ".",
       },
     ],
     next:
-      "Email " +
+      "Package Access is open. Download entitlement JSON, follow the package guide. Email " +
       FULFILL_EMAIL +
-      " subject PACKAGE ACCESS " +
-      sku +
-      " with this session id (usually same day).",
+      " only if you need human support.",
   };
 }
 
-function buildDeliverable({ paid, sku, sessionId, email, amountTotal, currency }) {
+export function buildDeliverable({ paid, sku, sessionId, email, amountTotal, currency }) {
   if (!paid) {
     return {
       state: "not_paid",
@@ -232,7 +321,7 @@ function buildDeliverable({ paid, sku, sessionId, email, amountTotal, currency }
   const product = sku || "unknown";
   const base = BASE;
 
-  if (TRUCHAMBER[product]) {
+  if (SEATS[product]) {
     return buildTruchamberDeliverable({
       paid,
       sku: product,
@@ -309,12 +398,12 @@ function buildDeliverable({ paid, sku, sessionId, email, amountTotal, currency }
         },
         {
           n: 2,
-          title: "Upgrade to TruChamber seat",
-          href: "/access?product=truchamber-year",
-          detail: "Day $24.99 · Month $175 · Year $1,750.",
+          title: "Buy TRU8 production",
+          href: "/access?product=tru8-year",
+          detail: "Day $24.99 · Month $175 · Year $1,900 (year = both products).",
         },
       ],
-      next: "Download entitlement JSON, then consider a TruChamber seat.",
+      next: "Download entitlement JSON, then consider a TRU8 or Chamber plan.",
     };
   }
 
@@ -364,6 +453,12 @@ function buildDeliverable({ paid, sku, sessionId, email, amountTotal, currency }
   };
 }
 
+function q(req, name) {
+  const v = req.query?.[name];
+  if (Array.isArray(v)) return v[0];
+  return v;
+}
+
 export default async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") return res.status(204).end();
@@ -371,11 +466,65 @@ export default async function handler(req, res) {
     return res.status(405).json({ ok: false, error: "method_not_allowed" });
   }
 
-  const sessionId = String(req.query.session || req.query.session_id || "").trim();
-  const productQ = normalizeSku(req.query.product || req.query.sku || "");
+  const sessionId = String(q(req, "session") || q(req, "session_id") || "").trim();
+  const claimTok = String(q(req, "claim") || q(req, "x402_claim") || q(req, "token") || "").trim();
+  const productQ = normalizeSku(q(req, "product") || q(req, "sku") || "");
+
+  // --- x402 auto-claim path ---
+  if (claimTok) {
+    const v = verifyClaim(claimTok);
+    if (!v.ok) {
+      return res.status(401).json({
+        ok: false,
+        error: v.error || "claim_invalid",
+        message: "x402 claim token invalid or expired. Re-buy or email PACKAGE ACCESS.",
+      });
+    }
+    const sku = normalizeSku(productQ || v.payload.sku) || v.payload.sku;
+    const deliverable = buildDeliverable({
+      paid: true,
+      sku,
+      sessionId: v.payload.order_id,
+      email: v.payload.email || null,
+      amountTotal: v.payload.amount_cents,
+      currency: "usd",
+    });
+    if (deliverable.entitlement) {
+      deliverable.entitlement.rail = "x402";
+      deliverable.entitlement.order_id = v.payload.order_id;
+      deliverable.entitlement.tx = v.payload.tx || null;
+      deliverable.entitlement.network = v.payload.network || null;
+      deliverable.entitlement.claim_expires_at = v.payload.exp
+        ? new Date(v.payload.exp * 1000).toISOString()
+        : null;
+    }
+    return res.status(200).json({
+      ok: true,
+      paid: true,
+      rail: "x402",
+      status: "complete",
+      payment_status: "paid",
+      order_id: v.payload.order_id,
+      session_id: v.payload.order_id,
+      amount_total: v.payload.amount_cents,
+      currency: "usd",
+      email: v.payload.email || null,
+      product_hint: sku,
+      tx: v.payload.tx || null,
+      network: v.payload.network || null,
+      claim_expires_at: v.payload.exp
+        ? new Date(v.payload.exp * 1000).toISOString()
+        : null,
+      deliverable,
+    });
+  }
 
   if (!sessionId || !sessionId.startsWith("cs_")) {
-    return res.status(400).json({ ok: false, error: "missing_or_invalid_session" });
+    return res.status(400).json({
+      ok: false,
+      error: "missing_or_invalid_session",
+      message: "Provide session=cs_… (Stripe) or claim=spl1.… (x402).",
+    });
   }
 
   const key =
@@ -419,12 +568,15 @@ export default async function handler(req, res) {
     let sku = productHint;
     if (!sku && paid && amountTotal === 900) sku = "try-gate";
     if (!sku && paid && amountTotal === 2900) sku = "sponsor";
-    if (!sku && paid && amountTotal === 2499) sku = "truchamber-day";
-    if (!sku && paid && amountTotal === 17500) sku = "truchamber-month";
-    if (!sku && paid && amountTotal === 175000) sku = "truchamber-year";
-    // retired amounts → year seat path
-    if (!sku && paid && amountTotal === 9900) sku = "truchamber-year";
-    if (!sku && paid && amountTotal === 190000) sku = "truchamber-year";
+    if (!sku && paid && amountTotal === 1250) sku = "chamber-day";
+    if (!sku && paid && amountTotal === 8750) sku = "chamber-month";
+    if (!sku && paid && amountTotal === 95000) sku = "chamber-year";
+    if (!sku && paid && amountTotal === 2499) sku = "tru8-day";
+    if (!sku && paid && amountTotal === 17500) sku = "tru8-month";
+    if (!sku && paid && amountTotal === 190000) sku = "tru8-year";
+    // legacy
+    if (!sku && paid && amountTotal === 175000) sku = "tru8-year";
+    if (!sku && paid && amountTotal === 9900) sku = "chamber-year";
 
     const deliverable = buildDeliverable({
       paid,
@@ -438,6 +590,7 @@ export default async function handler(req, res) {
     return res.status(200).json({
       ok: true,
       paid,
+      rail: "stripe",
       status: body.status,
       payment_status: body.payment_status,
       session_id: body.id,

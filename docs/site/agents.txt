@@ -15,8 +15,9 @@ Duos-API: https://www.slidphilabs.com/api/duos
 # Mission: One mission · two attack vectors · one team
 # Surfaces: Pub Facing (humans) · Agentic Minded (agents)
 # Public compression face: TRU8 (only). Credit: Powered by TRU8 · Slid Phi Labs
-# TruChamber = the product. 3h black box. Day $24.99 · Month $175 · Year $1,750. Seat includes TRU8.
-# Suite = metered jobs (100 GB then ~5¢/GB). Not a TruChamber seat.
+# Chamber = security. Day $12.50 · Month $87.50 · Year $950. No TRU8.
+# TRU8 = compression. Day $24.99 · Month $175 · Year $1,900 (year = both).
+# Suite = metered jobs (100 GB then ~5¢/GB). Not a Chamber or TRU8 seat.
 # Module 1 — Compression: TRU8 (ZRW / OmniWave / SPL Codec = historical lab series)
 # Module 2 — Agent platform: CuNi · Agent^Rider (paused) · Quikgater
 
@@ -29,7 +30,7 @@ Commercial: mailto:corey@slidphilabs.com
 
 Protocols: x402
 Suite: free first 100 GB then ~5¢/GB (first 100 paid GiB) then ~4¢/GB on /pps (Try Gate retired)
-x402_access_autoclaim: false
+x402_access_autoclaim: true
 # Live product host (PRIMARY .com): https://www.slidphilabs.com · alternate https://slidphilabs.fly.dev
 Payments: GET /api/payments · POST /api/checkout · UI /pay
 

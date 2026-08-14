@@ -1,61 +1,103 @@
 {
-  "updated": "2026-08-13",
+  "updated": "2026-08-14",
   "inbox": "corey@slidphilabs.com",
-  "rule": "Every dollar names a product and a unit. Cheaper path never buys the same thing as a dearer path. Yearly beats 12× monthly.",
-  "truchamber": {
-    "product": "TruChamber",
-    "includes_on_seat": "TRU8 compression (production path, not a public dump)",
-    "trial": { "hours": 3, "name": "black box", "usd": 0 },
-    "seats": {
-      "day": {
-        "sku": "truchamber-day",
-        "usd": 24.99,
-        "unit": "24 hours",
-        "why": "Spike / eval after the black box. ~4× the implied daily of monthly, so a week of day-passes ≈ one month."
-      },
-      "month": {
-        "sku": "truchamber-month",
-        "usd": 175,
-        "unit": "calendar month",
-        "why": "12 × 175 = 2100. Must sit above yearly/12 (145.83)."
-      },
-      "year": {
-        "sku": "truchamber-year",
-        "usd": 1750,
-        "unit": "calendar year",
-        "why": "Anchor. Was 1900/project-year. 1750 = two months free vs monthly (16.7% off 2100)."
+  "rule": "Two products. Each has Day · Month · Year. Chamber = security only (half the matching TRU8 tier). TRU8 = compression. TRU8 Year = both products for one year. Suite is a meter, not a seat. Yearly beats 12× monthly on each ladder.",
+  "math": {
+    "chamber_month_x12": 1050,
+    "chamber_year": 950,
+    "chamber_year_saves": 100,
+    "tru8_month_x12": 2100,
+    "tru8_year": 1900,
+    "tru8_year_saves": 200,
+    "chamber_is_half_of_tru8": true
+  },
+  "products": {
+    "chamber": {
+      "name": "Chamber",
+      "service": "security",
+      "trial_hours": 3,
+      "trial_name": "black box",
+      "includes": ["cloak/open", "kill switch", "φ-split + AES-256-GCM"],
+      "does_not_include": ["TRU8 production residual"],
+      "note": "Half the price of the matching TRU8 tier.",
+      "plans": {
+        "day": {
+          "sku": "chamber-day",
+          "usd": 12.5,
+          "unit": "24 hours",
+          "stripe": "https://buy.stripe.com/14A4gAebHcxG0CV9kA6wE0x",
+          "access": "https://www.slidphilabs.com/access?product=chamber-day"
+        },
+        "month": {
+          "sku": "chamber-month",
+          "usd": 87.5,
+          "unit": "calendar month",
+          "stripe": "https://buy.stripe.com/3cI5kEffL0OY4TbfIY6wE0y",
+          "access": "https://www.slidphilabs.com/access?product=chamber-month"
+        },
+        "year": {
+          "sku": "chamber-year",
+          "usd": 950,
+          "unit": "calendar year",
+          "stripe": "https://buy.stripe.com/7sYfZid7D55edpHcwM6wE0z",
+          "access": "https://www.slidphilabs.com/access?product=chamber-year",
+          "why": "Half of TRU8 Year ($1,900)"
+        }
       }
     },
-    "retired": {
-      "json-chamber-99": "Forever $99 unlock undercut every seat. Retired as a public offer.",
-      "tru8-commercial-1900": "Second product for the same stack. Replaced by truchamber-year 1750.",
-      "month-90": "90 × 12 = 1080 < 1750. Inverted. Do not sell."
+    "tru8": {
+      "name": "TRU8",
+      "service": "compression",
+      "demos": "free with credit: Powered by TRU8 · Slid Phi Labs",
+      "plans": {
+        "day": {
+          "sku": "tru8-day",
+          "usd": 24.99,
+          "unit": "24 hours",
+          "includes": ["TRU8 production path"],
+          "does_not_include": ["Chamber security seat"],
+          "stripe": "https://buy.stripe.com/4gM3cw0kR9lu4Tb54k6wE0A",
+          "access": "https://www.slidphilabs.com/access?product=tru8-day"
+        },
+        "month": {
+          "sku": "tru8-month",
+          "usd": 175,
+          "unit": "calendar month",
+          "includes": ["TRU8 production path"],
+          "does_not_include": ["Chamber security seat"],
+          "stripe": "https://buy.stripe.com/8x23cw9Vr0OY85n54k6wE0B",
+          "access": "https://www.slidphilabs.com/access?product=tru8-month"
+        },
+        "year": {
+          "sku": "tru8-year",
+          "usd": 1900,
+          "unit": "calendar year",
+          "includes": ["TRU8 production path", "Chamber security seat", "both products for full year"],
+          "note": "Yearly TRU8 = seat for BOTH products for the full year.",
+          "stripe": "https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C",
+          "access": "https://www.slidphilabs.com/access?product=tru8-year"
+        }
+      }
     }
   },
   "suite": {
     "product": "Pay Per Suite",
-    "not": "Not a TruChamber seat. Metered jobs only.",
+    "not": "Not Chamber. Not a TRU8 license. Metered jobs only.",
     "free_cap_gb": 100,
     "usd_per_gb_after_free": 0.05,
-    "usd_per_gb_bulk": 0.04,
-    "min_paid_usd": 0.05
+    "usd_per_gb_bulk": 0.04
   },
-  "historical_engines": {
-    "note": "ZRW / CDDG are lab-series licenses. They do not include TruChamber or TRU8 production.",
-    "zrw-n00b": { "usd": 79, "kind": "historical-license" },
-    "zrw-pro": { "usd": 249, "kind": "historical-license" },
-    "zrw-l33t": { "usd": 699, "kind": "historical-license" },
-    "cddg-split": { "usd": 199, "kind": "historical-process" }
+  "retired": {
+    "json-chamber-99": "Forever $99 unlock undercut every paid tier. Use Chamber or TRU8 Day/Month/Year.",
+    "truchamber-1750": "Single mashed product. Replaced by Chamber ladder + TRU8 ladder. truchamber-* aliases to tru8-*.",
+    "month-90": "90 × 12 = 1080 < any honest yearly. Do not sell."
   },
-  "services": {
-    "support-oss": { "usd": 199, "skus": ["blackjack", "shard-zip", "shard-tsdb"], "note": "Support for already-public libraries. No secret engine." },
-    "slid-phi": { "usd": 199, "kind": "stub", "note": "Public stub / quote rail. Not TruChamber." },
-    "support-integration": { "usd": 199, "kind": "service" },
-    "consulting": { "usd": 250, "kind": "service", "note": "Scoped session. Sits above $199 support." }
-  },
-  "gifts_and_games": {
-    "sponsor": { "usd": 29 },
-    "donate": { "usd": 29.99 },
-    "gao-entry": { "usd": 1, "note": "Olympiad named seat — not TruChamber." }
+  "aliases": {
+    "truchamber-day": "tru8-day",
+    "truchamber-month": "tru8-month",
+    "truchamber-year": "tru8-year",
+    "tru8-commercial": "tru8-year",
+    "tru8-chamber": "tru8-year",
+    "json-chamber": "chamber-year"
   }
 }

@@ -229,7 +229,7 @@ export default async function handler(req, res) {
   } catch (e) {
     console.error("try-submit", e);
     return json(res, 500, {
-      error: "Server error issuing pass. Email ceedotrock@gmail.com with subject ZRW FREE.",
+      error: "Server error issuing pass. Email corey@slidphilabs.com with subject ZRW FREE.",
     });
   }
 }

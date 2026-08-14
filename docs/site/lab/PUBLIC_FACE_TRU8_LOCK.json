@@ -3,47 +3,57 @@
   "sealed": "2026-08-12",
   "role": "source of truth — do not regress public-face claims",
   "wording": {
-    "rule": "TruChamber is the product. TRU8 is the compression tool that ships with a purchased TruChamber seat. Suite is a separate meter. Do not sell $99 unlock and $1,900/year as two products.",
+    "rule": "Two products, two prices. Chamber = security (half). TRU8 = compression. TRU8 Year $1,900 = both products for one year. TRU8 demos free. Suite is a meter.",
     "glossary": {
-      "TruChamber": "the product — black-box trial 3 hours, then a seat: Day Pass $24.99 · Monthly $175 · Yearly $1,750. A seat includes TRU8",
-      "TRU8": "compression tool — public demos free with credit; production path comes with a TruChamber seat",
-      "seat": "a purchased TruChamber access path (day / month / year) for a named human or agent. Includes TRU8. Not the Suite meter",
-      "Suite": "metered encode/decode jobs — 100 GB free then ~5¢/GB; not TruChamber; not a seat",
+      "Chamber": "security product — 3-hour black box, then Day $12.50 · Month $87.50 · Year $950. No TRU8 production. Half the matching TRU8 tier.",
+      "TRU8": "compression product — public demos free with credit. Day $24.99 and Month $175 are compression only. Year $1,900 is both products (Chamber + TRU8) for one year.",
+      "TruChamber": "legacy name. Public face is Chamber (security) + TRU8 (compression). Old truchamber-* SKUs alias to tru8-*.",
+      "seat": "a purchased Chamber or TRU8 access path (day / month / year) for a named human or agent. Not the Suite meter.",
+      "Suite": "metered encode/decode jobs — 100 GB free then ~5¢/GB; not Chamber; not TRU8; not a seat",
       "Access": "entitlement claim after payment — not a codec dump",
-      "TruGame": "game engine (building) — not TruChamber",
+      "TruGame": "game engine (building) — not Chamber, not TRU8",
       "support-oss": "$199 blackjack / shard-* = support for the already-public library; not a secret extra engine"
     }
   },
   "product": {
-    "public_face": "TruChamber",
+    "public_face": "Chamber + TRU8",
     "credit_line": "Powered by TRU8 · Slid Phi Labs",
     "demos_free_with_credit": true,
-    "production_residual": "included with a TruChamber seat (commercially licensed; not a public dump)",
-    "continuous_1088_strong": "included with a TruChamber seat (commercially licensed; not a public dump)",
-    "truchamber": {
-      "sku_family": "truchamber",
-      "job": "product box — security cloak + TRU8 with a purchased seat",
-      "trial_hours": 3,
-      "trial_name": "black box",
-      "pathways": {
-        "day": { "sku": "truchamber-day", "price_usd": 24.99, "unit": "24 hours" },
-        "month": { "sku": "truchamber-month", "price_usd": 175, "unit": "calendar month" },
-        "year": { "sku": "truchamber-year", "price_usd": 1750, "unit": "calendar year" }
-      },
-      "includes_on_seat": ["TruChamber cloak/open", "TRU8 compression"],
-      "retired_public_skus": {
-        "json-chamber-99": "retired as a separate forever unlock — use TruChamber seat pathways",
-        "tru8-commercial-1900": "retired as a second product — yearly seat is truchamber-year $1,750"
-      }
-    },
+    "production_residual": "TRU8 Day / Month / Year (commercially licensed; not a public dump). TRU8 Year also includes Chamber.",
+    "continuous_1088_strong": "licensed with a TRU8 production plan; not a public dump",
     "license_email": "corey@slidphilabs.com",
     "github_demo": "https://github.com/ceedot-rock/TRU8",
     "site": "https://www.slidphilabs.com/",
     "demos": "https://www.slidphilabs.com/demos",
     "license_page": "https://www.slidphilabs.com/license",
     "about": "https://www.slidphilabs.com/about",
-    "historical_lab_names": ["SPL Codec", "OmniWave", "ZRW"],
-    "historical_note": "SPL Codec / OmniWave / ZRW remain licensed engines and standings series — never the homepage product face."
+    "historical_lab_names": [
+      "SPL Codec",
+      "OmniWave",
+      "ZRW"
+    ],
+    "historical_note": "SPL Codec / OmniWave / ZRW remain licensed engines and standings series — never the homepage product face.",
+    "two_products": {
+      "full_stack_year_usd": 1900,
+      "full_stack_sku": "tru8-year",
+      "chamber_only_year_usd": 950,
+      "rule": "Chamber-only is half of the matching TRU8 tier. TRU8 Year includes both products.",
+      "skus_tru8": [
+        "tru8-day",
+        "tru8-month",
+        "tru8-year"
+      ],
+      "skus_chamber": [
+        "chamber-day",
+        "chamber-month",
+        "chamber-year"
+      ],
+      "legacy_aliases": [
+        "truchamber-day",
+        "truchamber-month",
+        "truchamber-year"
+      ]
+    }
   },
   "numbers": {
     "tru8_public_claim": {
@@ -55,7 +65,10 @@
       "label": "ZRW lab series (not the public product face)",
       "zeros_10k_int32": "8 B",
       "zeros_1M": "10 B",
-      "comparators_zeros_10k": { "gzip-9": "73 B", "brotli-11": "13 B" }
+      "comparators_zeros_10k": {
+        "gzip-9": "73 B",
+        "brotli-11": "13 B"
+      }
     },
     "silesia_lossless": {
       "omniwave": "~3.13–3.60×",
@@ -73,7 +86,11 @@
     "public_author": "Corey Tasz",
     "legal_name_manuscript": "Corey Robert Ptaszenski",
     "entity_claimed": "none — no public LLC/Inc/Ltd filing is claimed",
-    "roles": ["author", "copyright holder", "inventor"],
+    "roles": [
+      "author",
+      "copyright holder",
+      "inventor"
+    ],
     "not_a_title": "founder",
     "commercial_use": "written license required",
     "contact": {
