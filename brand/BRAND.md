@@ -8,6 +8,26 @@ Mystical guardian era: **gold ornate metal · teal/cyan glow · lotus · wings �
 
 Master poster: `docs/site/assets/slid-phi-labs-master.jpg`
 
+## Commercial surface assets (2026-08-14)
+
+| File | Use | Size |
+|------|-----|------|
+| `og-poster-tru8-125000x.jpg` | Open Graph / Twitter `summary_large_image` | 1200×630 |
+| `hero-bg-tru8.jpg` | Hero video poster + body fallback | 1920×1080 |
+
+Visual: binary data vortex → crystalline TRU8 cube, teal `#00c2c7` + purple neon, “IMPRESSIVE COMPRESSION · 125,000×”.
+
+**Live site action (Host):** place both files under Fly `/assets/logos/`, then:
+
+```html
+<meta property="og:image" content="https://www.slidphilabs.com/assets/logos/og-poster-tru8-125000x.jpg"/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/logos/og-poster-tru8-125000x.jpg"/>
+<!-- and -->
+<video ... poster="/assets/logos/hero-bg-tru8.jpg">
+```
+
+Cache-bust CSS/JS after deploy.
+
 ## Product logos (uniform set · 2026-08-07)
 
 | File | Product |
