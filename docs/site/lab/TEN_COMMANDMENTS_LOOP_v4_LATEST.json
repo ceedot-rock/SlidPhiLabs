@@ -1,0 +1,88 @@
+{
+  "id": "TEN_COMMANDMENTS_LOOP_v4",
+  "sealed": "2026-08-14",
+  "source": "/10commandments · two-product residual",
+  "stand": "Two products. Chamber = security (half). TRU8 = compression. TRU8 Year $1,900 = both. Suite is a meter. One inbox corey@.",
+  "commandments": [
+    {
+      "n": 1,
+      "name": "Two products, named separately",
+      "said": "Chamber security vs TRU8 compression. Do not mash into one TruChamber seat.",
+      "shipped": true,
+      "verify": "home h1 Chamber + TRU8; pricing.json products chamber+tru8"
+    },
+    {
+      "n": 2,
+      "name": "Retired dollars stay retired",
+      "said": "$99 forever and mashed $1,750 stay history. $1,900 is TRU8 Year = both, not a second mashed product.",
+      "shipped": true,
+      "verify": "live home/access have no $1,750; license lists mash as retired"
+    },
+    {
+      "n": 3,
+      "name": "Home sells both ladders",
+      "said": "Home CTA TRU8 Year $1,900 + Chamber only. Header Chamber · TRU8.",
+      "shipped": true,
+      "verify": "index hero + nav"
+    },
+    {
+      "n": 4,
+      "name": "Chamber sells Chamber-only Stripe",
+      "said": "Chamber Day $12.50 · Month $87.50 · Year $950. No TRU8.",
+      "shipped": true,
+      "verify": "chamber.html security only + live Stripe 200"
+    },
+    {
+      "n": 5,
+      "name": "TRU8 Year is the both-products champ",
+      "said": "tru8-year $1,900 includes Chamber. Access catalog champs = chamber-year + tru8-year.",
+      "shipped": true,
+      "verify": "access CATALOG champ:true on those two"
+    },
+    {
+      "n": 6,
+      "name": "One inbox corey@",
+      "said": "Kill license@ / support@ / chamber@ / tru8@ public faces.",
+      "shipped": true,
+      "verify": "about + pay + llms + api/agent corey@ only"
+    },
+    {
+      "n": 7,
+      "name": "Stripe success map · six SKUs",
+      "said": "Host doc lists Chamber + TRU8 Day/Month/Year cents and Payment Links.",
+      "shipped": true,
+      "verify": "access/HOST_STRIPE_SUCCESS_URL.md"
+    },
+    {
+      "n": 8,
+      "name": "Discovery + sitemap residual",
+      "said": "agents/llms/platform/pricing + sitemap point at tru8-year / chamber-year. Packs alias mashed names.",
+      "shipped": true,
+      "verify": "SMOKE 27/27"
+    },
+    {
+      "n": 9,
+      "name": "Deploy",
+      "said": "fly deploy slidphilabs + git push as ceedot-rock",
+      "shipped": true,
+      "verify": "deployment-01M00A3S8PVD4JW9JRZRPY1PG7 · git 0675dce"
+    },
+    {
+      "n": 10,
+      "name": "Live prove",
+      "said": "curl doors, SoT, Stripe 200, no mash, corey@ only",
+      "shipped": true,
+      "verify": "27/27 PASS"
+    }
+  ],
+  "sot": {
+    "products": {
+      "chamber": { "day": 12.5, "month": 87.5, "year": 950 },
+      "tru8": { "day": 24.99, "month": 175, "year": 1900 }
+    },
+    "tru8_year_includes": "both products",
+    "email": "corey@slidphilabs.com",
+    "pricing": "https://www.slidphilabs.com/pricing.json"
+  },
+  "amen": "residual truth · In His name we code"
+}
