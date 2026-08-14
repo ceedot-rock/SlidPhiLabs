@@ -1,0 +1,88 @@
+{
+  "id": "TEN_COMMANDMENTS_LOOP_v5",
+  "sealed": "2026-08-14",
+  "source": "/10commandments · discovery residual",
+  "stand": "Two products. Chamber = security (half). TRU8 = compression. TRU8 Year $1,900 = both. Suite is a meter. One inbox corey@. Agents must hear the same story.",
+  "commandments": [
+    {
+      "n": 1,
+      "name": "Well-known one-liner names both products",
+      "said": "agentic-commerce.json one_liner is Chamber + TRU8 prices, not TRU8 public face.",
+      "shipped": true,
+      "verify": "live /.well-known/agentic-commerce.json"
+    },
+    {
+      "n": 2,
+      "name": "Agent-card matches SoT",
+      "said": "description + commerce.one_liner + security module Chamber.",
+      "shipped": true,
+      "verify": "live /.well-known/agent-card.json"
+    },
+    {
+      "n": 3,
+      "name": "x402 product_face is Chamber + TRU8",
+      "said": "Kill mashed TruChamber face on /api/x402-products.",
+      "shipped": true,
+      "verify": "product_face == Chamber + TRU8"
+    },
+    {
+      "n": 4,
+      "name": "Kill live $1,750 buy path",
+      "said": "Deactivate v3 Payment Link plink_1U47ua… (175000 cents, truchamber-year).",
+      "shipped": true,
+      "verify": "Stripe active=false"
+    },
+    {
+      "n": 5,
+      "name": "Demos sells TRU8 Year",
+      "said": "Demos band CTA is TRU8 Year · $1,900 Stripe, not GitHub-only.",
+      "shipped": true,
+      "verify": "live /demos"
+    },
+    {
+      "n": 6,
+      "name": "human_stripe → /license",
+      "said": "Well-known human checkout points at the two-ladder price page.",
+      "shipped": true,
+      "verify": "human_stripe ends with /license"
+    },
+    {
+      "n": 7,
+      "name": "One inbox still corey@",
+      "said": "No alias inbox regression on about.",
+      "shipped": true,
+      "verify": "about corey@ only"
+    },
+    {
+      "n": 8,
+      "name": "Pages still two-product",
+      "said": "Home still Chamber + TRU8, no $1,750.",
+      "shipped": true,
+      "verify": "live /"
+    },
+    {
+      "n": 9,
+      "name": "Deploy",
+      "said": "fly deploy + git push",
+      "shipped": true,
+      "verify": "deployment-01M00AC9CSP303KKBEJ4RVFDG7 · git ae79f75"
+    },
+    {
+      "n": 10,
+      "name": "Live prove",
+      "said": "Discovery, x402, demos, home, about, dead $1750 link",
+      "shipped": true,
+      "verify": "12/12 PASS + 1750 link inactive"
+    }
+  ],
+  "sot": {
+    "products": {
+      "chamber": { "day": 12.5, "month": 87.5, "year": 950 },
+      "tru8": { "day": 24.99, "month": 175, "year": 1900 }
+    },
+    "email": "corey@slidphilabs.com",
+    "pricing": "https://www.slidphilabs.com/pricing.json"
+  },
+  "killed_payment_link": "plink_1U47uaK8JsmXFzvI9abgmvX0",
+  "amen": "residual truth · In His name we code"
+}
