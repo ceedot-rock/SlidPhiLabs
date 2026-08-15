@@ -1,0 +1,89 @@
+{
+  "id": "TEN_COMMANDMENTS_LOOP_v2",
+  "sealed": "2026-08-13",
+  "source": "/lord fresh look · /10commandments",
+  "stand": "TruChamber is the product. Three seats. TRU8 with seat. One email corey@. Access is claim not dump.",
+  "commandments": [
+    {
+      "n": 1,
+      "name": "One champ only",
+      "said": "Access catalog: year seat is the only champ; drop duplicate tru8-commercial display row and retired json-chamber grid card",
+      "shipped": true,
+      "verify": "access CATALOG keys truchamber-year|month|day; champ: true count = 1"
+    },
+    {
+      "n": 2,
+      "name": "Retired dollars stay retired",
+      "said": "Keep $99 / $1,900 only as retired labels, never active offers",
+      "shipped": true,
+      "verify": "license + llms list them under Retired only"
+    },
+    {
+      "n": 3,
+      "name": "Home sells Access",
+      "said": "Home CTAs point at /access?product=truchamber-* seats",
+      "shipped": true,
+      "verify": "index hero + band → year/month/day Access"
+    },
+    {
+      "n": 4,
+      "name": "Chamber sells Access",
+      "said": "Chamber buy buttons → Access seats not bare mailto-only",
+      "shipped": true,
+      "verify": "chamber.html Access links for all three seats"
+    },
+    {
+      "n": 5,
+      "name": "Discovery residual",
+      "said": "agents.json + platform.json primary SKU truchamber-year; corey@ only",
+      "shipped": true,
+      "verify": "platform.contact.primary_sku; agents truchamber skus[]"
+    },
+    {
+      "n": 6,
+      "name": "Stripe success map",
+      "said": "Host doc for day/month/year success URLs + cents",
+      "shipped": true,
+      "verify": "access/HOST_STRIPE_SUCCESS_URL.md"
+    },
+    {
+      "n": 7,
+      "name": "Retire old pack",
+      "said": "tru8-commercial pack redirects to truchamber pack",
+      "shipped": true,
+      "verify": "access/packs/tru8-commercial/* → truchamber"
+    },
+    {
+      "n": 8,
+      "name": "Smoke SoT",
+      "said": "pricing.json cents + SKUs match access-verify + Access catalog",
+      "shipped": true,
+      "verify": "SMOKE PASS"
+    },
+    {
+      "n": 9,
+      "name": "Deploy",
+      "said": "fly deploy slidphilabs",
+      "shipped": true,
+      "verify": "deployment-01KZYPHZ6CJ3PSSTMFQGY89HVJ"
+    },
+    {
+      "n": 10,
+      "name": "Live prove",
+      "said": "curl key doors; residual report to Host",
+      "shipped": true,
+      "verify": "see results in companion report"
+    }
+  ],
+  "sot": {
+    "product": "TruChamber",
+    "seats": {
+      "truchamber-day": 24.99,
+      "truchamber-month": 175,
+      "truchamber-year": 1750
+    },
+    "email": "corey@slidphilabs.com",
+    "pricing": "https://www.slidphilabs.com/pricing.json"
+  },
+  "amen": "residual truth · In His name we code"
+}

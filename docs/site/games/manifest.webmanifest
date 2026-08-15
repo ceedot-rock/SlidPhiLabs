@@ -1,0 +1,22 @@
+{
+  "id": "/games",
+  "name": "SPLabs Games",
+  "short_name": "SPLabs",
+  "description": "Slid Phi Labs Game Division — play on any screen.",
+  "start_url": "/games",
+  "scope": "/games",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#070708",
+  "theme_color": "#070708",
+  "lang": "en",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    {
+      "src": "/assets/slid-phi-labs-master.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

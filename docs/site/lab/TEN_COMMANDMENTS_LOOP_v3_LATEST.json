@@ -1,0 +1,72 @@
+{
+  "id": "TEN_COMMANDMENTS_LOOP_v3",
+  "sealed": "2026-08-13",
+  "source": "/10commandments · /lord residual",
+  "stand": "Wire money. Stripe seats live. Access claim after pay. corey@ PACKAGE ACCESS.",
+  "commandments": [
+    {
+      "n": 1,
+      "name": "Create Stripe Day",
+      "shipped": true,
+      "url": "https://buy.stripe.com/28E5kE0kR8hq3P740g6wE0o",
+      "amount_cents": 2499
+    },
+    {
+      "n": 2,
+      "name": "Create Stripe Month",
+      "shipped": true,
+      "url": "https://buy.stripe.com/4gMaEY0kR2X6advdAQ6wE0p",
+      "amount_cents": 17500
+    },
+    {
+      "n": 3,
+      "name": "Create Stripe Year",
+      "shipped": true,
+      "url": "https://buy.stripe.com/8x200k8Rn55eclDgN26wE0q",
+      "amount_cents": 175000
+    },
+    {
+      "n": 4,
+      "name": "Wire Access + x402 buy URLs",
+      "shipped": true
+    },
+    {
+      "n": 5,
+      "name": "Wire Home + Chamber + License CTAs",
+      "shipped": true
+    },
+    {
+      "n": 6,
+      "name": "pricing.json stripe + access fields",
+      "shipped": true
+    },
+    {
+      "n": 7,
+      "name": "agents + llms + pack + host success map",
+      "shipped": true
+    },
+    {
+      "n": 8,
+      "name": "updates.json TruChamber Stripe feed",
+      "shipped": true
+    },
+    {
+      "n": 9,
+      "name": "Deploy Fly",
+      "shipped": true
+    },
+    {
+      "n": 10,
+      "name": "Live verify buy links 200",
+      "shipped": true
+    }
+  ],
+  "payment_links": {
+    "truchamber-day": "https://buy.stripe.com/28E5kE0kR8hq3P740g6wE0o",
+    "truchamber-month": "https://buy.stripe.com/4gMaEY0kR2X6advdAQ6wE0p",
+    "truchamber-year": "https://buy.stripe.com/8x200k8Rn55eclDgN26wE0q"
+  },
+  "success_url_pattern": "https://www.slidphilabs.com/access?product={sku}&session={CHECKOUT_SESSION_ID}",
+  "fulfill_email": "corey@slidphilabs.com",
+  "amen": "residual truth · In His name we code"
+}
