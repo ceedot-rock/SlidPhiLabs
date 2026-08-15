@@ -1,0 +1,61 @@
+{
+  "name": "@cptasz13/tru8",
+  "version": "0.1.0",
+  "description": "TRU8 — true minimal units for repetition. Public demo by Slid Phi Labs. Production residual licensed.",
+  "type": "module",
+  "main": "src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "bin": {
+    "tru8": "src/cli.mjs"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "demo": "node src/cli.mjs"
+  },
+  "keywords": [
+    "tru8",
+    "compression",
+    "slid-phi-labs",
+    "zero-run",
+    "token"
+  ],
+  "author": "Slid Phi Labs",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://www.slidphilabs.com/demos",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ceedot-rock/TRU8.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ceedot-rock/TRU8/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://www.slidphilabs.com/license"
+  },
+  "pricing": {
+    "sku": "tru8-year",
+    "amount_usd": "1900.00",
+    "amount_cents": 190000,
+    "currency": "usd",
+    "buy": "https://www.slidphilabs.com/license",
+    "access": "https://www.slidphilabs.com/access?product=tru8-year",
+    "catalog": "https://www.slidphilabs.com/api/x402-products",
+    "demos": "https://www.slidphilabs.com/demos"
+  },
+  "agentic": {
+    "discovery": "https://www.slidphilabs.com/api/agent",
+    "catalog": "https://www.slidphilabs.com/api/x402-products",
+    "one_liner": "TRU8 public demo on npm. Production residual · Year $1,900. Inquire corey@slidphilabs.com"
+  }
+}
