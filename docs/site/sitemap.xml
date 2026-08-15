@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.slidphilabs.com/</loc><lastmod>2026-08-14</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.slidphilabs.com/lord</loc><lastmod>2026-08-15</lastmod><changefreq>daily</changefreq><priority>0.995</priority></url>
+  <url><loc>https://www.slidphilabs.com/10commandments</loc><lastmod>2026-08-15</lastmod><changefreq>daily</changefreq><priority>0.995</priority></url>
+  <url><loc>https://www.slidphilabs.com/lab/TEN_COMMANDMENTS_LOOP_v7_LATEST.json</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://www.slidphilabs.com/sios</loc><lastmod>2026-08-15</lastmod><changefreq>daily</changefreq><priority>0.99</priority></url>
   <url><loc>https://www.slidphilabs.com/chamber</loc><lastmod>2026-08-14</lastmod><changefreq>daily</changefreq><priority>0.99</priority></url>
   <url><loc>https://www.slidphilabs.com/license</loc><lastmod>2026-08-14</lastmod><changefreq>weekly</changefreq><priority>0.98</priority></url>
@@ -20,8 +23,7 @@
   <url><loc>https://www.slidphilabs.com/standings</loc><lastmod>2026-08-12</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://www.slidphilabs.com/toys</loc><lastmod>2026-08-12</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.slidphilabs.com/toys.json</loc><lastmod>2026-08-12</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://www.slidphilabs.com/10commandments</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.96</priority></url>
-  <url><loc>https://www.slidphilabs.com/lab/TEN_COMMANDMENTS_LOOP_v6_LATEST.json</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.slidphilabs.com/lab/TEN_COMMANDMENTS_LOOP_v6_LATEST.json</loc><lastmod>2026-08-15</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.slidphilabs.com/games</loc><lastmod>2026-08-14</lastmod><changefreq>daily</changefreq><priority>0.97</priority></url>
   <url><loc>https://www.slidphilabs.com/olympiad</loc><lastmod>2026-08-12</lastmod><changefreq>daily</changefreq><priority>0.97</priority></url>
   <url><loc>https://www.slidphilabs.com/olympiad.json</loc><lastmod>2026-08-12</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>

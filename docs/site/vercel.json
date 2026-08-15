@@ -11,6 +11,18 @@
       "destination": "/chamber.html"
     },
     {
+      "source": "/lord",
+      "destination": "/lord.html"
+    },
+    {
+      "source": "/lord/",
+      "destination": "/lord.html"
+    },
+    {
+      "source": "/law",
+      "destination": "/10commandments.html"
+    },
+    {
       "source": "/sios",
       "destination": "/sios.html"
     },

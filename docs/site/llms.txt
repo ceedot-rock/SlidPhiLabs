@@ -1,8 +1,15 @@
-# Chamber · TRU8 · Slid Phi Labs
+# SiOS · Chamber · TRU8 · Slid Phi Labs
+> /lord is the law of the entire lab. /10commandments is v7.
 > Two products. Each has Day · Month · Year.
 > Chamber (security): Day $12.50 · Month $87.50 · Year $950. No TRU8.
 > TRU8 (compression): Day $24.99 · Month $175 · Year $1,900. Year = both products.
 > TRU8 public demos: free with credit. Suite meters jobs.
+
+## Law
+- /lord (public law of the house): https://www.slidphilabs.com/lord
+- Ten commandments v7: https://www.slidphilabs.com/10commandments
+- Seal: https://www.slidphilabs.com/lab/TEN_COMMANDMENTS_LOOP_v7_LATEST.json
+- Private Creator face stays on the box /lord. Same stand.
 
 ## OS
 - SiOS (Synthetic Intelligent OS): https://www.slidphilabs.com/sios

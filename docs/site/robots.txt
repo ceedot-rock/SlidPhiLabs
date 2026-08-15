@@ -21,6 +21,8 @@ Allow: /
 Allow: /tru8
 Allow: /about
 Allow: /license
+Allow: /lord
+Allow: /law
 Allow: /sios
 Allow: /si-os
 Allow: /synthetic
