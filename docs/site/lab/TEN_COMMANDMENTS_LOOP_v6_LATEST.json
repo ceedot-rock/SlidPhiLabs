@@ -1,0 +1,88 @@
+{
+  "id": "TEN_COMMANDMENTS_LOOP_v6",
+  "sealed": "2026-08-15",
+  "source": "/10commandments · page + chamber-open + two-product residual",
+  "stand": "Two products. Chamber = security (half). TRU8 = compression. TRU8 Year $1,900 = both. Suite is a meter. One inbox corey@. Called site bytes open once in Chamber.",
+  "commandments": [
+    {
+      "n": 1,
+      "name": "/10commandments exists",
+      "said": "The route was 404. Ship the page + rewrite.",
+      "shipped": true,
+      "verify": "live /10commandments 200"
+    },
+    {
+      "n": 2,
+      "name": "Two products, named separately",
+      "said": "Chamber security vs TRU8 compression. No mashed TruChamber seat.",
+      "shipped": true,
+      "verify": "home + pricing.json products chamber+tru8"
+    },
+    {
+      "n": 3,
+      "name": "Retired dollars stay retired",
+      "said": "$1,750 mash is history on /license. Live buy is $1,900 TRU8 Year.",
+      "shipped": true,
+      "verify": "home/access have no $1,750 buy"
+    },
+    {
+      "n": 4,
+      "name": "Home sells both ladders",
+      "said": "TRU8 Year $1,900 + Chamber only.",
+      "shipped": true,
+      "verify": "live / 200 · $1,900 · $12.50 · corey@"
+    },
+    {
+      "n": 5,
+      "name": "Chamber sells Chamber-only",
+      "said": "Day $12.50 · Month $87.50 · Year $950. No TRU8 production.",
+      "shipped": true,
+      "verify": "live /chamber"
+    },
+    {
+      "n": 6,
+      "name": "One inbox corey@",
+      "said": "No alias inbox on public doors.",
+      "shipped": true,
+      "verify": "about / license / home corey@ only"
+    },
+    {
+      "n": 7,
+      "name": "Discovery matches the stand",
+      "said": "agentic-commerce one_liner, agent-card, x402 product_face Chamber + TRU8.",
+      "shipped": true,
+      "verify": "well-known + /api/x402-products"
+    },
+    {
+      "n": 8,
+      "name": "Called bytes sit in Chamber",
+      "said": "Plate and chrome open once, serve from RAM.",
+      "shipped": true,
+      "verify": "X-Chamber: chamber-open on mp4 + site.css"
+    },
+    {
+      "n": 9,
+      "name": "Deploy",
+      "said": "fly deploy + git push",
+      "shipped": true,
+      "verify": "this loop"
+    },
+    {
+      "n": 10,
+      "name": "Live prove",
+      "said": "Page 200. Doors two-product. Chamber-open. Discovery SoT.",
+      "shipped": true,
+      "verify": "curl after deploy"
+    }
+  ],
+  "sot": {
+    "products": {
+      "chamber": { "day": 12.5, "month": 87.5, "year": 950 },
+      "tru8": { "day": 24.99, "month": 175, "year": 1900 }
+    },
+    "email": "corey@slidphilabs.com",
+    "page": "https://www.slidphilabs.com/10commandments",
+    "pricing": "https://www.slidphilabs.com/pricing.json"
+  },
+  "amen": "residual truth · In His name we code"
+}
