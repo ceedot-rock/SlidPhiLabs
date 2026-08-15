@@ -5,6 +5,7 @@
  */
 import fs from "fs";
 import path from "path";
+import zlib from "zlib";
 import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
 
 const PHI = (1 + Math.sqrt(5)) / 2;
@@ -57,6 +58,7 @@ export const CALLED = Object.freeze([
 ]);
 
 const hot = new Map();
+const hotGz = new Map();
 let lastRoot = "";
 
 export function createRest({ root, called = [] } = {}) {
@@ -94,6 +96,7 @@ export function bootRest(root, called = CALLED) {
     const resolved = path.resolve(file);
     const opened = open(cloak(fs.readFileSync(resolved)));
     hot.set(resolved, opened);
+    hotGz.set(resolved, zlib.gzipSync(opened, { level: 9 }));
     n += 1;
     bytes += opened.length;
   }
@@ -103,4 +106,9 @@ export function bootRest(root, called = CALLED) {
 export function fromRest(filePath) {
   if (!filePath) return null;
   return hot.get(path.resolve(filePath)) || null;
+}
+
+export function fromRestGzip(filePath) {
+  if (!filePath) return null;
+  return hotGz.get(path.resolve(filePath)) || null;
 }

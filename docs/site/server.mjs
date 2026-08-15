@@ -9,7 +9,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import { attachNca, ncaBindApp, ncaHeaders, ncaReport } from "./lib/nca_infra.mjs";
-import { bootRest, fromRest } from "./lib/phi_rest.mjs";
+import { bootRest, fromRest, fromRestGzip } from "./lib/phi_rest.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = __dirname;
@@ -135,10 +135,12 @@ function sendFile(res, filePath, req) {
   const ext = path.extname(filePath).toLowerCase();
   const type = MIME[ext] || "application/octet-stream";
   const rested = fromRest(filePath);
-  const data = rested || fs.readFileSync(filePath);
+  const wantsGz = /\bgzip\b/.test(String(req?.headers?.["accept-encoding"] || ""));
+  const gz = wantsGz && !String(req?.headers?.range || "") ? fromRestGzip(filePath) : null;
+  const data = gz || rested || fs.readFileSync(filePath);
   const total = data.length;
   const cache = ext === ".html" ? "public, max-age=60" : "public, max-age=3600";
-  const via = rested ? "open" : "disk";
+  const via = gz ? "open-gzip" : rested ? "open" : "disk";
   const range = String(req?.headers?.range || "");
   const m = /^bytes=(\d*)-(\d*)$/.exec(range);
   if (m && (m[1] !== "" || m[2] !== "")) {
@@ -159,14 +161,17 @@ function sendFile(res, filePath, req) {
       return;
     }
   }
-  res.writeHead(200, {
+  const headers = {
     "Content-Type": type,
     "Content-Length": total,
     "Accept-Ranges": "bytes",
     "Cache-Control": cache,
     "X-Host": "fly-slidphilabs",
     "X-Phi-Rest": via,
-  });
+    Vary: "Accept-Encoding",
+  };
+  if (gz) headers["Content-Encoding"] = "gzip";
+  res.writeHead(200, headers);
   res.end(data);
 }
 
