@@ -1,11 +1,12 @@
 /**
- * φ-rest — after fire, rest.
+ * φ-rest — CJS twin. After fire, rest.
  * Called site bytes: φ-split + AES-256-GCM, open once, serve from RAM.
- * Not Chamber. Chamber is the product. This is the rest.
  */
-import fs from "fs";
-import path from "path";
-import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
+"use strict";
+
+const fs = require("fs");
+const path = require("path");
+const { createCipheriv, createDecipheriv, randomBytes } = require("crypto");
 
 const PHI = (1 + Math.sqrt(5)) / 2;
 
@@ -13,20 +14,20 @@ function mixIndex(i, n) {
   return Math.floor(i * PHI) % n;
 }
 
-export function phiSplit(key) {
+function phiSplit(key) {
   const a = randomBytes(key.length);
   const b = Buffer.alloc(key.length);
   for (let i = 0; i < key.length; i++) b[i] = key[i] ^ a[mixIndex(i, key.length)];
   return { a, b };
 }
 
-export function phiJoin(a, b) {
+function phiJoin(a, b) {
   const key = Buffer.alloc(a.length);
   for (let i = 0; i < a.length; i++) key[i] = b[i] ^ a[mixIndex(i, a.length)];
   return key;
 }
 
-export function cloak(plain) {
+function cloak(plain) {
   const key = randomBytes(32);
   const shares = phiSplit(key);
   const iv = randomBytes(12);
@@ -36,30 +37,17 @@ export function cloak(plain) {
   return { iv, tag, ct, shares };
 }
 
-export function open(sealed) {
+function open(sealed) {
   const key = phiJoin(sealed.shares.a, sealed.shares.b);
   const d = createDecipheriv("aes-256-gcm", key, sealed.iv);
   d.setAuthTag(sealed.tag);
   return Buffer.concat([d.update(sealed.ct), d.final()]);
 }
 
-export const CALLED = Object.freeze([
-  "assets/tru8/site.css",
-  "assets/site-header.css",
-  "assets/tru8/chat.css",
-  "assets/logos/logo-slid-phi-labs.jpg",
-  "assets/logos/logo-slid-phi-labs.mp4",
-  "assets/dynamic-meta.js",
-  "assets/tru8/chat.js",
-  "assets/tru8/site.js",
-  "assets/site-header.js",
-  "metadata.json",
-]);
-
 const hot = new Map();
 let lastRoot = "";
 
-export function createRest({ root, called = [] } = {}) {
+function createRest({ root, called = [] } = {}) {
   const map = new Map();
   const absRoot = root ? path.resolve(root) : process.cwd();
   function boot(extra = []) {
@@ -83,7 +71,7 @@ export function createRest({ root, called = [] } = {}) {
   return { boot, from, hot: map };
 }
 
-export function bootRest(root, called = CALLED) {
+function bootRest(root, called = []) {
   lastRoot = path.resolve(root);
   hot.clear();
   let n = 0;
@@ -100,7 +88,29 @@ export function bootRest(root, called = CALLED) {
   return { n, bytes };
 }
 
-export function fromRest(filePath) {
+function fromRest(filePath) {
   if (!filePath) return null;
   return hot.get(path.resolve(filePath)) || null;
 }
+
+function walkCalled(dir, base = dir) {
+  const out = [];
+  if (!fs.existsSync(dir)) return out;
+  for (const name of fs.readdirSync(dir)) {
+    const full = path.join(dir, name);
+    if (fs.statSync(full).isDirectory()) out.push(...walkCalled(full, base));
+    else out.push(path.relative(base, full));
+  }
+  return out;
+}
+
+module.exports = {
+  phiSplit,
+  phiJoin,
+  cloak,
+  open,
+  createRest,
+  bootRest,
+  fromRest,
+  walkCalled,
+};

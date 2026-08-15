@@ -1,0 +1,12 @@
+{
+  "name": "@slidphi/phi-rest",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "φ-rest — after fire, rest. Open once, serve from RAM.",
+  "exports": {
+    ".": "./src/phi_rest.mjs",
+    "./vite": "./src/vite-plugin.mjs",
+    "./cjs": "./src/phi_rest.cjs"
+  }
+}

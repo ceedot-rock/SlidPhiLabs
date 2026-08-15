@@ -43,19 +43,6 @@ export function open(sealed) {
   return Buffer.concat([d.update(sealed.ct), d.final()]);
 }
 
-export const CALLED = Object.freeze([
-  "assets/tru8/site.css",
-  "assets/site-header.css",
-  "assets/tru8/chat.css",
-  "assets/logos/logo-slid-phi-labs.jpg",
-  "assets/logos/logo-slid-phi-labs.mp4",
-  "assets/dynamic-meta.js",
-  "assets/tru8/chat.js",
-  "assets/tru8/site.js",
-  "assets/site-header.js",
-  "metadata.json",
-]);
-
 const hot = new Map();
 let lastRoot = "";
 
@@ -83,7 +70,7 @@ export function createRest({ root, called = [] } = {}) {
   return { boot, from, hot: map };
 }
 
-export function bootRest(root, called = CALLED) {
+export function bootRest(root, called = []) {
   lastRoot = path.resolve(root);
   hot.clear();
   let n = 0;
@@ -103,4 +90,15 @@ export function bootRest(root, called = CALLED) {
 export function fromRest(filePath) {
   if (!filePath) return null;
   return hot.get(path.resolve(filePath)) || null;
+}
+
+export function walkCalled(dir, base = dir) {
+  const out = [];
+  if (!fs.existsSync(dir)) return out;
+  for (const name of fs.readdirSync(dir)) {
+    const full = path.join(dir, name);
+    if (fs.statSync(full).isDirectory()) out.push(...walkCalled(full, base));
+    else out.push(path.relative(base, full));
+  }
+  return out;
 }
