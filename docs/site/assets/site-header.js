@@ -6,9 +6,7 @@
   if (header) {
     const path = (location.pathname.replace(/\/+$/, "") || "/").toLowerCase();
     const aliases = {
-      "/lord": ["/lord"],
-    "/10commandments": ["/10commandments", "/ten-commandments", "/law"],
-    "/sios": ["/sios", "/si-os", "/synthetic"],
+      "/sios": ["/sios", "/si-os", "/synthetic"],
       "/chamber": ["/chamber"],
       "/demos": ["/demos", "/tru8"],
       "/pps": ["/pps", "/try"],

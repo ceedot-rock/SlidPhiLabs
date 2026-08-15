@@ -11,18 +11,6 @@
       "destination": "/chamber.html"
     },
     {
-      "source": "/lord",
-      "destination": "/lord.html"
-    },
-    {
-      "source": "/lord/",
-      "destination": "/lord.html"
-    },
-    {
-      "source": "/law",
-      "destination": "/10commandments.html"
-    },
-    {
       "source": "/sios",
       "destination": "/sios.html"
     },
@@ -218,13 +206,23 @@
   "redirects": [
     {
       "source": "/",
-      "has": [{"type": "host", "value": "slidphilabs.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "slidphilabs.com"
+        }
+      ],
       "destination": "https://www.slidphilabs.com/",
       "permanent": true
     },
     {
       "source": "/:path*",
-      "has": [{"type": "host", "value": "slidphilabs.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "slidphilabs.com"
+        }
+      ],
       "destination": "https://www.slidphilabs.com/:path*",
       "permanent": true
     },
@@ -263,24 +261,48 @@
     {
       "source": "/(.*)",
       "headers": [
-        {"key": "X-Slid-Engine", "value": "alive"},
-        {"key": "X-Content-Type-Options", "value": "nosniff"},
-        {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
-        {"key": "Cache-Control", "value": "public, max-age=0, must-revalidate"}
+        {
+          "key": "X-Slid-Engine",
+          "value": "alive"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        {"key": "Cache-Control", "value": "public, max-age=86400"}
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
       ]
     },
     {
       "source": "/llms.txt",
       "headers": [
-        {"key": "Content-Type", "value": "text/plain; charset=utf-8"},
-        {"key": "Access-Control-Allow-Origin", "value": "*"},
-        {"key": "Cache-Control", "value": "public, max-age=3600"}
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     }
   ]
