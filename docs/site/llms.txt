@@ -2,11 +2,11 @@
 > Two products. Each has Day · Month · Year.
 > Chamber (security): Day $12.50 · Month $87.50 · Year $950. No TRU8.
 > TRU8 (compression): Day $24.99 · Month $175 · Year $1,900. Year = both products.
-> TRU8 public demos: free with credit. Suite: meter, not a seat.
+> TRU8 public demos: free with credit. Suite meters jobs.
 
 ## OS
 - SiOS (Synthetic Intelligent OS): https://www.slidphilabs.com/sios
-- Not a seat. Chamber + TRU8 stay the products. Suite stays the meter.
+- Chamber, TRU8, suite jobs, campus, and games run on it.
 
 ## Products
 - Site: https://www.slidphilabs.com/
@@ -27,6 +27,7 @@
 - SKUs: chamber-day | chamber-month | chamber-year
 
 ## TRU8 (compression)
+- npm public demo: `npm i @cptasz13/tru8` (unscoped `tru8` is blocked by npm as similar to tr46/tsup)
 - Public demos free with credit
 - T_ZERO / T_DICT / T_TRISUM_HOT
 - Day $24.99 and Month $175 = compression only
@@ -34,7 +35,7 @@
 - SKUs: tru8-day | tru8-month | tru8-year
 - Legacy aliases: truchamber-* → tru8-*
 
-## Suite (not a seat)
+## Suite
 - First 100 GB free, then ~5¢/GB (~4¢ bulk)
 - https://www.slidphilabs.com/pps
 
@@ -42,6 +43,7 @@
 - Discovery: https://www.slidphilabs.com/api/agent
 - Catalog: https://www.slidphilabs.com/api/x402-products
 - agents.json: https://www.slidphilabs.com/agents.json
+- Lab news ticker: https://www.slidphilabs.com/api/lab-news
 
 ## Scope
 Chamber = security. TRU8 = compression. TRU8 Year = both. Suite = meter. Residual engine never open-sourced.

@@ -12,7 +12,7 @@ npx @cptasz13/tru8
 Unscoped `tru8` is blocked by npm name similarity (`tr46` / `tsup`). This is the public name.
 
 ```js
-import { compress, decompress } from "tru8";
+import { compress, decompress } from "@cptasz13/tru8";
 
 const packed = compress(Buffer.alloc(1_000_000)); // 8 bytes
 const raw = decompress(packed);                   // 1_000_000 zeros
