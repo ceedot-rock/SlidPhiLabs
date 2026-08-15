@@ -79,6 +79,8 @@ const REWRITES = {
   "/duosurface/": "/duos.html",
   "/pps": "/pps/index.html",
   "/pps/": "/pps/index.html",
+  "/games": "/games/index.html",
+  "/games/": "/games/index.html",
   "/olympiad": "/olympiad.html",
   "/olympiad/": "/olympiad.html",
   "/toys": "/toys.html",
