@@ -2,12 +2,25 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "Two products: Chamber (security Day/Month/Year) + TRU8 (compression Day/Month/Year). TRU8 Year $1900 = both products + seat.",
-  "version": "1.13.1",
-  "updated": "2026-08-13",
+  "description": "SiOS is the OS. Two products: Chamber (security Day/Month/Year) + TRU8 (compression Day/Month/Year). TRU8 Year $1900 = both products + seat.",
+  "version": "1.13.2",
+  "updated": "2026-08-15",
   "standard": "https://agents-txt.com",
   "site": "https://www.slidphilabs.com",
+  "os": {
+    "id": "sios",
+    "name": "SiOS",
+    "long": "Synthetic Intelligent OS",
+    "url": "https://www.slidphilabs.com/sios"
+  },
   "agents": [
+    {
+      "id": "sios",
+      "name": "SiOS",
+      "role": "os",
+      "url": "https://www.slidphilabs.com/sios",
+      "note": "Synthetic Intelligent OS. Not a seat."
+    },
     {
       "id": "spl-platform",
       "name": "Slid Phi Labs Platform Discovery",

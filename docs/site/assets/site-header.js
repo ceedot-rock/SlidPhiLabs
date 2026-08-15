@@ -7,6 +7,7 @@
 
   const path = (location.pathname.replace(/\/+$/, "") || "/").toLowerCase();
   const aliases = {
+    "/sios": ["/sios", "/si-os", "/synthetic"],
     "/chamber": ["/chamber"],
     "/demos": ["/demos", "/tru8"],
     "/pps": ["/pps", "/try"],

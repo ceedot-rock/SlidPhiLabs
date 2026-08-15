@@ -21,6 +21,9 @@ Allow: /
 Allow: /tru8
 Allow: /about
 Allow: /license
+Allow: /sios
+Allow: /si-os
+Allow: /synthetic
 Allow: /chamber
 Allow: /license
 Allow: /web

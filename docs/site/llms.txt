@@ -4,6 +4,10 @@
 > TRU8 (compression): Day $24.99 · Month $175 · Year $1,900. Year = both products.
 > TRU8 public demos: free with credit. Suite: meter, not a seat.
 
+## OS
+- SiOS (Synthetic Intelligent OS): https://www.slidphilabs.com/sios
+- Not a seat. Chamber + TRU8 stay the products. Suite stays the meter.
+
 ## Products
 - Site: https://www.slidphilabs.com/
 - Chamber (security): https://www.slidphilabs.com/chamber

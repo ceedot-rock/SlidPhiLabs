@@ -11,6 +11,22 @@
       "destination": "/chamber.html"
     },
     {
+      "source": "/sios",
+      "destination": "/sios.html"
+    },
+    {
+      "source": "/sios/",
+      "destination": "/sios.html"
+    },
+    {
+      "source": "/si-os",
+      "destination": "/sios.html"
+    },
+    {
+      "source": "/synthetic",
+      "destination": "/sios.html"
+    },
+    {
       "source": "/stand/",
       "destination": "/standings.html"
     },

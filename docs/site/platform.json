@@ -5,7 +5,13 @@
   "site": "https://www.slidphilabs.com",
   "mission": "Pub-facing best encode/decode compression where the domain is named and round-trip proves it \u2014 then pivot into gaming and security. Agent systems stay exact. One team.",
   "slogan": "Encode \u00b7 decode \u00b7 prove \u00b7 game \u00b7 secure",
-  "updated": "2026-08-13",
+  "updated": "2026-08-15",
+  "os": {
+    "name": "SiOS",
+    "long": "Synthetic Intelligent OS",
+    "url": "https://www.slidphilabs.com/sios",
+    "note": "OS layer. Not a Chamber or TRU8 seat. Suite remains a meter."
+  },
   "modules": {
     "compression": {
       "products": [
