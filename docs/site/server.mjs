@@ -9,6 +9,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import { attachNca, ncaBindApp, ncaHeaders, ncaReport } from "./lib/nca_infra.mjs";
+import { bootBox, fromBox } from "./lib/chamber_serve.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = __dirname;
@@ -122,15 +123,41 @@ function safeJoin(root, rel) {
   return p;
 }
 
-function sendFile(res, filePath) {
+function sendFile(res, filePath, req) {
   const ext = path.extname(filePath).toLowerCase();
   const type = MIME[ext] || "application/octet-stream";
-  const data = fs.readFileSync(filePath);
+  const boxed = fromBox(filePath);
+  const data = boxed || fs.readFileSync(filePath);
+  const total = data.length;
+  const cache = ext === ".html" ? "public, max-age=60" : "public, max-age=3600";
+  const via = boxed ? "chamber-open" : "disk";
+  const range = String(req?.headers?.range || "");
+  const m = /^bytes=(\d*)-(\d*)$/.exec(range);
+  if (m && (m[1] !== "" || m[2] !== "")) {
+    const start = m[1] === "" ? Math.max(0, total - Number(m[2])) : Math.min(Number(m[1]), total);
+    const end = m[2] === "" ? total - 1 : Math.min(Number(m[2]), total - 1);
+    if (start <= end && start < total) {
+      const slice = data.subarray(start, end + 1);
+      res.writeHead(206, {
+        "Content-Type": type,
+        "Content-Length": slice.length,
+        "Content-Range": `bytes ${start}-${end}/${total}`,
+        "Accept-Ranges": "bytes",
+        "Cache-Control": cache,
+        "X-Host": "fly-slidphilabs",
+        "X-Chamber": via,
+      });
+      res.end(slice);
+      return;
+    }
+  }
   res.writeHead(200, {
     "Content-Type": type,
-    "Content-Length": data.length,
-    "Cache-Control": ext === ".html" ? "public, max-age=60" : "public, max-age=3600",
+    "Content-Length": total,
+    "Accept-Ranges": "bytes",
+    "Cache-Control": cache,
     "X-Host": "fly-slidphilabs",
+    "X-Chamber": via,
   });
   res.end(data);
 }
@@ -288,7 +315,7 @@ const server = http.createServer(async (req, res) => {
       notFound(res, "not_found");
       return;
     }
-    sendFile(res, file);
+    sendFile(res, file, req);
   } catch (e) {
     console.error(e);
     if (!res.headersSent) {
@@ -298,6 +325,7 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
+const vault = bootBox(ROOT);
 server.listen(PORT, HOST, () => {
-  console.log(`[slidphilabs] fly host http://${HOST}:${PORT} root=${ROOT}`);
+  console.log(`[slidphilabs] fly host http://${HOST}:${PORT} root=${ROOT} chamber=${vault.n}/${vault.bytes}`);
 });
