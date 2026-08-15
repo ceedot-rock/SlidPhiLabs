@@ -100,7 +100,7 @@ export default async function handler(req, res) {
       security_txt: "https://www.slidphilabs.com/.well-known/security.txt",
     },
     one_liner:
-      "Welcome home. Humans → /humans. Agents → GET /api/agent then x402. One mission · two attack vectors · one team.",
+      "Two products. Chamber security Day $12.50 · Month $87.50 · Year $950. TRU8 compression Day $24.99 · Month $175 · Year $1,900 (year = both). Suite meters. GET /api/agent.",
   };
 
   res.statusCode = 200;

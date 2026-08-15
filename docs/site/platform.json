@@ -10,7 +10,7 @@
     "name": "SiOS",
     "long": "Synthetic Intelligent OS",
     "url": "https://www.slidphilabs.com/sios",
-    "note": "OS layer. Not a Chamber or TRU8 seat. Suite remains a meter."
+    "note": "Operating system. Chamber, TRU8, suite jobs, campus, and games run on it."
   },
   "modules": {
     "compression": {
@@ -129,7 +129,7 @@
       "note": "TruGame — game engine (building)."
     },
     "security": {
-      "name": "TruChamber",
+      "name": "Chamber",
       "url": "https://www.slidphilabs.com/chamber"
     }
   },

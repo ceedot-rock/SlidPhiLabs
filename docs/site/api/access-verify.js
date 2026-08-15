@@ -360,7 +360,7 @@ export function buildDeliverable({ paid, sku, sessionId, email, amountTotal, cur
       does_not_include: [
         "Private codec process",
         "Closed-source engine tarballs",
-        "TruChamber seat",
+        "Chamber seat",
       ],
       human_followup: {
         email: FULFILL_EMAIL,
@@ -375,7 +375,7 @@ export function buildDeliverable({ paid, sku, sessionId, email, amountTotal, cur
       instant: true,
       seat_id,
       summary:
-        "Payment confirmed. Legacy eval seat. Prefer TruChamber seats for production TRU8.",
+        "Payment confirmed. Legacy eval seat. Prefer Chamber or TRU8 Year for production.",
       entitlement,
       downloads: [
         {
