@@ -1,7 +1,10 @@
 /**
- * Chamber black box — φ-split + AES-256-GCM.
- * Shares alone are useless. Open once. Serve the open bytes.
+ * φ-rest — after fire, rest.
+ * Called site bytes: φ-split + AES-256-GCM, open once, serve from RAM.
+ * Not Chamber. Chamber is the product. This is the rest.
  */
+import fs from "fs";
+import path from "path";
 import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
 
 const PHI = (1 + Math.sqrt(5)) / 2;
@@ -38,4 +41,37 @@ export function open(sealed) {
   const d = createDecipheriv("aes-256-gcm", key, sealed.iv);
   d.setAuthTag(sealed.tag);
   return Buffer.concat([d.update(sealed.ct), d.final()]);
+}
+
+export const CALLED = Object.freeze([
+  "assets/tru8/site.css",
+  "assets/site-header.css",
+  "assets/tru8/chat.css",
+  "assets/logos/logo-slid-phi-labs.jpg",
+  "assets/logos/logo-slid-phi-labs.mp4",
+  "assets/dynamic-meta.js",
+  "assets/tru8/chat.js",
+  "assets/tru8/site.js",
+  "assets/site-header.js",
+  "metadata.json",
+]);
+
+const hot = new Map();
+
+export function bootRest(root) {
+  let n = 0;
+  let bytes = 0;
+  for (const rel of CALLED) {
+    const file = path.join(root, rel);
+    if (!fs.existsSync(file)) continue;
+    const opened = open(cloak(fs.readFileSync(file)));
+    hot.set(file, opened);
+    n += 1;
+    bytes += opened.length;
+  }
+  return { n, bytes };
+}
+
+export function fromRest(filePath) {
+  return hot.get(filePath) || null;
 }

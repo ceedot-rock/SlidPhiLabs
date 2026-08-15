@@ -9,7 +9,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import { attachNca, ncaBindApp, ncaHeaders, ncaReport } from "./lib/nca_infra.mjs";
-import { bootBox, fromBox } from "./lib/chamber_serve.mjs";
+import { bootRest, fromRest } from "./lib/phi_rest.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = __dirname;
@@ -132,11 +132,11 @@ function safeJoin(root, rel) {
 function sendFile(res, filePath, req) {
   const ext = path.extname(filePath).toLowerCase();
   const type = MIME[ext] || "application/octet-stream";
-  const boxed = fromBox(filePath);
-  const data = boxed || fs.readFileSync(filePath);
+  const rested = fromRest(filePath);
+  const data = rested || fs.readFileSync(filePath);
   const total = data.length;
   const cache = ext === ".html" ? "public, max-age=60" : "public, max-age=3600";
-  const via = boxed ? "chamber-open" : "disk";
+  const via = rested ? "open" : "disk";
   const range = String(req?.headers?.range || "");
   const m = /^bytes=(\d*)-(\d*)$/.exec(range);
   if (m && (m[1] !== "" || m[2] !== "")) {
@@ -151,7 +151,7 @@ function sendFile(res, filePath, req) {
         "Accept-Ranges": "bytes",
         "Cache-Control": cache,
         "X-Host": "fly-slidphilabs",
-        "X-Chamber": via,
+        "X-Phi-Rest": via,
       });
       res.end(slice);
       return;
@@ -163,7 +163,7 @@ function sendFile(res, filePath, req) {
     "Accept-Ranges": "bytes",
     "Cache-Control": cache,
     "X-Host": "fly-slidphilabs",
-    "X-Chamber": via,
+    "X-Phi-Rest": via,
   });
   res.end(data);
 }
@@ -331,7 +331,7 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-const vault = bootBox(ROOT);
+const rest = bootRest(ROOT);
 server.listen(PORT, HOST, () => {
-  console.log(`[slidphilabs] fly host http://${HOST}:${PORT} root=${ROOT} chamber=${vault.n}/${vault.bytes}`);
+  console.log(`[slidphilabs] fly host http://${HOST}:${PORT} root=${ROOT} phi-rest=${rest.n}/${rest.bytes}`);
 });
