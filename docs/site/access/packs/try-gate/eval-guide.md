@@ -47,8 +47,7 @@ Same lab, machine door:
 
 ## Contact
 
-- Access questions: **ceedotrock@gmail.com** · subject `PACKAGE ACCESS`  
-- Partnerships: **corey@slidphilabs.com**  
+- One email: **corey@slidphilabs.com** · subject `PACKAGE ACCESS`  
 - X: https://x.com/slidphilabs  
 
 ---

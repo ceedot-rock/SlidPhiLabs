@@ -50,6 +50,59 @@
     return `${n} B`;
   }
 
+  /* Seamless plate: two buffers, 2.4s dissolve. Native loop snaps. */
+  (function wireLogoPlate() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const root = document.querySelector(".logo-bg");
+    const a = root && root.querySelector("video");
+    if (!a) return;
+    a.loop = false;
+    a.classList.add("is-on");
+    const b = a.cloneNode(true);
+    b.removeAttribute("id");
+    b.removeAttribute("autoplay");
+    b.classList.add("is-off");
+    b.muted = true;
+    root.appendChild(b);
+    const FADE = 2.4;
+    let front = a;
+    let back = b;
+    let fading = false;
+    function startFade() {
+      if (fading) return;
+      fading = true;
+      try {
+        back.currentTime = 0;
+      } catch (_) {}
+      const play = back.play();
+      if (play && play.catch) play.catch(() => {});
+      front.classList.remove("is-on");
+      front.classList.add("is-off");
+      back.classList.remove("is-off");
+      back.classList.add("is-on");
+      const retiring = front;
+      front = back;
+      back = retiring;
+      window.setTimeout(() => {
+        try {
+          back.pause();
+        } catch (_) {}
+        fading = false;
+      }, FADE * 1000 + 120);
+    }
+    function onTime(e) {
+      const v = e.currentTarget;
+      if (v !== front || fading) return;
+      if (v.duration && v.currentTime >= v.duration - FADE) startFade();
+    }
+    [a, b].forEach((v) => {
+      v.addEventListener("timeupdate", onTime);
+      v.addEventListener("ended", () => {
+        if (v === front) startFade();
+      });
+    });
+  })();
+
   /* nav */
   const nav = document.querySelector(".site-nav");
   const toggle = document.querySelector(".nav-toggle");

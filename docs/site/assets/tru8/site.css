@@ -139,6 +139,11 @@ svg {
   height: 100%;
   object-fit: cover;
   object-position: center 28%;
+  opacity: 1;
+  transition: opacity 2.4s ease-in-out;
+}
+.logo-bg video.is-off {
+  opacity: 0;
 }
 .logo-bg::after {
   content: "";

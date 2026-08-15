@@ -60,3 +60,6 @@ Allow: /assets/
 Allow: /.well-known/
 
 Sitemap: https://www.slidphilabs.com/sitemap.xml
+
+Allow: /pricing.json
+Allow: /access/packs/
