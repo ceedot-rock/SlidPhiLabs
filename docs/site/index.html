@@ -1,1 +1,68 @@
-SEE_ARTIFACT
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Slid Phi Labs — Chamber · TRU8 · ZRW 8B structured-int rail + web mode + API</title>
+<meta name="description" content="Not just JS. Flagship ZRW zeros×10k → 8 B via POST /api/process (gzip-9 73 B, brotli-11 13 B). Chamber + TRU8."/>
+<meta name="theme-color" content="#0A0A0A"/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://www.slidphilabs.com/"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg"/>
+<link rel="apple-touch-icon" href="/assets/logos/logo-slid-phi-labs.jpg"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:title" content="Slid Phi Labs · Chamber + TRU8"/>
+<meta property="og:description" content="Not just JS. ZRW zeros×10k → 8 B. Chamber security. TRU8 compression."/>
+<meta property="og:url" content="https://www.slidphilabs.com/"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent discovery"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/standings.json" title="SPL Benchmark Standings"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/lab/ZRW_ZEROS_10K_BENCH_LATEST.json" title="ZRW Zeros 10K Latest Bench"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/.well-known/agents.json" title="Well-known agents.json"/>
+<link rel="author" href="https://www.slidphilabs.com/zrw_verify.py"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+<link rel="stylesheet" href="/assets/tru8/site.css?v=7"/>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
+</head>
+<body>
+<header class="site-nav" role="banner">
+  <div class="inner">
+    <a class="brand" href="/" aria-label="Slid Phi Labs home">Slid Phi Labs</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/chamber">Chamber</a>
+      <a href="/demos">TRU8</a>
+      <a href="/pps">Suite</a>
+      <a href="/license">License</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero wrap">
+    <p class="hero-kicker">Two products · Chamber · TRU8 · Suite</p>
+    <h1 class="hero-title">Chamber + TRU8</h1>
+    <p class="hero-line">Chamber seals JSON. TRU8 compresses. Each has its own Day · Month · Year.</p>
+  </section>
+<section id="flagship-bench" class="section wrap" aria-label="Flagship bench">
+<p class="section-label">Flagship · structured-int rail</p>
+<h2>zeros × 10k → ZRW 8 B</h2>
+<p>Live rail POST /api/process. Not just JS. Gate 2 PASS.</p>
+<table><thead><tr><th>codec</th><th>bytes</th><th>gate</th></tr></thead>
+<tbody>
+<tr><td>ZRW (SPL)</td><td>8 B</td><td>Gate 2 PASS</td></tr>
+<tr><td>gzip -9</td><td>73 B</td><td>—</td></tr>
+<tr><td>brotli -11</td><td>13 B</td><td>—</td></tr>
+</tbody></table>
+<p><a href="/standings.json">standings.json</a> · <a href="/lab/ZRW_ZEROS_10K_BENCH_LATEST.json">lab bench</a> · <a href="/zrw_verify.py">verify</a></p>
+<pre id="bench-json">{"corpus":"zeros","n":10000,"zrw_bytes":8,"gzip9_bytes":73,"brotli11_bytes":13,"gate2":"PASS","endpoint":"POST /api/process"}</pre>
+</section>
+  <section class="section wrap" id="what">
+    <p class="section-label">Two products</p>
+    <h2>Chamber is security. TRU8 is compression.</h2>
+    <p class="lede">Each product has Day · Month · Year. TRU8 Year includes both products.</p>
+  </section>
+</main>
+<footer class="wrap"><p>Slid Phi Labs · <a href="/api/agent">/api/agent</a> · <a href="/.well-known/agents.json">agents.json</a></p></footer>
+</body>
+</html>
