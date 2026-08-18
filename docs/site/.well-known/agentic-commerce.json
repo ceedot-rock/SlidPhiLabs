@@ -10,7 +10,7 @@
   "buy": "POST https://www.slidphilabs.com/api/x402-products",
   "suite": "POST https://www.slidphilabs.com/api/x402-suite",
   "human_stripe": "https://www.slidphilabs.com/license",
-  "one_liner": "Two products. Chamber (security) Day $12.50 · Month $87.50 · Year $950. TRU8 (compression) Day $24.99 · Month $175 · Year $1,900 (year = both). Suite meters jobs. GET /api/agent.",
+  "one_liner": "Two products. Chamber (security) Day $9 · Month $49 · Year $490. TRU8 (compression) Day $19 · Month $99 · Year $990 (year = both). Suite meters jobs. GET /api/agent.",
   "agents_txt": "https://www.slidphilabs.com/agents.txt",
   "agents_json": "https://www.slidphilabs.com/agents.json",
   "llms_txt": "https://www.slidphilabs.com/llms.txt",
@@ -32,7 +32,7 @@
       "products": ["Chamber"],
       "page": "https://www.slidphilabs.com/chamber",
       "skus": ["chamber-day", "chamber-month", "chamber-year"],
-      "prices": "Day $12.50 · Month $87.50 · Year $950",
+      "prices": "Day $9 · Month $49 · Year $490",
       "note": "Security only. No TRU8."
     },
     "compression": {
@@ -40,7 +40,7 @@
         "TRU8"
       ],
       "skus": ["tru8-day", "tru8-month", "tru8-year"],
-      "prices": "Day $24.99 · Month $175 · Year $1,900 (year = both)",
+      "prices": "Day $19 · Month $99 · Year $990 (year = both)",
       "web": "https://www.slidphilabs.com/web",
       "suite": "https://www.slidphilabs.com/pps",
       "cddg": "https://www.slidphilabs.com/#cddg-split",

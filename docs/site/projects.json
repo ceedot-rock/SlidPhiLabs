@@ -6,8 +6,8 @@
       "id": "chamber",
       "name": "Chamber",
       "status": "live",
-      "role": "security product — 3h black box, then a Chamber seat; no TRU8",
-      "price": "Day $12.50 · Month $87.50 · Year $950",
+      "role": "security product — 24h black box, then a Chamber seat; no TRU8",
+      "price": "Day $9 · Month $49 · Year $490",
       "url": "https://www.slidphilabs.com/chamber"
     },
     {
@@ -15,7 +15,7 @@
       "name": "TRU8",
       "status": "live",
       "role": "compression product — demos free; Day/Month compression only; Year = both products",
-      "price": "Day $24.99 · Month $175 · Year $1,900",
+      "price": "Day $19 · Month $99 · Year $990",
       "url": "https://www.slidphilabs.com/demos"
     },
     {

@@ -1,7 +1,7 @@
 {
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "Two products. Chamber (security) Day $12.50 · Month $87.50 · Year $950. TRU8 (compression) Day $24.99 · Month $175 · Year $1,900 (year = both). Suite meters jobs.",
+  "description": "Two products. Chamber (security) Day $9 · Month $49 · Year $490. TRU8 (compression) Day $19 · Month $99 · Year $990 (year = both). Suite meters jobs.",
   "url": "https://www.slidphilabs.com",
   "version": "1.13.2",
   "provider": {
@@ -140,7 +140,7 @@
     "payment_header": "X-PAYMENT",
     "discovery": "https://www.slidphilabs.com/api/agent",
     "catalog": "https://www.slidphilabs.com/api/x402-products",
-    "one_liner": "Two products. Chamber (security) Day $12.50 · Month $87.50 · Year $950. TRU8 (compression) Day $24.99 · Month $175 · Year $1,900 (year = both). Suite meters jobs. GET /api/agent.",
+    "one_liner": "Two products. Chamber (security) Day $9 · Month $49 · Year $490. TRU8 (compression) Day $19 · Month $99 · Year $990 (year = both). Suite meters jobs. GET /api/agent.",
     "modules": {
       "compression": [
         "TRU8"

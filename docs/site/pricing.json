@@ -1,47 +1,48 @@
 {
-  "updated": "2026-08-14",
+  "updated": "2026-08-18",
   "inbox": "corey@slidphilabs.com",
-  "rule": "Two products. Each has Day · Month · Year. Chamber = security only (half the matching TRU8 tier). TRU8 = compression. TRU8 Year = both products for one year. Suite is a meter, not a seat. Yearly beats 12× monthly on each ladder.",
+  "rule": "Each product has its own ladder. Yearly beats 12× monthly. Lab Pass Year is the one black-box seat that unlocks Chamber + TRU8 + Gate + TruGame for 365 days. After the term the box closes. Suite stays a meter. SiOS is not a SKU. Retired Stripe $1900/$950/$12.50 links must not be sold.",
   "math": {
-    "chamber_month_x12": 1050,
-    "chamber_year": 950,
-    "chamber_year_saves": 100,
-    "tru8_month_x12": 2100,
-    "tru8_year": 1900,
-    "tru8_year_saves": 200,
-    "chamber_is_half_of_tru8": true
+    "chamber_month_x12": 588,
+    "chamber_year": 490,
+    "chamber_year_saves": 98,
+    "tru8_month_x12": 1188,
+    "tru8_year": 990,
+    "tru8_year_saves": 198,
+    "gate_month_x12": 1068,
+    "gate_year": 790,
+    "lab_pass_year": 1088
   },
   "products": {
     "chamber": {
       "name": "Chamber",
       "service": "security",
-      "trial_hours": 3,
+      "trial_hours": 24,
       "trial_name": "black box",
       "includes": ["cloak/open", "kill switch", "φ-split + AES-256-GCM"],
       "does_not_include": ["TRU8 production residual"],
-      "note": "Half the price of the matching TRU8 tier.",
+      "note": "24-hour black box, then a Chamber seat.",
       "plans": {
         "day": {
           "sku": "chamber-day",
-          "usd": 12.5,
+          "usd": 9,
           "unit": "24 hours",
-          "stripe": "https://buy.stripe.com/14A4gAebHcxG0CV9kA6wE0x",
+          "stripe": "https://www.slidphilabs.com/license",
           "access": "https://www.slidphilabs.com/access?product=chamber-day"
         },
         "month": {
           "sku": "chamber-month",
-          "usd": 87.5,
+          "usd": 49,
           "unit": "calendar month",
-          "stripe": "https://buy.stripe.com/3cI5kEffL0OY4TbfIY6wE0y",
+          "stripe": "https://www.slidphilabs.com/license",
           "access": "https://www.slidphilabs.com/access?product=chamber-month"
         },
         "year": {
           "sku": "chamber-year",
-          "usd": 950,
+          "usd": 490,
           "unit": "calendar year",
-          "stripe": "https://buy.stripe.com/7sYfZid7D55edpHcwM6wE0z",
-          "access": "https://www.slidphilabs.com/access?product=chamber-year",
-          "why": "Half of TRU8 Year ($1,900)"
+          "stripe": "https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F",
+          "access": "https://www.slidphilabs.com/access?product=chamber-year"
         }
       }
     },
@@ -52,32 +53,61 @@
       "plans": {
         "day": {
           "sku": "tru8-day",
-          "usd": 24.99,
+          "usd": 19,
           "unit": "24 hours",
-          "includes": ["TRU8 production path"],
-          "does_not_include": ["Chamber security seat"],
-          "stripe": "https://buy.stripe.com/4gM3cw0kR9lu4Tb54k6wE0A",
+          "stripe": "https://www.slidphilabs.com/license",
           "access": "https://www.slidphilabs.com/access?product=tru8-day"
         },
         "month": {
           "sku": "tru8-month",
-          "usd": 175,
+          "usd": 99,
           "unit": "calendar month",
-          "includes": ["TRU8 production path"],
-          "does_not_include": ["Chamber security seat"],
-          "stripe": "https://buy.stripe.com/8x23cw9Vr0OY85n54k6wE0B",
+          "stripe": "https://www.slidphilabs.com/license",
           "access": "https://www.slidphilabs.com/access?product=tru8-month"
         },
         "year": {
           "sku": "tru8-year",
-          "usd": 1900,
+          "usd": 990,
           "unit": "calendar year",
-          "includes": ["TRU8 production path", "Chamber security seat", "both products for full year"],
-          "note": "Yearly TRU8 = seat for BOTH products for the full year.",
-          "stripe": "https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C",
+          "includes": ["TRU8 production path", "Chamber security seat"],
+          "note": "Yearly TRU8 = Chamber + TRU8 for the year.",
+          "stripe": "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
           "access": "https://www.slidphilabs.com/access?product=tru8-year"
         }
       }
+    },
+    "gate": {
+      "name": "Gate",
+      "service": "lossless mixed-file router",
+      "note": "text → brotli-11, else gzip-9. Not #1 GC. Calgary +5.1% vs brotli.",
+      "plans": {
+        "day": { "sku": "gate-day", "usd": 29, "unit": "24 hours", "stripe": "https://www.slidphilabs.com/license" },
+        "month": { "sku": "gate-month", "usd": 89, "unit": "calendar month", "stripe": "https://www.slidphilabs.com/license" },
+        "year": {
+          "sku": "gate-year",
+          "usd": 790,
+          "unit": "calendar year",
+          "stripe": "https://buy.stripe.com/7sY4gA6Jfapy1GZ8gw6wE0G"
+        }
+      }
+    },
+    "trugame": {
+      "name": "TruGame Pass",
+      "service": "TruGames desks",
+      "plans": {
+        "month": { "sku": "trugame-month", "usd": 12, "unit": "calendar month", "stripe": "https://www.slidphilabs.com/games" },
+        "year": { "sku": "trugame-year", "usd": 79, "unit": "calendar year", "stripe": "https://www.slidphilabs.com/games" }
+      }
+    },
+    "lab_pass": {
+      "name": "Lab Pass Year",
+      "sku": "lab-pass",
+      "usd": 1088,
+      "unit": "365 days",
+      "black_box": true,
+      "unlocks": ["Chamber", "TRU8", "Gate", "TruGame Pass"],
+      "stripe": "https://buy.stripe.com/3cI7sM2sZ0OYfxP7cs6wE0D",
+      "access": "https://www.slidphilabs.com/access?product=lab-pass"
     }
   },
   "suite": {
@@ -88,16 +118,16 @@
     "usd_per_gb_bulk": 0.04
   },
   "retired": {
-    "json-chamber-99": "Forever $99 unlock undercut every paid tier. Use Chamber or TRU8 Day/Month/Year.",
-    "truchamber-1750": "Single mashed product. Replaced by Chamber ladder + TRU8 ladder. truchamber-* aliases to tru8-*.",
-    "month-90": "90 × 12 = 1080 < any honest yearly. Do not sell."
+    "json-chamber-99": "Forever $99 unlock undercut every paid tier.",
+    "truchamber-1750": "Mashed product. Replaced by Chamber + TRU8 ladders.",
+    "tru8-1900": "Do not sell $990 / $490 / $9. Live year seats are $990 / $490.",
+    "zrw-79-249-699": "Historical ZRW engine licenses. Not Chamber, TRU8, or Gate Year."
   },
   "aliases": {
     "truchamber-day": "tru8-day",
     "truchamber-month": "tru8-month",
     "truchamber-year": "tru8-year",
     "tru8-commercial": "tru8-year",
-    "tru8-chamber": "tru8-year",
-    "json-chamber": "chamber-year"
+    "lab-pass-year": "lab-pass"
   }
 }

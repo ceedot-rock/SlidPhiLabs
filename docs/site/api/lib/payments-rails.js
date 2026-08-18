@@ -47,37 +47,37 @@ export const PRODUCT_CATALOG = {
   "chamber-day": {
     name: "Chamber · Day",
     amount_cents: 1250,
-    stripe: "https://buy.stripe.com/14A4gAebHcxG0CV9kA6wE0x",
+    stripe: "https://www.slidphilabs.com/license",
     kind: "chamber",
   },
   "chamber-month": {
     name: "Chamber · Month",
     amount_cents: 8750,
-    stripe: "https://buy.stripe.com/3cI5kEffL0OY4TbfIY6wE0y",
+    stripe: "https://www.slidphilabs.com/license",
     kind: "chamber",
   },
   "chamber-year": {
     name: "Chamber · Year",
     amount_cents: 95000,
-    stripe: "https://buy.stripe.com/7sYfZid7D55edpHcwM6wE0z",
+    stripe: "https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F",
     kind: "chamber",
   },
   "tru8-day": {
     name: "TRU8 · Day",
     amount_cents: 2499,
-    stripe: "https://buy.stripe.com/4gM3cw0kR9lu4Tb54k6wE0A",
+    stripe: "https://www.slidphilabs.com/license",
     kind: "tru8",
   },
   "tru8-month": {
     name: "TRU8 · Month",
     amount_cents: 17500,
-    stripe: "https://buy.stripe.com/8x23cw9Vr0OY85n54k6wE0B",
+    stripe: "https://www.slidphilabs.com/license",
     kind: "tru8",
   },
   "tru8-year": {
     name: "TRU8 · Year (both products)",
     amount_cents: 190000,
-    stripe: "https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C",
+    stripe: "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
     kind: "both",
   },
   "cddg-split": {

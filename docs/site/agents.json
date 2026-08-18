@@ -2,7 +2,7 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "SiOS is the OS. Two products: Chamber (security Day/Month/Year) + TRU8 (compression Day/Month/Year). TRU8 Year $1900 = both products + seat.",
+  "description": "SiOS is the OS. Two products: Chamber (security Day/Month/Year) + TRU8 (compression Day/Month/Year). TRU8 Year $990 = both products + seat.",
   "version": "1.13.2",
   "updated": "2026-08-15",
   "standard": "https://agents-txt.com",
@@ -43,16 +43,16 @@
       "access": "https://www.slidphilabs.com/access?product=tru8-year",
       "fulfill_email": "corey@slidphilabs.com",
       "historical_engine": "OmniWave / SPL Codec (licensed, not the public face)",
-      "price": "Day $24.99 \u00b7 Month $175 \u00b7 Year $1,900 (year = both products + seat)",
+      "price": "Day $19 \u00b7 Month $99 \u00b7 Year $990 (year = both products + seat)",
       "skus": [
         "tru8-day",
         "tru8-month",
         "tru8-year"
       ],
       "stripe": {
-        "day": "https://buy.stripe.com/4gM3cw0kR9lu4Tb54k6wE0A",
-        "month": "https://buy.stripe.com/8x23cw9Vr0OY85n54k6wE0B",
-        "year": "https://buy.stripe.com/dRmaEYgjPbtCclDaoE6wE0C"
+        "day": "https://www.slidphilabs.com/license",
+        "month": "https://www.slidphilabs.com/license",
+        "year": "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E"
       },
       "note": "TRU8 Year includes Chamber seat for the full year."
     },
@@ -62,7 +62,7 @@
       "role": "product_seats",
       "url": "https://www.slidphilabs.com/chamber",
       "sdk": "https://github.com/ceedot-rock/json-chamber-sdk",
-      "price": "Day $12.50 \u00b7 Month $87.50 \u00b7 Year $950 (security only, half)",
+      "price": "Day $9 \u00b7 Month $49 \u00b7 Year $490 (security only, half)",
       "includes": "Full stack = Chamber + TRU8. Chamber-only = security, half price, no TRU8 production.",
       "skus": [
         "chamber-day",
@@ -70,9 +70,9 @@
         "chamber-year"
       ],
       "stripe": {
-        "day": "https://buy.stripe.com/14A4gAebHcxG0CV9kA6wE0x",
-        "month": "https://buy.stripe.com/3cI5kEffL0OY4TbfIY6wE0y",
-        "year": "https://buy.stripe.com/7sYfZid7D55edpHcwM6wE0z"
+        "day": "https://www.slidphilabs.com/license",
+        "month": "https://www.slidphilabs.com/license",
+        "year": "https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F"
       },
       "access": "https://www.slidphilabs.com/access?product=chamber-year",
       "pricing_sot": "https://www.slidphilabs.com/pricing.json",

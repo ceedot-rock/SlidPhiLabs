@@ -42,10 +42,10 @@
         "pricing": "https://www.slidphilabs.com/pricing.json"
       },
       "pricing": {
-        "trial": "3-hour black box, free",
-        "chamber-day": "$12.50 / 24 hours (security only, no TRU8)",
-        "chamber-month": "$87.50 / calendar month (security only, no TRU8)",
-        "chamber-year": "$950 / calendar year (security only; half of TRU8 Year)"
+        "trial": "24-hour black box, free",
+        "chamber-day": "$9 / 24 hours (security only, no TRU8)",
+        "chamber-month": "$49 / calendar month (security only, no TRU8)",
+        "chamber-year": "$490 / calendar year (security only; half of TRU8 Year)"
       }
     },
     "tru8": {
@@ -59,9 +59,9 @@
       },
       "pricing": {
         "demos": "free with credit",
-        "tru8-day": "$24.99 / 24 hours (compression only, no Chamber)",
-        "tru8-month": "$175 / calendar month (compression only, no Chamber)",
-        "tru8-year": "$1,900 / calendar year (both products)"
+        "tru8-day": "$19 / 24 hours (compression only, no Chamber)",
+        "tru8-month": "$99 / calendar month (compression only, no Chamber)",
+        "tru8-year": "$990 / calendar year (both products)"
       }
     },
     "game_engine": {
@@ -141,7 +141,7 @@
     "llms_txt": "https://www.slidphilabs.com/llms.txt",
     "llms_full": "https://www.slidphilabs.com/llms-full.txt"
   },
-  "one_liner": "Chamber security (Day/Month/Year half) \u00b7 TRU8 compression (Day/Month/Year) \u00b7 TRU8 Year $1900 = both products + seat",
+  "one_liner": "Chamber security (Day/Month/Year half) \u00b7 TRU8 compression (Day/Month/Year) \u00b7 TRU8 Year $990 = both products + seat",
   "contact": {
     "email": "corey@slidphilabs.com",
     "license": "corey@slidphilabs.com",

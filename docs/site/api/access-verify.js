@@ -7,8 +7,8 @@
  *   x402    — HMAC claim token issued after X-PAYMENT verify
  *
  * Primary SKUs (SoT: /pricing.json):
- *   TRU8 (compression): tru8-day $24.99 | tru8-month $175 | tru8-year $1,900 (year = both products)
- *   Chamber (security): chamber-day $12.50 | chamber-month $87.50 | chamber-year $950
+ *   TRU8 (compression): tru8-day $19 | tru8-month $99 | tru8-year $990 (year = both products)
+ *   Chamber (security): chamber-day $9 | chamber-month $49 | chamber-year $490
  *   Aliases: truchamber-* → tru8-*
  *
  * One email only: corey@slidphilabs.com
@@ -400,7 +400,7 @@ export function buildDeliverable({ paid, sku, sessionId, email, amountTotal, cur
           n: 2,
           title: "Buy TRU8 production",
           href: "/access?product=tru8-year",
-          detail: "Day $24.99 · Month $175 · Year $1,900 (year = both products).",
+          detail: "Day $19 · Month $99 · Year $990 (year = both products).",
         },
       ],
       next: "Download entitlement JSON, then consider a TRU8 or Chamber plan.",

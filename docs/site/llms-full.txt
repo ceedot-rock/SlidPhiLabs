@@ -29,7 +29,7 @@ TruGame — game engine. Packs sim state with TRU8, seals the save with Chamber.
 ### Security · Chamber
 - Page: https://www.slidphilabs.com/chamber
 - SDK: https://github.com/ceedot-rock/json-chamber-sdk
-- 3-hour black box · Day $12.50 · Month $87.50 · Year $950
+- 24-hour black box · Day $9 · Month $49 · Year $490
 - Security only. No TRU8. Half the matching TRU8 tier.
 
 ### Olympiad
@@ -39,8 +39,8 @@ TruGame — game engine. Packs sim state with TRU8, seals the save with Chamber.
 https://www.slidphilabs.com/projects.json
 
 ## Wording
-- Chamber = security. Day $12.50 · Month $87.50 · Year $950. No TRU8.
-- TRU8 = compression. Day $24.99 · Month $175 · Year $1,900 (year = both products).
+- Chamber = security. Day $9 · Month $49 · Year $490. No TRU8.
+- TRU8 = compression. Day $19 · Month $99 · Year $990 (year = both products).
 - Suite = metered jobs (100 GB then ~5¢/GB). Not a Chamber or TRU8 seat.
 - Access = entitlement claim. Not a codec dump.
 

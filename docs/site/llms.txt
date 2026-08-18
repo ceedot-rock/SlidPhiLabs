@@ -1,8 +1,7 @@
-# SiOS · Chamber · TRU8 · Slid Phi Labs
-> Two products. Each has Day · Month · Year.
-> Chamber (security): Day $12.50 · Month $87.50 · Year $950. No TRU8.
-> TRU8 (compression): Day $24.99 · Month $175 · Year $1,900. Year = both products.
-> TRU8 public demos: free with credit. Suite meters jobs.
+# SiOS · Chamber · TRU8 · Gate · TruGames · Slid Phi Labs
+> Chamber $9 / $49 / $490. TRU8 $19 / $99 / $990 (year = both).
+> Gate Year $790. Lab Pass $1,088 (365d black box: Chamber + TRU8 + Gate + TruGame).
+> TruGame Pass $12 / $79. Suite 100 GB then 5¢/4¢. 24h box on every product POST.
 
 ## OS
 - SiOS (Synthetic Intelligent OS): https://www.slidphilabs.com/sios
@@ -20,8 +19,8 @@
 
 ## Chamber (security)
 - φ-split keyword shares + AES-256-GCM
-- 3-hour black box from first run (hard cut)
-- Day $12.50 · Month $87.50 · Year $950
+- 24-hour black box from first run (hard cut)
+- Day $9 · Month $49 · Year $490
 - Half the matching TRU8 tier
 - No TRU8 production on this ladder
 - SKUs: chamber-day | chamber-month | chamber-year
@@ -30,10 +29,28 @@
 - npm public demo: `npm i @cptasz13/tru8` (unscoped `tru8` is blocked by npm as similar to tr46/tsup)
 - Public demos free with credit
 - T_ZERO / T_DICT / T_TRISUM_HOT
-- Day $24.99 and Month $175 = compression only
-- Year $1,900 = Chamber + TRU8 for one year
+- Day $19 and Month $99 = compression only
+- Year $990 = Chamber + TRU8 for one year
 - SKUs: tru8-day | tru8-month | tru8-year
 - Legacy aliases: truchamber-* → tru8-*
+
+## Gate
+- Lossless mixed-file router. Not #1 GC. Calgary +5.1% vs brotli-11.
+- Day $29 · Month $89 · Year $790
+- https://buy.stripe.com/7sY4gA6Jfapy1GZ8gw6wE0G
+
+## Lab Pass
+- $1,088 · 365 days · Chamber + TRU8 + Gate + TruGame
+- https://buy.stripe.com/3cI7sM2sZ0OYfxP7cs6wE0D
+
+## TruGames
+- Gaming division (not SPLAB Games). Pass $12 / $79.
+- https://www.slidphilabs.com/games
+
+## Black box
+- Protocol: splb-ed25519-24h
+- Status: https://www.slidphilabs.com/api/box
+- Every product POST is gated. Checkout stays open.
 
 ## Suite
 - First 100 GB free, then ~5¢/GB (~4¢ bulk)

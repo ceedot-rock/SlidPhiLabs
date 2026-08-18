@@ -5,7 +5,7 @@
 | Was | Now |
 |-----|-----|
 | mashed TruChamber $1,750 seat | **Chamber** (security) + **TRU8** (compression) |
-| `truchamber-year` | **`tru8-year` $1,900** — both products for one year |
+| `truchamber-year` | **`tru8-year` $990** — both products for one year |
 
 → **TRU8 what ships:** [/access/packs/tru8/what-ships.md](../tru8/what-ships.md)  
 → **Chamber only:** [/access/packs/chamber/what-ships.md](../chamber/what-ships.md)  

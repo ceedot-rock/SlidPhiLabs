@@ -15,8 +15,8 @@ Duos-API: https://www.slidphilabs.com/api/duos
 # Mission: One mission · two attack vectors · one team
 # Surfaces: Pub Facing (humans) · Agentic Minded (agents)
 # Public compression face: TRU8 (only). Credit: Powered by TRU8 · Slid Phi Labs
-# Chamber = security. Day $12.50 · Month $87.50 · Year $950. No TRU8.
-# TRU8 = compression. Day $24.99 · Month $175 · Year $1,900 (year = both).
+# Chamber = security. Day $9 · Month $49 · Year $490. No TRU8.
+# TRU8 = compression. Day $19 · Month $99 · Year $990 (year = both).
 # Suite = metered jobs (100 GB then ~5¢/GB). Not a Chamber or TRU8 seat.
 # Module 1 — Compression: TRU8 (ZRW / OmniWave / SPL Codec = historical lab series)
 # Module 2 — Agent platform: CuNi · Agent^Rider (paused) · Quikgater
