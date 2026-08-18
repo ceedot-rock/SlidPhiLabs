@@ -2,6 +2,8 @@
  * GET /api/stand — public proof board JSON (Gate 2 ZRW zeros×10k)
  * CrewHive: minimal verifiable surface · no residue
  */
+import { withProductBox } from "./lib/spl-box-gate.js";
+
 import {
   ZeroRangeWave,
   packBits,
@@ -25,7 +27,7 @@ function zrwDecompress(packed) {
   return new ZeroRangeWave(0, 4).decodeBits(unpackBits(packed));
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -91,3 +93,5 @@ export default async function handler(req, res) {
     at: new Date().toISOString(),
   });
 }
+
+export default withProductBox(handler, 'gate');

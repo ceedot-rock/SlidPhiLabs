@@ -3,6 +3,8 @@
  * POST /api/duos — re-run shopper (optional DUOS_TOKEN)
  * Also: GET /api/duos?surface=web|agent
  */
+import { withProductBox } from "./lib/spl-box-gate.js";
+
 import fs from "fs";
 import path from "path";
 import { fileURLToPath, pathToFileURL } from "url";
@@ -47,7 +49,7 @@ function send(res, code, obj, point = "duos") {
   res.end(body);
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   const url = new URL(req.url || "/", "http://x");
   const method = (req.method || "GET").toUpperCase();
 
@@ -135,3 +137,5 @@ export default async function handler(req, res) {
 
   return send(res, 405, { ok: false, error: "method not allowed" });
 }
+
+export default withProductBox(handler, 'lab');

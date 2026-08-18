@@ -4,6 +4,8 @@
  * Env: XAI_API_KEY (server-side only). Model: grok-4.6
  * Public product facts only — no residual / production IP.
  */
+import { withProductBox } from "./lib/spl-box-gate.js";
+
 const XAI_BASE = "https://api.x.ai/v1";
 const MODEL = process.env.XAI_MODEL || "grok-4.6";
 const MAX_MSG = 1200;
@@ -18,9 +20,10 @@ Product line: "Less is more. We dropped the E."
 TRU8 is the only public compression product face for slidphilabs.com.
 
 Public facts you MAY discuss:
-- T_ZERO (0x00): dormant runs → 8 B unit. Example: 1_000_000 zeros → 8 B (125_000×).
-- T_DICT (0x01): exact 1 KB block pointer → 8 B (128× on 100×1KB dups → 800 B).
-- T_TRISUM_HOT (0x10): hot trigrams → 1 B id after a 2 B definition. "the"×1000 ≈ 66.6% saving.
+- T_ZERO (0x00): dormant runs → 8 B unit. Example: 1_000_000 zeros → 8 B (125_000×). Frame hex 0040420f00000000.
+- T_DICT (0x01): exact 1 KB block pointer → 8 B. 100 × 1 KB → 800 B (128×). Pointer stream, not compress().
+- T_TRISUM_HOT (0x10): hot trigrams → 2 B definition + 1 B per hit. "the"×1000 = 1002 B from 3000 B (66.6% off). Token stream, not one byte total.
+- ZRW / OmniWave / Silesia numbers are lab series on /standings, not TRU8 product claims. OmniWave does not beat brotli-11 on Silesia.
 - T_SPARSE (0x03): residual path — licensed, do not invent coefficients.
 - Public demos free with required credit: "Powered by TRU8 · Slid Phi Labs"
 - Commercial residual / Continuous-1088 Strong: licensed. Contact corey@slidphilabs.com
@@ -78,7 +81,7 @@ function cleanMsg(m) {
   return { role, content };
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
@@ -220,3 +223,5 @@ export default async function handler(req, res) {
     return json(res, 500, { ok: false, error: "chat_failed", message: String(e.message || e) });
   }
 }
+
+export default withProductBox(handler, 'tru8');

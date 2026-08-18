@@ -11,6 +11,8 @@
  *     route?: "zrw|delta" | string  // Creator force: structured-int assassin first
  *   }
  */
+import { withProductBox } from "./lib/spl-box-gate.js";
+
 import {
   profile,
   route,
@@ -41,7 +43,7 @@ function toBuf(data, encoding) {
   return Buffer.from(String(data), "utf8");
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
@@ -234,3 +236,5 @@ export default async function handler(req, res) {
     });
   }
 }
+
+export default withProductBox(handler, 'gate');

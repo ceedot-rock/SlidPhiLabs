@@ -2,6 +2,8 @@
  * GET /api/suite-folder — list SPL Pay Per Suite on-site data folder
  * Static samples live under /suite-folder/ (served as static files).
  */
+import { withProductBox } from "./lib/spl-box-gate.js";
+
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -9,7 +11,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const MANIFEST = path.join(__dirname, "..", "suite-folder", "manifest.json");
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Cache-Control", "public, max-age=60");
   if (req.method === "OPTIONS") {
@@ -42,3 +44,5 @@ export default async function handler(req, res) {
     res.end(JSON.stringify({ ok: false, error: String(e.message || e) }));
   }
 }
+
+export default withProductBox(handler, 'suite');

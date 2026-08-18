@@ -8,12 +8,15 @@
  *
  * Returns JSON: packed_b64, zrw_bytes, raw_bytes, path, mirror_error
  */
+import { withProductBox } from "./lib/spl-box-gate.js";
+
 import {
   ZeroRangeWave,
   packBits,
   unpackBits,
 } from "./lib/vendor/zrw-pack.js";
 import { codexStamp, codexHeaders } from "./lib/codex-key.js";
+import { siosJob, siosFile } from "./lib/sios-cell.mjs";
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -63,7 +66,7 @@ function zrwDecompress(packed) {
   return new ZeroRangeWave(0, 4).decodeBits(unpackBits(packed));
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
@@ -140,6 +143,13 @@ export default async function handler(req, res) {
     const packed2 = zrwCompressInts(back);
     const mirror_error = rt && packed2.length === packed.length ? 0 : 1;
 
+    siosJob({
+      kind: "encode",
+      bytes: rawBytes,
+      ok: rt && mirror_error === 0,
+      path: "zrw",
+    });
+    siosFile({ name: `pack-${rawBytes}.zrw`, b64: packed.toString("base64"), hint: "zrw" });
     return json(res, 200, {
       ok: true,
       path: "zrw",
@@ -164,3 +174,5 @@ export default async function handler(req, res) {
     return json(res, 400, { ok: false, error: String(e.message || e) });
   }
 }
+
+export default withProductBox(handler, 'gate');

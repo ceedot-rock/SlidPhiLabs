@@ -5,6 +5,8 @@
  * Body: raw JSON or { json | value | data }
  * Returns: packed_b64, meta, keys, publish_delta
  */
+import { withProductBox } from "./lib/spl-box-gate.js";
+
 import {
   compressJsonKeys,
   decompressJsonKeys,
@@ -69,7 +71,7 @@ function parseInput(body) {
   }
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
@@ -121,3 +123,5 @@ export default async function handler(req, res) {
     return json(res, 400, { ok: false, error: String(e.message || e) });
   }
 }
+
+export default withProductBox(handler, 'tru8');

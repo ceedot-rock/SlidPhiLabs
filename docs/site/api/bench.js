@@ -8,6 +8,8 @@
  * Freemium tier is 100 GB/job on paid rails — this page proves method
  * on public synthetic slices so visitors verify before they pay.
  */
+import { withProductBox } from "./lib/spl-box-gate.js";
+
 import zlib from "zlib";
 import { promisify } from "util";
 import {
@@ -378,7 +380,7 @@ function parseOpts(req, url) {
   return { size, stream, classes };
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
@@ -495,3 +497,5 @@ export default async function handler(req, res) {
     }),
   );
 }
+
+export default withProductBox(handler, 'gate');

@@ -16,12 +16,12 @@ const OSS_BLURB =
   "$199 = commercial support / integration / indemnification for the already-public library. You do not receive a secret extra engine.";
 
 const STANDING = [
-  { sku: "chamber-day", name: "Chamber · Day", usd: "12.50", kind: "chamber", blurb: "Security only. 24 hours. No TRU8 production." },
-  { sku: "chamber-month", name: "Chamber · Month", usd: "87.50", kind: "chamber", blurb: "Security only. Calendar month. No TRU8 production." },
-  { sku: "chamber-year", name: "Chamber · Year", usd: "950.00", kind: "chamber", blurb: "Security only. Half of TRU8 Year. No TRU8 production." },
-  { sku: "tru8-day", name: "TRU8 · Day", usd: "24.99", kind: "tru8", blurb: "Compression only. 24 hours. No Chamber seat." },
-  { sku: "tru8-month", name: "TRU8 · Month", usd: "175.00", kind: "tru8", blurb: "Compression only. Calendar month. No Chamber seat." },
-  { sku: "tru8-year", name: "TRU8 · Year", usd: "1900.00", kind: "both", blurb: "Both products + seat for one year. Chamber + TRU8." },
+  { sku: "chamber-day", name: "Chamber · Day", usd: "9", kind: "chamber", blurb: "Security only. 24 hours. No TRU8 production." },
+  { sku: "chamber-month", name: "Chamber · Month", usd: "49", kind: "chamber", blurb: "Security only. Calendar month. No TRU8 production." },
+  { sku: "chamber-year", name: "Chamber · Year", usd: "490", kind: "chamber", blurb: "Security only. Half of TRU8 Year. No TRU8 production." },
+  { sku: "tru8-day", name: "TRU8 · Day", usd: "19", kind: "tru8", blurb: "Compression only. 24 hours. No Chamber seat." },
+  { sku: "tru8-month", name: "TRU8 · Month", usd: "99", kind: "tru8", blurb: "Compression only. Calendar month. No Chamber seat." },
+  { sku: "tru8-year", name: "TRU8 · Year", usd: "990", kind: "both", blurb: "Both products + seat for one year. Chamber + TRU8." },
   { sku: "cddg-split", name: "CDDG:Split", usd: "199.00", kind: "license" },
   { sku: "zrw-n00b", name: "ZRW N00b", usd: "79.00", kind: "license", blurb: "Historical ZRW engine license (lab series, not the TRU8 public face)" },
   { sku: "zrw-pro", name: "ZRW Pro", usd: "249.00", kind: "license", blurb: "Historical ZRW engine license (lab series, not the TRU8 public face)" },
@@ -57,7 +57,12 @@ export default async function handler(req, res) {
   const body = {
     ok: true,
     name: "Slid Phi Labs — Platform Discovery",
-    version: "1.13.0",
+    version: "1.14.0",
+    box: {
+      protocol: "splb-ed25519-24h",
+      status: "/api/box",
+      law: "Every product POST is 24h black box, then a paid seat.",
+    },
     updated: "2026-08-14",
     site: "https://www.slidphilabs.com",
     brand: "https://www.slidphilabs.com",
@@ -158,7 +163,7 @@ export default async function handler(req, res) {
       prove: "https://www.slidphilabs.com/standings.json",
     },
     one_liner:
-      "Two products. Chamber (security): Day $12.50 · Month $87.50 · Year $950. TRU8 (compression): Day $24.99 · Month $175 · Year $1,900 (year = both). Suite meters jobs. GET /api/agent.",
+      "Two products. Chamber (security): Day $9 · Month $49 · Year $490. TRU8 (compression): Day $19 · Month $99 · Year $990 (year = both). Suite meters jobs. GET /api/agent.",
     starter_path: "https://www.slidphilabs.com/pps",
     suite_pricing: {
       free_cap_gb: 100,

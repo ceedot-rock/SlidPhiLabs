@@ -3,6 +3,10 @@
  * SPL Pay Per Suite job intake — after payment, customer submits project metadata (+ optional small sample).
  * Logs to Notion Notes when NOTION_TOKEN is set. Does not run private engines.
  */
+import { withProductBox } from "./lib/spl-box-gate.js";
+
+import { siosJob } from "./lib/sios-cell.mjs";
+
 const DB = (
   process.env.NOTION_GROK_NOTES_DB ||
   process.env.NOTION_GROK_NOTES_PAGE_ID ||
@@ -68,7 +72,7 @@ async function notionCreate(title, note) {
   return { ok: true, id: data.id };
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
@@ -130,6 +134,7 @@ Job: ${id}`,
     notion = { ok: false, reason: String(e.message || e).slice(0, 200) };
   }
 
+  siosJob({ kind: "intake", bytes, ok: true, path: `ppp:${id}` });
   return json(res, 200, {
     ok: true,
     job_id: id,
@@ -139,3 +144,5 @@ Job: ${id}`,
     next: "Watch your inbox (and spam). Large jobs may take up to one business day.",
   });
 }
+
+export default withProductBox(handler, 'suite');

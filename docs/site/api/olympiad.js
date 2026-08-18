@@ -6,6 +6,8 @@
  * GET  ?view=proposals|records|entry|governance
  * POST → register intent / team draft / proposal / vote (logged; payment via x402 gao-entry)
  */
+import { withProductBox } from "./lib/spl-box-gate.js";
+
 const SPONSOR = {
   name: "Slid Phi Labs",
   domain: "slidphilabs.com",
@@ -224,7 +226,7 @@ function ratioOk(humanPct) {
   return h >= 30 && h <= 70;
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
@@ -469,3 +471,5 @@ export default async function handler(req, res) {
 
   return json(res, 405, { error: "Method not allowed", sponsor: SPONSOR });
 }
+
+export default withProductBox(handler, 'trugame');

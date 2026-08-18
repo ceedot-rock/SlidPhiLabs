@@ -2,12 +2,15 @@
  * POST /api/decompress — inverse of /api/compress (ZRW only)
  * Body: { packed_b64 } or application/octet-stream packed bytes
  */
+import { withProductBox } from "./lib/spl-box-gate.js";
+
 import {
   ZeroRangeWave,
   packBits,
   unpackBits,
 } from "./lib/vendor/zrw-pack.js";
 import { codexStamp, codexHeaders } from "./lib/codex-key.js";
+import { siosJob } from "./lib/sios-cell.mjs";
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -50,7 +53,7 @@ function intsToI32LE(ints) {
   return buf;
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
@@ -84,6 +87,7 @@ export default async function handler(req, res) {
     }
     const ints = zrwDecompress(packed);
     const raw = intsToI32LE(ints);
+    siosJob({ kind: "decode", bytes: raw.length, ok: true, path: "zrw" });
     return json(res, 200, {
       ok: true,
       path: "zrw",
@@ -98,3 +102,5 @@ export default async function handler(req, res) {
     return json(res, 400, { ok: false, error: String(e.message || e) });
   }
 }
+
+export default withProductBox(handler, 'gate');

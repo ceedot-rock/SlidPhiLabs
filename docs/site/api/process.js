@@ -6,6 +6,8 @@
  * Body: same as /api/compress (zeros JSON or int32 LE / data_b64)
  * Returns: packed + restored + mirror_error + forever history stamp
  */
+import { withProductBox } from "./lib/spl-box-gate.js";
+
 import {
   ZeroRangeWave,
   packBits,
@@ -69,7 +71,7 @@ function zrwDecompress(packed) {
   return new ZeroRangeWave(0, 4).decodeBits(unpackBits(packed));
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
@@ -214,3 +216,5 @@ export default async function handler(req, res) {
     );
   }
 }
+
+export default withProductBox(handler, 'gate');

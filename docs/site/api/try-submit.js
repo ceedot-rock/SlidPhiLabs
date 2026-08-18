@@ -3,6 +3,8 @@
  * Validates form, logs to Notion, issues ZRW Free Gate key (cap 25).
  * Env: NOTION_TOKEN, optional NOTION_GROK_NOTES_DB (default Notes for Grok id)
  */
+import { withProductBox } from "./lib/spl-box-gate.js";
+
 import { randomBytes } from "node:crypto";
 
 const FREE_CAP = 25;
@@ -95,7 +97,7 @@ function looksPublicReview(url) {
   return true;
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
@@ -233,3 +235,5 @@ export default async function handler(req, res) {
     });
   }
 }
+
+export default withProductBox(handler, 'gate');
