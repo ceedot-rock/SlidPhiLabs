@@ -127,7 +127,10 @@
   }
 
   async function mount() {
-    if (document.querySelector(".spl-header")) return;
+    if (document.querySelector(".spl-header")) {
+      document.body.classList.add("spl-chrome");
+      return;
+    }
     document.body.classList.add("spl-chrome");
     stripOld();
     const news = await loadNews();
