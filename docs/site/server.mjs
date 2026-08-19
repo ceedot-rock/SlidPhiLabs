@@ -115,6 +115,8 @@ const REWRITES = {
   "/pricing/": "/pricing.html",
   "/docs": "/docs.html",
   "/docs/": "/docs.html",
+  "/lab-pass": "/lab-pass.html",
+  "/lab-pass/": "/lab-pass.html",
   "/license": "/pricing.html",
   "/license/": "/pricing.html",
   "/toys": "/index.html",
