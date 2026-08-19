@@ -4,10 +4,9 @@
     ["/", "Home"],
     ["/products", "Products"],
     ["/box", "Try"],
+    ["/pricing", "Pricing"],
+    ["/docs", "API"],
     ["/games", "Games"],
-    ["/license", "License"],
-    ["/pps", "Suite"],
-    ["/updates", "News"],
   ];
   const FALLBACK_NEWS = [
     { t: "Try", title: "24-hour black box — download any product", href: "/box" },
@@ -30,12 +29,15 @@
       const cur = href === here || (href !== "/" && here.startsWith(href));
       return `<a href="${href}"${cur ? ' aria-current="page"' : ""}>${label}</a>`;
     }).join("");
-    return `<header class="spl-header" role="banner">
+    return `<a class="spl-skip" href="#main">Skip to content</a>
+    <div class="spl-top">
+    <header class="spl-header" role="banner">
       <div class="bar">
         <a class="spl-brand" href="/" aria-label="Slid Phi Labs home">
           <img src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
           <span>Slid Phi Labs</span>
         </a>
+        <button class="spl-nav-toggle" type="button" aria-expanded="false" aria-label="Menu"></button>
         <nav class="spl-nav" aria-label="Primary">${links}</nav>
       </div>
     </header>`;
@@ -45,9 +47,9 @@
     const bits = items
       .map((it) => `<a href="${it.href}"><b>${it.t}</b>${it.title}</a>`)
       .join("");
-    return `<div class="spl-ticker" role="marquee" aria-label="News and projects">
+    return `<div class="spl-ticker" role="region" aria-label="Lab news">
       <div class="spl-ticker-track">${bits}${bits}</div>
-    </div>`;
+    </div></div>`;
   }
 
   function footer() {
@@ -70,18 +72,17 @@
           <a href="/pps">Suite</a>
         </div>
         <div>
-          <h4>Seats</h4>
-          <a href="/license">License</a>
-          <a href="/pay">Pay</a>
-          <a href="/access">Access</a>
-          <a href="/demos">Demos</a>
+          <h4>Use</h4>
+          <a href="/box">Try 24h</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/docs">API</a>
+          <a href="/games">Games</a>
         </div>
         <div>
           <h4>Agents</h4>
           <a href="/api/agent">/api/agent</a>
           <a href="/llms.txt">llms.txt</a>
-          <a href="/updates">News</a>
-          <a href="/trugame">TruGame</a>
+          <a href="/api/box">/api/box</a>
         </div>
       </div>
       <p class="legal">© Slid Phi Labs · 24-hour product box · Powered by TRU8</p>
@@ -133,9 +134,19 @@
     const wrap = document.createElement("div");
     wrap.innerHTML = header() + ticker(news);
     document.body.insertBefore(wrap, document.body.firstChild);
+    const main = document.querySelector("main");
+    if (main && !main.id) main.id = "main";
     stripOld();
     if (!document.querySelector(".spl-footer")) {
       document.body.insertAdjacentHTML("beforeend", footer());
+    }
+    const tog = document.querySelector(".spl-nav-toggle");
+    const hdr = document.querySelector(".spl-header");
+    if (tog && hdr) {
+      tog.addEventListener("click", () => {
+        const on = hdr.classList.toggle("open");
+        tog.setAttribute("aria-expanded", on ? "true" : "false");
+      });
     }
   }
 

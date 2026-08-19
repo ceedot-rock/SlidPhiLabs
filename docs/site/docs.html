@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>API — Slid Phi Labs computation lab</title>
+  <meta name="description" content="Box protocol, try packs, compress, process, game rent. 24-hour product box. Agents: /api/agent and llms.txt."/>
+  <meta name="theme-color" content="#0f1c2e"/>
+  <meta name="robots" content="index,follow"/>
+  <link rel="canonical" href="https://www.slidphilabs.com/docs"/>
+  <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Slid Phi Labs"/>
+  <meta property="og:title" content="API — Slid Phi Labs"/>
+  <meta property="og:description" content="Computation lab HTTP API. Black box first."/>
+  <meta property="og:url" content="https://www.slidphilabs.com/docs"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="API — Slid Phi Labs"/>
+  <meta name="twitter:description" content="POST /api/box then compress, process, or download a 24h pack."/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=3"/>
+</head>
+<body>
+  <main class="spl-page">
+    <h1>API</h1>
+    <p class="lede">Every product POST opens or checks the 24-hour box. After that, a paid seat. Games use a 7-day rent cookie.</p>
+    <div class="spl-grid">
+      <div class="spl-card"><p class="spl-kicker">GET</p><h3>/api/box</h3><p>Box status. Protocol splb-ed25519-24h.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/box</h3><p>Open the 24-hour box. Sets spl_box.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/try-pack?product=</h3><p>chamber | tru8 | gate — download a runnable 24h pack.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/compress</h3><p>Gated encode. Zeros rail is the public flagship.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/process</h3><p>Gated process. Same box.</p></div>
+      <div class="spl-card"><p class="spl-kicker">GET/POST</p><h3>/api/rent-game</h3><p>TruGames $3.99 / 7 days. Then Pass $12 / $79.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/checkout</h3><p>Dynamic Stripe for day/month/rent. Year seats use live Payment Links.</p></div>
+      <div class="spl-card"><p class="spl-kicker">GET</p><h3>/api/agent</h3><p>Discovery for agents. Also /llms.txt</p></div>
+    </div>
+  </main>
+  <script src="/assets/chrome.js?v=3" defer></script>
+</body>
+</html>

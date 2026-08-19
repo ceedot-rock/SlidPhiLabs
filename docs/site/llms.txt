@@ -1,66 +1,14 @@
-# SiOS · Chamber · TRU8 · Gate · TruGames · Slid Phi Labs
+# Slid Phi Labs — computation lab
+> Try 24 hours (black box), then a seat.
 > Chamber $9 / $49 / $490. TRU8 $19 / $99 / $990 (year = both).
-> Gate Year $790. Lab Pass $1,088 (365d black box: Chamber + TRU8 + Gate + TruGame).
-> TruGame Pass $12 / $79. Suite 100 GB then 5¢/4¢. 24h box on every product POST.
+> Gate $29 / $89 / $790 (not #1 GC). Lab Pass $1,088 / 365d.
+> TruGames rent $3.99 / 7 days or Pass $12 / $79.
+> Suite 100 GB then ~5¢ / 4¢.
 
-## OS
-- SiOS (Synthetic Intelligent OS): https://www.slidphilabs.com/sios
-- Chamber, TRU8, suite jobs, campus, and games run on it.
-
-## Products
-- Site: https://www.slidphilabs.com/
-- Chamber (security): https://www.slidphilabs.com/chamber
-- Chamber SDK: https://github.com/ceedot-rock/json-chamber-sdk
-- TRU8 demos: https://www.slidphilabs.com/demos
-- License / prices: https://www.slidphilabs.com/license
-- Pricing SoT: https://www.slidphilabs.com/pricing.json
-- Inbox (all): mailto:corey@slidphilabs.com
-- Credit line: Powered by TRU8 · Slid Phi Labs
-
-## Chamber (security)
-- φ-split keyword shares + AES-256-GCM
-- 24-hour black box from first run (hard cut)
-- Day $9 · Month $49 · Year $490
-- Half the matching TRU8 tier
-- No TRU8 production on this ladder
-- SKUs: chamber-day | chamber-month | chamber-year
-
-## TRU8 (compression)
-- npm public demo: `npm i @cptasz13/tru8` (unscoped `tru8` is blocked by npm as similar to tr46/tsup)
-- Public demos free with credit
-- T_ZERO / T_DICT / T_TRISUM_HOT
-- Day $19 and Month $99 = compression only
-- Year $990 = Chamber + TRU8 for one year
-- SKUs: tru8-day | tru8-month | tru8-year
-- Legacy aliases: truchamber-* → tru8-*
-
-## Gate
-- Lossless mixed-file router. Not #1 GC. Calgary +5.1% vs brotli-11.
-- Day $29 · Month $89 · Year $790
-- https://buy.stripe.com/7sY4gA6Jfapy1GZ8gw6wE0G
-
-## Lab Pass
-- $1,088 · 365 days · Chamber + TRU8 + Gate + TruGame
-- https://buy.stripe.com/3cI7sM2sZ0OYfxP7cs6wE0D
-
-## TruGames
-- Gaming division (not SPLAB Games). Pass $12 / $79.
-- https://www.slidphilabs.com/games
-
-## Black box
-- Protocol: splb-ed25519-24h
-- Status: https://www.slidphilabs.com/api/box
-- Every product POST is gated. Checkout stays open.
-
-## Suite
-- First 100 GB free, then ~5¢/GB (~4¢ bulk)
-- https://www.slidphilabs.com/pps
-
-## Agents
-- Discovery: https://www.slidphilabs.com/api/agent
-- Catalog: https://www.slidphilabs.com/api/x402-products
-- agents.json: https://www.slidphilabs.com/agents.json
-- Lab news ticker: https://www.slidphilabs.com/api/lab-news
-
-## Scope
-Chamber = security. TRU8 = compression. TRU8 Year = both. Suite = meter. Residual engine never open-sourced.
+- Try/download: https://www.slidphilabs.com/box
+- Products: https://www.slidphilabs.com/products
+- Pricing: https://www.slidphilabs.com/pricing
+- API: https://www.slidphilabs.com/docs
+- Box status: https://www.slidphilabs.com/api/box
+- Agent: https://www.slidphilabs.com/api/agent
+- Inbox: corey@slidphilabs.com
