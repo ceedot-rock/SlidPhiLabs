@@ -3,17 +3,17 @@
   const NAV = [
     ["/", "Home"],
     ["/products", "Products"],
-    ["/games", "Games"],
     ["/license", "License"],
     ["/pps", "Suite"],
     ["/updates", "News"],
+    ["/games", "Games"],
   ];
   const FALLBACK_NEWS = [
-    { t: "News", title: "TruGames rent $3.99 / 7 days", href: "/games" },
-    { t: "Live", title: "Front campaign desk", href: "/trugame/front" },
-    { t: "Seat", title: "Lab Pass $1,088 · 365 days", href: "/products" },
-    { t: "Seat", title: "Gate Year $790", href: "/products" },
-    { t: "Seat", title: "TRU8 Year $990 · Chamber $490", href: "/license" },
+    { t: "Seat", title: "Lab Pass $1,088 · 365 days", href: "/lab-pass" },
+    { t: "Seat", title: "Chamber Year $490", href: "/chamber" },
+    { t: "Seat", title: "TRU8 Year $990", href: "/tru8" },
+    { t: "Seat", title: "Gate Year $790", href: "/gate" },
+    { t: "Suite", title: "100 GB then 5¢", href: "/pps" },
   ];
 
   function path() {
@@ -60,26 +60,28 @@
         </div>
         <div>
           <h4>Products</h4>
-          <a href="/license">Chamber · TRU8</a>
-          <a href="/products">Gate · Lab Pass</a>
+          <a href="/chamber">Chamber</a>
+          <a href="/tru8">TRU8</a>
+          <a href="/gate">Gate</a>
+          <a href="/lab-pass">Lab Pass</a>
           <a href="/pps">Suite</a>
-          <a href="/demos">Demos</a>
         </div>
         <div>
-          <h4>Play</h4>
-          <a href="/games">TruGames</a>
-          <a href="/trugame/front">Front</a>
-          <a href="/boxing">Boxing</a>
+          <h4>Seats</h4>
+          <a href="/license">License</a>
+          <a href="/pay">Pay</a>
+          <a href="/access">Access</a>
+          <a href="/demos">Demos</a>
         </div>
         <div>
           <h4>Agents</h4>
           <a href="/api/agent">/api/agent</a>
           <a href="/llms.txt">llms.txt</a>
           <a href="/updates">News</a>
-          <a href="/standings">Standings</a>
+          <a href="/games">Games</a>
         </div>
       </div>
-      <p class="legal">© Slid Phi Labs · 24-hour product box · TruGames rent $3.99 / 7 days · Powered by TRU8</p>
+      <p class="legal">© Slid Phi Labs · 24-hour product box · Powered by TRU8</p>
     </footer>`;
   }
 
