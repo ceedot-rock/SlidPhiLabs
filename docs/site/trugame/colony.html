@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Colony Session — TruGame on TelOS · Slid Phi Labs</title>
+  <meta name="description" content="Play Colony: you are the leftover on a Smart Frame. Cor grants milliwatts. Flash meaning. Hop Frame to Pack to Desk. Custos kills dumps. TruGame Pass $12 / $79."/>
+  <meta property="og:title" content="Colony Session — TruGame"/>
+  <meta property="og:description" content="You are Colony. Cor grants power. Leftover flashes. Hop it before the Frame goes black."/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <meta property="og:url" content="https://www.slidphilabs.com/trugame/colony"/>
+  <meta property="og:site_name" content="Slid Phi Labs"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Colony Session — TruGame"/>
+  <meta name="twitter:description" content="TelOS leftover game. Ditch the Dumb Drivers."/>
+  <link rel="canonical" href="https://www.slidphilabs.com/trugame/colony"/>
+  <link rel="icon" href="https://www.slidphilabs.com/favicon.ico"/>
+  <style>
+    :root { --navy:#0A1020; --teal:#00E5FF; --ink:#e8f6f8; --mut:#7aa0a8; --bad:#ff5a6a; }
+    * { box-sizing: border-box; }
+    body { margin:0; min-height:100vh; background:var(--navy); color:var(--ink); font:16px/1.45 system-ui,sans-serif; }
+    main { max-width: 40rem; margin: 0 auto; padding: 1.25rem; }
+    h1 { font-size: 1.45rem; letter-spacing: .04em; margin: 0 0 .25rem; }
+    .tag { color: var(--teal); font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; }
+    .card { border: 1px solid #163040; border-radius: 12px; padding: 1rem; margin: .75rem 0; background: #0d1828; }
+    .row { display:flex; gap:.6rem; flex-wrap:wrap; align-items:center; }
+    button, select { background:#122232; color:var(--ink); border:1px solid #1e3a4a; border-radius:8px; padding:.45rem .7rem; cursor:pointer; }
+    button.primary { background: var(--teal); color: var(--navy); font-weight: 700; border:0; }
+    button:disabled { opacity:.4; cursor:default; }
+    input[type=range] { width: 12rem; accent-color: var(--teal); }
+    .mut { color: var(--mut); font-size: .9rem; }
+    .flash { color: var(--teal); font-weight: 700; }
+    .bad { color: var(--bad); }
+    .win { color: #7dffb0; }
+    ol { padding-left: 1.1rem; margin: .4rem 0 0; }
+    li { margin: .25rem 0; color: var(--mut); font-size: .92rem; }
+    header a { color: var(--teal); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="tag">TruGame · Colony Session</p>
+  <h1>You are the leftover.</h1>
+  <p class="mut">Cor grants milliwatts. Flash meaning when an organ sleeps. Hop Frame → Pack → Desk. Custos kills dumps. Eight turns.</p>
+
+  <div class="card" id="event">
+    <div class="tag" id="turn">Turn 0 / 8</div>
+    <h2 id="title" style="margin:.3rem 0">Session start</h2>
+    <p class="mut" id="blurb">Set hunger and a face. Then resolve.</p>
+    <p id="status"></p>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <label>Hunger <span id="hungerN">40</span> mW</label>
+      <input id="hunger" type="range" min="10" max="80" value="40"/>
+    </div>
+    <div class="row" style="margin-top:.6rem">
+      <label>Face</label>
+      <select id="face">
+        <option value="1">.1 perceive</option>
+        <option value="2">.2 route</option>
+        <option value="3">.3 emit</option>
+      </select>
+      <label>Hop</label>
+      <select id="hop">
+        <option value="hold">hold Capture</option>
+        <option value="pack">→ Pack</option>
+        <option value="desk">→ Desk</option>
+      </select>
+    </div>
+    <div class="row" style="margin-top:.8rem">
+      <button class="primary" id="go">Resolve turn</button>
+      <button id="again" hidden>New session</button>
+      <span class="mut" id="score">score 0</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="tag">Log</div>
+    <ol id="log"></ol>
+  </div>
+  <p class="mut">Same stack as Colony / Desk / Pack / Mesh. Ditch the Dumb Drivers. <a href="/games" style="color:var(--teal)">TruGames</a> · Pass $12 / $79</p>
+</main>
+<script type="module">
+  import { newGame, resolveTurn, EVENTS } from "./colony-play.js";
+  let g = newGame();
+  const $ = (id) => document.getElementById(id);
+  function paint() {
+    $("turn").textContent = `Turn ${g.turn} / ${g.max} · flashes ${g.flashes} · hops ${g.hops} · dumps ${g.dumps}`;
+    $("score").textContent = `score ${g.score}`;
+    $("hungerN").textContent = $("hunger").value;
+    if (g.last) {
+      $("title").textContent = g.last.ev.title;
+      $("blurb").textContent = g.last.ev.blurb;
+      const gr = g.last.grants;
+      $("status").innerHTML = `Oculus ${gr.Oculus||0} · Auris ${gr.Auris||0} · Gait ${gr.Gait||0} · Colony ${gr.Colony||0} mW
+        · leftover ${g.last.leftover.toFixed(3)} ${g.last.wantFlash ? '<span class="flash">FLASH</span>' : ""}`;
+    }
+    $("log").innerHTML = g.log.map((l) => `<li>${l}</li>`).join("");
+    if (g.over) {
+      $("go").disabled = true;
+      $("again").hidden = false;
+      $("title").textContent = g.over === "win" ? "Session held" : "Session black";
+      $("title").className = g.over === "win" ? "win" : "bad";
+    }
+  }
+  $("hunger").oninput = () => { $("hungerN").textContent = $("hunger").value; };
+  $("go").onclick = () => {
+    g.hunger = Number($("hunger").value);
+    g.face = Number($("face").value);
+    g.hopTo = $("hop").value;
+    resolveTurn(g);
+    paint();
+  };
+  $("again").onclick = () => { g = newGame(); $("go").disabled = false; $("again").hidden = true; $("title").className = ""; paint(); };
+  paint();
+</script>
+</body>
+</html>
