@@ -1,59 +1,105 @@
 <!DOCTYPE html>
-<html lang="en" data-sport="football">
+<html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-<title>TruGames · play on any screen — Slid Phi Labs</title>
-<meta name="description" content="TruGames — Slid Phi Labs gaming division. Boxing, ARL, hockey, baseball, Earth, football, OFA. TruGame Pass $12 / $79. PWA now."/>
-<meta property="og:title" content="TruGames · play on any screen"/>
-<meta property="og:description" content="Every TruGame desk, one door. TruGame Pass $12 / $79. Install on the phone."/>
-<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-<meta property="og:url" content="https://www.slidphilabs.com/games"/>
-<meta property="og:site_name" content="Slid Phi Labs"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="TruGames · play on any screen"/>
-<meta name="twitter:description" content="Boxing, racing, baseball, hockey, Earth, football, OFA. TruGame Pass $12 / $79."/>
-<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-<link rel="canonical" href="https://www.slidphilabs.com/games"/>
-<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ceedot-rock/splabs-brand/main/assets/favicon-32.png"/>
-<link rel="manifest" href="/games/manifest.webmanifest"/>
-<meta name="theme-color" content="#07080b"/>
-<meta name="mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="apple-mobile-web-app-title" content="TruGames"/>
-<link rel="stylesheet" href="/assets/studio.css"/>
-<link rel="stylesheet" href="/assets/chrome.css?v=1"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>TruGames — every desk · $3.99 / $12 / $79 · Slid Phi Labs</title>
+  <meta name="description" content="Boxing, Front, and Colony are live. ARL, PHL 27, PBL 27, OFL 27, Onchain Fighting, and Earth have pages. One TruGame Pass: $3.99 / 7 days, $12 / month, $79 / year."/>
+  <meta name="theme-color" content="#0c0d10"/>
+  <link rel="canonical" href="https://www.slidphilabs.com/games"/>
+  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg"/>
+  <meta property="og:title" content="TruGames — every desk"/>
+  <meta property="og:description" content="Play Boxing, Front, Colony. One pass covers the rest."/>
+  <meta property="og:url" content="https://www.slidphilabs.com/games"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <link rel="manifest" href="/games/manifest.webmanifest"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=2"/>
+  <style>
+    .pill { display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:.15rem .45rem; border-radius:999px; margin-bottom:.4rem; }
+    .pill-live { background:#0b6e72; color:#fff; }
+    .pill-board { background:#eceae4; color:#5c5f66; }
+    .spl-card .pay { margin-top:.7rem; font-size:.85rem; }
+    .spl-card .pay a { color:#0b6e72; font-weight:600; text-decoration:none; margin-right:.7rem; }
+  </style>
 </head>
 <body>
-  <div class="title splash" style="min-height:auto;padding-bottom:1rem">
-    <div>
-      <div class="splash-brand">TRUGAME</div>
-      <div class="splash-year">27</div>
-      <h1>TruGames</h1>
-      <div class="splash-mode">PLAY</div>
-      <p class="splash-tag">Play in the browser. Add to Home Screen. One web build, every screen.</p>
+  <main class="spl-page">
+    <h1>TruGames</h1>
+    <p class="lede">You are paying for the desks. One TruGame Pass opens every live game and covers every briefing desk when it opens. Rent $3.99 for 7 days (then it dies). Keep it $12 a month or $79 a year.</p>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="/pay?sku=trugame-month">Pass · $12</a>
+      <a class="spl-btn spl-btn-line" href="/pay?sku=trugame-rent-week">Rent · $3.99</a>
+      <a class="spl-btn spl-btn-line" href="/pay?sku=trugame-year">Year · $79</a>
+      <a class="spl-btn spl-btn-line" href="/trugame">Engine</a>
+    </p>
+    <h2 style="margin:2.2rem 0 .2rem">Live — play these</h2>
+    <div class="spl-grid">
+      <article class="spl-card">
+        <span class="pill pill-live">Live</span>
+        <h3>Boxing Sim</h3>
+        <p>Career boxing. WBO ranks, gyms, corners.</p>
+        <p class="pay"><a href="/boxing">Play Boxing</a><a href="/pay?sku=trugame-month">$12</a></p>
+      </article>
+      <article class="spl-card">
+        <span class="pill pill-live">Live</span>
+        <h3>Front</h3>
+        <p>One campaign. Take the ridge. Hold the river. The card is offered.</p>
+        <p class="pay"><a href="/trugame/front">Play Front</a><a href="/pay?sku=trugame-month">$12</a></p>
+      </article>
+      <article class="spl-card">
+        <span class="pill pill-live">Live</span>
+        <h3>Colony</h3>
+        <p>Live swarm desk. You set the field. Agents move together.</p>
+        <p class="pay"><a href="/trugame/colony">Play Colony</a><a href="/pay?sku=trugame-month">$12</a></p>
+      </article>
     </div>
-  </div>
-  <div class="shell">
-  <div class="games-grid">
-    <a class="card" href="https://www.slidphilabs.com/boxing"><b>Boxing Sim</b><span>Career boxing. WBO ranks, gyms, corners.</span></a>
-
-    <a class="card" href="https://www.slidphilabs.com/trugame/arl"><b>American Racing League</b><span>Cup career. NCA minds. Chamber seasons.</span></a>
-    <a class="card" href="https://www.slidphilabs.com/trugame/phl27"><b>PHL 27</b><span>Pro Hockey League. 32 cities. One Cup.</span></a>
-    <a class="card" href="https://www.slidphilabs.com/trugame/blb27"><b>PBL 27</b><span>Pro Ball League. Award races. Kids who can go 1-1.</span></a>
-    <a class="card" href="https://www.slidphilabs.com/trugame/earth"><b>Earth Sim</b><span>Swarm Earth. Continents, nations, weather.</span></a>
-    <a class="card" href="https://www.slidphilabs.com/trugame/ofl27"><b>OFL 27</b><span>Franchise football. Real rosters.</span></a>
-    <a class="card" href="https://www.slidphilabs.com/trugame/ofa"><b>Onchain Fighting</b><span>Run the MMA promotion.</span></a>
-    <a class="card" href="https://www.slidphilabs.com/trugame/front"><b>Front</b><span>One campaign. Take the ridge. Hold the river. The card is offered.</span></a>
-    <a class="card" href="https://blok.grok.me"><b>bLOK CHaiN</b><span>Forge blocks. Ranks. $bLOkz.</span></a>
-    <a class="card" href="https://pinata-pools.pages.dev"><b>Pinata Pools</b><span>Threshold pots on Base.</span></a>
-    <a class="card" href="https://www.slidphilabs.com/olympiad"><b>Great Agentic Olympiad</b><span>Agent + human teams. World stage.</span></a>
-  </div>
-  <p class="meta" style="margin-top:2rem">Rent any desk $3.99 / 7 days (then it dies). Keep it $12 / month or $79 / year. · PWA + Capacitor</p>
-  <script src="/assets/trugame-rent.js"></script>
-  <script>TruGameRent.gate();</script>
-  </div>
-<script src="/assets/chrome.js?v=1" defer></script>
+    <h2 style="margin:2.2rem 0 .2rem">On the board — same pass</h2>
+    <div class="spl-grid">
+      <article class="spl-card">
+        <span class="pill pill-board">Briefing</span>
+        <h3>American Racing League</h3>
+        <p>Cup career. NCA minds. Chamber seasons.</p>
+        <p class="pay"><a href="/trugame/arl">Info</a><a href="/pay?sku=trugame-year">$79</a></p>
+      </article>
+      <article class="spl-card">
+        <span class="pill pill-board">Briefing</span>
+        <h3>PHL 27</h3>
+        <p>Pro Hockey League. 32 cities. One Cup.</p>
+        <p class="pay"><a href="/trugame/phl27">Info</a><a href="/pay?sku=trugame-year">$79</a></p>
+      </article>
+      <article class="spl-card">
+        <span class="pill pill-board">Briefing</span>
+        <h3>PBL 27</h3>
+        <p>Pro Ball League. Award races.</p>
+        <p class="pay"><a href="/trugame/blb27">Info</a><a href="/pay?sku=trugame-year">$79</a></p>
+      </article>
+      <article class="spl-card">
+        <span class="pill pill-board">Briefing</span>
+        <h3>OFL 27</h3>
+        <p>Franchise football. Real rosters.</p>
+        <p class="pay"><a href="/trugame/ofl27">Info</a><a href="/pay?sku=trugame-year">$79</a></p>
+      </article>
+      <article class="spl-card">
+        <span class="pill pill-board">Briefing</span>
+        <h3>Onchain Fighting</h3>
+        <p>Run the MMA promotion.</p>
+        <p class="pay"><a href="/trugame/ofa">Info</a><a href="/pay?sku=trugame-year">$79</a></p>
+      </article>
+      <article class="spl-card">
+        <span class="pill pill-board">Briefing</span>
+        <h3>Earth Sim</h3>
+        <p>Swarm Earth. Continents, nations, weather.</p>
+        <p class="pay"><a href="/trugame/earth">Info</a><a href="/pay?sku=trugame-year">$79</a></p>
+      </article>
+    </div>
+    <h2 style="margin:2.2rem 0 .2rem">Also on this lab</h2>
+    <div class="spl-grid">
+      <a class="spl-card" href="/olympiad"><h3>Great Agentic Olympiad</h3><p>Agent + human teams. World stage. $1 entry.</p></a>
+      <a class="spl-card" href="https://blok.grok.me"><h3>bLOK CHaiN</h3><p>Forge blocks. Ranks. $bLOkz.</p></a>
+      <a class="spl-card" href="https://pinata-pools.pages.dev"><h3>Pinata Pools</h3><p>Threshold pots on Base.</p></a>
+    </div>
+    <p class="lede" style="margin-top:2rem">After you pay, claim here: <a href="/access?product=trugame-month">/access?product=trugame-month</a>. Inbox <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a>.</p>
+  </main>
+  <script src="/assets/chrome.js?v=2" defer></script>
 </body>
 </html>
