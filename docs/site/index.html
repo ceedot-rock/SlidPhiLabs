@@ -34,11 +34,12 @@
   <div class="inner">
     <a class="brand" href="/" aria-label="Slid Phi Labs home">Slid Phi Labs</a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="/">Home</a>
-      <a href="/chamber">Chamber</a>
-      <a href="/demos">TRU8</a>
-      <a href="/pps">Suite</a>
+      <a href="/" aria-current="page">Home</a>
       <a href="/license">License</a>
+      <a href="/games">TruGames</a>
+      <a href="/trugame/front">Front</a>
+      <a href="/pps">Suite</a>
+      <a href="/demos">Demos</a>
     </nav>
   </div>
 </header>
@@ -46,12 +47,59 @@
   <section class="hero wrap">
     <p class="hero-kicker">Chamber · TRU8 · Gate · TruGames · Suite</p>
     <h1 class="hero-title">Chamber + TRU8 + Gate</h1>
-    <p class="hero-line">Chamber $9 / $49 / $490. TRU8 $19 / $99 / $990 (year = both). Gate Year $790. Lab Pass $1,088. 24-hour black box on every product door.</p>
+    <p class="hero-line">Chamber $9 / $49 / $490. TRU8 $19 / $99 / $990 (year = both). Gate Year $790. Lab Pass $1,088. TruGames rent $3.99 / week. 24-hour black box on every product door.</p>
+    <p>
+      <a class="btn btn-primary" href="https://buy.stripe.com/3cI7sM2sZ0OYfxP7cs6wE0D">Lab Pass $1,088</a>
+      <a class="btn btn-secondary" href="/games">Play TruGames</a>
+      <a class="btn btn-secondary" href="/license">Seats</a>
+    </p>
   </section>
+
+  <section class="section wrap" id="products">
+    <p class="section-label">The line</p>
+    <h2>What you can buy and play today</h2>
+    <div class="cards">
+      <a class="card" href="/license">
+        <h3>Chamber</h3>
+        <p>$9 / $49 / <strong>$490 year</strong>. Security seat. 24-hour black box, then pay.</p>
+      </a>
+      <a class="card" href="https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E">
+        <h3>TRU8</h3>
+        <p>$19 / $99 / <strong>$990 year</strong>. Compression. Year = Chamber + TRU8.</p>
+      </a>
+      <a class="card" href="https://buy.stripe.com/7sY4gA6Jfapy1GZ8gw6wE0G">
+        <h3>Gate</h3>
+        <p>Year <strong>$790</strong>. Mixed-file lossless router. Not #1 GC.</p>
+      </a>
+      <a class="card" href="https://buy.stripe.com/3cI7sM2sZ0OYfxP7cs6wE0D">
+        <h3>Lab Pass</h3>
+        <p><strong>$1,088</strong> · 365 days. Chamber + TRU8 + Gate + TruGame.</p>
+      </a>
+      <a class="card" href="/games">
+        <h3>TruGames</h3>
+        <p>Rent <strong>$3.99 / 7 days</strong> then it dies. Pass $12 / $79. Front is live.</p>
+      </a>
+      <a class="card" href="/pps">
+        <h3>Suite</h3>
+        <p>100 GB then ~5¢ / 4¢ bulk. Metered jobs. Not a license.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section wrap" id="play">
+    <p class="section-label">TruGames</p>
+    <h2>Front is on the field</h2>
+    <p class="lede">One campaign. The card is offered. Take / supply / hold. OFA stays the fight desk.</p>
+    <p>
+      <a class="btn btn-primary" href="/trugame/front">Play Front</a>
+      <a class="btn btn-secondary" href="/games">All desks</a>
+    </p>
+  </section>
+
 <section id="flagship-bench" class="section wrap" aria-label="Flagship bench">
 <p class="section-label">Flagship · structured-int rail</p>
 <h2>zeros × 10k → ZRW 8 B</h2>
-<p>Live rail POST /api/process. Not just JS. Gate 2 PASS.</p>
+<p>Live rail POST /api/process. Not a general-compressor claim.</p>
 <table><thead><tr><th>codec</th><th>bytes</th><th>gate</th></tr></thead>
 <tbody>
 <tr><td>ZRW (SPL)</td><td>8 B</td><td>Gate 2 PASS</td></tr>
@@ -59,13 +107,7 @@
 <tr><td>brotli -11</td><td>13 B</td><td>—</td></tr>
 </tbody></table>
 <p><a href="/standings.json">standings.json</a> · <a href="/lab/ZRW_ZEROS_10K_BENCH_LATEST.json">lab bench</a> · <a href="/zrw_verify.py">verify</a></p>
-<pre id="bench-json">{"corpus":"zeros","n":10000,"zrw_bytes":8,"gzip9_bytes":73,"brotli11_bytes":13,"gate2":"PASS","endpoint":"POST /api/process"}</pre>
 </section>
-  <section class="section wrap" id="what">
-    <p class="section-label">Two products</p>
-    <h2>Chamber is security. TRU8 is compression.</h2>
-    <p class="lede">Each product has Day · Month · Year. TRU8 Year includes both products.</p>
-  </section>
 </main>
 <footer class="wrap">
   <p>Slid Phi Labs · <a href="/api/agent">/api/agent</a> · <a href="/.well-known/agents.json">agents.json</a></p>
