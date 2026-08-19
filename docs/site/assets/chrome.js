@@ -6,7 +6,7 @@
     ["/license", "License"],
     ["/pps", "Suite"],
     ["/updates", "News"],
-    ["/games", "Games"],
+    ["/trugame", "TruGame"],
   ];
   const FALLBACK_NEWS = [
     { t: "Seat", title: "Lab Pass $1,088 · 365 days", href: "/lab-pass" },
@@ -78,7 +78,7 @@
           <a href="/api/agent">/api/agent</a>
           <a href="/llms.txt">llms.txt</a>
           <a href="/updates">News</a>
-          <a href="/games">Games</a>
+          <a href="/trugame">TruGame</a>
         </div>
       </div>
       <p class="legal">© Slid Phi Labs · 24-hour product box · Powered by TRU8</p>
