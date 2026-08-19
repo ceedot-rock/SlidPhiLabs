@@ -1,23 +1,17 @@
 /**
- * POST /api/compress — public residual rail (Creator /lord next key)
- * Wire existing ZRW binary only. No new encoders this hour.
- *
- * Body:
- *   - application/octet-stream: raw int32 LE bytes (zeros domain when all 0)
- *   - application/json: { n?: 10000, corpus?: "zeros", data_b64?: "..." }
- *
- * Returns JSON: packed_b64, zrw_bytes, raw_bytes, path, mirror_error
+ * POST /api/compress — lab codec.
+ * Picks smallest lossless of ZRW / leftover / brotli-11 / gzip-9 that round-trips.
+ * Zeros×10k still 8 B. Not a #1 general-compressor claim.
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
-
 import {
-  ZeroRangeWave,
-  packBits,
-  unpackBits,
-} from "./lib/vendor/zrw-pack.js";
-import { encode as splEncode, decode as splDecode } from "./lib/spl-codec.mjs";
+  encode as splEncode,
+  inputToRaw,
+  publicResult,
+  MAX_RAW,
+  MAX_VECTOR,
+} from "./lib/spl-codec.mjs";
 import { codexStamp, codexHeaders } from "./lib/codex-key.js";
-import { siosJob, siosFile } from "./lib/sios-cell.mjs";
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -50,23 +44,6 @@ function readBody(req) {
   });
 }
 
-function intsFromI32LE(buf) {
-  if (buf.length % 4 !== 0) throw new Error("raw_must_be_int32_aligned");
-  const n = buf.length / 4;
-  const ints = new Array(n);
-  for (let i = 0; i < n; i++) ints[i] = buf.readInt32LE(i * 4);
-  return ints;
-}
-
-function zrwCompressInts(ints) {
-  const bits = new ZeroRangeWave(0, 4).encodeBits(ints);
-  return Buffer.from(packBits(bits));
-}
-
-function zrwDecompress(packed) {
-  return new ZeroRangeWave(0, 4).decodeBits(unpackBits(packed));
-}
-
 async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
@@ -77,13 +54,13 @@ async function handler(req, res) {
     return json(res, 200, {
       ok: true,
       path: "spl-codec",
-      how: "POST raw bytes or JSON { corpus:'zeros', n:10000 } or { data_b64 }. Picks ZRW / leftover / brotli-11 / gzip-9, smallest RT.",
+      how: "POST raw bytes or JSON { corpus:'zeros', n:10000 } or { text } or { data_b64 }. Picks ZRW / leftover / brotli-11 / gzip-9, smallest that round-trips.",
+      pair: "POST /api/decompress · full loop POST /api/process",
+      max_raw: MAX_RAW,
+      max_vector: MAX_VECTOR,
       curl_10k_zeros:
         'python3 -c "open(\'z.bin\',\'wb\').write(bytes(40000))" && curl -sS -X POST https://www.slidphilabs.com/api/compress -H "content-type: application/octet-stream" --data-binary @z.bin',
-      pair: "POST /api/decompress · full loop POST /api/process",
-      next_domain: "high-entropy text (books, code, logs) — after zeros rail is public",
-      do_not: "invent encoders/tokenizers/dictionaries this hour",
-      lattice_key: "phi@p143 dual A∥B mirror seat",
+      do_not: "claim this beats brotli as a general compressor",
       ...codexStamp({ half: "compress" }),
     });
   }
@@ -93,9 +70,7 @@ async function handler(req, res) {
 
   try {
     const body = await readBody(req);
-    let ints;
-    let rawBytes;
-
+    let raw;
     if (body.kind === "json" || (body.kind === "bin" && body.value[0] === 0x7b)) {
       let j = body.kind === "json" ? body.value : null;
       if (!j) {
@@ -105,109 +80,22 @@ async function handler(req, res) {
           j = null;
         }
       }
-      if (j && typeof j === "object") {
-        if (j.data_b64) {
-          const buf = Buffer.from(j.data_b64, "base64");
-          ints = intsFromI32LE(buf);
-          rawBytes = buf.length;
-        } else {
-          const n = Math.min(1_000_000, Math.max(1, Number(j.n) || 10_000));
-          const corpus = String(j.corpus || "zeros");
-          if (corpus !== "zeros") {
-            const buf = Buffer.from(String(j.text || ""), "utf8");
-            if (!buf.length) {
-              return json(res, 400, { ok: false, error: "need_zeros_or_text_or_data_b64" });
-            }
-            const enc = splEncode(buf);
-            return json(res, 200, {
-              ok: true,
-              path: "spl-codec",
-              method: enc.method,
-              raw_bytes: enc.raw,
-              packed_bytes: enc.packed,
-              packed_b64: enc.frame.toString("base64"),
-              trials: enc.trials,
-              roundtrip: true,
-              ...codexStamp({ half: "compress" }),
-            });
-          }
-          ints = new Array(n).fill(0);
-          rawBytes = n * 4;
-        }
-      }
+      if (j && typeof j === "object") raw = inputToRaw(j);
     }
-
-    if (!ints) {
-      const buf = body.value;
-      if (!buf || !buf.length) {
+    if (!raw) {
+      if (!body.value || !body.value.length) {
         return json(res, 400, { ok: false, error: "empty_body" });
       }
-      try {
-        ints = intsFromI32LE(buf);
-        rawBytes = buf.length;
-        if (!ints.every((v) => v === 0) && !ints.every((v, i) => v === ints[0] + i)) {
-          const enc = splEncode(buf);
-          return json(res, 200, {
-            ok: true,
-            path: "spl-codec",
-            method: enc.method,
-            raw_bytes: enc.raw,
-            packed_bytes: enc.packed,
-            packed_b64: enc.frame.toString("base64"),
-            trials: enc.trials,
-            roundtrip: true,
-            ...codexStamp({ half: "compress" }),
-          });
-        }
-      } catch {
-        const enc = splEncode(buf);
-        return json(res, 200, {
-          ok: true,
-          path: "spl-codec",
-          method: enc.method,
-          raw_bytes: enc.raw,
-          packed_bytes: enc.packed,
-          packed_b64: enc.frame.toString("base64"),
-          trials: enc.trials,
-          roundtrip: true,
-          ...codexStamp({ half: "compress" }),
-        });
-      }
+      raw = Buffer.from(body.value);
     }
-
-    const packed = zrwCompressInts(ints);
-    const back = zrwDecompress(packed);
-    const rt =
-      Array.isArray(back) &&
-      back.length === ints.length &&
-      back.every((v, i) => v === ints[i]);
-    const packed2 = zrwCompressInts(back);
-    const mirror_error = rt && packed2.length === packed.length ? 0 : 1;
-
-    siosJob({
-      kind: "encode",
-      bytes: rawBytes,
-      ok: rt && mirror_error === 0,
-      path: "zrw",
-    });
-    siosFile({ name: `pack-${rawBytes}.zrw`, b64: packed.toString("base64"), hint: "zrw" });
+    const cap = raw.length % 4 === 0 && raw.length <= MAX_VECTOR ? MAX_VECTOR : MAX_RAW;
+    if (raw.length > cap) {
+      return json(res, 413, { ok: false, error: "too_large", max_raw: MAX_RAW, max_vector: MAX_VECTOR });
+    }
+    const enc = splEncode(raw);
     return json(res, 200, {
       ok: true,
-      path: "zrw",
-      method: "zero-range-wave",
-      raw_bytes: rawBytes,
-      zrw_bytes: packed.length,
-      packed_b64: packed.toString("base64"),
-      n_ints: ints.length,
-      roundtrip: rt,
-      mirror_error,
-      claim_check: ints.every((v) => v === 0)
-        ? {
-            zeros: true,
-            matches_flagship_8b_on_10k: ints.length === 10_000 && packed.length === 8,
-          }
-        : { zeros: false },
-      lattice_note: "phi@p143 next seat claim · seats not living shards",
+      ...publicResult(enc),
       ...codexStamp({ half: "compress", unlocked_pair: "/api/decompress" }),
       at: new Date().toISOString(),
     });
@@ -216,4 +104,4 @@ async function handler(req, res) {
   }
 }
 
-export default withProductBox(handler, 'gate');
+export default withProductBox(handler, "gate");

@@ -15,6 +15,9 @@ export const KIND = Object.freeze({
   gzip: 3,
   brotli: 4,
 });
+export const MAX_RAW = 1_048_576;
+export const MAX_VECTOR = 4_000_000;
+export const RDOM_CAP = 32_768;
 
 function gzip9(buf) {
   return zlib.gzipSync(buf, { level: 9 });
@@ -126,7 +129,7 @@ export function encode(input) {
   }
   trials.push(trial("gzip-9", KIND.gzip, gzip9(raw), raw));
   trials.push(trial("brotli-11", KIND.brotli, brotli11(raw), raw));
-  if (raw.length <= 32768) {
+  if (raw.length <= RDOM_CAP) {
     try {
       trials.push(trial("rdom", KIND.rdom, encodeReal(raw), raw));
     } catch {
@@ -165,4 +168,58 @@ export function decode(frame) {
   if (kind === KIND.brotli) return unbrotli(payload);
   if (kind === KIND.rdom) return decodeReal(payload);
   throw new Error("unknown SPL1 kind " + kind);
+}
+
+export function inputToRaw(input) {
+  if (input == null) throw new Error("empty_body");
+  if (Buffer.isBuffer(input) || input instanceof Uint8Array) return Buffer.from(input);
+  if (typeof input === "string") return Buffer.from(input, "utf8");
+  if (typeof input !== "object") throw new Error("empty_or_bad_input");
+  if (input.data_b64) return Buffer.from(String(input.data_b64), "base64");
+  const corpus = String(input.corpus || "");
+  const wantsVector = corpus === "zeros" || corpus === "ramp" || corpus === "walk";
+  if (input.text != null && !wantsVector) return Buffer.from(String(input.text), "utf8");
+  const n = Math.min(1_000_000, Math.max(1, Number(input.n) || 10_000));
+  if (!corpus || corpus === "zeros") {
+    const raw = Buffer.alloc(n * 4);
+    if (raw.length > MAX_VECTOR) throw new Error("too_large");
+    return raw;
+  }
+  if (corpus === "ramp") {
+    const raw = Buffer.alloc(n * 4);
+    const start = Number(input.start) || 0;
+    for (let i = 0; i < n; i++) raw.writeInt32LE((start + i) | 0, i * 4);
+    return raw;
+  }
+  if (corpus === "walk") {
+    const raw = Buffer.alloc(n * 4);
+    let v = Number(input.start) || 0;
+    for (let i = 0; i < n; i++) {
+      raw.writeInt32LE(v | 0, i * 4);
+      v += (i % 7) - 3;
+    }
+    return raw;
+  }
+  throw new Error("need_zeros_ramp_walk_text_or_data_b64");
+}
+
+export function publicResult(enc) {
+  const nInts = enc.raw % 4 === 0 ? enc.raw / 4 : null;
+  const zeros = enc.vector === "zeros";
+  return {
+    path: "spl-codec",
+    method: enc.method,
+    kind: enc.kind,
+    vector: enc.vector,
+    raw_bytes: enc.raw,
+    packed_bytes: enc.packed,
+    frame_bytes: enc.frame.length,
+    packed_b64: enc.frame.toString("base64"),
+    trials: enc.trials,
+    roundtrip: true,
+    ...(enc.method === "zrw" ? { zrw_bytes: enc.packed, n_ints: nInts } : {}),
+    claim_check: zeros
+      ? { zeros: true, matches_flagship_8b_on_10k: nInts === 10_000 && enc.packed === 8 }
+      : { zeros: false },
+  };
 }

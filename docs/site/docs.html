@@ -29,8 +29,9 @@
       <div class="spl-card"><p class="spl-kicker">GET</p><h3>/api/box</h3><p>Box status. Protocol splb-ed25519-24h.</p></div>
       <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/box</h3><p>Open the 24-hour box. Sets spl_box.</p></div>
       <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/try-pack?product=</h3><p>chamber | tru8 | gate — download a runnable 24h pack.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/compress</h3><p>SPL codec: ZRW on zeros/ramp/walk, else leftover / brotli-11 / gzip-9 — smallest that round-trips. Zeros×10k still 8 B.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/process</h3><p>Gated process. Same box.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/compress</h3><p>One codec. ZRW on zeros/ramp/walk, leftover on small text, else brotli-11 / gzip-9. Smallest that round-trips. Zeros×10k still 8 B. Try it on <a href="/tru8">/tru8</a>.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/decompress</h3><p>Inverse. SPL1 frame or legacy ZRW.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/process</h3><p>Encode then decode in one call. Same 24h box.</p></div>
       <div class="spl-card"><p class="spl-kicker">GET/POST</p><h3>/api/rent-game</h3><p>TruGames $3.99 / 7 days. Then Pass $12 / $79.</p></div>
       <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/checkout</h3><p>Dynamic Stripe for day/month/rent. Year seats use live Payment Links.</p></div>
       <div class="spl-card"><p class="spl-kicker">GET</p><h3>/api/agent</h3><p>Discovery for agents. Also /llms.txt</p></div>

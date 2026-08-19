@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>TRU8 codec — try encode/decode · Slid Phi Labs</title>
+  <meta name="description" content="One lossless codec: ZRW on zeros and ramps, leftover on small text, else brotli-11 or gzip-9. Zeros×10k is 8 bytes. Not a #1 general compressor. Day $19 · Month $99 · Year $990."/>
+  <meta name="theme-color" content="#0f1c2e"/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="agentic" content="true"/>
+  <meta name="agentic-role" content="codec"/>
+  <link rel="canonical" href="https://www.slidphilabs.com/tru8"/>
+  <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
+  <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
+  <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Slid Phi Labs"/>
+  <meta property="og:title" content="TRU8 codec — Slid Phi Labs"/>
+  <meta property="og:description" content="Encode and decode on the lab rail. Zeros×10k → 8 B. Mixed files go through Gate."/>
+  <meta property="og:url" content="https://www.slidphilabs.com/tru8"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="TRU8 codec — Slid Phi Labs"/>
+  <meta name="twitter:description" content="One encode/decode. 24-hour box. Then $19 / $99 / $990."/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=6"/>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">Codec</p>
+    <h1>TRU8. One encode, one decode.</h1>
+    <p class="lede">The rail picks the smallest lossless path that round-trips: ZRW on structured ints, leftover on small text, otherwise brotli-11 or gzip-9. Zeros×10k is still 8 bytes. This is not a claim that we beat brotli on every file.</p>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E">TRU8 Year $990</a>
+      <a class="spl-btn spl-btn-line" href="/pay?sku=tru8-day">Day $19</a>
+      <a class="spl-btn spl-btn-line" href="/pay?sku=tru8-month">Month $99</a>
+      <a class="spl-btn spl-btn-line" href="/box">24h pack</a>
+    </p>
+
+    <section class="spl-desk" aria-label="Encode desk">
+      <label for="src">Input</label>
+      <textarea id="src" rows="8" spellcheck="false" placeholder="Paste text, or load a sample."></textarea>
+      <div class="spl-actions">
+        <button class="spl-btn spl-btn-dark" id="encode" type="button">Encode</button>
+        <button class="spl-btn spl-btn-line" data-sample="zeros" type="button">10k zeros</button>
+        <button class="spl-btn spl-btn-line" data-sample="ramp" type="button">Ramp</button>
+        <button class="spl-btn spl-btn-line" data-sample="text" type="button">Repeated text</button>
+        <label class="spl-btn spl-btn-line" for="file">Upload file<input id="file" type="file" hidden/></label>
+      </div>
+      <p id="status" class="lede"></p>
+      <div id="out" hidden>
+        <table class="spl-trials" id="summary"></table>
+        <p class="spl-kicker" style="margin-top:1.2rem">Trials</p>
+        <table class="spl-trials" id="trials"></table>
+        <label for="packed">Packed (base64)</label>
+        <textarea id="packed" rows="4" spellcheck="false"></textarea>
+        <div class="spl-actions">
+          <button class="spl-btn spl-btn-line" id="decode" type="button">Decode</button>
+        </div>
+        <pre id="restored" class="spl-out" hidden></pre>
+      </div>
+    </section>
+  </main>
+  <script src="/assets/chrome.js?v=6" defer></script>
+  <script>
+    const src = document.getElementById("src");
+    const statusEl = document.getElementById("status");
+    const out = document.getElementById("out");
+    const packed = document.getElementById("packed");
+    const restored = document.getElementById("restored");
+    let mode = "text";
+    let lastRawB64 = "";
+
+    function setStatus(t) { statusEl.textContent = t; }
+
+    document.querySelectorAll("[data-sample]").forEach((btn) => {
+      btn.onclick = () => {
+        mode = btn.dataset.sample;
+        if (mode === "text") {
+          src.value = "the cat sat on the mat. ".repeat(40);
+          setStatus("Repeated sentence loaded. Encode to see leftover vs brotli vs gzip.");
+        } else if (mode === "zeros") {
+          src.value = "(10,000 int32 zeros — sent as corpus, not as this text)";
+          setStatus("Flagship sample. Expect method zrw and 8 packed bytes.");
+        } else if (mode === "ramp") {
+          src.value = "(10,000 ramping int32s — sent as corpus, not as this text)";
+          setStatus("Ramp sample. Expect a tiny ZRW payload.");
+        }
+      };
+    });
+
+    document.getElementById("file").onchange = async (ev) => {
+      const f = ev.target.files && ev.target.files[0];
+      if (!f) return;
+      const buf = new Uint8Array(await f.arrayBuffer());
+      let bin = "";
+      for (let i = 0; i < buf.length; i++) bin += String.fromCharCode(buf[i]);
+      lastRawB64 = btoa(bin);
+      mode = "bytes";
+      src.value = f.name + " · " + buf.length + " bytes";
+      setStatus("File staged. Encode sends the bytes, not the filename.");
+    };
+
+    function bodyForEncode() {
+      if (mode === "zeros") return { corpus: "zeros", n: 10000 };
+      if (mode === "ramp") return { corpus: "ramp", n: 10000 };
+      if (mode === "bytes" && lastRawB64) return { data_b64: lastRawB64 };
+      return { corpus: "text", text: src.value };
+    }
+
+    document.getElementById("encode").onclick = async () => {
+      setStatus("Encoding…");
+      out.hidden = true;
+      restored.hidden = true;
+      const r = await fetch("/api/compress", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(bodyForEncode()),
+      });
+      const j = await r.json();
+      if (!r.ok || !j.ok) {
+        setStatus(j.error || "encode failed · open the 24h box if this is your first POST");
+        return;
+      }
+      const rows = [
+        ["method", j.method],
+        ["vector", j.vector],
+        ["raw", j.raw_bytes],
+        ["packed", j.packed_bytes],
+        ["frame", j.frame_bytes],
+        ["flagship 8 B", j.claim_check && j.claim_check.matches_flagship_8b_on_10k ? "yes" : "—"],
+      ];
+      document.getElementById("summary").innerHTML = rows
+        .map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`)
+        .join("");
+      const trials = j.trials || [];
+      document.getElementById("trials").innerHTML =
+        "<tr><th>path</th><th>bytes</th><th>RT</th></tr>" +
+        trials.map((t) => `<tr><td>${t.name}</td><td>${t.bytes}</td><td>${t.rt ? "yes" : "no"}</td></tr>`).join("");
+      packed.value = j.packed_b64 || "";
+      out.hidden = false;
+      const claim = j.claim_check && j.claim_check.matches_flagship_8b_on_10k
+        ? " Flagship: 10k zeros → 8 bytes."
+        : "";
+      setStatus("Encoded with " + j.method + "." + claim);
+    };
+
+    document.getElementById("decode").onclick = async () => {
+      const r = await fetch("/api/decompress", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ packed_b64: packed.value }),
+      });
+      const j = await r.json();
+      if (!r.ok || !j.ok) {
+        setStatus(j.error || "decode failed");
+        return;
+      }
+      let text = "";
+      try { text = atob(j.raw_b64); } catch { text = ""; }
+      const printable = /^[\x09\x0a\x0d\x20-\x7e]*$/.test(text);
+      restored.textContent = printable && text.length
+        ? text.slice(0, 4000)
+        : (j.raw_bytes + " bytes restored");
+      restored.hidden = false;
+      setStatus("Decoded · " + j.raw_bytes + " bytes");
+    };
+  </script>
+</body>
+</html>

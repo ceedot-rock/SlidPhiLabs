@@ -9,6 +9,10 @@
 - Products: https://www.slidphilabs.com/products
 - Pricing: https://www.slidphilabs.com/pricing
 - API: https://www.slidphilabs.com/docs
+- Codec desk: https://www.slidphilabs.com/tru8
+- Compress: POST /api/compress  (ZRW / leftover / brotli-11 / gzip-9, smallest RT. Zeros×10k = 8 B. Not #1 GC.)
+- Decompress: POST /api/decompress
+- Process: POST /api/process
 - Box status: https://www.slidphilabs.com/api/box
 - Agent: https://www.slidphilabs.com/api/agent
 - Inbox: corey@slidphilabs.com

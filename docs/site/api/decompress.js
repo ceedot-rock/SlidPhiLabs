@@ -1,17 +1,10 @@
 /**
- * POST /api/decompress — inverse of /api/compress (ZRW only)
- * Body: { packed_b64 } or application/octet-stream packed bytes
+ * POST /api/decompress — inverse of /api/compress.
+ * Accepts SPL1 frames or legacy bare ZRW.
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
-
-import {
-  ZeroRangeWave,
-  packBits,
-  unpackBits,
-} from "./lib/vendor/zrw-pack.js";
 import { decode as splDecode, MAGIC as SPL_MAGIC } from "./lib/spl-codec.mjs";
 import { codexStamp, codexHeaders } from "./lib/codex-key.js";
-import { siosJob } from "./lib/sios-cell.mjs";
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -44,16 +37,6 @@ function readBody(req) {
   });
 }
 
-function zrwDecompress(packed) {
-  return new ZeroRangeWave(0, 4).decodeBits(unpackBits(packed));
-}
-
-function intsToI32LE(ints) {
-  const buf = Buffer.alloc(ints.length * 4);
-  for (let i = 0; i < ints.length; i++) buf.writeInt32LE(ints[i] | 0, i * 4);
-  return buf;
-}
-
 async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
@@ -63,7 +46,7 @@ async function handler(req, res) {
   if (req.method === "GET") {
     return json(res, 200, {
       ok: true,
-      how: 'POST { packed_b64 } or raw ZRW packed bytes',
+      how: "POST { packed_b64 } or raw packed bytes (SPL1 or legacy ZRW)",
       pair: "POST /api/compress",
       full_loop: "POST /api/process",
       ...codexStamp({ half: "decompress" }),
@@ -76,7 +59,7 @@ async function handler(req, res) {
   try {
     const body = await readBody(req);
     let packed;
-    if (body.kind === "json" || (body.value[0] === 0x7b)) {
+    if (body.kind === "json" || (body.value && body.value[0] === 0x7b)) {
       let j = body.kind === "json" ? body.value : JSON.parse(body.value.toString("utf8"));
       if (j.packed_b64) packed = Buffer.from(j.packed_b64, "base64");
       else return json(res, 400, { ok: false, error: "packed_b64_required" });
@@ -86,26 +69,13 @@ async function handler(req, res) {
     if (!packed || !packed.length) {
       return json(res, 400, { ok: false, error: "empty" });
     }
-    if (packed.length >= 4 && packed.subarray(0, 4).equals(SPL_MAGIC)) {
-      const raw = splDecode(packed);
-      return json(res, 200, {
-        ok: true,
-        path: "spl-codec",
-        raw_bytes: raw.length,
-        raw_b64: raw.toString("base64"),
-        ...codexStamp({ half: "decompress" }),
-      });
-    }
-    const ints = zrwDecompress(packed);
-    const raw = intsToI32LE(ints);
-    siosJob({ kind: "decode", bytes: raw.length, ok: true, path: "zrw" });
+    const raw = splDecode(packed);
+    const framed = packed.length >= 4 && packed.subarray(0, 4).equals(SPL_MAGIC);
     return json(res, 200, {
       ok: true,
-      path: "zrw",
-      n_ints: ints.length,
+      path: framed ? "spl-codec" : "zrw",
       raw_bytes: raw.length,
       raw_b64: raw.toString("base64"),
-      all_zeros: ints.every((v) => v === 0),
       ...codexStamp({ half: "decompress", unlocked_pair: "/api/compress" }),
       at: new Date().toISOString(),
     });
@@ -114,4 +84,4 @@ async function handler(req, res) {
   }
 }
 
-export default withProductBox(handler, 'gate');
+export default withProductBox(handler, "gate");
