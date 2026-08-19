@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Try the black box — 24 hours · Slid Phi Labs</title>
+  <meta name="description" content="Download Chamber, TRU8, or Gate for 24 hours. The box closes unless you buy. TruGames rent is $3.99 for 7 days."/>
+  <meta name="theme-color" content="#0c0d10"/>
+  <meta name="robots" content="index,follow"/>
+  <link rel="canonical" href="https://www.slidphilabs.com/box"/>
+  <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Slid Phi Labs"/>
+  <meta property="og:title" content="Try the black box — Slid Phi Labs"/>
+  <meta property="og:description" content="24-hour download try for Chamber, TRU8, Gate. Then buy. TruGames $3.99 / 7 days."/>
+  <meta property="og:url" content="https://www.slidphilabs.com/box"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Try the black box — Slid Phi Labs"/>
+  <meta name="twitter:description" content="Download any product for 24 hours. Gated. Then a seat."/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=1"/>
+</head>
+<body>
+  <main class="spl-page">
+    <h1>The black box</h1>
+    <p class="lede">Open a 24-hour try. Download the pack. Run it. When the clock hits zero the door closes unless you buy. TruGames is a 7-day rent at $3.99.</p>
+    <p id="status" class="lede"></p>
+    <div class="spl-actions">
+      <button class="spl-btn spl-btn-dark" id="open" type="button">Open 24-hour box</button>
+      <a class="spl-btn spl-btn-line" href="/games">Rent games $3.99</a>
+    </div>
+    <div class="spl-grid" style="margin-top:2rem">
+      <div class="spl-card">
+        <h3>Chamber</h3>
+        <p>Security try. Then $9 / $49 / $490.</p>
+        <p class="spl-actions"><button class="spl-btn spl-btn-line" data-p="chamber" type="button">Download 24h pack</button></p>
+      </div>
+      <div class="spl-card">
+        <h3>TRU8</h3>
+        <p>Compression try. Then $19 / $99 / $990.</p>
+        <p class="spl-actions"><button class="spl-btn spl-btn-line" data-p="tru8" type="button">Download 24h pack</button></p>
+      </div>
+      <div class="spl-card">
+        <h3>Gate</h3>
+        <p>Router try. Then Year $790.</p>
+        <p class="spl-actions"><button class="spl-btn spl-btn-line" data-p="gate" type="button">Download 24h pack</button></p>
+      </div>
+      <div class="spl-card">
+        <h3>TruGames</h3>
+        <p>Play Front. $3.99 / 7 days, then buy or it dies.</p>
+        <p class="spl-actions"><a class="spl-btn spl-btn-line" href="/trugame/front">Play</a></p>
+      </div>
+    </div>
+  </main>
+  <script src="/assets/chrome.js?v=1" defer></script>
+  <script>
+    const statusEl = document.getElementById("status");
+    async function refresh() {
+      const s = await fetch("/api/box").then((r) => r.json());
+      statusEl.textContent = s.box_open
+        ? `Box open · ${s.hours_left ?? 24} hours left · ${s.protocol}`
+        : (s.error || "Box not open yet. Open it, then download.");
+      return s;
+    }
+    document.getElementById("open").onclick = async () => {
+      await fetch("/api/box", { method: "POST" });
+      await refresh();
+    };
+    document.querySelectorAll("[data-p]").forEach((btn) => {
+      btn.onclick = async () => {
+        const r = await fetch("/api/try-pack?product=" + btn.dataset.p, { method: "POST" });
+        const blob = await r.blob();
+        if (!r.ok) {
+          const t = await blob.text();
+          alert(t.slice(0, 280));
+          return;
+        }
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "spl-" + btn.dataset.p + "-24h.json";
+        a.click();
+      };
+    });
+    refresh();
+  </script>
+</body>
+</html>

@@ -19,6 +19,14 @@
       "destination": "/products.html"
     },
     {
+      "source": "/box",
+      "destination": "/box.html"
+    },
+    {
+      "source": "/box/",
+      "destination": "/box.html"
+    },
+    {
       "source": "/sios",
       "destination": "/sios.html"
     },

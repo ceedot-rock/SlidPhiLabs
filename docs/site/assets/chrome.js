@@ -3,17 +3,19 @@
   const NAV = [
     ["/", "Home"],
     ["/products", "Products"],
+    ["/box", "Try"],
+    ["/games", "Games"],
     ["/license", "License"],
     ["/pps", "Suite"],
     ["/updates", "News"],
-    ["/trugame", "TruGame"],
   ];
   const FALLBACK_NEWS = [
+    { t: "Try", title: "24-hour black box — download any product", href: "/box" },
+    { t: "News", title: "TruGames rent $3.99 / 7 days", href: "/games" },
+    { t: "Live", title: "Front campaign desk", href: "/trugame/front" },
     { t: "Seat", title: "Lab Pass $1,088 · 365 days", href: "/lab-pass" },
-    { t: "Seat", title: "Chamber Year $490", href: "/chamber" },
-    { t: "Seat", title: "TRU8 Year $990", href: "/tru8" },
     { t: "Seat", title: "Gate Year $790", href: "/gate" },
-    { t: "Suite", title: "100 GB then 5¢", href: "/pps" },
+    { t: "Seat", title: "TRU8 Year $990 · Chamber $490", href: "/license" },
   ];
 
   function path() {
@@ -55,6 +57,7 @@
           <h4>Lab</h4>
           <a href="/">Home</a>
           <a href="/products">Products</a>
+          <a href="/box">Try 24h box</a>
           <a href="/about">About</a>
           <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a>
         </div>
