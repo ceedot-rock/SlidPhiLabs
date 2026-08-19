@@ -36,6 +36,7 @@
     li { margin: .25rem 0; color: var(--mut); font-size: .92rem; }
     header a { color: var(--teal); }
   </style>
+<link rel="stylesheet" href="/assets/chrome.css?v=1"/>
 </head>
 <body>
 <main>
@@ -116,5 +117,6 @@
   $("again").onclick = () => { g = newGame(); $("go").disabled = false; $("again").hidden = true; $("title").className = ""; paint(); };
   paint();
 </script>
+<script src="/assets/chrome.js?v=1" defer></script>
 </body>
 </html>

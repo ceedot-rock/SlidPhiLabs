@@ -1,13 +1,33 @@
 {
   "service": "Slid Phi Labs \u2014 Lab Feed",
   "version": "1.2.0",
-  "updated": "2026-08-13",
+  "updated": "2026-08-19",
   "social": {
     "x": "https://x.com/slidphilabs",
     "handle": "@slidphilabs"
   },
   "description": "Product updates, news, plans, and social pointers.",
   "items": [
+    {
+      "id": "u-front-rent",
+      "date": "2026-08-19",
+      "type": "product",
+      "title": "Front is live · rent $3.99 / 7 days",
+      "body": "Campaign desk on /trugame/front. TruGames rent is a 7-day box, then buy Pass $12 / $79.",
+      "href": "https://www.slidphilabs.com/games",
+      "href_label": "TruGames",
+      "tags": ["trugame", "front", "rent"]
+    },
+    {
+      "id": "u-lab-pass-gate",
+      "date": "2026-08-18",
+      "type": "product",
+      "title": "Lab Pass $1,088 · Gate Year $790",
+      "body": "Lab Pass unlocks Chamber + TRU8 + Gate + TruGame for 365 days. Gate Year $790.",
+      "href": "https://www.slidphilabs.com/products",
+      "href_label": "Products",
+      "tags": ["lab-pass", "gate"]
+    },
     {
       "id": "u-two-product-split",
       "date": "2026-08-14",
@@ -22,8 +42,8 @@
       "id": "u-truchamber-stripe-seats",
       "date": "2026-08-13",
       "type": "product",
-      "title": "TruChamber seats \u2014 Stripe live",
-      "body": "Day $19 \u00b7 Month $99 \u00b7 Year $1,750 Payment Links live. Success \u2192 /access?product=truchamber-*&session=cs_\u2026. TRU8 ships with the seat. PACKAGE ACCESS \u2192 corey@slidphilabs.com. SoT pricing.json.",
+      "title": "TRU8 and Chamber seats live",
+      "body": "Chamber Year $490. TRU8 Year $990 (both products). PACKAGE ACCESS \u2192 corey@slidphilabs.com.",
       "href": "https://www.slidphilabs.com/access?product=truchamber-year",
       "href_label": "Access \u00b7 Year seat",
       "tags": [

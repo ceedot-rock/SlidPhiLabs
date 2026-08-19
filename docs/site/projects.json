@@ -1,6 +1,6 @@
 {
   "service": "Slid Phi Labs — Official project list",
-  "updated": "2026-08-13",
+  "updated": "2026-08-19",
   "projects": [
     {
       "id": "chamber",
@@ -27,12 +27,28 @@
       "url": "https://www.slidphilabs.com/pps"
     },
     {
+      "id": "gate",
+      "name": "Gate",
+      "status": "live",
+      "role": "lossless mixed-file router — not #1 GC",
+      "price": "Year $790",
+      "url": "https://www.slidphilabs.com/products"
+    },
+    {
+      "id": "lab-pass",
+      "name": "Lab Pass",
+      "status": "live",
+      "role": "365-day black box — Chamber + TRU8 + Gate + TruGame",
+      "price": "$1,088",
+      "url": "https://www.slidphilabs.com/products"
+    },
+    {
       "id": "trugame",
-      "name": "TruGame",
-      "status": "building",
-      "role": "game engine — pack sim state, seal the save, run the sim",
-      "note": "Building. Source private. Inquire corey@slidphilabs.com subject TruGame.",
-      "url": "mailto:corey@slidphilabs.com?subject=TruGame"
+      "name": "TruGames",
+      "status": "live",
+      "role": "Front campaign + fight desks. Rent $3.99 / 7 days or Pass $12 / $79",
+      "price": "Rent $3.99 · Pass $12 / $79",
+      "url": "https://www.slidphilabs.com/games"
     },
     {
       "id": "olympiad",

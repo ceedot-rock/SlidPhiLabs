@@ -11,6 +11,14 @@
       "destination": "/chamber.html"
     },
     {
+      "source": "/products",
+      "destination": "/products.html"
+    },
+    {
+      "source": "/products/",
+      "destination": "/products.html"
+    },
+    {
       "source": "/sios",
       "destination": "/sios.html"
     },

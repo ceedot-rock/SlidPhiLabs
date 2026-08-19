@@ -83,6 +83,8 @@ const REWRITES = {
   "/pps/": "/pps/index.html",
   "/games": "/games/index.html",
   "/games/": "/games/index.html",
+  "/products": "/products.html",
+  "/products/": "/products.html",
   "/olympiad": "/olympiad.html",
   "/olympiad/": "/olympiad.html",
   "/toys": "/toys.html",

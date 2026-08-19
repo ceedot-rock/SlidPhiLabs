@@ -1,0 +1,178 @@
+/* Site chrome — one header, one ticker, one footer, one logo. */
+:root {
+  --ink: #0c0d10;
+  --paper: #f6f5f2;
+  --line: #e2e0db;
+  --mut: #5c5f66;
+  --accent: #0b6e72;
+  --white: #fff;
+  --nav-h: 64px;
+  --tick-h: 36px;
+}
+html { color-scheme: light; }
+body.spl-chrome {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.5;
+}
+.spl-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+.spl-header .bar {
+  max-width: 1080px;
+  margin: 0 auto;
+  min-height: var(--nav-h);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.spl-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-size: 1.05rem;
+}
+.spl-brand img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+.spl-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+.spl-nav a {
+  color: var(--mut);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+.spl-nav a:hover,
+.spl-nav a[aria-current="page"] {
+  color: var(--ink);
+  background: #f0efeb;
+}
+.spl-ticker {
+  border-bottom: 1px solid var(--line);
+  background: #111216;
+  color: #d7d9de;
+  height: var(--tick-h);
+  overflow: hidden;
+  font-size: 0.82rem;
+}
+.spl-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  height: var(--tick-h);
+  width: max-content;
+  animation: spl-tick 48s linear infinite;
+  padding: 0 1rem;
+}
+.spl-ticker-track:hover { animation-play-state: paused; }
+.spl-ticker a {
+  color: #d7d9de;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.spl-ticker a:hover { color: #fff; }
+.spl-ticker b { color: #7fd4d6; font-weight: 600; margin-right: 0.4rem; }
+@keyframes spl-tick {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.spl-footer {
+  border-top: 1px solid var(--line);
+  background: var(--white);
+  margin-top: 4rem;
+  padding: 2.5rem 20px 2rem;
+}
+.spl-footer .inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+.spl-footer h4 {
+  margin: 0 0 0.6rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mut);
+}
+.spl-footer a {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.92rem;
+  padding: 0.15rem 0;
+}
+.spl-footer a:hover { color: var(--accent); }
+.spl-footer .legal {
+  max-width: 1080px;
+  margin: 1.5rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  color: var(--mut);
+}
+.spl-page { max-width: 1080px; margin: 0 auto; padding: 2.5rem 20px 3rem; }
+.spl-page h1 { font-size: 2rem; letter-spacing: -0.04em; margin: 0 0 0.6rem; }
+.spl-page .lede { font-size: 1.1rem; color: var(--mut); max-width: 40rem; }
+.spl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.spl-card {
+  display: block;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.15rem 1.2rem;
+  text-decoration: none;
+  color: inherit;
+}
+.spl-card:hover { border-color: #c8c6c0; }
+.spl-card h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
+.spl-card p { margin: 0; color: var(--mut); font-size: 0.92rem; }
+.spl-price { font-weight: 600; color: var(--ink); }
+.spl-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
+.spl-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.spl-btn-dark { background: var(--ink); color: #fff; }
+.spl-btn-line { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+header.site-nav, body > footer.wrap { display: none !important; }
+@media (max-width: 800px) {
+  .spl-footer .inner { grid-template-columns: 1fr 1fr; }
+  .spl-nav a { padding: 6px 8px; font-size: 0.82rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spl-ticker-track { animation: none; }
+}
