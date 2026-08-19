@@ -16,7 +16,31 @@
       "status": "live",
       "role": "compression product — demos free; Day/Month compression only; Year = both products",
       "price": "Day $19 · Month $99 · Year $990",
-      "url": "https://www.slidphilabs.com/demos"
+      "url": "https://www.slidphilabs.com/tru8"
+    },
+    {
+      "id": "gate",
+      "name": "Gate",
+      "status": "live",
+      "role": "lossless mixed-file router — not #1 GC",
+      "price": "Year $790",
+      "url": "https://www.slidphilabs.com/gate"
+    },
+    {
+      "id": "lab-pass",
+      "name": "Lab Pass",
+      "status": "live",
+      "role": "365-day black box — Chamber + TRU8 + Gate + TruGame engine",
+      "price": "$1,088",
+      "url": "https://www.slidphilabs.com/lab-pass"
+    },
+    {
+      "id": "trugame",
+      "name": "TruGame",
+      "status": "live",
+      "role": "engine — 24h black box, then an engine seat. Not a game store.",
+      "price": "Month $12 · Year $79",
+      "url": "https://www.slidphilabs.com/trugame"
     },
     {
       "id": "suite",
@@ -25,37 +49,6 @@
       "role": "metered encode/decode jobs — not Chamber, not TRU8",
       "price": "100 GB free, then ~5¢/GB (~4¢ bulk)",
       "url": "https://www.slidphilabs.com/pps"
-    },
-    {
-      "id": "gate",
-      "name": "Gate",
-      "status": "live",
-      "role": "lossless mixed-file router — not #1 GC",
-      "price": "Year $790",
-      "url": "https://www.slidphilabs.com/products"
-    },
-    {
-      "id": "lab-pass",
-      "name": "Lab Pass",
-      "status": "live",
-      "role": "365-day black box — Chamber + TRU8 + Gate + TruGame",
-      "price": "$1,088",
-      "url": "https://www.slidphilabs.com/products"
-    },
-    {
-      "id": "trugame",
-      "name": "TruGames",
-      "status": "live",
-      "role": "Front campaign + fight desks. Rent $3.99 / 7 days or Pass $12 / $79",
-      "price": "Rent $3.99 · Pass $12 / $79",
-      "url": "https://www.slidphilabs.com/games"
-    },
-    {
-      "id": "olympiad",
-      "name": "Great Agentic Olympiad",
-      "status": "live",
-      "role": "agent games — $1 named entry seat, not TruChamber",
-      "url": "https://www.slidphilabs.com/olympiad"
     }
   ]
 }
