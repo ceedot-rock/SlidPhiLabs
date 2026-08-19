@@ -1,7 +1,7 @@
 {
-  "updated": "2026-08-18",
+  "updated": "2026-08-19",
   "inbox": "corey@slidphilabs.com",
-  "rule": "Each product has its own ladder. Yearly beats 12× monthly. Lab Pass Year is the one black-box seat that unlocks Chamber + TRU8 + Gate + TruGame for 365 days. After the term the box closes. Suite stays a meter. SiOS is not a SKU. Retired Stripe $1900/$950/$12.50 links must not be sold.",
+  "rule": "Each product has its own ladder. Yearly beats 12\u00d7 monthly. Lab Pass Year is the one black-box seat that unlocks Chamber + TRU8 + Gate + TruGame engine for 365 days. After the term the box closes. Suite stays a meter. SiOS is not a SKU. The rent desk is retired. Retired Stripe $1900/$950/$12.50 links must not be sold.",
   "math": {
     "chamber_month_x12": 588,
     "chamber_year": 490,
@@ -19,7 +19,7 @@
       "service": "security",
       "trial_hours": 24,
       "trial_name": "black box",
-      "includes": ["cloak/open", "kill switch", "φ-split + AES-256-GCM"],
+      "includes": ["cloak/open", "kill switch", "\u03c6-split + AES-256-GCM"],
       "does_not_include": ["TRU8 production residual"],
       "note": "24-hour black box, then a Chamber seat.",
       "plans": {
@@ -27,14 +27,14 @@
           "sku": "chamber-day",
           "usd": 9,
           "unit": "24 hours",
-          "stripe": "https://www.slidphilabs.com/license",
+          "stripe": "https://www.slidphilabs.com/pay?sku=chamber-day",
           "access": "https://www.slidphilabs.com/access?product=chamber-day"
         },
         "month": {
           "sku": "chamber-month",
           "usd": 49,
           "unit": "calendar month",
-          "stripe": "https://www.slidphilabs.com/license",
+          "stripe": "https://www.slidphilabs.com/pay?sku=chamber-month",
           "access": "https://www.slidphilabs.com/access?product=chamber-month"
         },
         "year": {
@@ -44,25 +44,26 @@
           "stripe": "https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F",
           "access": "https://www.slidphilabs.com/access?product=chamber-year"
         }
-      }
+      },
+      "page": "https://www.slidphilabs.com/chamber"
     },
     "tru8": {
       "name": "TRU8",
       "service": "compression",
-      "demos": "free with credit: Powered by TRU8 · Slid Phi Labs",
+      "demos": "free with credit: Powered by TRU8 \u00b7 Slid Phi Labs",
       "plans": {
         "day": {
           "sku": "tru8-day",
           "usd": 19,
           "unit": "24 hours",
-          "stripe": "https://www.slidphilabs.com/license",
+          "stripe": "https://www.slidphilabs.com/pay?sku=tru8-day",
           "access": "https://www.slidphilabs.com/access?product=tru8-day"
         },
         "month": {
           "sku": "tru8-month",
           "usd": 99,
           "unit": "calendar month",
-          "stripe": "https://www.slidphilabs.com/license",
+          "stripe": "https://www.slidphilabs.com/pay?sku=tru8-month",
           "access": "https://www.slidphilabs.com/access?product=tru8-month"
         },
         "year": {
@@ -74,40 +75,58 @@
           "stripe": "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
           "access": "https://www.slidphilabs.com/access?product=tru8-year"
         }
-      }
+      },
+      "page": "https://www.slidphilabs.com/tru8"
     },
     "gate": {
       "name": "Gate",
       "service": "lossless mixed-file router",
-      "note": "text → brotli-11, else gzip-9. Not #1 GC. Calgary +5.1% vs brotli.",
+      "note": "text \u2192 brotli-11, else gzip-9. Not #1 GC. Calgary +5.1% vs brotli.",
       "plans": {
-        "day": { "sku": "gate-day", "usd": 29, "unit": "24 hours", "stripe": "https://www.slidphilabs.com/license" },
-        "month": { "sku": "gate-month", "usd": 89, "unit": "calendar month", "stripe": "https://www.slidphilabs.com/license" },
+        "day": {
+          "sku": "gate-day",
+          "usd": 29,
+          "unit": "24 hours",
+          "stripe": "https://www.slidphilabs.com/pay?sku=gate-day"
+        },
+        "month": {
+          "sku": "gate-month",
+          "usd": 89,
+          "unit": "calendar month",
+          "stripe": "https://www.slidphilabs.com/pay?sku=gate-month"
+        },
         "year": {
           "sku": "gate-year",
           "usd": 790,
           "unit": "calendar year",
           "stripe": "https://buy.stripe.com/7sY4gA6Jfapy1GZ8gw6wE0G"
         }
-      }
+      },
+      "page": "https://www.slidphilabs.com/gate"
     },
     "trugame": {
-      "name": "TruGame Pass",
-      "service": "TruGames desks",
+      "name": "TruGame",
+      "service": "engine",
+      "trial_hours": 24,
+      "trial_name": "black box",
+      "note": "The engine. Not a game store. No rent desk. 24-hour black box, then an engine seat.",
       "plans": {
-        "rent": {
-          "sku": "trugame-rent-week",
-          "usd": 3.99,
-          "unit": "7 days",
-          "black_box_hours": 168,
-          "self_destruct": true,
-          "buy_instead": ["trugame-month", "trugame-year"],
-          "stripe": "/api/checkout",
-          "access": "https://www.slidphilabs.com/games?rent=1"
+        "month": {
+          "sku": "trugame-month",
+          "usd": 12,
+          "unit": "calendar month",
+          "stripe": "https://www.slidphilabs.com/pay?sku=trugame-month",
+          "access": "https://www.slidphilabs.com/access?product=trugame-month"
         },
-        "month": { "sku": "trugame-month", "usd": 12, "unit": "calendar month", "stripe": "/api/checkout" },
-        "year": { "sku": "trugame-year", "usd": 79, "unit": "calendar year", "stripe": "/api/checkout" }
-      }
+        "year": {
+          "sku": "trugame-year",
+          "usd": 79,
+          "unit": "calendar year",
+          "stripe": "https://www.slidphilabs.com/pay?sku=trugame-year",
+          "access": "https://www.slidphilabs.com/access?product=trugame-year"
+        }
+      },
+      "page": "https://www.slidphilabs.com/trugame"
     },
     "lab_pass": {
       "name": "Lab Pass Year",
@@ -115,9 +134,10 @@
       "usd": 1088,
       "unit": "365 days",
       "black_box": true,
-      "unlocks": ["Chamber", "TRU8", "Gate", "TruGame Pass"],
+      "unlocks": ["Chamber", "TRU8", "Gate", "TruGame engine"],
       "stripe": "https://buy.stripe.com/3cI7sM2sZ0OYfxP7cs6wE0D",
-      "access": "https://www.slidphilabs.com/access?product=lab-pass"
+      "access": "https://www.slidphilabs.com/access?product=lab-pass",
+      "page": "https://www.slidphilabs.com/lab-pass"
     }
   },
   "suite": {
@@ -125,19 +145,22 @@
     "not": "Not Chamber. Not a TRU8 license. Metered jobs only.",
     "free_cap_gb": 100,
     "usd_per_gb_after_free": 0.05,
-    "usd_per_gb_bulk": 0.04
+    "usd_per_gb_bulk": 0.04,
+    "page": "https://www.slidphilabs.com/pps"
   },
   "retired": {
     "json-chamber-99": "Forever $99 unlock undercut every paid tier.",
     "truchamber-1750": "Mashed product. Replaced by Chamber + TRU8 ladders.",
     "tru8-1900": "Do not sell $990 / $490 / $9. Live year seats are $990 / $490.",
-    "zrw-79-249-699": "Historical ZRW engine licenses. Not Chamber, TRU8, or Gate Year."
+    "zrw-79-249-699": "Historical ZRW engine licenses. Not Chamber, TRU8, or Gate Year.",
+    "trugame-rent-week": "7-day desk rent retired. No $3.99 SKU. Engine seats only."
   },
   "aliases": {
     "truchamber-day": "tru8-day",
     "truchamber-month": "tru8-month",
     "truchamber-year": "tru8-year",
     "tru8-commercial": "tru8-year",
-    "lab-pass-year": "lab-pass"
+    "lab-pass-year": "lab-pass",
+    "trugame-pass": "trugame-month"
   }
 }

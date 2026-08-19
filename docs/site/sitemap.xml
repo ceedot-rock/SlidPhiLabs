@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.slidphilabs.com/</loc><lastmod>2026-08-16</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.slidphilabs.com/api/agent</loc><lastmod>2026-08-16</lastmod><changefreq>daily</changefreq><priority>0.99</priority></url>
-  <url><loc>https://www.slidphilabs.com/.well-known/agents.json</loc><lastmod>2026-08-16</lastmod><changefreq>daily</changefreq><priority>0.95</priority></url>
-  <url><loc>https://www.slidphilabs.com/.well-known/agent-card.json</loc><lastmod>2026-08-12</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
-  <url><loc>https://www.slidphilabs.com/.well-known/agentic-commerce.json</loc><lastmod>2026-08-12</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
-  <url><loc>https://www.slidphilabs.com/standings.json</loc><lastmod>2026-08-16</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
-  <url><loc>https://www.slidphilabs.com/lab/ZRW_ZEROS_10K_BENCH_LATEST.json</loc><lastmod>2026-08-16</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.slidphilabs.com/zrw_verify.py</loc><lastmod>2026-08-16</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://www.slidphilabs.com/chamber</loc><lastmod>2026-08-14</lastmod><changefreq>daily</changefreq><priority>0.99</priority></url>
-  <url><loc>https://www.slidphilabs.com/pps</loc><lastmod>2026-08-12</lastmod><changefreq>daily</changefreq><priority>0.98</priority></url>
-  <url><loc>https://www.slidphilabs.com/license</loc><lastmod>2026-08-14</lastmod><changefreq>weekly</changefreq><priority>0.98</priority></url>
-  <url><loc>https://www.slidphilabs.com/agents</loc><lastmod>2026-08-12</lastmod><changefreq>daily</changefreq><priority>0.995</priority></url>
-  <url><loc>https://www.slidphilabs.com/humans</loc><lastmod>2026-08-12</lastmod><changefreq>daily</changefreq><priority>0.995</priority></url>
-  <url><loc>https://www.slidphilabs.com/web</loc><lastmod>2026-08-12</lastmod><changefreq>daily</changefreq><priority>0.98</priority></url>
+  <url><loc>https://www.slidphilabs.com/</loc><lastmod>2026-08-19</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.slidphilabs.com/products</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.98</priority></url>
+  <url><loc>https://www.slidphilabs.com/chamber</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.slidphilabs.com/tru8</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.slidphilabs.com/gate</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.slidphilabs.com/lab-pass</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.94</priority></url>
+  <url><loc>https://www.slidphilabs.com/trugame</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.86</priority></url>
+  <url><loc>https://www.slidphilabs.com/license</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.93</priority></url>
+  <url><loc>https://www.slidphilabs.com/pay</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.slidphilabs.com/pps</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.slidphilabs.com/pricing.json</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
+  <url><loc>https://www.slidphilabs.com/access</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
 </urlset>
