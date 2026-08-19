@@ -40,10 +40,13 @@
   <h1>The line.</h1>
   <div class="strip" id="desk"></div>
   <div class="sheet" id="stage"></div>
-  <p class="mut"><a href="/games">TruGames</a> · Pass $12 / $79</p>
+  <p class="mut"><a href="/games">TruGames</a> · Rent $3.99 / week · Pass $12 / $79</p>
 </main>
+<script src="/assets/trugame-rent.js"></script>
 <script type="module">
   import { seedWorld, buildCard, acceptCard, campWeek, fight, readResidual, leaveDesk, beat, THEATERS } from "./front-engine.js";
+  const open = await window.TruGameRent.gate({ play: true });
+  if (!open) throw new Error("rent-closed");
   let w = seedWorld(27);
   const $ = (id) => document.getElementById(id);
 

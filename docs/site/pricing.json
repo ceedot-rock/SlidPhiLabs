@@ -95,8 +95,18 @@
       "name": "TruGame Pass",
       "service": "TruGames desks",
       "plans": {
-        "month": { "sku": "trugame-month", "usd": 12, "unit": "calendar month", "stripe": "https://www.slidphilabs.com/games" },
-        "year": { "sku": "trugame-year", "usd": 79, "unit": "calendar year", "stripe": "https://www.slidphilabs.com/games" }
+        "rent": {
+          "sku": "trugame-rent-week",
+          "usd": 3.99,
+          "unit": "7 days",
+          "black_box_hours": 168,
+          "self_destruct": true,
+          "buy_instead": ["trugame-month", "trugame-year"],
+          "stripe": "/api/checkout",
+          "access": "https://www.slidphilabs.com/games?rent=1"
+        },
+        "month": { "sku": "trugame-month", "usd": 12, "unit": "calendar month", "stripe": "/api/checkout" },
+        "year": { "sku": "trugame-year", "usd": 79, "unit": "calendar year", "stripe": "/api/checkout" }
       }
     },
     "lab_pass": {
