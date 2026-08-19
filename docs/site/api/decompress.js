@@ -9,6 +9,7 @@ import {
   packBits,
   unpackBits,
 } from "./lib/vendor/zrw-pack.js";
+import { decode as splDecode, MAGIC as SPL_MAGIC } from "./lib/spl-codec.mjs";
 import { codexStamp, codexHeaders } from "./lib/codex-key.js";
 import { siosJob } from "./lib/sios-cell.mjs";
 
@@ -84,6 +85,16 @@ async function handler(req, res) {
     }
     if (!packed || !packed.length) {
       return json(res, 400, { ok: false, error: "empty" });
+    }
+    if (packed.length >= 4 && packed.subarray(0, 4).equals(SPL_MAGIC)) {
+      const raw = splDecode(packed);
+      return json(res, 200, {
+        ok: true,
+        path: "spl-codec",
+        raw_bytes: raw.length,
+        raw_b64: raw.toString("base64"),
+        ...codexStamp({ half: "decompress" }),
+      });
     }
     const ints = zrwDecompress(packed);
     const raw = intsToI32LE(ints);

@@ -15,6 +15,7 @@ import {
   packBits,
   unpackBits,
 } from "./lib/vendor/zrw-pack.js";
+import { encode as splEncode, decode as splDecode } from "./lib/spl-codec.mjs";
 import { codexStamp, codexHeaders } from "./lib/codex-key.js";
 import { siosJob, siosFile } from "./lib/sios-cell.mjs";
 
@@ -75,8 +76,8 @@ async function handler(req, res) {
   if (req.method === "GET") {
     return json(res, 200, {
       ok: true,
-      path: "zrw",
-      how: "POST raw int32 LE (application/octet-stream) or JSON { corpus:'zeros', n:10000 }",
+      path: "spl-codec",
+      how: "POST raw bytes or JSON { corpus:'zeros', n:10000 } or { data_b64 }. Picks ZRW / leftover / brotli-11 / gzip-9, smallest RT.",
       curl_10k_zeros:
         'python3 -c "open(\'z.bin\',\'wb\').write(bytes(40000))" && curl -sS -X POST https://www.slidphilabs.com/api/compress -H "content-type: application/octet-stream" --data-binary @z.bin',
       pair: "POST /api/decompress · full loop POST /api/process",
@@ -113,10 +114,21 @@ async function handler(req, res) {
           const n = Math.min(1_000_000, Math.max(1, Number(j.n) || 10_000));
           const corpus = String(j.corpus || "zeros");
           if (corpus !== "zeros") {
-            return json(res, 400, {
-              ok: false,
-              error: "this_rail_zeros_or_raw_int32_only",
-              next: "high-entropy text is next domain — not invented this hour",
+            const buf = Buffer.from(String(j.text || ""), "utf8");
+            if (!buf.length) {
+              return json(res, 400, { ok: false, error: "need_zeros_or_text_or_data_b64" });
+            }
+            const enc = splEncode(buf);
+            return json(res, 200, {
+              ok: true,
+              path: "spl-codec",
+              method: enc.method,
+              raw_bytes: enc.raw,
+              packed_bytes: enc.packed,
+              packed_b64: enc.frame.toString("base64"),
+              trials: enc.trials,
+              roundtrip: true,
+              ...codexStamp({ half: "compress" }),
             });
           }
           ints = new Array(n).fill(0);
@@ -130,8 +142,37 @@ async function handler(req, res) {
       if (!buf || !buf.length) {
         return json(res, 400, { ok: false, error: "empty_body" });
       }
-      ints = intsFromI32LE(buf);
-      rawBytes = buf.length;
+      try {
+        ints = intsFromI32LE(buf);
+        rawBytes = buf.length;
+        if (!ints.every((v) => v === 0) && !ints.every((v, i) => v === ints[0] + i)) {
+          const enc = splEncode(buf);
+          return json(res, 200, {
+            ok: true,
+            path: "spl-codec",
+            method: enc.method,
+            raw_bytes: enc.raw,
+            packed_bytes: enc.packed,
+            packed_b64: enc.frame.toString("base64"),
+            trials: enc.trials,
+            roundtrip: true,
+            ...codexStamp({ half: "compress" }),
+          });
+        }
+      } catch {
+        const enc = splEncode(buf);
+        return json(res, 200, {
+          ok: true,
+          path: "spl-codec",
+          method: enc.method,
+          raw_bytes: enc.raw,
+          packed_bytes: enc.packed,
+          packed_b64: enc.frame.toString("base64"),
+          trials: enc.trials,
+          roundtrip: true,
+          ...codexStamp({ half: "compress" }),
+        });
+      }
     }
 
     const packed = zrwCompressInts(ints);
