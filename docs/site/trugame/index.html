@@ -3,40 +3,55 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>TruGame Engine — 24-hour black box · Slid Phi Labs</title>
-  <meta name="description" content="TruGame is the engine. 24-hour black box, then a seat. Included in Lab Pass $1,088. Engine seat $12 / $79."/>
+  <title>TruGames — play Front for $3.99 a week · Slid Phi Labs</title>
+  <meta name="description" content="Front is a campaign you play in the browser. $3.99 unlocks 7 days, then it stops. Pass $12 / month or $79 / year. Included in Lab Pass $1,088. Not a sports store."/>
+  <meta name="theme-color" content="#0f1c2e"/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="agentic" content="true"/>
   <link rel="canonical" href="https://www.slidphilabs.com/trugame"/>
-  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg"/>
-  <meta property="og:title" content="TruGame Engine — Slid Phi Labs"/>
-  <meta property="og:description" content="The engine. Not a game store. 24-hour black box. Lab Pass includes it."/>
+  <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Slid Phi Labs"/>
+  <meta property="og:title" content="TruGames — play Front · $3.99 / 7 days"/>
+  <meta property="og:description" content="A week of Front. Then buy a pass or it stops. Not a sports store."/>
   <meta property="og:url" content="https://www.slidphilabs.com/trugame"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=4"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="TruGames — play Front · $3.99 / 7 days"/>
+  <meta name="twitter:description" content="Rent a week of Front. Pass $12 / $79. Lab Pass includes it."/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=7"/>
 </head>
 <body>
-  <main class="spl-page">
-    <h1>TruGame engine</h1>
-    <p class="lede">This is the engine. ECS, physics, swarms, sensors, gait. 24-hour black box from first run. After that the box stays off until a seat is paid. Public benches show metrics only. No residual dumps.</p>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">Play a week</p>
+    <h1>TruGames</h1>
+    <p class="lede">Front is a campaign you play in the browser. You take ground, hold supply, and keep what you held. $3.99 turns it on for seven days. When the week ends it stops unless you buy a pass. This is not a sports league and not a store of old titles.</p>
     <p class="spl-actions">
-      <a class="spl-btn spl-btn-dark" href="/pay?sku=lab-pass">Lab Pass · $1,088</a>
-      <a class="spl-btn spl-btn-line" href="/pay?sku=trugame-year">Engine year · $79</a>
-      <a class="spl-btn spl-btn-line" href="/pay?sku=trugame-month">Engine month · $12</a>
+      <a class="spl-btn spl-btn-dark" href="/pay?sku=trugame-rent">Rent $3.99 / 7 days</a>
+      <a class="spl-btn spl-btn-line" href="/trugame/front">Open Front</a>
+      <a class="spl-btn spl-btn-line" href="/pay?sku=trugame-month">Pass $12</a>
+      <a class="spl-btn spl-btn-line" href="/pay?sku=trugame-year">Year $79</a>
     </p>
-    <div class="spl-grid">
+
+    <div class="spl-pair">
       <div class="spl-card">
-        <h3>What ships</h3>
-        <p>Gated engine under <code>require_alive</code>. Tick, world, contacts, motion. 24-hour eval, then a seat.</p>
+        <h3>It is</h3>
+        <p>A game you rent by the week, or keep with a pass. Lab Pass $1,088 includes it for 365 days.</p>
       </div>
       <div class="spl-card">
-        <h3>Seats</h3>
-        <p>Month $12. Year $79. Lab Pass $1,088 opens Chamber + TRU8 + Gate + this engine for 365 days.</p>
-      </div>
-      <div class="spl-card">
-        <h3>Claim</h3>
-        <p>After pay: <a href="/access?product=trugame-year">/access?product=trugame-year</a>. Inbox corey@slidphilabs.com.</p>
+        <h3>It is not</h3>
+        <p>Chamber, TRU8, or Gate. Renting the game does not unlock those tools. It is not “SPLAB Games.”</p>
       </div>
     </div>
+
+    <h2>What it costs</h2>
+    <div class="spl-grid">
+      <div class="spl-card"><p class="spl-kicker">Rent</p><p class="spl-price">$3.99</p><p>Seven days, then it dies.</p></div>
+      <div class="spl-card"><p class="spl-kicker">Month</p><p class="spl-price">$12</p><p>Game pass only.</p></div>
+      <div class="spl-card"><p class="spl-kicker">Year</p><p class="spl-price">$79</p><p>Game only. All four tools: Lab Pass $1,088.</p></div>
+    </div>
   </main>
-  <script src="/assets/chrome.js?v=4" defer></script>
+  <script src="/assets/chrome.js?v=7" defer></script>
 </body>
 </html>

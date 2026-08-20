@@ -1,241 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Chamber — security product · Day $9 · Month $49 · Year $490</title>
-<meta name="description" content="Chamber is the security product. 24-hour black box, then Day $9 · Month $49 · Year $490. No TRU8. For both products buy TRU8 Year $990."/>
-<meta name="theme-color" content="#0A0A0A"/>
-<meta name="robots" content="index,follow"/>
-<link rel="canonical" href="https://www.slidphilabs.com/chamber"/>
-<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg"/>
-<link rel="apple-touch-icon" href="/assets/logos/logo-slid-phi-labs.jpg"/>
-<meta property="og:type" content="website"/>
-<meta property="og:site_name" content="Slid Phi Labs"/>
-<meta property="og:title" content="Chamber — security only · half of TRU8"/>
-<meta property="og:description" content="Day $9 · Month $49 · Year $490. No TRU8. Both products = TRU8 Year $990."/>
-<meta property="og:url" content="https://www.slidphilabs.com/chamber"/>
-<meta property="og:image" content="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Chamber — security only"/>
-<meta name="twitter:description" content="24-hour black box. Day $9 · Month $49 · Year $490. No TRU8."/>
-<meta name="twitter:image" content="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
-<meta name="product" content="Chamber"/>
-<meta name="product-line" content="Chamber security · Day $9 · Month $49 · Year $490"/>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Chamber","applicationCategory":"SecurityApplication","operatingSystem":"Any","offers":{"@type":"AggregateOffer","lowPrice":"12.50","highPrice":"950","priceCurrency":"USD","offerCount":"3","description":"Chamber Day $9 · Month $49 · Year $490. Security only. No TRU8."},"description":"Security product. 24-hour black box, then a Chamber seat. No TRU8 production.","publisher":{"@type":"Organization","name":"Slid Phi Labs","url":"https://www.slidphilabs.com"}}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/assets/tru8/site.css?v=7"/>
-<link rel="stylesheet" href="/assets/site-header.css?v=2"/>
-<style>
-  .brand-logo {
-    width: 36px; height: 36px; border-radius: 50%;
-    object-fit: cover; display: block;
-    box-shadow: 0 0 14px rgba(0, 220, 220, 0.45);
-  }
-  .brand { display: flex; align-items: center; gap: 10px; }
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-      url("/assets/logos/logo-slid-phi-labs.jpg") center 18% / min(420px, 55vw) no-repeat,
-      radial-gradient(ellipse 45% 35% at 50% 18%, rgba(0, 200, 210, 0.18), transparent 70%),
-      radial-gradient(circle at 50% 22%, rgba(0, 180, 200, 0.12), transparent 55%);
-    opacity: 0.2;
-    pointer-events: none;
-    z-index: 0;
-  }
-  body > * { position: relative; z-index: 1; }
-  .chamber-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
-    margin-top: 24px;
-  }
-  .chamber-card {
-    background: rgba(12,16,20,0.85);
-    border: 1px solid rgba(0,220,220,0.18);
-    border-radius: 12px;
-    padding: 20px;
-  }
-  .chamber-card h3 { margin: 0 0 8px; font-size: 1.05rem; }
-  .chamber-card p { margin: 0; color: var(--gray, #9aa4b2); font-size: 0.92rem; line-height: 1.45; }
-  .price-row {
-    display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
-    margin-top: 20px;
-  }
-  .price-tag {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 1.6rem; font-weight: 600;
-    color: #5eead4;
-  }
-  .trial-badge {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: rgba(0,220,220,0.12);
-    border: 1px solid rgba(0,220,220,0.35);
-    color: #5eead4;
-    font-size: 0.8rem;
-    letter-spacing: 0.04em;
-  }
-</style>
-<link rel="stylesheet" href="/assets/tru8/chat.css?v=1"/>
-<link rel="stylesheet" href="/assets/chrome.css?v=1"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Chamber — lock a secret so one password is not enough · Slid Phi Labs</title>
+  <meta name="description" content="Chamber seals JSON behind two keys and a live license. Try 24 hours, then Day $9 · Month $49 · Year $490. This is not compression. For both products buy TRU8 Year $990."/>
+  <meta name="theme-color" content="#0f1c2e"/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="agentic" content="true"/>
+  <meta name="agentic-role" content="security"/>
+  <link rel="canonical" href="https://www.slidphilabs.com/chamber"/>
+  <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
+  <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
+  <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Slid Phi Labs"/>
+  <meta property="og:title" content="Chamber — lock a secret · Slid Phi Labs"/>
+  <meta property="og:description" content="Two keys to open. 24-hour try. Then $9 / $49 / $490. Not compression."/>
+  <meta property="og:url" content="https://www.slidphilabs.com/chamber"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Chamber — lock a secret · Slid Phi Labs"/>
+  <meta name="twitter:description" content="Seal JSON so one password is not enough. Year $490."/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=7"/>
 </head>
 <body>
-<div class="logo-bg" aria-hidden="true">
-  <video autoplay muted playsinline preload="auto" poster="/assets/logos/logo-slid-phi-labs.jpg">
-    <source src="/assets/logos/logo-slid-phi-labs.mp4?v=2" type="video/mp4"/>
-  </video>
-</div>
-<header class="site-nav" role="banner">
-  <div class="inner">
-    <a class="brand" href="/" aria-label="Slid Phi Labs home">
-      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
-      <span>Slid Phi Labs</span>
-    </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="/">Home</a>
-      <a href="/chamber">Chamber</a>
-      <a href="/demos">TRU8</a>
-      <a href="/pps">Suite</a>
-      <a href="/license">License</a>
-      <a href="/about">About</a>
-    </nav>
-    <div class="nav-cta">
-      <a class="btn btn-primary btn-sm" href="https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E" target="_blank" rel="noopener">TRU8 Year · $990</a>
-      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
-    </div>
-  </div>
-</header>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">Lock a secret</p>
+    <h1>Chamber</h1>
+    <p class="lede">You have a secret in JSON — an API key, a token, a config you should not leave sitting in the clear. Chamber seals it. Opening it later needs both keys plus a live license. One list of words by itself is useless.</p>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F">Year $490</a>
+      <a class="spl-btn spl-btn-line" href="/pay?sku=chamber-day">Day $9</a>
+      <a class="spl-btn spl-btn-line" href="/pay?sku=chamber-month">Month $49</a>
+      <a class="spl-btn spl-btn-line" href="/box">Try 24 hours</a>
+    </p>
 
-<main>
-  <section class="hero wrap">
-    <p class="hero-kicker"><span class="trial-badge">SECURITY PRODUCT</span></p>
-    <h1 class="hero-title">Chamber</h1>
-    <p class="hero-line">Cloak and open JSON. 24-hour black box, then a Chamber seat.</p>
-    <p class="hero-line" style="color:var(--gray);font-weight:500">Day $9 · Month $49 · Year $490. Security only. No TRU8 production.</p>
-    <p class="hero-sub">Half the matching TRU8 tier. Year $490 beats 12 × $49. Want both products? Buy TRU8 Year $990. φ-split + AES-256-GCM. Hard cut when the box or the seat expires.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F" target="_blank" rel="noopener">Chamber Year · $490</a>
-      <a class="btn btn-secondary" href="https://www.slidphilabs.com/license" target="_blank" rel="noopener">Month · $49</a>
-      <a class="btn btn-secondary" href="https://www.slidphilabs.com/license" target="_blank" rel="noopener">Day · $9</a>
-      <a class="btn btn-secondary" href="https://github.com/ceedot-rock/json-chamber-sdk">Get the SDK</a>
+    <h2>What you do with it</h2>
+    <div class="spl-prose">
+      <p>You call <strong>cloak</strong> on the JSON. Chamber splits the message key into two independent shares and encrypts the payload with AES-256-GCM. You can store or ship the sealed blob. To get the original back you call <strong>open</strong> with both shares and a license that has not expired or been edited.</p>
+      <p>If someone tampers with the license file, Chamber shuts down. When the 24-hour try or the paid seat ends, it refuses every operational call until you buy again.</p>
     </div>
-  </section>
 
-  <section class="section wrap" id="what">
-    <div class="reveal">
-      <p class="section-label">What Chamber is</p>
-      <h2>The box. The Chamber seat. No TRU8 on this ladder.</h2>
-      <p class="lede">Install. Run the black box for 3 hours. Then buy a Chamber seat. Cloak and open under a live license. Shares alone are useless. The license is tamper-evident. Compression is a different product — <a href="/demos">TRU8</a>.</p>
-      <div class="chamber-grid">
-        <div class="chamber-card"><h3>Cloak</h3><p>φ-split message key into two keyword shares → AES-256-GCM seal. Safe to store or ship.</p></div>
-        <div class="chamber-card"><h3>Open</h3><p>Both shares + master + live license required. Integrity tag checked before decrypt.</p></div>
-        <div class="chamber-card"><h3>Black box</h3><p>3 hours from first run. Hard cut — no grace. Tamper of the license file also kills the box.</p></div>
-        <div class="chamber-card"><h3>Chamber seat</h3><p>Day $9 · Month $49 · Year $490. Security only. For Chamber + TRU8 buy TRU8 Year $990.</p></div>
+    <div class="spl-pair">
+      <div class="spl-card">
+        <h3>It is</h3>
+        <p>A security product. Two-share lock on JSON. Tamper-evident license. 24-hour try, then a Chamber seat only.</p>
+      </div>
+      <div class="spl-card">
+        <h3>It is not</h3>
+        <p>Compression. TRU8 is the compressor. Chamber Year does not include TRU8. Want both for a year? Buy TRU8 Year $990.</p>
       </div>
     </div>
-  </section>
 
-  <section class="section wrap" id="trial">
-    <div class="reveal">
-      <p class="section-label">Trial</p>
-      <h2>Black box, then a seat</h2>
-      <div class="tokens">
-        <div class="token-row"><span class="token-id">HOUR 0</span><span class="token-name">First run<small>signed license · black box starts</small></span><span class="token-out">→ live</span></div>
-        <div class="token-row"><span class="token-id">0–3h</span><span class="token-name">Fully functional<small>cloak / open / status</small></span><span class="token-out">→ open</span></div>
-        <div class="token-row"><span class="token-id">3h+</span><span class="token-name">Box shuts off<small>or any license tamper</small></span><span class="token-out">→ killed</span></div>
-        <div class="token-row"><span class="token-id">SEAT</span><span class="token-name">Day $9 · Month $49 · Year $490<small>Chamber only · corey@</small></span><span class="token-out">→ paid</span></div>
-      </div>
-      <div class="price-row">
-        <span class="price-tag">$9</span>
-        <span class="price-tag">$49</span>
-        <span class="price-tag">$490</span>
-        <a class="btn btn-primary" href="https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F" target="_blank" rel="noopener">Buy Chamber Year</a>
-        <a class="btn btn-secondary" href="/license">Full terms</a>
-      </div>
+    <h2>What it costs</h2>
+    <div class="spl-grid">
+      <div class="spl-card"><p class="spl-kicker">Day</p><p class="spl-price">$9</p><p>24 hours of Chamber only.</p></div>
+      <div class="spl-card"><p class="spl-kicker">Month</p><p class="spl-price">$49</p><p>Chamber only.</p></div>
+      <div class="spl-card"><p class="spl-kicker">Year</p><p class="spl-price">$490</p><p>Cheaper than twelve months. Still Chamber only.</p></div>
     </div>
-  </section>
 
-  <section class="section wrap" id="security">
-    <div class="reveal">
-      <p class="section-label">Security model</p>
-      <h2>Built as a security product.</h2>
-      <div class="chamber-grid">
-        <div class="chamber-card"><h3>φ-split shares</h3><p>Message key split into two keyword lists. Either list alone is useless; both required to reconstruct.</p></div>
-        <div class="chamber-card"><h3>Tamper-evident license</h3><p>HMAC-SHA256 signed license under ~/.chamber/. Any edit fails the signature and triggers permanent shutdown.</p></div>
-        <div class="chamber-card"><h3>AES-256-GCM</h3><p>Authenticated encryption with associated data chamber-v1. Public integrity tag binds shares + nonce.</p></div>
-        <div class="chamber-card"><h3>Hard kill path</h3><p>At 24h the chamber writes a KILLED marker and refuses every operational call until a purchased key is supplied.</p></div>
-      </div>
+    <h2>How to try</h2>
+    <div class="spl-prose">
+      <p>Open the 24-hour try on <a href="/box">/box</a>, download the Chamber pack, run it. The pack talks to the live site. After 24 hours it stops unless you pay. Python SDK: <a href="https://github.com/ceedot-rock/json-chamber-sdk">json-chamber-sdk</a>.</p>
     </div>
-  </section>
-
-  <section class="section wrap" id="sdk">
-    <div class="reveal">
-      <p class="section-label">SDK</p>
-      <h2>json-chamber-sdk</h2>
-      <p class="lede">Pure Python. No TRU8 compression engine. Lend to any codebase.</p>
-      <pre style="background:rgba(0,0,0,0.4);padding:16px;border-radius:8px;overflow:auto;font-size:0.85rem"><code>pip install -e .
-# or clone https://github.com/ceedot-rock/json-chamber-sdk
-
-from json_chamber import cloak_json, open_json
-sealed = cloak_json({"api_key": "sk-..."})
-original = open_json(sealed)</code></pre>
-      <p style="margin-top:12px"><a class="btn btn-secondary" href="https://github.com/ceedot-rock/json-chamber-sdk">GitHub · json-chamber-sdk</a></p>
-    </div>
-  </section>
-
-  <section class="wrap">
-    <div class="band reveal">
-      <div>
-        <h2>Start the 24-hour black box.</h2>
-        <p>Fully functional from first run. Then a Chamber seat: Day $9 · Month $49 · Year $490. No TRU8. Both products = TRU8 Year $990.</p>
-        <p style="margin-top:12px" class="credit-pill">Slid Phi Labs</p>
-      </div>
-      <div class="band-actions">
-        <a class="btn btn-primary" href="mailto:corey@slidphilabs.com?subject=Chamber%20seat">Buy a seat</a>
-        <a class="btn btn-secondary" href="https://github.com/ceedot-rock/json-chamber-sdk">SDK</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">Chamber</div>
-        <p class="footer-note">24-hour black box · Chamber $9 / $49 / $490 · no TRU8</p>
-      </div>
-      <div class="footer-col">
-        <h4>Product</h4>
-        <a href="/">Home</a>
-        <a href="/chamber">Chamber</a>
-        <a href="/demos">TRU8 Demos</a>
-        <a href="/license">License / Trial</a>
-      </div>
-      <div class="footer-col">
-        <h4>Connect</h4>
-        <a href="https://github.com/ceedot-rock/json-chamber-sdk" target="_blank" rel="noopener">GitHub</a>
-        <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a>
-        <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
-      </div>
-    </div>
-    <div class="footer-credit">
-      <span><strong>Slid Phi Labs</strong> · Chamber $9 / $49 / $490 · TRU8 $19 / $99 / $990</span>
-      <span>© 2026</span>
-    </div>
-  </div>
-</footer>
-<script src="/assets/tru8/chat.js?v=1" defer></script>
-<script src="/assets/tru8/site.js?v=2" defer></script>
-<script src="/assets/site-header.js?v=2" defer></script>
-<script src="/assets/chrome.js?v=1" defer></script>
+  </main>
+  <script src="/assets/chrome.js?v=7" defer></script>
 </body>
 </html>

@@ -139,11 +139,36 @@ body.spl-chrome {
   letter-spacing: -0.04em;
   margin: 0 0 0.6rem;
 }
+.spl-page h2 {
+  font-size: 1.2rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  margin: 2rem 0 0.55rem;
+}
 .spl-page .lede {
   font-size: 1.0625rem;
   line-height: 1.55;
   color: var(--mut);
   max-width: 40rem;
+}
+.spl-prose {
+  max-width: 40rem;
+  color: var(--ink-2);
+}
+.spl-prose p { margin: 0 0 0.85rem; }
+.spl-prose ul {
+  margin: 0 0 1rem;
+  padding-left: 1.15rem;
+}
+.spl-prose li { margin: 0.3rem 0; }
+.spl-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 1.25rem;
+}
+@media (max-width: 700px) {
+  .spl-pair { grid-template-columns: 1fr; }
 }
 .spl-grid {
   display: grid;

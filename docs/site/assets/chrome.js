@@ -9,12 +9,12 @@
     ["/games", "Games"],
   ];
   const FALLBACK_NEWS = [
-    { t: "Try", title: "24-hour black box — download any product", href: "/box" },
-    { t: "News", title: "TruGames rent $3.99 / 7 days", href: "/games" },
-    { t: "Live", title: "Front campaign desk", href: "/trugame/front" },
-    { t: "Seat", title: "Lab Pass $1,088 · 365 days", href: "/lab-pass" },
-    { t: "Seat", title: "Gate Year $790", href: "/gate" },
-    { t: "Seat", title: "TRU8 Year $990 · Chamber $490", href: "/license" },
+    { t: "Try", title: "Any tool free for 24 hours", href: "/box" },
+    { t: "Lock", title: "Chamber seals a secret behind two keys", href: "/chamber" },
+    { t: "Shrink", title: "TRU8 compresses a file and restores it", href: "/tru8" },
+    { t: "Play", title: "Front · $3.99 for 7 days", href: "/games" },
+    { t: "Year", title: "Lab Pass $1,088 · all four", href: "/lab-pass" },
+    { t: "Send", title: "Gate picks a lossless compressor per file", href: "/gate" },
   ];
 
   function path() {
@@ -59,7 +59,7 @@
           <h4>Lab</h4>
           <a href="/">Home</a>
           <a href="/products">Products</a>
-          <a href="/box">Try 24h box</a>
+          <a href="/box">Try 24 hours</a>
           <a href="/about">About</a>
           <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a>
         </div>
