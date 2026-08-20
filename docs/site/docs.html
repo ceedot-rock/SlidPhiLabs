@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>API — Slid Phi Labs computation lab</title>
-  <meta name="description" content="Box protocol, try packs, compress, process, game rent. 24-hour product box. Agents: /api/agent and llms.txt."/>
+  <meta name="description" content="Box protocol, try packs, compress, process. 24-hour product box. TruGame engine seats. Rent desk retired."/>
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://www.slidphilabs.com/docs"/>
@@ -12,31 +12,21 @@
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Slid Phi Labs"/>
   <meta property="og:title" content="API — Slid Phi Labs"/>
-  <meta property="og:description" content="Computation lab HTTP API. Black box first."/>
+  <meta property="og:description" content="Box, try, compress, process. Engine seats. Rent desk retired."/>
   <meta property="og:url" content="https://www.slidphilabs.com/docs"/>
-  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="API — Slid Phi Labs"/>
-  <meta name="twitter:description" content="POST /api/box then compress, process, or download a 24h pack."/>
-  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=3"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=8"/>
 </head>
 <body>
-  <main class="spl-page">
+  <main class="spl-page" id="main">
     <h1>API</h1>
-    <p class="lede">If you are a person, start on <a href="/products">what each product is</a>. If you are a program, the first POST to a product opens a 24-hour try. After that you need a paid seat. The game uses a 7-day rent cookie.</p>
+    <p class="lede">If you are a person, start on <a href="/products">what each product is</a>. If you are a program, the first POST to a product opens a 24-hour try. After that you need a paid seat. TruGame uses engine seats (Month $12 · Year $79). Rent desk retired.</p>
     <div class="spl-grid">
-      <div class="spl-card"><p class="spl-kicker">GET</p><h3>/api/box</h3><p>Box status. Protocol splb-ed25519-24h.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/box</h3><p>Open the 24-hour box. Sets spl_box.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/try-pack?product=</h3><p>chamber | tru8 | gate — download a runnable 24h pack.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/compress</h3><p>One codec. ZRW on zeros/ramp/walk, leftover on small text, else brotli-11 / gzip-9. Smallest that round-trips. Zeros×10k still 8 B. Try it on <a href="/tru8">/tru8</a>.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/decompress</h3><p>Inverse. SPL1 frame or legacy ZRW.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/process</h3><p>Encode then decode in one call. Same 24h box.</p></div>
-      <div class="spl-card"><p class="spl-kicker">GET/POST</p><h3>/api/rent-game</h3><p>TruGames $3.99 / 7 days. Then Pass $12 / $79.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/checkout</h3><p>Dynamic Stripe for day/month/rent. Year seats use live Payment Links.</p></div>
-      <div class="spl-card"><p class="spl-kicker">GET</p><h3>/api/agent</h3><p>Discovery for agents. Also /llms.txt</p></div>
+      <div class="spl-card"><p class="spl-kicker">GET/POST</p><h3>/api/box</h3><p>24-hour try pack. Starts the black box.</p></div>
+      <div class="spl-card"><p class="spl-kicker">GET/POST</p><h3>/api/agent</h3><p>TruGame engine seats Month $12 · Year $79. Rent desk retired.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/checkout</h3><p>Dynamic Stripe for day/month. Year seats use live Payment Links.</p></div>
+      <div class="spl-card"><p class="spl-kicker">GET</p><h3>/pricing.json</h3><p>Source of truth for all live prices and retired SKUs.</p></div>
     </div>
   </main>
-  <script src="/assets/chrome.js?v=3" defer></script>
+  <script src="/assets/chrome.js?v=8" defer></script>
 </body>
 </html>
