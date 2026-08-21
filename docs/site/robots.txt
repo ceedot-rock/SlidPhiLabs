@@ -35,6 +35,16 @@ Allow: /truth
 Allow: /demos
 Allow: /try
 Allow: /access
+Allow: /products
+Allow: /pricing
+Allow: /quikgater
+Allow: /drverified
+Allow: /box
+Allow: /docs
+Allow: /api/quikgater
+Allow: /api/compress
+Allow: /api/decompress
+Allow: /api/process
 Allow: /api/web-codec
 Allow: /api/omniwave
 Allow: /api/ppp-quote

@@ -7,8 +7,12 @@
 - Lab Pass — Chamber + TRU8 + Gate + TruGame for 365 days. $1,088. Then it ends.
 - TruGame — engine, not a store. Month $12 · Year $79. No $3.99 / 7-day SKU.
 - Suite — pay by the gigabyte. First 100 GB free, then ~5¢ / 4¢. Not a seat.
+- Quikgater — pay-per-fact agent fetch. Live worker. Not a compressor.
+- ZRW core git is private. Public npm is a stub.
 
 - What each product is: https://www.slidphilabs.com/products
+- Quikgater: https://www.slidphilabs.com/quikgater
+- DRverified: https://www.slidphilabs.com/drverified
 - Try 24 hours: https://www.slidphilabs.com/box
 - Prices: https://www.slidphilabs.com/pricing.json
 - Inbox: corey@slidphilabs.com

@@ -1,9 +1,9 @@
 {
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "Two products. Chamber (security) Day $9 · Month $49 · Year $490. TRU8 (compression) Day $19 · Month $99 · Year $990 (year = both). Suite meters jobs.",
+  "description": "Chamber $9/$49/$490. TRU8 $19/$99/$990. Gate $29/$89/$790. Lab Pass $1,088. TruGame $12/$79. Suite 100 GB then 5c. Quikgater paid fetch. Rent desk retired.",
   "url": "https://www.slidphilabs.com",
-  "version": "1.13.2",
+  "version": "1.15.0",
   "provider": {
     "organization": "Slid Phi Labs",
     "url": "https://www.slidphilabs.com"

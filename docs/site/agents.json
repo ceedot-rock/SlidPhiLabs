@@ -2,120 +2,29 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "SiOS is the OS. Two products: Chamber (security Day/Month/Year) + TRU8 (compression Day/Month/Year). TRU8 Year $990 = both products + seat.",
-  "version": "1.13.2",
-  "updated": "2026-08-15",
+  "description": "Computation lab. Chamber locks a secret. TRU8 shrinks a file. Gate routes mixed files. TruGame is an engine seat. Suite meters jobs. Quikgater is paid agent fetch. Rent desk retired.",
+  "version": "1.15.0",
+  "updated": "2026-08-21",
   "standard": "https://agents-txt.com",
   "site": "https://www.slidphilabs.com",
-  "os": {
-    "id": "sios",
-    "name": "SiOS",
-    "long": "Synthetic Intelligent OS",
-    "url": "https://www.slidphilabs.com/sios"
+  "pricing": "https://www.slidphilabs.com/pricing.json",
+  "flagship": {
+    "bench": "zeros×10k int32",
+    "zrw": "8B",
+    "gzip-9": "73B",
+    "brotli-11": "13B",
+    "endpoint": "POST /api/compress",
+    "note": "Domain supremacy. Not a #1 general compressor."
   },
+  "retired": ["trugame-rent-week", "zrw-n00b", "zrw-pro", "zrw-l33t", "$1900", "$950", "$12.50"],
+  "discovery": "https://www.slidphilabs.com/api/agent",
+  "mcp": "https://www.slidphilabs.com/.well-known/agent-card.json",
   "agents": [
-    {
-      "id": "sios",
-      "name": "SiOS",
-      "role": "os",
-      "url": "https://www.slidphilabs.com/sios",
-      "note": "Synthetic Intelligent OS. Not a seat."
-    },
-    {
-      "id": "spl-platform",
-      "name": "Slid Phi Labs Platform Discovery",
-      "role": "discovery",
-      "url": "https://www.slidphilabs.com/api/agent",
-      "card": "https://www.slidphilabs.com/.well-known/agent-card.json",
-      "commerce": "https://www.slidphilabs.com/.well-known/agentic-commerce.json",
-      "hub": "https://www.slidphilabs.com/agents"
-    },
-    {
-      "id": "tru8",
-      "name": "TRU8",
-      "role": "compression",
-      "url": "https://www.slidphilabs.com/",
-      "web": "https://www.slidphilabs.com/web",
-      "suite": "https://www.slidphilabs.com/pps",
-      "github": "https://github.com/ceedot-rock/TRU8",
-      "demos": "https://www.slidphilabs.com/demos",
-      "comes_with": "TRU8 Day/Month = compression only. TRU8 Year = both products. Not included on chamber-only SKUs.",
-      "access": "https://www.slidphilabs.com/access?product=tru8-year",
-      "fulfill_email": "corey@slidphilabs.com",
-      "historical_engine": "OmniWave / SPL Codec (licensed, not the public face)",
-      "price": "Day $19 \u00b7 Month $99 \u00b7 Year $990 (year = both products + seat)",
-      "skus": [
-        "tru8-day",
-        "tru8-month",
-        "tru8-year"
-      ],
-      "stripe": {
-        "day": "https://www.slidphilabs.com/license",
-        "month": "https://www.slidphilabs.com/license",
-        "year": "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E"
-      },
-      "note": "TRU8 Year includes Chamber seat for the full year."
-    },
-    {
-      "id": "chamber",
-      "name": "Chamber",
-      "role": "product_seats",
-      "url": "https://www.slidphilabs.com/chamber",
-      "sdk": "https://github.com/ceedot-rock/json-chamber-sdk",
-      "price": "Day $9 \u00b7 Month $49 \u00b7 Year $490 (security only, half)",
-      "includes": "Full stack = Chamber + TRU8. Chamber-only = security, half price, no TRU8 production.",
-      "skus": [
-        "chamber-day",
-        "chamber-month",
-        "chamber-year"
-      ],
-      "stripe": {
-        "day": "https://www.slidphilabs.com/license",
-        "month": "https://www.slidphilabs.com/license",
-        "year": "https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F"
-      },
-      "access": "https://www.slidphilabs.com/access?product=chamber-year",
-      "pricing_sot": "https://www.slidphilabs.com/pricing.json",
-      "fulfill_email": "corey@slidphilabs.com"
-    },
-    {
-      "id": "trugame",
-      "name": "TruGame",
-      "role": "game_engine",
-      "status": "building",
-      "url": "https://www.slidphilabs.com/",
-      "chamber": "https://www.slidphilabs.com/chamber",
-      "demos": "https://www.slidphilabs.com/demos",
-      "olympiad": "https://www.slidphilabs.com/olympiad",
-      "license": "mailto:corey@slidphilabs.com?subject=TruGame",
-      "note": "TruGame — game engine (building). Source private. Inquire corey@ subject TruGame."
-    },
-    {
-      "id": "spl-duos",
-      "name": "Duosurface reporting",
-      "role": "secret_shopper",
-      "url": "https://www.slidphilabs.com/api/duos",
-      "ui": "https://www.slidphilabs.com/duos"
-    },
-    {
-      "id": "spl-olympiad",
-      "name": "Great Agentic Olympiad",
-      "role": "gaming",
-      "url": "https://www.slidphilabs.com/api/olympiad",
-      "ui": "https://www.slidphilabs.com/olympiad"
-    },
-    {
-      "id": "teachaid-spu",
-      "name": "TEACHAiD / Slid Phi University",
-      "role": "education",
-      "url": "https://teachaid.fly.dev/api/agent",
-      "host": "https://teachaid.fly.dev"
-    },
-    {
-      "id": "team-mesh",
-      "name": "SPL Team Mesh",
-      "role": "ops",
-      "url": "https://www.slidphilabs.com/"
-    }
+    { "id": "spl-platform", "name": "Slid Phi Labs", "role": "discovery", "url": "https://www.slidphilabs.com/api/agent" },
+    { "id": "chamber", "name": "Chamber", "role": "security", "url": "https://www.slidphilabs.com/chamber", "price": "Day $9 · Month $49 · Year $490" },
+    { "id": "tru8", "name": "TRU8", "role": "compression", "url": "https://www.slidphilabs.com/tru8", "price": "Day $19 · Month $99 · Year $990" },
+    { "id": "gate", "name": "Gate", "role": "router", "url": "https://www.slidphilabs.com/gate", "price": "Day $29 · Month $89 · Year $790" },
+    { "id": "trugame", "name": "TruGame", "role": "engine", "url": "https://www.slidphilabs.com/trugame", "price": "Month $12 · Year $79" },
+    { "id": "quikgater", "name": "Quikgater", "role": "fetch", "url": "https://www.slidphilabs.com/quikgater", "worker": "https://quikgater-worker.ceedotrock.workers.dev/" }
   ]
 }

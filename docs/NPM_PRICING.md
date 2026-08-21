@@ -1,6 +1,6 @@
 # npm · product prices (canonical)
 
-**Updated:** 2026-08-12  
+**Updated:** 2026-08-21  
 **Live product host:** https://www.slidphilabs.com  
 **Catalog:** https://www.slidphilabs.com/api/x402-products  
 **Pay UI:** https://www.slidphilabs.com/pay  
@@ -16,9 +16,9 @@ Access after pay is an entitlement claim, not a private-engine dump. x402 auto-c
 | SKU | Name | USD | Stripe Payment Link | npm package(s) |
 |-----|------|----:|---------------------|----------------|
 | `cddg-split` | CDDG:Split | **199** | https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f | (process product; site) |
-| `zrw-n00b` | ZRW N00b | **79** | https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b | `zero-range-wave-compression` |
-| `zrw-pro` | ZRW Pro | **249** | https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c | `zero-range-wave-compression` |
-| `zrw-l33t` | ZRW L33t$aUC3 | **699** | https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d | `zero-range-wave-compression` |
+| `zrw-n00b` | ZRW N00b | **retired** | do not sell | stub npm only; git **private** |
+| `zrw-pro` | ZRW Pro | **retired** | do not sell | stub npm only; git **private** |
+| `zrw-l33t` | ZRW L33t$aUC3 | **retired** | do not sell | stub npm only; git **private** |
 | `blackjack` | Blackjack | **199** | https://buy.stripe.com/00w00k6Jf8hqgBTaoE6wE0h | `blackjack-compression` |
 | `shard-zip` | shard-zip | **199** | https://buy.stripe.com/3cI7sMd7D8hq1GZaoE6wE0i | `shard-zip` |
 | `shard-tsdb` | shard-tsdb | **199** | https://buy.stripe.com/9B628sd7DeFO99r9kA6wE0j | `shard-tsdb` (MIT open + commercial path) |
