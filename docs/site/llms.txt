@@ -1,14 +1,14 @@
 # Slid Phi Labs
-> Tools a person can try for 24 hours, then buy. A game you rent for a week.
+> Tools a person can try for 24 hours, then buy. The rent desk is retired.
 
 - Chamber — lock a JSON secret so two keys are required to open it. $9 / $49 / $490.
 - TRU8 — compress a file and get it back exactly. 10k zeros → 8 B. $19 / $99 / $990 (year includes Chamber). Not a claim we beat brotli on every file.
 - Gate — mixed files: text → brotli-11, else gzip-9. $29 / $89 / $790. Not #1 general compressor.
-- Lab Pass — Chamber + TRU8 + Gate + TruGames for 365 days. $1,088. Then it ends.
-- TruGames — Front in the browser. Rent $3.99 / 7 days, then it stops. Pass $12 / $79.
+- Lab Pass — Chamber + TRU8 + Gate + TruGame for 365 days. $1,088. Then it ends.
+- TruGame — engine, not a store. Month $12 · Year $79. No $3.99 / 7-day SKU.
 - Suite — pay by the gigabyte. First 100 GB free, then ~5¢ / 4¢. Not a seat.
 
 - What each product is: https://www.slidphilabs.com/products
 - Try 24 hours: https://www.slidphilabs.com/box
-- Prices: https://www.slidphilabs.com/pricing
+- Prices: https://www.slidphilabs.com/pricing.json
 - Inbox: corey@slidphilabs.com
