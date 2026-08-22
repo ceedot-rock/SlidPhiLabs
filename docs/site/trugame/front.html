@@ -3,20 +3,116 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Front → TruGame engine · Slid Phi Labs</title>
-  <meta name="description" content="Front now opens the TruGame engine seat page. Month $12 · Year $79. Rent desk retired."/>
-  <meta name="robots" content="noindex,follow"/>
-  <meta http-equiv="refresh" content="0; url=/trugame"/>
-  <link rel="canonical" href="https://www.slidphilabs.com/trugame"/>
+  <title>Front — play the campaign · Slid Phi Labs</title>
+  <meta name="description" content="Play Front. Take the ridge, hold the river, push the rail. Camp three weeks. Fight the night. TruGame Pass $12 / $79. Lab Pass includes it."/>
+  <meta name="theme-color" content="#10140e"/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="agentic" content="true"/>
+  <link rel="canonical" href="https://www.slidphilabs.com/trugame/front"/>
   <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
-  <meta property="og:title" content="TruGame engine — Slid Phi Labs"/>
-  <meta property="og:description" content="Engine seats. Month $12 · Year $79."/>
-  <meta property="og:url" content="https://www.slidphilabs.com/trugame"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Slid Phi Labs"/>
+  <meta property="og:title" content="Front — play the campaign"/>
+  <meta property="og:description" content="One front. Take, supply, hold. The card is offered."/>
+  <meta property="og:url" content="https://www.slidphilabs.com/trugame/front"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  <script>location.replace("/trugame");</script>
+  <meta name="twitter:title" content="Front — play the campaign"/>
+  <meta name="twitter:description" content="Campaign desk. Take the ground. Hold the line."/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=9"/>
+  <style>
+    :root { --bg:#10140e; --ink:#e6ead4; --mut:#8a9178; --line:#3d4a32; --go:#c4d36a; --bad:#c45a4a; }
+    body { background:var(--bg); color:var(--ink); }
+    .front-wrap { max-width:42rem; margin:0 auto; padding:1.2rem 1.2rem 3rem; font:16px/1.45 Georgia, serif; }
+    .front-wrap h1 { font-size:1.35rem; margin:.2rem 0; letter-spacing:.06em; }
+    .strip, .sheet { border:1px solid var(--line); padding:.85rem 1rem; margin:.7rem 0; }
+    .mut { color:var(--mut); font-size:.92rem; }
+    .front-wrap button { font:inherit; background:#1a2016; color:var(--ink); border:1px solid var(--line); padding:.4rem .75rem; margin:.2rem .25rem 0 0; cursor:pointer; }
+    .front-wrap button.pri { background:var(--go); color:#14180f; border:0; font-weight:700; }
+    .hex { display:flex; gap:4px; margin:.5rem 0; }
+    .hex i { flex:1; height:14px; background:#2a3324; display:block; }
+    .hex i.on { background:var(--go); }
+    .hex i.off { background:var(--bad); }
+    .win { color:var(--go); }
+    .lose { color:var(--bad); }
+    .front-wrap a { color:var(--go); }
+  </style>
 </head>
 <body>
-  <p><a href="/trugame">TruGame engine</a></p>
+  <div class="front-wrap">
+    <p class="mut">TRUGAME · FRONT</p>
+    <h1>The line.</h1>
+    <p class="mut">A card is offered. You camp. You fight. The line writes the next desk. Pass $12 / $79.</p>
+    <div class="strip" id="desk"></div>
+    <div class="sheet" id="stage"></div>
+    <p class="mut"><a href="/trugame">Engine seats</a> · <a href="/pay?sku=trugame-month">Month $12</a> · <a href="/pay?sku=trugame-year">Year $79</a></p>
+  </div>
+  <script src="/assets/chrome.js?v=9" defer></script>
+  <script type="module">
+    import { seedWorld, buildCard, acceptCard, campWeek, fight, readResidual, leaveDesk, beat, THEATERS } from "./front-engine.js?v=9";
+    let w = seedWorld(27);
+    buildCard(w);
+    const $ = (id) => document.getElementById(id);
+
+    function deskHtml() {
+      const held = w.held.length ? w.held.map((id) => THEATERS.find((t) => t.id === id).name).join(" · ") : "none";
+      return `<b>Week ${w.week}</b> · supply ${w.supply} · purse ${w.cash}
+        · record ${w.wins}–${w.losses} · held: ${held}<br>
+        <span class="mut">${w.lastLine}</span>`;
+    }
+
+    function paint() {
+      $("desk").innerHTML = deskHtml();
+      const b = beat(w);
+      const st = $("stage");
+      if (w.over) {
+        st.innerHTML = `<p class="${w.over==="win"?"win":"lose"}">${w.over==="win"?"The four grounds are yours.":"The front collapsed."}</p>
+          <button id="re">New campaign</button>`;
+        $("re").onclick = () => { w = seedWorld(Date.now() % 99991); paint(); };
+        return;
+      }
+      if (b === "card") {
+        if (!w.card) buildCard(w);
+        const t = w.card.theater;
+        st.innerHTML = `<p>Next ground: <b>${t.name}</b>. Night ${Math.round(t.night*10)} · mud ${Math.round(t.mud*10)} · heat ${Math.round(t.heat*10)}.</p>
+          <button class="pri" id="yes">Accept</button><button id="no">Sit this one</button>`;
+        $("yes").onclick = () => { acceptCard(w, true); paint(); };
+        $("no").onclick = () => { acceptCard(w, false); paint(); };
+        return;
+      }
+      if (b === "camp") {
+        const n = w.camp.weeks || 0;
+        st.innerHTML = `<p>Camp week ${n+1} of 3. One focus.</p>
+          <button class="pri" data-f="take">Take</button>
+          <button data-f="supply">Supply</button>
+          <button data-f="hold">Hold</button>
+          <button data-f="rest">Rest</button>`;
+        st.querySelectorAll("button").forEach((btn) => {
+          btn.onclick = () => { campWeek(w, btn.dataset.f); paint(); };
+        });
+        return;
+      }
+      if (b === "fight") {
+        st.innerHTML = `<p>Night on <b>${w.card.theater.name}</b>. The line goes.</p>
+          <button class="pri" id="go">Fight</button>`;
+        $("go").onclick = () => { fight(w); paint(); };
+        return;
+      }
+      if (b === "residual") {
+        const f = w.lastFight;
+        const bars = (f.hex || []).map((v) => `<i class="${v>0?"on":v<0?"off":""}"></i>`).join("");
+        st.innerHTML = `<p>${w.lastLine}</p><div class="hex">${bars}</div>
+          <p class="mut">score ${f.score} · ${f.ticks} ticks</p>
+          <button class="pri" id="ok">Back to desk</button>`;
+        $("ok").onclick = () => { readResidual(w); paint(); };
+        return;
+      }
+      st.innerHTML = `<p class="mut">Week committed. The next card comes on schedule.</p>
+        <button class="pri" id="adv">Advance week</button>`;
+      $("adv").onclick = () => { leaveDesk(w); paint(); };
+    }
+    paint();
+  </script>
 </body>
 </html>
