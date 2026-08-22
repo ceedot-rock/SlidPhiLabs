@@ -3,115 +3,132 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Front — play the campaign · Slid Phi Labs</title>
-  <meta name="description" content="Play Front. Take the ridge, hold the river, push the rail. Camp three weeks. Fight the night. TruGame Pass $12 / $79. Lab Pass includes it."/>
-  <meta name="theme-color" content="#10140e"/>
+  <title>Front — five warriors · Slid Phi Labs</title>
+  <meta name="description" content="Command five warriors. Drill them on the thirteen chapters. Take the field. TruGame Pass $12 / $79."/>
+  <meta name="theme-color" content="#12100c"/>
   <meta name="robots" content="index,follow"/>
   <meta name="agentic" content="true"/>
   <link rel="canonical" href="https://www.slidphilabs.com/trugame/front"/>
   <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Slid Phi Labs"/>
-  <meta property="og:title" content="Front — play the campaign"/>
-  <meta property="og:description" content="One front. Take, supply, hold. The card is offered."/>
+  <meta property="og:title" content="Front — five warriors"/>
+  <meta property="og:description" content="A war. Drill the host. Command the blow. Not a menu."/>
   <meta property="og:url" content="https://www.slidphilabs.com/trugame/front"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Front — play the campaign"/>
-  <meta name="twitter:description" content="Campaign desk. Take the ground. Hold the line."/>
+  <meta name="twitter:title" content="Front — five warriors"/>
+  <meta name="twitter:description" content="Trained on the thirteen chapters. Fought by warriors."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=9"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=10"/>
   <style>
-    :root { --bg:#10140e; --ink:#e6ead4; --mut:#8a9178; --line:#3d4a32; --go:#c4d36a; --bad:#c45a4a; }
+    :root { --bg:#12100c; --ink:#e8dfc8; --mut:#8a806c; --line:#3a3428; --go:#c4a35a; --bad:#a34538; --you:#6a8f5a; --them:#8f5a5a; }
     body { background:var(--bg); color:var(--ink); }
-    .front-wrap { max-width:42rem; margin:0 auto; padding:1.2rem 1.2rem 3rem; font:16px/1.45 Georgia, serif; }
-    .front-wrap h1 { font-size:1.35rem; margin:.2rem 0; letter-spacing:.06em; }
-    .strip, .sheet { border:1px solid var(--line); padding:.85rem 1rem; margin:.7rem 0; }
-    .mut { color:var(--mut); font-size:.92rem; }
-    .front-wrap button { font:inherit; background:#1a2016; color:var(--ink); border:1px solid var(--line); padding:.4rem .75rem; margin:.2rem .25rem 0 0; cursor:pointer; }
-    .front-wrap button.pri { background:var(--go); color:#14180f; border:0; font-weight:700; }
-    .hex { display:flex; gap:4px; margin:.5rem 0; }
-    .hex i { flex:1; height:14px; background:#2a3324; display:block; }
-    .hex i.on { background:var(--go); }
-    .hex i.off { background:var(--bad); }
-    .win { color:var(--go); }
-    .lose { color:var(--bad); }
-    .front-wrap a { color:var(--go); }
+    .war { max-width:52rem; margin:0 auto; padding:1rem 1rem 3rem; font:15px/1.4 "IBM Plex Sans", system-ui, sans-serif; }
+    .war h1 { font:650 1.6rem/1.15 Georgia, serif; letter-spacing:.04em; margin:.2rem 0 .4rem; }
+    .mut { color:var(--mut); }
+    .row { display:flex; flex-wrap:wrap; gap:.6rem; }
+    .card { border:1px solid var(--line); background:#1a1712; padding:.7rem .8rem; flex:1; min-width:9rem; }
+    .card.dead { opacity:.4; }
+    .card.on { outline:1px solid var(--go); }
+    .card h3 { margin:0 0 .2rem; font-size:1rem; }
+    .role { font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:var(--mut); }
+    .field { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin:1rem 0; }
+    .slot { border:1px dashed var(--line); min-height:4.4rem; padding:.4rem; text-align:center; font-size:.85rem; }
+    .slot.you { background:#182016; border-color:var(--you); }
+    .slot.them { background:#201616; border-color:var(--them); }
+    .slot.on { outline:2px solid var(--go); }
+    .war button { font:inherit; background:#241f18; color:var(--ink); border:1px solid var(--line); padding:.35rem .6rem; margin:.15rem .15rem 0 0; cursor:pointer; }
+    .war button.pri { background:var(--go); color:#16130e; border:0; font-weight:700; }
+    .log { max-height:10rem; overflow:auto; font-size:.9rem; color:var(--mut); }
+    .log div { margin:.25rem 0; }
+    .hp { height:6px; background:#2a241c; margin:.35rem 0; }
+    .hp i { display:block; height:100%; background:var(--you); }
+    .them .hp i, .foe .hp i { background:var(--them); }
   </style>
 </head>
 <body>
-  <div class="front-wrap">
-    <p class="mut">TRUGAME · FRONT</p>
-    <h1>The line.</h1>
-    <p class="mut">A card is offered. You camp. You fight. The line writes the next desk. Pass $12 / $79.</p>
-    <div class="strip" id="desk"></div>
-    <div class="sheet" id="stage"></div>
-    <p class="mut"><a href="/trugame">Engine seats</a> · <a href="/pay?sku=trugame-month">Month $12</a> · <a href="/pay?sku=trugame-year">Year $79</a></p>
+  <div class="war">
+    <p class="mut">FRONT · FIVE WARRIORS · THE BOOK</p>
+    <h1>Command the host.</h1>
+    <p class="mut" id="status">Drill a warrior on a chapter. Then take the field.</p>
+    <p class="mut" id="meta"></p>
+
+    <h2 class="mut" style="font-size:.8rem;letter-spacing:.12em;">YOUR HOST</h2>
+    <div class="row" id="you"></div>
+
+    <h2 class="mut" style="font-size:.8rem;letter-spacing:.12em;margin-top:1.2rem;">DRILL — THIRTEEN CHAPTERS</h2>
+    <div id="book"></div>
+
+    <p class="row" style="margin-top:.8rem">
+      <button class="pri" id="deploy" type="button">Take the field</button>
+      <button id="again" type="button">New war</button>
+    </p>
+
+    <div class="field" id="enemyField"></div>
+    <div class="field" id="yourField"></div>
+
+    <h2 class="mut" style="font-size:.8rem;letter-spacing:.12em;">COMMAND</h2>
+    <div id="blows"></div>
+    <p class="mut">Click a ground, then a blow. They answer.</p>
+    <div class="log" id="log"></div>
+    <p class="mut" style="margin-top:1rem"><a href="/trugame">Engine seats</a> · Month $12 · Year $79</p>
   </div>
-  <script src="/assets/chrome.js?v=9" defer></script>
+  <script src="/assets/chrome.js?v=10" defer></script>
   <script type="module">
-    import { seedWorld, buildCard, acceptCard, campWeek, fight, readResidual, leaveDesk, beat, THEATERS } from "./front-engine.js?v=9";
-    let w = seedWorld(27);
-    buildCard(w);
+    import { seedWar, drill, deploy, command, portrait, BOOK, STRATAGEMS, SLOTS, restart } from "./front-engine.js?v=11";
+    let g = seedWar(27);
+    let pickSlot = 2;
     const $ = (id) => document.getElementById(id);
 
-    function deskHtml() {
-      const held = w.held.length ? w.held.map((id) => THEATERS.find((t) => t.id === id).name).join(" · ") : "none";
-      return `<b>Week ${w.week}</b> · supply ${w.supply} · purse ${w.cash}
-        · record ${w.wins}–${w.losses} · held: ${held}<br>
-        <span class="mut">${w.lastLine}</span>`;
+    function bars(w) {
+      const pct = Math.max(0, Math.min(100, (w.cell.strength / 1.6) * 100));
+      return `<div class="hp"><i style="width:${pct}%"></i></div>`;
     }
 
     function paint() {
-      $("desk").innerHTML = deskHtml();
-      const b = beat(w);
-      const st = $("stage");
-      if (w.over) {
-        st.innerHTML = `<p class="${w.over==="win"?"win":"lose"}">${w.over==="win"?"The four grounds are yours.":"The front collapsed."}</p>
-          <button id="re">New campaign</button>`;
-        $("re").onclick = () => { w = seedWorld(Date.now() % 99991); paint(); };
-        return;
-      }
-      if (b === "card") {
-        if (!w.card) buildCard(w);
-        const t = w.card.theater;
-        st.innerHTML = `<p>Next ground: <b>${t.name}</b>. Night ${Math.round(t.night*10)} · mud ${Math.round(t.mud*10)} · heat ${Math.round(t.heat*10)}.</p>
-          <button class="pri" id="yes">Accept</button><button id="no">Sit this one</button>`;
-        $("yes").onclick = () => { acceptCard(w, true); paint(); };
-        $("no").onclick = () => { acceptCard(w, false); paint(); };
-        return;
-      }
-      if (b === "camp") {
-        const n = w.camp.weeks || 0;
-        st.innerHTML = `<p>Camp week ${n+1} of 3. One focus.</p>
-          <button class="pri" data-f="take">Take</button>
-          <button data-f="supply">Supply</button>
-          <button data-f="hold">Hold</button>
-          <button data-f="rest">Rest</button>`;
-        st.querySelectorAll("button").forEach((btn) => {
-          btn.onclick = () => { campWeek(w, btn.dataset.f); paint(); };
-        });
-        return;
-      }
-      if (b === "fight") {
-        st.innerHTML = `<p>Night on <b>${w.card.theater.name}</b>. The line goes.</p>
-          <button class="pri" id="go">Fight</button>`;
-        $("go").onclick = () => { fight(w); paint(); };
-        return;
-      }
-      if (b === "residual") {
-        const f = w.lastFight;
-        const bars = (f.hex || []).map((v) => `<i class="${v>0?"on":v<0?"off":""}"></i>`).join("");
-        st.innerHTML = `<p>${w.lastLine}</p><div class="hex">${bars}</div>
-          <p class="mut">score ${f.score} · ${f.ticks} ticks</p>
-          <button class="pri" id="ok">Back to desk</button>`;
-        $("ok").onclick = () => { readResidual(w); paint(); };
-        return;
-      }
-      st.innerHTML = `<p class="mut">Week committed. The next card comes on schedule.</p>
-        <button class="pri" id="adv">Advance week</button>`;
-      $("adv").onclick = () => { leaveDesk(w); paint(); };
+      $("meta").textContent = `Day ${g.day} · wagons ${g.supply} · round ${g.round || "—"} · ${g.over ? (g.over === "win" ? "YOU HOLD" : "HOST BROKEN") : g.phase}`;
+      $("status").textContent = g.log[0] || "";
+      $("you").innerHTML = g.you.map((w, i) => {
+        const p = portrait(w);
+        return `<div class="card ${w.cell.alive ? "" : "dead"} ${g.selected===i?"on":""}" data-w="${i}">
+          <div class="role">${p.role}</div>
+          <h3>${p.name}</h3>
+          ${bars(w)}
+          <div class="mut">${p.drills.slice(0,3).join(" · ") || "untrained"} · wounds ${p.wounds}</div>
+        </div>`;
+      }).join("");
+      $("you").querySelectorAll("[data-w]").forEach((el) => {
+        el.onclick = () => { g.selected = Number(el.dataset.w); paint(); };
+      });
+      $("book").innerHTML = BOOK.map((m) => `<button data-m="${m.id}" title="${m.line}">${m.ch}. ${m.name}</button>`).join("");
+      $("book").querySelectorAll("button").forEach((b) => {
+        b.onclick = () => { drill(g, g.selected, b.dataset.m); paint(); };
+      });
+      $("enemyField").innerHTML = SLOTS.map((s, i) => {
+        const w = g.enemyField[i];
+        return `<div class="slot them">${s.name}<br><b>${w ? w.name : "—"}</b>${w ? bars(w) : ""}</div>`;
+      }).join("");
+      $("yourField").innerHTML = SLOTS.map((s, i) => {
+        const w = g.field[i];
+        return `<div class="slot you ${pickSlot===i?"on":""}" data-s="${i}">${s.name}<br><b>${w ? w.name : "—"}</b>${w ? bars(w) : ""}</div>`;
+      }).join("");
+      $("yourField").querySelectorAll("[data-s]").forEach((el) => {
+        el.onclick = () => { pickSlot = Number(el.dataset.s); paint(); };
+      });
+      $("blows").innerHTML = STRATAGEMS.map((s) => `<button class="pri" data-b="${s.id}">${s.name}</button>`).join("");
+      $("blows").querySelectorAll("button").forEach((b) => {
+        b.onclick = () => { command(g, b.dataset.b, pickSlot); paint(); };
+      });
+      $("log").innerHTML = g.log.slice(0, 8).map((l) => `<div>${l}</div>`).join("");
+      $("deploy").disabled = g.phase !== "drill" || !!g.over;
     }
+
+    $("deploy").onclick = () => {
+      deploy(g, [0, 1, 2, 3, 4]);
+      paint();
+    };
+    $("again").onclick = () => { g = restart(); pickSlot = 2; paint(); };
     paint();
   </script>
 </body>

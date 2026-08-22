@@ -1,15 +1,59 @@
 /**
- * Front — campaign engine.
- * Internally: Autonoma tick + leftover + Cor market + Custos + Capture/Route/Memory.
- * Externally: desk → card → camp → fight → residual → desk. /webber law.
+ * Front — war. Warriors on a field.
+ * Cells train on the thirteen chapters. The glass never says the cell name.
  */
 const SENSE = 29;
 const SPEAK = 36;
-const THEATERS = [
-  { id: "ridge", name: "The Ridge", night: 0.8, mud: 0.2, heat: 0.3 },
-  { id: "river", name: "The River", night: 0.3, mud: 0.9, heat: 0.2 },
-  { id: "rail", name: "The Rail", night: 0.4, mud: 0.3, heat: 0.5 },
-  { id: "city", name: "The City", night: 0.6, mud: 0.4, heat: 0.7 },
+
+/** Sun Tzu, thirteen chapters. Each is a drill that writes a sense channel. */
+export const BOOK = [
+  { id: "l1", ch: 1, name: "Estimates", line: "Measure the field before you move.", sense: 4, take: 0.1, hold: 0.2, spy: 0.4 },
+  { id: "l2", ch: 2, name: "Waging War", line: "A long war empties the wagons.", sense: 5, take: 0.1, hold: 0.1, spy: 0, supply: 0.5 },
+  { id: "l3", ch: 3, name: "Attack by Stratagem", line: "The best victory is to take them whole.", sense: 6, take: 0.45, hold: 0.05, spy: 0.2 },
+  { id: "l4", ch: 4, name: "Tactical Dispositions", line: "First make yourself unconquerable.", sense: 7, take: 0.05, hold: 0.5, spy: 0 },
+  { id: "l5", ch: 5, name: "Energy", line: "Strike as a millstone on an egg.", sense: 8, take: 0.5, hold: 0.05, spy: 0 },
+  { id: "l6", ch: 6, name: "Weak Points", line: "Hit them where they are empty.", sense: 9, take: 0.55, hold: 0, spy: 0.15 },
+  { id: "l7", ch: 7, name: "Maneuver", line: "The clever fight after they have already won the road.", sense: 10, take: 0.25, hold: 0.15, spy: 0.1 },
+  { id: "l8", ch: 8, name: "Variation", line: "There are roads not to take, armies not to strike.", sense: 11, take: 0.15, hold: 0.35, spy: 0.1 },
+  { id: "l9", ch: 9, name: "The March", line: "Read the dust. Read the birds.", sense: 12, take: 0.2, hold: 0.1, spy: 0.45 },
+  { id: "l10", ch: 10, name: "Terrain", line: "Ground decides who may stand.", sense: 13, take: 0.15, hold: 0.45, spy: 0.1 },
+  { id: "l11", ch: 11, name: "Nine Situations", line: "On desperate ground, fight.", sense: 14, take: 0.4, hold: 0.2, spy: 0 },
+  { id: "l12", ch: 12, name: "Attack by Fire", line: "Fire when the wind is yours.", sense: 15, take: 0.5, hold: 0, spy: 0 },
+  { id: "l13", ch: 13, name: "Use of Spies", line: "Foreknowledge. Nothing else wins first.", sense: 16, take: 0.1, hold: 0.1, spy: 0.7 },
+];
+
+export const SLOTS = [
+  { id: 0, name: "Left wing" },
+  { id: 1, name: "Left" },
+  { id: 2, name: "Center" },
+  { id: 3, name: "Right" },
+  { id: 4, name: "Right wing" },
+];
+
+export const STRATAGEMS = [
+  { id: "unprepared", name: "Strike the unprepared", need: "l6", take: 1.2, hold: 0.4, spy: 0.3 },
+  { id: "unconquerable", name: "Stand unconquerable", need: "l4", take: 0.35, hold: 1.3, spy: 0.1 },
+  { id: "whole", name: "Take them whole", need: "l3", take: 0.9, hold: 0.6, spy: 0.4 },
+  { id: "wagons", name: "Cut the wagons", need: "l2", take: 0.5, hold: 0.4, spy: 0.2, supplyHit: 14 },
+  { id: "millstone", name: "Millstone on an egg", need: "l5", take: 1.35, hold: 0.2, spy: 0 },
+  { id: "dust", name: "Read the dust", need: "l9", take: 0.6, hold: 0.5, spy: 1.2 },
+  { id: "desperate", name: "Desperate ground", need: "l11", take: 1.1, hold: 0.8, spy: 0 },
+  { id: "fire", name: "Fire with the wind", need: "l12", take: 1.25, hold: 0.15, spy: 0 },
+];
+
+const YOU_NAMES = [
+  { name: "Rook", role: "Captain" },
+  { name: "Ivy", role: "Scout" },
+  { name: "Hale", role: "Vanguard" },
+  { name: "Moth", role: "Wing" },
+  { name: "Bram", role: "Reserve" },
+];
+const THEM_NAMES = [
+  { name: "Kestrel", role: "Captain" },
+  { name: "Ash", role: "Scout" },
+  { name: "Vane", role: "Vanguard" },
+  { name: "Pike", role: "Wing" },
+  { name: "Dorr", role: "Reserve" },
 ];
 
 function hash32(n) {
@@ -28,38 +72,62 @@ function mulberry(seed) {
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
+function mean(a) {
+  let s = 0;
+  for (let i = 0; i < a.length; i++) s += a[i];
+  return s / a.length;
+}
 
 function makeCell(seed) {
   const sense = new Float64Array(SENSE);
+  const book = new Float64Array(13);
   let s = seed >>> 0;
-  for (let i = 0; i < SENSE; i++) sense[i] = ((s = hash32(s + i)) & 255) / 255;
-  return { seed, sense, speak: new Float64Array(SPEAK), alive: true, ticks: 0, strength: 1 };
+  for (let i = 0; i < SENSE; i++) sense[i] = ((s = hash32(s + i)) & 255) / 255 * 0.25;
+  return {
+    seed,
+    sense,
+    speak: new Float64Array(SPEAK),
+    book,
+    alive: true,
+    ticks: 0,
+    strength: 0.55,
+    wounds: 0,
+  };
 }
 
 function tickCell(cell, world) {
   if (!cell.alive) return;
-  const g = Math.max(0, Math.min(1, (world.grant || 40) / 200));
-  cell.sense[0] = world.night;
-  cell.sense[1] = world.mud;
-  cell.sense[2] = world.heat;
+  const g = Math.max(0, Math.min(1, (world.grant || 50) / 160));
+  cell.sense[0] = world.night ?? 0.4;
+  cell.sense[1] = world.mud ?? 0.3;
+  cell.sense[2] = world.heat ?? 0.4;
   cell.sense[3] = g;
-  for (let i = 4; i < SENSE; i++) {
-    const nse = ((hash32(cell.seed + cell.ticks * 19 + i) & 255) / 255 - 0.5) * 0.05;
-    cell.sense[i] = Math.max(0, Math.min(1, cell.sense[i] * 0.84 + cell.sense[i % 4] * 0.12 + nse));
+  for (let i = 0; i < 13; i++) {
+    const idx = 4 + i;
+    const trained = cell.book[i];
+    const nse = ((hash32(cell.seed + cell.ticks * 19 + i) & 255) / 255 - 0.5) * 0.04;
+    cell.sense[idx] = Math.max(0, Math.min(1, cell.sense[idx] * 0.72 + trained * 0.22 + nse));
   }
-  const mouths = Math.max(4, Math.round(g * SPEAK));
+  for (let i = 17; i < SENSE; i++) {
+    cell.sense[i] = cell.sense[i] * 0.9 + cell.sense[i % 13 + 4] * 0.08;
+  }
+  const mouths = Math.max(6, Math.round(8 + g * 20 + mean(cell.book) * 12));
   for (let i = 0; i < SPEAK; i++) {
     const a = cell.sense[i % SENSE];
     const b = cell.sense[(i * 3) % SENSE];
-    cell.speak[i] = i >= mouths ? cell.speak[i] * 0.45 : Math.max(0, Math.min(1, a * 0.5 + b * 0.35 + cell.speak[i] * 0.15));
+    const drill = cell.book[i % 13];
+    cell.speak[i] =
+      i >= mouths
+        ? cell.speak[i] * 0.5
+        : Math.max(0, Math.min(1, a * 0.35 + b * 0.25 + drill * 0.25 + cell.speak[i] * 0.15));
   }
   cell.ticks++;
   const e = mean(cell.sense) + mean(cell.speak);
-  if (e < 0.02 || e > 2.5) cell.alive = false;
-  cell.strength = Math.max(0.05, Math.min(1.4, mean(cell.speak) * 1.6 * cell.strength ** 0.5 + 0.2));
+  if (e < 0.02 || cell.wounds >= 3) cell.alive = false;
+  cell.strength = Math.max(0.08, Math.min(1.6, mean(cell.speak) * 1.4 + mean(cell.book) * 0.5 - cell.wounds * 0.18));
 }
 
-function leftoverEnergy(cell) {
+function leftover(cell) {
   let e = 0;
   for (let i = 0; i < SPEAK; i++) {
     const d = cell.speak[i] - cell.sense[i % SENSE];
@@ -68,189 +136,179 @@ function leftoverEnergy(cell) {
   return e / SPEAK;
 }
 
-function mean(a) {
-  let s = 0;
-  for (let i = 0; i < a.length; i++) s += a[i];
-  return s / a.length;
+function skill(cell, maximId) {
+  const m = BOOK.find((b) => b.id === maximId);
+  if (!m) return 0;
+  return cell.book[m.ch - 1] * 0.7 + cell.sense[m.sense] * 0.3;
 }
 
-function grantBudget(supply, asks) {
-  let left = supply;
-  const out = {};
-  for (const a of [...asks].sort((x, y) => y.need - x.need)) {
-    const g = Math.min(a.ask, left);
-    out[a.who] = g;
-    left -= g;
-  }
-  return out;
+function makeWarrior(seed, spec, foe) {
+  return {
+    name: spec.name,
+    role: spec.role,
+    foe,
+    cell: makeCell(seed),
+    drills: [],
+    slot: null,
+  };
 }
 
-function illegal(energy, peak) {
-  if (energy > 0.55) return "overreach";
-  if (peak > 0.97) return "broke-contact";
-  return null;
-}
-
-export function seedWorld(seed = 27) {
+export function seedWar(seed = 27) {
   const rng = mulberry(seed);
-  const units = (tag, n0) =>
-    [0, 1, 2].map((i) => ({
-      who: tag,
-      cell: makeCell((seed * 17 + tag.charCodeAt(0) * 13 + i) >>> 0),
-    }));
+  const you = YOU_NAMES.map((n, i) => makeWarrior((seed * 19 + i * 97) >>> 0, n, false));
+  const them = THEM_NAMES.map((n, i) => makeWarrior((seed * 31 + i * 53 + 7) >>> 0, n, true));
+  for (const w of them) {
+    const picks = [...BOOK].sort(() => rng() - 0.5).slice(0, 3 + Math.floor(rng() * 3));
+    for (const m of picks) drillWarrior(w, m.id);
+  }
   return {
     seed,
-    week: 1,
-    supply: 100,
-    cash: 12,
-    held: [],
-    losses: 0,
-    wins: 0,
-    streak: 0,
-    lastLine: "A card is on the desk.",
-    card: null,
-    accepted: null,
-    needRead: false,
-    atDesk: false,
-    camp: { take: 0, supply: 0, hold: 0, weeks: 0 },
-    you: { take: units("t"), supply: units("s"), hold: units("h") },
-    them: { take: units("T"), supply: units("S"), hold: units("H") },
-    log: [],
     rng,
+    day: 1,
+    supply: 100,
+    you,
+    them,
+    field: [null, null, null, null, null],
+    enemyField: [null, null, null, null, null],
+    phase: "drill",
+    round: 0,
+    log: ["Five warriors. The book is open. Drill them, then take the field."],
+    last: null,
     over: null,
+    selected: 0,
   };
 }
 
-export function buildCard(w) {
-  const open = THEATERS.filter((t) => !w.held.includes(t.id));
-  const pool = open.length ? open : THEATERS;
-  const pick = pool[Math.floor(w.rng() * pool.length)];
-  w.card = {
-    week: w.week,
-    theater: pick,
-    night: pick.night,
-    mud: pick.mud,
-    heat: pick.heat,
-  };
+export function drillWarrior(w, maximId) {
+  const m = BOOK.find((b) => b.id === maximId);
+  if (!m || !w.cell.alive) return w;
+  w.cell.book[m.ch - 1] = Math.min(1, w.cell.book[m.ch - 1] + 0.34);
+  tickCell(w.cell, { night: 0.3, mud: 0.2, heat: 0.3, grant: 90 });
+  if (!w.drills.includes(m.id)) w.drills.push(m.id);
   return w;
 }
 
-export function acceptCard(w, yes) {
-  if (!w.card) buildCard(w);
-  w.accepted = !!yes;
-  if (!yes) {
-    w.streak = 0;
-    w.lastLine = "You sat. The line moved without you.";
-  }
-  return w;
+export function drill(g, warriorIndex, maximId) {
+  if (g.phase !== "drill" || g.over) return g;
+  const w = g.you[warriorIndex];
+  if (!w) return g;
+  drillWarrior(w, maximId);
+  const m = BOOK.find((b) => b.id === maximId);
+  g.supply = Math.max(40, g.supply - 4);
+  g.log.unshift(`${w.name} drills ${m.name}. “${m.line}”`);
+  g.selected = warriorIndex;
+  return g;
 }
 
-export function campWeek(w, focus) {
-  const f = ["take", "supply", "hold", "rest"].includes(focus) ? focus : "rest";
-  if (f !== "rest") w.camp[f] = (w.camp[f] || 0) + 1;
-  w.camp.weeks = (w.camp.weeks || 0) + 1;
-  const world = {
-    night: w.card?.night ?? 0.4,
-    mud: w.card?.mud ?? 0.3,
-    heat: w.card?.heat ?? 0.3,
-    grant: f === "rest" ? 30 : 70,
-  };
-  const side = w.you[f === "rest" ? "hold" : f] || w.you.hold;
-  for (const u of side) tickCell(u.cell, world);
-  for (const k of ["take", "supply", "hold"]) {
-    for (const u of w.them[k]) tickCell(u.cell, { ...world, grant: 55 });
+export function deploy(g, slots) {
+  if (g.phase !== "drill" || g.over) return g;
+  const used = new Set();
+  for (let i = 0; i < 5; i++) {
+    const idx = slots[i];
+    if (idx == null || idx < 0 || used.has(idx) || !g.you[idx]) return g;
+    used.add(idx);
   }
-  w.supply = Math.max(20, Math.min(140, w.supply + (f === "supply" ? 12 : f === "rest" ? 6 : -4)));
-  w.week += 1;
-  return w;
+  g.field = slots.map((idx, slot) => {
+    g.you[idx].slot = slot;
+    return g.you[idx];
+  });
+  const order = [0, 1, 2, 3, 4].sort(() => g.rng() - 0.5);
+  g.enemyField = order.map((idx, slot) => {
+    g.them[idx].slot = slot;
+    return g.them[idx];
+  });
+  g.phase = "fight";
+  g.round = 1;
+  g.log.unshift("The field is set. Five against five. Command a blow.");
+  return g;
 }
 
-/** One battle: 16 ticks, 5 sectors. Take pushes, supply feeds, hold keeps. */
-export function fight(w) {
-  if (!w.accepted || !w.card) return w;
-  const th = w.card.theater;
-  const grants = grantBudget(w.supply, [
-    { who: "take", ask: 40 + w.camp.take * 10, need: 0.5 + w.camp.take * 0.15 },
-    { who: "supply", ask: 30 + w.camp.supply * 8, need: 0.4 + w.camp.supply * 0.1 },
-    { who: "hold", ask: 30 + w.camp.hold * 8, need: 0.45 + w.camp.hold * 0.12 },
-  ]);
-  const hex = [0, 0, 0, 0, 0];
-  const ticks = [];
-  for (let t = 0; t < 16; t++) {
-    const env = { night: th.night, mud: th.mud, heat: th.heat + t * 0.01, grant: grants.take };
-    for (const u of w.you.take) tickCell(u.cell, { ...env, grant: grants.take });
-    for (const u of w.you.supply) tickCell(u.cell, { ...env, grant: grants.supply });
-    for (const u of w.you.hold) tickCell(u.cell, { ...env, grant: grants.hold });
-    for (const k of ["take", "supply", "hold"]) {
-      for (const u of w.them[k]) tickCell(u.cell, { ...env, grant: 50 });
-    }
-    const push =
-      mean(w.you.take.map((u) => u.cell.strength)) +
-      mean(w.you.supply.map((u) => u.cell.strength)) * 0.35;
-    const hold =
-      mean(w.them.take.map((u) => u.cell.strength)) +
-      mean(w.them.hold.map((u) => u.cell.strength)) * 0.4;
-    const edge = push - hold + (w.rng() - 0.5) * 0.55;
-    const i = Math.min(4, Math.max(0, 2 + Math.round(edge * 4)));
-    hex[i] += edge > 0 ? 1 : -1;
-    const energy = leftoverEnergy(w.you.take[0].cell);
-    const peak = Math.max(...w.you.take[0].cell.speak);
-    const foul = illegal(energy, peak);
-    ticks.push({ t, edge, hex: i, foul });
-    if (foul === "overreach") {
-      hex[i] -= 2;
-      w.supply -= 8;
-    }
+function enemyStratagem(g, foe) {
+  const scored = STRATAGEMS.map((s) => ({ s, v: skill(foe.cell, s.need) + g.rng() * 0.2 }));
+  scored.sort((a, b) => b.v - a.v);
+  return scored[0].s;
+}
+
+export function command(g, stratagemId, slot) {
+  if (g.phase !== "fight" || g.over) return g;
+  const s = STRATAGEMS.find((x) => x.id === stratagemId);
+  const us = g.field[slot];
+  const them = g.enemyField[slot];
+  if (!s || !us || !them) return g;
+
+  const night = 0.35 + g.round * 0.04;
+  const env = { night, mud: 0.25 + (slot % 2) * 0.2, heat: 0.3 + slot * 0.05, grant: 55 + g.supply * 0.2 };
+  tickCell(us.cell, { ...env, grant: env.grant + skill(us.cell, s.need) * 40 });
+  const es = enemyStratagem(g, them);
+  tickCell(them.cell, { ...env, grant: 50 + skill(them.cell, es.need) * 36 });
+
+  const our =
+    us.cell.strength * (0.5 + s.take * skill(us.cell, s.need)) +
+    skill(us.cell, "l10") * 0.2 +
+    skill(us.cell, "l13") * 0.15;
+  const his =
+    them.cell.strength * (0.5 + es.hold * 0.5 + es.take * 0.3) +
+    skill(them.cell, "l4") * 0.25;
+  let edge = our - his + (g.rng() - 0.5) * 0.22;
+  if (leftover(us.cell) > 0.55) {
+    edge -= 0.35;
+    g.supply -= 6;
+    g.log.unshift(`${us.name} overreached. The line broke contact.`);
   }
-  const score = hex.reduce((s, v) => s + v, 0);
-  const won = score > 0;
-  if (won) {
-    if (!w.held.includes(th.id)) w.held.push(th.id);
-    w.wins += 1;
-    w.streak = Math.max(0, w.streak) + 1;
-    w.cash += 4;
-    w.lastLine = `${th.name} held. Line moved.`;
+  if (s.supplyHit) {
+    g.supply = Math.max(20, g.supply - 3);
+  }
+
+  let line;
+  if (edge > 0.12) {
+    them.cell.wounds += 1;
+    tickCell(them.cell, env);
+    line = `${us.name} (${s.name}) drives ${them.name} on the ${SLOTS[slot].name}.`;
+    if (!them.cell.alive) line = `${us.name} breaks ${them.name}. The ${SLOTS[slot].name} is yours.`;
+  } else if (edge < -0.12) {
+    us.cell.wounds += 1;
+    tickCell(us.cell, env);
+    line = `${them.name} answers ${us.name}. ${es.name}.`;
+    if (!us.cell.alive) line = `${us.name} falls on the ${SLOTS[slot].name}.`;
   } else {
-    w.losses += 1;
-    w.streak = Math.min(0, w.streak) - 1;
-    w.cash -= 2;
-    w.supply = Math.max(16, w.supply - 10);
-    w.lastLine = `${th.name} lost. You fall back.`;
+    line = `Dust on the ${SLOTS[slot].name}. Neither yields.`;
   }
-  w.lastFight = { theater: th, hex, score, won, ticks: ticks.length, grants };
-  w.needRead = true;
-  w.card = null;
-  w.accepted = null;
-  w.camp = { take: 0, supply: 0, hold: 0, weeks: 0 };
-  w.week += 1;
-  if (w.losses >= 3 && w.wins === 0) w.over = "lose";
-  if (w.held.length >= 4) w.over = "win";
-  if (w.cash < 0) w.over = "lose";
-  return w;
-}
 
-export function readResidual(w) {
-  w.needRead = false;
-  w.atDesk = true;
-  return w;
-}
+  g.last = { slot, stratagem: s, enemy: es, edge, line };
+  g.log.unshift(line);
+  g.round += 1;
+  g.supply = Math.max(12, g.supply - 5);
+  g.day += 1;
 
-export function leaveDesk(w) {
-  w.atDesk = false;
-  if (!w.card && (w.week % 4 === 1 || w.week === 1)) buildCard(w);
-  return w;
-}
-
-export function beat(w) {
-  if (w.over) return "desk";
-  if (w.needRead) return "residual";
-  if (w.atDesk) return "desk";
-  if (!w.card && (w.week % 4 === 1 || w.week === 1)) return "card";
-  if (w.card && w.accepted === null) return "card";
-  if (w.card && w.accepted === true) {
-    return (w.camp.weeks || 0) < 3 ? "camp" : "fight";
+  const livingYou = g.field.filter((w) => w.cell.alive).length;
+  const livingThem = g.enemyField.filter((w) => w.cell.alive).length;
+  const capYou = g.you[0].cell.alive;
+  const capThem = g.them[0].cell.alive;
+  if (!capYou || livingYou === 0) {
+    g.over = "lose";
+    g.log.unshift("The host is broken.");
+  } else if (!capThem || livingThem === 0) {
+    g.over = "win";
+    g.log.unshift("Their captain is down. The field is yours.");
+  } else if (g.round > 9) {
+    g.over = livingYou > livingThem ? "win" : "lose";
+    g.log.unshift(g.over === "win" ? "Night ends. You hold." : "Night ends. You are driven off.");
   }
-  return "desk";
+  return g;
 }
 
-export { THEATERS };
+export function portrait(w) {
+  return {
+    name: w.name,
+    role: w.role,
+    alive: w.cell.alive,
+    strength: +w.cell.strength.toFixed(2),
+    wounds: w.cell.wounds,
+    drills: w.drills.map((id) => BOOK.find((b) => b.id === id)?.name).filter(Boolean),
+    trained: +mean(w.cell.book).toFixed(2),
+  };
+}
+
+export function restart(seed) {
+  return seedWar(seed ?? (Date.now() % 99991));
+}
