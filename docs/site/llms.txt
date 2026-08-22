@@ -8,7 +8,7 @@
 - TruGame — engine, not a store. Month $12 · Year $79. No $3.99 / 7-day SKU.
 - Suite — pay by the gigabyte. First 100 GB free, then ~5¢ / 4¢. Not a seat.
 - Quikgater — pay-per-fact agent fetch. Live worker. Not a compressor.
-- ZRW core git is private. Public npm is a stub.
+- ZRW git is public. IP Guard off 2026-08-21. Encode/decode ship.
 
 - What each product is: https://www.slidphilabs.com/products
 - Quikgater: https://www.slidphilabs.com/quikgater
