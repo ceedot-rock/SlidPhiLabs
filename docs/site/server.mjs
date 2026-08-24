@@ -342,7 +342,8 @@ async function handleApi(req, res, url) {
 
 function resolveStatic(pathname) {
   let p = pathname.split("?")[0];
-  if (REWRITES[p]) p = REWRITES[p];
+  if (p.length > 1 && p.endsWith("/")) p = p.slice(0, -1);
+  if (REWRITES[p] || REWRITES[p + "/"]) p = REWRITES[p] || REWRITES[p + "/"];
   let file = safeJoin(ROOT, p === "/" ? "index.html" : p.replace(/^\//, ""));
   if (file && fs.existsSync(file) && fs.statSync(file).isFile()) return file;
   if (file && fs.existsSync(file) && fs.statSync(file).isDirectory()) {
