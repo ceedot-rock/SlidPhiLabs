@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Run — TruGame · Slid Phi Labs</title>
+  <meta name="description" content="A runner on the TruGame host. Jump, slide, burst. The field is the engine. Pass $12 / $79."/>
+  <meta name="theme-color" content="#0b0c08"/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="agentic" content="true"/>
+  <link rel="canonical" href="https://www.slidphilabs.com/trugame/runner"/>
+  <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Slid Phi Labs"/>
+  <meta property="og:title" content="Run — TruGame"/>
+  <meta property="og:description" content="Visually hard runner. Same engine. Space jumps."/>
+  <meta property="og:url" content="https://www.slidphilabs.com/trugame/runner"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Run — TruGame"/>
+  <meta name="twitter:description" content="Jump. Slide. Burst. The host is running."/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=11"/>
+  <style>
+    html, body { background:#0b0c08; margin:0; height:100%; }
+    #stage { position:fixed; inset:0; width:100%; height:100%; display:block; cursor:pointer; }
+    .hud-note { position:fixed; bottom:12px; right:16px; z-index:5; color:#8a806c; font:12px/1.3 sans-serif; }
+    .hud-note a { color:#c4d36a; }
+    body .spl-header, body .spl-ticker { background:rgba(12,14,10,.72); }
+  </style>
+</head>
+<body>
+  <canvas id="stage" aria-label="TruGame runner"></canvas>
+  <main id="main" hidden></main>
+  <p class="hud-note"><a href="/trugame">Engine</a> · $12 / $79</p>
+  <script src="/assets/chrome.js?v=11" defer></script>
+  <script type="module">
+    import { seedRun, step, draw, jump, slide, dash } from "./runner-engine.js?v=1";
+    const c = document.getElementById("stage");
+    const ctx = c.getContext("2d", { alpha: false });
+    let g = seedRun();
+    let last = performance.now();
+
+    function size() {
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      c.width = Math.floor(innerWidth * dpr);
+      c.height = Math.floor(innerHeight * dpr);
+      c.style.width = innerWidth + "px";
+      c.style.height = innerHeight + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    size();
+    addEventListener("resize", size);
+
+    function loop(now) {
+      const dt = Math.min(0.033, (now - last) / 1000);
+      last = now;
+      step(g, dt);
+      draw(ctx, g, innerWidth, innerHeight);
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+
+    function tap(y) {
+      if (!g.alive) { g = seedRun(); return; }
+      if (y > innerHeight * 0.72) slide(g);
+      else jump(g);
+    }
+    addEventListener("keydown", (e) => {
+      if (e.repeat) return;
+      if (!g.alive && (e.code === "Space" || e.code === "Enter")) { g = seedRun(); return; }
+      if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyW") { e.preventDefault(); jump(g); }
+      if (e.code === "ArrowDown" || e.code === "KeyS") { e.preventDefault(); slide(g); }
+      if (e.code === "ShiftLeft" || e.code === "ShiftRight" || e.code === "KeyD") dash(g);
+    });
+    c.addEventListener("pointerdown", (e) => tap(e.clientY));
+  </script>
+</body>
+</html>
