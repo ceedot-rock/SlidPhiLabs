@@ -10,36 +10,43 @@
   <meta name="agentic" content="true"/>
   <link rel="canonical" href="https://www.slidphilabs.com/trugame/runner"/>
   <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
+  <link rel="manifest" href="/trugame/manifest.webmanifest"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Slid Phi Labs"/>
   <meta property="og:title" content="Run — TruGame"/>
-  <meta property="og:description" content="Visually hard runner. Same engine. Space jumps."/>
+  <meta property="og:description" content="The field is the engine. Space jumps."/>
   <meta property="og:url" content="https://www.slidphilabs.com/trugame/runner"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Run — TruGame"/>
   <meta name="twitter:description" content="Jump. Slide. Burst. The host is running."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=11"/>
   <style>
-    html, body { background:#0b0c08; margin:0; height:100%; }
+    html, body { background:#0b0c08; margin:0; height:100%; overflow:hidden; }
     #stage { position:fixed; inset:0; width:100%; height:100%; display:block; cursor:pointer; }
-    .hud-note { position:fixed; bottom:12px; right:16px; z-index:5; color:#8a806c; font:12px/1.3 sans-serif; }
+    .hud-note {
+      position:fixed; bottom:max(12px, env(safe-area-inset-bottom));
+      right:max(16px, env(safe-area-inset-right)); z-index:5;
+      color:#8a806c; font:12px/1.3 sans-serif;
+    }
     .hud-note a { color:#c4d36a; }
-    body .spl-header, body .spl-ticker { background:rgba(12,14,10,.72); }
   </style>
 </head>
 <body>
   <canvas id="stage" aria-label="TruGame runner"></canvas>
   <main id="main" hidden></main>
   <p class="hud-note"><a href="/trugame">Engine</a> · $12 / $79</p>
-  <script src="/assets/chrome.js?v=11" defer></script>
   <script type="module">
-    import { seedRun, step, draw, jump, slide, dash } from "./runner-engine.js?v=1";
+    import { seedRun, step, jump, slide, dash } from "./runner-engine.js?v=12";
+    import { draw } from "./runner-view.js?v=12";
+    import * as audio from "./runner-audio.js?v=12";
     const c = document.getElementById("stage");
     const ctx = c.getContext("2d", { alpha: false });
     let g = seedRun();
     let last = performance.now();
+    let audioOn = false;
 
     function size() {
       const dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -52,26 +59,35 @@
     size();
     addEventListener("resize", size);
 
+    function armAudio() {
+      if (audioOn) return;
+      audio.unlock();
+      audioOn = true;
+    }
+
     function loop(now) {
       const dt = Math.min(0.033, (now - last) / 1000);
       last = now;
       step(g, dt);
+      if (audioOn) audio.drone(g.host.strength);
       draw(ctx, g, innerWidth, innerHeight);
       requestAnimationFrame(loop);
     }
     requestAnimationFrame(loop);
 
     function tap(y) {
+      armAudio();
       if (!g.alive) { g = seedRun(); return; }
-      if (y > innerHeight * 0.72) slide(g);
-      else jump(g);
+      if (y > innerHeight * 0.72) { slide(g); audio.onSlide(); }
+      else { jump(g); audio.onJump(); }
     }
     addEventListener("keydown", (e) => {
       if (e.repeat) return;
+      armAudio();
       if (!g.alive && (e.code === "Space" || e.code === "Enter")) { g = seedRun(); return; }
-      if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyW") { e.preventDefault(); jump(g); }
-      if (e.code === "ArrowDown" || e.code === "KeyS") { e.preventDefault(); slide(g); }
-      if (e.code === "ShiftLeft" || e.code === "ShiftRight" || e.code === "KeyD") dash(g);
+      if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyW") { e.preventDefault(); jump(g); audio.onJump(); }
+      if (e.code === "ArrowDown" || e.code === "KeyS") { e.preventDefault(); slide(g); audio.onSlide(); }
+      if (e.code === "ShiftLeft" || e.code === "ShiftRight" || e.code === "KeyD") { dash(g); audio.onDash(); }
     });
     c.addEventListener("pointerdown", (e) => tap(e.clientY));
   </script>

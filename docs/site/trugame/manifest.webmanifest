@@ -1,0 +1,13 @@
+{
+  "name": "TruGame Run",
+  "short_name": "Run",
+  "start_url": "/trugame/runner",
+  "scope": "/trugame/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b0c08",
+  "theme_color": "#0b0c08",
+  "icons": [
+    { "src": "/assets/logos/logo-slid-phi-labs.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any" }
+  ]
+}
