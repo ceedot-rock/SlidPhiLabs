@@ -148,6 +148,35 @@
     "usd_per_gb_bulk": 0.04,
     "page": "https://www.slidphilabs.com/pps"
   },
+  "other": {
+    "blackjack": {
+      "name": "Blackjack",
+      "service": "support / integration",
+      "usd": 199,
+      "note": "Not a Year seat. \u03942/Rice/Fib/Elias-\u03c9 language. Support and integration SKU.",
+      "contact": "mailto:corey@slidphilabs.com?subject=Blackjack%20%24199%20support"
+    },
+    "true8b": {
+      "name": "true8b",
+      "service": "specialist residual / integer coder",
+      "note": "Open source specialist. Calgary Path A leaves 64.5% remaining vs gzip-9 32.6% vs xz-9 27.2%. NEVER claim beats gzip/xz on general text. NOT the GC SKU.",
+      "github": "https://github.com/ceedot-rock/true8b"
+    },
+    "agent_rider": {
+      "name": "Agent-Rider",
+      "service": "agent coordination",
+      "note": "Live agent coordination surface. Identity, credits, tasks, contracts.",
+      "url": "https://agentrider.vercel.app",
+      "github": "https://github.com/ceedot-rock/Agent-Rider"
+    },
+    "quikgater": {
+      "name": "Quikgater",
+      "service": "pay-per-fact web fetch",
+      "note": "x402 on Base. Live worker. Browser render on Fly. Not a compressor. Not Chamber.",
+      "page": "https://www.slidphilabs.com/quikgater",
+      "worker": "https://quikgater-worker.ceedotrock.workers.dev/"
+    }
+  },
   "retired": {
     "json-chamber-99": "Forever $99 unlock undercut every paid tier.",
     "truchamber-1750": "Mashed product. Replaced by Chamber + TRU8 ladders.",
