@@ -42,7 +42,7 @@ export default async function handler(req, res) {
       service: "Slid Phi Labs checkout",
       post: {
         url: `${origin}/api/checkout`,
-        body: { sku: "zrw-n00b", email: "you@example.com", rail: "stripe" },
+        body: { sku: "chamber-year", email: "you@example.com", rail: "stripe" },
         rails: ["stripe", "link", "crypto", "x402", "invoice"],
       },
       matrix: `${origin}/api/payments`,
@@ -101,6 +101,13 @@ export default async function handler(req, res) {
 
   if (sku && PRODUCT_CATALOG[sku]) {
     const p = PRODUCT_CATALOG[sku];
+    if (p.retired) {
+      return json(res, 410, {
+        error: "product_retired",
+        sku,
+        use: "https://www.slidphilabs.com/pricing.json",
+      });
+    }
     amount_cents = p.amount_cents;
     name = p.name;
     payment_link = p.stripe;
@@ -112,7 +119,7 @@ export default async function handler(req, res) {
     return json(res, 400, {
       error: "sku_or_amount_required",
       hint: 'Body: { "sku": "cddg-split" } or { "amount_cents": 5000, "name": "Custom" }',
-      skus: Object.keys(PRODUCT_CATALOG),
+      skus: Object.keys(PRODUCT_CATALOG).filter((k) => !PRODUCT_CATALOG[k].retired),
       matrix: `${origin}/api/payments`,
     });
   }

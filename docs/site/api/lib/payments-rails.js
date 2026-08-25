@@ -47,13 +47,13 @@ export const PRODUCT_CATALOG = {
   "chamber-day": {
     name: "Chamber · Day",
     amount_cents: 900,
-    stripe: "https://www.slidphilabs.com/license",
+    stripe: "https://www.slidphilabs.com/pay?sku=chamber-day",
     kind: "chamber",
   },
   "chamber-month": {
     name: "Chamber · Month",
     amount_cents: 4900,
-    stripe: "https://www.slidphilabs.com/license",
+    stripe: "https://www.slidphilabs.com/pay?sku=chamber-month",
     kind: "chamber",
   },
   "chamber-year": {
@@ -65,38 +65,62 @@ export const PRODUCT_CATALOG = {
   "tru8-day": {
     name: "TRU8 · Day",
     amount_cents: 1900,
-    stripe: "https://www.slidphilabs.com/license",
+    stripe: "https://www.slidphilabs.com/pay?sku=tru8-day",
     kind: "tru8",
   },
   "tru8-month": {
     name: "TRU8 · Month",
     amount_cents: 9900,
-    stripe: "https://www.slidphilabs.com/license",
+    stripe: "https://www.slidphilabs.com/pay?sku=tru8-month",
     kind: "tru8",
   },
   "tru8-year": {
-    name: "TRU8 · Year (both products)",
+    name: "TRU8 · Year (includes Chamber)",
     amount_cents: 99000,
     stripe: "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
     kind: "both",
   },
+  "gate-day": {
+    name: "Gate · Day",
+    amount_cents: 2900,
+    stripe: "https://www.slidphilabs.com/pay?sku=gate-day",
+    kind: "gate",
+  },
+  "gate-month": {
+    name: "Gate · Month",
+    amount_cents: 8900,
+    stripe: "https://www.slidphilabs.com/pay?sku=gate-month",
+    kind: "gate",
+  },
+  "gate-year": {
+    name: "Gate · Year",
+    amount_cents: 79000,
+    stripe: "https://buy.stripe.com/7sY4gA6Jfapy1GZ8gw6wE0G",
+    kind: "gate",
+  },
+  "lab-pass": {
+    name: "Lab Pass · Year",
+    amount_cents: 108800,
+    stripe: "https://buy.stripe.com/3cI7sM2sZ0OYfxP7cs6wE0D",
+    kind: "seat",
+  },
   "trugame-rent-week": {
-    name: "TruGame rent · 7 days",
-    amount_cents: 399,
-    stripe: null,
+    name: "TruGame rent (retired)",
+    amount_cents: 1200,
+    stripe: "https://www.slidphilabs.com/pay?sku=trugame-month",
     kind: "trugame",
-    black_box_hours: 168,
+    retired: true,
   },
   "trugame-month": {
-    name: "TruGame Pass · Month",
+    name: "TruGame · Month",
     amount_cents: 1200,
-    stripe: null,
+    stripe: "https://www.slidphilabs.com/pay?sku=trugame-month",
     kind: "trugame",
   },
   "trugame-year": {
-    name: "TruGame Pass · Year",
+    name: "TruGame · Year",
     amount_cents: 7900,
-    stripe: null,
+    stripe: "https://www.slidphilabs.com/pay?sku=trugame-year",
     kind: "trugame",
   },
   "cddg-split": {
@@ -106,22 +130,25 @@ export const PRODUCT_CATALOG = {
     kind: "license",
   },
   "zrw-n00b": {
-    name: "ZRW N00b",
-    amount_cents: 7900,
-    stripe: "https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b",
+    name: "ZRW N00b (retired)",
+    amount_cents: 99000,
+    stripe: "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
     kind: "license",
+    retired: true,
   },
   "zrw-pro": {
-    name: "ZRW Pro",
-    amount_cents: 24900,
-    stripe: "https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c",
+    name: "ZRW Pro (retired)",
+    amount_cents: 99000,
+    stripe: "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
     kind: "license",
+    retired: true,
   },
   "zrw-l33t": {
-    name: "ZRW L33t$aUC3",
-    amount_cents: 69900,
-    stripe: "https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d",
+    name: "ZRW L33t (retired)",
+    amount_cents: 99000,
+    stripe: "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
     kind: "license",
+    retired: true,
   },
   blackjack: {
     name: "Blackjack",
@@ -195,11 +222,17 @@ export const SKU_ALIASES = {
   twin: "cddg-split",
   cddg: "cddg-split",
   split: "cddg-split",
-  zrw: "zrw-n00b",
-  n00b: "zrw-n00b",
-  noob: "zrw-n00b",
-  pro: "zrw-pro",
-  l33t: "zrw-l33t",
+  zrw: "tru8-year",
+  n00b: "tru8-year",
+  noob: "tru8-year",
+  pro: "tru8-year",
+  l33t: "tru8-year",
+  "zrw-n00b": "tru8-year",
+  "zrw-pro": "tru8-year",
+  "zrw-l33t": "tru8-year",
+  gate: "gate-year",
+  "lab-pass-year": "lab-pass",
+  pass: "lab-pass",
   support: "support-integration",
   integration: "support-integration",
   donation: "donate",
@@ -207,10 +240,11 @@ export const SKU_ALIASES = {
   olympiad: "gao-entry",
   ppp: "suite",
   suite: "suite",
-  rent: "trugame-rent-week",
-  "game-rent": "trugame-rent-week",
-  "trugame-rent": "trugame-rent-week",
-  "trugame-week": "trugame-rent-week",
+  rent: "trugame-month",
+  "game-rent": "trugame-month",
+  "trugame-rent": "trugame-month",
+  "trugame-week": "trugame-month",
+  "trugame-rent-week": "trugame-month",
   "trugame-pass": "trugame-month",
   "pay-per-suite": "suite",
   chamber: "chamber-year",
@@ -230,8 +264,11 @@ export function resolveSku(raw) {
     .toLowerCase();
   if (!k) return null;
   if (k === "suite" || k === "ppp" || k === "pay-per-suite" || k === "auto") return "suite";
+  const aliased = SKU_ALIASES[k];
+  const hit = aliased && PRODUCT_CATALOG[aliased] && !PRODUCT_CATALOG[aliased].retired ? aliased : k;
+  if (PRODUCT_CATALOG[hit] && !PRODUCT_CATALOG[hit].retired) return hit;
   if (PRODUCT_CATALOG[k]) return k;
-  if (SKU_ALIASES[k]) return SKU_ALIASES[k];
+  if (aliased) return aliased;
   return null;
 }
 
@@ -290,7 +327,9 @@ export function buildPaymentsMatrix(req) {
   const contact = contactEmail();
   const hasStripe = !!stripeSecret();
 
-  const products = Object.entries(PRODUCT_CATALOG).map(([sku, p]) => {
+  const products = Object.entries(PRODUCT_CATALOG)
+    .filter(([, p]) => !p.retired)
+    .map(([sku, p]) => {
     const row = {
       sku,
       name: p.name,
@@ -319,7 +358,7 @@ export function buildPaymentsMatrix(req) {
       note: "One session accepts cards, Link, Cash App, Amazon Pay, US bank ACH, Klarna, Affirm, Afterpay when Stripe enables them for the session.",
       how: {
         endpoint: `POST ${origin}/api/checkout`,
-        body: { sku: "zrw-n00b", email: "you@example.com", rail: "stripe" },
+        body: { sku: "chamber-year", email: "you@example.com", rail: "stripe" },
         returns: "url → hosted Checkout",
       },
     },
