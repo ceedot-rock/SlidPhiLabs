@@ -121,7 +121,7 @@ export function step(g, dt) {
 
   g.t += dt;
   g.rng = rngAt(g.seed, g.t, 1);
-  const speed = 0.42 + g.host.strength * 0.35 + (g.dash > 0 ? 0.55 : 0);
+  const speed = 0.42 + g.host.strength * 0.35 + (g.dash > 0 ? 0.55 : 0) + Math.min(0.35, g.t * 0.012);
   g.x += speed * dt;
   g.dist = g.x * 120;
   g.camLook = 0.22 + (g.dash > 0 ? 0.08 : 0) + g.vy * -2;
