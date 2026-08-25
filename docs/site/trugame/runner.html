@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>Run — TruGame · Slid Phi Labs</title>
-  <meta name="description" content="A runner on the TruGame host. Jump, slide, burst. The field is the engine. Pass $12 / $79."/>
+  <meta name="description" content="3D runner on the TruGame host. Same 29/36 tick. Jump, slide, burst. Pass $12 / $79."/>
   <meta name="theme-color" content="#0b0c08"/>
   <meta name="robots" content="index,follow"/>
   <meta name="agentic" content="true"/>
@@ -16,13 +16,16 @@
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Slid Phi Labs"/>
   <meta property="og:title" content="Run — TruGame"/>
-  <meta property="og:description" content="The field is the engine. Space jumps."/>
+  <meta property="og:description" content="3D field. Same engine tick. Space jumps."/>
   <meta property="og:url" content="https://www.slidphilabs.com/trugame/runner"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Run — TruGame"/>
-  <meta name="twitter:description" content="Jump. Slide. Burst. The host is running."/>
+  <meta name="twitter:description" content="Jump. Slide. Burst. 3D field on the same host tick."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" } }
+  </script>
   <style>
     html, body { background:#0b0c08; margin:0; height:100%; overflow:hidden; }
     #stage { position:fixed; inset:0; width:100%; height:100%; display:block; cursor:pointer; }
@@ -39,25 +42,14 @@
   <main id="main" hidden></main>
   <p class="hud-note"><a href="/trugame">Engine</a> · $12 / $79</p>
   <script type="module">
-    import { seedRun, step, jump, slide, dash } from "./runner-engine.js?v=13";
-    import { draw } from "./runner-view.js?v=13";
-    import * as audio from "./runner-audio.js?v=13";
+    import { seedRun, step, jump, slide, dash } from "./runner-engine.js?v=14";
+    import { createView } from "./runner-view3d.js?v=14";
+    import * as audio from "./runner-audio.js?v=14";
     const c = document.getElementById("stage");
-    const ctx = c.getContext("2d", { alpha: false });
+    const view = createView(c);
     let g = seedRun();
     let last = performance.now();
     let audioOn = false;
-
-    function size() {
-      const dpr = Math.min(2, window.devicePixelRatio || 1);
-      c.width = Math.floor(innerWidth * dpr);
-      c.height = Math.floor(innerHeight * dpr);
-      c.style.width = innerWidth + "px";
-      c.style.height = innerHeight + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    size();
-    addEventListener("resize", size);
 
     function armAudio() {
       if (audioOn) return;
@@ -70,7 +62,8 @@
       last = now;
       step(g, dt);
       if (audioOn) audio.drone(g.host.strength);
-      draw(ctx, g, innerWidth, innerHeight);
+      view.sync(g);
+      view.render();
       requestAnimationFrame(loop);
     }
     requestAnimationFrame(loop);
