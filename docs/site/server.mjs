@@ -117,6 +117,8 @@ const REWRITES = {
   "/trugame/ofa/": "/trugame/index.html",
   "/products": "/products.html",
   "/products/": "/products.html",
+  "/npm": "/npm.html",
+  "/npm/": "/npm.html",
   "/quikgater": "/quikgater.html",
   "/quikgater/": "/quikgater.html",
   "/fetchgate": "/quikgater.html",
