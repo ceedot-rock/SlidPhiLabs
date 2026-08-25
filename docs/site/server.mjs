@@ -360,6 +360,14 @@ function resolveStatic(pathname) {
 const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url || "/", `http://${req.headers.host || "localhost"}`);
+    const host = String(req.headers.host || "").split(":")[0].toLowerCase();
+    if (host === "slidphilabs.com") {
+      res.writeHead(301, {
+        Location: "https://www.slidphilabs.com" + url.pathname + url.search,
+        "Cache-Control": "no-store",
+      });
+      return res.end();
+    }
     if (url.pathname === "/healthz" || url.pathname === "/api/healthz") {
       const body = attachNca(
         { ok: true, host: "fly", app: process.env.FLY_APP_NAME || "slidphilabs", at: new Date().toISOString() },
