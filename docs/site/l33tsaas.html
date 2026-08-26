@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>L33tSaaS packs · Slid Phi Labs</title>
+  <meta name="description" content="All L33tSaaS product packs on Slid Phi Labs — claim, buy out, or browse the revolving supermarket." />
+  <link rel="stylesheet" href="/assets/chrome.css" />
+  <style>
+    body { margin:0; background:#070712; color:#e8eef8; font-family: ui-sans-serif, system-ui, sans-serif; }
+    main { max-width: 1080px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+    h1 { margin: 0 0 .4rem; font-size: 1.8rem; }
+    .sub { color:#8a93a8; margin: 0 0 1.25rem; }
+    .bar { display:flex; gap:.6rem; flex-wrap:wrap; margin: 0 0 1.25rem; }
+    input, select { background:#12122a; color:#e8eef8; border:1px solid #2a2a4a; border-radius:8px; padding:.5rem .7rem; }
+    input { flex:1; min-width:180px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap: .85rem; }
+    .card { background:#12122a; border:1px solid #252545; border-radius:12px; padding:1rem; display:flex; flex-direction:column; gap:.45rem; }
+    .card h3 { margin:0; font-size:1rem; line-height:1.35; }
+    .meta { font-size:.75rem; color:#8a93a8; }
+    .badge { display:inline-block; font-size:.68rem; padding:.12rem .4rem; border-radius:999px; font-weight:600; }
+    .open { background:#0d3d2c; color:#3ddc97; }
+    .cluster { background:#1a2a4a; color:#00b4ff; }
+    a.btn { display:inline-block; margin-top:auto; text-decoration:none; color:#041018; background:linear-gradient(135deg,#0088cc,#00b4ff); padding:.4rem .7rem; border-radius:8px; font-weight:600; font-size:.85rem; }
+    footer { color:#8a93a8; font-size:.8rem; margin-top:2rem; }
+    code { color:#00b4ff; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>L33tSaaS packs</h1>
+    <p class="sub">The revolving supermarket for builders and agents — every converted pack on Slid Phi Labs. Exclusive SKUs. Outright buyouts on the marketplace.</p>
+    <div class="bar">
+      <input id="q" placeholder="Search packs…" />
+      <select id="cluster"><option value="">All clusters</option></select>
+      <span class="meta" id="count"></span>
+    </div>
+    <div class="grid" id="grid">Loading catalog…</div>
+    <footer>
+      Catalog JSON: <code>/l33tsaas.json</code> ·
+      Claim: <code>POST https://l33tsaas.fly.dev/api/claim</code> ·
+      Buyout: <code>/api/marketplace</code>
+    </footer>
+  </main>
+  <script>
+    let PACKS = [];
+    const STORE = "https://l33tsaas.fly.dev";
+    function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&","<":"<",">":">","\"":""","'":"&#39;"}[c]));}
+    function render(){
+      const q=(document.getElementById("q").value||"").toLowerCase();
+      const c=document.getElementById("cluster").value;
+      const list=PACKS.filter(p=>{
+        const hay=((p.name||"")+" "+(p.id||"")+" "+(p.cluster||"")+" "+(p.idea||"")).toLowerCase();
+        if(q && !hay.includes(q)) return false;
+        if(c && p.cluster!==c) return false;
+        return true;
+      });
+      document.getElementById("count").textContent=list.length+" packs";
+      document.getElementById("grid").innerHTML=list.map(p=>`
+        <article class="card">
+          <div>
+            <span class="badge open">${p.ship_ready?"SHIP READY":"PACK"}</span>
+            ${p.cluster?`<span class="badge cluster">${esc(p.cluster)}</span>`:""}
+          </div>
+          <h3>${esc(p.name||p.id)}</h3>
+          <div class="meta">${esc(p.id)}${p.score!=null?" · "+p.score:""}</div>
+          <div class="meta">${esc((p.idea||"").slice(0,160))}</div>
+          <a class="btn" href="${STORE}" target="_blank" rel="noopener">Open store</a>
+        </article>`).join("");
+    }
+    fetch("/l33tsaas.json").then(r=>r.json()).then(j=>{
+      PACKS=j.packs||[];
+      const clusters=[...new Set(PACKS.map(p=>p.cluster).filter(Boolean))].sort();
+      const sel=document.getElementById("cluster");
+      clusters.forEach(c=>{const o=document.createElement("option");o.value=c;o.textContent=c;sel.appendChild(o);});
+      document.getElementById("q").addEventListener("input",render);
+      sel.addEventListener("change",render);
+      render();
+    }).catch(()=>{document.getElementById("grid").textContent="Catalog failed to load.";});
+  </script>
+</body>
+</html>
