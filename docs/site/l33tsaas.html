@@ -1,82 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>L33tSaaS packs · Slid Phi Labs</title>
-  <meta name="description" content="All L33tSaaS product packs on Slid Phi Labs — claim, buy out, or browse the revolving supermarket." />
-  <link rel="stylesheet" href="/assets/chrome.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>L33tSaaS — supermarket of SaaS packs for builders · Slid Phi Labs</title>
+  <meta name="description" content="L33tSaaS is the Slid Phi service for SaaS products: browse packs, claim one idea slot, read the aisle. Live store at l33tsaas.fly.dev. Not Chamber, not TRU8, not a Year seat."/>
+  <meta name="theme-color" content="#0f1c2e"/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="agentic" content="true"/>
+  <meta name="agentic-role" content="saas-store"/>
+  <link rel="canonical" href="https://www.slidphilabs.com/l33tsaas"/>
+  <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
+  <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
+  <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt"/>
+  <link rel="alternate" type="application/json" href="https://l33tsaas.fly.dev/.well-known/agent.json"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Slid Phi Labs"/>
+  <meta property="og:title" content="L33tSaaS — SaaS pack supermarket · Slid Phi Labs"/>
+  <meta property="og:description" content="A service for SaaS products: open the aisle, read packs, claim a slot. Live at l33tsaas.fly.dev."/>
+  <meta property="og:url" content="https://www.slidphilabs.com/l33tsaas"/>
+  <meta property="og:image" content="https://l33tsaas.fly.dev/brand/og.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="L33tSaaS — SaaS pack supermarket · Slid Phi Labs"/>
+  <meta name="twitter:description" content="Browse and claim SaaS packs. One idea, one slot. Not a compressor."/>
+  <meta name="twitter:image" content="https://l33tsaas.fly.dev/brand/og.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=8"/>
   <style>
-    body { margin:0; background:#070712; color:#e8eef8; font-family: ui-sans-serif, system-ui, sans-serif; }
-    main { max-width: 1080px; margin: 0 auto; padding: 2rem 1rem 4rem; }
-    h1 { margin: 0 0 .4rem; font-size: 1.8rem; }
-    .sub { color:#8a93a8; margin: 0 0 1.25rem; }
-    .bar { display:flex; gap:.6rem; flex-wrap:wrap; margin: 0 0 1.25rem; }
-    input, select { background:#12122a; color:#e8eef8; border:1px solid #2a2a4a; border-radius:8px; padding:.5rem .7rem; }
-    input { flex:1; min-width:180px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap: .85rem; }
-    .card { background:#12122a; border:1px solid #252545; border-radius:12px; padding:1rem; display:flex; flex-direction:column; gap:.45rem; }
-    .card h3 { margin:0; font-size:1rem; line-height:1.35; }
-    .meta { font-size:.75rem; color:#8a93a8; }
-    .badge { display:inline-block; font-size:.68rem; padding:.12rem .4rem; border-radius:999px; font-weight:600; }
-    .open { background:#0d3d2c; color:#3ddc97; }
-    .cluster { background:#1a2a4a; color:#00b4ff; }
-    a.btn { display:inline-block; margin-top:auto; text-decoration:none; color:#041018; background:linear-gradient(135deg,#0088cc,#00b4ff); padding:.4rem .7rem; border-radius:8px; font-weight:600; font-size:.85rem; }
-    footer { color:#8a93a8; font-size:.8rem; margin-top:2rem; }
-    code { color:#00b4ff; }
+    .l33t-bar { display:flex; gap:.6rem; flex-wrap:wrap; margin: 1rem 0 1.25rem; }
+    .l33t-bar input { flex:1; min-width:180px; background:#12182a; color:#f3efe6; border:1px solid #2a3348; border-radius:8px; padding:.5rem .7rem; }
+    .l33t-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:.85rem; }
+    .l33t-card { background:#141c2e; border:1px solid #2a3348; border-radius:12px; padding:1rem; display:flex; flex-direction:column; gap:.4rem; text-decoration:none; color:inherit; }
+    .l33t-card h3 { margin:0; font-size:1rem; line-height:1.35; }
+    .l33t-meta { font-size:.78rem; color:#8b93a7; }
+    .l33t-badge { display:inline-block; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; padding:.12rem .45rem; border-radius:999px; border:1px solid #c4a35a; color:#c4a35a; }
   </style>
 </head>
 <body>
-  <main>
-    <h1>L33tSaaS packs</h1>
-    <p class="sub">The revolving supermarket for builders and agents — every converted pack on Slid Phi Labs. Exclusive SKUs. Outright buyouts on the marketplace.</p>
-    <div class="bar">
-      <input id="q" placeholder="Search packs…" />
-      <select id="cluster"><option value="">All clusters</option></select>
-      <span class="meta" id="count"></span>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">Service for SaaS products</p>
+    <h1>L33tSaaS</h1>
+    <p class="lede">The lab’s supermarket for SaaS packs. Browse the aisle on this page or open the live store. “In the lab” means that idea slot is taken — you can still read the pack. This is not Chamber, not TRU8, and not a Year seat.</p>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="https://l33tsaas.fly.dev/">Open the live store</a>
+      <a class="spl-btn spl-btn-line" href="https://l33tsaas.fly.dev/api/packs">Packs API</a>
+      <a class="spl-btn spl-btn-line" href="/products">All lab products</a>
+    </p>
+    <div class="l33t-bar">
+      <input id="q" type="search" placeholder="Search packs…" autocomplete="off"/>
+      <span class="l33t-meta" id="count"></span>
     </div>
-    <div class="grid" id="grid">Loading catalog…</div>
-    <footer>
-      Catalog JSON: <code>/l33tsaas.json</code> ·
-      Claim: <code>POST https://l33tsaas.fly.dev/api/claim</code> ·
-      Buyout: <code>/api/marketplace</code>
-    </footer>
+    <div class="l33t-grid" id="grid">Loading aisle…</div>
+    <div class="spl-pair" style="margin-top:2rem">
+      <div class="spl-card">
+        <h3>It is</h3>
+        <p>A storefront and factory for SaaS packs. One idea, one market slot. Default new-aisle claim is $29 when checkout is on.</p>
+      </div>
+      <div class="spl-card">
+        <h3>It is not</h3>
+        <p>Chamber, TRU8, Gate, or Lab Pass. Not $1,900 / $199 Year. Not a claim we beat brotli.</p>
+      </div>
+    </div>
   </main>
+  <script src="/assets/chrome.js?v=8" defer></script>
   <script>
-    let PACKS = [];
     const STORE = "https://l33tsaas.fly.dev";
-    function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&","<":"<",">":">","\"":""","'":"&#39;"}[c]));}
+    function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    let PACKS = [];
     function render(){
       const q=(document.getElementById("q").value||"").toLowerCase();
-      const c=document.getElementById("cluster").value;
       const list=PACKS.filter(p=>{
-        const hay=((p.name||"")+" "+(p.id||"")+" "+(p.cluster||"")+" "+(p.idea||"")).toLowerCase();
-        if(q && !hay.includes(q)) return false;
-        if(c && p.cluster!==c) return false;
-        return true;
+        const hay=((p.title||"")+" "+(p.idea||"")+" "+(p.audience||"")+" "+(p.blurb||"")).toLowerCase();
+        return !q || hay.includes(q);
       });
       document.getElementById("count").textContent=list.length+" packs";
       document.getElementById("grid").innerHTML=list.map(p=>`
-        <article class="card">
-          <div>
-            <span class="badge open">${p.ship_ready?"SHIP READY":"PACK"}</span>
-            ${p.cluster?`<span class="badge cluster">${esc(p.cluster)}</span>`:""}
-          </div>
-          <h3>${esc(p.name||p.id)}</h3>
-          <div class="meta">${esc(p.id)}${p.score!=null?" · "+p.score:""}</div>
-          <div class="meta">${esc((p.idea||"").slice(0,160))}</div>
-          <a class="btn" href="${STORE}" target="_blank" rel="noopener">Open store</a>
-        </article>`).join("");
+        <a class="l33t-card" href="${STORE}/p/${encodeURIComponent(p.slug||"")}">
+          <span class="l33t-badge">${esc(p.badge|| (p.aisle==="lab"?"In the lab":"Open aisle"))}</span>
+          <h3>${esc(p.title||p.idea||p.slug)}</h3>
+          <div class="l33t-meta">${esc(p.audience||"")}</div>
+          <div class="l33t-meta">${esc((p.blurb||p.idea||"").slice(0,140))}</div>
+        </a>`).join("") || "No packs.";
     }
-    fetch("/l33tsaas.json").then(r=>r.json()).then(j=>{
+    fetch(STORE+"/api/packs").then(r=>r.json()).then(j=>{
       PACKS=j.packs||[];
-      const clusters=[...new Set(PACKS.map(p=>p.cluster).filter(Boolean))].sort();
-      const sel=document.getElementById("cluster");
-      clusters.forEach(c=>{const o=document.createElement("option");o.value=c;o.textContent=c;sel.appendChild(o);});
       document.getElementById("q").addEventListener("input",render);
-      sel.addEventListener("change",render);
       render();
-    }).catch(()=>{document.getElementById("grid").textContent="Catalog failed to load.";});
+    }).catch(()=>{document.getElementById("grid").textContent="Store catalog failed to load. Use Open the live store."});
   </script>
 </body>
 </html>

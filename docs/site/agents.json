@@ -28,6 +28,7 @@
     { "id": "tru8", "name": "TRU8", "role": "compression", "url": "https://www.slidphilabs.com/tru8", "price": "Day $19 · Month $99 · Year $990" },
     { "id": "gate", "name": "Gate", "role": "router", "url": "https://www.slidphilabs.com/gate", "price": "Day $29 · Month $89 · Year $790" },
     { "id": "trugame", "name": "TruGame", "role": "engine", "url": "https://www.slidphilabs.com/trugame", "price": "Month $12 · Year $79" },
-    { "id": "quikgater", "name": "Quikgater", "role": "fetch", "url": "https://www.slidphilabs.com/quikgater", "worker": "https://quikgater-worker.ceedotrock.workers.dev/" }
+    { "id": "quikgater", "name": "Quikgater", "role": "fetch", "url": "https://www.slidphilabs.com/quikgater", "worker": "https://quikgater-worker.ceedotrock.workers.dev/" },
+    { "id": "l33tsaas", "name": "L33tSaaS", "role": "saas-store", "url": "https://www.slidphilabs.com/l33tsaas", "store": "https://l33tsaas.fly.dev", "packs": "https://l33tsaas.fly.dev/api/packs" }
   ]
 }

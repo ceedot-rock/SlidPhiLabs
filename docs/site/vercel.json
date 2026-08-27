@@ -19,6 +19,22 @@
       "destination": "/products.html"
     },
     {
+      "source": "/l33tsaas",
+      "destination": "/l33tsaas.html"
+    },
+    {
+      "source": "/l33tsaas/",
+      "destination": "/l33tsaas.html"
+    },
+    {
+      "source": "/saas",
+      "destination": "/l33tsaas.html"
+    },
+    {
+      "source": "/saas/",
+      "destination": "/l33tsaas.html"
+    },
+    {
       "source": "/box",
       "destination": "/box.html"
     },

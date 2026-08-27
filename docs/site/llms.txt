@@ -13,6 +13,7 @@
 - Humans pay Stripe: https://www.slidphilabs.com/pay?sku=chamber-year (or year Payment Links)
 - Agents pay x402: POST https://www.slidphilabs.com/api/x402-products { "sku": "chamber-year" }
 - npm support SKUs $199: blackjack-compression, shard-zip, shard-tsdb — https://www.slidphilabs.com/npm
+- L33tSaaS — supermarket of SaaS packs (service, not a compressor). https://www.slidphilabs.com/l33tsaas · store https://l33tsaas.fly.dev · API https://l33tsaas.fly.dev/api/packs
 - What each product is: https://www.slidphilabs.com/products
 - Quikgater: https://www.slidphilabs.com/quikgater
 - DRverified: https://www.slidphilabs.com/drverified
