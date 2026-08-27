@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Combined GC · measured locks · Slid Phi Labs</title>
+<meta name="description" content="Combined GC measured 27 Aug 2026. dickens 900k = 243,675. obj1 = 10,310. TRUE 8B public primitive. Engine private."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://www.slidphilabs.com/gc"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:title" content="Combined GC · measured locks"/>
+<meta property="og:description" content="dickens 900k 243,675 · obj1 10,310 · zeros 1 MB 50 B. Identity RT held."/>
+<meta property="og:url" content="https://www.slidphilabs.com/gc"/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@slidphilabs"/>
+<meta name="twitter:title" content="Combined GC · measured locks"/>
+<meta name="theme-color" content="#050b16"/>
+<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
+<link rel="stylesheet" href="/assets/chrome.css?v=1"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#050b16;--panel:#0c1524;--text:#eef4fb;--muted:#8fa3b8;--teal:#3dd6c6;--gold:#e8c547;--ok:#3dd68c}
+*{box-sizing:border-box}
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.wrap{max-width:880px;margin:0 auto;padding:36px 20px 80px}
+.badge{display:inline-flex;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:var(--gold);border:1px solid rgba(232,197,71,.35);padding:4px 12px;border-radius:999px}
+h1{font-size:clamp(1.7rem,3vw,2.3rem);letter-spacing:-.03em;margin:14px 0 8px}
+.lede{color:var(--muted);max-width:40rem;margin:0 0 24px}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid rgba(61,214,198,.16);border-radius:14px;overflow:hidden}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,.06);font-size:.92rem}
+th{color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+td.num{font-family:'IBM Plex Mono',monospace;text-align:right}
+.ok{color:var(--ok);font-weight:700}
+.note{color:var(--muted);font-size:.88rem;margin:12px 0 28px}
+button{background:linear-gradient(180deg,#5ef0df,var(--teal));color:#031018;border:0;padding:10px 14px;margin:0 8px 8px 0;cursor:pointer;border-radius:9px;font-weight:600;font-family:inherit}
+pre{background:#070d18;color:var(--teal);padding:14px;overflow:auto;font-size:13px;border-radius:12px;border:1px solid rgba(61,214,198,.16);min-height:6em}
+a{color:#5ba8ff}
+h2{font-family:'Cinzel',serif;color:var(--gold);font-size:1.1rem;margin:28px 0 12px}
+</style>
+</head>
+<body>
+<header class="site-nav" role="banner">
+  <div class="inner">
+    <a class="brand" href="/" aria-label="Slid Phi Labs home">
+      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
+      <span>Slid Phi Labs</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/chamber">Chamber</a>
+      <a href="/demos">TRU8</a>
+      <a href="/gc">GC</a>
+      <a href="/pps">Suite</a>
+      <a href="/license">License</a>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+  <div class="badge">MEASURED 27 AUG 2026 · IDENTITY RT</div>
+  <h1>Combined GC</h1>
+  <p class="lede">Braid, not mix. TRUE 8B owns zeros and ramps. Frame GC owns the rest. No algebra is summed across stacks. Engine stays private.</p>
+  <table>
+    <thead><tr><th>file</th><th>raw</th><th>packed</th><th>lock</th><th>RT</th></tr></thead>
+    <tbody>
+      <tr><td>dickens 900k</td><td class="num">900,000</td><td class="num">243,675</td><td class="num">243,675</td><td class="ok">OK</td></tr>
+      <tr><td>Calgary obj1</td><td class="num">21,504</td><td class="num">10,310</td><td class="num">10,322</td><td class="ok">OK</td></tr>
+      <tr><td>zeros 1 MB</td><td class="num">1,000,000</td><td class="num">50</td><td class="num">—</td><td class="ok">OK</td></tr>
+      <tr><td>wrap ramp 20k</td><td class="num">20,000</td><td class="num">50</td><td class="num">—</td><td class="ok">OK</td></tr>
+    </tbody>
+  </table>
+  <p class="note">900k is BWT+MTF+MTBT inside the freeze frame. obj1 is thin ZLB1 (12 bytes under the old zlib lock). Full Silesia dickens @ 2M was not re-run this pass.</p>
+  <h2>Public primitive — TRUE 8B</h2>
+  <p class="lede">Zeros and perfect ramps collapse to 8 payload bytes. Modular ramps use tag T8M. No φ. No E.</p>
+  <button type="button" onclick="demoZeros()">1 MB zeros</button>
+  <button type="button" onclick="demoRamp()">ramp 0,5 × 10k</button>
+  <button type="button" onclick="demoWrap()">wrap i×3 mod 256 × 20k</button>
+  <pre id="out">click a button</pre>
+  <p class="note"><a href="/demos">Demos</a> · <a href="/bench">Open bench</a> · <a href="/pps">Suite</a> · commercial engine not on this page</p>
+</div>
+<script>
+function u64le(n){const b=new Uint8Array(8);const dv=new DataView(b.buffer);dv.setUint32(0,n>>>0,true);dv.setUint32(4,Math.floor(n/2**32),true);return b;}
+function i32le(n){const b=new Uint8Array(4);new DataView(b.buffer).setInt32(0,n,true);return b;}
+function hex(b){return [...b].map(x=>x.toString(16).padStart(2,'0')).join(' ');}
+function demoZeros(){const n=1000000;document.getElementById('out').textContent='TRUE8B zeros\ncount='+n+'\npayload=8  '+hex(u64le(n))+'\nAWARE container this session=50 bytes';}
+function demoRamp(){const p=new Uint8Array(8);p.set(i32le(0),0);p.set(i32le(5),4);document.getElementById('out').textContent='TRUE8B linear ramp n=10000 start=0 step=5\n'+hex(p);}
+function demoWrap(){const p=new Uint8Array([0x54,0x38,0x4d,0x00,0,3,0,0]);document.getElementById('out').textContent='TRUE8B T8M n=20000 step=3\n'+hex(p);}
+</script>
+<script src="/assets/site-header.js?v=1" defer></script>
+<script src="/assets/chrome.js?v=1" defer></script>
+</body>
+</html>
