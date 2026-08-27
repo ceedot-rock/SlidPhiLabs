@@ -1,26 +1,70 @@
 {
-  "updated": "2026-08-25",
+  "updated": "2026-08-27",
   "inbox": "corey@slidphilabs.com",
-  "rule": "Each product has its own ladder. Yearly beats 12\u00d7 monthly. Lab Pass Year is the one black-box seat that unlocks Chamber + TRU8 + Gate + TruGame engine for 365 days. After the term the box closes. Suite stays a meter. SiOS is not a SKU. The rent desk is retired. Retired Stripe $1900/$950/$12.50 links must not be sold.",
+  "rule": "Combined GC is the one compression product. TRUE 8B and Gate are stacks inside it, not storefronts. First 100 GB free on the Suite meter. Commercial GC Year is $490 (half the retired TRU8 Year $990). GC + Chamber Year stays $990 on the existing Stripe link. Lab Pass Year unlocks Chamber + Combined GC + TruGame. Suite stays a meter. SiOS is not a SKU. Rent desk retired. Do not claim top-3 general compressor. Do not sell retired $1900/$950/$12.50 links.",
   "math": {
     "chamber_month_x12": 588,
     "chamber_year": 490,
     "chamber_year_saves": 98,
-    "tru8_month_x12": 1188,
-    "tru8_year": 990,
-    "tru8_year_saves": 198,
-    "gate_month_x12": 1068,
-    "gate_year": 790,
-    "lab_pass_year": 1088
+    "gc_month_x12": 588,
+    "gc_year": 490,
+    "gc_year_saves": 98,
+    "gc_plus_chamber_year": 990,
+    "lab_pass_year": 1088,
+    "retired_tru8_year": 990,
+    "retired_gate_year": 790
   },
   "products": {
+    "gc": {
+      "name": "Combined GC",
+      "service": "compression",
+      "page": "https://www.slidphilabs.com/gc",
+      "note": "Braid, not mix. TRUE 8B owns zeros and ramps. Frame owns the rest. First 100 GB free on Suite. Not a top-3 general-compressor claim.",
+      "includes": ["TRUE 8B stack", "Gate router", "frame GC path", "identity RT"],
+      "does_not_include": ["Chamber", "TruGame"],
+      "plans": {
+        "day": {
+          "sku": "gc-day",
+          "usd": 9,
+          "unit": "24 hours",
+          "stripe": "https://www.slidphilabs.com/pay?sku=gc-day",
+          "access": "https://www.slidphilabs.com/access?product=gc-day"
+        },
+        "month": {
+          "sku": "gc-month",
+          "usd": 49,
+          "unit": "calendar month",
+          "stripe": "https://www.slidphilabs.com/pay?sku=gc-month",
+          "access": "https://www.slidphilabs.com/access?product=gc-month"
+        },
+        "year": {
+          "sku": "gc-year",
+          "usd": 490,
+          "unit": "calendar year",
+          "stripe": "https://www.slidphilabs.com/pay?sku=gc-year",
+          "access": "https://www.slidphilabs.com/access?product=gc-year",
+          "note": "Half the retired TRU8 Year. Stripe product gc-year must be created at $490. Do not point this at the $990 TRU8 Year link."
+        }
+      }
+    },
+    "gc_chamber": {
+      "name": "Combined GC + Chamber Year",
+      "service": "compression + security",
+      "sku": "gc-chamber-year",
+      "usd": 990,
+      "unit": "calendar year",
+      "stripe": "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
+      "access": "https://www.slidphilabs.com/access?product=tru8-year",
+      "note": "Existing TRU8 Year Stripe. Production GC path plus Chamber for the year.",
+      "page": "https://www.slidphilabs.com/gc"
+    },
     "chamber": {
       "name": "Chamber",
       "service": "security",
       "trial_hours": 24,
       "trial_name": "black box",
-      "includes": ["cloak/open", "kill switch", "\u03c6-split + AES-256-GCM"],
-      "does_not_include": ["TRU8 production residual"],
+      "includes": ["cloak/open", "kill switch", "φ-split + AES-256-GCM"],
+      "does_not_include": ["Combined GC production path"],
       "note": "24-hour black box, then a Chamber seat.",
       "plans": {
         "day": {
@@ -46,63 +90,6 @@
         }
       },
       "page": "https://www.slidphilabs.com/chamber"
-    },
-    "tru8": {
-      "name": "TRU8",
-      "service": "compression",
-      "demos": "free with credit: Powered by TRU8 \u00b7 Slid Phi Labs",
-      "plans": {
-        "day": {
-          "sku": "tru8-day",
-          "usd": 19,
-          "unit": "24 hours",
-          "stripe": "https://www.slidphilabs.com/pay?sku=tru8-day",
-          "access": "https://www.slidphilabs.com/access?product=tru8-day"
-        },
-        "month": {
-          "sku": "tru8-month",
-          "usd": 99,
-          "unit": "calendar month",
-          "stripe": "https://www.slidphilabs.com/pay?sku=tru8-month",
-          "access": "https://www.slidphilabs.com/access?product=tru8-month"
-        },
-        "year": {
-          "sku": "tru8-year",
-          "usd": 990,
-          "unit": "calendar year",
-          "includes": ["TRU8 production path", "Chamber security seat"],
-          "note": "Yearly TRU8 = Chamber + TRU8 for the year.",
-          "stripe": "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
-          "access": "https://www.slidphilabs.com/access?product=tru8-year"
-        }
-      },
-      "page": "https://www.slidphilabs.com/tru8"
-    },
-    "gate": {
-      "name": "Gate",
-      "service": "lossless mixed-file router",
-      "note": "text \u2192 brotli-11, else gzip-9. Not #1 GC. Calgary +5.1% vs brotli.",
-      "plans": {
-        "day": {
-          "sku": "gate-day",
-          "usd": 29,
-          "unit": "24 hours",
-          "stripe": "https://www.slidphilabs.com/pay?sku=gate-day"
-        },
-        "month": {
-          "sku": "gate-month",
-          "usd": 89,
-          "unit": "calendar month",
-          "stripe": "https://www.slidphilabs.com/pay?sku=gate-month"
-        },
-        "year": {
-          "sku": "gate-year",
-          "usd": 790,
-          "unit": "calendar year",
-          "stripe": "https://buy.stripe.com/7sY4gA6Jfapy1GZ8gw6wE0G"
-        }
-      },
-      "page": "https://www.slidphilabs.com/gate"
     },
     "trugame": {
       "name": "TruGame",
@@ -134,7 +121,8 @@
       "usd": 1088,
       "unit": "365 days",
       "black_box": true,
-      "unlocks": ["Chamber", "TRU8", "Gate", "TruGame engine"],
+      "unlocks": ["Chamber", "Combined GC", "TruGame engine"],
+      "no_longer_separate": ["TRU8 storefront", "Gate storefront"],
       "stripe": "https://buy.stripe.com/3cI7sM2sZ0OYfxP7cs6wE0D",
       "access": "https://www.slidphilabs.com/access?product=lab-pass",
       "page": "https://www.slidphilabs.com/lab-pass"
@@ -142,24 +130,25 @@
   },
   "suite": {
     "product": "Pay Per Suite",
-    "not": "Not Chamber. Not a TRU8 license. Metered jobs only.",
+    "not": "Not Chamber. Not a Combined GC year license. Metered jobs only.",
     "free_cap_gb": 100,
     "usd_per_gb_after_free": 0.05,
     "usd_per_gb_bulk": 0.04,
-    "page": "https://www.slidphilabs.com/pps"
+    "page": "https://www.slidphilabs.com/pps",
+    "note": "Default door for Combined GC jobs. First 100 GB free, then 5¢/GB (4¢ bulk)."
   },
   "other": {
     "blackjack": {
       "name": "Blackjack",
       "service": "support / integration",
       "usd": 199,
-      "note": "Not a Year seat. \u03942/Rice/Fib/Elias-\u03c9 language. Support and integration SKU.",
+      "note": "Not a Year seat. Support and integration SKU.",
       "contact": "mailto:corey@slidphilabs.com?subject=Blackjack%20%24199%20support"
     },
     "true8b": {
       "name": "true8b",
-      "service": "specialist residual / integer coder",
-      "note": "Open source specialist. Calgary Path A leaves 64.5% remaining vs gzip-9 32.6% vs xz-9 27.2%. NEVER claim beats gzip/xz on general text. NOT the GC SKU.",
+      "service": "public primitive / OSS specialist",
+      "note": "Public TRUE 8B primitive. Zeros and ramps. Not a priced SKU. Stack inside Combined GC.",
       "github": "https://github.com/ceedot-rock/true8b"
     },
     "agent_rider": {
@@ -172,23 +161,31 @@
     "quikgater": {
       "name": "Quikgater",
       "service": "pay-per-fact web fetch",
-      "note": "x402 on Base. Live worker. Browser render on Fly. Not a compressor. Not Chamber.",
+      "note": "x402 on Base. Live worker. Not a compressor. Not Chamber.",
       "page": "https://www.slidphilabs.com/quikgater",
       "worker": "https://quikgater-worker.ceedotrock.workers.dev/"
     }
   },
   "retired": {
+    "tru8-storefront": "Folded into Combined GC. TRUE 8B remains the zeros/ramp stack. Do not sell TRU8 as a separate compressor.",
+    "gate-storefront": "Folded into Combined GC as the router. Do not sell Gate Year $790 as a separate compressor.",
     "json-chamber-99": "Forever $99 unlock undercut every paid tier.",
-    "truchamber-1750": "Mashed product. Replaced by Chamber + TRU8 ladders.",
-    "tru8-1900": "Do not sell $990 / $490 / $9. Live year seats are $990 / $490.",
-    "zrw-79-249-699": "Historical ZRW engine licenses. Not Chamber, TRU8, or Gate Year.",
+    "truchamber-1750": "Mashed product. Replaced by Chamber + Combined GC ladders.",
+    "tru8-1900": "Do not sell $1,900 / $950. Live year seats are Chamber $490 and Combined GC $490. Bundle GC+Chamber is $990.",
+    "zrw-79-249-699": "Historical ZRW engine licenses. Not current SKUs.",
     "trugame-rent-week": "7-day desk rent retired. No $3.99 SKU. Engine seats only."
   },
   "aliases": {
-    "truchamber-day": "tru8-day",
-    "truchamber-month": "tru8-month",
-    "truchamber-year": "tru8-year",
-    "tru8-commercial": "tru8-year",
+    "tru8-day": "gc-day",
+    "tru8-month": "gc-month",
+    "tru8-year": "gc-chamber-year",
+    "truchamber-day": "gc-day",
+    "truchamber-month": "gc-month",
+    "truchamber-year": "gc-chamber-year",
+    "tru8-commercial": "gc-chamber-year",
+    "gate-day": "gc-day",
+    "gate-month": "gc-month",
+    "gate-year": "gc-year",
     "lab-pass-year": "lab-pass",
     "trugame-pass": "trugame-month"
   }
