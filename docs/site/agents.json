@@ -2,7 +2,7 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "CuNi exactness, Chamber seal, Agent-Rider. One lab account. Compression tools stay on the shelf.",
+  "description": "CuNi exactness, Chamber seal, Agent-Rider. One lab account. x402 for agents, Stripe for humans.",
   "version": "1.17.0",
   "updated": "2026-08-30",
   "lead_product": "cuni",
@@ -25,7 +25,7 @@
     "gzip-9": "73B",
     "brotli-11": "13B",
     "endpoint": "POST /api/compress",
-    "note": "Domain supremacy. Not a #1 general compressor."
+    "note": "POST /api/compress"
   },
   "retired": ["trugame-rent-week", "zrw-n00b", "zrw-pro", "zrw-l33t", "$1900", "$950", "$12.50"],
   "discovery": "https://www.slidphilabs.com/api/agent",

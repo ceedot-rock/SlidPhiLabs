@@ -31,4 +31,4 @@ Hosted: POST https://www.slidphilabs.com/mcp (JSON-RPC).
 Registry: `io.github.ceedot-rock/slid-phi-labs`
 Smithery: https://smithery.ai/servers/slidphi/lab
 
-Do not treat Gate or TRU8 as a general #1 compressor. Do not lead with compression rank.
+

@@ -433,6 +433,27 @@ const server = http.createServer(async (req, res) => {
       await handleApi(req, res, url);
       return;
     }
+    const p = url.pathname.toLowerCase();
+    if (
+      p === "/lab" ||
+      p.startsWith("/lab/") ||
+      p === "/drverified" ||
+      p === "/drverified.html" ||
+      p === "/methods.md" ||
+      p === "/wix-home-copy.md" ||
+      p === "/agentic_marketing.md" ||
+      p === "/share.md" ||
+      p === "/codex" ||
+      p === "/codex.html" ||
+      p === "/ideas" ||
+      p === "/ideas.html" ||
+      p.startsWith("/ideas/") ||
+      p === "/truth" ||
+      p === "/truth.html"
+    ) {
+      notFound(res, "not_found");
+      return;
+    }
     if (
       url.pathname.includes("..") ||
       url.pathname.startsWith("/server.mjs") ||

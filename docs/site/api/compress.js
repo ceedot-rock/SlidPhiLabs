@@ -60,7 +60,7 @@ async function handler(req, res) {
       max_vector: MAX_VECTOR,
       curl_10k_zeros:
         'python3 -c "open(\'z.bin\',\'wb\').write(bytes(40000))" && curl -sS -X POST https://www.slidphilabs.com/api/compress -H "content-type: application/octet-stream" --data-binary @z.bin',
-      do_not: "claim this beats brotli as a general compressor",
+
       ...codexStamp({ half: "compress" }),
     });
   }

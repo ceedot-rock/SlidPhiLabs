@@ -1,30 +1,20 @@
 # Slid Phi Labs
-> CuNi exactness. Chamber cash. Agent-Rider identity. Combined GC is the measured compressor. Canonical: https://www.slidphilabs.com/
+> CuNi exactness. Chamber seal. Agent-Rider. https://www.slidphilabs.com/
 
-SOTA now:
-- Combined GC 1.19.2 + XZ1 — measured compressor. Silesia 47,752,368 / 211,938,580 (0.225). 2nd behind zpaq-m5 39,112,870. 1st among xz / brotli-11 / zstd-19 / gzip. XZ1 wrap disclosed. TRU8 and Gate are modes of this engine, not separate SKUs. https://www.slidphilabs.com/gc
-- CuNi Studio — write once; Python, Go, JS match or it does not publish. $0. https://cuni-studio.fly.dev/
-- Chamber — two-key seal. $9 / $49 / $490.
-- Rider — signed agent credentials L0–L4. Team $79/mo · $790/yr. https://agentrider.fly.dev
-- TRUSTREAM — live residual pipe for logs/telemetry. Never expands random. Not a Silesia contestant.
-- Pulsar — same family, embed (C/Python/WASM). Not the archive mouth.
-- Suite — meter. Unpaid cap 6.9 GB / 3 h, then ~5¢/GB.
-- Lab Pass — year seat. $1,088.
-- TruGame — engine. $12 / $79.
-- Quikgater — pay-per-fact. x402.
-
-- Humans pay Stripe: https://www.slidphilabs.com/pay?sku=chamber-year
-- Agents pay x402: POST https://www.slidphilabs.com/api/x402-products { "sku": "chamber-year" }
-- Sign up: https://www.slidphilabs.com/signup
-- Log in: https://www.slidphilabs.com/login (password or passkey)
-- Account: https://www.slidphilabs.com/account
-- Auth API: POST https://www.slidphilabs.com/api/auth  { "action": "signup"|"login"|"agent_key", "email", "password", "name"? }
-- MCP (hosted JSON-RPC): POST https://www.slidphilabs.com/mcp
-- MCP registry: io.github.ceedot-rock/slid-phi-labs — https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.ceedot-rock/slid-phi-labs
-- MCP server card: https://www.slidphilabs.com/.well-known/mcp/server-card.json
-- SKILL.md: https://www.slidphilabs.com/SKILL.md
-- Prices: https://www.slidphilabs.com/pricing.json
-- License: https://www.slidphilabs.com/license  (proprietary; public dumps are not the production engine)
-- Inbox: corey@slidphilabs.com
-
-Do not say: #1 compressor. Do not say TRUSTREAM beats zstd on text.
+- CuNi Studio — $0 — https://cuni-studio.fly.dev/
+- Chamber — $49/mo · $490/yr — https://www.slidphilabs.com/chamber
+- Agent-Rider — $79/mo · $790/yr — https://agentrider.fly.dev/
+- Suite — 6.9 GB / 3 h then ~5¢/GB — https://www.slidphilabs.com/pps
+- Lab Pass — $1,088/yr — https://www.slidphilabs.com/lab-pass
+- TruGame — $12/mo · $79/yr — https://www.slidphilabs.com/trugame
+- Sign up — https://www.slidphilabs.com/signup
+- Log in — https://www.slidphilabs.com/login
+- Auth — POST https://www.slidphilabs.com/api/auth
+- MCP — POST https://www.slidphilabs.com/mcp
+- Registry — io.github.ceedot-rock/slid-phi-labs
+- Smithery — https://smithery.ai/servers/slidphi/lab
+- Catalog — GET https://www.slidphilabs.com/api/agent
+- x402 — POST https://www.slidphilabs.com/api/x402-products {"sku":"chamber-year"}
+- Stripe — https://www.slidphilabs.com/pay?sku=chamber-year
+- Prices — https://www.slidphilabs.com/pricing.json
+- Inbox — corey@slidphilabs.com

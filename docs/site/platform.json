@@ -9,8 +9,7 @@
   "lead_product": "cuni",
   "cash_product": "chamber",
   "pricing_sot": "https://www.slidphilabs.com/pricing.json",
-  "methods": "https://www.slidphilabs.com/METHODS.md",
-  "one_liner": "Combined GC · AWARE+XZ1 Silesia 47,752,368 (2nd vs zpaq) · Suite 6.9 GB / 3h then ~5c/GB · x402 /pay",
+  "one_liner": "CuNi exactness, Chamber seal, Agent-Rider. Suite 6.9 GB / 3 h then ~5¢/GB. x402 /pay",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
     "login": "https://www.slidphilabs.com/login",

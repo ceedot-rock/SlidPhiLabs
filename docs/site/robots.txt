@@ -53,7 +53,12 @@ Allow: /access
 Allow: /products
 Allow: /pricing
 Allow: /quikgater
-Allow: /drverified
+Disallow: /lab
+Disallow: /lab/
+Disallow: /drverified
+Disallow: /codex
+Disallow: /ideas
+Disallow: /METHODS.md
 Allow: /box
 Allow: /docs
 Allow: /api/quikgater
