@@ -1,5 +1,5 @@
 # Slid Phi Labs
-> Tools a person can try for 24 hours, then buy. The rent desk is retired.
+> CuNi exactness. Chamber cash. Agent-Rider identity. One lab account. Try 24 hours, then buy. The rent desk is retired.
 
 - Chamber — lock a JSON secret so two keys are required to open it. $9 / $49 / $490.
 - TRU8 — compress a file and get it back exactly. 10k zeros → 8 B. $19 / $99 / $990 (year includes Chamber). Not a claim we beat brotli on every file.
@@ -19,5 +19,10 @@
 - DRverified: https://www.slidphilabs.com/drverified
 - Try 24 hours: https://www.slidphilabs.com/box
 - Prices: https://www.slidphilabs.com/pricing.json
-- Sign up (one lab account): https://www.slidphilabs.com/signup
+- Sign up: https://www.slidphilabs.com/signup
+- Log in: https://www.slidphilabs.com/login
+- Account: https://www.slidphilabs.com/account
+- Auth API: POST https://www.slidphilabs.com/api/auth  { "action": "signup"|"login", "email", "password", "name"? }  GET with Authorization: Bearer
+- CuNi Studio (lead, $0): https://cuni-studio.fly.dev/
+- Agent-Rider (Team $79/$790): https://agentrider.fly.dev/  POST /api/agents to register
 - Inbox: corey@slidphilabs.com

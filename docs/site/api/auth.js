@@ -18,7 +18,8 @@ export default async function handler(req, res) {
     return res.end();
   }
   if (req.method === "GET") {
-    const user = meFromAuth(req.headers.authorization);
+    const q = (req.query && req.query.token) || "";
+    const user = meFromAuth(req.headers.authorization || (q ? "Bearer " + q : ""));
     if (!user) return json(res, 401, { ok: false, error: "need_login" });
     return json(res, 200, { ok: true, user });
   }

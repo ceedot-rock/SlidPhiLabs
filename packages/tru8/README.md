@@ -4,6 +4,8 @@
 
 Public demo token paths. Production residual is licensed.
 
+Lab account (all products): https://www.slidphilabs.com/signup — `POST /api/auth`.
+
 ```bash
 npm i @cptasz13/tru8
 npx @cptasz13/tru8

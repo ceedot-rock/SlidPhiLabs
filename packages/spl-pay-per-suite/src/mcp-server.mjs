@@ -46,6 +46,12 @@ const SUITE_LINE =
 
 const TOOLS = [
   {
+    name: "spl_lab_auth",
+    description:
+      "One lab account for every Slid Phi product. POST https://www.slidphilabs.com/api/auth {action:signup|login,email,password,name}. Then open CuNi, Rider, Chamber with the token. Humans: /signup /login /account.",
+    inputSchema: { type: "object", properties: {} },
+  },
+  {
     name: "spl_pps_info",
     description:
       "SPL Pay Per Suite overview: " +
@@ -214,6 +220,16 @@ function err(id, code, message) {
 
 async function callTool(name, args = {}) {
   switch (name) {
+    case "spl_lab_auth":
+      return {
+        signup: "https://www.slidphilabs.com/signup",
+        login: "https://www.slidphilabs.com/login",
+        account: "https://www.slidphilabs.com/account",
+        api: "POST https://www.slidphilabs.com/api/auth",
+        body: { action: "signup|login", email: "", password: "", name: "" },
+        lead_product: "cuni",
+        cash_product: "chamber",
+      };
     case "spl_pps_info":
       return {
         service: SERVICE_NAME,

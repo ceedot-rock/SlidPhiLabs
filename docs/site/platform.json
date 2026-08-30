@@ -5,7 +5,15 @@
   "site": "https://www.slidphilabs.com",
   "mission": "Pub-facing best encode/decode compression where the domain is named and round-trip proves it \u2014 then pivot into gaming and security. Agent systems stay exact. One team.",
   "slogan": "Encode \u00b7 decode \u00b7 prove \u00b7 game \u00b7 secure",
-  "updated": "2026-08-15",
+  "updated": "2026-08-30",
+  "lead_product": "cuni",
+  "cash_product": "chamber",
+  "auth": {
+    "signup": "https://www.slidphilabs.com/signup",
+    "login": "https://www.slidphilabs.com/login",
+    "account": "https://www.slidphilabs.com/account",
+    "api": "https://www.slidphilabs.com/api/auth"
+  },
   "os": {
     "name": "SiOS",
     "long": "Synthetic Intelligent OS",

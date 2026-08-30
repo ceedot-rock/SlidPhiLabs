@@ -15,7 +15,19 @@ function cors(res) {
 const OSS_BLURB =
   "$199 = commercial support / integration / indemnification for the already-public library. You do not receive a secret extra engine.";
 
+const AUTH = {
+  signup: "https://www.slidphilabs.com/signup",
+  login: "https://www.slidphilabs.com/login",
+  account: "https://www.slidphilabs.com/account",
+  api: "https://www.slidphilabs.com/api/auth",
+  post: { action: "signup|login", email: "you@lab.tld", password: "min 8", name: "optional on signup" },
+};
+
 const STANDING = [
+  { sku: "cuni-studio", name: "CuNi Studio", usd: "0", kind: "exactness", blurb: "Write once. Python, Go, JS match or it never publishes." },
+  { sku: "rider-team-month", name: "Rider Team · Month", usd: "79", kind: "rider", blurb: "Signed agent identity. Register only a PASS." },
+  { sku: "rider-team-year", name: "Rider Team · Year", usd: "790", kind: "rider", blurb: "Signed agent identity, year." },
+  { sku: "blackjack-build", name: "Build", usd: "1990", kind: "hands", blurb: "Integration build. Not a year seat." },
   { sku: "chamber-day", name: "Chamber · Day", usd: "9", kind: "chamber", blurb: "Security only. 24 hours. No TRU8 production." },
   { sku: "chamber-month", name: "Chamber · Month", usd: "49", kind: "chamber", blurb: "Security only. Calendar month. No TRU8 production." },
   { sku: "chamber-year", name: "Chamber · Year", usd: "490", kind: "chamber", blurb: "Security only. Half of TRU8 Year. No TRU8 production." },
@@ -24,7 +36,7 @@ const STANDING = [
   { sku: "tru8-year", name: "TRU8 · Year", usd: "990", kind: "both", blurb: "Both products + seat for one year. Chamber + TRU8." },
   { sku: "gate-day", name: "Gate · Day", usd: "29", kind: "gate", blurb: "Mixed-file lossless picker. Not #1 GC." },
   { sku: "gate-month", name: "Gate · Month", usd: "89", kind: "gate", blurb: "Mixed-file lossless picker. Not #1 GC." },
-  { sku: "cddg-split", name: "CDDG:Split", usd: "199.00", kind: "license", blurb: "Process product. Not Chamber Year." },
+
   { sku: "gate-year", name: "Gate · Year", usd: "790", kind: "gate", blurb: "Mixed-file lossless picker. Not #1 GC." },
   { sku: "lab-pass", name: "Lab Pass · Year", usd: "1088", kind: "seat", blurb: "Chamber + TRU8 + Gate + TruGame, 365 days." },
   { sku: "trugame-month", name: "TruGame · Month", usd: "12", kind: "engine", blurb: "Engine seat. Rent desk retired." },
@@ -60,13 +72,16 @@ export default async function handler(req, res) {
   const body = {
     ok: true,
     name: "Slid Phi Labs — Platform Discovery",
-    version: "1.16.0",
+    version: "1.17.0",
+    lead_product: "cuni",
+    cash_product: "chamber",
+    auth: AUTH,
     box: {
       protocol: "splb-ed25519-24h",
       status: "/api/box",
       law: "Every product POST is 24h black box, then a paid seat.",
     },
-    updated: "2026-08-25",
+    updated: "2026-08-30",
     rails: {
       human: "POST /api/checkout { sku } or /pay?sku=",
       agent: "POST /api/x402-products { sku }",

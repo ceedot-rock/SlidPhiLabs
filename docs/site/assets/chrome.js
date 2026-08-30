@@ -101,7 +101,7 @@
     document.body.classList.add("spl-chrome");
     if (!document.querySelector('script[src*="lab-auth.js"]')) {
       const s = document.createElement("script");
-      s.src = "/assets/lab-auth.js";
+      s.src = "/assets/lab-auth.js?v=3";
       document.body.appendChild(s);
     }
     const btn = document.querySelector(".spl-nav-toggle");

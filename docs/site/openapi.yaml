@@ -20,6 +20,8 @@ servers:
 tags:
   - name: home
     description: Feel-at-home bootstrap
+  - name: auth
+    description: One lab account for every product
   - name: discovery
     description: Platform & agent discovery
   - name: commerce
@@ -31,6 +33,31 @@ tags:
   - name: toys
     description: Toy Store (fun · theory · artifacts)
 paths:
+  /api/auth:
+    get:
+      tags: [auth]
+      summary: Who is this token
+      security: [{ bearerAuth: [] }]
+      responses:
+        "200": { description: "{ ok, user }" }
+        "401": { description: need_login }
+    post:
+      tags: [auth]
+      summary: signup or login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action: { type: string, enum: [signup, login] }
+                email: { type: string }
+                password: { type: string }
+                name: { type: string }
+      responses:
+        "200": { description: login ok }
+        "201": { description: signup ok }
   /api/welcome:
     get:
       tags: [home]
