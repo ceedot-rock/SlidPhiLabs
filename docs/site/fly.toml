@@ -13,6 +13,7 @@ primary_region = "iad"
   NODE_ENV = "production"
   PORT = "8080"
   HOST = "0.0.0.0"
+  AUTH_DIR = "/data"
 
 [http_service]
   internal_port = 8080
@@ -32,3 +33,7 @@ primary_region = "iad"
   memory = "512mb"
   cpu_kind = "shared"
   cpus = 1
+
+[mounts]
+  source = "spl_auth"
+  destination = "/data"
