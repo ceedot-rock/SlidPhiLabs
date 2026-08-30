@@ -1,82 +1,39 @@
-# TRU8 · Slid Phi Labs
+# Slid Phi Labs
 
-<p align="center">
-  <img src="./brand/slid-phi-labs-master.jpg" alt="TRU8 · Slid Phi Labs" width="720"/>
-</p>
+**Combined GC 1.19.2** is the compressor. Chamber seals. Rider signs agents. Suite meters jobs.
 
-<p align="center"><strong>TRU8</strong> — the only public compression product face<br/>Powered by TRU8 · Slid Phi Labs</p>
-
-<p align="center"><img src="https://raw.githubusercontent.com/ceedot-rock/splabs-brand/main/assets/brand/logos/logo-slid-phi.jpg" alt="product logo" width="280"/></p>
-
-**Less is more. We dropped the E.** True minimal units for repetition.
-
-This GitHub repo is the **lab site + public rails**. It is not a dump of the production residual engine. Public npm does **not** include codec source.
-
-## Public
+> Smallest published practical lossless on official Silesia among xz, brotli-11, zstd-19, and gzip. zpaq-m5 is smaller and slower. XZ1 wrap is disclosed.
 
 | Surface | URL |
 |---------|-----|
-| Product home | https://www.slidphilabs.com/ |
-| TRU8 demos (GitHub) | https://github.com/ceedot-rock/TRU8 |
-| Demos | https://www.slidphilabs.com/demos |
-| License | https://www.slidphilabs.com/license |
-| Suite meter | https://www.slidphilabs.com/pps |
-| Access (after pay) | https://www.slidphilabs.com/access |
+| Site | https://www.slidphilabs.com |
+| Combined GC (measurements) | https://github.com/ceedot-rock/combined-gc-view |
+| Demo | https://combined-gc-demo.vercel.app |
+| Rider | https://agentrider.fly.dev |
+| Pay | https://www.slidphilabs.com/pps |
 
-Public demos are **free with credit**: `Powered by TRU8 · Slid Phi Labs`.
+This repo is the **public site + rails**. It is not the production engine. Engine stays in private `combined-gc`.
 
-## Commercial residual
+## Public names (use only these)
 
-Production residual / Continuous-1088 Strong is **commercially licensed**. One inbox: [corey@slidphilabs.com](mailto:corey@slidphilabs.com).
+| Public | Version | What it is |
+|--------|---------|------------|
+| Combined GC | 1.19.2 + XZ1 | Lossless compressor |
+| Chamber | live | Two-key seal |
+| Rider | live | Signed agent credentials L0–L4 |
+| Suite | meter | 6.9 GB / 3 h unpaid, then ~5¢/GB |
+| Lab Pass | $1,088 | Year seat |
 
-## What `/access` actually is
+**Aliases, not cards:** TRU8 and Gate are modes of Combined GC. TRUE 8B is the zero/ramp primitive inside it. TRUSTREAM is a live pipe, not a Silesia contestant. Pulsar is embed. AWARE is an internal stack name.
 
-`/access` is an **entitlement claim** after Stripe (session verify) or x402 proof. It is **not** a public codec dump.
+Do not say #1 compressor. Do not say TRUSTREAM beats zstd on text.
 
-- Stripe session verify works.
-- **x402 auto-claim is not wired.** Agents email proof or use `/access?product=` + order id.
+## Suite cap (one sentence)
 
-## Lab series (not the public face)
+Unpaid cap is **6.9 GB and 3 hours**, then about **5¢/GB**. Not 100 GB free.
 
-ZRW / OmniWave structured-integer benches still stand. They are **lab series**, not the homepage product.
+## Status
 
-| Corpus | ZRW | gzip-9 | brotli-11 |
-|--------|----:|-------:|----------:|
-| zeros_10k (40 KB) | **8 B** | 73 B | 13 B |
-| zeros_1M (4 MB) | **10 B** | 3910 B | 14 B |
-| ramp_10k | **8 B** | 13907 B | 10429 B |
-| walk_10k s1 | **128 B** | ~5223 B | — |
-| walk_10k s5 | **420 B** | ~11231 B | — |
+See [STATUS.md](STATUS.md) · [CHANGELOG.md](CHANGELOG.md) · [SECURITY.md](SECURITY.md) · [CITATION.cff](CITATION.cff)
 
-Live scorecard: [standings](https://www.slidphilabs.com/standings) · honest comparison: [`docs/BENCH_VS_INDUSTRY.md`](docs/BENCH_VS_INDUSTRY.md)
-
-## Suite (metered jobs — not the product face)
-
-First **100 GB** free, then **~$0.05/GB** (bulk **$0.04**). Try Gate is retired.
-
-## npm
-
-| Package | Truth |
-|---------|--------|
-| `blackjack-compression` | Public npm is a **stub** (IP Guard). Site $199 SKU = support / integration — not a secret extra engine dump. |
-| `shard-zip`, `shard-tsdb` | Same posture on their repos: public surface + optional $199 support SKU. |
-| `slid-phi` | Public **stub**. |
-| `zero-range-wave-compression` | Public **stub / quote rail**. |
-| `spl-pay-per-suite` | Public **quote rail** for the metered suite. |
-
-## Agentic commerce
-
-Agents: `GET https://www.slidphilabs.com/api/agent` then pay via x402 on Solana or Base (X-PAYMENT). Auto-claim of Access after x402 is **not** wired.
-
-| Surface | URL |
-|---------|-----|
-| Discovery | https://www.slidphilabs.com/api/agent |
-| Catalog | https://www.slidphilabs.com/api/x402-products |
-| Suite (free 100 GB) | https://www.slidphilabs.com/pps |
-| agents.txt | https://www.slidphilabs.com/agents.txt |
-| agents.json | https://www.slidphilabs.com/agents.json |
-| llms.txt | https://www.slidphilabs.com/llms.txt |
-
-Humans: [www.slidphilabs.com](https://www.slidphilabs.com) (Stripe).
-
-© 2026 Slid Phi Labs / Corey Tasz. All rights reserved.
+Inbox: corey@slidphilabs.com
