@@ -1,0 +1,10 @@
+docs
+lab
+packages
+*.md
+!README.md
+!LICENSE
+scripts
+tests
+.git
+.github

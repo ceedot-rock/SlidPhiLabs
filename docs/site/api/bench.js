@@ -12,13 +12,14 @@ import { withProductBox } from "./lib/spl-box-gate.js";
 
 import zlib from "zlib";
 import { promisify } from "util";
-import {
-  ZeroRangeWave,
-  packBits,
-  unpackBits,
-} from "./lib/vendor/zrw-pack.js";
-import { omniCompress, omniDecompress, profile, route } from "./lib/omniwave.js";
 import { codexHeaders } from "./lib/codex-key.js";
+
+const zrwMod = await import("./lib/vendor/zrw-pack.js").catch(() => null);
+const omniMod = await import("./lib/omniwave.js").catch(() => null);
+const omniCompress = omniMod?.omniCompress;
+const omniDecompress = omniMod?.omniDecompress;
+const profile = omniMod?.profile;
+const route = omniMod?.route;
 
 const gzip = promisify(zlib.gzip);
 const gunzip = promisify(zlib.gunzip);
@@ -119,12 +120,14 @@ function intsFromBuf(buf) {
 }
 
 function zrwPack(ints) {
-  const bits = new ZeroRangeWave(0, 4).encodeBits(ints);
-  return Buffer.from(packBits(bits));
+  if (!zrwMod) throw new Error("engine_not_on_this_surface");
+  const bits = new zrwMod.ZeroRangeWave(0, 4).encodeBits(ints);
+  return Buffer.from(zrwMod.packBits(bits));
 }
 
 function zrwUnpack(packed) {
-  return new ZeroRangeWave(0, 4).decodeBits(unpackBits(packed));
+  if (!zrwMod) throw new Error("engine_not_on_this_surface");
+  return new zrwMod.ZeroRangeWave(0, 4).decodeBits(zrwMod.unpackBits(packed));
 }
 
 async function benchGzip(buf) {
@@ -160,6 +163,9 @@ async function benchBrotli(buf) {
 }
 
 async function benchZrw(buf) {
+  if (!zrwMod && !omniMod) {
+    return { engine: "zrw", skipped: true, reason: "engine_not_on_this_surface" };
+  }
   if (buf.length < 8 || buf.length % 4 !== 0) {
     return {
       engine: "zrw",
@@ -246,6 +252,9 @@ async function benchZrw(buf) {
 }
 
 async function benchSpl(buf, forcePath) {
+  if (!omniMod) {
+    return { engine: "spl_omniwave", skipped: true, reason: "engine_not_on_this_surface" };
+  }
   const feats = profile(buf);
   const auto = route(feats);
   try {

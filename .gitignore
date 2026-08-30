@@ -8,9 +8,14 @@ node_modules/
 docs/site/data/lab-users.json
 docs/site/data/auth-secret.txt
 
-# Host-only engines (IP Guard) — live on Fly, not in public git
+# Host-only engines — Fly deploy context, never public git / never npm
 docs/site/api/lib/vendor/zrw-pack.js
+docs/site/api/lib/vendor/engine.mjs
+docs/site/api/lib/rdom-real.mjs
 docs/site/api/lib/omniwave.js
 docs/site/api/lib/dark_parallel_omni.js
 docs/site/api/lib/barrel_cone.js
 docs/site/api/lib/creator_cloak_selector.js
+docs/site/api/omniwave.js
+lab/omniwave/*.py
+lab/omniwave/__pycache__/

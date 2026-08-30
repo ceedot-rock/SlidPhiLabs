@@ -1,12 +1,9 @@
 /**
- * SPL codec — one encode/decode for the lab rail.
- * Pick the smallest lossless path that round-trips:
- *   ZRW on zeros/ramp/walk ints · leftover LZ (rdom) · brotli-11 · gzip-9
- * Not a #1 GC claim. Gate still routes; this bake-off is what we run.
+ * SPL codec — public orchestrator.
+ * gzip-9 / brotli-11 always (Node zlib, not lab IP).
+ * ZRW / leftover load only if host engine files are on this machine (Fly).
  */
 import zlib from "node:zlib";
-import { ZeroRangeWave, packBits, unpackBits } from "./vendor/zrw-pack.js";
-import { encodeReal, decodeReal } from "./rdom-real.mjs";
 
 export const MAGIC = Buffer.from("SPL1");
 export const KIND = Object.freeze({
@@ -18,6 +15,8 @@ export const KIND = Object.freeze({
 export const MAX_RAW = 1_048_576;
 export const MAX_VECTOR = 4_000_000;
 export const RDOM_CAP = 32_768;
+
+const engine = await import("./vendor/engine.mjs").catch(() => null);
 
 function gzip9(buf) {
   return zlib.gzipSync(buf, { level: 9 });
@@ -75,13 +74,6 @@ export function classify(buf) {
   return { vector: texty / u8.length > 0.82 ? "text" : "bytes", path: "bakeoff" };
 }
 
-export function zrwEncode(ints) {
-  return Buffer.from(packBits(new ZeroRangeWave(0, 4).encodeBits(ints)));
-}
-export function zrwDecode(packed) {
-  return new ZeroRangeWave(0, 4).decodeBits(unpackBits(packed));
-}
-
 function wrap(kind, payload) {
   const hdr = Buffer.alloc(6);
   MAGIC.copy(hdr);
@@ -102,11 +94,15 @@ function trial(name, kind, payload, raw) {
   if (!payload) return null;
   let back;
   try {
-    if (kind === KIND.zrw) back = fromI32(zrwDecode(payload));
-    else if (kind === KIND.gzip) back = gunzip(payload);
+    if (kind === KIND.zrw) {
+      if (!engine) return null;
+      back = fromI32(engine.zrwDecode(payload));
+    } else if (kind === KIND.gzip) back = gunzip(payload);
     else if (kind === KIND.brotli) back = unbrotli(payload);
-    else if (kind === KIND.rdom) back = decodeReal(payload);
-    else return null;
+    else if (kind === KIND.rdom) {
+      if (!engine) return null;
+      back = engine.decodeReal(payload);
+    } else return null;
   } catch {
     return { name, kind, bytes: payload.length, rt: false };
   }
@@ -120,18 +116,22 @@ export function encode(input) {
   const trials = [];
   const ints = asI32(raw);
 
-  if (ints && (cls.path === "zrw" || cls.vector === "zeros" || cls.vector === "ramp" || cls.vector === "walk")) {
+  if (
+    engine &&
+    ints &&
+    (cls.path === "zrw" || cls.vector === "zeros" || cls.vector === "ramp" || cls.vector === "walk")
+  ) {
     try {
-      trials.push(trial("zrw", KIND.zrw, zrwEncode(ints), raw));
+      trials.push(trial("zrw", KIND.zrw, engine.zrwEncode(ints), raw));
     } catch {
       /* not a ZRW vector after all */
     }
   }
   trials.push(trial("gzip-9", KIND.gzip, gzip9(raw), raw));
   trials.push(trial("brotli-11", KIND.brotli, brotli11(raw), raw));
-  if (raw.length <= RDOM_CAP) {
+  if (engine && raw.length <= RDOM_CAP) {
     try {
-      trials.push(trial("rdom", KIND.rdom, encodeReal(raw), raw));
+      trials.push(trial("rdom", KIND.rdom, engine.encodeReal(raw), raw));
     } catch {
       /* leftover coder optional on small files */
     }
@@ -146,6 +146,7 @@ export function encode(input) {
     packed: win.bytes,
     frame: wrap(win.kind, win.payload),
     vector: cls.vector,
+    engine: Boolean(engine),
     trials: trials.filter(Boolean).map((t) => ({ name: t.name, bytes: t.bytes, rt: t.rt })),
   };
 }
@@ -153,20 +154,29 @@ export function encode(input) {
 export function decode(frame) {
   const { kind, payload, bare } = unwrap(frame);
   if (bare) {
-    try {
-      return fromI32(zrwDecode(payload));
-    } catch {
+    if (engine) {
       try {
-        return gunzip(payload);
+        return fromI32(engine.zrwDecode(payload));
       } catch {
-        return unbrotli(payload);
+        /* fall through */
       }
     }
+    try {
+      return gunzip(payload);
+    } catch {
+      return unbrotli(payload);
+    }
   }
-  if (kind === KIND.zrw) return fromI32(zrwDecode(payload));
+  if (kind === KIND.zrw) {
+    if (!engine) throw new Error("zrw_not_on_this_surface");
+    return fromI32(engine.zrwDecode(payload));
+  }
   if (kind === KIND.gzip) return gunzip(payload);
   if (kind === KIND.brotli) return unbrotli(payload);
-  if (kind === KIND.rdom) return decodeReal(payload);
+  if (kind === KIND.rdom) {
+    if (!engine) throw new Error("rdom_not_on_this_surface");
+    return engine.decodeReal(payload);
+  }
   throw new Error("unknown SPL1 kind " + kind);
 }
 
@@ -217,6 +227,7 @@ export function publicResult(enc) {
     packed_b64: enc.frame.toString("base64"),
     trials: enc.trials,
     roundtrip: true,
+    host_engine: Boolean(engine),
     ...(enc.method === "zrw" ? { zrw_bytes: enc.packed, n_ints: nInts } : {}),
     claim_check: zeros
       ? { zeros: true, matches_flagship_8b_on_10k: nInts === 10_000 && enc.packed === 8 }

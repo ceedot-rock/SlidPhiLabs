@@ -3,12 +3,7 @@
  * CrewHive: minimal verifiable surface · no residue
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
-
-import {
-  ZeroRangeWave,
-  packBits,
-  unpackBits,
-} from "./lib/vendor/zrw-pack.js";
+import { encode as splEncode, decode as splDecode, inputToRaw } from "./lib/spl-codec.mjs";
 
 function json(res, status, body) {
   res.statusCode = status;
@@ -16,15 +11,6 @@ function json(res, status, body) {
   res.setHeader("Cache-Control", "no-store");
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.end(JSON.stringify(body));
-}
-
-function zrwCompressInts(ints) {
-  const bits = new ZeroRangeWave(0, 4).encodeBits(ints);
-  return Buffer.from(packBits(bits));
-}
-
-function zrwDecompress(packed) {
-  return new ZeroRangeWave(0, 4).decodeBits(unpackBits(packed));
 }
 
 async function handler(req, res) {
@@ -39,16 +25,16 @@ async function handler(req, res) {
   }
 
   const n = 10_000;
-  const ints = new Array(n).fill(0);
-  const rawBytes = n * 4;
-  const packed = zrwCompressInts(ints);
-  const restored = zrwDecompress(packed);
+  const raw = inputToRaw({ corpus: "zeros", n });
+  const enc = splEncode(raw);
+  const restored = splDecode(enc.frame);
   let mirror = 0;
-  if (restored.length !== n) mirror = 1;
-  else for (let i = 0; i < n; i++) if ((restored[i] | 0) !== 0) { mirror = 1; break; }
+  if (!Buffer.isBuffer(restored) || restored.length !== raw.length) mirror = 1;
+  else if (!restored.equals(raw)) mirror = 1;
 
   const field = { gzip9_B: 73, brotli11_B: 13 };
-  const zrw_B = packed.length;
+  const zrw_B = enc.method === "zrw" ? enc.packed : enc.packed;
+  const rawBytes = raw.length;
   const pass = zrw_B === 8 && mirror === 0;
 
   return json(res, 200, {

@@ -12,7 +12,20 @@
 | Rider | https://agentrider.fly.dev |
 | Pay | https://www.slidphilabs.com/pps |
 
-This repo is the **public site + rails**. It is not the production engine. Engine stays in private `combined-gc`.
+This repo is the **public site + rails**. It is not the production engine. Engine stays on Fly (deploy context, gitignored) and in private `combined-gc`.
+
+## npm (industry default)
+
+Public packages are **stubs or HTTP clients**. They do not contain encoders.
+
+| Package | What `npm i` gives you |
+|---------|------------------------|
+| `slid-phi` | Stub. `POST https://www.slidphilabs.com/api/compress` |
+| `blackjack-compression` | Stub. Same API / suite |
+| `spl-pay-per-suite` | Quotes, checkout, MCP client — no packer |
+| `@cptasz13/tru8` | Public demo tokens. Residual paths throw |
+
+Do not put ZRW / leftover / OmniWave in a public tarball or on the public default branch. Production Fly still runs the host engine.
 
 ## Public names (use only these)
 

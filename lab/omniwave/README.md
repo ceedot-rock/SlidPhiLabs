@@ -20,6 +20,8 @@
 | `omniwave.py` | Profiler, router, specialists, LZ+zlib entropy, frame codec, demo |
 | `README.md` | This file |
 
+Python scaffold is **host-only** (not on the public default branch). This README stays as the public pointer.
+
 ## Run demo
 
 ```bash

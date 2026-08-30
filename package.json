@@ -1,7 +1,7 @@
 {
   "name": "slid-phi",
-  "version": "2.2.9",
-  "description": "Slid Phi Labs Omni-Dormant integer codecs \u2014 Zeckendorf / hybrid Fibonacci + optional gap-ANS path. Pure JS. Support and integration available.",
+  "version": "2.2.10",
+  "description": "Slid Phi Labs public npm stub. Encode via POST https://www.slidphilabs.com/api/compress. Engine is not in this package.",
   "type": "module",
   "main": "src/index.mjs",
   "exports": {

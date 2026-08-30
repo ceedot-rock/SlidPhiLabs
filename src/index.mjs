@@ -1,12 +1,32 @@
-/** Host work: real encode. Public npm may still ship a stub. IP Guard = public dump only. */
-export { encode, decode } from "../docs/site/api/lib/spl-codec.mjs";
-export const encodeHybrid = encode;
-export const decodeHybrid = decode;
+/**
+ * Public npm stub. The encoder is not in this tarball.
+ * Hosted: POST https://www.slidphilabs.com/api/compress
+ */
+const API = "https://www.slidphilabs.com/api/compress";
+const SUITE = "https://www.slidphilabs.com/pps";
+const MCP = "https://www.slidphilabs.com/mcp";
+
+function stub() {
+  const err = new Error(
+    `slid-phi public npm is a client stub. POST ${API} · suite ${SUITE} · MCP ${MCP}. Engine is not in this package.`,
+  );
+  err.code = "SPL_PUBLIC_STUB";
+  err.api = API;
+  throw err;
+}
+
+export const encode = stub;
+export const decode = stub;
+export const encodeHybrid = stub;
+export const decodeHybrid = stub;
 export const OMNI_META = {
-  stub: false,
-  host_work: true,
-  public_npm_stub: true,
-  suite: "https://www.slidphilabs.com/pps",
-  pricing: "free first 100 GB / job, then ~5¢/GB",
+  stub: true,
+  public_npm: true,
+  api: API,
+  decompress: "https://www.slidphilabs.com/api/decompress",
+  suite: SUITE,
+  mcp: MCP,
+  registry: "io.github.ceedot-rock/slid-phi-labs",
+  smithery: "https://smithery.ai/servers/slidphi/lab",
 };
 export default { encode, decode, encodeHybrid, decodeHybrid, OMNI_META };
