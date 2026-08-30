@@ -3,20 +3,16 @@
   const NAV = [
     ["/", "Home"],
     ["/products", "Products"],
-    ["/box", "Try"],
     ["/signup", "Sign up"],
     ["/pricing", "Pricing"],
     ["/docs", "API"],
-    ["/games", "Games"],
   ];
   const FALLBACK_NEWS = [
-    { t: "Try", title: "Any tool free for 24 hours", href: "/box" },
-    { t: "Lock", title: "Chamber seals a secret behind two keys", href: "/chamber" },
-    { t: "Shrink", title: "TRU8 compresses a file and restores it", href: "/tru8" },
-    { t: "Play", title: "TruGame engine · $12 / $79", href: "/trugame" },
-    { t: "Year", title: "Lab Pass $1,088 · all four", href: "/lab-pass" },
-    { t: "Send", title: "Gate picks a lossless compressor per file", href: "/gate" },
-    { t: "SaaS", title: "L33tSaaS supermarket of packs", href: "/l33tsaas" },
+    { t: "Exact", title: "CuNi Studio — write once or refuse", href: "https://cuni-studio.fly.dev/" },
+    { t: "Seal", title: "Chamber $49 / $490", href: "/chamber" },
+    { t: "Pass", title: "Rider Team $79 / $790", href: "https://agentrider.fly.dev/" },
+    { t: "Meter", title: "Suite 6.9 GB / 3 h then ~5¢", href: "/pps" },
+    { t: "Agents", title: "MCP + x402", href: "/mcp" },
   ];
 
   function path() {
@@ -66,12 +62,11 @@
       </div>
       <div>
         <h4>Products</h4>
+        <a href="https://cuni-studio.fly.dev/">CuNi</a>
         <a href="/chamber">Chamber</a>
-        <a href="/tru8">TRU8</a>
-        <a href="/gate">Gate</a>
-        <a href="/lab-pass">Lab Pass</a>
+        <a href="https://agentrider.fly.dev/">Rider</a>
         <a href="/pps">Suite</a>
-        <a href="/l33tsaas">L33tSaaS</a>
+        <a href="/lab-pass">Lab Pass</a>
       </div>
       <div>
         <h4>Use</h4>

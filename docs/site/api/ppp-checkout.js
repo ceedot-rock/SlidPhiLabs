@@ -151,7 +151,7 @@ export default async function handler(req, res) {
         origin +
         "/access?product=suite-free&free=1&token=" +
         encodeURIComponent(token),
-      next: "Free under 100 GB cap — submit the job from /pps (no payment). Upgrade is automatic when size exceeds free.",
+      next: "Free under 6.9 GB / 3 h unpaid cap — submit the job from /pps (no payment).",
       instructions:
         "This quote is $0 (free showcase). Submit your project on the suite page without Stripe.",
     });

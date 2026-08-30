@@ -16,7 +16,7 @@ SOTA now:
 - Humans pay Stripe: https://www.slidphilabs.com/pay?sku=chamber-year
 - Agents pay x402: POST https://www.slidphilabs.com/api/x402-products { "sku": "chamber-year" }
 - Sign up: https://www.slidphilabs.com/signup
-- Log in: https://www.slidphilabs.com/login
+- Log in: https://www.slidphilabs.com/login (password or passkey)
 - Account: https://www.slidphilabs.com/account
 - Auth API: POST https://www.slidphilabs.com/api/auth  { "action": "signup"|"login"|"agent_key", "email", "password", "name"? }
 - MCP (hosted JSON-RPC): POST https://www.slidphilabs.com/mcp

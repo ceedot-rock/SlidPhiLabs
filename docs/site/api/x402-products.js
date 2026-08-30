@@ -308,7 +308,7 @@ const CATALOG = {
     amount_cents: 900,
     stripe: "https://www.slidphilabs.com/pps",
     kind: "support",
-    blurb: "Retired. Use Suite 100 GB free then ~5¢/GB.",
+    blurb: "Retired. Use Suite 6.9 GB / 3 h then ~5¢/GB.",
   },
   "gao-entry": {
     name: "Great Agentic Olympiad Entry",

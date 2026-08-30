@@ -1,7 +1,7 @@
 {
   "name": "spl-pay-per-suite",
-  "version": "1.1.7",
-  "description": "SPL Pay Per Suite \u2014 freemium (free first 100 GB \u00b7 then ~5\u00a2/GB then ~4\u00a2/GB), Stripe + x402. Library, CLI, MCP. Try Gate retired.",
+  "version": "1.1.8",
+  "description": "SPL Pay Per Suite — unpaid cap 6.9 GB / 3 h, then ~5¢/GB (~4¢ bulk). Stripe + x402. MCP client. No encoder in this package.",
   "type": "module",
   "main": "src/index.mjs",
   "exports": {

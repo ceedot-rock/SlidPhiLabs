@@ -34,6 +34,7 @@
     <button type="submit">Update password</button>
   </form>
   <p id="pwerr" style="color:#b42318;min-height:1.1em"></p>
+  <p><button type="button" id="pk">Add a passkey</button> <span id="pkerr"></span></p>
   <p><button type="button" id="out">Log out</button></p>
 </main>
 <script src="/assets/chrome.js?v=3" defer></script>
@@ -49,6 +50,17 @@
     "<li><a href=\"" + SPLAuth.withToken(href, tok) + "\">" + (labels[k] || k) + "</a></li>"
   ).join("");
   document.getElementById("out").onclick = () => SPLAuth.logout();
+  document.getElementById("pk").onclick = async () => {
+    const el = document.getElementById("pkerr");
+    el.textContent = "";
+    try {
+      const j = await SPLAuth.passkeyRegister();
+      if (!j.ok) { el.textContent = j.error || "Could not add passkey"; return; }
+      el.textContent = "Passkey saved.";
+    } catch {
+      el.textContent = "Passkey cancelled or not available.";
+    }
+  };
   document.getElementById("pw").addEventListener("submit", async (e) => {
     e.preventDefault();
     const fd = new FormData(e.target);

@@ -486,7 +486,7 @@ export default async function handler(req, res) {
       job_id: jobId,
       quote,
       message:
-        "Free showcase under 100 GB cap — no payment. Job accepted for lab intake.",
+        "Free showcase under 6.9 GB / 3 h unpaid cap — no payment. Job accepted for lab intake.",
       access_url: "https://www.slidphilabs.com/access?product=suite-free&free=1",
     });
   }

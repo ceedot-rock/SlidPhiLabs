@@ -39,7 +39,20 @@ const MIME = {
   ".webmanifest": "application/manifest+json",
   ".map": "application/json",
   ".woff2": "font/woff2",
+  ".md": "text/markdown; charset=utf-8",
 };
+
+function trustHeaders() {
+  return {
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+    "Content-Security-Policy":
+      "default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://www.slidphilabs.com https://cuni-studio.fly.dev https://agentrider.fly.dev https://l33tsaas.fly.dev https://teachaid.fly.dev; frame-ancestors 'none'; base-uri 'self'",
+  };
+}
 
 /** Clean URL / rewrite map (mirrors vercel.json essentials) */
 const REWRITES = {
@@ -211,6 +224,7 @@ function sendFile(res, filePath, req) {
   const base = path.basename(filePath);
   let type = MIME[ext] || "application/octet-stream";
   if (base === "mcp-registry-auth") type = "text/plain; charset=utf-8";
+  if (base === "SKILL.md" || ext === ".md") type = "text/markdown; charset=utf-8";
   const rested = fromRest(filePath);
   const wantsGz = /\bgzip\b/.test(String(req?.headers?.["accept-encoding"] || ""));
   const gz = wantsGz && !String(req?.headers?.range || "") ? fromRestGzip(filePath) : null;
@@ -238,6 +252,7 @@ function sendFile(res, filePath, req) {
         "Cache-Control": cache,
         "X-Host": "fly-slidphilabs",
         "X-Phi-Rest": via,
+        ...trustHeaders(),
       });
       res.end(slice);
       return;
@@ -251,7 +266,8 @@ function sendFile(res, filePath, req) {
     "X-Host": "fly-slidphilabs",
     "X-Phi-Rest": via,
     Vary: "Accept-Encoding",
-    Link: '</.well-known/mcp/server-card.json>; rel="mcp", </mcp>; rel="mcp-endpoint", </api/agent>; rel="alternate"; type="application/json", </llms.txt>; rel="alternate"; type="text/plain", </SKILL.md>; rel="alternate"',
+    Link: '</.well-known/mcp/server-card.json>; rel="mcp", </mcp>; rel="mcp-endpoint", </api/agent>; rel="alternate"; type="application/json", </llms.txt>; rel="alternate"; type="text/plain", </SKILL.md>; rel="alternate"; type="text/markdown"',
+    ...trustHeaders(),
   };
   if (gz) headers["Content-Encoding"] = "gzip";
   res.writeHead(200, headers);
@@ -259,7 +275,7 @@ function sendFile(res, filePath, req) {
 }
 
 function notFound(res, msg = "not found") {
-  res.writeHead(404, { "Content-Type": "application/json" });
+  res.writeHead(404, { "Content-Type": "application/json", ...trustHeaders() });
   res.end(JSON.stringify({ error: msg }));
 }
 

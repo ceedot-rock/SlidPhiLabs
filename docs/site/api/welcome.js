@@ -61,7 +61,7 @@ export default async function handler(req, res) {
       api: "POST /api/join-work",
       asks: ["name", "one sentence of intent", "33-byte seed phrase"],
       seed: "exactly 33 UTF-8 bytes; hashed (sha256); seed never stored",
-      grants: "public freemium only — TRU8 demos / ZRW lab numbers / 100 GB per job free first",
+      grants: "public unpaid cap 6.9 GB / 3 h then ~5¢/GB. ZRW lab numbers on structured ints.",
       never: "private Smart Box, residual coefficients, living shard names, fourth Trinity mouth",
     },
     next_30_seconds: {
@@ -90,7 +90,7 @@ export default async function handler(req, res) {
     x402_access_autoclaim: false,
     ecosystem: {
       cuni: "https://cuni-studio.fly.dev/",
-      agent_rider: "https://agentrider.vercel.app/",
+      agent_rider: "https://agentrider.fly.dev/",
       agent_rider_status: "paused",
       quikgater: "https://github.com/ceedot-rock/quikgater",
     },

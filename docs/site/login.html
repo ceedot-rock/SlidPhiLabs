@@ -29,6 +29,7 @@
     <label>Email<input name="email" type="email" autocomplete="email" required style="width:100%;padding:.7rem;margin-top:.25rem"/></label>
     <label>Password<input name="password" type="password" autocomplete="current-password" required style="width:100%;padding:.7rem;margin-top:.25rem"/></label>
     <button type="submit" style="padding:.85rem;font-weight:700;background:#9a7b2f;color:#fff;border:0;border-radius:8px;cursor:pointer">Log in</button>
+    <button type="button" id="pk" style="padding:.85rem;font-weight:700;background:#0f1c2e;color:#fff;border:0;border-radius:8px;cursor:pointer">Passkey</button>
   </form>
   <p id="err" style="color:#b42318;min-height:1.2em"></p>
   <p>New here? <a id="su" href="/signup">Sign up</a></p>
@@ -45,6 +46,18 @@ document.getElementById("f").addEventListener("submit", async (e) => {
   const j = await SPLAuth.login({ email: fd.get("email"), password: fd.get("password") });
   if (!j.ok) { err.textContent = "Email or password did not match."; return; }
   SPLAuth.goAfter(j.token);
+});
+document.getElementById("pk").addEventListener("click", async () => {
+  const err = document.getElementById("err");
+  err.textContent = "";
+  try {
+    const email = document.querySelector("[name=email]").value;
+    const j = await SPLAuth.passkeyLogin(email);
+    if (!j.ok) { err.textContent = "Passkey did not match."; return; }
+    SPLAuth.goAfter(j.token);
+  } catch (e) {
+    err.textContent = "Passkey cancelled or not available.";
+  }
 });
 </script>
 </body>

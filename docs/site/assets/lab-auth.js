@@ -45,14 +45,75 @@
   }
 
   async function send(action, fields) {
+    const headers = { "Content-Type": "application/json" };
+    const tok = localStorage.getItem(KEY);
+    if (tok) headers.Authorization = "Bearer " + tok;
     const r = await fetch(AUTH, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers,
       body: JSON.stringify({ action, ...fields }),
     });
     const j = await r.json().catch(() => ({}));
     if (j.token) localStorage.setItem(KEY, j.token);
     return j;
+  }
+
+  function b64url(buf) {
+    const b = buf instanceof ArrayBuffer ? new Uint8Array(buf) : buf;
+    let s = btoa(String.fromCharCode(...b));
+    return s.replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
+  }
+  function unb64(s) {
+    const pad = s.replace(/-/g, "+").replace(/_/g, "/");
+    const bin = atob(pad);
+    const out = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out.buffer;
+  }
+
+  async function passkeyRegister() {
+    const begin = await send("passkey_register_begin", {});
+    if (!begin.ok) return begin;
+    const opt = begin.publicKey;
+    const challenge = opt.challenge;
+    opt.challenge = unb64(opt.challenge);
+    opt.user.id = unb64(opt.user.id);
+    const cred = await navigator.credentials.create({ publicKey: opt });
+    const att = cred.response;
+    const publicKey = att.getPublicKey ? b64url(await att.getPublicKey()) : "";
+    return send("passkey_register_finish", {
+      challenge,
+      credential: {
+        id: cred.id,
+        clientDataJSON: b64url(att.clientDataJSON),
+        publicKey,
+      },
+    });
+  }
+
+  async function passkeyLogin(email) {
+    const begin = await send("passkey_login_begin", { email: email || "" });
+    if (!begin.ok) return begin;
+    const opt = begin.publicKey;
+    const challenge = opt.challenge;
+    opt.challenge = unb64(opt.challenge);
+    if (opt.allowCredentials) {
+      opt.allowCredentials = opt.allowCredentials.map((c) => ({
+        type: "public-key",
+        id: unb64(c.id),
+      }));
+    }
+    const cred = await navigator.credentials.get({ publicKey: opt });
+    const asrt = cred.response;
+    return send("passkey_login_finish", {
+      challenge,
+      credential: {
+        id: cred.id,
+        clientDataJSON: b64url(asrt.clientDataJSON),
+        authenticatorData: b64url(asrt.authenticatorData),
+        signature: b64url(asrt.signature),
+      },
+    });
   }
 
   function goAfter(token) {
@@ -128,6 +189,8 @@
     token: () => localStorage.getItem(KEY),
     withToken,
     goAfter,
+    passkeyRegister,
+    passkeyLogin,
     mount,
   };
 

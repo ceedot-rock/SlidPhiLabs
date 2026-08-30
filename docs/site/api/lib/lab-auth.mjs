@@ -85,6 +85,7 @@ export function publicUser(u) {
     email: u.email,
     name: u.name,
     created: u.created,
+    has_passkey: Array.isArray(u.passkeys) && u.passkeys.length > 0,
     doors: {
       studio: "https://cuni-studio.fly.dev/",
       rider: "https://agentrider.fly.dev/",
@@ -219,3 +220,5 @@ export function meFromAuth(header) {
   const user = db.users.find((u) => u.id === body.sub || u.email === body.email);
   return user ? publicUser(user) : null;
 }
+
+export { load as loadUsers, save as saveUsers };
