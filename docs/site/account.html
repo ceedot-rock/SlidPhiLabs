@@ -27,6 +27,13 @@
   <p id="who" style="color:#5c6570"></p>
   <p>Same login on every door (opens already signed in):</p>
   <ul id="doors" style="line-height:1.9"></ul>
+  <h2 style="font-size:1.1rem;margin-top:1.8rem">Change password</h2>
+  <form id="pw" style="display:grid;gap:.55rem;max-width:22rem">
+    <input name="old_password" type="password" placeholder="Current password" required/>
+    <input name="new_password" type="password" placeholder="New password (8+)" minlength="8" required/>
+    <button type="submit">Update password</button>
+  </form>
+  <p id="pwerr" style="color:#b42318;min-height:1.1em"></p>
   <p><button type="button" id="out">Log out</button></p>
 </main>
 <script src="/assets/chrome.js?v=3" defer></script>
@@ -42,6 +49,27 @@
     "<li><a href=\"" + SPLAuth.withToken(href, tok) + "\">" + (labels[k] || k) + "</a></li>"
   ).join("");
   document.getElementById("out").onclick = () => SPLAuth.logout();
+  document.getElementById("pw").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const err = document.getElementById("pwerr");
+    err.textContent = "";
+    const r = await fetch("/api/auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: "Bearer " + SPLAuth.token() },
+      body: JSON.stringify({
+        action: "change_password",
+        old_password: fd.get("old_password"),
+        new_password: fd.get("new_password"),
+      }),
+    });
+    const j = await r.json();
+    if (!j.ok) { err.textContent = "Could not update password."; return; }
+    if (j.token) localStorage.setItem("spl_lab_token", j.token);
+    err.style.color = "#0f6f73";
+    err.textContent = "Password updated.";
+    e.target.reset();
+  });
 })();
 </script>
 </body>

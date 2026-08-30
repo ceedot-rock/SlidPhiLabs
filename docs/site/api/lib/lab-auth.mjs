@@ -186,6 +186,31 @@ export function issueAgentKey({ name } = {}) {
   };
 }
 
+export function changePassword({ email, old_password, new_password, token }) {
+  const pw = String(new_password || "");
+  if (pw.length < 8) return { error: "password_min_8", status: 400 };
+  const db = load();
+  let user = null;
+  if (token) {
+    const body = readToken(String(token).replace(/^Bearer\s+/i, ""));
+    if (body) user = db.users.find((u) => u.id === body.sub || u.email === body.email);
+  }
+  if (!user) {
+    const e = String(email || "").trim().toLowerCase();
+    user = db.users.find((u) => u.email === e);
+    if (!user || !checkPass(String(old_password || ""), user.salt, user.hash)) {
+      return { error: "bad_login", status: 401 };
+    }
+  } else if (old_password && !checkPass(String(old_password), user.salt, user.hash)) {
+    return { error: "bad_login", status: 401 };
+  }
+  const { salt, hash } = hashPass(pw);
+  user.salt = salt;
+  user.hash = hash;
+  save(db);
+  return { user: publicUser(user), token: signToken(user) };
+}
+
 export function meFromAuth(header) {
   const t = String(header || "").replace(/^Bearer\s+/i, "").trim();
   const body = readToken(t);
