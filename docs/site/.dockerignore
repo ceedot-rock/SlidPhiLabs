@@ -2,6 +2,8 @@
 .git
 node_modules
 *.md
+!SKILL.md
+!README.md
 scripts/amp
 assets/intro
 **/HOST_*.md

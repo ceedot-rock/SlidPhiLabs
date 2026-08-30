@@ -483,18 +483,11 @@ export default async function handler(req, res) {
         email: "agent-ops@example.com",
       },
     },
-    mcp: {
+    mcp_npx: {
       package: "spl-pay-per-suite",
-      tools: [
-        "spl_pps_x402_info",
-        "spl_pps_x402_catalog",
-        "spl_pps_x402_buy",
-        "spl_pps_x402_requirements",
-        "spl_pps_x402_submit",
-        "spl_pps_quote",
-        "spl_pps_checkout",
-      ],
-      note: "OmniWave live via POST /api/omniwave (profile|route|compress|decompress|bench). Suite quote uses data_class from profile.",
+      command: "npx -y spl-pay-per-suite mcp",
+      hosted: "https://www.slidphilabs.com/mcp",
+      tools_hosted: ["spl_discover", "spl_lab_auth", "spl_signup", "spl_agent_key", "spl_catalog"],
     },
     flow_omniwave: [
       "POST /api/omniwave { op: profile|route, data } → path + data_class + feats",
