@@ -1,36 +1,30 @@
 # Slid Phi Labs
-> CuNi exactness. Chamber cash. Agent-Rider identity. One lab account. Try 24 hours, then buy. The rent desk is retired.
+> CuNi exactness. Chamber cash. Agent-Rider identity. Combined GC is the measured compressor. Canonical: https://www.slidphilabs.com/
 
-- Chamber — lock a JSON secret so two keys are required to open it. $9 / $49 / $490.
-- TRU8 — compress a file and get it back exactly. 10k zeros → 8 B. $19 / $99 / $990 (year includes Chamber). Not a claim we beat brotli on every file.
-- Gate — mixed files: text → brotli-11, else gzip-9. $29 / $89 / $790. Not #1 general compressor.
-- Lab Pass — Chamber + TRU8 + Gate + TruGame for 365 days. $1,088. Then it ends.
-- TruGame — engine, not a store. Month $12 · Year $79. No $3.99 / 7-day SKU.
-- Suite — pay by the gigabyte. First 100 GB free, then ~5¢ / 4¢. Not a seat.
-- Quikgater — pay-per-fact agent fetch. Live worker. Not a compressor.
-- ZRW core git is private (not a public dump). Host works on it.
+SOTA now:
+- Combined GC 1.19.2 + XZ1 — measured compressor. Silesia 47,752,368 / 211,938,580 (0.225). 2nd behind zpaq-m5 39,112,870. 1st among xz / brotli-11 / zstd-19 / gzip. XZ1 wrap disclosed. TRU8 and Gate are modes of this engine, not separate SKUs. https://www.slidphilabs.com/gc
+- CuNi Studio — write once; Python, Go, JS match or it does not publish. $0. https://cuni-studio.fly.dev/
+- Chamber — two-key seal. $9 / $49 / $490.
+- Rider — signed agent credentials L0–L4. Team $79/mo · $790/yr. https://agentrider.fly.dev
+- TRUSTREAM — live residual pipe for logs/telemetry. Never expands random. Not a Silesia contestant.
+- Pulsar — same family, embed (C/Python/WASM). Not the archive mouth.
+- Suite — meter. Unpaid cap 6.9 GB / 3 h, then ~5¢/GB.
+- Lab Pass — year seat. $1,088.
+- TruGame — engine. $12 / $79.
+- Quikgater — pay-per-fact. x402.
 
-- Humans pay Stripe: https://www.slidphilabs.com/pay?sku=chamber-year (or year Payment Links)
+- Humans pay Stripe: https://www.slidphilabs.com/pay?sku=chamber-year
 - Agents pay x402: POST https://www.slidphilabs.com/api/x402-products { "sku": "chamber-year" }
-- npm support SKUs $199: blackjack-compression, shard-zip, shard-tsdb — https://www.slidphilabs.com/npm
-- L33tSaaS — supermarket of SaaS packs (service, not a compressor). https://www.slidphilabs.com/l33tsaas · store https://l33tsaas.fly.dev · API https://l33tsaas.fly.dev/api/packs
-- What each product is: https://www.slidphilabs.com/products
-- Quikgater: https://www.slidphilabs.com/quikgater
-- DRverified: https://www.slidphilabs.com/drverified
-- Try 24 hours: https://www.slidphilabs.com/box
-- Prices: https://www.slidphilabs.com/pricing.json
 - Sign up: https://www.slidphilabs.com/signup
 - Log in: https://www.slidphilabs.com/login
 - Account: https://www.slidphilabs.com/account
-- Auth API: POST https://www.slidphilabs.com/api/auth  { "action": "signup"|"login"|"agent_key", "email", "password", "name"? }  GET with Authorization: Bearer
-- Agent API key (no password): POST /api/auth { "action": "agent_key", "name": "my-agent" }
+- Auth API: POST https://www.slidphilabs.com/api/auth  { "action": "signup"|"login"|"agent_key", "email", "password", "name"? }
 - MCP (hosted JSON-RPC): POST https://www.slidphilabs.com/mcp
 - MCP registry: io.github.ceedot-rock/slid-phi-labs — https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.ceedot-rock/slid-phi-labs
 - MCP server card: https://www.slidphilabs.com/.well-known/mcp/server-card.json
-- ARD catalog: https://www.slidphilabs.com/.well-known/ai-catalog.json
 - SKILL.md: https://www.slidphilabs.com/SKILL.md
-- npx MCP: npx -y spl-pay-per-suite mcp
-- x402 auto-claim: pay then open access_url or GET /api/access-verify?claim=spl1…
-- CuNi Studio (lead, $0): https://cuni-studio.fly.dev/
-- Agent-Rider (Team $79/$790): https://agentrider.fly.dev/  POST /api/agents to register
+- Prices: https://www.slidphilabs.com/pricing.json
+- License: https://www.slidphilabs.com/license  (proprietary; public dumps are not the production engine)
 - Inbox: corey@slidphilabs.com
+
+Do not say: #1 compressor. Do not say TRUSTREAM beats zstd on text.

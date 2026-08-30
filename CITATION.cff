@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+title: Combined GC 1.19.2 measurements (Silesia)
+message: Cite the public measurement repo, not the private engine.
+type: software
+authors:
+  - family-names: Tasz
+    given-names: Corey
+    email: corey@slidphilabs.com
+repository-code: https://github.com/ceedot-rock/combined-gc-view
+url: https://www.slidphilabs.com/gc
+date-released: "2026-08-28"
+version: "1.19.2"
+abstract: >
+  Combined GC 1.19.2 + XZ1 packs official Silesia to 47,752,368 bytes.
+  zpaq 7.15 -m5 is smaller at 39,112,870. XZ1 wrap is disclosed.
+license: LicenseRef-Proprietary-Measurements

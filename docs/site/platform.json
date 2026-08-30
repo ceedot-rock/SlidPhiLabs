@@ -1,13 +1,16 @@
 {
   "ok": true,
   "name": "Slid Phi Labs",
-  "version": "1.13.1",
+  "version": "1.17.0",
+  "updated": "2026-08-30",
   "site": "https://www.slidphilabs.com",
   "mission": "Pub-facing best encode/decode compression where the domain is named and round-trip proves it \u2014 then pivot into gaming and security. Agent systems stay exact. One team.",
   "slogan": "Encode \u00b7 decode \u00b7 prove \u00b7 game \u00b7 secure",
-  "updated": "2026-08-30",
   "lead_product": "cuni",
   "cash_product": "chamber",
+  "pricing_sot": "https://www.slidphilabs.com/pricing.json",
+  "methods": "https://www.slidphilabs.com/METHODS.md",
+  "one_liner": "Combined GC · AWARE+XZ1 Silesia 47,752,368 (2nd vs zpaq) · Suite 6.9 GB / 3h then ~5c/GB · x402 /pay",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
     "login": "https://www.slidphilabs.com/login",
@@ -143,37 +146,13 @@
   },
   "discovery": {
     "agent_api": "https://www.slidphilabs.com/api/agent",
-    "platform_json": "https://www.slidphilabs.com/platform.json",
-    "projects_json": "https://www.slidphilabs.com/projects.json",
-    "agents_json": "https://www.slidphilabs.com/agents.json",
     "llms_txt": "https://www.slidphilabs.com/llms.txt",
-    "llms_full": "https://www.slidphilabs.com/llms-full.txt"
+    "x402": "https://www.slidphilabs.com/api/x402-products",
+    "mcp": "https://www.slidphilabs.com/mcp",
+    "mcp_registry": "io.github.ceedot-rock/slid-phi-labs"
   },
-  "one_liner": "Chamber security (Day/Month/Year half) \u00b7 TRU8 compression (Day/Month/Year) \u00b7 TRU8 Year $990 = both products + seat",
   "contact": {
     "email": "corey@slidphilabs.com",
-    "license": "corey@slidphilabs.com",
-    "package_access_subject": "PACKAGE ACCESS",
-    "access": "https://www.slidphilabs.com/access",
-    "primary_sku": "truchamber-year",
-    "seat_skus": [
-      "truchamber-day",
-      "truchamber-month",
-      "truchamber-year"
-    ],
-    "note": "One lab email only \u2014 corey@slidphilabs.com",
-    "github": "https://github.com/ceedot-rock/SlidPhiLabs",
-    "x": "https://x.com/slidphilabs",
-    "chamber_only_sku": "chamber-year"
-  },
-  "pricing": {
-    "chamber_day": 12.5,
-    "chamber_month": 87.5,
-    "chamber_year": 950,
-    "tru8_day": 24.99,
-    "tru8_month": 175,
-    "tru8_year": 1900,
-    "tru8_year_includes": "both products + seat for full year",
-    "table": "https://www.slidphilabs.com/pricing.json"
+    "x": "https://x.com/slidphilabs"
   }
 }
