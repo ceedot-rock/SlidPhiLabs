@@ -29,7 +29,10 @@
   },
   "retired": ["trugame-rent-week", "zrw-n00b", "zrw-pro", "zrw-l33t", "$1900", "$950", "$12.50"],
   "discovery": "https://www.slidphilabs.com/api/agent",
-  "mcp": "https://www.slidphilabs.com/.well-known/agent-card.json",
+  "mcp": "https://www.slidphilabs.com/mcp",
+  "mcp_registry": "io.github.ceedot-rock/slid-phi-labs",
+  "mcp_registry_url": "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.ceedot-rock/slid-phi-labs",
+  "mcp_card": "https://www.slidphilabs.com/.well-known/mcp/server-card.json",
   "agents": [
     { "id": "spl-platform", "name": "Slid Phi Labs", "role": "discovery", "url": "https://www.slidphilabs.com/api/agent" },
     { "id": "cuni", "name": "CuNi Studio", "role": "exactness", "url": "https://cuni-studio.fly.dev/", "price": "$0" },

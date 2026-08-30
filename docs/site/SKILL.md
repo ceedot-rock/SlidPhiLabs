@@ -28,5 +28,6 @@ Humans: https://www.slidphilabs.com/pay?sku=chamber-year
 { "mcpServers": { "slid-phi": { "command": "npx", "args": ["-y", "spl-pay-per-suite", "mcp"] } } }
 ```
 Hosted: POST https://www.slidphilabs.com/mcp (JSON-RPC).
+Registry: `io.github.ceedot-rock/slid-phi-labs` — https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.ceedot-rock/slid-phi-labs
 
 Do not treat Gate or TRU8 as a general #1 compressor. Do not lead with compression rank.

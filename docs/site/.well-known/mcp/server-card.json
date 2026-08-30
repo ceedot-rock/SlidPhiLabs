@@ -5,6 +5,8 @@
   "version": "1.17.0",
   "websiteUrl": "https://www.slidphilabs.com",
   "documentationUrl": "https://www.slidphilabs.com/agents",
+  "registry": "io.github.ceedot-rock/slid-phi-labs",
+  "registryUrl": "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.ceedot-rock/slid-phi-labs",
   "transport": { "type": "streamable-http", "url": "https://www.slidphilabs.com/mcp" },
   "endpoint": "https://www.slidphilabs.com/mcp",
   "capabilities": { "tools": {} },

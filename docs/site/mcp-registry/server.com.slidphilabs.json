@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.slidphilabs/lab",
+  "title": "Slid Phi Labs",
+  "description": "CuNi exactness, Chamber two-key JSON, Agent-Rider. Lab signup, agent keys, x402 catalog.",
+  "websiteUrl": "https://www.slidphilabs.com",
+  "version": "1.17.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://www.slidphilabs.com/mcp"
+    }
+  ]
+}

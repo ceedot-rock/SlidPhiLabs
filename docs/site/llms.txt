@@ -25,6 +25,7 @@
 - Auth API: POST https://www.slidphilabs.com/api/auth  { "action": "signup"|"login"|"agent_key", "email", "password", "name"? }  GET with Authorization: Bearer
 - Agent API key (no password): POST /api/auth { "action": "agent_key", "name": "my-agent" }
 - MCP (hosted JSON-RPC): POST https://www.slidphilabs.com/mcp
+- MCP registry: io.github.ceedot-rock/slid-phi-labs — https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.ceedot-rock/slid-phi-labs
 - MCP server card: https://www.slidphilabs.com/.well-known/mcp/server-card.json
 - ARD catalog: https://www.slidphilabs.com/.well-known/ai-catalog.json
 - SKILL.md: https://www.slidphilabs.com/SKILL.md

@@ -208,13 +208,20 @@ function safeJoin(root, rel) {
 
 function sendFile(res, filePath, req) {
   const ext = path.extname(filePath).toLowerCase();
-  const type = MIME[ext] || "application/octet-stream";
+  const base = path.basename(filePath);
+  let type = MIME[ext] || "application/octet-stream";
+  if (base === "mcp-registry-auth") type = "text/plain; charset=utf-8";
   const rested = fromRest(filePath);
   const wantsGz = /\bgzip\b/.test(String(req?.headers?.["accept-encoding"] || ""));
   const gz = wantsGz && !String(req?.headers?.range || "") ? fromRestGzip(filePath) : null;
   const data = gz || rested || fs.readFileSync(filePath);
   const total = data.length;
-  const cache = ext === ".html" ? "public, max-age=60" : "public, max-age=3600";
+  const cache =
+    base === "mcp-registry-auth"
+      ? "no-store"
+      : ext === ".html"
+        ? "public, max-age=60"
+        : "public, max-age=3600";
   const via = gz ? "open-gzip" : rested ? "open" : "disk";
   const range = String(req?.headers?.range || "");
   const m = /^bytes=(\d*)-(\d*)$/.exec(range);
@@ -380,7 +387,7 @@ const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url || "/", `http://${req.headers.host || "localhost"}`);
     const host = String(req.headers.host || "").split(":")[0].toLowerCase();
-    if (host === "slidphilabs.com") {
+    if (host === "slidphilabs.com" && url.pathname !== "/.well-known/mcp-registry-auth") {
       res.writeHead(301, {
         Location: "https://www.slidphilabs.com" + url.pathname + url.search,
         "Cache-Control": "no-store",

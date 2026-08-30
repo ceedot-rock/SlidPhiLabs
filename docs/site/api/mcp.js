@@ -14,6 +14,9 @@ export const SERVER_CARD = {
   version: "1.17.0",
   websiteUrl: SITE,
   documentationUrl: SITE + "/agents",
+  registry: "io.github.ceedot-rock/slid-phi-labs",
+  registryUrl:
+    "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.ceedot-rock/slid-phi-labs",
   transport: { type: "streamable-http", url: SITE + "/mcp" },
   endpoint: SITE + "/mcp",
   capabilities: { tools: {} },
@@ -56,6 +59,9 @@ async function callTool(name, args = {}) {
       signup: SITE + "/signup",
       auth: SITE + "/api/auth",
       mcp: SITE + "/mcp",
+      registry: "io.github.ceedot-rock/slid-phi-labs",
+      registryUrl:
+        "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.ceedot-rock/slid-phi-labs",
       card: SITE + "/.well-known/mcp/server-card.json",
       agent: SITE + "/api/agent",
       x402: SITE + "/api/x402-products",
