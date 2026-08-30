@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Log in — Slid Phi Labs</title>
+<meta name="description" content="Log in to your Slid Phi Labs account. One login for CuNi, Rider, Chamber, and the rest."/>
+<link rel="canonical" href="https://www.slidphilabs.com/login"/>
+<meta property="og:title" content="Log in — Slid Phi Labs"/>
+<meta property="og:description" content="One lab login for every product."/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta property="og:url" content="https://www.slidphilabs.com/login"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Log in — Slid Phi Labs"/>
+<meta name="twitter:description" content="One lab login for every product."/>
+<link rel="icon" href="/assets/logos/logo-slid-phi-labs.jpg"/>
+<link rel="stylesheet" href="/assets/chrome.css?v=2"/>
+</head>
+<body>
+<main id="main" style="max-width:28rem;margin:2rem auto;padding:0 1.1rem 3rem">
+  <h1 style="font-size:1.8rem">Log in</h1>
+  <form id="f" style="margin-top:1.2rem;display:grid;gap:.7rem">
+    <label>Email<input name="email" type="email" autocomplete="email" required style="width:100%;padding:.7rem;margin-top:.25rem"/></label>
+    <label>Password<input name="password" type="password" autocomplete="current-password" required style="width:100%;padding:.7rem;margin-top:.25rem"/></label>
+    <button type="submit" style="padding:.85rem;font-weight:700;background:#9a7b2f;color:#fff;border:0;border-radius:8px;cursor:pointer">Log in</button>
+  </form>
+  <p id="err" style="color:#b42318;min-height:1.2em"></p>
+  <p>New here? <a href="/signup">Sign up</a></p>
+</main>
+<script src="/assets/chrome.js?v=2" defer></script>
+<script src="/assets/lab-auth.js"></script>
+<script>
+document.getElementById("f").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const err = document.getElementById("err");
+  err.textContent = "";
+  const j = await SPLAuth.login({ email: fd.get("email"), password: fd.get("password") });
+  if (!j.ok) { err.textContent = "Email or password did not match."; return; }
+  const n = new URLSearchParams(location.search).get("next") || "/account";
+  location.href = n;
+});
+</script>
+</body>
+</html>

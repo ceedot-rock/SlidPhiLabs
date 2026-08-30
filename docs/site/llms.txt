@@ -19,4 +19,5 @@
 - DRverified: https://www.slidphilabs.com/drverified
 - Try 24 hours: https://www.slidphilabs.com/box
 - Prices: https://www.slidphilabs.com/pricing.json
+- Sign up (one lab account): https://www.slidphilabs.com/signup
 - Inbox: corey@slidphilabs.com

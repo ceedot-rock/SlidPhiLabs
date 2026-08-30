@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sign up — Slid Phi Labs</title>
+<meta name="description" content="One lab account. Open CuNi Studio, Agent-Rider, Chamber, and the rest of the lab."/>
+<link rel="canonical" href="https://www.slidphilabs.com/signup"/>
+<meta property="og:title" content="Sign up — Slid Phi Labs"/>
+<meta property="og:description" content="One lab account. Exactness, Chamber, Rider."/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta property="og:url" content="https://www.slidphilabs.com/signup"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Sign up — Slid Phi Labs"/>
+<meta name="twitter:description" content="One lab account for every product."/>
+<link rel="icon" href="/assets/logos/logo-slid-phi-labs.jpg"/>
+<link rel="stylesheet" href="/assets/chrome.css?v=2"/>
+<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
+</head>
+<body>
+<main id="main" class="wrap" style="max-width:28rem;margin:2rem auto;padding:0 1.1rem 3rem">
+  <p class="spl-stamp" style="letter-spacing:.12em;text-transform:uppercase;font-size:.75rem;color:#9a7b2f">One account</p>
+  <h1 style="font-size:1.8rem;margin:.3rem 0 .6rem">Sign up</h1>
+  <p style="color:#5c6570">Name, email, password. Then every door on the lab uses this login. Free. Takes a few seconds.</p>
+  <form id="f" style="margin-top:1.2rem;display:grid;gap:.7rem">
+    <label>Name<input name="name" autocomplete="name" required style="width:100%;padding:.7rem;margin-top:.25rem"/></label>
+    <label>Email<input name="email" type="email" autocomplete="email" required style="width:100%;padding:.7rem;margin-top:.25rem"/></label>
+    <label>Password (8+)<input name="password" type="password" autocomplete="new-password" minlength="8" required style="width:100%;padding:.7rem;margin-top:.25rem"/></label>
+    <button type="submit" style="padding:.85rem;font-weight:700;background:#9a7b2f;color:#fff;border:0;border-radius:8px;cursor:pointer">Create account</button>
+  </form>
+  <p id="err" style="color:#b42318;min-height:1.2em"></p>
+  <p>Already have one? <a href="/login">Log in</a></p>
+</main>
+<script src="/assets/chrome.js?v=2" defer></script>
+<script src="/assets/lab-auth.js"></script>
+<script>
+document.getElementById("f").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const err = document.getElementById("err");
+  err.textContent = "";
+  const j = await SPLAuth.signup({ name: fd.get("name"), email: fd.get("email"), password: fd.get("password") });
+  if (!j.ok) { err.textContent = j.error === "email_taken" ? "That email is already in." : (j.error || "Could not sign up"); return; }
+  const n = new URLSearchParams(location.search).get("next") || "/account";
+  location.href = n;
+});
+</script>
+</body>
+</html>

@@ -4,6 +4,7 @@
     ["/", "Home"],
     ["/products", "Products"],
     ["/box", "Try"],
+    ["/signup", "Sign up"],
     ["/pricing", "Pricing"],
     ["/docs", "API"],
     ["/games", "Games"],
@@ -39,7 +40,7 @@
           <span>Slid Phi Labs</span>
         </a>
         <button class="spl-nav-toggle" type="button" aria-expanded="false" aria-label="Menu"></button>
-        <nav class="spl-nav" aria-label="Primary">${links}</nav>
+        <nav class="spl-nav" aria-label="Primary">${links}<span data-spl-auth></span></nav>
       </div>
     </header>`;
   }
@@ -98,6 +99,11 @@
       document.body.insertAdjacentHTML("beforeend", footer());
     }
     document.body.classList.add("spl-chrome");
+    if (!document.querySelector('script[src*="lab-auth.js"]')) {
+      const s = document.createElement("script");
+      s.src = "/assets/lab-auth.js";
+      document.body.appendChild(s);
+    }
     const btn = document.querySelector(".spl-nav-toggle");
     if (btn) {
       btn.addEventListener("click", () => {

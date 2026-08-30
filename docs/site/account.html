@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Your lab account — Slid Phi Labs</title>
+<meta name="description" content="Your Slid Phi Labs account. Open Studio, Rider, Chamber, L33tSaaS, Overlord Eye, TEACHAiD."/>
+<link rel="canonical" href="https://www.slidphilabs.com/account"/>
+<meta property="og:title" content="Your lab account — Slid Phi Labs"/>
+<meta property="og:description" content="One account. Every product door."/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+<meta property="og:url" content="https://www.slidphilabs.com/account"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Your lab account — Slid Phi Labs"/>
+<meta name="twitter:description" content="One account. Every product door."/>
+<link rel="icon" href="/assets/logos/logo-slid-phi-labs.jpg"/>
+<link rel="stylesheet" href="/assets/chrome.css?v=2"/>
+</head>
+<body>
+<main id="main" style="max-width:36rem;margin:2rem auto;padding:0 1.1rem 3rem">
+  <h1 style="font-size:1.8rem">You’re in</h1>
+  <p id="who" style="color:#5c6570"></p>
+  <p>Same login on every door:</p>
+  <ul id="doors" style="line-height:1.9"></ul>
+  <p><button type="button" id="out">Log out</button></p>
+</main>
+<script src="/assets/chrome.js?v=2" defer></script>
+<script src="/assets/lab-auth.js"></script>
+<script>
+(async () => {
+  const u = await SPLAuth.me();
+  if (!u) { location.href = "/login?next=/account"; return; }
+  document.getElementById("who").textContent = u.name + " · " + u.email;
+  const labels = { studio: "CuNi Studio", rider: "Agent-Rider", chamber: "Chamber", box: "24-hour try", l33tsaas: "L33tSaaS", overlord: "Overlord Eye", teachaid: "TEACHAiD" };
+  document.getElementById("doors").innerHTML = Object.entries(u.doors).map(([k, href]) =>
+    "<li><a href=\"" + href + "\">" + (labels[k] || k) + "</a></li>"
+  ).join("");
+  document.getElementById("out").onclick = () => SPLAuth.logout();
+})();
+</script>
+</body>
+</html>

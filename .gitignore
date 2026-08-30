@@ -5,6 +5,8 @@ __pycache__/
 lab/benches/
 *.pt
 node_modules/
+docs/site/data/lab-users.json
+docs/site/data/auth-secret.txt
 
 # Host-only engines (IP Guard) — live on Fly, not in public git
 docs/site/api/lib/vendor/zrw-pack.js

@@ -35,6 +35,30 @@
       "destination": "/l33tsaas.html"
     },
     {
+      "source": "/signup",
+      "destination": "/signup.html"
+    },
+    {
+      "source": "/signup/",
+      "destination": "/signup.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/login.html"
+    },
+    {
+      "source": "/login/",
+      "destination": "/login.html"
+    },
+    {
+      "source": "/account",
+      "destination": "/account.html"
+    },
+    {
+      "source": "/account/",
+      "destination": "/account.html"
+    },
+    {
       "source": "/box",
       "destination": "/box.html"
     },
