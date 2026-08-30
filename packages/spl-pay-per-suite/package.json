@@ -11,7 +11,8 @@
   "bin": {
     "spl-pps": "src/cli.mjs",
     "spl-pay-per-suite": "src/cli.mjs",
-    "pay-per-suite": "src/cli.mjs"
+    "pay-per-suite": "src/cli.mjs",
+    "spl-mcp": "src/mcp-server.mjs"
   },
   "files": [
     "src",

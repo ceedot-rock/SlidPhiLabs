@@ -2,7 +2,7 @@
  * POST { action: "signup"|"login", email, password, name? }
  * GET  Authorization: Bearer  → { user }
  */
-import { cors, signup, login, meFromAuth } from "./lib/lab-auth.mjs";
+import { cors, signup, login, meFromAuth, issueAgentKey } from "./lib/lab-auth.mjs";
 
 function json(res, status, body) {
   res.statusCode = status;
@@ -38,6 +38,10 @@ export default async function handler(req, res) {
     if (action === "signup") {
       const out = signup(body);
       if (out.error) return json(res, out.status || 400, { ok: false, error: out.error });
+      return json(res, 201, { ok: true, ...out });
+    }
+    if (action === "agent_key") {
+      const out = issueAgentKey({ name: body.name });
       return json(res, 201, { ok: true, ...out });
     }
     const out = login(body);

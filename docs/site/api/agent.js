@@ -20,7 +20,8 @@ const AUTH = {
   login: "https://www.slidphilabs.com/login",
   account: "https://www.slidphilabs.com/account",
   api: "https://www.slidphilabs.com/api/auth",
-  post: { action: "signup|login", email: "you@lab.tld", password: "min 8", name: "optional on signup" },
+  post: { action: "signup|login|agent_key", email: "you@lab.tld", password: "min 8", name: "optional on signup" },
+  agent_key: { action: "agent_key", name: "my-agent" },
 };
 
 const STANDING = [
@@ -76,6 +77,13 @@ export default async function handler(req, res) {
     lead_product: "cuni",
     cash_product: "chamber",
     auth: AUTH,
+    mcp: {
+      http: "https://www.slidphilabs.com/mcp",
+      server_card: "https://www.slidphilabs.com/.well-known/mcp/server-card.json",
+      npx: "npx -y spl-pay-per-suite mcp",
+      skill: "https://www.slidphilabs.com/SKILL.md",
+      ard: "https://www.slidphilabs.com/.well-known/ai-catalog.json",
+    },
     box: {
       protocol: "splb-ed25519-24h",
       status: "/api/box",

@@ -1,0 +1,16 @@
+{
+  "name": "slid-phi-labs",
+  "title": "Slid Phi Labs",
+  "description": "CuNi exactness, Chamber seal, Agent-Rider. One lab account. x402 for agents, Stripe for humans.",
+  "version": "1.17.0",
+  "websiteUrl": "https://www.slidphilabs.com",
+  "documentationUrl": "https://www.slidphilabs.com/agents",
+  "transport": { "type": "streamable-http", "url": "https://www.slidphilabs.com/mcp" },
+  "endpoint": "https://www.slidphilabs.com/mcp",
+  "capabilities": { "tools": {} },
+  "auth": {
+    "type": "optional",
+    "human": "https://www.slidphilabs.com/api/auth",
+    "agent_key": "POST /api/auth {\"action\":\"agent_key\",\"name\":\"my-agent\"}"
+  }
+}

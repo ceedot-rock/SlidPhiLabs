@@ -102,14 +102,7 @@ async function main() {
     return;
   }
 
-  if (cmd === "mcp") {
-    console.log("Start MCP:  node src/mcp-server.mjs");
-    console.log("Or:         npm run mcp --prefix packages/spl-pay-per-suite");
-    console.log("Config:     { \"command\": \"npx\", \"args\": [\"-y\", \"spl-pay-per-suite\", \"mcp-serve\"] }");
-    return;
-  }
-
-  if (cmd === "mcp-serve") {
+  if (cmd === "mcp" || cmd === "mcp-serve") {
     await import("./mcp-server.mjs");
     return;
   }

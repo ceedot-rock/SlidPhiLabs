@@ -58,6 +58,13 @@ paths:
       responses:
         "200": { description: login ok }
         "201": { description: signup ok }
+  /mcp:
+    get:
+      tags: [auth]
+      summary: MCP server card (same as /.well-known/mcp/server-card.json)
+    post:
+      tags: [auth]
+      summary: MCP JSON-RPC (initialize, tools/list, tools/call)
   /api/welcome:
     get:
       tags: [home]

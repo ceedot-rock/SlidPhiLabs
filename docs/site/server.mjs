@@ -244,6 +244,7 @@ function sendFile(res, filePath, req) {
     "X-Host": "fly-slidphilabs",
     "X-Phi-Rest": via,
     Vary: "Accept-Encoding",
+    Link: '</.well-known/mcp/server-card.json>; rel="mcp", </mcp>; rel="mcp-endpoint", </api/agent>; rel="alternate"; type="application/json", </llms.txt>; rel="alternate"; type="text/plain", </SKILL.md>; rel="alternate"',
   };
   if (gz) headers["Content-Encoding"] = "gzip";
   res.writeHead(200, headers);
@@ -324,6 +325,12 @@ async function loadApiHandler(apiPath) {
 }
 
 async function handleApi(req, res, url) {
+  try {
+    res.setHeader(
+      "Link",
+      '</.well-known/mcp/server-card.json>; rel="mcp", </mcp>; rel="mcp-endpoint", </api/agent>; rel="alternate"; type="application/json"'
+    );
+  } catch { /* */ }
   const handler = await loadApiHandler(url.pathname);
   if (!handler) {
     notFound(res, "api_not_found");
@@ -392,6 +399,11 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === "/api/nca" || url.pathname === "/nca") {
       res.writeHead(200, { "Content-Type": "application/json", ...ncaHeaders() });
       res.end(JSON.stringify(ncaReport({ point: "status", app: "slidphilabs" })));
+      return;
+    }
+    if (url.pathname === "/mcp" || url.pathname === "/mcp/") {
+      url.pathname = "/api/mcp";
+      await handleApi(req, res, url);
       return;
     }
     if (url.pathname.startsWith("/api/")) {

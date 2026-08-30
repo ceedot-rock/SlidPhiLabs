@@ -1,0 +1,5 @@
+{
+  "mcp": "https://www.slidphilabs.com/mcp",
+  "server_card": "https://www.slidphilabs.com/.well-known/mcp/server-card.json",
+  "auth": "https://www.slidphilabs.com/api/auth"
+}

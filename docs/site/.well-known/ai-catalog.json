@@ -1,0 +1,24 @@
+{
+  "specVersion": "1.0",
+  "name": "Slid Phi Labs",
+  "url": "https://www.slidphilabs.com",
+  "lead_product": "cuni",
+  "cash_product": "chamber",
+  "entries": [
+    {
+      "identifier": "urn:ai:slidphilabs.com:mcp:lab",
+      "type": "application/mcp-server-card+json",
+      "url": "https://www.slidphilabs.com/.well-known/mcp/server-card.json"
+    },
+    {
+      "identifier": "urn:ai:slidphilabs.com:a2a:lab",
+      "type": "application/json",
+      "url": "https://www.slidphilabs.com/.well-known/agent-card.json"
+    },
+    {
+      "identifier": "urn:ai:slidphilabs.com:commerce",
+      "type": "application/json",
+      "url": "https://www.slidphilabs.com/api/agent"
+    }
+  ]
+}

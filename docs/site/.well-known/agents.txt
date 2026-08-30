@@ -1,0 +1,27 @@
+# agents.txt — what agents MAY do on this host
+# https://www.slidphilabs.com/.well-known/agents.txt
+
+Host: www.slidphilabs.com
+Rate: 60/min
+Auth: Bearer lab JWT or spl_ag_ key from POST /api/auth action=agent_key
+
+Allow: GET /api/agent
+Allow: GET /api/welcome
+Allow: GET /llms.txt
+Allow: GET /agents.json
+Allow: GET /platform.json
+Allow: GET /mcp
+Allow: POST /mcp
+Allow: POST /api/mcp
+Allow: POST /api/auth
+Allow: POST /api/x402-products
+Allow: POST /api/x402-suite
+Allow: GET /api/access-verify
+Allow: GET /.well-known/mcp/server-card.json
+Allow: GET /.well-known/agent-card.json
+Allow: GET /.well-known/ai-catalog.json
+Allow: GET /SKILL.md
+
+Payment: x402 USDC Solana + Base (X-PAYMENT). Humans: Stripe.
+MCP: https://www.slidphilabs.com/mcp
+npx: npx -y spl-pay-per-suite mcp

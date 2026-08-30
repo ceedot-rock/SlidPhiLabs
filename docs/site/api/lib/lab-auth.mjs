@@ -160,6 +160,32 @@ export function login({ email, password }) {
   return { user: publicUser(user), token: signToken(user) };
 }
 
+export function issueAgentKey({ name } = {}) {
+  const n = String(name || "agent").trim().slice(0, 80) || "agent";
+  const id = randomBytes(8).toString("hex");
+  const apiKey = "spl_ag_" + randomBytes(20).toString("hex");
+  const { salt, hash } = hashPass(apiKey);
+  const user = {
+    id,
+    email: `agent-${id}@agents.slidphilabs.com`,
+    name: n,
+    salt,
+    hash,
+    kind: "agent",
+    api_key_prefix: apiKey.slice(0, 14),
+    created: new Date().toISOString(),
+  };
+  const db = load();
+  db.users.push(user);
+  save(db);
+  return {
+    user: publicUser(user),
+    token: signToken(user),
+    api_key: apiKey,
+    note: "Store api_key now. Use Authorization: Bearer <token> or login with the key as password at action=login email=" + user.email,
+  };
+}
+
 export function meFromAuth(header) {
   const t = String(header || "").replace(/^Bearer\s+/i, "").trim();
   const body = readToken(t);

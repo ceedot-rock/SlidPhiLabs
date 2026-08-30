@@ -22,7 +22,14 @@
 - Sign up: https://www.slidphilabs.com/signup
 - Log in: https://www.slidphilabs.com/login
 - Account: https://www.slidphilabs.com/account
-- Auth API: POST https://www.slidphilabs.com/api/auth  { "action": "signup"|"login", "email", "password", "name"? }  GET with Authorization: Bearer
+- Auth API: POST https://www.slidphilabs.com/api/auth  { "action": "signup"|"login"|"agent_key", "email", "password", "name"? }  GET with Authorization: Bearer
+- Agent API key (no password): POST /api/auth { "action": "agent_key", "name": "my-agent" }
+- MCP (hosted JSON-RPC): POST https://www.slidphilabs.com/mcp
+- MCP server card: https://www.slidphilabs.com/.well-known/mcp/server-card.json
+- ARD catalog: https://www.slidphilabs.com/.well-known/ai-catalog.json
+- SKILL.md: https://www.slidphilabs.com/SKILL.md
+- npx MCP: npx -y spl-pay-per-suite mcp
+- x402 auto-claim: pay then open access_url or GET /api/access-verify?claim=spl1…
 - CuNi Studio (lead, $0): https://cuni-studio.fly.dev/
 - Agent-Rider (Team $79/$790): https://agentrider.fly.dev/  POST /api/agents to register
 - Inbox: corey@slidphilabs.com
