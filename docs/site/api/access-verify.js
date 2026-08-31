@@ -250,11 +250,11 @@ function buildTruchamberDeliverable({ paid, sku, sessionId, email, amountTotal, 
     product: both ? "TRU8 Year (both products)" : isChamber ? "Chamber" : "TRU8",
     includes,
     package_access: "open",
-    ip_guard: both
-      ? "TRU8 Year = Chamber seat + TRU8 production for full year. Package Access opens on payment confirm."
+    note: both
+      ? "Chamber + TRU8 for the year."
       : isChamber
-        ? "Chamber security only. Half price. No TRU8 production. Package Access open on payment."
-        : "TRU8 production only for this term. Chamber seat not included (buy TRU8 Year for both).",
+        ? "Chamber for this term."
+        : "TRU8 for this term.",
     ships: {
       entitlement_json: true,
       package_access: "open_on_payment",
@@ -382,8 +382,7 @@ export function buildDeliverable({ paid, sku, sessionId, email, amountTotal, cur
       currency: currency || "usd",
       issued_at: new Date().toISOString(),
       issuer: base,
-      ip_guard:
-        "Public evaluation seat only. No private process, engines, or secret sauce.",
+
       unlocks: {
         demos: base + "/demos",
         standings: base + "/standings",

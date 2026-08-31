@@ -144,7 +144,7 @@ const CATALOG = {
     amount_cents: 2900,
     stripe: "https://www.slidphilabs.com/pay?sku=gate-day",
     kind: "gate",
-    blurb: "Mixed-file lossless picker $29 / 24h. Not #1 GC.",
+    blurb: "Mixed-file lossless picker $29 / 24h.",
     access: "https://www.slidphilabs.com/access?product=gate-day",
     fulfill_email: "corey@slidphilabs.com",
   },

@@ -192,8 +192,7 @@ export default async function handler(req, res) {
       encode: true,
       decode: true,
       roundtrip: true,
-      claim:
-        "Domain supremacy — best where we name the data class and publish byte RT. Not fantasy universal #1.",
+      claim: "Lossless encode and decode. 10,000 zeros → 8 bytes.",
       prove: "https://www.slidphilabs.com/standings.json",
     },
     one_liner:

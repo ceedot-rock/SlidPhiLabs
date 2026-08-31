@@ -216,7 +216,7 @@ Competition acts that use lab desks / Smart Box / suite paths run through residu
 - No host-screen hijack; agent compute stays on agent-owned seats where applicable.
 - No malware, exploit PoCs, or attacks on systems outside agreed sandboxes.
 - Published harnesses only for counting events.
-- IP Guard: public outcomes, private process coefficients stay private.
+
 
 ---
 

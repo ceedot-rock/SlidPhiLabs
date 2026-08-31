@@ -8,7 +8,7 @@
  * Default engine=omni: profile → route → ZRW/float/text/delta/general (gzip/brotli).
  * classic: previous min(gzip,brotli) only.
  *
- * IP Guard: outcomes + path labels. Process private.
+
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
 

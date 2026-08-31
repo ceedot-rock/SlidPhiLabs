@@ -2,8 +2,6 @@
 
 **SKU:** `try-gate` · **Seat:** evaluation · **Price:** $9 chip-in  
 **Lab:** https://www.slidphilabs.com  
-**IP Guard:** Public outcomes and process only. No private engines, coefficients, or secret sauce.
-
 ---
 
 ## What you unlocked

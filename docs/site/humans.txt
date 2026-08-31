@@ -1,46 +1,12 @@
-/* humans.txt — who runs this place (for people, not scrapers) */
-
 Team: Slid Phi Labs
 Contact: corey@slidphilabs.com
 Site: https://www.slidphilabs.com
-Slogan: One mission · two attack vectors · one team
-Credit: Powered by TRU8 · Slid Phi Labs
 
-Pub Facing (you are here in spirit): https://www.slidphilabs.com/humans
-Agentic Minded (if you are software): https://www.slidphilabs.com/agents
-
-What we sell (public outcomes only) — each word is the buy:
-  - Chamber — SECURITY. 24h black box, then Day $9 · Month $49 · Year $490. No TRU8.
-  - TRU8 — COMPRESSION. Demos free with credit. Day $19 · Month $99 · Year $990 (year = both products).
-  - Suite — METERED JOBS on /pps. 100 GB free, then ~5¢/GB. Not a Chamber or TRU8 seat.
-  - Access — entitlement claim after pay. Not a codec dump.
-  - CDDG:Split / ZRW / OmniWave — historical lab series (licensed). Not TruChamber. Not TRU8.
-  - Agent rails — CuNi · Agent^Rider (paused) · Quikgater.
-  - Services — OSS support $199 · Consulting $250 · Sponsor $29 · Donate $29.99 · Olympiad $1.
-
-Start: Chamber https://www.slidphilabs.com/chamber · TRU8 https://www.slidphilabs.com/demos · prices https://www.slidphilabs.com/pricing.json
-Historical web codec door: https://www.slidphilabs.com/web
-Proof: https://www.slidphilabs.com/standings
-Buy suite: https://www.slidphilabs.com/pps
-Eval: free first 100 GB on https://www.slidphilabs.com/pps (then ~5¢/GB, then ~4¢/GB). Try Gate retired.
-Pay any rail: https://www.slidphilabs.com/pay
-Access after pay: https://www.slidphilabs.com/access  (entitlement claim — not a codec dump)
-x402 auto-claim: ON. POST /api/x402-products with X-PAYMENT → claim_token; GET /api/access-verify?claim=…
-
-Great Agentic Olympiad: https://www.slidphilabs.com/olympiad
-  (tryouts now until week before open registration; quarterly every year after)
-  Entry $1 SKU gao-entry · agents: GET /api/olympiad
-Toy Store (fun · theory · artifacts): https://www.slidphilabs.com/toys
-Idea Lab: https://www.slidphilabs.com/ideas
-
-LEGAL IDENTITY
-  Operates as the trade name Slid Phi Labs.
-  Public author / copyright: Corey Tasz.
-  Legal name on manuscript: Corey Robert Ptaszenski.
-  No public LLC / Inc / Ltd filing is claimed.
-  Commercial use requires a written license.
-
-IP Guard: we publish outcomes and benches, not private process.
-No tip-desk spam. Real humans get real replies.
-
-Preferred language: plain English, short demos, honest v0/v1 maturity.
+CuNi Studio — $0 — https://cuni-studio.fly.dev/
+Chamber — $49/mo · $490/yr — https://www.slidphilabs.com/chamber
+Agent-Rider — $79/mo · $790/yr — https://agentrider.fly.dev/
+Suite — 6.9 GB / 3 h then ~5¢/GB — https://www.slidphilabs.com/pps
+Lab Pass — $1,088/yr — https://www.slidphilabs.com/lab-pass
+Sign up — https://www.slidphilabs.com/signup
+Pay — https://www.slidphilabs.com/pay
+MCP — https://www.slidphilabs.com/mcp

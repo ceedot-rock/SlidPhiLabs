@@ -17,12 +17,6 @@
       "public-safe artifacts and curios",
       "parked fun-bin ideas ready to browse"
     ],
-    "what_does_not": [
-      "standing commercial SKUs (use catalog / PPS)",
-      "private coefficients or process engines",
-      "production harness internals"
-    ],
-    "ip_guard": "Outcomes and names only. Engines stay private.",
     "not_legal_advice": true
   },
   "aisles": {
@@ -105,7 +99,7 @@
       ],
       "idea_id": 12,
       "links": [],
-      "shelf": "Theory aisle · IP Guard on"
+      "shelf": "Theory aisle"
     },
     {
       "id": "mirrored-cost",
@@ -113,7 +107,7 @@
       "name": "Mirrored Cost (story)",
       "aisle": "theory",
       "status": "story",
-      "price": "public outcomes only",
+      "price": "story",
       "blurb": "Cost identity framing (ΔE+ΔC≈0 class; mirror error near zero) as a quality and efficiency story — not the private tables.",
       "tags": [
         "mirrored_cost",

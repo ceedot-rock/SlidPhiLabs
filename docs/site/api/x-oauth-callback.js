@@ -41,14 +41,8 @@ https://www.slidphilabs.com/agents
 
 Same lab. Same 8 B proof. Different rails.`,
 
-  `IP Guard: outcomes only.
-
-Free first 100 GB suite, then ~5¢/GB under ~9¢ egress.
-Try free web: https://www.slidphilabs.com/web
-Why 8 B: https://www.slidphilabs.com/blog/2026-08-07-why-8b-matters
-
-Exact codecs. Agentic infrastructure.
-Compression that knows it is alive.
+  `CuNi · Chamber · Agent-Rider
+https://www.slidphilabs.com
 @slidphilabs`,
 ];
 
