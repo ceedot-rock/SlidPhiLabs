@@ -1,0 +1,20 @@
+# Slid Phi Labs
+> CuNi exactness. Chamber seal. Agent-Rider. https://www.slidphilabs.com/
+
+- CuNi Studio — $0 — https://cuni-studio.fly.dev/
+- Chamber — $49/mo · $490/yr — https://www.slidphilabs.com/chamber
+- Agent-Rider — $79/mo · $790/yr — https://agentrider.fly.dev/
+- Suite — 6.9 GB / 3 h then ~5¢/GB — https://www.slidphilabs.com/pps
+- Lab Pass — $1,088/yr — https://www.slidphilabs.com/lab-pass
+- TruGame — $12/mo · $79/yr — https://www.slidphilabs.com/trugame
+- Sign up — https://www.slidphilabs.com/signup
+- Log in — https://www.slidphilabs.com/login
+- Auth — POST https://www.slidphilabs.com/api/auth
+- MCP — POST https://www.slidphilabs.com/mcp
+- Registry — io.github.ceedot-rock/slid-phi-labs
+- Smithery — https://smithery.ai/servers/slidphi/lab
+- Catalog — GET https://www.slidphilabs.com/api/agent
+- x402 — POST https://www.slidphilabs.com/api/x402-products {"sku":"chamber-year"}
+- Stripe — https://www.slidphilabs.com/pay?sku=chamber-year
+- Prices — https://www.slidphilabs.com/pricing.json
+- Inbox — corey@slidphilabs.com

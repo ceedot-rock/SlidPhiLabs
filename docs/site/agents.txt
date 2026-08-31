@@ -1,15 +1,20 @@
-# agents.txt
-# Standard-ish capability list. JSON: /agents.json  IETF copy: /.well-known/agents.txt
+# agents.txt — Slid Phi Labs
+# CuNi $0 · Chamber $49/$490 · Rider $79/$790 · Suite 6.9 GB / 3 h then ~5¢
 
-GET /api/agent
-GET /mcp
-POST /mcp
-POST /api/auth
-POST /api/x402-products
-GET /SKILL.md
-GET /.well-known/mcp/server-card.json
-GET /.well-known/ai-catalog.json
+GET https://www.slidphilabs.com/llms.txt
+GET https://www.slidphilabs.com/api/agent
+GET https://www.slidphilabs.com/mcp
+POST https://www.slidphilabs.com/mcp
+POST https://www.slidphilabs.com/api/auth
+POST https://www.slidphilabs.com/api/x402-products
+GET https://www.slidphilabs.com/SKILL.md
+GET https://www.slidphilabs.com/.well-known/mcp/server-card.json
+GET https://www.slidphilabs.com/.well-known/ai-catalog.json
+GET https://www.slidphilabs.com/pricing.json
 
 npx -y spl-pay-per-suite mcp
+Registry: io.github.ceedot-rock/slid-phi-labs
+Smithery: https://smithery.ai/servers/slidphi/lab
 Rate 60/min
 x402 Solana + Base USDC
+Stripe https://www.slidphilabs.com/pay?sku=chamber-year

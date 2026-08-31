@@ -19,6 +19,16 @@
       "identifier": "urn:ai:slidphilabs.com:commerce",
       "type": "application/json",
       "url": "https://www.slidphilabs.com/api/agent"
+    },
+    {
+      "identifier": "urn:ai:slidphilabs.com:llms",
+      "type": "text/plain",
+      "url": "https://www.slidphilabs.com/llms.txt"
+    },
+    {
+      "identifier": "urn:ai:slidphilabs.com:skill",
+      "type": "text/markdown",
+      "url": "https://www.slidphilabs.com/SKILL.md"
     }
   ]
 }
