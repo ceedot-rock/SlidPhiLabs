@@ -431,7 +431,7 @@
       "id": 20,
       "bucket": "product",
       "name": "Freemium suite",
-      "blurb": "Metered encode/decode jobs (not the product face). First 100 GB free per job · then ~5¢/GB · bulk 4¢. Try Gate retired.",
+      "blurb": "Metered encode/decode jobs (not the product face). 6.9 GB / 3 h unpaid per job · then ~5¢/GB · bulk 4¢. Try Gate retired.",
       "surface": "public",
       "vehicle": [
         "product",
@@ -505,15 +505,15 @@
       "links": [
         {
           "label": "Open Rider",
-          "href": "https://agentrider.vercel.app/"
+          "href": "https://agentrider.fly.dev/"
         },
         {
           "label": "Agent JSON",
-          "href": "https://agentrider.vercel.app/.well-known/agent.json"
+          "href": "https://agentrider.fly.dev/.well-known/agent.json"
         },
         {
           "label": "MCP",
-          "href": "https://agentrider.vercel.app/api/mcp"
+          "href": "https://agentrider.fly.dev/api/mcp"
         }
       ],
       "pursued": "2026-06-15",
@@ -534,7 +534,7 @@
       "links": [
         {
           "label": "Rider",
-          "href": "https://agentrider.vercel.app/"
+          "href": "https://agentrider.fly.dev/"
         },
         {
           "label": "Studio",

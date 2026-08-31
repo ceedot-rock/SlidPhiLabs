@@ -11,7 +11,7 @@ export const SERVER_CARD = {
   title: "Slid Phi Labs",
   description:
     "CuNi exactness, Chamber seal, Agent-Rider. One lab account. x402 for agents, Stripe for humans.",
-  version: "1.17.0",
+  version: "1.18.0",
   websiteUrl: SITE,
   documentationUrl: SITE + "/agents",
   registry: "io.github.ceedot-rock/slid-phi-labs",

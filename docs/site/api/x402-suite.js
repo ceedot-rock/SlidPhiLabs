@@ -476,7 +476,7 @@ export default async function handler(req, res) {
   const accept0 = requirements.accepts?.[0];
   const { payTo } = networkConfig();
 
-  // Free showcase — first 100 GB, no x402 payment
+  // Free showcase — 6.9 GB / 3 h, no x402 payment
   if (quote.free || quote.amount_cents === 0) {
     const jobId = "free_" + Date.now().toString(36);
     return json(res, 200, {

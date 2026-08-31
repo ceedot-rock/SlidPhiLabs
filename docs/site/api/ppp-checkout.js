@@ -1,6 +1,6 @@
 /**
  * PPP checkout — POST /api/ppp-checkout
- * Freemium: $0 under 100 GB free cap (no Stripe). Paid usage → Checkout Session.
+ * Freemium: $0 under 6.9 GB / 3 h unpaid cap (no Stripe). Paid usage → Checkout Session.
  */
 import { computeQuote } from "./suite-pricing.js";
 

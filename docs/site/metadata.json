@@ -10,7 +10,7 @@
   "glossary": {
     "Chamber": "security product — 24-hour black box, then Day $9 · Month $49 · Year $490. No TRU8.",
     "TRU8": "compression product — demos free; Day $19 · Month $99 · Year $990 (year = both products).",
-    "Suite": "metered encode/decode jobs — 100 GB free then ~5¢/GB; not Chamber; not TRU8",
+    "Suite": "metered encode/decode jobs — 6.9 GB / 3 h unpaid then ~5¢/GB; not Chamber; not TRU8",
     "Access": "entitlement claim after payment — not a codec dump",
     "seat": "a purchased Chamber or TRU8 access path (day / month / year)"
   },
@@ -67,7 +67,7 @@
     },
     "/pps": {
       "title": "Pay Per Suite — metered jobs · not a seat · Slid Phi Labs",
-      "description": "Suite is metered encode/decode jobs: first 100 GB free, then ~5¢/GB. Not Chamber. Not TRU8.",
+      "description": "Suite is metered encode/decode jobs: 6.9 GB / 3 h unpaid, then ~5¢/GB. Not Chamber. Not TRU8.",
       "canonical": "https://www.slidphilabs.com/pps"
     },
     "/access": {
@@ -82,7 +82,7 @@
     },
     "/humans": {
       "title": "Humans — Chamber · TRU8 · Suite · Slid Phi Labs",
-      "description": "Chamber $9 / $49 / $490. TRU8 $19 / $99 / $990 (year = both). Suite 100 GB then ¢/GB.",
+      "description": "Chamber $9 / $49 / $490. TRU8 $19 / $99 / $990 (year = both). Suite 6.9 GB / 3 h then ¢/GB.",
       "canonical": "https://www.slidphilabs.com/humans"
     }
   }

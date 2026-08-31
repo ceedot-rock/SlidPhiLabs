@@ -16,7 +16,7 @@ SoT methods (this file + combined-gc-view)
 - Unpaid: **6.9 GB** and **3 hours**. Then pay.
 - Humans: /pay Stripe (team secrets).
 - Robots: x402 POST /api/x402-products, header X-PAYMENT. Same PAY_TO_ADDRESS as quikgater.
-- MCP / npm / Fly / git copy this file. Do not say 100 GB free.
+- MCP / npm / Fly / git copy this file. Do not say 6.9 GB / 3 h unpaid.
 
 ## Doors
 

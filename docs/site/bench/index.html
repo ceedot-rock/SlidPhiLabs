@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="agentic" content="true"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt"/>
+
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Open Bench · SPL · ZRW · gzip · brotli · Slid Phi Labs</title>
-<meta name="description" content="Self-serve compression proof: structured, float, and mixed streams through SPL OmniWave, ZRW, gzip-9, and brotli-11. Ratio + wall-clock. Freemium first 100 GB."/>
+<meta name="description" content="Self-serve compression proof: structured, float, and mixed streams through SPL OmniWave, ZRW, gzip-9, and brotli-11. Ratio + wall-clock. Freemium 6.9 GB / 3 h."/>
 <meta name="robots" content="index,follow"/>
 <link rel="canonical" href="https://www.slidphilabs.com/bench"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Slid Phi Labs"/>
 <meta property="og:title" content="Open Bench · SPL vs gzip vs brotli"/>
-<meta property="og:description" content="Verify structured · float · mixed before you pay. First 100 GB freemium."/>
+<meta property="og:description" content="Verify structured · float · mixed before you pay. 6.9 GB / 3 h unpaidmium."/>
 <meta property="og:url" content="https://www.slidphilabs.com/bench"/>
 <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Open Bench · SPL vs gzip vs brotli"/>
-<meta name="twitter:description" content="Verify structured · float · mixed before you pay. First 100 GB freemium."/>
+<meta name="twitter:description" content="Verify structured · float · mixed before you pay. 6.9 GB / 3 h unpaidmium."/>
 <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
 <meta name="theme-color" content="#050b16"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
@@ -95,7 +99,7 @@ td.win{color:var(--ok);font-weight:600}
   <p class="lead">
     Live synthetic streams — <strong>structured</strong>, <strong>float</strong>, and <strong>mixed</strong> (text · float · high-entropy) —
     through <strong>SPL OmniWave</strong>, <strong>ZRW</strong>, <strong>gzip-9</strong>, and <strong>brotli-11</strong>.
-    Ratio + wall-clock, self-serve. Freemium suite: first <strong>100 GB</strong> free; this page uses public slices so the proof is free too.
+    Ratio + wall-clock, self-serve. Suite unpaid cap is 6.9 GB / 3 hours.
   </p>
 
   <div class="panel">
@@ -139,7 +143,7 @@ td.win{color:var(--ok);font-weight:600}
   <div class="footer">
     <p>Open API: <code>GET /api/bench?stream=1&amp;bytes=65536</code> (NDJSON) · <code>GET /api/bench</code> (JSON) · <code>?meta=1</code>.</p>
     <p>ZRW wins structured ints; OmniWave covers float/delta/high-entropy routes gzip never sees as first-class. Compare ratios yourself.</p>
-    <a class="cta" href="/pps">Open freemium suite · 100 GB</a>
+    <a class="cta" href="/pps">Open Suite</a>
   </div>
 </div>
 <script>
@@ -250,7 +254,7 @@ td.win{color:var(--ok);font-weight:600}
             log(`✓ ${ev.class} best size · ${ev.winner ? ev.winner.engine + " " + ev.winner.packed_bytes + " B" : "—"}`);
           } else if (ev.event === "done") {
             wallPill.textContent = "wall " + ev.wall_ms + " ms";
-            status.textContent = "Done. Compare packed sizes (smaller is better) · freemium suite for real jobs (100 GB free).";
+            status.textContent = "Done. Compare packed sizes (smaller is better) · freemium suite for real jobs (6.9 GB / 3 h unpaid).";
             modePill.textContent = "done";
             modePill.className = "pill ok";
           }

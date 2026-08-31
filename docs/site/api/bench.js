@@ -5,7 +5,7 @@
  * engines: SPL OmniWave · ZRW · gzip-9 · brotli-11
  * metrics: packed_bytes, ratio, encode_ms, decode_ms (where applicable)
  *
- * Freemium tier is 100 GB/job on paid rails — this page proves method
+ * Suite unpaid cap is 6.9 GB / 3 h — this page proves method
  * on public synthetic slices so visitors verify before they pay.
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
@@ -411,7 +411,7 @@ async function handler(req, res) {
         engines: ["spl_omniwave", "zrw", "gzip-9", "brotli-11"],
         freemium: {
           first_gb: 100,
-          note: "Live paid jobs up to 100 GB; this open bench uses public synthetic slices ≤512 KiB so proof is free and self-serve.",
+          note: "Live paid jobs up to 6.9 GB / 3 h; this open bench uses public synthetic slices ≤512 KiB so proof is free and self-serve.",
         },
         stream: "GET /api/bench?stream=1&bytes=65536 → NDJSON events",
         json: "GET /api/bench?bytes=65536 → full JSON report",
@@ -474,7 +474,7 @@ async function handler(req, res) {
       })),
       cta: {
         suite: "https://www.slidphilabs.com/pps",
-        note: "First 100 GB freemium · then ¢/GB — proof is above.",
+        note: "6.9 GB / 3 h unpaidmium · then ¢/GB — proof is above.",
       },
     });
     return res.end();
@@ -496,7 +496,7 @@ async function handler(req, res) {
       wall_ms: +(nowMs() - tAll).toFixed(3),
       freemium: {
         first_gb: 100,
-        note: "Open bench = synthetic proof. Paid suite handles real jobs to 100 GB free tier.",
+        note: "Open bench = synthetic proof. Paid suite handles real jobs to 6.9 GB / 3 h unpaid tier.",
       },
       classes: results,
       cta: {

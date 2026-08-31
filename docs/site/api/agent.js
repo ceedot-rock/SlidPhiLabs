@@ -72,7 +72,7 @@ export default async function handler(req, res) {
   const body = {
     ok: true,
     name: "Slid Phi Labs — Platform Discovery",
-    version: "1.17.0",
+    version: "1.18.0",
     lead_product: "cuni",
     cash_product: "chamber",
     auth: AUTH,
@@ -196,10 +196,10 @@ export default async function handler(req, res) {
       prove: "https://www.slidphilabs.com/standings.json",
     },
     one_liner:
-      "Two products. Chamber (security): Day $9 · Month $49 · Year $490. TRU8 (compression): Day $19 · Month $99 · Year $990 (year = both). Suite meters jobs. GET /api/agent.",
+      "CuNi $0. Chamber $49/mo · $490/yr. Rider $79/mo · $790/yr. Suite 6.9 GB / 3 h then ~5¢/GB.",
     starter_path: "https://www.slidphilabs.com/pps",
     suite_pricing: {
-      free_cap_gb: 100,
+      free_cap_gb: 6.9,
       min_paid_usd: 0.05,
       usd_per_gb_after_free: 0.05,
       usd_per_gb_bulk: 0.04,

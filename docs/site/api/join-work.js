@@ -238,7 +238,7 @@ export default async function handler(req, res) {
     grants: grants(),
     next: [
       "Save your token offline",
-      "Open /pps for freemium suite (100 GB/job free first)",
+      "Open /pps for Suite (6.9 GB / 3 h unpaid)",
       "Open /standings for ZRW 8 B proof",
       "Open /web to compress",
       "Walk the lattice — do not seek private lab keys",

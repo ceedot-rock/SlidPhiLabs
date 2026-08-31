@@ -1,6 +1,6 @@
 /**
  * POST /api/residual-mint
- * Dual door. Suite meters 100 GB then 5¢/4¢. Chamber 24h then $9/$49/$490.
+ * Dual door. Suite meters 6.9 GB / 3 h then 5¢/4¢. Chamber 24h then $9/$49/$490.
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
 

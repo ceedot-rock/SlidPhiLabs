@@ -10,7 +10,7 @@ const ORIGINS = [
   "https://www.slidphilabs.com",
   "https://slidphilabs.fly.dev",
   "https://agentrider.fly.dev",
-  "https://agentrider.vercel.app",
+  "https://agentrider.fly.dev",
   "https://cuni-studio.fly.dev",
   "https://l33tsaas.fly.dev",
   "https://overlord-eye.fly.dev",

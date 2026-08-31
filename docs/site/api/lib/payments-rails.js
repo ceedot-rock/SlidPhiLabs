@@ -455,7 +455,7 @@ export function buildPaymentsMatrix(req) {
       name: "SPL Pay Per Suite (metered freemium)",
       audience: ["humans", "agents"],
       configured: true,
-      free_cap_gb: 100,
+      free_cap_gb: 6.9,
       after_free_usd_per_gb: 0.05,
       human: `POST ${origin}/api/ppp-checkout`,
       agent: `POST ${origin}/api/x402-suite`,

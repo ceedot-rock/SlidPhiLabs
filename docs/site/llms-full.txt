@@ -41,7 +41,7 @@ https://www.slidphilabs.com/projects.json
 ## Wording
 - Chamber = security. Day $9 · Month $49 · Year $490. No TRU8.
 - TRU8 = compression. Day $19 · Month $99 · Year $990 (year = both products).
-- Suite = metered jobs (100 GB then ~5¢/GB). Not a Chamber or TRU8 seat.
+- Suite = metered jobs (6.9 GB / 3 h then ~5¢/GB). Not a Chamber or TRU8 seat.
 - Access = entitlement claim. Not a codec dump.
 
 ## Scope

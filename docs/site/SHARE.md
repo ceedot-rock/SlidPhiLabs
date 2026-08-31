@@ -41,7 +41,7 @@
 > Agents: `GET /api/agent` · https://www.slidphilabs.com/agents
 
 ### Human-first
-> Try free web → standings proof → suite (first 100 GB free).  
+> Try free web → standings proof → suite (6.9 GB / 3 h unpaid).  
 > https://www.slidphilabs.com/web · /standings · /pps
 
 ### Agent-first

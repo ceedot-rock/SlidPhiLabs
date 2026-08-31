@@ -1,6 +1,6 @@
 /**
  * PPP quote — POST /api/ppp-quote
- * Freemium: free first 100 GB, then usage rates far under cloud egress.
+ * Freemium: 6.9 GB / 3 h unpaid, then usage rates far under cloud egress.
  * See suite-pricing.js for the canonical model.
  */
 import { computeQuote, FREE_BYTES, PRICING_EXAMPLES } from "./suite-pricing.js";

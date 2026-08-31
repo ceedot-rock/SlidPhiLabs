@@ -13,7 +13,7 @@
 | Field | Value |
 |--------|--------|
 | **Title** | Slid Phi Labs — Chamber unlock · TRU8 compression · Suite meter |
-| **Description** | Chamber unlocks JSON ($99/domain after 24h). TRU8 compresses (demos free). Suite meters jobs (100 GB then ¢/GB). Not seats. |
+| **Description** | Chamber unlocks JSON ($99/domain after 24h). TRU8 compresses (demos free). Suite meters jobs (6.9 GB / 3 h then ¢/GB). Not seats. |
 | **Keywords** | TRU8, slid phi labs, compression, residual, CDDG, suite |
 | **Canonical** | https://www.slidphilabs.com/ |
 | **OG image** | Master poster (full, no crop of third-eye / banners) |
@@ -55,7 +55,7 @@ When Stripe lands on `/?purchase=PRODUCT` or `/?purchase=…&session=…`:
 TRU8 — true minimal units for repetition
 
 **Lede:**  
-Chamber is a security unlock ($99 / domain after 24h) — not compression, not a seat. TRU8 is the only public compression product face: demos free with credit; production residual is a commercial license via corey@slidphilabs.com. tru8-chamber is a $1,900/project/year license (both products, one project). Suite on /pps is a metered job rail (100 GB free, then ~5¢/GB) — not a seat, not the product face. Try Gate is retired.
+Chamber is a security unlock ($99 / domain after 24h) — not compression, not a seat. TRU8 is the only public compression product face: demos free with credit; production residual is a commercial license via corey@slidphilabs.com. tru8-chamber is a $1,900/project/year license (both products, one project). Suite on /pps is a metered job rail (6.9 GB / 3 h unpaid, then ~5¢/GB) — not a seat, not the product face. Try Gate is retired.
 
 **CTAs:**  
 1. **See for yourself** → `/try` (teal)  

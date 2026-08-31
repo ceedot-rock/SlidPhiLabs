@@ -5,7 +5,7 @@ info:
     Public product face: TRU8. Dual-surface lab: Pub Facing (humans) + Agentic Minded (agents).
     One mission · two attack vectors · one team.
     Start: GET /api/welcome then GET /api/agent.
-    Suite is a metered service (100 GB free · then ~5¢/GB), not the product face.
+    Suite is a metered service (6.9 GB / 3 h unpaid · then ~5¢/GB), not the product face.
     x402 auto-claim of /access is not wired.
   version: 1.6.0
   contact:
