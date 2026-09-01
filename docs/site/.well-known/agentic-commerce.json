@@ -31,7 +31,7 @@
   "products": {
     "cuni": { "price": "$0", "url": "https://cuni-studio.fly.dev/" },
     "chamber": { "month": 49, "year": 490, "url": "https://www.slidphilabs.com/chamber" },
-    "aware": { "name": "AWARE", "engine": "Combined GC 1.19.2", "day": 9, "month": 49, "year": 490, "url": "https://www.slidphilabs.com/gc" },
+    "aware": { "name": "AWARE", "acronym": "Adaptive Waveform Archive Restore Engine", "engine": "Combined GC 1.19.2", "day": 9, "month": 49, "year": 490, "url": "https://www.slidphilabs.com/gc" },
     "rider": { "month": 79, "year": 790, "url": "https://agentrider.fly.dev/" },
     "suite": { "unpaid_gb": 6.9, "trial_hours": 3, "usd_per_gb": 0.05, "url": "https://www.slidphilabs.com/pps" },
     "lab_pass": { "year": 1088, "url": "https://www.slidphilabs.com/lab-pass" },

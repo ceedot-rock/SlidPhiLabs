@@ -22,6 +22,7 @@
   "products": {
     "gc": {
       "name": "AWARE",
+      "acronym": "Adaptive Waveform Archive Restore Engine",
       "engine": "Combined GC 1.19.2",
       "version": "1.19.2",
       "page": "https://www.slidphilabs.com/gc",

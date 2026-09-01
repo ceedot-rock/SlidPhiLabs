@@ -10,7 +10,7 @@
   const FALLBACK_NEWS = [
     { t: "Exact", title: "CuNi Studio — write once or refuse", href: "https://cuni-studio.fly.dev/" },
     { t: "Seal", title: "Chamber $49 / $490", href: "/chamber" },
-    { t: "Pack", title: "AWARE $9 / $49 / $490", href: "/gc" },
+    { t: "Pack", title: "AWARE — Adaptive Waveform Archive Restore Engine $9 / $49 / $490", href: "/gc" },
     { t: "Pass", title: "Rider Team $79 / $790", href: "https://agentrider.fly.dev/" },
     { t: "Meter", title: "Suite 6.9 GB / 3 h then ~5¢", href: "/pps" },
     { t: "Agents", title: "MCP + x402", href: "/mcp" },
