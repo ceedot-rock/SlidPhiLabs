@@ -32,6 +32,9 @@ const STANDING = [
   { sku: "chamber-day", name: "Chamber · Day", usd: "9", kind: "chamber", blurb: "Security only. 24 hours. No TRU8 production." },
   { sku: "chamber-month", name: "Chamber · Month", usd: "49", kind: "chamber", blurb: "Security only. Calendar month. No TRU8 production." },
   { sku: "chamber-year", name: "Chamber · Year", usd: "490", kind: "chamber", blurb: "Security only. Half of TRU8 Year. No TRU8 production." },
+  { sku: "gc-day", name: "AWARE · Day", usd: "9", kind: "gc", blurb: "AWARE lossless. Combined GC 1.19.2. 24 hours." },
+  { sku: "gc-month", name: "AWARE · Month", usd: "49", kind: "gc", blurb: "AWARE lossless. Combined GC 1.19.2. Calendar month." },
+  { sku: "gc-year", name: "AWARE · Year", usd: "490", kind: "gc", blurb: "AWARE lossless. Combined GC 1.19.2. Year seat." },
   { sku: "tru8-day", name: "TRU8 · Day", usd: "19", kind: "tru8", blurb: "Compression only. 24 hours. No Chamber seat." },
   { sku: "tru8-month", name: "TRU8 · Month", usd: "99", kind: "tru8", blurb: "Compression only. Calendar month. No Chamber seat." },
   { sku: "tru8-year", name: "TRU8 · Year", usd: "990", kind: "both", blurb: "Both products + seat for one year. Chamber + TRU8." },
@@ -196,7 +199,7 @@ export default async function handler(req, res) {
       prove: "https://www.slidphilabs.com/standings.json",
     },
     one_liner:
-      "CuNi $0. Chamber $49/mo · $490/yr. Rider $79/mo · $790/yr. Suite 6.9 GB / 3 h then ~5¢/GB.",
+      "CuNi $0. Chamber $49/mo · $490/yr. AWARE $9/$49/$490. Rider $79/mo · $790/yr. Suite 6.9 GB / 3 h then ~5¢/GB.",
     starter_path: "https://www.slidphilabs.com/pps",
     suite_pricing: {
       free_cap_gb: 6.9,
