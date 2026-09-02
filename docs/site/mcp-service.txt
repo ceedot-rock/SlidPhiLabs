@@ -1,0 +1,33 @@
+Slid Phi Labs — lab catalogs (remote server, nothing to install)
+
+Server URL: https://www.slidphilabs.com/mcp
+Docs / landing page: https://www.slidphilabs.com/mcp-service
+Official MCP Registry: io.github.ceedot-rock/slid-phi-labs
+Transport: Streamable HTTP · authentication optional · free (fair use: 60 requests/hour per IP; 500/day)
+
+Lookup tools for the official Slid Phi Labs public catalogs:
+SKU / price, License, Surface, CuNi exactness, Chamber, Agent-Rider, AWARE (Combined GC),
+pulsar (public GPLv3 cousin), Measure (published benches only), Rail (Stripe / x402),
+Box (24h try law), and Docs (SKILL.md, llms.txt, server card, OpenAPI).
+
+Each catalog exposes two tools — xxx_search (free text or code) and xxx_get (one entry with
+notes, child codes and cross-references to the other catalogs). 24 catalog tools across
+12 catalogs, plus 5 commerce tools on the same endpoint (spl_discover, spl_lab_auth,
+spl_signup, spl_agent_key, spl_catalog). SKU succession works the same way year-over-year
+questions work on a coding catalog: what changed, and which SKU succeeded it.
+
+Catalogs are public law. Engines stay behind a seat.
+
+Config:
+
+{
+  "mcpServers": {
+    "slid-phi-labs": {
+      "url": "https://www.slidphilabs.com/mcp"
+    }
+  }
+}
+
+There is no public engine repository for the seats — this is a hosted service, so the
+endpoint above is the whole integration. Public cousin source (GPLv3) lives at
+https://github.com/ceedot-rock/cuni and https://github.com/ceedot-rock/pulsar-best.
