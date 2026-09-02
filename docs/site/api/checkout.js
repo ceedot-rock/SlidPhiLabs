@@ -48,6 +48,13 @@ export default async function handler(req, res) {
       matrix: `${origin}/api/payments`,
       methods_on_stripe: [
         "card",
+        "link",
+        "cashapp",
+        "amazon_pay",
+        "us_bank_account",
+        "klarna",
+        "affirm",
+        "afterpay_clearpay",
         "apple_pay_google_pay_via_card",
       ],
     });
@@ -182,7 +189,7 @@ export default async function handler(req, res) {
     const session = await createStripeCheckoutSession({
       amountCents: amount_cents,
       name: `Slid Phi Labs — ${name}`,
-      description: `${kind} · lab seat · card checkout`,
+      description: `${kind} · lab seat`,
       sku: sku || "custom",
       email,
       origin,

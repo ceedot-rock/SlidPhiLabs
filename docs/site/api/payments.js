@@ -186,7 +186,7 @@ export default async function handler(req, res) {
       const session = await createStripeCheckoutSession({
         amountCents: amount_cents,
         name,
-        description: `Slid Phi Labs · ${sku || "custom"} · card checkout`,
+        description: `Slid Phi Labs · ${sku || "custom"}`,
         sku: sku || "custom",
         email,
         origin,

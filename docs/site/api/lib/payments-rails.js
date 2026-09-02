@@ -1,6 +1,6 @@
 /**
  * Universal payment rails for Slid Phi Labs.
- * Humans → Stripe Checkout (card; Apple/Google Pay ride on card) + invoice/wire.
+ * Humans → Stripe Checkout (card, wallets, bank, BNPL when Stripe enables them) + invoice/wire.
  * Agents → x402 (Solana USDC + Base USDC).
  * Anyone → manual crypto addresses + invoice email.
  *
@@ -18,14 +18,35 @@ export const USDC_SOLANA_MAINNET = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
 export const USDC_BASE_MAINNET = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export const BASE_NETWORK = "eip155:8453";
 
-/** Stripe Checkout — lab seats, not BNPL storefront. Apple/Google Pay ride on `card`. */
-export const STRIPE_CHECKOUT_METHODS = ["card"];
+/** Stripe Checkout methods. Apple/Google Pay ride on `card`. */
+export const STRIPE_CHECKOUT_METHODS = [
+  "card",
+  "link",
+  "cashapp",
+  "amazon_pay",
+  "us_bank_account",
+  "klarna",
+  "affirm",
+  "afterpay_clearpay",
+];
 
-export const STRIPE_CHECKOUT_METHODS_FALLBACK = ["card"];
+export const STRIPE_CHECKOUT_METHODS_FALLBACK = [
+  "card",
+  "link",
+  "cashapp",
+  "amazon_pay",
+];
 
 /** Human-readable labels for discovery UIs */
 export const STRIPE_METHOD_LABELS = {
   card: "Card (Visa, Mastercard, Amex) · Apple Pay / Google Pay when available",
+  link: "Link",
+  cashapp: "Cash App Pay",
+  amazon_pay: "Amazon Pay",
+  us_bank_account: "US bank account (ACH)",
+  klarna: "Klarna",
+  affirm: "Affirm",
+  afterpay_clearpay: "Afterpay",
 };
 
 /** Standing SKUs — keep in sync with x402-products.js CATALOG */
@@ -406,7 +427,7 @@ export function buildPaymentsMatrix(req) {
         id,
         label: STRIPE_METHOD_LABELS[id] || id,
       })),
-      note: "Hosted Checkout: card. Apple Pay and Google Pay appear on card when the browser offers them. No BNPL on this path.",
+      note: "Hosted Checkout. Card, Link, Cash App, Amazon Pay, US bank ACH, Klarna, Affirm, Afterpay when Stripe enables them for the session. Apple Pay and Google Pay ride on card.",
       how: {
         endpoint: `POST ${origin}/api/checkout`,
         body: { sku: "chamber-year", email: "you@example.com", rail: "stripe" },
@@ -520,7 +541,7 @@ export function buildPaymentsMatrix(req) {
   return {
     service: "Slid Phi Labs — lab checkout",
     version: "1.1.0",
-    policy: "Humans: Stripe card checkout, then /access. Teams: invoice/wire. Agents: x402. Entitlement after Stripe session verify or x402 claim.",
+    policy: "Humans: Stripe Checkout, then /access. Teams: invoice/wire. Agents: x402. Entitlement after Stripe session verify or x402 claim.",
     product_face: "Slid Phi Labs",
     x402_access_autoclaim: false,
     contact,

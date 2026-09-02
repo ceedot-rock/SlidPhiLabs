@@ -68,7 +68,16 @@ async function createCheckoutSession({ amountCents, quote, email, origin }) {
     "line_items[0][price_data][product_data][description]",
     `${quote.breakdown.mb} MB · ${quote.breakdown.data_class} · SPL Pay Per Suite`
   );
-  params.set("payment_method_types[0]", "card");
+  [
+    "card",
+    "link",
+    "cashapp",
+    "amazon_pay",
+    "us_bank_account",
+    "klarna",
+    "affirm",
+    "afterpay_clearpay",
+  ].forEach((m, i) => params.set(`payment_method_types[${i}]`, m));
   params.set("metadata[sku]", "ppp");
   params.set("metadata[product]", quote.breakdown.product);
   params.set("metadata[op]", quote.breakdown.op);
