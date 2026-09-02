@@ -10,7 +10,7 @@
 <title>Access — entitlement claim after payment · Slid Phi Labs</title>
 <meta name="description" content="Claim entitlement after Chamber unlock, suite job, or project license. Not a codec dump. Not a seat unless the SKU is a named identity."/>
 <meta name="lab-modules" content="compression,chamber"/>
-<meta name="lab-compression" content="TRU8"/>
+<meta name="lab-compression" content="AWARE,pulsar"/>
 <meta name="lab-sku" content="truchamber-day,truchamber-month,truchamber-year"/>
 
 <meta name="robots" content="index,follow"/>
@@ -138,7 +138,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 .p-card .blurb{color:var(--muted);font-size:.85rem;flex:1}
 .mono{font-family:'IBM Plex Mono',monospace;font-size:.88rem}
 </style>
-<link rel="stylesheet" href="/assets/chrome.css?v=1"/>
+<link rel="stylesheet" href="/assets/chrome.css?v=16"/>
 </head>
 <body>
 <header class="site-nav" role="banner">
@@ -149,14 +149,13 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="/">Home</a>
-      <a href="/chamber">Chamber</a>
-      <a href="/demos">TRU8</a>
-      <a href="/pps">Suite</a>
-      <a href="/license">License</a>
-      <a href="/about">About</a>
+      <a href="/products">Products</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/box">Try</a>
+      <a href="/pay">Pay</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-primary btn-sm" href="https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E" target="_blank" rel="noopener">TRU8 Year · $990</a>
+      <a class="btn btn-primary btn-sm" href="/pay?sku=chamber-year">Chamber Year · $490</a>
       <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -168,7 +167,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       <div class="badge">After pay · claim the entitlement you bought</div>
       <p class="ribbon">Not a dump. Not a second product.</p>
       <h1>Access</h1>
-      <p class="note" style="margin-bottom:0">Pay for Chamber (security) or TRU8 (compression), then this page opens the pack you bought. Chamber Year $490 = security only. TRU8 Year $990 = both. Support: <code>corey@slidphilabs.com</code>.</p>
+      <p class="note" style="margin-bottom:0">Pay for a lab seat — Chamber, AWARE, Agent-Rider, Lab Pass — then this page opens what you bought. Support: <code>corey@slidphilabs.com</code>.</p>
     </div>
   </div>
 
@@ -218,14 +217,14 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 
   <h2>Not purchased yet?</h2>
   <div class="links">
-    <a class="btn btn-gold" href="https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E" target="_blank" rel="noopener">TRU8 Year · $990</a>
-    <a class="btn btn-primary" href="https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F" target="_blank" rel="noopener">Chamber Year · $490</a>
-    <a class="btn btn-teal" href="/license">All six plans</a>
-    <a class="btn btn-ghost" href="/demos">Free TRU8 demos</a>
+    <a class="btn btn-gold" href="/pay?sku=chamber-year">Chamber Year · $490</a>
+    <a class="btn btn-primary" href="/pay?sku=gc-year">AWARE Year · $490</a>
+    <a class="btn btn-teal" href="/pay?sku=rider-year">Rider Year · $790</a>
+    <a class="btn btn-ghost" href="/pricing">Full price list</a>
   </div>
 
   <h2>Primary loop</h2>
-  <p class="note">Black box 3h → seat → Access entitlement → PACKAGE ACCESS to corey@ → TruChamber + TRU8 with seat. SoT: <a href="/pricing.json">pricing.json</a>.</p>
+  <p class="note">Try 24 hours on /box → pay a seat on /pay → this page opens Access. SoT: <a href="/pricing.json">pricing.json</a>.</p>
 
   <footer>
     <div class="lockup">
@@ -260,49 +259,114 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 (function () {
   const FULFILL = 'corey@slidphilabs.com';
   const CATALOG = {
-    'tru8-year': {
-      name: 'TRU8 · Year (both products)',
-      price: '$990/year',
-      champ: true,
-      deliver: 'TRU8 production + Chamber security for one year. Both products.',
-      buy: 'https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E',
-      blurb: 'Full stack · both products',
-    },
-    'tru8-month': {
-      name: 'TRU8 · Month',
-      price: '$99/month',
-      deliver: 'TRU8 production only for one calendar month. No Chamber seat.',
-      buy: 'https://www.slidphilabs.com/license',
-      blurb: 'Compression only',
-    },
-    'tru8-day': {
-      name: 'TRU8 · Day',
-      price: '$19/day',
-      deliver: 'TRU8 production only for 24 hours. No Chamber seat.',
-      buy: 'https://www.slidphilabs.com/license',
-      blurb: 'Compression only',
-    },
     'chamber-year': {
-      name: 'Chamber · Year',
+      name: 'Chamber · annual seat',
       price: '$490/year',
       champ: true,
-      deliver: 'Security only for one year. Half of TRU8 Year. No TRU8 production.',
-      buy: 'https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F',
-      blurb: 'Security only · half',
+      deliver: 'Two-key JSON seal for one year. Not a compressor.',
+      buy: '/pay?sku=chamber-year',
+      blurb: 'JSON seal',
     },
     'chamber-month': {
-      name: 'Chamber · Month',
+      name: 'Chamber · monthly seat',
       price: '$49/month',
-      deliver: 'Security only. Half of TRU8 Month. No TRU8 production.',
-      buy: 'https://www.slidphilabs.com/license',
-      blurb: 'Security only · half',
+      deliver: 'Two-key JSON seal for one calendar month.',
+      buy: '/pay?sku=chamber-month',
+      blurb: 'JSON seal',
     },
     'chamber-day': {
-      name: 'Chamber · Day',
+      name: 'Chamber · 24-hour seat',
       price: '$9/day',
-      deliver: 'Security only. Half of TRU8 Day. No TRU8 production.',
-      buy: 'https://www.slidphilabs.com/license',
-      blurb: 'Security only · half',
+      deliver: 'Two-key JSON seal for 24 hours.',
+      buy: '/pay?sku=chamber-day',
+      blurb: 'JSON seal',
+    },
+    'gc-year': {
+      name: 'AWARE · annual compressor seat',
+      price: '$490/year',
+      champ: true,
+      deliver: 'Hosted lossless compressor for one year. Engine stays in the lab.',
+      buy: '/pay?sku=gc-year',
+      blurb: 'Compressor',
+    },
+    'gc-month': {
+      name: 'AWARE · monthly compressor seat',
+      price: '$49/month',
+      deliver: 'Hosted lossless compressor for one calendar month.',
+      buy: '/pay?sku=gc-month',
+      blurb: 'Compressor',
+    },
+    'gc-day': {
+      name: 'AWARE · 24-hour compressor seat',
+      price: '$9/day',
+      deliver: 'Hosted lossless compressor for 24 hours.',
+      buy: '/pay?sku=gc-day',
+      blurb: 'Compressor',
+    },
+    'rider-year': {
+      name: 'Agent-Rider · annual team seat',
+      price: '$790/year',
+      champ: true,
+      deliver: 'Signed agent identity L0–L4 for one year. Not in Lab Pass.',
+      buy: '/pay?sku=rider-year',
+      blurb: 'Identity',
+    },
+    'rider-month': {
+      name: 'Agent-Rider · monthly team seat',
+      price: '$79/month',
+      deliver: 'Signed agent identity L0–L4 for one calendar month.',
+      buy: '/pay?sku=rider-month',
+      blurb: 'Identity',
+    },
+    'lab-pass': {
+      name: 'Lab Pass · annual',
+      price: '$1,088/year',
+      champ: true,
+      deliver: 'Chamber + AWARE + TruGame for 365 days. Not Rider.',
+      buy: '/pay?sku=lab-pass',
+      blurb: 'Bundle',
+    },
+    'cuni-exception': {
+      name: 'CuNi · closed-app exception',
+      price: '$490/year',
+      deliver: 'One closed product, one year. Not Combined GC.',
+      buy: '/pay?sku=cuni-exception',
+      blurb: 'Language exception',
+    },
+    'trugame-year': {
+      name: 'TruGame · annual engine seat',
+      price: '$79/year',
+      deliver: 'Engine seat for one year.',
+      buy: '/pay?sku=trugame-year',
+      blurb: 'Engine',
+    },
+    'trugame-month': {
+      name: 'TruGame · monthly engine seat',
+      price: '$12/month',
+      deliver: 'Engine seat for one calendar month.',
+      buy: '/pay?sku=trugame-month',
+      blurb: 'Engine',
+    },
+    'tru8-year': {
+      name: 'TRU8 · Year (legacy)',
+      price: '$990/year',
+      deliver: 'Legacy receipt SKU. New compressor seats are AWARE.',
+      buy: '/pay?sku=gc-year',
+      blurb: 'Legacy',
+    },
+    'tru8-month': {
+      name: 'TRU8 · Month (legacy)',
+      price: '$99/month',
+      deliver: 'Legacy receipt SKU. New compressor seats are AWARE.',
+      buy: '/pay?sku=gc-month',
+      blurb: 'Legacy',
+    },
+    'tru8-day': {
+      name: 'TRU8 · Day (legacy)',
+      price: '$19/day',
+      deliver: 'Legacy receipt SKU. New compressor seats are AWARE.',
+      buy: '/pay?sku=gc-day',
+      blurb: 'Legacy',
     },
     'truchamber-year': {
       name: 'TRU8 · Year (legacy alias)',
@@ -420,6 +484,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 
   const grid = document.getElementById('product-grid');
   Object.keys(CATALOG).forEach((key) => {
+    if (/^(tru8|truchamber|zrw|cddg|json-chamber|try-gate|gate)/.test(key)) return;
     const p = CATALOG[key];
     const el = document.createElement('div');
     el.className = 'p-card' + (p.champ ? ' champ' : '');
@@ -452,20 +517,22 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
     sauc3: 'zrw-l33t-unlimited',
     unlimited: 'zrw-l33t-unlimited',
     support: 'support-integration',
-    tru8: 'truchamber-year',
-    'tru8-chamber': 'truchamber-year',
-    'tru8-commercial': 'truchamber-year',
-    license: 'truchamber-year',
-    studio: 'truchamber-year',
-    commercial: 'truchamber-year',
     chamber: 'chamber-year',
     unlock: 'chamber-year',
-    day: 'truchamber-day',
-    month: 'truchamber-month',
-    year: 'truchamber-year',
-    yearly: 'truchamber-year',
-    monthly: 'truchamber-month',
-    seat: 'truchamber-year',
+    gc: 'gc-year',
+    aware: 'gc-year',
+    rider: 'rider-year',
+    'agent-rider': 'rider-year',
+    pass: 'lab-pass',
+    'lab-pass-year': 'lab-pass',
+    exception: 'cuni-exception',
+    day: 'chamber-day',
+    month: 'chamber-month',
+    year: 'chamber-year',
+    yearly: 'lab-pass',
+    monthly: 'chamber-month',
+    seat: 'lab-pass',
+    tru8: 'gc-year',
     truchamber: 'chamber-year',
   };
   if (aliases[product]) product = aliases[product];
@@ -760,6 +827,6 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 </script>
 <script src="/assets/platform-home.js?v=1" defer></script>
 <script src="/assets/site-header.js?v=1" defer></script>
-<script src="/assets/chrome.js?v=1" defer></script>
+<script src="/assets/chrome.js?v=16" defer></script>
 </body>
 </html>

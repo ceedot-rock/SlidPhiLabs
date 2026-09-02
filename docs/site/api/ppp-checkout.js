@@ -27,13 +27,12 @@ function siteOrigin(req) {
 }
 
 async function createCheckoutSession({ amountCents, quote, email, origin }) {
-  // Prefer shared multi-method builder (cards, Link, Cash App, ACH, BNPL, …)
   try {
     const { createStripeCheckoutSession } = await import("./lib/payments-rails.js");
     return await createStripeCheckoutSession({
       amountCents,
       name: `SPL Pay Per Suite — ${quote.breakdown.op} · ${quote.breakdown.product}`,
-      description: `${quote.breakdown.mb} MB · ${quote.breakdown.data_class} · multi-method`,
+      description: `${quote.breakdown.mb} MB · ${quote.breakdown.data_class} · Suite meter`,
       sku: "ppp",
       email,
       origin,
@@ -69,17 +68,7 @@ async function createCheckoutSession({ amountCents, quote, email, origin }) {
     "line_items[0][price_data][product_data][description]",
     `${quote.breakdown.mb} MB · ${quote.breakdown.data_class} · SPL Pay Per Suite`
   );
-  // Broad methods (same set as universal checkout)
-  [
-    "card",
-    "link",
-    "cashapp",
-    "amazon_pay",
-    "us_bank_account",
-    "klarna",
-    "affirm",
-    "afterpay_clearpay",
-  ].forEach((m, i) => params.set(`payment_method_types[${i}]`, m));
+  params.set("payment_method_types[0]", "card");
   params.set("metadata[sku]", "ppp");
   params.set("metadata[product]", quote.breakdown.product);
   params.set("metadata[op]", quote.breakdown.op);

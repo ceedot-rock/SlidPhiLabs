@@ -204,8 +204,6 @@ const REWRITES = {
   "/ideas/": "/ideas.html",
   "/datacenters": "/datacenters.html",
   "/datacenters/": "/datacenters.html",
-  "/try": "/pps/index.html",
-  "/try/": "/pps/index.html",
   "/pay": "/pay.html",
   "/pay/": "/pay.html",
   "/payments": "/pay.html",

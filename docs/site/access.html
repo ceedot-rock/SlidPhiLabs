@@ -10,7 +10,7 @@
 <title>Access — packages after pay · Slid Phi Labs</title>
 <meta name="description" content="Claim entitlement after Stripe or x402. Auto-claim with ?claim= token. Suite freemium on /pps (6.9 GB / 3 h)."/>
 <meta name="lab-modules" content="compression,agent_platform"/>
-<meta name="lab-compression" content="TRU8,CDDG:Split"/>
+<meta name="lab-compression" content="AWARE,pulsar"/>
 <meta name="lab-agent-platform" content="CuNi,Agent^Rider,Quikgater"/>
 
 <meta name="robots" content="index,follow"/>
@@ -138,7 +138,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 .p-card .blurb{color:var(--muted);font-size:.85rem;flex:1}
 .mono{font-family:'IBM Plex Mono',monospace;font-size:.88rem}
 </style>
-<link rel="stylesheet" href="/assets/chrome.css?v=1"/>
+<link rel="stylesheet" href="/assets/chrome.css?v=16"/>
 </head>
 <body>
 <header class="site-nav" role="banner">
@@ -149,14 +149,13 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="/">Home</a>
-      <a href="/chamber">Chamber</a>
-      <a href="/demos">TRU8</a>
-      <a href="/pps">Suite</a>
-      <a href="/license">License</a>
-      <a href="/about">About</a>
+      <a href="/products">Products</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/box">Try</a>
+      <a href="/pay">Pay</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-primary btn-sm" href="https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E" target="_blank" rel="noopener">TRU8 Year · $990</a>
+      <a class="btn btn-primary btn-sm" href="/pay?sku=chamber-year">Chamber Year · $490</a>
       <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -168,7 +167,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       <div class="badge">After pay · claim the entitlement you bought</div>
       <p class="ribbon">Not a dump. Not a second product.</p>
       <h1>Access</h1>
-      <p class="note" style="margin-bottom:0">Pay for Chamber (security) or TRU8 (compression), then this page opens the pack. Chamber Year $490 = security only. TRU8 Year $990 = both. Support: <code>corey@slidphilabs.com</code>.</p>
+      <p class="note" style="margin-bottom:0">Pay for a lab seat — Chamber, AWARE, Agent-Rider, Lab Pass — then this page opens what you bought. Support: <code>corey@slidphilabs.com</code>.</p>
     </div>
   </div>
 
@@ -178,7 +177,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
     <code>?claim=spl1.…&amp;product=sku</code> or GET <code>/api/access-verify?claim=…</code>.
     Email <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> if the token is missing.
     blackjack / shard-zip / shard-tsdb $199 SKUs are support for the already-public OSS library — no secret extra engine tarball.
-    Chamber: Day $9 · Month $49 · Year $490 (security only). TRU8: Day $19 · Month $99 · Year $990 (year = both). Suite is a meter (6.9 GB / 3 h then ~5¢/GB).
+    Chamber $9 / $49 / $490. AWARE $9 / $49 / $490. Rider $79 / $790. Lab Pass $1,088 (Chamber + AWARE + TruGame, not Rider). Suite is a meter (6.9 GB / 3 h then ~5¢/GB).
   </div>
 
   <div id="status-card" role="status">
@@ -580,6 +579,6 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 </script>
 <script src="/assets/platform-home.js?v=1" defer></script>
 <script src="/assets/site-header.js?v=1" defer></script>
-<script src="/assets/chrome.js?v=1" defer></script>
+<script src="/assets/chrome.js?v=16" defer></script>
 </body>
 </html>

@@ -237,6 +237,9 @@ body.spl-chrome {
   border: 1px solid transparent;
   cursor: pointer;
   font-family: inherit;
+  appearance: none;
+  background: none;
+  color: inherit;
 }
 .spl-btn-dark { background: var(--navy); color: #fff; border-color: var(--navy); }
 .spl-btn-dark:hover { background: var(--navy-2); }

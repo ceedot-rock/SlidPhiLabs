@@ -1,9 +1,9 @@
 {
-  "updated": "2026-08-30",
+  "updated": "2026-09-02",
   "inbox": "corey@slidphilabs.com",
   "site": "https://www.slidphilabs.com",
   "methods": "https://www.slidphilabs.com/METHODS.md",
-  "rule": "CuNi $0. Chamber $49/mo · $490/yr. AWARE $9/$49/$490. Rider $79/mo · $790/yr. Suite 6.9 GB / 3 h then ~5¢/GB. Lab Pass $1,088.",
+  "rule": "CuNi $0. Chamber $9/$49/$490. AWARE $9/$49/$490. Rider $79/mo · $790/yr. Suite 6.9 GB / 3 h then ~5¢/GB. Lab Pass $1,088 (Chamber + AWARE + TruGame, not Rider). Stripe card checkout.",
   "measured": {
     "silesia_raw": 211938580,
     "aware_xz1": 47752368,
@@ -38,8 +38,21 @@
       "plans": {
         "day": { "sku": "chamber-day", "usd": 9, "stripe": "https://www.slidphilabs.com/pay?sku=chamber-day" },
         "month": { "sku": "chamber-month", "usd": 49, "stripe": "https://www.slidphilabs.com/pay?sku=chamber-month" },
-        "year": { "sku": "chamber-year", "usd": 490, "stripe": "https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F" }
+        "year": { "sku": "chamber-year", "usd": 490, "stripe": "https://www.slidphilabs.com/pay?sku=chamber-year" }
       }
+    },
+    "rider": {
+      "name": "Agent-Rider",
+      "plans": {
+        "month": { "sku": "rider-month", "usd": 79, "stripe": "https://www.slidphilabs.com/pay?sku=rider-month" },
+        "year": { "sku": "rider-year", "usd": 790, "stripe": "https://www.slidphilabs.com/pay?sku=rider-year" }
+      }
+    },
+    "cuni_exception": {
+      "name": "CuNi closed-app exception",
+      "sku": "cuni-exception",
+      "usd": 490,
+      "stripe": "https://www.slidphilabs.com/pay?sku=cuni-exception"
     },
     "trugame": {
       "name": "TruGame",
@@ -52,7 +65,9 @@
       "name": "Lab Pass Year",
       "sku": "lab-pass",
       "usd": 1088,
-      "stripe": "https://buy.stripe.com/3cI7sM2sZ0OYfxP7cs6wE0D"
+      "stripe": "https://www.slidphilabs.com/pay?sku=lab-pass",
+      "includes": ["chamber", "gc", "trugame"],
+      "excludes": ["rider"]
     }
   },
   "suite": {

@@ -7,9 +7,10 @@
  *   x402    — HMAC claim token issued after X-PAYMENT verify
  *
  * Primary SKUs (SoT: /pricing.json):
- *   TRU8 (compression): tru8-day $19 | tru8-month $99 | tru8-year $990 (year = both products)
- *   Chamber (security): chamber-day $9 | chamber-month $49 | chamber-year $490
- *   Aliases: truchamber-* → tru8-*
+ *   Chamber: chamber-day $9 | chamber-month $49 | chamber-year $490
+ *   AWARE:   gc-day $9 | gc-month $49 | gc-year $490
+ *   Rider:   rider-month $79 | rider-year $790
+ *   Lab Pass $1,088 (Chamber + AWARE + TruGame; not Rider)
  *
  * One email only: corey@slidphilabs.com
  */
@@ -19,37 +20,107 @@ import { verifyClaim } from "./lib/x402-claim.mjs";
 const FULFILL_EMAIL = "corey@slidphilabs.com";
 const BASE = "https://www.slidphilabs.com";
 
-/** Two products × Day/Month/Year. TRU8 Year = both products + seat for full year. */
+/** Listed lab seats. Legacy TRU8 / Gate SKUs stay for old receipts. */
 const SEATS = {
   "chamber-day": {
-    name: "Chamber · Day",
+    name: "Chamber · 24-hour seat",
     list_usd: 9,
     unit: "24 hours",
     amount_cents: 900,
     product: "chamber",
     stack: "chamber",
-    includes: ["Chamber security only"],
-    does_not_include: ["TRU8 production path"],
+    includes: ["Chamber JSON seal"],
+    does_not_include: ["AWARE compressor", "Agent-Rider"],
   },
   "chamber-month": {
-    name: "Chamber · Month",
+    name: "Chamber · monthly seat",
     list_usd: 49,
     unit: "calendar month",
     amount_cents: 4900,
     product: "chamber",
     stack: "chamber",
-    includes: ["Chamber security only"],
-    does_not_include: ["TRU8 production path"],
+    includes: ["Chamber JSON seal"],
+    does_not_include: ["AWARE compressor", "Agent-Rider"],
   },
   "chamber-year": {
-    name: "Chamber · Year",
+    name: "Chamber · annual seat",
     list_usd: 490,
     unit: "calendar year",
     amount_cents: 49000,
     product: "chamber",
     stack: "chamber",
-    includes: ["Chamber security only"],
-    does_not_include: ["TRU8 production path"],
+    includes: ["Chamber JSON seal"],
+    does_not_include: ["AWARE compressor", "Agent-Rider"],
+  },
+  "gc-day": {
+    name: "AWARE · 24-hour compressor seat",
+    list_usd: 9,
+    unit: "24 hours",
+    amount_cents: 900,
+    product: "gc",
+    stack: "gc",
+    includes: ["AWARE hosted compressor access"],
+    does_not_include: ["Combined GC source", "Chamber", "Agent-Rider"],
+  },
+  "gc-month": {
+    name: "AWARE · monthly compressor seat",
+    list_usd: 49,
+    unit: "calendar month",
+    amount_cents: 4900,
+    product: "gc",
+    stack: "gc",
+    includes: ["AWARE hosted compressor access"],
+    does_not_include: ["Combined GC source", "Chamber", "Agent-Rider"],
+  },
+  "gc-year": {
+    name: "AWARE · annual compressor seat",
+    list_usd: 490,
+    unit: "calendar year",
+    amount_cents: 49000,
+    product: "gc",
+    stack: "gc",
+    includes: ["AWARE hosted compressor access"],
+    does_not_include: ["Combined GC source", "Chamber", "Agent-Rider"],
+  },
+  "rider-month": {
+    name: "Agent-Rider · monthly team seat",
+    list_usd: 79,
+    unit: "calendar month",
+    amount_cents: 7900,
+    product: "rider",
+    stack: "rider",
+    includes: ["Agent-Rider signed identity L0–L4"],
+    does_not_include: ["Chamber", "AWARE", "Lab Pass"],
+  },
+  "rider-year": {
+    name: "Agent-Rider · annual team seat",
+    list_usd: 790,
+    unit: "calendar year",
+    amount_cents: 79000,
+    product: "rider",
+    stack: "rider",
+    includes: ["Agent-Rider signed identity L0–L4"],
+    does_not_include: ["Chamber", "AWARE", "Lab Pass"],
+  },
+  "cuni-exception": {
+    name: "CuNi · closed-app exception",
+    list_usd: 490,
+    unit: "calendar year",
+    amount_cents: 49000,
+    product: "exception",
+    stack: "exception",
+    includes: ["Written exception for one closed product, one year"],
+    does_not_include: ["Combined GC", "Chamber", "Agent-Rider"],
+  },
+  "lab-pass": {
+    name: "Lab Pass · annual",
+    list_usd: 1088,
+    unit: "calendar year",
+    amount_cents: 108800,
+    product: "seat",
+    stack: "seat",
+    includes: ["Chamber", "AWARE", "TruGame engine"],
+    does_not_include: ["Agent-Rider", "Combined GC source"],
   },
   "tru8-day": {
     name: "TRU8 · Day",
@@ -132,9 +203,12 @@ function simpleSeatId(sessionId, sku) {
     h = Math.imul(h, 16777619);
   }
   let prefix = "tg_";
-  if (sku.startsWith("tru8-") || sku.startsWith("truchamber-")) prefix = "t8_";
+  if (sku.startsWith("tru8-") || sku.startsWith("truchamber-") || sku === "tru8-commercial") prefix = "t8_";
   else if (sku.startsWith("chamber-")) prefix = "ch_";
-  else if (sku === "tru8-commercial") prefix = "t8_";
+  else if (sku.startsWith("gc-")) prefix = "aw_";
+  else if (sku.startsWith("rider-")) prefix = "ar_";
+  else if (sku === "lab-pass") prefix = "lp_";
+  else if (sku === "cuni-exception") prefix = "cu_";
   return prefix + (h >>> 0).toString(16).padStart(8, "0");
 }
 
@@ -185,7 +259,25 @@ export function normalizeSku(raw) {
     "chamber-only": "chamber-year",
     "json-chamber": "chamber-year",
     unlock: "chamber-year",
-    // TRU8 product
+    "gc-day": "gc-day",
+    "gc-month": "gc-month",
+    "gc-year": "gc-year",
+    gc: "gc-year",
+    aware: "gc-year",
+    "combined-gc": "gc-year",
+    "rider-month": "rider-month",
+    "rider-year": "rider-year",
+    rider: "rider-year",
+    "agent-rider": "rider-year",
+    agentrider: "rider-year",
+    "rider-team-month": "rider-month",
+    "rider-team-year": "rider-year",
+    "lab-pass": "lab-pass",
+    "lab-pass-year": "lab-pass",
+    "cuni-exception": "cuni-exception",
+    "cuni-closed": "cuni-exception",
+    exception: "cuni-exception",
+    // TRU8 product (legacy receipts)
     "tru8-day": "tru8-day",
     "tru8-month": "tru8-month",
     "tru8-year": "tru8-year",
@@ -227,10 +319,20 @@ function buildTruchamberDeliverable({ paid, sku, sessionId, email, amountTotal, 
   const isTru8Only = meta.stack === "tru8";
   const includes = meta.includes || [];
   const doesNot = (meta.does_not_include || []).concat([
-    "Instant residual engine tarball on this page",
+    "Engine source dump",
     "Suite meter credit (use /pps separately)",
   ]);
-  const pack = both ? "tru8" : isChamber ? "chamber" : "tru8";
+  const pack = isChamber ? "chamber" : both || isTru8Only ? "tru8" : "chamber";
+  const productLabel =
+    meta.stack === "gc" ? "AWARE"
+    : meta.stack === "rider" ? "Agent-Rider"
+    : meta.stack === "exception" ? "CuNi exception"
+    : meta.stack === "seat" ? "Lab Pass"
+    : meta.stack === "trugame" ? "TruGame"
+    : both ? "TRU8 Year (legacy bundle)"
+    : isChamber ? "Chamber"
+    : isTru8Only ? "TRU8 (legacy)"
+    : meta.name;
   const entitlement = {
     type: "slid_phi_labs_entitlement",
     version: "1.2",
@@ -247,14 +349,10 @@ function buildTruchamberDeliverable({ paid, sku, sessionId, email, amountTotal, 
     stack: meta.stack,
     issued_at: new Date().toISOString(),
     issuer: BASE,
-    product: both ? "TRU8 Year (both products)" : isChamber ? "Chamber" : "TRU8",
+    product: productLabel,
     includes,
     package_access: "open",
-    note: both
-      ? "Chamber + TRU8 for the year."
-      : isChamber
-        ? "Chamber for this term."
-        : "TRU8 for this term.",
+    note: meta.name + " for this term.",
     ships: {
       entitlement_json: true,
       package_access: "open_on_payment",
@@ -282,12 +380,8 @@ function buildTruchamberDeliverable({ paid, sku, sessionId, email, amountTotal, 
     seat_id,
     summary:
       "Payment confirmed. Package Access is open now — no extra email gate. " +
-      (both
-        ? "TRU8 Year = Chamber seat + TRU8 for the full year (both products)."
-        : isChamber
-          ? "Chamber security only — half price. No TRU8 production."
-          : "TRU8 production only for this term. Chamber not included.") +
-      " Download your entitlement and install pack below.",
+      meta.name +
+      ". Download your entitlement below.",
     entitlement,
     downloads: [
       {

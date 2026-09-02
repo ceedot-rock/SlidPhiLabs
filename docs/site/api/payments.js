@@ -141,7 +141,7 @@ export default async function handler(req, res) {
     } else {
       return json(res, 400, {
         error: "sku_or_amount_required",
-        hint: 'POST { "sku": "zrw-n00b" } or { "amount_cents": 5000, "name": "…" }',
+        hint: 'POST { "sku": "chamber-year" } or { "amount_cents": 5000, "name": "…" }',
         catalog: `${origin}/api/payments`,
       });
     }
@@ -186,7 +186,7 @@ export default async function handler(req, res) {
       const session = await createStripeCheckoutSession({
         amountCents: amount_cents,
         name,
-        description: `Slid Phi Labs · ${sku || "custom"} · multi-method checkout`,
+        description: `Slid Phi Labs · ${sku || "custom"} · card checkout`,
         sku: sku || "custom",
         email,
         origin,

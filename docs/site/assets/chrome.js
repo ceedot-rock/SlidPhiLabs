@@ -6,6 +6,7 @@
     ["/about", "About"],
     ["/pricing", "Pricing"],
     ["/box", "Try"],
+    ["/pay", "Pay"],
   ];
   const FALLBACK_NEWS = [
     { t: "Lab", title: "Slid Phi Labs — tools that check", href: "/about" },

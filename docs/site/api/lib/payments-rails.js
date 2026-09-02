@@ -1,8 +1,8 @@
 /**
  * Universal payment rails for Slid Phi Labs.
- * Humans → Stripe (cards, wallets, bank, BNPL, …) + static Payment Links.
+ * Humans → Stripe Checkout (card; Apple/Google Pay ride on card) + invoice/wire.
  * Agents → x402 (Solana USDC + Base USDC).
- * Anyone → manual crypto addresses + wire/invoice email.
+ * Anyone → manual crypto addresses + invoice email.
  *
  * Env (optional overrides):
  *   STRIPE_SECRET_KEY | STRIPE_RESTRICTED_KEY
@@ -18,67 +18,80 @@ export const USDC_SOLANA_MAINNET = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
 export const USDC_BASE_MAINNET = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export const BASE_NETWORK = "eip155:8453";
 
-/** Stripe Checkout payment_method_types that this account can enable (US). */
-export const STRIPE_CHECKOUT_METHODS = [
-  "card",
-  "link",
-  "cashapp",
-  "amazon_pay",
-  "us_bank_account",
-  "klarna",
-  "affirm",
-  "afterpay_clearpay",
-];
+/** Stripe Checkout — lab seats, not BNPL storefront. Apple/Google Pay ride on `card`. */
+export const STRIPE_CHECKOUT_METHODS = ["card"];
+
+export const STRIPE_CHECKOUT_METHODS_FALLBACK = ["card"];
 
 /** Human-readable labels for discovery UIs */
 export const STRIPE_METHOD_LABELS = {
-  card: "Cards (Visa, Mastercard, Amex, Discover, …) + Apple Pay / Google Pay when available",
-  link: "Link (Stripe)",
-  cashapp: "Cash App Pay",
-  amazon_pay: "Amazon Pay",
-  us_bank_account: "US bank ACH (debit)",
-  klarna: "Klarna",
-  affirm: "Affirm",
-  afterpay_clearpay: "Afterpay / Clearpay",
+  card: "Card (Visa, Mastercard, Amex) · Apple Pay / Google Pay when available",
 };
 
 /** Standing SKUs — keep in sync with x402-products.js CATALOG */
 export const PRODUCT_CATALOG = {
   "chamber-day": {
-    name: "Chamber · Day",
+    name: "Chamber · 24-hour seat",
     amount_cents: 900,
     stripe: "https://www.slidphilabs.com/pay?sku=chamber-day",
     kind: "chamber",
+    list: true,
   },
   "chamber-month": {
-    name: "Chamber · Month",
+    name: "Chamber · monthly seat",
     amount_cents: 4900,
     stripe: "https://www.slidphilabs.com/pay?sku=chamber-month",
     kind: "chamber",
+    list: true,
   },
   "chamber-year": {
-    name: "Chamber · Year",
+    name: "Chamber · annual seat",
     amount_cents: 49000,
     stripe: "https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F",
     kind: "chamber",
+    list: true,
   },
   "gc-day": {
-    name: "AWARE · Day",
+    name: "AWARE · 24-hour compressor seat",
     amount_cents: 900,
     stripe: "https://www.slidphilabs.com/pay?sku=gc-day",
     kind: "gc",
+    list: true,
   },
   "gc-month": {
-    name: "AWARE · Month",
+    name: "AWARE · monthly compressor seat",
     amount_cents: 4900,
     stripe: "https://www.slidphilabs.com/pay?sku=gc-month",
     kind: "gc",
+    list: true,
   },
   "gc-year": {
-    name: "AWARE · Year",
+    name: "AWARE · annual compressor seat",
     amount_cents: 49000,
     stripe: "https://www.slidphilabs.com/pay?sku=gc-year",
     kind: "gc",
+    list: true,
+  },
+  "rider-month": {
+    name: "Agent-Rider · monthly team seat",
+    amount_cents: 7900,
+    stripe: "https://www.slidphilabs.com/pay?sku=rider-month",
+    kind: "rider",
+    list: true,
+  },
+  "rider-year": {
+    name: "Agent-Rider · annual team seat",
+    amount_cents: 79000,
+    stripe: "https://www.slidphilabs.com/pay?sku=rider-year",
+    kind: "rider",
+    list: true,
+  },
+  "cuni-exception": {
+    name: "CuNi · closed-app exception (one product, one year)",
+    amount_cents: 49000,
+    stripe: "https://www.slidphilabs.com/pay?sku=cuni-exception",
+    kind: "exception",
+    list: true,
   },
   "tru8-day": {
     name: "TRU8 · Day",
@@ -117,10 +130,11 @@ export const PRODUCT_CATALOG = {
     kind: "gate",
   },
   "lab-pass": {
-    name: "Lab Pass · Year",
+    name: "Lab Pass · annual (Chamber + AWARE + TruGame)",
     amount_cents: 108800,
     stripe: "https://buy.stripe.com/3cI7sM2sZ0OYfxP7cs6wE0D",
     kind: "seat",
+    list: true,
   },
   "trugame-rent-week": {
     name: "TruGame rent (retired)",
@@ -130,16 +144,18 @@ export const PRODUCT_CATALOG = {
     retired: true,
   },
   "trugame-month": {
-    name: "TruGame · Month",
+    name: "TruGame · monthly engine seat",
     amount_cents: 1200,
     stripe: "https://www.slidphilabs.com/pay?sku=trugame-month",
     kind: "trugame",
+    list: true,
   },
   "trugame-year": {
-    name: "TruGame · Year",
+    name: "TruGame · annual engine seat",
     amount_cents: 7900,
     stripe: "https://www.slidphilabs.com/pay?sku=trugame-year",
     kind: "trugame",
+    list: true,
   },
   "cddg-split": {
     name: "CDDG:Split",
@@ -209,10 +225,11 @@ export const PRODUCT_CATALOG = {
     kind: "service",
   },
   consulting: {
-    name: "Consulting",
+    name: "Lab consulting (2 hours)",
     amount_cents: 25000,
     stripe: "https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02",
     kind: "service",
+    list: true,
   },
   sponsor: {
     name: "Sponsor",
@@ -273,6 +290,11 @@ export const SKU_ALIASES = {
   "pay-per-suite": "suite",
   chamber: "chamber-year",
   "chamber-only": "chamber-year",
+  rider: "rider-year",
+  "agent-rider": "rider-year",
+  agentrider: "rider-year",
+  "cuni-closed": "cuni-exception",
+  exception: "cuni-exception",
   tru8: "tru8-year",
   both: "tru8-year",
   truchamber: "tru8-year",
@@ -351,15 +373,14 @@ export function buildPaymentsMatrix(req) {
   const contact = contactEmail();
   const hasStripe = !!stripeSecret();
 
-  const products = Object.entries(PRODUCT_CATALOG)
-    .filter(([, p]) => !p.retired)
-    .map(([sku, p]) => {
+  function rowFor(sku, p) {
     const row = {
       sku,
       name: p.name,
       amount_usd: (p.amount_cents / 100).toFixed(2),
       amount_cents: p.amount_cents,
       kind: p.kind,
+      list: !!p.list,
       human_payment_link: p.stripe || null,
       checkout: `POST ${origin}/api/checkout { "sku": "${sku}" }`,
       agent_x402: `POST ${origin}/api/x402-products { "sku": "${sku}" }`,
@@ -367,7 +388,13 @@ export function buildPaymentsMatrix(req) {
     if (p.blurb) row.blurb = p.blurb;
     if (p.oss_npm) row.oss_npm = p.oss_npm;
     return row;
-  });
+  }
+  const products = Object.entries(PRODUCT_CATALOG)
+    .filter(([, p]) => !p.retired)
+    .map(([sku, p]) => rowFor(sku, p));
+  const listed = Object.entries(PRODUCT_CATALOG)
+    .filter(([, p]) => !p.retired && p.list)
+    .map(([sku, p]) => rowFor(sku, p));
 
   const rails = [
     {
@@ -379,7 +406,7 @@ export function buildPaymentsMatrix(req) {
         id,
         label: STRIPE_METHOD_LABELS[id] || id,
       })),
-      note: "One session accepts cards, Link, Cash App, Amazon Pay, US bank ACH, Klarna, Affirm, Afterpay when Stripe enables them for the session.",
+      note: "Hosted Checkout: card. Apple Pay and Google Pay appear on card when the browser offers them. No BNPL on this path.",
       how: {
         endpoint: `POST ${origin}/api/checkout`,
         body: { sku: "chamber-year", email: "you@example.com", rail: "stripe" },
@@ -491,10 +518,10 @@ export function buildPaymentsMatrix(req) {
   const missing = rails.filter((r) => !r.configured).map((r) => r.id);
 
   return {
-    service: "Slid Phi Labs — Universal Payments",
-    version: "1.0.0",
-    policy: "Accept any workable rail. Entitlement after proof of payment (Stripe session verify works; x402 auto-claim is not wired — email proof or /access?product= + order id).",
-    product_face: "TRU8",
+    service: "Slid Phi Labs — lab checkout",
+    version: "1.1.0",
+    policy: "Humans: Stripe card checkout, then /access. Teams: invoice/wire. Agents: x402. Entitlement after Stripe session verify or x402 claim.",
+    product_face: "Slid Phi Labs",
     x402_access_autoclaim: false,
     contact,
     origin,
@@ -511,6 +538,7 @@ export function buildPaymentsMatrix(req) {
     rails,
     configured_rails: configured,
     missing_or_optional: missing,
+    listed,
     products,
     preferred: {
       human: "stripe_checkout",
@@ -522,7 +550,7 @@ export function buildPaymentsMatrix(req) {
 }
 
 /**
- * Create Stripe Checkout Session with broad payment_method_types.
+ * Create Stripe Checkout Session — card (Apple/Google Pay ride on card).
  */
 export async function createStripeCheckoutSession({
   amountCents,
@@ -594,7 +622,7 @@ export async function createStripeCheckoutSession({
       // wipe payment_method_types and set minimal
       const keys = [...fallback.keys()].filter((k) => k.startsWith("payment_method_types"));
       keys.forEach((k) => fallback.delete(k));
-      ["card", "link", "cashapp", "amazon_pay"].forEach((m, i) =>
+      STRIPE_CHECKOUT_METHODS_FALLBACK.forEach((m, i) =>
         fallback.set(`payment_method_types[${i}]`, m)
       );
       const r2 = await fetch("https://api.stripe.com/v1/checkout/sessions", {
