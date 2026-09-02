@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Try for 24 hours — then buy or it stops · Slid Phi Labs</title>
-  <meta name="description" content="Start a 24-hour try of Chamber or AWARE. CuNi Studio is free. Agent-Rider is a team seat. After 24 hours the try stops unless you buy."/>
+  <meta name="description" content="Start a 24-hour try of Chamber or AWARE in this page. CuNi Studio is free. Agent-Rider is a team seat. After 24 hours the try stops unless you buy."/>
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow"/>
   <meta name="agentic" content="true"/>
@@ -22,18 +22,25 @@
   <meta name="twitter:title" content="Try 24 hours — Slid Phi Labs"/>
   <meta name="twitter:description" content="Chamber and AWARE: one day, then a seat."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=17"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=18"/>
+  <style>
+    .box-status { margin: 16px 0 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); max-width: 40rem; }
+    .box-status strong { color: var(--ink); }
+    .box-status.ok { border-color: #b7d7c2; }
+    .box-status.err { border-color: #e3b6b6; }
+  </style>
 </head>
 <body>
   <main class="spl-page" id="main">
     <p class="spl-kicker">Evaluate</p>
     <h1>Try the tools for 24 hours</h1>
-    <p class="lede">Start a one-day trial in the browser, then run the pack for the product you want. After 24 hours it stops unless you buy a seat. CuNi Studio does not need a trial — it is free. Agent-Rider is a team seat, not a 24-hour box.</p>
+    <p class="lede">Start the try on this page. That opens a one-day window in your browser. Then pick Chamber or AWARE. After 24 hours it stops unless you buy a seat. CuNi Studio does not need a trial — it is free. Agent-Rider is a team seat, not a 24-hour box.</p>
     <p class="spl-actions">
-      <a class="spl-btn spl-btn-dark" href="/api/box">Start 24-hour try</a>
+      <button type="button" class="spl-btn spl-btn-dark" id="startTry">Start 24-hour try</button>
       <a class="spl-btn spl-btn-line" href="/pricing">Prices</a>
-      <a class="spl-btn spl-btn-line" href="/products">What each product is</a>
+      <a class="spl-btn spl-btn-line" href="/pay">Buy a seat</a>
     </p>
+    <div id="boxStatus" class="box-status" hidden></div>
     <div class="spl-grid">
       <a class="spl-card" href="/chamber">
         <p class="spl-kicker">JSON seal</p>
@@ -56,8 +63,40 @@
         <p>Playground is free. Closed-app exception $490 / year per product.</p>
       </a>
     </div>
-    <p class="spl-note">After the day, checkout is <a href="/pay">/pay</a>. Lab Pass $1,088 is Chamber + AWARE + TruGame for a year. It does not include Rider.</p>
+    <p class="spl-note">This page talks to <code>/api/box</code> for you. You should not have to read JSON. Lab Pass $1,088 is Chamber + AWARE + TruGame for a year. It does not include Rider.</p>
   </main>
-  <script src="/assets/chrome.js?v=17" defer></script>
+<script>
+(async () => {
+  const out = document.getElementById("boxStatus");
+  const btn = document.getElementById("startTry");
+  function show(html, ok) {
+    out.hidden = false;
+    out.className = "box-status " + (ok ? "ok" : "err");
+    out.innerHTML = html;
+  }
+  function paint(d, startedNow) {
+    if (!d) return;
+    if (d.door === "gated" || d.box_open === false) {
+      show("The 24-hour window is closed. Buy a seat on <a href=\"/pay\">/pay</a>, or email corey@slidphilabs.com.", false);
+      return;
+    }
+    const hours = d.hours_left == null ? 24 : d.hours_left;
+    const lead = startedNow ? "Try started." : "Try is open.";
+    show("<strong>" + lead + "</strong> About " + Number(hours).toFixed(1) + " hours left. Next: open <a href=\"/chamber\">Chamber</a> or <a href=\"/gc\">AWARE</a>. After the day, <a href=\"/pay\">buy a seat</a>.", true);
+  }
+  async function ping(start) {
+    try {
+      const r = await fetch("/api/box", { method: start ? "POST" : "GET", credentials: "same-origin" });
+      const d = await r.json();
+      paint(d, start && d.ok);
+    } catch (e) {
+      show("Could not reach the try door. Refresh, or email corey@slidphilabs.com.", false);
+    }
+  }
+  btn.addEventListener("click", () => ping(true));
+  await ping(false);
+})();
+</script>
+  <script src="/assets/chrome.js?v=18" defer></script>
 </body>
 </html>
