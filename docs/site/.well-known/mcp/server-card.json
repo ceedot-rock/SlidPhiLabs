@@ -1,10 +1,10 @@
 {
   "name": "slid-phi-labs",
   "title": "Slid Phi Labs",
-  "description": "CuNi exactness, Chamber seal, Agent-Rider. One lab account. x402 for agents, Stripe for humans.",
-  "version": "1.18.0",
+  "description": "Lab catalogs in the client. CuNi, Chamber, Rider, AWARE. Lookup is public law. Engines stay behind a seat.",
+  "version": "1.19.0",
   "websiteUrl": "https://www.slidphilabs.com",
-  "documentationUrl": "https://www.slidphilabs.com/agents",
+  "documentationUrl": "https://www.slidphilabs.com/mcp-service",
   "registry": "io.github.ceedot-rock/slid-phi-labs",
   "registryUrl": "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.ceedot-rock/slid-phi-labs",
   "transport": { "type": "streamable-http", "url": "https://www.slidphilabs.com/mcp" },

@@ -3,37 +3,43 @@
  * GET returns the server card.
  */
 import { signup, login, issueAgentKey } from "./lib/lab-auth.mjs";
+import { catalogTools, dispatchCatalog } from "./lib/mcp-catalogs.mjs";
 
 const SITE = "https://www.slidphilabs.com";
+
+const COMMERCE = [
+  { name: "spl_discover", description: "Lead product, cash product, auth, MCP, x402." },
+  { name: "spl_lab_auth", description: "How to mint a lab account or agent API key." },
+  { name: "spl_signup", description: "Create a human lab account (email + password)." },
+  { name: "spl_agent_key", description: "Mint an agent API key (no password)." },
+  { name: "spl_catalog", description: "Standing SKUs agents can buy via x402." },
+];
 
 export const SERVER_CARD = {
   name: "slid-phi-labs",
   title: "Slid Phi Labs",
   description:
-    "CuNi exactness, Chamber seal, Agent-Rider. One lab account. x402 for agents, Stripe for humans.",
-  version: "1.18.0",
+    "Lab catalogs in the client. CuNi, Chamber, Rider, AWARE. Lookup is public law. Engines stay behind a seat.",
+  version: "1.19.0",
   websiteUrl: SITE,
-  documentationUrl: SITE + "/agents",
+  documentationUrl: SITE + "/mcp-service",
   registry: "io.github.ceedot-rock/slid-phi-labs",
   registryUrl:
     "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.ceedot-rock/slid-phi-labs",
   transport: { type: "streamable-http", url: SITE + "/mcp" },
   endpoint: SITE + "/mcp",
   capabilities: { tools: {} },
-  tools: [
-    { name: "spl_discover", description: "Lead product, cash product, auth, MCP, x402." },
-    { name: "spl_lab_auth", description: "How to mint a lab account or agent API key." },
-    { name: "spl_signup", description: "Create a human lab account (email + password)." },
-    { name: "spl_agent_key", description: "Mint an agent API key (no password)." },
-    { name: "spl_catalog", description: "Standing SKUs agents can buy via x402." },
-  ],
+  tools: [...COMMERCE, ...catalogTools().map((t) => ({ name: t.name, description: t.description }))],
 };
 
-const TOOLS = SERVER_CARD.tools.map((t) => ({
-  name: t.name,
-  description: t.description,
-  inputSchema: { type: "object", properties: {}, additionalProperties: true },
-}));
+const TOOLS = [
+  ...COMMERCE.map((t) => ({
+    name: t.name,
+    description: t.description,
+    inputSchema: { type: "object", properties: {}, additionalProperties: true },
+  })),
+  ...catalogTools(),
+];
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -49,6 +55,8 @@ function err(id, code, message) {
 }
 
 async function callTool(name, args = {}) {
+  const cat = dispatchCatalog(name, args);
+  if (cat) return cat;
   if (name === "spl_discover") {
     return {
       lead_product: "cuni",
@@ -59,6 +67,7 @@ async function callTool(name, args = {}) {
       signup: SITE + "/signup",
       auth: SITE + "/api/auth",
       mcp: SITE + "/mcp",
+      docs: SITE + "/mcp-service",
       registry: "io.github.ceedot-rock/slid-phi-labs",
       registryUrl:
         "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.ceedot-rock/slid-phi-labs",
@@ -93,7 +102,7 @@ async function handleRpc(msg) {
   if (method === "initialize") {
     return ok(id, {
       protocolVersion: "2024-11-05",
-      serverInfo: { name: "slid-phi-labs", version: "1.17.0" },
+      serverInfo: { name: "slid-phi-labs", version: "1.19.0" },
       capabilities: { tools: {} },
     });
   }
