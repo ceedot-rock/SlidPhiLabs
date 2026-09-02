@@ -100,7 +100,7 @@ export default async function handler(req, res) {
       security_txt: "https://www.slidphilabs.com/.well-known/security.txt",
     },
     one_liner:
-      "Two products. Chamber security Day $9 · Month $49 · Year $490. TRU8 compression Day $19 · Month $99 · Year $990 (year = both). Suite meters. GET /api/agent.",
+      "CuNi $0. Chamber cloak $9/mo · $99/yr. AWARE $9/$49/$490. Rider $79/$790. Lab Pass $668. GET /api/agent.",
   };
 
   res.statusCode = 200;

@@ -6,7 +6,7 @@ const r = await fetch(BASE + "/api/box");
 const box = await r.json();
 console.log("box", box.protocol, "open", box.box_open, "hours_left", box.hours_left);
 if (!box.box_open && box.door === "gated") {
-  console.error("Box closed. Buy Chamber: https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F");
+  console.error("Box closed. Buy Chamber: https://www.slidphilabs.com/pay?sku=chamber-year");
   process.exit(3);
 }
 const open = await fetch(BASE + "/api/box", { method: "POST" });

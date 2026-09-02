@@ -15,19 +15,19 @@ Access after pay is an entitlement claim, not a private-engine dump. x402 auto-c
 
 | SKU | Name | USD | Stripe Payment Link | npm package(s) |
 |-----|------|----:|---------------------|----------------|
-| `cddg-split` | CDDG:Split | **199** | https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f | (process product; site) |
+| `cddg-split` | CDDG:Split | **199** | https://www.slidphilabs.com/pay?sku=consulting | (process product; site) |
 | `zrw-n00b` | ZRW N00b | **retired** | do not sell | stub npm only; git **private** |
 | `zrw-pro` | ZRW Pro | **retired** | do not sell | stub npm only; git **private** |
 | `zrw-l33t` | ZRW L33t$aUC3 | **retired** | do not sell | stub npm only; git **private** |
-| `blackjack` | Blackjack | **199** | https://buy.stripe.com/00w00k6Jf8hqgBTaoE6wE0h | `blackjack-compression` |
-| `shard-zip` | shard-zip | **199** | https://buy.stripe.com/3cI7sMd7D8hq1GZaoE6wE0i | `shard-zip` |
-| `shard-tsdb` | shard-tsdb | **199** | https://buy.stripe.com/9B628sd7DeFO99r9kA6wE0j | `shard-tsdb` (MIT open + commercial path) |
-| `slid-phi` | slid-phi | **199** | https://buy.stripe.com/dRm6oI6JfgNWetL8gw6wE0k | `slid-phi` |
-| `support-integration` | Support + Integration | **199** | https://buy.stripe.com/8x28wQebH41a85n2Wc6wE0l | services |
-| `consulting` | Consulting | **250** | https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02 | services |
-| `sponsor` | Sponsor | **29** | https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01 | support |
-| `donate` | Donate | **29.99** | https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a | support |
-| `gao-entry` | GAO Entry | **1** | https://buy.stripe.com/8x24gAd7D7dm2L31S86wE0m | olympiad |
+| `blackjack` | Blackjack | **199** | https://www.slidphilabs.com/pay?sku=oss-support | `blackjack-compression` |
+| `shard-zip` | shard-zip | **199** | https://www.slidphilabs.com/pay?sku=oss-support | `shard-zip` |
+| `shard-tsdb` | shard-tsdb | **199** | https://www.slidphilabs.com/pay?sku=oss-support | `shard-tsdb` (MIT open + commercial path) |
+| `slid-phi` | slid-phi | **199** | https://www.slidphilabs.com/pay?sku=consulting | `slid-phi` |
+| `support-integration` | Support + Integration | **199** | https://www.slidphilabs.com/pay?sku=consulting | services |
+| `consulting` | Consulting | **250** | https://www.slidphilabs.com/pay?sku=consulting | services |
+| `sponsor` | Sponsor | **29** | https://www.slidphilabs.com/pay?sku=sponsor | support |
+| `donate` | Donate | **29.99** | https://www.slidphilabs.com/pay?sku=donate | support |
+| `gao-entry` | GAO Entry | **1** | https://www.slidphilabs.com/olympiad | olympiad |
 
 ## Suite (metered freemium)
 

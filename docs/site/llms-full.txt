@@ -19,16 +19,17 @@ TruGame — game engine. Packs sim state with TRU8, seals the save with Chamber.
 - Source private. Inquire: mailto:corey@slidphilabs.com?subject=TruGame
 - Workbench: Sports-sims packages/trugame + sim-nfl
 
-### Compression · TRU8
-- Home: https://www.slidphilabs.com/
+### Compression · AWARE
+- Page: https://www.slidphilabs.com/gc
 - Demos: https://www.slidphilabs.com/demos
-- GitHub: https://github.com/ceedot-rock/TRU8
+- pulsar (public GPLv3 cousin): https://github.com/ceedot-rock/pulsar-best
+- Day $9 · Month $49 · Year $490. Access, not source.
 
 ### Security · Chamber
 - Page: https://www.slidphilabs.com/chamber
 - SDK: https://github.com/ceedot-rock/json-chamber-sdk
-- 24-hour black box · Day $9 · Month $49 · Year $490
-- Security only. No TRU8. Half the matching TRU8 tier.
+- 24-hour try · Month $9 · Year $99
+- Cloak license. Open existing seals with both keys.
 
 ### Olympiad
 - https://www.slidphilabs.com/olympiad
@@ -37,12 +38,12 @@ TruGame — game engine. Packs sim state with TRU8, seals the save with Chamber.
 https://www.slidphilabs.com/projects.json
 
 ## Wording
-- Chamber = security. Day $9 · Month $49 · Year $490. No TRU8.
-- TRU8 = compression. Day $19 · Month $99 · Year $990 (year = both products).
-- Suite = metered jobs (6.9 GB / 3 h then ~5¢/GB). Not a Chamber or TRU8 seat.
+- Chamber = cloak license. $9/mo · $99/yr. Open is keys-only.
+- AWARE = hosted compressor. $9/day · $49/mo · $490/yr.
+- Suite = metered AWARE jobs (6.9 GB / 3 h then ~5¢/GB).
+- Lab Pass = Chamber + AWARE + TruGame, $668/yr. Not Rider.
 - Access = entitlement claim. Not a codec dump.
 
 ## Scope
-TRU8 Year includes Chamber. Chamber-only does not include TRU8.
-TruGame = game engine (building). Inquire corey@ subject TruGame.
-TRU8 residual engine never open-sourced.
+TruGame = game engine. $12/mo · $79/yr.
+Combined GC stays in the lab.

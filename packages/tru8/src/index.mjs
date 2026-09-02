@@ -12,7 +12,7 @@ export const T_STROKE = 0x11;
 
 export const ALPHABET = " etaoinsrhldcumwfgypbvkjxqz.,!?\n";
 
-const ACCESS = "https://www.slidphilabs.com/access?product=tru8-year";
+const ACCESS = "https://www.slidphilabs.com/pay?sku=gc-year";
 const DEMOS = "https://www.slidphilabs.com/demos";
 const INQUIRE = "mailto:corey@slidphilabs.com?subject=TRU8";
 const CREDIT = "Powered by TRU8 · Slid Phi Labs";
@@ -20,7 +20,7 @@ const CREDIT = "Powered by TRU8 · Slid Phi Labs";
 export class LicensedPathError extends Error {
   constructor(token = "T_SPARSE") {
     super(
-      `${token} is licensed residual. Public npm is the demo surface. Demos: ${DEMOS} · Year $990: ${ACCESS} · ${INQUIRE}`,
+      `${token} is licensed residual. Public npm is the demo surface. Demos: ${DEMOS} · AWARE: ${ACCESS} · ${INQUIRE}`,
     );
     this.name = "LicensedPathError";
     this.token = token;

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>x402 — how agents pay the lab · Slid Phi Labs</title>
+  <meta name="description" content="Humans pay Stripe. Agents pay x402 (USDC on Solana or Base). Same catalog. Quikgater is pay-per-fetch on its own worker."/>
+  <meta name="robots" content="index,follow"/>
+  <link rel="canonical" href="https://www.slidphilabs.com/x402"/>
+  <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=20"/>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">Agent money rail</p>
+    <h1>x402</h1>
+    <p class="lede">Humans use Stripe or an invoice. Agents use HTTP 402. Same SKUs, same dollars. We do not headline every wallet on the buy page. The rail is here so an agent can complete a purchase without a browser.</p>
+    <div class="spl-prose">
+      <p><strong>Seats</strong> — <code>POST /api/x402-products</code> with <code>{"sku":"chamber-year"}</code>. No payment → 402 and <code>accepts[]</code> (Solana USDC + Base USDC). Pay, retry with <code>X-PAYMENT</code>, get a claim token, open <code>/access?claim=…</code>.</p>
+      <p><strong>Suite jobs</strong> — <code>POST /api/x402-suite</code>. Under 6.9 GB / 3 hours is free (200). Over the cap returns 402.</p>
+      <p><strong>Quikgater</strong> — not a seat. Hit the worker with a URL. Unpaid → 402. Paid → fetch. Status: <a href="/api/quikgater">/api/quikgater</a>.</p>
+    </div>
+    <h2>From a shell</h2>
+    <div class="spl-prose">
+      <p><code>curl -sS https://www.slidphilabs.com/api/x402-products</code></p>
+      <p><code>curl -sS -X POST https://www.slidphilabs.com/api/x402-products -H 'content-type: application/json' -d '{"sku":"gc-year"}'</code> — expect 402 until you attach payment.</p>
+      <p><code>curl -sS "https://quikgater-worker.ceedotrock.workers.dev/?url=https://example.com"</code> — expect 402.</p>
+      <p>npm helper: <code>npx -y spl-pay-per-suite mcp</code> then <code>spl_pps_x402_catalog</code> / <code>spl_pps_x402_buy</code>.</p>
+    </div>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="/pay">Human checkout</a>
+      <a class="spl-btn spl-btn-line" href="/api/x402-products">Catalog JSON</a>
+      <a class="spl-btn spl-btn-line" href="/quikgater">Quikgater</a>
+    </p>
+  </main>
+  <script src="/assets/chrome.js?v=20" defer></script>
+</body>
+</html>

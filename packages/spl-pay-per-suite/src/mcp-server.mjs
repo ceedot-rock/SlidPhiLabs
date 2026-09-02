@@ -56,7 +56,7 @@ const TOOLS = [
     description:
       "SPL Pay Per Suite overview: " +
       SUITE_LINE +
-      " Stripe (humans) + x402 (agents). Standing SKUs: CDDG $199 · ZRW $79/$249/$699 · blackjack/shards/slid-phi/support $199 · consulting $250.",
+      " Stripe (humans) + x402 (agents). Seats: Chamber $9/$99 · AWARE $9/$49/$490 · Rider $79/$790 · Lab Pass $668 · consulting $250.",
     inputSchema: { type: "object", properties: {} },
   },
   {
@@ -68,7 +68,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_catalog",
     description:
-      "List standing Slid Phi Labs license products agents can buy via x402 (CDDG:Split $199, ZRW tiers $79/$249/$699, Blackjack/shards/slid-phi/support $199, consulting $250, etc.). Freemium suite for eval.",
+      "List standing Slid Phi Labs seats agents can buy via x402 (Chamber, AWARE, Rider, Lab Pass, TruGame, consulting). Suite jobs are separate.",
     inputSchema: { type: "object", properties: {} },
   },
   {
@@ -81,7 +81,7 @@ const TOOLS = [
         sku: {
           type: "string",
           description:
-            "cddg-split($199) | zrw-n00b($79) | zrw-pro($249) | zrw-l33t($699) | blackjack($199) | shard-zip($199) | shard-tsdb($199) | slid-phi($199) | support-integration($199) | consulting($250) | sponsor($29) | donate($29.99) | gao-entry($1)",
+            "chamber-year($99) | gc-year($490) | rider-year($790) | lab-pass($668) | trugame-year($79) | consulting($250) | oss-support($199)",
         },
         email: { type: "string" },
         note: { type: "string" },
@@ -236,19 +236,20 @@ async function callTool(name, args = {}) {
         site: SITE_PPS,
         pricing: { ...SUITE_PRICING, free_cap_bytes: FREE_BYTES, min_paid_cents: MIN_PAID_CENTS },
         standing_skus_usd: {
-          "cddg-split": 199,
-          "zrw-n00b": 79,
-          "zrw-pro": 249,
-          "zrw-l33t": 699,
-          blackjack: 199,
-          "shard-zip": 199,
-          "shard-tsdb": 199,
-          "slid-phi": 199,
-          "support-integration": 199,
+          "chamber-month": 9,
+          "chamber-year": 99,
+          "gc-day": 9,
+          "gc-month": 49,
+          "gc-year": 490,
+          "rider-month": 79,
+          "rider-year": 790,
+          "rider-ops-month": 29,
+          "rider-ops-year": 290,
+          "lab-pass": 668,
+          "trugame-month": 12,
+          "trugame-year": 79,
           consulting: 250,
-          sponsor: 29,
-          donate: 29.99,
-          "gao-entry": 1,
+          "oss-support": 199,
         },
         catalog: X402_PRODUCTS_URL,
         pay_human: STRIPE_PAYMENT_LINK,

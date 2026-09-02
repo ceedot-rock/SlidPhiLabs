@@ -13,7 +13,7 @@
       "date": "2026-09-02",
       "type": "product",
       "title": "Lab catalog: CuNi, Chamber, Rider, AWARE",
-      "body": "Public seats are CuNi $0, Chamber $9/$49/$490, Agent-Rider $79/$790, AWARE $9/$49/$490, Lab Pass $1,088 (not Rider). Stripe card checkout. TRU8 Year $990 is not the storefront.",
+      "body": "Public seats: CuNi $0, Chamber $9/$99, Agent-Rider $79/$790, AWARE $9/$49/$490, Lab Pass $668, Rider Ops $29/$290, Quikgater x402 per fetch.",
       "href": "https://www.slidphilabs.com/products",
       "href_label": "Products",
       "tags": ["catalog", "pricing", "chamber", "aware", "rider"]
@@ -23,7 +23,7 @@
       "date": "2026-08-20",
       "type": "product",
       "title": "Rent desk retired · TruGame engine seats only",
-      "body": "No $3.99 / 7-day SKU. TruGame is Month $12 · Year $79. Lab Pass $1,088 includes the engine.",
+      "body": "TruGame is Month $12 · Year $79. Lab Pass $668 includes the engine.",
       "href": "https://www.slidphilabs.com/trugame",
       "href_label": "TruGame",
       "tags": ["trugame", "pricing"]
@@ -32,8 +32,8 @@
       "id": "u-lab-pass-gate",
       "date": "2026-08-18",
       "type": "product",
-      "title": "Lab Pass $1,088 · Gate Year $790",
-      "body": "Lab Pass unlocks Chamber + TRU8 + Gate + TruGame for 365 days. Gate Year $790.",
+      "title": "Lab Pass $668",
+      "body": "Lab Pass is Chamber + AWARE + TruGame for 365 days. Rider is separate.",
       "href": "https://www.slidphilabs.com/products",
       "href_label": "Products",
       "tags": ["lab-pass", "gate"]
@@ -42,8 +42,8 @@
       "id": "u-two-product-split",
       "date": "2026-08-14",
       "type": "product",
-      "title": "Two products — Chamber + TRU8",
-      "body": "Chamber (security) Day $9 · Month $49 · Year $490. TRU8 (compression) Day $19 · Month $99 · Year $990 (year = both). Suite still meters jobs. SoT pricing.json.",
+      "title": "Chamber cloak + AWARE compressor",
+      "body": "Chamber cloak $9/mo · $99/yr. AWARE $9/$49/$490. Suite meters jobs. SoT pricing.json.",
       "href": "https://www.slidphilabs.com/license",
       "href_label": "Prices",
       "tags": ["chamber", "tru8", "pricing"]

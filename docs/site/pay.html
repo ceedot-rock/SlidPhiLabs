@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="Checkout — Slid Phi Labs"/>
   <meta name="twitter:description" content="Lab seats on Stripe. Invoice for teams."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=17"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=20"/>
   <style>
     .pay-form { max-width: 36rem; }
     .pay-form label { display: block; font-size: 0.82rem; color: var(--mut); margin: 14px 0 6px; letter-spacing: 0.04em; text-transform: uppercase; }
@@ -43,7 +43,7 @@
     <p class="spl-kicker">Checkout</p>
     <h1>Buy a lab seat</h1>
     <p class="lede">Pick the product. Humans pay on Stripe or by invoice. Agents pay x402 (USDC on Solana or Base). After payment you land on Access.</p>
-    <p class="pay-note">Chamber cloak license $9/mo · $99/yr. AWARE $9/$49/$490. Agent-Rider $79/$790. Lab Pass $668. CuNi Studio is free.</p>
+    <p class="pay-note">Chamber $9/$99. AWARE $9/$49/$490. Rider $79/$790. Rider Ops $29/$290. Lab Pass $668. Consulting $250. CuNi is free. Quikgater is pay-per-fetch, not a seat — <a href="/quikgater">/quikgater</a>.</p>
 
     <div class="pay-form">
       <label for="sku">Seat</label>
@@ -83,10 +83,12 @@
     return;
   }
 
-  const listed = matrix.listed || (matrix.products || []).filter((p) => p.list !== false);
-  const all = matrix.products || listed;
+  const listed = (matrix.listed || (matrix.products || []).filter((p) => p.list !== false))
+    .filter((p) => p.sell !== false && Number(p.amount_cents || p.amount_usd * 100) >= 50);
+  const all = (matrix.products || listed).filter((p) => p.sell !== false && Number(p.amount_cents || 0) >= 50);
   const params = new URLSearchParams(location.search);
-  const wanted = params.get("sku");
+  const wantedRaw = params.get("sku");
+  const wanted = (matrix.aliases && wantedRaw && matrix.aliases[wantedRaw]) || wantedRaw;
 
   let products = listed.slice();
   if (wanted && !products.some((p) => p.sku === wanted)) {
@@ -151,6 +153,6 @@
   document.getElementById("payInvoice").onclick = () => checkout("invoice");
 })();
 </script>
-  <script src="/assets/chrome.js?v=17" defer></script>
+  <script src="/assets/chrome.js?v=20" defer></script>
 </body>
 </html>

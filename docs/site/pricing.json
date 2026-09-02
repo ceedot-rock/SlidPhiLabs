@@ -3,7 +3,7 @@
   "inbox": "corey@slidphilabs.com",
   "site": "https://www.slidphilabs.com",
   "methods": "https://www.slidphilabs.com/METHODS.md",
-  "rule": "CuNi $0. Chamber cloak license $9/mo · $99/yr (open existing seals with keys). AWARE $9/$49/$490. Rider $79/mo · $790/yr. Suite 6.9 GB / 3 h then ~5¢/GB. Lab Pass $668.",
+  "rule": "CuNi $0. Chamber cloak $9/mo · $99/yr (open with keys). AWARE $9/$49/$490. Rider $79/mo · $790/yr. Rider Ops $29/$290. Suite 6.9 GB / 3 h then ~5¢/GB. Lab Pass $668. Quikgater is pay-per-fetch, not a seat. TRU8/Gate/ZRW are names inside AWARE.",
   "measured": {
     "silesia_raw": 211938580,
     "aware_xz1": 47752368,
@@ -14,10 +14,12 @@
     "gzip9_calgary": 1017680
   },
   "math": {
-    "chamber_week": 1.99,
     "chamber_month": 9,
     "chamber_year": 99,
     "gc_year": 490,
+    "rider_year": 790,
+    "rider_ops_year": 290,
+    "trugame_year": 79,
     "lab_pass_year": 668
   },
   "products": {
@@ -49,6 +51,14 @@
         "year": { "sku": "rider-year", "usd": 790, "stripe": "https://www.slidphilabs.com/pay?sku=rider-year" }
       }
     },
+    "rider_ops": {
+      "name": "Rider Ops",
+      "needs": "rider",
+      "plans": {
+        "month": { "sku": "rider-ops-month", "usd": 29, "stripe": "https://www.slidphilabs.com/pay?sku=rider-ops-month" },
+        "year": { "sku": "rider-ops-year", "usd": 290, "stripe": "https://www.slidphilabs.com/pay?sku=rider-ops-year" }
+      }
+    },
     "cuni_exception": {
       "name": "CuNi closed-app exception",
       "sku": "cuni-exception",
@@ -69,6 +79,19 @@
       "stripe": "https://www.slidphilabs.com/pay?sku=lab-pass",
       "includes": ["chamber", "gc", "trugame"],
       "excludes": ["rider"]
+    },
+    "consulting": {
+      "name": "Lab consulting (2 hours)",
+      "sku": "consulting",
+      "usd": 250,
+      "stripe": "https://www.slidphilabs.com/pay?sku=consulting"
+    },
+    "quikgater": {
+      "name": "Quikgater",
+      "sku": "quikgater",
+      "kind": "usage",
+      "page": "https://www.slidphilabs.com/quikgater",
+      "x402": "https://quikgater-worker.ceedotrock.workers.dev/"
     }
   },
   "suite": {
@@ -79,8 +102,18 @@
     "page": "https://www.slidphilabs.com/pps"
   },
   "aliases": {
-    "tru8-year": "gc-chamber-year",
+    "tru8": "gc-year",
+    "tru8-year": "gc-year",
+    "gate": "gc-year",
     "gate-year": "gc-year",
-    "lab-pass-year": "lab-pass"
+    "zrw": "gc-year",
+    "cddg": "consulting",
+    "support-integration": "consulting",
+    "slid-phi": "consulting",
+    "chamber-week": "chamber-month",
+    "chamber-day": "chamber-month",
+    "lab-pass-year": "lab-pass",
+    "fleetpulse": "rider-ops-year",
+    "fetchgate": "quikgater"
   }
 }

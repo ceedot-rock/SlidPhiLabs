@@ -6,7 +6,7 @@ import { computeQuote } from "./suite-pricing.js";
 
 const PPP_PAYMENT_LINK =
   process.env.PPP_PAYMENT_LINK ||
-  "https://buy.stripe.com/aFa00k4B70OYetL0O46wE0g";
+  "https://www.slidphilabs.com/pps";
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");

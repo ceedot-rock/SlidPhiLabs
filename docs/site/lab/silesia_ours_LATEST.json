@@ -331,7 +331,7 @@
         },
         "zrw_force": {
           "ok": false,
-          "reason": "ZRW: max 10000 ints/call on Free Gate (got 1538048). Upgrade: https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b"
+          "reason": "ZRW: max 10000 ints/call on Free Gate (got 1538048). Upgrade: https://www.slidphilabs.com/pay?sku=gc-year"
         }
       },
       "omni_vs_brotli11": 1035090,
@@ -535,7 +535,7 @@
         },
         "zrw_force": {
           "ok": false,
-          "reason": "ZRW: max 10000 ints/call on Free Gate (got 1812986). Upgrade: https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b"
+          "reason": "ZRW: max 10000 ints/call on Free Gate (got 1812986). Upgrade: https://www.slidphilabs.com/pay?sku=gc-year"
         }
       },
       "omni_vs_brotli11": -735965,
@@ -637,7 +637,7 @@
         },
         "zrw_force": {
           "ok": false,
-          "reason": "ZRW: max 10000 ints/call on Free Gate (got 1336320). Upgrade: https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b"
+          "reason": "ZRW: max 10000 ints/call on Free Gate (got 1336320). Upgrade: https://www.slidphilabs.com/pay?sku=gc-year"
         }
       },
       "omni_vs_brotli11": 0,

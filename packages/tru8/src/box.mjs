@@ -4,7 +4,7 @@ import { homedir } from "node:os";
 import { join } from "node:path";
 
 const FILE = join(homedir(), ".slidphilabs", "blackbox.json");
-const BUY = "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E";
+const BUY = "https://www.slidphilabs.com/pay?sku=gc-year";
 
 export function assertTru8Box() {
   if (process.env.SPL_UNLOCK === "1") return;
@@ -20,6 +20,6 @@ export function assertTru8Box() {
   const hours = (Date.now() - Date.parse(rec.started)) / 3600000;
   if (hours < -1) throw new Error("HALT: clock tamper");
   if (hours >= 24) {
-    throw new Error(`black box closed — TRU8 Year $990 ${BUY}`);
+    throw new Error(`black box closed — AWARE Year $490 ${BUY}`);
   }
 }

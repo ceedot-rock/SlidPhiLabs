@@ -25,6 +25,11 @@ import {
   buildDeliverable,
   normalizeSku as accessNormalizeSku,
 } from "./access-verify.js";
+import {
+  PRODUCT_CATALOG as CATALOG,
+  SKU_ALIASES as ALIASES,
+  resolveSku,
+} from "./lib/payments-rails.js";
 
 const DB = (
   process.env.NOTION_GROK_NOTES_DB ||
@@ -43,416 +48,13 @@ const BASE_NETWORK = "eip155:8453";
 const TRANSFER_TOPIC =
   "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef";
 
-/** Standing products — cents match pricing.json SoT. Humans: Stripe. Agents: this rail. */
-const CATALOG = {
-  "chamber-week": {
-    name: "Chamber · weekly seat",
-    amount_cents: 199,
-    stripe: "https://www.slidphilabs.com/pay?sku=chamber-week",
-    kind: "chamber",
-    blurb: "Same Chamber. License live 7 days. Cloak/open until it expires.",
-    access: "https://www.slidphilabs.com/access?product=chamber-week",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "chamber-day": {
-    name: "Chamber · Day",
-    amount_cents: 900,
-    stripe: "https://www.slidphilabs.com/pay?sku=chamber-day",
-    kind: "chamber",
-    blurb: "Lock JSON. Two keys. $9 / 24h. Not a compressor.",
-    access: "https://www.slidphilabs.com/access?product=chamber-day",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "chamber-month": {
-    name: "Chamber · Month",
-    amount_cents: 900,
-    stripe: "https://www.slidphilabs.com/pay?sku=chamber-month",
-    kind: "chamber",
-    blurb: "License to cloak new JSON for 30 days. Open existing seals with both keys.",
-    access: "https://www.slidphilabs.com/access?product=chamber-month",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "chamber-year": {
-    name: "Chamber · Year",
-    amount_cents: 9900,
-    stripe: "https://www.slidphilabs.com/pay?sku=chamber-year",
-    kind: "chamber",
-    blurb: "License to cloak new JSON for 365 days. Stored secrets do not expire.",
-    access: "https://www.slidphilabs.com/access?product=chamber-year",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "gc-day": {
-    name: "AWARE · Day",
-    amount_cents: 900,
-    stripe: "https://www.slidphilabs.com/pay?sku=gc-day",
-    kind: "gc",
-    blurb: "AWARE — Adaptive Waveform Archive Restore Engine. $9 / 24h.",
-    access: "https://www.slidphilabs.com/access?product=gc-day",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "gc-month": {
-    name: "AWARE · Month",
-    amount_cents: 4900,
-    stripe: "https://www.slidphilabs.com/pay?sku=gc-month",
-    kind: "gc",
-    blurb: "AWARE — Adaptive Waveform Archive Restore Engine. $49 / month.",
-    access: "https://www.slidphilabs.com/access?product=gc-month",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "gc-year": {
-    name: "AWARE · Year",
-    amount_cents: 49000,
-    stripe: "https://www.slidphilabs.com/pay?sku=gc-year",
-    kind: "gc",
-    blurb: "AWARE — Adaptive Waveform Archive Restore Engine. $490 / year.",
-    access: "https://www.slidphilabs.com/access?product=gc-year",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "rider-month": {
-    name: "Agent-Rider · monthly team seat",
-    amount_cents: 7900,
-    stripe: "https://www.slidphilabs.com/pay?sku=rider-month",
-    kind: "rider",
-    blurb: "Signed agent identity L0–L4. $79 / month. Not in Lab Pass.",
-    access: "https://www.slidphilabs.com/access?product=rider-month",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "rider-year": {
-    name: "Agent-Rider · annual team seat",
-    amount_cents: 79000,
-    stripe: "https://www.slidphilabs.com/pay?sku=rider-year",
-    kind: "rider",
-    blurb: "Signed agent identity L0–L4. $790 / year. Not in Lab Pass.",
-    access: "https://www.slidphilabs.com/access?product=rider-year",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "cuni-exception": {
-    name: "CuNi · closed-app exception (one product, one year)",
-    amount_cents: 49000,
-    stripe: "https://www.slidphilabs.com/pay?sku=cuni-exception",
-    kind: "exception",
-    blurb: "One closed product, one year. Not Combined GC.",
-    access: "https://www.slidphilabs.com/access?product=cuni-exception",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "tru8-day": {
-    name: "TRU8 · Day",
-    amount_cents: 1900,
-    stripe: "https://www.slidphilabs.com/pay?sku=tru8-day",
-    kind: "tru8",
-    blurb: "Lossless encode $19 / 24h. Day does not include Chamber.",
-    access: "https://www.slidphilabs.com/access?product=tru8-day",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "tru8-month": {
-    name: "TRU8 · Month",
-    amount_cents: 9900,
-    stripe: "https://www.slidphilabs.com/pay?sku=tru8-month",
-    kind: "tru8",
-    blurb: "TRU8 $99 / month. No Chamber.",
-    access: "https://www.slidphilabs.com/access?product=tru8-month",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "tru8-year": {
-    name: "TRU8 · Year (includes Chamber)",
-    amount_cents: 99000,
-    stripe: "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
-    kind: "both",
-    blurb: "TRU8 + Chamber $990 / year. Saves $198 vs 12 months.",
-    access: "https://www.slidphilabs.com/access?product=tru8-year",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "tru8-commercial": {
-    name: "TRU8 · Year (alias)",
-    amount_cents: 99000,
-    stripe: "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
-    kind: "both",
-    retired_as: "tru8-year",
-    blurb: "Alias of tru8-year $990.",
-    access: "https://www.slidphilabs.com/access?product=tru8-year",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "truchamber-day": {
-    name: "TRU8 · Day (alias)",
-    amount_cents: 1900,
-    stripe: "https://www.slidphilabs.com/pay?sku=tru8-day",
-    kind: "tru8",
-    retired_as: "tru8-day",
-    blurb: "Alias of tru8-day $19.",
-    access: "https://www.slidphilabs.com/access?product=tru8-day",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "truchamber-month": {
-    name: "TRU8 · Month (alias)",
-    amount_cents: 9900,
-    stripe: "https://www.slidphilabs.com/pay?sku=tru8-month",
-    kind: "tru8",
-    retired_as: "tru8-month",
-    blurb: "Alias of tru8-month $99.",
-    access: "https://www.slidphilabs.com/access?product=tru8-month",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "truchamber-year": {
-    name: "TRU8 · Year (alias)",
-    amount_cents: 99000,
-    stripe: "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
-    kind: "both",
-    retired_as: "tru8-year",
-    blurb: "Alias of tru8-year $990.",
-    access: "https://www.slidphilabs.com/access?product=tru8-year",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "gate-day": {
-    name: "Gate · Day",
-    amount_cents: 2900,
-    stripe: "https://www.slidphilabs.com/pay?sku=gate-day",
-    kind: "gate",
-    blurb: "Mixed-file lossless picker $29 / 24h.",
-    access: "https://www.slidphilabs.com/access?product=gate-day",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "gate-month": {
-    name: "Gate · Month",
-    amount_cents: 8900,
-    stripe: "https://www.slidphilabs.com/pay?sku=gate-month",
-    kind: "gate",
-    blurb: "Gate $89 / month.",
-    access: "https://www.slidphilabs.com/access?product=gate-month",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "gate-year": {
-    name: "Gate · Year",
-    amount_cents: 79000,
-    stripe: "https://buy.stripe.com/7sY4gA6Jfapy1GZ8gw6wE0G",
-    kind: "gate",
-    blurb: "Gate $790 / year. Saves $278 vs 12 months.",
-    access: "https://www.slidphilabs.com/access?product=gate-year",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "lab-pass": {
-    name: "Lab Pass · Year",
-    amount_cents: 66800,
-    stripe: "https://www.slidphilabs.com/pay?sku=lab-pass",
-    kind: "seat",
-    blurb: "Chamber + AWARE + TruGame · $668 / 365d. Not Rider.",
-    access: "https://www.slidphilabs.com/access?product=lab-pass",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "trugame-month": {
-    name: "TruGame · Month",
-    amount_cents: 1200,
-    stripe: "https://www.slidphilabs.com/pay?sku=trugame-month",
-    kind: "trugame",
-    blurb: "Engine seat $12 / month. No rent desk.",
-    access: "https://www.slidphilabs.com/access?product=trugame-month",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "trugame-year": {
-    name: "TruGame · Year",
-    amount_cents: 7900,
-    stripe: "https://www.slidphilabs.com/pay?sku=trugame-year",
-    kind: "trugame",
-    blurb: "Engine seat $79 / year.",
-    access: "https://www.slidphilabs.com/access?product=trugame-year",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "json-chamber": {
-    name: "json-chamber unlock (retired)",
-    amount_cents: 49000,
-    stripe: "https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F",
-    kind: "retired",
-    retired: true,
-    blurb: "Retired. Use Chamber $9/$49/$490.",
-    access: "https://www.slidphilabs.com/chamber",
-  },
-  "cddg-split": {
-    name: "CDDG:Split",
-    amount_cents: 19900,
-    stripe: "https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f",
-    kind: "historical-process",
-    blurb: "Process product $199. Not Chamber Year. Not TRU8.",
-    access: "https://www.slidphilabs.com/access?product=cddg-split",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "zrw-n00b": {
-    name: "ZRW N00b (retired)",
-    amount_cents: 99000,
-    stripe: "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
-    kind: "historical-license",
-    retired: true,
-    blurb: "Retired. Buy TRU8 Year $990.",
-  },
-  "zrw-pro": {
-    name: "ZRW Pro (retired)",
-    amount_cents: 99000,
-    stripe: "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
-    kind: "historical-license",
-    retired: true,
-    blurb: "Retired. Buy TRU8 Year $990.",
-  },
-  "zrw-l33t": {
-    name: "ZRW L33t (retired)",
-    amount_cents: 99000,
-    stripe: "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
-    kind: "historical-license",
-    retired: true,
-    blurb: "Retired. Buy TRU8 Year $990.",
-  },
-  blackjack: {
-    name: "Blackjack support",
-    amount_cents: 19900,
-    stripe: "https://buy.stripe.com/00w00k6Jf8hqgBTaoE6wE0h",
-    kind: "support-oss",
-    oss_npm: "blackjack-compression",
-    blurb: "$199 support for the public library. Not a secret engine.",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "shard-zip": {
-    name: "shard-zip support",
-    amount_cents: 19900,
-    stripe: "https://buy.stripe.com/3cI7sMd7D8hq1GZaoE6wE0i",
-    kind: "support-oss",
-    oss_npm: "shard-zip",
-    blurb: "$199 support for the public library.",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "shard-tsdb": {
-    name: "shard-tsdb support",
-    amount_cents: 19900,
-    stripe: "https://buy.stripe.com/9B628sd7DeFO99r9kA6wE0j",
-    kind: "support-oss",
-    oss_npm: "shard-tsdb",
-    blurb: "$199 support for the public library.",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "slid-phi": {
-    name: "slid-phi support",
-    amount_cents: 19900,
-    stripe: "https://buy.stripe.com/dRm6oI6JfgNWetL8gw6wE0k",
-    kind: "stub",
-    blurb: "Public npm stub / quote. $199.",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "support-integration": {
-    name: "Support + Integration",
-    amount_cents: 19900,
-    stripe: "https://buy.stripe.com/8x28wQebH41a85n2Wc6wE0l",
-    kind: "service",
-    blurb: "Pathway, benches, email Q&A · $199",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  consulting: {
-    name: "Consulting",
-    amount_cents: 25000,
-    stripe: "https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02",
-    kind: "service",
-    blurb: "Scoped lab session · $250",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  sponsor: {
-    name: "Sponsor",
-    amount_cents: 2900,
-    stripe: "https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01",
-    kind: "support",
-    blurb: "Support the lab · $29",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  donate: {
-    name: "Donate",
-    amount_cents: 2999,
-    stripe: "https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a",
-    kind: "support",
-    blurb: "Lab support · $29.99 via this link.",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-  "try-gate": {
-    retired: true,
-    name: "Try Gate (retired)",
-    amount_cents: 900,
-    stripe: "https://www.slidphilabs.com/pps",
-    kind: "support",
-    blurb: "Retired. Use Suite 6.9 GB / 3 h then ~5¢/GB.",
-  },
-  "gao-entry": {
-    name: "Great Agentic Olympiad Entry",
-    amount_cents: 100,
-    stripe: "https://buy.stripe.com/8x24gAd7D7dm2L31S86wE0m",
-    kind: "olympiad",
-    blurb: "$1 GAO seat.",
-    access: "https://www.slidphilabs.com/olympiad",
-    fulfill_email: "corey@slidphilabs.com",
-  },
-};
-
-const ALIASES = {
-  residual: "cddg-split",
-  "residual-governance": "cddg-split",
-  twin: "cddg-split",
-  cddg: "cddg-split",
-  split: "cddg-split",
-  zrw: "tru8-year",
-  n00b: "tru8-year",
-  noob: "tru8-year",
-  starting: "tru8-year",
-  "zrw-starting-gate": "tru8-year",
-  "starting-gate": "tru8-year",
-  pro: "tru8-year",
-  "zrw-pro-starter": "tru8-year",
-  l33t: "tru8-year",
-  "l33t-sauc3": "tru8-year",
-  "zrw-l33t-unlimited": "tru8-year",
-  unlimited: "tru8-year",
-  "zrw-n00b": "tru8-year",
-  "zrw-pro": "tru8-year",
-  "zrw-l33t": "tru8-year",
-  gate: "gate-year",
-  "lab-pass-year": "lab-pass",
-  pass: "lab-pass",
-  trugame: "trugame-month",
-  rent: "trugame-month",
-  support: "support-integration",
-  integration: "support-integration",
-  chip: "try-gate",
-  "try-gate-chip-in": "try-gate",
-  donation: "donate",
-  gao: "gao-entry",
-  olympiad: "gao-entry",
-  "olympiad-entry": "gao-entry",
-  "great-agentic-olympiad": "gao-entry",
-  tru8: "tru8-year",
-  "tru8-chamber": "tru8-year",
-  license: "tru8-year",
-  studio: "tru8-year",
-  commercial: "tru8-year",
-  "tru8-commercial": "tru8-year",
-  chamber: "chamber-year",
-  week: "chamber-month",
-  weekly: "chamber-month",
-  rider: "rider-year",
-  "agent-rider": "rider-year",
-  agentrider: "rider-year",
-  "rider-team-month": "rider-month",
-  "rider-team-year": "rider-year",
-  gc: "gc-year",
-  aware: "gc-year",
-  "combined-gc": "gc-year",
-  exception: "cuni-exception",
-  "cuni-closed": "cuni-exception",
-  truchamber: "tru8-year",
-  "tru-chamber": "tru8-month",
-  unlock: "chamber-day",
-  security: "chamber-year",
-  "chamber-only": "chamber-year",
-  both: "tru8-year",
-  full: "lab-pass",
-  day: "chamber-day",
-  "day-pass": "chamber-day",
-  month: "chamber-month",
-  monthly: "chamber-month",
-  year: "tru8-year",
-  yearly: "tru8-year",
-  annual: "lab-pass",
-};
+function enrich(p, sku) {
+  if (!p) return p;
+  const out = { ...p };
+  if (!out.access) out.access = "https://www.slidphilabs.com/access?product=" + sku;
+  if (!out.fulfill_email) out.fulfill_email = "corey@slidphilabs.com";
+  return out;
+}
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -478,19 +80,6 @@ function clean(s, max = 2000) {
   return String(s || "")
     .trim()
     .slice(0, max);
-}
-
-function resolveSku(raw) {
-  const k = String(raw || "")
-    .trim()
-    .toLowerCase();
-  if (!k) return null;
-  const aliased = ALIASES[k];
-  if (aliased && CATALOG[aliased] && !CATALOG[aliased].retired) return aliased;
-  if (CATALOG[k] && !CATALOG[k].retired) return k;
-  if (CATALOG[k]) return k;
-  if (aliased) return aliased;
-  return null;
 }
 
 function solanaConfig() {
@@ -568,17 +157,17 @@ function centsToRawAmount(cents, decimals) {
 }
 
 function publicProduct(sku) {
-  const p = CATALOG[sku];
+  const p = enrich(CATALOG[sku], sku);
   if (!p) return null;
   const out = {
     sku,
     name: p.name,
     amount_cents: p.amount_cents,
-    amount_usd: (p.amount_cents / 100).toFixed(2),
+    amount_usd: ((p.amount_cents || 0) / 100).toFixed(2),
     kind: p.kind,
     blurb: p.blurb,
-    human_stripe: p.stripe || null,
-    agent_buy: "POST /api/x402-products",
+    human_stripe: p.kind === "usage" ? null : p.stripe || null,
+    agent_buy: p.kind === "usage" ? (p.x402 || "https://www.slidphilabs.com/quikgater") : "POST /api/x402-products",
   };
   if (p.oss_npm) out.oss_npm = p.oss_npm;
   if (p.access) out.access = p.access;
@@ -897,7 +486,7 @@ function catalogResponse() {
   const sol = solanaConfig();
   const base = baseConfig();
   const products = Object.keys(CATALOG)
-    .filter((sku) => !CATALOG[sku].retired)
+    .filter((sku) => !CATALOG[sku].retired && (CATALOG[sku].list || CATALOG[sku].kind === "support-oss" || CATALOG[sku].kind === "support" || CATALOG[sku].kind === "olympiad"))
     .map((sku) => publicProduct(sku));
   const rails = [];
   if (sol.enabled) {
@@ -962,6 +551,14 @@ export default async function handler(req, res) {
     const qSku = resolveSku(url.searchParams.get("sku") || url.searchParams.get("product"));
     if (qSku) {
       const pub = publicProduct(qSku);
+      if (CATALOG[qSku]?.kind === "usage" || CATALOG[qSku]?.sell === false) {
+        return json(res, 200, {
+          ...pub,
+          mode: "usage",
+          x402: CATALOG[qSku].x402 || null,
+          how: "Hit the worker URL. Unpaid fetch returns HTTP 402. Seats use POST /api/x402-products.",
+        });
+      }
       const requirements = buildAccepts(qSku);
       return json(res, 200, {
         ...pub,
@@ -990,7 +587,7 @@ export default async function handler(req, res) {
   if (!sku || !CATALOG[sku]) {
     return json(res, 400, {
       error: "Unknown product sku",
-      known: Object.keys(CATALOG).filter((k) => !CATALOG[k].retired),
+      known: Object.keys(CATALOG).filter((k) => !CATALOG[k].retired && CATALOG[k].list),
       aliases: Object.keys(ALIASES),
       suite_free: "Use POST /api/x402-suite with bytes ≤ 1GiB free — try-gate is retired",
     });
@@ -1002,6 +599,19 @@ export default async function handler(req, res) {
       message: CATALOG[sku].blurb || "Retired SKU. See /pricing.json.",
       suite: "https://www.slidphilabs.com/pps",
       x402_suite: "POST /api/x402-suite",
+    });
+  }
+
+  if (CATALOG[sku].kind === "usage" || CATALOG[sku].sell === false) {
+    const u = CATALOG[sku];
+    return json(res, 200, {
+      ok: true,
+      mode: "usage",
+      sku,
+      message: u.blurb,
+      url: u.page || u.x402 || u.stripe,
+      x402: u.x402 || null,
+      note: "Pay per call on the worker. This SKU is not a Stripe seat.",
     });
   }
 

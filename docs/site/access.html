@@ -220,10 +220,10 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 
   <h2>Not purchased yet?</h2>
   <div class="links">
-    <a class="btn btn-gold" href="https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f" target="_blank" rel="noopener">CDDG:Split $199</a>
-    <a class="btn btn-primary" href="https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b" target="_blank" rel="noopener">ZRW N00b $79</a>
-    <a class="btn btn-teal" href="/pps">Free suite</a>
-    <a class="btn btn-ghost" href="/#pricing">Full pricing</a>
+    <a class="btn btn-gold" href="/pay?sku=gc-year">AWARE Year $490</a>
+    <a class="btn btn-primary" href="/pay?sku=chamber-year">Chamber Year $99</a>
+    <a class="btn btn-teal" href="/pps">Suite</a>
+    <a class="btn btn-ghost" href="/pricing">Pricing</a>
   </div>
 
   <h2>npm packages</h2>
@@ -260,85 +260,41 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 <script>
 (function () {
   const CATALOG = {
-    'cddg-split': {
-      name: 'CDDG:Split',
-      price: '$199',
+    'chamber-year': {
+      name: 'Chamber · annual cloak license',
+      price: '$99/year',
       champ: true,
-      deliver: 'CDDG:Split package + license / install instructions.',
-      buy: 'https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f',
-      blurb: 'Process product',
+      deliver: 'License to seal new JSON for 365 days. Open with both keys.',
+      buy: '/pay?sku=chamber-year',
+      blurb: 'JSON protocol',
     },
-    'residual-governance': {
-      name: 'CDDG:Split',
-      price: '$199',
-      champ: true,
-      deliver: 'CDDG:Split package + license / install instructions.',
-      buy: 'https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f',
-      blurb: 'Process product',
+    'gc-year': {
+      name: 'AWARE · annual compressor seat',
+      price: '$490/year',
+      deliver: 'Hosted lossless compressor. Engine stays in the lab.',
+      buy: '/pay?sku=gc-year',
+      blurb: 'Compressor',
     },
-    'twin': {
-      name: 'CDDG:Split',
-      price: '$199',
-      champ: true,
-      deliver: 'CDDG:Split package + license / install instructions.',
-      buy: 'https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f',
-      blurb: 'Process product',
+    'rider-year': {
+      name: 'Agent-Rider · annual team seat',
+      price: '$790/year',
+      deliver: 'Signed agent identity L0–L4.',
+      buy: '/pay?sku=rider-year',
+      blurb: 'Identity',
     },
-    'zrw-starting-gate': {
-      name: 'ZRW N00b',
-      price: '$79',
-      deliver: 'ZRW N00b package / license key.',
-      buy: 'https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b',
-      blurb: 'N00b tier — Zero Range Wave',
-    },
-    'zrw-pro-starter': {
-      name: 'ZRW Pro',
-      price: '$249',
-      deliver: 'ZRW Pro package / higher commercial limits.',
-      buy: 'https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c',
-      blurb: 'Pro tier',
-    },
-    'zrw-l33t-unlimited': {
-      name: 'ZRW L33t$aUC3',
-      price: '$699',
-      deliver: 'ZRW L33t$aUC3 business / unlimited tier package.',
-      buy: 'https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d',
-      blurb: 'Business / unlimited — L33t$aUC3',
-    },
-    'support-integration': {
-      name: 'Support + Integration',
-      price: '$199',
-      deliver: 'Calendar / intake + email onboarding for pathway choice and benches.',
-      buy: 'https://buy.stripe.com/8x28wQebH41a85n2Wc6wE0l',
-      blurb: 'Pathway + benches + Q&A',
-    },
-    'sponsor': {
-      name: 'Sponsor',
-      price: '$29',
-      deliver: 'Thank-you + optional sponsor badge. Fuels the lab.',
-      buy: 'https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01',
-      blurb: 'Support research',
+    'lab-pass': {
+      name: 'Lab Pass · annual',
+      price: '$668/year',
+      deliver: 'Chamber + AWARE + TruGame. Not Rider.',
+      buy: '/pay?sku=lab-pass',
+      blurb: 'Bundle',
     },
     'consulting': {
       name: 'Consulting',
       price: '$250',
-      deliver: 'Booking / intake link for a scoped lab session.',
-      buy: 'https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02',
-      blurb: 'Scoped expert session',
-    },
-    'try-gate': {
-      name: 'Try Gate chip-in',
-      price: '$9',
-      deliver: 'Legacy Try Gate (retired). Prefer free suite on /pps. If you already paid, seat tools still unlock below.',
-      buy: 'https://donate.stripe.com/eVq8wQffL2X60CVfIY6wE0e',
-      blurb: 'Legacy Try Gate (retired)',
-    },
-    'donate': {
-      name: 'Donate',
-      price: '$29.99',
-      deliver: 'Thank-you note. No package unless separately purchased.',
-      buy: 'https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a',
-      blurb: 'General lab support',
+      deliver: 'Two hours of lab time.',
+      buy: '/pay?sku=consulting',
+      blurb: 'Scoped session',
     },
   };
 

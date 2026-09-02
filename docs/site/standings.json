@@ -511,7 +511,7 @@
       "status": "active",
       "product": "Slid Phi University / TEACHAiD",
       "links": {
-        "pay": "https://buy.stripe.com/9B6bJ2c3z2X6clD40g6wE0n",
+        "pay": "https://www.slidphilabs.com/pay",
         "desk": "https://teachaid.fly.dev/campus-hub.html#school",
         "api": "https://teachaid.fly.dev/api/school"
       }

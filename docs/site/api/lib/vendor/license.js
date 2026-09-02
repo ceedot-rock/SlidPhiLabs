@@ -1,6 +1,5 @@
 /**
- * Product use-route: 24h black box, then a real seat.
- * Retired ZRW $79/$249/$699 links are dead. Do not sell them.
+ * Product use-route: 24h try, then a real seat on /pay.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
@@ -8,8 +7,8 @@ import { join } from "node:path";
 
 export const Tiers = Object.freeze({
   BOX: "black-box-24h",
-  GATE: "gate-year",
-  TRU8: "tru8-year",
+  GATE: "gc-year",
+  TRU8: "gc-year",
   CHAMBER: "chamber-year",
   LAB: "lab-pass",
 });
@@ -17,18 +16,17 @@ export const Tiers = Object.freeze({
 export const FREE_LICENSE_CAP = Infinity;
 export const BOX_MS = 24 * 3600 * 1000;
 export const BUY = {
-  gate_year: "https://buy.stripe.com/7sY4gA6Jfapy1GZ8gw6wE0G",
-  tru8_year: "https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E",
-  chamber_year: "https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F",
-  lab_pass: "https://buy.stripe.com/3cI7sM2sZ0OYfxP7cs6wE0D",
+  gc_year: "https://www.slidphilabs.com/pay?sku=gc-year",
+  chamber_year: "https://www.slidphilabs.com/pay?sku=chamber-year",
+  lab_pass: "https://www.slidphilabs.com/pay?sku=lab-pass",
 };
 
 export const LIMITS = Object.freeze({
-  [Tiers.BOX]: { label: "24h black box", priceUsd: 0, buyUrl: BUY.lab_pass },
-  [Tiers.GATE]: { label: "Gate Year", priceUsd: 790, buyUrl: BUY.gate_year },
-  [Tiers.TRU8]: { label: "TRU8 Year", priceUsd: 990, buyUrl: BUY.tru8_year },
-  [Tiers.CHAMBER]: { label: "Chamber year license", priceUsd: 99, buyUrl: "https://www.slidphilabs.com/pay?sku=chamber-year" },
-  [Tiers.LAB]: { label: "Lab Pass Year", priceUsd: 668, buyUrl: "https://www.slidphilabs.com/pay?sku=lab-pass" },
+  [Tiers.BOX]: { label: "24h try", priceUsd: 0, buyUrl: BUY.lab_pass },
+  [Tiers.GATE]: { label: "AWARE Year", priceUsd: 490, buyUrl: BUY.gc_year },
+  [Tiers.TRU8]: { label: "AWARE Year", priceUsd: 490, buyUrl: BUY.gc_year },
+  [Tiers.CHAMBER]: { label: "Chamber year license", priceUsd: 99, buyUrl: BUY.chamber_year },
+  [Tiers.LAB]: { label: "Lab Pass Year", priceUsd: 668, buyUrl: BUY.lab_pass },
 });
 
 const DIR = join(homedir(), ".slidphilabs");
@@ -89,7 +87,7 @@ export function assertLicense(_opts = {}) {
   const box = openLocalBox();
   if (box.open) return true;
   throw new Error(
-    `black box closed — buy a seat. Lab Pass $1,088 ${BUY.lab_pass} · Gate Year $790 ${BUY.gate_year}`,
+    `black box closed — buy a seat. Lab Pass $668 ${BUY.lab_pass} · AWARE Year $490 ${BUY.gc_year}`,
   );
 }
 

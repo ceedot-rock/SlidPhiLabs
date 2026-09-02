@@ -88,7 +88,7 @@ Hierarchy is the attractor. Code only what remains. Residual Governance packages
 | Residual cut | **64–84%** |
 
 **CTAs:**  
-- **Buy Residual Governance · $199** → https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f  
+- **Buy Residual Governance · $199** → https://www.slidphilabs.com/pay?sku=consulting  
 - **After purchase → Access** → `/access?product=residual-governance`
 
 ---
@@ -111,9 +111,9 @@ Hierarchy is the attractor. Code only what remains. Residual Governance packages
 **Buttons (exact Stripe):**  
 - See for yourself → `/try`  
 - npm stub → zero-range-wave-compression  
-- Starting Gate $79 → https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b  
-- Pro $249 → https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c  
-- l33t $699 → https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d  
+- Starting Gate $79 → https://www.slidphilabs.com/pay?sku=gc-year  
+- Pro $249 → https://www.slidphilabs.com/pay?sku=gc-year  
+- l33t $699 → https://www.slidphilabs.com/pay?sku=gc-year  
 
 ---
 
@@ -142,30 +142,30 @@ Hierarchy is the attractor. Code only what remains. Residual Governance packages
 
 | Product | Price | Checkout |
 |---------|------:|----------|
-| Residual Governance | $199 | https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f |
-| Support + Integration | $199 | https://buy.stripe.com/8x28wQebH41a85n2Wc6wE0l |
-| Blackjack | $199 | https://buy.stripe.com/00w00k6Jf8hqgBTaoE6wE0h |
-| shard-zip | $199 | https://buy.stripe.com/3cI7sMd7D8hq1GZaoE6wE0i |
-| shard-tsdb | $199 | https://buy.stripe.com/9B628sd7DeFO99r9kA6wE0j |
-| slid-phi | $199 | https://buy.stripe.com/dRm6oI6JfgNWetL8gw6wE0k |
-| GAO entry | $1 | https://buy.stripe.com/8x24gAd7D7dm2L31S86wE0m |
-| Consulting | $250 | https://buy.stripe.com/eVqfZi0kR41a4TbgN26wE02 |
+| Residual Governance | $199 | https://www.slidphilabs.com/pay?sku=consulting |
+| Support + Integration | $199 | https://www.slidphilabs.com/pay?sku=consulting |
+| Blackjack | $199 | https://www.slidphilabs.com/pay?sku=oss-support |
+| shard-zip | $199 | https://www.slidphilabs.com/pay?sku=oss-support |
+| shard-tsdb | $199 | https://www.slidphilabs.com/pay?sku=oss-support |
+| slid-phi | $199 | https://www.slidphilabs.com/pay?sku=consulting |
+| GAO entry | $1 | https://www.slidphilabs.com/olympiad |
+| Consulting | $250 | https://www.slidphilabs.com/pay?sku=consulting |
 
 ### ZRW gates
 
 | Product | Price | Checkout |
 |---------|------:|----------|
-| Starting Gate | $79 | https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b |
-| Pro Starter | $249 | https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c |
-| l33t Unlimited | $699 | https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d |
+| Starting Gate | $79 | https://www.slidphilabs.com/pay?sku=gc-year |
+| Pro Starter | $249 | https://www.slidphilabs.com/pay?sku=gc-year |
+| l33t Unlimited | $699 | https://www.slidphilabs.com/pay?sku=gc-year |
 
 ### Fuel
 
 | Product | Price | Checkout |
 |---------|------:|----------|
-| Try Gate chip-in | $9 | https://donate.stripe.com/eVq8wQffL2X60CVfIY6wE0e |
-| Sponsor | $29 | https://buy.stripe.com/cNi6oI8RnbtCgBTgN26wE01 |
-| Donate | $29.99 | https://buy.stripe.com/eVq9AUd7D0OY0CVdAQ6wE0a |
+| Try Gate chip-in | $9 | https://www.slidphilabs.com/pps |
+| Sponsor | $29 | https://www.slidphilabs.com/pay?sku=sponsor |
+| Donate | $29.99 | https://www.slidphilabs.com/pay?sku=donate |
 
 ---
 

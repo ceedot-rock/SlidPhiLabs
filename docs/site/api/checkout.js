@@ -94,6 +94,18 @@ export default async function handler(req, res) {
     });
   }
 
+  if (sku && PRODUCT_CATALOG[sku] && (PRODUCT_CATALOG[sku].kind === "usage" || PRODUCT_CATALOG[sku].sell === false)) {
+    const p = PRODUCT_CATALOG[sku];
+    return json(res, 200, {
+      ok: true,
+      mode: "usage",
+      sku,
+      message: p.blurb || "Usage product — not a Stripe seat.",
+      url: p.page || p.x402 || p.stripe,
+      x402: p.x402 || null,
+    });
+  }
+
   let amount_cents;
   let name;
   let payment_link = null;
@@ -118,8 +130,8 @@ export default async function handler(req, res) {
   } else {
     return json(res, 400, {
       error: "sku_or_amount_required",
-      hint: 'Body: { "sku": "cddg-split" } or { "amount_cents": 5000, "name": "Custom" }',
-      skus: Object.keys(PRODUCT_CATALOG).filter((k) => !PRODUCT_CATALOG[k].retired),
+      hint: 'Body: { "sku": "chamber-year" } or { "amount_cents": 5000, "name": "Custom" }',
+      skus: Object.keys(PRODUCT_CATALOG).filter((k) => !PRODUCT_CATALOG[k].retired && PRODUCT_CATALOG[k].list),
       matrix: `${origin}/api/payments`,
     });
   }

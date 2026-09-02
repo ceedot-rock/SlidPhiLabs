@@ -8,10 +8,12 @@ Slid Phi Labs. Corey Tasz. Human door: /humans  Agent door: /agents  Inbox: core
 ## Products
 - CuNi — language. One source → Python, Go, JS or refuse. $0. https://www.slidphilabs.com/cuni  Studio: https://cuni-studio.fly.dev/
 - Chamber — two-key protocol for storing a JSON secret. License to cloak $9/mo · $99/yr. Open existing seals with both keys (no extra payment). Try 24h: /box. https://www.slidphilabs.com/chamber
-- Agent-Rider — signed agent identity L0–L4. $79/mo · $790/yr. https://www.slidphilabs.com/rider  App: https://agentrider.fly.dev/
-- AWARE — hosted lossless compressor (engine: Combined GC). $9/day · $49/mo · $490/yr. Access, not source. https://www.slidphilabs.com/gc
+- Agent-Rider — signed agent identity L0–L4. $79/mo · $790/yr. Ops (heartbeat) $29/mo · $290/yr. https://www.slidphilabs.com/rider  App: https://agentrider.fly.dev/
+- AWARE — hosted lossless compressor (engine: Combined GC). $9/day · $49/mo · $490/yr. Access, not source. TRU8/Gate/ZRW are names inside this stack, not extra SKUs. https://www.slidphilabs.com/gc
 - Suite — metered AWARE jobs. 6.9 GB / 3 h unpaid, then ~5¢/GB. https://www.slidphilabs.com/pps
 - Lab Pass — Chamber year license + AWARE + TruGame, $668/yr. Not Rider. https://www.slidphilabs.com/lab-pass
+- Quikgater — pay-per-fact fetch for agents (x402). Not a seat. https://www.slidphilabs.com/quikgater
+- Consulting — $250 / 2 hours. https://www.slidphilabs.com/pay?sku=consulting
 - pulsar — public GPLv3 demo compressor. Not Combined GC. https://github.com/ceedot-rock/pulsar-best
 
 ## Checkout
@@ -26,6 +28,6 @@ Try: https://www.slidphilabs.com/box
 - Registry — io.github.ceedot-rock/slid-phi-labs
 - Smithery — https://smithery.ai/servers/slidphi/lab
 - Catalog — GET https://www.slidphilabs.com/api/agent
-- x402 — POST https://www.slidphilabs.com/api/x402-products
+- x402 — POST https://www.slidphilabs.com/api/x402-products  (docs: https://www.slidphilabs.com/x402)
 - Prices — https://www.slidphilabs.com/pricing.json
 - npm stdio — npx -y spl-pay-per-suite mcp

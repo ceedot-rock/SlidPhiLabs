@@ -94,38 +94,11 @@
     "pay_ui": "https://slidphilabs.fly.dev/pay",
     "doc": "docs/NPM_PRICING.md",
     "skus": {
-      "cddg-split": {
-        "usd": 199,
-        "buy": "https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f"
-      },
-      "zrw-n00b": {
-        "usd": 79,
-        "buy": "https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b"
-      },
-      "zrw-pro": {
-        "usd": 249,
-        "buy": "https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c"
-      },
-      "zrw-l33t": {
-        "usd": 699,
-        "buy": "https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d"
-      },
-      "blackjack": {
-        "usd": 199,
-        "buy": "https://buy.stripe.com/00w00k6Jf8hqgBTaoE6wE0h"
-      },
-      "shard-zip": {
-        "usd": 199,
-        "buy": "https://buy.stripe.com/3cI7sMd7D8hq1GZaoE6wE0i"
-      },
-      "shard-tsdb": {
-        "usd": 199,
-        "buy": "https://buy.stripe.com/9B628sd7DeFO99r9kA6wE0j"
-      },
-      "slid-phi": {
-        "usd": 199,
-        "buy": "https://buy.stripe.com/dRm6oI6JfgNWetL8gw6wE0k"
-      }
+      "chamber-year": { "usd": 99, "buy": "https://www.slidphilabs.com/pay?sku=chamber-year" },
+      "gc-year": { "usd": 490, "buy": "https://www.slidphilabs.com/pay?sku=gc-year" },
+      "rider-year": { "usd": 790, "buy": "https://www.slidphilabs.com/pay?sku=rider-year" },
+      "lab-pass": { "usd": 668, "buy": "https://www.slidphilabs.com/pay?sku=lab-pass" },
+      "consulting": { "usd": 250, "buy": "https://www.slidphilabs.com/pay?sku=consulting" }
     }
   }
 }

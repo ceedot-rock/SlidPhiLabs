@@ -1,20 +1,18 @@
 # Slid Phi Labs
-> CuNi exactness. Chamber seal. Agent-Rider. https://www.slidphilabs.com/
+> CuNi exactness. Chamber seal. Agent-Rider. AWARE. https://www.slidphilabs.com/
 
 - CuNi Studio — $0 — https://cuni-studio.fly.dev/
-- Chamber — $49/mo · $490/yr — https://www.slidphilabs.com/chamber
-- AWARE (Adaptive Waveform Archive Restore Engine) — $9/day · $49/mo · $490/yr — https://www.slidphilabs.com/gc
+- Chamber — $9/mo · $99/yr — cloak license; open is keys-only — https://www.slidphilabs.com/chamber
+- AWARE — $9/day · $49/mo · $490/yr — https://www.slidphilabs.com/gc
 - Agent-Rider — $79/mo · $790/yr — https://agentrider.fly.dev/
+- Rider Ops — $29/mo · $290/yr — https://www.slidphilabs.com/pay?sku=rider-ops-month
 - Suite — 6.9 GB / 3 h then ~5¢/GB — https://www.slidphilabs.com/pps
-- Lab Pass — $1,088/yr — https://www.slidphilabs.com/lab-pass
+- Lab Pass — $668/yr — Chamber + AWARE + TruGame — https://www.slidphilabs.com/lab-pass
 - TruGame — $12/mo · $79/yr — https://www.slidphilabs.com/trugame
+- Quikgater — x402 per fetch — https://www.slidphilabs.com/quikgater
+- Consulting — $250 / 2h — https://www.slidphilabs.com/pay?sku=consulting
 - Sign up — https://www.slidphilabs.com/signup
-- Log in — https://www.slidphilabs.com/login
-- Auth — POST https://www.slidphilabs.com/api/auth
 - MCP — POST https://www.slidphilabs.com/mcp
-- Registry — io.github.ceedot-rock/slid-phi-labs
-- Smithery — https://smithery.ai/servers/slidphi/lab
-- Catalog — GET https://www.slidphilabs.com/api/agent
 - x402 — POST https://www.slidphilabs.com/api/x402-products {"sku":"chamber-year"}
 - Stripe — https://www.slidphilabs.com/pay?sku=chamber-year
 - Prices — https://www.slidphilabs.com/pricing.json

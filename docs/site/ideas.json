@@ -89,7 +89,7 @@
         },
         {
           "label": "Buy",
-          "href": "https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f"
+          "href": "https://www.slidphilabs.com/pay?sku=consulting"
         }
       ],
       "pursued": "2026-08-04",
@@ -280,7 +280,7 @@
       "links": [
         {
           "label": "Buy $199",
-          "href": "https://buy.stripe.com/14A4gA4B79lu71jdAQ6wE0f"
+          "href": "https://www.slidphilabs.com/pay?sku=consulting"
         },
         {
           "label": "Access",
@@ -304,7 +304,7 @@
       "links": [
         {
           "label": "Buy",
-          "href": "https://buy.stripe.com/00w00k6Jf8hqgBTaoE6wE0h"
+          "href": "https://www.slidphilabs.com/pay?sku=oss-support"
         }
       ],
       "pursued": "2026-07-20",
@@ -326,7 +326,7 @@
       "links": [
         {
           "label": "Buy",
-          "href": "https://buy.stripe.com/3cI7sMd7D8hq1GZaoE6wE0i"
+          "href": "https://www.slidphilabs.com/pay?sku=oss-support"
         }
       ],
       "pursued": "2026-07-20",
@@ -348,7 +348,7 @@
       "links": [
         {
           "label": "Buy",
-          "href": "https://buy.stripe.com/9B628sd7DeFO99r9kA6wE0j"
+          "href": "https://www.slidphilabs.com/pay?sku=oss-support"
         }
       ],
       "pursued": "2026-07-20",
@@ -370,7 +370,7 @@
       "links": [
         {
           "label": "Buy",
-          "href": "https://buy.stripe.com/dRm6oI6JfgNWetL8gw6wE0k"
+          "href": "https://www.slidphilabs.com/pay?sku=consulting"
         }
       ],
       "pursued": "2026-07-20",
@@ -391,15 +391,15 @@
       "links": [
         {
           "label": "N00b",
-          "href": "https://buy.stripe.com/28EfZic3z69i3P72Wc6wE0b"
+          "href": "https://www.slidphilabs.com/pay?sku=gc-year"
         },
         {
           "label": "Pro",
-          "href": "https://buy.stripe.com/cNidRaebHbtC71j8gw6wE0c"
+          "href": "https://www.slidphilabs.com/pay?sku=gc-year"
         },
         {
           "label": "L33t",
-          "href": "https://buy.stripe.com/14AeVe9Vr8hqadvbsI6wE0d"
+          "href": "https://www.slidphilabs.com/pay?sku=gc-year"
         }
       ],
       "pursued": "2026-08-05",

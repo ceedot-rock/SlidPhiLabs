@@ -41,7 +41,7 @@ export const OP_MULT = {
 
 export const STRIPE_PAYMENT_LINK =
   process.env.SPL_PPS_PAYMENT_LINK ||
-  "https://buy.stripe.com/aFa00k4B70OYetL0O46wE0g";
+  "https://www.slidphilabs.com/pps";
 export const SITE_PPS =
   process.env.SPL_PPS_SITE || "https://www.slidphilabs.com/pps";
 export const API_BASE =
