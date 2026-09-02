@@ -51,24 +51,29 @@ export const STRIPE_METHOD_LABELS = {
 
 /** Standing SKUs — keep in sync with x402-products.js CATALOG */
 export const PRODUCT_CATALOG = {
+  "chamber-week": {
+    name: "Chamber · weekly (not sold)",
+    amount_cents: 199,
+    stripe: "https://www.slidphilabs.com/pay?sku=chamber-month",
+    kind: "chamber",
+  },
   "chamber-day": {
     name: "Chamber · 24-hour seat",
     amount_cents: 900,
     stripe: "https://www.slidphilabs.com/pay?sku=chamber-day",
     kind: "chamber",
-    list: true,
   },
   "chamber-month": {
-    name: "Chamber · monthly seat",
-    amount_cents: 4900,
+    name: "Chamber · monthly cloak license",
+    amount_cents: 900,
     stripe: "https://www.slidphilabs.com/pay?sku=chamber-month",
     kind: "chamber",
     list: true,
   },
   "chamber-year": {
-    name: "Chamber · annual seat",
-    amount_cents: 49000,
-    stripe: "https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F",
+    name: "Chamber · annual cloak license",
+    amount_cents: 9900,
+    stripe: "https://www.slidphilabs.com/pay?sku=chamber-year",
     kind: "chamber",
     list: true,
   },
@@ -152,8 +157,8 @@ export const PRODUCT_CATALOG = {
   },
   "lab-pass": {
     name: "Lab Pass · annual (Chamber + AWARE + TruGame)",
-    amount_cents: 108800,
-    stripe: "https://buy.stripe.com/3cI7sM2sZ0OYfxP7cs6wE0D",
+    amount_cents: 66800,
+    stripe: "https://www.slidphilabs.com/pay?sku=lab-pass",
     kind: "seat",
     list: true,
   },
@@ -311,6 +316,8 @@ export const SKU_ALIASES = {
   "pay-per-suite": "suite",
   chamber: "chamber-year",
   "chamber-only": "chamber-year",
+  week: "chamber-month",
+  weekly: "chamber-month",
   rider: "rider-year",
   "agent-rider": "rider-year",
   agentrider: "rider-year",

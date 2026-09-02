@@ -7,11 +7,11 @@ Slid Phi Labs. Corey Tasz. Human door: /humans  Agent door: /agents  Inbox: core
 
 ## Products
 - CuNi — language. One source → Python, Go, JS or refuse. $0. https://www.slidphilabs.com/cuni  Studio: https://cuni-studio.fly.dev/
-- Chamber — two-key JSON seal. $9/day · $49/mo · $490/yr. Not compression. Try 24h: /box. https://www.slidphilabs.com/chamber
+- Chamber — two-key protocol for storing a JSON secret. License to cloak $9/mo · $99/yr. Open existing seals with both keys (no extra payment). Try 24h: /box. https://www.slidphilabs.com/chamber
 - Agent-Rider — signed agent identity L0–L4. $79/mo · $790/yr. https://www.slidphilabs.com/rider  App: https://agentrider.fly.dev/
 - AWARE — hosted lossless compressor (engine: Combined GC). $9/day · $49/mo · $490/yr. Access, not source. https://www.slidphilabs.com/gc
 - Suite — metered AWARE jobs. 6.9 GB / 3 h unpaid, then ~5¢/GB. https://www.slidphilabs.com/pps
-- Lab Pass — Chamber + AWARE + TruGame, $1,088/yr. Not Rider. https://www.slidphilabs.com/lab-pass
+- Lab Pass — Chamber year license + AWARE + TruGame, $668/yr. Not Rider. https://www.slidphilabs.com/lab-pass
 - pulsar — public GPLv3 demo compressor. Not Combined GC. https://github.com/ceedot-rock/pulsar-best
 
 ## Checkout

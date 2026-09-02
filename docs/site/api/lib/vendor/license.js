@@ -27,8 +27,8 @@ export const LIMITS = Object.freeze({
   [Tiers.BOX]: { label: "24h black box", priceUsd: 0, buyUrl: BUY.lab_pass },
   [Tiers.GATE]: { label: "Gate Year", priceUsd: 790, buyUrl: BUY.gate_year },
   [Tiers.TRU8]: { label: "TRU8 Year", priceUsd: 990, buyUrl: BUY.tru8_year },
-  [Tiers.CHAMBER]: { label: "Chamber Year", priceUsd: 490, buyUrl: BUY.chamber_year },
-  [Tiers.LAB]: { label: "Lab Pass Year", priceUsd: 1088, buyUrl: BUY.lab_pass },
+  [Tiers.CHAMBER]: { label: "Chamber year license", priceUsd: 99, buyUrl: "https://www.slidphilabs.com/pay?sku=chamber-year" },
+  [Tiers.LAB]: { label: "Lab Pass Year", priceUsd: 668, buyUrl: "https://www.slidphilabs.com/pay?sku=lab-pass" },
 });
 
 const DIR = join(homedir(), ".slidphilabs");
@@ -56,7 +56,12 @@ export function parseLicenseKey(key) {
   if (u === "lab-pass" || u === "lab-pass-year") return { tier: Tiers.LAB, valid: true };
   if (u === "tru8-year" || u === "tru8-month" || u === "tru8-day") return { tier: Tiers.TRU8, valid: true };
   if (u === "gate-year" || u === "gate-month" || u === "gate-day") return { tier: Tiers.GATE, valid: true };
-  if (u === "chamber-year" || u === "chamber-month" || u === "chamber-day") return { tier: Tiers.CHAMBER, valid: true };
+  if (
+    u === "chamber-year" ||
+    u === "chamber-month" ||
+    u === "chamber-week" ||
+    u === "chamber-day"
+  ) return { tier: Tiers.CHAMBER, valid: true };
   return { tier: Tiers.BOX, valid: false };
 }
 

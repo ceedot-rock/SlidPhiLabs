@@ -53,10 +53,10 @@
         "pricing": "https://www.slidphilabs.com/pricing.json"
       },
       "pricing": {
-        "trial": "24-hour black box, free",
-        "chamber-day": "$9 / 24 hours (JSON seal only)",
-        "chamber-month": "$49 / calendar month (JSON seal only)",
-        "chamber-year": "$490 / calendar year (JSON seal only)"
+        "trial": "24-hour try, then a cloak license",
+        "open_policy": "keys_only — already-sealed blobs do not expire",
+        "chamber-month": "$9 / month cloak license",
+        "chamber-year": "$99 / year cloak license"
       }
     },
     "tru8": {

@@ -11,7 +11,7 @@
   "twitter": "@slidphilabs",
   "glossary": {
     "CuNi": "language — one source to Python, Go, JS, or refuse. Studio $0. Closed-app exception $490/yr.",
-    "Chamber": "two-key JSON seal. Try 24 hours, then Day $9 · Month $49 · Year $490. Not a compressor.",
+    "Chamber": "two-key protocol for storing a JSON secret. Cloak license $9/mo · $99/yr. Open existing seals with both keys.",
     "Agent-Rider": "signed agent identity L0–L4. Month $79 · Year $790. Not in Lab Pass.",
     "AWARE": "hosted lossless compressor. Day $9 · Month $49 · Year $490. Engine (Combined GC) stays in the lab.",
     "Suite": "metered AWARE jobs — 6.9 GB / 3 h unpaid then ~5¢/GB. Not a user seat.",
@@ -89,8 +89,8 @@
       "canonical": "https://www.slidphilabs.com/box"
     },
     "/chamber": {
-      "title": "Chamber — two-key JSON seal · Slid Phi Labs",
-      "description": "Lock a JSON secret behind two keys. Try 24 hours, then Day $9 · Month $49 · Year $490. Not a compressor.",
+      "title": "Chamber — two-key protocol for a JSON secret · Slid Phi Labs",
+      "description": "License to seal new JSON. Opening an already-sealed secret takes both keys, not another payment. $9/mo · $99/yr.",
       "canonical": "https://www.slidphilabs.com/chamber",
       "product_line": "Chamber"
     },

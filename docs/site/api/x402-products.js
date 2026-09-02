@@ -45,6 +45,15 @@ const TRANSFER_TOPIC =
 
 /** Standing products — cents match pricing.json SoT. Humans: Stripe. Agents: this rail. */
 const CATALOG = {
+  "chamber-week": {
+    name: "Chamber · weekly seat",
+    amount_cents: 199,
+    stripe: "https://www.slidphilabs.com/pay?sku=chamber-week",
+    kind: "chamber",
+    blurb: "Same Chamber. License live 7 days. Cloak/open until it expires.",
+    access: "https://www.slidphilabs.com/access?product=chamber-week",
+    fulfill_email: "corey@slidphilabs.com",
+  },
   "chamber-day": {
     name: "Chamber · Day",
     amount_cents: 900,
@@ -56,19 +65,19 @@ const CATALOG = {
   },
   "chamber-month": {
     name: "Chamber · Month",
-    amount_cents: 4900,
+    amount_cents: 900,
     stripe: "https://www.slidphilabs.com/pay?sku=chamber-month",
     kind: "chamber",
-    blurb: "Chamber $49 / month. Not a compressor.",
+    blurb: "License to cloak new JSON for 30 days. Open existing seals with both keys.",
     access: "https://www.slidphilabs.com/access?product=chamber-month",
     fulfill_email: "corey@slidphilabs.com",
   },
   "chamber-year": {
     name: "Chamber · Year",
-    amount_cents: 49000,
+    amount_cents: 9900,
     stripe: "https://www.slidphilabs.com/pay?sku=chamber-year",
     kind: "chamber",
-    blurb: "Chamber $490 / year. Not a compressor.",
+    blurb: "License to cloak new JSON for 365 days. Stored secrets do not expire.",
     access: "https://www.slidphilabs.com/access?product=chamber-year",
     fulfill_email: "corey@slidphilabs.com",
   },
@@ -222,10 +231,10 @@ const CATALOG = {
   },
   "lab-pass": {
     name: "Lab Pass · Year",
-    amount_cents: 108800,
+    amount_cents: 66800,
     stripe: "https://www.slidphilabs.com/pay?sku=lab-pass",
     kind: "seat",
-    blurb: "Chamber + AWARE + TruGame · $1,088 / 365d. Not Rider.",
+    blurb: "Chamber + AWARE + TruGame · $668 / 365d. Not Rider.",
     access: "https://www.slidphilabs.com/access?product=lab-pass",
     fulfill_email: "corey@slidphilabs.com",
   },
@@ -417,6 +426,8 @@ const ALIASES = {
   commercial: "tru8-year",
   "tru8-commercial": "tru8-year",
   chamber: "chamber-year",
+  week: "chamber-month",
+  weekly: "chamber-month",
   rider: "rider-year",
   "agent-rider": "rider-year",
   agentrider: "rider-year",

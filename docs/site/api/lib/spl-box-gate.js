@@ -19,6 +19,7 @@ export const SEATS = new Set([
   "lab-pass-year",
   "chamber-year",
   "chamber-month",
+  "chamber-week",
   "chamber-day",
   "gc-year",
   "gc-month",

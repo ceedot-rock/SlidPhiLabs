@@ -6,7 +6,7 @@ description: CuNi exactness, Chamber two-key JSON, Agent-Rider identity, AWARE c
 # Slid Phi Labs
 
 Lead product: **CuNi Studio** (free) — write once; Python, Go, JS must match or it does not publish.  
-Cash product: **Chamber** $9/day · $49/mo · $490/yr.  
+Cash product: **Chamber** cloak license $9/mo · $99/yr (open existing seals with both keys).  
 Identity: **Agent-Rider** $79/mo · $790/yr.  
 Compressor: **AWARE** $9/day · $49/mo · $490/yr (access, not source).
 

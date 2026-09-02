@@ -22,10 +22,22 @@ const BASE = "https://www.slidphilabs.com";
 
 /** Listed lab seats. Legacy TRU8 / Gate SKUs stay for old receipts. */
 const SEATS = {
+  "chamber-week": {
+    name: "Chamber · weekly (not sold)",
+    list_usd: 1.99,
+    unit: "7 days",
+    valid_days: 7,
+    amount_cents: 199,
+    product: "chamber",
+    stack: "chamber",
+    includes: ["Cloak new JSON for 7 days"],
+    does_not_include: ["Kill switch on already-sealed blobs", "AWARE", "Hosted storage"],
+  },
   "chamber-day": {
     name: "Chamber · 24-hour seat",
     list_usd: 9,
     unit: "24 hours",
+    valid_days: 1,
     amount_cents: 900,
     product: "chamber",
     stack: "chamber",
@@ -34,23 +46,33 @@ const SEATS = {
   },
   "chamber-month": {
     name: "Chamber · monthly seat",
-    list_usd: 49,
+    list_usd: 9,
     unit: "calendar month",
-    amount_cents: 4900,
+    valid_days: 30,
+    amount_cents: 900,
     product: "chamber",
     stack: "chamber",
-    includes: ["Chamber JSON seal"],
-    does_not_include: ["AWARE compressor", "Agent-Rider"],
+    includes: [
+      "License to cloak new JSON for 30 days",
+      "json-chamber-sdk",
+      "Open already-sealed blobs with both keys (no extra payment)",
+    ],
+    does_not_include: ["AWARE compressor", "Agent-Rider", "Hosted blob storage", "Kill switch on stored secrets"],
   },
   "chamber-year": {
-    name: "Chamber · annual seat",
-    list_usd: 490,
+    name: "Chamber · annual cloak license",
+    list_usd: 99,
     unit: "calendar year",
-    amount_cents: 49000,
+    valid_days: 365,
+    amount_cents: 9900,
     product: "chamber",
     stack: "chamber",
-    includes: ["Chamber JSON seal"],
-    does_not_include: ["AWARE compressor", "Agent-Rider"],
+    includes: [
+      "License to cloak new JSON for 365 days",
+      "json-chamber-sdk",
+      "Open already-sealed blobs with both keys (no extra payment)",
+    ],
+    does_not_include: ["AWARE compressor", "Agent-Rider", "Hosted blob storage", "Kill switch on stored secrets"],
   },
   "gc-day": {
     name: "AWARE · 24-hour compressor seat",
@@ -114,9 +136,9 @@ const SEATS = {
   },
   "lab-pass": {
     name: "Lab Pass · annual",
-    list_usd: 1088,
+    list_usd: 668,
     unit: "calendar year",
-    amount_cents: 108800,
+    amount_cents: 66800,
     product: "seat",
     stack: "seat",
     includes: ["Chamber", "AWARE", "TruGame engine"],
@@ -251,6 +273,9 @@ export function normalizeSku(raw) {
     support: "support-integration",
     // Chamber product
     "chamber-day": "chamber-day",
+    "chamber-week": "chamber-week",
+    week: "chamber-week",
+    weekly: "chamber-week",
     "chamber-month": "chamber-month",
     "chamber-year": "chamber-year",
     chamber: "chamber-year",
@@ -333,9 +358,14 @@ function buildTruchamberDeliverable({ paid, sku, sessionId, email, amountTotal, 
     : isChamber ? "Chamber"
     : isTru8Only ? "TRU8 (legacy)"
     : meta.name;
+  const issued = new Date();
+  const validDays = Number(meta.valid_days) || 0;
+  const validUntil = validDays
+    ? new Date(issued.getTime() + validDays * 86400000).toISOString()
+    : null;
   const entitlement = {
     type: "slid_phi_labs_entitlement",
-    version: "1.2",
+    version: "1.3",
     sku,
     name: meta.name,
     seat_id,
@@ -346,13 +376,25 @@ function buildTruchamberDeliverable({ paid, sku, sessionId, email, amountTotal, 
     currency: currency || "usd",
     list_price_usd: meta.list_usd,
     unit: meta.unit,
+    valid_days: validDays || null,
+    valid_until: validUntil,
     stack: meta.stack,
-    issued_at: new Date().toISOString(),
+    issued_at: issued.toISOString(),
     issuer: BASE,
     product: productLabel,
     includes,
     package_access: "open",
-    note: meta.name + " for this term.",
+    open_policy: isChamber
+      ? "keys_only — already-sealed blobs open with both shares; no extra payment"
+      : null,
+    cloak_until: isChamber ? validUntil : null,
+    note: isChamber
+      ? "License to cloak new JSON until " +
+        (validUntil || "term end") +
+        ". Opening a secret you already sealed takes both keys, not another payment."
+      : validUntil
+        ? meta.name + " until " + validUntil
+        : meta.name + " for this term.",
     ships: {
       entitlement_json: true,
       package_access: "open_on_payment",

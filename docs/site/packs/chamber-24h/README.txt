@@ -1,6 +1,6 @@
 Slid Phi Labs — Chamber 24-hour black box
 Protocol: splb-ed25519-24h
-This pack is a try. After 24 hours the box closes unless you buy Chamber ($9 / $49 / $490).
+This pack is a try. After 24 hours new seals stop unless you buy a Chamber cloak license ($9 / mo · $99 / yr). Already-sealed blobs still open with both keys.
 
 Run:
   node chamber-try.mjs

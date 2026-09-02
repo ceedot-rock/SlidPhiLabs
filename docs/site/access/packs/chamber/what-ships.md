@@ -1,13 +1,16 @@
-# Chamber — what ships (security only)
+# Chamber — what you receive
 
-| SKU | Price | Includes |
-|-----|-------|----------|
-| `chamber-day` | $9 / 24h | Chamber security only |
-| `chamber-month` | $49 / month | Chamber security only |
-| `chamber-year` | **$490 / year** | Chamber security only (half of TRU8 Year) |
+Chamber is a two-key protocol for storing a JSON secret.
 
-**No TRU8 production** on these SKUs.
+The license is the right to **cloak** (seal new JSON) for a term.
+**Open** of a blob you already sealed takes both keys. It does not take another payment. The stored secret does not expire.
 
-Want both products for a year? Buy **Chamber Year · $490**.
+| SKU | Price | You receive |
+|-----|-------|-------------|
+| Try | 24 hours | Box. Then a license, or new seals stop. |
+| `chamber-month` | $9 / 30 days | Cloak license for a month. SDK. |
+| `chamber-year` | $99 / 365 days | Cloak license for a year. SDK. |
+
+You keep the ciphertext. We do not host the blob. Not AWARE. Not Rider. Not the private Smart Box.
 
 Email: corey@slidphilabs.com · subject `PACKAGE ACCESS chamber-year`
