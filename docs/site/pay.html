@@ -42,7 +42,7 @@
   <main class="spl-page" id="main">
     <p class="spl-kicker">Checkout</p>
     <h1>Buy a lab seat</h1>
-    <p class="lede">Pick the product. Pay on Stripe — card, wallets, bank, and the methods Stripe offers for that seat. After payment you land on Access with the seat you bought.</p>
+    <p class="lede">Pick the product. Humans: Stripe (card, wallets, bank, Klarna/Affirm when Stripe offers them) or invoice. Agents: x402 USDC on Solana or Base. After payment you land on Access with the seat you bought.</p>
     <p class="pay-note">Chamber $9 / $49 / $490. AWARE $9 / $49 / $490. Agent-Rider $79 / $790. Lab Pass $1,088 (Chamber + AWARE + TruGame — not Rider). CuNi Studio is free. Teams that need a wire or invoice, use that button.</p>
 
     <div class="pay-form">
@@ -53,10 +53,11 @@
       <p class="pay-amount">Amount: <strong id="amount">—</strong></p>
       <p class="spl-actions">
         <button type="button" class="spl-btn spl-btn-dark" id="payStripe">Pay with Stripe</button>
+        <button type="button" class="spl-btn spl-btn-line" id="payX402">x402 · USDC</button>
         <button type="button" class="spl-btn spl-btn-line" id="payInvoice">Invoice / wire</button>
         <a class="spl-btn spl-btn-line" href="/pricing">Full price list</a>
       </p>
-      <p class="pay-note" style="margin-top:8px">Agents: POST <code>/api/checkout</code> with <code>rail: "x402"</code>, or <a href="/agents">/agents</a>.</p>
+      <p class="pay-note" style="margin-top:8px">Agents can also POST <code>/api/x402-products</code> with the SKU, then retry with <code>X-PAYMENT</code>. Same catalog as this page.</p>
       <div id="out" class="pay-msg" hidden></div>
     </div>
   </main>
@@ -146,6 +147,7 @@
   }
 
   document.getElementById("payStripe").onclick = () => checkout("stripe");
+  document.getElementById("payX402").onclick = () => checkout("x402");
   document.getElementById("payInvoice").onclick = () => checkout("invoice");
 })();
 </script>
