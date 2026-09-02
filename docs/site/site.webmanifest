@@ -1,38 +1,38 @@
 {
-  "name": "TRU8 · Slid Phi Labs",
-  "short_name": "TRU8",
-  "description": "Less is more. We dropped the E. True minimal units for repetition.",
+  "name": "Slid Phi Labs",
+  "short_name": "Slid Phi",
+  "description": "Computation lab in Cherry Hill. CuNi, Chamber, Agent-Rider, AWARE.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0A0A0A",
-  "theme_color": "#0A0A0A",
+  "background_color": "#0f1c2e",
+  "theme_color": "#0f1c2e",
   "lang": "en",
   "icons": [
     {
-      "src": "/assets/tru8/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
-    {
-      "src": "/assets/tru8/og.png",
-      "sizes": "1200x630",
-      "type": "image/png",
+      "src": "/assets/logos/logo-slid-phi-labs.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
       "purpose": "any"
     }
   ],
   "shortcuts": [
     {
-      "name": "Demos",
-      "short_name": "Demos",
-      "url": "/demos",
-      "description": "TRU8 public demos"
+      "name": "Products",
+      "short_name": "Products",
+      "url": "/products",
+      "description": "What we sell"
     },
     {
-      "name": "License",
-      "short_name": "License",
-      "url": "/license",
-      "description": "Commercial license"
+      "name": "Try 24 hours",
+      "short_name": "Try",
+      "url": "/box",
+      "description": "Chamber or AWARE for a day"
+    },
+    {
+      "name": "Checkout",
+      "short_name": "Pay",
+      "url": "/pay",
+      "description": "Buy a lab seat"
     }
   ]
 }

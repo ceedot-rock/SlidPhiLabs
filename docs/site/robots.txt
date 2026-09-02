@@ -1,4 +1,4 @@
-# Slid Phi Labs — crawl us. Sell CuNi, Chamber, Rider, Suite.
+# Slid Phi Labs — crawl us. CuNi, Chamber, Rider, AWARE, Suite.
 User-agent: *
 Allow: /
 

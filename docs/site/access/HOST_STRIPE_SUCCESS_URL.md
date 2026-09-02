@@ -14,7 +14,7 @@ Chamber = security only (half). TRU8 Year = both products.
 | `chamber-year` | 95000 | https://buy.stripe.com/dRmeVeaZv7dm99rcwM6wE0F | `…/access?product=chamber-year&session={CHECKOUT_SESSION_ID}` |
 | `tru8-day` | 2499 | https://www.slidphilabs.com/license | `…/access?product=tru8-day&session={CHECKOUT_SESSION_ID}` |
 | `tru8-month` | 17500 | https://www.slidphilabs.com/license | `…/access?product=tru8-month&session={CHECKOUT_SESSION_ID}` |
-| `tru8-year` | 190000 | https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E | `…/access?product=tru8-year&session={CHECKOUT_SESSION_ID}` |
+| `tru8-year` | 190000 | /pay?sku=chamber-year | `…/access?product=tru8-year&session={CHECKOUT_SESSION_ID}` |
 
 Checkout metadata: `sku=<sku>` (preferred) and `product=<sku>`.  
 Aliases: `truchamber-*` → `tru8-*`.

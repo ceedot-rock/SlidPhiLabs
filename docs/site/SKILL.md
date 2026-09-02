@@ -1,13 +1,14 @@
 ---
 name: slid-phi-labs
-description: CuNi exactness, Chamber two-key JSON, Agent-Rider identity. Pay x402 (agents) or Stripe (humans).
+description: CuNi exactness, Chamber two-key JSON, Agent-Rider identity, AWARE compressor. Pay x402 (agents) or Stripe card (humans).
 ---
 
 # Slid Phi Labs
 
 Lead product: **CuNi Studio** (free) — write once; Python, Go, JS must match or it does not publish.  
-Cash product: **Chamber** $49/mo · $490/yr.  
-Identity: **Agent-Rider** $79/mo · $790/yr.
+Cash product: **Chamber** $9/day · $49/mo · $490/yr.  
+Identity: **Agent-Rider** $79/mo · $790/yr.  
+Compressor: **AWARE** $9/day · $49/mo · $490/yr (access, not source).
 
 ## Discover
 GET https://www.slidphilabs.com/api/agent  

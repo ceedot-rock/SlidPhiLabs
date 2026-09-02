@@ -1,13 +1,23 @@
 {
   "service": "Slid Phi Labs — Lab Feed",
   "version": "1.2.0",
-  "updated": "2026-08-20",
+  "updated": "2026-09-02",
   "social": {
     "x": "https://x.com/slidphilabs",
     "handle": "@slidphilabs"
   },
   "description": "Product updates, news, plans, and social pointers.",
   "items": [
+    {
+      "id": "u-lab-catalog-2026-09",
+      "date": "2026-09-02",
+      "type": "product",
+      "title": "Lab catalog: CuNi, Chamber, Rider, AWARE",
+      "body": "Public seats are CuNi $0, Chamber $9/$49/$490, Agent-Rider $79/$790, AWARE $9/$49/$490, Lab Pass $1,088 (not Rider). Stripe card checkout. TRU8 Year $990 is not the storefront.",
+      "href": "https://www.slidphilabs.com/products",
+      "href_label": "Products",
+      "tags": ["catalog", "pricing", "chamber", "aware", "rider"]
+    },
     {
       "id": "u-rent-retired",
       "date": "2026-08-20",

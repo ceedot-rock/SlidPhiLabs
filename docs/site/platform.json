@@ -1,15 +1,15 @@
 {
   "ok": true,
   "name": "Slid Phi Labs",
-  "version": "1.18.0",
-  "updated": "2026-08-30",
+  "version": "2.0.0",
+  "updated": "2026-09-02",
   "site": "https://www.slidphilabs.com",
-  "mission": "Pub-facing best encode/decode compression where the domain is named and round-trip proves it \u2014 then pivot into gaming and security. Agent systems stay exact. One team.",
-  "slogan": "Encode \u00b7 decode \u00b7 prove \u00b7 game \u00b7 secure",
+  "mission": "Build tools that check: same result or refuse, sealed or not open, signed or not trusted, measured or not claimed.",
+  "slogan": "Same result or refuse",
   "lead_product": "cuni",
   "cash_product": "chamber",
   "pricing_sot": "https://www.slidphilabs.com/pricing.json",
-  "one_liner": "CuNi exactness, Chamber seal, Agent-Rider. Suite 6.9 GB / 3 h then ~5¢/GB. x402 /pay",
+  "one_liner": "CuNi $0. Chamber $9/$49/$490. Rider $79/$790. AWARE $9/$49/$490. Stripe card / x402.",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
     "login": "https://www.slidphilabs.com/login",
@@ -20,26 +20,27 @@
     "name": "SiOS",
     "long": "Synthetic Intelligent OS",
     "url": "https://www.slidphilabs.com/sios",
-    "note": "Operating system. Chamber, TRU8, suite jobs, campus, and games run on it."
+    "note": "Operating system. Chamber, AWARE, suite jobs, campus, and games run on it."
   },
   "modules": {
     "compression": {
       "products": [
-        "TRU8",
-        "CDDG:Split"
+        "AWARE",
+        "pulsar"
       ],
       "urls": {
-        "home": "https://www.slidphilabs.com/",
+        "home": "https://www.slidphilabs.com/gc",
         "demos": "https://www.slidphilabs.com/demos",
-        "github": "https://github.com/ceedot-rock/TRU8",
+        "github": "https://github.com/ceedot-rock/pulsar-best",
         "standings": "https://www.slidphilabs.com/standings"
       },
       "historical_engines": [
         "SPL Codec",
         "OmniWave",
-        "ZRW"
+        "ZRW",
+        "TRU8"
       ],
-      "note": "TRU8 is the only public compression product face."
+      "note": "AWARE is the hosted compressor seat. pulsar is the public GPLv3 demo. Combined GC is not in npm."
     },
     "chamber": {
       "products": [
@@ -53,9 +54,9 @@
       },
       "pricing": {
         "trial": "24-hour black box, free",
-        "chamber-day": "$9 / 24 hours (security only, no TRU8)",
-        "chamber-month": "$49 / calendar month (security only, no TRU8)",
-        "chamber-year": "$490 / calendar year (security only; half of TRU8 Year)"
+        "chamber-day": "$9 / 24 hours (JSON seal only)",
+        "chamber-month": "$49 / calendar month (JSON seal only)",
+        "chamber-year": "$490 / calendar year (JSON seal only)"
       }
     },
     "tru8": {

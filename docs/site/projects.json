@@ -1,36 +1,52 @@
 {
   "service": "Slid Phi Labs — Official project list",
-  "updated": "2026-08-19",
+  "updated": "2026-09-02",
   "projects": [
+    {
+      "id": "cuni",
+      "name": "CuNi",
+      "status": "live",
+      "role": "language — one source, three runtimes, or refuse",
+      "price": "$0 (closed-app exception $490/yr)",
+      "url": "https://www.slidphilabs.com/cuni"
+    },
     {
       "id": "chamber",
       "name": "Chamber",
       "status": "live",
-      "role": "security product — 24h black box, then a Chamber seat; no TRU8",
+      "role": "two-key JSON seal. 24-hour try, then a Chamber seat. Not a compressor.",
       "price": "Day $9 · Month $49 · Year $490",
       "url": "https://www.slidphilabs.com/chamber"
     },
     {
-      "id": "tru8",
-      "name": "TRU8",
+      "id": "rider",
+      "name": "Agent-Rider",
       "status": "live",
-      "role": "compression product — demos free; Day/Month compression only; Year = both products",
-      "price": "Day $19 · Month $99 · Year $990",
-      "url": "https://www.slidphilabs.com/tru8"
+      "role": "signed agent identity L0–L4. Not in Lab Pass.",
+      "price": "Month $79 · Year $790",
+      "url": "https://www.slidphilabs.com/rider"
     },
     {
-      "id": "gate",
-      "name": "Gate",
+      "id": "aware",
+      "name": "AWARE",
       "status": "live",
-      "role": "lossless mixed-file router",
-      "price": "Year $790",
-      "url": "https://www.slidphilabs.com/gate"
+      "role": "hosted lossless compressor. Access, not Combined GC source.",
+      "price": "Day $9 · Month $49 · Year $490",
+      "url": "https://www.slidphilabs.com/gc"
+    },
+    {
+      "id": "suite",
+      "name": "Suite",
+      "status": "live",
+      "role": "metered AWARE jobs — not a user seat",
+      "price": "6.9 GB / 3 h unpaid, then ~5¢/GB",
+      "url": "https://www.slidphilabs.com/pps"
     },
     {
       "id": "lab-pass",
       "name": "Lab Pass",
       "status": "live",
-      "role": "365-day black box — Chamber + TRU8 + Gate + TruGame engine",
+      "role": "365 days — Chamber + AWARE + TruGame. Not Rider.",
       "price": "$1,088",
       "url": "https://www.slidphilabs.com/lab-pass"
     },
@@ -38,17 +54,9 @@
       "id": "trugame",
       "name": "TruGame",
       "status": "live",
-      "role": "engine — 24h black box, then an engine seat. Not a game store.",
+      "role": "engine seat. Not a game store.",
       "price": "Month $12 · Year $79",
       "url": "https://www.slidphilabs.com/trugame"
-    },
-    {
-      "id": "suite",
-      "name": "Pay Per Suite",
-      "status": "live",
-      "role": "metered encode/decode jobs — not Chamber, not TRU8",
-      "price": "6.9 GB / 3 h unpaid, then ~5¢/GB (~4¢ bulk)",
-      "url": "https://www.slidphilabs.com/pps"
     }
   ]
 }

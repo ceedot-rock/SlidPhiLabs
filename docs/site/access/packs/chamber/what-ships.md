@@ -8,6 +8,6 @@
 
 **No TRU8 production** on these SKUs.
 
-Want both products for a year? Buy **TRU8 Year · $990**.
+Want both products for a year? Buy **Chamber Year · $490**.
 
 Email: corey@slidphilabs.com · subject `PACKAGE ACCESS chamber-year`

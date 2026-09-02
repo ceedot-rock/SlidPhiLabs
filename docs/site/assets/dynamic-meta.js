@@ -1,5 +1,5 @@
 /**
- * TRU8 / Slid Phi Labs — dynamic metadata
+ * Slid Phi Labs — dynamic metadata
  * Loads /metadata.json and applies title, description, OG, Twitter, canonical,
  * product meta, and JSON-LD for the current path. Safe no-op if fetch fails.
  * Include on any page: <script src="/assets/dynamic-meta.js" defer></script>
@@ -69,7 +69,7 @@
     if (title) document.title = title;
     ensureMeta("name", "description", description);
     ensureMeta("name", "theme-color", meta.theme_color || "#0A0A0A");
-    ensureMeta("name", "product", meta.product || "TRU8 Black-Box");
+    ensureMeta("name", "product", meta.product || "Slid Phi Labs");
     ensureMeta("name", "product-line", productLine);
     ensureMeta("name", "twitter:card", "summary_large_image");
     ensureMeta("name", "twitter:site", meta.twitter || "@slidphilabs");
@@ -77,7 +77,7 @@
     ensureMeta("name", "twitter:description", twDesc);
     ensureMeta("name", "twitter:image", image);
     ensureMeta("property", "og:type", "website");
-    ensureMeta("property", "og:site_name", "TRU8 · " + (meta.brand || "Slid Phi Labs"));
+    ensureMeta("property", "og:site_name", meta.brand || "Slid Phi Labs");
     ensureMeta("property", "og:title", ogTitle);
     ensureMeta("property", "og:description", ogDesc);
     ensureMeta("property", "og:url", canonical);
@@ -102,14 +102,14 @@
       "@type": "WebSite",
       "@id": "https://www.slidphilabs.com/#website",
       url: meta.site || "https://www.slidphilabs.com/",
-      name: meta.product || "TRU8",
+      name: meta.product || meta.brand || "Slid Phi Labs",
       description: description,
       publisher: { "@id": "https://www.slidphilabs.com/#org" },
     });
     ensureJsonLd(graph);
 
     // Expose for debugging / other scripts
-    window.TRU8Meta = {
+    window.SPLMeta = {
       path: pathKey(),
       title: title,
       description: description,

@@ -3,10 +3,12 @@ Contact: corey@slidphilabs.com
 Site: https://www.slidphilabs.com
 
 CuNi Studio — $0 — https://cuni-studio.fly.dev/
-Chamber — $49/mo · $490/yr — https://www.slidphilabs.com/chamber
-Agent-Rider — $79/mo · $790/yr — https://agentrider.fly.dev/
+Chamber — $9/day · $49/mo · $490/yr — https://www.slidphilabs.com/chamber
+Agent-Rider — $79/mo · $790/yr — https://www.slidphilabs.com/rider
+AWARE — $9/day · $49/mo · $490/yr — https://www.slidphilabs.com/gc
 Suite — 6.9 GB / 3 h then ~5¢/GB — https://www.slidphilabs.com/pps
-Lab Pass — $1,088/yr — https://www.slidphilabs.com/lab-pass
+Lab Pass — $1,088/yr (Chamber + AWARE + TruGame, not Rider) — https://www.slidphilabs.com/lab-pass
+Try 24h — https://www.slidphilabs.com/box
 Sign up — https://www.slidphilabs.com/signup
 Pay — https://www.slidphilabs.com/pay
 MCP — https://www.slidphilabs.com/mcp

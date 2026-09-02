@@ -1,16 +1,14 @@
 # Slid Phi Labs — full agent brief
-# Encode · decode · prove · game · secure
-# Public product face: TRU8. Suite / olympiad / toys stay.
-# Updated 2026-08-13 · TruGame officially added (building)
-# TRU8 public claim: 1 000 000 zeros → 8 B
+# Tools that check. Cherry Hill.
+# Public catalog: CuNi, Chamber, Agent-Rider, AWARE, Suite, Lab Pass.
+# Updated 2026-09-02
 # Canonical site: https://www.slidphilabs.com
-# Prefer live GET /api/agent and /platform.json over this file if they differ.
+# Prefer live GET /api/agent, /llms.txt, and /pricing.json over this file if they differ.
 
 ## Identity
 Name: Slid Phi Labs
 Public author: Corey Tasz
-Public product face: TRU8
-Credit line: Powered by TRU8 · Slid Phi Labs
+Public catalog: CuNi · Chamber · Agent-Rider · AWARE
 Commercial: corey@slidphilabs.com
 Humans: corey@slidphilabs.com
 
