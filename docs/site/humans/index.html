@@ -1,244 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="agentic" content="true"/>
-<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
-<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt"/>
-
-<meta name="lab-pricing" content="freemium_suite_v4_undercut"/>
-<meta name="lab-eval-path" content="https://www.slidphilabs.com/pps"/>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Humans — CuNi · Chamber · Rider · Slid Phi Labs</title>
-<meta name="description" content="CuNi $0. Chamber $49/mo · $490/yr. Rider $79/mo · $790/yr. Suite 6.9 GB / 3 h then ~5¢/GB."/>
-<meta name="lab-surface" content="pub_facing"/>
-<meta name="lab-modules" content="compression,agent_platform"/>
-<meta name="lab-compression" content="TRU8,CDDG:Split"/>
-<meta name="lab-agent-platform" content="CuNi,Agent^Rider,Quikgater"/>
-<meta name="keywords" content="Slid Phi Labs, humans, pub facing, compression, try gate, suite, CDDG, CuNi"/>
-<link rel="canonical" href="https://www.slidphilabs.com/humans"/>
-<meta property="og:type" content="website"/>
-<meta property="og:site_name" content="Slid Phi Labs"/>
-<meta property="og:title" content="Humans — CuNi · Chamber · Rider"/>
-<meta property="og:description" content="CuNi $0. Chamber $49/$490. Rider $79/$790. Suite 6.9 GB / 3 h then ~5¢."/>
-<meta property="og:url" content="https://www.slidphilabs.com/humans"/>
-<meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:site" content="@slidphilabs"/>
-<meta name="twitter:creator" content="@slidphilabs"/>
-<meta name="twitter:title" content="Humans — CuNi · Chamber · Rider"/>
-<meta name="twitter:description" content="Chamber $9 / $49 / $490 · TRU8 $19 / $99 / $990. Suite 6.9 GB / 3 h then ¢/GB."/>
-<meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-<meta name="theme-color" content="#050b16"/>
-<meta name="robots" content="index,follow"/>
-<link rel="manifest" href="/site.webmanifest"/>
-<link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
-<link rel="stylesheet" href="/assets/brand-header.css?v=1"/>
-<link rel="stylesheet" href="/assets/site-header.css?v=1"/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<style>
-:root{--bg:#050b16;--panel:#0c1524;--border:rgba(61,214,198,.14);--border-gold:rgba(232,197,71,.35);--text:#eef4fb;--muted:#8fa3b8;--accent:#5ba8ff;--teal:#3dd6c6;--teal-bright:#5ef0df;--gold:#e8c547;--gold-soft:rgba(232,197,71,.12);--poster:url("/assets/slid-phi-labs-master.jpg")}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh}
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.16;background:linear-gradient(180deg,rgba(5,11,22,.45),rgba(5,11,22,.92)),var(--poster) 50% 18%/cover no-repeat}
-a{color:var(--accent);text-decoration:none}a:hover{color:var(--teal-bright)}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
-nav{position:sticky;top:0;z-index:50;background:rgba(5,11,22,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,197,71,.18)}
-nav .inner{max-width:1040px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
-.logo{font-family:'Cinzel',serif;font-weight:700;color:var(--gold);display:inline-flex;gap:10px;align-items:center;font-size:.95rem}
-.logo img{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-gold);object-fit:cover}
-.logo span{color:var(--teal-bright)}
-.nav-links{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
-.nav-links a{color:var(--muted);font-size:.86rem}
-.nav-links a.active{color:var(--gold)}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:9px;font-weight:600;font-size:.86rem;border:0;cursor:pointer;font-family:inherit}
-.btn-gold{background:linear-gradient(180deg,#f0d56a,var(--gold));color:#1a1404}
-.btn-teal{background:linear-gradient(180deg,#5ef0df,var(--teal));color:#031018}
-.btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(61,214,198,.3)}
-.hero{padding:36px 0 12px}
-.badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border-gold);padding:5px 12px;border-radius:999px;margin-bottom:14px;background:var(--gold-soft)}
-h1{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(1.55rem,3.4vw,2.25rem);line-height:1.2;margin-bottom:12px}
-.lead{color:var(--muted);max-width:42rem;font-size:1.05rem}
-.lead strong{color:var(--text)}
-.mission{margin:18px 0 8px;padding:14px 16px;border-left:3px solid var(--gold);background:rgba(12,21,36,.75);border-radius:0 12px 12px 0;color:var(--muted);font-size:.95rem}
-.mission em{color:var(--teal-bright);font-style:normal}
-.grid{display:grid;gap:14px;margin:22px 0 28px}
-@media(min-width:720px){.grid{grid-template-columns:1fr 1fr}.grid .span2{grid-column:1/-1}}
-.card{background:rgba(12,21,36,.92);border:1px solid var(--border);border-radius:14px;padding:18px 18px 16px;transition:border-color .15s,box-shadow .15s}
-.card:hover{border-color:rgba(232,197,71,.4);box-shadow:0 0 28px rgba(232,197,71,.08)}
-.card a.block{display:block;color:inherit}
-.kicker{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-bright);margin-bottom:6px}
-.card h2{font-family:'Cinzel',serif;color:var(--gold);font-size:1.15rem;margin-bottom:8px}
-.card p{color:var(--muted);font-size:.92rem}
-.card .go{margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--gold)}
-.steps{counter-reset:s;list-style:none;margin:10px 0 0}
-.steps li{position:relative;padding:10px 0 10px 42px;border-bottom:1px solid rgba(61,214,198,.1);color:var(--muted);font-size:.92rem}
-.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:10px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:#031018;background:var(--gold)}
-.steps li strong{color:var(--text)}
-.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 8px}
-.alt{margin:28px 0;padding:16px;border:1px dashed rgba(61,214,198,.3);border-radius:14px;background:rgba(8,16,28,.6)}
-.alt h3{font-family:'Cinzel',serif;color:var(--teal-bright);font-size:1rem;margin-bottom:8px}
-.alt p{color:var(--muted);font-size:.9rem}
-footer{padding:28px 0 40px;border-top:1px solid rgba(232,197,71,.18);color:var(--muted);font-size:.88rem;margin-top:12px}
-footer a{margin-right:12px}
-</style>
-<link rel="stylesheet" href="/assets/slid-proof.css?v=1"/>
-<script src="/assets/slid-proof.js?v=1" defer></script>
-<link rel="stylesheet" href="/assets/chrome.css?v=1"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Humans — the lab in plain language · Slid Phi Labs</title>
+  <meta name="description" content="Human door for Slid Phi Labs. Who we are, what we sell, how to try it. CuNi, Chamber, Agent-Rider, AWARE. Agents use /agents."/>
+  <meta name="theme-color" content="#0f1c2e"/>
+  <meta name="robots" content="index,follow"/>
+  <link rel="canonical" href="https://www.slidphilabs.com/humans"/>
+  <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Slid Phi Labs"/>
+  <meta property="og:title" content="Humans — the lab in plain language"/>
+  <meta property="og:description" content="Who we are, what we sell, how to try it. Agents go to /agents."/>
+  <meta property="og:url" content="https://www.slidphilabs.com/humans"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Humans — Slid Phi Labs"/>
+  <meta name="twitter:description" content="Plain-language door. Same products as the agent door."/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=15"/>
 </head>
 <body>
-
-<div id="slid-proof" class="slid-proof-bar" aria-live="polite">
-  <span class="slid-pulse" aria-hidden="true"></span>
-  <span class="slid-engine">X-Slid-Engine · <strong data-slid="alive" class="gold">alive</strong></span>
-  <span><span class="slid-label">ZRW zeros×10k</span><strong data-slid="zrw-zeros">8 B</strong></span>
-  <span><span class="slid-label">vs gzip-9</span><strong>73 B</strong></span>
-  <span><span class="slid-label">vs brotli-11</span><strong>13 B</strong></span>
-  <span><span class="slid-label">Live ratio</span><strong data-slid="ratio">—</strong>×</span>
-  <span><span class="slid-label">Path</span><strong data-slid="path">zrw</strong></span>
-  <a href="/standings">Full standings →</a>
-</div>
-
-<header class="site-nav" role="banner">
-  <div class="inner">
-    <a class="brand" href="/" aria-label="Slid Phi Labs home">
-      <img class="brand-logo" src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
-      <span>Slid Phi Labs</span>
-    </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="/">Home</a>
-      <a href="/chamber">Chamber</a>
-      <a href="/demos">TRU8</a>
-      <a href="/pps">Suite</a>
-      <a href="/license">License</a>
-      <a href="/about">About</a>
-    </nav>
-    <div class="nav-cta">
-      <a class="btn btn-primary btn-sm" href="https://buy.stripe.com/dRmaEY6Jf1T23P78gw6wE0E" target="_blank" rel="noopener">TRU8 Year · $990</a>
-      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">Human door</p>
+    <h1>If you are a person, start here.</h1>
+    <div class="spl-who">
+      <p>Slid Phi Labs is a small computation lab in Cherry Hill. We build four things: a language that will not fake portability, a two-key JSON seal, signed identity for agents, and a hosted lossless compressor.</p>
+      <p>This page is the human path. Agents have <a href="/agents">/agents</a>. Same products, different rails.</p>
     </div>
-  </div>
-</header>
-
-<header class="hero wrap" id="main">
-  <div class="badge">Human door · same products as /agents</div>
-  <h1>Buy Chamber, buy TRU8, or meter Suite.</h1>
-  <p class="lead">
-    <strong style="color:var(--gold)">Chamber</strong> is security
-    (<a href="/chamber">Day $9 · Month $49 · Year $490</a> — no TRU8).
-    <strong>TRU8</strong> is compression
-    (<a href="/demos">Day $19 · Month $99 · Year $990</a> — year = both).
-    <strong>Suite</strong> meters jobs (<a href="/pps">6.9 GB / 3 h then ~5¢/GB</a>).
-  </p>
-  <p class="mission">
-    <em>Five-minute path:</em>
-    Try free web → See standings → Quote suite → Access after pay.
-    Same outcomes agents discover on the other door.
-  </p>
-  <p class="mission" style="border-left-color:var(--teal)">
+    <h2>Five minutes</h2>
+    <div class="spl-prose">
+      <ol>
+        <li>Open <a href="https://cuni-studio.fly.dev/">CuNi Studio</a> and hit exactness. You should see Python, Go, and JS match — or a clear no.</li>
+        <li>Read <a href="/chamber">Chamber</a> if you have a JSON secret. Start a <a href="/box">24-hour try</a> if you want to lock one.</li>
+        <li>If you run agents, open <a href="/rider">Agent-Rider</a>.</li>
+        <li>If you need lossless compress as a service, that is <a href="/gc">AWARE</a>. Metered jobs are <a href="/pps">Suite</a>.</li>
+        <li>Questions: <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a>.</li>
+      </ol>
+    </div>
+    <div class="spl-grid">
+      <a class="spl-card" href="/cuni"><p class="spl-kicker">01</p><h3>CuNi — free</h3><p>Language. One source, three runtimes, or refuse.</p></a>
+      <a class="spl-card" href="/chamber"><p class="spl-kicker">02</p><h3>Chamber</h3><p>Two-key JSON seal. $49 / $490.</p></a>
+      <a class="spl-card" href="/rider"><p class="spl-kicker">03</p><h3>Agent-Rider</h3><p>Signed agent identity. $79 / $790.</p></a>
+      <a class="spl-card" href="/gc"><p class="spl-kicker">04</p><h3>AWARE</h3><p>Hosted lossless compressor. $9 / $49 / $490.</p></a>
+    </div>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="/about">About the lab</a>
+      <a class="spl-btn spl-btn-line" href="/pricing">Prices</a>
+      <a class="spl-btn spl-btn-line" href="/agents">Agent door →</a>
     </p>
-  <div class="cta-row">
-    <a class="btn btn-teal" href="/web">Try free web</a>
-    <a class="btn btn-gold" href="/standings">See standings</a>
-    <a class="btn btn-ghost" href="/pps">Quote suite</a>
-    <a class="btn btn-ghost" href="/agents">Agents →</a>
-  </div>
-</header>
-
-<main class="wrap">
-  <div class="grid">
-    <a class="card block" href="/web">
-      <div class="kicker">01 · Instant</div>
-      <h2>Web mode</h2>
-      <p>HTML · CSS · JS · JSON · text. Live compress &amp; decompress. No account required.</p>
-      <div class="go">Open web codec →</div>
-    </a>
-    <a class="card block" href="/pps">
-      <div class="kicker">02 · Evaluate free</div>
-      <h2>Free suite · 6.9 GB / 3 h</h2>
-      <p>No chip-in. Quote a job up to 6.9 GB / 3 h unpaid, then ~5¢/GB under ~9¢ egress. Feel the platform.</p>
-      <div class="go">Open suite →</div>
-    </a>
-    <a class="card block" href="/pps">
-      <div class="kicker">03 · Ship bulk</div>
-      <h2>Metered suite</h2>
-      <p>Metered jobs 6.9 GB / 3 h unpaid. 6.9 GB / 3 h unpaid, then ~5¢/GB under ~9¢ egress. Quote → pay → job.</p>
-      <div class="go">Open suite →</div>
-    </a>
-    <a class="card block" href="/standings">
-      <div class="kicker">04 · Proof</div>
-      <h2>Standings &amp; truth</h2>
-      <p>Public benches vs gzip / brotli. Outcomes only — processes stay in the lab.</p>
-      <div class="go">See standings →</div>
-    </a>
-    <a class="card block" href="/datacenters">
-      <div class="kicker">05 · Ops story</div>
-      <h2>Data Centers</h2>
-      <p>Where compression meets rack reality. Human-readable ops pitch.</p>
-      <div class="go">Data centers →</div>
-    </a>
-    <a class="card block" href="/access">
-      <div class="kicker">06 · After pay</div>
-      <h2>Access</h2>
-      <p>Redeem purchases, delivery steps, support onboarding.</p>
-      <div class="go">Open Access →</div>
-    </a>
-    <a class="card block span2" href="#modules">
-      <div class="kicker">Modules · both surfaces share these</div>
-      <h2>Named doors</h2>
-      <p><strong style="color:var(--text)">Chamber:</strong> $9 / $49 / $490. <strong>TRU8:</strong> $19 / $99 / $990 (year = both).
-        <strong style="color:var(--text)">Meter:</strong> Suite /pps.
-        Agent platform: CuNi · Agent^Rider · Quikgater.</p>
-      <div class="go">Scroll modules →</div>
-    </a>
-  </div>
-
-  <section class="card" id="path">
-    <div class="kicker">Recommended human path</div>
-    <h2 style="font-family:'Cinzel',serif;color:var(--gold);font-size:1.2rem;margin-bottom:4px">Five minutes to conviction</h2>
-    <ol class="steps">
-      <li><strong>Compress something live</strong> on <a href="/web">/web</a> — feel the product, no card.</li>
-      <li><strong>Check the scoreboard</strong> at <a href="/standings">/standings</a> — ZRW zeros vs gzip/brotli.</li>
-      <li><strong>Quote a suite job</strong> on <a href="/pps">/pps</a> — see bulk-cheap pricing for your bytes.</li>
-      <li><strong>Suite free tier</strong> — 6.9 GB / 3 h per job at $0, then usage pricing.</li>
-      <li><strong>Partner / integrate</strong> — email <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> or use Access after purchase.</li>
-    </ol>
-  </section>
-
-  <section class="card" id="modules" style="margin-top:16px">
-    <div class="kicker">Product map (human view)</div>
-    <h2 style="font-family:'Cinzel',serif;color:var(--gold);font-size:1.15rem;margin-bottom:12px">What you can touch today</h2>
-    <div class="grid" style="margin:0">
-      <div>
-        <p style="color:var(--teal-bright);font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;margin-bottom:8px">COMPRESS · UNLOCK · METER</p>
-        <p style="color:var(--muted);font-size:.9rem;margin-bottom:8px"><a href="/demos">TRU8 demos</a> · <a href="/chamber">Chamber unlock</a> · <a href="/pps">Suite meter</a> · <a href="/license">tru8-chamber license</a></p>
-      </div>
-      <div>
-        <p style="color:var(--teal-bright);font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;margin-bottom:8px">NAMED SEATS (agents / campus)</p>
-        <p style="color:var(--muted);font-size:.9rem"><a href="https://cuni-studio.fly.dev/">CuNi Studio</a> · <a href="https://agentrider.fly.dev/">Agent^Rider</a> · <a href="https://github.com/ceedot-rock/quikgater">Quikgater</a></p>
-      </div>
-    </div>
-  </section>
-
-  <div class="alt">
-    <h3>Also arriving as an agent?</h3>
-    <p>Same lab, machine rails: discovery JSON, x402 on Solana + Base, MCP tools, llms.txt. Start at <a href="/agents">/agents</a> or <a href="/api/agent">GET /api/agent</a>.</p>
-  </div>
-</main>
-
-<footer class="wrap">
-  <p>
-    <a href="/">Home</a>
-    <a href="/humans">Pub Facing</a>
-    <a href="/agents" data-surface="agent">Agentic Minded</a>
-    <a href="/ideas">Idea Lab</a>
-    <a href="https://x.com/slidphilabs" target="_blank" rel="noopener me">@slidphilabs</a>
-    <a href="mailto:corey@slidphilabs.com">Contact</a>
-  </p>
-  <p style="margin-top:8px"> Processes stay private. © Slid Phi Labs</p>
-</footer>
-<script src="/assets/platform-home.js?v=1" defer></script>
-<script src="/assets/site-header.js?v=1" defer></script>
-<script src="/assets/chrome.js?v=1" defer></script>
+  </main>
+  <script src="/assets/chrome.js?v=15" defer></script>
 </body>
 </html>

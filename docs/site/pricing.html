@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="agentic" content="true"/>
-<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
-<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt"/>
-
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Pricing — Slid Phi Labs</title>
-  <meta name="description" content="CuNi is free. Chamber $49/mo · $490/yr. Rider Team $79/mo · $790/yr. Suite unpaid cap 6.9 GB / 3 h then ~5¢/GB. Lab Pass $1,088."/>
+  <meta name="description" content="CuNi is free. Chamber $49/mo or $490/yr. Agent-Rider $79/mo or $790/yr. AWARE $9/day, $49/mo, $490/yr. Suite meters jobs after 6.9 GB / 3 hours."/>
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://www.slidphilabs.com/pricing"/>
@@ -16,70 +12,72 @@
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Slid Phi Labs"/>
   <meta property="og:title" content="Pricing — Slid Phi Labs"/>
-  <meta property="og:description" content="CuNi $0. Chamber $49/$490. Rider $79/$790. Suite 6.9 GB / 3 h then ~5¢. Lab Pass $1,088."/>
+  <meta property="og:description" content="CuNi $0. Chamber $49/$490. Rider $79/$790. AWARE $9/$49/$490."/>
   <meta property="og:url" content="https://www.slidphilabs.com/pricing"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Pricing — Slid Phi Labs"/>
-  <meta name="twitter:description" content="CuNi $0. Chamber $49/$490. Rider $79/$790. Suite 6.9 GB / 3 h then ~5¢."/>
+  <meta name="twitter:description" content="What each seat costs, in one list."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=10"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=15"/>
 </head>
 <body>
   <main class="spl-page" id="main">
-    <h1>Prices</h1>
-    <p class="lede">CuNi is free. Chamber and AWARE are $49 a month or $490 a year. Rider Team is $79 a month. Suite meters jobs after 6.9 GB / 3 hours.</p>
+    <p class="spl-kicker">Pricing</p>
+    <h1>What it costs</h1>
+    <p class="lede">CuNi Studio is free. Paid seats are Chamber, Agent-Rider, and AWARE. Humans: Stripe. Agents: x402. Try Chamber or AWARE for 24 hours on the box.</p>
     <div class="spl-grid">
-      <a class="spl-card" href="https://cuni-studio.fly.dev/">
-        <p class="spl-kicker">Lead</p>
+      <a class="spl-card" href="/cuni">
+        <p class="spl-kicker">Language</p>
         <h3>CuNi Studio</h3>
-        <p>Exact Python / Go / JS, or refuse.</p>
+        <p>Playground and exactness. Not a license to ship closed source.</p>
         <p class="spl-price">$0</p>
       </a>
+      <a class="spl-card" href="/pay?sku=cuni-exception">
+        <p class="spl-kicker">Exception</p>
+        <h3>CuNi closed-app grant</h3>
+        <p>One closed product, one year. Not the compressor.</p>
+        <p class="spl-price">$490 / yr</p>
+      </a>
       <a class="spl-card" href="/chamber">
-        <p class="spl-kicker">Cash</p>
+        <p class="spl-kicker">JSON seal</p>
         <h3>Chamber</h3>
-        <p>Two-key JSON. 24h try on the box.</p>
+        <p>Two-key lock. 24-hour try. Chamber only — no compressor.</p>
         <p class="spl-price">$49 / mo · $490 / yr</p>
       </a>
-      <a class="spl-card" href="https://agentrider.fly.dev/">
+      <a class="spl-card" href="/rider">
         <p class="spl-kicker">Identity</p>
         <h3>Agent-Rider</h3>
         <p>Signed agent credentials L0–L4.</p>
         <p class="spl-price">$79 / mo · $790 / yr</p>
       </a>
       <a class="spl-card" href="/gc">
-        <p class="spl-kicker">Compress</p>
+        <p class="spl-kicker">Compressor</p>
         <h3>AWARE</h3>
-        <p>Adaptive Waveform Archive Restore Engine.</p>
+        <p>Hosted lossless compressor. Access, not source.</p>
         <p class="spl-price">$9 / day · $49 / mo · $490 / yr</p>
       </a>
       <a class="spl-card" href="/pps">
         <p class="spl-kicker">Meter</p>
         <h3>Suite</h3>
-        <p>Pay-per-job on AWARE.</p>
-        <p class="spl-price">6.9 GB / 3 h then ~5¢</p>
+        <p>Jobs on AWARE. Not a user seat.</p>
+        <p class="spl-price">6.9 GB / 3 h then ~5¢/GB</p>
       </a>
       <a class="spl-card" href="/lab-pass">
-        <p class="spl-kicker">Year seat</p>
+        <p class="spl-kicker">Bundle</p>
         <h3>Lab Pass</h3>
-        <p>Chamber + GC path + TruGame.</p>
+        <p>Chamber + AWARE + TruGame. Not Rider.</p>
         <p class="spl-price">$1,088 / year</p>
       </a>
       <a class="spl-card" href="/trugame">
-        <p class="spl-kicker">Engine</p>
+        <p class="spl-kicker">Games</p>
         <h3>TruGame</h3>
-        <p>Engine seats. Month $12 · Year $79.</p>
+        <p>Engine seat for the games.</p>
         <p class="spl-price">$12 / mo · $79 / yr</p>
       </a>
-      <a class="spl-card" href="mailto:corey@slidphilabs.com?subject=Blackjack%20%24199%20support">
-        <p class="spl-kicker">Support</p>
-        <h3>Blackjack</h3>
-        <p>Integration. Not a year seat.</p>
-        <p class="spl-price">$199</p>
-      </a>
     </div>
+    <p class="spl-note">$199 on blackjack / shards is help on the public GPLv3 libraries, not Combined GC and not a year seat.</p>
   </main>
-  <script src="/assets/chrome.js?v=10" defer></script>
+  <script src="/assets/chrome.js?v=15" defer></script>
 </body>
 </html>

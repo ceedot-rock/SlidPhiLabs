@@ -11,6 +11,38 @@
       "destination": "/api/mcp"
     },
     {
+      "source": "/cuni",
+      "destination": "/cuni.html"
+    },
+    {
+      "source": "/cuni/",
+      "destination": "/cuni.html"
+    },
+    {
+      "source": "/rider",
+      "destination": "/rider.html"
+    },
+    {
+      "source": "/rider/",
+      "destination": "/rider.html"
+    },
+    {
+      "source": "/agentrider",
+      "destination": "/rider.html"
+    },
+    {
+      "source": "/gc",
+      "destination": "/gc.html"
+    },
+    {
+      "source": "/gc/",
+      "destination": "/gc.html"
+    },
+    {
+      "source": "/aware",
+      "destination": "/gc.html"
+    },
+    {
       "source": "/chamber",
       "destination": "/chamber.html"
     },

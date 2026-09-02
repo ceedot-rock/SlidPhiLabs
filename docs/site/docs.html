@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="agentic" content="true"/>
-<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
-<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt"/>
-
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>API — Slid Phi Labs computation lab</title>
-  <meta name="description" content="Sign up, MCP, compress, x402 catalog, Stripe checkout. One lab account."/>
+  <title>API — after you know what we sell · Slid Phi Labs</title>
+  <meta name="description" content="Machine doors for Slid Phi Labs: sign up, MCP, x402 catalog, Stripe checkout, compress API. Humans start on the site. Agents start at /agents."/>
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://www.slidphilabs.com/docs"/>
@@ -16,28 +12,34 @@
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Slid Phi Labs"/>
   <meta property="og:title" content="API — Slid Phi Labs"/>
-  <meta property="og:description" content="Sign up, MCP, compress, x402, Stripe."/>
+  <meta property="og:description" content="Auth, MCP, x402, Stripe, compress. After the product pages."/>
   <meta property="og:url" content="https://www.slidphilabs.com/docs"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="API — Slid Phi Labs"/>
-  <meta name="twitter:description" content="Sign up, MCP, compress, x402, Stripe."/>
+  <meta name="twitter:description" content="Machine doors for the same four products."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=9"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=15"/>
 </head>
 <body>
   <main class="spl-page" id="main">
-    <h1>API</h1>
-    <p class="lede">Buy CuNi, Chamber, Rider, and Suite through these doors. Humans use Stripe. Agents use x402 and MCP.</p>
+    <p class="spl-kicker">API</p>
+    <h1>Machine doors</h1>
+    <p class="lede">Same lab, for agents and scripts. If you do not yet know what CuNi, Chamber, Rider, or AWARE <em>are</em>, start at <a href="/about">About</a> or <a href="/products">Products</a>. This page is how you call them.</p>
     <div class="spl-grid">
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/auth</h3><p>Sign up, log in, passkey, agent API key.</p></div>
-      <div class="spl-card"><p class="spl-kicker">GET/POST</p><h3>/mcp</h3><p>Hosted tools. Registry + Smithery.</p></div>
-      <div class="spl-card"><p class="spl-kicker">GET</p><h3>/api/agent</h3><p>Full catalog. Lead CuNi. Cash Chamber.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/x402-products</h3><p>Agent checkout. HTTP 402 then USDC.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/checkout</h3><p>Stripe for day and month seats.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/compress</h3><p>Lossless encode. 10,000 zeros → 8 bytes.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/auth</h3><p>Human signup/login, or mint an agent API key.</p></div>
+      <div class="spl-card"><p class="spl-kicker">GET / POST</p><h3>/mcp</h3><p>Hosted MCP. Official registry <code>io.github.ceedot-rock/slid-phi-labs</code>. Or <code>npx -y spl-pay-per-suite mcp</code>.</p></div>
+      <div class="spl-card"><p class="spl-kicker">GET</p><h3>/api/agent</h3><p>Catalog of what agents can buy. CuNi, Chamber, Rider, AWARE, Suite.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/x402-products</h3><p>Agent checkout. HTTP 402, then USDC on Solana or Base.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/checkout</h3><p>Stripe for human day and month seats.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/compress</h3><p>Lossless encode on the hosted seat. Encoder is not in the public npm packages.</p></div>
     </div>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="/agents">Agent door</a>
+      <a class="spl-btn spl-btn-line" href="/llms.txt">llms.txt</a>
+      <a class="spl-btn spl-btn-line" href="/signup">Human signup</a>
+    </p>
   </main>
-  <script src="/assets/chrome.js?v=8" defer></script>
+  <script src="/assets/chrome.js?v=15" defer></script>
 </body>
 </html>

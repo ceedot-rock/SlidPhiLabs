@@ -149,8 +149,24 @@ body.spl-chrome {
   font-size: 1.0625rem;
   line-height: 1.55;
   color: var(--mut);
-  max-width: 40rem;
+  max-width: 42rem;
 }
+.spl-note {
+  margin: 1.25rem 0 0;
+  padding: 0.95rem 1.05rem;
+  border-left: 3px solid var(--gold-line);
+  background: var(--paper-2);
+  color: var(--ink-2);
+  max-width: 42rem;
+}
+.spl-note strong { color: var(--ink); }
+.spl-who {
+  max-width: 42rem;
+  margin: 0 0 1.4rem;
+  color: var(--ink-2);
+}
+.spl-who p { margin: 0 0 0.8rem; }
+.spl-who p:last-child { margin-bottom: 0; }
 .spl-prose {
   max-width: 40rem;
   color: var(--ink-2);

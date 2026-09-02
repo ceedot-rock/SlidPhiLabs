@@ -3,17 +3,17 @@
   const NAV = [
     ["/", "Home"],
     ["/products", "Products"],
-    ["/signup", "Sign up"],
+    ["/about", "About"],
     ["/pricing", "Pricing"],
-    ["/docs", "API"],
+    ["/box", "Try"],
   ];
   const FALLBACK_NEWS = [
-    { t: "Exact", title: "CuNi Studio — write once or refuse", href: "https://cuni-studio.fly.dev/" },
-    { t: "Seal", title: "Chamber $49 / $490", href: "/chamber" },
-    { t: "Pack", title: "AWARE — Adaptive Waveform Archive Restore Engine $9 / $49 / $490", href: "/gc" },
-    { t: "Pass", title: "Rider Team $79 / $790", href: "https://agentrider.fly.dev/" },
-    { t: "Meter", title: "Suite 6.9 GB / 3 h then ~5¢", href: "/pps" },
-    { t: "Agents", title: "MCP + x402", href: "/mcp" },
+    { t: "Lab", title: "Slid Phi Labs — tools that check", href: "/about" },
+    { t: "Language", title: "CuNi — one source, three runtimes, or refuse", href: "/cuni" },
+    { t: "Seal", title: "Chamber — two keys for a JSON secret", href: "/chamber" },
+    { t: "Identity", title: "Agent-Rider — signed agent credentials", href: "/rider" },
+    { t: "Compress", title: "AWARE — hosted lossless compressor", href: "/gc" },
+    { t: "Meter", title: "Suite — 6.9 GB / 3 h then ~5¢/GB", href: "/pps" },
   ];
 
   function path() {
@@ -63,27 +63,29 @@
       </div>
       <div>
         <h4>Products</h4>
-        <a href="https://cuni-studio.fly.dev/">CuNi</a>
+        <a href="/cuni">CuNi</a>
         <a href="/chamber">Chamber</a>
-        <a href="/gc">AWARE</a>
-        <a href="https://agentrider.fly.dev/">Rider</a>
+        <a href="/rider">Agent-Rider</a>
+        <a href="/gc">AWARE compressor</a>
         <a href="/pps">Suite</a>
         <a href="/lab-pass">Lab Pass</a>
       </div>
       <div>
         <h4>Use</h4>
+        <a href="/about">About the lab</a>
+        <a href="/humans">Humans</a>
         <a href="/pricing">Pricing</a>
         <a href="/docs">API</a>
-        <a href="/games">Games</a>
       </div>
       <div>
         <h4>Agents</h4>
+        <a href="/agents">Agent door</a>
         <a href="/api/agent">/api/agent</a>
         <a href="/llms.txt">llms.txt</a>
-        <a href="/api/box">/api/box</a>
+        <a href="/mcp">/mcp</a>
       </div>
     </div>
-    <p class="legal">© Slid Phi Labs · 24-hour product box · TruGame engine seats · Powered by TRU8</p>
+    <p class="legal">© Slid Phi Labs · Cherry Hill · corey@slidphilabs.com</p>
   </footer>`;
   }
 
