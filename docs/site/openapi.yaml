@@ -1,13 +1,12 @@
 openapi: 3.0.3
 info:
-  title: TRU8 · Slid Phi Labs — Agent commerce & platform
+  title: Slid Phi Labs API — discovery, commerce, and hosted MCP
   description: |
-    Public product face: TRU8. Dual-surface lab: Pub Facing (humans) + Agentic Minded (agents).
-    One mission · two attack vectors · one team.
-    Start: GET /api/welcome then GET /api/agent.
-    Suite is a metered service (6.9 GB / 3 h unpaid · then ~5¢/GB), not the product face.
-    x402 auto-claim of /access is not wired.
-  version: 1.6.0
+    Public discovery, commerce, and integration surface for Slid Phi Labs.
+    Start with GET /api/agent for catalog discovery or connect an MCP client to POST /mcp.
+    Suite is a metered hosted service (6.9 GB / 3 h unpaid, then about 5¢/GB).
+    Public API and MCP catalog access do not expose protected compression engines or customer operations.
+  version: 1.7.0
   contact:
     name: Slid Phi Labs
     email: corey@slidphilabs.com
@@ -28,6 +27,8 @@ tags:
     description: x402 catalog & suite jobs
   - name: compression
     description: Web codec demo API
+  - name: mcp
+    description: Hosted Streamable HTTP Model Context Protocol server
   - name: olympiad
     description: Great Agentic Olympiad (tryouts · quarterly)
   - name: toys
@@ -60,11 +61,11 @@ paths:
         "201": { description: signup ok }
   /mcp:
     get:
-      tags: [auth]
+      tags: [mcp]
       summary: MCP server card (same as /.well-known/mcp/server-card.json)
     post:
-      tags: [auth]
-      summary: MCP JSON-RPC (initialize, tools/list, tools/call)
+      tags: [mcp]
+      summary: Streamable HTTP MCP JSON-RPC (initialize, tools/list, tools/call, ping)
   /api/welcome:
     get:
       tags: [home]

@@ -19,8 +19,8 @@ export const SERVER_CARD = {
   name: "slid-phi-labs",
   title: "Slid Phi Labs",
   description:
-    "Lab catalogs in the client. CuNi, Chamber, Rider, AWARE. Lookup is public law. Engines stay behind a seat.",
-  version: "1.19.0",
+    "Hosted Streamable HTTP MCP for Slid Phi Labs public catalog and commerce discovery. Lookup is public; engines and customer operations remain protected.",
+  version: "1.20.0",
   websiteUrl: SITE,
   documentationUrl: SITE + "/mcp-service",
   registry: "io.github.ceedot-rock/slid-phi-labs",
@@ -29,6 +29,11 @@ export const SERVER_CARD = {
   transport: { type: "streamable-http", url: SITE + "/mcp" },
   endpoint: SITE + "/mcp",
   capabilities: { tools: {} },
+  auth: {
+    type: "optional",
+    human: SITE + "/api/auth",
+    agent_key: 'POST /api/auth {"action":"agent_key","name":"my-agent"}',
+  },
   tools: [...COMMERCE, ...catalogTools().map((t) => ({ name: t.name, description: t.description }))],
 };
 
@@ -102,7 +107,7 @@ async function handleRpc(msg) {
   if (method === "initialize") {
     return ok(id, {
       protocolVersion: "2024-11-05",
-      serverInfo: { name: "slid-phi-labs", version: "1.19.0" },
+      serverInfo: { name: "slid-phi-labs", version: "1.20.0" },
       capabilities: { tools: {} },
     });
   }

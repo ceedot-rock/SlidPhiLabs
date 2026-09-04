@@ -93,7 +93,8 @@
     },
     "suite": "https://www.slidphilabs.com/pps",
     "suite_pricing": {
-      "free_cap_gb": 100,
+      "free_cap_gb": 6.9,
+      "free_window_hours": 3,
       "min_paid_usd": 0.05,
       "usd_per_gb_after_free": 0.05,
       "usd_per_gb_bulk": 0.04,
@@ -129,7 +130,8 @@
     "pay_ui": "https://www.slidphilabs.com/pay",
     "doc": "https://www.slidphilabs.com/pps",
     "suite_pricing": {
-      "free_cap_gb": 100,
+      "free_cap_gb": 6.9,
+      "free_window_hours": 3,
       "usd_per_gb_after_free": 0.05,
       "usd_per_gb_bulk": 0.04
     }

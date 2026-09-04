@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "updated": "2026-09-02",
+  "updated": "2026-09-04",
   "site": "https://www.slidphilabs.com",
   "brand": "Slid Phi Labs",
   "product": "Slid Phi Labs",
@@ -35,13 +35,13 @@
     "cuni-exception": { "sku": "cuni-exception", "price_usd": 490 }
   },
   "default": {
-    "title": "Slid Phi Labs — a computation lab that checks",
-    "description": "Cherry Hill lab. CuNi $0. Chamber $9/$49/$490. Agent-Rider $79/$790. AWARE $9/$49/$490. Suite meters jobs. Lab Pass $1,088.",
-    "og_title": "Slid Phi Labs — tools that check",
-    "og_description": "Language, JSON seal, signed agents, hosted lossless compressor. Same result or refuse.",
-    "twitter_title": "Slid Phi Labs — a computation lab that checks",
-    "twitter_description": "CuNi, Chamber, Agent-Rider, AWARE. Cherry Hill.",
-    "og_image": "https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg",
+    "title": "Slid Phi Labs — Lossless Compression, Verified",
+    "description": "Verified lossless compression, agent identity, and production infrastructure. Public proof, private performance, paid production.",
+    "og_title": "Slid Phi Labs — Lossless Compression, Verified",
+    "og_description": "Public proof, private compression performance, and paid production infrastructure.",
+    "twitter_title": "Slid Phi Labs — Lossless Compression, Verified",
+    "twitter_description": "Public proof, private performance, paid production.",
+    "og_image": "https://www.slidphilabs.com/assets/ledger/hero.png",
     "canonical": "https://www.slidphilabs.com/",
     "product_line": "CuNi · Chamber · Agent-Rider · AWARE · Suite"
   },
@@ -64,8 +64,8 @@
   },
   "routes": {
     "/": {
-      "title": "Slid Phi Labs — a computation lab that checks",
-      "description": "Small lab in Cherry Hill. CuNi, Chamber, Agent-Rider, hosted lossless compressor. Tools that check instead of vibe.",
+      "title": "Slid Phi Labs — Lossless Compression, Verified",
+      "description": "Verified lossless compression, agent identity, and production infrastructure from Slid Phi Labs. Public proof, private performance, paid production.",
       "canonical": "https://www.slidphilabs.com/"
     },
     "/products": {
@@ -102,7 +102,7 @@
     },
     "/rider": {
       "title": "Agent-Rider — signed identity for AI agents · Slid Phi Labs",
-      "description": "Signed credentials L0–L4. Team $79/month or $790/year. Not included in Lab Pass.",
+      "description": "Public-facing signed agent identity: issue accountable credentials and verify them locally. Team plans are available separately from Lab Pass.",
       "canonical": "https://www.slidphilabs.com/rider",
       "product_line": "Agent-Rider"
     },
@@ -151,6 +151,16 @@
       "title": "API — Slid Phi Labs",
       "description": "Checkout, x402, MCP, and the human/agent doors. Same prices as /pricing.",
       "canonical": "https://www.slidphilabs.com/docs"
+    },
+    "/mcp-service": {
+      "title": "Slid Phi Labs MCP — public catalog tools over Streamable HTTP",
+      "description": "Connect a client to Slid Phi Labs’ hosted MCP server for public catalog, documentation, and commerce discovery tools.",
+      "canonical": "https://www.slidphilabs.com/mcp-service"
+    },
+    "/npm": {
+      "title": "Slid Phi Labs npm packages — clients, demos, and MCP tools",
+      "description": "Install the public Slid Phi Labs client, quote, demo, and MCP helper packages. Private compression engines are not shipped in npm tarballs.",
+      "canonical": "https://www.slidphilabs.com/npm"
     },
     "/demos": {
       "title": "Historical compression demos · Slid Phi Labs",

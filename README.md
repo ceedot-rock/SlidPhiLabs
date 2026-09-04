@@ -1,52 +1,46 @@
 # Slid Phi Labs
 
-**Combined GC 1.19.2** is the compressor. Chamber seals. Rider signs agents. Suite meters jobs.
+**Public proof. Private performance. Paid production.** Slid Phi Labs builds lossless-compression and agent-infrastructure products. This repository contains the public site, integration clients, documentation, and payment rails—not the protected production compression engine.
 
-> Smallest published practical lossless on official Silesia among xz, brotli-11, zstd-19, and gzip. zpaq-m5 is smaller and slower. XZ1 wrap is disclosed.
+| Surface | Public entry point |
+|---|---|
+| Website | https://www.slidphilabs.com |
+| Hosted MCP | https://www.slidphilabs.com/mcp |
+| MCP documentation | https://www.slidphilabs.com/mcp-service |
+| MCP server card | https://www.slidphilabs.com/.well-known/mcp/server-card.json |
+| npm catalog | https://www.slidphilabs.com/npm |
+| Public compression baseline | https://github.com/ceedot-rock/pulsar-best |
 
-| Surface | URL |
-|---------|-----|
-| Site | https://www.slidphilabs.com |
-| Combined GC (measurements) | https://github.com/ceedot-rock/combined-gc-view |
-| Demo | https://combined-gc-demo.vercel.app |
-| Rider | https://agentrider.fly.dev |
-| Pay | https://www.slidphilabs.com/pps |
+## Product boundaries
 
-This repo is the **public site + rails**. It is not the production engine. Engine stays on Fly (deploy context, gitignored) and in private `combined-gc`.
+**AWARE** is the hosted lossless-compression surface. **Agent-Rider** is a public-facing signed-agent-identity product. **Chamber** provides two-key JSON sealing. **CuNi** is a public exactness tool. The public packages and documentation describe these surfaces; protected routing, production engines, customer data, and issuer controls remain behind their appropriate operating boundary.
 
-## npm (industry default)
+The private pathway evidence is presented with its measured scope. Do not describe internal results as a public first-place Silesia-table result.
 
-Public packages are **stubs or HTTP clients**. They do not contain encoders.
+## npm
 
-| Package | What `npm i` gives you |
-|---------|------------------------|
-| `slid-phi` | Stub. `POST https://www.slidphilabs.com/api/compress` |
-| `blackjack-compression` | Stub. Same API / suite |
-| `spl-pay-per-suite` | Quotes, checkout, MCP client — no packer |
-| `@cptasz13/tru8` | Public demo tokens. Residual paths throw |
+Public packages are clients, quote tools, integration stubs, or demonstrations. They do not contain private encoders.
 
-Do not put ZRW / leftover / OmniWave in a public tarball or on the public default branch. Production Fly still runs the host engine.
+| Package | What it provides |
+|---|---|
+| `slid-phi` | Public HTTP client and discovery stub |
+| `spl-pay-per-suite` | Quotes, checkout rails, and optional local MCP helper |
+| `blackjack-compression` | Public integration stub for hosted compression services |
+| `@cptasz13/tru8` | Public demonstration package |
 
-## Public names (use only these)
+```bash
+npm install spl-pay-per-suite
+npx -y spl-pay-per-suite mcp
+```
 
-| Public | Version | What it is |
-|--------|---------|------------|
-| Combined GC | 1.19.2 + XZ1 | Lossless compressor |
-| Chamber | live | Two-key seal |
-| Rider | live | Signed agent credentials L0–L4 |
-| Suite | meter | 6.9 GB / 3 h unpaid, then ~5¢/GB |
-| Lab Pass | $1,088 | Year seat |
+For remote MCP use, point a compatible client at `https://www.slidphilabs.com/mcp`. No npm package is required for the hosted catalog server.
 
-**Aliases, not cards:** TRU8 and Gate are modes of Combined GC. TRUE 8B is the zero/ramp primitive inside it. TRUSTREAM is a live pipe, not a Silesia contestant. Pulsar is embed. AWARE is an internal stack name.
+## Suite metering
 
-Do not say #1 compressor. Do not say TRUSTREAM beats zstd on text.
-
-## Suite cap (one sentence)
-
-Unpaid cap is **6.9 GB and 3 hours**, then about **5¢/GB**. Not 100 GB free.
+The public Suite boundary is **6.9 GB and 3 hours unpaid**, then about **5¢/GB**. The package surfaces quote and commerce behavior; it does not bypass the hosted service or package the private engine.
 
 ## Status
 
-See [STATUS.md](STATUS.md) · [CHANGELOG.md](CHANGELOG.md) · [SECURITY.md](SECURITY.md) · [CITATION.cff](CITATION.cff)
+See [STATUS.md](STATUS.md) · [CHANGELOG.md](CHANGELOG.md) · [SECURITY.md](SECURITY.md) · [CITATION.cff](CITATION.cff).
 
 Inbox: corey@slidphilabs.com

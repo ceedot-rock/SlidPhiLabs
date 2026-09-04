@@ -1,5 +1,5 @@
 # Slid Phi Labs
-> Small computation lab in Cherry Hill. Tools that check: same result or refuse; sealed or not open; signed or not trusted; measured or not claimed.
+> Lossless-compression and agent-infrastructure lab in Cherry Hill. Public proof, private performance, paid production.
 > https://www.slidphilabs.com/
 
 ## Who
@@ -25,9 +25,11 @@ Try: https://www.slidphilabs.com/box
 - Sign up — https://www.slidphilabs.com/signup
 - Auth — POST https://www.slidphilabs.com/api/auth
 - MCP — POST https://www.slidphilabs.com/mcp
+- MCP documentation — https://www.slidphilabs.com/mcp-service
 - Registry — io.github.ceedot-rock/slid-phi-labs
 - Smithery — https://smithery.ai/servers/slidphi/lab
 - Catalog — GET https://www.slidphilabs.com/api/agent
 - x402 — POST https://www.slidphilabs.com/api/x402-products  (docs: https://www.slidphilabs.com/x402)
 - Prices — https://www.slidphilabs.com/pricing.json
 - npm stdio — npx -y spl-pay-per-suite mcp
+- npm packages — https://www.slidphilabs.com/npm

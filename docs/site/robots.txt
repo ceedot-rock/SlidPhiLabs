@@ -74,6 +74,12 @@ Disallow: /drverified
 Disallow: /codex
 Disallow: /ideas
 Disallow: /METHODS.md
+Disallow: /api/
+Disallow: /account
+Disallow: /access
+Disallow: /login
+Disallow: /signup
+Disallow: /pay
 
 Sitemap: https://www.slidphilabs.com/sitemap.xml
 # IndexNow key: https://www.slidphilabs.com/6ad6371582d44dcdb023883f84035004.txt
