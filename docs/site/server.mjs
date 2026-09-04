@@ -234,6 +234,8 @@ function sendFile(res, filePath, req) {
   const cache =
     base === "mcp-registry-auth"
       ? "no-store"
+      : base === "index.html"
+        ? "no-cache, max-age=0, must-revalidate"
       : ext === ".html"
         ? "public, max-age=60"
         : "public, max-age=3600";
