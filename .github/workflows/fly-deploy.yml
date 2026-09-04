@@ -1,0 +1,33 @@
+name: Deploy Slid Phi Labs to Fly.io
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/site/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fly-slidphilabs-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy slidphilabs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy existing Fly app
+        working-directory: docs/site
+        run: flyctl deploy --remote-only --config fly.toml --app slidphilabs
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
