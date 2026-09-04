@@ -6,13 +6,13 @@ info:
     Start with GET /api/agent for catalog discovery or connect an MCP client to POST /mcp.
     Suite is a metered hosted service (6.9 GB / 3 h unpaid, then about 5¢/GB).
     Public API and MCP catalog access do not expose protected compression engines or customer operations.
-  version: 1.7.0
+  version: 1.7.1
   contact:
     name: Slid Phi Labs
     email: corey@slidphilabs.com
     url: https://www.slidphilabs.com
   x-logo:
-    url: https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg
+    url: https://www.slidphilabs.com/assets/ledger/mark.jpg?v=logo-20260904
 servers:
   - url: https://www.slidphilabs.com
     description: Production
@@ -212,6 +212,54 @@ paths:
           description: Pay metered quote
         "200":
           description: job_id issued
+  /api/checkout:
+    post:
+      tags: [commerce]
+      summary: Create a human Stripe Checkout session for a public SKU
+      operationId: humanCheckout
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [sku]
+              properties:
+                sku:
+                  type: string
+                email:
+                  type: string
+                  format: email
+      responses:
+        "200":
+          description: Checkout session or next-step response
+  /api/compress:
+    post:
+      tags: [compression]
+      summary: Hosted lossless compression on an authorized AWARE seat
+      operationId: hostedCompress
+      description: The protected encoder remains hosted. Authorization or an applicable paid access boundary is required.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Compression result with recovery information
+        "401":
+          description: Authentication required
+        "402":
+          description: Applicable payment or access boundary
+  /api/payments:
+    get:
+      tags: [commerce]
+      summary: Public payment-rail matrix and product lookup
+      operationId: paymentMatrix
+      responses:
+        "200":
+          description: Human Stripe, team invoice, and agent x402 payment rails
   /api/web-codec:
     post:
       tags: [compression]

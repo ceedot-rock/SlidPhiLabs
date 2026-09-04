@@ -3,10 +3,10 @@
   "ok": true,
   "name": "Slid Phi Labs",
   "description": "Verified compression, agent identity, and public catalog discovery from Slid Phi Labs. Stripe for humans; x402 where offered for agents.",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "updated": "2026-09-04",
   "lead_product": "cuni",
-  "cash_product": "chamber",
+  "cash_product": "gc-year",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
     "login": "https://www.slidphilabs.com/login",
@@ -39,7 +39,7 @@
   "agents": [
     { "id": "spl-platform", "name": "Slid Phi Labs", "role": "discovery", "url": "https://www.slidphilabs.com/api/agent" },
     { "id": "cuni", "name": "CuNi Studio", "role": "exactness", "url": "https://cuni-studio.fly.dev/", "price": "$0" },
-    { "id": "rider", "name": "Agent-Rider", "role": "identity", "url": "https://agentrider.fly.dev/", "price": "Team $79/mo · $790/yr" },
+    { "id": "rider", "name": "Agent-Rider", "role": "identity", "url": "https://agentrider.fly.dev/", "price": "Labs team seat $79/mo · $790/yr; Merchant Gate is a separate self-serve offer" },
     { "id": "chamber", "name": "Chamber", "role": "security", "url": "https://www.slidphilabs.com/chamber", "price": "Cloak license $9/mo · $99/yr. Open with keys." },
     { "id": "aware", "name": "AWARE", "role": "compression", "url": "https://www.slidphilabs.com/gc", "price": "Day $9 · Month $49 · Year $490" },
     { "id": "trugame", "name": "TruGame", "role": "engine", "url": "https://www.slidphilabs.com/trugame", "price": "Month $12 · Year $79" },
