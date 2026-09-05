@@ -19,3 +19,4 @@ docs/site/api/lib/creator_cloak_selector.js
 docs/site/api/omniwave.js
 lab/omniwave/*.py
 lab/omniwave/__pycache__/
+docs/site/assets/logos/*.orig.jpg
