@@ -37,7 +37,7 @@ curl -sL https://www.slidphilabs.com/platform.json
 
 | Product | URL | Notes |
 |---------|-----|-------|
-| Free suite | https://www.slidphilabs.com/pps | **Free first 100 GB / job**, then ~5¢/GB |
+| Suite | https://www.slidphilabs.com/pps | **6.9 GB / 3 h unpaid**, then ~5¢/GB |
 | Standings | https://www.slidphilabs.com/standings | Public size records only |
 | Standings JSON | https://www.slidphilabs.com/standings.json | Machine copy |
 | Web codec demo | https://www.slidphilabs.com/web | In-browser encode/decode/prove |
@@ -45,7 +45,7 @@ curl -sL https://www.slidphilabs.com/platform.json
 
 **Flagship public numbers (domain-honest):**
 - zeros_10k → **8 B** (gzip-9 73 · brotli-11 13)
-- zeros_1M → **10 B**
+- zeros_1M → **8 B**
 - Wins on structured integers (zeros / ramps / pack walks) — not a general zstd replacement
 
 **Hard rules for agents**
@@ -58,7 +58,7 @@ curl -sL https://www.slidphilabs.com/platform.json
 | Product | URL | Role |
 |---------|-----|------|
 | CuNi | https://cuni-studio.fly.dev/ | Exact multi-runtime |
-| Agent^Rider | https://agentrider.vercel.app/ | Identity · trust · contracts · MCP |
+| Agent^Rider | https://agentrider.fly.dev/ | Identity · trust · contracts · MCP |
 | Quikgater | https://github.com/ceedot-rock/quikgater | Pay-per-fact web fetch (x402) |
 
 ## TEACHAiD · Slid Phi University (SPU)

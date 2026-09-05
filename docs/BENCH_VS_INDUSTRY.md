@@ -87,7 +87,7 @@ Industry analogs: Gorilla, Delta-of-delta, FPC, FastPFor — not deflate.
 
 All public npm packages ship **stubs only**. Real engines are delivered after freemium use or purchase.
 
-- Free first **100 GB / job** → [https://www.slidphilabs.com/pps](https://www.slidphilabs.com/pps)
+- Suite unpaid cap **6.9 GB / 3 h** → [https://www.slidphilabs.com/pps](https://www.slidphilabs.com/pps)
 - Access / support / private install → [https://www.slidphilabs.com/access](https://www.slidphilabs.com/access)
 - Agent rail (x402) → [https://www.slidphilabs.com/api/agent](https://www.slidphilabs.com/api/agent)
 

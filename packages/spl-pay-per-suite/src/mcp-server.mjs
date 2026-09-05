@@ -42,7 +42,7 @@ import {
 } from "./index.mjs";
 
 const SUITE_LINE =
-  "Free first 100 GB per job · then ~5¢/GB (4¢ after 100 paid GB) · min $0.05 · under ~9¢ cloud egress. Try Gate retired.";
+  "Unpaid cap 6.9 GB / 3 h · then ~5¢/GB (4¢ bulk) · min $0.05. Try Gate retired.";
 
 const TOOLS = [
   {
@@ -62,7 +62,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_info",
     description:
-      "Agentic commerce discovery: standing product catalog + freemium suite jobs (free under 100 GB), headers, flow. Stripe remains for humans.",
+      "Agentic commerce discovery: standing product catalog + freemium suite jobs (free under 6.9 GB / 3 h), headers, flow. Stripe remains for humans.",
     inputSchema: { type: "object", properties: {} },
   },
   {
@@ -94,7 +94,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_requirements",
     description:
-      "Probe POST /api/x402-suite. Free under 100 GB (no pay). Over free → 402 accepts[] for usage (~5¢/GB then 4¢ · min $0.05).",
+      "Probe POST /api/x402-suite. Free under 6.9 GB / 3 h (no pay). Over free → 402 accepts[] for usage (~5¢/GB then 4¢ · min $0.05).",
     inputSchema: {
       type: "object",
       properties: {
@@ -103,7 +103,7 @@ const TOOLS = [
         op: { type: "string" },
         bytes: {
           type: "number",
-          description: "Payload bytes (≤100 GiB free; over free requires payment)",
+          description: "Payload bytes (≤6.9 GB unpaid cap; over cap requires payment)",
         },
         email: { type: "string" },
         note: { type: "string" },
@@ -113,7 +113,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_submit",
     description:
-      "Submit freemium suite job via x402. Under 100 GB free (no paymentHeader). Over free: pass paymentHeader after paying, or devBypass for staging.",
+      "Submit freemium suite job via x402. Under 6.9 GB / 3 h free (no paymentHeader). Over free: pass paymentHeader after paying, or devBypass for staging.",
     inputSchema: {
       type: "object",
       properties: {
@@ -126,7 +126,7 @@ const TOOLS = [
         fileName: { type: "string" },
         paymentHeader: {
           type: "string",
-          description: "Base64 X-PAYMENT proof (only if over free 100 GB cap)",
+          description: "Base64 X-PAYMENT proof (only if over free 6.9 GB / 3 h cap)",
         },
         devBypass: { type: "boolean", description: "Staging only if server allows" },
       },
@@ -135,7 +135,7 @@ const TOOLS = [
   {
     name: "spl_pps_quote",
     description:
-      "Instant freemium quote: free first 100 GB ($0), then ~5¢/GB (4¢ bulk) · min $0.05. Inputs: product, dataClass, op, bytes. Returns free flag + USD amount.",
+      "Instant freemium quote: free first 6.9 GB / 3 h ($0), then ~5¢/GB (4¢ bulk) · min $0.05. Inputs: product, dataClass, op, bytes. Returns free flag + USD amount.",
     inputSchema: {
       type: "object",
       properties: {
@@ -151,7 +151,7 @@ const TOOLS = [
         op: { type: "string", description: "compress | decompress | roundtrip" },
         bytes: {
           type: "number",
-          description: "Payload size in bytes (≤100 GiB = free)",
+          description: "Payload size in bytes (≤6.9 GB unpaid = $0)",
         },
         remote: { type: "boolean", description: "If true, use live site API" },
       },
@@ -160,7 +160,7 @@ const TOOLS = [
   {
     name: "spl_pps_checkout",
     description:
-      "Checkout for suite quote. Under 100 GB returns free_showcase (no Stripe). Over free returns Stripe Checkout URL.",
+      "Checkout for suite quote. Under 6.9 GB / 3 h returns free_showcase (no Stripe). Over free returns Stripe Checkout URL.",
     inputSchema: {
       type: "object",
       properties: {
@@ -175,7 +175,7 @@ const TOOLS = [
   {
     name: "spl_pps_submit_job",
     description:
-      "Submit a Pay Per Suite job (free under 100 GB after free_showcase, or after paid). Lab runs best tool and emails results. Requires email.",
+      "Submit a Pay Per Suite job (free under 6.9 GB / 3 h after free_showcase, or after paid). Lab runs best tool and emails results. Requires email.",
     inputSchema: {
       type: "object",
       properties: {

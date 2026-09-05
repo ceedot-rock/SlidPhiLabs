@@ -71,9 +71,6 @@ export function packTrisumHot(hotId) {
   return Buffer.from([T_TRISUM_HOT, hotId & 0xff]);
 }
 
-export { encodeStroke, decodeStroke, isLosslessStroke, looksText, probePath } from "./stroke-ls.mjs";
-import { encodeStroke, decodeStroke, isLosslessStroke } from "./stroke-ls.mjs";
-
 /**
  * T_STROKE — Gregg / Pitman residual (public demo, lossy).
  *
@@ -426,20 +423,22 @@ function asBuf(input) {
 }
 
 /**
- * Public pack. Zeros → T_ZERO. Everything else → lossless T_STROKE
- * (piece / Δ+LZ / fast LZ via 64 KiB probe). T_SPARSE stays licensed.
+ * Public pack. All-zero input → T_ZERO (8 B). Anything else is licensed residual.
  */
 export function compress(input) {
   assertTru8Box();
-  return encodeStroke(asBuf(input));
+  const b = asBuf(input);
+  for (let i = 0; i < b.length; i++) {
+    if (b[i] !== 0) throw new LicensedPathError("T_SPARSE");
+  }
+  return packZeroRun(b.length);
 }
 
-/** Public decompress: T_ZERO and lossless T_STROKE. */
+/** Public decompress: T_ZERO only. */
 export function decompress(frame, opts) {
   assertTru8Box();
   const b = asBuf(frame);
   if (b[0] === T_ZERO) return expandZeros(b, opts);
-  if (b[0] === T_STROKE && isLosslessStroke(b)) return decodeStroke(b);
   if (b[0] === T_SPARSE) throw new LicensedPathError("T_SPARSE");
   throw new LicensedPathError(`token 0x${b[0].toString(16)}`);
 }
@@ -490,8 +489,7 @@ export function demoDictBlock(blockSize = 1024, hits = 100) {
 export function demoStroke(text = "the residual file", opts) {
   const src = String(text);
   const strokes = textToStrokes(src, opts);
-  const packed = encodeStroke(src);
-  const back = decodeStroke(packed);
+  const packed = packStrokes(strokes);
   const raw = Buffer.byteLength(src);
   return {
     name: "stroke",
@@ -503,9 +501,8 @@ export function demoStroke(text = "the residual file", opts) {
     skeleton: strokesToSkeleton(strokes),
     pitman: strokesToPitman(strokes),
     packed_hex: packed.length <= 64 ? packed.toString("hex") : packed.subarray(0, 32).toString("hex") + "…",
-    lossy: false,
-    roundtrip: Buffer.from(src).equals(back),
-    note: "T_STROKE lossless — our piece dictionary + Huffman (text) / LZ + Huffman (binary). Skeleton is still the Gregg/Pitman view.",
+    lossy: true,
+    note: "T_STROKE public demo is Gregg/Pitman skeleton, not original bytes. compress() stays zeros-only.",
     credit: CREDIT,
   };
 }
@@ -534,8 +531,6 @@ export default {
   packTrisumHot,
   packStrokes,
   unpackStrokes,
-  encodeStroke,
-  decodeStroke,
   textToStrokes,
   strokesToSkeleton,
   strokesToPitman,

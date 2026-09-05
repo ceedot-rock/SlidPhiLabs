@@ -1,6 +1,6 @@
 # npm · product prices (canonical)
 
-**Updated:** 2026-08-21  
+**Updated:** 2026-09-05  
 **Live product host:** https://www.slidphilabs.com  
 **Catalog:** https://www.slidphilabs.com/api/x402-products  
 **Pay UI:** https://www.slidphilabs.com/pay  
@@ -29,15 +29,17 @@ Access after pay is an entitlement claim, not a private-engine dump. x402 auto-c
 | `donate` | Donate | **29.99** | https://www.slidphilabs.com/pay?sku=donate | support |
 | `gao-entry` | GAO Entry | **1** | https://www.slidphilabs.com/olympiad | olympiad |
 
-## Suite (metered freemium)
+## Suite (metered)
 
 | | |
 |--|--|
-| Free | first **100 GB** per job |
-| Then | **$0.05 / GB** (first 100 paid GiB) |
+| Unpaid | **6.9 GB and 3 hours** |
+| Then | **~$0.05 / GB** (first 100 paid GiB) |
 | Bulk | **$0.04 / GB** after that |
-| Quote | `POST https://slidphilabs.fly.dev/api/ppp-quote` |
-| Checkout | multi-method Stripe or x402 suite |
+| Quote | `POST https://www.slidphilabs.com/api/ppp-quote` |
+| Checkout | Stripe or x402 suite |
+
+Do not advertise 100 GB free.
 
 ## package.json fields (standard)
 
@@ -45,10 +47,10 @@ Each commercial package should expose:
 
 ```json
 {
-  "homepage": "https://slidphilabs.fly.dev",
+  "homepage": "https://www.slidphilabs.com",
   "funding": {
     "type": "individual",
-    "url": "https://slidphilabs.fly.dev/pay"
+    "url": "https://www.slidphilabs.com/pay"
   },
   "pricing": {
     "sku": "<sku>",
@@ -56,37 +58,39 @@ Each commercial package should expose:
     "amount_cents": 19900,
     "currency": "usd",
     "buy": "https://buy.stripe.com/…",
-    "checkout": "https://slidphilabs.fly.dev/api/checkout",
-    "access": "https://slidphilabs.fly.dev/access?product=<sku>",
-    "catalog": "https://slidphilabs.fly.dev/api/x402-products",
-    "pay_ui": "https://slidphilabs.fly.dev/pay"
+    "checkout": "https://www.slidphilabs.com/api/checkout",
+    "access": "https://www.slidphilabs.com/access?product=<sku>",
+    "catalog": "https://www.slidphilabs.com/api/x402-products",
+    "pay_ui": "https://www.slidphilabs.com/pay"
   },
   "agentic": {
-    "discovery": "https://slidphilabs.fly.dev/api/agent",
-    "catalog": "https://slidphilabs.fly.dev/api/x402-products",
-    "suite_pricing": { "free_cap_gb": 100, "usd_per_gb_after_free": 0.05, "usd_per_gb_bulk": 0.04 }
+    "discovery": "https://www.slidphilabs.com/api/agent",
+    "catalog": "https://www.slidphilabs.com/api/x402-products",
+    "suite_pricing": { "free_cap_gb": 6.9, "free_window_hours": 3, "usd_per_gb_after_free": 0.05, "usd_per_gb_bulk": 0.04 }
   },
   "x402": {
-    "discovery": "https://slidphilabs.fly.dev/api/agent",
-    "catalog": "https://slidphilabs.fly.dev/api/x402-products",
+    "discovery": "https://www.slidphilabs.com/api/agent",
+    "catalog": "https://www.slidphilabs.com/api/x402-products",
     "networks": ["solana-mainnet-beta", "eip155:8453"],
     "payment_header": "X-PAYMENT"
   }
 }
 ```
 
-## Publish status (this Host Grok · 2026-08-09)
+## Publish status (2026-09-05)
 
-| Package | Local prices wired | npm publish |
-|---------|-------------------|-------------|
-| blackjack-compression | yes | **1.4.8** published (`pricing` $199 + Fly pay) |
-| shard-zip | yes | **0.3.8** published |
-| shard-tsdb | yes | **0.2.12** published |
-| spl-pay-per-suite | yes · MCP + quote `SUITE_PRICING` | **1.1.7** published (100 GB · 5¢/4¢) |
+| Package | Local | npm (live until Host `npm login`) |
+|---------|-------|-----------------------------------|
+| slid-phi | **2.2.11** | **2.2.10** |
+| spl-pay-per-suite | **1.1.9** (6.9 GB / 3 h) | **1.1.8** (still says 100 GB) |
+| blackjack-compression | **1.5.3** | **1.5.2** |
+| @cptasz13/tru8 | **0.1.1** zeros → 8 B | **0.1.0** (broken: missing `stroke-ls.mjs`) |
+| shard-zip | historical | **0.4.1** |
+| shard-tsdb | historical | **0.3.1** |
+| pulsar | cargo/git, not npm | — |
 | zero-range-wave-compression | pending local tree | **Other Grok / Host** |
-| slid-phi | pending local tree | **Other Grok / Host** |
 
-**Canonical suite (must match API + MCP + npm):** free **100 GB** · then **$0.05/GB** · bulk **$0.04/GB** · min **$0.05**.
+**Canonical suite (must match API + MCP + npm):** unpaid **6.9 GB / 3 h** · then **$0.05/GB** · bulk **$0.04/GB** · min **$0.05**.
 
 ## Handoff · This Grok ↔ Other Grok
 
@@ -100,9 +104,9 @@ Each commercial package should expose:
 ### **Other Grok** (or Host with npm auth) **must**
 1. `npm publish` each package with bumped version after price field patch  
 2. Confirm npm page shows new `funding` / readme buy links  
-3. Point www DNS → Fly so `www` URLs in old published packages stop 404  
-4. Optionally rewrite published package descriptions that still say Try Gate / 1.5¢  
+3. `npm login` on this machine, then publish local versions above  
+4. Optionally rewrite published package descriptions that still say 100 GB free / Try Gate / 1.5¢  
 
 ### Either side
 - Do not invent new SKU prices without Host lock  
-- Prefer Fly product host until www DNS flips  
+- Public homepage is https://www.slidphilabs.com  

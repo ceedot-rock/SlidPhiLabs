@@ -26,7 +26,7 @@ Codec name is **PCC** (Ptaszenski Computational Codec). Combined GC stays privat
 | Rider | live | Signed agent credentials L0–L4 |
 | CuNi | public | Exactness: Python, Go, JS match or refuse |
 | Suite | meter | 6.9 GB / 3 h unpaid, then ~5¢/GB |
-| Lab Pass | $1,088 | Year seat |
+| Lab Pass | $668 | Year seat |
 
 AWARE is Combined GC’s internal stack name. Gate is a router, not a gene. true8b is residual/integer, not TRU8. TRUSTREAM is a live pipe, not a Silesia contestant. XZ1 wrap is disclosed steal — not a lab occupant.
 

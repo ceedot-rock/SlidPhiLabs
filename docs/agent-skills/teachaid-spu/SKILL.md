@@ -92,7 +92,7 @@ curl -sL -X POST https://teachaid.fly.dev/api/chat \
 ## Related lab surfaces
 
 - Slid Phi Labs (compression freemium): https://www.slidphilabs.com/api/agent
-- Free suite 100 GB: https://www.slidphilabs.com/pps
+- Suite 6.9 GB / 3 h unpaid: https://www.slidphilabs.com/pps
 - Standings: https://www.slidphilabs.com/standings
 
 Host: `host_spu_ceedot` · Engine version: TEACHAiD 1.4.0-school-bursar · Org: Slid Phi Labs

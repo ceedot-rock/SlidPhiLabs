@@ -76,4 +76,4 @@ Private house: `house_best.py` **combines Combined GC with** those genes — sam
 
 ## Pricing note
 
-Public freemium (100 GB free / under first paid egress) is independent of this lab codec. OmniWave is **capability**; suite is **commerce**.
+Public unpaid cap (6.9 GB / 3 h, then under first paid egress) is independent of this lab codec. OmniWave is **capability**; suite is **commerce**.

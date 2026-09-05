@@ -1,9 +1,11 @@
 /**
- * SPL Pay Per Suite — local quote (matches site).
- * Free first 100 GiB (equal when competitor free-tier size is $0).
- * Over free: under first paid egress (~$0.09/GB) at ~5¢/GB.
+ * SPL Pay Per Suite — local quote (matches site API suite-pricing.js).
+ * Unpaid cap: 6.9 GB and 3 hours. Then ~5¢/GB (4¢ bulk after 100 paid GB).
+ * Time window is enforced on the host; this quote is bytes-only.
  */
-export const FREE_BYTES = 100 * 1024 * 1024 * 1024;
+export const FREE_GB = 6.9;
+export const FREE_WINDOW_HOURS = 3;
+export const FREE_BYTES = Math.round(FREE_GB * 1024 * 1024 * 1024);
 export const MAX_BYTES = 1024 * 1024 * 1024 * 1024;
 export const MAX_CENTS = 1_000_000;
 export const MIN_PAID_CENTS = 5;
@@ -11,8 +13,9 @@ export const MIN_CENTS = 0;
 
 /** Canonical suite rates — MCP, package.json, site, API must match */
 export const SUITE_PRICING = {
-  model: "freemium_suite_v4_undercut",
-  free_cap_gb: 100,
+  model: "unpaid_cap_6_9_3h",
+  free_cap_gb: FREE_GB,
+  free_window_hours: FREE_WINDOW_HOURS,
   free_cap_bytes: FREE_BYTES,
   usd_per_gb_after_free: 0.05,
   usd_per_gb_first_100: 0.05,
@@ -22,7 +25,7 @@ export const SUITE_PRICING = {
   first_paid_egress_ref_usd: 0.09,
   try_gate: "retired",
   human_one_liner:
-    "Free first 100 GB per job · then ~5¢/GB (4¢ after 100 paid GB) · min $0.05 · under ~9¢ cloud egress",
+    "Unpaid cap 6.9 GB / 3 h · then ~5¢/GB (4¢ bulk) · min $0.05",
 };
 
 export const PRODUCT_ADD_CENTS = {
@@ -69,7 +72,8 @@ export function computeQuote({
   const billable = Math.max(0, b - free_bytes);
   const free = billable <= 0;
   const rates = {
-    free_cap_gb: 100,
+    free_cap_gb: FREE_GB,
+    free_window_hours: FREE_WINDOW_HOURS,
     min_paid_usd: 0.05,
     usd_per_gb_first_100: 0.05,
     usd_per_gb_after_100: 0.04,
@@ -79,11 +83,11 @@ export function computeQuote({
   if (free) {
     return {
       ok: true, service: "SPL Pay Per Suite", currency: "usd",
-      amount_cents: 0, amount_display: "0.00", free: true, tier: "free_match",
-      message: "Free through 100 GB (equal when competitor free-tier size is $0).",
+      amount_cents: 0, amount_display: "0.00", free: true, tier: "unpaid_cap",
+      message: "Unpaid cap 6.9 GB and 3 hours. Then ~5¢/GB.",
       breakdown: {
         product: prod, product_add_cents: 0, product_base_cents: 0,
-        free_bytes, free_gb: 100, billable_bytes: 0, usage_cents: 0, size_cents: 0,
+        free_bytes, free_gb: FREE_GB, billable_bytes: 0, usage_cents: 0, size_cents: 0,
         data_class: cls, data_multiplier: DATA_MULT[cls],
         op: operation, op_multiplier: OP_MULT[operation],
         bytes: b, mb: +(b/1024/1024).toFixed(4), gb: +(b/1024/1024/1024).toFixed(6),
@@ -100,10 +104,10 @@ export function computeQuote({
     ok: true, service: "SPL Pay Per Suite", currency: "usd",
     amount_cents: cents, amount_display: (cents / 100).toFixed(2),
     free: false, tier: "usage_undercut",
-    message: "Over free: ~5¢/GB (under first paid egress ~9¢/GB).",
+    message: "Over 6.9 GB unpaid cap — ~5¢/GB (4¢ bulk).",
     breakdown: {
       product: prod, product_add_cents: add, product_base_cents: add,
-      free_bytes, free_gb: 100, billable_bytes: billable, usage_cents: usage, size_cents: usage,
+      free_bytes, free_gb: FREE_GB, billable_bytes: billable, usage_cents: usage, size_cents: usage,
       data_class: cls, data_multiplier: DATA_MULT[cls],
       op: operation, op_multiplier: OP_MULT[operation],
       bytes: b, mb: +(b/1024/1024).toFixed(4), gb: +(b/1024/1024/1024).toFixed(6),

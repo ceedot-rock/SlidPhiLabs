@@ -1,6 +1,6 @@
 {
   "name": "@cptasz13/tru8",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TRU8 — true minimal units for repetition. Public demo by Slid Phi Labs. Production residual licensed.",
   "type": "module",
   "main": "src/index.mjs",

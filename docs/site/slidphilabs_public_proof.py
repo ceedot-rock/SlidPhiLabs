@@ -30,7 +30,7 @@ DOMAIN = "zeros10k"  # domain under test
 N_INTS = 10_000
 RAW_BYTES_I32 = N_INTS * 4  # 40_000 B raw int32 zeros
 FLAGSHIP_TARGET_B = 8  # product claim size (ZRW int seat)
-FREE_GB = 100  # freemium first 100 GB
+FREE_GB = 6.9  # unpaid cap 6.9 GB / 3 h
 PLANES = {
     "grok": 100,
     "spl": 160,

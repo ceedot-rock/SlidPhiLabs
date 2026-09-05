@@ -3,13 +3,19 @@ import assert from "node:assert/strict";
 import { computeQuote, classifyBytes, FREE_BYTES, MIN_PAID_CENTS } from "../src/quote.mjs";
 const GiB = 1024 ** 3;
 
-test("9 GB free (equal when theirs is 0 in free tier)", () => {
-  const q = computeQuote({ bytes: 9 * GiB, product: "auto" });
+test("6.9 GB unpaid cap is free", () => {
+  const q = computeQuote({ bytes: 6.9 * GiB, product: "auto" });
   assert.equal(q.amount_cents, 0);
   assert.equal(q.free, true);
 });
 
-test("100 GB free cap", () => {
+test("7 GB is over cap", () => {
+  const q = computeQuote({ bytes: 7 * GiB, product: "auto" });
+  assert.equal(q.free, false);
+  assert.ok(q.amount_cents >= MIN_PAID_CENTS);
+});
+
+test("FREE_BYTES is the 6.9 GB cap", () => {
   assert.equal(computeQuote({ bytes: FREE_BYTES }).amount_cents, 0);
 });
 

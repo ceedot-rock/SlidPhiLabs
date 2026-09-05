@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-05
+- npm public packages aligned to live Suite: 6.9 GB / 3 h unpaid, then ~5¢/GB.
+- `@cptasz13/tru8` public `compress` is zeros-only → 8 B DECODE_OK; non-zero throws `LicensedPathError`. No Combined GC in the tarball.
+- Catalog on `/npm` lists shard-zip, shard-tsdb, and pulsar (cargo/git, not npm).
+- Local versions ready after `npm login`: slid-phi 2.2.11, spl-pay-per-suite 1.1.9, blackjack-compression 1.5.3, @cptasz13/tru8 0.1.1.
+
 ## 2026-08-30
 - Public vocabulary locked: Combined GC 1.19.2, Chamber, Rider, Suite.
 - Suite cap written once: 6.9 GB / 3 h, then ~5¢/GB.

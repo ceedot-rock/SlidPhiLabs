@@ -15,7 +15,7 @@
     "Agent-Rider": "signed agent identity L0–L4. Month $79 · Year $790. Not in Lab Pass.",
     "AWARE": "hosted lossless compressor. Day $9 · Month $49 · Year $490. Engine (Combined GC) stays in the lab.",
     "Suite": "metered AWARE jobs — 6.9 GB / 3 h unpaid then ~5¢/GB. Not a user seat.",
-    "Lab Pass": "Chamber + AWARE + TruGame for 365 days, $1,088. Not Rider.",
+    "Lab Pass": "Chamber + AWARE + TruGame for 365 days, $668. Not Rider.",
     "Access": "entitlement claim after Stripe or x402. Not a codec dump.",
     "pulsar": "public GPLv3 demo compressor. Not Combined GC."
   },
@@ -31,7 +31,7 @@
     "gc-year": { "sku": "gc-year", "price_usd": 490 },
     "rider-month": { "sku": "rider-month", "price_usd": 79 },
     "rider-year": { "sku": "rider-year", "price_usd": 790 },
-    "lab-pass": { "sku": "lab-pass", "price_usd": 1088 },
+    "lab-pass": { "sku": "lab-pass", "price_usd": 668 },
     "cuni-exception": { "sku": "cuni-exception", "price_usd": 490 }
   },
   "default": {
@@ -75,7 +75,7 @@
     },
     "/pricing": {
       "title": "Pricing — Slid Phi Labs",
-      "description": "CuNi $0. Chamber $9/$49/$490. Rider $79/$790. AWARE $9/$49/$490. Lab Pass $1,088. Stripe card checkout.",
+      "description": "CuNi $0. Chamber $9/$49/$490. Rider $79/$790. AWARE $9/$49/$490. Lab Pass $668. Stripe card checkout.",
       "canonical": "https://www.slidphilabs.com/pricing"
     },
     "/pay": {
@@ -113,13 +113,13 @@
       "product_line": "CuNi"
     },
     "/lab-pass": {
-      "title": "Lab Pass — Chamber + AWARE + TruGame · $1,088",
+      "title": "Lab Pass — Chamber + AWARE + TruGame · $668",
       "description": "One year: Chamber, AWARE, TruGame. Not Agent-Rider.",
       "canonical": "https://www.slidphilabs.com/lab-pass"
     },
     "/license": {
       "title": "License — every product, every checkout · Slid Phi Labs",
-      "description": "CuNi $0. Chamber $9/$49/$490. AWARE $9/$49/$490. Rider $79/$790. Lab Pass $1,088.",
+      "description": "CuNi $0. Chamber $9/$49/$490. AWARE $9/$49/$490. Rider $79/$790. Lab Pass $668.",
       "canonical": "https://www.slidphilabs.com/license"
     },
     "/about": {

@@ -29,10 +29,10 @@ npx spl-pay-per-suite quote --bytes 500000000
 import { computeQuote } from "spl-pay-per-suite";
 
 computeQuote({ product: "auto", op: "compress", bytes: 1 * 1024 ** 3 });
-// → within the current unpaid boundary
+// → unpaid (under 6.9 GB)
 
 computeQuote({ product: "auto", op: "compress", bytes: 7 * 1024 ** 3 });
-// → over the current unpaid boundary; inspect the returned quote before checkout
+// → over 6.9 GB unpaid cap; inspect the returned quote before checkout
 ```
 
 ## MCP

@@ -5,12 +5,12 @@
 
 ## Episode 1 — Show notes
 **Title:** Slid Phi Labs — One Codec, Structured Data  
-**One-liner:** Why we built a codec path for structured integers, what the public numbers actually show, and how to try 100 GB free in under a minute.
+**One-liner:** Why we built a codec path for structured integers, what the public numbers actually show, and how to try the 6.9 GB / 3 h unpaid suite in under a minute.
 
 ### Body
 - What “one codec · structured data” means in practice
 - The public standings and how to read them (domain-honest)
-- Free first 100 GB per job, then ~5¢/GB
+- Unpaid cap 6.9 GB / 3 h per job, then ~5¢/GB
 - The agent path (x402 + dual surface)
 
 ### Links
@@ -24,8 +24,8 @@ Open the free suite: https://www.slidphilabs.com/pps
 
 ### YouTube Short description
 One public number. Structured data.  
-zeros_10k → 8 B. zeros_1M → 10 B.  
-Free first 100 GB: slidphilabs.com/pps  
+zeros_10k → 8 B. zeros_1M → 8 B.  
+Suite 6.9 GB / 3 h unpaid: slidphilabs.com/pps  
 #compression #codec #SlidPhi
 
 ## Day 1–3 X copy

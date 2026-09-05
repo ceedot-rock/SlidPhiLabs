@@ -1,6 +1,6 @@
 {
   "name": "blackjack-compression",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "Blackjack compression — proprietary (Slid Phi Labs). Public package is a stub. Real engine after freemium or purchase.",
   "type": "module",
   "main": "stub.mjs",

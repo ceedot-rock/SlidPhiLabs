@@ -1,6 +1,6 @@
 {
   "name": "slid-phi",
-  "version": "2.2.10",
+  "version": "2.2.11",
   "description": "Slid Phi Labs public HTTP client and discovery stub. Hosted compression and protected engines are not shipped in this package.",
   "type": "module",
   "main": "src/index.mjs",
@@ -68,12 +68,13 @@
     "one_liner": "Public discovery and HTTP client. Suite meter: 6.9 GB / 3 h unpaid, then about 5¢/GB. GET https://www.slidphilabs.com/api/agent.",
     "agent_platform": {
       "cuni": "https://cuni-studio.fly.dev/",
-      "agent_rider": "https://agentrider.vercel.app/",
+      "agent_rider": "https://agentrider.fly.dev/",
       "quikgater": "https://github.com/ceedot-rock/quikgater"
     },
     "suite": "https://www.slidphilabs.com/pps",
     "suite_pricing": {
-      "free_cap_gb": 100,
+      "free_cap_gb": 6.9,
+      "free_window_hours": 3,
       "usd_per_gb_after_free": 0.05,
       "usd_per_gb_bulk": 0.04
     },
@@ -98,8 +99,8 @@
     "url": "https://www.slidphilabs.com"
   },
   "pricing": {
-    "catalog": "https://slidphilabs.fly.dev/api/x402-products",
-    "pay_ui": "https://slidphilabs.fly.dev/pay",
+    "catalog": "https://www.slidphilabs.com/api/x402-products",
+    "pay_ui": "https://www.slidphilabs.com/pay",
     "doc": "docs/NPM_PRICING.md",
     "skus": {
       "chamber-year": { "usd": 99, "buy": "https://www.slidphilabs.com/pay?sku=chamber-year" },
