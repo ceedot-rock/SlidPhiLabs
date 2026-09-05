@@ -11,6 +11,7 @@
  *
  * Full cloaked agent NCA lives in agent_nca.mjs (chamber).
  * This module is the **portable coat** for every Fly app.
+ * Dashboard automaton only — does not encode files. Not a Silesia gene.
  *
  * Seats (public labels):
  *   phi@p40 · grok@p100 · spl@p160 · zrw@p220 · suite@p280 · agentic@p340

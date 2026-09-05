@@ -33,6 +33,7 @@ Cache-bust CSS/JS after deploy.
 | File | Product |
 |------|---------|
 | `logo-slid-phi-labs.jpg` | House mark |
+| `logo-spl.jpg` / `logo-slid-phi-labs-spl.jpg` | SPL product mark (house winged-eye + SPL) |
 | `logo-slid-phi.jpg` | SPL Codec / slid-phi |
 | `logo-zero-range-wave.jpg` | Zero Range Wave |
 | `logo-zrqc.jpg` | ZRQC umbrella |

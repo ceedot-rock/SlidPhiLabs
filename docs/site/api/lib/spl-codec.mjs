@@ -1,7 +1,13 @@
 /**
- * SPL codec — public orchestrator.
- * gzip-9 / brotli-11 always (Node zlib, not lab IP).
- * ZRW / leftover load only if host engine files are on this machine (Fly).
+ * Public web orchestrator. Not PCC. Not a lab gene.
+ *
+ * ZRW (when the engine file is on this host) is the only lab occupant.
+ * gzip-9 / brotli-11 are Node zlib — host fallbacks, opponents on a
+ * scoreboard, never "ours." Frames still wrap them as kinds 3/4 so old
+ * blobs decode; encode results now set host_fallback when they win.
+ *
+ * NCA/swarm do not belong here. Routing is mixture-of-experts: pick one
+ * whole-file specialist. See docs/GAPS_NCA_SWARM.md and lbr1/JOBS.md.
  */
 import zlib from "node:zlib";
 
@@ -139,6 +145,7 @@ export function encode(input) {
 
   const ok = trials.filter((t) => t && t.rt).sort((a, b) => a.bytes - b.bytes);
   const win = ok[0] || trial("gzip-9", KIND.gzip, gzip9(raw), raw);
+  const hostFallback = win.kind === KIND.gzip || win.kind === KIND.brotli;
   return {
     raw: raw.length,
     method: win.name,
@@ -147,6 +154,8 @@ export function encode(input) {
     frame: wrap(win.kind, win.payload),
     vector: cls.vector,
     engine: Boolean(engine),
+    host_fallback: hostFallback,
+    lab_gene: win.kind === KIND.zrw || win.kind === KIND.rdom,
     trials: trials.filter(Boolean).map((t) => ({ name: t.name, bytes: t.bytes, rt: t.rt })),
   };
 }
@@ -228,6 +237,8 @@ export function publicResult(enc) {
     trials: enc.trials,
     roundtrip: true,
     host_engine: Boolean(engine),
+    host_fallback: Boolean(enc.host_fallback),
+    lab_gene: Boolean(enc.lab_gene),
     ...(enc.method === "zrw" ? { zrw_bytes: enc.packed, n_ints: nInts } : {}),
     claim_check: zeros
       ? { zeros: true, matches_flagship_8b_on_10k: nInts === 10_000 && enc.packed === 8 }

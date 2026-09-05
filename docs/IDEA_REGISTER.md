@@ -30,7 +30,7 @@
 | 7 | **QQc / QuasiQuad** | QuasiQuad computation core (equations + machine steps in patent intake). | mixed (intake docs) | patent · book | partial |
 | 8 | **ZRW** | Zero Range Wave — pure-JS-class integer/pattern compressor that crushes zeros/ramps/walks vs gzip/brotli class. | public pack/stub · private full core | product · patent adjacency | solid (public) / secret (core) |
 | 9 | **360 / 1088 discrete baselines** | Historical discrete baselines; not the public champion lead. | public as “old story” | research · patent history | solid (demoted) |
-| 10 | **SmartSwarm / M40** | Swarm/colony lineage named next to ZRW+QQc on research board. | mostly unexposed here | research | stub |
+| 10 | **SmartSwarm / M40** | Name only. The real object is **mixture-of-experts routing** (`lb best` / `house_best`). PSO/ACO would be offline knob search if the space were huge; seven GC profiles are enumerated, not swarmed. Distill NCA is sentinel/game, not a gene. | toy shelf · teaching in GAPS_NCA_SWARM.md | research | stub |
 | 11 | **Omni-Dormant / slid-phi pathways** | Pathway selection for dormant/sparse integer research loads. | public product name · process secret | product · research | partial |
 | 12 | **Public-safe math book** | Full narrative of mathematics + use cases + future *without* private coefficients. | public-safe draft path | book | partial |
 
@@ -135,7 +135,7 @@ Aisles: **fun** · **theory** · **artifact** · **history**. Commercial SKUs st
 ## Gaps / still thin on this host
 
 1. Full private residual engine + champion drawings (handoff zips)  
-2. SmartSwarm / M40 depth beyond names  
+2. SmartSwarm / M40 — teaching pass 2026-09-05: MoE routing is the real name (`GAPS_NCA_SWARM.md`). Still no PSO loop; do not build one until enumeration loses.  
 3. Single reconciled pricing ladder (board $9/$29/$199 vs live ZRW/CDDG map)  
 4. External successful x402 paid proof on mainnet  
 5. Complete multi-corpus leaderboard (gzip/brotli/zstd/…) on private corpora  

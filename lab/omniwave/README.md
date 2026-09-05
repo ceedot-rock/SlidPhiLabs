@@ -1,6 +1,8 @@
 # OmniWave / Apex Path (lab scaffold)
 
-**Private complementary generalist** for SLiD Phi Labs.
+**Teach:** seats are jobs. Occupants are specialists that know encode/decode. See `lbr1/JOBS.md`. Router does not compress. Packer does not parse. Host gzip/brotli/xz are not genes. Combined GC is a private compressor that knows compression — meld or alongside in the house, never copied into pulsar.
+
+**Private complementary generalist** for Slid Phi Labs. Occupants must be lab engines. Host gzip/brotli/xz are opponents.
 
 - **Strong where ZRW is weak:** general bytes, high-entropy, floats, text/nested  
 - **Router preserves ZRW** on zeros / ramps / walks (high structured score)  
@@ -43,17 +45,25 @@ framed, meta = ow.compress(payload)
 raw = ow.decompress(framed)
 ```
 
-## Product map
+## Product map (own genes in OmniWave seats)
+
+Same seats. Occupants are lab engines. Host gzip / brotli / xz are not genes.
 
 ```
-Input → FastProfiler → Router
-  → ZRW_delegate          (existing ZRW / Blackjack / CDDG / shards)
-  → float_xor + entropy
-  → struct_text + lz + entropy   (JSON/HTML hook — expand tokenizer for real wins)
-  → delta + lz + entropy
-  → general lz + entropy         (high-entropy / unknown)
-→ OMWV frame + agent meta
+Input → classify (Fill / Sparse / Text / Binary)
+  → ZRW_delegate     TRU8 / TR8X          (zeros, ramps, sparse)
+  → struct_text      pulsar BW22          (was brotli-11 skin)
+  → general          LBR1                 (was gzip-9 skin)
+  → mixed            LBHX                 (own split, ≥8% mixed)
+  → CDDG             residual / Split     (not a Silesia GP)
+  → AWARE            Combined GC          (private house; competes with struct_text + general)
+  → float_xor        vacant               (lossy quantize retired — GC does not fill this as a skin)
+→ lab magics only + DECODE_OK
 ```
+
+Public CLI: `lb best` = TRU8 / LBR1 / pulsar. Combined GC is **not** copied into pulsar.
+
+Private house: `house_best.py` **combines Combined GC with** those genes — same OmniWave seats, min() the smallest DECODE_OK blob. GC source stays in `combined-gc`.
 
 ## Next (production)
 

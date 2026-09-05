@@ -1,6 +1,8 @@
 # Slid Phi Labs
 
-**Public proof. Private performance. Paid production.** Slid Phi Labs builds lossless-compression and agent-infrastructure products. This repository contains the public site, integration clients, documentation, and payment rails—not the protected production compression engine.
+**Public proof. Private performance. Paid production.** This repository is the public site, clients, docs, and payment rails. It is not the production compressor.
+
+Codec name is **PCC** (Ptaszenski Computational Codec). Combined GC stays private. pulsar is the public OSCB toy.
 
 | Surface | Public entry point |
 |---|---|
@@ -11,11 +13,24 @@
 | npm catalog | https://www.slidphilabs.com/npm |
 | Public compression baseline | https://github.com/ceedot-rock/pulsar-best |
 
-## Product boundaries
+## Names (lab spec)
 
-**AWARE** is the hosted lossless-compression surface. **Agent-Rider** is a public-facing signed-agent-identity product. **Chamber** provides two-key JSON sealing. **CuNi** is a public exactness tool. The public packages and documentation describe these surfaces; protected routing, production engines, customer data, and issuer controls remain behind their appropriate operating boundary.
+| Name | Surface | What it is |
+|------|---------|------------|
+| Slid Phi Labs | lab | The lab. |
+| PCC | private | Ptaszenski Computational Codec. House, not a public GitHub name. |
+| Combined GC | 1.19.2 private | AWARE specialist. Engine in `combined-gc`. Measurements in `combined-gc-view`. |
+| pulsar | 2.5.0 public GPLv3 | OSCB toy. `struct_text` seat. Repo `pulsar-best`. |
+| TRU8 | zeros/fill gene | Flagship 8 bytes. Not a general compressor. |
+| Chamber | live | Two-key JSON seal |
+| Rider | live | Signed agent credentials L0–L4 |
+| CuNi | public | Exactness: Python, Go, JS match or refuse |
+| Suite | meter | 6.9 GB / 3 h unpaid, then ~5¢/GB |
+| Lab Pass | $1,088 | Year seat |
 
-The private pathway evidence is presented with its measured scope. Do not describe internal results as a public first-place Silesia-table result.
+AWARE is Combined GC’s internal stack name. Gate is a router, not a gene. true8b is residual/integer, not TRU8. TRUSTREAM is a live pipe, not a Silesia contestant. XZ1 wrap is disclosed steal — not a lab occupant.
+
+Do not say #1 compressor. Do not describe internal results as a public first-place Silesia-table result. Do not dump Combined GC into pulsar.
 
 ## npm
 
