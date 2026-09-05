@@ -53,6 +53,12 @@ Allow: /
 User-agent: Yandex
 Allow: /
 
+User-agent: Naverbot
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
 User-agent: Twitterbot
 Allow: /
 

@@ -1,6 +1,8 @@
 Team: Slid Phi Labs
+From: Cherry Hill, NJ, US
 Contact: corey@slidphilabs.com
 Site: https://www.slidphilabs.com
+pulsar 2.5.0: https://www.slidphilabs.com/pulsar
 
 CuNi Studio — $0 — https://cuni-studio.fly.dev/
 Chamber — cloak license $9/mo · $99/yr (open with keys) — https://www.slidphilabs.com/chamber

@@ -3,6 +3,17 @@
 **Platform:** dual surface  
 **Slogan:** One mission · two attack vectors · one team
 
+## Crawl engines (GEO · SEO · MEO · NEO)
+
+| | Job | Lab keep-hot |
+|---|---|---|
+| **SEO** | Web search | sitemap, titles, `/pulsar` |
+| **GEO** | LLM / answer engines | `llms.txt`, GPTBot allow |
+| **MEO** | Maps / local | Cherry Hill NJ JSON-LD. No fake street. |
+| **NEO** | Naver + news cards | Yeti/Naverbot, `/blog` posts |
+
+See `DISCOVERY.md`.
+
 ## Attack vector A — Pub Facing (humans)
 
 | Action | Where | Why |

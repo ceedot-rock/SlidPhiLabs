@@ -1,7 +1,7 @@
 # Slid Phi Labs — full agent brief
 # Tools that check. Cherry Hill.
 # Public catalog: CuNi, Chamber, Agent-Rider, AWARE, Suite, Lab Pass.
-# Updated 2026-09-02
+# Updated 2026-09-05
 # Canonical site: https://www.slidphilabs.com
 # Prefer live GET /api/agent, /llms.txt, and /pricing.json over this file if they differ.
 
@@ -22,7 +22,9 @@ TruGame — game engine. Packs sim state with TRU8, seals the save with Chamber.
 ### Compression · AWARE
 - Page: https://www.slidphilabs.com/gc
 - Demos: https://www.slidphilabs.com/demos
-- pulsar (public GPLv3 cousin): https://github.com/ceedot-rock/pulsar-best
+- pulsar 2.5.0 (public GPLv3): https://www.slidphilabs.com/pulsar
+- Release: https://github.com/ceedot-rock/pulsar-best/releases/tag/v2.5.0
+- Silesia 55,745,438 / 211,938,580 DECODE_OK 12/12. Beats gzip-9. Loses to bzip2 and xz. Not Combined GC.
 - Day $9 · Month $49 · Year $490. Access, not source.
 
 ### Security · Chamber

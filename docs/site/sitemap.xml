@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.slidphilabs.com/</loc><lastmod>2026-09-04</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.slidphilabs.com/</loc><lastmod>2026-09-05</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.slidphilabs.com/pulsar</loc><lastmod>2026-09-05</lastmod><changefreq>weekly</changefreq><priority>0.97</priority></url>
+  <url><loc>https://www.slidphilabs.com/blog/2026-09-05-pulsar-250</loc><lastmod>2026-09-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.slidphilabs.com/standings</loc><lastmod>2026-09-05</lastmod><changefreq>weekly</changefreq><priority>0.84</priority></url>
+  <url><loc>https://www.slidphilabs.com/blog</loc><lastmod>2026-09-05</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
   <url><loc>https://www.slidphilabs.com/products</loc><lastmod>2026-09-04</lastmod><changefreq>weekly</changefreq><priority>0.98</priority></url>
   <url><loc>https://www.slidphilabs.com/pricing</loc><lastmod>2026-09-04</lastmod><changefreq>weekly</changefreq><priority>0.97</priority></url>
   <url><loc>https://www.slidphilabs.com/gc</loc><lastmod>2026-09-04</lastmod><changefreq>weekly</changefreq><priority>0.96</priority></url>

@@ -1,13 +1,23 @@
 {
   "service": "Slid Phi Labs — Weekly Blog",
   "version": "1.0.0",
-  "updated": "2026-08-07",
+  "updated": "2026-09-05",
   "canonical": "https://www.slidphilabs.com/blog",
   "social": {
     "x": "https://x.com/slidphilabs",
     "handle": "@slidphilabs"
   },
   "posts": [
+    {
+      "id": "2026-09-05-pulsar-250",
+      "week_of": "2026-09-01",
+      "published": "2026-09-05",
+      "title": "pulsar 2.5.0 is tagged",
+      "slug": "2026-09-05-pulsar-250",
+      "url": "https://www.slidphilabs.com/blog/2026-09-05-pulsar-250",
+      "summary": "Public GPLv3 compressor on GitHub Releases. Silesia 55,745,438 / 211,938,580, DECODE_OK 12/12. Beats gzip-9. Loses to xz-6. Not Combined GC.",
+      "tags": ["pulsar", "release", "silesia"]
+    },
     {
       "id": "2026-08-07-why-8b-matters",
       "week_of": "2026-08-04",

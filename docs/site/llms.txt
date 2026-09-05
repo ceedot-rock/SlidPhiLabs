@@ -14,7 +14,7 @@ Slid Phi Labs. Corey Tasz. Human door: /humans  Agent door: /agents  Inbox: core
 - Lab Pass — Chamber year license + AWARE + TruGame, $668/yr. Not Rider. https://www.slidphilabs.com/lab-pass
 - Quikgater — pay-per-fact fetch for agents (x402). Not a seat. https://www.slidphilabs.com/quikgater
 - Consulting — $250 / 2 hours. https://www.slidphilabs.com/pay?sku=consulting
-- pulsar — public GPLv3 demo compressor. Not Combined GC. https://github.com/ceedot-rock/pulsar-best
+- pulsar 2.5.0 — public GPLv3 lossless compressor. Silesia 55,745,438 / 211,938,580, DECODE_OK 12/12. Beats gzip-9. Loses to bzip2-9 and xz-6. Not Combined GC. https://www.slidphilabs.com/pulsar  Release: https://github.com/ceedot-rock/pulsar-best/releases/tag/v2.5.0
 
 ## Checkout
 Humans: POST /api/checkout { "sku": "chamber-year", "rail": "stripe" } → Stripe card session.

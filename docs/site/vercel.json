@@ -39,6 +39,14 @@
       "destination": "/gc.html"
     },
     {
+      "source": "/pulsar",
+      "destination": "/pulsar.html"
+    },
+    {
+      "source": "/pulsar/",
+      "destination": "/pulsar.html"
+    },
+    {
       "source": "/aware",
       "destination": "/gc.html"
     },
