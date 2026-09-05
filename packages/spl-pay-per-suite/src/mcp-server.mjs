@@ -261,8 +261,8 @@ async function callTool(name, args = {}) {
         ops: Object.keys(OP_MULT),
         npm: "spl-pay-per-suite",
         cli: "npx spl-pay-per-suite quote|pay|job|x402|catalog|buy",
-        discovery: "https://slidphilabs.fly.dev/api/agent",
-        pay_ui: "https://slidphilabs.fly.dev/pay",
+        discovery: "https://www.slidphilabs.com/api/agent",
+        pay_ui: "https://www.slidphilabs.com/pay",
         canonical_doc: "docs/NPM_PRICING.md",
         one_liner: SUITE_LINE,
       };

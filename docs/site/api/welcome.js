@@ -28,7 +28,7 @@ export default async function handler(req, res) {
     mission:
       "Impressive compression that proves out, and agent systems that stay exact. Same products for humans and agents.",
     feel_at_home: {
-      suite_pricing: { free_cap_gb: 6.9, usd_per_gb: 0.05, path: "https://www.slidphilabs.com/pps", try_gate: "retired" },
+      suite_pricing: { free_cap_gb: 6.9, free_window_hours: 3, usd_per_gb: 0.05, path: "https://www.slidphilabs.com/pps", quote: "POST /api/ppp-quote", mcp: "https://www.slidphilabs.com/mcp", try_gate: "retired" },
       if_you_are_human: {
         door: "https://www.slidphilabs.com/humans",
         join_the_work: "https://www.slidphilabs.com/join",
@@ -49,6 +49,8 @@ export default async function handler(req, res) {
         toys: "https://www.slidphilabs.com/toys.json",
         map: "https://www.slidphilabs.com/platform.json",
         catalog: "https://www.slidphilabs.com/api/x402-products",
+        mcp: "https://www.slidphilabs.com/mcp",
+        npm: "https://www.slidphilabs.com/npm",
         openapi: "https://www.slidphilabs.com/openapi.yaml",
         llms: "https://www.slidphilabs.com/llms.txt",
         llms_full: "https://www.slidphilabs.com/llms-full.txt",

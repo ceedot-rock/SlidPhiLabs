@@ -1,6 +1,7 @@
 # Changelog
 
 ## 2026-09-05
+- Hosted MCP 1.20.1: Chamber $9/$99, Lab Pass $668, `spl_quote` (6.9 GB / 3 h), npm catalog. GET /api/agent and /api/welcome match.
 - npm public packages aligned to live Suite: 6.9 GB / 3 h unpaid, then ~5¢/GB.
 - `@cptasz13/tru8` public `compress` is zeros-only → 8 B DECODE_OK; non-zero throws `LicensedPathError`. No Combined GC in the tarball.
 - Catalog on `/npm` lists shard-zip, shard-tsdb, and pulsar (cargo/git, not npm).

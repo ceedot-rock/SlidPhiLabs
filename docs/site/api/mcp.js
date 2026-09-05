@@ -4,15 +4,30 @@
  */
 import { signup, login, issueAgentKey } from "./lib/lab-auth.mjs";
 import { catalogTools, dispatchCatalog } from "./lib/mcp-catalogs.mjs";
+import { computeQuote } from "./suite-pricing.js";
 
 const SITE = "https://www.slidphilabs.com";
+const MCP_VERSION = "1.20.1";
 
 const COMMERCE = [
   { name: "spl_discover", description: "Lead product, cash product, auth, MCP, x402." },
   { name: "spl_lab_auth", description: "How to mint a lab account or agent API key." },
   { name: "spl_signup", description: "Create a human lab account (email + password)." },
   { name: "spl_agent_key", description: "Mint an agent API key (no password)." },
-  { name: "spl_catalog", description: "Standing SKUs agents can buy via x402." },
+  { name: "spl_catalog", description: "Standing SKUs agents can buy via x402. Retired ZRW $79/$249/$699 are not sold." },
+  {
+    name: "spl_quote",
+    description: "Suite quote. Unpaid 6.9 GB / 3 h, then ~5¢/GB (4¢ bulk). Args: bytes, product, op. No encoder.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        bytes: { type: "number", description: "Payload bytes. ≤6.9 GiB unpaid." },
+        product: { type: "string", description: "auto | zrw | blackjack | shard-zip | shard-tsdb | slid-phi" },
+        op: { type: "string", description: "compress | decompress | roundtrip" },
+        dataClass: { type: "string" },
+      },
+    },
+  },
 ];
 
 export const SERVER_CARD = {
@@ -20,7 +35,7 @@ export const SERVER_CARD = {
   title: "Slid Phi Labs",
   description:
     "Hosted Streamable HTTP MCP for Slid Phi Labs public catalog and commerce discovery. Lookup is public; engines and customer operations remain protected.",
-  version: "1.20.0",
+  version: MCP_VERSION,
   websiteUrl: SITE,
   documentationUrl: SITE + "/mcp-service",
   registry: "io.github.ceedot-rock/slid-phi-labs",
@@ -41,7 +56,7 @@ const TOOLS = [
   ...COMMERCE.map((t) => ({
     name: t.name,
     description: t.description,
-    inputSchema: { type: "object", properties: {}, additionalProperties: true },
+    inputSchema: t.inputSchema || { type: "object", properties: {}, additionalProperties: true },
   })),
   ...catalogTools(),
 ];
@@ -99,6 +114,14 @@ async function callTool(name, args = {}) {
     const r = await fetch(SITE + "/api/x402-products", { signal: AbortSignal.timeout(12000) });
     return r.json();
   }
+  if (name === "spl_quote") {
+    return computeQuote({
+      product: args.product || "auto",
+      dataClass: args.dataClass || args.data_class || "unknown",
+      op: args.op || "compress",
+      bytes: args.bytes || 0,
+    });
+  }
   throw new Error("Unknown tool: " + name);
 }
 
@@ -107,7 +130,7 @@ async function handleRpc(msg) {
   if (method === "initialize") {
     return ok(id, {
       protocolVersion: "2024-11-05",
-      serverInfo: { name: "slid-phi-labs", version: "1.20.0" },
+      serverInfo: { name: "slid-phi-labs", version: MCP_VERSION },
       capabilities: { tools: {} },
     });
   }

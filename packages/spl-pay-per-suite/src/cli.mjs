@@ -120,7 +120,7 @@ async function main() {
   if (cmd === "buy" || cmd === "x402-buy") {
     const sku = args.sku || args.product || args._[0];
     if (!sku) {
-      console.error("--sku required (e.g. cddg-split, zrw-n00b, blackjack)");
+      console.error("--sku required (e.g. chamber-year, gc-year, lab-pass)");
       process.exit(1);
     }
     const opts = {

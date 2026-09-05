@@ -78,7 +78,7 @@ export default async function handler(req, res) {
       status: "/api/box",
       law: "Every product POST is 24h black box, then a paid seat.",
     },
-    updated: "2026-09-04",
+    updated: "2026-09-05",
     rails: {
       human: "POST /api/checkout { sku } or /pay?sku=",
       agent: "POST /api/x402-products { sku }",
@@ -154,7 +154,7 @@ export default async function handler(req, res) {
       "Public encode/decode compression leader on named domains (standings + RT). Pivot: Great Agentic Olympiad (gaming) + residual governance / agent security.",
     tagline: "Best encode & decode — gaming & security next.",
     flagship:
-      "TRU8 1 000 000 zeros → 8 B · ZRW lab zeros×10k → 8 B (gzip-9 73 B, brotli-11 13 B) · zeros_1M → 10 B",
+      "TRU8 1 000 000 zeros → 8 B · ZRW lab zeros×10k → 8 B (gzip-9 73 B, brotli-11 13 B) · zeros_1M → 8 B",
     pivot: {
       gaming: {
         name: "Great Agentic Olympiad",
@@ -190,13 +190,22 @@ export default async function handler(req, res) {
     starter_path: "https://www.slidphilabs.com/pps",
     suite_pricing: {
       free_cap_gb: 6.9,
+      free_window_hours: 3,
       min_paid_usd: 0.05,
       usd_per_gb_after_free: 0.05,
       usd_per_gb_bulk: 0.04,
       first_paid_egress_ref_usd: 0.09,
       model: "freemium_suite_v4_undercut",
       try_gate: "retired",
+      quote: "POST /api/ppp-quote",
+      mcp_quote: "spl_quote on https://www.slidphilabs.com/mcp",
       note: "Suite 6.9 GB / 3 h then ~5¢/GB.",
+    },
+    npm: {
+      catalog: "https://www.slidphilabs.com/npm",
+      packages: ["slid-phi", "spl-pay-per-suite", "blackjack-compression", "@cptasz13/tru8", "shard-zip", "shard-tsdb"],
+      not_npm: ["pulsar"],
+      note: "Public stubs, clients, and demos. Combined GC and LBR1 are not in tarballs.",
     },
     university: {
       name: "Slid Phi University",

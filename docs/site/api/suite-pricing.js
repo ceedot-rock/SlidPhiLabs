@@ -22,7 +22,7 @@ export function computeQuote({ product = "auto", dataClass = "unknown", op = "co
   const free_bytes = FREE_BYTES;
   const billable = Math.max(0, b - free_bytes);
   const free = billable <= 0;
-  const rates = { free_cap_gb: 6.9, trial_seconds: TRIAL_SECONDS, usd_per_gb_first_100: 0.05, usd_per_gb_after_100: 0.04 };
+  const rates = { free_cap_gb: 6.9, free_window_hours: 3, trial_seconds: TRIAL_SECONDS, usd_per_gb_first_100: 0.05, usd_per_gb_after_100: 0.04 };
   if (free) {
     return { ok: true, service: "SPL Pay Per Suite", currency: "usd", amount_cents: 0, amount_display: "0.00", free: true, tier: "unpaid_cap", message: "Unpaid cap 6.9 GB and 3 hours. Then ~5¢/GB.", breakdown: { product: prod, free_bytes, free_gb: 6.9, billable_bytes: 0, usage_cents: 0, bytes: b, rates, trial_seconds: TRIAL_SECONDS } };
   }

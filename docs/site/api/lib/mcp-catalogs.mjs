@@ -8,16 +8,20 @@ export const CATALOGS = [
     entries: [
       { id: "cuni", name: "CuNi Studio", price: "$0", note: "Write once — Python, Go, JS match or refuse.", url: "https://cuni-studio.fly.dev/", related: ["license", "cuni"] },
       { id: "cuni-exception", name: "CuNi closed-app exception", price: "$490/yr", note: "SKU to ship closed. Public tree stays GPLv3.", url: SITE + "/pay?sku=cuni-exception", related: ["license"] },
-      { id: "chamber-month", name: "Chamber month", price: "$49/mo", note: "Two-key JSON seat.", url: SITE + "/chamber", related: ["chamber", "box"] },
-      { id: "chamber-year", name: "Chamber year", price: "$490/yr", note: "Two-key JSON seat.", url: SITE + "/pay?sku=chamber-year", related: ["chamber"] },
-      { id: "gc-day", name: "AWARE day", price: "$9", note: "Combined GC behind access.", url: SITE + "/gc", related: ["aware"] },
+      { id: "chamber-month", name: "Chamber month", price: "$9/mo", note: "Cloak license. Open existing seals with both keys.", url: SITE + "/chamber", related: ["chamber", "box"] },
+      { id: "chamber-year", name: "Chamber year", price: "$99/yr", note: "Cloak license. Open existing seals with both keys.", url: SITE + "/pay?sku=chamber-year", related: ["chamber"] },
+      { id: "gc-day", name: "AWARE day", price: "$9", note: "Combined GC behind access. Encoder not in npm.", url: SITE + "/gc", related: ["aware"] },
       { id: "gc-month", name: "AWARE month", price: "$49/mo", url: SITE + "/gc", related: ["aware"] },
       { id: "gc-year", name: "AWARE year", price: "$490/yr", url: SITE + "/gc", related: ["aware", "pulsar"] },
       { id: "rider-month", name: "Rider Team month", price: "$79/mo", url: "https://agentrider.fly.dev/", related: ["rider"] },
       { id: "rider-year", name: "Rider Team year", price: "$790/yr", url: "https://agentrider.fly.dev/", related: ["rider"] },
-      { id: "suite", name: "Suite", price: "6.9 GB / 3 h then ~5¢/GB", url: SITE + "/pps", related: ["aware", "rail"] },
-      { id: "lab-pass", name: "Lab Pass", price: "$1,088/yr", url: SITE + "/lab-pass", related: ["chamber", "aware"] },
+      { id: "rider-ops-month", name: "Rider Ops month", price: "$29/mo", note: "Fleet watch. Needs a Rider seat.", url: SITE + "/pay?sku=rider-ops-month", related: ["rider"] },
+      { id: "rider-ops-year", name: "Rider Ops year", price: "$290/yr", note: "Fleet watch. Needs a Rider seat.", url: SITE + "/pay?sku=rider-ops-year", related: ["rider"] },
+      { id: "suite", name: "Suite", price: "6.9 GB / 3 h then ~5¢/GB", note: "Metered AWARE jobs. Not a seat. Quote via spl_quote or POST /api/ppp-quote.", url: SITE + "/pps", related: ["aware", "rail"] },
+      { id: "lab-pass", name: "Lab Pass", price: "$668/yr", note: "Chamber year + AWARE year + TruGame year. Not Rider.", url: SITE + "/lab-pass", related: ["chamber", "aware"] },
       { id: "trugame", name: "TruGame", price: "$12/mo · $79/yr", url: SITE + "/trugame", related: ["sku"] },
+      { id: "consulting", name: "Consulting", price: "$250", note: "Two hours of lab time.", url: SITE + "/pay?sku=consulting", related: ["sku"] },
+      { id: "oss-support", name: "OSS support", price: "$199", note: "Support for already-public libraries. Not Combined GC.", url: SITE + "/pay?sku=oss-support", related: ["npm"] },
     ],
   },
   {
@@ -106,6 +110,19 @@ export const CATALOGS = [
     ],
   },
   {
+    id: "npm",
+    title: "npm / public packages",
+    entries: [
+      { id: "slid-phi", name: "slid-phi", note: "HTTP client + discovery stub. No engine.", url: "https://www.npmjs.com/package/slid-phi" },
+      { id: "spl-pay-per-suite", name: "spl-pay-per-suite", note: "Quote + MCP helper. Unpaid 6.9 GB / 3 h. No encoder.", url: "https://www.npmjs.com/package/spl-pay-per-suite" },
+      { id: "blackjack-compression", name: "blackjack-compression", note: "Public stub. Engine stays hosted or licensed.", url: "https://www.npmjs.com/package/blackjack-compression" },
+      { id: "tru8", name: "@cptasz13/tru8", note: "Public demo. 1 000 000 zeros → 8 B. Non-zero throws LicensedPathError.", url: "https://www.npmjs.com/package/@cptasz13/tru8" },
+      { id: "shard-zip", name: "shard-zip", note: "Historical GPLv3. Not Combined GC.", url: "https://www.npmjs.com/package/shard-zip" },
+      { id: "shard-tsdb", name: "shard-tsdb", note: "Historical GPLv3. Not Combined GC.", url: "https://www.npmjs.com/package/shard-tsdb" },
+      { id: "pulsar", name: "pulsar 2.5.0", note: "Not npm. cargo/git GPLv3. Silesia 55,745,438. Not Combined GC.", url: SITE + "/pulsar" },
+    ],
+  },
+  {
     id: "docs",
     title: "Docs",
     entries: [
@@ -116,6 +133,7 @@ export const CATALOGS = [
       { id: "pricing", name: "pricing.json", url: SITE + "/pricing.json" },
       { id: "licensing", name: "licensing.json", url: SITE + "/licensing.json" },
       { id: "mcp-service", name: "MCP landing", url: SITE + "/mcp-service" },
+      { id: "npm", name: "npm catalog", url: SITE + "/npm" },
     ],
   },
 ];

@@ -4,7 +4,7 @@
   "name": "Slid Phi Labs",
   "description": "Verified compression, agent identity, and public catalog discovery from Slid Phi Labs. Stripe for humans; x402 where offered for agents.",
   "version": "2.1.1",
-  "updated": "2026-09-04",
+  "updated": "2026-09-05",
   "lead_product": "cuni",
   "cash_product": "gc-year",
   "auth": {
@@ -19,7 +19,9 @@
   "human": "https://www.slidphilabs.com/pay",
   "x402": "https://www.slidphilabs.com/api/x402-products",
   "npm": "https://www.slidphilabs.com/npm",
-  "npm_packages": ["slid-phi", "spl-pay-per-suite", "blackjack-compression", "@cptasz13/tru8"],
+  "npm_packages": ["slid-phi", "spl-pay-per-suite", "blackjack-compression", "@cptasz13/tru8", "shard-zip", "shard-tsdb"],
+  "not_npm": ["pulsar"],
+  "suite": { "unpaid_gb": 6.9, "unpaid_hours": 3, "usd_per_gb": 0.05, "quote": "POST /api/ppp-quote", "mcp": "spl_quote" },
   "flagship": {
     "bench": "zeros×10k int32",
     "zrw": "8B",

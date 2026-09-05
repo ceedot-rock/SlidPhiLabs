@@ -24,8 +24,8 @@
   "buy_email": "corey@slidphilabs.com",
   "pathways": {
     "chamber-day": { "sku": "chamber-day", "price_usd": 9 },
-    "chamber-month": { "sku": "chamber-month", "price_usd": 49 },
-    "chamber-year": { "sku": "chamber-year", "price_usd": 490 },
+    "chamber-month": { "sku": "chamber-month", "price_usd": 9 },
+    "chamber-year": { "sku": "chamber-year", "price_usd": 99 },
     "gc-day": { "sku": "gc-day", "price_usd": 9 },
     "gc-month": { "sku": "gc-month", "price_usd": 49 },
     "gc-year": { "sku": "gc-year", "price_usd": 490 },
