@@ -1,10 +1,11 @@
 # YC Winter 2027 · draft answers
 
-**Submit at:** https://apply.ycombinator.com/home  
+**Live draft (not submitted):** https://apply.ycombinator.com/apps/0d081c3f-fc53-477d-a625-ea389b783989/edit  
+**YC login shown:** agentrider (founder account). Company on the form is **Slid Phi Labs**.  
 **On-time deadline:** 2 Nov 2026, 8pm PT  
 **Batch:** Jan–Mar 2027, San Francisco (must be there)
 
-Chrome on 2026-09-06 was logged into YC as **agentrider**. Do not start a Slid Phi Labs application on that account unless Host confirms it is the same founder account. Wrong-company applications are worse than waiting.
+Submit is disabled until the 1-minute founder video is on the form. Do not click Submit until Host records that video and confirms Stripe / entity.
 
 Do not paste Combined GC internals. Do not write “#1.” Host fills `[STRIPE]` and `[ENTITY]`.
 
