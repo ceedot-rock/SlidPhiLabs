@@ -6,16 +6,14 @@
 Slid Phi Labs. Corey Tasz. Human door: /humans  Agent door: /agents  Inbox: corey@slidphilabs.com
 
 ## Products
-- CuNi — language. One source → Python, Go, JS or refuse. $0. https://www.slidphilabs.com/cuni  Studio: https://cuni-studio.fly.dev/
-- Chamber — two-key protocol for storing a JSON secret. License to cloak $9/mo · $99/yr. Open existing seals with both keys (no extra payment). Try 24h: /box. https://www.slidphilabs.com/chamber
-- Agent-Rider — signed agent identity L0–L4. $79/mo · $790/yr. Ops (heartbeat) $29/mo · $290/yr. https://www.slidphilabs.com/rider  App: https://agentrider.fly.dev/
-- AWARE — hosted lossless compressor. $9/day · $49/mo · $490/yr. Access, not source. TRU8/Gate/ZRW are names inside this stack, not extra SKUs. https://www.slidphilabs.com/gc
-- TRUSTREAM — live 4 KiB residual pipe for agent logs / SIEM / telemetry. Never expands incompressible. Not a zstd replacement. Not a Silesia contestant. Runs on an AWARE seat or Suite. https://www.slidphilabs.com/trustream
-- Suite — metered AWARE jobs. 6.9 GB / 3 h unpaid, then ~5¢/GB. https://www.slidphilabs.com/pps
-- Lab Pass — Chamber year license + AWARE + TruGame, $668/yr. Not Rider. https://www.slidphilabs.com/lab-pass
-- Quikgater — pay-per-fact fetch for agents (x402). Not a seat. https://www.slidphilabs.com/quikgater
-- Consulting — $250 / 2 hours. https://www.slidphilabs.com/pay?sku=consulting
-- pulsar 2.5.0 — public GPLv3 lossless compressor. Silesia 55,745,438 / 211,938,580, DECODE_OK 12/12. Beats gzip-9. Loses to bzip2-9 and xz-6. Not AWARE. https://www.slidphilabs.com/pulsar  Release: https://github.com/ceedot-rock/pulsar-best/releases/tag/v2.5.0
+Five cards. Not a SKU dump.
+- AWARE — hosted lossless compressor (files). $9/day · $49/mo · $490/yr. Access, not source. Meter: Suite 6.9 GB / 3 h then ~5¢/GB. https://www.slidphilabs.com/gc
+- TRUSTREAM — live 4 KiB residual pipe (streams). STORE + ZERO. Agent logs / SIEM. Not a zstd replacement. Runs on an AWARE seat. https://www.slidphilabs.com/trustream
+- Chamber — two-key JSON seal. $9/mo · $99/yr. Open existing seals with both keys. https://www.slidphilabs.com/chamber
+- Agent-Rider — signed agent identity L0–L4. $79/mo · $790/yr. https://www.slidphilabs.com/rider
+- CuNi — one source → Python, Go, JS or refuse. $0. https://www.slidphilabs.com/cuni
+PCC is the house frame (ZERO / MATCH / BWT / STORE), not a SKU. Combined GC is the private engine. pulsar is the public GPLv3 demo: https://www.slidphilabs.com/pulsar
+
 
 ## Checkout
 Humans: POST /api/checkout { "sku": "chamber-year", "rail": "stripe" } → Stripe card session.

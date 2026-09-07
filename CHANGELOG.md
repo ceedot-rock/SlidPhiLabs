@@ -1,6 +1,7 @@
 # Changelog
 
 ## 2026-09-07
+- `/products` cut to five cards: AWARE, TRUSTREAM, Chamber, Rider, CuNi. Suite/Lab Pass/TruGame/Quikgater/L33tSaaS/consulting/pulsar are not product cards.
 - Public compressor name is **AWARE**. Combined GC stays the private engine tree. File type `.pcc` later, not a SKU.
 - **TRUSTREAM** is a public product: live residual pipe for agent logs / SIEM. Page `/trustream`. Not a zstd replacement. Not a Silesia contestant.
 - Combined GC copy stripped from public site cards. Checkout aliases `combined-gc*` still map to AWARE SKUs.
