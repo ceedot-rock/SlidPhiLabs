@@ -16,5 +16,5 @@
 - x402 — POST https://www.slidphilabs.com/api/x402-products {"sku":"chamber-year"}
 - Stripe — https://www.slidphilabs.com/pay?sku=chamber-year
 - Prices — https://www.slidphilabs.com/pricing.json
-- pulsar 2.5.0 — https://www.slidphilabs.com/pulsar — Silesia 55,745,438, not Combined GC
+- pulsar 2.5.0 — https://www.slidphilabs.com/pulsar — Silesia 55,745,438, not AWARE
 - Inbox — corey@slidphilabs.com

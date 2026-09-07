@@ -82,7 +82,7 @@ const SEATS = {
     product: "gc",
     stack: "gc",
     includes: ["AWARE hosted compressor access"],
-    does_not_include: ["Combined GC source", "Chamber", "Agent-Rider"],
+    does_not_include: ["engine source", "Chamber", "Agent-Rider"],
   },
   "gc-month": {
     name: "AWARE · monthly compressor seat",
@@ -92,7 +92,7 @@ const SEATS = {
     product: "gc",
     stack: "gc",
     includes: ["AWARE hosted compressor access"],
-    does_not_include: ["Combined GC source", "Chamber", "Agent-Rider"],
+    does_not_include: ["engine source", "Chamber", "Agent-Rider"],
   },
   "gc-year": {
     name: "AWARE · annual compressor seat",
@@ -102,7 +102,7 @@ const SEATS = {
     product: "gc",
     stack: "gc",
     includes: ["AWARE hosted compressor access"],
-    does_not_include: ["Combined GC source", "Chamber", "Agent-Rider"],
+    does_not_include: ["engine source", "Chamber", "Agent-Rider"],
   },
   "rider-month": {
     name: "Agent-Rider · monthly team seat",
@@ -132,7 +132,7 @@ const SEATS = {
     product: "exception",
     stack: "exception",
     includes: ["Written exception for one closed product, one year"],
-    does_not_include: ["Combined GC", "Chamber", "Agent-Rider"],
+    does_not_include: ["AWARE source", "Chamber", "Agent-Rider"],
   },
   "rider-ops-month": {
     name: "Rider Ops · monthly fleet watch",
@@ -172,7 +172,7 @@ const SEATS = {
     product: "support-oss",
     stack: "support-oss",
     includes: ["Support for an already-public GPLv3 library"],
-    does_not_include: ["Combined GC", "A secret extra engine"],
+    does_not_include: ["AWARE source", "A secret extra engine"],
   },
   "lab-pass": {
     name: "Lab Pass · annual",
@@ -182,7 +182,7 @@ const SEATS = {
     product: "seat",
     stack: "seat",
     includes: ["Chamber", "AWARE", "TruGame engine"],
-    does_not_include: ["Agent-Rider", "Combined GC source"],
+    does_not_include: ["Agent-Rider", "engine source"],
   },
   "tru8-day": {
     name: "TRU8 · Day",

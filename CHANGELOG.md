@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-07
+- Public compressor name is **AWARE**. Combined GC stays the private engine tree. File type `.pcc` later, not a SKU.
+- **TRUSTREAM** is a public product: live residual pipe for agent logs / SIEM. Page `/trustream`. Not a zstd replacement. Not a Silesia contestant.
+- Combined GC copy stripped from public site cards. Checkout aliases `combined-gc*` still map to AWARE SKUs.
+
 ## 2026-09-06
 - Seed packet in `docs/funding/`: one-pager, YC W27 draft, use of funds. NJIF skipped (needs 3 founders). npm published 2.2.11 / 1.1.9 / 1.5.3 / tru8 0.1.1.
 

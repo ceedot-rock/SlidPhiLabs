@@ -15,7 +15,7 @@
       "title": "pulsar 2.5.0 is tagged",
       "slug": "2026-09-05-pulsar-250",
       "url": "https://www.slidphilabs.com/blog/2026-09-05-pulsar-250",
-      "summary": "Public GPLv3 compressor on GitHub Releases. Silesia 55,745,438 / 211,938,580, DECODE_OK 12/12. Beats gzip-9. Loses to xz-6. Not Combined GC.",
+      "summary": "Public GPLv3 compressor on GitHub Releases. Silesia 55,745,438 / 211,938,580, DECODE_OK 12/12. Beats gzip-9. Loses to xz-6. Not AWARE.",
       "tags": ["pulsar", "release", "silesia"]
     },
     {

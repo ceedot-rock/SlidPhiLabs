@@ -51,7 +51,7 @@ export const STRIPE_METHOD_LABELS = {
 
 /** Standing SKUs. x402-products.js imports this object — do not duplicate. */
 const OSS_SUPPORT_BLURB =
-  "$199 = commercial support for an already-public GPLv3 library. You do not receive Combined GC or a secret extra engine.";
+  "$199 = commercial support for an already-public GPLv3 library. You do not receive the AWARE engine or a secret extra engine.";
 
 function retired(alias, name) {
   return {

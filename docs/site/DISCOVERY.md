@@ -1,6 +1,6 @@
 # GEO · SEO · MEO · NEO
 
-Four crawl surfaces. Honest copy only. No #1. Combined GC stays private. pulsar is the public compressor.
+Four crawl surfaces. Honest copy only. No #1. The AWARE engine stays private. pulsar is the public compressor.
 
 | Engine | Who | Lab files |
 |---|---|---|
@@ -13,7 +13,7 @@ Four crawl surfaces. Honest copy only. No #1. Combined GC stays private. pulsar 
 
 - Lab: Slid Phi Labs, Cherry Hill, NJ. Corey Tasz. corey@slidphilabs.com
 - Site: https://www.slidphilabs.com
-- pulsar 2.5.0 GPLv3: Silesia 55,745,438 / 211,938,580, DECODE_OK 12/12. Beats gzip-9. Loses to bzip2-9 and xz-6. Not Combined GC. https://github.com/ceedot-rock/pulsar-best/releases/tag/v2.5.0
+- pulsar 2.5.0 GPLv3: Silesia 55,745,438 / 211,938,580, DECODE_OK 12/12. Beats gzip-9. Loses to bzip2-9 and xz-6. Not AWARE. https://github.com/ceedot-rock/pulsar-best/releases/tag/v2.5.0
 - AWARE is the hosted seat. Engine not in npm.
 - Suite: 6.9 GB / 3 h unpaid, then ~5¢/GB.
 

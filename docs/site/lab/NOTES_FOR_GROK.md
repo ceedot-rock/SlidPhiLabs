@@ -32,7 +32,7 @@ Silesia 211,938,580: zpaq-m5 39,112,870 · **AWARE+XZ1 47,752,368** · xz-9 48,7
 
 Calgary 3,141,622 Loom Hangry **980,769** vs gzip-9 1,017,680 vs xz-9 845,840. 14/14. Loom is not the GC SKU.
 
-AWARE ≠ Loom ≠ xz. Combined GC = commercial SKU. Engine private: `ceedot-rock/combined-gc`. View: `combined-gc-view`.
+AWARE ≠ Loom ≠ xz. AWARE = commercial SKU. TRUSTREAM = live residual pipe. Engine private: `ceedot-rock/combined-gc`.
 
 ## Law
 
@@ -53,7 +53,7 @@ Retired: separate TRU8/Gate years, ZRW $79/$249/$699, $1900/$950 rent desk.
 
 ## Git public vs private
 
-Public: SlidPhiLabs, combined-gc-view, quikgater.
+Public: SlidPhiLabs, quikgater, pulsar-best.
 Private: combined-gc, ZRW engine, lab-team-dump, host-*.
 `slidphi-storefront` was a scratch repo this session — not the shop.
 

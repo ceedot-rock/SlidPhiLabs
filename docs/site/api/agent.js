@@ -205,7 +205,7 @@ export default async function handler(req, res) {
       catalog: "https://www.slidphilabs.com/npm",
       packages: ["slid-phi", "spl-pay-per-suite", "blackjack-compression", "@cptasz13/tru8", "shard-zip", "shard-tsdb"],
       not_npm: ["pulsar"],
-      note: "Public stubs, clients, and demos. Combined GC and LBR1 are not in tarballs.",
+      note: "Public stubs, clients, and demos. The AWARE engine and LBR1 are not in tarballs.",
     },
     university: {
       name: "Slid Phi University",

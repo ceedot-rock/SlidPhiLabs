@@ -51,6 +51,22 @@
       "destination": "/gc.html"
     },
     {
+      "source": "/trustream",
+      "destination": "/trustream.html"
+    },
+    {
+      "source": "/trustream/",
+      "destination": "/trustream.html"
+    },
+    {
+      "source": "/agent-logs",
+      "destination": "/trustream.html"
+    },
+    {
+      "source": "/agent-logs/",
+      "destination": "/trustream.html"
+    },
+    {
       "source": "/chamber",
       "destination": "/chamber.html"
     },

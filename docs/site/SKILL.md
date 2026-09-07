@@ -9,6 +9,7 @@ Lead product: **CuNi Studio** (free) — write once; Python, Go, JS must match o
 Cash product: **Chamber** cloak license $9/mo · $99/yr (open existing seals with both keys).  
 Identity: **Agent-Rider** $79/mo · $790/yr.  
 Compressor: **AWARE** $9/day · $49/mo · $490/yr (access, not source).  
+Stream: **TRUSTREAM** — live residual pipe for agent logs / SIEM. Not a zstd replacement. Runs on an AWARE seat.  
 Suite: **6.9 GB / 3 h unpaid**, then ~5¢/GB. Quote: `POST /api/ppp-quote` or MCP `spl_quote`.  
 Lab Pass: **$668/yr** (Chamber + AWARE + TruGame). Not Rider.
 

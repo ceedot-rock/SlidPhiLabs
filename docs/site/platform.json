@@ -26,10 +26,12 @@
     "compression": {
       "products": [
         "AWARE",
+        "TRUSTREAM",
         "pulsar"
       ],
       "urls": {
         "home": "https://www.slidphilabs.com/gc",
+        "trustream": "https://www.slidphilabs.com/trustream",
         "demos": "https://www.slidphilabs.com/demos",
         "github": "https://github.com/ceedot-rock/pulsar-best",
         "standings": "https://www.slidphilabs.com/standings"
@@ -40,7 +42,7 @@
         "ZRW",
         "TRU8"
       ],
-      "note": "AWARE is the hosted compressor seat. pulsar is the public GPLv3 demo. Combined GC is not in npm."
+      "note": "AWARE is the hosted compressor seat. pulsar is the public GPLv3 demo. The engine is not in npm."
     },
     "chamber": {
       "products": [

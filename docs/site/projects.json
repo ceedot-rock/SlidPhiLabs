@@ -30,7 +30,7 @@
       "id": "aware",
       "name": "AWARE",
       "status": "live",
-      "role": "hosted lossless compressor. Access, not Combined GC source.",
+      "role": "hosted lossless compressor. Access, not AWARE source.",
       "price": "Day $9 · Month $49 · Year $490",
       "url": "https://www.slidphilabs.com/gc"
     },

@@ -24,7 +24,7 @@ TruGame — game engine. Packs sim state with TRU8, seals the save with Chamber.
 - Demos: https://www.slidphilabs.com/demos
 - pulsar 2.5.0 (public GPLv3): https://www.slidphilabs.com/pulsar
 - Release: https://github.com/ceedot-rock/pulsar-best/releases/tag/v2.5.0
-- Silesia 55,745,438 / 211,938,580 DECODE_OK 12/12. Beats gzip-9. Loses to bzip2 and xz. Not Combined GC.
+- Silesia 55,745,438 / 211,938,580 DECODE_OK 12/12. Beats gzip-9. Loses to bzip2 and xz. Not AWARE.
 - Day $9 · Month $49 · Year $490. Access, not source.
 
 ### Security · Chamber
@@ -48,4 +48,4 @@ https://www.slidphilabs.com/projects.json
 
 ## Scope
 TruGame = game engine. $12/mo · $79/yr.
-Combined GC stays in the lab.
+The engine stays in the lab.
