@@ -1,9 +1,9 @@
 {
-  "updated": "2026-09-02",
+  "updated": "2026-09-07",
   "inbox": "corey@slidphilabs.com",
   "site": "https://www.slidphilabs.com",
   "methods": "https://www.slidphilabs.com/METHODS.md",
-  "rule": "CuNi $0. Chamber cloak $9/mo · $99/yr (open with keys). AWARE $9/$49/$490. Rider $79/mo · $790/yr. Rider Ops $29/$290. Suite 6.9 GB / 3 h then ~5¢/GB. Lab Pass $668. Quikgater is pay-per-fetch, not a seat. TRU8/Gate/ZRW are names inside AWARE.",
+  "rule": "CuNi $0. Chamber cloak $9/mo · $99/yr (open with keys). AWARE $9/$49/$490. TRUSTREAM rides the AWARE seat. Rider $79/mo · $790/yr. Rider Ops $29/$290. Suite 6.9 GB / 3 h then ~5¢/GB. Lab Pass $668. Quikgater is pay-per-fetch, not a seat. TRU8/Gate/ZRW are names inside AWARE.",
   "measured": {
     "silesia_raw": 211938580,
     "aware_xz1": 47752368,
@@ -107,6 +107,7 @@
     "gate": "gc-year",
     "gate-year": "gc-year",
     "zrw": "gc-year",
+    "trustream": "gc-year",
     "cddg": "consulting",
     "support-integration": "consulting",
     "slid-phi": "consulting",

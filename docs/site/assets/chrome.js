@@ -9,11 +9,12 @@
     ["/pay", "Pay"],
   ];
   const FALLBACK_NEWS = [
-    { t: "Lab", title: "Slid Phi Labs — tools that check", href: "/about" },
-    { t: "Language", title: "CuNi — one source, three runtimes, or refuse", href: "/cuni" },
-    { t: "Seal", title: "Chamber — two keys for a JSON secret", href: "/chamber" },
-    { t: "Identity", title: "Agent-Rider — signed agent credentials", href: "/rider" },
-    { t: "Compress", title: "AWARE — hosted lossless compressor", href: "/gc" },
+    { t: "Lab", title: "Smaller binaries. Verified return.", href: "/" },
+    { t: "Files", title: "AWARE — hosted lossless compressor · $9 / $49 / $490", href: "/gc" },
+    { t: "Streams", title: "TRUSTREAM — 4 KiB residual pipe on an AWARE seat", href: "/trustream" },
+    { t: "Seal", title: "Chamber — two keys for a JSON secret · $9 / $99", href: "/chamber" },
+    { t: "Identity", title: "Agent-Rider — signed agent credentials · $79 / $790", href: "/rider" },
+    { t: "Language", title: "CuNi — one source, three runtimes, or refuse · $0", href: "/cuni" },
     { t: "Meter", title: "Suite — 6.9 GB / 3 h then ~5¢/GB", href: "/pps" },
   ];
 
@@ -64,12 +65,12 @@
       </div>
       <div>
         <h4>Products</h4>
-        <a href="/cuni">CuNi</a>
+        <a href="/gc">AWARE</a>
+        <a href="/trustream">TRUSTREAM</a>
         <a href="/chamber">Chamber</a>
         <a href="/rider">Agent-Rider</a>
-        <a href="/gc">AWARE compressor</a>
+        <a href="/cuni">CuNi</a>
         <a href="/pps">Suite</a>
-        <a href="/lab-pass">Lab Pass</a>
       </div>
       <div>
         <h4>Use</h4>
