@@ -24,7 +24,9 @@ TruGame — game engine. Packs sim state with TRU8, seals the save with Chamber.
 - Demos: https://www.slidphilabs.com/demos
 - pulsar 2.5.0 (public GPLv3): https://www.slidphilabs.com/pulsar
 - Release: https://github.com/ceedot-rock/pulsar-best/releases/tag/v2.5.0
-- Silesia 55,745,438 / 211,938,580 DECODE_OK 12/12. Beats gzip-9. Loses to bzip2 and xz. Not AWARE.
+- Silesia 55,745,438 / 211,938,580 DECODE_OK 12/12. Beats gzip-9. Loses to bzip2 and xz. Matches OSCB. Not AWARE.
+- PCC on the same official 12: 51,498,645, DECODE_OK 12/12. xz-6 still ahead (~49.4M). Not a #1 claim. AWARE+XZ1 47.7M retired.
+- Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc
 - Day $9 · Month $49 · Year $490. Access, not source.
 
 ### Security · Chamber
