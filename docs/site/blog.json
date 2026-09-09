@@ -9,6 +9,16 @@
   },
   "posts": [
     {
+      "id": "2026-09-09-pcc-silesia",
+      "week_of": "2026-09-08",
+      "published": "2026-09-09",
+      "title": "PCC measured. pulsar matched OSCB. xz is still ahead.",
+      "slug": "2026-09-09-pcc-silesia",
+      "url": "https://www.slidphilabs.com/blog/2026-09-09-pcc-silesia",
+      "summary": "Official Silesia 12, whole files. PCC 51,498,645 DECODE_OK 12/12. pulsar 55,745,438 matches OSCB. xz-6 still ahead. Dual-licensed. Not a #1 claim.",
+      "tags": ["silesia", "pcc", "pulsar", "rankings"]
+    },
+    {
       "id": "2026-09-09-hosted-dual-license",
       "week_of": "2026-09-08",
       "published": "2026-09-09",
