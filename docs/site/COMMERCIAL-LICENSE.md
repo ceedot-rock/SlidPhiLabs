@@ -60,7 +60,7 @@ After Stripe, claim on https://www.slidphilabs.com/access.
 
 - A file of zeros: compressed here, free demo, 8 bytes, original restored.
 - Text you want to run yourself: download pulsar, or pay `pulsar-exception` to put it in a closed app.
-- Everyday files: buy AWARE. You run it on our machines. You do not get the encoder.
+- Everyday files: buy AWARE. You run it on our machines. Source is dual-licensed; the AWARE year seat is the closed-product grant and the hosted grant.
 
 gzip, brotli, xz, and bzip2 are other compressors we publish numbers against. They are not included in what you buy.
 

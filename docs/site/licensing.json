@@ -42,33 +42,42 @@
       "flagship": "1e6 zero bytes → 8 B, round-trip"
     },
     "struct_text": {
-      "occupant": "pulsar 2.5.0",
+      "occupant": "pulsar 2.5.0 + STR1",
       "public_name": "pulsar",
-      "license": "GPL-3.0-or-later",
-      "runs_here": false,
+      "license": "GPL-3.0-or-later (pulsar) / AGPL-3.0-or-later OR Commercial (STR1)",
+      "runs_here": true,
       "source": "https://github.com/ceedot-rock/pulsar-best",
       "page": "https://www.slidphilabs.com/pulsar",
       "commercial_sku": "pulsar-exception",
-      "plain": "Free GPLv3 compressor. $490/yr (SKU pulsar-exception) to embed in one closed product. $199 OSS support is help, not that grant.",
-      "commercial": "GPLv3 in public. Closed-source embed needs a written exception. $199 OSS support is help, not this grant."
+      "silesia": "pulsar 2.5.0 official 55,745,438 / 211,938,580, 12/12 DECODE_OK",
+      "plain": "pulsar is the free GPLv3 compressor (OSCB 55,745,438). STR1 is our structure transform on the AWARE machine. $490/yr (SKU pulsar-exception) to embed pulsar in one closed product.",
+      "commercial": "GPLv3 in public for pulsar. Closed-source embed needs a written exception. STR1 rides the AWARE year grant."
     },
     "archive": {
       "occupant": "AWARE",
       "public_name": "AWARE",
       "license": "AGPL-3.0-or-later OR Commercial (AWARE year)",
       "runs_here": true,
-      "engine": "Combined GC + LBR1 + pulsar + wraps",
+      "engine": "Combined GC + LBR1 + pulsar + LZM1 + STR1 + ZMX1 + NNC1 + wraps",
       "page": "https://www.slidphilabs.com/gc",
       "skus": ["gc-day", "gc-month", "gc-year", "lab-pass"],
-      "plain": "Hosted lossless compressor. $9/day · $49/mo (200 GB) · $490/yr (2,000 GB). Then 8¢/GB. First 2 GB/month free. Source is dual-licensed. AWARE year is the closed-product grant.",
+      "plain": "Hosted lossless compressor. $9/day · $49/mo (200 GB) · $490/yr (2,000 GB). Then 8¢/GB. First 2 GB/month free. Source is dual-licensed. AWARE year is the closed-product grant. Official 12-file numbers live on /silesia.",
       "commercial": "AGPL in public. Closed-product grant is AWARE year. Keys stay operator-only."
     },
     "general": {
-      "occupant": "LBR1",
+      "occupant": "LBR1 + LZW1 + LZM1",
       "license": "AGPL-3.0-or-later OR Commercial",
       "runs_here": true,
-      "plain": "LBR1 runs on the hosted AWARE machine. Dual license: AGPL-3.0-or-later, or an AWARE year seat.",
+      "plain": "LBR1, own LZ wrap (LZW1), and LZMA-style LZM1 run on the hosted AWARE machine. Dual license: AGPL-3.0-or-later, or an AWARE year seat. LZM1 is a reimplementation, not host xz.",
       "commercial": "SKU gc-year. Hosted compression already uses this pathway."
+    },
+    "paq": {
+      "occupant": "PCAQ + ZMX1 + NNC1",
+      "license": "AGPL-3.0-or-later OR Commercial",
+      "runs_here": true,
+      "house_caps": { "PCAQ": 262144, "ZMX1": 1048576, "NNC1": 262144 },
+      "plain": "Own mixers. PCAQ 256 KiB, ZMX1 1 MiB house, NNC1 256 KiB house. Not paq8px. Not cmix. Those stay GPL research opponents.",
+      "commercial": "SKU gc-year. Hosted jobs over the mixer caps skip them."
     }
   },
   "skus": {

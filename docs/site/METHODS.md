@@ -6,10 +6,15 @@ SoT methods (this file)
 
 ## Compression (outcomes only)
 
-- Product SKU: AWARE. Engine private.
-- Silesia 211,938,580: AWARE+XZ1 **47,752,368** (2nd behind zpaq-m5 39,112,870; beats xz-9 48,795,480). Four files are host xz (XZ1). Not a top-1 general claim.
-- Own stack (not the GC SKU): Loom Hangry Calgary **980,769** vs gzip-9 1,017,680 vs xz-9 845,840. 14/14 invert. Magics STIL PULS WEAV DRFT RUNS THRD LOOM.
-- Law: coded ≥ raw → raw + flag. Never expand.
+- Product SKU: AWARE. Hosted lossless compression. Dual-licensed public source (AGPL or paid grant). Host xz/gzip/bzip are opponents, not occupants.
+- Official Silesia 12, whole files, DECODE_OK, raw **211,938,580** (`pcc-0.12.1` matrix):
+  - pulsar 2.5.0 **55,745,438** (matches OSCB)
+  - PCC **51,498,645** (4.25M inside pulsar; still loses to xz-6 ~49.4M)
+  - champ / best / aware: no total until 12/12
+- Retired: AWARE+XZ1 **47,752,368**. That line occupied host xz. Off this scoreboard.
+- Zeros: 1e6 zero bytes → **8 B**, round-trip.
+- Hosted API: 4 MiB, 45s, `/bench`. Not official Silesia.
+- Law: coded ≥ raw → raw + flag. Never expand. Not a #1 claim.
 
 ## Gate
 

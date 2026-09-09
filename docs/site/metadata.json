@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "updated": "2026-09-04",
+  "updated": "2026-09-09",
   "site": "https://www.slidphilabs.com",
   "brand": "Slid Phi Labs",
   "product": "Slid Phi Labs",
@@ -13,7 +13,7 @@
     "CuNi": "language — write once, print many languages. Python, Go, and JS must match, or refuse. Studio $0. Closed-app exception $490/yr. v0.1.8.",
     "Chamber": "two-key protocol for storing a JSON secret. Cloak license $9/mo · $99/yr. Open existing seals with both keys.",
     "Agent-Rider": "signed agent identity L0–L4. Month $79 · Year $790. Not in Lab Pass.",
-    "AWARE": "hosted lossless compressor. Day $9 · Month $49 · Year $490. You do not get the encoder.",
+    "AWARE": "hosted lossless compressor. Day $9 · Month $49 · Year $490. Dual-licensed public source, or a paid grant to ship closed.",
     "TRUSTREAM": "live logs on the AWARE plan.",
     "Suite": "AWARE meter — first 2 GB/month free, then 8¢/GB. Not a fifth product.",
     "Lab Pass": "Chamber + AWARE + TruGame for 365 days, $668. Not Rider.",
@@ -97,7 +97,7 @@
     },
     "/gc": {
       "title": "AWARE — hosted lossless compressor · Slid Phi Labs",
-      "description": "Buy a seat to run a lossless compressor. Day $9 · Month $49 · Year $490. You do not get the encoder.",
+      "description": "Buy a seat to run a lossless compressor. Day $9 · Month $49 · Year $490. Dual-licensed public source, or a paid grant to ship closed.",
       "canonical": "https://www.slidphilabs.com/gc",
       "product_line": "AWARE"
     },
