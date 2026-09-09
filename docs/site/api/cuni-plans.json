@@ -1,0 +1,16 @@
+{
+  "law": "cuni/examples/laws/catalog-plans.cuni",
+  "currency": "usd",
+  "unit": "cents",
+  "skus": {
+    "aware-day": 900,
+    "aware-month": 4900,
+    "aware-year": 49000,
+    "chamber-month": 900,
+    "chamber-year": 9900,
+    "rider-month": 7900,
+    "rider-year": 79000,
+    "cuni-studio": 0,
+    "cuni-exception": 49000
+  }
+}

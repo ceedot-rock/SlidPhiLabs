@@ -2,6 +2,7 @@
  * Hosted compression meter.
  * First 2 GB each month are free. After that, 8¢ per GB of input.
  * $1 minimum when a card charge is due (Stripe's fee eats smaller ones).
+ * Law: CuNi examples/laws/suite-meter.cuni — JS here must match that gold.
  *
  * Why 8¢: Fly NA egress is $0.02/GB. A compress job can send about that
  * much back out, plus CPU on the machine (~$3.20/mo for the 512 MB box).

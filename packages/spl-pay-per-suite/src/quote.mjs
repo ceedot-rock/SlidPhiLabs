@@ -1,6 +1,9 @@
 /**
  * SPL Pay Per Suite — local quote (matches site API suite-pricing.js).
  * First 2 GB each calendar month are free. Then 8¢/GB. $1 card minimum.
+ *
+ * Law: cuni/examples/laws/suite-meter.cuni
+ * Prove: cuni prove …/suite-meter.cuni --against test/print-suite-meter.mjs
  */
 export const FREE_GB = 2;
 export const FREE_WINDOW_HOURS = 0;

@@ -14,7 +14,7 @@ What it is, then what you pay.
 - Chamber — two-key JSON seal. $9/mo · $99/yr. License to seal new secrets; opening an already-sealed secret takes both keys, not another payment. https://www.slidphilabs.com/chamber
 - Agent-Rider — signed identity for AI agents. $79/mo · $790/yr. https://www.slidphilabs.com/rider
 - Warrant — signed mandate + receipts bound to a Rider. Who is Rider; what they may do and proof they did it is Warrant. $29/mo · $290/yr. POST /api/warrant/issue (X-Agent-Rider). https://www.slidphilabs.com/warrant
-- CuNi — one program printed into many languages. Python, Go, and JavaScript must match, or it refuses. Playground $0. Closed-app exception $490/yr, SKU cuni-exception. v0.1.8. https://www.slidphilabs.com/cuni
+- CuNi — one program printed into many languages. Exactness: same stdout on the catalog, or it refuses. Playground $0. Closed-app exception $490/yr, SKU cuni-exception. Protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json · https://www.slidphilabs.com/.well-known/cuni-protocol.json · v0.1.8. https://www.slidphilabs.com/cuni
 - Lab Pass — $668/yr. One year of Chamber + AWARE + TruGame. Does not include Rider. https://www.slidphilabs.com/lab-pass
 
 Every product we bring forward is dual-licensed (open terms or a paid grant). Hosted compression uses all of those pathways. npm packages and MCP call the live host — they are clients, not stubs.
