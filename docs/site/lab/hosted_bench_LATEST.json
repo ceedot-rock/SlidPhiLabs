@@ -1,0 +1,336 @@
+{
+  "ok": true,
+  "service": "AWARE hosted lossless compression",
+  "origin": "https://www.slidphilabs.com",
+  "at": "2026-09-09T13:41:23.536Z",
+  "cap_bytes": 4194304,
+  "plain": "Live POST /api/compress then POST /api/decompress. gzip-9 and brotli-11 ran on the same bytes as opponents, not as occupants. Hosted cap 4 MiB. Silesia rows are slices, not the official 12-file total. Not a #1 claim.",
+  "decode_ok": 12,
+  "n": 12,
+  "rows": [
+    {
+      "id": "zeros_40k",
+      "label": "40,000 zeros",
+      "kind": "zeros",
+      "note": "Flagship fill. Official whole file.",
+      "raw_bytes": 40000,
+      "hosted": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 14,
+        "frame_bytes": 14,
+        "encode_ms": 418,
+        "decode_ms": 36,
+        "method": "zeros"
+      },
+      "gzip9": {
+        "packed_bytes": 73,
+        "encode_ms": 2
+      },
+      "brotli11": {
+        "packed_bytes": 13,
+        "encode_ms": 8
+      },
+      "ratio_hosted": 0.0003,
+      "ratio_gzip9": 0.0018,
+      "ratio_brotli11": 0.0003
+    },
+    {
+      "id": "zeros_1e6",
+      "label": "1,000,000 zeros",
+      "kind": "zeros",
+      "note": "Flagship fill. Official whole file.",
+      "raw_bytes": 1000000,
+      "hosted": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 14,
+        "frame_bytes": 14,
+        "encode_ms": 247,
+        "decode_ms": 67,
+        "method": "zeros"
+      },
+      "gzip9": {
+        "packed_bytes": 1003,
+        "encode_ms": 8
+      },
+      "brotli11": {
+        "packed_bytes": 14,
+        "encode_ms": 58
+      },
+      "ratio_hosted": 0,
+      "ratio_gzip9": 0.001,
+      "ratio_brotli11": 0
+    },
+    {
+      "id": "text_repeat_256k",
+      "label": "Repeating English 256 KiB",
+      "kind": "text",
+      "note": "Synthetic.",
+      "raw_bytes": 262144,
+      "hosted": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 174,
+        "frame_bytes": 174,
+        "encode_ms": 615,
+        "decode_ms": 48,
+        "method": "pulsar"
+      },
+      "gzip9": {
+        "packed_bytes": 696,
+        "encode_ms": 5
+      },
+      "brotli11": {
+        "packed_bytes": 44,
+        "encode_ms": 43
+      },
+      "ratio_hosted": 0.0007,
+      "ratio_gzip9": 0.0027,
+      "ratio_brotli11": 0.0002
+    },
+    {
+      "id": "json_128k",
+      "label": "Repeating JSON 128 KiB",
+      "kind": "text",
+      "note": "Synthetic.",
+      "raw_bytes": 131072,
+      "hosted": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 330,
+        "frame_bytes": 330,
+        "encode_ms": 380,
+        "decode_ms": 49,
+        "method": "pulsar"
+      },
+      "gzip9": {
+        "packed_bytes": 470,
+        "encode_ms": 1
+      },
+      "brotli11": {
+        "packed_bytes": 61,
+        "encode_ms": 13
+      },
+      "ratio_hosted": 0.0025,
+      "ratio_gzip9": 0.0036,
+      "ratio_brotli11": 0.0005
+    },
+    {
+      "id": "int_ramp_256k",
+      "label": "uint32 ramp 256 KiB",
+      "kind": "ints",
+      "note": "Synthetic.",
+      "raw_bytes": 262144,
+      "hosted": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 3546,
+        "frame_bytes": 3546,
+        "encode_ms": 1167,
+        "decode_ms": 67,
+        "method": "pulsar"
+      },
+      "gzip9": {
+        "packed_bytes": 90677,
+        "encode_ms": 45
+      },
+      "brotli11": {
+        "packed_bytes": 80874,
+        "encode_ms": 2392
+      },
+      "ratio_hosted": 0.0135,
+      "ratio_gzip9": 0.3459,
+      "ratio_brotli11": 0.3085
+    },
+    {
+      "id": "mixed_256k",
+      "label": "Zeros then text 256 KiB",
+      "kind": "mixed",
+      "note": "Synthetic.",
+      "raw_bytes": 262144,
+      "hosted": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 207,
+        "frame_bytes": 207,
+        "encode_ms": 561,
+        "decode_ms": 53,
+        "method": "hosted"
+      },
+      "gzip9": {
+        "packed_bytes": 571,
+        "encode_ms": 2
+      },
+      "brotli11": {
+        "packed_bytes": 42,
+        "encode_ms": 27
+      },
+      "ratio_hosted": 0.0008,
+      "ratio_gzip9": 0.0022,
+      "ratio_brotli11": 0.0002
+    },
+    {
+      "id": "rand_64k",
+      "label": "Incompressible 64 KiB",
+      "kind": "random",
+      "note": "Should store, not grow.",
+      "raw_bytes": 65536,
+      "hosted": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 65542,
+        "frame_bytes": 65542,
+        "encode_ms": 521,
+        "decode_ms": 75,
+        "method": "store"
+      },
+      "gzip9": {
+        "packed_bytes": 65574,
+        "encode_ms": 3
+      },
+      "brotli11": {
+        "packed_bytes": 65540,
+        "encode_ms": 31
+      },
+      "ratio_hosted": 1.0001,
+      "ratio_gzip9": 1.0006,
+      "ratio_brotli11": 1.0001
+    },
+    {
+      "id": "silesia_dickens_1m",
+      "label": "dickens first 1 MiB",
+      "kind": "silesia-slice",
+      "note": "Slice. Not official Silesia.",
+      "raw_bytes": 1048576,
+      "hosted": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 293096,
+        "frame_bytes": 293096,
+        "encode_ms": 10606,
+        "decode_ms": 369,
+        "method": "pulsar"
+      },
+      "gzip9": {
+        "packed_bytes": 388949,
+        "encode_ms": 189
+      },
+      "brotli11": {
+        "packed_bytes": 305265,
+        "encode_ms": 2523
+      },
+      "ratio_hosted": 0.2795,
+      "ratio_gzip9": 0.3709,
+      "ratio_brotli11": 0.2911
+    },
+    {
+      "id": "silesia_xml_1m",
+      "label": "xml first 1 MiB",
+      "kind": "silesia-slice",
+      "note": "Slice. Not official Silesia.",
+      "raw_bytes": 1048576,
+      "hosted": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 110890,
+        "frame_bytes": 110890,
+        "encode_ms": 3002,
+        "decode_ms": 193,
+        "method": "pulsar"
+      },
+      "gzip9": {
+        "packed_bytes": 147473,
+        "encode_ms": 87
+      },
+      "brotli11": {
+        "packed_bytes": 119727,
+        "encode_ms": 1843
+      },
+      "ratio_hosted": 0.1058,
+      "ratio_gzip9": 0.1406,
+      "ratio_brotli11": 0.1142
+    },
+    {
+      "id": "silesia_ooffice_1m",
+      "label": "ooffice first 1 MiB",
+      "kind": "silesia-slice",
+      "note": "Slice. Not official Silesia.",
+      "raw_bytes": 1048576,
+      "hosted": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 526967,
+        "frame_bytes": 526967,
+        "encode_ms": 18148,
+        "decode_ms": 410,
+        "method": "pulsar"
+      },
+      "gzip9": {
+        "packed_bytes": 582532,
+        "encode_ms": 108
+      },
+      "brotli11": {
+        "packed_bytes": 488479,
+        "encode_ms": 3449
+      },
+      "ratio_hosted": 0.5026,
+      "ratio_gzip9": 0.5555,
+      "ratio_brotli11": 0.4658
+    },
+    {
+      "id": "silesia_mr_1m",
+      "label": "mr first 1 MiB",
+      "kind": "silesia-slice",
+      "note": "Slice. Not official Silesia.",
+      "raw_bytes": 1048576,
+      "hosted": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 245283,
+        "frame_bytes": 245283,
+        "encode_ms": 15410,
+        "decode_ms": 261,
+        "method": "pulsar"
+      },
+      "gzip9": {
+        "packed_bytes": 346418,
+        "encode_ms": 311
+      },
+      "brotli11": {
+        "packed_bytes": 271989,
+        "encode_ms": 2743
+      },
+      "ratio_hosted": 0.2339,
+      "ratio_gzip9": 0.3304,
+      "ratio_brotli11": 0.2594
+    },
+    {
+      "id": "silesia_dickens_4m",
+      "label": "dickens first 4 MiB",
+      "kind": "silesia-slice",
+      "note": "Hosted cap. Slice. Not official Silesia.",
+      "raw_bytes": 4194304,
+      "hosted": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 1218424,
+        "frame_bytes": 1218424,
+        "encode_ms": 105858,
+        "decode_ms": 9036,
+        "method": "pulsar"
+      },
+      "gzip9": {
+        "packed_bytes": 1579518,
+        "encode_ms": 537
+      },
+      "brotli11": {
+        "packed_bytes": 1194154,
+        "encode_ms": 11524
+      },
+      "ratio_hosted": 0.2905,
+      "ratio_gzip9": 0.3766,
+      "ratio_brotli11": 0.2847
+    }
+  ]
+}

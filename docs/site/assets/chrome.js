@@ -22,6 +22,8 @@
   ];
   const FALLBACK_NEWS = [
     { t: "Press", title: "Dual-licensed hosted compression — npm clients call the live host", href: "/press" },
+    { t: "Silesia", title: "Official 12-file matrix — all pathways", href: "/silesia" },
+    { t: "Bench", title: "Live hosted compression vs gzip-9 and brotli-11", href: "/bench" },
     { t: ".pcc", title: "Our archive, like zip — many files, our compression", href: "/pcc" },
     { t: "AWARE", title: "Hosted lossless compression — send a file, restore every byte", href: "/gc" },
     { t: "TRUSTREAM", title: "Live logs on the same plan", href: "/trustream" },
@@ -85,6 +87,7 @@
         <h4>Compress</h4>
         <a href="/gc">Hosted compression</a>
         <a href="/compare">Compare prices</a>
+        <a href="/bench">Bench</a>
         <a href="/docs">API</a>
         <a href="/pulsar">pulsar</a>
       </div>

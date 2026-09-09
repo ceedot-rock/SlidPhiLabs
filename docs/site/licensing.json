@@ -7,8 +7,8 @@
   "terms": "https://www.slidphilabs.com/COMMERCIAL-LICENSE.md",
   "machine": "https://www.slidphilabs.com/specialist",
   "api": "https://www.slidphilabs.com/api/specialist",
-  "plain": "Every product we bring forward is dual-licensed: the open license, or a paid grant to ship closed. Hosted compression runs every pathway we own on this machine and keeps the smallest file that still restores. npm and MCP call that live host. AWARE year ($490) is the commercial grant for the hosted house. pulsar-exception and cuni-exception cover those trees. Chamber, Rider, and Warrant seats cover theirs.",
-  "rule": "Dual license on every product we bring forward. Copyleft or a paid grant. Hosted compression uses every own pathway. Signing keys and live customer data stay operator-only.",
+  "plain": "Every product is dual-licensed and public: copyleft, or a paid grant to ship closed. Hosted compression runs every pathway we own and keeps the smallest file that still restores. Signing keys, Chamber kernel secrets, and live customer data stay operator-only.",
+  "rule": "Public source under dual license. Copyleft or a paid grant. Hosted compression uses every own pathway. Keys, kernel secrets, and AUTH_DIR stay operator-only.",
   "dual": {
     "chooser": "You pick copyleft or the commercial grant. Both are written.",
     "copyleft_or_commercial": [
@@ -26,9 +26,9 @@
     "operator_only": ["Agent-Rider signing keys", "Chamber kernel secrets", "AUTH_DIR customer data"]
   },
   "never_on_this_surface": [
-    "the private encoder",
-    "Chamber internals",
     "Agent-Rider signing keys",
+    "Chamber kernel secrets",
+    "AUTH_DIR customer data",
     "gzip, brotli, xz, or bzip2 sold as ours"
   ],
   "lanes": {
@@ -60,8 +60,8 @@
       "engine": "Combined GC + LBR1 + pulsar + wraps",
       "page": "https://www.slidphilabs.com/gc",
       "skus": ["gc-day", "gc-month", "gc-year", "lab-pass"],
-      "plain": "Hosted lossless compressor. $9/day · $49/mo (200 GB) · $490/yr (2,000 GB). Then 8¢/GB. First 2 GB/month free. You buy access. You do not get the encoder.",
-      "commercial": "You buy access to run it. You do not get the encoder."
+      "plain": "Hosted lossless compressor. $9/day · $49/mo (200 GB) · $490/yr (2,000 GB). Then 8¢/GB. First 2 GB/month free. Source is dual-licensed. AWARE year is the closed-product grant.",
+      "commercial": "AGPL in public. Closed-product grant is AWARE year. Keys stay operator-only."
     },
     "general": {
       "occupant": "LBR1",

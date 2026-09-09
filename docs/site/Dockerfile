@@ -1,4 +1,5 @@
-FROM node:20-bookworm-slim
+# lb is built on Debian 13 (glibc 2.39+). bookworm (2.36) cannot run it.
+FROM node:20-trixie-slim
 WORKDIR /app
 COPY package.json ./
 COPY . .

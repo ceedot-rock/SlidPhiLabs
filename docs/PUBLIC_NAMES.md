@@ -2,9 +2,10 @@
 
 Use only: AWARE, TRUSTREAM, Chamber, Rider, Suite, Lab Pass, pulsar (public GPLv3 demo).
 
-Public file type: `.pcc` (our zip). Do not expand the codec name on customer HTML.
+Public: AWARE, TRUSTREAM, Chamber, Rider, Warrant, CuNi, pulsar, `.pcc` archives.
+Public source (dual license): pulsar, PCC/lbr1, Combined GC. Keys and AUTH_DIR stay operator-only.
 
-Internal only: Combined GC, PCC (the codec), Loom, ZRW, ZRQC, Omni-Dormant, PHASON, CDDG, TRUE 8B.
+Rankings may name pulsar, PCC, champ, best, AWARE. Customer product pages still lead with what it is, then price.
 
 Retired as lead cards: TRU8, Gate. Keep URLs as aliases → AWARE.
 

@@ -11,6 +11,8 @@
 import { withProductBox } from "./lib/spl-box-gate.js";
 
 import zlib from "zlib";
+import fs from "fs";
+import path from "path";
 import { promisify } from "util";
 import { codexHeaders } from "./lib/codex-key.js";
 
@@ -397,6 +399,21 @@ async function handler(req, res) {
   }
 
   const url = new URL(req.url || "/api/bench", "http://local");
+
+  if (req.method === "GET" && url.searchParams.get("stream") !== "1") {
+    try {
+      const p = path.join(process.cwd(), "bench.json");
+      const j = JSON.parse(fs.readFileSync(p, "utf8"));
+      res.statusCode = 200;
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.setHeader("Cache-Control", "no-store");
+      return res.end(JSON.stringify(j));
+    } catch (e) {
+      res.statusCode = 500;
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.end(JSON.stringify({ ok: false, error: String(e.message || e) }));
+    }
+  }
 
   if (req.method === "GET" && url.searchParams.get("meta") === "1") {
     res.statusCode = 200;

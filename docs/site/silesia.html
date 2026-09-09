@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Silesia rankings — all pathways · Slid Phi Labs</title>
+  <meta name="description" content="Official Silesia 12, files individually. pulsar, PCC, champ, best, AWARE vs gzip-9, bzip2-9, xz-6. DECODE_OK. Not a #1 claim."/>
+  <link rel="canonical" href="https://www.slidphilabs.com/silesia"/>
+  <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/silesia.json"/>
+  <link rel="icon" type="image/jpeg" href="/assets/now/mark.jpg"/>
+  <meta property="og:title" content="Silesia rankings — all pathways"/>
+  <meta property="og:url" content="https://www.slidphilabs.com/silesia"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=34"/>
+  <style>
+    .spl-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 12px 0; }
+    .spl-table th, .spl-table td { text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+    .spl-table th:first-child, .spl-table td:first-child { text-align: left; }
+    .spl-table .ours td { background: #eef6f6; }
+    .mono { font-family: ui-monospace, monospace; font-size: 0.8rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">Public corpus · Silesia 12</p>
+    <h1>All pathways. Official files. DECODE_OK.</h1>
+    <p class="lede">Silesia 12 files compressed individually. Raw 211,938,580 bytes. gzip, bzip2, and xz are opponents, not occupants. pulsar is already on Matt Mahoney’s open-source table. This page is our public matrix. Not a #1 claim. Hosted jobs are capped at 4 MiB, so these numbers are local <code>lb</code> / <code>pulsar</code>, not <code>POST /api/compress</code>.</p>
+    <p class="spl-note" id="meta">Loading <a href="/silesia.json">silesia.json</a>…</p>
+    <div style="overflow-x:auto"><table class="spl-table" id="tot"><thead></thead><tbody></tbody></table></div>
+    <h2>Mahoney-format lines</h2>
+    <pre class="mono" id="lines"></pre>
+    <p class="spl-note">Source: <a href="https://github.com/ceedot-rock/pulsar-best">pulsar-best</a> · <a href="https://github.com/ceedot-rock/lbr1">lbr1 / PCC</a> · <a href="https://github.com/ceedot-rock/combined-gc">combined-gc</a>. Dual-licensed. Signing keys stay operator-only. OSCB: <a href="https://mattmahoney.net/dc/silesia.html">mattmahoney.net/dc/silesia.html</a>.</p>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="/bench">Hosted 4 MiB bench</a>
+      <a class="spl-btn spl-btn-line" href="/silesia.json">silesia.json</a>
+      <a class="spl-btn spl-btn-line" href="/gc">AWARE</a>
+    </p>
+  </main>
+  <script src="/assets/chrome.js?v=34" defer></script>
+  <script>
+    const order = ["aware","best","pcc","champ","pulsar","bzip2-9","xz-6","gzip-9"];
+    function fmt(n){ if(n==null) return "—"; return Number(n).toLocaleString("en-US"); }
+    fetch("/silesia.json",{cache:"no-store"}).then(r=>{
+      if(!r.ok) throw new Error("silesia.json not ready yet");
+      return r.json();
+    }).then(j=>{
+      document.getElementById("meta").textContent = (j.at||"")+" · "+(j.plain||"");
+      const tot = j.totals||{};
+      const th = document.querySelector("#tot thead");
+      th.innerHTML = "<tr><th>Pathway</th><th>Packed</th><th>DECODE_OK</th><th>Ratio</th></tr>";
+      const tb = document.querySelector("#tot tbody");
+      tb.innerHTML = "";
+      for (const pw of order) {
+        const t = tot[pw]; if(!t) continue;
+        const tr = document.createElement("tr");
+        if (["aware","best","pcc","champ","pulsar"].includes(pw)) tr.className = "ours";
+        tr.innerHTML = `<td>${pw}</td><td>${fmt(t.packed_bytes)}</td><td>${t.decode_ok}/${t.n}</td><td>${t.packed_bytes? (t.packed_bytes/j.raw_total).toFixed(4): "—"}</td>`;
+        tb.appendChild(tr);
+      }
+      document.getElementById("lines").textContent = (j.mahoney_lines||[]).join("\n") || "(waiting on 12/12 keeps)";
+    }).catch(e=>{
+      document.getElementById("meta").textContent = "Official matrix is still running on the lab box. Hosted 4 MiB numbers are on /bench. "+e.message;
+    });
+  </script>
+</body>
+</html>
