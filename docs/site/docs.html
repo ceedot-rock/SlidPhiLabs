@@ -3,44 +3,44 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>API — after you know what we sell · Slid Phi Labs</title>
-  <meta name="description" content="Call Slid Phi Labs from code: sign up, MCP, agent catalog, Stripe checkout, zeros demo, compress. Humans start on the site. Agents start at /agents."/>
+  <title>API — compress, restore, pay · Slid Phi Labs</title>
+  <meta name="description" content="One story: POST /api/compress, POST /api/decompress. Zeros → 8 bytes. Else pulsar on this host. First 2 GB/month free, then 8¢/GB."/>
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://www.slidphilabs.com/docs"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:site_name" content="Slid Phi Labs"/>
-  <meta property="og:title" content="API — Slid Phi Labs"/>
-  <meta property="og:description" content="Auth, MCP, checkout, compress. After the product pages."/>
-  <meta property="og:url" content="https://www.slidphilabs.com/docs"/>
-  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="API — Slid Phi Labs"/>
-  <meta name="twitter:description" content="The same products, for scripts and agents."/>
-  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=17"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=21"/>
 </head>
 <body>
   <main class="spl-page" id="main">
-    <p class="spl-kicker">API</p>
-    <h1>Call this from code</h1>
-    <p class="lede">Same products, for scripts and agents. If you do not yet know what CuNi, Chamber, Agent-Rider, or AWARE <em>are</em>, start at <a href="/about">About</a> or <a href="/products">Products</a>. This page is how you call them.</p>
+    <p class="spl-kicker">API · one encode path</p>
+    <h1>Compress, restore, pay. Same lab.</h1>
+    <p class="lede">Every door hits the same hosted path: zeros specialist or pulsar 2.5.0. gzip is not an occupant. Combined GC is not on this host.</p>
+    <div class="spl-prose">
+      <p><strong>Zeros (free demo)</strong></p>
+      <pre class="spl-out" style="white-space:pre-wrap">python3 -c "open('z.bin','wb').write(bytes(1000000))"
+curl -sS -X POST https://www.slidphilabs.com/api/compress \
+  -H 'content-type: application/octet-stream' --data-binary @z.bin</pre>
+      <p><strong>A real file, then restore</strong></p>
+      <pre class="spl-out" style="white-space:pre-wrap">curl -sS -X POST https://www.slidphilabs.com/api/compress \
+  -H 'content-type: application/octet-stream' --data-binary @file.bin > out.json
+curl -sS -X POST https://www.slidphilabs.com/api/decompress \
+  -H 'content-type: application/json' --data-binary @out.json</pre>
+      <p>Or one loop: <code>POST /api/process</code> with the same body. Same engine: <code>POST /api/specialist</code>.</p>
+      <p>Meter: first 2 GB each month free, then 8¢/GB ($1 card floor). AWARE month $49 includes 200 GB. Quote: <code>POST /api/ppp-quote</code>.</p>
+    </div>
     <div class="spl-grid">
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/auth</h3><p>Human signup/login, or mint an agent API key.</p></div>
-      <div class="spl-card"><p class="spl-kicker">GET / POST</p><h3>/mcp</h3><p>Hosted MCP. Official registry <code>io.github.ceedot-rock/slid-phi-labs</code>. Or <code>npx -y spl-pay-per-suite mcp</code>.</p></div>
-      <div class="spl-card"><p class="spl-kicker">GET</p><h3>/api/agent</h3><p>Catalog of what agents can buy: CuNi, Chamber, Rider, AWARE, and AWARE jobs billed per gigabyte.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/x402-products</h3><p>Agent checkout. HTTP 402, then USDC on Solana or Base.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/checkout</h3><p>Stripe for human day and month access.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/specialist</h3><p>Public zeros demo. Everyday files go to AWARE (you pay for access). pulsar is the free download; closed commercial embed is $490/year.</p></div>
-      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/compress</h3><p>Older hosted compress door. Prefer /api/specialist.</p></div>
+      <div class="spl-card"><p class="spl-kicker">GET</p><h3>/api/agent</h3><p>What agents can buy. Compression first.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/mcp</h3><p>Hosted MCP. Registry <code>io.github.ceedot-rock/slid-phi-labs</code>.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/checkout</h3><p>Stripe. SKU <code>gc-month</code> is the hosted compressor.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/x402-products</h3><p>Agents. HTTP 402, then USDC.</p></div>
     </div>
     <p class="spl-actions">
-      <a class="spl-btn spl-btn-dark" href="/agents">Agent door</a>
+      <a class="spl-btn spl-btn-dark" href="/gc">AWARE product</a>
       <a class="spl-btn spl-btn-line" href="/llms.txt">llms.txt</a>
-      <a class="spl-btn spl-btn-line" href="/signup">Human signup</a>
+      <a class="spl-btn spl-btn-line" href="/agents">Agent door</a>
     </p>
   </main>
-  <script src="/assets/chrome.js?v=17" defer></script>
+  <script src="/assets/chrome.js?v=21" defer></script>
 </body>
 </html>

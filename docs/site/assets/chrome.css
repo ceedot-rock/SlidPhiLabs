@@ -95,6 +95,32 @@ body.spl-chrome {
   border-radius: 8px;
   cursor: pointer;
 }
+.spl-drop { position: relative; }
+.spl-drop > summary {
+  list-style: none;
+  cursor: pointer;
+  color: var(--mut);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+.spl-drop > summary::-webkit-details-marker { display: none; }
+.spl-drop > summary:hover,
+.spl-drop[open] > summary { color: var(--ink); background: var(--paper-2); }
+.spl-drop-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  min-width: 14rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 6px;
+  z-index: 70;
+  box-shadow: 0 8px 24px rgba(18, 32, 51, 0.08);
+}
+.spl-drop-menu a { display: block; border-radius: 8px; }
 .spl-ticker {
   background: var(--navy);
   color: #d5dbe3;
