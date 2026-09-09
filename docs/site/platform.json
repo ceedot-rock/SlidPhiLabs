@@ -9,7 +9,7 @@
   "lead_product": "cuni",
   "cash_product": "chamber",
   "pricing_sot": "https://www.slidphilabs.com/pricing.json",
-  "one_liner": "CuNi $0. Chamber $9/$49/$490. Rider $79/$790. AWARE $9/$49/$490. Stripe card / x402.",
+  "one_liner": "AWARE $9/$49/$490 (200 GB/mo included, then 8¢/GB). Chamber $9/$99. Rider $79/$790. CuNi $0. Stripe / x402.",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
     "login": "https://www.slidphilabs.com/login",
@@ -26,7 +26,6 @@
     "compression": {
       "products": [
         "AWARE",
-        "TRUSTREAM",
         "pulsar"
       ],
       "urls": {
@@ -42,7 +41,7 @@
         "ZRW",
         "TRU8"
       ],
-      "note": "AWARE is the hosted compressor seat. pulsar is the public GPLv3 demo. The engine is not in npm."
+      "note": "AWARE is the hosted compressor seat (files and live 4 KiB pipe). pulsar is the public GPLv3 demo. The engine is not in npm."
     },
     "chamber": {
       "products": [

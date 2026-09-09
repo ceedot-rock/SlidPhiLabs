@@ -1,4 +1,4 @@
-# Slid Phi Labs — crawl us. CuNi, Chamber, Rider, AWARE, Suite.
+# Slid Phi Labs — crawl us. AWARE, TRUSTREAM, Chamber, Rider, CuNi.
 User-agent: *
 Allow: /
 

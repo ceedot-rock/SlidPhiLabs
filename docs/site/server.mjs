@@ -79,6 +79,10 @@ const REWRITES = {
   "/demos/": "/demos.html",
   "/license": "/license.html",
   "/license/": "/license.html",
+  "/specialist": "/specialist.html",
+  "/specialist/": "/specialist.html",
+  "/specialists": "/specialist.html",
+  "/specialists/": "/specialist.html",
   "/about": "/about.html",
   "/about/": "/about.html",
   "/chamber": "/chamber.html",
@@ -100,12 +104,12 @@ const REWRITES = {
   "/duos/": "/duos.html",
   "/duosurface": "/duos.html",
   "/duosurface/": "/duos.html",
-  "/pps": "/pps.html",
-  "/pps/": "/pps.html",
-  "/suite": "/pps.html",
-  "/suite/": "/pps.html",
-  "/pps/desk": "/pps.html",
-  "/pps/desk/": "/pps.html",
+  "/pps": "/gc.html",
+  "/pps/": "/gc.html",
+  "/suite": "/gc.html",
+  "/suite/": "/gc.html",
+  "/pps/desk": "/gc.html",
+  "/pps/desk/": "/gc.html",
   "/games": "/trugame/index.html",
   "/games/": "/trugame/index.html",
   "/trugames": "/trugame/index.html",
@@ -162,8 +166,6 @@ const REWRITES = {
   "/docs/": "/docs.html",
   "/lab-pass": "/lab-pass.html",
   "/lab-pass/": "/lab-pass.html",
-  "/license": "/pricing.html",
-  "/license/": "/pricing.html",
   "/cuni": "/cuni.html",
   "/cuni/": "/cuni.html",
   "/rider": "/rider.html",
@@ -174,6 +176,9 @@ const REWRITES = {
   "/gc/": "/gc.html",
   "/aware": "/gc.html",
   "/aware/": "/gc.html",
+  "/compare": "/compare.html",
+  "/compare/": "/compare.html",
+  "/vs": "/compare.html",
   "/trustream": "/trustream.html",
   "/trustream/": "/trustream.html",
   "/agent-logs": "/trustream.html",
@@ -414,6 +419,14 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(301, {
         Location: "https://www.slidphilabs.com" + url.pathname + url.search,
         "Cache-Control": "no-store",
+      });
+      return res.end();
+    }
+    const p0 = url.pathname.replace(/\/$/, "") || "/";
+    if (p0 === "/pps" || p0 === "/suite" || p0 === "/pps/desk") {
+      res.writeHead(301, {
+        Location: "https://www.slidphilabs.com/gc" + url.search,
+        "Cache-Control": "public, max-age=3600",
       });
       return res.end();
     }

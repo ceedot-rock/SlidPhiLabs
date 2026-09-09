@@ -65,6 +65,13 @@
       "usd": 490,
       "stripe": "https://www.slidphilabs.com/pay?sku=cuni-exception"
     },
+    "pulsar_exception": {
+      "name": "pulsar closed-embed exception",
+      "sku": "pulsar-exception",
+      "usd": 490,
+      "stripe": "https://www.slidphilabs.com/pay?sku=pulsar-exception",
+      "grants": "One closed-source product, one year. pulsar stays GPLv3. Never Combined GC / LBR1 / AWARE residual."
+    },
     "trugame": {
       "name": "TruGame",
       "plans": {
@@ -95,11 +102,13 @@
     }
   },
   "suite": {
-    "free_cap_gb": 6.9,
-    "trial_hours": 3,
-    "usd_per_gb_after_free": 0.05,
-    "usd_per_gb_bulk": 0.04,
-    "page": "https://www.slidphilabs.com/pps"
+    "plain": "First 2 GB each month are free. After that, 8¢ per GB. Card charges start at $1.",
+    "free_cap_gb": 2,
+    "window": "calendar_month",
+    "usd_per_gb_after_free": 0.08,
+    "min_paid_usd": 1,
+    "included_gb": { "unpaid": 2, "gc-day": 10, "gc-month": 200, "gc-year": 2000, "lab-pass": 2000 },
+    "page": "https://www.slidphilabs.com/gc"
   },
   "aliases": {
     "tru8": "gc-year",
@@ -115,6 +124,8 @@
     "chamber-day": "chamber-month",
     "lab-pass-year": "lab-pass",
     "fleetpulse": "rider-ops-year",
-    "fetchgate": "quikgater"
+    "fetchgate": "quikgater",
+    "pulsar-closed": "pulsar-exception",
+    "pulsar-embed": "pulsar-exception"
   }
 }

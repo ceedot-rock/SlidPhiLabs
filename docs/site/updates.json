@@ -1,13 +1,23 @@
 {
   "service": "Slid Phi Labs — Lab Feed",
   "version": "1.2.0",
-  "updated": "2026-09-02",
+  "updated": "2026-09-09",
   "social": {
     "x": "https://x.com/slidphilabs",
     "handle": "@slidphilabs"
   },
   "description": "Product updates, news, plans, and social pointers.",
   "items": [
+    {
+      "id": "u-cuni-0-1-8",
+      "date": "2026-09-09",
+      "type": "product",
+      "title": "CuNi 0.1.8 — write once, print many languages",
+      "body": "CuNi now emits a catalog of coding languages from one source. Python, Go, and JavaScript still have to print the same thing, or the compiler refuses. Studio is free. Closed-app exception $490/year.",
+      "href": "https://www.slidphilabs.com/cuni",
+      "href_label": "CuNi",
+      "tags": ["cuni", "release", "studio"]
+    },
     {
       "id": "u-lab-catalog-2026-09",
       "date": "2026-09-02",

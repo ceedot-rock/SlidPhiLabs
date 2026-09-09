@@ -1,7 +1,7 @@
 {
   "name": "slid-phi",
-  "version": "2.2.11",
-  "description": "Slid Phi Labs public HTTP client and discovery stub. Hosted compression and protected engines are not shipped in this package.",
+  "version": "2.2.12",
+  "description": "Slid Phi Labs public HTTP client. Discover products and call hosted APIs. Does not include the AWARE compressor.",
   "type": "module",
   "main": "src/index.mjs",
   "exports": {

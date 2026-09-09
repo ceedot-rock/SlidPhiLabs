@@ -1,15 +1,14 @@
 # spl-pay-per-suite
 
-**SPL Pay Per Suite** — quote, checkout, and MCP helper for a hosted service. Stripe is available for humans; x402 is available for agents where offered. This package does not contain the private encoder.
+Quote, checkout, and MCP helper for **AWARE** metered jobs. Stripe for humans; x402 for agents. This package does not contain the compressor.
 
-## Pricing (canonical · matches live API)
+## Pricing
 
 | Tier | Rule |
 |------|------|
-| **Unpaid boundary** | First **6.9 GB** within **3 hours** — $0 |
-| **Usage** | Then about **$0.05 / GB**; bulk pricing may apply where offered |
-| **Min paid** | **$0.05** once over free |
-| **Ref** | Under typical first paid cloud egress (~$0.09/GB) |
+| **Free** | First **2 GB** each calendar month — $0 |
+| **Then** | **8¢ / GB** ($1 card minimum) |
+| **Month plan** | AWARE $49 includes 200 GB |
 
 Canonical catalog: [GET /api/x402-products](https://www.slidphilabs.com/api/x402-products)
 

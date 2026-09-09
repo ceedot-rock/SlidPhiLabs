@@ -1,0 +1,85 @@
+{
+  "updated": "2026-09-08",
+  "lab": "Slid Phi Labs",
+  "owner": "Corey Tasz",
+  "inbox": "corey@slidphilabs.com",
+  "site": "https://www.slidphilabs.com",
+  "terms": "https://www.slidphilabs.com/COMMERCIAL-LICENSE.md",
+  "machine": "https://www.slidphilabs.com/specialist",
+  "api": "https://www.slidphilabs.com/api/specialist",
+  "plain": "pulsar is free GPLv3; $490/yr (SKU pulsar-exception) to embed it in one closed product. AWARE is a hosted compressor — paid access, no source ($9/day · $49/mo · $490/yr). The zeros demo is free: all-zero data → 8 bytes on POST /api/specialist. Chamber, Rider, CuNi, and Lab Pass are products with prices. The production engine is private.",
+  "rule": "Free demos and open-source stay public. Putting open code in a closed product needs a paid written exception. Hosted products are access: you run them, you do not get the encoder.",
+  "never_on_this_surface": [
+    "the private encoder",
+    "Chamber internals",
+    "Agent-Rider signing keys",
+    "gzip, brotli, xz, or bzip2 sold as ours"
+  ],
+  "lanes": {
+    "fill": {
+      "occupant": "zeros demo",
+      "public_name": "zeros",
+      "license": "public demo",
+      "runs_here": true,
+      "plain": "Zeros demo. All-zero data → 8 bytes, and you get the original back. Free on POST /api/specialist. For real files, buy AWARE.",
+      "commercial": "This demo is free. Everyday files use AWARE.",
+      "flagship": "1e6 zero bytes → 8 B, round-trip"
+    },
+    "struct_text": {
+      "occupant": "pulsar 2.5.0",
+      "public_name": "pulsar",
+      "license": "GPL-3.0-or-later",
+      "runs_here": false,
+      "source": "https://github.com/ceedot-rock/pulsar-best",
+      "page": "https://www.slidphilabs.com/pulsar",
+      "commercial_sku": "pulsar-exception",
+      "plain": "Free GPLv3 compressor. $490/yr (SKU pulsar-exception) to embed in one closed product. $199 OSS support is help, not that grant.",
+      "commercial": "GPLv3 in public. Closed-source embed needs a written exception. $199 OSS support is help, not this grant."
+    },
+    "archive": {
+      "occupant": "AWARE",
+      "public_name": "AWARE",
+      "license": "hosted access",
+      "runs_here": false,
+      "engine": "private",
+      "page": "https://www.slidphilabs.com/gc",
+      "skus": ["gc-day", "gc-month", "gc-year", "lab-pass"],
+      "plain": "Hosted lossless compressor. $9/day · $49/mo (200 GB) · $490/yr (2,000 GB). Then 8¢/GB. First 2 GB/month free. You buy access. You do not get the encoder.",
+      "commercial": "You buy access to run it. You do not get the encoder."
+    },
+    "general": {
+      "occupant": "LBR1",
+      "license": "UNLICENSED",
+      "runs_here": false,
+      "plain": "Not for sale. The production engine is private. The hosted compressor you can buy is AWARE.",
+      "commercial": "Not published. Hosted path is AWARE."
+    }
+  },
+  "skus": {
+    "pulsar-exception": {
+      "usd": 490,
+      "period": "year",
+      "plain": "Pay $490/year to put pulsar inside one closed-source product for one year. pulsar source stays GPLv3. This is not AWARE.",
+      "grants": "Written exception to distribute pulsar inside one closed-source product for one year. pulsar source stays GPL-3.0-or-later.",
+      "never_includes": ["Combined GC", "AWARE residual", "LBR1", "ASMD", "Chamber kernel", "Agent-Rider keys"],
+      "pay": "https://www.slidphilabs.com/pay?sku=pulsar-exception"
+    },
+    "cuni-exception": {
+      "usd": 490,
+      "period": "year",
+      "plain": "Pay $490/year to ship CuNi inside one closed product for one year. The public playground stays free.",
+      "grants": "Written exception for one closed product using CuNi, one year.",
+      "pay": "https://www.slidphilabs.com/pay?sku=cuni-exception"
+    },
+    "gc-day": { "usd": 9, "plain": "AWARE hosted compressor, one day of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=gc-day" },
+    "gc-month": { "usd": 49, "plain": "AWARE hosted compressor, one month of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=gc-month" },
+    "gc-year": { "usd": 490, "plain": "AWARE hosted compressor, one year of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=gc-year" },
+    "lab-pass": { "usd": 668, "plain": "One year of Chamber + AWARE + TruGame for $668. Does not include Rider.", "pay": "https://www.slidphilabs.com/pay?sku=lab-pass", "includes": ["chamber", "gc", "trugame"], "excludes": ["rider"] },
+    "oss-support": {
+      "usd": 199,
+      "plain": "$199 for help with an already-public GPLv3 library. Not a license to embed, and not AWARE.",
+      "grants": "Commercial support for an already-public GPLv3 library. Not an engine grant.",
+      "pay": "https://www.slidphilabs.com/pay?sku=oss-support"
+    }
+  }
+}

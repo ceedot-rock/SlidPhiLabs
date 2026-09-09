@@ -1,7 +1,7 @@
 {
   "name": "slid-phi-labs",
   "title": "Slid Phi Labs",
-  "description": "Hosted Streamable HTTP MCP for Slid Phi Labs public catalog, Suite quote (6.9 GB / 3 h unpaid), and commerce discovery. Lookup is public; engines stay protected.",
+  "description": "Hosted Streamable HTTP MCP for Slid Phi Labs public catalog and commerce. AWARE: first 2 GB/month free, then 8¢/GB. Lookup is public; the encoder stays protected.",
   "version": "1.20.1",
   "websiteUrl": "https://www.slidphilabs.com",
   "documentationUrl": "https://www.slidphilabs.com/mcp-service",

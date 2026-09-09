@@ -1,24 +1,29 @@
 # Slid Phi Labs
-> Lossless-compression and agent-infrastructure lab in Cherry Hill. Public proof, private performance, paid production.
+> Lossless compression, a two-key JSON seal, signed agent identity, and a small exactness language. You buy a seat or a written exception — not the production engine.
 > https://www.slidphilabs.com/
 
 ## Who
-Slid Phi Labs. Corey Tasz. Human door: /humans  Agent door: /agents  Inbox: corey@slidphilabs.com
+Slid Phi Labs. Corey Tasz. Humans: /humans  Agents: /agents  Inbox: corey@slidphilabs.com
 
-## Products
-Five cards. Not a SKU dump.
-- AWARE — hosted lossless compressor (files). $9/day · $49/mo · $490/yr. Access, not source. Meter: Suite 6.9 GB / 3 h then ~5¢/GB. https://www.slidphilabs.com/gc
-- TRUSTREAM — live 4 KiB residual pipe (streams). STORE + ZERO. Agent logs / SIEM. Not a zstd replacement. Runs on an AWARE seat. https://www.slidphilabs.com/trustream
-- Chamber — two-key JSON seal. $9/mo · $99/yr. Open existing seals with both keys. https://www.slidphilabs.com/chamber
-- Agent-Rider — signed agent identity L0–L4. $79/mo · $790/yr. https://www.slidphilabs.com/rider
-- CuNi — one source → Python, Go, JS or refuse. $0. https://www.slidphilabs.com/cuni
-PCC is the house frame (ZERO / MATCH / BWT / STORE), not a SKU. Combined GC is the private engine. pulsar is the public GPLv3 demo: https://www.slidphilabs.com/pulsar
+## Catalog
+What it is, what you get, what you pay.
+- AWARE — hosted lossless compressor. $9/day · $49/mo (200 GB included) · $490/yr (2,000 GB). Then 8¢/GB ($1 card minimum). First 2 GB/month free with no plan. Cheaper than Cloudinary Plus ($99) and AWS S3 egress (~9¢/GB uncompressed). Compare: https://www.slidphilabs.com/compare · product: https://www.slidphilabs.com/gc
+- pulsar — free GPLv3 lossless compressor you can build yourself. To embed it in a closed-source product: $490/yr, SKU pulsar-exception. https://www.slidphilabs.com/pulsar · https://www.slidphilabs.com/pay?sku=pulsar-exception
+- zeros demo — all-zero data → 8 bytes, round-trip. Free on POST /api/specialist. Proof, not the paid compressor.
+- Chamber — two-key JSON seal. $9/mo · $99/yr. License to seal new secrets; opening an already-sealed secret takes both keys, not another payment. https://www.slidphilabs.com/chamber
+- Agent-Rider — signed identity for AI agents. $79/mo · $790/yr. https://www.slidphilabs.com/rider
+- CuNi — one program printed into many languages. Python, Go, and JavaScript must match, or it refuses. Playground $0. Closed-app exception $490/yr, SKU cuni-exception. v0.1.8. https://www.slidphilabs.com/cuni
+- Lab Pass — $668/yr. One year of Chamber + AWARE + TruGame. Does not include Rider. https://www.slidphilabs.com/lab-pass
 
+The production engine is private. You buy a seat or a written exception, not the engine.
+
+Licensing: https://www.slidphilabs.com/licensing.json · https://www.slidphilabs.com/COMMERCIAL-LICENSE.md
+Specialist (zeros demo): https://www.slidphilabs.com/specialist · POST /api/specialist
 
 ## Checkout
 Humans: POST /api/checkout { "sku": "chamber-year", "rail": "stripe" } → Stripe card session.
 UI: https://www.slidphilabs.com/pay
-Try: https://www.slidphilabs.com/box
+Try 24 hours: https://www.slidphilabs.com/box
 
 ## Machine
 - Sign up — https://www.slidphilabs.com/signup
@@ -30,5 +35,5 @@ Try: https://www.slidphilabs.com/box
 - Catalog — GET https://www.slidphilabs.com/api/agent
 - x402 — POST https://www.slidphilabs.com/api/x402-products  (docs: https://www.slidphilabs.com/x402)
 - Prices — https://www.slidphilabs.com/pricing.json
-- npm stdio — npx -y spl-pay-per-suite mcp
+- npm MCP helper — npx -y spl-pay-per-suite mcp
 - npm packages — https://www.slidphilabs.com/npm

@@ -1,7 +1,7 @@
 {
   "name": "@cptasz13/tru8",
-  "version": "0.1.1",
-  "description": "TRU8 — true minimal units for repetition. Public demo by Slid Phi Labs. Production residual licensed.",
+  "version": "0.1.2",
+  "description": "Slid Phi Labs zeros demo: 1,000,000 zeros → 8 bytes, round-trip. Not the AWARE compressor.",
   "type": "module",
   "main": "src/index.mjs",
   "exports": {

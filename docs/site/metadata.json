@@ -10,11 +10,11 @@
   "theme_color": "#0f1c2e",
   "twitter": "@slidphilabs",
   "glossary": {
-    "CuNi": "language — one source to Python, Go, JS, or refuse. Studio $0. Closed-app exception $490/yr.",
+    "CuNi": "language — write once, print many languages. Python, Go, and JS must match, or refuse. Studio $0. Closed-app exception $490/yr. v0.1.8.",
     "Chamber": "two-key protocol for storing a JSON secret. Cloak license $9/mo · $99/yr. Open existing seals with both keys.",
     "Agent-Rider": "signed agent identity L0–L4. Month $79 · Year $790. Not in Lab Pass.",
-    "AWARE": "hosted lossless compressor. Day $9 · Month $49 · Year $490. Engine stays in the lab.",
-    "Suite": "metered AWARE jobs — 6.9 GB / 3 h unpaid then ~5¢/GB. Not a user seat.",
+    "AWARE": "hosted lossless compressor. Day $9 · Month $49 · Year $490. You do not get the encoder.",
+    "Suite": "AWARE meter — first 2 GB/month free, then 8¢/GB. Not a fifth product.",
     "Lab Pass": "Chamber + AWARE + TruGame for 365 days, $668. Not Rider.",
     "Access": "entitlement claim after Stripe or x402. Not a codec dump.",
     "pulsar": "public GPLv3 demo compressor. Not AWARE."
@@ -96,7 +96,7 @@
     },
     "/gc": {
       "title": "AWARE — hosted lossless compressor · Slid Phi Labs",
-      "description": "Buy a seat to run a lossless compressor. Day $9 · Month $49 · Year $490. Engine stays in the lab.",
+      "description": "Buy a seat to run a lossless compressor. Day $9 · Month $49 · Year $490. You do not get the encoder.",
       "canonical": "https://www.slidphilabs.com/gc",
       "product_line": "AWARE"
     },
@@ -107,8 +107,8 @@
       "product_line": "Agent-Rider"
     },
     "/cuni": {
-      "title": "CuNi — one source, three runtimes, or refuse · Slid Phi Labs",
-      "description": "Language. Playground is free. Closed-app exception $490/year per product.",
+      "title": "CuNi — write once, print many languages · Slid Phi Labs",
+      "description": "One program, many languages. Python, Go, and JS must match, or it refuses. Playground is free. Closed-app exception $490/year per product.",
       "canonical": "https://www.slidphilabs.com/cuni",
       "product_line": "CuNi"
     },

@@ -2,15 +2,14 @@ Team: Slid Phi Labs
 From: Cherry Hill, NJ, US
 Contact: corey@slidphilabs.com
 Site: https://www.slidphilabs.com
-pulsar 2.5.0: https://www.slidphilabs.com/pulsar
 
-CuNi Studio — $0 — https://cuni-studio.fly.dev/
-Chamber — cloak license $9/mo · $99/yr (open with keys) — https://www.slidphilabs.com/chamber
+AWARE — hosted lossless compression — $9/day · $49/mo (200 GB) · $490/yr (2,000 GB) — then 8¢/GB — https://www.slidphilabs.com/gc
+TRUSTREAM — live log pipe, same AWARE plan — https://www.slidphilabs.com/trustream
+Chamber — two-key JSON — $9/mo · $99/yr — https://www.slidphilabs.com/chamber
 Agent-Rider — $79/mo · $790/yr — https://www.slidphilabs.com/rider
-AWARE — $9/day · $49/mo · $490/yr — https://www.slidphilabs.com/gc
-Suite — 6.9 GB / 3 h then ~5¢/GB — https://www.slidphilabs.com/pps
-Lab Pass — $668/yr (Chamber year license + AWARE + TruGame, not Rider) — https://www.slidphilabs.com/lab-pass
+CuNi Studio — $0 — write once, print many languages; Python/Go/JS must match — https://cuni-studio.fly.dev/
+pulsar 2.5.0 — free open-source compressor — https://www.slidphilabs.com/pulsar
+Lab Pass — $668/yr (Chamber + AWARE + TruGame, not Rider) — https://www.slidphilabs.com/lab-pass
+Compare — https://www.slidphilabs.com/compare
 Try 24h — https://www.slidphilabs.com/box
-Sign up — https://www.slidphilabs.com/signup
-Pay — https://www.slidphilabs.com/pay
 MCP — https://www.slidphilabs.com/mcp
