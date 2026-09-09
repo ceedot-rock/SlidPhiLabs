@@ -5,6 +5,7 @@ node_modules
 !SKILL.md
 !README.md
 !COMMERCIAL-LICENSE.md
+!CUNI-PROTOCOL.md
 scripts/amp
 assets/intro
 **/HOST_*.md

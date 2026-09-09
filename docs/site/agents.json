@@ -40,7 +40,7 @@
   "mcp_card": "https://www.slidphilabs.com/.well-known/mcp/server-card.json",
   "agents": [
     { "id": "spl-platform", "name": "Slid Phi Labs", "role": "discovery", "url": "https://www.slidphilabs.com/api/agent" },
-    { "id": "cuni", "name": "CuNi Studio", "role": "language", "url": "https://cuni-studio.fly.dev/", "price": "$0", "note": "v0.1.8. Print many languages. Python, Go, JS must match or refuse." },
+    { "id": "cuni", "name": "CuNi Studio", "role": "language", "url": "https://cuni-studio.fly.dev/", "protocol": "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json", "price": "$0", "note": "v0.1.8. 119 languages. Same stdout or refuse. Protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json" },
     { "id": "rider", "name": "Agent-Rider", "role": "identity", "url": "https://agentrider.fly.dev/", "price": "Labs team seat $79/mo · $790/yr; Merchant Gate is a separate self-serve offer" },
     { "id": "chamber", "name": "Chamber", "role": "security", "url": "https://www.slidphilabs.com/chamber", "price": "Cloak license $9/mo · $99/yr. Open with keys." },
     { "id": "aware", "name": "AWARE", "role": "compression", "url": "https://www.slidphilabs.com/gc", "price": "Day $9 · Month $49 · Year $490" },

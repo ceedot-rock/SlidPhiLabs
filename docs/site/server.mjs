@@ -233,6 +233,8 @@ const REWRITES = {
   "/pay/": "/pay.html",
   "/payments": "/pay.html",
   "/payments/": "/pay.html",
+  "/PROTOCOL.md": "/CUNI-PROTOCOL.md",
+  "/cuni-protocol.md": "/CUNI-PROTOCOL.md",
 };
 
 function safeJoin(root, rel) {

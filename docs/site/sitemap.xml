@@ -9,8 +9,11 @@
   <url><loc>https://www.slidphilabs.com/rider</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
   <url><loc>https://www.slidphilabs.com/warrant</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
   <url><loc>https://www.slidphilabs.com/cuni</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.86</priority></url>
+  <url><loc>https://www.slidphilabs.com/.well-known/cuni-protocol.json</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://www.slidphilabs.com/CUNI-PROTOCOL.md</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
   <url><loc>https://www.slidphilabs.com/pulsar</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.84</priority></url>
   <url><loc>https://www.slidphilabs.com/specialist</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://www.slidphilabs.com/bench</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
   <url><loc>https://www.slidphilabs.com/compare</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
   <url><loc>https://www.slidphilabs.com/docs</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
   <url><loc>https://www.slidphilabs.com/box</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.78</priority></url>
