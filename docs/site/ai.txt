@@ -1,14 +1,13 @@
 # Slid Phi Labs
-> Hosted lossless compression from a Cherry Hill lab. AWARE $49/mo with 200 GB included, then 8¢/GB. https://www.slidphilabs.com/
+> Hosted lossless compression from a Cherry Hill lab. AWARE: send a file, get a smaller one, restore every byte. https://www.slidphilabs.com/
 
-- AWARE — $9/day · $49/mo (200 GB) · $490/yr (2,000 GB) — then 8¢/GB — https://www.slidphilabs.com/gc
+- AWARE — hosted lossless compression — $9/day · $49/mo (200 GB) · $490/yr (2,000 GB) — then 8¢/GB — https://www.slidphilabs.com/gc
 - TRUSTREAM — live log pipe, same AWARE plan — https://www.slidphilabs.com/trustream
-- Chamber — $9/mo · $99/yr — https://www.slidphilabs.com/chamber
-- Agent-Rider — $79/mo · $790/yr — https://agentrider.fly.dev/
-- CuNi Studio — $0 — write once, print many languages; Python, Go, and JS must match — https://cuni-studio.fly.dev/
-- pulsar 2.5.0 — free GPLv3 compressor — https://www.slidphilabs.com/pulsar
-- Compare — Cloudinary Plus $99 vs AWARE $49 — https://www.slidphilabs.com/compare
-- Lab Pass — $668/yr — https://www.slidphilabs.com/lab-pass
+- Chamber — two-key JSON seal — $9/mo · $99/yr — https://www.slidphilabs.com/chamber
+- Agent-Rider — signed agent identity — $79/mo · $790/yr — https://www.slidphilabs.com/rider
+- CuNi Studio — $0 — write once; Python, Go, and JS must match — https://cuni-studio.fly.dev/
+- pulsar 2.5.0 — free GPLv3 compressor you download — https://www.slidphilabs.com/pulsar
+- Pricing — https://www.slidphilabs.com/pricing
+- Compare — https://www.slidphilabs.com/compare
 - MCP — POST https://www.slidphilabs.com/mcp
-- Prices — https://www.slidphilabs.com/pricing.json
 - Inbox — corey@slidphilabs.com

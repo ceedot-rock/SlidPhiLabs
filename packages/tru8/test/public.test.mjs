@@ -30,9 +30,10 @@ test("dict ptr is 8 B", () => {
   assert.equal(u.offset, 1024);
 });
 
-test("non-zero is licensed, not leaked", () => {
-  assert.throws(() => compress(Buffer.from("secret-engine")), LicensedPathError);
-  assert.throws(() => decompress(Buffer.from([0x03, 1, 2, 3])), LicensedPathError);
+test("non-zero uses hosted dual-licensed pathway", async () => {
+  const packed = await compress(Buffer.from("the cat sat on the mat. ".repeat(40)));
+  assert.ok(Buffer.isBuffer(packed));
+  assert.ok(packed.length > 0);
 });
 
 test("demo zeros ratio", () => {

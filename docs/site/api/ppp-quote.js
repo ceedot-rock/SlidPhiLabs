@@ -1,9 +1,9 @@
 /**
- * PPP quote — POST /api/ppp-quote
- * Freemium: 6.9 GB / 3 h unpaid, then usage rates far under cloud egress.
- * See suite-pricing.js for the canonical model.
+ * Quote a compress job against this month's meter.
+ * First 2 GB free, then 8¢/GB, $1 card minimum.
  */
 import { computeQuote, FREE_BYTES, PRICING_EXAMPLES } from "./suite-pricing.js";
+import { meterSnapshot, identityFromReq, readUsage } from "./lib/usage-meter.mjs";
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -39,16 +39,21 @@ export default async function handler(req, res) {
   }
   body = body || {};
 
+  const id = identityFromReq(req);
+  const used = readUsage(id.key);
   const quote = computeQuote({
     product: String(body.product || "auto"),
     dataClass: String(body.dataClass || body.data_class || "unknown"),
     op: String(body.op || "compress"),
     bytes: body.bytes,
+    used_bytes: body.used_bytes != null ? body.used_bytes : used.bytes,
+    sku: body.sku || id.sku,
   });
 
   return json(res, 200, {
     ...quote,
-    pricing_model: "freemium_usage_v2",
+    pricing_model: "free_2gb_then_8c",
+    usage: meterSnapshot(req, Number(body.bytes) || 0),
     examples: PRICING_EXAMPLES,
   });
 }

@@ -5,8 +5,8 @@
   "brand": "Slid Phi Labs",
   "product": "Slid Phi Labs",
   "inbox": "corey@slidphilabs.com",
-  "logo": "https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg",
-  "og_image": "https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg",
+  "logo": "https://www.slidphilabs.com/assets/now/mark.jpg",
+  "og_image": "https://www.slidphilabs.com/assets/now/og.jpg",
   "theme_color": "#0f1c2e",
   "twitter": "@slidphilabs",
   "glossary": {
@@ -14,6 +14,7 @@
     "Chamber": "two-key protocol for storing a JSON secret. Cloak license $9/mo · $99/yr. Open existing seals with both keys.",
     "Agent-Rider": "signed agent identity L0–L4. Month $79 · Year $790. Not in Lab Pass.",
     "AWARE": "hosted lossless compressor. Day $9 · Month $49 · Year $490. You do not get the encoder.",
+    "TRUSTREAM": "live logs on the AWARE plan.",
     "Suite": "AWARE meter — first 2 GB/month free, then 8¢/GB. Not a fifth product.",
     "Lab Pass": "Chamber + AWARE + TruGame for 365 days, $668. Not Rider.",
     "Access": "entitlement claim after Stripe or x402. Not a codec dump.",
@@ -35,15 +36,15 @@
     "cuni-exception": { "sku": "cuni-exception", "price_usd": 490 }
   },
   "default": {
-    "title": "Slid Phi Labs — Lossless Compression, Verified",
-    "description": "Verified lossless compression, agent identity, and production infrastructure. Public proof, private performance, paid production.",
-    "og_title": "Slid Phi Labs — Lossless Compression, Verified",
-    "og_description": "Public proof, private compression performance, and paid production infrastructure.",
-    "twitter_title": "Slid Phi Labs — Lossless Compression, Verified",
-    "twitter_description": "Public proof, private performance, paid production.",
-    "og_image": "https://www.slidphilabs.com/assets/ledger/hero.png",
+    "title": "Slid Phi Labs — hosted lossless compression",
+    "description": "AWARE: send a file, get a smaller one, restore every byte. TRUSTREAM, Chamber, Agent-Rider, CuNi.",
+    "og_title": "Slid Phi Labs — hosted lossless compression",
+    "og_description": "AWARE is hosted lossless compression. We run it. You restore every byte.",
+    "twitter_title": "Slid Phi Labs — hosted lossless compression",
+    "twitter_description": "AWARE: send a file, restore every byte.",
+    "og_image": "https://www.slidphilabs.com/assets/now/og.jpg",
     "canonical": "https://www.slidphilabs.com/",
-    "product_line": "CuNi · Chamber · Agent-Rider · AWARE · Suite"
+    "product_line": "AWARE · TRUSTREAM · Chamber · Agent-Rider · CuNi"
   },
   "schema": {
     "organization": {

@@ -1,16 +1,10 @@
 /**
- * POST /api/compress — lab codec.
- * Picks smallest lossless of ZRW / leftover / brotli-11 / gzip-9 that round-trips.
- * Zeros×10k still 8 B. Not a #1 general-compressor claim.
+ * POST /api/compress — hosted compression. Same engine as /api/specialist.
+ * Zeros → 8 B. Else min() of every own pathway on this host (or store).
  */
-import { withProductBox } from "./lib/spl-box-gate.js";
-import {
-  encode as splEncode,
-  inputToRaw,
-  publicResult,
-  MAX_RAW,
-  MAX_VECTOR,
-} from "./lib/spl-codec.mjs";
+import { inputToRaw, machineCard, MAX_RAW } from "./lib/specialist.mjs";
+import { runHostedEncode } from "./lib/hosted-job.mjs";
+import { meterSnapshot } from "./lib/usage-meter.mjs";
 import { codexStamp, codexHeaders } from "./lib/codex-key.js";
 
 function cors(res) {
@@ -44,7 +38,7 @@ function readBody(req) {
   });
 }
 
-async function handler(req, res) {
+export default async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
@@ -53,14 +47,10 @@ async function handler(req, res) {
   if (req.method === "GET") {
     return json(res, 200, {
       ok: true,
-      path: "spl-codec",
-      how: "POST raw bytes or JSON { corpus:'zeros', n:10000 } or { text } or { data_b64 }. Picks ZRW / leftover / brotli-11 / gzip-9, smallest that round-trips.",
+      path: "hosted-compression",
+      ...machineCard(),
       pair: "POST /api/decompress · full loop POST /api/process",
-      max_raw: MAX_RAW,
-      max_vector: MAX_VECTOR,
-      curl_10k_zeros:
-        'python3 -c "open(\'z.bin\',\'wb\').write(bytes(40000))" && curl -sS -X POST https://www.slidphilabs.com/api/compress -H "content-type: application/octet-stream" --data-binary @z.bin',
-
+      usage: meterSnapshot(req),
       ...codexStamp({ half: "compress" }),
     });
   }
@@ -88,20 +78,9 @@ async function handler(req, res) {
       }
       raw = Buffer.from(body.value);
     }
-    const cap = raw.length % 4 === 0 && raw.length <= MAX_VECTOR ? MAX_VECTOR : MAX_RAW;
-    if (raw.length > cap) {
-      return json(res, 413, { ok: false, error: "too_large", max_raw: MAX_RAW, max_vector: MAX_VECTOR });
-    }
-    const enc = splEncode(raw);
-    return json(res, 200, {
-      ok: true,
-      ...publicResult(enc),
-      ...codexStamp({ half: "compress", unlocked_pair: "/api/decompress" }),
-      at: new Date().toISOString(),
-    });
+    const job = await runHostedEncode(req, raw);
+    return json(res, job.status, { ...job.body, ...codexStamp({ half: "compress", unlocked_pair: "/api/decompress" }) });
   } catch (e) {
-    return json(res, 400, { ok: false, error: String(e.message || e) });
+    return json(res, 400, { ok: false, error: String(e.message || e), host_fallback: false, max_raw: MAX_RAW });
   }
 }
-
-export default withProductBox(handler, "gate");

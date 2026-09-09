@@ -9,6 +9,16 @@
   "description": "Product updates, news, plans, and social pointers.",
   "items": [
     {
+      "id": "u-press-dual-license-npm",
+      "date": "2026-09-09",
+      "type": "product",
+      "title": "Press: dual-licensed hosted compression + npm clients",
+      "body": "AWARE is live under a dual license. slid-phi 2.3.0, spl-pay-per-suite 1.2.0, blackjack-compression 1.6.0, and @cptasz13/tru8 0.2.0 call the live host. First 2 GB/month free, then 8¢/GB.",
+      "href": "https://www.slidphilabs.com/press",
+      "href_label": "Press release",
+      "tags": ["aware", "npm", "license", "press"]
+    },
+    {
       "id": "u-cuni-0-1-8",
       "date": "2026-09-09",
       "type": "product",

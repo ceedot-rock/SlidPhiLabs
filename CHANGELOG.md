@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-09
+- **`.pcc` archive** (our zip): many files, one container, house compression inside. `lb zip` / `lb unzip` / `lb ls`. Hosted `POST /api/archive` and `POST /api/unarchive`. npm `zip()` / `unzip()`. Page `/pcc`.
+- Press release: `/press` and `/press.txt`. Blog: `/blog/2026-09-09-hosted-dual-license`.
+- npm clients call the live host: `slid-phi` 2.3.0, `spl-pay-per-suite` 1.2.0, `blackjack-compression` 1.6.0, `@cptasz13/tru8` 0.2.0.
+- Suite quote aligned to live meter: first 2 GB/month free, then 8¢/GB, $1 card minimum.
+
 ## 2026-09-07
 - `/products` cut to five cards: AWARE, TRUSTREAM, Chamber, Rider, CuNi. Suite/Lab Pass/TruGame/Quikgater/L33tSaaS/consulting/pulsar are not product cards.
 - Public compressor name is **AWARE**. Combined GC stays the private engine tree. File type `.pcc` later, not a SKU.

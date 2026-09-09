@@ -4,6 +4,7 @@ node_modules
 *.md
 !SKILL.md
 !README.md
+!COMMERCIAL-LICENSE.md
 scripts/amp
 assets/intro
 **/HOST_*.md

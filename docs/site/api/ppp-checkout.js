@@ -1,6 +1,6 @@
 /**
  * PPP checkout — POST /api/ppp-checkout
- * Freemium: $0 under 6.9 GB / 3 h unpaid cap (no Stripe). Paid usage → Checkout Session.
+ * First 2 GB/month free. Then 8¢/GB, $1 card minimum → Stripe Checkout.
  */
 import { computeQuote } from "./suite-pricing.js";
 

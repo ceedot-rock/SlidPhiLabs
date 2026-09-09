@@ -1,32 +1,23 @@
 /**
- * Public npm stub. The encoder is not in this tarball.
- * Hosted: POST https://www.slidphilabs.com/api/compress
+ * slid-phi — dual-licensed hosted compression client.
+ * Open license or a paid grant. The host runs every pathway.
  */
-const API = "https://www.slidphilabs.com/api/compress";
-const SUITE = "https://www.slidphilabs.com/pps";
-const MCP = "https://www.slidphilabs.com/mcp";
+import { compress, decompress, zip, unzip, ORIGIN, asBuf, isPccz } from "./hosted.mjs";
 
-function stub() {
-  const err = new Error(
-    `slid-phi public npm is a client stub. POST ${API} · suite ${SUITE} · MCP ${MCP}. Engine is not in this package.`,
-  );
-  err.code = "SPL_PUBLIC_STUB";
-  err.api = API;
-  throw err;
-}
+export { compress, decompress, zip, unzip, ORIGIN, asBuf, isPccz };
+export const encode = compress;
+export const decodeFn = decompress;
 
-export const encode = stub;
-export const decode = stub;
-export const encodeHybrid = stub;
-export const decodeHybrid = stub;
 export const OMNI_META = {
-  stub: true,
-  public_npm: true,
-  api: API,
+  stub: false,
+  dual_license: "AGPL-3.0-or-later OR Slid Phi Labs Commercial",
+  api: "https://www.slidphilabs.com/api/compress",
   decompress: "https://www.slidphilabs.com/api/decompress",
-  suite: SUITE,
-  mcp: MCP,
-  registry: "io.github.ceedot-rock/slid-phi-labs",
-  smithery: "https://smithery.ai/servers/slidphi/lab",
+  mcp: "https://www.slidphilabs.com/mcp",
+  licensing: "https://www.slidphilabs.com/licensing.json",
+  product: "https://www.slidphilabs.com/gc",
 };
-export default { encode, decode, encodeHybrid, decodeHybrid, OMNI_META };
+
+export { decompress as decode };
+
+export default { compress, decompress, zip, unzip, encode, decode: decompress, OMNI_META, isPccz };

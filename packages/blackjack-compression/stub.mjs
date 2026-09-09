@@ -1,21 +1,14 @@
 /**
- * Public npm stub. Engine is not in this package.
+ * blackjack-compression — dual-licensed hosted compression client.
+ * Every pathway on the lab host. Open license or a paid grant.
  */
-const API = "https://www.slidphilabs.com/api/compress";
-const ACCESS = "https://www.slidphilabs.com/access";
-const SUITE = "https://www.slidphilabs.com/pps";
+import { compress, decompress, zip, unzip, ORIGIN, asBuf, isPccz } from "./hosted.mjs";
 
-function stub() {
-  const err = new Error(
-    `blackjack-compression public npm is a stub. POST ${API} · suite ${SUITE} · access ${ACCESS}`,
-  );
-  err.code = "SPL_PUBLIC_STUB";
-  err.api = API;
-  throw err;
-}
+export { compress, decompress, zip, unzip, ORIGIN, asBuf, isPccz };
+export const encode = compress;
+export const decode = decompress;
+export const api = "https://www.slidphilabs.com/api/compress";
+export const access = "https://www.slidphilabs.com/gc";
+export const suite = "https://www.slidphilabs.com/gc";
 
-export const compress = stub;
-export const decompress = stub;
-export const encode = stub;
-export const decode = stub;
-export default { stub: true, compress, decompress, encode, decode, api: API, access: ACCESS, suite: SUITE };
+export default { stub: false, compress, decompress, zip, unzip, encode, decode, api, access, suite };

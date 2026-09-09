@@ -3,32 +3,30 @@ import assert from "node:assert/strict";
 import { computeQuote, classifyBytes, FREE_BYTES, MIN_PAID_CENTS } from "../src/quote.mjs";
 const GiB = 1024 ** 3;
 
-test("6.9 GB unpaid cap is free", () => {
-  const q = computeQuote({ bytes: 6.9 * GiB, product: "auto" });
+test("2 GB unpaid cap is free", () => {
+  const q = computeQuote({ bytes: 2 * GiB, product: "auto" });
   assert.equal(q.amount_cents, 0);
   assert.equal(q.free, true);
 });
 
-test("7 GB is over cap", () => {
-  const q = computeQuote({ bytes: 7 * GiB, product: "auto" });
+test("3 GB is over cap and hits $1 card minimum", () => {
+  const q = computeQuote({ bytes: 3 * GiB, product: "auto" });
   assert.equal(q.free, false);
-  assert.ok(q.amount_cents >= MIN_PAID_CENTS);
+  assert.equal(q.amount_cents, 100);
 });
 
-test("FREE_BYTES is the 6.9 GB cap", () => {
+test("FREE_BYTES is the 2 GB cap", () => {
   assert.equal(computeQuote({ bytes: FREE_BYTES }).amount_cents, 0);
 });
 
-test("over free undercuts 9c/GB", () => {
-  const q = computeQuote({ bytes: FREE_BYTES + 10 * GiB, product: "auto" });
+test("20 GB is 18 GB × 8¢", () => {
+  const q = computeQuote({ bytes: 20 * GiB, product: "auto" });
   assert.equal(q.free, false);
-  // 10 GB * 5c = 50c
-  assert.equal(q.amount_cents, 50);
-  assert.ok(q.amount_cents / 10 < 9); // under 9¢/GB
+  assert.equal(q.amount_cents, 144);
 });
 
-test("min paid is under first 1GB egress", () => {
-  assert.ok(MIN_PAID_CENTS < 9);
+test("min paid is $1", () => {
+  assert.equal(MIN_PAID_CENTS, 100);
 });
 
 test("classify zeros", () => {

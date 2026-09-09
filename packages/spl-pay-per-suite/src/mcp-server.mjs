@@ -33,6 +33,8 @@ import {
   SERVICE_NAME,
   SITE_PPS,
   STRIPE_PAYMENT_LINK,
+  compress,
+  decompress,
   PRODUCT_BASE,
   DATA_MULT,
   OP_MULT,
@@ -42,9 +44,28 @@ import {
 } from "./index.mjs";
 
 const SUITE_LINE =
-  "Unpaid cap 6.9 GB / 3 h · then ~5¢/GB (4¢ bulk) · min $0.05. Try Gate retired.";
+  "First 2 GB each month free · then 8¢/GB · $1 card minimum.";
 
 const TOOLS = [
+  {
+    name: "spl_compress",
+    description:
+      "Hosted lossless compression. Every dual-licensed pathway on the lab machine. Args: data_b64. Returns packed_b64. First 2 GB/month free, then 8¢/GB.",
+    inputSchema: {
+      type: "object",
+      properties: { data_b64: { type: "string", description: "Base64 of the file to shrink" } },
+      required: ["data_b64"],
+    },
+  },
+  {
+    name: "spl_decompress",
+    description: "Restore a file packed by spl_compress. Args: packed_b64. Returns raw_b64.",
+    inputSchema: {
+      type: "object",
+      properties: { packed_b64: { type: "string" } },
+      required: ["packed_b64"],
+    },
+  },
   {
     name: "spl_lab_auth",
     description:
@@ -62,7 +83,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_info",
     description:
-      "Agentic commerce discovery: standing product catalog + freemium suite jobs (free under 6.9 GB / 3 h), headers, flow. Stripe remains for humans.",
+      "Agentic commerce discovery: standing product catalog + freemium suite jobs (free under 2 GB/month), headers, flow. Stripe remains for humans.",
     inputSchema: { type: "object", properties: {} },
   },
   {
@@ -94,7 +115,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_requirements",
     description:
-      "Probe POST /api/x402-suite. Free under 6.9 GB / 3 h (no pay). Over free → 402 accepts[] for usage (~5¢/GB then 4¢ · min $0.05).",
+      "Probe POST /api/x402-suite. Free under 2 GB/month (no pay). Over free → 402 accepts[] for usage (8¢/GB · $1 card minimum).",
     inputSchema: {
       type: "object",
       properties: {
@@ -103,7 +124,7 @@ const TOOLS = [
         op: { type: "string" },
         bytes: {
           type: "number",
-          description: "Payload bytes (≤6.9 GB unpaid cap; over cap requires payment)",
+          description: "Payload bytes (≤2 GB unpaid cap; over cap requires payment)",
         },
         email: { type: "string" },
         note: { type: "string" },
@@ -113,7 +134,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_submit",
     description:
-      "Submit freemium suite job via x402. Under 6.9 GB / 3 h free (no paymentHeader). Over free: pass paymentHeader after paying, or devBypass for staging.",
+      "Submit freemium suite job via x402. Under 2 GB/month free (no paymentHeader). Over free: pass paymentHeader after paying, or devBypass for staging.",
     inputSchema: {
       type: "object",
       properties: {
@@ -126,7 +147,7 @@ const TOOLS = [
         fileName: { type: "string" },
         paymentHeader: {
           type: "string",
-          description: "Base64 X-PAYMENT proof (only if over free 6.9 GB / 3 h cap)",
+          description: "Base64 X-PAYMENT proof (only if over free 2 GB/month cap)",
         },
         devBypass: { type: "boolean", description: "Staging only if server allows" },
       },
@@ -135,7 +156,7 @@ const TOOLS = [
   {
     name: "spl_pps_quote",
     description:
-      "Instant freemium quote: free first 6.9 GB / 3 h ($0), then ~5¢/GB (4¢ bulk) · min $0.05. Inputs: product, dataClass, op, bytes. Returns free flag + USD amount.",
+      "Instant quote: free first 2 GB/month ($0), then 8¢/GB · $1 card minimum. Inputs: product, dataClass, op, bytes.",
     inputSchema: {
       type: "object",
       properties: {
@@ -151,7 +172,7 @@ const TOOLS = [
         op: { type: "string", description: "compress | decompress | roundtrip" },
         bytes: {
           type: "number",
-          description: "Payload size in bytes (≤6.9 GB unpaid = $0)",
+          description: "Payload size in bytes (≤2 GB unpaid = $0)",
         },
         remote: { type: "boolean", description: "If true, use live site API" },
       },
@@ -160,7 +181,7 @@ const TOOLS = [
   {
     name: "spl_pps_checkout",
     description:
-      "Checkout for suite quote. Under 6.9 GB / 3 h returns free_showcase (no Stripe). Over free returns Stripe Checkout URL.",
+      "Checkout for suite quote. Under 2 GB/month returns free_showcase (no Stripe). Over free returns Stripe Checkout URL.",
     inputSchema: {
       type: "object",
       properties: {
@@ -175,7 +196,7 @@ const TOOLS = [
   {
     name: "spl_pps_submit_job",
     description:
-      "Submit a Pay Per Suite job (free under 6.9 GB / 3 h after free_showcase, or after paid). Lab runs best tool and emails results. Requires email.",
+      "Submit a Pay Per Suite job (free under 2 GB/month after free_showcase, or after paid). Lab runs best tool and emails results. Requires email.",
     inputSchema: {
       type: "object",
       properties: {
@@ -220,6 +241,15 @@ function err(id, code, message) {
 
 async function callTool(name, args = {}) {
   switch (name) {
+    case "spl_compress": {
+      const raw = Buffer.from(String(args.data_b64 || ""), "base64");
+      const j = await compress(raw);
+      return { ok: true, packed_b64: j.packed_b64, packed_bytes: j.packed_bytes, raw_bytes: j.raw_bytes, method: j.method };
+    }
+    case "spl_decompress": {
+      const j = await decompress({ packed_b64: args.packed_b64 });
+      return { ok: true, raw_b64: j.raw_b64, raw_bytes: j.raw_bytes };
+    }
     case "spl_lab_auth":
       return {
         signup: "https://www.slidphilabs.com/signup",

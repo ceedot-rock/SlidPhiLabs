@@ -1,8 +1,19 @@
-Proprietary — Slid Phi Labs. All rights reserved.
+blackjack-compression is available under two licenses. You choose one.
 
-Public distribution is a stub only. The real codec is delivered after freemium use or purchase.
+1. GNU Affero General Public License v3.0 or later
+   See LICENSE.AGPL-3.0
 
-Suite unpaid cap 6.9 GB / 3 h: https://www.slidphilabs.com/pps
-Access / private install: https://www.slidphilabs.com/access
+2. Slid Phi Labs Commercial License
+   See LICENSE.COMMERCIAL
+   Use this to embed the hosted client in a closed product without AGPL source-offer.
 
-No license is granted to reverse-engineer, re-implement from public stubs, or redistribute the proprietary engine.
+This grant never includes Combined GC, LBR1 / splb / ASMD,
+AWARE encoder source, Chamber kernel, or Agent-Rider signing keys
+unless the invoice names them.
+
+Copyright (c) 2026 Slid Phi Labs / Corey Tasz.
+
+Seats and current terms: https://www.slidphilabs.com/licensing.json
+Contact: corey@slidphilabs.com
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.

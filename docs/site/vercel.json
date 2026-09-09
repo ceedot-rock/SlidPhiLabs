@@ -39,6 +39,30 @@
       "destination": "/gc.html"
     },
     {
+      "source": "/pcc",
+      "destination": "/pcc.html"
+    },
+    {
+      "source": "/pcc/",
+      "destination": "/pcc.html"
+    },
+    {
+      "source": "/press",
+      "destination": "/press.html"
+    },
+    {
+      "source": "/press/",
+      "destination": "/press.html"
+    },
+    {
+      "source": "/news",
+      "destination": "/press.html"
+    },
+    {
+      "source": "/newsroom",
+      "destination": "/press.html"
+    },
+    {
       "source": "/pulsar",
       "destination": "/pulsar.html"
     },
@@ -273,6 +297,22 @@
     {
       "source": "/blog/",
       "destination": "/blog/index.html"
+    },
+    {
+      "source": "/blog/2026-09-09-hosted-dual-license",
+      "destination": "/blog/2026-09-09-hosted-dual-license.html"
+    },
+    {
+      "source": "/blog/2026-09-09-hosted-dual-license/",
+      "destination": "/blog/2026-09-09-hosted-dual-license.html"
+    },
+    {
+      "source": "/blog/2026-09-05-pulsar-250",
+      "destination": "/blog/2026-09-05-pulsar-250.html"
+    },
+    {
+      "source": "/blog/2026-09-05-pulsar-250/",
+      "destination": "/blog/2026-09-05-pulsar-250.html"
     },
     {
       "source": "/blog/2026-08-07-why-8b-matters",

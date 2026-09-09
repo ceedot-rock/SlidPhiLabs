@@ -1,9 +1,10 @@
 /**
- * POST /api/decompress — inverse of /api/compress.
- * Accepts SPL1 frames or legacy bare ZRW.
+ * POST /api/decompress — inverse of /api/compress (SPLS / pulsar / zeros / legacy SPL1).
  */
-import { withProductBox } from "./lib/spl-box-gate.js";
 import { decode as splDecode, MAGIC as SPL_MAGIC } from "./lib/spl-codec.mjs";
+import { decodeFrame, MAGIC as SPLS } from "./lib/specialist.mjs";
+import { looksPulsar } from "./lib/pulsar-host.mjs";
+import { isPccz } from "./lib/pccz.mjs";
 import { codexStamp, codexHeaders } from "./lib/codex-key.js";
 
 function cors(res) {
@@ -37,7 +38,28 @@ function readBody(req) {
   });
 }
 
-async function handler(req, res) {
+async function decodeAny(packed) {
+  const p = Buffer.from(packed);
+  if (isPccz(p)) {
+    const e = new Error("pcc_archive");
+    e.hint = "POST /api/unarchive";
+    throw e;
+  }
+  if (p.length >= 4 && p.subarray(0, 4).equals(SPLS)) return { raw: await decodeFrame(p), path: "hosted" };
+  if (looksPulsar(p) || (p.length >= 8 && p[0] === 0x00)) {
+    return { raw: await decodeFrame(p), path: "hosted" };
+  }
+  if (p.length >= 4 && p.subarray(0, 4).equals(SPL_MAGIC)) {
+    return { raw: splDecode(p), path: "legacy-spl1" };
+  }
+  try {
+    return { raw: await decodeFrame(p), path: "hosted" };
+  } catch {
+    return { raw: splDecode(p), path: "legacy" };
+  }
+}
+
+export default async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
@@ -46,7 +68,7 @@ async function handler(req, res) {
   if (req.method === "GET") {
     return json(res, 200, {
       ok: true,
-      how: "POST { packed_b64 } or raw packed bytes (SPL1 or legacy ZRW)",
+      how: "POST { packed_b64 } or raw packed bytes from /api/compress",
       pair: "POST /api/compress",
       full_loop: "POST /api/process",
       ...codexStamp({ half: "decompress" }),
@@ -60,7 +82,7 @@ async function handler(req, res) {
     const body = await readBody(req);
     let packed;
     if (body.kind === "json" || (body.value && body.value[0] === 0x7b)) {
-      let j = body.kind === "json" ? body.value : JSON.parse(body.value.toString("utf8"));
+      const j = body.kind === "json" ? body.value : JSON.parse(body.value.toString("utf8"));
       if (j.packed_b64) packed = Buffer.from(j.packed_b64, "base64");
       else return json(res, 400, { ok: false, error: "packed_b64_required" });
     } else {
@@ -69,19 +91,21 @@ async function handler(req, res) {
     if (!packed || !packed.length) {
       return json(res, 400, { ok: false, error: "empty" });
     }
-    const raw = splDecode(packed);
-    const framed = packed.length >= 4 && packed.subarray(0, 4).equals(SPL_MAGIC);
+    const { raw, path } = await decodeAny(packed);
     return json(res, 200, {
       ok: true,
-      path: framed ? "spl-codec" : "zrw",
+      path,
       raw_bytes: raw.length,
       raw_b64: raw.toString("base64"),
+      host_fallback: false,
       ...codexStamp({ half: "decompress", unlocked_pair: "/api/compress" }),
       at: new Date().toISOString(),
     });
   } catch (e) {
-    return json(res, 400, { ok: false, error: String(e.message || e) });
+    const error = String(e.message || e);
+    if (error === "pcc_archive") {
+      return json(res, 400, { ok: false, error, hint: "POST /api/unarchive", ext: ".pcc" });
+    }
+    return json(res, 400, { ok: false, error });
   }
 }
-
-export default withProductBox(handler, "gate");

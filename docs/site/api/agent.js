@@ -36,6 +36,8 @@ const STANDING = [
   { sku: "rider-year", name: "Agent-Rider · annual team seat", usd: "790", kind: "rider", blurb: "Signed agent identity L0–L4. Year. Not in Lab Pass." },
   { sku: "rider-ops-month", name: "Rider Ops · monthly fleet watch", usd: "29", kind: "rider-ops", blurb: "Heartbeat + alert when a signed agent goes quiet. Needs a Rider seat." },
   { sku: "rider-ops-year", name: "Rider Ops · annual fleet watch", usd: "290", kind: "rider-ops", blurb: "Year of fleet watch. Needs a Rider seat." },
+  { sku: "warrant-month", name: "Warrant · monthly mandate seat", usd: "29", kind: "warrant", blurb: "Signed mandate + receipts for a Rider. Not identity. Pair X-Agent-Rider with X-Agent-Warrant." },
+  { sku: "warrant-year", name: "Warrant · annual mandate seat", usd: "290", kind: "warrant", blurb: "Year of mandates and receipts. Needs a Rider token." },
   { sku: "lab-pass", name: "Lab Pass · annual", usd: "668", kind: "seat", blurb: "Chamber + AWARE + TruGame, 365 days. Not Rider." },
   { sku: "trugame-month", name: "TruGame · monthly engine seat", usd: "12", kind: "engine", blurb: "Engine seat." },
   { sku: "trugame-year", name: "TruGame · annual engine seat", usd: "79", kind: "engine", blurb: "Engine seat." },

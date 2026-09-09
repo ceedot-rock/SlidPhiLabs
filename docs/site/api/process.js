@@ -1,24 +1,15 @@
 /**
  * POST /api/process — compress then decompress in one call.
  */
-import { withProductBox } from "./lib/spl-box-gate.js";
-import {
-  encode as splEncode,
-  decode as splDecode,
-  inputToRaw,
-  publicResult,
-  MAX_RAW,
-  MAX_VECTOR,
-} from "./lib/spl-codec.mjs";
-import { codexStamp, codexHeaders, CODEX_NAME, CODEX_SEAL_DAY } from "./lib/codex-key.js";
-import { attachNca, ncaHeaders } from "./lib/nca_infra.mjs";
+import { decodeFrame, inputToRaw, MAX_RAW } from "./lib/specialist.mjs";
+import { runHostedEncode } from "./lib/hosted-job.mjs";
+import { codexStamp, codexHeaders } from "./lib/codex-key.js";
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  const h = { ...codexHeaders(), ...ncaHeaders() };
-  for (const [k, v] of Object.entries(h)) res.setHeader(k, v);
+  for (const [k, v] of Object.entries(codexHeaders())) res.setHeader(k, v);
 }
 
 function json(res, status, body) {
@@ -45,30 +36,21 @@ function readBody(req) {
   });
 }
 
-async function handler(req, res) {
+export default async function handler(req, res) {
   cors(res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
     return res.end();
   }
   if (req.method === "GET") {
-    return json(
-      res,
-      200,
-      attachNca(
-        {
-          ok: true,
-          ...codexStamp({
-            how: "POST same body as /api/compress — encode then decode, report RT",
-          }),
-        },
-        "process",
-        { ok: true },
-      ),
-    );
+    return json(res, 200, {
+      ok: true,
+      how: "POST same body as /api/compress — encode then decode, report round-trip",
+      ...codexStamp(),
+    });
   }
   if (req.method !== "POST") {
-    return json(res, 405, { ok: false, error: "POST only", ...codexStamp() });
+    return json(res, 405, { ok: false, error: "POST only" });
   }
 
   try {
@@ -87,55 +69,27 @@ async function handler(req, res) {
     }
     if (!raw) {
       if (!body.value || !body.value.length) {
-        return json(res, 400, { ok: false, error: "empty_body", ...codexStamp() });
+        return json(res, 400, { ok: false, error: "empty_body" });
       }
       raw = Buffer.from(body.value);
     }
-    const cap = raw.length % 4 === 0 && raw.length <= MAX_VECTOR ? MAX_VECTOR : MAX_RAW;
-    if (raw.length > cap) {
-      return json(res, 413, { ok: false, error: "too_large", ...codexStamp() });
-    }
-    const enc = splEncode(raw);
-    const restored = splDecode(enc.frame);
-    const roundtrip = Buffer.isBuffer(restored) && restored.equals(raw);
-    const pub = publicResult(enc);
-    return json(
-      res,
-      200,
-      attachNca(
-        {
-          ok: true,
-          ...codexStamp(),
-          unlocked: true,
-          key: CODEX_NAME,
-          seal_day: CODEX_SEAL_DAY,
-          ...pub,
-          process: {
-            compress: true,
-            decompress: true,
-            closed_loop: roundtrip,
-          },
-          restored_bytes: restored.length,
-          restored_b64: restored.toString("base64"),
-          roundtrip,
-          mirror_error: roundtrip ? 0 : 1,
-          at: new Date().toISOString(),
-        },
-        "process",
-        { ok: true, roundtrip, path: pub.path },
-      ),
-    );
+    const job = await runHostedEncode(req, raw);
+    if (job.status !== 200) return json(res, job.status, job.body);
+    const frame = Buffer.from(job.body.packed_b64, "base64");
+    const restored = await decodeFrame(frame);
+    const roundtrip = restored.equals(raw);
+    return json(res, 200, {
+      ok: true,
+      ...job.body,
+      process: { compress: true, decompress: true, closed_loop: roundtrip },
+      restored_bytes: restored.length,
+      restored_b64: restored.toString("base64"),
+      roundtrip,
+      host_fallback: false,
+      ...codexStamp(),
+      at: new Date().toISOString(),
+    });
   } catch (e) {
-    return json(
-      res,
-      400,
-      attachNca(
-        { ok: false, error: String(e.message || e), ...codexStamp() },
-        "process",
-        { ok: false },
-      ),
-    );
+    return json(res, 400, { ok: false, error: String(e.message || e), max_raw: MAX_RAW, host_fallback: false });
   }
 }
-
-export default withProductBox(handler, "gate");

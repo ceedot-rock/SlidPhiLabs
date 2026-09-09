@@ -1,8 +1,9 @@
 /**
- * Hosted compression on this machine: zeros specialist + pulsar 2.5.0.
- * gzip/brotli/xz/bzip2 are not occupants. Combined GC / LBR1 / ASMD are not here.
+ * Hosted compression on this machine. Every own pathway is a candidate:
+ * zeros, pulsar, LBR1, Combined GC, LZ wrap, PAQ wrap. Smallest DECODE_OK wins.
  */
 import { looksPulsar, pulsarDecode, pulsarEncode } from "./pulsar-host.mjs";
+import { lbAware, lbDecode, lbEncode } from "./engines.mjs";
 
 export const MAGIC = Buffer.from("SPLS");
 export const VER = 1;
@@ -10,6 +11,7 @@ export const T_ZERO = 0x00;
 export const SEAT_FILL = 1;
 export const SEAT_PULSAR = 2;
 export const SEAT_STORE = 3;
+export const SEAT_LB = 4;
 export const MAX_RAW = 4_194_304;
 export const EXPAND_CAP = 8_388_608;
 
@@ -132,6 +134,16 @@ export function encodeFill(raw) {
   };
 }
 
+function occupantName(runner, blob) {
+  if (!blob || blob.length < 4) return runner;
+  const mag = blob.subarray(0, 4).toString("latin1");
+  if (mag === "LZW1") return "lz";
+  if (mag === "PCAQ") return "paq";
+  if (mag === "BW22" || mag === "BW23") return "pulsar";
+  if (mag === "TR8\0" || mag.startsWith("TR8")) return "fill";
+  return runner;
+}
+
 export async function encodeHosted(raw) {
   const b = Buffer.from(raw);
   if (!b.length) throw new Error("empty_body");
@@ -139,38 +151,44 @@ export async function encodeHosted(raw) {
   const cls = classify(b);
   if (cls.seat === "fill") return { ...encodeFill(b), classify: cls };
 
-  let inner = null;
-  try {
-    inner = await pulsarEncode(b);
-  } catch (e) {
-    const msg = String(e.message || e);
-    if (/ENOENT|spawn/i.test(msg)) {
-      throw new Error("hosted_pulsar_missing");
+  const tries = [];
+  const run = async (name, fn, seat) => {
+    try {
+      const blob = await fn(b);
+      if (blob && blob.length < b.length) tries.push({ name, blob, seat });
+    } catch (e) {
+      const msg = String(e.message || e);
+      if (/ENOENT|spawn|hosted_/i.test(msg)) return;
+      if (e.killed || e.signal === "SIGTERM") return;
     }
-    throw e;
-  }
-  const method = inner ? "pulsar" : "store";
-  const payload = inner || b;
-  const seat = inner ? SEAT_PULSAR : SEAT_STORE;
+  };
+  await run("pulsar", pulsarEncode, SEAT_PULSAR);
+  await run("lbr1", lbEncode, SEAT_LB);
+  await run("aware", lbAware, SEAT_LB);
+  tries.sort((a, b) => a.blob.length - b.blob.length);
+  const win = tries[0];
+  const method = win ? occupantName(win.name, win.blob) : "store";
+  const payload = win ? win.blob : b;
+  const seat = win ? win.seat : SEAT_STORE;
   const frame = wrapSeat(seat, payload);
   const back = await decodeFrame(frame);
   if (!back.equals(b)) throw new Error("roundtrip_fail");
   return {
     ok: true,
-    plain: inner
-      ? `Hosted pulsar compressed this file from ${b.length} bytes to ${payload.length} bytes. Restore with POST /api/decompress. First 2 GB/month are free, then 8¢/GB.`
+    plain: win
+      ? `Hosted ${method} compressed this file from ${b.length} bytes to ${payload.length} bytes. Restore with POST /api/decompress. First 2 GB/month are free, then 8¢/GB.`
       : `This file did not get smaller. We stored it as-is (our store path, not gzip). Restore with POST /api/decompress.`,
     seat: cls.seat,
     occupant: method,
     method,
-    license: inner ? "GPL-3.0-or-later" : "store",
+    license: method === "pulsar" ? "GPL-3.0-or-later" : method === "store" ? "store" : "hosted-access",
     runs_here: true,
     raw_bytes: b.length,
     packed_bytes: payload.length,
     frame_bytes: frame.length,
     packed_b64: frame.toString("base64"),
     roundtrip: true,
-    lab_gene: Boolean(inner),
+    lab_gene: Boolean(win),
     host_fallback: false,
     classify: cls,
     buy: { gc_month: BUY.gc_month, gc_year: BUY.gc_year },
@@ -185,7 +203,14 @@ export async function decodeFrame(frame) {
     return Buffer.alloc(n);
   }
   if (seat === SEAT_STORE) return Buffer.from(inner);
-  if (seat === SEAT_PULSAR) return pulsarDecode(inner);
+  if (seat === SEAT_PULSAR) {
+    try {
+      return await pulsarDecode(inner);
+    } catch {
+      return lbDecode(inner);
+    }
+  }
+  if (seat === SEAT_LB) return lbDecode(inner);
   throw new Error("unknown seat " + seat);
 }
 
@@ -206,18 +231,16 @@ export function machineCard() {
     ok: true,
     machine: "hosted-compression",
     job: "encode",
-    plain: "POST a file. All-zero files become 8 bytes. Everything else runs pulsar 2.5.0 on this host (or store if it would not shrink). First 2 GB each month are free, then 8¢/GB. The private encoder is not on this host.",
+    plain: "POST a file. Hosted lossless compression, dual-licensed. All-zero files become 8 bytes. Every pathway we own runs on this machine; we keep the smallest result that restores. First 2 GB each month are free, then 8¢/GB. npm: slid-phi. MCP: spl_compress.",
     never: NEVER,
     seats: {
       fill: { occupant: "zeros", runs_here: true, license: "public-demo" },
-      pulsar: {
-        occupant: "pulsar 2.5.0",
-        runs_here: true,
-        license: "GPL-3.0-or-later",
-        commercial_sku: "pulsar-exception",
-        pay: BUY.pulsar_exception,
-      },
-      store: { occupant: "store", runs_here: true, note: "Incompressible. Our path, not gzip." },
+      pulsar: { occupant: "pulsar 2.5.0", runs_here: true, license: "GPL-3.0-or-later" },
+      lbr1: { occupant: "LBR1", runs_here: true, license: "hosted-access" },
+      aware: { occupant: "AWARE house", runs_here: true, license: "hosted-access" },
+      lz: { occupant: "LZ wrap", runs_here: true, license: "hosted-access" },
+      paq: { occupant: "PAQ wrap", runs_here: true, license: "hosted-access" },
+      store: { occupant: "store", runs_here: true },
     },
     how: "POST raw bytes or JSON { corpus:'zeros', n:1000000 } or { text } or { data_b64 }. Decode: POST { op:'decode', data_b64 } or POST /api/decompress.",
     curl: `python3 -c "open('z.bin','wb').write(bytes(1000000))" && curl -sS -X POST https://www.slidphilabs.com/api/compress -H 'content-type: application/octet-stream' --data-binary @z.bin`,

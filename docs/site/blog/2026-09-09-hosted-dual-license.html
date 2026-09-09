@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Hosted compression is dual-licensed — npm clients call the live host · Slid Phi Labs Blog</title>
+  <meta name="description" content="AWARE is hosted lossless compression under a dual license. slid-phi 2.3.0, spl-pay-per-suite 1.2.0, blackjack-compression 1.6.0, and @cptasz13/tru8 0.2.0 call the live host."/>
+  <link rel="canonical" href="https://www.slidphilabs.com/blog/2026-09-09-hosted-dual-license"/>
+  <link rel="icon" type="image/jpeg" href="/assets/now/mark.jpg"/>
+  <meta name="robots" content="index,follow"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="Slid Phi Labs"/>
+  <meta property="og:title" content="Hosted compression is dual-licensed. npm clients call the live host."/>
+  <meta property="og:description" content="AWARE, dual license, four npm clients. First 2 GB/month free, then 8¢/GB."/>
+  <meta property="og:url" content="https://www.slidphilabs.com/blog/2026-09-09-hosted-dual-license"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <meta property="article:published_time" content="2026-09-09"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Hosted compression is dual-licensed"/>
+  <meta name="twitter:description" content="Four npm clients call the live host. First 2 GB/month free, then 8¢/GB."/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=34"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Hosted compression is dual-licensed. npm clients call the live host.","datePublished":"2026-09-09","author":{"@type":"Person","name":"Corey Tasz"},"publisher":{"@type":"Organization","name":"Slid Phi Labs"},"mainEntityOfPage":"https://www.slidphilabs.com/blog/2026-09-09-hosted-dual-license","image":"https://www.slidphilabs.com/assets/now/og.jpg"}</script>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">Blog · 2026-09-09</p>
+    <h1>Hosted compression is dual-licensed. npm clients call the live host.</h1>
+    <div class="spl-prose">
+      <p>AWARE is hosted lossless compression. You send a file. We run every pathway we own. You get the smallest copy that still restores every byte. Dual-licensed: open terms, or a paid grant to ship closed. That is the product, and it is live.</p>
+      <p>Four npm packages now call that host. They are clients. They are not stubs.</p>
+      <ul>
+        <li><code>slid-phi</code> 2.3.0 — <code>compress()</code> / <code>decompress()</code></li>
+        <li><code>spl-pay-per-suite</code> 1.2.0 — quotes, checkout, MCP, same compress path</li>
+        <li><code>blackjack-compression</code> 1.6.0 — same hosted path</li>
+        <li><code>@cptasz13/tru8</code> 0.2.0 — zeros pack locally to 8 bytes; everything else uses hosted AWARE</li>
+      </ul>
+      <pre><code>npm i slid-phi
+npm i spl-pay-per-suite
+npx -y spl-pay-per-suite mcp</code></pre>
+      <p>A <code>.pcc</code> file is our zip: many files, one container, this compressor inside. <code>zip()</code> / <code>unzip()</code> on npm. <code>POST /api/archive</code> on the host.</p>
+      <p>First 2 GB each month are free. Then 8¢/GB, $1 card minimum. AWARE month is $49 and includes 200 GB.</p>
+      <p><a href="/pulsar">pulsar</a> is still the free compressor you run on your own machine. Formal release copy: <a href="/press">/press</a>.</p>
+    </div>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="/gc">Try AWARE</a>
+      <a class="spl-btn spl-btn-line" href="/press">Press release</a>
+      <a class="spl-btn spl-btn-line" href="/npm">npm</a>
+    </p>
+  </main>
+  <script src="/assets/chrome.js?v=34" defer></script>
+</body>
+</html>

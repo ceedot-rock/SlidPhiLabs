@@ -366,6 +366,29 @@ header.site-nav, body > footer.wrap { display: none !important; }
   width: 8rem;
 }
 .spl-trials td { padding: 6px 0; font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.spl-hero {
+  margin: 0 0 1.75rem;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--navy);
+}
+.spl-hero img {
+  display: block;
+  width: 100%;
+  height: min(38vw, 300px);
+  object-fit: cover;
+  object-position: center 40%;
+}
+.spl-lead {
+  grid-column: 1 / -1;
+  border-top-color: var(--teal) !important;
+}
+@media (min-width: 900px) {
+  .spl-grid.spl-catalog {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+}
 .spl-out {
   margin: 1rem 0 0;
   padding: 12px;

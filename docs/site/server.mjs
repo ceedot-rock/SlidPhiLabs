@@ -170,10 +170,22 @@ const REWRITES = {
   "/cuni/": "/cuni.html",
   "/rider": "/rider.html",
   "/rider/": "/rider.html",
+  "/warrant": "/warrant.html",
+  "/warrant/": "/warrant.html",
+  "/agent-warrant": "/warrant.html",
+  "/agent-warrant/": "/warrant.html",
   "/agentrider": "/rider.html",
   "/agent-rider": "/rider.html",
   "/gc": "/gc.html",
   "/gc/": "/gc.html",
+  "/pcc": "/pcc.html",
+  "/pcc/": "/pcc.html",
+  "/press": "/press.html",
+  "/press/": "/press.html",
+  "/news": "/press.html",
+  "/news/": "/press.html",
+  "/newsroom": "/press.html",
+  "/newsroom/": "/press.html",
   "/aware": "/gc.html",
   "/aware/": "/gc.html",
   "/compare": "/compare.html",
@@ -423,9 +435,26 @@ const server = http.createServer(async (req, res) => {
       return res.end();
     }
     const p0 = url.pathname.replace(/\/$/, "") || "/";
-    if (p0 === "/pps" || p0 === "/suite" || p0 === "/pps/desk") {
+    const gone = {
+      "/pps": "/gc",
+      "/suite": "/gc",
+      "/pps/desk": "/gc",
+      "/tru8": "/gc",
+      "/codec": "/gc",
+      "/humans": "/",
+      "/standings": "/products",
+      "/stand": "/products",
+      "/demos": "/specialist",
+      "/toys": "/products",
+      "/olympiad": "/about",
+      "/ledger": "/gc",
+      "/gate": "/box",
+      "/codex": "/about",
+      "/divine-codex": "/about",
+    };
+    if (gone[p0]) {
       res.writeHead(301, {
-        Location: "https://www.slidphilabs.com/gc" + url.search,
+        Location: "https://www.slidphilabs.com" + gone[p0] + url.search,
         "Cache-Control": "public, max-age=3600",
       });
       return res.end();

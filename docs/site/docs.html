@@ -4,18 +4,18 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>API — compress, restore, pay · Slid Phi Labs</title>
-  <meta name="description" content="One story: POST /api/compress, POST /api/decompress. Zeros → 8 bytes. Else pulsar on this host. First 2 GB/month free, then 8¢/GB."/>
+  <meta name="description" content="AWARE API: POST /api/compress, POST /api/decompress. Zeros → 8 bytes. Else the lab’s hosted compressors. Restore every byte."/>
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://www.slidphilabs.com/docs"/>
-  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=21"/>
+  <link rel="icon" type="image/jpeg" href="/assets/now/mark.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=30"/>
 </head>
 <body>
   <main class="spl-page" id="main">
-    <p class="spl-kicker">API · one encode path</p>
-    <h1>Compress, restore, pay. Same lab.</h1>
-    <p class="lede">Every door hits the same hosted path: zeros specialist or pulsar 2.5.0. gzip is not an occupant. Combined GC is not on this host.</p>
+    <p class="spl-kicker">For developers</p>
+    <h1>One API: shrink a file, then restore it.</h1>
+    <p class="lede">Same product the website sells: hosted lossless compression. Send a file, get a smaller one back, restore every byte later. Zeros become 8 bytes. The rest run every pathway on this machine.</p>
     <div class="spl-prose">
       <p><strong>Zeros (free demo)</strong></p>
       <pre class="spl-out" style="white-space:pre-wrap">python3 -c "open('z.bin','wb').write(bytes(1000000))"
@@ -28,10 +28,12 @@ curl -sS -X POST https://www.slidphilabs.com/api/decompress \
   -H 'content-type: application/json' --data-binary @out.json</pre>
       <p>Or one loop: <code>POST /api/process</code> with the same body. Same engine: <code>POST /api/specialist</code>.</p>
       <p>Meter: first 2 GB each month free, then 8¢/GB ($1 card floor). AWARE month $49 includes 200 GB. Quote: <code>POST /api/ppp-quote</code>.</p>
+      <p><strong>Warrant</strong> (pairs with Agent-Rider): <code>POST /api/warrant/issue</code> with <code>X-Agent-Rider</code>, then <code>POST /api/warrant/receipt</code> with <code>X-Agent-Warrant</code>. Discovery: <code>GET /api/warrant</code>.</p>
     </div>
     <div class="spl-grid">
       <div class="spl-card"><p class="spl-kicker">GET</p><h3>/api/agent</h3><p>What agents can buy. Compression first.</p></div>
       <div class="spl-card"><p class="spl-kicker">POST</p><h3>/mcp</h3><p>Hosted MCP. Registry <code>io.github.ceedot-rock/slid-phi-labs</code>.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/archive</h3><p>Pack files into a <code>.pcc</code> (our zip). Restore <code>POST /api/unarchive</code>.</p></div>
       <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/checkout</h3><p>Stripe. SKU <code>gc-month</code> is the hosted compressor.</p></div>
       <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/x402-products</h3><p>Agents. HTTP 402, then USDC.</p></div>
     </div>
@@ -41,6 +43,6 @@ curl -sS -X POST https://www.slidphilabs.com/api/decompress \
       <a class="spl-btn spl-btn-line" href="/agents">Agent door</a>
     </p>
   </main>
-  <script src="/assets/chrome.js?v=21" defer></script>
+  <script src="/assets/chrome.js?v=30" defer></script>
 </body>
 </html>

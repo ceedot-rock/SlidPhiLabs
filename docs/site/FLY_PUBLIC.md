@@ -40,7 +40,9 @@ fly certs check slidphilabs.com -a slidphilabs
 | `/` | Home |
 | `/join` | Join the Work |
 | `/humans` `/agents` `/standings` `/pps` | Dual doors |
-| `/api/welcome` `/api/join-work` `/api/web-codec` … | APIs via `server.mjs` |
+| `/api/welcome` `/api/join-work` `/api/web-codec` `/api/specialist` | APIs via `server.mjs` |
+| `/specialist` | Public specialist machine (fill runs; pulsar/AWARE licensed) |
+| `/licensing.json` `/COMMERCIAL-LICENSE.md` | License SoT |
 
 ## vs Creator box
 

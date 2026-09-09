@@ -2,7 +2,7 @@
 
 Hosted lossless compression, a two-key JSON seal, signed agent identity, and a small language that refuses to lie.
 
-This repository is the public website, API, and npm clients. It is not the production compressor. You buy a seat or a written exception — you do not get the encoder.
+This repository is the public website, API, and npm clients. Dual-licensed: AGPL-3.0-or-later or a paid commercial grant. Hosted compression runs every pathway we own.
 
 | Surface | URL |
 |---|---|
@@ -16,12 +16,12 @@ This repository is the public website, API, and npm clients. It is not the produ
 
 | Product | What it is | Price |
 |---------|------------|-------|
-| **AWARE** | Hosted lossless compression. Send a file, get a smaller file back, restore every byte. | $9/day · $49/mo (200 GB) · $490/yr (2,000 GB), then 8¢/GB |
+| **AWARE** | Hosted lossless compression. Dual-licensed. Send a file, get a smaller file back, restore every byte. | $9/day · $49/mo (200 GB) · $490/yr (2,000 GB), then 8¢/GB |
 | **TRUSTREAM** | The same plan, for live logs. | Included with AWARE |
 | **Chamber** | Two-key JSON seal. One share is useless. You store the blob. | $9/mo · $99/yr |
 | **Agent-Rider** | Signed identity so you know which agent acted. | $79/mo · $790/yr |
 | **CuNi** | Write one program. Print many languages. Python, Go, and JS must match, or it refuses. | Studio $0 · closed-app exception $490/yr |
-| **pulsar** | Free GPLv3 compressor you can build yourself. Not AWARE. | Free · $490/yr to embed in a closed product |
+| **pulsar** | Free GPLv3 compressor you run on your own machine (binary + source). | Free · $490/yr to embed in a closed product |
 
 First 2 GB each month are free with no plan. Compare: https://www.slidphilabs.com/compare
 
@@ -33,7 +33,7 @@ npm i spl-pay-per-suite
 npx -y spl-pay-per-suite mcp
 ```
 
-These packages discover and quote. They do not ship the compressor.
+These packages call the live host: `compress()` / `decompress()` / `zip()` / `unzip()`. A `.pcc` file is our zip. Dual-licensed.
 
 ## Status
 

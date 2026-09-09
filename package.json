@@ -1,7 +1,7 @@
 {
   "name": "slid-phi",
-  "version": "2.2.12",
-  "description": "Slid Phi Labs public HTTP client. Discover products and call hosted APIs. Does not include the AWARE compressor.",
+  "version": "2.3.0",
+  "description": "Dual-licensed hosted lossless compression client. Open license or a paid grant. POST /api/compress runs every pathway on the lab machine.",
   "type": "module",
   "main": "src/index.mjs",
   "exports": {
@@ -9,8 +9,13 @@
   },
   "files": [
     "src/index.mjs",
+    "src/hosted.mjs",
+    "src/pccz.mjs",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "LICENSE.AGPL-3.0",
+    "LICENSE.COMMERCIAL",
+    "NOTICE"
   ],
   "keywords": [
     "slid phi labs",
@@ -36,7 +41,7 @@
     "quikgater"
   ],
   "author": "Slid Phi Labs",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "AGPL-3.0-or-later",
   "homepage": "https://www.slidphilabs.com",
   "repository": {
     "type": "git",

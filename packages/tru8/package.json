@@ -1,7 +1,7 @@
 {
   "name": "@cptasz13/tru8",
-  "version": "0.1.2",
-  "description": "Slid Phi Labs zeros demo: 1,000,000 zeros → 8 bytes, round-trip. Not the AWARE compressor.",
+  "version": "0.2.0",
+  "description": "Dual-licensed compression client. Zeros pack locally to 8 bytes. Everything else uses hosted AWARE (every pathway on the lab machine).",
   "type": "module",
   "main": "src/index.mjs",
   "exports": {
@@ -13,7 +13,10 @@
   "files": [
     "src",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "LICENSE.AGPL-3.0",
+    "LICENSE.COMMERCIAL",
+    "NOTICE"
   ],
   "scripts": {
     "test": "node --test test/*.test.mjs",
@@ -27,7 +30,7 @@
     "token"
   ],
   "author": "Slid Phi Labs",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "AGPL-3.0-or-later",
   "homepage": "https://www.slidphilabs.com/demos",
   "repository": {
     "type": "git",

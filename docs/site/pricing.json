@@ -59,6 +59,15 @@
         "year": { "sku": "rider-ops-year", "usd": 290, "stripe": "https://www.slidphilabs.com/pay?sku=rider-ops-year" }
       }
     },
+    "warrant": {
+      "name": "Warrant",
+      "needs": "rider",
+      "page": "https://www.slidphilabs.com/warrant",
+      "plans": {
+        "month": { "sku": "warrant-month", "usd": 29, "stripe": "https://www.slidphilabs.com/pay?sku=warrant-month" },
+        "year": { "sku": "warrant-year", "usd": 290, "stripe": "https://www.slidphilabs.com/pay?sku=warrant-year" }
+      }
+    },
     "cuni_exception": {
       "name": "CuNi closed-app exception",
       "sku": "cuni-exception",

@@ -1,13 +1,23 @@
 {
   "service": "Slid Phi Labs — Weekly Blog",
   "version": "1.0.0",
-  "updated": "2026-09-05",
+  "updated": "2026-09-09",
   "canonical": "https://www.slidphilabs.com/blog",
   "social": {
     "x": "https://x.com/slidphilabs",
     "handle": "@slidphilabs"
   },
   "posts": [
+    {
+      "id": "2026-09-09-hosted-dual-license",
+      "week_of": "2026-09-08",
+      "published": "2026-09-09",
+      "title": "Hosted compression is dual-licensed. npm clients call the live host.",
+      "slug": "2026-09-09-hosted-dual-license",
+      "url": "https://www.slidphilabs.com/blog/2026-09-09-hosted-dual-license",
+      "summary": "AWARE is live under a dual license. slid-phi 2.3.0, spl-pay-per-suite 1.2.0, blackjack-compression 1.6.0, and @cptasz13/tru8 0.2.0 call POST /api/compress. First 2 GB/month free, then 8¢/GB.",
+      "tags": ["aware", "release", "npm", "license"]
+    },
     {
       "id": "2026-09-05-pulsar-250",
       "week_of": "2026-09-01",

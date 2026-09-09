@@ -1,18 +1,24 @@
-TRU8 Public Demo License
+TRU8 public zeros demo is available under two licenses. You choose one.
 
-Copyright (c) 2026 Slid Phi Labs
+1. GNU Affero General Public License v3.0 or later
+   See LICENSE.AGPL-3.0
 
-Permission is granted to use, copy, and benchmark the public demo surface
-in this package with attribution:
+2. Slid Phi Labs Commercial License
+   See LICENSE.COMMERCIAL
+   Use this to ship the public zeros demo inside a closed product. The production residual engine stays a separate paid grant.
 
-  Powered by TRU8 · Slid Phi Labs
+This grant never includes Combined GC, LBR1 / splb / ASMD,
+AWARE encoder source, Chamber kernel, or Agent-Rider signing keys
+unless the invoice names them.
 
-The production residual engine, private coefficients, full packer/unpacker,
-T_SPARSE internals, and Continuous-1088 Strong path are proprietary and
-require a commercial license.
+Copyright (c) 2026 Slid Phi Labs / Corey Tasz.
 
-Hosted compressor seat: https://www.slidphilabs.com/pay?sku=gc-year
-Lab Pass: https://www.slidphilabs.com/pay?sku=lab-pass
-Inquire: corey@slidphilabs.com
+Legal identity
+- Trade name: Slid Phi Labs
+- Public author / copyright: Corey Tasz
+- Legal name on manuscript: Corey Robert Ptaszenski
+
+Seats and current terms: https://www.slidphilabs.com/licensing.json
+Contact: corey@slidphilabs.com
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.

@@ -3,6 +3,8 @@
  * Production residual / Continuous-1088 / T_SPARSE internals stay licensed.
  */
 import { assertTru8Box } from "./box.mjs";
+import { compress as hostedCompress, decompress as hostedDecompress } from "./hosted.mjs";
+export { zip, unzip, isPccz } from "./hosted.mjs";
 
 export const T_ZERO = 0x00;
 export const T_DICT = 0x01;
@@ -423,24 +425,29 @@ function asBuf(input) {
 }
 
 /**
- * Public pack. All-zero input → T_ZERO (8 B). Anything else is licensed residual.
+ * All-zero input → 8 bytes locally. Everything else uses hosted compression
+ * (every dual-licensed pathway on the lab machine).
  */
-export function compress(input) {
+export function compress(input, opts) {
   assertTru8Box();
   const b = asBuf(input);
+  let zeros = true;
   for (let i = 0; i < b.length; i++) {
-    if (b[i] !== 0) throw new LicensedPathError("T_SPARSE");
+    if (b[i] !== 0) {
+      zeros = false;
+      break;
+    }
   }
-  return packZeroRun(b.length);
+  if (zeros) return packZeroRun(b.length);
+  return hostedCompress(b, opts).then((j) => j.packed);
 }
 
-/** Public decompress: T_ZERO only. */
+/** T_ZERO locally; hosted frames restore on the lab host. */
 export function decompress(frame, opts) {
   assertTru8Box();
-  const b = asBuf(frame);
+  const b = asBuf(frame.packed || frame);
   if (b[0] === T_ZERO) return expandZeros(b, opts);
-  if (b[0] === T_SPARSE) throw new LicensedPathError("T_SPARSE");
-  throw new LicensedPathError(`token 0x${b[0].toString(16)}`);
+  return hostedDecompress(frame.packed_b64 ? frame : b, opts).then((j) => j.raw);
 }
 
 export function demoZeros(n = 1_000_000) {

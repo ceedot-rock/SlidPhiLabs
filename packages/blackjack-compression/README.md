@@ -1,25 +1,16 @@
-# blackjack-compression (public stub)
+# blackjack-compression
 
-**Proprietary.** Public surface is a stub only.
+Dual-licensed hosted lossless compression client. `compress()` / `decompress()` / `zip()` / `unzip()` call the live host. Open terms or a paid grant.
 
-Fibonacci operator coding + Rice + Elias ω + Δ² + Combinadic engines are delivered after freemium use or purchase.
+```bash
+npm i blackjack-compression
+```
 
-## Get the real package
+```js
+import { compress, decompress, zip } from "blackjack-compression";
 
-- **Suite unpaid cap 6.9 GB / 3 h** → [https://www.slidphilabs.com/pps](https://www.slidphilabs.com/pps)
-- **Access / support / private install** → [https://www.slidphilabs.com/access](https://www.slidphilabs.com/access)
-- Agent rail (x402) → [https://www.slidphilabs.com/api/agent](https://www.slidphilabs.com/api/agent)
+const { packed } = await compress(Buffer.from("hello"));
+const archive = await zip([{ path: "a.txt", data: "hello" }]); // .pcc
+```
 
-Support + Integration $199 · Sponsor $29 · Consulting $250
-
-## Live benches (structured integers)
-
-See the lab scorecard: [www.slidphilabs.com/standings](https://www.slidphilabs.com/standings)
-
-Flagship (ZRW family):
-- zeros_10k → **8 B** (gzip-9 73 B · brotli-11 13 B)
-- zeros_1M → **8 B** (gzip-9 3910 B · brotli-11 14 B)
-
-Domain-honest comparison: [`docs/BENCH_VS_INDUSTRY.md`](../../docs/BENCH_VS_INDUSTRY.md)
-
-© Slid Phi Labs · All rights reserved
+A `.pcc` file is our zip. First 2 GB/month free, then 8¢/GB. Product: [www.slidphilabs.com/gc](https://www.slidphilabs.com/gc)

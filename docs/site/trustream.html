@@ -4,32 +4,32 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>TRUSTREAM — live log compression on your AWARE plan · Slid Phi Labs</title>
-  <meta name="description" content="Stream agent logs and telemetry in 4 KiB tiles. Zeros collapse. Random junk never grows. Included with AWARE — not a second bill, not a zstd replacement."/>
+  <meta name="description" content="Stream agent logs and telemetry. Zeros collapse. Random junk stays the same size. Included with AWARE."/>
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://www.slidphilabs.com/trustream"/>
-  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg"/>
+  <link rel="icon" type="image/jpeg" href="/assets/now/mark.jpg"/>
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Slid Phi Labs"/>
   <meta property="og:title" content="TRUSTREAM — live log compression"/>
   <meta property="og:description" content="Same AWARE plan as files. Agent logs, SIEM, telemetry. Zeros shrink. Junk does not inflate."/>
   <meta property="og:url" content="https://www.slidphilabs.com/trustream"/>
-  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="TRUSTREAM — live log compression"/>
   <meta name="twitter:description" content="Included with AWARE. Zeros collapse. Incompressible tiles stay put."/>
-  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=17"/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=30"/>
 </head>
 <body>
   <main class="spl-page" id="main">
     <p class="spl-kicker">Live logs · included with AWARE</p>
     <h1>TRUSTREAM</h1>
-    <p class="lede">Agent logs, SIEM, telemetry — without paying a second compressor, and without a pipe that makes random noise bigger than it started.</p>
+    <p class="lede">Agent logs, SIEM, telemetry — without a second compressor, and without a pipe that makes random noise bigger than it started.</p>
     <div class="spl-prose">
-      <p><strong>What you get.</strong> A live 4 KiB tile pipe on the AWARE plan you already buy for files. Day $9, month $49, year $490. Long runs of zeros collapse (the zeros demo is 10,000 zeros → 8 bytes). Already-compressed or random tiles are stored as-is. Ratio on incompressible data is 1.0000 — it does not grow.</p>
-      <p><strong>Why it exists.</strong> File compressors wait for a whole blob. Log pipes cannot. TRUSTREAM is the stream face of the same house: keep the empty parts tiny, never punish the noisy parts. You are not replacing zstd on general text. You are not entering a Silesia contest. You are shipping traces without a surprise expansion.</p>
-      <p><strong>What you do not buy twice.</strong> This is not a fifth product. pulsar is the free download compressor. AWARE archive mode is whole files. TRUSTREAM is the live door. One checkout.</p>
+      <p><strong>What you get.</strong> Live log compression on the AWARE plan you already buy for files. Empty stretches shrink. Already-compressed or random chunks stay as-is — they do not grow.</p>
+      <p><strong>Why it exists.</strong> File compressors wait for a whole blob. Logs cannot. TRUSTREAM is the stream face of AWARE: keep the empty parts tiny, never punish the noisy parts. You are not replacing gzip on general text. You are shipping traces without a surprise expansion.</p>
+      <p><strong>One checkout.</strong> AWARE is whole files. TRUSTREAM is the live door. pulsar is the compressor you run on your machine.</p>
     </div>
     <p class="spl-actions">
       <a class="spl-btn spl-btn-dark" href="/pay?sku=gc-month">AWARE month $49</a>
@@ -38,6 +38,6 @@
     </p>
     <p class="spl-note">Same checkout as <a href="/gc">AWARE</a>. Not zstd. Not pulsar.</p>
   </main>
-  <script src="/assets/chrome.js?v=17" defer></script>
+  <script src="/assets/chrome.js?v=30" defer></script>
 </body>
 </html>

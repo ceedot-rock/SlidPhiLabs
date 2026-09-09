@@ -1,21 +1,27 @@
 # Slid Phi Labs
-> Lossless compression, a two-key JSON seal, signed agent identity, and a small exactness language. You buy a seat or a written exception — not the production engine.
+> AWARE is hosted lossless compression. Dual-licensed: open terms or a paid grant. Send a file, get a smaller one, restore every byte. Every pathway on this machine. POST /api/compress. Restore POST /api/decompress. npm: slid-phi compress()/decompress(). MCP: spl_compress. Product: https://www.slidphilabs.com/gc
 > https://www.slidphilabs.com/
 
 ## Who
-Slid Phi Labs. Corey Tasz. Humans: /humans  Agents: /agents  Inbox: corey@slidphilabs.com
+Slid Phi Labs. Corey Tasz. Site: https://www.slidphilabs.com  Agents: /agents  Inbox: corey@slidphilabs.com
 
 ## Catalog
-What it is, what you get, what you pay.
-- AWARE — hosted lossless compressor. $9/day · $49/mo (200 GB included) · $490/yr (2,000 GB). Then 8¢/GB ($1 card minimum). First 2 GB/month free with no plan. Cheaper than Cloudinary Plus ($99) and AWS S3 egress (~9¢/GB uncompressed). Compare: https://www.slidphilabs.com/compare · product: https://www.slidphilabs.com/gc
-- pulsar — free GPLv3 lossless compressor you can build yourself. To embed it in a closed-source product: $490/yr, SKU pulsar-exception. https://www.slidphilabs.com/pulsar · https://www.slidphilabs.com/pay?sku=pulsar-exception
+What it is, then what you pay.
+- AWARE — hosted lossless compressor. Dual-licensed. You send a backup, dataset, archive, or log. We run every pathway we own and keep the smallest restore-safe copy. $9/day · $49/mo (200 GB included) · $490/yr (2,000 GB). Then 8¢/GB. First 2 GB/month free. Product: https://www.slidphilabs.com/gc · prices: https://www.slidphilabs.com/pricing
+- TRUSTREAM — live logs on the AWARE plan. Empty stretches shrink. Noisy stretches do not explode. Not a second bill. https://www.slidphilabs.com/trustream
+- pulsar — free GPLv3 lossless compressor you run on your own machine (Linux binary + source). Closed-product embed: $490/yr, SKU pulsar-exception. https://www.slidphilabs.com/pulsar · https://www.slidphilabs.com/pay?sku=pulsar-exception
 - zeros demo — all-zero data → 8 bytes, round-trip. Free on POST /api/specialist. Proof, not the paid compressor.
 - Chamber — two-key JSON seal. $9/mo · $99/yr. License to seal new secrets; opening an already-sealed secret takes both keys, not another payment. https://www.slidphilabs.com/chamber
 - Agent-Rider — signed identity for AI agents. $79/mo · $790/yr. https://www.slidphilabs.com/rider
+- Warrant — signed mandate + receipts bound to a Rider. Who is Rider; what they may do and proof they did it is Warrant. $29/mo · $290/yr. POST /api/warrant/issue (X-Agent-Rider). https://www.slidphilabs.com/warrant
 - CuNi — one program printed into many languages. Python, Go, and JavaScript must match, or it refuses. Playground $0. Closed-app exception $490/yr, SKU cuni-exception. v0.1.8. https://www.slidphilabs.com/cuni
 - Lab Pass — $668/yr. One year of Chamber + AWARE + TruGame. Does not include Rider. https://www.slidphilabs.com/lab-pass
 
-The production engine is private. You buy a seat or a written exception, not the engine.
+Every product we bring forward is dual-licensed (open terms or a paid grant). Hosted compression uses all of those pathways. npm packages and MCP call the live host — they are clients, not stubs.
+
+.pcc archive (our zip): https://www.slidphilabs.com/pcc · POST /api/archive · POST /api/unarchive · npm zip()/unzip()
+Press (2026-09-09): https://www.slidphilabs.com/press · blog: https://www.slidphilabs.com/blog/2026-09-09-hosted-dual-license
+npm: slid-phi 2.3.0 · spl-pay-per-suite 1.2.0 · blackjack-compression 1.6.0 · @cptasz13/tru8 0.2.0
 
 Licensing: https://www.slidphilabs.com/licensing.json · https://www.slidphilabs.com/COMMERCIAL-LICENSE.md
 Specialist (zeros demo): https://www.slidphilabs.com/specialist · POST /api/specialist

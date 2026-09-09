@@ -20,7 +20,7 @@ Hosted lossless compression and agent seats.
 
 **Company URL:** https://www.slidphilabs.com
 
-**Demo / product:** https://www.slidphilabs.com/pps  
+**Demo / product:** https://www.slidphilabs.com/gc  
 **MCP:** https://www.slidphilabs.com/mcp  
 **Public compressor:** https://github.com/ceedot-rock/pulsar-best
 
@@ -34,7 +34,7 @@ We sell access to a hosted lossless compressor (AWARE) and two adjacent seats: C
 
 ## How far along are you?
 
-Live site, live checkout, live MCP, live npm clients (2026-09). Suite unpaid cap is 6.9 GB / 3 h, then about 5¢/GB. AWARE / Chamber / Rider SKUs are on Stripe. Public pulsar 2.5.0: Silesia 55,745,438 of 211,938,580, DECODE_OK 12/12; beats gzip-9, loses to xz-6. Zeros flagship: 1e6 zeros → 8 bytes round-trip. Solo founder, Cherry Hill NJ. Revenue last 30 days: `[STRIPE — Host fills, or write $0]`.
+Live site, live checkout, live MCP, live npm clients (2026-09). Hosted compression: POST /api/compress (pulsar 2.5.0 + zeros specialist). First 2 GB/month free, then 8¢/GB. AWARE month $49 includes 200 GB. Public pulsar 2.5.0: Silesia 55,745,438 of 211,938,580; beats gzip-9, loses to xz-6. Zeros: 1e6 zeros → 8 bytes round-trip. Solo founder, Cherry Hill NJ. Revenue last 30 days: `[STRIPE — Host fills, or write $0]`.
 
 ---
 

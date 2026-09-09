@@ -3,75 +3,61 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Agents — same products, machine checkout · Slid Phi Labs</title>
-  <meta name="description" content="Agent door for Slid Phi Labs. Same five products as the human site. Discover at GET /api/agent. Pay with x402 USDC or send a human to Stripe."/>
+  <title>Agents — AWARE and the rest of the lab · Slid Phi Labs</title>
+  <meta name="description" content="Same products as the website. Lead product AWARE. Discover GET /api/agent. Pay x402 USDC or send a human to Stripe."/>
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://www.slidphilabs.com/agents"/>
-  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg"/>
+  <link rel="icon" type="image/jpeg" href="/assets/now/mark.jpg"/>
   <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent commerce discovery"/>
-  <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/agents.json" title="agents.json"/>
   <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:site_name" content="Slid Phi Labs"/>
-  <meta property="og:title" content="Agents — same products, machine checkout"/>
-  <meta property="og:description" content="GET /api/agent. Five products. x402 USDC or Stripe."/>
+  <meta property="og:title" content="Agents — Slid Phi Labs"/>
+  <meta property="og:description" content="GET /api/agent. AWARE first. x402 or Stripe."/>
   <meta property="og:url" content="https://www.slidphilabs.com/agents"/>
-  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Agents — Slid Phi Labs"/>
-  <meta name="twitter:description" content="Same products as /humans. Discovery: GET /api/agent."/>
-  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=18"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=30"/>
 </head>
 <body>
   <main class="spl-page" id="main">
-    <p class="spl-kicker">Agent door</p>
-    <h1>Agents buy the same products humans do.</h1>
-    <p class="lede">Start at <a href="/api/agent"><code>GET /api/agent</code></a>. That JSON is the catalog. Humans use <a href="/humans">/humans</a> and Stripe. You can pay with x402 (USDC on Solana or Base) or send a person to checkout.</p>
+    <p class="spl-kicker">For agents</p>
+    <h1>Same lab. Machine checkout.</h1>
+    <p class="lede">Start at <a href="/api/agent"><code>GET /api/agent</code></a>. The lead product is AWARE: hosted lossless compression. POST a file, get a smaller one, restore every byte. Humans use the website and Stripe. You can pay with x402 (USDC) or send a person to checkout.</p>
     <div class="spl-grid">
+      <a class="spl-card spl-lead" href="/gc">
+        <p class="spl-kicker">Files</p>
+        <h3>AWARE</h3>
+        <p>Hosted lossless compression. POST /api/compress, POST /api/decompress. You do not get the encoder.</p>
+      </a>
+      <a class="spl-card" href="/trustream">
+        <p class="spl-kicker">Streams</p>
+        <h3>TRUSTREAM</h3>
+        <p>Live logs on the same AWARE plan.</p>
+      </a>
+      <a class="spl-card" href="/chamber">
+        <p class="spl-kicker">JSON secrets</p>
+        <h3>Chamber</h3>
+        <p>Two-key JSON seal. You store the blob.</p>
+      </a>
+      <a class="spl-card" href="/rider">
+        <p class="spl-kicker">Identity</p>
+        <h3>Agent-Rider</h3>
+        <p>Signed credential so you can prove which agent acted.</p>
+      </a>
       <a class="spl-card" href="/cuni">
         <p class="spl-kicker">Language · $0</p>
         <h3>CuNi</h3>
-        <p>Write once. Print many languages. Python, Go, and JS must match, or it refuses. Studio: cuni-studio.fly.dev</p>
-      </a>
-      <a class="spl-card" href="/gc">
-        <p class="spl-kicker">Files · $9 / $49 / $490</p>
-        <h3>AWARE</h3>
-        <p>Hosted lossless compression. $49/month includes 200 GB, then 8¢/GB. You do not get the encoder.</p>
-      </a>
-      <a class="spl-card" href="/trustream">
-        <p class="spl-kicker">Streams · included with AWARE</p>
-        <h3>TRUSTREAM</h3>
-        <p>The same plan, for live logs in 4 KiB tiles.</p>
-      </a>
-      <a class="spl-card" href="/chamber">
-        <p class="spl-kicker">JSON secrets · $9 / $99</p>
-        <h3>Chamber</h3>
-        <p>Two-key JSON seal. One share is useless. You store the blob.</p>
-      </a>
-      <a class="spl-card" href="/rider">
-        <p class="spl-kicker">Identity · $79 / $790</p>
-        <h3>Agent-Rider</h3>
-        <p>Signed credential so you can prove which agent acted. Not in Lab Pass.</p>
+        <p>Write once. Python, Go, and JS must match, or it refuses.</p>
       </a>
     </div>
-    <h2>How to pay</h2>
     <div class="spl-prose">
-      <ol>
-        <li>Read <a href="/api/agent">GET /api/agent</a> and <a href="/llms.txt">/llms.txt</a>.</li>
-        <li>List SKUs: <a href="/api/x402-products">GET /api/x402-products</a>.</li>
-        <li>Buy: <code>POST /api/x402-products</code> with a sku. On HTTP 402, pay the quoted USDC and retry with <code>X-PAYMENT</code>.</li>
-        <li>Humans: <a href="/pay">/pay</a> (Stripe).</li>
-        <li>MCP: <code>POST /mcp</code> or <code>npx -y spl-pay-per-suite mcp</code>.</li>
-      </ol>
+      <p>Pay: <code>GET /api/x402-products</code>, then <code>POST /api/x402-products</code> with a sku. On HTTP 402, pay the quoted USDC and retry with <code>X-PAYMENT</code>. MCP: <code>POST /mcp</code>. Humans: <a href="/pay">/pay</a>.</p>
     </div>
     <p class="spl-actions">
       <a class="spl-btn spl-btn-dark" href="/api/agent">GET /api/agent</a>
-      <a class="spl-btn spl-btn-line" href="/products">Product catalog</a>
-      <a class="spl-btn spl-btn-line" href="/humans">Human door</a>
+      <a class="spl-btn spl-btn-line" href="/docs">API</a>
+      <a class="spl-btn spl-btn-line" href="/llms.txt">llms.txt</a>
     </p>
   </main>
-  <script src="/assets/chrome.js?v=18" defer></script>
+  <script src="/assets/chrome.js?v=30" defer></script>
 </body>
 </html>

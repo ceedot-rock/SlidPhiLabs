@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-08",
+  "updated": "2026-09-09",
   "lab": "Slid Phi Labs",
   "owner": "Corey Tasz",
   "inbox": "corey@slidphilabs.com",
@@ -7,8 +7,24 @@
   "terms": "https://www.slidphilabs.com/COMMERCIAL-LICENSE.md",
   "machine": "https://www.slidphilabs.com/specialist",
   "api": "https://www.slidphilabs.com/api/specialist",
-  "plain": "pulsar is free GPLv3; $490/yr (SKU pulsar-exception) to embed it in one closed product. AWARE is a hosted compressor — paid access, no source ($9/day · $49/mo · $490/yr). The zeros demo is free: all-zero data → 8 bytes on POST /api/specialist. Chamber, Rider, CuNi, and Lab Pass are products with prices. The production engine is private.",
-  "rule": "Free demos and open-source stay public. Putting open code in a closed product needs a paid written exception. Hosted products are access: you run them, you do not get the encoder.",
+  "plain": "Every product we bring forward is dual-licensed: the open license, or a paid grant to ship closed. Hosted compression runs every pathway we own on this machine and keeps the smallest file that still restores. npm and MCP call that live host. AWARE year ($490) is the commercial grant for the hosted house. pulsar-exception and cuni-exception cover those trees. Chamber, Rider, and Warrant seats cover theirs.",
+  "rule": "Dual license on every product we bring forward. Copyleft or a paid grant. Hosted compression uses every own pathway. Signing keys and live customer data stay operator-only.",
+  "dual": {
+    "chooser": "You pick copyleft or the commercial grant. Both are written.",
+    "copyleft_or_commercial": [
+      { "name": "pulsar", "copyleft": "GPL-3.0-or-later", "sku": "pulsar-exception", "usd": 490, "page": "https://www.slidphilabs.com/pulsar" },
+      { "name": "Combined GC", "copyleft": "AGPL-3.0-or-later", "sku": "gc-year", "usd": 490, "page": "https://www.slidphilabs.com/gc", "hosted": true },
+      { "name": "LBR1 / PCC / splb", "copyleft": "AGPL-3.0-or-later", "sku": "gc-year", "usd": 490, "page": "https://www.slidphilabs.com/gc", "hosted": true },
+      { "name": "CuNi", "copyleft": "AGPL-3.0-or-later", "sku": "cuni-exception", "usd": 490, "page": "https://www.slidphilabs.com/cuni" },
+      { "name": "Chamber SDK", "copyleft": "AGPL-3.0-or-later", "sku": "chamber-year", "usd": 99, "page": "https://www.slidphilabs.com/chamber" },
+      { "name": "Agent-Rider", "copyleft": "AGPL-3.0-or-later", "sku": "rider-year", "usd": 790, "page": "https://www.slidphilabs.com/rider" },
+      { "name": "Warrant", "copyleft": "AGPL-3.0-or-later", "sku": "warrant-year", "usd": 290, "page": "https://www.slidphilabs.com/warrant" },
+      { "name": "spl-pay-per-suite", "copyleft": "AGPL-3.0-or-later", "sku": "gc-month", "usd": 49, "page": "https://www.slidphilabs.com/docs" },
+      { "name": "TRU8 public zeros demo", "copyleft": "AGPL-3.0-or-later", "sku": "pulsar-exception", "usd": 490, "page": "https://www.slidphilabs.com/specialist" },
+      { "name": "Slid Phi Labs public site and clients", "copyleft": "AGPL-3.0-or-later", "sku": "gc-year", "usd": 490, "page": "https://www.slidphilabs.com/" }
+    ],
+    "operator_only": ["Agent-Rider signing keys", "Chamber kernel secrets", "AUTH_DIR customer data"]
+  },
   "never_on_this_surface": [
     "the private encoder",
     "Chamber internals",
@@ -39,9 +55,9 @@
     "archive": {
       "occupant": "AWARE",
       "public_name": "AWARE",
-      "license": "hosted access",
-      "runs_here": false,
-      "engine": "private",
+      "license": "AGPL-3.0-or-later OR Commercial (AWARE year)",
+      "runs_here": true,
+      "engine": "Combined GC + LBR1 + pulsar + wraps",
       "page": "https://www.slidphilabs.com/gc",
       "skus": ["gc-day", "gc-month", "gc-year", "lab-pass"],
       "plain": "Hosted lossless compressor. $9/day · $49/mo (200 GB) · $490/yr (2,000 GB). Then 8¢/GB. First 2 GB/month free. You buy access. You do not get the encoder.",
@@ -49,10 +65,10 @@
     },
     "general": {
       "occupant": "LBR1",
-      "license": "UNLICENSED",
-      "runs_here": false,
-      "plain": "Not for sale. The production engine is private. The hosted compressor you can buy is AWARE.",
-      "commercial": "Not published. Hosted path is AWARE."
+      "license": "AGPL-3.0-or-later OR Commercial",
+      "runs_here": true,
+      "plain": "LBR1 runs on the hosted AWARE machine. Dual license: AGPL-3.0-or-later, or an AWARE year seat.",
+      "commercial": "SKU gc-year. Hosted compression already uses this pathway."
     }
   },
   "skus": {

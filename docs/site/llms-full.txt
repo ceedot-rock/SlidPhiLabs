@@ -42,7 +42,7 @@ https://www.slidphilabs.com/projects.json
 ## Wording
 - Chamber = cloak license. $9/mo · $99/yr. Open is keys-only.
 - AWARE = hosted compressor. $9/day · $49/mo · $490/yr.
-- Suite = metered AWARE jobs (6.9 GB / 3 h then ~5¢/GB).
+- AWARE meter = first 2 GB/month free, then 8¢/GB. Month plan includes 200 GB. Not a fifth product.
 - Lab Pass = Chamber + AWARE + TruGame, $668/yr. Not Rider.
 - Access = entitlement claim. Not a codec dump.
 

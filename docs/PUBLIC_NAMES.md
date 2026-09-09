@@ -2,7 +2,9 @@
 
 Use only: AWARE, TRUSTREAM, Chamber, Rider, Suite, Lab Pass, pulsar (public GPLv3 demo).
 
-Internal only: Combined GC, PCC (file type `.pcc` later), Loom, ZRW, ZRQC, Omni-Dormant, PHASON, CDDG, TRUE 8B.
+Public file type: `.pcc` (our zip). Do not expand the codec name on customer HTML.
+
+Internal only: Combined GC, PCC (the codec), Loom, ZRW, ZRQC, Omni-Dormant, PHASON, CDDG, TRUE 8B.
 
 Retired as lead cards: TRU8, Gate. Keep URLs as aliases → AWARE.
 

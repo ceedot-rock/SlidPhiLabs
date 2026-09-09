@@ -1,0 +1,73 @@
+FOR IMMEDIATE RELEASE
+September 9, 2026
+Cherry Hill, New Jersey
+
+SLID PHI LABS OPENS DUAL-LICENSED HOSTED LOSSLESS COMPRESSION
+AND PUBLISHES NPM CLIENTS THAT CALL THE LIVE HOST
+
+Slid Phi Labs today opened AWARE, hosted lossless compression, under a dual
+license, and published four npm packages that call the live host.
+
+WHAT IT IS
+You send a file. The lab runs every compression pathway it owns on that
+machine and keeps the smallest copy that still restores every byte. All-zero
+files become 8 bytes. If nothing shrinks the file, it is stored as-is so it
+never comes back larger. Restore is the same host.
+
+DUAL LICENSE
+Every product the lab brings forward is available two ways: open terms, or a
+paid commercial grant to ship inside a closed product. An AWARE seat is the
+grant for hosted use. pulsar’s closed-product grant is $490/year. CuNi’s is
+$490/year. Chamber, Rider, and Warrant seats cover theirs.
+
+NPM CLIENTS (not the encoder)
+  slid-phi 2.3.0                 compress() / decompress()
+  spl-pay-per-suite 1.2.0        quotes, checkout, MCP, same compress path
+  blackjack-compression 1.6.0    same hosted path
+  @cptasz13/tru8 0.2.0           zeros pack locally to 8 bytes; else hosted AWARE
+
+  npm i slid-phi
+  npm i spl-pay-per-suite
+  npm i blackjack-compression
+  npm i @cptasz13/tru8
+
+.PCC ARCHIVE
+A .pcc file is our zip: many files, one container, our compression inside.
+POST /api/archive  → archive.pcc
+POST /api/unarchive → the files
+npm zip() / unzip() · lb zip out.pcc folder/
+
+PRICE
+  First 2 GB each calendar month: free
+  Then: 8¢ per GB, $1 card minimum
+  AWARE day $9 (10 GB) · month $49 (200 GB) · year $490 (2,000 GB)
+  TRUSTREAM live logs sit on the same plan
+
+PULSAR
+Free lossless compressor you run on your own machine (Linux binary and
+source). Closed-product embed: $490/year.
+
+ALSO ON THE CATALOG
+  Chamber     two-key JSON seal                 $9/month · $99/year
+  Agent-Rider signed agent identity             $79/month · $790/year
+  Warrant     mandate + receipts on a Rider     $29/month · $290/year
+  CuNi        write once; Python/Go/JS match    studio $0 · exception $490/year
+
+LINKS
+  Product  https://www.slidphilabs.com/gc
+  Pricing  https://www.slidphilabs.com/pricing
+  npm      https://www.slidphilabs.com/npm
+  API      https://www.slidphilabs.com/docs
+  Press    https://www.slidphilabs.com/press
+
+MEDIA CONTACT
+Corey Tasz, Slid Phi Labs
+corey@slidphilabs.com
+https://x.com/slidphilabs
+
+BOILERPLATE
+Slid Phi Labs is a computation lab in Cherry Hill, New Jersey. The lead
+product is hosted lossless compression. This release does not claim a ranking
+against other compressors and does not report customer counts or revenue.
+
+###

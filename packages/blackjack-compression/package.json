@@ -1,7 +1,7 @@
 {
   "name": "blackjack-compression",
-  "version": "1.5.3",
-  "description": "Blackjack compression — proprietary (Slid Phi Labs). Public package is a stub. Real engine after freemium or purchase.",
+  "version": "1.6.0",
+  "description": "Dual-licensed hosted lossless compression client. Open license or a paid grant. Calls the lab host; every pathway runs.",
   "type": "module",
   "main": "stub.mjs",
   "exports": {
@@ -9,18 +9,22 @@
   },
   "files": [
     "stub.mjs",
+    "hosted.mjs",
+    "pccz.mjs",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "LICENSE.AGPL-3.0",
+    "LICENSE.COMMERCIAL"
   ],
   "keywords": [
     "compression",
-    "proprietary",
-    "stub",
+    "pcc",
+    "archive",
     "slid-phi-labs",
     "blackjack"
   ],
   "author": "Slid Phi Labs",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "AGPL-3.0-or-later",
   "repository": {
     "type": "git",
     "url": "https://github.com/ceedot-rock/SlidPhiLabs"

@@ -1,49 +1,37 @@
 # Slid Phi Labs — public share kit
 
 **Canonical:** https://www.slidphilabs.com  
-**Position:** Exact codecs. Agentic infrastructure. Compression that knows it is alive.  
-**Flagship:** ZRW zeros×10k → **8 B** (gzip-9 73 B · brotli-11 13 B · ramp ~141×)
+**Press:** https://www.slidphilabs.com/press  
+**Position:** Hosted lossless compression. Dual-licensed. Send a file, get a smaller one, restore every byte.
 
-## Live pulse (ship 2026-08-07)
+## Live (2026-09-09)
 
 | Signal | URL |
 |--------|-----|
-| Home + proof bar | https://www.slidphilabs.com |
-| Metrics | https://www.slidphilabs.com/api/phi/metrics |
-| Standings | https://www.slidphilabs.com/standings |
-| Blog: Why 8 B | https://www.slidphilabs.com/blog/2026-08-07-why-8b-matters |
-| OG image | https://www.slidphilabs.com/assets/og-alive.jpg |
+| Press release | https://www.slidphilabs.com/press |
+| Plain text | https://www.slidphilabs.com/press.txt |
+| Blog | https://www.slidphilabs.com/blog/2026-09-09-hosted-dual-license |
+| Product | https://www.slidphilabs.com/gc |
+| npm | https://www.slidphilabs.com/npm |
+| Pricing | https://www.slidphilabs.com/pricing |
 
-## One-liner (Discord / agent channels)
+## One-liner
 
-> Site now breathes. Ratio, cycles, self-tunes, standings — all live. https://www.slidphilabs.com · ZRW zeros×10k → 8 B
+> AWARE is hosted lossless compression. Dual-licensed. npm clients call the live host. First 2 GB/month free, then 8¢/GB. https://www.slidphilabs.com/press
 
-## Dual surfaces
+## X / Discord
 
-| Surface | Who | URL |
-|---------|-----|-----|
-| **Pub Facing** | Humans | https://www.slidphilabs.com/humans |
-| **Agentic Minded** | Agents | https://www.slidphilabs.com/agents |
+> Slid Phi Labs opened AWARE: hosted lossless compression, dual-licensed. Four npm clients now call the live host — slid-phi 2.3.0, spl-pay-per-suite 1.2.0, blackjack-compression 1.6.0, @cptasz13/tru8 0.2.0. First 2 GB/month free, then 8¢/GB. https://www.slidphilabs.com/press
 
-## Amplify pack
+## npm
 
-- X thread copy: `scripts/amp/X_THREAD_SITE_BREATHES.md`
-- Design-partner blast: `scripts/amp/DESIGN_PARTNER_BLAST.md`
-- Verify: `./scripts/slid_verify_deploy.sh`
-- Watch: `node scripts/slid_watch_pulse.mjs`
+```bash
+npm i slid-phi
+npm i spl-pay-per-suite
+npm i blackjack-compression
+npm i @cptasz13/tru8
+```
 
-## Blurbs
+## Contact
 
-### Universal
-> **Slid Phi Labs** — Compression that knows it is alive.  
-> ZRW zeros×10k → 8 B (gzip 73 · brotli 13).  
-> Humans: https://www.slidphilabs.com/humans  
-> Agents: `GET /api/agent` · https://www.slidphilabs.com/agents
-
-### Human-first
-> Try free web → standings proof → suite (6.9 GB / 3 h unpaid).  
-> https://www.slidphilabs.com/web · /standings · /pps
-
-### Agent-first
-> `GET https://www.slidphilabs.com/api/agent` then x402.  
-> OmniWave: `POST /api/omniwave` · pulse: `/api/phi/metrics`
+corey@slidphilabs.com · @slidphilabs

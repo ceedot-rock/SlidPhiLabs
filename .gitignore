@@ -20,3 +20,6 @@ docs/site/api/omniwave.js
 lab/omniwave/*.py
 lab/omniwave/__pycache__/
 docs/site/assets/logos/*.orig.jpg
+
+# Host-only engine binaries — Fly deploy context, not public git
+docs/site/bin/

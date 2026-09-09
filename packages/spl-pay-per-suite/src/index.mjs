@@ -46,6 +46,8 @@ export {
 
 export const SERVICE_NAME = "SPL Pay Per Suite";
 
+export { compress, decompress, zip, unzip, ORIGIN as SPL_HOST, isPccz } from "./hosted.mjs";
+
 /**
  * Live quote from site API (falls back to local computeQuote).
  */

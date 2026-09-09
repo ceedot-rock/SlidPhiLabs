@@ -3,29 +3,32 @@
   const NAV = [
     ["/", "Home"],
     ["/gc", "Compress"],
-    ["/docs", "API"],
     ["/pricing", "Pricing"],
+    ["/box", "Try"],
     ["/pay", "Pay"],
   ];
   const MORE = [
     ["/trustream", "TRUSTREAM logs"],
-    ["/pulsar", "pulsar download"],
-    ["/specialist", "Zeros demo"],
     ["/chamber", "Chamber"],
     ["/rider", "Agent-Rider"],
+    ["/warrant", "Warrant"],
     ["/cuni", "CuNi"],
-    ["/lab-pass", "Lab Pass"],
+    ["/pcc", ".pcc archive"],
+    ["/pulsar", "pulsar"],
+    ["/docs", "API"],
+    ["/press", "Press"],
     ["/about", "About"],
     ["/products", "All products"],
   ];
   const FALLBACK_NEWS = [
-    { t: "Compress", title: "AWARE — shrink files for $49/mo, 200 GB, then 8¢/GB", href: "/gc" },
-    { t: "Streams", title: "TRUSTREAM — live logs, same AWARE plan", href: "/trustream" },
-    { t: "Seal", title: "Chamber — two-key JSON seal, $9/mo · $99/yr", href: "/chamber" },
-    { t: "Identity", title: "Agent-Rider — signed agent identity, $79/mo · $790/yr", href: "/rider" },
-    { t: "Language", title: "CuNi — write once, print many languages, $0", href: "/cuni" },
-    { t: "Free", title: "pulsar — GPLv3 compressor; $490/yr to embed closed", href: "/pulsar" },
-    { t: "Bundle", title: "Lab Pass — Chamber + AWARE + TruGame, $668/yr", href: "/lab-pass" },
+    { t: "Press", title: "Dual-licensed hosted compression — npm clients call the live host", href: "/press" },
+    { t: ".pcc", title: "Our archive, like zip — many files, our compression", href: "/pcc" },
+    { t: "AWARE", title: "Hosted lossless compression — send a file, restore every byte", href: "/gc" },
+    { t: "TRUSTREAM", title: "Live logs on the same plan", href: "/trustream" },
+    { t: "Chamber", title: "Two-key lock for a JSON secret", href: "/chamber" },
+    { t: "Rider", title: "Signed identity for AI agents", href: "/rider" },
+    { t: "Warrant", title: "Mandate and receipts for a Rider", href: "/warrant" },
+    { t: "CuNi", title: "Write once. Python, Go, and JS must match", href: "/cuni" },
   ];
 
   function path() {
@@ -49,7 +52,7 @@
     <header class="spl-header" role="banner">
       <div class="bar">
         <a class="spl-brand" href="/" aria-label="Slid Phi Labs home">
-          <img src="/assets/logos/logo-slid-phi-labs.jpg" width="36" height="36" alt=""/>
+          <img src="/assets/now/mark.jpg" width="36" height="36" alt=""/>
           <span>Slid Phi Labs</span>
         </a>
         <button class="spl-nav-toggle" type="button" aria-expanded="false" aria-label="Menu"></button>
@@ -74,31 +77,25 @@
         <h4>Company</h4>
         <a href="/">Home</a>
         <a href="/products">Products</a>
+        <a href="/press">Press</a>
         <a href="/box">Try 24 hours</a>
         <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a>
       </div>
       <div>
-        <h4>Products</h4>
-        <a href="/gc">AWARE</a>
-        <a href="/trustream">TRUSTREAM</a>
-        <a href="/chamber">Chamber</a>
-        <a href="/rider">Agent-Rider</a>
-        <a href="/cuni">CuNi</a>
+        <h4>Compress</h4>
+        <a href="/gc">Hosted compression</a>
+        <a href="/compare">Compare prices</a>
+        <a href="/docs">API</a>
         <a href="/pulsar">pulsar</a>
       </div>
       <div>
-        <h4>Use</h4>
-        <a href="/about">About</a>
-        <a href="/humans">Humans</a>
-        <a href="/pricing">Pricing</a>
-        <a href="/docs">API</a>
-      </div>
-      <div>
         <h4>Also</h4>
-        <a href="/lab-pass">Lab Pass</a>
-        <a href="/compare">Price table</a>
-        <a href="/license">License</a>
-        <a href="/npm">npm</a>
+        <a href="/trustream">TRUSTREAM</a>
+        <a href="/chamber">Chamber</a>
+        <a href="/rider">Agent-Rider</a>
+        <a href="/warrant">Warrant</a>
+        <a href="/cuni">CuNi</a>
+        <a href="/about">About</a>
       </div>
       <div>
         <h4>Agents</h4>

@@ -9,7 +9,7 @@
   <meta name="robots" content="index,follow"/>
   <meta name="agentic" content="true"/>
   <link rel="canonical" href="https://www.slidphilabs.com/box"/>
-  <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg"/>
+  <link rel="icon" type="image/jpeg" href="/assets/now/mark.jpg"/>
   <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
   <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt"/>
   <meta property="og:type" content="website"/>
@@ -17,12 +17,12 @@
   <meta property="og:title" content="Try 24 hours — Slid Phi Labs"/>
   <meta property="og:description" content="A day on Chamber or AWARE. Then a seat, or it stops."/>
   <meta property="og:url" content="https://www.slidphilabs.com/box"/>
-  <meta property="og:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Try 24 hours — Slid Phi Labs"/>
   <meta name="twitter:description" content="Chamber and AWARE: one day, then a seat."/>
-  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/slid-phi-labs-master.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=18"/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=30"/>
   <style>
     .box-status { margin: 16px 0 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); max-width: 40rem; }
     .box-status strong { color: var(--ink); }
@@ -33,8 +33,8 @@
 <body>
   <main class="spl-page" id="main">
     <p class="spl-kicker">Evaluate</p>
-    <h1>Try the tools for 24 hours</h1>
-    <p class="lede">Start the try on this page. That opens a one-day window in your browser. Then pick Chamber or AWARE. After 24 hours it stops unless you buy a seat. CuNi Studio does not need a trial — it is free. Agent-Rider is a team seat, not a 24-hour box.</p>
+    <h1>Try AWARE or Chamber for 24 hours</h1>
+    <p class="lede">Start the try on this page. That opens a one-day window in your browser. AWARE is the hosted compressor. Chamber is the two-key JSON lock. After 24 hours it stops unless you buy a seat. CuNi Studio is free and does not need a trial. Agent-Rider is a team seat, not a 24-hour box.</p>
     <p class="spl-actions">
       <button type="button" class="spl-btn spl-btn-dark" id="startTry">Start 24-hour try</button>
       <a class="spl-btn spl-btn-line" href="/pricing">Prices</a>
@@ -42,15 +42,15 @@
     </p>
     <div id="boxStatus" class="box-status" hidden></div>
     <div class="spl-grid">
+      <a class="spl-card" href="/gc">
+        <p class="spl-kicker">Compressor</p>
+        <h3>AWARE</h3>
+        <p>Hosted lossless compressor. Send a file, get a smaller one, restore every byte. Engine stays in the lab.</p>
+      </a>
       <a class="spl-card" href="/chamber">
         <p class="spl-kicker">JSON seal</p>
         <h3>Chamber</h3>
         <p>Two-key protocol. License $9/mo · $99/yr. Opening a sealed secret is keys, not another charge.</p>
-      </a>
-      <a class="spl-card" href="/gc">
-        <p class="spl-kicker">Compressor</p>
-        <h3>AWARE</h3>
-        <p>Hosted lossless compressor. Day $9 · Month $49 · Year $490. Engine stays in the lab.</p>
       </a>
       <a class="spl-card" href="/rider">
         <p class="spl-kicker">Identity</p>
@@ -97,6 +97,6 @@
   await ping(false);
 })();
 </script>
-  <script src="/assets/chrome.js?v=18" defer></script>
+  <script src="/assets/chrome.js?v=30" defer></script>
 </body>
 </html>

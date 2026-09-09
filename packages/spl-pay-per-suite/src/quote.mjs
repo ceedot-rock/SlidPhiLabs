@@ -1,31 +1,32 @@
 /**
  * SPL Pay Per Suite — local quote (matches site API suite-pricing.js).
- * Unpaid cap: 6.9 GB and 3 hours. Then ~5¢/GB (4¢ bulk after 100 paid GB).
- * Time window is enforced on the host; this quote is bytes-only.
+ * First 2 GB each calendar month are free. Then 8¢/GB. $1 card minimum.
  */
-export const FREE_GB = 6.9;
-export const FREE_WINDOW_HOURS = 3;
-export const FREE_BYTES = Math.round(FREE_GB * 1024 * 1024 * 1024);
+export const FREE_GB = 2;
+export const FREE_WINDOW_HOURS = 0;
+export const FREE_BYTES = 2 * 1024 * 1024 * 1024;
 export const MAX_BYTES = 1024 * 1024 * 1024 * 1024;
 export const MAX_CENTS = 1_000_000;
-export const MIN_PAID_CENTS = 5;
+export const MIN_PAID_CENTS = 100;
 export const MIN_CENTS = 0;
+export const CENTS_PER_GB = 8;
 
 /** Canonical suite rates — MCP, package.json, site, API must match */
 export const SUITE_PRICING = {
-  model: "unpaid_cap_6_9_3h",
+  model: "calendar_month_2gb_8c",
   free_cap_gb: FREE_GB,
   free_window_hours: FREE_WINDOW_HOURS,
   free_cap_bytes: FREE_BYTES,
-  usd_per_gb_after_free: 0.05,
-  usd_per_gb_first_100: 0.05,
-  usd_per_gb_bulk: 0.04,
-  min_paid_usd: 0.05,
+  usd_per_gb_after_free: 0.08,
+  usd_per_gb_first_100: 0.08,
+  usd_per_gb_bulk: 0.08,
+  min_paid_usd: 1,
   min_paid_cents: MIN_PAID_CENTS,
-  first_paid_egress_ref_usd: 0.09,
+  first_paid_egress_ref_usd: 0.02,
   try_gate: "retired",
+  window: "calendar_month",
   human_one_liner:
-    "Unpaid cap 6.9 GB / 3 h · then ~5¢/GB (4¢ bulk) · min $0.05",
+    "First 2 GB each month free · then 8¢/GB · $1 card minimum",
 };
 
 export const PRODUCT_ADD_CENTS = {
@@ -44,9 +45,9 @@ export const OP_MULT = {
 
 export const STRIPE_PAYMENT_LINK =
   process.env.SPL_PPS_PAYMENT_LINK ||
-  "https://www.slidphilabs.com/pps";
+  "https://www.slidphilabs.com/pay";
 export const SITE_PPS =
-  process.env.SPL_PPS_SITE || "https://www.slidphilabs.com/pps";
+  process.env.SPL_PPS_SITE || "https://www.slidphilabs.com/gc";
 export const API_BASE =
   process.env.SPL_PPS_API || "https://www.slidphilabs.com";
 
@@ -54,8 +55,7 @@ export function usageFeeCents(billableBytes) {
   const b = Math.max(0, Number(billableBytes) || 0);
   if (b <= 0) return 0;
   const gb = b / (1024 * 1024 * 1024);
-  if (gb <= 100) return Math.round(gb * 5);
-  return Math.round(100 * 5 + (gb - 100) * 4);
+  return Math.round(gb * CENTS_PER_GB);
 }
 
 export function computeQuote({
@@ -63,31 +63,34 @@ export function computeQuote({
   dataClass = "unknown",
   op = "compress",
   bytes = 0,
+  used_bytes = 0,
+  sku = "",
 } = {}) {
   const prod = PRODUCT_ADD_CENTS[product] != null ? product : "auto";
   const cls = DATA_MULT[dataClass] != null ? dataClass : "unknown";
   const operation = OP_MULT[op] != null ? op : "compress";
   const b = Math.max(0, Math.min(Number(bytes) || 0, MAX_BYTES));
-  const free_bytes = FREE_BYTES;
-  const billable = Math.max(0, b - free_bytes);
+  const used = Math.max(0, Number(used_bytes) || 0);
+  const free_left = Math.max(0, FREE_BYTES - used);
+  const billable = Math.max(0, b - free_left);
   const free = billable <= 0;
   const rates = {
     free_cap_gb: FREE_GB,
-    free_window_hours: FREE_WINDOW_HOURS,
-    min_paid_usd: 0.05,
-    usd_per_gb_first_100: 0.05,
-    usd_per_gb_after_100: 0.04,
-    first_paid_egress_ref: 0.09,
+    usd_per_gb: CENTS_PER_GB / 100,
+    min_paid_usd: MIN_PAID_CENTS / 100,
+    window: "calendar_month",
+    sku: sku || null,
   };
+  const plain_free = "First 2 GB each month are free. After that, 8¢ per GB. Card charges start at $1.";
 
   if (free) {
     return {
-      ok: true, service: "SPL Pay Per Suite", currency: "usd",
-      amount_cents: 0, amount_display: "0.00", free: true, tier: "unpaid_cap",
-      message: "Unpaid cap 6.9 GB and 3 hours. Then ~5¢/GB.",
+      ok: true, service: "AWARE meter", currency: "usd",
+      amount_cents: 0, amount_display: "0.00", free: true, tier: "free",
+      message: plain_free,
       breakdown: {
         product: prod, product_add_cents: 0, product_base_cents: 0,
-        free_bytes, free_gb: FREE_GB, billable_bytes: 0, usage_cents: 0, size_cents: 0,
+        free_bytes: FREE_BYTES, free_gb: FREE_GB, billable_bytes: 0, usage_cents: 0, size_cents: 0,
         data_class: cls, data_multiplier: DATA_MULT[cls],
         op: operation, op_multiplier: OP_MULT[operation],
         bytes: b, mb: +(b/1024/1024).toFixed(4), gb: +(b/1024/1024/1024).toFixed(6),
@@ -97,17 +100,15 @@ export function computeQuote({
     };
   }
   const usage = usageFeeCents(billable);
-  const add = PRODUCT_ADD_CENTS[prod] || 0;
-  const raw = Math.round((usage + add) * DATA_MULT[cls] * OP_MULT[operation]);
-  const cents = Math.min(MAX_CENTS, Math.max(MIN_PAID_CENTS, raw));
+  const cents = Math.min(MAX_CENTS, Math.max(MIN_PAID_CENTS, usage));
   return {
-    ok: true, service: "SPL Pay Per Suite", currency: "usd",
+    ok: true, service: "AWARE meter", currency: "usd",
     amount_cents: cents, amount_display: (cents / 100).toFixed(2),
-    free: false, tier: "usage_undercut",
-    message: "Over 6.9 GB unpaid cap — ~5¢/GB (4¢ bulk).",
+    free: false, tier: "usage",
+    message: `Over the free 2 GB — 8¢/GB, $1 minimum on card.`,
     breakdown: {
-      product: prod, product_add_cents: add, product_base_cents: add,
-      free_bytes, free_gb: FREE_GB, billable_bytes: billable, usage_cents: usage, size_cents: usage,
+      product: prod, product_add_cents: 0, product_base_cents: 0,
+      free_bytes: FREE_BYTES, free_gb: FREE_GB, billable_bytes: billable, usage_cents: usage, size_cents: usage,
       data_class: cls, data_multiplier: DATA_MULT[cls],
       op: operation, op_multiplier: OP_MULT[operation],
       bytes: b, mb: +(b/1024/1024).toFixed(4), gb: +(b/1024/1024/1024).toFixed(6),

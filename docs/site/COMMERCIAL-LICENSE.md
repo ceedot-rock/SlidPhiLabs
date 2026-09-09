@@ -7,7 +7,9 @@ Public specialist machine: https://www.slidphilabs.com/specialist
 
 ## Plain English (read this first)
 
-pulsar is a free GPLv3 compressor. You may run, study, and share it under GPLv3. If you ship it **inside a closed-source product**, pay **$490/year** (SKU `pulsar-exception`). That invoice is the written exception for **one product, one year**. pulsar source stays GPLv3.
+Every product we bring forward is **dual-licensed**. You pick the open license, or you pay a commercial grant and ship closed. Hosted compression runs every pathway we own on that grant. npm and MCP call the live host.
+
+pulsar is GPL-3.0-or-later, or SKU `pulsar-exception` at **$490/year** for one closed product, one year. CuNi is AGPL-3.0-or-later, or SKU `cuni-exception` at **$490/year**. Chamber SDK, Warrant, and Agent-Rider are AGPL-3.0-or-later, or their matching seat. Chooser files live in each repo as `LICENSE`.
 
 AWARE is a **hosted** compressor. You buy a seat to run it ($9/day · $49/month · $490/year). You do **not** get the source.
 

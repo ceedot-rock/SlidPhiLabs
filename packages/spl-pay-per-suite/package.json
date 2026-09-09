@@ -1,7 +1,7 @@
 {
   "name": "spl-pay-per-suite",
-  "version": "1.1.10",
-  "description": "Slid Phi Labs quote and checkout helper for AWARE metered jobs. First 2 GB/month free, then 8¢/GB. Stripe + x402. MCP helper. Does not include the compressor.",
+  "version": "1.2.0",
+  "description": "Dual-licensed hosted compression client, quotes, checkout, and MCP. Open license or a paid grant. First 2 GB/month free, then 8¢/GB.",
   "type": "module",
   "main": "src/index.mjs",
   "exports": {
@@ -17,7 +17,10 @@
   "files": [
     "src",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "LICENSE.AGPL-3.0",
+    "LICENSE.COMMERCIAL",
+    "NOTICE"
   ],
   "scripts": {
     "test": "node --test test/*.test.mjs",
@@ -52,7 +55,7 @@
     "usage-pricing"
   ],
   "author": "Slid Phi Labs",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "AGPL-3.0-or-later",
   "homepage": "https://www.slidphilabs.com",
   "repository": {
     "type": "git",
@@ -85,7 +88,7 @@
     "site": "https://www.slidphilabs.com",
     "llms_txt": "https://www.slidphilabs.com/llms.txt",
     "agents_json": "https://www.slidphilabs.com/agents.json",
-    "one_liner": "Unpaid cap 6.9 GB / 3 h \u00b7 then ~5\u00a2/GB. Pay: https://www.slidphilabs.com/pay \u00b7 GET https://www.slidphilabs.com/api/agent",
+    "one_liner": "First 2 GB/month free, then 8\u00a2/GB. zip() builds a .pcc. Pay: https://www.slidphilabs.com/pay \u00b7 GET https://www.slidphilabs.com/api/agent",
     "agent_platform": {
       "cuni": "https://cuni-studio.fly.dev/",
       "agent_rider": "https://agentrider.fly.dev/",
@@ -93,14 +96,14 @@
     },
     "suite": "https://www.slidphilabs.com/pps",
     "suite_pricing": {
-      "free_cap_gb": 6.9,
-      "free_window_hours": 3,
-      "min_paid_usd": 0.05,
-      "usd_per_gb_after_free": 0.05,
-      "usd_per_gb_bulk": 0.04,
-      "first_paid_egress_ref_usd": 0.09,
+      "free_cap_gb": 2,
+      "free_window_hours": 0,
+      "min_paid_usd": 1,
+      "usd_per_gb_after_free": 0.08,
+      "usd_per_gb_bulk": 0.08,
+      "window": "calendar_month",
       "try_gate": "retired",
-      "model": "freemium_suite_v4_undercut"
+      "model": "calendar_month_2gb_8c"
     },
     "welcome": "https://www.slidphilabs.com/api/welcome",
     "platform_json": "https://www.slidphilabs.com/platform.json",
@@ -130,10 +133,10 @@
     "pay_ui": "https://www.slidphilabs.com/pay",
     "doc": "https://www.slidphilabs.com/pps",
     "suite_pricing": {
-      "free_cap_gb": 6.9,
-      "free_window_hours": 3,
-      "usd_per_gb_after_free": 0.05,
-      "usd_per_gb_bulk": 0.04
+      "free_cap_gb": 2,
+      "free_window_hours": 0,
+      "usd_per_gb_after_free": 0.08,
+      "usd_per_gb_bulk": 0.08
     }
   }
 }
