@@ -16,7 +16,7 @@ assert.equal(classify(text).seat, "struct_text");
 const enc = await encodeHosted(text);
 assert.equal(enc.ok, true);
 assert.equal(enc.host_fallback, false);
-assert.ok(["pulsar", "lz", "paq", "lbr1", "aware"].includes(enc.method), enc.method);
+assert.ok(["pulsar", "lz", "paq", "lbr1", "aware", "repeat", "walk_lcg", "walk_d1"].includes(enc.method), enc.method);
 assert.ok(enc.packed_bytes < text.length);
 const back = await decodeFrame(Buffer.from(enc.packed_b64, "base64"));
 assert.ok(back.equals(text), "hosted RT");
