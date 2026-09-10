@@ -54,7 +54,7 @@
     <header class="spl-header" role="banner">
       <div class="bar">
         <a class="spl-brand" href="/" aria-label="Slid Phi Labs home">
-          <img src="/assets/now/mark.jpg" width="36" height="36" alt=""/>
+          <img src="/assets/logos/logo-slid-phi-labs.jpg?v=14" width="36" height="36" alt=""/>
           <span>Slid Phi Labs</span>
         </a>
         <button class="spl-nav-toggle" type="button" aria-expanded="false" aria-label="Menu"></button>
