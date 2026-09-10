@@ -50,3 +50,37 @@ fly certs check slidphilabs.com -a slidphilabs
 |-----|---------|
 | **slidphilabs** | Public marketing + freemium + Join the Work |
 | **slidphi-smart-box** | Private Creator / lab (`/lord`) |
+
+## Refresh bin/lb (AWARE walk_lcg crown)
+
+`docs/site/bin/` is **gitignored** (host-only engines). Kolmogorov seating for
+`walk_lcg` / `walk_d1` is **not** claimed from the JS twin in `api/lib/walk-peel.mjs`
+— that module prices `{step,seed}` and tests wire shape. The crown is seated only
+when Fly ships a `bin/lb` rebuilt from **ceedot-rock/lbr1** `main` (merged walk PR).
+
+Before `fly deploy`:
+
+```bash
+# on a glibc≥2.39 host (see Dockerfile: node:20-trixie-slim)
+cd /path/to/lbr1
+git pull origin main
+cargo build -p splb --release --bin lb
+
+SITE=/path/to/SlidPhiLabs/docs/site
+mkdir -p "$SITE/bin"
+cp -f target/release/lb "$SITE/bin/lb"
+chmod +x "$SITE/bin/lb"
+
+# prove crown (aware_bytes=9 → LBHX frame 22 B, kind=walk_lcg)
+"$SITE/bin/lb" aware /path/to/corpora/walks/walk_10k_s1.i32le.bin /tmp/w1.out
+"$SITE/bin/lb" aware /path/to/corpora/walks/walk_10k_s5.i32le.bin /tmp/w5.out
+# expect: kind=walk_lcg  coded=22  DECODE_OK
+
+cd "$SITE"
+fly deploy --remote-only --ha=false
+```
+
+Or: `bash scripts/refresh-lb-from-lbr1.sh /path/to/lbr1` from `docs/site/`.
+
+Stale `bin/lb` may still compress walks via other seats (e.g. STR1) and will **not**
+report `program.model=walk_lcg` / 9 B aware_bytes through `/api/compress`.

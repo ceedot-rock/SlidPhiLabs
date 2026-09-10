@@ -1,9 +1,12 @@
 /**
  * Hosted compression on this machine. Every own pathway is a candidate:
  * zeros, pulsar, LBR1, Combined GC, LZ wrap, PAQ wrap. Smallest DECODE_OK wins.
+ * Walk programs (walk_lcg / walk_d1): price via walk-peel helpers; Kolmogorov
+ * seating is rebuilt bin/lb (`lb aware`) from lbr1 main — not the JS twin alone.
  */
 import { looksPulsar, pulsarDecode, pulsarEncode } from "./pulsar-host.mjs";
 import { lbAware, lbDecode, lbEncode } from "./engines.mjs";
+import { inspectWalkProgram, priceWalkProgram } from "./walk-peel.mjs";
 
 export const MAGIC = Buffer.from("SPLS");
 export const VER = 1;
@@ -141,6 +144,9 @@ function occupantName(runner, blob) {
   if (mag === "PCAQ") return "paq";
   if (mag === "BW22" || mag === "BW23") return "pulsar";
   if (mag === "TR8\0" || mag.startsWith("TR8")) return "fill";
+  const walk = inspectWalkProgram(blob);
+  if (walk) return walk.model;
+  if (mag === "LBHX") return runner === "aware" ? "aware" : runner;
   return runner;
 }
 
@@ -150,6 +156,10 @@ export async function encodeHosted(raw) {
   if (b.length > MAX_RAW) throw new Error("too_large");
   const cls = classify(b);
   if (cls.seat === "fill") return { ...encodeFill(b), classify: cls };
+
+  // Price walk program (SKU {step,seed}) before general bake-off. Seating itself
+  // is `lb aware` once Ship refreshes docs/site/bin/lb from lbr1 main.
+  const walkSku = priceWalkProgram(b);
 
   const tries = [];
   const run = async (name, fn, seat) => {
@@ -162,9 +172,15 @@ export async function encodeHosted(raw) {
       if (e.killed || e.signal === "SIGTERM") return;
     }
   };
+  // When raw matches a walk program, prefer AWARE first (crown path).
+  if (walkSku) {
+    await run("aware", lbAware, SEAT_LB);
+  }
   await run("pulsar", pulsarEncode, SEAT_PULSAR);
   await run("lbr1", lbEncode, SEAT_LB);
-  await run("aware", lbAware, SEAT_LB);
+  if (!walkSku) {
+    await run("aware", lbAware, SEAT_LB);
+  }
   tries.sort((a, b) => a.blob.length - b.blob.length);
   const win = tries[0];
   const method = win ? occupantName(win.name, win.blob) : "store";
@@ -173,11 +189,36 @@ export async function encodeHosted(raw) {
   const frame = wrapSeat(seat, payload);
   const back = await decodeFrame(frame);
   if (!back.equals(b)) throw new Error("roundtrip_fail");
+
+  const seated = win ? inspectWalkProgram(win.blob) : null;
+  const program = seated
+    ? {
+        ...seated,
+        seated: true,
+        note: seated.model === "walk_lcg"
+          ? "Kolmogorov crown seated by bin/lb aware (aware_bytes=9)"
+          : "walk_d1 ladder seated by bin/lb aware",
+      }
+    : walkSku
+      ? {
+          ...walkSku,
+          seated: false,
+          note: "SKU prices the program; refresh docs/site/bin/lb from lbr1 main to seat the crown via lb aware",
+        }
+      : undefined;
+
+  let plain;
+  if (seated?.model === "walk_lcg") {
+    plain = `Hosted walk_lcg priced the program {step:${seated.step},seed:${seated.seed}} — ${seated.aware_bytes} B aware pack (${payload.length} B LBHX frame) on ${b.length} B. Restore with POST /api/decompress.`;
+  } else if (win) {
+    plain = `Hosted ${method} compressed this file from ${b.length} bytes to ${payload.length} bytes. Restore with POST /api/decompress. First 2 GB/month are free, then 8¢/GB.`;
+  } else {
+    plain = `This file did not get smaller. We stored it as-is (our store path, not gzip). Restore with POST /api/decompress.`;
+  }
+
   return {
     ok: true,
-    plain: win
-      ? `Hosted ${method} compressed this file from ${b.length} bytes to ${payload.length} bytes. Restore with POST /api/decompress. First 2 GB/month are free, then 8¢/GB.`
-      : `This file did not get smaller. We stored it as-is (our store path, not gzip). Restore with POST /api/decompress.`,
+    plain,
     seat: cls.seat,
     occupant: method,
     method,
@@ -191,6 +232,7 @@ export async function encodeHosted(raw) {
     lab_gene: Boolean(win),
     host_fallback: false,
     classify: cls,
+    ...(program ? { program } : {}),
     buy: { gc_month: BUY.gc_month, gc_year: BUY.gc_year },
   };
 }
@@ -237,7 +279,7 @@ export function machineCard() {
       fill: { occupant: "zeros", runs_here: true, license: "public-demo" },
       pulsar: { occupant: "pulsar 2.5.0", runs_here: true, license: "GPL-3.0-or-later" },
       lbr1: { occupant: "LBR1", runs_here: true, license: "hosted-access" },
-      aware: { occupant: "AWARE house", runs_here: true, license: "hosted-access" },
+      aware: { occupant: "AWARE house (walk_lcg / walk_d1 when bin/lb from lbr1 main)", runs_here: true, license: "hosted-access" },
       lz: { occupant: "LZ wrap", runs_here: true, license: "hosted-access" },
       paq: { occupant: "PAQ wrap", runs_here: true, license: "hosted-access" },
       store: { occupant: "store", runs_here: true },
