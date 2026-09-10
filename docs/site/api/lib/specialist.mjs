@@ -1,12 +1,13 @@
 /**
  * Hosted compression on this machine. Every own pathway is a candidate:
  * zeros, pulsar, LBR1, Combined GC, LZ wrap, PAQ wrap. Smallest DECODE_OK wins.
- * Walk programs (walk_lcg / walk_d1): price via walk-peel helpers; Kolmogorov
+ * AWARE programs (repeat / walk_lcg / walk_d1): price via peel helpers; Kolmogorov
  * seating is rebuilt bin/lb (`lb aware`) from lbr1 main — not the JS twin alone.
  */
 import { looksPulsar, pulsarDecode, pulsarEncode } from "./pulsar-host.mjs";
 import { lbAware, lbDecode, lbEncode } from "./engines.mjs";
 import { inspectWalkProgram, priceWalkProgram } from "./walk-peel.mjs";
+import { inspectRepeatProgram, priceRepeatProgram } from "./repeat-peel.mjs";
 
 export const MAGIC = Buffer.from("SPLS");
 export const VER = 1;
@@ -146,6 +147,8 @@ function occupantName(runner, blob) {
   if (mag === "TR8\0" || mag.startsWith("TR8")) return "fill";
   const walk = inspectWalkProgram(blob);
   if (walk) return walk.model;
+  const rep = inspectRepeatProgram(blob);
+  if (rep) return rep.model;
   if (mag === "LBHX") return runner === "aware" ? "aware" : runner;
   return runner;
 }
@@ -157,9 +160,12 @@ export async function encodeHosted(raw) {
   const cls = classify(b);
   if (cls.seat === "fill") return { ...encodeFill(b), classify: cls };
 
-  // Price walk program (SKU {step,seed}) before general bake-off. Seating itself
+  // Price AWARE programs (repeat / walk) before general bake-off. Seating itself
   // is `lb aware` once Ship refreshes docs/site/bin/lb from lbr1 main.
-  const walkSku = priceWalkProgram(b);
+  // Prefer repeat when it matches (byte periodic crown; tried first in lbr1).
+  const repeatSku = priceRepeatProgram(b);
+  const walkSku = repeatSku ? null : priceWalkProgram(b);
+  const awareSku = repeatSku || walkSku;
 
   const tries = [];
   const run = async (name, fn, seat) => {
@@ -172,13 +178,13 @@ export async function encodeHosted(raw) {
       if (e.killed || e.signal === "SIGTERM") return;
     }
   };
-  // When raw matches a walk program, prefer AWARE first (crown path).
-  if (walkSku) {
+  // When raw matches an AWARE program, prefer AWARE first (crown path).
+  if (awareSku) {
     await run("aware", lbAware, SEAT_LB);
   }
   await run("pulsar", pulsarEncode, SEAT_PULSAR);
   await run("lbr1", lbEncode, SEAT_LB);
-  if (!walkSku) {
+  if (!awareSku) {
     await run("aware", lbAware, SEAT_LB);
   }
   tries.sort((a, b) => a.blob.length - b.blob.length);
@@ -190,25 +196,36 @@ export async function encodeHosted(raw) {
   const back = await decodeFrame(frame);
   if (!back.equals(b)) throw new Error("roundtrip_fail");
 
-  const seated = win ? inspectWalkProgram(win.blob) : null;
+  const seated = win
+    ? inspectRepeatProgram(win.blob) || inspectWalkProgram(win.blob)
+    : null;
+  const crownNote = (m) => {
+    if (m.model === "repeat") {
+      return `Kolmogorov crown seated by bin/lb aware (aware_bytes=${m.aware_bytes}; unit_len=${m.unit_len})`;
+    }
+    if (m.model === "walk_lcg") {
+      return "Kolmogorov crown seated by bin/lb aware (aware_bytes=9)";
+    }
+    return "walk_d1 ladder seated by bin/lb aware";
+  };
   const program = seated
     ? {
         ...seated,
         seated: true,
-        note: seated.model === "walk_lcg"
-          ? "Kolmogorov crown seated by bin/lb aware (aware_bytes=9)"
-          : "walk_d1 ladder seated by bin/lb aware",
+        note: crownNote(seated),
       }
-    : walkSku
+    : awareSku
       ? {
-          ...walkSku,
+          ...awareSku,
           seated: false,
           note: "SKU prices the program; refresh docs/site/bin/lb from lbr1 main to seat the crown via lb aware",
         }
       : undefined;
 
   let plain;
-  if (seated?.model === "walk_lcg") {
+  if (seated?.model === "repeat") {
+    plain = `Hosted repeat priced the program {unit_len:${seated.unit_len},n:${seated.n}} — ${seated.aware_bytes} B aware pack (${payload.length} B LBHX frame) on ${b.length} B. Restore with POST /api/decompress.`;
+  } else if (seated?.model === "walk_lcg") {
     plain = `Hosted walk_lcg priced the program {step:${seated.step},seed:${seated.seed}} — ${seated.aware_bytes} B aware pack (${payload.length} B LBHX frame) on ${b.length} B. Restore with POST /api/decompress.`;
   } else if (win) {
     plain = `Hosted ${method} compressed this file from ${b.length} bytes to ${payload.length} bytes. Restore with POST /api/decompress. First 2 GB/month are free, then 8¢/GB.`;
@@ -279,7 +296,7 @@ export function machineCard() {
       fill: { occupant: "zeros", runs_here: true, license: "public-demo" },
       pulsar: { occupant: "pulsar 2.5.0", runs_here: true, license: "GPL-3.0-or-later" },
       lbr1: { occupant: "LBR1", runs_here: true, license: "hosted-access" },
-      aware: { occupant: "AWARE house (walk_lcg / walk_d1 when bin/lb from lbr1 main)", runs_here: true, license: "hosted-access" },
+      aware: { occupant: "AWARE house (repeat / walk_lcg / walk_d1 when bin/lb from lbr1 main)", runs_here: true, license: "hosted-access" },
       lz: { occupant: "LZ wrap", runs_here: true, license: "hosted-access" },
       paq: { occupant: "PAQ wrap", runs_here: true, license: "hosted-access" },
       store: { occupant: "store", runs_here: true },

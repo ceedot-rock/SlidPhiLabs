@@ -51,12 +51,13 @@ fly certs check slidphilabs.com -a slidphilabs
 | **slidphilabs** | Public marketing + freemium + Join the Work |
 | **slidphi-smart-box** | Private Creator / lab (`/lord`) |
 
-## Refresh bin/lb (AWARE walk_lcg crown)
+## Refresh bin/lb (AWARE repeat + walk crowns)
 
 `docs/site/bin/` is **gitignored** (host-only engines). Kolmogorov seating for
-`walk_lcg` / `walk_d1` is **not** claimed from the JS twin in `api/lib/walk-peel.mjs`
-— that module prices `{step,seed}` and tests wire shape. The crown is seated only
-when Fly ships a `bin/lb` rebuilt from **ceedot-rock/lbr1** `main` (merged walk PR).
+`repeat` / `walk_lcg` / `walk_d1` is **not** claimed from the JS twins in
+`api/lib/repeat-peel.mjs` / `api/lib/walk-peel.mjs` — those modules price the
+program and test wire shape. Crowns seat only when Fly ships a `bin/lb` rebuilt
+from **ceedot-rock/lbr1** `main` (merged repeat PR #4 + walk PRs).
 
 Before `fly deploy`:
 
@@ -71,16 +72,29 @@ mkdir -p "$SITE/bin"
 cp -f target/release/lb "$SITE/bin/lb"
 chmod +x "$SITE/bin/lb"
 
-# prove crown (aware_bytes=9 → LBHX frame 22 B, kind=walk_lcg)
+# prove repeat crown (model_id=7)
+# text_repeat_256k: aware_bytes=33 → LBHX frame 46 B, kind=repeat
+# json_128k:        aware_bytes=61 → LBHX frame 74 B, kind=repeat
+"$SITE/bin/lb" aware /path/to/corpora/periodic/text_repeat_256k.bin /tmp/t.out
+"$SITE/bin/lb" aware /path/to/corpora/periodic/json_128k.bin /tmp/j.out
+# expect: kind=repeat  coded=46 / 74  DECODE_OK
+
+# prove walk_lcg crown (aware_bytes=9 → LBHX frame 22 B)
 "$SITE/bin/lb" aware /path/to/corpora/walks/walk_10k_s1.i32le.bin /tmp/w1.out
 "$SITE/bin/lb" aware /path/to/corpora/walks/walk_10k_s5.i32le.bin /tmp/w5.out
 # expect: kind=walk_lcg  coded=22  DECODE_OK
+
+# /api/compress proof gate (after deploy, or locally with refreshed LB_BIN):
+# POST periodic fixtures → program.model=repeat, program.seated=true,
+# program.aware_bytes=33|61, program.unit_len=24|52
 
 cd "$SITE"
 fly deploy --remote-only --ha=false
 ```
 
-Or: `bash scripts/refresh-lb-from-lbr1.sh /path/to/lbr1` from `docs/site/`.
+Or: `bash scripts/refresh-lb-from-lbr1.sh /path/to/lbr1` from `docs/site/`
+(optional `REPEAT_TEXT` / `REPEAT_JSON` / `WALK_S1` env paths for proof).
 
-Stale `bin/lb` may still compress walks via other seats (e.g. STR1) and will **not**
-report `program.model=walk_lcg` / 9 B aware_bytes through `/api/compress`.
+Stale `bin/lb` may still compress via other seats (e.g. STR1 / pulsar) and will
+**not** report `program.model=repeat` / 33|61 B aware_bytes (or walk_lcg / 9 B)
+through `/api/compress`.
