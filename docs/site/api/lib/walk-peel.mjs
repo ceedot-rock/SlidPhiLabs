@@ -250,6 +250,15 @@ export function priceWalkProgram(raw) {
   }
   const d1 = fitWalkConstMag(vals);
   if (d1) {
+    // Exact same-sign Δ is affine_i32 territory (Rust MDL); do not steal ramps.
+    let mixed = false;
+    for (let i = 1; i < d1.signs.length; i++) {
+      if (d1.signs[i] !== d1.signs[0]) {
+        mixed = true;
+        break;
+      }
+    }
+    if (!mixed) return null;
     const inner = packWalkD1(d1.start, d1.mag, d1.signs);
     return {
       model: "walk_d1",

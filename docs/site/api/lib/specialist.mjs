@@ -1,13 +1,14 @@
 /**
  * Hosted compression on this machine. Every own pathway is a candidate:
  * zeros, pulsar, LBR1, Combined GC, LZ wrap, PAQ wrap. Smallest DECODE_OK wins.
- * AWARE programs (repeat / walk_lcg / walk_d1): price via peel helpers; Kolmogorov
+ * AWARE programs (repeat / affine_i32 / walk_lcg / walk_d1): price via peel helpers; Kolmogorov
  * seating is rebuilt bin/lb (`lb aware`) from lbr1 main — not the JS twin alone.
  */
 import { looksPulsar, pulsarDecode, pulsarEncode } from "./pulsar-host.mjs";
 import { lbAware, lbDecode, lbEncode } from "./engines.mjs";
 import { inspectWalkProgram, priceWalkProgram } from "./walk-peel.mjs";
 import { inspectRepeatProgram, priceRepeatProgram } from "./repeat-peel.mjs";
+import { inspectAffineProgram, priceAffineProgram } from "./affine-peel.mjs";
 
 export const MAGIC = Buffer.from("SPLS");
 export const VER = 1;
@@ -145,10 +146,12 @@ function occupantName(runner, blob) {
   if (mag === "PCAQ") return "paq";
   if (mag === "BW22" || mag === "BW23") return "pulsar";
   if (mag === "TR8\0" || mag.startsWith("TR8")) return "fill";
-  const walk = inspectWalkProgram(blob);
-  if (walk) return walk.model;
   const rep = inspectRepeatProgram(blob);
   if (rep) return rep.model;
+  const aff = inspectAffineProgram(blob);
+  if (aff) return aff.model;
+  const walk = inspectWalkProgram(blob);
+  if (walk) return walk.model;
   if (mag === "LBHX") return runner === "aware" ? "aware" : runner;
   return runner;
 }
@@ -160,12 +163,13 @@ export async function encodeHosted(raw) {
   const cls = classify(b);
   if (cls.seat === "fill") return { ...encodeFill(b), classify: cls };
 
-  // Price AWARE programs (repeat / walk) before general bake-off. Seating itself
-  // is `lb aware` once Ship refreshes docs/site/bin/lb from lbr1 main.
-  // Prefer repeat when it matches (byte periodic crown; tried first in lbr1).
+  // Price AWARE programs (repeat / affine / walk) before general bake-off.
+  // Seating is `lb aware` once Ship refreshes docs/site/bin/lb from lbr1 main.
+  // Order matches lbr1: repeat → affine_i32 → walk (affine before walk_d1 on ramps).
   const repeatSku = priceRepeatProgram(b);
-  const walkSku = repeatSku ? null : priceWalkProgram(b);
-  const awareSku = repeatSku || walkSku;
+  const affineSku = repeatSku ? null : priceAffineProgram(b);
+  const walkSku = repeatSku || affineSku ? null : priceWalkProgram(b);
+  const awareSku = repeatSku || affineSku || walkSku;
 
   const tries = [];
   const run = async (name, fn, seat) => {
@@ -197,11 +201,14 @@ export async function encodeHosted(raw) {
   if (!back.equals(b)) throw new Error("roundtrip_fail");
 
   const seated = win
-    ? inspectRepeatProgram(win.blob) || inspectWalkProgram(win.blob)
+    ? inspectRepeatProgram(win.blob) || inspectAffineProgram(win.blob) || inspectWalkProgram(win.blob)
     : null;
   const crownNote = (m) => {
     if (m.model === "repeat") {
       return `Kolmogorov crown seated by bin/lb aware (aware_bytes=${m.aware_bytes}; unit_len=${m.unit_len})`;
+    }
+    if (m.model === "affine_i32") {
+      return "Kolmogorov crown seated by bin/lb aware (aware_bytes=18)";
     }
     if (m.model === "walk_lcg") {
       return "Kolmogorov crown seated by bin/lb aware (aware_bytes=9)";
@@ -225,6 +232,8 @@ export async function encodeHosted(raw) {
   let plain;
   if (seated?.model === "repeat") {
     plain = `Hosted repeat priced the program {unit_len:${seated.unit_len},n:${seated.n}} — ${seated.aware_bytes} B aware pack (${payload.length} B LBHX frame) on ${b.length} B. Restore with POST /api/decompress.`;
+  } else if (seated?.model === "affine_i32") {
+    plain = `Hosted affine_i32 priced the program {start:${seated.start},step:${seated.step}} — ${seated.aware_bytes} B aware pack (${payload.length} B LBHX frame) on ${b.length} B. Restore with POST /api/decompress.`;
   } else if (seated?.model === "walk_lcg") {
     plain = `Hosted walk_lcg priced the program {step:${seated.step},seed:${seated.seed}} — ${seated.aware_bytes} B aware pack (${payload.length} B LBHX frame) on ${b.length} B. Restore with POST /api/decompress.`;
   } else if (win) {
@@ -296,7 +305,7 @@ export function machineCard() {
       fill: { occupant: "zeros", runs_here: true, license: "public-demo" },
       pulsar: { occupant: "pulsar 2.5.0", runs_here: true, license: "GPL-3.0-or-later" },
       lbr1: { occupant: "LBR1", runs_here: true, license: "hosted-access" },
-      aware: { occupant: "AWARE house (repeat / walk_lcg / walk_d1 when bin/lb from lbr1 main)", runs_here: true, license: "hosted-access" },
+      aware: { occupant: "AWARE house (repeat / affine_i32 / walk_lcg / walk_d1 when bin/lb from lbr1 main)", runs_here: true, license: "hosted-access" },
       lz: { occupant: "LZ wrap", runs_here: true, license: "hosted-access" },
       paq: { occupant: "PAQ wrap", runs_here: true, license: "hosted-access" },
       store: { occupant: "store", runs_here: true },
