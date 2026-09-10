@@ -5,7 +5,7 @@
   "brand": "Slid Phi Labs",
   "product": "Slid Phi Labs",
   "inbox": "corey@slidphilabs.com",
-  "logo": "https://www.slidphilabs.com/assets/now/mark.jpg",
+  "logo": "https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg?v=14",
   "og_image": "https://www.slidphilabs.com/assets/now/og.jpg",
   "theme_color": "#0f1c2e",
   "twitter": "@slidphilabs",
@@ -53,7 +53,7 @@
       "name": "Slid Phi Labs",
       "url": "https://www.slidphilabs.com",
       "email": "corey@slidphilabs.com",
-      "logo": "https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg",
+      "logo": "https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg?v=14",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Cherry Hill",
