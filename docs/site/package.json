@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.mjs",
     "dev": "node server.mjs",
-    "test": "node --test api/lib/warrant.test.mjs api/lib/specialist.test.mjs api/suite-pricing.test.mjs",
+    "test": "node --test api/lib/warrant.test.mjs api/lib/specialist.test.mjs api/lib/walk-peel.test.mjs api/suite-pricing.test.mjs",
     "seo-audit": "node scripts/seo-audit.cjs"
   },
   "engines": {
