@@ -1,15 +1,15 @@
 ---
 name: slid-phi-labs
-description: CuNi exactness, Chamber two-key JSON, Agent-Rider identity, AWARE compressor. Pay x402 (agents) or Stripe card (humans).
+description: CuNi exactness, Chamber two-key JSON, Agent-Rider identity, PCC compressor. Pay x402 (agents) or Stripe card (humans).
 ---
 
 # Slid Phi Labs
 
-Lead product: **AWARE** hosted lossless compression. Dual-licensed (open terms or a paid grant). POST /api/compress runs every pathway on the host. $9/day · $49/mo (200 GB) · $490/yr. First 2 GB/month free, then 8¢/GB.  
+Lead product: **PCC** hosted lossless compression. Dual-licensed (open terms or a paid grant). POST /api/compress runs every pathway on the host. $9/day · $49/mo (200 GB) · $490/yr. First 2 GB/month free, then 8¢/GB.  
 Also: Chamber $9/$99, Agent-Rider $79/$790, Warrant $29/$290 (mandate + receipts for a Rider), CuNi Studio $0.  
-Stream: **TRUSTREAM** — live residual pipe for agent logs / SIEM. Runs on an AWARE seat.  
+Stream: **TRUSTREAM** — live residual pipe for agent logs / SIEM. Runs on a PCC seat.  
 Meter: **first 2 GB each month free**, then 8¢/GB ($1 minimum on card). Quote: `POST /api/ppp-quote` or MCP `spl_quote`.  
-Lab Pass: **$668/yr** (Chamber + AWARE + TruGame). Rider is its own seat.
+Lab Pass: **$668/yr** (Chamber + PCC + TruGame). Rider is its own seat.
 
 ## Discover
 GET https://www.slidphilabs.com/api/agent  

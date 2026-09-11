@@ -41,7 +41,7 @@ fly certs check slidphilabs.com -a slidphilabs
 | `/join` | Join the Work |
 | `/humans` `/agents` `/standings` `/pps` | Dual doors |
 | `/api/welcome` `/api/join-work` `/api/web-codec` `/api/specialist` | APIs via `server.mjs` |
-| `/specialist` | Public specialist machine (fill runs; pulsar/AWARE licensed) |
+| `/specialist` | Public specialist machine (fill runs; pulsar/PCC licensed) |
 | `/licensing.json` `/COMMERCIAL-LICENSE.md` | License SoT |
 
 ## vs Creator box
@@ -51,7 +51,7 @@ fly certs check slidphilabs.com -a slidphilabs
 | **slidphilabs** | Public marketing + freemium + Join the Work |
 | **slidphi-smart-box** | Private Creator / lab (`/lord`) |
 
-## Refresh bin/lb (AWARE repeat + walk crowns)
+## Refresh bin/lb (PCC repeat + walk crowns)
 
 `docs/site/bin/` is **gitignored** (host-only engines). Kolmogorov seating for
 `repeat` / `walk_lcg` / `walk_d1` is **not** claimed from the JS twins in

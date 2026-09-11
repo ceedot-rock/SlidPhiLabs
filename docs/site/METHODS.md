@@ -6,7 +6,7 @@ SoT methods (this file)
 
 ## Compression (outcomes only)
 
-- Product SKU: AWARE. Hosted lossless compression. Dual-licensed public source (AGPL or paid grant). Host xz/gzip/bzip are opponents, not occupants.
+- Product face: PCC. Hosted lossless compression. Dual-licensed public source (AGPL or paid grant). Host xz/gzip/bzip are opponents, not occupants.
 - Official Silesia 12, whole files, DECODE_OK, raw **211,938,580** (`pcc-0.12.1` matrix):
   - pulsar 2.5.0 **55,745,438** (matches OSCB)
   - PCC **51,498,645** (4.25M inside pulsar; still loses to xz-6 ~49.4M)

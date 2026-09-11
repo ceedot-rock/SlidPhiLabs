@@ -28,13 +28,13 @@ Hosted lossless compression and agent seats.
 
 ## What will you make? (3–5 sentences)
 
-We sell access to a hosted lossless compressor (AWARE) and two adjacent seats: Chamber (two-key JSON secrets) and Agent-Rider (signed agent identity). Humans pay Stripe. Agents pay x402 in USDC and can quote jobs on MCP. CuNi Studio is free: one source must print the same in Python, Go, and JS or it never publishes. The production compressor is private; pulsar is a public GPLv3 cousin so people can measure something without getting the engine.
+We sell access to a hosted lossless compressor (PCC) and two adjacent seats: Chamber (two-key JSON secrets) and Agent-Rider (signed agent identity). Humans pay Stripe. Agents pay x402 in USDC and can quote jobs on MCP. CuNi Studio is free: one source must print the same in Python, Go, and JS or it never publishes. The production compressor is private; pulsar is a public GPLv3 cousin so people can measure something without getting the engine.
 
 ---
 
 ## How far along are you?
 
-Live site, live checkout, live MCP, live npm clients (2026-09). Hosted compression: POST /api/compress (pulsar 2.5.0 + zeros specialist). First 2 GB/month free, then 8¢/GB. AWARE month $49 includes 200 GB. Public pulsar 2.5.0: Silesia 55,745,438 of 211,938,580; beats gzip-9, loses to xz-6. Zeros: 1e6 zeros → 8 bytes round-trip. Solo founder, Cherry Hill NJ. Revenue last 30 days: `[STRIPE — Host fills, or write $0]`.
+Live site, live checkout, live MCP, live npm clients (2026-09). Hosted compression: POST /api/compress (pulsar 2.5.0 + zeros specialist). First 2 GB/month free, then 8¢/GB. PCC month $49 includes 200 GB. Public pulsar 2.5.0: Silesia 55,745,438 of 211,938,580; beats gzip-9, loses to xz-6. Zeros: 1e6 zeros → 8 bytes round-trip. Solo founder, Cherry Hill NJ. Revenue last 30 days: `[STRIPE — Host fills, or write $0]`.
 
 ---
 

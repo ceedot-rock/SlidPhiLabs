@@ -15,7 +15,7 @@ export const MIN_PAID_CENTS = 100;
 export const MAX_BYTES = 1024 * 1024 * 1024 * 1024;
 export const MAX_CENTS = 1_000_000;
 
-/** Extra included GB on a paid AWARE / Lab Pass plan (still 8¢ after that). */
+/** Extra included GB on a paid PCC / Lab Pass plan (still 8¢ after that). */
 export const INCLUDED_GB = Object.freeze({
   "": FREE_GB,
   env: FREE_GB,
@@ -64,7 +64,7 @@ export function computeQuote({
   if (free) {
     return {
       ok: true,
-      service: "AWARE meter",
+      service: "PCC meter",
       plain: plain_free,
       currency: "usd",
       amount_cents: 0,
@@ -90,7 +90,7 @@ export function computeQuote({
   const cents = Math.min(MAX_CENTS, Math.max(MIN_PAID_CENTS, usage));
   return {
     ok: true,
-    service: "AWARE meter",
+    service: "PCC meter",
     plain: `${plain_free} This job: $${(cents / 100).toFixed(2)}.`,
     currency: "usd",
     amount_cents: cents,

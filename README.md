@@ -16,8 +16,8 @@ This repository is the public website, API, and npm clients. Dual-licensed: AGPL
 
 | Product | What it is | Price |
 |---------|------------|-------|
-| **AWARE** | Hosted lossless compression. Dual-licensed. Send a file, get a smaller file back, restore every byte. | $9/day · $49/mo (200 GB) · $490/yr (2,000 GB), then 8¢/GB |
-| **TRUSTREAM** | The same plan, for live logs. | Included with AWARE |
+| **PCC** | Hosted lossless compression. Dual-licensed. Send a file, get a smaller file back, restore every byte. | $9/day · $49/mo (200 GB) · $490/yr (2,000 GB), then 8¢/GB |
+| **TRUSTREAM** | The same plan, for live logs. | Included with PCC |
 | **Chamber** | Two-key JSON seal. One share is useless. You store the blob. | $9/mo · $99/yr |
 | **Agent-Rider** | Signed identity so you know which agent acted. | $79/mo · $790/yr |
 | **CuNi** | Write one program. Print many languages. Python, Go, and JS must match, or it refuses. | Studio $0 · closed-app exception $490/yr |

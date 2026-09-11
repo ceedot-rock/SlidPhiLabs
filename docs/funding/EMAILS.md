@@ -6,7 +6,7 @@ Do not blast. Do not attach Combined GC.
 
 Subject: Slid Phi Labs — hosted lossless jobs, DECODE_OK
 
-I’m Corey Tasz. One-person lab in Cherry Hill. We host a lossless compressor (AWARE) and sell Chamber (two-key JSON) and Agent-Rider (signed agents). Humans Stripe, agents x402.
+I’m Corey Tasz. One-person lab in Cherry Hill. We host a lossless compressor (PCC) and sell Chamber (two-key JSON) and Agent-Rider (signed agents). Humans Stripe, agents x402.
 
 Public cousin pulsar 2.5.0: Silesia 55.7M / 211.9M, DECODE_OK 12/12. Beats gzip-9, loses to xz-6. Zeros: 1e6 → 8 bytes.
 

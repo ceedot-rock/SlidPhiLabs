@@ -1,7 +1,7 @@
 {
   "name": "Slid Phi Labs",
   "short_name": "Slid Phi",
-  "description": "Computation lab in Cherry Hill. CuNi, Chamber, Agent-Rider, AWARE.",
+  "description": "Computation lab in Cherry Hill. CuNi, Chamber, Agent-Rider, PCC.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f1c2e",
@@ -26,7 +26,7 @@
       "name": "Try 24 hours",
       "short_name": "Try",
       "url": "/box",
-      "description": "Chamber or AWARE for a day"
+      "description": "Chamber or PCC for a day"
     },
     {
       "name": "Checkout",

@@ -13,12 +13,12 @@
     "CuNi": "language — write once, print many languages. Python, Go, and JS must match, or refuse. Studio $0. Closed-app exception $490/yr. v0.1.8.",
     "Chamber": "two-key protocol for storing a JSON secret. Cloak license $9/mo · $99/yr. Open existing seals with both keys.",
     "Agent-Rider": "signed agent identity L0–L4. Month $79 · Year $790. Not in Lab Pass.",
-    "AWARE": "hosted lossless compressor. Day $9 · Month $49 · Year $490. Dual-licensed public source, or a paid grant to ship closed.",
-    "TRUSTREAM": "live logs on the AWARE plan.",
-    "Suite": "AWARE meter — first 2 GB/month free, then 8¢/GB. Not a fifth product.",
-    "Lab Pass": "Chamber + AWARE + TruGame for 365 days, $668. Not Rider.",
+    "PCC": "hosted lossless compressor. Day $9 · Month $49 · Year $490. Dual-licensed public source, or a paid grant to ship closed.",
+    "TRUSTREAM": "live logs on the PCC plan.",
+    "Suite": "PCC meter — first 2 GB/month free, then 8¢/GB. Not a fifth product.",
+    "Lab Pass": "Chamber + PCC + TruGame for 365 days, $668. Not Rider.",
     "Access": "entitlement claim after Stripe or x402. Not a codec dump.",
-    "pulsar": "public GPLv3 demo compressor. Not AWARE."
+    "pulsar": "public GPLv3 demo compressor. Not PCC."
   },
   "trial_hours": 24,
   "trial_name": "24-hour try",
@@ -37,14 +37,14 @@
   },
   "default": {
     "title": "Slid Phi Labs — hosted lossless compression",
-    "description": "AWARE: send a file, get a smaller one, restore every byte. TRUSTREAM, Chamber, Agent-Rider, CuNi.",
+    "description": "PCC: send a file, get a smaller one, restore every byte. TRUSTREAM, Chamber, Agent-Rider, CuNi.",
     "og_title": "Slid Phi Labs — hosted lossless compression",
-    "og_description": "AWARE is hosted lossless compression. We run it. You restore every byte.",
+    "og_description": "PCC is hosted lossless compression. We run it. You restore every byte.",
     "twitter_title": "Slid Phi Labs — hosted lossless compression",
-    "twitter_description": "AWARE: send a file, restore every byte.",
+    "twitter_description": "PCC: send a file, restore every byte.",
     "og_image": "https://www.slidphilabs.com/assets/now/og.jpg",
     "canonical": "https://www.slidphilabs.com/",
-    "product_line": "AWARE · TRUSTREAM · Chamber · Agent-Rider · CuNi"
+    "product_line": "PCC · TRUSTREAM · Chamber · Agent-Rider · CuNi"
   },
   "schema": {
     "organization": {
@@ -71,12 +71,12 @@
     },
     "/products": {
       "title": "Products — what we actually sell · Slid Phi Labs",
-      "description": "CuNi, Chamber, Agent-Rider, AWARE, Suite, Lab Pass. Plain-language catalog.",
+      "description": "CuNi, Chamber, Agent-Rider, PCC, Suite, Lab Pass. Plain-language catalog.",
       "canonical": "https://www.slidphilabs.com/products"
     },
     "/pricing": {
       "title": "Pricing — Slid Phi Labs",
-      "description": "CuNi $0. Chamber $9/$49/$490. Rider $79/$790. AWARE $9/$49/$490. Lab Pass $668. Stripe card checkout.",
+      "description": "CuNi $0. Chamber $9/$49/$490. Rider $79/$790. PCC $9/$49/$490. Lab Pass $668. Stripe card checkout.",
       "canonical": "https://www.slidphilabs.com/pricing"
     },
     "/pay": {
@@ -86,7 +86,7 @@
     },
     "/box": {
       "title": "Try for 24 hours — Slid Phi Labs",
-      "description": "One-day try of Chamber or AWARE. Then a seat, or it stops. CuNi is free. Rider is a team seat.",
+      "description": "One-day try of Chamber or PCC. Then a seat, or it stops. CuNi is free. Rider is a team seat.",
       "canonical": "https://www.slidphilabs.com/box"
     },
     "/chamber": {
@@ -96,10 +96,10 @@
       "product_line": "Chamber"
     },
     "/gc": {
-      "title": "AWARE — hosted lossless compressor · Slid Phi Labs",
+      "title": "PCC — hosted lossless compressor · Slid Phi Labs",
       "description": "Buy a seat to run a lossless compressor. Day $9 · Month $49 · Year $490. Dual-licensed public source, or a paid grant to ship closed.",
       "canonical": "https://www.slidphilabs.com/gc",
-      "product_line": "AWARE"
+      "product_line": "PCC"
     },
     "/rider": {
       "title": "Agent-Rider — signed identity for AI agents · Slid Phi Labs",
@@ -114,28 +114,28 @@
       "product_line": "CuNi"
     },
     "/lab-pass": {
-      "title": "Lab Pass — Chamber + AWARE + TruGame · $668",
-      "description": "One year: Chamber, AWARE, TruGame. Not Agent-Rider.",
+      "title": "Lab Pass — Chamber + PCC + TruGame · $668",
+      "description": "One year: Chamber, PCC, TruGame. Not Agent-Rider.",
       "canonical": "https://www.slidphilabs.com/lab-pass"
     },
     "/license": {
       "title": "License — every product, every checkout · Slid Phi Labs",
-      "description": "CuNi $0. Chamber $9/$49/$490. AWARE $9/$49/$490. Rider $79/$790. Lab Pass $668.",
+      "description": "CuNi $0. Chamber $9/$49/$490. PCC $9/$49/$490. Rider $79/$790. Lab Pass $668.",
       "canonical": "https://www.slidphilabs.com/license"
     },
     "/about": {
       "title": "About the lab — Slid Phi Labs",
-      "description": "Small computation lab in Cherry Hill. Tools that check: CuNi, Chamber, Agent-Rider, AWARE.",
+      "description": "Small computation lab in Cherry Hill. Tools that check: CuNi, Chamber, Agent-Rider, PCC.",
       "canonical": "https://www.slidphilabs.com/about"
     },
     "/pps": {
       "title": "Suite — metered jobs · not a seat · Slid Phi Labs",
-      "description": "Pay per AWARE job. 6.9 GB / 3 hours unpaid, then about 5¢/GB. Not a user seat.",
+      "description": "Pay per PCC job. 6.9 GB / 3 hours unpaid, then about 5¢/GB. Not a user seat.",
       "canonical": "https://www.slidphilabs.com/pps"
     },
     "/access": {
       "title": "Access — claim a lab seat after payment · Slid Phi Labs",
-      "description": "After Stripe or x402, this page opens the Chamber, AWARE, Rider, or Lab Pass seat you bought.",
+      "description": "After Stripe or x402, this page opens the Chamber, PCC, Rider, or Lab Pass seat you bought.",
       "canonical": "https://www.slidphilabs.com/access"
     },
     "/agents": {
@@ -145,7 +145,7 @@
     },
     "/humans": {
       "title": "Humans — the lab in plain language · Slid Phi Labs",
-      "description": "Who we are, what we sell, how to try it. CuNi, Chamber, Agent-Rider, AWARE. Agents use /agents.",
+      "description": "Who we are, what we sell, how to try it. CuNi, Chamber, Agent-Rider, PCC. Agents use /agents.",
       "canonical": "https://www.slidphilabs.com/humans"
     },
     "/docs": {
@@ -165,7 +165,7 @@
     },
     "/demos": {
       "title": "Historical compression demos · Slid Phi Labs",
-      "description": "Old public demos. The compressor you buy today is AWARE. pulsar is the public GPLv3 cousin.",
+      "description": "Old public demos. The compressor seat you buy today is PCC. pulsar is the public GPLv3 cousin.",
       "canonical": "https://www.slidphilabs.com/demos"
     }
   }

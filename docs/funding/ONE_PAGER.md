@@ -12,10 +12,10 @@ Four paid surfaces, one free playground:
 |---------|------------|-------|
 | **CuNi** | One source → Python, Go, JS match or refuse | $0 |
 | **Chamber** | Two-key JSON seal | $9/mo · $99/yr |
-| **AWARE** | Hosted lossless compressor. Engine stays in the lab. | $9/day · $49/mo · $490/yr |
+| **PCC** | Hosted lossless compressor. Engine stays in the lab. | $9/day · $49/mo · $490/yr |
 | **Agent-Rider** | Signed agent identity L0–L4 | $79/mo · $790/yr |
-| **Suite** | Metered AWARE jobs | 6.9 GB / 3 h unpaid, then ~5¢/GB |
-| **Lab Pass** | Chamber + AWARE + TruGame, 365 days. Not Rider. | $668/yr |
+| **Suite** | Metered PCC jobs | 6.9 GB / 3 h unpaid, then ~5¢/GB |
+| **Lab Pass** | Chamber + PCC + TruGame, 365 days. Not Rider. | $668/yr |
 
 Humans: Stripe. Agents: x402 (USDC, Solana or Base) + hosted MCP `https://www.slidphilabs.com/mcp`.
 
@@ -25,7 +25,7 @@ Humans: Stripe. Agents: x402 (USDC, Solana or Base) + hosted MCP `https://www.sl
 - **pulsar 2.5.0** (GPLv3, not the private engine): Silesia **55,745,438 / 211,938,580**, DECODE_OK 12/12. Beats gzip-9 (~67.6M). Loses to xz-6 (~49.4M) and to zpaq-class tools.  
 - npm clients live: `slid-phi` 2.2.11, `spl-pay-per-suite` 1.1.9, `blackjack-compression` 1.5.3, `@cptasz13/tru8` 0.1.1. Stubs and quote rails. **No private encoder in the tarball.**
 
-We do not claim #1 on Silesia. Combined GC (the hosted AWARE engine) is not on GitHub.
+We do not claim #1 on Silesia. Combined GC (the hosted PCC engine) is not on GitHub.
 
 ## Why this is a company
 
@@ -37,7 +37,7 @@ Cloud egress is ~9¢/GB. We meter jobs at ~5¢/GB after a small unpaid cap. Agen
 
 ## What we will not say
 
-- That pulsar or AWARE is the best compressor.  
+- That pulsar or PCC is the best compressor.  
 - Fake MRR. Stripe totals come from Host.  
 - That Combined GC is open source.
 

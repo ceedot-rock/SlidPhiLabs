@@ -1,6 +1,6 @@
 # agents.txt — Slid Phi Labs
 # Small computation lab. Tools that check.
-# CuNi $0 · Chamber $9/$99 · Rider $79/$790 · AWARE $9/$49/$490 · 2 GB/mo free then 8¢/GB
+# CuNi $0 · Chamber $9/$99 · Rider $79/$790 · PCC $9/$49/$490 · 2 GB/mo free then 8¢/GB
 
 GET https://www.slidphilabs.com/llms.txt
 GET https://www.slidphilabs.com/api/agent

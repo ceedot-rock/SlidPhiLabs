@@ -6,7 +6,7 @@ Slid Phi Labs Commercial License. See LICENSE.
 
 Out of both licenses:
 - Combined GC, LBR1 / splb / ASMD, PCC encoder source
-- AWARE encoder source
+- PCC encoder source
 - docs/site/bin/lb and docs/site/bin/pulsar as engine grants (hosted access is a seat)
 - Chamber kernel, Agent-Rider signing keys, production AUTH_DIR data
 
