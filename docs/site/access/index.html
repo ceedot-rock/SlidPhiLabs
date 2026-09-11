@@ -8,9 +8,9 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Access — entitlement claim after payment · Slid Phi Labs</title>
-<meta name="description" content="After Stripe or x402, this page opens the Chamber, AWARE, Rider, or Lab Pass seat you bought. Not a codec dump."/>
+<meta name="description" content="After Stripe or x402, this page opens the Chamber, PCC, Rider, or Lab Pass seat you bought. Not a codec dump."/>
 <meta name="lab-modules" content="compression,chamber"/>
-<meta name="lab-compression" content="AWARE,pulsar"/>
+<meta name="lab-compression" content="PCC,pulsar"/>
 <meta name="lab-sku" content="truchamber-day,truchamber-month,truchamber-year"/>
 
 <meta name="robots" content="index,follow"/>
@@ -167,7 +167,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       <div class="badge">After pay · claim the entitlement you bought</div>
       <p class="ribbon">Not a dump. Not a second product.</p>
       <h1>Access</h1>
-      <p class="note" style="margin-bottom:0">Pay for a lab seat — Chamber, AWARE, Agent-Rider, Lab Pass — then this page opens what you bought. Support: <code>corey@slidphilabs.com</code>.</p>
+      <p class="note" style="margin-bottom:0">Pay for a lab seat — Chamber, PCC, Agent-Rider, Lab Pass — then this page opens what you bought. Support: <code>corey@slidphilabs.com</code>.</p>
     </div>
   </div>
 
@@ -218,7 +218,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
   <h2>Not purchased yet?</h2>
   <div class="links">
     <a class="btn btn-gold" href="/pay?sku=chamber-year">Chamber Year · $490</a>
-    <a class="btn btn-primary" href="/pay?sku=gc-year">AWARE Year · $490</a>
+    <a class="btn btn-primary" href="/pay?sku=gc-year">PCC Year · $490</a>
     <a class="btn btn-teal" href="/pay?sku=rider-year">Rider Year · $790</a>
     <a class="btn btn-ghost" href="/pricing">Full price list</a>
   </div>
@@ -282,7 +282,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       blurb: 'JSON seal',
     },
     'gc-year': {
-      name: 'AWARE · annual compressor seat',
+      name: 'PCC · annual compressor seat',
       price: '$490/year',
       champ: true,
       deliver: 'Hosted lossless compressor for one year. Engine stays in the lab.',
@@ -290,14 +290,14 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       blurb: 'Compressor',
     },
     'gc-month': {
-      name: 'AWARE · monthly compressor seat',
+      name: 'PCC · monthly compressor seat',
       price: '$49/month',
       deliver: 'Hosted lossless compressor for one calendar month.',
       buy: '/pay?sku=gc-month',
       blurb: 'Compressor',
     },
     'gc-day': {
-      name: 'AWARE · 24-hour compressor seat',
+      name: 'PCC · 24-hour compressor seat',
       price: '$9/day',
       deliver: 'Hosted lossless compressor for 24 hours.',
       buy: '/pay?sku=gc-day',
@@ -322,14 +322,14 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       name: 'Lab Pass · annual',
       price: '$668/year',
       champ: true,
-      deliver: 'Chamber + AWARE + TruGame for 365 days. Not Rider.',
+      deliver: 'Chamber + PCC + TruGame for 365 days. Not Rider.',
       buy: '/pay?sku=lab-pass',
       blurb: 'Bundle',
     },
     'cuni-exception': {
       name: 'CuNi · closed-app exception',
       price: '$490/year',
-      deliver: 'One closed product, one year. Not AWARE.',
+      deliver: 'One closed product, one year. Not PCC.',
       buy: '/pay?sku=cuni-exception',
       blurb: 'Language exception',
     },

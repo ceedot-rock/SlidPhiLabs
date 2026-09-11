@@ -1,7 +1,7 @@
 /**
  * Hosted compression on this machine. Every own pathway is a candidate:
  * zeros, pulsar, LBR1, Combined GC, LZ wrap, PAQ wrap. Smallest DECODE_OK wins.
- * AWARE programs (repeat / affine_i32 / walk_lcg / walk_d1): price via peel helpers; Kolmogorov
+ * PCC programs (repeat / affine_i32 / walk_lcg / walk_d1): price via peel helpers; Kolmogorov
  * seating is rebuilt bin/lb (`lb aware`) from lbr1 main — not the JS twin alone.
  */
 import { looksPulsar, pulsarDecode, pulsarEncode } from "./pulsar-host.mjs";
@@ -163,7 +163,7 @@ export async function encodeHosted(raw) {
   const cls = classify(b);
   if (cls.seat === "fill") return { ...encodeFill(b), classify: cls };
 
-  // Price AWARE programs (repeat / affine / walk) before general bake-off.
+  // Price PCC/LBR1 `lb aware` programs (repeat / affine / walk) before general bake-off.
   // Seating is `lb aware` once Ship refreshes docs/site/bin/lb from lbr1 main.
   // Order matches lbr1: repeat → affine_i32 → walk (affine before walk_d1 on ramps).
   const repeatSku = priceRepeatProgram(b);
@@ -182,7 +182,7 @@ export async function encodeHosted(raw) {
       if (e.killed || e.signal === "SIGTERM") return;
     }
   };
-  // When raw matches an AWARE program, prefer AWARE first (crown path).
+  // When raw matches a PCC/LBR1 program, prefer `lb aware` first (strong path). Crowns unchanged.
   if (awareSku) {
     await run("aware", lbAware, SEAT_LB);
   }
@@ -305,7 +305,7 @@ export function machineCard() {
       fill: { occupant: "zeros", runs_here: true, license: "public-demo" },
       pulsar: { occupant: "pulsar 2.5.0", runs_here: true, license: "GPL-3.0-or-later" },
       lbr1: { occupant: "LBR1", runs_here: true, license: "hosted-access" },
-      aware: { occupant: "AWARE house (repeat / affine_i32 / walk_lcg / walk_d1 when bin/lb from lbr1 main)", runs_here: true, license: "hosted-access" },
+      aware: { occupant: "PCC/LBR1 house (repeat / affine_i32 / walk_lcg / walk_d1 when bin/lb from lbr1 main)", runs_here: true, license: "hosted-access" },
       lz: { occupant: "LZ wrap", runs_here: true, license: "hosted-access" },
       paq: { occupant: "PAQ wrap", runs_here: true, license: "hosted-access" },
       store: { occupant: "store", runs_here: true },

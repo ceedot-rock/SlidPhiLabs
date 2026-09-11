@@ -3,7 +3,7 @@
 Dual-licensed compression client from Slid Phi Labs.
 
 - All-zero input packs locally to **8 bytes** and round-trips (sync).
-- Everything else uses hosted AWARE (`compress()` returns a Promise).
+- Everything else uses hosted PCC (`compress()` returns a Promise).
 - `zip()` / `unzip()` build a `.pcc` archive (our zip).
 
 ```bash
@@ -18,4 +18,4 @@ const packed = compress(Buffer.alloc(1_000_000)); // 8 bytes, sync
 const raw = decompress(packed);                   // 1_000_000 zeros
 ```
 
-AWARE: https://www.slidphilabs.com/gc · `.pcc`: https://www.slidphilabs.com/pcc
+PCC: https://www.slidphilabs.com/gc · `.pcc`: https://www.slidphilabs.com/pcc

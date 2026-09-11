@@ -6,7 +6,7 @@ Not a designed PPTX. Speak this. Do not add a Silesia “we won” slide.
 
 2. **Problem** — Restore is the product. Ratio without DECODE_OK is a lie. Agents pay and act with no identity.
 
-3. **Product** — AWARE hosted jobs. Chamber two-key JSON. Rider signed agents. CuNi free exactness.
+3. **Product** — PCC hosted jobs. Chamber two-key JSON. Rider signed agents. CuNi free exactness.
 
 4. **Proof** — 1e6 zeros → 8 B. pulsar Silesia 55.7M / 211.9M, DECODE_OK 12/12. Beats gzip-9. Loses to xz-6.
 

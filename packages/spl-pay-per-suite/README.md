@@ -1,6 +1,6 @@
 # spl-pay-per-suite
 
-Quote, checkout, MCP, and hosted `compress()` / `decompress()` / `zip()` / `unzip()` for **AWARE**. Dual-licensed: AGPL-3.0-or-later or a paid grant. The encoder stays on the lab host.
+Quote, checkout, MCP, and hosted `compress()` / `decompress()` / `zip()` / `unzip()` for **PCC**. Dual-licensed: AGPL-3.0-or-later or a paid grant. The encoder stays on the lab host.
 
 ## Pricing
 
@@ -8,7 +8,7 @@ Quote, checkout, MCP, and hosted `compress()` / `decompress()` / `zip()` / `unzi
 |------|------|
 | **Free** | First **2 GB** each calendar month — $0 |
 | **Then** | **8¢ / GB** ($1 card minimum) |
-| **Month plan** | AWARE $49 includes 200 GB |
+| **Month plan** | PCC $49 includes 200 GB |
 
 Canonical catalog: [GET /api/x402-products](https://www.slidphilabs.com/api/x402-products)
 

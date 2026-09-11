@@ -3,7 +3,7 @@
   "inbox": "corey@slidphilabs.com",
   "site": "https://www.slidphilabs.com",
   "methods": "https://www.slidphilabs.com/METHODS.md",
-  "rule": "CuNi $0. Chamber cloak $9/mo · $99/yr (open with keys). AWARE $9/$49/$490. TRUSTREAM rides the AWARE seat. Rider $79/mo · $790/yr. Rider Ops $29/$290. Suite 6.9 GB / 3 h then ~5¢/GB. Lab Pass $668. Quikgater is pay-per-fetch, not a seat. TRU8/Gate/ZRW are names inside AWARE.",
+  "rule": "CuNi $0. Chamber cloak $9/mo · $99/yr (open with keys). PCC $9/$49/$490. TRUSTREAM rides the PCC seat. Rider $79/mo · $790/yr. Rider Ops $29/$290. Suite 6.9 GB / 3 h then ~5¢/GB. Lab Pass $668. Quikgater is pay-per-fetch, not a seat. TRU8/Gate/ZRW are names inside PCC.",
   "measured": {
     "silesia_raw": 211938580,
     "aware_xz1": 47752368,
@@ -24,7 +24,7 @@
   },
   "products": {
     "gc": {
-      "name": "AWARE",
+      "name": "PCC",
       "acronym": "Adaptive Waveform Archive Restore Engine",
       "engine": "hosted",
       "version": "1.19.2",
@@ -79,7 +79,7 @@
       "sku": "pulsar-exception",
       "usd": 490,
       "stripe": "https://www.slidphilabs.com/pay?sku=pulsar-exception",
-      "grants": "One closed-source product, one year. pulsar stays GPLv3. Never Combined GC / LBR1 / AWARE residual."
+      "grants": "One closed-source product, one year. pulsar stays GPLv3. Never Combined GC / LBR1 / PCC residual."
     },
     "trugame": {
       "name": "TruGame",

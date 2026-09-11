@@ -11,9 +11,9 @@ Every product we bring forward is **dual-licensed**. You pick the open license, 
 
 pulsar is GPL-3.0-or-later, or SKU `pulsar-exception` at **$490/year** for one closed product, one year. CuNi is AGPL-3.0-or-later, or SKU `cuni-exception` at **$490/year**. Chamber SDK, Warrant, and Agent-Rider are AGPL-3.0-or-later, or their matching seat. Chooser files live in each repo as `LICENSE`.
 
-AWARE is a **hosted** compressor. You buy a seat to run it ($9/day · $49/month · $490/year). You do **not** get the source.
+PCC is a **hosted** compressor. You buy a seat to run it ($9/day · $49/month · $490/year). You do **not** get the source.
 
-Chamber ($9/month · $99/year), Agent-Rider ($79/month · $790/year), and Lab Pass ($668/year: Chamber + AWARE + TruGame, not Rider) are paid product seats. CuNi’s playground is free; shipping CuNi in a closed app is $490/year (SKU `cuni-exception`).
+Chamber ($9/month · $99/year), Agent-Rider ($79/month · $790/year), and Lab Pass ($668/year: Chamber + PCC + TruGame, not Rider) are paid product seats. CuNi’s playground is free; shipping CuNi in a closed app is $490/year (SKU `cuni-exception`).
 
 The production engine is private. A $199 OSS-support SKU is help, not a license, unless the invoice says otherwise.
 
@@ -28,7 +28,7 @@ The production engine is private. A $199 OSS-support SKU is help, not a license,
 
    The public tree stays GPL / public. The exception is extra permission for one closed product, one year.
 
-3. **Hosted seat.** AWARE, Chamber, Rider, Lab Pass, and related seats are **access**. You buy the right to run the product on our machines (or, for Chamber, to seal new JSON). You do not receive the production engine.
+3. **Hosted seat.** PCC, Chamber, Rider, Lab Pass, and related seats are **access**. You buy the right to run the product on our machines (or, for Chamber, to seal new JSON). You do not receive the production engine.
 
 ## What a pulsar exception grants
 
@@ -40,17 +40,17 @@ The production engine is private. A $199 OSS-support SKU is help, not a license,
 
 No SKU sells the production engine or its internals. You buy a seat or a written exception.
 
-Without a matching invoice, you do not receive Combined GC, LBR1 / `splb` / ASMD, AWARE encoder source, the Chamber kernel, Agent-Rider signing keys, or a right to paste a host codec (gzip, brotli, xz, bzip2) into a lab frame and call it ours.
+Without a matching invoice, you do not receive Combined GC, LBR1 / `splb` / ASMD, PCC encoder source, the Chamber kernel, Agent-Rider signing keys, or a right to paste a host codec (gzip, brotli, xz, bzip2) into a lab frame and call it ours.
 
 ## Hosted seats (access, not engine)
 
 | Product | SKU | Price |
 |---|---|---|
-| AWARE day / month / year | `gc-day` / `gc-month` / `gc-year` | $9 / $49 / $490 |
-| Lab Pass year | `lab-pass` | $668 (Chamber + AWARE + TruGame; not Rider) |
+| PCC day / month / year | `gc-day` / `gc-month` / `gc-year` | $9 / $49 / $490 |
+| Lab Pass year | `lab-pass` | $668 (Chamber + PCC + TruGame; not Rider) |
 | Chamber month / year | `chamber-month` / `chamber-year` | $9 / $99 |
 
-Hosted compression: first 2 GB each month are free. After that, 8¢ per GB. Card charges start at $1. An AWARE plan includes more (day 10 GB, month 200 GB, year 2,000 GB), then the same 8¢. That meter pays for the machines. It is not a separate product.
+Hosted compression: first 2 GB each month are free. After that, 8¢ per GB. Card charges start at $1. A PCC plan includes more (day 10 GB, month 200 GB, year 2,000 GB), then the same 8¢. That meter pays for the machines. It is not a separate product.
 
 After Stripe, claim on https://www.slidphilabs.com/access.
 
@@ -60,7 +60,7 @@ After Stripe, claim on https://www.slidphilabs.com/access.
 
 - A file of zeros: compressed here, free demo, 8 bytes, original restored.
 - Text you want to run yourself: download pulsar, or pay `pulsar-exception` to put it in a closed app.
-- Everyday files: buy AWARE. You run it on our machines. Source is dual-licensed; the AWARE year seat is the closed-product grant and the hosted grant.
+- Everyday files: buy PCC. You run it on our machines. Source is dual-licensed; the PCC year seat is the closed-product grant and the hosted grant.
 
 gzip, brotli, xz, and bzip2 are other compressors we publish numbers against. They are not included in what you buy.
 

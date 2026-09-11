@@ -13,7 +13,7 @@
       "date": "2026-09-09",
       "type": "product",
       "title": "Press: dual-licensed hosted compression + npm clients",
-      "body": "AWARE is live under a dual license. slid-phi 2.3.0, spl-pay-per-suite 1.2.0, blackjack-compression 1.6.0, and @cptasz13/tru8 0.2.0 call the live host. First 2 GB/month free, then 8¢/GB.",
+      "body": "PCC is live under a dual license. slid-phi 2.3.0, spl-pay-per-suite 1.2.0, blackjack-compression 1.6.0, and @cptasz13/tru8 0.2.0 call the live host. First 2 GB/month free, then 8¢/GB.",
       "href": "https://www.slidphilabs.com/press",
       "href_label": "Press release",
       "tags": ["aware", "npm", "license", "press"]
@@ -32,8 +32,8 @@
       "id": "u-lab-catalog-2026-09",
       "date": "2026-09-02",
       "type": "product",
-      "title": "Lab catalog: CuNi, Chamber, Rider, AWARE",
-      "body": "Public seats: CuNi $0, Chamber $9/$99, Agent-Rider $79/$790, AWARE $9/$49/$490, Lab Pass $668, Rider Ops $29/$290, Quikgater x402 per fetch.",
+      "title": "Lab catalog: CuNi, Chamber, Rider, PCC",
+      "body": "Public seats: CuNi $0, Chamber $9/$99, Agent-Rider $79/$790, PCC $9/$49/$490, Lab Pass $668, Rider Ops $29/$290, Quikgater x402 per fetch.",
       "href": "https://www.slidphilabs.com/products",
       "href_label": "Products",
       "tags": ["catalog", "pricing", "chamber", "aware", "rider"]
@@ -53,7 +53,7 @@
       "date": "2026-08-18",
       "type": "product",
       "title": "Lab Pass $668",
-      "body": "Lab Pass is Chamber + AWARE + TruGame for 365 days. Rider is separate.",
+      "body": "Lab Pass is Chamber + PCC + TruGame for 365 days. Rider is separate.",
       "href": "https://www.slidphilabs.com/products",
       "href_label": "Products",
       "tags": ["lab-pass", "gate"]
@@ -62,8 +62,8 @@
       "id": "u-two-product-split",
       "date": "2026-08-14",
       "type": "product",
-      "title": "Chamber cloak + AWARE compressor",
-      "body": "Chamber cloak $9/mo · $99/yr. AWARE $9/$49/$490. Suite meters jobs. SoT pricing.json.",
+      "title": "Chamber cloak + PCC compressor",
+      "body": "Chamber cloak $9/mo · $99/yr. PCC $9/$49/$490. Suite meters jobs. SoT pricing.json.",
       "href": "https://www.slidphilabs.com/license",
       "href_label": "Prices",
       "tags": ["chamber", "tru8", "pricing"]
