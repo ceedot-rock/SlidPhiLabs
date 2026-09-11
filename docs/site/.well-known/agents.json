@@ -4,7 +4,7 @@
   "name": "Slid Phi Labs",
   "description": "Hosted lossless compression (PCC $49/mo, 200 GB, then 8¢/GB), Chamber, Agent-Rider, CuNi. AWARE is a retired alias for PCC. x402 for agents, Stripe for humans.",
   "version": "2.0.0",
-  "updated": "2026-09-02",
+  "updated": "2026-09-11",
   "lead_product": "pcc",
   "cash_product": "chamber",
   "auth": {
