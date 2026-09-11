@@ -53,10 +53,10 @@
       "note": "pay-per-fact x402 worker \u2014 root 400 without URL is healthy signal"
     },
     "agent_rider": {
-      "url": "https://agentrider.vercel.app/",
-      "mcp": "https://agentrider.vercel.app/api/mcp",
+      "url": "https://agentrider.fly.dev/",
+      "mcp": "https://agentrider.fly.dev/api/mcp",
       "live": {
-        "url": "https://agentrider.vercel.app/",
+        "url": "https://agentrider.fly.dev/",
         "http": 402,
         "ok": false,
         "note": "Vercel billing disabled \u2014 MCP path blocked until billing cleared"
