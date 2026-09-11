@@ -64,7 +64,7 @@ export default async function handler(req, res) {
   const body = {
     ok: true,
     name: "Slid Phi Labs — Platform Discovery",
-    version: "1.21.0",
+    version: "1.21.1",
     lead_product: "pcc",
     cash_product: "gc-year",
     auth: AUTH,
@@ -80,7 +80,7 @@ export default async function handler(req, res) {
       status: "/api/box",
       law: "Every product POST is 24h black box, then a paid seat.",
     },
-    updated: "2026-09-05",
+    updated: "2026-09-11",
     rails: {
       human: "POST /api/checkout { sku } or /pay?sku=",
       agent: "POST /api/x402-products { sku }",

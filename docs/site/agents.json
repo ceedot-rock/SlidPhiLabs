@@ -4,7 +4,7 @@
   "name": "Slid Phi Labs",
   "description": "Primary face is PCC (hosted lossless compression). TRUSTREAM (live logs on the same plan), Chamber (two-key JSON seal), Agent-Rider (signed agent identity), CuNi (write once, print many languages). AWARE is a retired alias for PCC. Stripe for humans; x402 for agents.",
   "version": "2.1.2",
-  "updated": "2026-09-09",
+  "updated": "2026-09-11",
   "lead_product": "pcc",
   "cash_product": "gc-year",
   "auth": {
