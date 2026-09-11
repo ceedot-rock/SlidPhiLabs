@@ -25,8 +25,11 @@
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <link rel="stylesheet" href="/assets/chrome.css?v=35"/>
   <style>
-    .tg-loop{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:1.25rem 0 1.75rem}
-    .tg-loop .step{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .7rem;border:1px solid rgba(232,197,71,.35);border-radius:999px;background:rgba(15,28,46,.7);font-size:.92rem}
+    .tg-hero-row{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin:0 0 1rem}
+    .tg-seat{width:72px;height:72px;border-radius:16px;border:1px solid rgba(232,197,71,.35);background:rgba(15,28,46,.7);object-fit:cover}
+    .tg-loop{display:flex;flex-wrap:wrap;gap:.55rem;align-items:center;margin:1.25rem 0 1.75rem}
+    .tg-loop .step{display:inline-flex;align-items:center;gap:.45rem;padding:.4rem .75rem .4rem .4rem;border:1px solid rgba(232,197,71,.35);border-radius:999px;background:rgba(15,28,46,.7);font-size:.92rem}
+    .tg-loop .step img{width:36px;height:36px;border-radius:50%;display:block}
     .tg-loop .step strong{color:var(--gold,#e8c547);font-weight:700;letter-spacing:.04em}
     .tg-loop .arrow{opacity:.45;user-select:none}
     .tg-note{font-size:.95rem;opacity:.85;max-width:42rem}
@@ -35,21 +38,26 @@
 </head>
 <body>
   <main class="spl-page" id="main">
-    <p class="spl-kicker">Engine seat</p>
-    <h1>TruGame</h1>
+    <div class="tg-hero-row">
+      <img class="tg-seat" src="/assets/trugame/marks/trugame-mark-seat.jpg?v=1" width="72" height="72" alt="TruGame engine seat"/>
+      <div>
+        <p class="spl-kicker">Engine seat</p>
+        <h1>TruGame</h1>
+      </div>
+    </div>
     <p class="lede">TruGame is the engine that makes worlds leave evidence. Not a game store. Not a war skin. A seat for the loop that packs leftovers and seals them bit-exact.</p>
 
     <h2>The loop</h2>
     <div class="tg-loop" aria-label="Canonical engine loop">
-      <span class="step"><strong>cell</strong> OFA</span>
+      <span class="step"><img src="/assets/trugame/marks/trugame-mark-cell.jpg?v=1" width="36" height="36" alt=""/><strong>cell</strong> OFA</span>
       <span class="arrow" aria-hidden="true">→</span>
-      <span class="step"><strong>tick</strong></span>
+      <span class="step"><img src="/assets/trugame/marks/trugame-mark-tick.jpg?v=1" width="36" height="36" alt=""/><strong>tick</strong></span>
       <span class="arrow" aria-hidden="true">→</span>
-      <span class="step"><strong>leftover</strong></span>
+      <span class="step"><img src="/assets/trugame/marks/trugame-mark-leftover.jpg?v=1" width="36" height="36" alt=""/><strong>leftover</strong></span>
       <span class="arrow" aria-hidden="true">→</span>
-      <span class="step"><strong>TG8</strong> pack</span>
+      <span class="step"><img src="/assets/trugame/marks/trugame-mark-tg8.jpg?v=1" width="36" height="36" alt=""/><strong>TG8</strong> pack</span>
       <span class="arrow" aria-hidden="true">→</span>
-      <span class="step"><strong>Chamber</strong> seal / restore</span>
+      <span class="step"><img src="/assets/trugame/marks/trugame-mark-chamber.jpg?v=1" width="36" height="36" alt=""/><strong>Chamber</strong> seal / restore</span>
     </div>
     <p class="tg-note">Shippable cell today: <strong>OFA</strong>. Machine door: <code>POST /api/trugame/ofa</code> · format <code>trugame-tg8</code>. Bit-exact CI is on main. Live host optional — contract is proven without Fly.</p>
 
