@@ -39,14 +39,6 @@
       "destination": "/gc.html"
     },
     {
-      "source": "/pcc",
-      "destination": "/pcc.html"
-    },
-    {
-      "source": "/pcc/",
-      "destination": "/pcc.html"
-    },
-    {
       "source": "/press",
       "destination": "/press.html"
     },
@@ -361,9 +353,27 @@
     {
       "source": "/blog/2026-08-07-freemium-suite-retires-try-gate/",
       "destination": "/blog/2026-08-07-freemium-suite-retires-try-gate.html"
+    },
+    {
+      "source": "/archive",
+      "destination": "/pcc.html"
+    },
+    {
+      "source": "/archive/",
+      "destination": "/pcc.html"
     }
   ],
   "redirects": [
+    {
+      "source": "/pcc/",
+      "destination": "/gc",
+      "permanent": true
+    },
+    {
+      "source": "/pcc",
+      "destination": "/gc",
+      "permanent": true
+    },
     {
       "source": "/",
       "has": [
