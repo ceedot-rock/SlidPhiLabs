@@ -14,17 +14,34 @@
   <meta property="og:url" content="https://www.slidphilabs.com/gc"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <link rel="stylesheet" href="/assets/chrome.css?v=35"/>
+  <style>
+    .aware-board{margin:1.25rem 0 1.5rem;padding:1rem 1.15rem;border:1px solid rgba(232,197,71,.35);border-radius:16px;background:rgba(15,28,46,.72)}
+    .aware-board .today{font-size:clamp(1.35rem,3.2vw,1.85rem);line-height:1.15;margin:.2rem 0 .55rem;color:var(--gold,#e8c547)}
+    .aware-board .today strong{font-weight:800;letter-spacing:.02em}
+    .aware-board .second{opacity:.82;font-size:.95rem;margin:0}
+    .aware-board .kicker{margin:0;opacity:.75;letter-spacing:.08em;text-transform:uppercase;font-size:.72rem}
+  </style>
 </head>
 <body>
   <main class="spl-page" id="main">
-    <p class="spl-kicker">The product · AWARE · dual license</p>
-    <h1>Send a file. Get a smaller one. Restore every byte later.</h1>
-    <p class="lede">AWARE is hosted lossless compression. You have a file you must keep. You send it to us. We run every compression path we own on this machine and keep the smallest copy that can still become the original. You store or ship the small copy. When you need the real file, you send it back and we restore it. That loop is the product.</p>
+    <p class="spl-kicker">AWARE · diner window</p>
+    <h1>Send a file. Get it smaller. Every byte back.</h1>
+    <p class="lede">Hosted lossless compression — every pathway we own, smallest restore-safe copy. You order at the window; the kitchen cooks. The awning says <strong>AWARE</strong>.</p>
+    <aside class="aware-board" aria-label="Today’s climb">
+      <p class="kicker">Today’s special</p>
+      <p class="today">Ramp crown <strong>18 B seated</strong></p>
+      <p class="second">Honest own-path, climbing to #1. Walk 9 B · repeat 33/61 B secondary.</p>
+    </aside>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="/specialist">The door — shrink a file</a>
+      <a class="spl-btn spl-btn-line" href="/box">Try 24 hours</a>
+      <a class="spl-btn spl-btn-line" href="/docs">API</a>
+    </p>
     <div class="spl-prose">
       <p><strong>Lossless</strong> means the file that comes back is the file you sent. If we cannot make it smaller, we keep it as-is so it never grows.</p>
       <p><strong>Hosted</strong> means we run it. Website, one HTTP call, npm, or MCP. You get the smaller file.</p>
       <p><strong>Dual-licensed.</strong> Every engine we bring forward is available two ways. Use the public source under the open license, or pay a seat and ship it inside a closed product. The hosted service is the same family: an AWARE seat is the grant that runs those pathways on our machines. pulsar’s closed-product grant is $490/year. CuNi’s is $490/year. Chamber, Rider, and Warrant seats cover theirs. Full list: <a href="/licensing.json">licensing.json</a>.</p>
-      <p><strong>What people send.</strong> Backups. Datasets. Archives. Log history. Live logs use the same plan (TRUSTREAM).</p>
+      <p><strong>What people send.</strong> Backups. Datasets. Archives. Log history. Live logs use the same plan (TRUSTREAM). A folder becomes a <a href="/pcc"><code>.pcc</code></a> file — our zip: many files, one container, this compressor inside.</p>
     </div>
     <h2>How a job runs</h2>
     <div class="spl-grid">
@@ -33,7 +50,7 @@
       <article class="spl-card"><p class="spl-kicker">3</p><h3>You keep the small copy</h3><p>Store it, ship it, archive it.</p></article>
       <article class="spl-card"><p class="spl-kicker">4</p><h3>You restore later</h3><p><code>POST /api/decompress</code>. Every byte of the original comes back.</p></article>
     </div>
-    <p class="spl-note">First 2 GB each month are free. A month is $49 and includes 200 GB. Then 8¢ per GB. <a href="/pricing">Pricing</a> · <a href="/compare">Compare</a> · <a href="/npm">npm</a>.</p>
+    <p class="spl-note">First 2 GB each month are free. A month is $49 and includes 200 GB. Then 8¢ per GB. Official 12-file corpus numbers: <a href="/silesia">/silesia</a>. <a href="/pricing">Pricing</a> · <a href="/compare">Compare</a> · <a href="/npm">npm</a>.</p>
     <p class="spl-actions">
       <a class="spl-btn spl-btn-dark" href="/box">Try 24 hours</a>
       <a class="spl-btn spl-btn-line" href="/specialist">See it shrink a file</a>
