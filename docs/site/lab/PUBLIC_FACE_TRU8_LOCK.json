@@ -137,7 +137,7 @@
   "liveness": {
     "checked": "2026-08-12",
     "agent_rider": {
-      "url": "https://agentrider.vercel.app/",
+      "url": "https://agentrider.fly.dev/",
       "status": "paused",
       "note": "Vercel Deployment Paused (DEPLOYMENT_DISABLED / HTTP 402). Do not delete the URL."
     },
@@ -165,7 +165,7 @@
   },
   "sisters": {
     "cuni": "https://cuni-studio.fly.dev/",
-    "agent_rider": "https://agentrider.vercel.app/",
+    "agent_rider": "https://agentrider.fly.dev/",
     "quikgater": "https://github.com/ceedot-rock/quikgater",
     "quikgater_worker": "https://quikgater-worker.ceedotrock.workers.dev",
     "team_mesh": "https://spl-team-mesh.fly.dev"

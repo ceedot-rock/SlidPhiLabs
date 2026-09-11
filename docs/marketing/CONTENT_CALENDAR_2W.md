@@ -7,7 +7,7 @@
 |-----|---------|---------|---------------|-----|
 | D0 | Podcast + YT | SlidPhi | Upload Ep1 + Short (copy in Notion 7-day package) | /pps Try · standings |
 | D1 | X thread | SlidPhi | Ep1 live + standings proof | /standings · /pps |
-| D1 | X | Rider | Studio → Rider cutover live (contracts API) | agentrider.vercel.app |
+| D1 | X | Rider | Studio → Rider cutover live (contracts API) | agentrider.fly.dev |
 | D2 | X | SlidPhi | Public number clip + IP Guard line | /standings |
 | D2 | Blog/X | CuNi | Exactness citizenship one-pager | cuni-studio.fly.dev |
 | D3 | X | SlidPhi | Ep2 teaser · Try/Suite/Support doors | /try · /pps |
@@ -24,5 +24,5 @@
 - www.slidphilabs.com
 - /api/agent (agents)
 - cuni-studio.fly.dev
-- agentrider.vercel.app
+- agentrider.fly.dev
 - github.com/ceedot-rock/quikgater
