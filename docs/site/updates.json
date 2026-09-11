@@ -1,13 +1,23 @@
 {
   "service": "Slid Phi Labs — Lab Feed",
-  "version": "1.2.0",
-  "updated": "2026-09-09",
+  "version": "1.2.1",
+  "updated": "2026-09-11",
   "social": {
     "x": "https://x.com/slidphilabs",
     "handle": "@slidphilabs"
   },
   "description": "Product updates, news, plans, and social pointers.",
   "items": [
+    {
+      "id": "u-cuni-0-1-9",
+      "date": "2026-09-11",
+      "type": "product",
+      "title": "CuNi 0.1.9 — 119 languages, same stdout or refuse",
+      "body": "cuni check emit+runs the 119-language catalog. Native seats: Python, Go, JavaScript, TypeScript, C, C++, Rust. Other ids emit+run via Python lowering. Studio is free. Closed-app exception $490/year.",
+      "href": "https://www.slidphilabs.com/cuni",
+      "href_label": "CuNi",
+      "tags": ["cuni", "release", "studio", "protocol"]
+    },
     {
       "id": "u-press-dual-license-npm",
       "date": "2026-09-09",

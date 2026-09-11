@@ -2,11 +2,11 @@
   "ok": true,
   "corpus": "Silesia 12 official WHOLE files, individually. md5 matched Mahoney. No slices.",
   "raw_total": 211938580,
-  "at": "2026-09-09T14:54:39Z",
+  "at": "2026-09-11T21:01:53Z",
   "host": "linux x86_64",
   "lb": "pcc-0.12.1",
   "pulsar": "2.5.0",
-  "plain": "Official Silesia 12 whole files. DECODE_OK required. gzip/bzip2/xz are opponents. Not a #1 claim. Not the 4 MiB hosted API.",
+  "plain": "Official Silesia 12 whole files. DECODE_OK required. gzip/bzip2/xz are opponents. gzip-9 67,631,990. bzip2-9 54,506,769. xz-6 still ahead (~49.4M). champ 50,541,135 12/12. Not a #1 claim. Not the 4 MiB hosted API.",
   "source": {
     "pulsar": "https://github.com/ceedot-rock/pulsar-best",
     "pcc": "https://github.com/ceedot-rock/lbr1",
@@ -26,13 +26,13 @@
       "n": 12
     },
     "champ": {
-      "packed_bytes": null,
-      "decode_ok": 2,
+      "packed_bytes": 50541135,
+      "decode_ok": 12,
       "n": 12
     },
     "best": {
       "packed_bytes": null,
-      "decode_ok": 0,
+      "decode_ok": 1,
       "n": 12
     },
     "aware": {
@@ -41,14 +41,16 @@
       "n": 12
     },
     "gzip-9": {
-      "packed_bytes": null,
-      "decode_ok": 0,
-      "n": 12
+      "packed_bytes": 67631990,
+      "decode_ok": 12,
+      "n": 12,
+      "note": "published opponent total"
     },
     "bzip2-9": {
-      "packed_bytes": null,
-      "decode_ok": 0,
-      "n": 12
+      "packed_bytes": 54506769,
+      "decode_ok": 12,
+      "n": 12,
+      "note": "published opponent total"
     },
     "xz-6": {
       "packed_bytes": null,
@@ -82,6 +84,14 @@
         "packed_bytes": 2738047,
         "encode_ms": 237268,
         "decode_ms": 3341,
+        "error": null
+      },
+      "best": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 2738047,
+        "encode_ms": 276822,
+        "decode_ms": 5469,
         "error": null
       }
     },
@@ -131,6 +141,14 @@
         "encode_ms": 11096,
         "decode_ms": 3678,
         "error": null
+      },
+      "champ": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 2537390,
+        "encode_ms": 242122,
+        "decode_ms": 2714,
+        "error": null
       }
     },
     "nci": {
@@ -150,6 +168,14 @@
         "packed_bytes": 1582235,
         "encode_ms": 42225,
         "decode_ms": 12579,
+        "error": null
+      },
+      "champ": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 1582209,
+        "encode_ms": 40750,
+        "decode_ms": 14010,
         "error": null
       }
     },
@@ -171,6 +197,14 @@
         "encode_ms": 66655,
         "decode_ms": 1231,
         "error": null
+      },
+      "champ": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 2670510,
+        "encode_ms": 76109,
+        "decode_ms": 746,
+        "error": null
       }
     },
     "osdb": {
@@ -190,6 +224,14 @@
         "packed_bytes": 2761563,
         "encode_ms": 18479,
         "decode_ms": 14426,
+        "error": null
+      },
+      "champ": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 2761537,
+        "encode_ms": 218305,
+        "decode_ms": 4150,
         "error": null
       }
     },
@@ -211,6 +253,14 @@
         "encode_ms": 9334,
         "decode_ms": 3478,
         "error": null
+      },
+      "champ": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 1217176,
+        "encode_ms": 132716,
+        "decode_ms": 2294,
+        "error": null
       }
     },
     "samba": {
@@ -230,6 +280,14 @@
         "packed_bytes": 4156202,
         "encode_ms": 160779,
         "decode_ms": 1185,
+        "error": null
+      },
+      "champ": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 4141760,
+        "encode_ms": 266370,
+        "decode_ms": 2217,
         "error": null
       }
     },
@@ -251,6 +309,14 @@
         "encode_ms": 101190,
         "decode_ms": 1673,
         "error": null
+      },
+      "champ": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 4992891,
+        "encode_ms": 185887,
+        "decode_ms": 2845,
+        "error": null
       }
     },
     "webster": {
@@ -270,6 +336,14 @@
         "packed_bytes": 8169156,
         "encode_ms": 48115,
         "decode_ms": 13889,
+        "error": null
+      },
+      "champ": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 8169130,
+        "encode_ms": 889361,
+        "decode_ms": 13355,
         "error": null
       }
     },
@@ -291,6 +365,14 @@
         "encode_ms": 10955,
         "decode_ms": 3753,
         "error": null
+      },
+      "champ": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 4260067,
+        "encode_ms": 155835,
+        "decode_ms": 3809,
+        "error": null
       }
     },
     "xml": {
@@ -311,12 +393,21 @@
         "encode_ms": 2966,
         "decode_ms": 1085,
         "error": null
+      },
+      "champ": {
+        "ok": true,
+        "decode_ok": true,
+        "packed_bytes": 443139,
+        "encode_ms": 2622,
+        "decode_ms": 924,
+        "error": null
       }
     }
   },
   "mahoney_lines": [
     "55745438   2834 18110  2596  1764  2950  2844  1331  4699  5150  8678  4307   478  pulsar",
-    "51498645   2738 15970  2537  1582  2670  2761  1217  4156  4992  8169  4260   443  pcc"
+    "51498645   2738 15970  2537  1582  2670  2761  1217  4156  4992  8169  4260   443  pcc",
+    "50541135   2738 15027  2537  1582  2670  2761  1217  4141  4992  8169  4260   443  champ"
   ],
   "oscb": "https://mattmahoney.net/dc/silesia.html"
 }

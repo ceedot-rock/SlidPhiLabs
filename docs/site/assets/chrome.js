@@ -13,7 +13,7 @@
     ["/rider", "Agent-Rider"],
     ["/warrant", "Warrant"],
     ["/cuni", "CuNi"],
-    ["/pcc", ".pcc archive"],
+    ["/archive", ".pcc archive"],
     ["/pulsar", "pulsar"],
     ["/docs", "API"],
     ["/press", "Press"],
@@ -24,13 +24,13 @@
     { t: "Press", title: "Dual-licensed hosted compression — npm clients call the live host", href: "/press" },
     { t: "Silesia", title: "Official 12-file matrix — all pathways", href: "/silesia" },
     { t: "Bench", title: "Live hosted compression vs gzip-9 and brotli-11", href: "/bench" },
-    { t: ".pcc", title: "Our archive, like zip — many files, our compression", href: "/pcc" },
+    { t: ".pcc", title: "Our archive, like zip — many files, our compression", href: "/archive" },
     { t: "PCC", title: "Hosted lossless compression — send a file, restore every byte", href: "/gc" },
     { t: "TRUSTREAM", title: "Live logs on the same plan", href: "/trustream" },
     { t: "Chamber", title: "Two-key lock for a JSON secret", href: "/chamber" },
     { t: "Rider", title: "Signed identity for AI agents", href: "/rider" },
     { t: "Warrant", title: "Mandate and receipts for a Rider", href: "/warrant" },
-    { t: "CuNi", title: "Write once. Python, Go, and JS must match", href: "/cuni" },
+    { t: "CuNi", title: "Write once. 119 languages. Same stdout or refuse", href: "/cuni" },
   ];
 
   function path() {

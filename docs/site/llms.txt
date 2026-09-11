@@ -16,12 +16,12 @@ What it is, then what you pay.
 - Chamber — two-key JSON seal. $9/mo · $99/yr. License to seal new secrets; opening an already-sealed secret takes both keys, not another payment. https://www.slidphilabs.com/chamber
 - Agent-Rider — signed identity for AI agents. $79/mo · $790/yr. https://www.slidphilabs.com/rider
 - Warrant — signed mandate + receipts bound to a Rider. Who is Rider; what they may do and proof they did it is Warrant. $29/mo · $290/yr. POST /api/warrant/issue (X-Agent-Rider). https://www.slidphilabs.com/warrant
-- CuNi — one program printed into many languages. Exactness: same stdout on the catalog, or it refuses. Playground $0. Closed-app exception $490/yr, SKU cuni-exception. Protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json · https://www.slidphilabs.com/.well-known/cuni-protocol.json · v0.1.8. https://www.slidphilabs.com/cuni
+- CuNi — 119 languages. Same stdout on every catalog seat, or it refuses. Native seats: Python, Go, JavaScript, TypeScript, C, C++, Rust. Other ids emit+run via Python lowering. Playground $0. Closed-app exception $490/yr, SKU cuni-exception. Protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json · https://www.slidphilabs.com/.well-known/cuni-protocol.json · v0.1.9. https://www.slidphilabs.com/cuni
 - Lab Pass — $668/yr. One year of Chamber + PCC + TruGame. Does not include Rider. https://www.slidphilabs.com/lab-pass
 
 Every product we bring forward is dual-licensed (open terms or a paid grant). Hosted compression uses all of those pathways. npm packages and MCP call the live host — they are clients, not stubs.
 
-Official Silesia 12 (211,938,580 in, whole files, DECODE_OK): pulsar 2.5.0 55,745,438 (matches OSCB, 12/12) · PCC 51,498,645 (12/12). xz-6 still ahead (~49.4M). gzip-9 67,631,990. Not a #1 claim. AWARE+XZ1 47.7M is retired (occupied host xz; not a product spec). Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/silesia.json · blog: https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc
+Official Silesia 12 (211,938,580 in, whole files, DECODE_OK): pulsar 2.5.0 55,745,438 (matches OSCB, 12/12) · PCC 51,498,645 (12/12) · champ 50,541,135 (12/12). gzip-9 67,631,990. bzip2-9 54,506,769. xz-6 still ahead (~49.4M). Not a #1 claim. AWARE+XZ1 47.7M is retired (occupied host xz; not a product spec). Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/silesia.json · blog: https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc
 Hosted bench (live POST /api/compress, gzip-9 and brotli-11 as opponents, 4 MiB cap, not official Silesia): https://www.slidphilabs.com/bench · https://www.slidphilabs.com/bench.json
 Public source: https://github.com/ceedot-rock/pulsar-best · https://github.com/ceedot-rock/lbr1 · https://github.com/ceedot-rock/combined-gc · https://github.com/ceedot-rock/SlidPhiLabs
 Operator-only: signing keys, Chamber kernel secrets, AUTH_DIR.

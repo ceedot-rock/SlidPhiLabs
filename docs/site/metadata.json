@@ -10,7 +10,7 @@
   "theme_color": "#0f1c2e",
   "twitter": "@slidphilabs",
   "glossary": {
-    "CuNi": "language — write once, print many languages. Python, Go, and JS must match, or refuse. Studio $0. Closed-app exception $490/yr. v0.1.8.",
+    "CuNi": "language — write once, print 119 languages. Same stdout or refuse. Native seats: Python, Go, JS, TS, C, C++, Rust. Studio $0. Closed-app exception $490/yr. v0.1.9.",
     "Chamber": "two-key protocol for storing a JSON secret. Cloak license $9/mo · $99/yr. Open existing seals with both keys.",
     "Agent-Rider": "signed agent identity L0–L4. Month $79 · Year $790. Not in Lab Pass.",
     "PCC": "hosted lossless compressor. Day $9 · Month $49 · Year $490. Dual-licensed public source, or a paid grant to ship closed.",
@@ -109,7 +109,7 @@
     },
     "/cuni": {
       "title": "CuNi — write once, print many languages · Slid Phi Labs",
-      "description": "One program, many languages. Python, Go, and JS must match, or it refuses. Playground is free. Closed-app exception $490/year per product.",
+      "description": "119 languages. Same stdout or refuse. Native seats: Python, Go, JS, TS, C, C++, Rust. Playground is free. Closed-app exception $490/year per product.",
       "canonical": "https://www.slidphilabs.com/cuni",
       "product_line": "CuNi"
     },

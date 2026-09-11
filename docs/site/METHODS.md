@@ -10,7 +10,11 @@ SoT methods (this file)
 - Official Silesia 12, whole files, DECODE_OK, raw **211,938,580** (`pcc-0.12.1` matrix):
   - pulsar 2.5.0 **55,745,438** (matches OSCB)
   - PCC **51,498,645** (4.25M inside pulsar; still loses to xz-6 ~49.4M)
-  - champ / best / aware: no total until 12/12
+  - champ **50,541,135** DECODE_OK 12/12
+  - gzip-9 **67,631,990** (opponent)
+  - bzip2-9 **54,506,769** (opponent)
+  - xz-6 still ahead (~49.4M; no exact lab total published)
+  - best / aware: no total until 12/12
 - Retired: AWARE+XZ1 **47,752,368**. That line occupied host xz. Off this scoreboard.
 - Zeros: 1e6 zero bytes → **8 B**, round-trip.
 - Hosted API: 4 MiB, 45s, `/bench`. Not official Silesia.

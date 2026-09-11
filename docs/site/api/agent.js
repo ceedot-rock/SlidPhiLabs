@@ -25,7 +25,7 @@ const AUTH = {
 };
 
 const STANDING = [
-  { sku: "cuni-studio", name: "CuNi Studio", usd: "0", kind: "exactness", blurb: "Write once. Print many languages. Python, Go, and JS must match, or it refuses." },
+  { sku: "cuni-studio", name: "CuNi Studio", usd: "0", kind: "exactness", blurb: "Write once. 119 languages. Same stdout or refuse. Native seats: py/go/js/ts/c/cpp/rs." },
   { sku: "cuni-exception", name: "CuNi · closed-app exception", usd: "490", kind: "exception", blurb: "Ship CuNi inside one closed product for one year. Not the compressor." },
   { sku: "chamber-month", name: "Chamber · monthly cloak license", usd: "9", kind: "chamber", blurb: "License to seal new JSON for 30 days. Open already-sealed blobs with both keys." },
   { sku: "chamber-year", name: "Chamber · annual cloak license", usd: "99", kind: "chamber", blurb: "License to seal new JSON for a year. Stored secrets do not expire." },

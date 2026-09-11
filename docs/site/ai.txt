@@ -5,7 +5,7 @@
 - TRUSTREAM — live log pipe, same PCC plan — https://www.slidphilabs.com/trustream
 - Chamber — two-key JSON seal — $9/mo · $99/yr — https://www.slidphilabs.com/chamber
 - Agent-Rider — signed agent identity — $79/mo · $790/yr — https://www.slidphilabs.com/rider
-- CuNi Studio — $0 — write once; Python, Go, and JS must match — https://cuni-studio.fly.dev/
+- CuNi Studio — $0 — write once; 119 languages, same stdout or refuse — https://cuni-studio.fly.dev/
 - pulsar 2.5.0 — free GPLv3 compressor you download — https://www.slidphilabs.com/pulsar
 - Pricing — https://www.slidphilabs.com/pricing
 - Compare — https://www.slidphilabs.com/compare
