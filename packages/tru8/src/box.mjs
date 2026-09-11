@@ -20,6 +20,6 @@ export function assertTru8Box() {
   const hours = (Date.now() - Date.parse(rec.started)) / 3600000;
   if (hours < -1) throw new Error("HALT: clock tamper");
   if (hours >= 24) {
-    throw new Error(`black box closed — AWARE Year $490 ${BUY}`);
+    throw new Error(`black box closed — PCC Year $490 ${BUY}`);
   }
 }

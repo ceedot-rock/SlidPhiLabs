@@ -6,7 +6,7 @@ Official MCP Registry: io.github.ceedot-rock/slid-phi-labs
 Transport: Streamable HTTP · authentication optional · free (fair use: 60 requests/hour per IP; 500/day)
 
 Lookup tools for the official Slid Phi Labs public catalogs:
-SKU / price, License, Surface, CuNi exactness, Chamber, Agent-Rider, AWARE,
+SKU / price, License, Surface, CuNi exactness, Chamber, Agent-Rider, PCC,
 pulsar (public GPLv3 cousin), Measure (published benches only), Rail (Stripe / x402),
 Box (24h try law), and Docs (SKILL.md, llms.txt, server card, OpenAPI).
 

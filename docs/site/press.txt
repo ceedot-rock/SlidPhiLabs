@@ -5,7 +5,7 @@ Cherry Hill, New Jersey
 SLID PHI LABS OPENS DUAL-LICENSED HOSTED LOSSLESS COMPRESSION
 AND PUBLISHES NPM CLIENTS THAT CALL THE LIVE HOST
 
-Slid Phi Labs today opened AWARE, hosted lossless compression, under a dual
+Slid Phi Labs today opened PCC, hosted lossless compression, under a dual
 license, and published four npm packages that call the live host.
 
 WHAT IT IS
@@ -16,7 +16,7 @@ never comes back larger. Restore is the same host.
 
 DUAL LICENSE
 Every product the lab brings forward is available two ways: open terms, or a
-paid commercial grant to ship inside a closed product. An AWARE seat is the
+paid commercial grant to ship inside a closed product. A PCC seat is the
 grant for hosted use. pulsar’s closed-product grant is $490/year. CuNi’s is
 $490/year. Chamber, Rider, and Warrant seats cover theirs.
 
@@ -24,7 +24,7 @@ NPM CLIENTS (not the encoder)
   slid-phi 2.3.0                 compress() / decompress()
   spl-pay-per-suite 1.2.0        quotes, checkout, MCP, same compress path
   blackjack-compression 1.6.0    same hosted path
-  @cptasz13/tru8 0.2.0           zeros pack locally to 8 bytes; else hosted AWARE
+  @cptasz13/tru8 0.2.0           zeros pack locally to 8 bytes; else hosted PCC
 
   npm i slid-phi
   npm i spl-pay-per-suite
@@ -40,7 +40,7 @@ npm zip() / unzip() · lb zip out.pcc folder/
 PRICE
   First 2 GB each calendar month: free
   Then: 8¢ per GB, $1 card minimum
-  AWARE day $9 (10 GB) · month $49 (200 GB) · year $490 (2,000 GB)
+  PCC day $9 (10 GB) · month $49 (200 GB) · year $490 (2,000 GB)
   TRUSTREAM live logs sit on the same plan
 
 PULSAR

@@ -1,6 +1,6 @@
 # agents.txt — what agents MAY do on this host
 # https://www.slidphilabs.com/.well-known/agents.txt
-# CuNi $0 · Chamber $9/$49/$490 · Rider $79/$790 · AWARE $9/$49/$490 · Suite 6.9 GB / 3 h then ~5¢
+# CuNi $0 · Chamber $9/$49/$490 · Rider $79/$790 · PCC $9/$49/$490 · Suite 6.9 GB / 3 h then ~5¢
 
 Host: www.slidphilabs.com
 Rate: 60/min

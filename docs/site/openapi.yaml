@@ -236,7 +236,7 @@ paths:
   /api/compress:
     post:
       tags: [compression]
-      summary: Hosted lossless compression on an authorized AWARE seat
+      summary: Hosted lossless compression on an authorized PCC seat
       operationId: hostedCompress
       description: The protected encoder remains hosted. Authorization or an applicable paid access boundary is required.
       requestBody:

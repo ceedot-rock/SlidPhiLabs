@@ -9,7 +9,7 @@
   "lead_product": "cuni",
   "cash_product": "chamber",
   "pricing_sot": "https://www.slidphilabs.com/pricing.json",
-  "one_liner": "AWARE $9/$49/$490 (200 GB/mo included, then 8¢/GB). Chamber $9/$99. Rider $79/$790. CuNi $0. Stripe / x402.",
+  "one_liner": "PCC $9/$49/$490 (200 GB/mo included, then 8¢/GB). Chamber $9/$99. Rider $79/$790. CuNi $0. Stripe / x402.",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
     "login": "https://www.slidphilabs.com/login",
@@ -20,12 +20,12 @@
     "name": "SiOS",
     "long": "Synthetic Intelligent OS",
     "url": "https://www.slidphilabs.com/sios",
-    "note": "Operating system. Chamber, AWARE, suite jobs, campus, and games run on it."
+    "note": "Operating system. Chamber, PCC, suite jobs, campus, and games run on it."
   },
   "modules": {
     "compression": {
       "products": [
-        "AWARE",
+        "PCC",
         "pulsar"
       ],
       "urls": {
@@ -41,7 +41,7 @@
         "ZRW",
         "TRU8"
       ],
-      "note": "AWARE is the hosted compressor seat (files and live 4 KiB pipe). pulsar is the public GPLv3 demo. The engine is not in npm."
+      "note": "PCC is the hosted compressor seat (files and live 4 KiB pipe). pulsar is the public GPLv3 demo. The engine is not in npm."
     },
     "chamber": {
       "products": [

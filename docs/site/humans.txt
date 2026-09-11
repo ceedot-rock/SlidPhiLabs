@@ -3,13 +3,13 @@ From: Cherry Hill, NJ, US
 Contact: corey@slidphilabs.com
 Site: https://www.slidphilabs.com
 
-AWARE — hosted lossless compression — $9/day · $49/mo (200 GB) · $490/yr (2,000 GB) — then 8¢/GB — https://www.slidphilabs.com/gc
-TRUSTREAM — live log pipe, same AWARE plan — https://www.slidphilabs.com/trustream
+PCC — hosted lossless compression — $9/day · $49/mo (200 GB) · $490/yr (2,000 GB) — then 8¢/GB — https://www.slidphilabs.com/gc
+TRUSTREAM — live log pipe, same PCC plan — https://www.slidphilabs.com/trustream
 Chamber — two-key JSON — $9/mo · $99/yr — https://www.slidphilabs.com/chamber
 Agent-Rider — $79/mo · $790/yr — https://www.slidphilabs.com/rider
 CuNi Studio — $0 — write once, print many languages; Python/Go/JS must match — https://cuni-studio.fly.dev/
 pulsar 2.5.0 — free open-source compressor — https://www.slidphilabs.com/pulsar
-Lab Pass — $668/yr (Chamber + AWARE + TruGame, not Rider) — https://www.slidphilabs.com/lab-pass
+Lab Pass — $668/yr (Chamber + PCC + TruGame, not Rider) — https://www.slidphilabs.com/lab-pass
 Compare — https://www.slidphilabs.com/compare
 Try 24h — https://www.slidphilabs.com/box
 MCP — https://www.slidphilabs.com/mcp

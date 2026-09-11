@@ -102,7 +102,7 @@ export default async function handler(req, res) {
       security_txt: "https://www.slidphilabs.com/.well-known/security.txt",
     },
     one_liner:
-      "CuNi $0. Chamber cloak $9/mo · $99/yr. AWARE $9/$49/$490. Rider $79/$790. Lab Pass $668. GET /api/agent.",
+      "CuNi $0. Chamber cloak $9/mo · $99/yr. PCC $9/$49/$490. Rider $79/$790. Lab Pass $668. GET /api/agent.",
   };
 
   res.statusCode = 200;

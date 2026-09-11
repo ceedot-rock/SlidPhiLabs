@@ -25,7 +25,7 @@
     { t: "Silesia", title: "Official 12-file matrix — all pathways", href: "/silesia" },
     { t: "Bench", title: "Live hosted compression vs gzip-9 and brotli-11", href: "/bench" },
     { t: ".pcc", title: "Our archive, like zip — many files, our compression", href: "/pcc" },
-    { t: "AWARE", title: "Hosted lossless compression — send a file, restore every byte", href: "/gc" },
+    { t: "PCC", title: "Hosted lossless compression — send a file, restore every byte", href: "/gc" },
     { t: "TRUSTREAM", title: "Live logs on the same plan", href: "/trustream" },
     { t: "Chamber", title: "Two-key lock for a JSON secret", href: "/chamber" },
     { t: "Rider", title: "Signed identity for AI agents", href: "/rider" },
