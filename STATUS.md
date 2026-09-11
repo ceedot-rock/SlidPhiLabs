@@ -38,5 +38,5 @@ Private session dumps created 2026-08-29. **Not products.** Archive them in GitH
 - **AWARE:** legacy alias / seat synonym only — not the main name.
 - **Crowns:** unchanged. Do not invent crowns. Do not sell Gale. Quiet doors 8/9 stay deep shelf.
 - **Silesia:** PCC board **51,498,645** (12/12) stays; honesty vs xz unchanged.
-- Ship: merge/deploy the PCC face PR when ready; refresh `docs/site/bin/lb` from ceedot-rock/lbr1 if peels need seating.
+- Ship: merge/deploy https://github.com/ceedot-rock/SlidPhiLabs/pull/12 ; refresh `docs/site/bin/lb` from ceedot-rock/lbr1 if peels need seating.
 
