@@ -2,10 +2,10 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "Five products: AWARE (hosted lossless compression), TRUSTREAM (live logs on the same plan), Chamber (two-key JSON seal), Agent-Rider (signed agent identity), CuNi (write once, print many languages). Stripe for humans; x402 for agents.",
+  "description": "Primary face is PCC (hosted lossless compression). TRUSTREAM (live logs on the same plan), Chamber (two-key JSON seal), Agent-Rider (signed agent identity), CuNi (write once, print many languages). AWARE is a retired alias for PCC. Stripe for humans; x402 for agents.",
   "version": "2.1.2",
   "updated": "2026-09-09",
-  "lead_product": "cuni",
+  "lead_product": "pcc",
   "cash_product": "gc-year",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
@@ -21,7 +21,7 @@
   "npm": "https://www.slidphilabs.com/npm",
   "npm_packages": ["slid-phi", "spl-pay-per-suite", "blackjack-compression", "@cptasz13/tru8", "shard-zip", "shard-tsdb"],
   "not_npm": ["pulsar"],
-  "suite": { "plain": "First 2 GB each month free, then 8¢/GB. AWARE month includes 200 GB.", "unpaid_gb": 2, "window": "calendar_month", "usd_per_gb": 0.08, "min_paid_usd": 1, "quote": "POST /api/ppp-quote", "mcp": "spl_quote", "compare": "https://www.slidphilabs.com/compare" },
+  "suite": { "plain": "First 2 GB each month free, then 8¢/GB. PCC month includes 200 GB.", "unpaid_gb": 2, "window": "calendar_month", "usd_per_gb": 0.08, "min_paid_usd": 1, "quote": "POST /api/ppp-quote", "mcp": "spl_quote", "compare": "https://www.slidphilabs.com/compare" },
   "flagship": {
     "bench": "zeros×10k int32",
     "zrw": "8B",
@@ -43,7 +43,7 @@
     { "id": "cuni", "name": "CuNi Studio", "role": "language", "url": "https://cuni-studio.fly.dev/", "protocol": "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json", "price": "$0", "note": "v0.1.8. 119 languages. Same stdout or refuse. Protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json" },
     { "id": "rider", "name": "Agent-Rider", "role": "identity", "url": "https://agentrider.fly.dev/", "price": "Labs team seat $79/mo · $790/yr; Merchant Gate is a separate self-serve offer" },
     { "id": "chamber", "name": "Chamber", "role": "security", "url": "https://www.slidphilabs.com/chamber", "price": "Cloak license $9/mo · $99/yr. Open with keys." },
-    { "id": "aware", "name": "AWARE", "role": "compression", "url": "https://www.slidphilabs.com/gc", "price": "Day $9 · Month $49 · Year $490" },
+    { "id": "aware", "name": "PCC", "role": "compression", "url": "https://www.slidphilabs.com/gc", "price": "Day $9 · Month $49 · Year $490" },
     { "id": "trugame", "name": "TruGame", "role": "engine", "url": "https://www.slidphilabs.com/trugame", "price": "Month $12 · Year $79" },
     { "id": "quikgater", "name": "Quikgater", "role": "fetch", "url": "https://www.slidphilabs.com/quikgater", "worker": "https://quikgater-worker.ceedotrock.workers.dev/" },
     { "id": "l33tsaas", "name": "L33tSaaS", "role": "saas-store", "url": "https://www.slidphilabs.com/l33tsaas", "store": "https://l33tsaas.fly.dev", "packs": "https://l33tsaas.fly.dev/api/packs" }

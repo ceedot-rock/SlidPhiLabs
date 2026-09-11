@@ -75,7 +75,7 @@ const SEATS = {
     does_not_include: ["AWARE compressor", "Agent-Rider", "Hosted blob storage", "Kill switch on stored secrets"],
   },
   "gc-day": {
-    name: "AWARE · 24-hour compressor seat",
+    name: "PCC · 24-hour compressor seat",
     list_usd: 9,
     unit: "24 hours",
     amount_cents: 900,
@@ -85,7 +85,7 @@ const SEATS = {
     does_not_include: ["engine source", "Chamber", "Agent-Rider"],
   },
   "gc-month": {
-    name: "AWARE · monthly compressor seat",
+    name: "PCC · monthly compressor seat",
     list_usd: 49,
     unit: "calendar month",
     amount_cents: 4900,
@@ -95,7 +95,7 @@ const SEATS = {
     does_not_include: ["engine source", "Chamber", "Agent-Rider"],
   },
   "gc-year": {
-    name: "AWARE · annual compressor seat",
+    name: "PCC · annual compressor seat",
     list_usd: 490,
     unit: "calendar year",
     amount_cents: 49000,

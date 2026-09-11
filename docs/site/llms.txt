@@ -2,6 +2,8 @@
 > PCC is hosted lossless compression. Dual-licensed: open terms or a paid grant. Send a file, get a smaller one, restore every byte. Every pathway on this machine. POST /api/compress. Restore POST /api/decompress. npm: slid-phi compress()/decompress(). MCP: spl_compress. Product: https://www.slidphilabs.com/gc
 > https://www.slidphilabs.com/
 
+Primary product face is PCC; AWARE is a retired alias; TRU8 is not the current lead.
+
 ## Who
 Slid Phi Labs. Corey Tasz. Site: https://www.slidphilabs.com  Agents: /agents  Inbox: corey@slidphilabs.com
 

@@ -2,10 +2,10 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "Hosted lossless compression (AWARE $49/mo, 200 GB, then 8¢/GB), Chamber, Agent-Rider, CuNi. x402 for agents, Stripe for humans.",
+  "description": "Hosted lossless compression (PCC $49/mo, 200 GB, then 8¢/GB), Chamber, Agent-Rider, CuNi. AWARE is a retired alias for PCC. x402 for agents, Stripe for humans.",
   "version": "2.0.0",
   "updated": "2026-09-02",
-  "lead_product": "cuni",
+  "lead_product": "pcc",
   "cash_product": "chamber",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
@@ -38,7 +38,7 @@
     { "id": "cuni", "name": "CuNi Studio", "role": "exactness", "url": "https://cuni-studio.fly.dev/", "price": "$0" },
     { "id": "rider", "name": "Agent-Rider", "role": "identity", "url": "https://agentrider.fly.dev/", "price": "Team $79/mo · $790/yr" },
     { "id": "chamber", "name": "Chamber", "role": "security", "url": "https://www.slidphilabs.com/chamber", "price": "Cloak license $9/mo · $99/yr. Open with keys." },
-    { "id": "aware", "name": "AWARE", "role": "compression", "url": "https://www.slidphilabs.com/gc", "price": "Day $9 · Month $49 · Year $490" },
+    { "id": "aware", "name": "PCC", "role": "compression", "url": "https://www.slidphilabs.com/gc", "price": "Day $9 · Month $49 · Year $490" },
     { "id": "trugame", "name": "TruGame", "role": "engine", "url": "https://www.slidphilabs.com/trugame", "price": "Month $12 · Year $79" },
     { "id": "quikgater", "name": "Quikgater", "role": "fetch", "url": "https://www.slidphilabs.com/quikgater", "worker": "https://quikgater-worker.ceedotrock.workers.dev/" },
     { "id": "l33tsaas", "name": "L33tSaaS", "role": "saas-store", "url": "https://www.slidphilabs.com/l33tsaas", "store": "https://l33tsaas.fly.dev", "packs": "https://l33tsaas.fly.dev/api/packs" }

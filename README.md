@@ -1,5 +1,7 @@
 # Slid Phi Labs
 
+AWARE is a retired alias for PCC (the hosted lossless compressor). TRU8 is not the current product lead.
+
 Hosted lossless compression, a two-key JSON seal, signed agent identity, and a small language that refuses to lie.
 
 This repository is the public website, API, and npm clients. Dual-licensed: AGPL-3.0-or-later or a paid commercial grant. Hosted compression runs every pathway we own.
