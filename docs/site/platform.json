@@ -6,7 +6,7 @@
   "site": "https://www.slidphilabs.com",
   "mission": "Build tools that check: same result or refuse, sealed or not open, signed or not trusted, measured or not claimed.",
   "slogan": "Same result or refuse",
-  "lead_product": "cuni",
+  "lead_product": "pcc",
   "cash_product": "chamber",
   "pricing_sot": "https://www.slidphilabs.com/pricing.json",
   "one_liner": "PCC $9/$49/$490 (200 GB/mo included, then 8¢/GB). Chamber $9/$99. Rider $79/$790. CuNi $0. Stripe / x402.",

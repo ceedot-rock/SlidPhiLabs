@@ -77,7 +77,7 @@ const TOOLS = [
     description:
       "SPL Pay Per Suite overview: " +
       SUITE_LINE +
-      " Stripe (humans) + x402 (agents). Seats: Chamber $9/$99 · AWARE $9/$49/$490 · Rider $79/$790 · Lab Pass $668 · consulting $250.",
+      " Stripe (humans) + x402 (agents). Seats: Chamber $9/$99 · PCC $9/$49/$490 · Rider $79/$790 · Lab Pass $668 · consulting $250.",
     inputSchema: { type: "object", properties: {} },
   },
   {
@@ -89,7 +89,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_catalog",
     description:
-      "List standing Slid Phi Labs seats agents can buy via x402 (Chamber, AWARE, Rider, Lab Pass, TruGame, consulting). Suite jobs are separate.",
+      "List standing Slid Phi Labs seats agents can buy via x402 (Chamber, PCC, Rider, Lab Pass, TruGame, consulting). Suite jobs are separate.",
     inputSchema: { type: "object", properties: {} },
   },
   {
@@ -257,7 +257,7 @@ async function callTool(name, args = {}) {
         account: "https://www.slidphilabs.com/account",
         api: "POST https://www.slidphilabs.com/api/auth",
         body: { action: "signup|login", email: "", password: "", name: "" },
-        lead_product: "cuni",
+        lead_product: "pcc",
         cash_product: "chamber",
       };
     case "spl_pps_info":

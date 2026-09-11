@@ -211,7 +211,7 @@ async function callTool(name, args = {}) {
   }
   if (name === "spl_discover") {
     return {
-      lead_product: "cuni",
+      lead_product: "pcc",
       cash_product: "chamber",
       studio: "https://cuni-studio.fly.dev/",
       rider: "https://agentrider.fly.dev/",
