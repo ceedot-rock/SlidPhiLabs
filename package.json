@@ -131,6 +131,6 @@
     }
   },
   "scripts": {
-    "test": "node --input-type=module -e \"console.log(\"slid-phi ok\")\""
+    "test": "node -e 'console.log(\"slid-phi ok\")'"
   }
 }
