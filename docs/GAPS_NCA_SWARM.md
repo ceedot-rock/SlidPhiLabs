@@ -212,7 +212,7 @@ PCC law maps onto that: parse = find repeats; encode = one gene; pack = magics; 
 
 ### 5.5 PCC house (`lb best` / `house_best` / LBHX)
 
-**Is:** MoE by another name. Min of own DECODE_OK blobs. LBHX is the packer tag (which engine coded the payload). Not Combined GC. Not host xz.
+**Is:** MoE by another name. Min of own DECODE_OK blobs. LBHX is the packer tag (which engine coded the payload). House genes only.
 
 **Miss:** named OmniWave years earlier, then filled seats with gzip/brotli. Named SmartSwarm, never built a router. Meld experiment: **slicing specialists made size and time worse.**
 
@@ -242,7 +242,7 @@ Also: 6.03× float path was **lossy** float_fixed_delta. NCA would not have save
 
 Public faces, private/thin engines. `bench_3way.mjs` still has a “two-stage blackjack + brotli” path — that is **host brotli after our pack**, same steal as OmniWave if we report it as a gene.
 
-**Tighten:** two-stage with brotli is a *bench against brotli*, or a paid pipeline that **names brotli**. It is not Blackjack.
+**Tighten:** two-stage with brotli is a *bench against brotli*, or a paid pipeline that **names brotli**.
 
 ### 5.10 Chamber, Rider, CuNi, Suite, Lab Pass, Quikgater, Try Gate, x402, Stripe
 

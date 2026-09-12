@@ -3,22 +3,26 @@
   "sealed": "2026-08-12",
   "role": "source of truth — do not regress public-face claims",
   "wording": {
-    "rule": "Two products, two prices. Chamber = security (half). TRU8 = compression. TRU8 Year $1,900 = both products for one year. TRU8 demos free. Suite is a meter.",
+    "rule": "PCC is hosted lossless compression. TRUSTREAM is live logs on that plan. Chamber is a two-key JSON seal. Rider is signed agent identity. Warrant is a signed mandate. CuNi is 119 languages, same stdout or refuse. TRU8 packs zeros to 8 bytes. Suite meters jobs.",
     "glossary": {
-      "Chamber": "security product — 3-hour black box, then Day $12.50 · Month $87.50 · Year $950. No TRU8 production. Half the matching TRU8 tier.",
-      "TRU8": "compression product — public demos free with credit. Day $24.99 and Month $175 are compression only. Year $1,900 is both products (Chamber + TRU8) for one year.",
-      "TruChamber": "legacy name. Public face is Chamber (security) + TRU8 (compression). Old truchamber-* SKUs alias to tru8-*.",
-      "seat": "a purchased Chamber or TRU8 access path (day / month / year) for a named human or agent. Not the Suite meter.",
-      "Suite": "metered encode/decode jobs — 100 GB free then ~5¢/GB; not Chamber; not TRU8; not a seat",
-      "Access": "entitlement claim after payment — not a codec dump",
-      "SiOS": "Synthetic Intelligent OS. The house the lab runs on. Not a seat. Not a third product.",
-      "phi-rest": "Serve layer. Called bytes open once, RAM, X-Phi-Rest. Not Chamber.",
-      "TruGame": "game engine (building). Inquire corey@ subject TruGame.",
-      "support-oss": "$199 blackjack / shard-* = support for the already-public library; not a secret extra engine"
+      "PCC": "hosted lossless compressor. Day $9 · Month $49 · Year $490. First 2 GB/month free, then 8¢/GB.",
+      "TRUSTREAM": "live logs on the PCC plan.",
+      "Chamber": "two-key JSON seal. Cloak license $9/mo · $99/yr.",
+      "Agent-Rider": "signed agent identity. $79/mo · $790/yr.",
+      "Warrant": "signed mandate and receipts bound to a Rider. $29/mo · $290/yr.",
+      "CuNi": "one program, 119 languages, same stdout or refuse. Studio $0. Closed-app exception $490/yr.",
+      "TRU8": "zeros specialist. 1 000 000 zeros → 8 bytes, round-trip. npm @cptasz13/tru8.",
+      "pulsar": "free GPLv3 compressor you run on your own machine. Closed embed $490/yr.",
+      "Suite": "metered encode/decode jobs. First 2 GB/month free, then 8¢/GB.",
+      "Access": "entitlement claim after payment.",
+      "SiOS": "Synthetic Intelligent OS. The house the lab runs on.",
+      "phi-rest": "Serve layer. Called bytes open once, RAM, X-Phi-Rest.",
+      "TruGame": "game engine. Month $12 · Year $79.",
+      "support-oss": "$199 help on an already-public GPLv3 library."
     }
   },
   "product": {
-    "public_face": "Chamber + TRU8",
+    "public_face": "PCC",
     "credit_line": "Powered by TRU8 · Slid Phi Labs",
     "demos_free_with_credit": true,
     "production_residual": "TRU8 Day / Month / Year (commercially licensed; not a public dump). TRU8 Year also includes Chamber.",

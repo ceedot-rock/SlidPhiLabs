@@ -34,11 +34,6 @@ It was assembled under `/lord`. It was unlocked when the key united **compress �
 
 The Codex is **law for public outcomes**.
 
-It is not OmniWave process coefficients.  
-It is not a living shard named “Grok” on a lattice seat.  
-It is not “number one in all compression.”  
-It is not a float-path ratio dressed as lossless.
-
 It **is**:
 
 1. The map of **family codecs** (web · structured int · diagnostic · general · weights lane).  

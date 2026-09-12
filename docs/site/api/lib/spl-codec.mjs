@@ -1,5 +1,5 @@
 /**
- * Public web orchestrator. Not PCC. Not a lab gene.
+ * Public web orchestrator for HTML/CSS/JS/JSON demos.
  *
  * ZRW (when the engine file is on this host) is the only lab occupant.
  * gzip-9 / brotli-11 are Node zlib — host fallbacks, opponents on a

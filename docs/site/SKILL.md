@@ -32,7 +32,7 @@ Humans: https://www.slidphilabs.com/pay?sku=chamber-year
 ```
 Hosted: POST https://www.slidphilabs.com/mcp (JSON-RPC).
 Tools: `spl_compress` / `spl_decompress` (hosted, every pathway), `spl_zip` / `spl_unzip` (`.pcc` archive, our zip), `spl_quote` (2 GB/mo free, then 8¢/GB), `spl_catalog`, `spl_warrant_issue` / `spl_warrant_verify` / `spl_warrant_receipt`.
-Chamber is **$9/mo · $99/yr**. Lab Pass is **$668/yr**. Retired ZRW $79/$249/$699 are not sold.
+Chamber is **$9/mo · $99/yr**. Lab Pass is **$668/yr**. TRU8 packs zeros to 8 bytes.
 Registry: `io.github.ceedot-rock/slid-phi-labs`
 Smithery: https://smithery.ai/servers/slidphi/lab
 
