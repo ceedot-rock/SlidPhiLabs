@@ -39,7 +39,9 @@
       "historical_engines": [
         "SPL Codec",
         "OmniWave",
-        "ZRW",
+        "ZRW"
+      ],
+      "specialists": [
         "TRU8"
       ],
       "note": "PCC is the hosted compressor. TRUSTREAM is the same plan for live logs. pulsar is the public GPLv3 demo."
@@ -65,13 +67,15 @@
       "products": [
         "TRU8"
       ],
+      "kind": "zeros specialist",
       "urls": {
-        "demos": "https://www.slidphilabs.com/demos",
+        "page": "https://www.slidphilabs.com/tru8",
+        "specialist": "https://www.slidphilabs.com/specialist",
         "github": "https://github.com/ceedot-rock/TRU8",
-        "pricing": "https://www.slidphilabs.com/pricing.json"
+        "npm": "https://www.npmjs.com/package/@cptasz13/tru8"
       },
-      "status": "historical",
-      "note": "Historical name. Current product is PCC."
+      "claim": "1 000 000 zeros → 8 B, round-trip",
+      "note": "TRU8 is the zeros / fill specialist. It is not PCC."
     },
     "game_engine": {
       "name": "TruGame",
