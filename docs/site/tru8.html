@@ -23,13 +23,31 @@
   <meta name="twitter:title" content="TRU8 — zeros specialist"/>
   <meta name="twitter:description" content="All-zero data → 8 bytes, round-trip."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=35"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=36"/>
 </head>
 <body>
   <main class="spl-page" id="main">
     <p class="spl-kicker">Zeros specialist</p>
     <h1>TRU8</h1>
     <p class="lede">All-zero data becomes 8 bytes and comes back. npm <code>@cptasz13/tru8</code>. Free demo on POST /api/specialist.</p>
+    <section class="spl-proof" aria-label="Zeros specialist">
+      <div class="spl-meter">
+        <p class="spl-kicker">In</p>
+        <p class="spl-meter-val">1,000,000<span>zero bytes</span></p>
+        <div class="spl-bar" style="--fill:100%"><i></i></div>
+      </div>
+      <div class="spl-meter">
+        <p class="spl-kicker">Out</p>
+        <p class="spl-meter-val">8<span>bytes packed</span></p>
+        <div class="spl-bar" style="--fill:0.0008%"><i></i></div>
+        <p class="spl-stamp">round-trip</p>
+      </div>
+      <a class="spl-meter" href="/specialist">
+        <p class="spl-kicker">Try</p>
+        <p class="spl-meter-val">demo<span>POST /api/specialist</span></p>
+        <p class="spl-stamp">free</p>
+      </a>
+    </section>
     <p class="spl-actions">
       <a class="spl-btn spl-btn-dark" href="/specialist">Zeros demo</a>
       <a class="spl-btn spl-btn-line" href="https://www.npmjs.com/package/@cptasz13/tru8">npm</a>
@@ -75,7 +93,7 @@
       </div>
     </section>
   </main>
-  <script src="/assets/chrome.js?v=35" defer></script>
+  <script src="/assets/chrome.js?v=36" defer></script>
   <script>
     const src = document.getElementById("src");
     const statusEl = document.getElementById("status");

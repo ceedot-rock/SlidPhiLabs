@@ -19,13 +19,31 @@
   <meta name="twitter:title" content="TRUSTREAM — live log compression"/>
   <meta name="twitter:description" content="Included with PCC. Zeros collapse. Incompressible tiles stay put."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=35"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=36"/>
 </head>
 <body>
   <main class="spl-page" id="main">
     <p class="spl-kicker">Live logs · included with PCC</p>
     <h1>TRUSTREAM</h1>
-    <p class="lede">Agent logs, SIEM, telemetry — without a second compressor, and without a pipe that makes random noise bigger than it started.</p>
+    <p class="lede">Agent logs, SIEM, telemetry — live, in 4 KiB tiles. Empty stretches shrink. Noisy stretches keep their size.</p>
+    <section class="spl-proof" aria-label="4 KiB tiles">
+      <div class="spl-meter">
+        <p class="spl-kicker">Tile</p>
+        <p class="spl-meter-val">4 KiB<span>stream grain</span></p>
+        <div class="spl-tiles" aria-hidden="true"><b data-k="empty"></b><b data-k="empty"></b><b data-k="noise"></b><b data-k="empty"></b><b data-k="noise"></b><b data-k="empty"></b><b data-k="empty"></b><b data-k="noise"></b></div>
+        <p class="spl-stamp">ZERO → MATH → PHRASE → STORE</p>
+      </div>
+      <div class="spl-meter">
+        <p class="spl-kicker">Empty</p>
+        <p class="spl-meter-val">shrinks<span>zeros and repeats</span></p>
+        <p class="spl-stamp">collapse</p>
+      </div>
+      <div class="spl-meter">
+        <p class="spl-kicker">Noise</p>
+        <p class="spl-meter-val">same size<span>never grows</span></p>
+        <p class="spl-stamp">keep raw</p>
+      </div>
+    </section>
     <div class="spl-prose">
       <p><strong>What you get.</strong> Live log compression on the PCC plan you already buy for files. Empty stretches shrink. Already-compressed or random chunks stay as-is — they do not grow.</p>
       <p><strong>Why it exists.</strong> File compressors wait for a whole blob. Logs cannot. TRUSTREAM is the stream face of PCC: keep the empty parts tiny, never punish the noisy parts. You are not replacing gzip on general text. You are shipping traces without a surprise expansion.</p>
@@ -38,6 +56,6 @@
     </p>
     <p class="spl-note">Same checkout as <a href="/gc">PCC</a>. Live logs on that plan.</p>
   </main>
-  <script src="/assets/chrome.js?v=35" defer></script>
+  <script src="/assets/chrome.js?v=36" defer></script>
 </body>
 </html>

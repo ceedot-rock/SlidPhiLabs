@@ -31,6 +31,7 @@
     { t: "Rider", title: "Signed identity for AI agents", href: "/rider" },
     { t: "Warrant", title: "Mandate and receipts for a Rider", href: "/warrant" },
     { t: "CuNi", title: "Write once. 119 languages. Same stdout or refuse", href: "/cuni" },
+    { t: "TRU8", title: "1 000 000 zeros → 8 bytes, round-trip", href: "/tru8" },
   ];
 
   function path() {

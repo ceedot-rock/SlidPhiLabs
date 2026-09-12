@@ -22,13 +22,31 @@
   <meta name="twitter:title" content="Chamber — two-key protocol for a JSON secret"/>
   <meta name="twitter:description" content="License to seal. Keys to open. $9/mo · $99/yr."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=35"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=36"/>
 </head>
 <body>
   <main class="spl-page" id="main">
     <p class="spl-kicker">Two-key JSON lock · $9 / mo · $99 / yr</p>
     <h1>Chamber</h1>
     <p class="lede">A secret in JSON that one person should not be able to open alone. Chamber splits the key. You keep the blob. We never hold it. Stop paying and yesterday’s seals still open — you only pay to make new ones.</p>
+    <section class="spl-proof" aria-label="Two-key seal">
+      <div class="spl-meter">
+        <p class="spl-kicker">Cloak</p>
+        <p class="spl-meter-val">JSON in<span>two shares out</span></p>
+        <div class="spl-keys"><span class="spl-key">share A</span><span class="spl-key">share B</span></div>
+        <p class="spl-stamp">you store the blob</p>
+      </div>
+      <div class="spl-meter">
+        <p class="spl-kicker">Open</p>
+        <p class="spl-meter-val">both keys<span>original JSON back</span></p>
+        <p class="spl-stamp">old seals still open</p>
+      </div>
+      <div class="spl-meter">
+        <p class="spl-kicker">License</p>
+        <p class="spl-meter-val">$9 / $99<span>month · year</span></p>
+        <p class="spl-stamp">pay to seal new</p>
+      </div>
+    </section>
 
     <h2>What you buy</h2>
     <div class="spl-prose">
@@ -63,6 +81,6 @@
 
     <p class="spl-note">SDK: <a href="https://github.com/ceedot-rock/json-chamber-sdk">json-chamber-sdk</a>. After pay, Access issues entitlement with a cloak-until date. Open stays keys.</p>
   </main>
-  <script src="/assets/chrome.js?v=35" defer></script>
+  <script src="/assets/chrome.js?v=36" defer></script>
 </body>
 </html>

@@ -15,7 +15,7 @@
   <meta property="og:description" content="Identity is Rider. Mandate and proof are Warrant."/>
   <meta property="og:url" content="https://www.slidphilabs.com/warrant"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=35"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=36"/>
   <style>
     .spl-try { margin: 28px 0 0; max-width: 40rem; }
     .spl-try textarea, .spl-try input, .spl-try select {
@@ -31,7 +31,24 @@
   <main class="spl-page" id="main">
     <p class="spl-kicker">Agent stack · pairs with Rider · $29 / mo · $290 / yr</p>
     <h1>Rider names the agent. Warrant names the job. A receipt proves it ran.</h1>
-    <p class="lede">Agent-Rider is signed identity: which agent acted. That is not an audit trail by itself. Warrant is the other half — a signed mandate (hosts, actions, spend cap, expiry) bound to that Rider, then a receipt when the action happens. Gates check both headers: <code>X-Agent-Rider</code> and <code>X-Agent-Warrant</code>.</p>
+    <p class="lede">Agent-Rider is signed identity: which agent acted. Warrant is the signed mandate — hosts, actions, spend cap, expiry — bound to that Rider, then a receipt when the action happens. Gates check both headers: <code>X-Agent-Rider</code> and <code>X-Agent-Warrant</code>.</p>
+    <section class="spl-proof" aria-label="Who and what">
+      <a class="spl-meter" href="/rider">
+        <p class="spl-kicker">Rider</p>
+        <p class="spl-meter-val">who<span>X-Agent-Rider</span></p>
+        <p class="spl-stamp">identity</p>
+      </a>
+      <div class="spl-meter">
+        <p class="spl-kicker">Warrant</p>
+        <p class="spl-meter-val">what<span>hosts · actions · cap</span></p>
+        <p class="spl-stamp">X-Agent-Warrant</p>
+      </div>
+      <div class="spl-meter">
+        <p class="spl-kicker">Receipt</p>
+        <p class="spl-meter-val">proof it ran<span>host · action · spend</span></p>
+        <p class="spl-stamp">filed after the job</p>
+      </div>
+    </section>
     <div class="spl-grid">
       <article class="spl-card">
         <p class="spl-kicker">Rider already does</p>
@@ -78,7 +95,7 @@
       <p><code>GET /api/warrant</code> — discovery. <code>GET /api/warrant?id=wrt_…</code> — public record.</p>
     </div>
   </main>
-  <script src="/assets/chrome.js?v=35" defer></script>
+  <script src="/assets/chrome.js?v=36" defer></script>
   <script>
   (function () {
     const out = document.getElementById("out");

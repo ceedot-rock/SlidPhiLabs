@@ -21,7 +21,7 @@
   <meta name="twitter:title" content="Try compression"/>
   <meta name="twitter:description" content="Zeros are free. Everyday files use PCC. pulsar is the download."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=35"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=36"/>
   <style>
     .spl-try { margin: 28px 0 0; max-width: 40rem; }
     .spl-try textarea, .spl-try input {
@@ -37,6 +37,11 @@
     <p class="spl-kicker">See it work · then pick how you pay</p>
     <h1>Prove compression in the browser. Buy the hosted one when the files are real.</h1>
     <p class="lede">One million zeros become 8 bytes and come back. That demo is free. Everyday files — backups, datasets, archives, logs — run on PCC, the hosted compressor. pulsar is the free compressor you run on your own machine.</p>
+    <section class="spl-proof" aria-label="Three doors">
+      <a class="spl-meter" href="/tru8"><p class="spl-kicker">TRU8</p><p class="spl-meter-val">1e6 → 8 B<span>zeros round-trip</span></p><p class="spl-stamp">free demo</p></a>
+      <a class="spl-meter" href="/gc"><p class="spl-kicker">PCC</p><p class="spl-meter-val">51,498,645<span>Silesia packed</span></p><p class="spl-stamp">DECODE_OK 12/12</p></a>
+      <a class="spl-meter" href="/pulsar"><p class="spl-kicker">pulsar</p><p class="spl-meter-val">55,745,438<span>you run it locally</span></p><p class="spl-stamp">GPLv3</p></a>
+    </section>
     <div class="spl-grid">
       <article class="spl-card">
         <p class="spl-kicker">Free demo</p>
@@ -71,7 +76,7 @@
       <pre class="spl-out" id="out" hidden></pre>
     </form>
   </main>
-  <script src="/assets/chrome.js?v=35" defer></script>
+  <script src="/assets/chrome.js?v=36" defer></script>
   <script>
     const out = document.getElementById("out");
     document.getElementById("try").addEventListener("submit", async (e) => {
