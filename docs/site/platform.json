@@ -75,7 +75,7 @@
         "npm": "https://www.npmjs.com/package/@cptasz13/tru8"
       },
       "claim": "1 000 000 zeros → 8 B, round-trip",
-      "note": "TRU8 is the zeros / fill specialist. It is not PCC."
+      "note": "TRU8 packs all-zero data to 8 bytes and restores it. Public zeros specialist."
     },
     "game_engine": {
       "name": "TruGame",

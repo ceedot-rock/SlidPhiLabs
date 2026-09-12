@@ -315,7 +315,6 @@ export default async function handler(req, res) {
       specialist: "https://www.slidphilabs.com/specialist",
       npm: "@cptasz13/tru8",
       claim: "1 000 000 zeros → 8 B, round-trip",
-      not: "PCC",
     },
     legal: {
       trade_name: "Slid Phi Labs",
@@ -346,7 +345,7 @@ export default async function handler(req, res) {
     codec: {
         product: "PCC",
         engine: "hosted",
-        public: "PCC is the hosted compression product (AWARE is a retired alias). TRU8 is the zeros specialist — not PCC.",
+        public: "PCC is the hosted lossless compressor. TRU8 packs all-zero data to 8 bytes and restores it.",
       api: "https://www.slidphilabs.com/api/compress",
       web: "https://www.slidphilabs.com/api/web-codec",
       github: "https://github.com/ceedot-rock/lbr1",

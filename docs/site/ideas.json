@@ -19,7 +19,7 @@
       "id": 0,
       "bucket": "product",
       "name": "TRU8",
-      "blurb": "Zeros / fill specialist. All-zero data → 8 bytes, round-trip. Public demo. Not PCC (hosted general compressor). Not pulsar.",
+      "blurb": "Zeros / fill specialist. All-zero data → 8 bytes, round-trip. Public demo on POST /api/specialist. npm @cptasz13/tru8.",
       "surface": "zeros specialist · public demo",
       "vehicle": [
         "product",
@@ -37,7 +37,7 @@
         }
       ],
       "pursued": "2026-08-12",
-      "pursued_note": "Zeros specialist. Not the PCC seat.",
+      "pursued_note": "Zeros specialist. Public demo.",
       "pursued_approx": false
     },
     {
@@ -868,7 +868,7 @@
     }
   ],
   "public": true,
-  "note": "Public Idea Lab. Dates are first-known lab pursuit (best-effort). Engines/process stay private. Public product face is PCC. TRU8 is the zeros specialist, not PCC. ZRQC remains public name \u00b7 secret engine.",
+  "note": "Public Idea Lab. Dates are first-known lab pursuit (best-effort). Engines/process stay private. Public product face is PCC. TRU8 is the zeros specialist. ZRQC remains public name \u00b7 secret engine.",
   "date_policy": "pursued = first date this host/board/repo record shows the lab actively working the idea; approximate where exact day is unknown.",
   "toy_store": {
     "html": "https://www.slidphilabs.com/toys",
