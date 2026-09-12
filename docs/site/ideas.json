@@ -1,7 +1,7 @@
 {
-  "service": "Slid Phi Labs — Idea Lab",
+  "service": "Slid Phi Labs \u2014 Idea Lab",
   "version": "1.0.0",
-  "updated": "2026-08-12",
+  "updated": "2026-09-12",
   "count": 41,
   "not_legal_advice": true,
   "source_register": "docs/IDEA_REGISTER.md (private host path)",
@@ -19,8 +19,8 @@
       "id": 0,
       "bucket": "product",
       "name": "TRU8",
-      "blurb": "Only public compression product face. Public demos free with credit. Production residual commercially licensed.",
-      "surface": "public product face",
+      "blurb": "Historical public name for the hosted compressor. Current product face is PCC. Demos remain as aliases.",
+      "surface": "historical name \u2192 PCC",
       "vehicle": [
         "product",
         "brand"
@@ -28,24 +28,16 @@
       "maturity": "solid",
       "links": [
         {
-          "label": "Home",
-          "href": "/"
+          "label": "PCC",
+          "href": "/gc"
         },
         {
-          "label": "Demos",
-          "href": "/demos"
-        },
-        {
-          "label": "GitHub",
-          "href": "https://github.com/ceedot-rock/TRU8"
-        },
-        {
-          "label": "License",
-          "href": "/license"
+          "label": "Historical TRU8 page",
+          "href": "/tru8"
         }
       ],
       "pursued": "2026-08-12",
-      "pursued_note": "Public product face locked to TRU8",
+      "pursued_note": "Retired as lead card. Buy PCC.",
       "pursued_approx": false
     },
     {
@@ -53,7 +45,7 @@
       "bucket": "math",
       "name": "ZRQC",
       "blurb": "Umbrella substrate: quasi-computing stance that unifies residual + wave family under code structure, not soup.",
-      "surface": "public name · secret engine",
+      "surface": "public name \u00b7 secret engine",
       "vehicle": [
         "patent",
         "book",
@@ -74,8 +66,8 @@
       "id": 2,
       "bucket": "math",
       "name": "CDDG",
-      "blurb": "Continuous Dark-Degree Geometry — lead residual geometry (not pure discrete-360 as the story). Residual ~64–84% / quality ~2.05×–2.09× are host/champion internal bands · not independently blinded.",
-      "surface": "public as CDDG:Split · process secret",
+      "blurb": "Continuous Dark-Degree Geometry \u2014 lead residual geometry (not pure discrete-360 as the story). Residual ~64\u201384% / quality ~2.05\u00d7\u20132.09\u00d7 are host/champion internal bands \u00b7 not independently blinded.",
+      "surface": "public as CDDG:Split \u00b7 process secret",
       "vehicle": [
         "patent",
         "product",
@@ -100,7 +92,7 @@
       "id": 3,
       "bucket": "math",
       "name": "Mirrored Cost",
-      "blurb": "Cost identity framing (ΔE+ΔC≈0 class; mirror error near zero) as quality and efficiency story.",
+      "blurb": "Cost identity framing (\u0394E+\u0394C\u22480 class; mirror error near zero) as quality and efficiency story.",
       "surface": "public outcomes",
       "vehicle": [
         "patent",
@@ -117,7 +109,7 @@
       "bucket": "math",
       "name": "Residual coding",
       "blurb": "Encode only what remains after structure is accounted for.",
-      "surface": "public slogan · secret coefficients",
+      "surface": "public slogan \u00b7 secret coefficients",
       "vehicle": [
         "patent",
         "product"
@@ -149,7 +141,7 @@
       "bucket": "math",
       "name": "OS-RNS / residual colonies",
       "blurb": "Multi-colony residual paces; ablation still compensated in reported benches.",
-      "surface": "secret process · public % bands",
+      "surface": "secret process \u00b7 public % bands",
       "vehicle": [
         "patent",
         "research"
@@ -164,7 +156,7 @@
       "id": 7,
       "bucket": "math",
       "name": "QQc / QuasiQuad",
-      "blurb": "QuasiQuad computation core — machine-oriented framing for patent and book.",
+      "blurb": "QuasiQuad computation core \u2014 machine-oriented framing for patent and book.",
       "surface": "mixed",
       "vehicle": [
         "patent",
@@ -180,8 +172,8 @@
       "id": 8,
       "bucket": "math",
       "name": "ZRW",
-      "blurb": "Zero Range Wave — integer/pattern compressor that crushes zeros, ramps, walks vs gzip/brotli class.",
-      "surface": "public pack · private core",
+      "blurb": "Zero Range Wave \u2014 integer/pattern compressor that crushes zeros, ramps, walks vs gzip/brotli class.",
+      "surface": "public pack \u00b7 private core",
       "vehicle": [
         "product",
         "patent"
@@ -205,7 +197,7 @@
       "id": 9,
       "bucket": "math",
       "name": "360 / 1088 baselines",
-      "blurb": "Historical discrete baselines — demoted; not the public champion lead.",
+      "blurb": "Historical discrete baselines \u2014 demoted; not the public champion lead.",
       "surface": "public as old story",
       "vehicle": [
         "research"
@@ -236,7 +228,7 @@
       "bucket": "math",
       "name": "Omni-Dormant pathways",
       "blurb": "Pathway selection for dormant/sparse integer research loads (slid-phi surface).",
-      "surface": "public product · process secret",
+      "surface": "public product \u00b7 process secret",
       "vehicle": [
         "product",
         "research"
@@ -295,7 +287,7 @@
       "id": 14,
       "bucket": "product",
       "name": "Blackjack",
-      "blurb": "Public Apache/MIT library (blackjack-compression). $199 site SKU is commercial support / integration / indemnification — not a secret extra engine.",
+      "blurb": "Public Apache/MIT library (blackjack-compression). $199 site SKU is commercial support / integration / indemnification \u2014 not a secret extra engine.",
       "surface": "OSS + support-oss SKU",
       "vehicle": [
         "product"
@@ -317,7 +309,7 @@
       "id": 15,
       "bucket": "product",
       "name": "shard-zip",
-      "blurb": "Public OSS library. $199 site SKU is commercial support / integration / indemnification — not a secret extra engine.",
+      "blurb": "Public OSS library. $199 site SKU is commercial support / integration / indemnification \u2014 not a secret extra engine.",
       "surface": "OSS + support-oss SKU",
       "vehicle": [
         "product"
@@ -339,7 +331,7 @@
       "id": 16,
       "bucket": "product",
       "name": "shard-tsdb",
-      "blurb": "Public OSS library. $199 site SKU is commercial support / integration / indemnification — not a secret extra engine.",
+      "blurb": "Public OSS library. $199 site SKU is commercial support / integration / indemnification \u2014 not a secret extra engine.",
       "surface": "OSS + support-oss SKU",
       "vehicle": [
         "product"
@@ -361,7 +353,7 @@
       "id": 17,
       "bucket": "product",
       "name": "slid-phi",
-      "blurb": "Public npm stub / quote rail — not a private engine dump.",
+      "blurb": "Public npm stub / quote rail \u2014 not a private engine dump.",
       "surface": "public stub",
       "vehicle": [
         "product"
@@ -382,8 +374,8 @@
       "id": 18,
       "bucket": "product",
       "name": "ZRW tiers",
-      "blurb": "N00b $79 · Pro $249 · L33t$aUC3 $699.",
-      "surface": "public",
+      "blurb": "Retired SKU names. Buy PCC ($9/$49/$490).",
+      "surface": "historical SKUs \u2192 PCC",
       "vehicle": [
         "product"
       ],
@@ -410,7 +402,7 @@
       "id": 19,
       "bucket": "product",
       "name": "SPL Pay Per Suite",
-      "blurb": "Live quote → pay → lab-run delivery. Suite is a metered service, not the TRU8 product face.",
+      "blurb": "Live quote \u2192 pay \u2192 lab-run delivery. Suite is a metered service, not a product card. First 2 GB/month free, then 8\u00a2/GB.",
       "surface": "public",
       "vehicle": [
         "product",
@@ -431,7 +423,7 @@
       "id": 20,
       "bucket": "product",
       "name": "Freemium suite",
-      "blurb": "Metered encode/decode jobs (not the product face). 6.9 GB / 3 h unpaid per job · then ~5¢/GB · bulk 4¢. Try Gate retired.",
+      "blurb": "Metered encode/decode jobs (not a product card). First 2 GB/month free, then 8\u00a2/GB. Try Gate retired.",
       "surface": "public",
       "vehicle": [
         "product",
@@ -472,7 +464,7 @@
       "id": 22,
       "bucket": "platform",
       "name": "CuNi",
-      "blurb": "Exact multi-target compiler (Python · Go · JavaScript) with exactness as citizenship.",
+      "blurb": "119 languages. One program. Same stdout on every catalog seat, or it refuses. Native: Python, Go, JS, TS, C, C++, Rust. Studio free.",
       "surface": "public",
       "vehicle": [
         "platform"
@@ -496,7 +488,7 @@
       "id": 23,
       "bucket": "platform",
       "name": "Agent^Rider",
-      "blurb": "Signed agent identity, trust, tasks, AGC credits, MCP coordination. Status 2026-08-12: paused (Vercel Deployment Paused).",
+      "blurb": "Signed agent identity. Live on Fly: https://agentrider.fly.dev MCP /api/mcp. Vercel 402 is a dead door.",
       "surface": "public",
       "vehicle": [
         "platform"
@@ -519,13 +511,13 @@
       "pursued": "2026-06-15",
       "pursued_note": "Agent^Rider identity/platform (approx)",
       "pursued_approx": true,
-      "status": "paused"
+      "status": "live"
     },
     {
       "id": 24,
       "bucket": "platform",
-      "name": "CuNi → Rider publish",
-      "blurb": "Exactness PASS → metadata registers into Rider for invocable policies.",
+      "name": "CuNi \u2192 Rider publish",
+      "blurb": "Exactness PASS \u2192 metadata registers into Rider for invocable policies.",
       "surface": "public path",
       "vehicle": [
         "platform"
@@ -542,7 +534,7 @@
         }
       ],
       "pursued": "2026-08-01",
-      "pursued_note": "CuNi → Rider publish path",
+      "pursued_note": "CuNi \u2192 Rider publish path",
       "pursued_approx": true
     },
     {
@@ -569,7 +561,7 @@
       "id": 26,
       "bucket": "commerce",
       "name": "Dual checkout",
-      "blurb": "Humans on Stripe; agents on x402 — additive, not a replacement.",
+      "blurb": "Humans on Stripe; agents on x402 \u2014 additive, not a replacement.",
       "surface": "public",
       "vehicle": [
         "commerce"
@@ -714,7 +706,7 @@
       "id": 33,
       "bucket": "commerce",
       "name": "Pricing ladder",
-      "blurb": "Board ladder Open Core → Try $9 → Sponsor $29 → Support $199; live also maps ZRW tiers + CDDG.",
+      "blurb": "Board ladder Open Core \u2192 Try $9 \u2192 Sponsor $29 \u2192 Support $199; live also maps ZRW tiers + CDDG.",
       "surface": "mixed",
       "vehicle": [
         "strategy",
@@ -750,7 +742,7 @@
       "id": 35,
       "bucket": "strategy",
       "name": "Poster brand system",
-      "blurb": "Gold · teal · cosmic · wings · lotus wordmarks for the family.",
+      "blurb": "Gold \u00b7 teal \u00b7 cosmic \u00b7 wings \u00b7 lotus wordmarks for the family.",
       "surface": "public",
       "vehicle": [
         "brand"
@@ -852,8 +844,8 @@
       "id": 40,
       "bucket": "fun",
       "name": "3LiZa",
-      "blurb": "ELIZA rebirth — classic DOCTOR pattern-matcher reborn as lab demo / agent toy. Public-domain soul, SPL dress. Summoned 2026-08-08; parked in fun bin (not shipping).",
-      "surface": "fun bin · not shipping",
+      "blurb": "ELIZA rebirth \u2014 classic DOCTOR pattern-matcher reborn as lab demo / agent toy. Public-domain soul, SPL dress. Summoned 2026-08-08; parked in fun bin (not shipping).",
+      "surface": "fun bin \u00b7 not shipping",
       "vehicle": [
         "demo",
         "fun"
@@ -861,7 +853,7 @@
       "maturity": "stub",
       "links": [],
       "pursued": "2026-08-08",
-      "pursued_note": "Summoned in session; parked fun bin — do not build until pulled",
+      "pursued_note": "Summoned in session; parked fun bin \u2014 do not build until pulled",
       "pursued_approx": false,
       "status": "fun_bin",
       "tags": [
@@ -876,12 +868,12 @@
     }
   ],
   "public": true,
-  "note": "Public Idea Lab. Dates are first-known lab pursuit (best-effort). Engines/process stay private. Public product face is TRU8; ZRQC remains public name · secret engine.",
+  "note": "Public Idea Lab. Dates are first-known lab pursuit (best-effort). Engines/process stay private. Public product face is PCC. TRU8 is a historical name. ZRQC remains public name \u00b7 secret engine.",
   "date_policy": "pursued = first date this host/board/repo record shows the lab actively working the idea; approximate where exact day is unknown.",
   "toy_store": {
     "html": "https://www.slidphilabs.com/toys",
     "json": "https://www.slidphilabs.com/toys.json",
     "note": "Fun bin + light theory/artifacts surface on the public site"
   },
-  "public_product_face": "TRU8"
+  "public_product_face": "PCC"
 }

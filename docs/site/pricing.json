@@ -1,17 +1,22 @@
 {
-  "updated": "2026-09-07",
+  "updated": "2026-09-12",
   "inbox": "corey@slidphilabs.com",
   "site": "https://www.slidphilabs.com",
   "methods": "https://www.slidphilabs.com/METHODS.md",
-  "rule": "CuNi $0. Chamber cloak $9/mo · $99/yr (open with keys). PCC $9/$49/$490. TRUSTREAM rides the PCC seat. Rider $79/mo · $790/yr. Rider Ops $29/$290. Suite 6.9 GB / 3 h then ~5¢/GB. Lab Pass $668. Quikgater is pay-per-fetch, not a seat. TRU8/Gate/ZRW are names inside PCC.",
+  "rule": "CuNi $0. Chamber cloak $9/mo \u00b7 $99/yr (open with keys). PCC $9/$49/$490. TRUSTREAM rides the PCC seat. Rider $79/mo \u00b7 $790/yr. Rider Ops $29/$290. Warrant $29/$290. First 2 GB/month free, then 8\u00a2/GB. Lab Pass $668. Quikgater is pay-per-fetch, not a seat. TRU8/Gate/ZRW are historical names inside PCC.",
   "measured": {
     "silesia_raw": 211938580,
-    "aware_xz1": 47752368,
     "zpaq_m5": 39112870,
     "xz9": 48795480,
     "calgary_raw": 3141622,
     "loom_hangry": 980769,
-    "gzip9_calgary": 1017680
+    "gzip9_calgary": 1017680,
+    "aware_xz1_retired": 47752368,
+    "pcc": 51498645,
+    "pulsar": 55745438,
+    "champ": 50541135,
+    "gzip9": 67631990,
+    "bzip29": 54506769
   },
   "math": {
     "chamber_month": 9,
@@ -30,9 +35,21 @@
       "version": "1.19.2",
       "page": "https://www.slidphilabs.com/gc",
       "plans": {
-        "day": { "sku": "gc-day", "usd": 9, "stripe": "https://www.slidphilabs.com/pay?sku=gc-day" },
-        "month": { "sku": "gc-month", "usd": 49, "stripe": "https://www.slidphilabs.com/pay?sku=gc-month" },
-        "year": { "sku": "gc-year", "usd": 490, "stripe": "https://www.slidphilabs.com/pay?sku=gc-year" }
+        "day": {
+          "sku": "gc-day",
+          "usd": 9,
+          "stripe": "https://www.slidphilabs.com/pay?sku=gc-day"
+        },
+        "month": {
+          "sku": "gc-month",
+          "usd": 49,
+          "stripe": "https://www.slidphilabs.com/pay?sku=gc-month"
+        },
+        "year": {
+          "sku": "gc-year",
+          "usd": 490,
+          "stripe": "https://www.slidphilabs.com/pay?sku=gc-year"
+        }
       }
     },
     "chamber": {
@@ -40,23 +57,47 @@
       "trial_hours": 24,
       "open_policy": "keys_only",
       "plans": {
-        "month": { "sku": "chamber-month", "usd": 9, "stripe": "https://www.slidphilabs.com/pay?sku=chamber-month" },
-        "year": { "sku": "chamber-year", "usd": 99, "stripe": "https://www.slidphilabs.com/pay?sku=chamber-year" }
+        "month": {
+          "sku": "chamber-month",
+          "usd": 9,
+          "stripe": "https://www.slidphilabs.com/pay?sku=chamber-month"
+        },
+        "year": {
+          "sku": "chamber-year",
+          "usd": 99,
+          "stripe": "https://www.slidphilabs.com/pay?sku=chamber-year"
+        }
       }
     },
     "rider": {
       "name": "Agent-Rider",
       "plans": {
-        "month": { "sku": "rider-month", "usd": 79, "stripe": "https://www.slidphilabs.com/pay?sku=rider-month" },
-        "year": { "sku": "rider-year", "usd": 790, "stripe": "https://www.slidphilabs.com/pay?sku=rider-year" }
+        "month": {
+          "sku": "rider-month",
+          "usd": 79,
+          "stripe": "https://www.slidphilabs.com/pay?sku=rider-month"
+        },
+        "year": {
+          "sku": "rider-year",
+          "usd": 790,
+          "stripe": "https://www.slidphilabs.com/pay?sku=rider-year"
+        }
       }
     },
     "rider_ops": {
       "name": "Rider Ops",
       "needs": "rider",
       "plans": {
-        "month": { "sku": "rider-ops-month", "usd": 29, "stripe": "https://www.slidphilabs.com/pay?sku=rider-ops-month" },
-        "year": { "sku": "rider-ops-year", "usd": 290, "stripe": "https://www.slidphilabs.com/pay?sku=rider-ops-year" }
+        "month": {
+          "sku": "rider-ops-month",
+          "usd": 29,
+          "stripe": "https://www.slidphilabs.com/pay?sku=rider-ops-month"
+        },
+        "year": {
+          "sku": "rider-ops-year",
+          "usd": 290,
+          "stripe": "https://www.slidphilabs.com/pay?sku=rider-ops-year"
+        }
       }
     },
     "warrant": {
@@ -64,8 +105,16 @@
       "needs": "rider",
       "page": "https://www.slidphilabs.com/warrant",
       "plans": {
-        "month": { "sku": "warrant-month", "usd": 29, "stripe": "https://www.slidphilabs.com/pay?sku=warrant-month" },
-        "year": { "sku": "warrant-year", "usd": 290, "stripe": "https://www.slidphilabs.com/pay?sku=warrant-year" }
+        "month": {
+          "sku": "warrant-month",
+          "usd": 29,
+          "stripe": "https://www.slidphilabs.com/pay?sku=warrant-month"
+        },
+        "year": {
+          "sku": "warrant-year",
+          "usd": 290,
+          "stripe": "https://www.slidphilabs.com/pay?sku=warrant-year"
+        }
       }
     },
     "cuni_exception": {
@@ -84,8 +133,16 @@
     "trugame": {
       "name": "TruGame",
       "plans": {
-        "month": { "sku": "trugame-month", "usd": 12, "stripe": "https://www.slidphilabs.com/pay?sku=trugame-month" },
-        "year": { "sku": "trugame-year", "usd": 79, "stripe": "https://www.slidphilabs.com/pay?sku=trugame-year" }
+        "month": {
+          "sku": "trugame-month",
+          "usd": 12,
+          "stripe": "https://www.slidphilabs.com/pay?sku=trugame-month"
+        },
+        "year": {
+          "sku": "trugame-year",
+          "usd": 79,
+          "stripe": "https://www.slidphilabs.com/pay?sku=trugame-year"
+        }
       }
     },
     "lab_pass": {
@@ -93,8 +150,14 @@
       "sku": "lab-pass",
       "usd": 668,
       "stripe": "https://www.slidphilabs.com/pay?sku=lab-pass",
-      "includes": ["chamber", "gc", "trugame"],
-      "excludes": ["rider"]
+      "includes": [
+        "chamber",
+        "gc",
+        "trugame"
+      ],
+      "excludes": [
+        "rider"
+      ]
     },
     "consulting": {
       "name": "Lab consulting (2 hours)",
@@ -108,15 +171,36 @@
       "kind": "usage",
       "page": "https://www.slidphilabs.com/quikgater",
       "x402": "https://quikgater-worker.ceedotrock.workers.dev/"
+    },
+    "trustream": {
+      "name": "TRUSTREAM",
+      "included_with": "gc",
+      "page": "https://www.slidphilabs.com/trustream",
+      "plain": "Live logs on the PCC plan. Not a second bill."
+    },
+    "cuni": {
+      "name": "CuNi",
+      "studio": 0,
+      "exception": {
+        "sku": "cuni-exception",
+        "usd": 490
+      },
+      "page": "https://www.slidphilabs.com/cuni"
     }
   },
   "suite": {
-    "plain": "First 2 GB each month are free. After that, 8¢ per GB. Card charges start at $1.",
+    "plain": "First 2 GB each month are free. After that, 8\u00a2 per GB. Card charges start at $1.",
     "free_cap_gb": 2,
     "window": "calendar_month",
     "usd_per_gb_after_free": 0.08,
     "min_paid_usd": 1,
-    "included_gb": { "unpaid": 2, "gc-day": 10, "gc-month": 200, "gc-year": 2000, "lab-pass": 2000 },
+    "included_gb": {
+      "unpaid": 2,
+      "gc-day": 10,
+      "gc-month": 200,
+      "gc-year": 2000,
+      "lab-pass": 2000
+    },
     "page": "https://www.slidphilabs.com/gc"
   },
   "aliases": {

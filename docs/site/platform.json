@@ -2,14 +2,14 @@
   "ok": true,
   "name": "Slid Phi Labs",
   "version": "2.0.0",
-  "updated": "2026-09-11",
+  "updated": "2026-09-12",
   "site": "https://www.slidphilabs.com",
   "mission": "Build tools that check: same result or refuse, sealed or not open, signed or not trusted, measured or not claimed.",
   "slogan": "Same result or refuse",
   "lead_product": "pcc",
-  "cash_product": "chamber",
+  "cash_product": "gc-year",
   "pricing_sot": "https://www.slidphilabs.com/pricing.json",
-  "one_liner": "PCC $9/$49/$490 (200 GB/mo included, then 8¢/GB). Chamber $9/$99. Rider $79/$790. CuNi $0. Stripe / x402.",
+  "one_liner": "PCC $9/$49/$490 (200 GB/mo included, then 8\u00a2/GB). TRUSTREAM included. Chamber $9/$99. Rider $79/$790. Warrant $29/$290. CuNi $0. Stripe / x402.",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
     "login": "https://www.slidphilabs.com/login",
@@ -26,6 +26,7 @@
     "compression": {
       "products": [
         "PCC",
+        "TRUSTREAM",
         "pulsar"
       ],
       "urls": {
@@ -41,7 +42,7 @@
         "ZRW",
         "TRU8"
       ],
-      "note": "PCC is the hosted compressor seat (files and live 4 KiB pipe). pulsar is the public GPLv3 demo. The engine is not in npm."
+      "note": "PCC is the hosted compressor. TRUSTREAM is the same plan for live logs. pulsar is the public GPLv3 demo."
     },
     "chamber": {
       "products": [
@@ -55,7 +56,7 @@
       },
       "pricing": {
         "trial": "24-hour try, then a cloak license",
-        "open_policy": "keys_only — already-sealed blobs do not expire",
+        "open_policy": "keys_only \u2014 already-sealed blobs do not expire",
         "chamber-month": "$9 / month cloak license",
         "chamber-year": "$99 / year cloak license"
       }
@@ -69,18 +70,14 @@
         "github": "https://github.com/ceedot-rock/TRU8",
         "pricing": "https://www.slidphilabs.com/pricing.json"
       },
-      "pricing": {
-        "demos": "free",
-        "gc-day": "$9 / 24 hours",
-        "gc-month": "$49 / calendar month",
-        "gc-year": "$490 / calendar year"
-      }
+      "status": "historical",
+      "note": "Historical name. Current product is PCC."
     },
     "game_engine": {
       "name": "TruGame",
       "status": "building",
       "official": true,
-      "description": "TruGame — game engine (building). Packs sim state with TRU8, seals the save with Chamber. Inquire corey@.",
+      "description": "TruGame \u2014 game engine (building). Inquire corey@.",
       "products": [
         "TruGame"
       ],
@@ -110,7 +107,10 @@
     "agent_platform": {
       "products": [
         "CuNi",
-        "Agent^Rider",
+        "Agent-Rider",
+        "Warrant"
+      ],
+      "also": [
         "Quikgater"
       ]
     },
@@ -138,7 +138,7 @@
       "engine": "TruGame",
       "status": "building",
       "url": "https://www.slidphilabs.com/olympiad",
-      "note": "TruGame — game engine (building)."
+      "note": "TruGame \u2014 game engine (building)."
     },
     "security": {
       "name": "Chamber",

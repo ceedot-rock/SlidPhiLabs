@@ -1,52 +1,76 @@
 {
-  "service": "Slid Phi Labs — Official project list",
-  "updated": "2026-09-02",
+  "service": "Slid Phi Labs \u2014 Official project list",
+  "updated": "2026-09-12",
   "projects": [
     {
-      "id": "cuni",
-      "name": "CuNi",
+      "id": "pcc",
+      "name": "PCC",
       "status": "live",
-      "role": "language — one source, three runtimes, or refuse",
-      "price": "$0 (closed-app exception $490/yr)",
-      "url": "https://www.slidphilabs.com/cuni"
+      "role": "hosted lossless compressor",
+      "price": "Day $9 \u00b7 Month $49 \u00b7 Year $490",
+      "url": "https://www.slidphilabs.com/gc"
+    },
+    {
+      "id": "trustream",
+      "name": "TRUSTREAM",
+      "status": "live",
+      "role": "live logs on the PCC plan",
+      "price": "Included with PCC",
+      "url": "https://www.slidphilabs.com/trustream"
     },
     {
       "id": "chamber",
       "name": "Chamber",
       "status": "live",
       "role": "two-key JSON seal. 24-hour try, then a Chamber seat. Not a compressor.",
-      "price": "Cloak license $9/mo · $99/yr. Open with keys.",
+      "price": "Cloak license $9/mo \u00b7 $99/yr. Open with keys.",
       "url": "https://www.slidphilabs.com/chamber"
     },
     {
       "id": "rider",
       "name": "Agent-Rider",
       "status": "live",
-      "role": "signed agent identity L0–L4. Not in Lab Pass.",
-      "price": "Month $79 · Year $790",
+      "role": "signed agent identity. Not in Lab Pass.",
+      "price": "Month $79 \u00b7 Year $790",
       "url": "https://www.slidphilabs.com/rider"
     },
     {
-      "id": "aware",
-      "name": "AWARE",
+      "id": "warrant",
+      "name": "Warrant",
       "status": "live",
-      "role": "hosted lossless compressor. Access, not AWARE source.",
-      "price": "Day $9 · Month $49 · Year $490",
-      "url": "https://www.slidphilabs.com/gc"
+      "role": "signed mandate and receipts bound to a Rider",
+      "price": "Month $29 \u00b7 Year $290",
+      "url": "https://www.slidphilabs.com/warrant"
+    },
+    {
+      "id": "cuni",
+      "name": "CuNi",
+      "status": "live",
+      "role": "one source, 119 languages, same stdout or refuse",
+      "price": "$0 (closed-app exception $490/yr)",
+      "url": "https://www.slidphilabs.com/cuni"
+    },
+    {
+      "id": "pulsar",
+      "name": "pulsar",
+      "status": "live",
+      "role": "free GPLv3 compressor you run on your own machine. Not a product card.",
+      "price": "Free \u00b7 $490/yr closed embed",
+      "url": "https://www.slidphilabs.com/pulsar"
     },
     {
       "id": "suite",
       "name": "Suite",
       "status": "live",
-      "role": "metered AWARE jobs — not a user seat",
-      "price": "6.9 GB / 3 h unpaid, then ~5¢/GB",
+      "role": "metered PCC jobs \u2014 not a product card",
+      "price": "First 2 GB/month free, then 8\u00a2/GB",
       "url": "https://www.slidphilabs.com/pps"
     },
     {
       "id": "lab-pass",
       "name": "Lab Pass",
       "status": "live",
-      "role": "365 days — Chamber + AWARE + TruGame. Not Rider.",
+      "role": "365 days \u2014 Chamber + PCC + TruGame. Not Rider.",
       "price": "$668",
       "url": "https://www.slidphilabs.com/lab-pass"
     },
@@ -55,7 +79,7 @@
       "name": "TruGame",
       "status": "live",
       "role": "engine seat. Not a game store.",
-      "price": "Month $12 · Year $79",
+      "price": "Month $12 \u00b7 Year $79",
       "url": "https://www.slidphilabs.com/trugame"
     }
   ]

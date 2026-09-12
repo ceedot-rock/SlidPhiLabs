@@ -1,12 +1,14 @@
 {
   "name": "Slid Phi Labs",
-  "version": "1.18.0",
-  "updated": "2026-08-31",
+  "version": "1.19.0",
+  "updated": "2026-09-12",
   "site": "https://www.slidphilabs.com",
   "lead_product": "pcc",
-  "cash_product": "chamber",
-  "one_liner": "PCC $9/$49/$490. Chamber $49/mo · $490/yr. CuNi $0. Rider $79/mo · $790/yr. Suite 6.9 GB / 3 h then ~5¢/GB.",
-  "protocols": ["x402"],
+  "cash_product": "gc-year",
+  "one_liner": "PCC $9/$49/$490. TRUSTREAM included. Chamber $9/$99. Rider $79/$790. Warrant $29/$290. CuNi $0. First 2 GB/month free, then 8\u00a2/GB.",
+  "protocols": [
+    "x402"
+  ],
   "discovery": "https://www.slidphilabs.com/api/agent",
   "catalog": "https://www.slidphilabs.com/api/x402-products",
   "buy": "POST https://www.slidphilabs.com/api/x402-products",
@@ -22,26 +24,68 @@
   "signup": "https://www.slidphilabs.com/signup",
   "network": "solana-mainnet-beta + eip155:8453",
   "asset": "USDC",
-  "networks": ["solana-mainnet-beta", "eip155:8453"],
+  "networks": [
+    "solana-mainnet-beta",
+    "eip155:8453"
+  ],
   "ecosystem": {
     "cuni_studio": "https://cuni-studio.fly.dev/",
     "agent_rider": "https://agentrider.fly.dev/",
     "quikgater_worker": "https://quikgater-worker.ceedotrock.workers.dev"
   },
   "products": {
-    "cuni": { "price": "$0", "url": "https://cuni-studio.fly.dev/" },
-    "chamber": { "month": 49, "year": 490, "url": "https://www.slidphilabs.com/chamber" },
-    "aware": { "name": "PCC", "alias": "AWARE (retired)", "engine": "hosted", "day": 9, "month": 49, "year": 490, "url": "https://www.slidphilabs.com/gc" },
-    "rider": { "month": 79, "year": 790, "url": "https://agentrider.fly.dev/" },
-    "suite": { "unpaid_gb": 6.9, "trial_hours": 3, "usd_per_gb": 0.05, "url": "https://www.slidphilabs.com/pps" },
-    "lab_pass": { "year": 1088, "url": "https://www.slidphilabs.com/lab-pass" },
-    "trugame": { "month": 12, "year": 79, "url": "https://www.slidphilabs.com/trugame" }
+    "cuni": {
+      "price": "$0",
+      "url": "https://cuni-studio.fly.dev/"
+    },
+    "chamber": {
+      "month": 9,
+      "year": 99,
+      "url": "https://www.slidphilabs.com/chamber"
+    },
+    "pcc": {
+      "name": "PCC",
+      "alias": "AWARE (retired)",
+      "day": 9,
+      "month": 49,
+      "year": 490,
+      "url": "https://www.slidphilabs.com/gc"
+    },
+    "trustream": {
+      "included_with": "pcc",
+      "url": "https://www.slidphilabs.com/trustream"
+    },
+    "rider": {
+      "month": 79,
+      "year": 790,
+      "url": "https://agentrider.fly.dev/"
+    },
+    "warrant": {
+      "month": 29,
+      "year": 290,
+      "url": "https://www.slidphilabs.com/warrant"
+    },
+    "suite": {
+      "unpaid_gb": 2,
+      "window": "calendar_month",
+      "usd_per_gb": 0.08,
+      "url": "https://www.slidphilabs.com/pps"
+    },
+    "lab_pass": {
+      "year": 668,
+      "url": "https://www.slidphilabs.com/lab-pass"
+    },
+    "trugame": {
+      "month": 12,
+      "year": 79,
+      "url": "https://www.slidphilabs.com/trugame"
+    }
   },
   "suite_pricing": {
-    "free_cap_gb": 6.9,
-    "trial_hours": 3,
-    "usd_per_gb_after_free": 0.05,
-    "usd_per_gb_bulk": 0.04,
+    "free_cap_gb": 2,
+    "window": "calendar_month",
+    "usd_per_gb_after_free": 0.08,
+    "min_paid_usd": 1,
     "suite_url": "https://www.slidphilabs.com/pps"
   },
   "x402_access_autoclaim": true

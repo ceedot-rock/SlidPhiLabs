@@ -2,11 +2,11 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "Hosted lossless compression (PCC $49/mo, 200 GB, then 8¢/GB), Chamber, Agent-Rider, CuNi. AWARE is a retired alias for PCC. x402 for agents, Stripe for humans.",
-  "version": "2.0.0",
-  "updated": "2026-09-11",
+  "description": "Primary face is PCC (hosted lossless compression). TRUSTREAM (live logs on the same plan), Chamber (two-key JSON seal), Agent-Rider (signed identity), Warrant (mandate + receipts), CuNi (write once, same stdout or refuse). AWARE is a retired alias for PCC. Stripe for humans; x402 for agents.",
+  "version": "2.1.3",
+  "updated": "2026-09-12",
   "lead_product": "pcc",
-  "cash_product": "chamber",
+  "cash_product": "gc-year",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
     "login": "https://www.slidphilabs.com/login",
@@ -19,28 +19,131 @@
   "human": "https://www.slidphilabs.com/pay",
   "x402": "https://www.slidphilabs.com/api/x402-products",
   "npm": "https://www.slidphilabs.com/npm",
+  "npm_packages": [
+    "slid-phi",
+    "spl-pay-per-suite",
+    "blackjack-compression",
+    "@cptasz13/tru8",
+    "shard-zip",
+    "shard-tsdb"
+  ],
+  "not_npm": [
+    "pulsar"
+  ],
+  "suite": {
+    "plain": "First 2 GB each month free, then 8\u00a2/GB. PCC month includes 200 GB.",
+    "unpaid_gb": 2,
+    "window": "calendar_month",
+    "usd_per_gb": 0.08,
+    "min_paid_usd": 1,
+    "quote": "POST /api/ppp-quote",
+    "mcp": "spl_quote",
+    "compare": "https://www.slidphilabs.com/compare"
+  },
   "flagship": {
-    "bench": "zeros×10k int32",
+    "bench": "zeros\u00d710k int32",
     "zrw": "8B",
     "gzip-9": "73B",
     "brotli-11": "13B",
     "endpoint": "POST /api/compress",
     "note": "POST /api/compress"
   },
-  "retired": ["trugame-rent-week", "zrw-n00b", "zrw-pro", "zrw-l33t", "$1900", "$950", "$12.50"],
+  "retired": [
+    "trugame-rent-week",
+    "zrw-n00b",
+    "zrw-pro",
+    "zrw-l33t",
+    "$1900",
+    "$950",
+    "$12.50"
+  ],
   "discovery": "https://www.slidphilabs.com/api/agent",
   "mcp": "https://www.slidphilabs.com/mcp",
+  "mcp_documentation": "https://www.slidphilabs.com/mcp-service",
+  "mcp_transport": "streamable-http",
   "mcp_registry": "io.github.ceedot-rock/slid-phi-labs",
   "mcp_registry_url": "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.ceedot-rock/slid-phi-labs",
   "mcp_card": "https://www.slidphilabs.com/.well-known/mcp/server-card.json",
   "agents": [
-    { "id": "spl-platform", "name": "Slid Phi Labs", "role": "discovery", "url": "https://www.slidphilabs.com/api/agent" },
-    { "id": "cuni", "name": "CuNi Studio", "role": "exactness", "url": "https://cuni-studio.fly.dev/", "price": "$0" },
-    { "id": "rider", "name": "Agent-Rider", "role": "identity", "url": "https://agentrider.fly.dev/", "price": "Team $79/mo · $790/yr" },
-    { "id": "chamber", "name": "Chamber", "role": "security", "url": "https://www.slidphilabs.com/chamber", "price": "Cloak license $9/mo · $99/yr. Open with keys." },
-    { "id": "aware", "name": "PCC", "role": "compression", "url": "https://www.slidphilabs.com/gc", "price": "Day $9 · Month $49 · Year $490" },
-    { "id": "trugame", "name": "TruGame", "role": "engine", "url": "https://www.slidphilabs.com/trugame", "price": "Month $12 · Year $79" },
-    { "id": "quikgater", "name": "Quikgater", "role": "fetch", "url": "https://www.slidphilabs.com/quikgater", "worker": "https://quikgater-worker.ceedotrock.workers.dev/" },
-    { "id": "l33tsaas", "name": "L33tSaaS", "role": "saas-store", "url": "https://www.slidphilabs.com/l33tsaas", "store": "https://l33tsaas.fly.dev", "packs": "https://l33tsaas.fly.dev/api/packs" }
+    {
+      "id": "spl-platform",
+      "name": "Slid Phi Labs",
+      "role": "discovery",
+      "url": "https://www.slidphilabs.com/api/agent"
+    },
+    {
+      "id": "cuni",
+      "name": "CuNi Studio",
+      "role": "language",
+      "url": "https://cuni-studio.fly.dev/",
+      "protocol": "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json",
+      "price": "$0",
+      "note": "v0.1.9. 119 languages. Same stdout or refuse. Native seats: py/go/js/ts/c/cpp/rs. Protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json"
+    },
+    {
+      "id": "rider",
+      "name": "Agent-Rider",
+      "role": "identity",
+      "url": "https://agentrider.fly.dev/",
+      "price": "Labs team seat $79/mo \u00b7 $790/yr; Merchant Gate is a separate self-serve offer"
+    },
+    {
+      "id": "chamber",
+      "name": "Chamber",
+      "role": "security",
+      "url": "https://www.slidphilabs.com/chamber",
+      "price": "Cloak license $9/mo \u00b7 $99/yr. Open with keys."
+    },
+    {
+      "id": "aware",
+      "name": "PCC",
+      "role": "compression",
+      "url": "https://www.slidphilabs.com/gc",
+      "price": "Day $9 \u00b7 Month $49 \u00b7 Year $490",
+      "note": "AWARE is a retired alias for PCC"
+    },
+    {
+      "id": "trugame",
+      "name": "TruGame",
+      "role": "engine",
+      "url": "https://www.slidphilabs.com/trugame",
+      "price": "Month $12 \u00b7 Year $79"
+    },
+    {
+      "id": "quikgater",
+      "name": "Quikgater",
+      "role": "fetch",
+      "url": "https://www.slidphilabs.com/quikgater",
+      "worker": "https://quikgater-worker.ceedotrock.workers.dev/"
+    },
+    {
+      "id": "l33tsaas",
+      "name": "L33tSaaS",
+      "role": "saas-store",
+      "url": "https://www.slidphilabs.com/l33tsaas",
+      "store": "https://l33tsaas.fly.dev",
+      "packs": "https://l33tsaas.fly.dev/api/packs"
+    },
+    {
+      "id": "pcc",
+      "name": "PCC",
+      "role": "compression",
+      "url": "https://www.slidphilabs.com/gc",
+      "price": "Day $9 \u00b7 Month $49 \u00b7 Year $490"
+    },
+    {
+      "id": "trustream",
+      "name": "TRUSTREAM",
+      "role": "streams",
+      "url": "https://www.slidphilabs.com/trustream",
+      "price": "Included with PCC"
+    },
+    {
+      "id": "warrant",
+      "name": "Warrant",
+      "role": "mandate",
+      "url": "https://www.slidphilabs.com/warrant",
+      "price": "$29/mo \u00b7 $290/yr. Needs a Rider."
+    }
   ]
 }

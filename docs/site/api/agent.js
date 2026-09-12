@@ -64,7 +64,7 @@ export default async function handler(req, res) {
   const body = {
     ok: true,
     name: "Slid Phi Labs — Platform Discovery",
-    version: "1.21.1",
+    version: "1.22.0",
     lead_product: "pcc",
     cash_product: "gc-year",
     auth: AUTH,
@@ -80,7 +80,7 @@ export default async function handler(req, res) {
       status: "/api/box",
       law: "Every product POST is 24h black box, then a paid seat.",
     },
-    updated: "2026-09-11",
+    updated: "2026-09-12",
     rails: {
       human: "POST /api/checkout { sku } or /pay?sku=",
       agent: "POST /api/x402-products { sku }",
@@ -137,7 +137,7 @@ export default async function handler(req, res) {
     }),
     agent_roster: [
       { id: "spl-platform", name: "Platform Discovery", url: "https://www.slidphilabs.com/api/agent" },
-      { id: "tru8", name: "TRU8", url: "https://www.slidphilabs.com/", github: "https://github.com/ceedot-rock/TRU8", demos: "https://www.slidphilabs.com/demos", license: "mailto:corey@slidphilabs.com" },
+      { id: "pcc", name: "PCC", url: "https://www.slidphilabs.com/gc" },
       { id: "spl-duos", name: "Duosurface reporting", url: "https://www.slidphilabs.com/api/duos", ui: "https://www.slidphilabs.com/duos" },
       { id: "teachaid", name: "TEACHAiD", url: "https://teachaid.fly.dev/api/agent" },
       { id: "team-mesh", name: "Team Mesh", url: "https://spl-team-mesh.fly.dev/api/agent" },
@@ -156,7 +156,7 @@ export default async function handler(req, res) {
       "Public encode/decode compression leader on named domains (standings + RT). Pivot: Great Agentic Olympiad (gaming) + residual governance / agent security.",
     tagline: "Best encode & decode — gaming & security next.",
     flagship:
-      "TRU8 1 000 000 zeros → 8 B · ZRW lab zeros×10k → 8 B (gzip-9 73 B, brotli-11 13 B) · zeros_1M → 8 B",
+      "zeros demo 1 000 000 zeros → 8 B. Official Silesia 12: PCC 51,498,645 · pulsar 55,745,438 · champ 50,541,135. Not a #1 claim.",
     pivot: {
       gaming: {
         name: "Great Agentic Olympiad",
@@ -272,7 +272,7 @@ export default async function handler(req, res) {
       modules: {
         compression: {
           name: "Compression",
-          products: ["TRU8", "CDDG:Split"],
+          products: ["PCC", "TRUSTREAM", "pulsar"],
           historical_engines: ["SPL Codec", "OmniWave", "ZRW"],
           codec: "https://www.slidphilabs.com/#codec",
           web: "https://www.slidphilabs.com/web",
@@ -283,7 +283,7 @@ export default async function handler(req, res) {
         },
         agent_platform: {
           name: "Agent platform",
-          products: ["CuNi", "Agent^Rider", "Quikgater"],
+          products: ["CuNi", "Agent-Rider", "Warrant"],
           cuni_studio: "https://cuni-studio.fly.dev/",
           cuni_github: "https://github.com/ceedot-rock/cuni",
           cuni_health: "https://cuni-studio.fly.dev/api/health",
@@ -309,13 +309,10 @@ export default async function handler(req, res) {
     omniwave: "https://www.slidphilabs.com/api/omniwave",
     product: "PCC",
     tru8: {
-      product: "TRU8",
-      home: "https://www.slidphilabs.com/",
-      demos: "https://www.slidphilabs.com/demos",
-      license: "mailto:corey@slidphilabs.com",
-      github: "https://github.com/ceedot-rock/TRU8",
-      credit: "Powered by TRU8 · Slid Phi Labs",
-      public_claim: "1 000 000 zeros → 8 B",
+      product: "PCC",
+      historical_name: "TRU8",
+      page: "https://www.slidphilabs.com/tru8",
+      buy: "https://www.slidphilabs.com/gc",
     },
     legal: {
       trade_name: "Slid Phi Labs",
@@ -332,8 +329,8 @@ export default async function handler(req, res) {
       x402_access_autoclaim: true,
       agent_rider: {
         url: "https://agentrider.fly.dev/",
-        status: "paused",
-        note: "Vercel Deployment Paused (DEPLOYMENT_DISABLED / HTTP 402).",
+        status: "live",
+        note: "Official remote is Fly. Vercel HTTP 402 is a dead door.",
       },
       cuni_studio: { url: "https://cuni-studio.fly.dev/", status: "live" },
       quikgater_worker: {
@@ -344,10 +341,10 @@ export default async function handler(req, res) {
     },
     x402_access_autoclaim: true,
     codec: {
-        product: "TRU8",
-        engine: "TRU8",
-        historical: "OmniWave / SPL Codec / ZRW remain licensed lab engines — not the public face",
-        public: "PCC is the hosted compression product (AWARE is a retired alias). TRU8 is a public demonstration package, not the current lead. Historical engines remain licensed lab work.",
+        product: "PCC",
+        engine: "hosted",
+        historical: "TRU8 / OmniWave / SPL Codec / ZRW are historical names, not the current product face",
+        public: "PCC is the hosted compression product (AWARE is a retired alias).",
       api: "https://www.slidphilabs.com/api/omniwave",
       web: "https://www.slidphilabs.com/api/web-codec",
       github: "https://github.com/ceedot-rock/TRU8",
