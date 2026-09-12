@@ -22,6 +22,7 @@ This repository is the public website, API, and npm clients. Dual-licensed: AGPL
 | **TRUSTREAM** | The same plan, for live logs. | Included with PCC |
 | **Chamber** | Two-key JSON seal. One share is useless. You store the blob. | $9/mo · $99/yr |
 | **Agent-Rider** | Signed identity so you know which agent acted. | $79/mo · $790/yr |
+| **Warrant** | Signed mandate and receipts bound to a Rider (hosts, actions, spend cap). | $29/mo · $290/yr |
 | **CuNi** | Write one program. Print many languages. Python, Go, and JS must match, or it refuses. | Studio $0 · closed-app exception $490/yr |
 | **pulsar** | Free GPLv3 compressor you run on your own machine (binary + source). | Free · $490/yr to embed in a closed product |
 
@@ -43,4 +44,4 @@ See [STATUS.md](STATUS.md) · [CHANGELOG.md](CHANGELOG.md) · [SECURITY.md](SECU
 
 ## License
 
-Site and clients: see LICENSE. pulsar and CuNi are GPLv3. The hosted encoder stays here.
+Site and clients: see LICENSE. pulsar is GPLv3. CuNi is AGPL-3.0-or-later or Commercial. The hosted encoder stays here.

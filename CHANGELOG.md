@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-09-12
+- `/products` lists six cards: PCC, TRUSTREAM, Chamber, Rider, Warrant, CuNi. pulsar stays a free local compressor, not a product card. License line: pulsar GPLv3, CuNi AGPL-or-commercial.
+
 ## 2026-09-11
 - **PCC is the product face.** Customer chrome, compress copy, products, pricing, discovery rails, and catalog display names lead with PCC. AWARE remains a legacy alias / seat synonym for the same hosted compressor. SKU ids (`gc-day` / `gc-month` / `gc-year`), `/gc` URL, and `lb aware` runner paths stay for compat.
 - `/api/compress` bake-off still prefers `lb aware` / LBR1 strong path when a program SKU matches (repeat → affine → walk), then pulsar / lbr1; crowns unchanged. Ship: refresh `docs/site/bin/lb` from lbr1 main on deploy if needed.

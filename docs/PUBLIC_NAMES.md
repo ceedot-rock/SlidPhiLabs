@@ -1,6 +1,6 @@
 # Public names
 
-Use only: **PCC**, TRUSTREAM, Chamber, Rider, Suite, Lab Pass, pulsar (public GPLv3 demo).
+Use only: **PCC**, TRUSTREAM, Chamber, Rider, Warrant, CuNi, Suite, Lab Pass, pulsar (public GPLv3 demo).
 
 Public: PCC, TRUSTREAM, Chamber, Rider, Warrant, CuNi, pulsar, `.pcc` archives.
 Public source (dual license): pulsar, PCC/lbr1, Combined GC. Keys and AUTH_DIR stay operator-only.

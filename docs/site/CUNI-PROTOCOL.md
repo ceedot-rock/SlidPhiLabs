@@ -10,7 +10,11 @@ CuNi is 119 languages. One program. Same stdout on every catalog seat, or the co
 
 A CuNi program with no `ext` blocks **emits and runs** on every language in the catalog. Stdout must match, or `cuni check` exits 1.
 
+`cuni run` evaluates in-process (no emit). That runner is a **seat**: `cuni check` also runs it and refuses if it diverges from catalog gold. Programs with `ext` skip the in-process seat (they already left the portable core).
+
 Native seats today: Python, Go, JavaScript, TypeScript, C, C++, Rust. Other catalog ids still emit+run (Python lowering until that seat is native). `--receipt` records `native` vs `lowering`.
+
+A citizen receipt (`cuni check --receipt`) carries `source_hash`: SHA-256 of the `.cuni` bytes. The program is that hash, not the path. Agent-Rider refuses register if a claimed hash does not match the source.
 
 ## 2. Speech is not law
 
@@ -40,6 +44,18 @@ Integer cents, same gold on every native seat:
 | `examples/laws/catalog-plans.cuni` | Public SKU list prices |
 | `examples/laws/rider-fee.cuni` | Rider 5% task fee |
 | `examples/laws/spend-control.cuni` | Agent spend cap |
+
+## 5b. Compressor laws
+
+Formulas, fills, and order. Not Combined GC. Not host xz.
+
+| Law | Protects |
+|-----|----------|
+| `examples/compressors/pcc-ops.cuni` | PCC1 op ids |
+| `examples/compressors/never-expand.cuni` | coded ≥ raw → keep raw |
+| `examples/compressors/zeros.cuni` | ZERO packed size |
+| `examples/compressors/math-arith.cuni` | MTH1 u8 ramp keep |
+| `examples/compressors/trustream.cuni` | 4 KiB tile gene order |
 
 ## 6. Where it lives
 
