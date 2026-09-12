@@ -10,3 +10,6 @@ scripts/amp
 assets/intro
 **/HOST_*.md
 **/.DS_Store
+lab/*.log
+lab/*.jsonl
+**/*.tgz
