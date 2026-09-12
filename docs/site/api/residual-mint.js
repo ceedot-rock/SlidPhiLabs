@@ -28,8 +28,8 @@ async function handler(req, res) {
     return json(res, 200, {
       service: "residual_mint",
       doors: {
-        suite: { free_gb: FREE_GB, then: "5¢ then 4¢", path: SUITE, not: "Not Chamber" },
-        chamber: { trial_h: 24, plans: CHAMBER, path: LICENSE, not: "Not $199. Not Suite." },
+        suite: { free_gb: FREE_GB, then: "8¢/GB after free", path: SUITE },
+        chamber: { trial_h: 24, plans: CHAMBER, path: LICENSE },
       },
       post: { door: "suite|chamber", gb_used: 120.5, user_id: "…", plan: "year" },
     });

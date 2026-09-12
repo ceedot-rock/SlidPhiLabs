@@ -18,7 +18,7 @@
     "Suite": "PCC meter \u2014 first 2 GB/month free, then 8\u00a2/GB. Not a product card.",
     "Lab Pass": "Chamber + PCC + TruGame for 365 days, $668. Not Rider.",
     "Access": "entitlement claim after Stripe or x402. Not a codec dump.",
-    "pulsar": "public GPLv3 demo compressor. Not PCC.",
+    "pulsar": "free GPLv3 compressor you run on your own machine.",
     "Warrant": "signed mandate and receipts bound to a Rider. $29/mo \u00b7 $290/yr."
   },
   "trial_hours": 24,
@@ -171,8 +171,8 @@
       "canonical": "https://www.slidphilabs.com/about"
     },
     "/pps": {
-      "title": "Suite \u2014 metered jobs \u00b7 not a seat \u00b7 Slid Phi Labs",
-      "description": "Pay per PCC job. 6.9 GB / 3 hours unpaid, then about 5\u00a2/GB. Not a user seat.",
+      "title": "Suite \u2014 metered encode/decode \u00b7 Slid Phi Labs",
+      "description": "Pay per PCC job. First 2 GB each month free, then 8\u00a2/GB.",
       "canonical": "https://www.slidphilabs.com/pps"
     },
     "/access": {

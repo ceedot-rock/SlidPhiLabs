@@ -19,8 +19,8 @@
       "id": 0,
       "bucket": "product",
       "name": "TRU8",
-      "blurb": "Zeros / fill specialist. All-zero data → 8 bytes, round-trip. Public demo on POST /api/specialist. npm @cptasz13/tru8.",
-      "surface": "zeros specialist · public demo",
+      "blurb": "Zeros / fill specialist. All-zero data \u2192 8 bytes, round-trip. Public demo on POST /api/specialist. npm @cptasz13/tru8.",
+      "surface": "zeros specialist \u00b7 public demo",
       "vehicle": [
         "product",
         "brand"
@@ -402,7 +402,7 @@
       "id": 19,
       "bucket": "product",
       "name": "SPL Pay Per Suite",
-      "blurb": "Live quote \u2192 pay \u2192 lab-run delivery. Suite is a metered service, not a product card. First 2 GB/month free, then 8\u00a2/GB.",
+      "blurb": "Live quote \u2192 pay \u2192 lab-run delivery. Suite meters encode/decode jobs. First 2 GB/month free, then 8\u00a2/GB.",
       "surface": "public",
       "vehicle": [
         "product",
@@ -423,7 +423,7 @@
       "id": 20,
       "bucket": "product",
       "name": "Freemium suite",
-      "blurb": "Metered encode/decode jobs (not a product card). First 2 GB/month free, then 8\u00a2/GB. Try Gate retired.",
+      "blurb": "Metered encode/decode jobs. First 2 GB/month free, then 8\u00a2/GB.",
       "surface": "public",
       "vehicle": [
         "product",

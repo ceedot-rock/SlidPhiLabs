@@ -168,7 +168,7 @@ export const PRODUCT_CATALOG = {
     stripe: "https://www.slidphilabs.com/pay?sku=pulsar-exception",
     kind: "exception",
     list: true,
-    blurb: "Written exception to embed pulsar in one closed-source product for one year. pulsar source stays GPLv3. Not Combined GC, not PCC, not LBR1. $199 OSS support is help, not this grant.",
+    blurb: "Written exception to embed pulsar in one closed-source product for one year. pulsar source stays GPLv3.",
   },
   "lab-pass": {
     name: "Lab Pass · annual (Chamber + PCC + TruGame)",
@@ -176,7 +176,7 @@ export const PRODUCT_CATALOG = {
     stripe: "https://www.slidphilabs.com/pay?sku=lab-pass",
     kind: "seat",
     list: true,
-    blurb: "Chamber year $99 + PCC year $490 + TruGame year $79. Not Rider.",
+    blurb: "Chamber year $99 + PCC year $490 + TruGame year $79.",
   },
   "trugame-month": {
     name: "TruGame · monthly engine seat",

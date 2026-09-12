@@ -17,6 +17,6 @@ Crawl surfaces. Honest copy only. No #1. The hosted encoder stays private. pulsa
 - Site: https://www.slidphilabs.com
 - Products: PCC (files), TRUSTREAM (streams, same PCC plan), Chamber, Agent-Rider, CuNi
 - PCC: $9/day · $49/mo (200 GB included) · $490/yr (2,000 GB). First 2 GB/month free, then 8¢/GB. Card charges start at $1. Encoder not in npm. Compare: https://www.slidphilabs.com/compare
-- pulsar 2.5.0 GPLv3: Silesia 55,745,438 / 211,938,580, every file restored. Beats gzip-9. Loses to bzip2-9 and xz-6. Not PCC. Closed embed $490/yr (`pulsar-exception`).
+- pulsar 2.5.0 GPLv3: Silesia 55,745,438 / 211,938,580, every file restored. Beats gzip-9. Loses to bzip2-9 and xz-6. Closed embed $490/yr (`pulsar-exception`).
 
 Do not index `/lab`, `/api/`, `/account`.

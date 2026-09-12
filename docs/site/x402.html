@@ -27,8 +27,8 @@
     <p class="lede">Humans use Stripe or an invoice. Agents use HTTP 402. Same SKUs, same dollars. We do not headline every wallet on the buy page. The rail is here so an agent can complete a purchase without a browser.</p>
     <div class="spl-prose">
       <p><strong>Seats</strong> — <code>POST /api/x402-products</code> with <code>{"sku":"chamber-year"}</code>. No payment → 402 and <code>accepts[]</code> (Solana USDC + Base USDC). Pay, retry with <code>X-PAYMENT</code>, get a claim token, open <code>/access?claim=…</code>.</p>
-      <p><strong>Suite jobs</strong> — <code>POST /api/x402-suite</code>. Under 6.9 GB / 3 hours is free (200). Over the cap returns 402.</p>
-      <p><strong>Quikgater</strong> — not a seat. Hit the worker with a URL. Unpaid → 402. Paid → fetch. Status: <a href="/api/quikgater">/api/quikgater</a>.</p>
+      <p><strong>Suite jobs</strong> — <code>POST /api/x402-suite</code>. First 2 GB each month are free. After that the job quotes 8¢/GB.</p>
+      <p><strong>Quikgater</strong> — pay-per-fetch. Hit the worker with a URL. Unpaid → 402. Paid → fetch. Status: <a href="/api/quikgater">/api/quikgater</a>.</p>
     </div>
     <h2>From a shell</h2>
     <div class="spl-prose">

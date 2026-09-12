@@ -62,7 +62,7 @@
       "id": "suite",
       "name": "Suite",
       "status": "live",
-      "role": "metered PCC jobs \u2014 not a product card",
+      "role": "metered PCC encode/decode jobs. First 2 GB/month free, then 8\u00a2/GB",
       "price": "First 2 GB/month free, then 8\u00a2/GB",
       "url": "https://www.slidphilabs.com/pps"
     },

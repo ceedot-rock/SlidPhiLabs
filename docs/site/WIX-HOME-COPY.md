@@ -52,10 +52,10 @@ When Stripe lands on `/?purchase=PRODUCT` or `/?purchase=…&session=…`:
 **Less is more. We dropped the E.**
 
 **H1:**  
-TRU8 — true minimal units for repetition
+PCC — hosted lossless compression
 
 **Lede:**  
-Chamber is a security unlock ($99 / domain after 24h) — not compression, not a seat. TRU8 is the only public compression product face: demos free with credit; production residual is a commercial license via corey@slidphilabs.com. tru8-chamber is a $1,900/project/year license (both products, one project). Suite on /pps is a metered job rail (6.9 GB / 3 h unpaid, then ~5¢/GB) — not a seat, not the product face. Try Gate is retired.
+PCC shrinks a file on our machines and restores every byte. Day $9 · Month $49 · Year $490. TRUSTREAM is live logs on that plan. Chamber is a two-key JSON seal, $9/$99. Rider is signed agent identity, $79/$790. Warrant is a signed mandate, $29/$290. CuNi is 119 languages, same stdout or refuse, Studio free. TRU8 packs all-zero data to 8 bytes. Suite meters jobs: first 2 GB/month free, then 8¢/GB.
 
 **CTAs:**  
 1. **See for yourself** → `/try` (teal)  

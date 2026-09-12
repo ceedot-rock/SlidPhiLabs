@@ -50,7 +50,7 @@ Without a matching invoice, you do not receive Combined GC, LBR1 / `splb` / ASMD
 | Lab Pass year | `lab-pass` | $668 (Chamber + PCC + TruGame; not Rider) |
 | Chamber month / year | `chamber-month` / `chamber-year` | $9 / $99 |
 
-Hosted compression: first 2 GB each month are free. After that, 8¢ per GB. Card charges start at $1. A PCC plan includes more (day 10 GB, month 200 GB, year 2,000 GB), then the same 8¢. That meter pays for the machines. It is not a separate product.
+Hosted compression: first 2 GB each month are free. After that, 8¢ per GB. Card charges start at $1. A PCC plan includes more (day 10 GB, month 200 GB, year 2,000 GB), then the same 8¢. That meter pays for the machines on the PCC plan.
 
 After Stripe, claim on https://www.slidphilabs.com/access.
 
