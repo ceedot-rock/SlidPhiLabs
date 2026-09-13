@@ -48,6 +48,20 @@ const SUITE_LINE =
 
 const TOOLS = [
   {
+    name: "cuni_bank",
+    description:
+      "CuNi Bank: paste N, get X. Ingest → emit → prove, or refuse. v1 from Python. Args: source, from (py|cuni), to (js|go|py|ts).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        source: { type: "string" },
+        from: { type: "string" },
+        to: { type: "string" },
+      },
+      required: ["source", "to"],
+    },
+  },
+  {
     name: "spl_compress",
     description:
       "Hosted lossless compression. Every dual-licensed pathway on the lab machine. Args: data_b64. Returns packed_b64. First 2 GB/month free, then 8¢/GB.",
@@ -241,6 +255,20 @@ function err(id, code, message) {
 
 async function callTool(name, args = {}) {
   switch (name) {
+    case "cuni_bank": {
+      const r = await fetch("https://cuni-studio.fly.dev/api/bank", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          source: String(args.source || ""),
+          from: String(args.from || "py"),
+          to: String(args.to || "js"),
+        }),
+        signal: AbortSignal.timeout(60000),
+      });
+      const j = await r.json().catch(() => ({}));
+      return { status: r.status, studio: "https://cuni-studio.fly.dev/bank", ...j };
+    }
     case "spl_compress": {
       const raw = Buffer.from(String(args.data_b64 || ""), "base64");
       const j = await compress(raw);
@@ -258,7 +286,7 @@ async function callTool(name, args = {}) {
         api: "POST https://www.slidphilabs.com/api/auth",
         body: { action: "signup|login", email: "", password: "", name: "" },
         lead_product: "pcc",
-        cash_product: "chamber",
+        cash_product: "gc-year",
       };
     case "spl_pps_info":
       return {

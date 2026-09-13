@@ -1,6 +1,6 @@
 {
   "name": "spl-pay-per-suite",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Dual-licensed hosted compression client, quotes, checkout, and MCP. Open license or a paid grant. First 2 GB/month free, then 8¢/GB.",
   "type": "module",
   "main": "src/index.mjs",

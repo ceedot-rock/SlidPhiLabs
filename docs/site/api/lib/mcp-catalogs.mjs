@@ -6,7 +6,7 @@ export const CATALOGS = [
     id: "sku",
     title: "Prices",
     entries: [
-      { id: "cuni", name: "CuNi Studio", price: "$0", note: "Write once. Print many languages. Python, Go, and JS must match, or it refuses. Free playground. v0.1.9.", url: "https://cuni-studio.fly.dev/", related: ["license", "cuni"] },
+      { id: "cuni", name: "CuNi Studio", price: "$0", note: "Write once. Print many languages. Python, Go, and JS must match, or it refuses. Bank arm: paste N get X. Free playground. v0.1.10 + cuni-bank-0.1.0.", url: "https://cuni-studio.fly.dev/", related: ["license", "cuni"] },
       { id: "cuni-exception", name: "CuNi closed-app exception", price: "$490/yr", note: "Pay $490/year to ship CuNi inside one closed product. Public tree is AGPL-3.0-or-later.", url: SITE + "/pay?sku=cuni-exception", related: ["license"] },
       { id: "pulsar-exception", name: "pulsar closed-embed exception", price: "$490/yr", note: "Pay $490/year to embed pulsar in one closed product for one year. pulsar source stays GPLv3.", url: SITE + "/pay?sku=pulsar-exception", related: ["license", "pulsar"] },
       { id: "chamber-month", name: "Chamber month", price: "$9/mo", note: "Two-key JSON seal. License to seal new secrets. Open existing seals with both keys, no extra payment.", url: SITE + "/chamber", related: ["chamber", "box"] },
@@ -39,7 +39,7 @@ export const CATALOGS = [
     title: "Where to use them",
     entries: [
       { id: "lab", name: "www.slidphilabs.com", url: SITE, note: "Public site, checkout, and APIs." },
-      { id: "studio", name: "cuni-studio.fly.dev", url: "https://cuni-studio.fly.dev/", note: "Free CuNi playground. Write once, print many languages. Python, Go, and JS must match, or refuse." },
+      { id: "studio", name: "cuni-studio.fly.dev", url: "https://cuni-studio.fly.dev/", note: "Free CuNi playground. Write once, print many languages. Python, Go, and JS must match, or refuse. Bank: /bank." },
       { id: "rider", name: "agentrider.fly.dev", url: "https://agentrider.fly.dev/", note: "Signed agent identity. $79/mo · $790/yr on the Labs seat." },
       { id: "teachaid", name: "teachaid.fly.dev", url: "https://teachaid.fly.dev/", note: "Personal teacher surface." },
       { id: "mcp", name: "/mcp", url: SITE + "/mcp", note: "This server. Catalog, prices, and quotes." },
@@ -52,6 +52,7 @@ export const CATALOGS = [
       { id: "law", name: "Exactness law", note: "One program. Python, Go, and JS print the same thing, or it refuses to compile. Playground is free.", url: "https://cuni-studio.fly.dev/" },
       { id: "check", name: "cuni check", note: "The gate: nothing publishes on FAIL.", url: "https://github.com/ceedot-rock/cuni" },
       { id: "spend", name: "spend-control.cuni", note: "Flagship example loaded in the free Studio.", url: "https://cuni-studio.fly.dev/" },
+      { id: "bank", name: "CuNi Bank", note: "Arm of CuNi. Paste N, get X. Exactness or refuse. v1 from Python. POST /api/bank. Not 119 ingest parsers.", url: "https://cuni-studio.fly.dev/bank" },
     ],
   },
   {
@@ -181,10 +182,22 @@ export function catalogTools() {
       inputSchema: { type: "object", properties: { id: { type: "string" } }, required: ["id"] },
     });
   }
+  tools.push({
+    name: "pcc_search",
+    description: "PCC — what it is, what you get, what you pay. Free text or code. Alias of aware_search.",
+    inputSchema: { type: "object", properties: { q: { type: "string" } } },
+  });
+  tools.push({
+    name: "pcc_get",
+    description: "PCC — one entry with notes, price, and links. Alias of aware_get.",
+    inputSchema: { type: "object", properties: { id: { type: "string" } }, required: ["id"] },
+  });
   return tools;
 }
 
 export function dispatchCatalog(name, args = {}) {
+  if (name === "pcc_search") name = "aware_search";
+  if (name === "pcc_get") name = "aware_get";
   if (name.endsWith("_search")) return searchCatalog(name.slice(0, -7), args.q || args.query || args.code);
   if (name.endsWith("_get")) return getCatalog(name.slice(0, -4), args.id || args.code || args.entry);
   return null;

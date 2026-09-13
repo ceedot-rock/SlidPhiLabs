@@ -11,9 +11,23 @@ import { packArchive, crc32 } from "./lib/pccz.mjs";
 import { unpackMembers } from "./archive.js";
 
 const SITE = "https://www.slidphilabs.com";
-const MCP_VERSION = "1.20.1";
+const MCP_VERSION = "1.20.2";
 
 const COMMERCE = [
+  {
+    name: "cuni_bank",
+    description:
+      "CuNi Bank: paste N, get X. Ingest → emit → prove, or refuse. v1 from Python. Args: source, from (py|cuni), to (catalog id, e.g. js). POSTs to cuni-studio /api/bank.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        source: { type: "string", description: "Source program (Python v1 subset or .cuni)" },
+        from: { type: "string", description: "py | cuni" },
+        to: { type: "string", description: "catalog id: py, go, js, ts, …" },
+      },
+      required: ["source", "to"],
+    },
+  },
   { name: "spl_discover", description: "Lead product, cash product, auth, MCP, x402." },
   { name: "spl_lab_auth", description: "How to mint a lab account or agent API key." },
   { name: "spl_signup", description: "Create a human lab account (email + password)." },
@@ -208,6 +222,21 @@ async function callTool(name, args = {}) {
     const packed = Buffer.from(String(args.packed_b64 || ""), "base64");
     const files = await unpackMembers(packed);
     return { ok: true, ext: ".pcc", files, members: files.length };
+  }
+  if (name === "cuni_bank") {
+    const body = {
+      source: String(args.source || ""),
+      from: String(args.from || "py"),
+      to: String(args.to || "js"),
+    };
+    const r = await fetch("https://cuni-studio.fly.dev/api/bank", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(body),
+      signal: AbortSignal.timeout(60000),
+    });
+    const j = await r.json().catch(() => ({}));
+    return { status: r.status, studio: "https://cuni-studio.fly.dev/bank", ...j };
   }
   if (name === "spl_discover") {
     return {

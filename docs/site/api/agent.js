@@ -64,9 +64,11 @@ export default async function handler(req, res) {
   const body = {
     ok: true,
     name: "Slid Phi Labs — Platform Discovery",
-    version: "1.22.0",
+    version: "1.22.1",
     lead_product: "pcc",
     cash_product: "gc-year",
+    storefront: ["PCC", "TRUSTREAM", "Chamber", "Agent-Rider", "Warrant", "CuNi"],
+    well_known_agent: "https://www.slidphilabs.com/.well-known/agent.json",
     auth: AUTH,
     mcp: {
       http: "https://www.slidphilabs.com/mcp",
@@ -80,7 +82,7 @@ export default async function handler(req, res) {
       status: "/api/box",
       law: "Every product POST is 24h black box, then a paid seat.",
     },
-    updated: "2026-09-12",
+    updated: "2026-09-13",
     rails: {
       human: "POST /api/checkout { sku } or /pay?sku=",
       agent: "POST /api/x402-products { sku }",
@@ -100,13 +102,10 @@ export default async function handler(req, res) {
       agents: "https://www.slidphilabs.com/agents",
       note: "PRIMARY: www.slidphilabs.com (DNS→Fly). ALTERNATE: slidphilabs.fly.dev. Mesh: spl-team-mesh.fly.dev.",
     },
-    cadence: {
-      beats: [33, 66, 999],
-      "33": "domain supremacy — primary host is product",
-      "66": "dual doors — humans Stripe · agents x402",
-      "999": "gift school factory — TEACHAiD $275 forever cut",
-      day: "Ghost_pi_2026-08-09",
-      seal: "IN_HIS_NAME_WE_CODE",
+    doors: {
+      humans: "https://www.slidphilabs.com/humans",
+      agents: "https://www.slidphilabs.com/agents",
+      note: "Humans Stripe. Agents x402.",
     },
     live_product_host: "https://www.slidphilabs.com",
     live_product_alternate: "https://slidphilabs.fly.dev",
@@ -136,11 +135,12 @@ export default async function handler(req, res) {
       return row;
     }),
     agent_roster: [
-      { id: "spl-platform", name: "Platform Discovery", url: "https://www.slidphilabs.com/api/agent" },
       { id: "pcc", name: "PCC", url: "https://www.slidphilabs.com/gc" },
-      { id: "spl-duos", name: "Duosurface reporting", url: "https://www.slidphilabs.com/api/duos", ui: "https://www.slidphilabs.com/duos" },
-      { id: "teachaid", name: "TEACHAiD", url: "https://teachaid.fly.dev/api/agent" },
-      { id: "team-mesh", name: "Team Mesh", url: "https://spl-team-mesh.fly.dev/api/agent" },
+      { id: "trustream", name: "TRUSTREAM", url: "https://www.slidphilabs.com/trustream" },
+      { id: "chamber", name: "Chamber", url: "https://www.slidphilabs.com/chamber" },
+      { id: "rider", name: "Agent-Rider", url: "https://agentrider.fly.dev/", mcp: "https://agentrider.fly.dev/api/mcp" },
+      { id: "warrant", name: "Warrant", url: "https://www.slidphilabs.com/warrant" },
+      { id: "cuni", name: "CuNi", url: "https://cuni-studio.fly.dev/", protocol: "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json", public_install_tag: "v0.1.10" },
     ],
     team_mesh: {
       url: "https://spl-team-mesh.fly.dev",
@@ -156,7 +156,7 @@ export default async function handler(req, res) {
       "Public encode/decode compression leader on named domains (standings + RT). Pivot: Great Agentic Olympiad (gaming) + residual governance / agent security.",
     tagline: "Best encode & decode — gaming & security next.",
     flagship:
-      "zeros demo 1 000 000 zeros → 8 B. Official Silesia 12: PCC 51,498,645 · pulsar 55,745,438 · champ 50,541,135. Not a #1 claim.",
+      "PCC hosted lossless compressor. Official Silesia 12: PCC 51,498,645 · pulsar 55,745,438 · champ 50,541,135. Not a #1 claim. TRU8 zeros specialist is POST /api/specialist, not /api/compress.",
     pivot: {
       gaming: {
         name: "Great Agentic Olympiad",
@@ -285,6 +285,8 @@ export default async function handler(req, res) {
           name: "Agent platform",
           products: ["CuNi", "Agent-Rider", "Warrant"],
           cuni_studio: "https://cuni-studio.fly.dev/",
+          cuni_bank: "https://cuni-studio.fly.dev/bank",
+          cuni_bank_api: "https://cuni-studio.fly.dev/api/bank",
           cuni_github: "https://github.com/ceedot-rock/cuni",
           cuni_health: "https://cuni-studio.fly.dev/api/health",
           cuni_agents_json: "https://cuni-studio.fly.dev/agents.json",
@@ -365,12 +367,11 @@ export default async function handler(req, res) {
     standings_version: "1.2.2",
     standings_updated: "2026-08-10",
     public_proof: {
-      joint: "https://www.slidphilabs.com/lab/PUBLIC_PROOF_JOINT_LATEST.json",
-      zrw_zeros_10k: "https://www.slidphilabs.com/lab/zeros_10k_zrw_PUBLIC_LATEST.json",
-      process: "POST https://www.slidphilabs.com/api/process",
-      verify_zrw: "BASE=https://www.slidphilabs.com bash scripts/curl_zrw_10k.sh",
-      flagship: "ZRW zeros×10k → 8 B · mirror_error 0 · RT",
-      agent_joint: "CuNi Studio health + Quikgater worker + Rider MCP (see joint JSON grade)",
+      silesia: "https://www.slidphilabs.com/silesia.json",
+      bench: "https://www.slidphilabs.com/bench.json",
+      specialist: "POST https://www.slidphilabs.com/api/specialist",
+      compress: "POST https://www.slidphilabs.com/api/compress",
+      note: "Silesia board is PCC/pulsar proof. Zeros round-trip is TRU8 on /api/specialist.",
     },
     olympiad: {
       name: "Great Agentic Olympiad",
