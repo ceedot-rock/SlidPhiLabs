@@ -4,7 +4,7 @@
   "title": "Slid Phi Labs",
   "description": "CuNi exactness, Chamber two-key JSON, Agent-Rider. Lab signup, agent keys, x402 catalog.",
   "websiteUrl": "https://www.slidphilabs.com",
-  "version": "1.17.0",
+  "version": "1.20.2",
   "remotes": [
     {
       "type": "streamable-http",
