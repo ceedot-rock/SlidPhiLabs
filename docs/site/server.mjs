@@ -467,6 +467,26 @@ const server = http.createServer(async (req, res) => {
       });
       return res.end();
     }
+    if (url.pathname === "/v1/check" || url.pathname === "/v1/translate" || url.pathname === "/v1/squeeze") {
+      const store = (process.env.LAB_AGENT_URL || "https://spl-lab-agent.fly.dev").replace(/\/$/, "");
+      const chunks = [];
+      for await (const c of req) chunks.push(c);
+      const raw = Buffer.concat(chunks);
+      const up = await fetch(store + url.pathname, {
+        method: req.method,
+        headers: { "content-type": req.headers["content-type"] || "application/json" },
+        body: req.method === "POST" ? raw : undefined,
+        signal: AbortSignal.timeout(90000),
+      });
+      const buf = Buffer.from(await up.arrayBuffer());
+      res.writeHead(up.status, {
+        "Content-Type": up.headers.get("content-type") || "application/json",
+        "Access-Control-Allow-Origin": "*",
+        ...ncaHeaders(),
+      });
+      res.end(buf);
+      return;
+    }
     if (url.pathname === "/healthz" || url.pathname === "/api/healthz") {
       const body = attachNca(
         { ok: true, host: "fly", app: process.env.FLY_APP_NAME || "slidphilabs", at: new Date().toISOString() },

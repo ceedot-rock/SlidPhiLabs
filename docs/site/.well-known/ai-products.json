@@ -1,0 +1,33 @@
+{
+  "id": "slidphilabs-agent-store",
+  "version": "0.1.0",
+  "lab": "Slid Phi Labs",
+  "canonical": "https://www.slidphilabs.com/.well-known/ai-products.json",
+  "store": "https://spl-lab-agent.fly.dev/",
+  "license": "https://www.slidphilabs.com/licensing.json",
+  "pay": "https://www.slidphilabs.com/api/agent",
+  "verbs": ["check", "translate", "squeeze"],
+  "products": [
+    {
+      "id": "check",
+      "name": "CuNi Check",
+      "repo": "https://github.com/ceedot-rock/cuni",
+      "post": "/v1/check",
+      "pin": "v0.1.10"
+    },
+    {
+      "id": "translate",
+      "name": "CuNi Bank",
+      "repo": "https://github.com/ceedot-rock/cuni",
+      "post": "/v1/translate",
+      "pin": "cuni-bank-0.1.0"
+    },
+    {
+      "id": "squeeze",
+      "name": "PCCX",
+      "repo": "https://github.com/ceedot-rock/pccx",
+      "post": "/v1/squeeze",
+      "pin": "e72528b"
+    }
+  ]
+}
