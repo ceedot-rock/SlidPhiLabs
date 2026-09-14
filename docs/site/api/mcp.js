@@ -83,7 +83,7 @@ const COMMERCE = [
     inputSchema: {
       type: "object",
       properties: {
-        bytes: { type: "number", description: "Payload bytes. ≤6.9 GiB unpaid." },
+        bytes: { type: "number", description: "Payload bytes. first 2 GB/month free." },
         product: { type: "string", description: "auto | zrw | blackjack | shard-zip | shard-tsdb | slid-phi" },
         op: { type: "string", description: "compress | decompress | roundtrip" },
         dataClass: { type: "string" },

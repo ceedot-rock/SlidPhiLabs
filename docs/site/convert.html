@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Convert · Suite 6.9 GB / 3 h then Stripe · Slid Phi Labs</title>
-<meta name="description" content="Freemium → paid conversion: 6.9 GB / 3 h unpaid, then ~5¢/GB (4¢ bulk) under ~9¢ egress. Stripe checkout for humans · x402 for agents. ZRW 8 B sealed PASS as sales spear."/>
+<title>Convert · Suite first 2 GB/month then Stripe · Slid Phi Labs</title>
+<meta name="description" content="Freemium → paid conversion: First 2 GB/month free, then 8¢/GB. Stripe for humans · x402 for agents."/>
 <link rel="canonical" href="https://www.slidphilabs.com/convert"/>
 <meta name="robots" content="index,follow"/>
 <meta name="theme-color" content="#050b16"/>
@@ -13,12 +13,12 @@
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Slid Phi Labs"/>
 <meta property="og:title" content="Convert · Suite then Stripe · Slid Phi Labs"/>
-<meta property="og:description" content="6.9 GB / 3 h unpaid · then ~5¢/GB. Stripe humans · x402 agents. Cite ZRW PASS · run the suite."/>
+<meta property="og:description" content="First 2 GB/month free, then 8¢/GB. Stripe humans · x402 agents."/>
 <meta property="og:url" content="https://www.slidphilabs.com/convert"/>
 <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Convert · freemium → Stripe · Slid Phi Labs"/>
-<meta name="twitter:description" content="6.9 GB / 3 h unpaid · then ~5¢/GB. Dual doors: humans + agents."/>
+<meta name="twitter:description" content="First 2 GB/month free, then 8¢/GB. Dual doors: humans + agents."/>
 <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
 <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=13"/>
 <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent commerce"/>
@@ -116,7 +116,7 @@ footer a{margin-right:12px}
     </nav>
 
     <span class="badge">Move 1 · freemium → Stripe</span>
-    <h1>Free first 100 GB · then pay ~5¢/GB</h1>
+    <h1>Free first 100 GB · then pay 8¢/GB</h1>
     <p class="lead">
       Conversion rail for <strong>Slid Phi Labs</strong>: freemium cap, then Stripe checkout for humans
       and <strong>x402</strong> for agents — same product path. Proof spear:
@@ -176,7 +176,7 @@ footer a{margin-right:12px}
       <div class="kicker">How conversion works</div>
       <ol class="steps">
         <li><strong>Free</strong> — jobs ≤ 100 GB: $0 · run on <a href="/pps">/pps</a> · no card.</li>
-        <li><strong>Over free</strong> — billable GB after 100 · ~5¢/GB (4¢ after 100 paid GB) · min $0.05.</li>
+        <li><strong>Over free</strong> — billable GB after 100 · 8¢/GB (4¢ after 100 paid GB) · min $0.05.</li>
         <li><strong>Humans</strong> — Stripe Checkout (cards, Link, ACH, BNPL when available).</li>
         <li><strong>Agents</strong> — same product · <a href="/api/agent">/api/agent</a> · x402 pay · no human form.</li>
         <li><strong>Access</strong> — after pay, claim on <a href="/access">/access</a>.</li>
@@ -192,7 +192,7 @@ footer a{margin-right:12px}
         </div>
         <div class="door">
           <h3>Agents · x402</h3>
-          <p>Machine discovery at <code>/api/agent</code> · unpaid under 6.9 GB / 3 h · paid with payment header. Same suite rates.</p>
+          <p>Machine discovery at <code>/api/agent</code> · first 2 GB/month free · paid with payment header. Same suite rates.</p>
         </div>
       </div>
     </div>
@@ -209,7 +209,7 @@ footer a{margin-right:12px}
 
   <script type="module">
     const STRIPE_LINK = "https://www.slidphilabs.com/pps";
-    const FREE_GB = 6.9;
+    const FREE_GB = 2;
     const $ = (id) => document.getElementById(id);
 
     function bytesFromGb(gb) {
@@ -224,20 +224,18 @@ footer a{margin-right:12px}
           free: true,
           amount_cents: 0,
           amount_display: "0.00",
-          message: "Under 6.9 GB / 3 h — open suite, no Stripe.",
+          message: "Under 2 GB this month — open suite, no Stripe.",
           breakdown: { gb, free_gb: FREE_GB, billable_bytes: 0, op, product },
         };
       }
-      // ~5¢ first 100 paid GB, 4¢ after — matches suite-pricing
-      let cents;
-      if (billableGb <= 100) cents = Math.round(billableGb * 5);
-      else cents = Math.round(100 * 5 + (billableGb - 100) * 4);
-      cents = Math.max(5, cents);
+      // 8¢/GB after the free 2 GB — matches suite-pricing.js
+      let cents = Math.round(billableGb * 8);
+      cents = Math.max(100, cents);
       return {
         free: false,
         amount_cents: cents,
         amount_display: (cents / 100).toFixed(2),
-        message: `Over free: ~5¢/GB under ~9¢ egress · ${billableGb.toFixed(2)} billable GB`,
+        message: `Over free: 8¢/GB · ${billableGb.toFixed(2)} billable GB · card charges start at $1`,
         breakdown: { gb, free_gb: FREE_GB, billable_gb: billableGb, op, product, bytes: b },
       };
     }

@@ -23,7 +23,7 @@
 <meta name="agent-networks" content="solana-mainnet-beta,eip155:8453"/>
 <meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
 <meta name="agent-catalog" content="https://www.slidphilabs.com/api/x402-products"/>
-<meta name="agent-one-liner" content="CuNi $0 · Chamber $49/$490 · Rider $79/$790 · Suite 6.9 GB / 3 h then ~5¢ · GET /api/agent"/>
+<meta name="agent-one-liner" content="CuNi $0 · Chamber $9/$99 · PCC $9/$49/$490 · Rider $79/$790 · first 2 GB/mo then 8¢/GB · GET /api/agent"/>
 <meta property="og:title" content="Pay Per Suite — metered encode/decode"/>
 <meta property="og:description" content="Suite meters encode/decode jobs. First 2 GB each month free, then 8¢/GB."/>
 <meta property="og:url" content="https://www.slidphilabs.com/pps"/>
@@ -409,7 +409,7 @@ footer.suite-foot a{color:var(--teal-bright);font-weight:600}
     "@type": "Service",
     "name": "SPL Pay Per Suite",
     "provider": { "@type": "Organization", "name": "Slid Phi Labs", "url": "https://www.slidphilabs.com/" },
-    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "0", "description": "6.9 GB / 3 h unpaid · encode/decode folder on site" }
+    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "0", "description": "First 2 GB each month free, then 8¢/GB · encode/decode folder on site" }
   }
 }
 </script>
@@ -447,7 +447,7 @@ footer.suite-foot a{color:var(--teal-bright);font-weight:600}
         <p class="ribbon">Need a product seat? Chamber Year $490 → <a href="/chamber" style="color:inherit">/chamber</a>. PCC Year $490 → <a href="/gc" style="color:inherit">/gc</a>.</p>
         <h1>Suite meters encode / decode jobs</h1>
         <p class="lede">
-          Suite meters jobs — unpaid <strong>6.9 GB / 3 h</strong>, then ~5¢/GB.
+          Suite meters jobs — first <strong>2 GB each month free</strong>, then 8¢/GB.
           Not a user seat. Not a Chamber unlock. Not a TRU8 production license.
           Browse the <strong>suite data folder</strong>, download samples, encode, decode, recompress.
         </p>
@@ -549,7 +549,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
       <div class="panel">
         <div class="quote-label">Live quote</div>
         <div class="quote-amt" id="quoteAmtEl">$<span id="amt">9.00</span><span class="cur">USD</span></div>
-        <p class="quote-sub" id="amtSub">6.9 GB / 3 h unpaid · multi-GB is cheap (free 6.9 GB / 3 h then ~5¢/GB under ~9¢ egress) · max $10,000</p>
+        <p class="quote-sub" id="amtSub">First 2 GB each month free, then 8¢/GB. Card charges start at $1.</p>
         <div class="breakdown" id="breakdown"></div>
         <div class="cta-stack">
           <button type="button" class="btn btn-gold btn-lg btn-block" id="payBtn">Pay with Stripe →</button>
@@ -632,7 +632,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
 (function () {
   const PPP_LINK = 'https://www.slidphilabs.com/pps';
   /* Freemium usage — match api/suite-pricing.js */
-  const FREE_BYTES = Math.round(6.9 * 1024 * 1024 * 1024); // 6.9 GB unpaid cap
+  const FREE_BYTES = 2 * 1024 * 1024 * 1024; // first 2 GB each month
   const PRODUCT_ADD = {
     auto: 0, zrw: 0, "cddg-split": 25, blackjack: 0,
     "shard-zip": 0, "shard-tsdb": 0, "slid-phi": 0,
@@ -755,17 +755,17 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
     if (q.free) {
       $('breakdown').innerHTML =
         '<div><span>Free showcase</span><strong>$0.00</strong></div>' +
-        '<div><span>Free cap</span><strong>6.9 GB / 3 h</strong></div>' +
+        '<div><span>Free cap</span><strong>2 GB / month</strong></div>' +
         '<div><span>Size · ' + fmtBytes(q.bytes) + '</span><strong>included</strong></div>' +
-        '<div><span>Then</span><strong>~5¢/GB under ~9¢ egress (under first paid egress ~9¢/GB)</strong></div>';
-      if ($('amtSub')) $('amtSub').textContent = 'FREE under 6.9 GB / 3 h · showcase the platform · no Stripe';
+        '<div><span>Then</span><strong>8¢/GB. Card charges start at $1.</strong></div>';
+      if ($('amtSub')) $('amtSub').textContent = 'FREE under 2 GB this month · no Stripe';
     } else {
       $('breakdown').innerHTML =
-        '<div><span>6.9 GB / 3 h unpaid</span><strong>$0.00</strong></div>' +
+        '<div><span>First 2 GB this month</span><strong>$0.00</strong></div>' +
         '<div><span>Usage · ' + fmtBytes(q.billable) + '</span><strong>$' + (q.size / 100).toFixed(2) + '</strong></div>' +
         '<div><span>Product add</span><strong>$' + (q.base / 100).toFixed(2) + '</strong></div>' +
         '<div><span>Data × op</span><strong>×' + q.mult.toFixed(2) + '</strong></div>';
-      if ($('amtSub')) $('amtSub').textContent = 'Usage · ~5¢/GB under ~9¢ egress after free · under first paid egress ~9¢/GB · max $10,000';
+      if ($('amtSub')) $('amtSub').textContent = 'Usage · 8¢/GB after the free 2 GB · card charges start at $1';
     }
     const toolLabel = productEl.value === 'auto' && recommendedTool !== 'auto'
       ? 'auto → ' + recommendedTool
@@ -905,7 +905,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
     const btn = $('payBtn');
     if (!btn) return;
     if (q.free) {
-      btn.textContent = 'Continue free (under 6.9 GB / 3 h) →';
+      btn.textContent = 'Continue free (under 2 GB this month) →';
       btn.classList.remove('btn-gold');
       btn.classList.add('btn-teal');
     } else {
@@ -943,8 +943,8 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
       if (data.mode === 'free_showcase' || data.free || q.free) {
         paid = true;
         show(payMsg, 'ok',
-          '<strong>Free showcase</strong> — under 6.9 GB / 3 h cap. No payment. Enter email and <strong>Submit project</strong>.');
-        showBanner('ok', 'Free tier active — 6.9 GB / 3 h is $0. Submit your job below.');
+          '<strong>Free showcase</strong> — under the 2 GB monthly free cap. No payment. Enter email and <strong>Submit project</strong>.');
+        showBanner('ok', 'Free tier active — first 2 GB this month is $0. Submit your job below.');
         setSteps();
         return;
       }
@@ -963,7 +963,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
     } catch (e) {
       if (q.free) {
         paid = true;
-        show(payMsg, 'ok', 'Free under 6.9 GB / 3 h — submit project below.');
+        show(payMsg, 'ok', 'Free under 2 GB this month — submit project below.');
         setSteps();
       } else {
         show(payMsg, 'err', 'Checkout hiccup — opening Stripe…');

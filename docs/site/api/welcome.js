@@ -63,7 +63,7 @@ export default async function handler(req, res) {
       api: "POST /api/join-work",
       asks: ["name", "one sentence of intent", "33-byte seed phrase"],
       seed: "exactly 33 UTF-8 bytes; hashed (sha256); seed never stored",
-      grants: "public unpaid cap 6.9 GB / 3 h then ~5¢/GB. ZRW lab numbers on structured ints.",
+      grants: "first 2 GB/month free then 8¢/GB.",
       never: "private Smart Box, residual coefficients, living shard names, fourth Trinity mouth",
     },
     next_30_seconds: {

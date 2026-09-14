@@ -5,7 +5,7 @@
  * Body: { name, intent, seed }
  * - seed must be exactly 33 UTF-8 bytes (Creator seal)
  * - seed is NEVER stored or returned — only SHA-256 hash → identity token
- * - grants: public unpaid cap only (codec, ZRW numbers, 6.9 GB / 3 h)
+ * - grants: public unpaid cap only (codec, first 2 GB/month free)
  * - no Smart Box, no residual coeffs, no living shard names
  */
 import { createHash, randomUUID } from "node:crypto";
@@ -29,7 +29,7 @@ function json(res, status, body) {
 function grants() {
   return {
     layer: "public_freemium_only",
-    free_cap_gb_per_job: 6.9,
+    free_cap_gb_per_job: 2,
     read: [
       {
         id: "spl_codec",
@@ -238,7 +238,7 @@ export default async function handler(req, res) {
     grants: grants(),
     next: [
       "Save your token offline",
-      "Open /pps for Suite (6.9 GB / 3 h unpaid)",
+      "Open /pps for Suite (first 2 GB/month free)",
       "Open /standings for ZRW 8 B proof",
       "Open /web to compress",
       "Walk the lattice — do not seek private lab keys",
