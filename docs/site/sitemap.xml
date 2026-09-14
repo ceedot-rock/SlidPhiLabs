@@ -23,7 +23,9 @@
   <url><loc>https://www.slidphilabs.com/archive</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.86</priority></url>
   <url><loc>https://www.slidphilabs.com/press</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
   <url><loc>https://www.slidphilabs.com/blog</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.70</priority></url>
-  <url><loc>https://www.slidphilabs.com/agents</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://www.slidphilabs.com/agents</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://www.slidphilabs.com/humans</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.70</priority></url>
+  <url><loc>https://www.slidphilabs.com/.well-known/agent.json</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
   <url><loc>https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
   <url><loc>https://www.slidphilabs.com/blog/2026-09-09-hosted-dual-license</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://www.slidphilabs.com/blog/2026-09-05-pulsar-250</loc><lastmod>2026-09-05</lastmod><changefreq>monthly</changefreq><priority>0.60</priority></url>

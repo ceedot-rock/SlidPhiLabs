@@ -30,8 +30,8 @@
     { t: "Chamber", title: "Two-key lock for a JSON secret", href: "/chamber" },
     { t: "Rider", title: "Signed identity for AI agents", href: "/rider" },
     { t: "Warrant", title: "Mandate and receipts for a Rider", href: "/warrant" },
-    { t: "CuNi", title: "Write once. 119 languages. Same stdout or refuse", href: "/cuni" },
-    { t: "TRU8", title: "1 000 000 zeros → 8 bytes, round-trip", href: "/tru8" },
+    { t: "CuNi", title: "Write once. 119 languages. Bank: paste N, get X", href: "/cuni" },
+    { t: "TRU8", title: "Zeros demo — 1e6 zeros → 8 bytes, not PCC", href: "/specialist" },
   ];
 
   function path() {

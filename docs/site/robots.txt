@@ -74,6 +74,17 @@ Allow: /
 User-agent: Discordbot
 Allow: /
 
+Allow: /mcp
+Allow: /api/agent
+Allow: /api/compress
+Allow: /api/decompress
+Allow: /api/specialist
+Allow: /api/healthz
+Allow: /api/x402-products
+Allow: /api/warrant/issue
+Allow: /api/warrant/verify
+Allow: /api/auth
+Allow: /api/welcome
 Disallow: /lab
 Disallow: /lab/
 Disallow: /drverified

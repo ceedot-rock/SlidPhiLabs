@@ -1,0 +1,9 @@
+{
+  "name": "Slid Phi Labs",
+  "description": "PCC hosted lossless compression, TRUSTREAM, Chamber, Agent-Rider, Warrant, CuNi (Bank arm: paste N get X). AWARE is a retired alias for PCC. TRU8 is the zeros demo, not PCC.",
+  "url": "https://www.slidphilabs.com/",
+  "documentation": "https://www.slidphilabs.com/agents",
+  "mcp": "https://www.slidphilabs.com/mcp",
+  "version": "1.20.2",
+  "products": ["pcc", "trustream", "chamber", "agent-rider", "warrant", "cuni"]
+}

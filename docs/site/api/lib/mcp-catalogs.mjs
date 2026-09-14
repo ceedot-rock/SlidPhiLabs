@@ -73,7 +73,7 @@ export const CATALOGS = [
   },
   {
     id: "aware",
-    title: "PCC",
+    title: "PCC (AWARE is a retired alias)",
     entries: [
       { id: "engine", name: "PCC", note: "Hosted compressor. Files and live 4 KiB pipe, one seat. $9/day · $49/mo · $490/yr. Paid access, no source.", url: SITE + "/gc" },
       { id: "stream", name: "PCC stream", note: "4 KiB ZERO+STORE pipe for agent logs / SIEM. Same PCC seat.", url: SITE + "/trustream" },
@@ -184,12 +184,12 @@ export function catalogTools() {
   }
   tools.push({
     name: "pcc_search",
-    description: "PCC — what it is, what you get, what you pay. Free text or code. Alias of aware_search.",
+    description: "PCC — what it is, what you get, what you pay. Free text or code. Prefer this. aware_search is a retired alias.",
     inputSchema: { type: "object", properties: { q: { type: "string" } } },
   });
   tools.push({
     name: "pcc_get",
-    description: "PCC — one entry with notes, price, and links. Alias of aware_get.",
+    description: "PCC — one entry with notes, price, and links. Prefer this. aware_get is a retired alias.",
     inputSchema: { type: "object", properties: { id: { type: "string" } }, required: ["id"] },
   });
   return tools;

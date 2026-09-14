@@ -2,7 +2,7 @@
   "name": "slid-phi-labs",
   "title": "Slid Phi Labs",
   "description": "Hosted Streamable HTTP MCP for Slid Phi Labs public catalog and commerce. PCC: first 2 GB/month free, then 8\u00a2/GB. Lookup is public; the encoder stays protected.",
-  "version": "1.20.1",
+  "version": "1.20.2",
   "websiteUrl": "https://www.slidphilabs.com",
   "documentationUrl": "https://www.slidphilabs.com/mcp-service",
   "registry": "io.github.ceedot-rock/slid-phi-labs",
