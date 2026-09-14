@@ -455,7 +455,7 @@ const server = http.createServer(async (req, res) => {
       "/toys": "/products",
       "/olympiad": "/about",
       "/ledger": "/gc",
-      "/gate": "/box",
+      "/gate": "/gc",
       "/codex": "/about",
       "/divine-codex": "/about",
     };
