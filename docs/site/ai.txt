@@ -14,4 +14,4 @@
 - Humans — https://www.slidphilabs.com/humans
 - Agents — https://www.slidphilabs.com/agents
 - Inbox — corey@slidphilabs.com
-- TRU8 is the zeros demo, not PCC — https://www.slidphilabs.com/specialist
+- TRU8 — 1e6 zeros → 8 bytes — https://www.slidphilabs.com/specialist

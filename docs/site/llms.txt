@@ -12,7 +12,7 @@ What it is, then what you pay.
 - PCC — hosted lossless compressor. Dual-licensed. You send a backup, dataset, archive, or log. We run every pathway we own and keep the smallest restore-safe copy. $9/day · $49/mo (200 GB included) · $490/yr (2,000 GB). Then 8¢/GB. First 2 GB/month free. Product: https://www.slidphilabs.com/gc · prices: https://www.slidphilabs.com/pricing
 - TRUSTREAM — live logs on the PCC plan. Empty stretches shrink. Noisy stretches do not explode. Not a second bill. https://www.slidphilabs.com/trustream
 - pulsar — free GPLv3 lossless compressor you run on your own machine (Linux binary + source). Closed-product embed: $490/yr, SKU pulsar-exception. https://www.slidphilabs.com/pulsar · https://www.slidphilabs.com/pay?sku=pulsar-exception
-- zeros demo — all-zero data → 8 bytes, round-trip. Free on POST /api/specialist. Proof, not the paid compressor.
+- TRU8 — all-zero data → 8 bytes, round-trip. Free on POST /api/specialist.
 - Chamber — two-key JSON seal. $9/mo · $99/yr. License to seal new secrets; opening an already-sealed secret takes both keys, not another payment. https://www.slidphilabs.com/chamber
 - Agent-Rider — signed identity for AI agents. $79/mo · $790/yr. https://www.slidphilabs.com/rider
 - Warrant — signed mandate + receipts bound to a Rider. Who is Rider; what they may do and proof they did it is Warrant. $29/mo · $290/yr. POST /api/warrant/issue (X-Agent-Rider). https://www.slidphilabs.com/warrant

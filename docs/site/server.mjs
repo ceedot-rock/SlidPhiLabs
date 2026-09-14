@@ -152,8 +152,7 @@ const REWRITES = {
   "/fetchgate/": "/quikgater.html",
   "/x402": "/x402.html",
   "/x402/": "/x402.html",
-  "/gate": "/gate.html",
-  "/gate/": "/gate.html",
+
   "/drverified": "/drverified.html",
   "/drverified/": "/drverified.html",
   "/box": "/box.html",

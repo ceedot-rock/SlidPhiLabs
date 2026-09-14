@@ -33,7 +33,7 @@
     { t: "Rider", title: "Signed identity for AI agents", href: "/rider" },
     { t: "Warrant", title: "Mandate and receipts for a Rider", href: "/warrant" },
     { t: "CuNi", title: "Write once. 119 languages. Bank: paste N, get X", href: "/cuni" },
-    { t: "TRU8", title: "Zeros demo — 1e6 zeros → 8 bytes, not PCC", href: "/specialist" },
+    { t: "TRU8", title: "1e6 zeros → 8 bytes", href: "/specialist" },
   ];
 
   function path() {
