@@ -13,7 +13,7 @@
     "chooser": "You pick copyleft or the commercial grant. Both are written.",
     "copyleft_or_commercial": [
       { "name": "pulsar", "copyleft": "GPL-3.0-or-later", "sku": "pulsar-exception", "usd": 490, "page": "https://www.slidphilabs.com/pulsar" },
-      { "name": "PCC", "copyleft": "AGPL-3.0-or-later", "sku": "gc-month", "usd": 49, "page": "https://www.slidphilabs.com/gc", "hosted": true },
+      { "name": "PCC", "copyleft": "AGPL-3.0-or-later", "sku": "gc-month", "usd": 49, "page": "https://www.slidphilabs.com/pcc", "hosted": true },
       { "name": "CuNi", "copyleft": "AGPL-3.0-or-later", "sku": "cuni-exception", "usd": 490, "page": "https://www.slidphilabs.com/cuni" },
       { "name": "Chamber SDK", "copyleft": "AGPL-3.0-or-later", "sku": "chamber-year", "usd": 99, "page": "https://www.slidphilabs.com/chamber" },
       { "name": "Agent-Rider", "copyleft": "AGPL-3.0-or-later", "sku": "rider-year", "usd": 790, "page": "https://www.slidphilabs.com/rider" },
@@ -58,7 +58,7 @@
       "license": "AGPL-3.0-or-later OR Commercial (PCC year)",
       "runs_here": true,
       "engine": "PCC",
-      "page": "https://www.slidphilabs.com/gc",
+      "page": "https://www.slidphilabs.com/pcc",
       "skus": ["gc-day", "gc-month", "gc-year", "lab-pass"],
       "plain": "Hosted lossless compressor. $9/day · $49/mo (200 GB) · $490/yr (2,000 GB). Then 8¢/GB. First 2 GB/month free. Source is dual-licensed. PCC year is the closed-product grant. Official 12-file numbers live on /silesia.",
       "commercial": "AGPL in public. Closed-product grant is PCC year. Keys stay operator-only."

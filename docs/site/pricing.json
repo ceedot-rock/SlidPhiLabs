@@ -33,7 +33,7 @@
       "acronym": "Adaptive Waveform Archive Restore Engine",
       "engine": "hosted",
       "version": "1.19.2",
-      "page": "https://www.slidphilabs.com/gc",
+      "page": "https://www.slidphilabs.com/pcc",
       "plans": {
         "day": {
           "sku": "gc-day",
@@ -201,7 +201,7 @@
       "gc-year": 2000,
       "lab-pass": 2000
     },
-    "page": "https://www.slidphilabs.com/gc"
+    "page": "https://www.slidphilabs.com/pcc"
   },
   "aliases": {
     "tru8": "gc-year",

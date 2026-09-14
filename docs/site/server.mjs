@@ -442,19 +442,11 @@ const server = http.createServer(async (req, res) => {
     }
     const p0 = url.pathname.replace(/\/$/, "") || "/";
     const gone = {
-      "/pps": "/gc",
-      "/suite": "/gc",
-      "/pps/desk": "/gc",
+      "/gc": "/pcc",
       "/tru8": "/specialist",
-      "/codec": "/gc",
-      "/pcc": "/gc",
-      "/standings": "/products",
-      "/stand": "/products",
-      "/demos": "/specialist",
-      "/toys": "/products",
-      "/olympiad": "/about",
-      "/ledger": "/gc",
-      "/gate": "/gc",
+      "/codec": "/pcc",
+      "/ledger": "/pcc",
+      "/gate": "/pcc",
       "/codex": "/about",
       "/divine-codex": "/about",
     };

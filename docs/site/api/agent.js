@@ -137,7 +137,7 @@ export default async function handler(req, res) {
       return row;
     }),
     agent_roster: [
-      { id: "pcc", name: "PCC", url: "https://www.slidphilabs.com/gc" },
+      { id: "pcc", name: "PCC", url: "https://www.slidphilabs.com/pcc" },
       { id: "trustream", name: "TRUSTREAM", url: "https://www.slidphilabs.com/trustream" },
       { id: "chamber", name: "Chamber", url: "https://www.slidphilabs.com/chamber" },
       { id: "rider", name: "Agent-Rider", url: "https://agentrider.fly.dev/", mcp: "https://agentrider.fly.dev/api/mcp" },
@@ -191,7 +191,7 @@ export default async function handler(req, res) {
     },
     one_liner:
       "PCC $9/$49/$490. Chamber $9/mo · $99/yr. CuNi $0. Rider $79/mo · $790/yr. First 2 GB/mo free, then 8¢/GB.",
-    starter_path: "https://www.slidphilabs.com/gc",
+    starter_path: "https://www.slidphilabs.com/pcc",
     suite_pricing: {
       free_cap_gb: 2,
       window: "calendar_month",

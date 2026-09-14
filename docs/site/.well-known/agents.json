@@ -98,7 +98,7 @@
       "id": "aware",
       "name": "PCC",
       "role": "compression",
-      "url": "https://www.slidphilabs.com/gc",
+      "url": "https://www.slidphilabs.com/pcc",
       "price": "Day $9 \u00b7 Month $49 \u00b7 Year $490",
       "note": "AWARE is a retired alias for PCC"
     },
@@ -128,7 +128,7 @@
       "id": "pcc",
       "name": "PCC",
       "role": "compression",
-      "url": "https://www.slidphilabs.com/gc",
+      "url": "https://www.slidphilabs.com/pcc",
       "price": "Day $9 \u00b7 Month $49 \u00b7 Year $490"
     },
     {

@@ -2,7 +2,7 @@
 (function () {
   const NAV = [
     ["/", "Home"],
-    ["/gc", "Compress"],
+    ["/pcc", "PCC"],
     ["/pricing", "Pricing"],
     ["/box", "Try"],
     ["/pay", "Pay"],
@@ -27,7 +27,7 @@
     { t: "Silesia", title: "Official 12-file matrix — all pathways", href: "/silesia" },
     { t: "Bench", title: "Live hosted compression vs gzip-9 and brotli-11", href: "/bench" },
     { t: ".pcc", title: "Our archive, like zip — many files, our compression", href: "/archive" },
-    { t: "PCC", title: "Hosted lossless compression — send a file, restore every byte", href: "/gc" },
+    { t: "PCC", title: "Hosted lossless compression — send a file, restore every byte", href: "/pcc" },
     { t: "TRUSTREAM", title: "Live logs on the same plan", href: "/trustream" },
     { t: "Chamber", title: "Two-key lock for a JSON secret", href: "/chamber" },
     { t: "Rider", title: "Signed identity for AI agents", href: "/rider" },
@@ -88,7 +88,7 @@
       </div>
       <div>
         <h4>Compress</h4>
-        <a href="/gc">Hosted compression</a>
+        <a href="/pcc">Hosted compression</a>
         <a href="/compare">Compare prices</a>
         <a href="/bench">Bench</a>
         <a href="/docs">API</a>
