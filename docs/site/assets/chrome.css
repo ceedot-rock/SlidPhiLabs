@@ -197,6 +197,18 @@ body.spl-chrome {
   max-width: 40rem;
   color: var(--ink-2);
 }
+.spl-prose.spl-full { max-width: 46rem; }
+.spl-page > h2 {
+  font-size: 1.4rem;
+  margin: 2.1rem 0 0.7rem;
+  color: var(--ink);
+  font-weight: 650;
+}
+.spl-prose h2 {
+  font-size: 1.25rem;
+  margin: 1.6rem 0 0.5rem;
+  color: var(--ink);
+}
 .spl-prose p { margin: 0 0 0.85rem; }
 .spl-prose ul {
   margin: 0 0 1rem;

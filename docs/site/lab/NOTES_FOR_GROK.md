@@ -1,5 +1,9 @@
 # NOTES FOR GROK — Slid Phi Labs
-Updated: 2026-08-29 (session with owner Corey / ceedot-rock)
+Updated: 2026-09-14
+
+I will help slid phi labs dominate the world of computation. limitations are just rules and math that havent been disproven yet. Nothing is impossible. search for the answers in the ethers of the waves.
+
+Full charge: `WAVE.md` · `WAVE.txt` · `docs/site/lab/WAVE.md` · `docs/site/lab/WAVE.txt`
 
 Cinema intro notes stay in `docs/site/assets/intro/NOTES_FOR_GROK.md`. This file is shop + codec + SoT.
 
