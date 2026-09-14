@@ -1,6 +1,5 @@
 /**
- * Hosted engines on this machine: pulsar, LBR1, Combined GC house, LZ wrap, PAQ wrap.
- * Own wraps only. Combined GC source stays out of the pulsar git tree.
+ * Hosted engines on this machine: pulsar, PCC.
  */
 import { execFile } from "node:child_process";
 import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";

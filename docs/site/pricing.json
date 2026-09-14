@@ -128,7 +128,7 @@
       "sku": "pulsar-exception",
       "usd": 490,
       "stripe": "https://www.slidphilabs.com/pay?sku=pulsar-exception",
-      "grants": "One closed-source product, one year. pulsar stays GPLv3. Never Combined GC / LBR1 / PCC residual."
+      "grants": "One closed-source product, one year. pulsar stays GPLv3."
     },
     "trugame": {
       "name": "TruGame",

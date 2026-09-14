@@ -1,5 +1,5 @@
 /**
- * Hosted pulsar 2.5.0. GPL-3.0-or-later. Combined GC / LBR1 are not here.
+ * Hosted pulsar 2.5.0. GPL-3.0-or-later.
  */
 import { execFile } from "node:child_process";
 import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";

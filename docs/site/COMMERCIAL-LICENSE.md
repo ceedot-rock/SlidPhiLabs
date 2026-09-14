@@ -40,13 +40,13 @@ The production engine is private. A $199 OSS-support SKU is help, not a license,
 
 No SKU sells the production engine or its internals. You buy a seat or a written exception.
 
-Without a matching invoice, you do not receive Combined GC, LBR1 / `splb` / ASMD, PCC encoder source, the Chamber kernel, Agent-Rider signing keys, or a right to paste a host codec (gzip, brotli, xz, bzip2) into a lab frame and call it ours.
+Without a matching invoice, you do not receive PCC encoder source, the Chamber kernel, or Agent-Rider signing keys.
 
 ## Hosted seats (access, not engine)
 
 | Product | SKU | Price |
 |---|---|---|
-| PCC day / month / year | `gc-day` / `gc-month` / `gc-year` | $9 / $49 / $490 |
+| PCC Pro | `gc-month` | $49 / month |
 | Lab Pass year | `lab-pass` | $668 (Chamber + PCC + TruGame; not Rider) |
 | Chamber month / year | `chamber-month` / `chamber-year` | $9 / $99 |
 

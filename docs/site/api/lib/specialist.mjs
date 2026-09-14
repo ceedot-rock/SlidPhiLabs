@@ -1,6 +1,6 @@
 /**
  * Hosted compression on this machine. Every own pathway is a candidate:
- * zeros, pulsar, LBR1, Combined GC, LZ wrap, PAQ wrap. Smallest DECODE_OK wins.
+ * zeros, pulsar, PCC. Smallest DECODE_OK wins.
  * PCC programs (repeat / affine_i32 / walk_lcg / walk_d1): price via peel helpers; Kolmogorov
  * seating is rebuilt bin/lb (`lb aware`) from lbr1 main — not the JS twin alone.
  */
@@ -21,9 +21,6 @@ export const MAX_RAW = 4_194_304;
 export const EXPAND_CAP = 8_388_608;
 
 export const NEVER = Object.freeze([
-  "Combined GC",
-  "LBR1",
-  "ASMD",
   "gzip",
   "brotli",
   "xz",
