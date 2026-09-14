@@ -18,6 +18,8 @@
     ["/docs", "API"],
     ["/press", "Press"],
     ["/about", "About"],
+    ["/humans", "Humans"],
+    ["/agents", "Agents"],
     ["/products", "All products"],
   ];
   const FALLBACK_NEWS = [

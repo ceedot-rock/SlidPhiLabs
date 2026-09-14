@@ -8,7 +8,8 @@
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow,max-image-preview:large"/>
   <link rel="canonical" href="https://www.slidphilabs.com/"/>
-  <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt"/>
+  <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+  <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/ai.txt" title="ai.txt"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Slid Phi Labs"/>
@@ -21,7 +22,81 @@
   <meta name="twitter:description" content="PCC: send a file, restore every byte. We run it."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <link rel="stylesheet" href="/assets/chrome.css?v=36"/>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Slid Phi Labs","url":"https://www.slidphilabs.com/","email":"corey@slidphilabs.com","address":{"@type":"PostalAddress","addressLocality":"Cherry Hill","addressRegion":"NJ","addressCountry":"US"},"areaServed":"US","description":"Hosted lossless compression (PCC). Send a file, get a smaller one, restore every byte."}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://www.slidphilabs.com/#lab",
+        "name": "Slid Phi Labs",
+        "url": "https://www.slidphilabs.com/",
+        "email": "corey@slidphilabs.com",
+        "founder": { "@type": "Person", "name": "Corey Tasz" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cherry Hill",
+          "addressRegion": "NJ",
+          "addressCountry": "US"
+        },
+        "areaServed": "US",
+        "description": "Hosted lossless compression (PCC). Send a file, get a smaller one, restore every byte. Six products: PCC, TRUSTREAM, Chamber, Agent-Rider, Warrant, CuNi.",
+        "sameAs": [
+          "https://x.com/slidphilabs",
+          "https://github.com/ceedot-rock",
+          "https://github.com/ceedot-rock/SlidPhiLabs"
+        ],
+        "knowsAbout": ["PCC", "lossless compression", "CuNi", "Agent-Rider", "Chamber"]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.slidphilabs.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is PCC?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PCC is hosted lossless compression from Slid Phi Labs. You send a file. We keep the smallest copy that still restores every byte. Dual-licensed. First 2 GB per month free, then 8 cents per GB. Day $9, month $49, year $490."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is TRU8 the paid compressor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. TRU8 is a free zeros demo (1 million zeros to 8 bytes). PCC is the paid hosted compressor. pulsar is the free GPLv3 compressor you run yourself."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do humans and agents pay?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Humans use Stripe Checkout (card, Link, Cash App, Amazon Pay, ACH, Klarna, Affirm, Afterpay when Stripe enables them). Agents use x402 with Solana USDC or Base USDC. Invoice and manual crypto are also available."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is the lab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Slid Phi Labs is in Cherry Hill, New Jersey. Corey Tasz. Inbox corey@slidphilabs.com."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is CuNi Bank?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bank is an arm of CuNi, not a seventh product. Paste a Python subset, get another language, prove identical stdout or refuse. Studio: https://cuni-studio.fly.dev/bank"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <main class="spl-page" id="main">

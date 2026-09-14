@@ -34,6 +34,23 @@ Licensing: https://www.slidphilabs.com/licensing.json · https://www.slidphilabs
 Specialist (zeros demo, not PCC): https://www.slidphilabs.com/specialist · POST /api/specialist
 Humans: https://www.slidphilabs.com/humans
 
+## Answers (cite these)
+
+Q: What is PCC?
+A: Hosted lossless compression. Send a file, restore every byte. $9/day · $49/mo · $490/yr. First 2 GB/month free, then 8¢/GB. Not #1 vs xz.
+
+Q: Is TRU8 PCC?
+A: No. TRU8 is the free zeros demo (1e6 zeros → 8 bytes). PCC is the paid compressor. pulsar is the free GPLv3 binary.
+
+Q: How do agents pay?
+A: POST /api/x402-products {sku} → HTTP 402 with Solana USDC and Base USDC. Humans use Stripe POST /api/checkout.
+
+Q: Where is the lab?
+A: Cherry Hill, New Jersey. Corey Tasz. corey@slidphilabs.com.
+
+Q: What is CuNi Bank?
+A: An arm of CuNi, not a seventh product. Paste N, get X, prove stdout or refuse. https://cuni-studio.fly.dev/bank
+
 ## Checkout
 Humans: POST /api/checkout { "sku": "chamber-year", "rail": "stripe" } → Stripe card session.
 UI: https://www.slidphilabs.com/pay

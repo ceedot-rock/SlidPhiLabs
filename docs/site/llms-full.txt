@@ -1,16 +1,17 @@
 # Slid Phi Labs — full agent brief
 # Tools that check. Cherry Hill.
 # Public catalog: CuNi, Chamber, Agent-Rider, PCC, Suite, Lab Pass.
-# Updated 2026-09-05
+# Updated 2026-09-14
 # Canonical site: https://www.slidphilabs.com
 # Prefer live GET /api/agent, /llms.txt, and /pricing.json over this file if they differ.
 
 ## Identity
 Name: Slid Phi Labs
 Public author: Corey Tasz
-Public catalog: CuNi · Chamber · Agent-Rider · PCC
+Public catalog: PCC · TRUSTREAM · Chamber · Agent-Rider · Warrant · CuNi (Bank is an arm of CuNi)
 Commercial: corey@slidphilabs.com
-Humans: corey@slidphilabs.com
+Humans: https://www.slidphilabs.com/humans
+Agents: https://www.slidphilabs.com/agents
 
 ## Modules
 
