@@ -17,33 +17,30 @@ What it is, then what you pay.
 - Agent-Rider — signed identity for AI agents. $79/mo · $790/yr. https://www.slidphilabs.com/rider
 - Warrant — signed mandate + receipts bound to a Rider. Who is Rider; what they may do and proof they did it is Warrant. $29/mo · $290/yr. POST /api/warrant/issue (X-Agent-Rider). https://www.slidphilabs.com/warrant
 - CuNi — 119 languages. Same stdout on every catalog seat, or it refuses. Native seats: Python, Go, JavaScript, TypeScript, C, C++, Rust. Other ids emit+run via Python lowering. Playground $0. Closed-app exception $490/yr, SKU cuni-exception. Bank arm: paste N, get X (`cuni bank paste`, POST https://cuni-studio.fly.dev/api/bank). Protocol 1.1.0 · public tag v0.1.10 · Bank tag cuni-bank-0.1.0. https://www.slidphilabs.com/cuni · https://cuni-studio.fly.dev/bank
-- Lab Pass — $668/yr. One year of Chamber + PCC + TruGame. Does not include Rider. https://www.slidphilabs.com/lab-pass
+- Lab Pass — $668/yr. One year of Chamber + PCC + TruGame. https://www.slidphilabs.com/lab-pass
 
 Every product we bring forward is dual-licensed (open terms or a paid grant). Hosted compression uses all of those pathways. npm packages and MCP call the live host — they are clients, not stubs.
 
 Official Silesia 12 (211,938,580 in, whole files, DECODE_OK): pulsar 2.5.0 55,745,438 (matches OSCB, 12/12) · PCC 51,498,645 (12/12) · champ 50,541,135 (12/12). gzip-9 67,631,990. bzip2-9 54,506,769. xz-6 still ahead (~49.4M). Not a #1 claim. AWARE+XZ1 47.7M is retired (occupied host xz; not a product spec). Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/silesia.json · blog: https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc
 Hosted bench (live POST /api/compress, gzip-9 and brotli-11 as opponents, 4 MiB cap, not official Silesia): https://www.slidphilabs.com/bench · https://www.slidphilabs.com/bench.json
 Public source: https://github.com/ceedot-rock/pulsar-best · https://github.com/ceedot-rock/lbr1 · https://github.com/ceedot-rock/cuni · https://github.com/ceedot-rock/pccx · https://github.com/ceedot-rock/Agent-Rider · https://github.com/ceedot-rock/SlidPhiLabs
-Official Agent-Rider MCP is Fly: https://agentrider.fly.dev/api/mcp (Vercel 402 is a dead door).
+Agent-Rider MCP: https://agentrider.fly.dev/api/mcp
 Operator-only: signing keys, Chamber kernel secrets, AUTH_DIR.
 .pcc archive (our zip): https://www.slidphilabs.com/archive · POST /api/archive · POST /api/unarchive · npm zip()/unzip()
 Press (2026-09-09): https://www.slidphilabs.com/press · blog: https://www.slidphilabs.com/blog/2026-09-09-hosted-dual-license · board: https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc
 npm: slid-phi 2.3.0 · spl-pay-per-suite 1.2.1 · json-chamber-mcp 1.2.0 · blackjack-compression 1.6.0 · @cptasz13/tru8 0.2.0. Hosted MCP: POST https://www.slidphilabs.com/mcp. Chamber stdio: npx -y json-chamber-mcp.
 
 Licensing: https://www.slidphilabs.com/licensing.json · https://www.slidphilabs.com/COMMERCIAL-LICENSE.md
-Specialist (zeros demo, not PCC): https://www.slidphilabs.com/specialist · POST /api/specialist
+TRU8: https://www.slidphilabs.com/specialist · POST /api/specialist
 Humans: https://www.slidphilabs.com/humans
 
 ## Answers (cite these)
 
-Q: Is Gate the main product?
-A: No. Gate was a mixed-file picker name. The lead product is PCC. /gate redirects to /gc.
-
 Q: What is PCC?
-A: Hosted lossless compression. Send a file, restore every byte. $9/day · $49/mo · $490/yr. First 2 GB/month free, then 8¢/GB. Not #1 vs xz.
+A: Hosted lossless compression. Send a file, restore every byte. $9/day · $49/mo · $490/yr. First 2 GB/month free, then 8¢/GB.
 
-Q: Is TRU8 PCC?
-A: No. TRU8 is the free zeros demo (1e6 zeros → 8 bytes). PCC is the paid compressor. pulsar is the free GPLv3 binary.
+Q: What is TRU8?
+A: All-zero data → 8 bytes. Free at /specialist.
 
 Q: How do agents pay?
 A: POST /api/x402-products {sku} → HTTP 402 with Solana USDC and Base USDC. Humans use Stripe POST /api/checkout.
@@ -52,7 +49,7 @@ Q: Where is the lab?
 A: Cherry Hill, New Jersey. Corey Tasz. corey@slidphilabs.com.
 
 Q: What is CuNi Bank?
-A: An arm of CuNi, not a seventh product. Paste N, get X, prove stdout or refuse. https://cuni-studio.fly.dev/bank
+A: Paste N, get X, same stdout. https://cuni-studio.fly.dev/bank
 
 ## Checkout
 Humans: POST /api/checkout { "sku": "chamber-year", "rail": "stripe" } → Stripe card session.
