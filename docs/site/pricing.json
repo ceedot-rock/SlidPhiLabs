@@ -28,7 +28,7 @@
     "lab_pass_year": 668
   },
   "products": {
-    "gc": {
+    "pcc": {
       "name": "PCC",
       "acronym": "Adaptive Waveform Archive Restore Engine",
       "engine": "hosted",
@@ -174,7 +174,7 @@
     },
     "trustream": {
       "name": "TRUSTREAM",
-      "included_with": "gc",
+      "included_with": "pcc",
       "page": "https://www.slidphilabs.com/trustream",
       "plain": "Live logs on the PCC plan. Not a second bill."
     },

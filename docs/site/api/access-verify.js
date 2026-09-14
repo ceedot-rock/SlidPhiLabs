@@ -79,8 +79,8 @@ const SEATS = {
     list_usd: 9,
     unit: "24 hours",
     amount_cents: 900,
-    product: "gc",
-    stack: "gc",
+    product: "pcc",
+    stack: "pcc",
     includes: ["AWARE hosted compressor access"],
     does_not_include: ["engine source", "Chamber", "Agent-Rider"],
   },
@@ -89,8 +89,8 @@ const SEATS = {
     list_usd: 49,
     unit: "calendar month",
     amount_cents: 4900,
-    product: "gc",
-    stack: "gc",
+    product: "pcc",
+    stack: "pcc",
     includes: ["AWARE hosted compressor access"],
     does_not_include: ["engine source", "Chamber", "Agent-Rider"],
   },
@@ -99,8 +99,8 @@ const SEATS = {
     list_usd: 490,
     unit: "calendar year",
     amount_cents: 49000,
-    product: "gc",
-    stack: "gc",
+    product: "pcc",
+    stack: "pcc",
     includes: ["AWARE hosted compressor access"],
     does_not_include: ["engine source", "Chamber", "Agent-Rider"],
   },
@@ -407,7 +407,7 @@ function buildTruchamberDeliverable({ paid, sku, sessionId, email, amountTotal, 
   ]);
   const pack = isChamber ? "chamber" : both || isTru8Only ? "tru8" : "chamber";
   const productLabel =
-    meta.stack === "gc" ? "AWARE"
+    meta.stack === "pcc" ? "PCC"
     : meta.stack === "rider" ? "Agent-Rider"
     : meta.stack === "exception" ? "CuNi exception"
     : meta.stack === "seat" ? "Lab Pass"

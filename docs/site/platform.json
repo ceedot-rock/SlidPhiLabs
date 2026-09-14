@@ -7,7 +7,7 @@
   "mission": "Build tools that check: same result or refuse, sealed or not open, signed or not trusted, measured or not claimed.",
   "slogan": "Same result or refuse",
   "lead_product": "pcc",
-  "cash_product": "gc-year",
+  "cash_product": "gc-month",
   "pricing_sot": "https://www.slidphilabs.com/pricing.json",
   "one_liner": "PCC $9/$49/$490 (200 GB/mo included, then 8\u00a2/GB). TRUSTREAM included. Chamber $9/$99. Rider $79/$790. Warrant $29/$290. CuNi $0. Stripe / x402.",
   "auth": {
