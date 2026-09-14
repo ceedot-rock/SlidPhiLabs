@@ -465,14 +465,25 @@ const server = http.createServer(async (req, res) => {
       });
       return res.end();
     }
-    if (url.pathname === "/v1/check" || url.pathname === "/v1/translate" || url.pathname === "/v1/squeeze") {
+    if (
+      url.pathname === "/v1/check" ||
+      url.pathname === "/v1/translate" ||
+      url.pathname === "/v1/squeeze" ||
+      url.pathname === "/v1/deposit" ||
+      url.pathname === "/v1/replicate" ||
+      url.pathname.startsWith("/v1/deposit/")
+    ) {
       const store = (process.env.LAB_AGENT_URL || "https://spl-lab-agent.fly.dev").replace(/\/$/, "");
       const chunks = [];
       for await (const c of req) chunks.push(c);
       const raw = Buffer.concat(chunks);
       const up = await fetch(store + url.pathname, {
         method: req.method,
-        headers: { "content-type": req.headers["content-type"] || "application/json" },
+        headers: {
+          "content-type": req.headers["content-type"] || "application/json",
+          "payment-signature": req.headers["payment-signature"] || "",
+          "x-payment": req.headers["x-payment"] || "",
+        },
         body: req.method === "POST" ? raw : undefined,
         signal: AbortSignal.timeout(90000),
       });
