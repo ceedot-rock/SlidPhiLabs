@@ -319,8 +319,12 @@ async function callTool(name, args = {}) {
 async function handleRpc(msg) {
   const { id, method, params } = msg || {};
   if (method === "initialize") {
+    const supported = ["2024-11-05", "2025-03-26", "2025-11-25"];
+    const latest = "2025-11-25";
+    const asked = String((params && params.protocolVersion) || "");
+    const protocolVersion = supported.includes(asked) ? asked : latest;
     return ok(id, {
-      protocolVersion: "2024-11-05",
+      protocolVersion,
       serverInfo: { name: "slid-phi-labs", version: MCP_VERSION },
       capabilities: { tools: {} },
     });
