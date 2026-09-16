@@ -1,0 +1,9 @@
+{
+  "id": "warrant",
+  "name": "Warrant",
+  "job": "Signed mandate and receipt bound to a Rider.",
+  "human": "https://www.slidphilabs.com/warrant",
+  "issue": "POST https://www.slidphilabs.com/api/warrant/issue",
+  "header": ["X-Agent-Rider", "X-Agent-Warrant"],
+  "price": { "month_usd": 29, "year_usd": 290 }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "pulsar",
+  "name": "pulsar",
+  "job": "Local lossless compressor. You run it.",
+  "human": "https://www.slidphilabs.com/pulsar",
+  "source": "https://github.com/ceedot-rock/pulsar-best",
+  "price": { "binary": 0, "closed_embed_year_usd": 490, "sku": "pulsar-exception" }
+}

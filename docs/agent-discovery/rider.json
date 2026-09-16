@@ -1,0 +1,18 @@
+{
+  "id": "rider",
+  "name": "Agent-Rider",
+  "job": "Signed agent identity L0–L4. X-Agent-Rider on every hop.",
+  "human": "https://www.slidphilabs.com/rider",
+  "host": "https://agentrider.fly.dev",
+  "manifest": "https://agentrider.fly.dev/.well-known/agent.json",
+  "mcp": "https://agentrider.fly.dev/api/mcp",
+  "jwks": "https://agentrider.fly.dev/.well-known/jwks.json",
+  "settle": "POST https://agentrider.fly.dev/api/settle",
+  "price": { "month_usd": 79, "year_usd": 790 },
+  "agent": {
+    "header": "X-Agent-Rider",
+    "hop_currency": "USDC",
+    "hop_protocol": "x402",
+    "not_hop": ["agc", "stripe", "tiun"]
+  }
+}
