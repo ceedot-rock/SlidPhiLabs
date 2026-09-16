@@ -3,6 +3,7 @@
 # CuNi $0 · Chamber $9/$99 · Rider $79/$790 · PCC $9/$49/$490 · 2 GB/mo free then 8¢/GB
 
 GET https://www.slidphilabs.com/llms.txt
+GET https://www.slidphilabs.com/.well-known/mcp.json
 GET https://www.slidphilabs.com/api/agent
 GET https://www.slidphilabs.com/mcp
 POST https://www.slidphilabs.com/mcp
@@ -13,9 +14,23 @@ GET https://www.slidphilabs.com/.well-known/mcp/server-card.json
 GET https://www.slidphilabs.com/.well-known/ai-catalog.json
 GET https://www.slidphilabs.com/pricing.json
 
+# Chamber stdio
+npx -y json-chamber-mcp
+Registry: io.github.ceedot-rock/json-chamber-mcp
+
+# Lab hosted MCP
 npx -y spl-pay-per-suite mcp
 Registry: io.github.ceedot-rock/slid-phi-labs
 Smithery: https://smithery.ai/servers/slidphi/lab
+
+# Rider + CuNi
+GET https://agentrider.fly.dev/.well-known/agent.json
+GET https://agentrider.fly.dev/api/mcp
+GET https://cuni-studio.fly.dev/
+GET https://cuni-studio.fly.dev/.well-known/cuni-protocol.json
+GET https://cuni-studio.fly.dev/llms.txt
+brew tap ceedot-rock/cuni && brew install cuni
+
 Rate 60/min
 x402 Solana + Base USDC
-Stripe https://www.slidphilabs.com/pay?sku=chamber-year
+Stripe https://www.slidphilabs.com/pay
