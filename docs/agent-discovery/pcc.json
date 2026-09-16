@@ -1,0 +1,13 @@
+{
+  "id": "pcc",
+  "name": "PCC",
+  "job": "Hosted lossless compress / decompress.",
+  "human": "https://www.slidphilabs.com/gc",
+  "api": {
+    "compress": "POST https://www.slidphilabs.com/api/compress",
+    "decompress": "POST https://www.slidphilabs.com/api/decompress"
+  },
+  "mcp_tool": "spl_compress",
+  "price": { "day_usd": 9, "month_usd": 49, "year_usd": 490, "first_gb_free": 2, "then_per_gb_usd": 0.08 },
+  "agent": { "pay": "x402 sku on /api/x402-products" }
+}

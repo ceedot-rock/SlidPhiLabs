@@ -1,0 +1,13 @@
+{
+  "id": "chamber",
+  "name": "Chamber",
+  "job": "Admit or refuse a bound body. Extra keys die.",
+  "human": "https://www.slidphilabs.com/chamber",
+  "mcp_stdio": "npx -y json-chamber-mcp",
+  "source": "https://github.com/ceedot-rock/json-chamber-mcp",
+  "price": { "month_usd": 9, "year_usd": 99 },
+  "agent": {
+    "verdict": ["admit", "reject.extra", "reject.agent", "reject.replay", "reject.hash", "reject.empty"],
+    "header": "X-Agent-Rider"
+  }
+}

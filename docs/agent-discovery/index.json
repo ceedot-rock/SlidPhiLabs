@@ -1,0 +1,29 @@
+{
+  "lab": "Slid Phi Labs",
+  "updated": "2026-09-15",
+  "start": {
+    "llms": "https://www.slidphilabs.com/llms.txt",
+    "catalog": "https://www.slidphilabs.com/api/agent",
+    "mcp": "https://www.slidphilabs.com/mcp",
+    "registry": "io.github.ceedot-rock/slid-phi-labs",
+    "x402": "https://www.slidphilabs.com/api/x402-products"
+  },
+  "pay": {
+    "hop": "usdc",
+    "protocol": "x402",
+    "networks": ["eip155:8453"],
+    "human_attach": ["stripe", "tiun"],
+    "not_hop": ["agc"]
+  },
+  "products": [
+    "cuni",
+    "chamber",
+    "pcc",
+    "trustream",
+    "pulsar",
+    "rider",
+    "warrant",
+    "mcp"
+  ],
+  "parked": ["trugame"]
+}

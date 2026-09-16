@@ -1,0 +1,15 @@
+{
+  "id": "cuni",
+  "name": "CuNi",
+  "job": "Exact text contracts. Same stdout on every seat or refuse.",
+  "human": "https://www.slidphilabs.com/cuni",
+  "studio": "https://cuni-studio.fly.dev",
+  "bank": "https://cuni-studio.fly.dev/api/bank",
+  "source": "https://github.com/ceedot-rock/cuni",
+  "price": { "studio": 0, "closed_embed_year_usd": 490, "sku": "cuni-exception" },
+  "agent": {
+    "attach": "MCP tool with a single cuni string or exact fields. Extra keys refuse.",
+    "contracts": ["ScanChunk", "MeshJob", "MeshResult", "SettleHop"],
+    "header": "X-Agent-Rider"
+  }
+}

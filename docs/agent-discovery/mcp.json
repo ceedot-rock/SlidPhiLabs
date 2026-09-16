@@ -1,0 +1,11 @@
+{
+  "id": "mcp",
+  "name": "Lab MCP",
+  "job": "One Streamable HTTP endpoint for catalog tools.",
+  "docs": "https://www.slidphilabs.com/mcp-service",
+  "endpoint": "POST https://www.slidphilabs.com/mcp",
+  "registry": "io.github.ceedot-rock/slid-phi-labs",
+  "card": "https://www.slidphilabs.com/.well-known/mcp/server-card.json",
+  "smithery": "https://smithery.ai/servers/slidphi/lab",
+  "tools_start": ["spl_discover", "spl_catalog", "spl_quote", "spl_compress"]
+}
