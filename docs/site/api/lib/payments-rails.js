@@ -87,7 +87,7 @@ export const PRODUCT_CATALOG = {
     amount_cents: 900,
     stripe: "https://www.slidphilabs.com/pay?sku=gc-day",
     kind: "pcc",
-    list: false,
+    list: true,
     blurb: "Legacy day SKU. Hosted PCC is Pro $49/mo or usage (first 2 GB free, then 8¢/GB).",
   },
   "gc-month": {
@@ -103,7 +103,7 @@ export const PRODUCT_CATALOG = {
     amount_cents: 49000,
     stripe: "https://www.slidphilabs.com/pay?sku=gc-year",
     kind: "pcc",
-    list: false,
+    list: true,
     blurb: "Legacy year SKU. Same as 12 months of PCC Pro.",
   },
   "lab-check": {
@@ -111,7 +111,7 @@ export const PRODUCT_CATALOG = {
     amount_cents: 10,
     stripe: "https://www.slidphilabs.com/pay?sku=lab-check",
     kind: "lab",
-    list: false,
+    list: true,
     blurb: "One exactness check. x402 on the verb.",
   },
   "lab-translate": {
@@ -119,7 +119,7 @@ export const PRODUCT_CATALOG = {
     amount_cents: 10,
     stripe: "https://www.slidphilabs.com/pay?sku=lab-translate",
     kind: "lab",
-    list: false,
+    list: true,
     blurb: "One Bank paste. x402 on the verb.",
   },
   "lab-squeeze": {
@@ -127,7 +127,7 @@ export const PRODUCT_CATALOG = {
     amount_cents: 10,
     stripe: "https://www.slidphilabs.com/pay?sku=lab-squeeze",
     kind: "lab",
-    list: false,
+    list: true,
     blurb: "One squeeze. x402 on the verb.",
   },
   "rider-month": {
@@ -225,6 +225,17 @@ export const PRODUCT_CATALOG = {
     kind: "service",
     list: true,
     blurb: "Scoped lab time. Integration, benches, written exception, leftover math names.",
+  },
+  suite: {
+    name: "PCC usage",
+    amount_cents: 0,
+    stripe: "https://www.slidphilabs.com/pps",
+    kind: "usage",
+    list: true,
+    sell: false,
+    page: "https://www.slidphilabs.com/pps",
+    x402: "POST https://www.slidphilabs.com/api/x402-suite",
+    blurb: "First 2 GB each month free, then 8¢/GB. Agents: POST /api/x402-suite. Not a seat SKU.",
   },
   quikgater: {
     name: "Quikgater · pay-per-fact fetch",
@@ -641,9 +652,9 @@ export function buildPaymentsMatrix(req) {
   return {
     service: "Slid Phi Labs — lab checkout",
     version: "1.2.0",
-    policy: "Humans: Stripe Checkout, then /access. Teams: invoice/wire. Agents: x402. Entitlement after Stripe session verify or x402 claim.",
+    policy: "Humans: Stripe Checkout, then /access. Teams: invoice/wire. Agents: x402 with auto-claim. Entitlement after Stripe session verify or x402 claim_token.",
     product_face: "Slid Phi Labs",
-    x402_access_autoclaim: false,
+    x402_access_autoclaim: true,
     contact,
     origin,
     access_after_pay: `${origin}/access`,
@@ -667,7 +678,7 @@ export function buildPaymentsMatrix(req) {
       agent: evm || sol ? (evm ? "x402_base_usdc" : "x402_solana_usdc") : "stripe_checkout",
       enterprise: "wire_invoice_ach",
     },
-    note: "Payment Links and Checkout Sessions settle in USD on Stripe. Crypto rails settle on-chain; email proof for Access until auto-claim is wired.",
+    note: "Payment Links and Checkout Sessions settle in USD on Stripe. Agents: x402 Solana USDC + Base USDC, auto-claim ON (claim_token on paid POST). Notion order log needs NOTION_TOKEN on Fly.",
   };
 }
 
