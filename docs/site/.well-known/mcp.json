@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "json-chamber": {
+      "description": "Chamber — two-key JSON seal/open. Cloak needs a live license. Open is keys-only.",
+      "websiteUrl": "https://www.slidphilabs.com/chamber",
+      "registry": "io.github.ceedot-rock/json-chamber-mcp",
+      "command": "npx",
+      "args": ["-y", "json-chamber-mcp"],
+      "transport": "stdio"
+    },
+    "slid-phi-labs": {
+      "description": "Lab hosted MCP (PCC compress + catalog).",
+      "websiteUrl": "https://www.slidphilabs.com/mcp-service",
+      "registry": "io.github.ceedot-rock/slid-phi-labs",
+      "url": "https://www.slidphilabs.com/mcp",
+      "transport": "http"
+    },
+    "agent-rider": {
+      "description": "Agent-Rider signed identity MCP.",
+      "websiteUrl": "https://www.slidphilabs.com/rider",
+      "url": "https://agentrider.fly.dev/api/mcp",
+      "transport": "http"
+    }
+  }
+}
