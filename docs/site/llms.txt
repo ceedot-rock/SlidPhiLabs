@@ -2,6 +2,11 @@
 > PCC is hosted lossless compression. Dual-licensed: open terms or a paid grant. Send a file, get a smaller one, restore every byte. Every pathway on this machine. POST /api/compress. Restore POST /api/decompress. npm: slid-phi compress()/decompress(). MCP: spl_compress. Product: https://www.slidphilabs.com/gc
 > https://www.slidphilabs.com/
 
+## Discovery (start here)
+- Chamber — two-key JSON seal/open. stdio MCP: `npx -y json-chamber-mcp`. Manifest: https://www.slidphilabs.com/.well-known/mcp.json · product: https://www.slidphilabs.com/chamber · npm: json-chamber-mcp 1.2.0 · registry: io.github.ceedot-rock/json-chamber-mcp
+- CuNi Studio — 119 languages, same stdout or refuse. https://cuni-studio.fly.dev/ · protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json · llms: https://cuni-studio.fly.dev/llms.txt · tap: `brew tap ceedot-rock/cuni && brew install cuni` · source: https://github.com/ceedot-rock/cuni
+- Agent-Rider — signed agent identity. https://agentrider.fly.dev/.well-known/agent.json · MCP: https://agentrider.fly.dev/api/mcp · product: https://www.slidphilabs.com/rider
+
 Primary product face is PCC; AWARE is a retired alias; TRU8 is not the current lead.
 
 ## Who
@@ -61,7 +66,8 @@ Try 24 hours: https://www.slidphilabs.com/box
 - Auth — POST https://www.slidphilabs.com/api/auth
 - MCP — POST https://www.slidphilabs.com/mcp
 - MCP documentation — https://www.slidphilabs.com/mcp-service
-- Registry — io.github.ceedot-rock/slid-phi-labs
+- Chamber well-known — https://www.slidphilabs.com/.well-known/mcp.json
+- Registry — io.github.ceedot-rock/slid-phi-labs · io.github.ceedot-rock/json-chamber-mcp
 - Smithery — https://smithery.ai/servers/slidphi/lab
 - Catalog — GET https://www.slidphilabs.com/api/agent
 - x402 — POST https://www.slidphilabs.com/api/x402-products  (docs: https://www.slidphilabs.com/x402)
