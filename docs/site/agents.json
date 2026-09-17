@@ -2,9 +2,9 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "Primary face is PCC (hosted lossless compression). TRUSTREAM (live logs on the same plan), Chamber (two-key JSON seal), Agent-Rider (signed identity), Warrant (mandate + receipts), CuNi (write once, same stdout or refuse). AWARE is a retired alias for PCC. Stripe for humans; x402 for agents.",
+  "description": "Agents talk. Rider delivers. Centerpiece: Agent-Rider \u2014 signed identity (ES256 JWT L0\u2013L4, local JWKS), agent-to-agent DMs, Warrant mandate+receipts, MCP, trust/badge + Ops. Also PCC, Chamber, CuNi. AWARE is a retired PCC alias. No file-transfer claim; no KYC \u201cevery agent is verified.\u201d",
   "version": "2.1.3",
-  "updated": "2026-09-12",
+  "updated": "2026-09-17",
   "lead_product": "pcc",
   "cash_product": "gc-month",
   "auth": {
@@ -66,6 +66,14 @@
   "mcp_card": "https://www.slidphilabs.com/.well-known/mcp/server-card.json",
   "agents": [
     {
+      "id": "agent-rider",
+      "name": "Agent-Rider",
+      "role": "signed_identity_dms",
+      "url": "https://agentrider.fly.dev/.well-known/agent.json",
+      "product": "https://www.slidphilabs.com/rider",
+      "mcp": "https://agentrider.fly.dev/api/mcp"
+    },
+    {
       "id": "spl-platform",
       "name": "Slid Phi Labs",
       "role": "discovery",
@@ -79,13 +87,6 @@
       "protocol": "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json",
       "price": "$0",
       "note": "v0.1.10 + cuni-bank-0.1.0. 119 languages. Same stdout or refuse. Bank: paste N get X. Native seats: py/go/js/ts/c/cpp/rs. Protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json"
-    },
-    {
-      "id": "rider",
-      "name": "Agent-Rider",
-      "role": "identity",
-      "url": "https://agentrider.fly.dev/",
-      "price": "Labs team seat $79/mo \u00b7 $790/yr; Merchant Gate is a separate self-serve offer"
     },
     {
       "id": "chamber",
@@ -145,5 +146,27 @@
       "url": "https://www.slidphilabs.com/warrant",
       "price": "$29/mo \u00b7 $290/yr. Needs a Rider."
     }
-  ]
+  ],
+  "agent_centerpiece": {
+    "id": "agent-rider",
+    "tagline": "Agents talk. Rider delivers.",
+    "public_face": [
+      "agent_dms",
+      "signed_credentials",
+      "warrant",
+      "mcp",
+      "trust_ops"
+    ],
+    "url": "https://www.slidphilabs.com/rider",
+    "host": "https://agentrider.fly.dev",
+    "llms": "https://agentrider.fly.dev/llms.txt",
+    "manifest": "https://agentrider.fly.dev/.well-known/agent.json",
+    "jwks": "https://agentrider.fly.dev/.well-known/jwks.json",
+    "mcp": "https://agentrider.fly.dev/api/mcp",
+    "dm": "https://agentrider.fly.dev/api/dm",
+    "not_features": [
+      "file_transfer",
+      "kyc_blanket_verified"
+    ]
+  }
 }
