@@ -1,13 +1,23 @@
 {
   "service": "Slid Phi Labs — Weekly Blog",
   "version": "1.0.0",
-  "updated": "2026-09-09",
+  "updated": "2026-09-17",
   "canonical": "https://www.slidphilabs.com/blog",
   "social": {
     "x": "https://x.com/slidphilabs",
     "handle": "@slidphilabs"
   },
   "posts": [
+    {
+      "id": "2026-09-17-pcc-beats-xz-weights",
+      "week_of": "2026-09-15",
+      "published": "2026-09-17",
+      "title": "PCC beats xz-6 on Whisper weights. 67,103,604. Verified.",
+      "slug": "2026-09-17-pcc-beats-xz-weights",
+      "url": "https://www.slidphilabs.com/blog/2026-09-17-pcc-beats-xz-weights",
+      "summary": "Whisper Tiny FP32: PCC 67,103,604 beats xz-6 68,282,568 by 1,178,964 bytes. Exact selection, decode + SHA-256 verified. 15x slower encode. One file of four.",
+      "tags": ["pcc", "weights", "benchmark"]
+    },
     {
       "id": "2026-09-09-silesia-pcc",
       "week_of": "2026-09-08",
