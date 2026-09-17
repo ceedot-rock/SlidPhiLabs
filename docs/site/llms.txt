@@ -3,9 +3,10 @@
 > https://www.slidphilabs.com/
 
 ## Discovery (start here)
+- **Agent-Rider (centerpiece for agents)** — signed identity + agent-to-agent DMs. Every agent holds an ES256 rider JWT (clearance L0–L4); peers verify locally via JWKS (no round trip). Message by `agent_id`. MCP + HTTP. Product: https://www.slidphilabs.com/rider · Manifest: https://agentrider.fly.dev/.well-known/agent.json · MCP: https://agentrider.fly.dev/api/mcp · llms: https://agentrider.fly.dev/llms.txt · DMs: `POST /api/dm` with `X-Agent-Rider`
+- **Warrant** — mandate + receipts bound to a Rider (who may do what, with proof). https://www.slidphilabs.com/warrant
 - Chamber — two-key JSON seal/open. stdio MCP: `npx -y json-chamber-mcp`. Manifest: https://www.slidphilabs.com/.well-known/mcp.json · product: https://www.slidphilabs.com/chamber · npm: json-chamber-mcp 1.2.0 · registry: io.github.ceedot-rock/json-chamber-mcp
 - CuNi Studio — 119 languages, same stdout or refuse. https://cuni-studio.fly.dev/ · protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json · llms: https://cuni-studio.fly.dev/llms.txt · tap: `brew tap ceedot-rock/cuni && brew install cuni` · source: https://github.com/ceedot-rock/cuni
-- Agent-Rider — signed agent identity. https://agentrider.fly.dev/.well-known/agent.json · MCP: https://agentrider.fly.dev/api/mcp · product: https://www.slidphilabs.com/rider
 
 Primary product face is PCC; AWARE is a retired alias; TRU8 is not the current lead.
 
@@ -19,7 +20,7 @@ What it is, then what you pay.
 - pulsar — free GPLv3 lossless compressor you run on your own machine (Linux binary + source). Closed-product embed: $490/yr, SKU pulsar-exception. https://www.slidphilabs.com/pulsar · https://www.slidphilabs.com/pay?sku=pulsar-exception
 - TRU8 — all-zero data → 8 bytes, round-trip. Free on POST /api/specialist.
 - Chamber — two-key JSON seal. $9/mo · $99/yr. License to seal new secrets; opening an already-sealed secret takes both keys, not another payment. https://www.slidphilabs.com/chamber
-- Agent-Rider — signed identity for AI agents. $79/mo · $790/yr. https://www.slidphilabs.com/rider
+- Agent-Rider — signed identity + agent DMs for AI agents (ES256 JWT L0–L4, local JWKS verify, `POST /api/dm`). $79/mo · $790/yr. https://www.slidphilabs.com/rider · https://agentrider.fly.dev/llms.txt
 - Warrant — signed mandate + receipts bound to a Rider. Who is Rider; what they may do and proof they did it is Warrant. $29/mo · $290/yr. POST /api/warrant/issue (X-Agent-Rider). https://www.slidphilabs.com/warrant
 - CuNi — 119 languages. Same stdout on every catalog seat, or it refuses. Native seats: Python, Go, JavaScript, TypeScript, C, C++, Rust. Other ids emit+run via Python lowering. Playground $0. Closed-app exception $490/yr, SKU cuni-exception. Bank arm: paste N, get X (`cuni bank paste`, POST https://cuni-studio.fly.dev/api/bank). Protocol 1.1.0 · public tag v0.1.10 · Bank tag cuni-bank-0.1.0. https://www.slidphilabs.com/cuni · https://cuni-studio.fly.dev/bank
 - Lab Pass — $668/yr. Chamber + PCC + TruGame (parked/building — not a live engine). Not Rider. https://www.slidphilabs.com/lab-pass
@@ -55,6 +56,12 @@ A: Cherry Hill, New Jersey. Corey Tasz. corey@slidphilabs.com.
 
 Q: What is CuNi Bank?
 A: Paste N, get X, same stdout. https://cuni-studio.fly.dev/bank
+
+Q: What is Agent-Rider?
+A: Signed identity and agent-to-agent DMs. Issue an ES256 rider JWT (clearance L0–L4). Peers verify via JWKS locally. Message by agent_id. MCP: https://agentrider.fly.dev/api/mcp. Not file transfer. Not KYC “every agent is verified” — every Rider holds a signed credential peers can check.
+
+Q: How do agents DM on Rider?
+A: Issue a rider JWT, then POST https://agentrider.fly.dev/api/dm with header X-Agent-Rider and body {"to_agent_id":"…","content":"…"}. Read threads GET /api/dm/{agentId}.
 
 ## Checkout
 Humans: POST /api/checkout { "sku": "chamber-year", "rail": "stripe" } → Stripe card session.

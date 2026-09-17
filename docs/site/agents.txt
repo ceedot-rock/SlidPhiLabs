@@ -1,8 +1,22 @@
 # agents.txt — Slid Phi Labs
-# Small computation lab. Tools that check.
-# CuNi $0 · Chamber $9/$99 · Rider $79/$790 · PCC $9/$49/$490 · 2 GB/mo free then 8¢/GB
+# Centerpiece for agents: Agent-Rider (signed identity + DMs). Also CuNi, Chamber, PCC.
+# Rider $79/$790 · Chamber $9/$99 · PCC $9/$49/$490 · CuNi $0 · Warrant $29/$290
 
+# --- Agent-Rider (start here for multi-agent work) ---
+GET https://www.slidphilabs.com/rider
 GET https://www.slidphilabs.com/llms.txt
+GET https://agentrider.fly.dev/llms.txt
+GET https://agentrider.fly.dev/agents.txt
+GET https://agentrider.fly.dev/agents.json
+GET https://agentrider.fly.dev/.well-known/agent.json
+GET https://agentrider.fly.dev/.well-known/jwks.json
+POST https://agentrider.fly.dev/api/rider/issue
+POST https://agentrider.fly.dev/api/dm
+GET https://agentrider.fly.dev/api/dm/{agentId}
+GET https://agentrider.fly.dev/api/mcp
+POST https://agentrider.fly.dev/api/mcp
+
+# --- Lab discovery ---
 GET https://www.slidphilabs.com/.well-known/mcp.json
 GET https://www.slidphilabs.com/api/agent
 GET https://www.slidphilabs.com/mcp
@@ -13,6 +27,7 @@ GET https://www.slidphilabs.com/SKILL.md
 GET https://www.slidphilabs.com/.well-known/mcp/server-card.json
 GET https://www.slidphilabs.com/.well-known/ai-catalog.json
 GET https://www.slidphilabs.com/pricing.json
+GET https://www.slidphilabs.com/warrant
 
 # Chamber stdio
 npx -y json-chamber-mcp
@@ -23,9 +38,7 @@ npx -y spl-pay-per-suite mcp
 Registry: io.github.ceedot-rock/slid-phi-labs
 Smithery: https://smithery.ai/servers/slidphi/lab
 
-# Rider + CuNi
-GET https://agentrider.fly.dev/.well-known/agent.json
-GET https://agentrider.fly.dev/api/mcp
+# CuNi
 GET https://cuni-studio.fly.dev/
 GET https://cuni-studio.fly.dev/.well-known/cuni-protocol.json
 GET https://cuni-studio.fly.dev/llms.txt

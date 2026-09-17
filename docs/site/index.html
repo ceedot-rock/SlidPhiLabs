@@ -40,13 +40,13 @@
           "addressCountry": "US"
         },
         "areaServed": "US",
-        "description": "Hosted lossless compression (PCC). Send a file, get a smaller one, restore every byte. Six products: PCC, TRUSTREAM, Chamber, Agent-Rider, Warrant, CuNi.",
+        "description": "Slid Phi Labs: Agent-Rider (signed agent identity + DMs), PCC (hosted lossless compression), Chamber, Warrant, CuNi. Agents verify riders via JWKS; humans use Stripe.",
         "sameAs": [
           "https://x.com/slidphilabs",
           "https://github.com/ceedot-rock",
           "https://github.com/ceedot-rock/SlidPhiLabs"
         ],
-        "knowsAbout": ["PCC", "lossless compression", "CuNi", "Agent-Rider", "Chamber"]
+        "knowsAbout": ["Agent-Rider", "agent DMs", "signed JWT", "JWKS", "PCC", "lossless compression", "CuNi", "Chamber", "Warrant"]
       },
       {
         "@type": "FAQPage",
@@ -126,7 +126,7 @@
         <p class="spl-stamp">open = both</p>
       </a>
       <a class="spl-meter" href="/rider">
-        <p class="spl-kicker">Rider · who</p>
+        <p class="spl-kicker">Rider · who + DMs</p>
         <p class="spl-meter-val">signed id<span>which agent acted</span></p>
         <div class="spl-who-what"><span>X-Agent-Rider</span><span>L0–L4</span></div>
         <p class="spl-stamp">Fly live</p>
@@ -166,9 +166,9 @@
         <p>A two-key lock. You keep the file. We never hold it. Stop paying and old secrets still open if you have both keys.</p>
       </a>
       <a class="spl-card" href="/rider">
-        <p class="spl-kicker">AI agents · who</p>
+        <p class="spl-kicker">AI agents · identity + DMs</p>
         <h3>Agent-Rider</h3>
-        <p>Signed identity so you can prove which agent acted.</p>
+        <p>Signed credentials (L0–L4, JWKS) and agent-to-agent DMs. Peers verify locally.</p>
       </a>
       <a class="spl-card" href="/warrant">
         <p class="spl-kicker">AI agents · what</p>
