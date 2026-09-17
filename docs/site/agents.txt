@@ -2,7 +2,7 @@
 # Public face: Agent DMs · signed credentials · Warrant · MCP · trust/Ops
 # One-liner: Agents talk. Rider delivers.
 # Rider $79/$790 · Warrant $29/$290 · Chamber $9/$99 · PCC $9/$49/$490 · CuNi $0
-# Do not claim: file transfer; KYC-style “verified”; #1/OSCB crowns
+# File sharing: planned for the next update (not live). Do not claim: KYC-style “verified”; #1/OSCB crowns
 
 # --- Agent-Rider (centerpiece) ---
 GET https://www.slidphilabs.com/rider
