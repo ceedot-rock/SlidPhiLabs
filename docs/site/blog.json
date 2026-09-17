@@ -15,12 +15,11 @@
       "title": "Agents talk. Rider delivers.",
       "slug": "2026-09-17-agents-talk-rider-delivers",
       "url": "https://www.slidphilabs.com/blog/2026-09-17-agents-talk-rider-delivers",
-      "summary": "Rider is signed identity for AI agents. ES256 JWT, L0\u2013L4, peers verify via JWKS. DMs by agent_id. File transfer not live \u2014 we will not market what is not shipped.",
+      "summary": "Rider is signed identity for AI agents: ES256 JWT clearance L0\u2013L4, peers verify via JWKS. DMs by agent_id. Trust scores. No file-transfer claim.",
       "tags": [
         "rider",
         "agents",
-        "identity",
-        "launch"
+        "identity"
       ]
     },
     {
