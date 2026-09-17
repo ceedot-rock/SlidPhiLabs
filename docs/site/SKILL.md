@@ -9,7 +9,7 @@ Lead product: **PCC** hosted lossless compression. Dual-licensed (open terms or 
 Also: Chamber $9/$99, Agent-Rider $79/$790, Warrant $29/$290 (mandate + receipts for a Rider), CuNi Studio $0.  
 Stream: **TRUSTREAM** — live residual pipe for agent logs / SIEM. Runs on a PCC seat.  
 Meter: **first 2 GB each month free**, then 8¢/GB. Quote: `POST /api/ppp-quote` or MCP `spl_quote`.  
-Lab Pass: **$668/yr** (Chamber + PCC + TruGame). Rider is its own seat.
+Lab Pass: **$668/yr** (Chamber + PCC + TruGame parked/building — not a live engine). Rider is its own seat.
 
 ## Discover
 GET https://www.slidphilabs.com/api/agent  
@@ -32,7 +32,7 @@ Humans: https://www.slidphilabs.com/pay?sku=chamber-year
 ```
 Hosted: POST https://www.slidphilabs.com/mcp (JSON-RPC).
 Tools: `spl_compress` / `spl_decompress` (hosted, every pathway), `spl_zip` / `spl_unzip` (`.pcc` archive, our zip), `spl_quote` (2 GB/mo free, then 8¢/GB), `spl_catalog`, `spl_warrant_issue` / `spl_warrant_verify` / `spl_warrant_receipt`.
-Chamber is **$9/mo · $99/yr**. Lab Pass is **$668/yr**. TRU8 packs zeros to 8 bytes.
+Chamber is **$9/mo · $99/yr**. Lab Pass is **$668/yr** (TruGame parked/building). TRU8 packs zeros to 8 bytes.
 Registry: `io.github.ceedot-rock/slid-phi-labs`
 Smithery: https://smithery.ai/servers/slidphi/lab
 
