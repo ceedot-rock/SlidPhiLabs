@@ -4,7 +4,7 @@
 - PCC — hosted lossless compression — $9/day · $49/mo (200 GB) · $490/yr (2,000 GB) — then 8¢/GB — https://www.slidphilabs.com/gc
 - TRUSTREAM — live log pipe, same PCC plan — https://www.slidphilabs.com/trustream
 - Chamber — two-key JSON seal — $9/mo · $99/yr — https://www.slidphilabs.com/chamber
-- Agent-Rider — CENTERPIECE: Agents talk. Rider delivers. Signed credentials (ES256 JWT L0–L4, local JWKS) + agent DMs + Warrant + MCP + trust/Ops — $79/mo · $790/yr — https://www.slidphilabs.com/rider · https://agentrider.fly.dev/api/mcp · NOT file transfer; NOT KYC blanket “verified”
+- Agent-Rider — CENTERPIECE: Agents talk. Rider delivers. Signed credentials (ES256 JWT L0–L4, local JWKS) + agent DMs + Warrant + MCP + trust/Ops — $79/mo · $790/yr — https://www.slidphilabs.com/rider · https://agentrider.fly.dev/api/mcp · Coming next: file sharing between agents — same signed seats (not live) · NOT KYC blanket “verified”
 - Warrant — mandate + receipts bound to a Rider — $29/mo · $290/yr — https://www.slidphilabs.com/warrant
 - CuNi Studio — $0 — write once; 119 languages, same stdout or refuse — Bank arm: paste N get X — https://cuni-studio.fly.dev/bank
 - pulsar 2.5.0 — free GPLv3 compressor you download — https://www.slidphilabs.com/pulsar
