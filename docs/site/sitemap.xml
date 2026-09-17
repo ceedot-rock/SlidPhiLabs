@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.slidphilabs.com/</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+    <url>
+    <loc>https://www.slidphilabs.com/blog/2026-09-17-agents-talk-rider-delivers</loc>
+    <lastmod>2026-09-17</lastmod>
+  </url>
+<url><loc>https://www.slidphilabs.com/</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://www.slidphilabs.com/llms.txt</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://www.slidphilabs.com/ai.txt</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
   <url><loc>https://www.slidphilabs.com/.well-known/mcp/server-card.json</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
@@ -11,7 +15,7 @@
   <url><loc>https://www.slidphilabs.com/pricing</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://www.slidphilabs.com/trustream</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
   <url><loc>https://www.slidphilabs.com/chamber</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
-  <url><loc>https://www.slidphilabs.com/rider</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
+  <url><loc>https://www.slidphilabs.com/rider</loc><lastmod>2026-09-17</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
   <url><loc>https://www.slidphilabs.com/warrant</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
   <url><loc>https://www.slidphilabs.com/cuni</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.86</priority></url>
   <url><loc>https://www.slidphilabs.com/.well-known/cuni-protocol.json</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
@@ -27,7 +31,7 @@
   <url><loc>https://www.slidphilabs.com/npm</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.70</priority></url>
   <url><loc>https://www.slidphilabs.com/archive</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.86</priority></url>
   <url><loc>https://www.slidphilabs.com/press</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
-  <url><loc>https://www.slidphilabs.com/blog</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.70</priority></url>
+  <url><loc>https://www.slidphilabs.com/blog</loc><lastmod>2026-09-17</lastmod><changefreq>weekly</changefreq><priority>0.70</priority></url>
   <url><loc>https://www.slidphilabs.com/agents</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
   <url><loc>https://www.slidphilabs.com/humans</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.70</priority></url>
   <url><loc>https://www.slidphilabs.com/.well-known/agent.json</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
