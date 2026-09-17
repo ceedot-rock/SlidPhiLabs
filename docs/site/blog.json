@@ -1,5 +1,5 @@
 {
-  "service": "Slid Phi Labs — Weekly Blog",
+  "service": "Slid Phi Labs \u2014 Weekly Blog",
   "version": "1.0.0",
   "updated": "2026-09-17",
   "canonical": "https://www.slidphilabs.com/blog",
@@ -9,6 +9,20 @@
   },
   "posts": [
     {
+      "id": "2026-09-17-agents-talk-rider-delivers",
+      "week_of": "2026-09-15",
+      "published": "2026-09-17",
+      "title": "Agents talk. Rider delivers.",
+      "slug": "2026-09-17-agents-talk-rider-delivers",
+      "url": "https://www.slidphilabs.com/blog/2026-09-17-agents-talk-rider-delivers",
+      "summary": "Rider is signed identity for AI agents: ES256 JWT clearance L0\u2013L4, peers verify via JWKS. DMs by agent_id. Trust scores. No file-transfer claim.",
+      "tags": [
+        "rider",
+        "agents",
+        "identity"
+      ]
+    },
+    {
       "id": "2026-09-17-pcc-beats-xz-weights",
       "week_of": "2026-09-15",
       "published": "2026-09-17",
@@ -16,7 +30,11 @@
       "slug": "2026-09-17-pcc-beats-xz-weights",
       "url": "https://www.slidphilabs.com/blog/2026-09-17-pcc-beats-xz-weights",
       "summary": "Whisper Tiny FP32: PCC 67,103,604 beats xz-6 68,282,568 by 1,178,964 bytes. Exact selection, decode + SHA-256 verified. 15x slower encode. One file of four.",
-      "tags": ["pcc", "weights", "benchmark"]
+      "tags": [
+        "pcc",
+        "weights",
+        "benchmark"
+      ]
     },
     {
       "id": "2026-09-09-silesia-pcc",
@@ -26,7 +44,12 @@
       "slug": "2026-09-09-silesia-pcc",
       "url": "https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc",
       "summary": "Official Silesia 12, whole files. PCC 51,498,645 DECODE_OK 12/12. pulsar 55,745,438 matches OSCB. xz-6 still ahead. Dual-licensed. Not a #1 claim.",
-      "tags": ["silesia", "pcc", "pulsar", "rankings"]
+      "tags": [
+        "silesia",
+        "pcc",
+        "pulsar",
+        "rankings"
+      ]
     },
     {
       "id": "2026-09-09-hosted-dual-license",
@@ -35,8 +58,13 @@
       "title": "Hosted compression is dual-licensed. npm clients call the live host.",
       "slug": "2026-09-09-hosted-dual-license",
       "url": "https://www.slidphilabs.com/blog/2026-09-09-hosted-dual-license",
-      "summary": "AWARE is live under a dual license. slid-phi 2.3.0, spl-pay-per-suite 1.2.0, blackjack-compression 1.6.0, and @cptasz13/tru8 0.2.0 call POST /api/compress. First 2 GB/month free, then 8¢/GB.",
-      "tags": ["aware", "release", "npm", "license"]
+      "summary": "AWARE is live under a dual license. slid-phi 2.3.0, spl-pay-per-suite 1.2.0, blackjack-compression 1.6.0, and @cptasz13/tru8 0.2.0 call POST /api/compress. First 2 GB/month free, then 8\u00a2/GB.",
+      "tags": [
+        "aware",
+        "release",
+        "npm",
+        "license"
+      ]
     },
     {
       "id": "2026-09-05-pulsar-250",
@@ -46,16 +74,20 @@
       "slug": "2026-09-05-pulsar-250",
       "url": "https://www.slidphilabs.com/blog/2026-09-05-pulsar-250",
       "summary": "Public GPLv3 compressor on GitHub Releases. Silesia 55,745,438 / 211,938,580, DECODE_OK 12/12. Beats gzip-9. Loses to xz-6. Not AWARE.",
-      "tags": ["pulsar", "release", "silesia"]
+      "tags": [
+        "pulsar",
+        "release",
+        "silesia"
+      ]
     },
     {
       "id": "2026-08-07-why-8b-matters",
       "week_of": "2026-08-04",
       "published": "2026-08-07",
-      "title": "Why 8 B matters — and the site that now breathes",
+      "title": "Why 8 B matters \u2014 and the site that now breathes",
       "slug": "2026-08-07-why-8b-matters",
       "url": "https://www.slidphilabs.com/blog/2026-08-07-why-8b-matters",
-      "summary": "ZRW zeros×10k → 8 B vs gzip 73 B / brotli 13 B. Verify round-trip. Live proof bar, standings first paint, /api/phi/metrics.",
+      "summary": "ZRW zeros\u00d710k \u2192 8 B vs gzip 73 B / brotli 13 B. Verify round-trip. Live proof bar, standings first paint, /api/phi/metrics.",
       "tags": [
         "proof",
         "zrw",
@@ -70,7 +102,7 @@
       "title": "Try Gate retired: 6.9 GB / 3 h unpaid, then usage",
       "slug": "2026-08-07-freemium-suite-retires-try-gate",
       "url": "https://www.slidphilabs.com/blog/2026-08-07-freemium-suite-retires-try-gate",
-      "summary": "$9 Try Gate removed. Freemium suite is the eval path: 6.9 GB / 3 h unpaid, then ~5¢/GB under cloud egress.",
+      "summary": "$9 Try Gate removed. Freemium suite is the eval path: 6.9 GB / 3 h unpaid, then ~5\u00a2/GB under cloud egress.",
       "tags": [
         "pricing",
         "freemium",
@@ -81,7 +113,7 @@
       "id": "2026-08-07-access-loop",
       "week_of": "2026-08-04",
       "published": "2026-08-07",
-      "title": "Try Gate Access loop: pay → verify → instant seat",
+      "title": "Try Gate Access loop: pay \u2192 verify \u2192 instant seat",
       "slug": "2026-08-07-access-try-gate-loop",
       "url": "https://www.slidphilabs.com/blog/2026-08-07-access-try-gate-loop",
       "summary": "Stripe verify on Access unlocks Try Gate evaluation seat instantly: entitlement JSON, guide, checklist, public demos. No secret sauce.",
@@ -98,7 +130,7 @@
       "title": "Two doors, one lab: Pub Facing and Agentic Minded",
       "slug": "2026-08-07-two-doors-one-lab",
       "url": "https://www.slidphilabs.com/blog/2026-08-07-two-doors-one-lab",
-      "summary": "We shipped dual surfaces so humans and agents each have a home path — same products, different rails. Discovery, welcome, npm agentic metadata, Lab Feed, and @slidphilabs.",
+      "summary": "We shipped dual surfaces so humans and agents each have a home path \u2014 same products, different rails. Discovery, welcome, npm agentic metadata, Lab Feed, and @slidphilabs.",
       "tags": [
         "platform",
         "agents",
@@ -128,7 +160,7 @@
       "title": "Proprietary by design: Try Gate, Access, and honest public packages",
       "slug": "2026-08-03-proprietary-try-gate-access",
       "url": "https://www.slidphilabs.com/blog/2026-08-03-proprietary-try-gate-access",
-      "summary": "We locked brand and licensing, made Try Gate + Access the evaluation path, and kept public npm honest as a stub — real codec via purchase, not open process dumps.",
+      "summary": "We locked brand and licensing, made Try Gate + Access the evaluation path, and kept public npm honest as a stub \u2014 real codec via purchase, not open process dumps.",
       "tags": [
         "licensing",
         "try-gate",
