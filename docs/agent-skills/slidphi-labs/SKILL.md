@@ -58,3 +58,7 @@ Lab verbs $0.10 each: `lab-check`, `lab-translate`, `lab-squeeze`.
 ```
 
 npm: `slid-phi` · `spl-pay-per-suite` · `json-chamber-mcp`. pypi: `json-chamber`.
+
+## Honesty locks
+- TruGame is parked/building — not a live engine. Planned $12/mo · $79/yr are not a live unlock.
+- Lab Pass may list TruGame as building/parked; PCC remains compressor-only.
