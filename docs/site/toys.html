@@ -180,7 +180,7 @@ footer a{color:var(--gold)}
     <div class="guard">
       <strong>Policy.</strong> Outcomes and names only — no private coefficients or production engines.
       Commercial SKUs → <a href="/pps">Pay Per Suite</a> · <a href="/api/x402-products">x402 catalog</a> ·
-      Idea register → <a href="/ideas">Idea Lab</a>.
+      Idea register → Idea Lab.
       Hosted by <a href="https://www.slidphilabs.com">slidphilabs.com</a>.
     </div>
   </div>
@@ -225,7 +225,7 @@ footer a{color:var(--gold)}
     <p><strong style="color:var(--gold)">Toy Store</strong> · Slid Phi Labs · <a href="https://www.slidphilabs.com">slidphilabs.com</a></p>
     <p style="margin-top:8px">
       <a href="/toys.json">toys.json</a> ·
-      <a href="/ideas">Idea Lab</a> ·
+      Idea Lab ·
       <a href="/ideas.json">ideas.json</a> ·
       <a href="/olympiad">Olympiad</a> ·
       <a href="/demos">Demos</a> ·
@@ -288,7 +288,7 @@ footer a{color:var(--gold)}
         return '<a class="btn btn-ghost btn-sm" href="' + l.href + '">' + l.label + "</a>";
       }).join("");
       if (t.idea_id) {
-        links += '<a class="btn btn-ghost btn-sm" href="/ideas">Idea #' + t.idea_id + "</a>";
+        links += '<span class="btn btn-ghost btn-sm">Idea #' + t.idea_id + "</span>";
       }
       return (
         '<article class="card" data-id="' + t.id + '">' +
