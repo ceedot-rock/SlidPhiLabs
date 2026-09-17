@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.slidphilabs.com/</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+    <url>
+    <loc>https://www.slidphilabs.com/blog/2026-09-17-agents-talk-rider-delivers</loc>
+    <lastmod>2026-09-17</lastmod>
+  </url>
+<url><loc>https://www.slidphilabs.com/</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://www.slidphilabs.com/llms.txt</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://www.slidphilabs.com/ai.txt</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
   <url><loc>https://www.slidphilabs.com/.well-known/mcp/server-card.json</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
