@@ -13,7 +13,7 @@ Lab Pass: **$668/yr** = Chamber + PCC now; TruGame when unparked (parked/buildin
 ## Agent Quickstart
 1. Discover: GET https://www.slidphilabs.com/api/agent · GET /.well-known/mcp/server-card.json
 2. MCP: `npx -y spl-pay-per-suite mcp` OR POST https://www.slidphilabs.com/mcp
-3. Buy seat (agents): POST /api/x402-products `{"sku":"rider-month"}` → HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with `X-PAYMENT` → `claim_token` / `access_url`. **Do not invent a completed debit.** Claim the 402 challenge freely; live debit still needs CDP (or current facilitator) — do NOT say settle completed / debit done.
+3. Buy seat (agents): POST /api/x402-products `{"sku":"rider-month"}` → HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with `X-PAYMENT` → `claim_token` / `access_url`. **Do not invent a completed debit.** Claim the 402 challenge freely; live debit still needs XPay (in flight) — do NOT say settle completed / debit done.
 4. Humans: https://www.slidphilabs.com/pay?sku=rider-month (Stripe).
 5. Rider: issue L0–L4; peers verify JWKS https://agentrider.fly.dev/.well-known/jwks.json; DMs POST https://agentrider.fly.dev/api/dm with `X-Agent-Rider`.
 6. Warrant: /warrant · skus warrant-month/year.
