@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: Combined GC 1.19.2 measurements (Silesia)
+title: PCC / Silesia measurements
 message: Cite the public measurement repo, not the private engine.
 type: software
 authors:
@@ -11,6 +11,8 @@ url: https://www.slidphilabs.com/gc
 date-released: "2026-08-28"
 version: "1.19.2"
 abstract: >
-  Combined GC 1.19.2 + XZ1 packs official Silesia to 47,752,368 bytes.
-  zpaq 7.15 -m5 is smaller at 39,112,870. XZ1 wrap is disclosed.
+  Public cite name is PCC. Live public Silesia: PCC 51,498,645 / 12/12;
+  pulsar 2.5.0 55,745,438 / 12/12; gzip-9 67,631,990; xz-6 still ahead ~49.4M.
+  Private-encoder own-path notes live in combined-gc-view. XZ1 hybrid is retired.
+  Not a #1 claim. Cite measurements, not private engine source.
 license: LicenseRef-Proprietary-Measurements

@@ -1,6 +1,6 @@
 # OmniWave / Apex Path (lab scaffold)
 
-**Teach:** seats are jobs. Occupants are specialists that know encode/decode. See `lbr1/JOBS.md`. Router does not compress. Packer does not parse. Host gzip/brotli/xz are not genes. Combined GC is a private compressor that knows compression — meld or alongside in the house, never copied into pulsar.
+**Teach:** seats are jobs. Occupants are specialists that know encode/decode. See `lbr1/JOBS.md`. Router does not compress. Packer does not parse. Host gzip/brotli/xz are not genes. The private encoder stays private — meld or alongside in the house, never copied into pulsar. Public hosted product is **PCC**; AWARE is a retired alias.
 
 **Private complementary generalist** for Slid Phi Labs. Occupants must be lab engines. Host gzip/brotli/xz are opponents.
 
@@ -56,14 +56,14 @@ Input → classify (Fill / Sparse / Text / Binary)
   → general          LBR1                 (was gzip-9 skin)
   → mixed            LBHX                 (own split, ≥8% mixed)
   → CDDG             residual / Split     (not a Silesia GP)
-  → AWARE            Combined GC          (private house; competes with struct_text + general)
+  → private encoder  (lab house; competes with struct_text + general; AWARE retired alias)
   → float_xor        vacant               (lossy quantize retired — GC does not fill this as a skin)
 → lab magics only + DECODE_OK
 ```
 
-Public CLI: `lb best` = TRU8 / LBR1 / pulsar. Combined GC is **not** copied into pulsar.
+Public CLI: `lb best` = TRU8 / LBR1 / pulsar. The private encoder is **not** copied into pulsar.
 
-Private house: `house_best.py` **combines Combined GC with** those genes — same OmniWave seats, min() the smallest DECODE_OK blob. GC source stays in `combined-gc`.
+Private house: `house_best.py` **combines the private encoder with** those genes — same OmniWave seats, min() the smallest DECODE_OK blob. Private encoder source stays out of public trees.
 
 ## Next (production)
 
@@ -76,4 +76,4 @@ Private house: `house_best.py` **combines Combined GC with** those genes — sam
 
 ## Pricing note
 
-Public unpaid cap (6.9 GB / 3 h, then under first paid egress) is independent of this lab codec. OmniWave is **capability**; suite is **commerce**.
+Public meter (first 2 GB/month free, then 8¢/GB) is independent of this lab codec. OmniWave is **capability**; suite is **commerce**.
