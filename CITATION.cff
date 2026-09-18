@@ -1,18 +1,17 @@
 cff-version: 1.2.0
-title: PCC / Silesia measurements
-message: Cite the public measurement repo, not the private engine.
+title: PCC Silesia measurements
+message: Cite the public measurement board, not the private encoder.
 type: software
 authors:
   - family-names: Tasz
     given-names: Corey
     email: corey@slidphilabs.com
-repository-code: https://github.com/ceedot-rock/combined-gc-view
-url: https://www.slidphilabs.com/gc
-date-released: "2026-08-28"
-version: "1.19.2"
+repository-code: https://github.com/ceedot-rock/SlidPhiLabs
+url: https://www.slidphilabs.com/silesia
+date-released: "2026-09-09"
+version: "pcc-0.12.1"
 abstract: >
-  Public cite name is PCC. Live public Silesia: PCC 51,498,645 / 12/12;
-  pulsar 2.5.0 55,745,438 / 12/12; gzip-9 67,631,990; xz-6 still ahead ~49.4M.
-  Private-encoder own-path notes live in combined-gc-view. XZ1 hybrid is retired.
-  Not a #1 claim. Cite measurements, not private engine source.
+  Hosted PCC packs official Silesia 12 to 51,498,645 bytes (DECODE_OK 12/12).
+  pulsar 2.5.0 is 55,745,438. gzip-9 is 67,631,990. xz-6 is still ahead (~49.4M).
+  Not a #1 claim. AWARE is a retired alias. XZ1 hybrid is retired from product spec.
 license: LicenseRef-Proprietary-Measurements
