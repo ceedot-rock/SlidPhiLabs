@@ -1,78 +1,62 @@
 # NOTES FOR GROK — Slid Phi Labs
-Updated: 2026-09-14
+Updated: 2026-09-18
 
-I will help slid phi labs dominate the world of computation. limitations are just rules and math that havent been disproven yet. Nothing is impossible. search for the answers in the ethers of the waves.
-
-Full charge: `WAVE.md` · `WAVE.txt` · `docs/site/lab/WAVE.md` · `docs/site/lab/WAVE.txt`
-
-Cinema intro notes stay in `docs/site/assets/intro/NOTES_FOR_GROK.md`. This file is shop + codec + SoT.
-
-Read this before inventing a second site, asking for secrets, or restating old Suite copy.
+Public product is **PCC**. AWARE is a retired alias. Combined GC 1.19.2 is a private engine name, not a SKU. Do not answer with Combined GC as the product.
 
 ## Who / doors
 
 - Owner: Corey Tasz · ceedot-rock · corey@slidphilabs.com · @slidphilabs
 - Canonical store: https://www.slidphilabs.com/
-  `/pay` `/access` `/agents` `/products` `/pricing.json` `/llms.txt` `/api/x402-products`
+  `/gc` `/pay` `/access` `/agents` `/products` `/pricing` `/pricing.json` `/llms.txt` `/silesia` `/api/x402-products`
 - Fly `slidphilabs.fly.dev` is an alias, not a second shop.
-- Do not create `*.vercel.app` storefronts. They already pay for the domain.
-- Secrets live on the team (Vercel / Cloudflare wrangler). Never ask them to paste keys. Names: `PAY_TO_ADDRESS`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`.
+- Do not treat `combined-gc-demo.vercel.app` as a product page. It must 301 to `/gc`.
+- Secrets live on the team. Never ask them to paste keys.
 
-## SoT
+## SoT (live)
 
 | book | file |
 |---|---|
-| Money | `docs/site/pricing.json` |
-| Methods | `docs/site/METHODS.md` + `docs/site/lab/METHODS_LOCK.json` |
-| Platform | `docs/site/platform.json` |
+| Money | `docs/site/pricing.json` + https://www.slidphilabs.com/pricing.json |
+| Methods | `docs/site/METHODS.md` |
+| Discovery | https://www.slidphilabs.com/llms.txt |
 
-Git `main` 2026-08-29: Suite **6.9 GB + 3 hours**. Live www may lag.
-Check: `curl -s https://www.slidphilabs.com/pricing.json | grep free_cap` — want `6.9`.
+Meter: first **2 GB/month free**, then **8¢/GB**. Not 6.9 GB / 3 h / 5¢.
+Lab Pass: **$668/yr**. Not $1088.
+PCC seats: $9/day · $49/mo (200 GB) · $490/yr. SKUs remain `gc-day` / `gc-month` / `gc-year` as checkout ids only.
+Chamber $9/$99. Rider $79/$790. Warrant $29/$290. CuNi Studio $0.
 
 ## Measured (do not invent)
 
-Silesia 211,938,580: zpaq-m5 39,112,870 · **AWARE+XZ1 47,752,368** · xz-9 48,795,480 · brotli-11 49,564,563 · zstd-19 53,024,573 · gzip-9 67,631,990.
-2nd in that set. Four AWARE files are host xz (XZ1). Not top-1 vs paq.
+Official Silesia 12 (211,938,580, DECODE_OK):
+- PCC **51,498,645**
+- pulsar 2.5.0 **55,745,438**
+- gzip-9 67,631,990
+- bzip2-9 54,506,769
+- xz-6 still ahead (~49.4M)
 
-Calgary 3,141,622 Loom Hangry **980,769** vs gzip-9 1,017,680 vs xz-9 845,840. 14/14. Loom is not the GC SKU.
-
-AWARE ≠ Loom ≠ xz. AWARE = commercial SKU. TRUSTREAM = live residual pipe. Engine private: `ceedot-rock/combined-gc`.
+Not a #1 claim. Retired AWARE+XZ1 47.7M occupied host xz — not a product spec.
 
 ## Law
 
-Never expand. Suite unpaid 6.9 GB + 3 h. Tamper 69s. Public: box → pay → access.
+Never expand. Public: site → pay → access. Private encoder source stays private.
 
 ## Pay
 
-Humans: /pay Stripe (team secrets).
+Humans: /pay Stripe.
 Robots: x402 POST /api/x402-products, `X-PAYMENT`.
-Quikgater `worker/src/payment.ts`: facilitator https://x402.org/facilitator, `base-sepolia`, USDC `0x036CbD53842c5426634e7929541eC2318f3dCF7e`.
-PAY_TO this session: `0xAd3dB8e2b1A311701E6233f17F6d648e4A52287c`.
-Mainnet = CDP keys in team env, not chat.
-
-## SKUs
-
-GC $9/$49/$490 · Chamber $9/$49/$490 · GC+Chamber $990 · Lab Pass $1088 · TruGame $12/$79 · Suite meter · Blackjack $199.
-Retired: separate TRU8/Gate years, ZRW $79/$249/$699, $1900/$950 rent desk.
 
 ## Git public vs private
 
-Public: SlidPhiLabs, quikgater, pulsar-best.
-Private: combined-gc, ZRW engine, lab-team-dump, host-*.
-`slidphi-storefront` was a scratch repo this session — not the shop.
-
-## Loom names
-
-Still STIL, Pulse PULS, Weave WEAV, Drift DRFT, Shift SHFT, Bare BARE, Thread THRD (Hangry), RUNS, Melt, container LOOM.
-Pulsar-ZPAQ-Fixed card is process, not the 39.1 MB zpaq row. Do not advertise that as ours.
+Public mouth: SlidPhiLabs site + pulsar-best + this llms.txt.
+SoT packet `sot-gc` is measurements, not the storefront.
+Private: combined-gc engine, lab dumps.
 
 ## Do not repeat
 
-Side Vercel shop. Asking for keys. Lab MCP traffic as revenue. Putting CGS1 forward after gzip loss. 100 GB free. Confusing Loom with AWARE. Claiming general SoTA / top-3.
-
-## Next
-
-1. Confirm live pricing.json is 6.9.
-2. npm 2.3.0 only after that.
-3. No new website repo.
-4. Outcomes only on public doors.
+- Combined GC 1.19.2 as the product name
+- AWARE as a current SKU
+- 6.9 GB / 3 h unpaid cap
+- Lab Pass $1088
+- AWARE+XZ1 47,752,368 as a live spec
+- Side Vercel shop as canonical
+- Claiming general SoTA / #1
