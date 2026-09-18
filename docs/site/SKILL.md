@@ -13,7 +13,7 @@ Lab Pass: **$668/yr** = Chamber + PCC now; TruGame when unparked (parked/buildin
 ## Agent Quickstart
 1. Discover: GET https://www.slidphilabs.com/api/agent · GET /.well-known/mcp/server-card.json
 2. MCP: `npx -y spl-pay-per-suite mcp` OR POST https://www.slidphilabs.com/mcp
-3. Buy seat (agents): POST /api/x402-products `{"sku":"rider-month"}` → HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with `X-PAYMENT` → `claim_token` / `access_url`. **Do not invent a completed debit.** Claim the 402 challenge freely; live debit still needs XPay (in flight) — do NOT say settle completed / debit done.
+3. Buy seat (agents): POST /api/x402-products `{"sku":"rider-month"}` → HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with `X-PAYMENT` → `claim_token` / `access_url`. **402 OK; live settle via XPay in flight.** Do not invent a completed debit — XPay is in flight.
 4. Humans: https://www.slidphilabs.com/pay?sku=rider-month (Stripe).
 5. Rider: issue L0–L4; peers verify JWKS https://agentrider.fly.dev/.well-known/jwks.json; DMs POST https://agentrider.fly.dev/api/dm with `X-Agent-Rider`.
 6. Warrant: /warrant · skus warrant-month/year.
@@ -35,7 +35,7 @@ Agents: POST /api/auth `{"action":"agent_key","name":"my-agent"}` → `api_key` 
 ## Buy
 Agents: POST /api/x402-products `{"sku":"rider-month"}` (or chamber-year, gc-month, …). If 402, pay USDC (Solana or Base) and retry with `X-PAYMENT`. Response includes `claim_token` and `access_url`. Open that URL or GET `/api/access-verify?claim=<token>&product=<sku>`.  
 Humans: https://www.slidphilabs.com/pay?sku=rider-month  
-Honesty: 402 OK to claim; no invented live debit.
+Honesty: 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight.
 
 ## Install MCP
 ```json

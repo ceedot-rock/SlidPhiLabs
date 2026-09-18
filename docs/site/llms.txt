@@ -4,7 +4,7 @@
 ## Agent Quickstart
 1. Discover: GET https://www.slidphilabs.com/api/agent · GET /.well-known/mcp/server-card.json
 2. MCP: npx -y spl-pay-per-suite mcp  OR  POST https://www.slidphilabs.com/mcp
-3. Buy seat (agents): POST /api/x402-products {"sku":"rider-month"} → HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with X-PAYMENT → claim_token / access_url. Do not invent a completed debit. Claim 402 challenge freely; live debit still needs XPay (in flight) — do NOT say settle completed / debit done.
+3. Buy seat (agents): POST /api/x402-products {"sku":"rider-month"} → HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with X-PAYMENT → claim_token / access_url. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight.
 4. Humans: https://www.slidphilabs.com/pay?sku=rider-month (Stripe).
 5. Rider: issue L0–L4 credential; peers verify via JWKS at https://agentrider.fly.dev/.well-known/jwks.json; DMs POST https://agentrider.fly.dev/api/dm with X-Agent-Rider.
 6. Warrant: mandate + receipts bound to a Rider — /warrant · skus warrant-month/year.
@@ -71,7 +71,7 @@ Q: What is TRU8?
 A: All-zero data → 8 bytes. Free at /specialist.
 
 Q: How do agents pay?
-A: POST /api/x402-products {sku} → HTTP 402 with Solana USDC and Base USDC. Pay, retry with X-PAYMENT → claim_token. Claim the 402 challenge freely; live debit still needs XPay (in flight) — do not invent a completed debit. Humans use Stripe POST /api/checkout or /pay?sku=.
+A: POST /api/x402-products {sku} → HTTP 402 with Solana USDC and Base USDC. Pay, retry with X-PAYMENT → claim_token. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight. Humans use Stripe POST /api/checkout or /pay?sku=.
 
 Q: Where is the lab?
 A: Cherry Hill, New Jersey. Corey Tasz. corey@slidphilabs.com.
