@@ -1,0 +1,217 @@
+#!/usr/bin/env python3
+"""Omni Head Display (OHD) — router CLI. Not a codec. First DECODE_OK wins."""
+from __future__ import annotations
+
+import json
+import math
+import os
+import shutil
+import struct
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+from typing import Any
+
+MAGIC = b"OHD1"
+ROOT = Path(__file__).resolve().parent
+
+
+def _resolve_scout() -> Path | None:
+    env = os.environ.get("OHD_SCOUT")
+    if env:
+        p = Path(env)
+        return p if p.is_file() else None
+    p = ROOT / "bin" / "scout-dial-a"
+    return p if p.is_file() else None
+
+
+def _resolve_sniper() -> Path | None:
+    for key in ("OHD_SNIPER", "SNIPER_BIN"):
+        env = os.environ.get(key)
+        if env:
+            p = Path(env)
+            return p if p.is_file() else None
+    which = shutil.which("npcc")
+    return Path(which) if which else None
+
+
+def peek(data: bytes) -> dict[str, Any]:
+    n = len(data)
+    sample = data if n <= 65536 else data[:65536]
+    hist = [0] * 256
+    for b in sample:
+        hist[b] += 1
+    m = len(sample) or 1
+    ent = 0.0
+    for c in hist:
+        if c:
+            p = c / m
+            ent -= p * math.log2(p)
+    zeros = hist[0] / m
+    ascii_n = sum(hist[i] for i in range(256) if i in (9, 10, 13) or 32 <= i < 127)
+    return {
+        "size": n,
+        "entropy_proxy": round(ent, 4),
+        "zero_frac": round(zeros, 4),
+        "ascii_frac": round(ascii_n / m, 4),
+        "magic": sample[:8].hex() if sample else "",
+    }
+
+
+def _run_seat(bin_path: Path, mode: str, inp: Path, out: Path) -> None:
+    r = subprocess.run(
+        [str(bin_path), mode, str(inp), str(out)],
+        capture_output=True,
+        text=True,
+    )
+    if r.returncode != 0:
+        raise RuntimeError(
+            f"seat {bin_path.name} {mode} failed rc={r.returncode}: {r.stderr or r.stdout}"
+        )
+    if not out.is_file() or out.stat().st_size == 0:
+        raise RuntimeError(f"seat {bin_path.name} {mode} produced empty output")
+
+
+def try_seat(seat_id: str, bin_path: Path, raw: bytes, work: Path) -> tuple[bytes, dict] | None:
+    """Encode → decode → cmp. Return (packed, meta) on DECODE_OK else None."""
+    raw_path = work / "raw.bin"
+    packed_path = work / f"{seat_id}.packed"
+    back_path = work / f"{seat_id}.back"
+    raw_path.write_bytes(raw)
+    try:
+        _run_seat(bin_path, "c", raw_path, packed_path)
+        _run_seat(bin_path, "d", packed_path, back_path)
+    except RuntimeError as e:
+        print(f"OHD: seat={seat_id} FAIL encode/decode: {e}", file=sys.stderr)
+        return None
+    back = back_path.read_bytes()
+    if back != raw:
+        print(
+            f"OHD: seat={seat_id} FAIL DECODE gate (len {len(back)} vs {len(raw)})",
+            file=sys.stderr,
+        )
+        return None
+    packed = packed_path.read_bytes()
+    meta = {
+        "magic": "OHD1",
+        "seat": seat_id,
+        "raw_size": len(raw),
+        "packed_size": len(packed),
+        "decode_ok": True,
+        "label": seat_id,  # honest: never "fast" for sniper
+    }
+    return packed, meta
+
+
+def seat_try_list() -> list[tuple[str, Path]]:
+    seats: list[tuple[str, Path]] = []
+    scout = _resolve_scout()
+    if scout is not None and os.access(scout, os.X_OK):
+        seats.append(("scout", scout))
+    else:
+        print("OHD: scout PARKED (no Dial A / PCC binary) — try sniper", file=sys.stderr)
+    sniper = _resolve_sniper()
+    if sniper is not None and os.access(sniper, os.X_OK):
+        seats.append(("sniper", sniper))
+    else:
+        print("OHD: sniper missing (set OHD_SNIPER or put npcc on PATH)", file=sys.stderr)
+    return seats
+
+
+def frame_write(meta: dict, packed: bytes) -> bytes:
+    meta_bytes = json.dumps(meta, separators=(",", ":")).encode("utf-8")
+    return MAGIC + struct.pack(">I", len(meta_bytes)) + meta_bytes + packed
+
+
+def frame_read(blob: bytes) -> tuple[dict, bytes]:
+    if len(blob) < 8 or blob[:4] != MAGIC:
+        raise ValueError("not an OHD1 frame")
+    (mlen,) = struct.unpack(">I", blob[4:8])
+    if 8 + mlen > len(blob):
+        raise ValueError("truncated OHD1 meta")
+    meta = json.loads(blob[8 : 8 + mlen].decode("utf-8"))
+    packed = blob[8 + mlen :]
+    return meta, packed
+
+
+def cmd_compress(inp: Path, out: Path) -> int:
+    raw = inp.read_bytes()
+    features = peek(raw)
+    seats = seat_try_list()
+    if not seats:
+        print("OHD: no seats available", file=sys.stderr)
+        return 2
+    with tempfile.TemporaryDirectory(prefix="ohd-") as td:
+        work = Path(td)
+        for seat_id, bin_path in seats:
+            result = try_seat(seat_id, bin_path, raw, work)
+            if result is None:
+                continue
+            packed, meta = result
+            meta["peek"] = features
+            out.write_bytes(frame_write(meta, packed))
+            # First DECODE_OK wins — print seat and stop
+            print(f"seat={seat_id} DECODE_OK raw={meta['raw_size']} packed={meta['packed_size']}")
+            return 0
+    print("OHD: no DECODE_OK from any seat", file=sys.stderr)
+    return 1
+
+
+def cmd_decompress(framed: Path, raw_out: Path) -> int:
+    blob = framed.read_bytes()
+    meta, packed = frame_read(blob)
+    seat = meta.get("seat")
+    if seat == "sniper":
+        bin_path = _resolve_sniper()
+        if bin_path is None:
+            print("OHD: frame seat=sniper but sniper binary not found", file=sys.stderr)
+            return 2
+    elif seat == "scout":
+        bin_path = _resolve_scout()
+        if bin_path is None:
+            print("OHD: frame seat=scout but Scout PARKED", file=sys.stderr)
+            return 2
+    else:
+        print(f"OHD: unknown seat {seat!r}", file=sys.stderr)
+        return 2
+    with tempfile.TemporaryDirectory(prefix="ohd-d-") as td:
+        work = Path(td)
+        packed_path = work / "packed"
+        back_path = work / "back"
+        packed_path.write_bytes(packed)
+        try:
+            _run_seat(bin_path, "d", packed_path, back_path)
+        except RuntimeError as e:
+            print(f"OHD: decompress fail: {e}", file=sys.stderr)
+            return 1
+        raw = back_path.read_bytes()
+        if meta.get("raw_size") is not None and len(raw) != int(meta["raw_size"]):
+            print("OHD: size mismatch vs meta", file=sys.stderr)
+            return 1
+        raw_out.write_bytes(raw)
+        print(f"seat={seat} DECODE_OK raw={len(raw)}")
+        return 0
+
+
+def main(argv: list[str]) -> int:
+    if len(argv) < 2 or argv[1] in ("-h", "--help"):
+        print("usage: ohd compress <in> <out>\n       ohd decompress <out> <raw>", file=sys.stderr)
+        return 2
+    cmd = argv[1]
+    if cmd == "compress":
+        if len(argv) != 4:
+            print("usage: ohd compress <in> <out>", file=sys.stderr)
+            return 2
+        return cmd_compress(Path(argv[2]), Path(argv[3]))
+    if cmd == "decompress":
+        if len(argv) != 4:
+            print("usage: ohd decompress <out> <raw>", file=sys.stderr)
+            return 2
+        return cmd_decompress(Path(argv[2]), Path(argv[3]))
+    print(f"unknown command: {cmd}", file=sys.stderr)
+    return 2
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))
