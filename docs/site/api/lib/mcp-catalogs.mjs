@@ -20,7 +20,7 @@ export const CATALOGS = [
       { id: "rider-ops-year", name: "Rider Ops year", price: "$290/yr", note: "Fleet watch when a signed agent goes quiet. Needs a Rider seat.", url: SITE + "/pay?sku=rider-ops-year", related: ["rider"] },
       { id: "suite", name: "PCC metered jobs", price: "2 GB/mo free, then 8¢/GB", note: "First 2 GB each month free. Then 8¢ per GB. Month plan includes 200 GB. Compare: /compare. Quote: POST /api/ppp-quote.", url: SITE + "/compare", related: ["aware", "rail"] },
       { id: "lab-pass", name: "Lab Pass", price: "$668/yr", note: "One year of Chamber + PCC + TruGame for $668.", url: SITE + "/lab-pass", related: ["chamber", "aware"] },
-      { id: "trugame", name: "TruGame", price: "$12/mo · $79/yr", note: "Game-engine seat. Also bundled in Lab Pass.", url: SITE + "/trugame", related: ["sku"] },
+      { id: "trugame", name: "TruGame", price: "parked", note: "Parked/building — not a live engine. Not for sale. Planned $12/$79 when live.", url: SITE + "/trugame", related: [] },
       { id: "consulting", name: "Consulting", price: "$250", note: "Two hours of lab time.", url: SITE + "/pay?sku=consulting", related: ["sku"] },
       { id: "oss-support", name: "OSS support", price: "$199", note: "Help with an already-public GPLv3 library.", url: SITE + "/pay?sku=oss-support", related: ["npm"] },
     ],
