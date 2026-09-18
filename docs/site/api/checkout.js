@@ -94,6 +94,16 @@ export default async function handler(req, res) {
     });
   }
 
+  if (sku && PRODUCT_CATALOG[sku]?.parked) {
+    const p = PRODUCT_CATALOG[sku];
+    return json(res, 410, {
+      error: "product_parked",
+      sku,
+      message: p.blurb || "Parked — not for sale.",
+      info: "https://www.slidphilabs.com/trugame",
+    });
+  }
+
   if (sku && PRODUCT_CATALOG[sku] && (PRODUCT_CATALOG[sku].kind === "usage" || PRODUCT_CATALOG[sku].sell === false)) {
     const p = PRODUCT_CATALOG[sku];
     return json(res, 200, {
