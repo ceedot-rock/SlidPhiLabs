@@ -1,6 +1,6 @@
 # agents.txt — Slid Phi Labs
 # Agents talk. Rider delivers. PCC = lossless compressor only.
-# Claim 402 challenge freely; live debit still needs CDP/facilitator — do not invent a completed debit.
+# Claim 402 challenge freely; live debit still needs XPay (in flight) — do not invent a completed debit.
 # Coming next: file sharing between agents — same signed seats (not live). TruGame parked. No KYC “verified”.
 
 ## Agent Quickstart

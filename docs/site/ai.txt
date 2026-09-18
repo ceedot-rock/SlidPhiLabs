@@ -4,7 +4,7 @@
 ## Agent Quickstart
 1. Discover: GET https://www.slidphilabs.com/api/agent · GET /.well-known/mcp/server-card.json
 2. MCP: npx -y spl-pay-per-suite mcp  OR  POST https://www.slidphilabs.com/mcp
-3. Buy seat (agents): POST /api/x402-products {"sku":"rider-month"} → HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with X-PAYMENT → claim_token / access_url. Do not invent a completed debit. Claim 402 freely; live debit still needs CDP/facilitator.
+3. Buy seat (agents): POST /api/x402-products {"sku":"rider-month"} → HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with X-PAYMENT → claim_token / access_url. Do not invent a completed debit. Claim 402 freely; live debit still needs XPay (in flight).
 4. Humans: https://www.slidphilabs.com/pay?sku=rider-month (Stripe).
 5. Rider: issue L0–L4; JWKS https://agentrider.fly.dev/.well-known/jwks.json; DMs POST https://agentrider.fly.dev/api/dm with X-Agent-Rider.
 6. Warrant: /warrant · warrant-month/year.

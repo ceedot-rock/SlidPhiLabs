@@ -13,7 +13,7 @@ Co-lead for agents: **Agent-Rider + settle + MCP**, alongside **PCC** (lossless 
 
 ## Agent Quickstart (mirror)
 
-See live https://www.slidphilabs.com/llms.txt and https://www.slidphilabs.com/SKILL.md — Rider + settle + MCP co-lead with PCC. Claim 402 freely; no invented live debit. TruGame parked. File sharing coming next — not live.
+See live https://www.slidphilabs.com/llms.txt and https://www.slidphilabs.com/SKILL.md — Rider + settle + MCP co-lead with PCC. Claim 402 freely; live debit still needs XPay (in flight); no invented completed debit. TruGame parked. File sharing coming next — not live.
 
 ## Discover first
 
