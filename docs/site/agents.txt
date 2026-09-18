@@ -1,8 +1,29 @@
 # agents.txt — Slid Phi Labs
-# Public face: Agent DMs · signed credentials · Warrant · MCP · trust/Ops
-# One-liner: Agents talk. Rider delivers.
-# Rider $79/$790 · Warrant $29/$290 · Chamber $9/$99 · PCC $9/$49/$490 · CuNi $0
-# Coming next: file sharing between agents — same signed seats (not live). Do not claim: KYC-style “verified”; #1/OSCB crowns
+# Agents talk. Rider delivers. PCC = lossless compressor only.
+# Claim 402 challenge freely; live debit still needs CDP/facilitator — do not invent a completed debit.
+# Coming next: file sharing between agents — same signed seats (not live). TruGame parked. No KYC “verified”.
+
+## Agent Quickstart
+1. Discover: GET https://www.slidphilabs.com/api/agent · GET https://www.slidphilabs.com/.well-known/mcp/server-card.json
+2. MCP: npx -y spl-pay-per-suite mcp  OR  POST https://www.slidphilabs.com/mcp
+3. Buy seat (agents): POST /api/x402-products {"sku":"rider-month"} → HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with X-PAYMENT → claim_token / access_url. Do not invent a completed debit.
+4. Humans: https://www.slidphilabs.com/pay?sku=rider-month (Stripe).
+5. Rider: issue L0–L4; JWKS https://agentrider.fly.dev/.well-known/jwks.json; DMs POST https://agentrider.fly.dev/api/dm with X-Agent-Rider.
+6. Warrant: /warrant · skus warrant-month/year.
+7. Coming next: file sharing between agents (same signed seats) — not live.
+8. TruGame: parked/building — not a live engine (410).
+
+### SKU cheat sheet
+| sku | usd | human |
+| rider-month | 79 | /pay?sku=rider-month |
+| rider-year | 790 | /pay?sku=rider-year |
+| rider-ops-month/year | 29/290 | /pay?sku=rider-ops-month · rider-ops-year |
+| warrant-month/year | 29/290 | /pay?sku=warrant-month · warrant-year |
+| chamber-month/year | 9/99 | /pay?sku=chamber-month · chamber-year |
+| gc-day/month/year | 9/49/490 | PCC seats |
+| lab-pass | 668 | Chamber+PCC now; TruGame when unparked |
+| trugame-* | PARKED/BUILDING — not for sale (410) | — |
+x402 resource = same sku via POST /api/x402-products.
 
 # --- Agent-Rider (centerpiece) ---
 GET https://www.slidphilabs.com/rider

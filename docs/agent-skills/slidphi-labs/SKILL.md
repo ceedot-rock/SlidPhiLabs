@@ -8,7 +8,12 @@ version: 1.1.0
 
 Cherry Hill, NJ. Corey Tasz. Inbox corey@slidphilabs.com.
 
-Lead product is **PCC**. Storefront: PCC, TRUSTREAM, Chamber, Agent-Rider, Warrant, CuNi.
+Co-lead for agents: **Agent-Rider + settle + MCP**, alongside **PCC** (lossless compressor only). Storefront: Rider, Warrant, PCC, TRUSTREAM, Chamber, CuNi. TruGame parked/building.
+
+
+## Agent Quickstart (mirror)
+
+See live https://www.slidphilabs.com/llms.txt and https://www.slidphilabs.com/SKILL.md — Rider + settle + MCP co-lead with PCC. Claim 402 freely; no invented live debit. TruGame parked. File sharing coming next — not live.
 
 ## Discover first
 

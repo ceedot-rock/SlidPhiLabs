@@ -2,8 +2,8 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "Agents talk. Rider delivers. Centerpiece: Agent-Rider \u2014 signed identity (ES256 JWT L0\u2013L4, local JWKS), agent-to-agent DMs, Warrant mandate+receipts, MCP, trust/badge + Ops. Also PCC, Chamber, CuNi. AWARE is a retired PCC alias. Coming next: file sharing between agents \u2014 same signed seats (not live); no KYC \u201cevery agent is verified.\u201d",
-  "version": "2.1.3",
+  "description": "Agents talk. Rider delivers. Discover MCP + settle Rider seats (x402 USDC or Stripe). Also PCC lossless compressor, Chamber, CuNi. AWARE is a retired PCC alias. Claim 402 challenge freely; live debit still needs CDP/facilitator — do not invent a completed debit. Coming next: file sharing between agents (same signed seats) — not live. TruGame parked/building. No KYC verified claims.",
+  "version": "2.2.0",
   "updated": "2026-09-17",
   "lead_product": "pcc",
   "cash_product": "gc-month",
@@ -31,7 +31,7 @@
     "pulsar"
   ],
   "suite": {
-    "plain": "First 2 GB each month free, then 8\u00a2/GB. PCC month includes 200 GB.",
+    "plain": "First 2 GB each month free, then 8¢/GB. PCC month includes 200 GB.",
     "unpaid_gb": 2,
     "window": "calendar_month",
     "usd_per_gb": 0.08,
@@ -41,7 +41,7 @@
     "compare": "https://www.slidphilabs.com/compare"
   },
   "flagship": {
-    "bench": "zeros\u00d710k int32",
+    "bench": "zeros×10k int32",
     "zrw": "8B",
     "gzip-9": "73B",
     "brotli-11": "13B",
@@ -55,7 +55,9 @@
     "zrw-l33t",
     "$1900",
     "$950",
-    "$12.50"
+    "$12.50",
+    "trugame-month",
+    "trugame-year"
   ],
   "discovery": "https://www.slidphilabs.com/api/agent",
   "mcp": "https://www.slidphilabs.com/mcp",
@@ -93,22 +95,24 @@
       "name": "Chamber",
       "role": "security",
       "url": "https://www.slidphilabs.com/chamber",
-      "price": "Cloak license $9/mo \u00b7 $99/yr. Open with keys."
+      "price": "Cloak license $9/mo · $99/yr. Open with keys."
     },
     {
       "id": "aware",
       "name": "PCC",
       "role": "compression",
       "url": "https://www.slidphilabs.com/pcc",
-      "price": "Day $9 \u00b7 Month $49 \u00b7 Year $490",
-      "note": "AWARE is a retired alias for PCC"
+      "price": "Day $9 · Month $49 · Year $490",
+      "note": "PCC = lossless compressor only. AWARE is a retired alias."
     },
     {
       "id": "trugame",
       "name": "TruGame",
-      "role": "engine",
+      "role": "parked",
       "url": "https://www.slidphilabs.com/trugame",
-      "price": "Month $12 \u00b7 Year $79"
+      "price": "PARKED/BUILDING — not for sale (410)",
+      "status": "parked",
+      "note": "Not a live engine. Checkout and x402 return 410 product_parked."
     },
     {
       "id": "quikgater",
@@ -130,7 +134,8 @@
       "name": "PCC",
       "role": "compression",
       "url": "https://www.slidphilabs.com/pcc",
-      "price": "Day $9 \u00b7 Month $49 \u00b7 Year $490"
+      "price": "Day $9 · Month $49 · Year $490",
+      "note": "lossless compressor only (not payment)"
     },
     {
       "id": "trustream",
@@ -144,7 +149,7 @@
       "name": "Warrant",
       "role": "mandate",
       "url": "https://www.slidphilabs.com/warrant",
-      "price": "$29/mo \u00b7 $290/yr. Needs a Rider."
+      "price": "$29/mo · $290/yr. Needs a Rider."
     }
   ],
   "agent_centerpiece": {
@@ -170,6 +175,154 @@
     ],
     "coming_next": [
       "file_sharing_between_agents_same_signed_seats"
+    ]
+  },
+  "agent_quickstart": {
+    "steps": [
+      {
+        "n": 1,
+        "title": "Discover",
+        "actions": [
+          "GET https://www.slidphilabs.com/api/agent",
+          "GET https://www.slidphilabs.com/.well-known/mcp/server-card.json"
+        ]
+      },
+      {
+        "n": 2,
+        "title": "MCP",
+        "actions": [
+          "npx -y spl-pay-per-suite mcp",
+          "POST https://www.slidphilabs.com/mcp"
+        ]
+      },
+      {
+        "n": 3,
+        "title": "Buy seat (agents)",
+        "actions": [
+          "POST /api/x402-products {\"sku\":\"rider-month\"}",
+          "HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with X-PAYMENT → claim_token / access_url"
+        ],
+        "honesty": "Do not invent a completed debit. Claim 402 challenge freely; live debit still needs CDP (or current facilitator)."
+      },
+      {
+        "n": 4,
+        "title": "Humans",
+        "actions": [
+          "https://www.slidphilabs.com/pay?sku=rider-month (Stripe)"
+        ]
+      },
+      {
+        "n": 5,
+        "title": "Rider",
+        "actions": [
+          "Issue L0–L4 credential",
+          "Peers verify via JWKS https://agentrider.fly.dev/.well-known/jwks.json",
+          "DMs POST https://agentrider.fly.dev/api/dm with X-Agent-Rider"
+        ]
+      },
+      {
+        "n": 6,
+        "title": "Warrant",
+        "actions": [
+          "mandate + receipts bound to a Rider — /warrant · skus warrant-month/year"
+        ]
+      },
+      {
+        "n": 7,
+        "title": "Coming next",
+        "actions": [
+          "file sharing between agents (same signed seats) — not live"
+        ]
+      },
+      {
+        "n": 8,
+        "title": "TruGame",
+        "actions": [
+          "parked/building — not a live engine"
+        ]
+      }
+    ],
+    "sku_cheat_sheet": [
+      {
+        "sku": "rider-month",
+        "usd": 79,
+        "human": "/pay?sku=rider-month"
+      },
+      {
+        "sku": "rider-year",
+        "usd": 790,
+        "human": "/pay?sku=rider-year"
+      },
+      {
+        "sku": "rider-ops-month",
+        "usd": 29,
+        "human": "/pay?sku=rider-ops-month"
+      },
+      {
+        "sku": "rider-ops-year",
+        "usd": 290,
+        "human": "/pay?sku=rider-ops-year"
+      },
+      {
+        "sku": "warrant-month",
+        "usd": 29,
+        "human": "/pay?sku=warrant-month"
+      },
+      {
+        "sku": "warrant-year",
+        "usd": 290,
+        "human": "/pay?sku=warrant-year"
+      },
+      {
+        "sku": "chamber-month",
+        "usd": 9,
+        "human": "/pay?sku=chamber-month"
+      },
+      {
+        "sku": "chamber-year",
+        "usd": 99,
+        "human": "/pay?sku=chamber-year"
+      },
+      {
+        "sku": "gc-day",
+        "usd": 9,
+        "human": "/pay?sku=gc-day",
+        "note": "PCC seats"
+      },
+      {
+        "sku": "gc-month",
+        "usd": 49,
+        "human": "/pay?sku=gc-month",
+        "note": "PCC seats"
+      },
+      {
+        "sku": "gc-year",
+        "usd": 490,
+        "human": "/pay?sku=gc-year",
+        "note": "PCC seats"
+      },
+      {
+        "sku": "lab-pass",
+        "usd": 668,
+        "human": "/pay?sku=lab-pass",
+        "note": "Chamber+PCC now; TruGame when unparked"
+      },
+      {
+        "sku": "trugame-*",
+        "usd": null,
+        "human": null,
+        "note": "PARKED/BUILDING — not for sale (410)"
+      }
+    ],
+    "x402_resource": "same sku via POST /api/x402-products",
+    "locks": [
+      "no_invented_live_debit",
+      "file_sharing_coming_next_not_live",
+      "no_kyc_verified_claims",
+      "pcc_is_lossless_compressor_only",
+      "aware_retired_alias_only",
+      "rider_urls_fly_only_agentrider.fly.dev",
+      "trugame_parked"
     ]
   }
 }
