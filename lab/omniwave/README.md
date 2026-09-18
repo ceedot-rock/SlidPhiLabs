@@ -1,6 +1,6 @@
 # OmniWave / Apex Path (lab scaffold)
 
-**Teach:** seats are jobs. Occupants are specialists that know encode/decode. See `lbr1/JOBS.md`. Router does not compress. Packer does not parse. Host gzip/brotli/xz are not genes. The private encoder knows compression — meld or alongside in the house, never copied into pulsar. Public product is **PCC**.
+**Teach:** seats are jobs. Occupants are specialists that know encode/decode. See `lbr1/JOBS.md`. Router does not compress. Packer does not parse. Host gzip/brotli/xz are not genes. The private encoder knows compression — meld or alongside in the house, never copied into pulsar. Public product is **PCC**. Vertical rename + router CLI: see [`lab/ohd/`](../ohd/) (OHD = OmniWave).
 
 **Private complementary generalist** for Slid Phi Labs. Occupants must be lab engines. Host gzip/brotli/xz are opponents.
 
