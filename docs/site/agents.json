@@ -2,7 +2,7 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "Agents talk. Rider delivers. Discover MCP + settle Rider seats (x402 USDC or Stripe). Also PCC lossless compressor, Chamber, CuNi. AWARE is a retired PCC alias. Claim 402 challenge freely; live debit still needs XPay (in flight) — do not invent a completed debit. Coming next: file sharing between agents (same signed seats) — not live. TruGame parked/building. No KYC verified claims.",
+  "description": "Agents talk. Rider delivers. Discover MCP + settle Rider seats (x402 USDC or Stripe). Also PCC lossless compressor, Chamber, CuNi. AWARE is a retired PCC alias. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight. Coming next: file sharing between agents (same signed seats) — not live. TruGame parked/building. No KYC verified claims.",
   "version": "2.2.0",
   "updated": "2026-09-17",
   "lead_product": "pcc",
@@ -202,7 +202,7 @@
           "POST /api/x402-products {\"sku\":\"rider-month\"}",
           "HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with X-PAYMENT → claim_token / access_url"
         ],
-        "honesty": "Do not invent a completed debit. Claim 402 challenge freely; live debit still needs XPay (in flight)."
+        "honesty": "402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight."
       },
       {
         "n": 4,
