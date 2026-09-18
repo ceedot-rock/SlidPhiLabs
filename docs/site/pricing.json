@@ -132,17 +132,12 @@
     },
     "trugame": {
       "name": "TruGame",
-      "plans": {
-        "month": {
-          "sku": "trugame-month",
-          "usd": 12,
-          "stripe": "https://www.slidphilabs.com/pay?sku=trugame-month"
-        },
-        "year": {
-          "sku": "trugame-year",
-          "usd": 79,
-          "stripe": "https://www.slidphilabs.com/pay?sku=trugame-year"
-        }
+      "status": "parked",
+      "note": "Parked/building \u2014 not a live engine. Not for sale.",
+      "info": "https://www.slidphilabs.com/trugame",
+      "planned_prices_usd": {
+        "month": 12,
+        "year": 79
       }
     },
     "lab_pass": {
@@ -153,11 +148,12 @@
       "includes": [
         "chamber",
         "gc",
-        "trugame"
+        "trugame (parked)"
       ],
       "excludes": [
         "rider"
-      ]
+      ],
+      "note": "TruGame parked/building \u2014 Lab Pass is Chamber + PCC; TruGame not a live unlock."
     },
     "consulting": {
       "name": "Lab consulting (2 hours)",

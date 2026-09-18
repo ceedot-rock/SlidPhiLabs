@@ -116,7 +116,7 @@ const TOOLS = [
         sku: {
           type: "string",
           description:
-            "chamber-year($99) | gc-year($490) | rider-year($790) | lab-pass($668) | trugame-year($79) | consulting($250) | oss-support($199)",
+            "chamber-year($99) | gc-year($490) | rider-year($790) | lab-pass($668) | consulting($250) | oss-support($199) — TruGame parked",
         },
         email: { type: "string" },
         note: { type: "string" },
@@ -304,8 +304,8 @@ async function callTool(name, args = {}) {
           "rider-ops-month": 29,
           "rider-ops-year": 290,
           "lab-pass": 668,
-          "trugame-month": 12,
-          "trugame-year": 79,
+          "trugame-month": 0, // parked — not sold
+          "trugame-year": 0, // parked — not sold
           consulting: 250,
           "oss-support": 199,
         },

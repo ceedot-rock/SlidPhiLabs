@@ -551,6 +551,14 @@ export default async function handler(req, res) {
     const qSku = resolveSku(url.searchParams.get("sku") || url.searchParams.get("product"));
     if (qSku) {
       const pub = publicProduct(qSku);
+      if (CATALOG[qSku]?.parked) {
+        return json(res, 410, {
+          error: "product_parked",
+          sku: qSku,
+          message: CATALOG[qSku].blurb || "Parked — not for sale.",
+          info: "https://www.slidphilabs.com/trugame",
+        });
+      }
       if (CATALOG[qSku]?.kind === "usage" || CATALOG[qSku]?.sell === false) {
         return json(res, 200, {
           ...pub,
@@ -599,6 +607,15 @@ export default async function handler(req, res) {
       message: CATALOG[sku].blurb || "Retired SKU. See /pricing.json.",
       suite: "https://www.slidphilabs.com/pps",
       x402_suite: "POST /api/x402-suite",
+    });
+  }
+
+  if (CATALOG[sku].parked) {
+    return json(res, 410, {
+      error: "product_parked",
+      sku,
+      message: CATALOG[sku].blurb || "Parked — not for sale.",
+      info: "https://www.slidphilabs.com/trugame",
     });
   }
 

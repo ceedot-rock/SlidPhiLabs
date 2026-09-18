@@ -65,6 +65,20 @@ function retired(alias, name) {
   };
 }
 
+/** Parked product: still listed for honesty, not for sale (no 402). */
+function parked(name, blurb) {
+  return {
+    name,
+    amount_cents: 0,
+    stripe: "https://www.slidphilabs.com/trugame",
+    kind: "trugame",
+    list: true,
+    sell: false,
+    parked: true,
+    blurb,
+  };
+}
+
 export const PRODUCT_CATALOG = {
   "chamber-month": {
     name: "Chamber · monthly cloak license",
@@ -195,29 +209,21 @@ export const PRODUCT_CATALOG = {
     blurb: "Written exception to embed pulsar in one closed-source product for one year. pulsar source stays GPLv3.",
   },
   "lab-pass": {
-    name: "Lab Pass · annual (Chamber + PCC + TruGame)",
+    name: "Lab Pass · annual (Chamber + PCC; TruGame parked)",
     amount_cents: 66800,
     stripe: "https://www.slidphilabs.com/pay?sku=lab-pass",
     kind: "seat",
     list: true,
-    blurb: "Chamber year $99 + PCC year $490 + TruGame year $79.",
+    blurb: "Chamber year $99 + PCC year $490. TruGame is parked/building (not a live unlock).",
   },
-  "trugame-month": {
-    name: "TruGame · monthly engine seat",
-    amount_cents: 1200,
-    stripe: "https://www.slidphilabs.com/pay?sku=trugame-month",
-    kind: "trugame",
-    list: true,
-    blurb: "Engine seat. Not a store. No rent desk.",
-  },
-  "trugame-year": {
-    name: "TruGame · annual engine seat",
-    amount_cents: 7900,
-    stripe: "https://www.slidphilabs.com/pay?sku=trugame-year",
-    kind: "trugame",
-    list: true,
-    blurb: "Engine seat for 365 days.",
-  },
+  "trugame-month": parked(
+    "TruGame · monthly (parked)",
+    "Parked/building — not a live engine. Not for sale. Info: https://www.slidphilabs.com/trugame"
+  ),
+  "trugame-year": parked(
+    "TruGame · annual (parked)",
+    "Parked/building — not a live engine. Not for sale. Info: https://www.slidphilabs.com/trugame"
+  ),
   consulting: {
     name: "Lab consulting (2 hours)",
     amount_cents: 25000,
