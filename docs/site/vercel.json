@@ -373,6 +373,16 @@
   ],
   "redirects": [
     {
+      "source": "/receipts/pcc-diner-dialA-mozilla.json",
+      "destination": "/receipts/pcc-diner-dial-a-mozilla.json",
+      "permanent": true
+    },
+    {
+      "source": "/receipts/gc-diner-dialA-mozilla.json",
+      "destination": "/receipts/pcc-diner-dial-a-mozilla.json",
+      "permanent": true
+    },
+    {
       "source": "/gc",
       "destination": "/pcc",
       "permanent": true
@@ -390,16 +400,6 @@
     {
       "source": "/aware/",
       "destination": "/pcc",
-      "permanent": true
-    },
-    {
-      "source": "/receipts/pcc-diner-dial-a-mozilla.json",
-      "destination": "/receipts/pcc-diner-dial-a-mozilla.json",
-      "permanent": true
-    },
-    {
-      "source": "/receipts/pcc-diner-dial-a-mozilla.json",
-      "destination": "/receipts/pcc-diner-dial-a-mozilla.json",
       "permanent": true
     },
     {
