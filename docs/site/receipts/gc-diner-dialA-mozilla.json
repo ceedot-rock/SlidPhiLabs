@@ -1,41 +1,4 @@
 {
-  "schema": "spl.gc.diner_receipt.v1",
-  "status": "SEALED",
-  "product": "PCC",
-  "face": "https://www.slidphilabs.com/gc",
-  "seat": "scout",
-  "dial": "A",
-  "fixture": "silesia/mozilla",
-  "claimable": true,
-  "fields": {
-    "in_bytes": 51220480,
-    "out_bytes": 16708129,
-    "every_byte_back": true,
-    "DECODE_OK": true,
-    "vs_zstd9_bytes": -27834,
-    "vs_zstd9_label": "−28k class"
-  },
-  "reference": {
-    "zstd9_bytes": 16735963,
-    "bake": "pcc-mozilla-wall-split-dialA",
-    "bake_sha_hint": "c329554",
-    "note": "Dial A CHAIN=8 / ml4 pack · claimable size lead only"
-  },
-  "forbidden_on_strip": [
-    "Fast",
-    "≥50 MB/s",
-    "OSCB",
-    "#1",
-    "Gale",
-    "PCC as payment",
-    "Combined GC as product name"
-  ],
-  "strip_copy": {
-    "In": "51,220,480",
-    "Out": "16,708,129",
-    "Every_byte_back": "yes",
-    "vs_zstd9": "−27,834"
-  },
-  "minted_by": "Ship",
-  "minted_et": "2026-09-18"
+  "moved_to": "/receipts/pcc-diner-dialA-mozilla.json",
+  "note": "GC public label retired. Same Dial A numbers at the PCC diner receipt."
 }
