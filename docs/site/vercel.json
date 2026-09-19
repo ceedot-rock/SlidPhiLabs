@@ -31,14 +31,6 @@
       "destination": "/rider.html"
     },
     {
-      "source": "/gc",
-      "destination": "/gc.html"
-    },
-    {
-      "source": "/gc/",
-      "destination": "/gc.html"
-    },
-    {
       "source": "/press",
       "destination": "/press.html"
     },
@@ -64,7 +56,7 @@
     },
     {
       "source": "/aware",
-      "destination": "/gc.html"
+      "destination": "/pcc.html"
     },
     {
       "source": "/trustream",
@@ -369,17 +361,30 @@
     {
       "source": "/blog/2026-09-17-agents-talk-rider-delivers/",
       "destination": "/blog/2026-09-17-agents-talk-rider-delivers.html"
+    },
+    {
+      "source": "/pcc",
+      "destination": "/pcc.html"
+    },
+    {
+      "source": "/pcc/",
+      "destination": "/pcc.html"
     }
   ],
   "redirects": [
     {
-      "source": "/pcc/",
-      "destination": "/gc",
+      "source": "/receipts/gc-diner-dialA-mozilla.json",
+      "destination": "/receipts/pcc-diner-dialA-mozilla.json",
       "permanent": true
     },
     {
-      "source": "/pcc",
-      "destination": "/gc",
+      "source": "/gc/",
+      "destination": "/pcc",
+      "permanent": true
+    },
+    {
+      "source": "/gc",
+      "destination": "/pcc",
       "permanent": true
     },
     {
