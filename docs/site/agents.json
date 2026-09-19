@@ -6,7 +6,7 @@
   "version": "2.2.0",
   "updated": "2026-09-17",
   "lead_product": "pcc",
-  "cash_product": "gc-month",
+  "cash_product": "pcc-month",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
     "login": "https://www.slidphilabs.com/login",

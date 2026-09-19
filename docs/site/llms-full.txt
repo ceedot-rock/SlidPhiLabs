@@ -21,7 +21,7 @@ TruGame — game engine. Packs sim state with TRU8, seals the save with Chamber.
 - Workbench: Sports-sims packages/trugame + sim-nfl
 
 ### Compression · PCC
-- Page: https://www.slidphilabs.com/gc
+- Page: https://www.slidphilabs.com/pcc
 - Demos: https://www.slidphilabs.com/demos
 - pulsar 2.5.0 (public GPLv3): https://www.slidphilabs.com/pulsar
 - Release: https://github.com/ceedot-rock/pulsar-best/releases/tag/v2.5.0

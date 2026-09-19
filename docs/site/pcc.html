@@ -3,52 +3,52 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>.pcc — our archive, like zip · Slid Phi Labs</title>
-  <meta name="description" content="A .pcc file is Slid Phi Labs’ archive format. Many files, one container, our lossless compression inside. Restore every byte. Not zip. Not gzip."/>
-  <meta name="theme-color" content="#0f1c2e"/>
-  <meta name="robots" content="index,follow"/>
-  <link rel="canonical" href="https://www.slidphilabs.com/archive"/>
+  <title>PCC — hosted lossless compression · Slid Phi Labs</title>
+  <meta name="description" content="PCC is hosted lossless compression. Send a file. Get a smaller copy. Restore every byte. Pro $49/month or usage: first 2 GB free, then 8¢/GB."/>
+  <link rel="canonical" href="https://www.slidphilabs.com/pcc"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
-  <meta property="og:title" content=".pcc — our archive, like zip"/>
-  <meta property="og:description" content="Many files. One container. Our compression. Restore every byte."/>
-  <meta property="og:url" content="https://www.slidphilabs.com/archive"/>
+  <meta property="og:title" content="PCC — hosted lossless compression"/>
+  <meta property="og:description" content="Send a file. Get it smaller. Every byte back."/>
+  <meta property="og:url" content="https://www.slidphilabs.com/pcc"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
-  <link rel="stylesheet" href="/assets/chrome.css?v=35"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=38"/>
 </head>
 <body>
   <main class="spl-page" id="main">
-    <p class="spl-kicker">Archive · .pcc</p>
-    <p class="spl-note">Looking for the <strong>PCC</strong> compressor product? That’s <a href="/pcc">/gc</a>. This page is only the <code>.pcc</code> archive format.</p>
-    <h1>Our version of zip. The file is <code>.pcc</code>.</h1>
-    <p class="lede">A <strong>.pcc</strong> file holds many files in one container. We compress each one with PCC — every pathway on this machine — and keep the smallest copy that still restores. You store the <code>.pcc</code>. When you need the originals, you unpack it. Every byte comes back.</p>
+    <p class="spl-kicker">PCC · hosted lossless compression</p>
+    <h1>Send a file. Get it smaller. Every byte back.</h1>
+    <p class="lede">PCC is the lab’s hosted compressor. You send bytes. We keep the smallest copy that still restores the original. Website, HTTP, npm, or MCP. Hosted private encoder on our machines — seat grants access, not engine source.</p>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="/pay?sku=gc-month">PCC Pro · $49 / month</a>
+      <a class="spl-btn spl-btn-line" href="/pps">Usage · 2 GB free then 8¢/GB</a>
+      <a class="spl-btn spl-btn-line" href="/specialist">Shrink a file</a>
+    </p>
 
     <aside class="spl-card" id="diner-check" aria-label="Sealed Dial A diner receipt">
       <p class="spl-kicker">Diner check · Dial A · silesia/mozilla · sealed</p>
       <p class="lede" style="margin:0.4rem 0 0.6rem"><strong>In</strong> 51,220,480 · <strong>Out</strong> 16,708,129 · <strong>Every byte back</strong> yes · <strong>vs zstd-9</strong> −27,834 (−28k)</p>
-      <p class="spl-note" style="margin:0">DECODE_OK. Claimable size lead only. Fast chrome stays dark. Machine receipt: <a href="/receipts/gc-diner-dialA-mozilla.json"><code>gc-diner-dialA-mozilla.json</code></a>.</p>
+      <p class="spl-note" style="margin:0">DECODE_OK. Claimable size lead only. Fast chrome stays dark. Machine receipt: <a href="/receipts/pcc-diner-dial-a-mozilla.json"><code>pcc-diner-dial-a-mozilla.json</code></a>.</p>
     </aside>
-    <div class="spl-prose">
-      <p><strong>Like zip</strong> in the job it does: pack a folder, list it, take files out. Our compression inside. If a file cannot shrink, we store it as-is so the archive never inflates that member.</p>
-      <p>The codec inside a <code>.pcc</code> is PCC. On official Silesia 12 (211,938,580 bytes in, whole files, DECODE_OK) PCC wrote <strong>51,498,645</strong>. pulsar wrote 55,745,438. gzip-9 wrote about 67.6M. xz-6 wrote about 49.4M. Not a #1 claim. Live board: <a href="/silesia">/silesia</a>.</p>
-      <p><strong>Hosted.</strong> POST files to <code>/api/archive</code>, get a <code>.pcc</code> back. Restore with <code>POST /api/unarchive</code>. npm: <code>zip()</code> and <code>unzip()</code> on <code>slid-phi</code>.</p>
-      <p><strong>On your machine.</strong> <code>lb zip out.pcc folder/</code> and <code>lb unzip out.pcc</code>. Same format the host writes.</p>
+    <div class="spl-prose spl-full">
+      <h2>What it is</h2>
+      <p>A compression service. Lossless: the file that comes back is the file you sent. Hosted: our machines run the pathways. You store, ship, and archive the small copy. Restore later with <code>POST /api/decompress</code>.</p>
+      <p>Zeros collapse to 8 bytes on the specialist door. Everyday files take every pathway we own; the smallest restore-safe result wins. A folder can become a <code>.pcc</code> container — many files, one archive, this compressor inside.</p>
+      <p><strong>PCC Pro</strong> is $49/month and includes 200 GB. Then 8¢/GB. <strong>Usage</strong> is first 2 GB each month free, then 8¢/GB. TRUSTREAM (live logs) rides the same plan. Official 12-file corpus: <a href="/silesia">/silesia</a>.</p>
+      <h2>How a job runs</h2>
+      <p>You send the file. We shrink it. You keep the small copy. You restore later. Same path on the site, <code>POST /api/compress</code>, npm, or MCP.</p>
+      <h2>Future use</h2>
+      <ul>
+        <li>Object stores that keep one master and spawn derived sizes on demand.</li>
+        <li>Backup vendors that bill on packed bytes while restore stays exact.</li>
+        <li>Model and dataset hubs that ship deltas with a prove step.</li>
+        <li>On-device packs that unpack to the original for training or inference.</li>
+        <li>Legal and medical archives that must prove bit identity years later.</li>
+      </ul>
+      <h2>Market</h2>
+      <p>Cloud egress and disk are priced on raw size. A compressor that restores every byte turns storage and transfer into a margin line. Teams that already pay AWS, GCP, or a CDN can cut the bill without changing the file they get back. Agents that buy squeeze by the call (x402) make the same math available to machines.</p>
     </div>
-    <div class="spl-grid">
-      <article class="spl-card"><p class="spl-kicker">1</p><h3>You send files</h3><p>A folder, or a list of paths. Website, HTTP, npm, or <code>lb zip</code>.</p></article>
-      <article class="spl-card"><p class="spl-kicker">2</p><h3>We pack a .pcc</h3><p>Each member runs every pathway. Smallest restore-safe copy wins.</p></article>
-      <article class="spl-card"><p class="spl-kicker">3</p><h3>You keep one file</h3><p>Ship it, archive it, name it <code>backup.pcc</code>.</p></article>
-      <article class="spl-card"><p class="spl-kicker">4</p><h3>You unpack later</h3><p><code>POST /api/unarchive</code> or <code>lb unzip</code>. Originals come back.</p></article>
-    </div>
-    <pre class="spl-prose"><code>npm i slid-phi
-# zip([{ path: "a.txt", data: "hello" }]) → archive.pcc
-# unzip(packed) → the files</code></pre>
-    <p class="spl-note">First 2 GB each month are free. Then 8¢/GB. PCC month $49 includes 200 GB. <a href="/pcc">PCC</a> · <a href="/pricing">Pricing</a> · <a href="/docs">API</a>.</p>
-    <p class="spl-actions">
-      <a class="spl-btn spl-btn-dark" href="/pcc">Hosted compression</a>
-      <a class="spl-btn spl-btn-line" href="/npm">npm</a>
-      <a class="spl-btn spl-btn-line" href="/press">Press</a>
-    </p>
+    <p class="spl-note"><a href="/pricing">Pricing</a> · <a href="/docs">API</a> · <a href="/silesia">Silesia</a> · <a href="/npm">npm</a></p>
   </main>
-  <script src="/assets/chrome.js?v=35" defer></script>
+  <script src="/assets/chrome.js?v=38" defer></script>
 </body>
 </html>

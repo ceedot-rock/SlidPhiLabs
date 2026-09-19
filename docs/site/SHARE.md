@@ -11,7 +11,7 @@
 | Press release | https://www.slidphilabs.com/press |
 | Plain text | https://www.slidphilabs.com/press.txt |
 | Blog | https://www.slidphilabs.com/blog/2026-09-09-hosted-dual-license |
-| Product | https://www.slidphilabs.com/gc |
+| Product | https://www.slidphilabs.com/pcc |
 | npm | https://www.slidphilabs.com/npm |
 | Pricing | https://www.slidphilabs.com/pricing |
 

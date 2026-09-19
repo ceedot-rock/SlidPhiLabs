@@ -41,7 +41,7 @@ export const BUY = Object.freeze({
   sot: `${SITE}/licensing.json`,
   pulsar: `${SITE}/pulsar`,
   pulsar_source: "https://github.com/ceedot-rock/pulsar-best",
-  aware: `${SITE}/gc`,
+  aware: `${SITE}/pcc`,
   inbox: "corey@slidphilabs.com",
 });
 
