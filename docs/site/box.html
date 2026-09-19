@@ -82,7 +82,7 @@
     }
     const hours = d.hours_left == null ? 24 : d.hours_left;
     const lead = startedNow ? "Try started." : "Try is open.";
-    show("<strong>" + lead + "</strong> About " + Number(hours).toFixed(1) + " hours left. Next: open <a href=\"/chamber\">Chamber</a> or <a href=\"/gc\">PCC</a>. After the day, <a href=\"/pay\">buy a seat</a>.", true);
+    show("<strong>" + lead + "</strong> About " + Number(hours).toFixed(1) + " hours left. Next: open <a href=\"/chamber\">Chamber</a> or <a href=\"/pcc\">PCC</a>. After the day, <a href=\"/pay\">buy a seat</a>.", true);
   }
   async function ping(start) {
     try {

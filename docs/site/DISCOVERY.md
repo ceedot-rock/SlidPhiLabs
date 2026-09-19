@@ -4,7 +4,7 @@ Crawl surfaces for a stranger. Honest copy only. No #1. Six products. Bank is an
 
 | Engine | Who | Lab files |
 |---|---|---|
-| **SEO** | Google, DuckDuckGo | `sitemap.xml` · titles/canonicals/OG · `/gc` · `/products` · `/compare` · `/pulsar` · `/humans` |
+| **SEO** | Google, DuckDuckGo | `sitemap.xml` · titles/canonicals/OG · `/pcc` · `/products` · `/compare` · `/pulsar` · `/humans` |
 | **GEO** | GPTBot, OAI-SearchBot, Claude, Perplexity, Gemini | `llms.txt` · `llms-full.txt` · `ai.txt` · `robots.txt` allow those bots |
 | **AEO** | Answer boxes, voice, cite-me snippets | FAQ JSON-LD on `/` · `/llms.txt` Q&A · `/compare` · `/silesia` measured numbers |
 | **MEO** | Maps / local pack | JSON-LD `ProfessionalService` Cherry Hill NJ · `/about` NAP (name, email, locality). No fake street or phone. |

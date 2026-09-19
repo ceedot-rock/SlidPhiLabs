@@ -7,9 +7,9 @@ Public product is **PCC**. AWARE is a retired alias. Combined GC 1.19.2 is a pri
 
 - Owner: Corey Tasz · ceedot-rock · corey@slidphilabs.com · @slidphilabs
 - Canonical store: https://www.slidphilabs.com/
-  `/gc` `/pay` `/access` `/agents` `/products` `/pricing` `/pricing.json` `/llms.txt` `/silesia` `/api/x402-products`
+  `/pcc` `/pay` `/access` `/agents` `/products` `/pricing` `/pricing.json` `/llms.txt` `/silesia` `/api/x402-products`
 - Fly `slidphilabs.fly.dev` is an alias, not a second shop.
-- Do not treat `combined-gc-demo.vercel.app` as a product page. It must 301 to `/gc`.
+- Do not treat `combined-gc-demo.vercel.app` as a product page. It must 301 to `/pcc`.
 - Secrets live on the team. Never ask them to paste keys.
 
 ## SoT (live)

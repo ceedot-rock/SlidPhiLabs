@@ -18,4 +18,4 @@ const packed = compress(Buffer.alloc(1_000_000)); // 8 bytes, sync
 const raw = decompress(packed);                   // 1_000_000 zeros
 ```
 
-PCC: https://www.slidphilabs.com/gc · `.pcc` archive format: https://www.slidphilabs.com/archive
+PCC: https://www.slidphilabs.com/pcc · `.pcc` archive format: https://www.slidphilabs.com/archive

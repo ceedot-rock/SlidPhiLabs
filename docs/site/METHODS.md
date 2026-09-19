@@ -35,4 +35,4 @@ SoT methods (this file)
 | Fly | https://slidphilabs.fly.dev (alias, not a second store) |
 | npm | package slid-phi homepage www.slidphilabs.com |
 | MCP/agents | /api/agent · /llms.txt · /agents.json |
-| measurements | https://www.slidphilabs.com/gc |
+| measurements | https://www.slidphilabs.com/pcc |

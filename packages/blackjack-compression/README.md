@@ -13,4 +13,4 @@ const { packed } = await compress(Buffer.from("hello"));
 const archive = await zip([{ path: "a.txt", data: "hello" }]); // .pcc
 ```
 
-A `.pcc` file is our zip. First 2 GB/month free, then 8¢/GB. Product: [www.slidphilabs.com/gc](https://www.slidphilabs.com/gc)
+A `.pcc` file is our zip. First 2 GB/month free, then 8¢/GB. Product: [www.slidphilabs.com/pcc](https://www.slidphilabs.com/pcc)

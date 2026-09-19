@@ -3,7 +3,7 @@ From: Cherry Hill, NJ, US
 Contact: corey@slidphilabs.com
 Site: https://www.slidphilabs.com
 
-PCC — hosted lossless compression — $9/day · $49/mo (200 GB) · $490/yr (2,000 GB) — then 8¢/GB — https://www.slidphilabs.com/gc
+PCC — hosted lossless compression — $9/day · $49/mo (200 GB) · $490/yr (2,000 GB) — then 8¢/GB — https://www.slidphilabs.com/pcc
 TRUSTREAM — live log pipe, same PCC plan — https://www.slidphilabs.com/trustream
 Chamber — two-key JSON — $9/mo · $99/yr — https://www.slidphilabs.com/chamber
 Agent-Rider — $79/mo · $790/yr — https://www.slidphilabs.com/rider

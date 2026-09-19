@@ -54,7 +54,7 @@ ALSO ON THE CATALOG
   CuNi        write once; Python/Go/JS match    studio $0 · exception $490/year
 
 LINKS
-  Product  https://www.slidphilabs.com/gc
+  Product  https://www.slidphilabs.com/pcc
   Pricing  https://www.slidphilabs.com/pricing
   npm      https://www.slidphilabs.com/npm
   API      https://www.slidphilabs.com/docs

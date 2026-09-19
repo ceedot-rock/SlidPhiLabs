@@ -16,7 +16,7 @@ rider-month $79 · rider-year $790 · rider-ops 29/290 · warrant 29/290 · cham
 
 - Agent-Rider — CENTERPIECE: Agents talk. Rider delivers. Signed credentials (ES256 JWT L0–L4, local JWKS) + agent DMs + Warrant + MCP + trust/Ops — $79/mo · $790/yr — https://www.slidphilabs.com/rider · https://agentrider.fly.dev · Coming next: file sharing — not live · NOT KYC blanket “verified”
 - Warrant — mandate + receipts bound to a Rider — $29/mo · $290/yr — https://www.slidphilabs.com/warrant
-- PCC — hosted lossless compressor — $9/day · $49/mo (200 GB) · $490/yr (2,000 GB) — then 8¢/GB — https://www.slidphilabs.com/gc
+- PCC — hosted lossless compressor — $9/day · $49/mo (200 GB) · $490/yr (2,000 GB) — then 8¢/GB — https://www.slidphilabs.com/pcc
 - TRUSTREAM — live log pipe, same PCC plan — https://www.slidphilabs.com/trustream
 - Chamber — two-key JSON seal — $9/mo · $99/yr — https://www.slidphilabs.com/chamber
 - Lab Pass — $668/yr — Chamber + PCC now; TruGame when unparked — https://www.slidphilabs.com/lab-pass

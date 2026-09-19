@@ -348,11 +348,11 @@
     },
     {
       "source": "/archive",
-      "destination": "/pcc.html"
+      "destination": "/archive.html"
     },
     {
       "source": "/archive/",
-      "destination": "/pcc.html"
+      "destination": "/archive.html"
     },
     {
       "source": "/blog/2026-09-17-agents-talk-rider-delivers",
@@ -373,8 +373,8 @@
   ],
   "redirects": [
     {
-      "source": "/receipts/gc-diner-dialA-mozilla.json",
-      "destination": "/receipts/pcc-diner-dialA-mozilla.json",
+      "source": "/gc",
+      "destination": "/pcc",
       "permanent": true
     },
     {
@@ -383,8 +383,23 @@
       "permanent": true
     },
     {
-      "source": "/gc",
+      "source": "/aware",
       "destination": "/pcc",
+      "permanent": true
+    },
+    {
+      "source": "/aware/",
+      "destination": "/pcc",
+      "permanent": true
+    },
+    {
+      "source": "/receipts/pcc-diner-dial-a-mozilla.json",
+      "destination": "/receipts/pcc-diner-dial-a-mozilla.json",
+      "permanent": true
+    },
+    {
+      "source": "/receipts/pcc-diner-dial-a-mozilla.json",
+      "destination": "/receipts/pcc-diner-dial-a-mozilla.json",
       "permanent": true
     },
     {
