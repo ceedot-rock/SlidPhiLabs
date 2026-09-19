@@ -1,7 +1,5 @@
-# Sealed `/gc` diner receipts
+# Sealed `/pcc` diner receipts
 
-Claimable strip fields only. **No Fast chrome.**
+Claimable strip fields only. **No Fast chrome.** Public product name is **PCC** (never GC).
 
-- [`gc-diner-dialA-mozilla.json`](gc-diner-dialA-mozilla.json) — Dial A Scout · mozilla · Out **16,708,129** · vs zstd-9 **−27,834** (−28k class) · Every byte back = DECODE_OK
-
-Public product name is **PCC**. AWARE is a retired alias.
+- [`pcc-diner-dialA-mozilla.json`](pcc-diner-dialA-mozilla.json) — Dial A Scout · mozilla · Out **16,708,129** · vs zstd-9 **−27,834** (−28k class) · Every byte back = DECODE_OK
