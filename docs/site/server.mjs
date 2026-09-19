@@ -446,6 +446,8 @@ const server = http.createServer(async (req, res) => {
       "/gate": "/pcc",
       "/codex": "/about",
       "/divine-codex": "/about",
+      "/receipts/gc-diner-dialA-mozilla.json": "/receipts/pcc-diner-dial-a-mozilla.json",
+      "/receipts/pcc-diner-dialA-mozilla.json": "/receipts/pcc-diner-dial-a-mozilla.json",
     };
     if (gone[p0]) {
       res.writeHead(301, {
