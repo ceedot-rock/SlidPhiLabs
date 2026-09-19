@@ -51,7 +51,7 @@ Every product we bring forward is dual-licensed (open terms or a paid grant). Ho
 
 Official Silesia 12 (211,938,580 in, whole files, DECODE_OK): pulsar 2.5.0 55,745,438 (matches OSCB, 12/12) · PCC 51,498,645 (12/12) · champ 50,541,135 (12/12). gzip-9 67,631,990. bzip2-9 54,506,769. xz-6 still ahead (~49.4M). Not a #1 claim. AWARE+XZ1 47.7M is retired (occupied host xz; not a product spec). Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/silesia.json · blog: https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc
 Hosted bench (live POST /api/compress, gzip-9 and brotli-11 as opponents, 4 MiB cap, not official Silesia): https://www.slidphilabs.com/bench · https://www.slidphilabs.com/bench.json
-Public source: https://github.com/ceedot-rock/pulsar-best · https://github.com/ceedot-rock/lbr1 · https://github.com/ceedot-rock/cuni · https://github.com/ceedot-rock/pccx · https://github.com/ceedot-rock/Agent-Rider · https://github.com/ceedot-rock/SlidPhiLabs
+Public source: https://github.com/ceedot-rock/pulsar-best · https://github.com/ceedot-rock/lbr1 · https://github.com/ceedot-rock/cuni · https://github.com/ceedot-rock/Agent-Rider · https://github.com/ceedot-rock/SlidPhiLabs
 Agent-Rider MCP: https://agentrider.fly.dev/api/mcp
 Operator-only: signing keys, Chamber kernel secrets, AUTH_DIR.
 .pcc archive (our zip): https://www.slidphilabs.com/archive · POST /api/archive · POST /api/unarchive · npm zip()/unzip()
