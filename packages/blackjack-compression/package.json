@@ -1,6 +1,6 @@
 {
   "name": "blackjack-compression",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Dual-licensed hosted lossless compression client. Open license or a paid grant. Calls the lab host; every pathway runs.",
   "type": "module",
   "main": "stub.mjs",

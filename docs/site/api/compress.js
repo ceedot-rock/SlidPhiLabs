@@ -6,11 +6,12 @@ import { inputToRaw, machineCard, MAX_RAW } from "./lib/specialist.mjs";
 import { runHostedEncode } from "./lib/hosted-job.mjs";
 import { meterSnapshot } from "./lib/usage-meter.mjs";
 import { codexStamp, codexHeaders } from "./lib/codex-key.js";
+import { applyClaimSeat, claimAuthError } from "./lib/claim-seat.mjs";
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   for (const [k, v] of Object.entries(codexHeaders())) res.setHeader(k, v);
 }
 
@@ -56,6 +57,13 @@ export default async function handler(req, res) {
   }
   if (req.method !== "POST") {
     return json(res, 405, { ok: false, error: "POST only" });
+  }
+
+  // Agent license bridge: a valid x402 claim (Bearer spl1.…) counts as the
+  // seat for metering. Bad/expired claim -> honest 401, never silent free-tier.
+  const seat = applyClaimSeat(req);
+  if (!seat.ok && seat.tokenPresent) {
+    return json(res, 401, claimAuthError(seat.reason));
   }
 
   try {

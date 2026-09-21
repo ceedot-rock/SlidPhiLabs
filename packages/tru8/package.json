@@ -1,6 +1,6 @@
 {
   "name": "@cptasz13/tru8",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Dual-licensed compression client. Zeros pack locally to 8 bytes. Everything else uses hosted AWARE (every pathway on the lab machine).",
   "type": "module",
   "main": "src/index.mjs",
@@ -59,6 +59,6 @@
   "agentic": {
     "discovery": "https://www.slidphilabs.com/api/agent",
     "catalog": "https://www.slidphilabs.com/api/x402-products",
-    "one_liner": "TRU8 public demo on npm. Production residual · Year $1,900. Inquire corey@slidphilabs.com"
+    "one_liner": "TRU8 public demo on npm. Production residual \u00b7 Year $1,900. Inquire corey@slidphilabs.com"
   }
 }

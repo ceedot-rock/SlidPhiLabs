@@ -457,6 +457,7 @@ export default async function handler(req, res) {
       "POST /api/x402-products { sku, email? } → 402 + accepts[]",
       "Pay maxAmountRequired (SPL) via x402-client payFetch",
       "Retry with X-PAYMENT → 200 + order_id + claim_token + entitlement + access_url",
+      "claim_token is the API key: send as Authorization: Bearer <claim_token> on POST /api/compress and POST /api/decompress (or apiKey in the npm clients) — verified server-side, metered to the seat; no key = 2 GB/month free tier",
       "GET /api/access-verify?claim=<claim_token>&product=<sku> → Access deliverable",
     ],
     flow_suite_job: [

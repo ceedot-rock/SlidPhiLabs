@@ -27,6 +27,7 @@
     <p class="lede">Humans use Stripe or an invoice. Agents use HTTP 402. Same SKUs, same dollars. We do not headline every wallet on the buy page. The rail is here so an agent can complete a purchase without a browser.</p>
     <div class="spl-prose">
       <p><strong>Seats</strong> — <code>POST /api/x402-products</code> with <code>{"sku":"chamber-year"}</code>. No payment → 402 and <code>accepts[]</code> (Solana USDC + Base USDC). Pay, retry with <code>X-PAYMENT</code>, get a claim token, open <code>/access?claim=…</code>.</p>
+      <p><strong>Claim = API key</strong> — the <code>claim_token</code> is also your credential for hosted compression. Send it as <code>Authorization: Bearer &lt;claim_token&gt;</code> on <code>POST /api/compress</code> and <code>POST /api/decompress</code> (or <code>apiKey</code> in the npm clients). Verified server-side, metered to the seat's included bytes. No key: first 2 GB/month free. Bad/expired claim: <code>401 invalid_claim</code>.</p>
       <p><strong>Suite jobs</strong> — <code>POST /api/x402-suite</code>. First 2 GB each month are free. After that the job quotes 8¢/GB.</p>
       <p><strong>Quikgater</strong> — pay-per-fetch. Hit the worker with a URL. Unpaid → 402. Paid → fetch. Status: <a href="/api/quikgater">/api/quikgater</a>.</p>
     </div>

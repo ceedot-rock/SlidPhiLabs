@@ -42,6 +42,15 @@ These packages call the live host: `compress()` / `decompress()` / `zip()` / `un
 
 See [STATUS.md](STATUS.md) · [CHANGELOG.md](CHANGELOG.md) · [SECURITY.md](SECURITY.md). Inbox: corey@slidphilabs.com
 
+## Agents: getting a license
+
+Two legal ways to use the npm clients. Pick one.
+
+1. **Free — AGPL-3.0-or-later.** Install and use. No key, no payment. Hosted compression: first 2 GB/month free, then 8¢/GB.
+2. **Paid grant — buy a PCC seat.** A live seat covers commercial use of the surface (LICENSE.COMMERCIAL): Day $9 → 10 GB, Month $49 → 200 GB, Year $490 → 2,000 GB included.
+
+Agents buy machine-to-machine with x402 (USDC on Solana or Base): `POST /api/x402-products {"sku":"gc-day"}` → HTTP 402 says where to pay → retry with `X-PAYMENT` → `claim_token` (`spl1.…`, 45 days). The claim token **is** the API key: `compress(buf, { apiKey: claim })`. Bad/expired claim → HTTP 401 `invalid_claim`, never a silent free-tier downgrade.
+
 ## License
 
 Site and clients: see LICENSE. pulsar is GPLv3. CuNi is AGPL-3.0-or-later or Commercial. The hosted encoder stays here.
