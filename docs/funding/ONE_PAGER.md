@@ -23,7 +23,7 @@ Humans: Stripe. Agents: x402 (USDC, Solana or Base) + hosted MCP `https://www.sl
 
 - **TRU8 / zeros:** 1 000 000 zeros → **8 bytes**, round-trip. gzip-9 is thousands of bytes on the same class. This is a fill gene, not a general compressor.  
 - **pulsar 2.5.0** (GPLv3, not the private engine): Silesia **55,745,438 / 211,938,580**, DECODE_OK 12/12. Beats gzip-9 (~67.6M). Loses to xz-6 (~49.4M) and to zpaq-class tools.  
-- npm clients live: `slid-phi` 2.2.11, `spl-pay-per-suite` 1.1.9, `blackjack-compression` 1.5.3, `@cptasz13/tru8` 0.1.1. Stubs and quote rails. **No private encoder in the tarball.**
+- npm clients live: `slid-phi` 2.3.1, `spl-pay-per-suite` 1.2.2. Stubs and quote rails. **No private encoder in the tarball.**
 
 We do not claim #1 on Silesia. Combined GC (the hosted PCC engine) is not on GitHub.
 

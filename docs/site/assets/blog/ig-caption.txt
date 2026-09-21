@@ -1,0 +1,7 @@
+ABB just launched Infinitus — source-to-rack DC power built around solid-state transformers. The thesis: every conversion step bleeds energy as heat, so cut the steps. Their modeling says a 5% efficiency gain frees 25 MW on a 500 MW campus.
+
+Last week we published our rack-heat lab note making the same argument one level down, inside the rack — 48V distribution, voltage scaling, co-packaged optics, adiabatic CMOS. The industry just validated the first lever. The other three are still open.
+
+Same war, different front. Wrote it up:
+
+https://www.slidphilabs.com/blog/2026-09-21-abb-infinitus-rack-heat

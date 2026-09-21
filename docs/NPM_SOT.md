@@ -7,5 +7,5 @@ Do not put Combined GC / LBR1 / pulsar encoder in an npm tarball.
 Published 2026-09-05 as `cptasz13`:
 - `slid-phi` **2.2.11**
 - `spl-pay-per-suite` **1.1.9**
-- `blackjack-compression` **1.5.3**
-- `@cptasz13/tru8` **0.1.1** (zeros → 8 B)
+- `blackjack-compression` **deprecated** (→ `slid-phi`)
+- `@cptasz13/tru8` **deprecated** (demo client)

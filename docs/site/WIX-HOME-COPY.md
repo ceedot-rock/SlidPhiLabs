@@ -123,7 +123,6 @@ Hierarchy is the attractor. Code only what remains. Residual Governance packages
 |------|--------|
 | **residual-governance** (featured gold) | Buy $199 · Access |
 | **zero-range-wave-compression** | Starting Gate · Access |
-| **blackjack-compression** | Get access |
 | **shard-zip · shard-tsdb · slid-phi** | Get access |
 
 ---

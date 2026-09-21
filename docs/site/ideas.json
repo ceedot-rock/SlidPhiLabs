@@ -19,7 +19,7 @@
       "id": 0,
       "bucket": "product",
       "name": "TRU8",
-      "blurb": "Zeros / fill specialist. All-zero data \u2192 8 bytes, round-trip. Public demo on POST /api/specialist. npm @cptasz13/tru8.",
+      "blurb": "Zeros / fill specialist. All-zero data \u2192 8 bytes, round-trip. Public demo on POST /api/specialist.",
       "surface": "zeros specialist \u00b7 public demo",
       "vehicle": [
         "product",
@@ -287,7 +287,7 @@
       "id": 14,
       "bucket": "product",
       "name": "Blackjack",
-      "blurb": "Public Apache/MIT library (blackjack-compression). $199 site SKU is commercial support / integration / indemnification \u2014 not a secret extra engine.",
+      "blurb": "Public Apache/MIT library. $199 site SKU is commercial support / integration / indemnification \u2014 not a secret extra engine.",
       "surface": "OSS + support-oss SKU",
       "vehicle": [
         "product"
@@ -303,7 +303,7 @@
       "pursued_note": "Blackjack commercial product",
       "pursued_approx": true,
       "kind": "support-oss",
-      "oss_npm": "blackjack-compression"
+      "oss_npm": "slid-phi"
     },
     {
       "id": 15,

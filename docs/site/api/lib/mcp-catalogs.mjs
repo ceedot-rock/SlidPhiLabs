@@ -118,8 +118,6 @@ export const CATALOGS = [
     entries: [
       { id: "slid-phi", name: "slid-phi", note: "HTTP client + discovery stub. No compressor engine.", url: "https://www.npmjs.com/package/slid-phi" },
       { id: "spl-pay-per-suite", name: "spl-pay-per-suite", note: "Quote helper for metered PCC jobs. First 2 GB/month free, then 8¢/GB.", url: "https://www.npmjs.com/package/spl-pay-per-suite" },
-      { id: "blackjack-compression", name: "blackjack-compression", note: "Public stub. The compressor stays hosted or licensed.", url: "https://www.npmjs.com/package/blackjack-compression" },
-      { id: "tru8", name: "@cptasz13/tru8", note: "Zeros specialist. 1 000 000 zeros → 8 bytes, round-trip.", url: "https://www.npmjs.com/package/@cptasz13/tru8" },
       { id: "shard-zip", name: "shard-zip", note: "Public GPLv3 zip helper on npm.", url: "https://www.npmjs.com/package/shard-zip" },
       { id: "shard-tsdb", name: "shard-tsdb", note: "Public GPLv3 time-series helper on npm.", url: "https://www.npmjs.com/package/shard-tsdb" },
       { id: "pulsar", name: "pulsar 2.5.0", note: "cargo/git GPLv3. Free to build; $490/yr to embed closed.", url: SITE + "/pulsar" },

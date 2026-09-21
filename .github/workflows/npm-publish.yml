@@ -20,9 +20,7 @@ jobs:
       matrix:
         pkg:
           - "."
-          - "packages/blackjack-compression"
           - "packages/spl-pay-per-suite"
-          - "packages/tru8"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

@@ -261,14 +261,7 @@ export const PRODUCT_CATALOG = {
     kind: "support-oss",
     blurb: OSS_SUPPORT_BLURB,
   },
-  blackjack: {
-    name: "Blackjack support",
-    amount_cents: 19900,
-    stripe: "https://www.slidphilabs.com/pay?sku=oss-support",
-    kind: "support-oss",
-    oss_npm: "blackjack-compression",
-    blurb: OSS_SUPPORT_BLURB,
-  },
+  blackjack: retired("oss-support", "Blackjack support (retired → OSS support)"),
   "shard-zip": {
     name: "shard-zip support",
     amount_cents: 19900,

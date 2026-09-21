@@ -7,7 +7,7 @@
 **Team Mesh:** https://spl-team-mesh.fly.dev  
 
 Public product face is **TRU8** (not these npm names).  
-`blackjack-compression`, `shard-zip`, and `shard-tsdb` are already-public OSS libraries. The $199 site SKU is **support / integration / indemnification** — not a secret extra engine.  
+`shard-zip` and `shard-tsdb` are already-public OSS libraries. `blackjack-compression` is deprecated (consolidated into `slid-phi`). The $199 site SKU is **support / integration / indemnification** — not a secret extra engine.  
 `slid-phi`, `zero-range-wave-compression`, and `spl-pay-per-suite` are **stubs or quote rails**.  
 Access after pay is an entitlement claim, not a private-engine dump. x402 auto-claim is not wired.
 
@@ -19,7 +19,7 @@ Access after pay is an entitlement claim, not a private-engine dump. x402 auto-c
 | `zrw-n00b` | ZRW N00b | **retired** | do not sell | stub npm only; git **private** |
 | `zrw-pro` | ZRW Pro | **retired** | do not sell | stub npm only; git **private** |
 | `zrw-l33t` | ZRW L33t$aUC3 | **retired** | do not sell | stub npm only; git **private** |
-| `blackjack` | Blackjack | **199** | https://www.slidphilabs.com/pay?sku=oss-support | `blackjack-compression` |
+| `blackjack` | Blackjack | **retired** | do not sell | `blackjack-compression` (deprecated → `slid-phi`) |
 | `shard-zip` | shard-zip | **199** | https://www.slidphilabs.com/pay?sku=oss-support | `shard-zip` |
 | `shard-tsdb` | shard-tsdb | **199** | https://www.slidphilabs.com/pay?sku=oss-support | `shard-tsdb` (MIT open + commercial path) |
 | `slid-phi` | slid-phi | **199** | https://www.slidphilabs.com/pay?sku=consulting | `slid-phi` |
@@ -83,8 +83,8 @@ Each commercial package should expose:
 |---------|-------|-----------------------------------|
 | slid-phi | **2.2.11** | **2.2.10** |
 | spl-pay-per-suite | **1.1.9** (6.9 GB / 3 h) | **1.1.8** (still says 100 GB) |
-| blackjack-compression | **1.5.3** | **1.5.2** |
-| @cptasz13/tru8 | **0.1.1** zeros → 8 B | **0.1.0** (broken: missing `stroke-ls.mjs`) |
+| blackjack-compression | **deprecated** | **1.5.2** |
+| @cptasz13/tru8 | **deprecated** | **0.1.0** (broken: missing `stroke-ls.mjs`) |
 | shard-zip | historical | **0.4.1** |
 | shard-tsdb | historical | **0.3.1** |
 | pulsar | cargo/git, not npm | — |

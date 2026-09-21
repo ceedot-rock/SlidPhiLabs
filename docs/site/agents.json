@@ -22,8 +22,6 @@
   "npm_packages": [
     "slid-phi",
     "spl-pay-per-suite",
-    "blackjack-compression",
-    "@cptasz13/tru8",
     "shard-zip",
     "shard-tsdb"
   ],

@@ -204,7 +204,7 @@ export default async function handler(req, res) {
     },
     npm: {
       catalog: "https://www.slidphilabs.com/npm",
-      packages: ["slid-phi", "spl-pay-per-suite", "blackjack-compression", "@cptasz13/tru8", "shard-zip", "shard-tsdb"],
+      packages: ["slid-phi", "spl-pay-per-suite", "shard-zip", "shard-tsdb"],
       not_npm: ["pulsar"],
       note: "Public stubs, clients, and demos. The PCC host encoder and LBR1 are not in tarballs.",
     },
@@ -311,14 +311,6 @@ export default async function handler(req, res) {
     web_codec: "https://www.slidphilabs.com/api/web-codec",
     omniwave: "https://www.slidphilabs.com/api/omniwave",
     product: "PCC",
-    tru8: {
-      product: "TRU8",
-      kind: "zeros specialist",
-      page: "https://www.slidphilabs.com/tru8",
-      specialist: "https://www.slidphilabs.com/specialist",
-      npm: "@cptasz13/tru8",
-      claim: "1 000 000 zeros → 8 B, round-trip",
-    },
     legal: {
       trade_name: "Slid Phi Labs",
       public_author: "Corey Tasz",
