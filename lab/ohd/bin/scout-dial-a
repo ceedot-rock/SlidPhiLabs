@@ -1,19 +1,44 @@
 #!/usr/bin/env bash
 # Scout = Dial A / PCC (lbr1). OHD seat CLI: c|d <in> <out>
+#
+# Profiles (SCOUT_PROFILE):
+#   quality — default. PCC_OPEN_RATIO=0.31 so ZMIX/NNC/STR/LZ still run
+#             when MATCH/BWT left the file fat.
+#   fast    — skip those mixers (PCC_OPEN_RATIO=0.99). Smaller wall clock,
+#             larger blobs. Still DECODE_OK. This is the Fast claim seat.
 set -euo pipefail
 LB="${SCOUT_LB:-${LB:-lb}}"
-export LBR1_PARSE=hc4
-export LBR1_WINDOW=1048576
-export LBR1_CHAIN=8
-export LBR1_LAZY=0
-export LBR1_PACK=ml4
-export LBR1_HASH=17
-export LBR1_INSERT=dense
-export LBR1_FIND=price
+PROFILE="${SCOUT_PROFILE:-quality}"
+
+# Dial A MATCH knobs. lb pcc currently follows autonoma, not these,
+# except where splb still reads LBR1_*. Harmless if ignored.
+export LBR1_PARSE="${LBR1_PARSE:-hc4}"
+export LBR1_WINDOW="${LBR1_WINDOW:-1048576}"
+export LBR1_CHAIN="${LBR1_CHAIN:-8}"
+export LBR1_LAZY="${LBR1_LAZY:-0}"
+export LBR1_PACK="${LBR1_PACK:-ml4}"
+export LBR1_HASH="${LBR1_HASH:-17}"
+export LBR1_INSERT="${LBR1_INSERT:-dense}"
+export LBR1_FIND="${LBR1_FIND:-price}"
+
+case "$PROFILE" in
+  fast)
+    # Do not pay ZMIX/NNC/STR after a held MATCH/BWT.
+    export PCC_OPEN_RATIO="${PCC_OPEN_RATIO:-0.99}"
+    ;;
+  quality|qual)
+    export PCC_OPEN_RATIO="${PCC_OPEN_RATIO:-0.31}"
+    ;;
+  *)
+    echo "scout-dial-a: unknown SCOUT_PROFILE=$PROFILE (fast|quality)" >&2
+    exit 2
+    ;;
+esac
 
 usage() {
   echo "usage: scout-dial-a c <in> <out>" >&2
   echo "       scout-dial-a d <in> <out>" >&2
+  echo "env: SCOUT_PROFILE=fast|quality  PCC_OPEN_RATIO=0.31  SCOUT_LB=lb" >&2
   exit 2
 }
 
@@ -22,7 +47,6 @@ mode=$1
 inp=$2
 out=$3
 
-# Resolve lb from PATH when not an absolute/existing path
 if [[ ! -x "$LB" ]]; then
   if command -v "$LB" >/dev/null 2>&1; then
     LB=$(command -v "$LB")
@@ -35,12 +59,10 @@ fi
 
 case "$mode" in
   c)
-    # lb pcc IN OUT → PCC1 bytes (Dial A env above)
     "$LB" pcc "$inp" "$out" >/dev/null
     [[ -s "$out" ]] || { echo "scout-dial-a: encode produced empty output" >&2; exit 1; }
     ;;
   d)
-    # lb decode handles PCC1 via splb::decode
     "$LB" decode "$inp" "$out"
     [[ -f "$out" ]] || { echo "scout-dial-a: decode produced no file" >&2; exit 1; }
     ;;
