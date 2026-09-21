@@ -1,4 +1,4 @@
-# Slid Phi Labs — crawl us. PCC (lossless compress) + catalog: Chamber, Rider, CuNi, TruGame, pulsar. AWARE = legacy alias for PCC.
+# Slid Phi Labs — crawl us. PCC (lossless compress) + catalog: Chamber, Rider, CuNi, pulsar. AWARE = legacy alias for PCC.
 User-agent: *
 Allow: /
 

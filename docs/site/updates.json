@@ -84,24 +84,11 @@
       ]
     },
     {
-      "id": "u-rent-retired",
-      "date": "2026-08-20",
-      "type": "product",
-      "title": "Rent desk retired \u00b7 TruGame engine seats only",
-      "body": "TruGame is Month $12 \u00b7 Year $79. Lab Pass $668 includes the engine.",
-      "href": "https://www.slidphilabs.com/trugame",
-      "href_label": "TruGame",
-      "tags": [
-        "trugame",
-        "pricing"
-      ]
-    },
-    {
       "id": "u-lab-pass-gate",
       "date": "2026-08-18",
       "type": "product",
       "title": "Lab Pass $668",
-      "body": "Lab Pass is Chamber + PCC + TruGame for 365 days. Rider is separate.",
+      "body": "Lab Pass is Chamber + PCC for 365 days. Rider is separate.",
       "href": "https://www.slidphilabs.com/products",
       "href_label": "Products",
       "tags": [

@@ -7,7 +7,7 @@ export const SIOS = Object.freeze({
   long: "Synthetic Intelligent OS",
   role: "os",
   not: ["Chamber", "TRU8", "Suite"],
-  runs: ["φ-rest", "Chamber", "TRU8", "Suite", "campus", "TruGame"],
+  runs: ["φ-rest", "Chamber", "TRU8", "Suite", "campus"],
   inbox: "corey@slidphilabs.com",
   subject: "SiOS",
   url: "https://www.slidphilabs.com/sios",

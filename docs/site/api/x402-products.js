@@ -556,7 +556,7 @@ export default async function handler(req, res) {
           error: "product_parked",
           sku: qSku,
           message: CATALOG[qSku].blurb || "Parked — not for sale.",
-          info: "https://www.slidphilabs.com/trugame",
+          info: "https://www.slidphilabs.com/pricing",
         });
       }
       if (CATALOG[qSku]?.kind === "usage" || CATALOG[qSku]?.sell === false) {
@@ -615,7 +615,7 @@ export default async function handler(req, res) {
       error: "product_parked",
       sku,
       message: CATALOG[sku].blurb || "Parked — not for sale.",
-      info: "https://www.slidphilabs.com/trugame",
+      info: "https://www.slidphilabs.com/pricing",
     });
   }
 

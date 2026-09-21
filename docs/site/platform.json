@@ -77,29 +77,6 @@
       "claim": "1 000 000 zeros → 8 B, round-trip",
       "note": "TRU8 packs all-zero data to 8 bytes and restores it. Public zeros specialist."
     },
-    "game_engine": {
-      "name": "TruGame",
-      "status": "building",
-      "official": true,
-      "description": "TruGame \u2014 game engine (building). Inquire corey@.",
-      "products": [
-        "TruGame"
-      ],
-      "related": [
-        "TRU8",
-        "Chamber",
-        "Great Agentic Olympiad"
-      ],
-      "urls": {
-        "home": "https://www.slidphilabs.com/",
-        "chamber": "https://www.slidphilabs.com/chamber",
-        "demos": "https://www.slidphilabs.com/demos",
-        "olympiad": "https://www.slidphilabs.com/olympiad",
-        "projects": "https://www.slidphilabs.com/projects.json",
-        "contact": "mailto:corey@slidphilabs.com?subject=TruGame"
-      },
-      "note": "Building. Source private. Inquire corey@slidphilabs.com subject TruGame."
-    },
     "olympiad": {
       "name": "Great Agentic Olympiad",
       "urls": {
@@ -139,10 +116,8 @@
   "pivot": {
     "gaming": {
       "name": "Great Agentic Olympiad",
-      "engine": "TruGame",
       "status": "building",
-      "url": "https://www.slidphilabs.com/olympiad",
-      "note": "TruGame \u2014 game engine (building)."
+      "url": "https://www.slidphilabs.com/olympiad"
     },
     "security": {
       "name": "Chamber",

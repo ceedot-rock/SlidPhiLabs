@@ -15,11 +15,6 @@ Agents: https://www.slidphilabs.com/agents
 
 ## Modules
 
-### Game Engine · TruGame (parked/building)
-TruGame — game engine. Parked/building — not a live engine, not for sale (HTTP 410 on checkout + x402).
-- Planned prices when unparked: $12/mo · $79/yr. Not for sale today.
-- Workbench: Sports-sims packages/trugame + sim-nfl
-
 ### Compression · PCC
 - Page: https://www.slidphilabs.com/pcc
 - Demos: https://www.slidphilabs.com/demos
@@ -46,9 +41,8 @@ https://www.slidphilabs.com/projects.json
 - Chamber = cloak license. $9/mo · $99/yr. Open is keys-only.
 - PCC = hosted compressor. $9/day · $49/mo · $490/yr.
 - PCC meter = first 2 GB/month free, then 8¢/GB. Month plan includes 200 GB. Not a fifth product.
-- Lab Pass = Chamber + PCC now, $668/yr. TruGame when unparked — not a live unlock today. Not Rider.
+- Lab Pass = Chamber + PCC, $668/yr. Not Rider.
 - Access = entitlement claim. Not a codec dump.
 
 ## Scope
-TruGame = game engine. Parked/building — not for sale (410). Planned $12/mo · $79/yr when unparked.
 The engine stays in the lab.

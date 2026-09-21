@@ -40,7 +40,7 @@ const STANDING = [
   { sku: "rider-ops-year", name: "Rider Ops · annual fleet watch", usd: "290", kind: "rider-ops", blurb: "Year of fleet watch. Needs a Rider seat." },
   { sku: "warrant-month", name: "Warrant · monthly mandate seat", usd: "29", kind: "warrant", blurb: "Signed mandate + receipts for a Rider. Not identity. Pair X-Agent-Rider with X-Agent-Warrant." },
   { sku: "warrant-year", name: "Warrant · annual mandate seat", usd: "290", kind: "warrant", blurb: "Year of mandates and receipts. Needs a Rider token." },
-  { sku: "lab-pass", name: "Lab Pass · annual", usd: "668", kind: "seat", blurb: "Chamber + PCC, 365 days. TruGame parked (not a live unlock). Not Rider." },
+  { sku: "lab-pass", name: "Lab Pass · annual", usd: "668", kind: "seat", blurb: "Chamber + PCC, 365 days. Not Rider." },
   { sku: "quikgater", name: "Quikgater · pay-per-fact fetch", usd: "usage", kind: "usage", blurb: "Not a seat. Unpaid URL → HTTP 402. Worker: quikgater-worker.ceedotrock.workers.dev" },
   { sku: "oss-support", name: "OSS support", usd: "199.00", kind: "support-oss", blurb: OSS_BLURB },
   { sku: "consulting", name: "Consulting", usd: "250.00", kind: "service", blurb: "Two hours of lab time." },

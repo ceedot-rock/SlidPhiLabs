@@ -9,7 +9,7 @@ Chamber — two-key JSON — $9/mo · $99/yr — https://www.slidphilabs.com/cha
 Agent-Rider — $79/mo · $790/yr — https://www.slidphilabs.com/rider
 CuNi Studio — $0 — write once, print many languages; Python/Go/JS must match — https://cuni-studio.fly.dev/
 pulsar 2.5.0 — free open-source compressor — https://www.slidphilabs.com/pulsar
-Lab Pass — $668/yr (Chamber + PCC + TruGame parked/building — not a live engine; not Rider) — https://www.slidphilabs.com/lab-pass
+Lab Pass — $668/yr (Chamber + PCC; not Rider) — https://www.slidphilabs.com/lab-pass
 Compare — https://www.slidphilabs.com/compare
 Try 24h — https://www.slidphilabs.com/box
 MCP — https://www.slidphilabs.com/mcp

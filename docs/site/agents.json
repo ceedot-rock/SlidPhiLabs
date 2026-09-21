@@ -2,7 +2,7 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "Agents talk. Rider delivers. Discover MCP + settle Rider seats (x402 USDC or Stripe). Also PCC lossless compressor, Chamber, CuNi. AWARE is a retired PCC alias. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight. Coming next: file sharing between agents (same signed seats) — not live. TruGame parked/building. No KYC verified claims.",
+  "description": "Agents talk. Rider delivers. Discover MCP + settle Rider seats (x402 USDC or Stripe). Also PCC lossless compressor, Chamber, CuNi. AWARE is a retired PCC alias. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight. Coming next: file sharing between agents (same signed seats) — not live. No KYC verified claims.",
   "version": "2.2.0",
   "updated": "2026-09-17",
   "lead_product": "pcc",
@@ -49,15 +49,12 @@
     "note": "POST /api/compress"
   },
   "retired": [
-    "trugame-rent-week",
     "zrw-n00b",
     "zrw-pro",
     "zrw-l33t",
     "$1900",
     "$950",
-    "$12.50",
-    "trugame-month",
-    "trugame-year"
+    "$12.50"
   ],
   "discovery": "https://www.slidphilabs.com/api/agent",
   "mcp": "https://www.slidphilabs.com/mcp",
@@ -104,15 +101,6 @@
       "url": "https://www.slidphilabs.com/pcc",
       "price": "Day $9 · Month $49 · Year $490",
       "note": "PCC = lossless compressor only. AWARE is a retired alias."
-    },
-    {
-      "id": "trugame",
-      "name": "TruGame",
-      "role": "parked",
-      "url": "https://www.slidphilabs.com/trugame",
-      "price": "PARKED/BUILDING — not for sale (410)",
-      "status": "parked",
-      "note": "Not a live engine. Checkout and x402 return 410 product_parked."
     },
     {
       "id": "quikgater",
@@ -233,13 +221,6 @@
         "actions": [
           "file sharing between agents (same signed seats) — not live"
         ]
-      },
-      {
-        "n": 8,
-        "title": "TruGame",
-        "actions": [
-          "parked/building — not a live engine"
-        ]
       }
     ],
     "sku_cheat_sheet": [
@@ -305,13 +286,7 @@
         "sku": "lab-pass",
         "usd": 668,
         "human": "/pay?sku=lab-pass",
-        "note": "Chamber+PCC now; TruGame when unparked"
-      },
-      {
-        "sku": "trugame-*",
-        "usd": null,
-        "human": null,
-        "note": "PARKED/BUILDING — not for sale (410)"
+        "note": "Chamber+PCC"
       }
     ],
     "x402_resource": "same sku via POST /api/x402-products",
@@ -321,8 +296,7 @@
       "no_kyc_verified_claims",
       "pcc_is_lossless_compressor_only",
       "aware_retired_alias_only",
-      "rider_urls_fly_only_agentrider.fly.dev",
-      "trugame_parked"
+      "rider_urls_fly_only_agentrider.fly.dev"
     ]
   }
 }

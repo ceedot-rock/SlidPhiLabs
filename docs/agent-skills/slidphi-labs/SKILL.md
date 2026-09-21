@@ -8,12 +8,12 @@ version: 1.1.0
 
 Cherry Hill, NJ. Corey Tasz. Inbox corey@slidphilabs.com.
 
-Co-lead for agents: **Agent-Rider + settle + MCP**, alongside **PCC** (lossless compressor only). Storefront: Rider, Warrant, PCC, TRUSTREAM, Chamber, CuNi. TruGame parked/building.
+Co-lead for agents: **Agent-Rider + settle + MCP**, alongside **PCC** (lossless compressor only). Storefront: Rider, Warrant, PCC, TRUSTREAM, Chamber, CuNi.
 
 
 ## Agent Quickstart (mirror)
 
-See live https://www.slidphilabs.com/llms.txt and https://www.slidphilabs.com/SKILL.md — Rider + settle + MCP co-lead with PCC. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight. TruGame parked. File sharing coming next — not live.
+See live https://www.slidphilabs.com/llms.txt and https://www.slidphilabs.com/SKILL.md — Rider + settle + MCP co-lead with PCC. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight. File sharing coming next — not live.
 
 ## Discover first
 
@@ -65,5 +65,4 @@ Lab verbs $0.10 each: `lab-check`, `lab-translate`, `lab-squeeze`.
 npm: `slid-phi` · `spl-pay-per-suite` · `json-chamber-mcp`. pypi: `json-chamber`.
 
 ## Honesty locks
-- TruGame is parked/building — not a live engine. Planned $12/mo · $79/yr are not a live unlock.
-- Lab Pass may list TruGame as building/parked; PCC remains compressor-only.
+- PCC remains compressor-only.

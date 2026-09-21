@@ -1,6 +1,6 @@
 ---
 name: slid-phi-labs
-description: Agent-Rider identity + settle (x402/Stripe) + MCP, co-lead with PCC lossless compressor. Chamber, Warrant, CuNi. TruGame parked.
+description: Agent-Rider identity + settle (x402/Stripe) + MCP, co-lead with PCC lossless compressor. Chamber, Warrant, CuNi.
 ---
 
 # Slid Phi Labs
@@ -8,7 +8,7 @@ description: Agent-Rider identity + settle (x402/Stripe) + MCP, co-lead with PCC
 **Co-lead for agents:** Agent-Rider + settle + MCP, alongside **PCC** (hosted lossless compressor only — AWARE is a retired alias).  
 Rider $79/$790 · Warrant $29/$290 · Chamber $9/$99 · PCC $9/$49/$490 · CuNi Studio $0.  
 Stream: **TRUSTREAM** rides a PCC seat. Meter: first 2 GB/month free, then 8¢/GB (`POST /api/ppp-quote` / MCP `spl_quote`).  
-Lab Pass: **$668/yr** = Chamber + PCC now; TruGame when unparked (parked/building — not a live unlock). Rider is its own seat.
+Lab Pass: **$668/yr** = Chamber + PCC. Rider is its own seat.
 
 ## Agent Quickstart
 1. Discover: GET https://www.slidphilabs.com/api/agent · GET /.well-known/mcp/server-card.json
@@ -18,7 +18,7 @@ Lab Pass: **$668/yr** = Chamber + PCC now; TruGame when unparked (parked/buildin
 5. Rider: issue L0–L4; peers verify JWKS https://agentrider.fly.dev/.well-known/jwks.json; DMs POST https://agentrider.fly.dev/api/dm with `X-Agent-Rider`.
 6. Warrant: /warrant · skus warrant-month/year.
 7. Coming next: file sharing between agents (same signed seats) — not live.
-8. TruGame: parked/building — not a live engine (checkout + x402 → 410).
+8. Retired SKUs: checkout + x402 → 410.
 
 ## Discover
 GET https://www.slidphilabs.com/api/agent  

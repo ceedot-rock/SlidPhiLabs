@@ -103,7 +103,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_catalog",
     description:
-      "List standing Slid Phi Labs seats agents can buy via x402 (Chamber, PCC, Rider, Lab Pass, TruGame, consulting). Suite jobs are separate.",
+      "List standing Slid Phi Labs seats agents can buy via x402 (Chamber, PCC, Rider, Lab Pass, consulting). Suite jobs are separate.",
     inputSchema: { type: "object", properties: {} },
   },
   {
@@ -116,7 +116,7 @@ const TOOLS = [
         sku: {
           type: "string",
           description:
-            "chamber-year($99) | gc-year($490) | rider-year($790) | lab-pass($668) | consulting($250) | oss-support($199) — TruGame parked",
+            "chamber-year($99) | gc-year($490) | rider-year($790) | lab-pass($668) | consulting($250) | oss-support($199)",
         },
         email: { type: "string" },
         note: { type: "string" },

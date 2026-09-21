@@ -49,7 +49,6 @@
     "note": "POST /api/compress"
   },
   "retired": [
-    "trugame-rent-week",
     "zrw-n00b",
     "zrw-pro",
     "zrw-l33t",
@@ -101,13 +100,6 @@
       "url": "https://www.slidphilabs.com/pcc",
       "price": "Day $9 \u00b7 Month $49 \u00b7 Year $490",
       "note": "AWARE is a retired alias for PCC"
-    },
-    {
-      "id": "trugame",
-      "name": "TruGame",
-      "role": "engine",
-      "url": "https://www.slidphilabs.com/trugame",
-      "price": "Month $12 \u00b7 Year $79"
     },
     {
       "id": "quikgater",

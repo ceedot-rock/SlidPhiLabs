@@ -10,7 +10,7 @@
  *   Chamber: chamber-month $9 | chamber-year $99  (open is keys-only)
  *   AWARE:   gc-day $9 | gc-month $49 | gc-year $490
  *   Rider:   rider-month $79 | rider-year $790 · Ops $29/$290
- *   Lab Pass $668 (Chamber + AWARE + TruGame; not Rider)
+ *   Lab Pass $668 (Chamber + AWARE; not Rider)
  *
  * One email only: corey@slidphilabs.com
  */
@@ -201,7 +201,7 @@ const SEATS = {
     amount_cents: 66800,
     product: "seat",
     stack: "seat",
-    includes: ["Chamber", "AWARE", "TruGame engine"],
+    includes: ["Chamber", "AWARE"],
     does_not_include: ["Agent-Rider", "engine source"],
   },
   "tru8-day": {

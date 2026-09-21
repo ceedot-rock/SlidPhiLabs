@@ -13,7 +13,7 @@ pulsar is GPL-3.0-or-later, or SKU `pulsar-exception` at **$490/year** for one c
 
 PCC is a **hosted** compressor. You buy a seat to run it ($9/day · $49/month · $490/year). You do **not** get the source.
 
-Chamber ($9/month · $99/year), Agent-Rider ($79/month · $790/year), and Lab Pass ($668/year: Chamber + PCC + TruGame, not Rider) are paid product seats. CuNi’s playground is free; shipping CuNi in a closed app is $490/year (SKU `cuni-exception`).
+Chamber ($9/month · $99/year), Agent-Rider ($79/month · $790/year), and Lab Pass ($668/year: Chamber + PCC, not Rider) are paid product seats. CuNi’s playground is free; shipping CuNi in a closed app is $490/year (SKU `cuni-exception`).
 
 The production engine is private. A $199 OSS-support SKU is help, not a license, unless the invoice says otherwise.
 
@@ -47,7 +47,7 @@ Without a matching invoice, you do not receive PCC encoder source, the Chamber k
 | Product | SKU | Price |
 |---|---|---|
 | PCC Pro | `gc-month` | $49 / month |
-| Lab Pass year | `lab-pass` | $668 (Chamber + PCC + TruGame; not Rider) |
+| Lab Pass year | `lab-pass` | $668 (Chamber + PCC; not Rider) |
 | Chamber month / year | `chamber-month` / `chamber-year` | $9 / $99 |
 
 Hosted compression: first 2 GB each month are free. After that, 8¢ per GB. Card charges start at $1. A PCC plan includes more (day 10 GB, month 200 GB, year 2,000 GB), then the same 8¢. That meter pays for the machines on the PCC plan.

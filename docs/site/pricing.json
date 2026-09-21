@@ -24,7 +24,6 @@
     "gc_year": 490,
     "rider_year": 790,
     "rider_ops_year": 290,
-    "trugame_year": 79,
     "lab_pass_year": 668
   },
   "products": {
@@ -130,16 +129,6 @@
       "stripe": "https://www.slidphilabs.com/pay?sku=pulsar-exception",
       "grants": "One closed-source product, one year. pulsar stays GPLv3."
     },
-    "trugame": {
-      "name": "TruGame",
-      "status": "parked",
-      "note": "Parked/building — not a live engine. Not for sale.",
-      "info": "https://www.slidphilabs.com/trugame",
-      "planned_prices_usd": {
-        "month": 12,
-        "year": 79
-      }
-    },
     "lab_pass": {
       "name": "Lab Pass Year",
       "sku": "lab-pass",
@@ -152,10 +141,7 @@
       "excludes": [
         "rider"
       ],
-      "note": "Lab Pass is Chamber + PCC now. TruGame when unparked — not a live unlock today.",
-      "includes_when_unparked": [
-        "trugame"
-      ]
+      "note": "Lab Pass is Chamber + PCC."
     },
     "consulting": {
       "name": "Lab consulting (2 hours)",

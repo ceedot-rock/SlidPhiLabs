@@ -100,7 +100,7 @@ export default async function handler(req, res) {
       error: "product_parked",
       sku,
       message: p.blurb || "Parked — not for sale.",
-      info: "https://www.slidphilabs.com/trugame",
+      info: "https://www.slidphilabs.com/pricing",
     });
   }
 

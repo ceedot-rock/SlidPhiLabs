@@ -70,17 +70,9 @@
       "id": "lab-pass",
       "name": "Lab Pass",
       "status": "live",
-      "role": "365 days \u2014 Chamber + PCC + TruGame. Not Rider.",
+      "role": "365 days \u2014 Chamber + PCC. Not Rider.",
       "price": "$668",
       "url": "https://www.slidphilabs.com/lab-pass"
-    },
-    {
-      "id": "trugame",
-      "name": "TruGame",
-      "status": "live",
-      "role": "engine seat. Not a game store.",
-      "price": "Month $12 \u00b7 Year $79",
-      "url": "https://www.slidphilabs.com/trugame"
     }
   ]
 }
