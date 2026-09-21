@@ -1,13 +1,27 @@
 {
   "service": "Slid Phi Labs \u2014 Weekly Blog",
   "version": "1.0.0",
-  "updated": "2026-09-17",
+  "updated": "2026-09-21",
   "canonical": "https://www.slidphilabs.com/blog",
   "social": {
     "x": "https://x.com/slidphilabs",
     "handle": "@slidphilabs"
   },
   "posts": [
+    {
+      "id": "2026-09-21-abb-infinitus-rack-heat",
+      "week_of": "2026-09-21",
+      "published": "2026-09-21",
+      "title": "ABB's Infinitus and the rack-heat problem: same war, different front",
+      "slug": "2026-09-21-abb-infinitus-rack-heat",
+      "url": "https://www.slidphilabs.com/blog/2026-09-21-abb-infinitus-rack-heat",
+      "summary": "ABB's Infinitus cuts conversion steps at the facility level; our rack-heat note made the same argument inside the rack (48V distribution) and goes further at the chip level. Vendor modeling vs conditional envelope, stacked honestly.",
+      "tags": [
+        "rack-heat",
+        "datacenters",
+        "power"
+      ]
+    },
     {
       "id": "2026-09-17-agents-talk-rider-delivers",
       "week_of": "2026-09-15",
