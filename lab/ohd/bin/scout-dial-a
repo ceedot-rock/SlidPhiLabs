@@ -1,50 +1,29 @@
 #!/usr/bin/env bash
-# Scout = Dial A / PCC (lbr1). OHD seat CLI: c|d <in> <out>
+# Scout = Dial A / PCC. First DECODE_OK Fast seat.
 set -euo pipefail
 LB="${SCOUT_LB:-${LB:-lb}}"
-export LBR1_PARSE=hc4
-export LBR1_WINDOW=1048576
-export LBR1_CHAIN=8
-export LBR1_LAZY=0
-export LBR1_PACK=ml4
-export LBR1_HASH=17
-export LBR1_INSERT=dense
-export LBR1_FIND=price
-
-usage() {
-  echo "usage: scout-dial-a c <in> <out>" >&2
-  echo "       scout-dial-a d <in> <out>" >&2
-  exit 2
-}
-
-[[ $# -eq 3 ]] || usage
-mode=$1
-inp=$2
-out=$3
-
-# Resolve lb from PATH when not an absolute/existing path
-if [[ ! -x "$LB" ]]; then
-  if command -v "$LB" >/dev/null 2>&1; then
-    LB=$(command -v "$LB")
-  else
-    echo "scout-dial-a: lb not found (set SCOUT_LB or LB, or put lb on PATH)" >&2
-    exit 1
-  fi
+PROFILE="${SCOUT_PROFILE:-quality}"
+export LBR1_PARSE="${LBR1_PARSE:-hc4}"
+export LBR1_WINDOW="${LBR1_WINDOW:-1048576}"
+export LBR1_CHAIN="${LBR1_CHAIN:-8}"
+export LBR1_LAZY="${LBR1_LAZY:-0}"
+export LBR1_PACK="${LBR1_PACK:-ml4}"
+export LBR1_HASH="${LBR1_HASH:-17}"
+export LBR1_INSERT="${LBR1_INSERT:-dense}"
+export LBR1_FIND="${LBR1_FIND:-price}"
+case "$PROFILE" in
+  fast) export PCC_OPEN_RATIO="${PCC_OPEN_RATIO:-0.99}" ;;
+  quality|qual) export PCC_OPEN_RATIO="${PCC_OPEN_RATIO:-0.31}" ;;
+  *) echo "scout-dial-a: unknown SCOUT_PROFILE=$PROFILE" >&2; exit 2 ;;
+esac
+[[ $# -eq 3 ]] || { echo "usage: scout-dial-a c|d <in> <out>" >&2; exit 2; }
+mode=$1; inp=$2; out=$3
+if ! command -v "$LB" >/dev/null 2>&1 && [[ ! -x "$LB" ]]; then
+  echo "scout-dial-a: lb not found" >&2; exit 1
 fi
 [[ -f "$inp" ]] || { echo "scout-dial-a: input not found: $inp" >&2; exit 1; }
-
 case "$mode" in
-  c)
-    # lb pcc IN OUT → PCC1 bytes (Dial A env above)
-    "$LB" pcc "$inp" "$out" >/dev/null
-    [[ -s "$out" ]] || { echo "scout-dial-a: encode produced empty output" >&2; exit 1; }
-    ;;
-  d)
-    # lb decode handles PCC1 via splb::decode
-    "$LB" decode "$inp" "$out"
-    [[ -f "$out" ]] || { echo "scout-dial-a: decode produced no file" >&2; exit 1; }
-    ;;
-  *)
-    usage
-    ;;
+  c) "$LB" pcc "$inp" "$out" >/dev/null; [[ -s "$out" ]] || exit 1 ;;
+  d) "$LB" decode "$inp" "$out"; [[ -f "$out" ]] || exit 1 ;;
+  *) exit 2 ;;
 esac
