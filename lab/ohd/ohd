@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Omni Head Display (OHD) — router CLI. Not a codec. First DECODE_OK wins."""
+"""Omni Head Display (OHD) — router CLI. Not a codec.
+
+v1 law: race available seats, keep the smallest DECODE_OK blob.
+Ties go to scout. Never label sniper Fast.
+"""
 from __future__ import annotations
 
 import json
@@ -10,11 +14,67 @@ import struct
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path
 from typing import Any
 
 MAGIC = b"OHD1"
 ROOT = Path(__file__).resolve().parent
+DEFAULT_SNIPER_MAX = 4 * 1024 * 1024
+DEFAULT_TIMEOUT = 30.0
+
+
+def _env_int(name: str, default: int) -> int:
+    raw = os.environ.get(name)
+    if raw is None or raw.strip() == "":
+        return default
+    try:
+        return int(raw, 10)
+    except ValueError:
+        print(f"OHD: bad {name}={raw!r}; using {default}", file=sys.stderr)
+        return default
+
+
+def _env_float(name: str, default: float) -> float:
+    raw = os.environ.get(name)
+    if raw is None or raw.strip() == "":
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        print(f"OHD: bad {name}={raw!r}; using {default}", file=sys.stderr)
+        return default
+
+
+def _truthy(name: str) -> bool:
+    return os.environ.get(name, "").strip().lower() in ("1", "true", "yes", "on")
+
+
+def pick_mode() -> str:
+    mode = os.environ.get("OHD_PICK", "smallest").strip().lower()
+    if mode not in ("smallest", "first"):
+        print(f"OHD: bad OHD_PICK={mode!r}; using smallest", file=sys.stderr)
+        return "smallest"
+    return mode
+
+
+def sniper_max_bytes() -> int:
+    return _env_int("OHD_SNIPER_MAX_BYTES", DEFAULT_SNIPER_MAX)
+
+
+def seat_timeout(seat_id: str) -> float:
+    if seat_id == "sniper":
+        return _env_float("OHD_SNIPER_TIMEOUT_SEC", DEFAULT_TIMEOUT)
+    return _env_float("OHD_SCOUT_TIMEOUT_SEC", DEFAULT_TIMEOUT)
+
+
+def sniper_allowed(n: int) -> tuple[bool, str]:
+    if _truthy("OHD_SNIPER_FORCE"):
+        return True, "force"
+    cap = sniper_max_bytes()
+    if n > cap:
+        return False, f"size {n} > OHD_SNIPER_MAX_BYTES={cap}"
+    return True, "ok"
 
 
 def _resolve_scout() -> Path | None:
@@ -59,12 +119,18 @@ def peek(data: bytes) -> dict[str, Any]:
     }
 
 
-def _run_seat(bin_path: Path, mode: str, inp: Path, out: Path) -> None:
-    r = subprocess.run(
-        [str(bin_path), mode, str(inp), str(out)],
-        capture_output=True,
-        text=True,
-    )
+def _run_seat(bin_path: Path, mode: str, inp: Path, out: Path, timeout: float) -> None:
+    try:
+        r = subprocess.run(
+            [str(bin_path), mode, str(inp), str(out)],
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired as e:
+        raise RuntimeError(
+            f"seat {bin_path.name} {mode} timeout after {timeout}s"
+        ) from e
     if r.returncode != 0:
         raise RuntimeError(
             f"seat {bin_path.name} {mode} failed rc={r.returncode}: {r.stderr or r.stdout}"
@@ -73,18 +139,22 @@ def _run_seat(bin_path: Path, mode: str, inp: Path, out: Path) -> None:
         raise RuntimeError(f"seat {bin_path.name} {mode} produced empty output")
 
 
-def try_seat(seat_id: str, bin_path: Path, raw: bytes, work: Path) -> tuple[bytes, dict] | None:
+def try_seat(
+    seat_id: str, bin_path: Path, raw: bytes, work: Path, timeout: float
+) -> tuple[bytes, dict] | None:
     """Encode → decode → cmp. Return (packed, meta) on DECODE_OK else None."""
     raw_path = work / "raw.bin"
     packed_path = work / f"{seat_id}.packed"
     back_path = work / f"{seat_id}.back"
     raw_path.write_bytes(raw)
+    t0 = time.monotonic()
     try:
-        _run_seat(bin_path, "c", raw_path, packed_path)
-        _run_seat(bin_path, "d", packed_path, back_path)
+        _run_seat(bin_path, "c", raw_path, packed_path, timeout)
+        _run_seat(bin_path, "d", packed_path, back_path, timeout)
     except RuntimeError as e:
         print(f"OHD: seat={seat_id} FAIL encode/decode: {e}", file=sys.stderr)
         return None
+    elapsed = time.monotonic() - t0
     back = back_path.read_bytes()
     if back != raw:
         print(
@@ -93,30 +163,50 @@ def try_seat(seat_id: str, bin_path: Path, raw: bytes, work: Path) -> tuple[byte
         )
         return None
     packed = packed_path.read_bytes()
+    if len(packed) >= len(raw):
+        print(
+            f"OHD: seat={seat_id} DECODE_OK but no shrink ({len(packed)} >= {len(raw)}); skip",
+            file=sys.stderr,
+        )
+        return None
     meta = {
         "magic": "OHD1",
         "seat": seat_id,
         "raw_size": len(raw),
         "packed_size": len(packed),
         "decode_ok": True,
+        "elapsed_sec": round(elapsed, 4),
         "label": seat_id,  # honest: never "fast" for sniper
     }
     return packed, meta
 
 
-def seat_try_list() -> list[tuple[str, Path]]:
+def seat_try_list(n: int) -> tuple[list[tuple[str, Path]], list[dict]]:
     seats: list[tuple[str, Path]] = []
+    skipped: list[dict] = []
     scout = _resolve_scout()
     if scout is not None and os.access(scout, os.X_OK):
         seats.append(("scout", scout))
     else:
         print("OHD: scout PARKED (no Dial A / PCC binary) — try sniper", file=sys.stderr)
+        skipped.append({"seat": "scout", "reason": "parked"})
     sniper = _resolve_sniper()
     if sniper is not None and os.access(sniper, os.X_OK):
-        seats.append(("sniper", sniper))
+        ok, why = sniper_allowed(n)
+        if ok:
+            seats.append(("sniper", sniper))
+        else:
+            print(f"OHD: sniper SKIP {why}", file=sys.stderr)
+            skipped.append({"seat": "sniper", "reason": why})
     else:
         print("OHD: sniper missing (set OHD_SNIPER or put npcc on PATH)", file=sys.stderr)
-    return seats
+        skipped.append({"seat": "sniper", "reason": "missing"})
+    return seats, skipped
+
+
+def _tie_rank(seat_id: str) -> int:
+    # Lower wins ties. Scout is the fast seat; sniper is never preferred on a tie.
+    return 0 if seat_id == "scout" else 1
 
 
 def frame_write(meta: dict, packed: bytes) -> bytes:
@@ -138,24 +228,53 @@ def frame_read(blob: bytes) -> tuple[dict, bytes]:
 def cmd_compress(inp: Path, out: Path) -> int:
     raw = inp.read_bytes()
     features = peek(raw)
-    seats = seat_try_list()
+    seats, skipped = seat_try_list(len(raw))
     if not seats:
         print("OHD: no seats available", file=sys.stderr)
         return 2
+    mode = pick_mode()
+    winners: list[tuple[bytes, dict]] = []
+    raced: list[dict] = []
     with tempfile.TemporaryDirectory(prefix="ohd-") as td:
         work = Path(td)
         for seat_id, bin_path in seats:
-            result = try_seat(seat_id, bin_path, raw, work)
+            timeout = seat_timeout(seat_id)
+            result = try_seat(seat_id, bin_path, raw, work, timeout)
             if result is None:
+                raced.append({"seat": seat_id, "decode_ok": False})
+                if mode == "first":
+                    continue
                 continue
             packed, meta = result
-            meta["peek"] = features
-            out.write_bytes(frame_write(meta, packed))
-            # First DECODE_OK wins — print seat and stop
-            print(f"seat={seat_id} DECODE_OK raw={meta['raw_size']} packed={meta['packed_size']}")
-            return 0
-    print("OHD: no DECODE_OK from any seat", file=sys.stderr)
-    return 1
+            raced.append(
+                {
+                    "seat": seat_id,
+                    "decode_ok": True,
+                    "packed_size": meta["packed_size"],
+                    "elapsed_sec": meta["elapsed_sec"],
+                }
+            )
+            if mode == "first":
+                winners = [(packed, meta)]
+                break
+            winners.append((packed, meta))
+        if not winners:
+            print("OHD: no DECODE_OK from any seat", file=sys.stderr)
+            return 1
+        packed, meta = min(
+            winners, key=lambda t: (t[1]["packed_size"], _tie_rank(t[1]["seat"]))
+        )
+        meta["peek"] = features
+        meta["pick"] = mode
+        meta["raced"] = raced
+        if skipped:
+            meta["skipped"] = skipped
+        out.write_bytes(frame_write(meta, packed))
+        print(
+            f"seat={meta['seat']} DECODE_OK raw={meta['raw_size']} "
+            f"packed={meta['packed_size']} pick={mode} raced={len(raced)}"
+        )
+        return 0
 
 
 def cmd_decompress(framed: Path, raw_out: Path) -> int:
@@ -181,7 +300,7 @@ def cmd_decompress(framed: Path, raw_out: Path) -> int:
         back_path = work / "back"
         packed_path.write_bytes(packed)
         try:
-            _run_seat(bin_path, "d", packed_path, back_path)
+            _run_seat(bin_path, "d", packed_path, back_path, seat_timeout(str(seat)))
         except RuntimeError as e:
             print(f"OHD: decompress fail: {e}", file=sys.stderr)
             return 1
@@ -196,7 +315,10 @@ def cmd_decompress(framed: Path, raw_out: Path) -> int:
 
 def main(argv: list[str]) -> int:
     if len(argv) < 2 or argv[1] in ("-h", "--help"):
-        print("usage: ohd compress <in> <out>\n       ohd decompress <out> <raw>", file=sys.stderr)
+        print(
+            "usage: ohd compress <in> <out>\n       ohd decompress <out> <raw>",
+            file=sys.stderr,
+        )
         return 2
     cmd = argv[1]
     if cmd == "compress":
