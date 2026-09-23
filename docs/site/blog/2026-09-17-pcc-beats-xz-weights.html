@@ -27,7 +27,7 @@
     <div class="spl-prose">
       <p>Whisper Tiny FP32. 151,061,672 bytes in. PCC wrote <strong>67,103,604</strong>. Ratio 0.444. Every byte verified by decode plus SHA-256.</p>
       <p>The baselines on the same file: xz-6 <strong>68,282,568</strong>. zstd-19 74,556,043. gzip-9 86,795,913. zstd-3 88,176,968. All 16 benchmark cells (4 weight files × 4 compressors) decode-verified. PCC beats the strongest baseline by 1.73%.</p>
-      <p>Exact selection, no shortcuts. Eight selector modes — including LZ, BWT, column-BWT, transposed-BWT, LZM2, per-block mixing, and per-block exact selection — each encoded the file for real, and the smallest actual byte count won. Mode 8 (per-block exact selection) took this file. xz-6 ran as a separate baseline, not a selector arm.</p>
+      <p>Exact selection, no shortcuts. Seven modes — LZ, BWT, column-BWT, transposed-BWT, LZM2, per-block mixing, xz — each encoded the file for real, and the smallest actual byte count won. Mode 8 (per-block exact selection) took this file.</p>
       <p>The honest costs: encode took 3,809 s against xz-6's 258 s — about 15× slower. Decode 36 s vs 10 s. A win without costs is marketing; this is a ratio-vs-speed tradeoff, stated plainly. Need fast, use zstd. Need small, PCC just took the crown on this file.</p>
       <p>One file of four. GPT-2, SmolLM2, and Whisper Base baselines are done; their PCC runs are pending. No broad claims about neural weights in general. One verified win is one verified win.</p>
       <p>Why it matters: model weights are the most-moved bytes in ML infrastructure — every checkpoint download, every deployment, every edge device. At that scale, 1.7% is real bandwidth and real money.</p>
