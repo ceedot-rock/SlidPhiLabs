@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Data-Handling Policy — PCC & TRUSTREAM · Slid Phi Labs</title>
+  <meta name="description" content="How we handle the files you send us. Plain English."/>
+  <link rel="canonical" href="https://www.slidphilabs.com/data-handling"/>
+  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=36"/>
+  <style>
+    .spl-draft { background: #fff3cd; border: 1px solid #d9a821; color: #5c4300; padding: 12px 16px; border-radius: 8px; font-weight: 700; margin: 0 0 20px; }
+    .spl-flag { display: inline-block; background: #ffe9e9; border: 1px solid #c0392b; color: #7a1f14; padding: 2px 8px; border-radius: 6px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <div class="spl-draft">DRAFT FOR REVIEW — staged on branch <span class="mono">gap-pack-legal</span>, not published, not in effect. Nothing here is live until Corey approves.</div>
+    <p class="spl-kicker">Slid Phi Labs · legal drafts</p>
+    <h1>Data-Handling Policy — PCC &amp; TRUSTREAM</h1>
+<p>Slid Phi Labs · <strong>DRAFT FOR REVIEW — not published, not in effect</strong></p>
+<p>Plain-English version of what happens to the files you send us. If the plain</p>
+<p>version and the legal version ever disagree, the plain version wins — tell us</p>
+<p>and we&#x27;ll fix the legal one.</p>
+<h2>What we store</h2>
+<ul>
+<li><strong>The files you upload</strong>, the <strong>compressed archives we produce</strong>, and **job</li>
+</ul>
+<p>records**: byte counts, SHA-256 hashes of input and output, timestamps, and</p>
+<p>decode-verification results.</p>
+<ul>
+<li><strong>TRUSTREAM tiles</strong> you send us (log/telemetry data), stored under the same rules.</li>
+<li><strong>What we don&#x27;t store:</strong> payment card details (Stripe handles those — we never</li>
+</ul>
+<p>see them). We don&#x27;t buy, sell, or trade your data, and we share it with nobody</p>
+<p>except as described below.</p>
+<h2>Encryption</h2>
+<ul>
+<li><strong>In transit:</strong> everything moves over HTTPS/TLS. [VERIFY: confirm TLS config on</li>
+</ul>
+<p>the API hosts before publishing.]</p>
+<ul>
+<li><strong>At rest:</strong> our commitment is AES-256 (or platform-equivalent) encryption at</li>
+</ul>
+<p>rest for customer files and archives. **[FLAG: implementation not yet verified</p>
+<p>— confirm before this policy publishes. Do not ship this paragraph until it&#x27;s true.]**</p>
+<h2>Who can see your data</h2>
+<ul>
+<li><strong>Corey Tasz</strong>, the lab&#x27;s sole operator — for support, debugging, and keeping</li>
+</ul>
+<p>the service running. That&#x27;s the whole access list.</p>
+<ul>
+<li><strong>Our infrastructure provider (Fly.io)</strong> has underlying host-level access, the</li>
+</ul>
+<p>way any hosting provider does. No advertisers, no data brokers, no &quot;partners.&quot;</p>
+<h2>Retention</h2>
+<ul>
+<li><strong>API job outputs:</strong> purged 7 days after the job completes. Re-download or re-run.</li>
+<li><strong>Archives you keep stored with us:</strong> persist until you delete them.</li>
+<li><strong>TRUSTREAM tiles:</strong> rolling 30-day retention, then purged. <span class="spl-flag">[PROPOSED — Corey decides.]</span></li>
+</ul>
+<h2>Deletion</h2>
+<ul>
+<li><strong>On request:</strong> email corey@slidphilabs.com from your account email. We delete</li>
+</ul>
+<p>your files, archives, and job records within 14 days and confirm by email.</p>
+<p><span class="spl-flag">[PROPOSED SLA — Corey decides.]</span></p>
+<ul>
+<li><strong>If you stop paying:</strong> 30-day grace period to download or delete everything,</li>
+</ul>
+<p>then we purge. <span class="spl-flag">[PROPOSED — Corey decides.]</span></p>
+<ul>
+<li>Deletion means deleted from live systems; backups (if any) age out on their own</li>
+</ul>
+<p>cycle within 90 days. <span class="spl-flag">[PROPOSED — confirm backup story is real before publishing.]</span></p>
+<h2>If something goes wrong</h2>
+<p>If your data is exposed or lost because of us, we tell you directly and promptly.</p>
+<p>No burying it in a status page footnote.</p>
+<h2>What we&#x27;re not</h2>
+<p>We&#x27;re a one-person lab. We have <strong>not</strong> completed SOC 2, ISO 27001, or any</p>
+<p>third-party security audit. This page describes what we actually do — not a</p>
+<p>certification we don&#x27;t have. If you need a signed DPA or a custom security</p>
+<p>review, email corey@slidphilabs.com and we&#x27;ll talk.</p>
+<hr/>
+<p><em>Questions about this policy: corey@slidphilabs.com</em></p>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-line" href="/">Home</a>
+      <a class="spl-btn spl-btn-line" href="/pricing">Pricing</a>
+    </p>
+  </main>
+  <script src="/assets/chrome.js?v=36" defer></script>
+</body>
+</html>
