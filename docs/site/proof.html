@@ -82,31 +82,31 @@
       <thead><tr><th>op</th><th>arm</th><th>bytes</th><th>enc s</th><th>SHA</th></tr></thead>
       <tbody>
         <tr class="ours"><td>17</td><td class="win">PhiFast (byte-lane shuffle + greedy LZ / per-lane Huffman)</td><td class="win">13,485,087</td><td>1.67</td><td>YES</td></tr>
-        <tr><td>19</td><td>SlidArm_gem (gated expert mixer)</td><td>13,557,717</td><td>306.46</td><td>YES</td></tr>
+        <tr><td>19</td><td>PhiMixer (gated expert mixer)</td><td>13,557,717</td><td>306.46</td><td>YES</td></tr>
         <tr><td>14</td><td>PhiLane</td><td>13,991,415</td><td>67.55</td><td>YES</td></tr>
         <tr><td>13</td><td>PhiPlane</td><td>14,316,335</td><td>43.30</td><td>YES</td></tr>
         <tr><td>16</td><td>PhiSparse</td><td>14,384,158</td><td>87.10</td><td>YES</td></tr>
-        <tr><td>20</td><td>Ptaszenski Predictor</td><td>15,194,569</td><td>54.38</td><td>YES</td></tr>
+        <tr><td>20</td><td>PhiZo</td><td>15,194,569</td><td>54.38</td><td>YES</td></tr>
         <tr><td>15</td><td>PhiDelta</td><td>15,497,228</td><td>86.58</td><td>YES</td></tr>
         <tr><td>18</td><td>PhiNibble — DECLINED (no true 12-bit data)</td><td>—</td><td>0.09</td><td>n/a</td></tr>
       </tbody>
     </table></div>
-    <p>Winner: <strong>op 17 PhiFast, 13,485,087 bytes (ratio 0.6743)</strong> — also the speed winner. SlidArm_gem loses by 72,630 bytes; the Predictor is not competitive on bf16; PhiNibble correctly declines.</p>
+    <p>Winner: <strong>op 17 PhiFast, 13,485,087 bytes (ratio 0.6743)</strong> — also the speed winner. PhiMixer loses by 72,630 bytes; PhiZo is not competitive on bf16; PhiNibble correctly declines.</p>
     <h3>Whisper Tiny fp32 slice</h3>
     <div style="overflow-x:auto"><table class="spl-table">
       <thead><tr><th>op</th><th>arm</th><th>bytes</th><th>enc s</th><th>SHA</th></tr></thead>
       <tbody>
         <tr class="ours"><td>14</td><td class="win">PhiLane (byte-lane shuffle w2/w4 + LZ/BWT-ANS)</td><td class="win">8,681,099</td><td>123.94</td><td>YES</td></tr>
-        <tr><td>19</td><td>SlidArm_gem</td><td>8,701,347</td><td>270.52</td><td>YES</td></tr>
+        <tr><td>19</td><td>PhiMixer</td><td>8,701,347</td><td>270.52</td><td>YES</td></tr>
         <tr><td>17</td><td>PhiFast</td><td>9,085,618</td><td>1.21</td><td>YES</td></tr>
         <tr><td>16</td><td>PhiSparse</td><td>9,096,877</td><td>75.52</td><td>YES</td></tr>
         <tr><td>13</td><td>PhiPlane</td><td>9,280,422</td><td>68.77</td><td>YES</td></tr>
         <tr><td>15</td><td>PhiDelta</td><td>9,717,910</td><td>97.63</td><td>YES</td></tr>
-        <tr><td>20</td><td>Ptaszenski Predictor</td><td>10,177,264</td><td>53.62</td><td>YES</td></tr>
+        <tr><td>20</td><td>PhiZo</td><td>10,177,264</td><td>53.62</td><td>YES</td></tr>
         <tr><td>18</td><td>PhiNibble — DECLINED</td><td>—</td><td>0.09</td><td>n/a</td></tr>
       </tbody>
     </table></div>
-    <p>Winner: <strong>op 14 PhiLane, 8,681,099 bytes (ratio 0.4341)</strong>. SlidArm_gem loses by 20,248 bytes. PhiFast is the speed option (9,085,618 in 1.21 s).</p>
+    <p>Winner: <strong>op 14 PhiLane, 8,681,099 bytes (ratio 0.4341)</strong>. PhiMixer loses by 20,248 bytes. PhiFast is the speed option (9,085,618 in 1.21 s).</p>
 
     <h2>3. Synthetic sensor corpus (20,000,000 bytes u16)</h2>
     <p class="spl-note">Source: <span class="mono">pccx-master-arms/RESULTS.md</span> (2026-09-21). Same honest protocol as §2.</p>
@@ -147,7 +147,7 @@
     <p><strong>The honest counterweight:</strong> Coaster took ~2.2 h on this corpus vs ~4 min for xz-6. Decode is fast (all methods &lt; 70 s total).</p>
 
     <h2>5. Silesia corpus — 43,724,575</h2>
-    <p class="spl-note">Source: lab verify card <span class="mono">tnssrc-coaster-routes/_ref/tnssrc-E/VERIFY.md</span> (2026-09-18, America/New_York). Verdict: PASS. Configuration: E stacked A+B (MIPS2 mozilla + WEB3/BWT32 webster; BWT block 32 MiB) — the PCC product engine. Industry-verified: independently listed on the industry-standard Silesia benchmark — <a href="https://mattmahoney.net/dc/silesia.html">Matt Mahoney's Silesia benchmark</a> shows <span class="mono">43724575 … TNSSRC 0.1.0</span>.</p>
+    <p class="spl-note">Source: lab verify card <span class="mono">tnssrc-coaster-routes/_ref/tnssrc-E/VERIFY.md</span> (2026-09-18, America/New_York). Verdict: PASS. Configuration: E stacked A+B (MIPS2 mozilla + WEB3/BWT32 webster; BWT block 32 MiB) — the PCC product engine. Submitted result, listed on <a href="https://mattmahoney.net/dc/silesia.html">Matt Mahoney's Silesia benchmark</a> at <span class="mono">43724575</span>.</p>
     <div style="overflow-x:auto"><table class="spl-table">
       <thead><tr><th>file</th><th>packed bytes</th><th>SHA</th></tr></thead>
       <tbody>

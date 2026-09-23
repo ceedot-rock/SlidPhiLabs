@@ -21,7 +21,7 @@
 
 ## X / Discord
 
-> Slid Phi Labs opened PCC: hosted lossless compression, dual-licensed. Four npm clients now call the live host — slid-phi 2.3.0, spl-pay-per-suite 1.2.0, blackjack-compression 1.6.0, @cptasz13/tru8 0.2.0. First 2 GB/month free, then 8¢/GB. https://www.slidphilabs.com/press
+> Slid Phi Labs opened PCC: hosted lossless compression, dual-licensed. Four npm clients now call the live host — slid-phi 2.3.1, spl-pay-per-suite 1.2.2, blackjack-compression 1.6.1, @cptasz13/tru8 0.2.1. First 2 GB/month free, then 8¢/GB. https://www.slidphilabs.com/press
 
 ## npm
 

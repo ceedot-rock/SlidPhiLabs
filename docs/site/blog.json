@@ -72,7 +72,7 @@
       "title": "Hosted compression is dual-licensed. npm clients call the live host.",
       "slug": "2026-09-09-hosted-dual-license",
       "url": "https://www.slidphilabs.com/blog/2026-09-09-hosted-dual-license",
-      "summary": "AWARE is live under a dual license. slid-phi 2.3.0, spl-pay-per-suite 1.2.0, blackjack-compression 1.6.0, and @cptasz13/tru8 0.2.0 call POST /api/compress. First 2 GB/month free, then 8\u00a2/GB.",
+      "summary": "AWARE is live under a dual license. slid-phi 2.3.1, spl-pay-per-suite 1.2.2, blackjack-compression 1.6.1, and @cptasz13/tru8 0.2.1 call POST /api/compress. First 2 GB/month free, then 8\u00a2/GB.",
       "tags": [
         "aware",
         "release",

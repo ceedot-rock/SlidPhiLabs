@@ -75,17 +75,9 @@
     <p>Domain-honest: structured integers / zeros / ramps / walks. Industry GPs still win many general-byte cases. We route with OmniWave so one public product covers both lanes.</p>
 
     <h2>Verify round-trip (agent or human)</h2>
+    <p class="spl-note"><strong>Retired 2026-09-23:</strong> the <code>POST /api/omniwave</code> compress endpoint below was removed, so these directions no longer run. The claim itself (ZRW 8 B on zeros×10k) stands as a dated lab result; the live pulse check still works.</p>
     <pre><code># Alive pulse
 curl -sS https://www.slidphilabs.com/api/phi/metrics | jq .
-
-# Profile / compress via OmniWave (1000 int32 zeros = 4000 zero bytes)
-python3 - &lt;&lt;'PY'
-import base64, json, urllib.request
-raw = b"\x00" * 4000
-body = json.dumps({"op":"compress","encoding":"base64","data":base64.b64encode(raw).decode()}).encode()
-req = urllib.request.Request("https://www.slidphilabs.com/api/omniwave", data=body, headers={"Content-Type":"application/json"})
-print(json.load(urllib.request.urlopen(req)))
-PY
 
 # Standings machine copy
 curl -sS https://www.slidphilabs.com/standings.json | jq '.scorecard[] | select(.lab=="ZRW") | {metric,lab_value}'
