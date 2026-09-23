@@ -1,12 +1,14 @@
 /**
  * Hosted compression meter.
- * First 2 GB each month are free. After that, 8¢ per GB of input.
+ * First 2 GB each month are free. After that, tiered by op cost:
+ * compress 8¢/GB, decompress 3.2¢/GB, roundtrip 9.2¢/GB.
  * $1 minimum when a card charge is due (Stripe's fee eats smaller ones).
  * Law: CuNi examples/laws/suite-meter.cuni — JS here must match that gold.
  *
  * Why 8¢: Fly NA egress is $0.02/GB. A compress job can send about that
  * much back out, plus CPU on the machine (~$3.20/mo for the 512 MB box).
  * 8¢ is 4× the bandwidth floor so free-tier users and Stripe fees get covered.
+ * Decompress is 0.4× (3.2¢) — it burns far less CPU than a compress.
  */
 export const FREE_GB = 2;
 export const FREE_BYTES = 2 * 1024 * 1024 * 1024;
@@ -14,6 +16,15 @@ export const CENTS_PER_GB = 8;
 export const MIN_PAID_CENTS = 100;
 export const MAX_BYTES = 1024 * 1024 * 1024 * 1024;
 export const MAX_CENTS = 1_000_000;
+
+/** Op cost tiers: compress burns the CPU, decompress is cheap, roundtrip stacks both. */
+export const OP_MULT = {
+  compress: 1.0, decompress: 0.4, roundtrip: 1.15,
+};
+/** Effective ¢/GB per op after the free cap: 8.0 / 3.2 / 9.2 */
+export const OP_CENTS_PER_GB = {
+  compress: 8.0, decompress: 3.2, roundtrip: 9.2,
+};
 
 /** Extra included GB on a paid PCC / Lab Pass plan (still 8¢ after that). */
 export const INCLUDED_GB = Object.freeze({
@@ -49,6 +60,7 @@ export function computeQuote({
 } = {}) {
   const b = Math.max(0, Math.min(Number(bytes) || 0, MAX_BYTES));
   const used = Math.max(0, Number(used_bytes) || 0);
+  const operation = OP_MULT[op] != null ? op : "compress";
   const included = includedBytesForSku(sku);
   const free_left = Math.max(0, included - used);
   const billable = Math.max(0, b - free_left);
@@ -57,10 +69,11 @@ export function computeQuote({
     free_cap_gb: FREE_GB,
     included_gb: included / (1024 * 1024 * 1024),
     usd_per_gb: CENTS_PER_GB / 100,
+    op_cents_per_gb: OP_CENTS_PER_GB[operation],
     min_paid_usd: MIN_PAID_CENTS / 100,
     window: "calendar_month",
   };
-  const plain_free = `First ${FREE_GB} GB each month are free. After that, ${CENTS_PER_GB}¢ per GB. Card charges start at $1.`;
+  const plain_free = `First ${FREE_GB} GB each month are free. After that, ${OP_CENTS_PER_GB.compress}¢/GB compress · ${OP_CENTS_PER_GB.decompress}¢/GB decompress · ${OP_CENTS_PER_GB.roundtrip}¢/GB roundtrip. Card charges start at $1.`;
   if (free) {
     return {
       ok: true,
@@ -74,7 +87,8 @@ export function computeQuote({
       message: plain_free,
       breakdown: {
         product,
-        op,
+        op: operation,
+        op_multiplier: OP_MULT[operation],
         data_class: dataClass,
         bytes: b,
         used_bytes: used,
@@ -86,7 +100,7 @@ export function computeQuote({
       },
     };
   }
-  const usage = usageFeeCents(billable);
+  const usage = Math.round(usageFeeCents(billable) * OP_MULT[operation]);
   const cents = Math.min(MAX_CENTS, Math.max(MIN_PAID_CENTS, usage));
   return {
     ok: true,
@@ -97,10 +111,12 @@ export function computeQuote({
     amount_display: (cents / 100).toFixed(2),
     free: false,
     tier: "usage",
-    message: `Over the free ${FREE_GB} GB — ${CENTS_PER_GB}¢/GB, $1 minimum on card.`,
+    message: `Over the free ${FREE_GB} GB — ${OP_CENTS_PER_GB.compress}¢/GB compress · ${OP_CENTS_PER_GB.decompress}¢/GB decompress · ${OP_CENTS_PER_GB.roundtrip}¢/GB roundtrip, $1 minimum on card.`,
     breakdown: {
       product,
-      op,
+      op: operation,
+      op_multiplier: OP_MULT[operation],
+      op_cents_per_gb: OP_CENTS_PER_GB[operation],
       data_class: dataClass,
       bytes: b,
       used_bytes: used,
@@ -117,5 +133,7 @@ export const PRICING_EXAMPLES = [
   { gb: 1, label: "1 GB", approx: "$0 (under 2 GB free)" },
   { gb: 2, label: "2 GB", approx: "$0 (free cap)" },
   { gb: 3, label: "3 GB", approx: "$1 minimum (1 GB over at 8¢ would be $0.08; card floor is $1)" },
-  { gb: 20, label: "20 GB", approx: "$1.44 (18 GB × 8¢)" },
+  { gb: 20, label: "20 GB compress", approx: "$1.44 (18 GB × 8¢)" },
+  { gb: 20, label: "20 GB decompress", approx: "$0.58 (18 GB × 3.2¢)" },
+  { gb: 20, label: "20 GB roundtrip", approx: "$1.66 (18 GB × 9.2¢)" },
 ];

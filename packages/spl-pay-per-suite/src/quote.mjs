@@ -1,6 +1,7 @@
 /**
  * SPL Pay Per Suite — local quote (matches site API suite-pricing.js).
- * First 2 GB each calendar month are free. Then 8¢/GB. $1 card minimum.
+ * First 2 GB each calendar month are free. Then tiered by op cost:
+ * compress 8¢/GB, decompress 3.2¢/GB, roundtrip 9.2¢/GB. $1 card minimum.
  *
  * Law: cuni/examples/laws/suite-meter.cuni
  * Prove: cuni prove …/suite-meter.cuni --against test/print-suite-meter.mjs
@@ -29,7 +30,7 @@ export const SUITE_PRICING = {
   try_gate: "retired",
   window: "calendar_month",
   human_one_liner:
-    "First 2 GB each month free · then 8¢/GB · $1 card minimum",
+    "First 2 GB each month free · then 8¢/GB compress · 3.2¢/GB decompress · 9.2¢/GB roundtrip · $1 card minimum",
 };
 
 export const PRODUCT_ADD_CENTS = {
@@ -42,8 +43,16 @@ export const DATA_MULT = {
   zeros: 0.9, ramp: 0.95, walk: 1.0, mixed_ints: 1.05,
   timeseries: 1.05, json_series: 1.0, binary: 1.1, unknown: 1.0,
 };
+// NOTE: DATA_MULT is reported in the quote breakdown but deliberately NOT
+// applied to the charge — data class is not our cost driver, op is.
+// The cuni law (suite-meter.cuni) does not model it either.
+/** Op cost tiers: compress burns the CPU, decompress is cheap, roundtrip stacks both. */
 export const OP_MULT = {
-  compress: 1.0, decompress: 0.75, roundtrip: 1.15,
+  compress: 1.0, decompress: 0.4, roundtrip: 1.15,
+};
+/** Effective ¢/GB per op after the free cap: 8.0 / 3.2 / 9.2 */
+export const OP_CENTS_PER_GB = {
+  compress: 8.0, decompress: 3.2, roundtrip: 9.2,
 };
 
 export const STRIPE_PAYMENT_LINK =
@@ -84,7 +93,7 @@ export function computeQuote({
     window: "calendar_month",
     sku: sku || null,
   };
-  const plain_free = "First 2 GB each month are free. After that, 8¢ per GB. Card charges start at $1.";
+  const plain_free = "First 2 GB each month are free. After that, 8¢ per GB compress · 3.2¢ per GB decompress · 9.2¢ per GB roundtrip. Card charges start at $1.";
 
   if (free) {
     return {
@@ -102,18 +111,19 @@ export function computeQuote({
       pay_url: STRIPE_PAYMENT_LINK, suite_url: SITE_PPS,
     };
   }
-  const usage = usageFeeCents(billable);
+  const usage = Math.round(usageFeeCents(billable) * OP_MULT[operation]);
   const cents = Math.min(MAX_CENTS, Math.max(MIN_PAID_CENTS, usage));
   return {
     ok: true, service: "AWARE meter", currency: "usd",
     amount_cents: cents, amount_display: (cents / 100).toFixed(2),
     free: false, tier: "usage",
-    message: `Over the free 2 GB — 8¢/GB, $1 minimum on card.`,
+    message: `Over the free 2 GB — 8¢/GB compress · 3.2¢/GB decompress · 9.2¢/GB roundtrip, $1 minimum on card.`,
     breakdown: {
       product: prod, product_add_cents: 0, product_base_cents: 0,
       free_bytes: FREE_BYTES, free_gb: FREE_GB, billable_bytes: billable, usage_cents: usage, size_cents: usage,
       data_class: cls, data_multiplier: DATA_MULT[cls],
       op: operation, op_multiplier: OP_MULT[operation],
+      op_cents_per_gb: OP_CENTS_PER_GB[operation],
       bytes: b, mb: +(b/1024/1024).toFixed(4), gb: +(b/1024/1024/1024).toFixed(6),
       min_cents: MIN_PAID_CENTS, min_paid_cents: MIN_PAID_CENTS, max_cents: MAX_CENTS, rates,
     },

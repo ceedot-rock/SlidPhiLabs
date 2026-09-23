@@ -464,7 +464,7 @@
       "id": 22,
       "bucket": "platform",
       "name": "CuNi",
-      "blurb": "119 languages. One program. Same stdout on every catalog seat, or it refuses. Native: Python, Go, JS, TS, C, C++, Rust. Studio free.",
+      "blurb": "144 languages. One program. Same stdout on every catalog seat, or it refuses. Native: Python, Go, JS, TS, C, C++, Rust. Studio free.",
       "surface": "public",
       "vehicle": [
         "platform"

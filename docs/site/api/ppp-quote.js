@@ -1,6 +1,6 @@
 /**
  * Quote a compress job against this month's meter.
- * First 2 GB free, then 8¢/GB, $1 card minimum.
+ * First 2 GB free, then tiered by op: 8¢/GB compress · 3.2¢/GB decompress · 9.2¢/GB roundtrip, $1 card minimum.
  */
 import { computeQuote, FREE_BYTES, PRICING_EXAMPLES } from "./suite-pricing.js";
 import { meterSnapshot, identityFromReq, readUsage } from "./lib/usage-meter.mjs";

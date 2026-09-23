@@ -44,7 +44,7 @@ import {
 } from "./index.mjs";
 
 const SUITE_LINE =
-  "First 2 GB each month free · then 8¢/GB · $1 card minimum.";
+  "First 2 GB each month free · then 8¢/GB compress · 3.2¢/GB decompress · 9.2¢/GB roundtrip · $1 card minimum.";
 
 const TOOLS = [
   {
@@ -64,7 +64,7 @@ const TOOLS = [
   {
     name: "spl_compress",
     description:
-      "Hosted lossless compression. Every dual-licensed pathway on the lab machine. Args: data_b64. Returns packed_b64. First 2 GB/month free, then 8¢/GB.",
+      "Hosted lossless compression. Every dual-licensed pathway on the lab machine. Args: data_b64. Returns packed_b64. First 2 GB/month free, then 8¢/GB compress.",
     inputSchema: {
       type: "object",
       properties: { data_b64: { type: "string", description: "Base64 of the file to shrink" } },
@@ -129,7 +129,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_requirements",
     description:
-      "Probe POST /api/x402-suite. Free under 2 GB/month (no pay). Over free → 402 accepts[] for usage (8¢/GB · $1 card minimum).",
+      "Probe POST /api/x402-suite. Free under 2 GB/month (no pay). Over free → 402 accepts[] for usage (8¢/GB compress · 3.2¢/GB decompress · 9.2¢/GB roundtrip · $1 card minimum).",
     inputSchema: {
       type: "object",
       properties: {
@@ -170,7 +170,7 @@ const TOOLS = [
   {
     name: "spl_pps_quote",
     description:
-      "Instant quote: free first 2 GB/month ($0), then 8¢/GB · $1 card minimum. Inputs: product, dataClass, op, bytes.",
+      "Instant quote: free first 2 GB/month ($0), then 8¢/GB compress · 3.2¢/GB decompress · 9.2¢/GB roundtrip · $1 card minimum. Inputs: product, dataClass, op, bytes.",
     inputSchema: {
       type: "object",
       properties: {

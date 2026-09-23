@@ -7,7 +7,7 @@ Quote, checkout, MCP, and hosted `compress()` / `decompress()` / `zip()` / `unzi
 | Tier | Rule |
 |------|------|
 | **Free** | First **2 GB** each calendar month — $0 |
-| **Then** | **8¢ / GB** ($1 card minimum) |
+| **Then** | **8¢/GB** compress · **3.2¢/GB** decompress · **9.2¢/GB** roundtrip ($1 card minimum) |
 | **Month plan** | PCC $49 includes 200 GB |
 
 Canonical catalog: [GET /api/x402-products](https://www.slidphilabs.com/api/x402-products)
@@ -36,7 +36,7 @@ MCP tools include `spl_compress`, `spl_decompress`, `spl_zip`, `spl_unzip`. Host
 
 Two legal ways to use this. Pick one.
 
-1. **Free — AGPL-3.0-or-later.** Install and use. No key, no payment. Copyleft applies if you ship it. Hosted compression: first 2 GB/month free, then 8¢/GB, no key needed.
+1. **Free — AGPL-3.0-or-later.** Install and use. No key, no payment. Copyleft applies if you ship it. Hosted compression: first 2 GB/month free, then 8¢/GB compress · 3.2¢/GB decompress · 9.2¢/GB roundtrip, no key needed.
 2. **Paid grant — buy a PCC seat.** A live seat covers commercial use of this surface (see LICENSE.COMMERCIAL) and raises your included bytes: Day $9 → 10 GB, Month $49 → 200 GB, Year $490 → 2,000 GB.
 
 Agents buy the seat machine-to-machine with x402 (USDC on Solana or Base — no human checkout):

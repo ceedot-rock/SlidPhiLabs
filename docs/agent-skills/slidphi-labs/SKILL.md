@@ -42,7 +42,7 @@ curl -sL https://www.slidphilabs.com/.well-known/mcp/server-card.json
 | Chamber | Two-key JSON seal. AES-256-GCM. One share is useless. | $9/mo · $99/yr |
 | Agent-Rider | Signed agent identity, trust, credits, MCP. Official remote is Fly. | $79/mo · $790/yr |
 | Warrant | Mandate + receipts bound to a Rider | $29/mo · $290/yr |
-| CuNi | One program, 119 langs, same stdout or refuse. Bank paste N get X. | Studio $0 · closed-app $490/yr |
+| CuNi | One program, 144 langs, same stdout or refuse. Bank paste N get X. | Studio $0 · closed-app $490/yr |
 
 Official Silesia 12 (211,938,580, DECODE_OK): pulsar 2.5.0 **55,745,438** · PCC pcc-0.12.1 **51,498,645**. gzip-9 67,631,990. xz-6 still smaller. Not a #1 claim.
 

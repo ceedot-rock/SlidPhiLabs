@@ -5,3 +5,6 @@ const GiB = 1024 ** 3;
 for (const bytes of [0, 2 * GiB, 3 * GiB, 20 * GiB]) {
   console.log(String(computeQuote({ bytes }).amount_cents));
 }
+// op-tier fixtures must match the law's quote_cents_op say() lines, in order
+console.log(String(computeQuote({ bytes: 20 * GiB, op: "decompress" }).amount_cents));
+console.log(String(computeQuote({ bytes: 20 * GiB, op: "roundtrip" }).amount_cents));

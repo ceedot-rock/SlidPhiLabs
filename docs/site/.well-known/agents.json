@@ -75,7 +75,7 @@
       "url": "https://cuni-studio.fly.dev/",
       "protocol": "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json",
       "price": "$0",
-      "note": "v0.1.9. 119 languages. Same stdout or refuse. Native seats: py/go/js/ts/c/cpp/rs. Protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json"
+      "note": "v0.1.9. 144 languages. Same stdout or refuse. Native seats: py/go/js/ts/c/cpp/rs. Protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json"
     },
     {
       "id": "rider",
