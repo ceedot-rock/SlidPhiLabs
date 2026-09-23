@@ -151,6 +151,8 @@ const REWRITES = {
   "/archive/": "/archive.html",
   "/silesia": "/silesia.html",
   "/silesia/": "/silesia.html",
+  "/proof": "/proof.html",
+  "/proof/": "/proof.html",
   "/rankings": "/silesia.html",
   "/pcc": "/pcc.html",
   "/pcc/": "/pcc.html",

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Measured results — the proof · Slid Phi Labs</title>
+  <meta name="description" content="Measured compression results from Slid Phi Labs. Every accepted number decoded and SHA-256 verified. Wins and losses both reported."/>
+  <link rel="canonical" href="https://www.slidphilabs.com/proof"/>
+  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
+  <meta property="og:title" content="Measured results — the proof"/>
+  <meta property="og:url" content="https://www.slidphilabs.com/proof"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=36"/>
+  <style>
+    .spl-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 12px 0; }
+    .spl-table th, .spl-table td { text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+    .spl-table th:first-child, .spl-table td:first-child { text-align: left; }
+    .spl-table .ours td { background: #eef6f6; }
+    .spl-table td.win { font-weight: 700; }
+  </style>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">Measured, not marketed</p>
+    <h1>Every number below was measured.</h1>
+    <p class="lede">Four benchmark campaigns from the lab. Every accepted cell was decoded and SHA-256-verified against the original input. Wins and losses are both reported — anything we haven't measured isn't on this page.</p>
+
+    <section class="spl-proof" aria-label="Headline results">
+      <div class="spl-meter">
+        <p class="spl-kicker">Whisper Tiny fp32 · full file</p>
+        <p class="spl-meter-val">67,103,604<span>of 151,061,672</span></p>
+        <div class="spl-bar" style="--fill:44.4%"><i></i></div>
+        <p class="spl-stamp">+1.73% vs xz-6 · SHA OK</p>
+      </div>
+      <div class="spl-meter">
+        <p class="spl-kicker">20 MB weight slices · 8 arms</p>
+        <p class="spl-meter-val">0.6743 / 0.4341<span>bf16 PhiFast · fp32 PhiLane</span></p>
+        <div class="spl-bar" style="--fill:55.4%"><i></i></div>
+        <p class="spl-stamp">exact-selection winners · SHA OK</p>
+      </div>
+      <div class="spl-meter">
+        <p class="spl-kicker">Synthetic sensor corpus · 20 MB</p>
+        <p class="spl-meter-val">15,000,568<span>lab wins bytes by 3,640</span></p>
+        <div class="spl-bar" style="--fill:75.0%"><i></i></div>
+        <p class="spl-stamp">blosc wins speed 41× · both true</p>
+      </div>
+      <div class="spl-meter">
+        <p class="spl-kicker">Penn NV-diamond · 76 files</p>
+        <p class="spl-meter-val">133,395,218<span>of 273,190,871</span></p>
+        <div class="spl-bar" style="--fill:48.8%"><i></i></div>
+        <p class="spl-stamp">−5.57% vs xz-6 · 380 roundtrips, 0 fails</p>
+      </div>
+    </section>
+
+    <h2>The method</h2>
+    <ol>
+      <li><strong>Exact selection:</strong> every candidate encodes for real; the winner is the smallest <em>actual</em> compressed bytes. No estimates, no skipped candidates.</li>
+      <li><strong>Verify everything:</strong> every accepted cell is decoded and SHA-256-compared against the original. Any decode failure invalidates the cell.</li>
+      <li><strong>Report the misses:</strong> losing files, slow encodes, and incomplete cells are reported as-is.</li>
+    </ol>
+
+    <h2>1. Model weights — Whisper Tiny fp32, full file</h2>
+    <p class="spl-note">Source: lab bench log <span class="mono">pcc-weights-bench/RESULTS_WEIGHTS.md</span> (2026-09-17). Public safetensors file from Hugging Face; dtype verified from the safetensors JSON header.</p>
+    <div style="overflow-x:auto"><table class="spl-table">
+      <thead><tr><th>file</th><th>method</th><th>original</th><th>compressed</th><th>ratio</th><th>enc</th><th>dec</th><th>SHA</th></tr></thead>
+      <tbody>
+        <tr class="ours"><td>whisper-tiny-fp32</td><td class="win">PCC (exact selector, mode 8)</td><td>151,061,672</td><td class="win">67,103,604</td><td>0.4442</td><td>3,809 s</td><td>36 s</td><td>OK</td></tr>
+        <tr><td>whisper-tiny-fp32</td><td>xz-6</td><td>151,061,672</td><td>68,282,568</td><td>0.4520</td><td>258 s</td><td>10 s</td><td>OK</td></tr>
+        <tr><td>whisper-tiny-fp32</td><td>zstd-19</td><td>151,061,672</td><td>74,556,043</td><td>0.4935</td><td>235 s</td><td>0.7 s</td><td>OK</td></tr>
+        <tr><td>whisper-tiny-fp32</td><td>zstd-3</td><td>151,061,672</td><td>88,176,968</td><td>0.5837</td><td>2.8 s</td><td>0.5 s</td><td>OK</td></tr>
+        <tr><td>whisper-tiny-fp32</td><td>gzip-9</td><td>151,061,672</td><td>86,795,913</td><td>0.5746</td><td>105 s</td><td>3 s</td><td>OK</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>PCC beats the best baseline (xz-6) by 1,178,964 bytes (1.73%).</strong> Genuine win: every mode ran for real, the winner was chosen by actual minimum bytes, decode SHA-256 matches the original.</p>
+    <p><strong>The honest counterweight:</strong> PCC took 3,809 s (63.5 min) to encode vs xz-6's 258 s — a 14.8× slowdown for a 1.73% size win. If you pay per CPU-hour, that trade is not always worth it. Decode is fast (36 s).</p>
+    <p class="spl-note">Baselines only (PCC never completed) on three more files, all SHA-verified: SmolLM2-bf16 xz-6 190,670,328 (0.7087); whisper-base-fp32 xz-6 131,096,048 (0.4514); gpt2-fp32 xz-6 458,414,836 (0.8364). These are <em>not</em> PCC results.</p>
+
+    <h2>2. Model-weight slices — the arms race (20,000,000-byte slices)</h2>
+    <p class="spl-note">Source: lab bench log <span class="mono">pccx-master-arms/RESULTS.md</span> (2026-09-21). Portable release build; all 8 arms encoded for real; exact selection picked the smallest actual bytes; every accepted row decode + SHA-256 verified.</p>
+    <h3>SmolLM2 bf16 slice</h3>
+    <div style="overflow-x:auto"><table class="spl-table">
+      <thead><tr><th>op</th><th>arm</th><th>bytes</th><th>enc s</th><th>SHA</th></tr></thead>
+      <tbody>
+        <tr class="ours"><td>17</td><td class="win">PhiFast (byte-lane shuffle + greedy LZ / per-lane Huffman)</td><td class="win">13,485,087</td><td>1.67</td><td>YES</td></tr>
+        <tr><td>19</td><td>SlidArm_gem (gated expert mixer)</td><td>13,557,717</td><td>306.46</td><td>YES</td></tr>
+        <tr><td>14</td><td>PhiLane</td><td>13,991,415</td><td>67.55</td><td>YES</td></tr>
+        <tr><td>13</td><td>PhiPlane</td><td>14,316,335</td><td>43.30</td><td>YES</td></tr>
+        <tr><td>16</td><td>PhiSparse</td><td>14,384,158</td><td>87.10</td><td>YES</td></tr>
+        <tr><td>20</td><td>Ptaszenski Predictor</td><td>15,194,569</td><td>54.38</td><td>YES</td></tr>
+        <tr><td>15</td><td>PhiDelta</td><td>15,497,228</td><td>86.58</td><td>YES</td></tr>
+        <tr><td>18</td><td>PhiNibble — DECLINED (no true 12-bit data)</td><td>—</td><td>0.09</td><td>n/a</td></tr>
+      </tbody>
+    </table></div>
+    <p>Winner: <strong>op 17 PhiFast, 13,485,087 bytes (ratio 0.6743)</strong> — also the speed winner. SlidArm_gem loses by 72,630 bytes; the Predictor is not competitive on bf16; PhiNibble correctly declines.</p>
+    <h3>Whisper Tiny fp32 slice</h3>
+    <div style="overflow-x:auto"><table class="spl-table">
+      <thead><tr><th>op</th><th>arm</th><th>bytes</th><th>enc s</th><th>SHA</th></tr></thead>
+      <tbody>
+        <tr class="ours"><td>14</td><td class="win">PhiLane (byte-lane shuffle w2/w4 + LZ/BWT-ANS)</td><td class="win">8,681,099</td><td>123.94</td><td>YES</td></tr>
+        <tr><td>19</td><td>SlidArm_gem</td><td>8,701,347</td><td>270.52</td><td>YES</td></tr>
+        <tr><td>17</td><td>PhiFast</td><td>9,085,618</td><td>1.21</td><td>YES</td></tr>
+        <tr><td>16</td><td>PhiSparse</td><td>9,096,877</td><td>75.52</td><td>YES</td></tr>
+        <tr><td>13</td><td>PhiPlane</td><td>9,280,422</td><td>68.77</td><td>YES</td></tr>
+        <tr><td>15</td><td>PhiDelta</td><td>9,717,910</td><td>97.63</td><td>YES</td></tr>
+        <tr><td>20</td><td>Ptaszenski Predictor</td><td>10,177,264</td><td>53.62</td><td>YES</td></tr>
+        <tr><td>18</td><td>PhiNibble — DECLINED</td><td>—</td><td>0.09</td><td>n/a</td></tr>
+      </tbody>
+    </table></div>
+    <p>Winner: <strong>op 14 PhiLane, 8,681,099 bytes (ratio 0.4341)</strong>. SlidArm_gem loses by 20,248 bytes. PhiFast is the speed option (9,085,618 in 1.21 s).</p>
+
+    <h2>3. Synthetic sensor corpus (20,000,000 bytes u16)</h2>
+    <p class="spl-note">Source: <span class="mono">pccx-master-arms/RESULTS.md</span> (2026-09-21). Same honest protocol as §2.</p>
+    <div style="overflow-x:auto"><table class="spl-table">
+      <thead><tr><th>method</th><th>bytes</th><th>enc s</th><th>dec s</th><th>SHA</th></tr></thead>
+      <tbody>
+        <tr class="ours"><td class="win">PhiFast (op 17)</td><td class="win">15,000,568</td><td>1.22</td><td>0.46</td><td>YES</td></tr>
+        <tr><td>blosc-bitshuffle (external reference, measured same day)</td><td>15,004,208</td><td>0.03</td><td>—</td><td>—</td></tr>
+        <tr><td>PhiPlane</td><td>15,087,732</td><td>23.17</td><td>5.07</td><td>YES</td></tr>
+        <tr><td>PhiNibble</td><td>15,089,650</td><td>20.62</td><td>4.04</td><td>YES</td></tr>
+        <tr><td>PhiLane</td><td>15,110,429</td><td>41.09</td><td>3.98</td><td>YES</td></tr>
+        <tr><td>pcc-classic (external reference)</td><td>15,385,150</td><td>282.10</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>PhiFast beats blosc-bitshuffle by 3,640 bytes (−0.024%)</strong> — the lab's new arm takes the byte crown from the standard fast compressor. <strong>blosc wins speed 41× (0.03 s vs 1.22 s).</strong> Both facts are true and both are printed.</p>
+    <p>PhiFast also beats the classic PCC engine by 384,582 bytes (−2.5%) at 231× the encode speed — the arms are a generational step over the old pipeline.</p>
+
+    <h2>4. Penn NV-diamond quantum-hardware dataset — full-arsenal campaign</h2>
+    <p class="spl-note">Source: lab bench doc <span class="mono">your_files/penn-benchmark-doc.md</span> (measured 2026-09-20/21). Corpus: 76 files (44 .mat, 22 .csv, 5 .txt, 2 .ipynb, 2 .py, 1 .mplstyle), <strong>273,190,871 bytes</strong> — real open research data (Zenodo DOI 10.5281/zenodo.20969058; processing code DOI 10.5281/zenodo.20970922).</p>
+    <div style="overflow-x:auto"><table class="spl-table">
+      <thead><tr><th>method</th><th>total bytes</th><th>ratio</th><th>encode wall time</th></tr></thead>
+      <tbody>
+        <tr><td>Original</td><td>273,190,871</td><td>1.0000</td><td>—</td></tr>
+        <tr class="ours"><td class="win">Per-file best (exact selection across lab codecs)</td><td class="win">133,395,218</td><td>0.4883</td><td>—</td></tr>
+        <tr><td>Coaster smallest / fastpass</td><td>133,397,937</td><td>0.4883</td><td>8,040 s / 4,563 s</td></tr>
+        <tr><td>PCC (classic)</td><td>136,096,642</td><td>0.4982</td><td>5,055 s</td></tr>
+        <tr><td>TNSSRC dev</td><td>136,096,642</td><td>0.4982</td><td>10,849 s</td></tr>
+        <tr><td>xz-6</td><td>141,264,984</td><td>0.5171</td><td>236 s</td></tr>
+        <tr><td>zstd-19</td><td>146,059,751</td><td>0.5346</td><td>174 s</td></tr>
+        <tr><td>PCCX 0.3.0*</td><td>165,693,847</td><td>0.6065</td><td>670 s</td></tr>
+        <tr><td>zstd-3</td><td>203,914,264</td><td>0.7464</td><td>6 s</td></tr>
+        <tr><td>gzip-9</td><td>230,352,166</td><td>0.8432</td><td>20 s</td></tr>
+      </tbody>
+    </table></div>
+    <p class="spl-note">* PCCX 0.3.0 refuses incompressible inputs by design (no raw passthrough): its total covers 65 of 76 files; the other 11 are better served by xz/zstd.</p>
+    <p><strong>The lab codecs beat the best standard codec (xz-6) by 7,869,766 bytes (5.57%).</strong> Every candidate ran for real on every file; per-file winner = smallest actual bytes. <strong>380 verified encode/decode roundtrips, zero failures.</strong></p>
+    <p>Per-file winners: Coaster 69, PCCX 0.3.0 6 (text/CSV), PCC classic 1. <strong>Where the lab loses (honest):</strong> xz-6 still won 18 files outright — mostly small CSVs and notebooks, by small margins. The codecs win the corpus by 5.57%, not every individual file.</p>
+    <p><strong>The honest counterweight:</strong> Coaster took ~2.2 h on this corpus vs ~4 min for xz-6. Decode is fast (all methods &lt; 70 s total).</p>
+
+    <h2>What this page doesn't claim</h2>
+    <ul>
+      <li>The Silesia 40 MB target is active R&D — no Silesia figure is published on this page.</li>
+      <li>CuNi, Chamber, Agent-Rider, Warrant, and TRUSTREAM are mechanism claims, not numbers claims — no benchmark cells exist for them in the lab, so they don't appear here.</li>
+      <li>Nothing on this page is a "#1 in the world" claim. Opponents are named, deltas are shown, losses are printed.</li>
+    </ul>
+
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="/box">Try it on your files</a>
+      <a class="spl-btn spl-btn-line" href="/pricing">Pricing</a>
+      <a class="spl-btn spl-btn-line" href="/">Home</a>
+    </p>
+  </main>
+  <script src="/assets/chrome.js?v=36" defer></script>
+</body>
+</html>
