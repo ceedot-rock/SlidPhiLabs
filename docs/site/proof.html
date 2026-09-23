@@ -23,7 +23,7 @@
   <main class="spl-page" id="main">
     <p class="spl-kicker">Measured, not marketed</p>
     <h1>Every number below was measured.</h1>
-    <p class="lede">Four benchmark campaigns from the lab. Every accepted cell was decoded and SHA-256-verified against the original input. Wins and losses are both reported — anything we haven't measured isn't on this page.</p>
+    <p class="lede">Five benchmark campaigns from the lab. Every accepted cell was decoded and SHA-256-verified against the original input. Wins and losses are both reported — anything we haven't measured isn't on this page.</p>
 
     <section class="spl-proof" aria-label="Headline results">
       <div class="spl-meter">
@@ -146,9 +146,31 @@
     <p>Per-file winners: Coaster 69, PCCX 0.3.0 6 (text/CSV), PCC classic 1. <strong>Where the lab loses (honest):</strong> xz-6 still won 18 files outright — mostly small CSVs and notebooks, by small margins. The codecs win the corpus by 5.57%, not every individual file.</p>
     <p><strong>The honest counterweight:</strong> Coaster took ~2.2 h on this corpus vs ~4 min for xz-6. Decode is fast (all methods &lt; 70 s total).</p>
 
+    <h2>5. Silesia corpus — TNSSRC 0.1.0 research engine</h2>
+    <p class="spl-note">Source: lab verify card <span class="mono">tnssrc-coaster-routes/_ref/tnssrc-E/VERIFY.md</span> (2026-09-18, America/New_York). Verdict: PASS. Engine: E stacked A+B (MIPS2 mozilla + WEB3/BWT32 webster; BWT block 32 MiB). This is the TNSSRC 0.1.0 <em>research engine</em> result — not a hosted-PCC product benchmark. Also listed on the public board: <a href="https://mattmahoney.net/dc/silesia.html">Matt Mahoney's Silesia benchmark</a> shows <span class="mono">43724575 … TNSSRC 0.1.0</span>.</p>
+    <div style="overflow-x:auto"><table class="spl-table">
+      <thead><tr><th>file</th><th>packed bytes</th><th>SHA</th></tr></thead>
+      <tbody>
+        <tr><td>dickens</td><td>2,538,324</td><td>OK</td></tr>
+        <tr><td>mozilla</td><td>13,304,103</td><td>OK</td></tr>
+        <tr><td>mr</td><td>2,111,392</td><td>OK</td></tr>
+        <tr><td>nci</td><td>1,156,452</td><td>OK</td></tr>
+        <tr><td>ooffice</td><td>2,310,168</td><td>OK</td></tr>
+        <tr><td>osdb</td><td>2,424,253</td><td>OK</td></tr>
+        <tr><td>reymont</td><td>1,096,419</td><td>OK</td></tr>
+        <tr><td>samba</td><td>3,748,880</td><td>OK</td></tr>
+        <tr><td>sao</td><td>3,659,859</td><td>OK</td></tr>
+        <tr><td>webster</td><td>7,272,548</td><td>OK</td></tr>
+        <tr><td>x-ray</td><td>3,682,106</td><td>OK</td></tr>
+        <tr><td>xml</td><td>420,071</td><td>OK</td></tr>
+        <tr class="ours"><td class="win"><strong>total</strong></td><td class="win"><strong>43,724,575</strong></td><td class="win">12/12</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>43,724,575 packed of 211,938,580 (ratio 0.2063).</strong> Every one of the 12 files decoded and SHA-256-verified — DECODE+SHA 12/12. Per-file column sums exactly to the total. Not a "#1" claim, not an "under 40 MB" claim: the 40 MB target remains active R&amp;D.</p>
+
     <h2>What this page doesn't claim</h2>
     <ul>
-      <li>The Silesia 40 MB target is active R&D — no Silesia figure is published on this page.</li>
+      <li>The Silesia 40 MB target is still active R&amp;D — §5 publishes the verified 43,724,575, not 40 MB. That figure is the TNSSRC 0.1.0 <em>research engine</em> result (E stacked A+B); it is not a hosted-PCC product benchmark.</li>
       <li>CuNi, Chamber, Agent-Rider, Warrant, and TRUSTREAM are mechanism claims, not numbers claims — no benchmark cells exist for them in the lab, so they don't appear here.</li>
       <li>Nothing on this page is a "#1 in the world" claim. Opponents are named, deltas are shown, losses are printed.</li>
     </ul>
