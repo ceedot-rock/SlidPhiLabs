@@ -2,6 +2,7 @@
 /**
  * Bench the live hosted compressor. gzip-9 / brotli-11 are opponents on the
  * same bytes, not occupants. Hosted cap is 4 MiB. Silesia rows are slices.
+ * Public face is PCC. AWARE is a retired alias.
  */
 import { readFile, writeFile } from "node:fs/promises";
 import { gzipSync, brotliCompressSync, constants as zconst } from "node:zlib";
@@ -20,6 +21,7 @@ function publicMethod(m) {
   if (x === "lz") return "lz";
   if (x === "paq") return "paq";
   if (x === "store") return "store";
+  if (x === "aware") return "hosted";
   return "hosted";
 }
 
@@ -171,11 +173,11 @@ for (const job of jobs) {
 const keep = rows.filter((r) => r.hosted && r.hosted.decode_ok);
 const report = {
   ok: true,
-  service: "AWARE hosted lossless compression",
+  service: "PCC hosted lossless compression",
   origin: ORIGIN,
   at: new Date().toISOString(),
   cap_bytes: MAX,
-  plain: "Live POST /api/compress then POST /api/decompress. gzip-9 and brotli-11 ran on the same bytes as opponents, not as occupants. Hosted cap 4 MiB. Silesia rows are slices, not the official 12-file total. Not a #1 claim.",
+  plain: "Live POST /api/compress then POST /api/decompress. gzip-9 and brotli-11 ran on the same bytes as opponents, not as occupants. Hosted cap 4 MiB. Silesia rows are slices, not the official 12-file total. AWARE is a retired alias. Not a #1 claim.",
   decode_ok: keep.length,
   n: rows.length,
   rows,
