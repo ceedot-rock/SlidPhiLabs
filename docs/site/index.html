@@ -73,7 +73,7 @@
             "name": "How do humans and agents pay?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Humans use Stripe Checkout (card, Link, Cash App, Amazon Pay, ACH, Klarna, Affirm, Afterpay when Stripe enables them). Agent micropayments via x402 (Solana USDC / Base USDC) are on the roadmap — for agent access today, email corey@slidphilabs.com. Invoice and manual crypto are also available."
+              "text": "Humans use Stripe Checkout at /pay (card, Link, Cash App, Amazon Pay, ACH, Klarna, Affirm, Afterpay when Stripe enables them). Agents: POST /api/x402-products returns HTTP 402 with Solana USDC and Base USDC accepts[] (402 catalog exists); live settle via Rider XPay / x402 is in flight — do not invent a completed debit. Invoice and manual crypto are also available."
             }
           },
           {
@@ -109,8 +109,8 @@
     <section class="spl-proof" aria-label="Live lab">
       <a class="spl-meter" href="/silesia">
         <p class="spl-kicker">PCC · Silesia 12</p>
-        <p class="spl-meter-val">43,724,575<span>packed of 211,938,580</span></p>
-        <div class="spl-bar" style="--fill:20.6%"><i></i></div>
+        <p class="spl-meter-val">51,498,645<span>packed of 211,938,580</span></p>
+        <div class="spl-bar" style="--fill:24.3%"><i></i></div>
         <p class="spl-stamp">DECODE_OK 12/12</p>
       </a>
       <a class="spl-meter" href="/trustream">
