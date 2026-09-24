@@ -73,7 +73,7 @@
             "name": "How do humans and agents pay?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Humans use Stripe Checkout at /pay (card, Link, Cash App, Amazon Pay, ACH, Klarna, Affirm, Afterpay when Stripe enables them). Agents: POST /api/x402-products returns HTTP 402 with Solana USDC and Base USDC accepts[] (402 catalog exists); live settle via Rider XPay / x402 is in flight — do not invent a completed debit. Invoice and manual crypto are also available."
+              "text": "Humans use Stripe Checkout (card, Link, Cash App, Amazon Pay, ACH, Klarna, Affirm, Afterpay when Stripe enables them). Agents settle via Rider with x402 / XPay in flight (402 OK; do not invent a completed debit). Invoice and manual crypto are also available."
             }
           },
           {
