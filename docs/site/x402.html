@@ -34,7 +34,7 @@
     <h2>From a shell</h2>
     <div class="spl-prose">
       <p><code>curl -sS https://www.slidphilabs.com/api/x402-products</code></p>
-      <p><code>curl -sS -X POST https://www.slidphilabs.com/api/x402-products -H 'content-type: application/json' -d '{"sku":"pcc-year"}'</code> — PCC year seat; expect 402 until you attach payment. (<code>gc-year</code> still accepted as a silent legacy alias.)</p>
+      <p><code>curl -sS -X POST https://www.slidphilabs.com/api/x402-products -H 'content-type: application/json' -d '{"sku":"gc-year"}'</code> — PCC year seat (checkout token <code>gc-year</code>); expect 402 until you attach payment.</p>
       <p><code>curl -sS "https://quikgater-worker.ceedotrock.workers.dev/?url=https://example.com"</code> — expect 402.</p>
       <p>npm helper: <code>npx -y spl-pay-per-suite mcp</code> then <code>spl_pps_x402_catalog</code> / <code>spl_pps_x402_buy</code>.</p>
     </div>

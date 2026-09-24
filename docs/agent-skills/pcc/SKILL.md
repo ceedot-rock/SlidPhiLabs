@@ -20,10 +20,10 @@ TRUSTREAM is the same plan for live logs: https://www.slidphilabs.com/trustream
 ## Pay
 
 - **Usage:** first 2 GB each month free, then 8¢/GB. SKU `suite`.
-- **Pro:** $49/mo, 200 GB included, then 8¢/GB. Public SKU `pcc-month` (product name is PCC).
-- Day / year: public SKUs `pcc-day` / `pcc-year`. (`gc-*` remain silent legacy checkout aliases for Stripe/x402 compat.)
+- **Pro:** $49/mo, 200 GB included, then 8¢/GB. Face `pcc-month`; checkout sku `gc-month` (product name is PCC).
+- Day / year: face `pcc-day` / `pcc-year`; checkout tokens remain `gc-day` / `gc-year`.
 
-Agents: POST `/api/x402-products` `{"sku":"suite"}` or `{"sku":"pcc-month"}`. Humans: `/pay?sku=pcc-month`.
+Agents: POST `/api/x402-products` `{"sku":"suite"}` or `{"sku":"gc-month"}`. Humans: `/pay?sku=gc-month`.
 
 ## Official Silesia (12 whole files, 211,938,580, DECODE_OK)
 

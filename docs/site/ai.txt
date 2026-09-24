@@ -11,7 +11,7 @@
 7. Coming next: file sharing between agents (same signed seats) — not live.
 
 ### SKU cheat sheet
-rider-month $79 · rider-year $790 · rider-ops 29/290 · warrant 29/290 · chamber 9/99 · pcc-day/month/year 9/49/490 (PCC) · lab-pass $668 (Chamber+PCC). x402 = same sku via POST /api/x402-products. (eng: gc-* = silent legacy checkout aliases.)
+rider-month $79 · rider-year $790 · rider-ops 29/290 · warrant 29/290 · chamber 9/99 · pcc-day/month/year 9/49/490 (PCC; checkout tokens gc-day/month/year) · lab-pass $668 (Chamber+PCC). x402 = same sku via POST /api/x402-products.
 
 - Agent-Rider — CENTERPIECE: Agents talk. Rider delivers. Signed credentials (ES256 JWT L0–L4, local JWKS) + agent DMs + Warrant + MCP + trust/Ops — $79/mo · $790/yr — https://www.slidphilabs.com/rider · https://agentrider.fly.dev · Coming next: file sharing — not live · NOT KYC blanket “verified”
 - Warrant — mandate + receipts bound to a Rider — $29/mo · $290/yr — https://www.slidphilabs.com/warrant

@@ -49,7 +49,7 @@ Two legal ways to use the npm clients. Pick one.
 1. **Free — AGPL-3.0-or-later.** Install and use. No key, no payment. Hosted compression: first 2 GB/month free, then 8¢/GB.
 2. **Paid grant — buy a PCC seat.** A live seat covers commercial use of the surface (LICENSE.COMMERCIAL): Day $9 → 10 GB, Month $49 → 200 GB, Year $490 → 2,000 GB included.
 
-Agents buy machine-to-machine with x402 (USDC on Solana or Base): `POST /api/x402-products {"sku":"pcc-day"}` → HTTP 402 says where to pay → retry with `X-PAYMENT` → `claim_token` (`spl1.…`, 45 days). (`gc-day` still works as a silent legacy checkout id; the product is PCC.) The claim token **is** the API key: `compress(buf, { apiKey: claim })`. Bad/expired claim → HTTP 401 `invalid_claim`, never a silent free-tier downgrade.
+Agents buy machine-to-machine with x402 (USDC on Solana or Base): `POST /api/x402-products {"sku":"gc-day"}` → HTTP 402 says where to pay → retry with `X-PAYMENT` → `claim_token` (`spl1.…`, 45 days). (`gc-day` is the legacy Stripe/x402 checkout token; the product is PCC.) The claim token **is** the API key: `compress(buf, { apiKey: claim })`. Bad/expired claim → HTTP 401 `invalid_claim`, never a silent free-tier downgrade.
 
 ## License
 

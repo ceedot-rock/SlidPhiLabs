@@ -18,8 +18,7 @@
 | rider-ops-month/year | 29/290 | /pay?sku=rider-ops-month · /pay?sku=rider-ops-year |
 | warrant-month/year | 29/290 | /pay?sku=warrant-month · /pay?sku=warrant-year |
 | chamber-month/year | 9/99 | /pay?sku=chamber-month · /pay?sku=chamber-year |
-| pcc-day/month/year | 9/49/490 | PCC seats · /pay?sku=pcc-day · pcc-month · pcc-year |
-(eng: `gc-day`/`gc-month`/`gc-year` remain silent legacy checkout aliases for Stripe/x402 compat — do not market as public SKUs.)
+| pcc-day/month/year | 9/49/490 | PCC · /pcc · checkout /pay?sku=gc-day · gc-month · gc-year (legacy Stripe tokens) |
 | lab-pass | 668 | Chamber + PCC · /pay?sku=lab-pass |
 x402 resource = same sku via POST /api/x402-products.
 
@@ -73,7 +72,7 @@ Q: How do agents pay?
 A: POST /api/x402-products {sku} → HTTP 402 with Solana USDC and Base USDC. Pay, retry with X-PAYMENT → claim_token. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight. Humans use Stripe POST /api/checkout or /pay?sku=.
 
 Q: How does an agent use its claim_token with the npm packages?
-A: The claim_token IS the API key. Pass it as apiKey: compress(buf, { apiKey: "<claim_token>" }) sends Authorization: Bearer spl1.… — /api/compress and /api/decompress verify the claim and meter against the seat's included bytes (pcc-day 10 GB, pcc-month 200 GB, pcc-year 2,000 GB). No key: first 2 GB/month free on the anonymous tier. Expired/forged claim: HTTP 401 invalid_claim, never a silent downgrade.
+A: The claim_token IS the API key. Pass it as apiKey: compress(buf, { apiKey: "<claim_token>" }) sends Authorization: Bearer spl1.… — /api/compress and /api/decompress verify the claim and meter against the seat's included bytes (PCC day 10 GB, month 200 GB, year 2,000 GB; checkout tokens remain gc-day/month/year). No key: first 2 GB/month free on the anonymous tier. Expired/forged claim: HTTP 401 invalid_claim, never a silent downgrade.
 
 Q: Where is the lab?
 A: Cherry Hill, New Jersey. Corey Tasz. corey@slidphilabs.com.
