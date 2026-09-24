@@ -2,7 +2,7 @@
   "id": "pcc",
   "name": "PCC",
   "job": "Hosted lossless compress / decompress.",
-  "human": "https://www.slidphilabs.com/gc",
+  "human": "https://www.slidphilabs.com/pcc",
   "api": {
     "compress": "POST https://www.slidphilabs.com/api/compress",
     "decompress": "POST https://www.slidphilabs.com/api/decompress"

@@ -15,7 +15,7 @@ export const OMNI_META = {
   decompress: "https://www.slidphilabs.com/api/decompress",
   mcp: "https://www.slidphilabs.com/mcp",
   licensing: "https://www.slidphilabs.com/licensing.json",
-  product: "https://www.slidphilabs.com/gc",
+  product: "https://www.slidphilabs.com/pcc",
 };
 
 export { decompress as decode };

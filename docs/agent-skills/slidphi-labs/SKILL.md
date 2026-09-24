@@ -37,7 +37,7 @@ curl -sL https://www.slidphilabs.com/.well-known/mcp/server-card.json
 
 | Product | It is | Pay |
 |---------|-------|-----|
-| PCC | Hosted lossless compressor. Send a file, restore every byte. Dual-licensed. | Pro $49/mo (SKU `gc-month`, 200 GB then 8¢/GB) **or** usage first 2 GB/mo free then 8¢/GB (SKU `suite`) |
+| PCC | Hosted lossless compressor. Send a file, restore every byte. Dual-licensed. | Pro $49/mo (SKU `pcc-month`, 200 GB then 8¢/GB; `gc-*` = legacy checkout aliases) **or** usage first 2 GB/mo free then 8¢/GB (SKU `suite`) |
 | TRUSTREAM | Live residual pipe for logs/SIEM on a PCC seat | Included with PCC |
 | Chamber | Two-key JSON seal. AES-256-GCM. One share is useless. | $9/mo · $99/yr |
 | Agent-Rider | Signed agent identity, trust, credits, MCP. Official remote is Fly. | $79/mo · $790/yr |
