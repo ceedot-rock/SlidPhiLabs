@@ -1,9 +1,9 @@
 # Slid Phi Labs
 # Updated 2026-09-24
-> Cherry Hill lab. Agents: Rider + MCP + settle. Humans: Stripe. Compression is one Shared Spine with three heads, four doors: PCC (hosted), TNSSRC (local), TRUSTREAM (live pipe), pulsar (free demo). Never expand. DECODE_OK. https://www.slidphilabs.com/
+> Slid Phi Labs: one Shared Spine, four doors — **PCC** (hosted lossless), **TNSSRC** (local; Silesia **43.72M**, beats xz-9), **TRUSTREAM** (live tiles; with PCC), **pulsar** (free demo). Product URL: `/pcc`. Agents: Rider (signed seats, DMs, JWKS) + Warrant. CuNi: exact multi-language or refuse.
 
 ## The one-liner
-> Slid Phi Labs compression is one Shared Spine with three heads. PCC is the hosted door, TNSSRC the local engine (43.72M Silesia, beats xz-9), TRUSTREAM the live-tile door, pulsar the free demo. Never expand. DECODE_OK. Agents buy Rider/Warrant separately.
+> Slid Phi Labs: one Shared Spine, four doors — **PCC** (hosted lossless), **TNSSRC** (local; Silesia **43.72M**, beats xz-9), **TRUSTREAM** (live tiles; with PCC), **pulsar** (free demo). Product URL: `/pcc`. Agents: Rider (signed seats, DMs, JWKS) + Warrant. CuNi: exact multi-language or refuse.
 
 ## The spine
 bytes → Shared Spine (row / 4 KiB tile / file) → Head A (structure: runs, zeros, ramps) → Head B (literals: bytes, text/xml) → Head C (mix/gate: who wins this row) → pack only if strictly shorter than |x|, else store RAW → DECODE_OK, every byte back. Law: never expand, invert, CuNi pathways or refuse. One spine family, two crowns: hosted PCC may try extra lab pathways and crown a different winner per file. CuNi sits under the gate: pathway laws in cuni/ must print the same stdout on catalog seats or the path is refused. AIP/riser is lab-only, never a fifth door.
@@ -51,7 +51,7 @@ Four doors onto one Shared Spine. What it is, then what you pay.
 - Door 1 · PCC — hosted file job. Upload / POST /api/compress / npm / MCP. Every owned pathway on lab machines; smallest restore-safe copy. $9/day · $39/mo (200 GB) · $390/yr (2 TB). First 2 GB/month free, then 8¢/GB. Product: https://www.slidphilabs.com/pcc · prices: https://www.slidphilabs.com/pricing
 - Door 2 · TNSSRC — TriNeural Shared Spine Row Compression. Local `npcc` + closed grant. "Compressor 2. Own C." Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256, beats xz-9. AGPL $0 · closed grant $390/yr (SKU tnssrc-grant) · optional host bake-off $19.31/mo on a PCC seat. Board: https://www.slidphilabs.com/silesia
 - Door 3 · TRUSTREAM — live pipe, same spine, 4 KiB tiles: ZERO → MATH → PHRASE → STORE. Quiet tiles shrink; busy tiles stay put so the stream never inflates. Included with PCC, not a second bill. https://www.slidphilabs.com/trustream
-- Door 4 · pulsar — free GPLv3 binary demo you run on your own machine (Linux binary + source). Not PCC. Not TNSSRC. Proof that invert exists without a seat. $0 · closed embed $390/yr, SKU pulsar-exception. https://www.slidphilabs.com/pulsar · https://www.slidphilabs.com/pay?sku=pulsar-exception
+- Door 4 · pulsar — free GPLv3 binary demo you run on your own machine (Linux binary + source). Free proof on your machine — the demo door onto the Shared Spine. $0 · closed embed $390/yr, SKU pulsar-exception. https://www.slidphilabs.com/pulsar · https://www.slidphilabs.com/pay?sku=pulsar-exception
 - TRU8 — all-zero data → 8 bytes, round-trip. Free on POST /api/specialist.
 - Chamber — two-key JSON seal. $9/mo · $99/yr. License to seal new secrets; opening an already-sealed secret takes both keys, not another payment. https://www.slidphilabs.com/chamber
 - Agent-Rider — signed identity + agent DMs (ES256 JWT L0–L4, local JWKS, `POST /api/dm`). Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. https://www.slidphilabs.com/rider · https://agentrider.fly.dev/llms.txt

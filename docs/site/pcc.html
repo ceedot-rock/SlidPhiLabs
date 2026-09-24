@@ -3,49 +3,50 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>PCC — hosted lossless compression · Slid Phi Labs</title>
-  <meta name="description" content="PCC is Door 1 onto the Shared Spine: hosted lossless compression. Send a file. Get a smaller copy. Restore every byte. Pro $39/month or usage: first 2 GB free, then 8¢/GB."/>
+  <title>PCC — Hosted lossless compression | Slid Phi Labs</title>
+  <meta name="description" content="Send a file. Get it smaller. Restore every byte. Hosted lossless compression on the Shared Spine."/>
   <link rel="canonical" href="https://www.slidphilabs.com/pcc"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
-  <meta property="og:title" content="PCC — hosted lossless compression"/>
-  <meta property="og:description" content="Send a file. Get it smaller. Every byte back."/>
+  <meta property="og:title" content="PCC — Hosted lossless compression | Slid Phi Labs"/>
+  <meta property="og:description" content="Send a file. Get it smaller. Restore every byte. Hosted lossless compression on the Shared Spine."/>
   <meta property="og:url" content="https://www.slidphilabs.com/pcc"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <link rel="stylesheet" href="/assets/chrome.css?v=38"/>
 </head>
 <body>
   <main class="spl-page" id="main">
-    <p class="spl-kicker">PCC · Door 1 · hosted lossless compression</p>
+    <p class="spl-kicker">PCC · hosted lossless compression</p>
     <h1>Send a file. Get it smaller. Every byte back.</h1>
-    <p class="lede">PCC is Door 1 onto the lab's Shared Spine: the hosted file job. You send bytes. We keep the smallest copy that still restores the original. Website, HTTP, npm, or MCP. Hosted private encoder on our machines — seat grants access, not engine source.</p>
+    <p class="lede">PCC is hosted lossless compression. You send bytes. We return the smallest copy that still restores the original — on the website, HTTP, npm, or MCP.</p>
     <p class="spl-actions">
-      <a class="spl-btn spl-btn-dark" href="/pay?sku=pcc-month">PCC Pro · $39 / month</a>
-      <a class="spl-btn spl-btn-line" href="/pps">Usage · 2 GB free then 8¢/GB</a>
-      <a class="spl-btn spl-btn-line" href="/specialist">Shrink a file</a>
+      <a class="spl-btn spl-btn-dark" href="/specialist">Compress now</a>
+      <a class="spl-btn spl-btn-line" href="/pricing">View pricing</a>
     </p>
 
-    <aside class="spl-card" id="diner-check" aria-label="Sealed Dial A diner receipt">
-      <p class="spl-kicker">Diner check · Dial A · silesia/mozilla · sealed</p>
+    <aside class="spl-card" id="diner-check" aria-label="Live receipt · mozilla">
+      <p class="spl-kicker">Live receipt · mozilla</p>
       <p class="lede" style="margin:0.4rem 0 0.6rem"><strong>In</strong> 51,220,480 · <strong>Out</strong> 16,708,129 · <strong>Every byte back</strong> yes · <strong>vs zstd-9</strong> −27,834 (−28k)</p>
-      <p class="spl-note" style="margin:0">DECODE_OK. Claimable size lead only. Fast chrome stays dark. Machine receipt: <a href="/receipts/pcc-diner-dial-a-mozilla.json"><code>pcc-diner-dial-a-mozilla.json</code></a>.</p>
+      <p class="spl-note" style="margin:0">DECODE_OK. Machine receipt: <a href="/receipts/pcc-diner-dial-a-mozilla.json"><code>pcc-diner-dial-a-mozilla.json</code></a>.</p>
     </aside>
     <div class="spl-prose spl-full">
       <h2>What it is</h2>
-      <p>A compression service. Lossless: the file that comes back is the file you sent. Hosted: our machines run the pathways. You store, ship, and archive the small copy. Restore later with <code>POST /api/decompress</code>.</p>
-      <p>Zeros collapse to 8 bytes on the specialist door. Everyday files take every pathway we own; the smallest restore-safe result wins. A folder can become a <code>.pcc</code> container — many files, one archive, this compressor inside.</p>
-      <p><strong>PCC Pro</strong> is $39/month and includes 200 GB. <strong>PCC Year</strong> is $390. <strong>Usage</strong> is first 2 GB each month free, then 8¢/GB. TRUSTREAM (live logs) rides the same plan. Official 12-file corpus: <a href="/silesia">/silesia</a>.</p>
+      <p>PCC is a compression service. Lossless means the file you restore is the file you sent. Hosted means our machines run the pathways; your seat buys access. If nothing shrinks the file, we store it as-is — same size you sent.</p>
       <h2>How a job runs</h2>
-      <p>You send the file. We shrink it. You keep the small copy. You restore later. Same path on the site, <code>POST /api/compress</code>, npm, or MCP.</p>
-      <h2>Future use</h2>
+      <ol>
+        <li>Send the file.</li>
+        <li>We shrink it.</li>
+        <li>You keep the small copy.</li>
+        <li>Restore later with decompress — same path on the site, API, npm, or MCP.</li>
+      </ol>
+      <h2>Included</h2>
+      <p>TRUSTREAM rides the same PCC plan.</p>
+      <h2>Pricing</h2>
       <ul>
-        <li>Object stores that keep one master and spawn derived sizes on demand.</li>
-        <li>Backup vendors that bill on packed bytes while restore stays exact.</li>
-        <li>Model and dataset hubs that ship deltas with a prove step.</li>
-        <li>On-device packs that unpack to the original for training or inference.</li>
-        <li>Legal and medical archives that must prove bit identity years later.</li>
+        <li>First 2 GB / month free, then 8¢/GB</li>
+        <li>PCC Pro $39/mo · 200 GB included</li>
+        <li>PCC Year $390</li>
+        <li>Day pass available for short runs</li>
       </ul>
-      <h2>Market</h2>
-      <p>Cloud egress and disk are priced on raw size. A compressor that restores every byte turns storage and transfer into a margin line. Teams that already pay AWS, GCP, or a CDN can cut the bill without changing the file they get back. Agents that buy squeeze by the call (x402) make the same math available to machines.</p>
     </div>
     <p class="spl-note"><a href="/pricing">Pricing</a> · <a href="/docs">API</a> · <a href="/silesia">Silesia</a> · <a href="/npm">npm</a></p>
   </main>
