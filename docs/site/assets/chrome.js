@@ -2,20 +2,21 @@
 (function () {
   const NAV = [
     ["/", "Home"],
-    ["/pcc", "PCC"],
+    ["/pcc", "Compress"],
+    ["/silesia", "Board"],
+    ["/rider", "Rider"],
+    ["/chamber", "Chamber"],
+    ["/cuni", "CuNi"],
     ["/pricing", "Pricing"],
-    ["/box", "Try"],
-    ["/pay", "Pay"],
+    ["/docs", "Docs"],
   ];
   const MORE = [
     ["/trustream", "TRUSTREAM logs"],
-    ["/chamber", "Chamber"],
-    ["/rider", "Agent-Rider"],
     ["/warrant", "Warrant"],
-    ["/cuni", "CuNi"],
     ["/archive", ".pcc archive"],
     ["/pulsar", "pulsar"],
-    ["/docs", "API"],
+    ["/box", "Try"],
+    ["/pay", "Pay"],
     ["/press", "Press"],
     ["/about", "About"],
     ["/humans", "Humans"],
