@@ -18,7 +18,7 @@
 | rider-ops-month/year | 29/290 | /pay?sku=rider-ops-month · /pay?sku=rider-ops-year |
 | warrant-month/year | 29/290 | /pay?sku=warrant-month · /pay?sku=warrant-year |
 | chamber-month/year | 9/99 | /pay?sku=chamber-month · /pay?sku=chamber-year |
-| pcc-day/month/year | 9/49/490 | PCC · /pcc · checkout /pay?sku=gc-day · gc-month · gc-year (legacy Stripe tokens) |
+| pcc-day/month/year | 9/49/490 | PCC · /pcc · checkout /pay?sku=pcc-day · pcc-month · pcc-year (gc-* remain silent legacy aliases in payments-rails; not marketed) |
 | lab-pass | 668 | Chamber + PCC · /pay?sku=lab-pass |
 x402 resource = same sku via POST /api/x402-products.
 
