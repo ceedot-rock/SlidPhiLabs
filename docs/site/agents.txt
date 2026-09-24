@@ -19,7 +19,7 @@
 | rider-ops-month/year | 29/290 | /pay?sku=rider-ops-month · rider-ops-year |
 | warrant-month/year | 29/290 | /pay?sku=warrant-month · warrant-year |
 | chamber-month/year | 9/99 | /pay?sku=chamber-month · chamber-year |
-| gc-day/month/year | 9/49/490 | PCC seats |
+| PCC day/month/year | 9/49/490 | /pay?sku=gc-day · gc-month · gc-year |
 | lab-pass | 668 | Chamber+PCC |
 x402 resource = same sku via POST /api/x402-products.
 
