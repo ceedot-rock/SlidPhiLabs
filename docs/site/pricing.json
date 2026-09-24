@@ -37,17 +37,17 @@
         "day": {
           "sku": "gc-day",
           "usd": 9,
-          "stripe": "https://www.slidphilabs.com/pay?sku=gc-day"
+          "stripe": "https://www.slidphilabs.com/pay?sku=pcc-day"
         },
         "month": {
           "sku": "gc-month",
           "usd": 49,
-          "stripe": "https://www.slidphilabs.com/pay?sku=gc-month"
+          "stripe": "https://www.slidphilabs.com/pay?sku=pcc-month"
         },
         "year": {
           "sku": "gc-year",
           "usd": 490,
-          "stripe": "https://www.slidphilabs.com/pay?sku=gc-year"
+          "stripe": "https://www.slidphilabs.com/pay?sku=pcc-year"
         }
       }
     },

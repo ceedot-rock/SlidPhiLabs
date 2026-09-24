@@ -265,24 +265,24 @@
       {
         "sku": "gc-day",
         "usd": 9,
-        "human": "/pay?sku=gc-day",
-        "note": "PCC day \u00b7 checkout sku gc-day",
+        "human": "/pay?sku=pcc-day",
+        "note": "PCC day \u00b7 human checkout /pay?sku=pcc-day \u00b7 API sku gc-day",
         "face": "pcc-day",
         "product": "/pcc"
       },
       {
         "sku": "gc-month",
         "usd": 49,
-        "human": "/pay?sku=gc-month",
-        "note": "PCC month \u00b7 checkout sku gc-month",
+        "human": "/pay?sku=pcc-month",
+        "note": "PCC month \u00b7 human checkout /pay?sku=pcc-month \u00b7 API sku gc-month",
         "face": "pcc-month",
         "product": "/pcc"
       },
       {
         "sku": "gc-year",
         "usd": 490,
-        "human": "/pay?sku=gc-year",
-        "note": "PCC year \u00b7 checkout sku gc-year",
+        "human": "/pay?sku=pcc-year",
+        "note": "PCC year \u00b7 human checkout /pay?sku=pcc-year \u00b7 API sku gc-year",
         "face": "pcc-year",
         "product": "/pcc"
       },

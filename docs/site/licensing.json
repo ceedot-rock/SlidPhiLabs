@@ -95,9 +95,9 @@
       "grants": "Written exception for one closed product using CuNi, one year.",
       "pay": "https://www.slidphilabs.com/pay?sku=cuni-exception"
     },
-    "gc-day": { "usd": 9, "plain": "PCC hosted compressor, one day of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=gc-day" },
-    "gc-month": { "usd": 49, "plain": "PCC hosted compressor, one month of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=gc-month" },
-    "gc-year": { "usd": 490, "plain": "PCC hosted compressor, one year of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=gc-year" },
+    "gc-day": { "usd": 9, "plain": "PCC hosted compressor, one day of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-day" },
+    "gc-month": { "usd": 49, "plain": "PCC hosted compressor, one month of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-month" },
+    "gc-year": { "usd": 490, "plain": "PCC hosted compressor, one year of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-year" },
     "lab-pass": { "usd": 668, "plain": "One year of Chamber + PCC for $668.", "pay": "https://www.slidphilabs.com/pay?sku=lab-pass", "includes": ["chamber", "pcc"], "excludes": ["rider"] },
     "oss-support": {
       "usd": 199,
