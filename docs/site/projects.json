@@ -7,7 +7,7 @@
       "name": "PCC",
       "status": "live",
       "role": "hosted lossless compressor",
-      "price": "Day $9 \u00b7 Month $49 \u00b7 Year $490",
+      "price": "Day $9 \u00b7 Month $39 \u00b7 Year $390",
       "url": "https://www.slidphilabs.com/pcc"
     },
     {
@@ -31,7 +31,7 @@
       "name": "Agent-Rider",
       "status": "live",
       "role": "signed agent identity. Not in Lab Pass.",
-      "price": "Month $79 \u00b7 Year $790",
+      "price": "Solo $13.31 \u00b7 Bundle $19.31 \u00b7 Crew $49 \u00b7 Shop $199 \u00b7 Fleet $631",
       "url": "https://www.slidphilabs.com/rider"
     },
     {
@@ -47,7 +47,7 @@
       "name": "CuNi",
       "status": "live",
       "role": "one source, 144 languages, same stdout or refuse",
-      "price": "$0 (closed-app exception $490/yr)",
+      "price": "$0 (closed-app exception $390/yr)",
       "url": "https://www.slidphilabs.com/cuni"
     },
     {
@@ -55,7 +55,7 @@
       "name": "pulsar",
       "status": "live",
       "role": "free GPLv3 compressor you run on your own machine. Not a product card.",
-      "price": "Free \u00b7 $490/yr closed embed",
+      "price": "Free \u00b7 $390/yr closed embed",
       "url": "https://www.slidphilabs.com/pulsar"
     },
     {
@@ -71,7 +71,7 @@
       "name": "Lab Pass",
       "status": "live",
       "role": "365 days \u2014 Chamber + PCC. Not Rider.",
-      "price": "$668",
+      "price": "$490",
       "url": "https://www.slidphilabs.com/lab-pass"
     }
   ]

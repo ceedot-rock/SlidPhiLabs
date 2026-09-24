@@ -23,7 +23,7 @@ Agents: https://www.slidphilabs.com/agents
 - Silesia 55,745,438 / 211,938,580 DECODE_OK 12/12. Beats gzip-9. Loses to bzip2 and xz. Matches OSCB. Free local binary.
 - PCC on the same official 12: 51,498,645, DECODE_OK 12/12. champ 50,541,135 12/12. gzip-9 67,631,990. bzip2-9 54,506,769. xz-6 still ahead (~49.4M). Not a #1 claim. AWARE+XZ1 47.7M retired.
 - Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc
-- Day $9 · Month $49 · Year $490. Access, not source.
+- Day $9 · Month $39 · Year $390. Access, not source.
 
 ### Security · Chamber
 - Page: https://www.slidphilabs.com/chamber
@@ -39,9 +39,9 @@ https://www.slidphilabs.com/projects.json
 
 ## Wording
 - Chamber = cloak license. $9/mo · $99/yr. Open is keys-only.
-- PCC = hosted compressor. $9/day · $49/mo · $490/yr.
+- PCC = hosted compressor. $9/day · $39/mo · $390/yr.
 - PCC meter = first 2 GB/month free, then 8¢/GB. Month plan includes 200 GB. Not a fifth product.
-- Lab Pass = Chamber + PCC, $668/yr. Not Rider.
+- Lab Pass = Chamber year + PCC Year, $490/yr. Not Rider.
 - Access = entitlement claim. Not a codec dump.
 
 ## Scope

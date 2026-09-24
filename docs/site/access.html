@@ -28,7 +28,7 @@
 <meta name="agent-networks" content="solana-mainnet-beta,eip155:8453"/>
 <meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
 <meta name="agent-catalog" content="https://www.slidphilabs.com/api/x402-products"/>
-<meta name="agent-one-liner" content="CuNi $0 · Chamber $9/$99 · PCC $9/$49/$490 · Rider $79/$790 · first 2 GB/mo then 8¢/GB · GET /api/agent"/>
+<meta name="agent-one-liner" content="CuNi $0 · Chamber $9/$99 · PCC $9/$39/$390 · Rider Solo $13.31–Fleet $631 · first 2 GB/mo then 8¢/GB · GET /api/agent"/>
 <meta property="og:title" content="Access — packages after pay · Slid Phi Labs"/>
 <meta property="og:description" content="Claim entitlement after Stripe or x402. Auto-claim with ?claim= token."/>
 <meta property="og:url" content="https://www.slidphilabs.com/access"/>
@@ -155,7 +155,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       <a href="/pay">Pay</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-primary btn-sm" href="/pay?sku=chamber-year">Chamber Year · $490</a>
+      <a class="btn btn-primary btn-sm" href="/pay?sku=chamber-year">Chamber Year · $99</a>
       <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -177,7 +177,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
     <code>?claim=spl1.…&amp;product=sku</code> or GET <code>/api/access-verify?claim=…</code>.
     Email <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> if the token is missing.
     blackjack / shard-zip / shard-tsdb $199 SKUs are support for the already-public OSS library — no secret extra engine tarball.
-    Chamber $9 / $99. PCC $9 / $49 / $490. Rider $79 / $790. Lab Pass $668 (Chamber + PCC, not Rider). Suite is a meter (first 2 GB/month then 8¢/GB).
+    Chamber $9 / $99. PCC $9 / $39 / $390. Rider Solo $13.31–Fleet $631. Lab Pass $490 (Chamber year + PCC Year, not Rider). Suite is a meter (first 2 GB/month then 8¢/GB).
   </div>
 
   <div id="status-card" role="status">
@@ -220,7 +220,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
 
   <h2>Not purchased yet?</h2>
   <div class="links">
-    <a class="btn btn-gold" href="/pay?sku=pcc-year">PCC Year $490</a>
+    <a class="btn btn-gold" href="/pay?sku=pcc-year">PCC Year $390</a>
     <a class="btn btn-primary" href="/pay?sku=chamber-year">Chamber Year $99</a>
     <a class="btn btn-teal" href="/pps">Suite</a>
     <a class="btn btn-ghost" href="/pricing">Pricing</a>
@@ -270,21 +270,21 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
     },
     'gc-year': {
       name: 'PCC · annual compressor seat',
-      price: '$490/year',
+      price: '$390/year',
       deliver: 'Hosted lossless compressor. Engine stays in the lab.',
       buy: '/pay?sku=pcc-year',
       blurb: 'Compressor',
     },
     'rider-year': {
       name: 'Agent-Rider · annual team seat',
-      price: '$790/year',
+      price: 'Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631',
       deliver: 'Signed agent identity L0–L4.',
       buy: '/pay?sku=rider-year',
       blurb: 'Identity',
     },
     'lab-pass': {
       name: 'Lab Pass · annual',
-      price: '$668/year',
+      price: '$490/year',
       deliver: 'Chamber + PCC. Not Rider.',
       buy: '/pay?sku=lab-pass',
       blurb: 'Bundle',

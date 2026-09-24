@@ -17,8 +17,8 @@ never comes back larger. Restore is the same host.
 DUAL LICENSE
 Every product the lab brings forward is available two ways: open terms, or a
 paid commercial grant to ship inside a closed product. A PCC seat is the
-grant for hosted use. pulsar’s closed-product grant is $490/year. CuNi’s is
-$490/year. Chamber, Rider, and Warrant seats cover theirs.
+grant for hosted use. pulsar’s closed-product grant is $390/year. CuNi’s is
+$390/year. Chamber, Rider, and Warrant seats cover theirs.
 
 NPM CLIENTS (not the encoder)
   slid-phi 2.3.0                 compress() / decompress()
@@ -40,18 +40,18 @@ npm zip() / unzip() · lb zip out.pcc folder/
 PRICE
   First 2 GB each calendar month: free
   Then: 8¢ per GB, $1 card minimum
-  PCC day $9 (10 GB) · month $49 (200 GB) · year $490 (2,000 GB)
+  PCC day $9 (10 GB) · month $39 (200 GB) · year $390 (2 TB)
   TRUSTREAM live logs sit on the same plan
 
 PULSAR
 Free lossless compressor you run on your own machine (Linux binary and
-source). Closed-product embed: $490/year.
+source). Closed-product embed: $390/year.
 
 ALSO ON THE CATALOG
   Chamber     two-key JSON seal                 $9/month · $99/year
-  Agent-Rider signed agent identity             $79/month · $790/year
+  Agent-Rider signed agent identity             Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631
   Warrant     mandate + receipts on a Rider     $29/month · $290/year
-  CuNi        write once; Python/Go/JS match    studio $0 · exception $490/year
+  CuNi        write once; Python/Go/JS match    studio $0 · exception $390/year
 
 LINKS
   Product  https://www.slidphilabs.com/pcc

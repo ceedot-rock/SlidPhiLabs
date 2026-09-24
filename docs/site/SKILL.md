@@ -6,9 +6,9 @@ description: Agent-Rider identity + settle (x402/Stripe) + MCP, co-lead with PCC
 # Slid Phi Labs
 
 **Co-lead for agents:** Agent-Rider + settle + MCP, alongside **PCC** (hosted lossless compressor only — AWARE is a retired alias).  
-Rider $79/$790 · Warrant $29/$290 · Chamber $9/$99 · PCC $9/$49/$490 · CuNi Studio $0.  
+Rider Solo $13.31–Fleet $631 · Warrant/Ops in bundle or Team · Chamber $9/$99 · PCC $9/$39/$390 · CuNi Studio $0.
 Stream: **TRUSTREAM** rides a PCC seat. Meter: first 2 GB/month free, then 8¢/GB (`POST /api/ppp-quote` / MCP `spl_quote`).  
-Lab Pass: **$668/yr** = Chamber + PCC. Rider is its own seat.
+Lab Pass: **$490/yr** = Chamber year + PCC Year. Rider is its own seat.
 
 ## Agent Quickstart
 1. Discover: GET https://www.slidphilabs.com/api/agent · GET /.well-known/mcp/server-card.json

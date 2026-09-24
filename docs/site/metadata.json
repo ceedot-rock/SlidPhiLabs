@@ -10,13 +10,13 @@
   "theme_color": "#0f1c2e",
   "twitter": "@slidphilabs",
   "glossary": {
-    "CuNi": "language \u2014 write once, print 144 languages. Same stdout or refuse. Native seats: Python, Go, JS, TS, C, C++, Rust. Bank arm: paste N get X. Studio $0. Closed-app exception $490/yr. v0.1.10.",
+    "CuNi": "language \u2014 write once, print 144 languages. Same stdout or refuse. Native seats: Python, Go, JS, TS, C, C++, Rust. Bank arm: paste N get X. Studio $0. Closed-app exception $390/yr. v0.1.10.",
     "Chamber": "two-key protocol for storing a JSON secret. Cloak license $9/mo \u00b7 $99/yr. Open existing seals with both keys.",
-    "Agent-Rider": "signed agent identity L0\u2013L4. Month $79 \u00b7 Year $790. Not in Lab Pass.",
-    "PCC": "hosted lossless compressor. Day $9 \u00b7 Month $49 \u00b7 Year $490. Dual-licensed public source, or a paid grant to ship closed.",
+    "Agent-Rider": "signed agent identity L0\u2013L4. Solo $13.31 \u00b7 Bundle $19.31 \u00b7 Crew $49 \u00b7 Shop $199 \u00b7 Fleet $631. Not in Lab Pass.",
+    "PCC": "hosted lossless compressor. Day $9 \u00b7 Month $39 \u00b7 Year $390. Dual-licensed public source, or a paid grant to ship closed.",
     "TRUSTREAM": "live logs on the PCC plan.",
     "Suite": "PCC meter \u2014 first 2 GB/month free, then 8\u00a2/GB. Not a product card.",
-    "Lab Pass": "Chamber + PCC for 365 days, $668. Not Rider.",
+    "Lab Pass": "Chamber year + PCC Year for 365 days, $490. Not Rider.",
     "Access": "entitlement claim after Stripe or x402. Not a codec dump.",
     "pulsar": "free GPLv3 compressor you run on your own machine.",
     "Warrant": "signed mandate and receipts bound to a Rider. $29/mo \u00b7 $290/yr."
@@ -118,7 +118,7 @@
     },
     "/pricing": {
       "title": "Pricing \u2014 Slid Phi Labs",
-      "description": "CuNi $0. Chamber $9/$49/$490. Rider $79/$790. PCC $9/$49/$490. Lab Pass $668. Stripe card checkout.",
+      "description": "CuNi $0. Chamber $9/$99. Rider Solo $13.31-Fleet $631. PCC $9/$39/$390. Lab Pass $490. Stripe card checkout.",
       "canonical": "https://www.slidphilabs.com/pricing"
     },
     "/pay": {
@@ -139,7 +139,7 @@
     },
     "/pcc": {
       "title": "PCC \u2014 hosted lossless compressor \u00b7 Slid Phi Labs",
-      "description": "Buy a seat to run a lossless compressor. Day $9 \u00b7 Month $49 \u00b7 Year $490. Dual-licensed public source, or a paid grant to ship closed.",
+      "description": "Buy a seat to run a lossless compressor. Day $9 \u00b7 Month $39 \u00b7 Year $390. Dual-licensed public source, or a paid grant to ship closed.",
       "canonical": "https://www.slidphilabs.com/pcc",
       "product_line": "PCC"
     },
@@ -151,18 +151,18 @@
     },
     "/cuni": {
       "title": "CuNi \u2014 write once, print many languages \u00b7 Slid Phi Labs",
-      "description": "144 languages. Same stdout or refuse. Native seats: Python, Go, JS, TS, C, C++, Rust. Playground is free. Closed-app exception $490/year per product.",
+      "description": "144 languages. Same stdout or refuse. Native seats: Python, Go, JS, TS, C, C++, Rust. Playground is free. Closed-app exception $390/year per product.",
       "canonical": "https://www.slidphilabs.com/cuni",
       "product_line": "CuNi"
     },
     "/lab-pass": {
-      "title": "Lab Pass \u2014 Chamber + PCC \u00b7 $668",
+      "title": "Lab Pass \u2014 Chamber year + PCC Year \u00b7 $490",
       "description": "One year: Chamber, PCC. Not Agent-Rider.",
       "canonical": "https://www.slidphilabs.com/lab-pass"
     },
     "/license": {
       "title": "License \u2014 every product, every checkout \u00b7 Slid Phi Labs",
-      "description": "CuNi $0. Chamber $9/$49/$490. PCC $9/$49/$490. Rider $79/$790. Lab Pass $668.",
+      "description": "CuNi $0. Chamber $9/$99. PCC $9/$39/$390. Rider Solo $13.31-Fleet $631. Lab Pass $490.",
       "canonical": "https://www.slidphilabs.com/license"
     },
     "/about": {

@@ -1,9 +1,9 @@
 {
-  "updated": "2026-09-17",
+  "updated": "2026-09-24",
   "inbox": "corey@slidphilabs.com",
   "site": "https://www.slidphilabs.com",
   "methods": "https://www.slidphilabs.com/METHODS.md",
-  "rule": "CuNi $0. Chamber cloak $9/mo · $99/yr (open with keys). PCC $9/$49/$490. TRUSTREAM rides the PCC seat. Rider $79/mo · $790/yr. Rider Ops $29/$290. Warrant $29/$290. First 2 GB/month free, then 8¢/GB. Lab Pass $668. Quikgater is pay-per-fetch. TRU8 is the zeros specialist. AWARE is a retired alias for PCC.",
+  "rule": "One Shared Spine, three heads, four doors. Never expand. DECODE_OK. Door 1 PCC: Day $9 · Pro $39/mo (200 GB) · Year $390. First 2 GB/month free, then 8¢/GB. TRUSTREAM rides the PCC seat. Door 2 TNSSRC: AGPL $0 · closed grant $390/yr · optional host bake-off $19.31/mo on a PCC seat. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. Door 3 TRUSTREAM: included with PCC. Door 4 pulsar: $0 GPLv3 · closed embed $390/yr. Rider: Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. Warrant/Ops in bundle or Team. Chamber $9/mo · $99/yr (open with keys). CuNi Studio $0 · closed-app $390/yr. Lab Pass $490 (Chamber year + PCC Year). Foundry+ = Lab Pass + TNSSRC grant + Rider Crew. Quikgater is pay-per-fetch. TRU8 is the zeros specialist. AWARE is a retired alias for PCC.",
   "measured": {
     "silesia_raw": 211938580,
     "zpaq_m5": 39112870,
@@ -21,10 +21,19 @@
   "math": {
     "chamber_month": 9,
     "chamber_year": 99,
-    "gc_year": 490,
-    "rider_year": 790,
-    "rider_ops_year": 290,
-    "lab_pass_year": 668
+    "gc_day": 9,
+    "gc_month": 39,
+    "gc_year": 390,
+    "lab_pass_year": 490,
+    "rider_solo": 13.31,
+    "rider_bundle": 19.31,
+    "rider_crew": 49,
+    "rider_shop": 199,
+    "rider_fleet": 631,
+    "tnssrc_grant_year": 390,
+    "tnssrc_bakeoff_month": 19.31,
+    "pulsar_embed_year": 390,
+    "cuni_exception_year": 390
   },
   "products": {
     "pcc": {
@@ -37,17 +46,17 @@
         "day": {
           "sku": "gc-day",
           "usd": 9,
-          "stripe": "https://www.slidphilabs.com/pay?sku=pcc-day"
+          "stripe": "https://www.slidphilabs.com/pay?sku=gc-day"
         },
         "month": {
           "sku": "gc-month",
-          "usd": 49,
-          "stripe": "https://www.slidphilabs.com/pay?sku=pcc-month"
+          "usd": 39,
+          "stripe": "https://www.slidphilabs.com/pay?sku=gc-month"
         },
         "year": {
           "sku": "gc-year",
-          "usd": 490,
-          "stripe": "https://www.slidphilabs.com/pay?sku=pcc-year"
+          "usd": 390,
+          "stripe": "https://www.slidphilabs.com/pay?sku=gc-year"
         }
       }
     },
@@ -70,69 +79,87 @@
     },
     "rider": {
       "name": "Agent-Rider",
+      "page": "https://www.slidphilabs.com/rider",
       "plans": {
-        "month": {
-          "sku": "rider-month",
-          "usd": 79,
-          "stripe": "https://www.slidphilabs.com/pay?sku=rider-month"
+        "solo": {
+          "sku": "rider-solo",
+          "usd": 13.31,
+          "stripe": "https://www.slidphilabs.com/pay?sku=rider-solo"
         },
-        "year": {
-          "sku": "rider-year",
-          "usd": 790,
-          "stripe": "https://www.slidphilabs.com/pay?sku=rider-year"
+        "bundle": {
+          "sku": "rider-bundle",
+          "usd": 19.31,
+          "stripe": "https://www.slidphilabs.com/pay?sku=rider-bundle"
+        },
+        "crew": {
+          "sku": "rider-crew",
+          "usd": 49,
+          "stripe": "https://www.slidphilabs.com/pay?sku=rider-crew"
+        },
+        "shop": {
+          "sku": "rider-shop",
+          "usd": 199,
+          "stripe": "https://www.slidphilabs.com/pay?sku=rider-shop"
+        },
+        "fleet": {
+          "sku": "rider-fleet",
+          "usd": 631,
+          "stripe": "https://www.slidphilabs.com/pay?sku=rider-fleet"
         }
       }
     },
     "rider_ops": {
       "name": "Rider Ops",
       "needs": "rider",
-      "plans": {
-        "month": {
-          "sku": "rider-ops-month",
-          "usd": 29,
-          "stripe": "https://www.slidphilabs.com/pay?sku=rider-ops-month"
-        },
-        "year": {
-          "sku": "rider-ops-year",
-          "usd": 290,
-          "stripe": "https://www.slidphilabs.com/pay?sku=rider-ops-year"
-        }
-      }
+      "page": "https://www.slidphilabs.com/rider",
+      "availability": "Included in Rider Bundle and Team seats. No standalone price.",
+      "plans": {}
     },
     "warrant": {
       "name": "Warrant",
       "needs": "rider",
       "page": "https://www.slidphilabs.com/warrant",
-      "plans": {
-        "month": {
-          "sku": "warrant-month",
-          "usd": 29,
-          "stripe": "https://www.slidphilabs.com/pay?sku=warrant-month"
-        },
-        "year": {
-          "sku": "warrant-year",
-          "usd": 290,
-          "stripe": "https://www.slidphilabs.com/pay?sku=warrant-year"
-        }
-      }
+      "availability": "Included in Rider Bundle and Team seats. No standalone price.",
+      "plans": {}
     },
     "cuni_exception": {
       "name": "CuNi closed-app exception",
       "sku": "cuni-exception",
-      "usd": 490,
+      "usd": 390,
       "stripe": "https://www.slidphilabs.com/pay?sku=cuni-exception"
     },
     "pulsar_exception": {
       "name": "pulsar closed-embed exception",
       "sku": "pulsar-exception",
-      "usd": 490,
+      "usd": 390,
       "stripe": "https://www.slidphilabs.com/pay?sku=pulsar-exception",
       "grants": "One closed-source product, one year. pulsar stays GPLv3."
+    },
+    "tnssrc": {
+      "name": "TNSSRC",
+      "acronym": "TriNeural Shared Spine Row Compression",
+      "engine": "local npcc",
+      "page": "https://www.slidphilabs.com/silesia",
+      "silesia_bytes": 43724575,
+      "silesia_verified": "12/12 decode+SHA-256",
+      "agpl": 0,
+      "grant": {
+        "sku": "tnssrc-grant",
+        "usd": 390,
+        "stripe": "https://www.slidphilabs.com/pay?sku=tnssrc-grant",
+        "plain": "closed grant, one year"
+      },
+      "bakeoff": {
+        "sku": "tnssrc-bakeoff",
+        "usd": 19.31,
+        "stripe": "https://www.slidphilabs.com/pay?sku=tnssrc-bakeoff",
+        "plain": "optional host bake-off per month, on a PCC seat"
+      }
     },
     "lab_pass": {
       "name": "Lab Pass Year",
       "sku": "lab-pass",
-      "usd": 668,
+      "usd": 490,
       "stripe": "https://www.slidphilabs.com/pay?sku=lab-pass",
       "includes": [
         "chamber",
@@ -141,7 +168,18 @@
       "excludes": [
         "rider"
       ],
-      "note": "Lab Pass is Chamber + PCC."
+      "note": "Lab Pass is Chamber year + PCC Year."
+    },
+    "foundry_plus": {
+      "name": "Foundry+",
+      "sku": "foundry-plus",
+      "stripe": "https://www.slidphilabs.com/pay?sku=foundry-plus",
+      "includes": [
+        "lab-pass",
+        "tnssrc-grant",
+        "rider-crew"
+      ],
+      "note": "Lab Pass + TNSSRC closed grant + Rider Crew. One SKU: all four doors plus a swarm."
     },
     "consulting": {
       "name": "Lab consulting (2 hours)",
@@ -167,7 +205,7 @@
       "studio": 0,
       "exception": {
         "sku": "cuni-exception",
-        "usd": 490
+        "usd": 390
       },
       "page": "https://www.slidphilabs.com/cuni"
     }
@@ -200,7 +238,7 @@
     "chamber-week": "chamber-month",
     "chamber-day": "chamber-month",
     "lab-pass-year": "lab-pass",
-    "fleetpulse": "rider-ops-year",
+    "fleetpulse": "rider-bundle",
     "fetchgate": "quikgater",
     "pulsar-closed": "pulsar-exception",
     "pulsar-embed": "pulsar-exception"

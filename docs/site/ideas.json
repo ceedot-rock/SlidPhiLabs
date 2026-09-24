@@ -374,7 +374,7 @@
       "id": 18,
       "bucket": "product",
       "name": "ZRW tiers",
-      "blurb": "Retired SKU names. Buy PCC ($9/$49/$490).",
+      "blurb": "Retired SKU names. Buy PCC ($9/$39/$390).",
       "surface": "historical SKUs \u2192 PCC",
       "vehicle": [
         "product"

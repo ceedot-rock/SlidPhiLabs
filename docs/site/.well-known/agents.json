@@ -82,7 +82,7 @@
       "name": "Agent-Rider",
       "role": "identity",
       "url": "https://agentrider.fly.dev/",
-      "price": "Labs team seat $79/mo \u00b7 $790/yr; Merchant Gate is a separate self-serve offer"
+      "price": "Solo $13.31/mo \u00b7 Bundle $19.31 \u00b7 Crew $49 \u00b7 Shop $199 \u00b7 Fleet $631; Merchant Gate is a separate self-serve offer"
     },
     {
       "id": "chamber",
@@ -96,7 +96,7 @@
       "name": "PCC",
       "role": "compression",
       "url": "https://www.slidphilabs.com/pcc",
-      "price": "Day $9 \u00b7 Month $49 \u00b7 Year $490",
+      "price": "Day $9 \u00b7 Month $39 \u00b7 Year $390",
       "note": "AWARE is a retired alias for PCC"
     },
     {
@@ -119,7 +119,7 @@
       "name": "PCC",
       "role": "compression",
       "url": "https://www.slidphilabs.com/pcc",
-      "price": "Day $9 \u00b7 Month $49 \u00b7 Year $490"
+      "price": "Day $9 \u00b7 Month $39 \u00b7 Year $390"
     },
     {
       "id": "trustream",

@@ -1,5 +1,8 @@
 # Slid Phi Labs
-> Cherry Hill lab. Agents: Rider + MCP + settle. Humans: Stripe. PCC = lossless compressor. https://www.slidphilabs.com/
+> Cherry Hill lab. Agents: Rider + MCP + settle. Humans: Stripe. Compression is one Shared Spine with three heads, four doors: PCC (hosted), TNSSRC (local, 43,724,575 Silesia), TRUSTREAM (live pipe), pulsar (free demo). Never expand. DECODE_OK. https://www.slidphilabs.com/
+
+## The one-liner
+> Slid Phi Labs compression is one Shared Spine with three heads. PCC is the hosted door, TNSSRC the local engine (43.72M Silesia, beats xz-9), TRUSTREAM the live-tile door, pulsar the free demo. Never expand. DECODE_OK. Agents buy Rider/Warrant separately.
 
 ## Agent Quickstart
 1. Discover: GET https://www.slidphilabs.com/api/agent · GET /.well-known/mcp/server-card.json
@@ -11,16 +14,18 @@
 7. Coming next: file sharing between agents (same signed seats) — not live.
 
 ### SKU cheat sheet
-rider-month $79 · rider-year $790 · rider-ops 29/290 · warrant 29/290 · chamber 9/99 · pcc-day/month/year 9/49/490 (PCC; checkout /pay?sku=pcc-day|pcc-month|pcc-year; gc-* silent legacy aliases in payments-rails) · lab-pass $668 (Chamber+PCC). x402 = same sku via POST /api/x402-products.
+rider-solo $13.31 · rider-bundle $19.31 · rider-crew $49 · rider-shop $199 · rider-fleet $631 · warrant 29/290 · chamber 9/99 · pcc-day/month/year 9/39/390 (PCC) · tnssrc-grant $390 · tnssrc-bakeoff $19.31/mo · pulsar-exception $390 · cuni-exception $390 · lab-pass $490 (Chamber year+PCC Year) · foundry-plus (Lab Pass+TNSSRC grant+Rider Crew). x402 = same sku via POST /api/x402-products.
 
-- Agent-Rider — CENTERPIECE: Agents talk. Rider delivers. Signed credentials (ES256 JWT L0–L4, local JWKS) + agent DMs + Warrant + MCP + trust/Ops — $79/mo · $790/yr — https://www.slidphilabs.com/rider · https://agentrider.fly.dev · Coming next: file sharing — not live · NOT KYC blanket “verified”
-- Warrant — mandate + receipts bound to a Rider — $29/mo · $290/yr — https://www.slidphilabs.com/warrant
-- PCC — hosted lossless compressor — $9/day · $49/mo (200 GB) · $490/yr (2,000 GB) — then 8¢/GB — https://www.slidphilabs.com/pcc
-- TRUSTREAM — live log pipe, same PCC plan — https://www.slidphilabs.com/trustream
+- Agent-Rider — CENTERPIECE: Agents talk. Rider delivers. Signed credentials (ES256 JWT L0–L4, local JWKS) + agent DMs + Warrant + MCP + trust/Ops — Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631 — https://www.slidphilabs.com/rider · https://agentrider.fly.dev · Coming next: file sharing — not live · NOT KYC blanket “verified”
+- Warrant — mandate + receipts bound to a Rider — in bundle or Team — https://www.slidphilabs.com/warrant
+- PCC — Door 1, hosted lossless compressor — $9/day · $39/mo (200 GB) · $390/yr (2 TB) — then 8¢/GB — https://www.slidphilabs.com/pcc
+- TNSSRC — Door 2, local npcc + closed grant — 43,724,575 Silesia, 12/12 decode+SHA-256 — AGPL $0 · grant $390/yr · bake-off $19.31/mo — https://www.slidphilabs.com/silesia
+- TRUSTREAM — Door 3, live log pipe, same PCC plan — https://www.slidphilabs.com/trustream
 - Chamber — two-key JSON seal — $9/mo · $99/yr — https://www.slidphilabs.com/chamber
-- Lab Pass — $668/yr — Chamber + PCC — https://www.slidphilabs.com/lab-pass
+- Lab Pass — $490/yr — Chamber year + PCC Year — https://www.slidphilabs.com/lab-pass
+- Foundry+ — Lab Pass + TNSSRC grant + Rider Crew — all four doors plus a swarm
 - CuNi Studio — $0 — write once; 119 languages, same stdout or refuse — Bank: paste N get X — https://cuni-studio.fly.dev/bank
-- pulsar 2.5.0 — free GPLv3 compressor you download — https://www.slidphilabs.com/pulsar
+- pulsar 2.5.0 — Door 4, free GPLv3 compressor you download — closed embed $390/yr — https://www.slidphilabs.com/pulsar
 - Pricing — https://www.slidphilabs.com/pricing.json
 - MCP — POST https://www.slidphilabs.com/mcp
 - Humans — https://www.slidphilabs.com/humans

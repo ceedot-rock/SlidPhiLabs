@@ -1,5 +1,5 @@
 # agents.txt — Slid Phi Labs
-# Agents talk. Rider delivers. PCC = lossless compressor only.
+# Agents talk. Rider delivers. Compression is one Shared Spine with three heads, four doors: PCC (hosted), TNSSRC (local, 43,724,575 Silesia), TRUSTREAM (live pipe), pulsar (free demo). Never expand. DECODE_OK.
 # 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight.
 # Coming next: file sharing between agents — same signed seats (not live). No KYC “verified”.
 
@@ -14,13 +14,20 @@
 
 ### SKU cheat sheet
 | sku | usd | human |
-| rider-month | 79 | /pay?sku=rider-month |
-| rider-year | 790 | /pay?sku=rider-year |
-| rider-ops-month/year | 29/290 | /pay?sku=rider-ops-month · rider-ops-year |
+| rider-solo | 13.31 | /pay?sku=rider-solo |
+| rider-bundle | 19.31 | /pay?sku=rider-bundle |
+| rider-crew | 49 | /pay?sku=rider-crew |
+| rider-shop | 199 | /pay?sku=rider-shop |
+| rider-fleet | 631 | /pay?sku=rider-fleet |
 | warrant-month/year | 29/290 | /pay?sku=warrant-month · warrant-year |
 | chamber-month/year | 9/99 | /pay?sku=chamber-month · chamber-year |
-| pcc-day/month/year | 9/49/490 | PCC · /pay?sku=pcc-day · pcc-month · pcc-year (gc-* silent legacy in payments-rails) |
-| lab-pass | 668 | Chamber+PCC |
+| pcc-day/month/year | 9/39/390 | PCC seats |
+| tnssrc-grant | 390 | /pay?sku=tnssrc-grant |
+| tnssrc-bakeoff | 19.31 | /pay?sku=tnssrc-bakeoff |
+| pulsar-exception | 390 | /pay?sku=pulsar-exception |
+| cuni-exception | 390 | /pay?sku=cuni-exception |
+| lab-pass | 490 | Chamber year+PCC Year |
+| foundry-plus | — | Lab Pass+TNSSRC grant+Rider Crew |
 x402 resource = same sku via POST /api/x402-products.
 
 # --- Agent-Rider (centerpiece) ---

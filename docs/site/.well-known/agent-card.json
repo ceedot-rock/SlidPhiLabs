@@ -150,7 +150,7 @@
     "payment_header": "X-PAYMENT",
     "discovery": "https://www.slidphilabs.com/api/agent",
     "catalog": "https://www.slidphilabs.com/api/x402-products",
-    "one_liner": "CuNi $0. Chamber $49/mo · $490/yr. Rider $79/mo · $790/yr. Suite 6.9 GB / 3 h then ~5¢/GB.",
+    "one_liner": "CuNi $0. Chamber $9/mo · $99/yr. Rider Solo $13.31–Fleet $631/mo. PCC $9/$39/$390. Suite 6.9 GB / 3 h then ~5¢/GB.",
     "modules": {
       "compression": [
         "TRU8"

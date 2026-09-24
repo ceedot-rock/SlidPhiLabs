@@ -27,7 +27,7 @@ curl -sS -X POST https://www.slidphilabs.com/api/compress \
 curl -sS -X POST https://www.slidphilabs.com/api/decompress \
   -H 'content-type: application/json' --data-binary @out.json</pre>
       <p>Or one loop: <code>POST /api/process</code> with the same body. Same engine: <code>POST /api/specialist</code>.</p>
-      <p>Meter: first 2 GB each month free, then 8¢/GB ($1 card floor). PCC month $49 includes 200 GB. Quote: <code>POST /api/ppp-quote</code>.</p>
+      <p>Meter: first 2 GB each month free, then 8¢/GB ($1 card floor). PCC month $39 includes 200 GB. Quote: <code>POST /api/ppp-quote</code>.</p>
       <p><strong>Warrant</strong> (pairs with Agent-Rider): <code>POST /api/warrant/issue</code> with <code>X-Agent-Rider</code>, then <code>POST /api/warrant/receipt</code> with <code>X-Agent-Warrant</code>. Discovery: <code>GET /api/warrant</code>.</p>
     </div>
     <div class="spl-grid">

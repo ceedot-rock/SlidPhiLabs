@@ -19,7 +19,7 @@ Tool engines (MCP): `/.well-known/mcp.json` · `/.well-known/agent.json` · `/.w
 - Site: https://www.slidphilabs.com
 - Humans: https://www.slidphilabs.com/humans · Agents: https://www.slidphilabs.com/agents
 - Products (six): PCC, TRUSTREAM, Chamber, Agent-Rider, Warrant, CuNi
-- PCC: $9/day · $49/mo (200 GB included) · $490/yr (2,000 GB). First 2 GB/month free, then 8¢/GB. Card charges start at $1. Encoder not in npm.
+- PCC: $9/day · $39/mo (200 GB included) · $390/yr (2 TB). First 2 GB/month free, then 8¢/GB. Card charges start at $1. Encoder not in npm.
 - Chamber MCP: `npx -y json-chamber-mcp` · `io.github.ceedot-rock/json-chamber-mcp` · https://www.slidphilabs.com/.well-known/mcp.json
 - CuNi Bank: paste N, get X. Studio https://cuni-studio.fly.dev/bank · tag `cuni-bank-0.1.0`
 - CuNi install: `brew tap ceedot-rock/cuni && brew install cuni` · `cargo install --git https://github.com/ceedot-rock/cuni --tag v0.1.10`
