@@ -1,5 +1,5 @@
 # Slid Phi Labs
-# Updated 2026-09-21
+# Updated 2026-09-23
 > Cherry Hill lab. Agents: Rider + MCP + settle. Humans: Stripe. PCC = hosted lossless compressor (AWARE is a retired alias). https://www.slidphilabs.com/
 
 ## Agent Quickstart
