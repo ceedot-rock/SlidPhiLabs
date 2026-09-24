@@ -15,7 +15,9 @@
     "LICENSE",
     "LICENSE.AGPL-3.0",
     "LICENSE.COMMERCIAL",
-    "NOTICE"
+    "NOTICE",
+    "mcp-shim.js",
+    "Dockerfile"
   ],
   "keywords": [
     "slid phi labs",
@@ -38,7 +40,10 @@
     "agent-platform",
     "cuni",
     "agent-rider",
-    "quikgater"
+    "quikgater",
+    "mcp",
+    "model-context-protocol",
+    "stdio"
   ],
   "author": "Slid Phi Labs",
   "license": "AGPL-3.0-or-later",
@@ -131,6 +136,13 @@
     }
   },
   "scripts": {
-    "test": "node -e 'console.log(\"slid-phi ok\")'"
+    "test": "node -e 'console.log(\"slid-phi ok\")'",
+    "mcp": "node mcp-shim.js"
+  },
+  "bin": {
+    "slidphi-mcp": "mcp-shim.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.1"
   }
 }
