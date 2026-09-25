@@ -1,16 +1,18 @@
 /** One header, ticker, footer, one logo — every page. */
 (function () {
   const NAV = [
-    ["/", "Home"],
-    ["/pcc", "Compress"],
-    ["/silesia", "Board"],
     ["/rider", "Rider"],
-    ["/chamber", "Chamber"],
-    ["/cuni", "CuNi"],
-    ["/pricing", "Pricing"],
+    ["/pcc", "Compress"],
+    ["/toys", "Experiments"],
     ["/docs", "Docs"],
+    ["/truth", "Status"],
   ];
   const MORE = [
+    ["/", "Home"],
+    ["/silesia", "Board"],
+    ["/pricing", "Pricing"],
+    ["/chamber", "Chamber"],
+    ["/cuni", "CuNi"],
     ["/trustream", "TRUSTREAM logs"],
     ["/warrant", "Warrant"],
     ["/archive", ".pcc archive"],
