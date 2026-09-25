@@ -1,5 +1,6 @@
 {
   "name": "slid-phi",
+  "private": true,
   "version": "2.3.1",
   "description": "Dual-licensed hosted lossless compression client. Open license or a paid grant. POST /api/compress runs every pathway on the lab machine.",
   "type": "module",
