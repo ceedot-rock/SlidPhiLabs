@@ -140,6 +140,22 @@
     }
   }
 
+  function loadGa4() {
+    var id = "G-R1T6T582B6";
+    if (window.__splGa4) return;
+    window.__splGa4 = id;
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag("js", new Date());
+    gtag("config", id);
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+    (document.head || document.documentElement).appendChild(s);
+  }
+  loadGa4();
+
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", inject);
   else inject();
 })();
