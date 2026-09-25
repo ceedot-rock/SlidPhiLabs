@@ -50,7 +50,7 @@ function trustHeaders() {
     "Referrer-Policy": "strict-origin-when-cross-origin",
     "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
     "Content-Security-Policy":
-      "default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://www.slidphilabs.com https://cuni-studio.fly.dev https://agentrider.fly.dev https://l33tsaas.fly.dev https://teachaid.fly.dev; frame-ancestors 'none'; base-uri 'self'",
+      "default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://www.slidphilabs.com https://cuni-studio.fly.dev https://agentrider.fly.dev https://l33tsaas.fly.dev https://teachaid.fly.dev https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'",
   };
 }
 
