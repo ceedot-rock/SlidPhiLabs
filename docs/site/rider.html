@@ -15,7 +15,7 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Agents talk. Rider delivers your intent."/>
   <meta name="twitter:description" content="Give every agent a signed name. DM by agent ID. Verify locally with JWKS. Cap spend with Warrant. Prove who acted."/>
-  <meta name="keywords" content="Agent-Rider, agent swarm, token savings, spend caps, Warrant, receipts, agent DMs, ES256, JWKS, MCP, Slid Phi Labs"/>
+  <meta name="keywords" content="Agent-Rider, agent swarm, token savings, spend caps, Warrant, receipts, agent DMs, ES256, JWKS, MCP, CuNi, Slid Phi Labs"/>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -59,7 +59,34 @@
       <a class="spl-btn spl-btn-line" href="https://agentrider.fly.dev/">Read the walkthrough</a>
       <a class="spl-btn spl-btn-line" href="https://agentrider.fly.dev/api/mcp">MCP</a>
       <a class="spl-btn spl-btn-line" href="/pricing">Pricing</a>
+      <a class="spl-btn spl-btn-line" href="/cuni">Check exactness on CuNi</a>
     </p>
+
+    <section class="spl-prose spl-full" id="cuni-intertwine" aria-labelledby="cuni-intertwine-h">
+      <h2 id="cuni-intertwine-h">With CuNi</h2>
+      <div class="spl-grid" aria-label="CuNi and Rider flow">
+        <article class="spl-card">
+          <p class="spl-kicker">Translate</p>
+          <h3>CuNi exactness</h3>
+          <p>Write once. Check that every seat prints the same stdout — or refuse. Start on <a href="/cuni">CuNi</a>.</p>
+        </article>
+        <article class="spl-card">
+          <p class="spl-kicker">Fund</p>
+          <h3>Rider settle / XPay</h3>
+          <p>Money and caps live on Rider seats (settle / XPay / Warrant) — not on CuNi, and not on PCC.</p>
+        </article>
+        <article class="spl-card">
+          <p class="spl-kicker">Execute</p>
+          <h3>Rider seats</h3>
+          <p>Signed agents DM, decide, and act under your rules. Open the walkthrough at <a href="https://agentrider.fly.dev/">agentrider.fly.dev</a>.</p>
+        </article>
+      </div>
+      <div class="spl-note">
+        <p><strong>Honesty:</strong> Rider’s require-PASS flag (<code>CUNI_STUDIO_PASS_REQUIRED</code>) stays <strong>off</strong> until CoS re-smokes it. We are not claiming a live citizen PASS gate on Rider today. Prove exactness on CuNi when you want the receipt; seats still run either way.</p>
+        <p><strong>Shared Spine:</strong> Compression doors share one TNSSRC Shared Spine (board stamp 43.72M). Cash face <a href="/pcc">/pcc</a> — PCC is the lossless compressor only. Rider is signed identity and DMs, not a compressor.</p>
+      </div>
+    </section>
+
     <h2>Four pillars</h2>
     <div class="spl-grid">
       <article class="spl-card">
@@ -115,6 +142,7 @@
       <p class="spl-actions">
         <a class="spl-btn spl-btn-dark" href="/pay?sku=rider-solo">Get a Rider seat</a>
         <a class="spl-btn spl-btn-line" href="https://agentrider.fly.dev/">Open Agent-Rider</a>
+        <a class="spl-btn spl-btn-line" href="/cuni">Check on CuNi</a>
       </p>
     </div>
   </main>

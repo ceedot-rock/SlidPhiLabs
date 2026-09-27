@@ -1,12 +1,12 @@
 {
   "name": "CuNi Protocol",
   "id": "cuni-protocol",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "spec": "https://cuni-studio.fly.dev/PROTOCOL.md",
   "canonical": "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json",
   "github": "https://github.com/ceedot-rock/cuni/blob/master/PROTOCOL.md",
   "rule": "emit+run identical stdout on every catalog language, or refuse",
-  "catalog_languages": 119,
+  "catalog_languages": 144,
   "native_seats": [
     "py",
     "go",
@@ -14,7 +14,10 @@
     "ts",
     "c",
     "cpp",
-    "rs"
+    "rs",
+    "rb",
+    "lua",
+    "sol"
   ],
   "studio_gate": [
     "py",
@@ -25,6 +28,7 @@
     "check",
     "run",
     "ingest",
+    "bank",
     "prove",
     "emit-all"
   ],
@@ -32,7 +36,7 @@
     "kind": "seat",
     "note": "in-process evaluator. cuni check refuses if stdout diverges from catalog gold. Programs with ext skip this seat."
   },
-  "public_install_tag": "v0.1.10",
+  "public_install_tag": "v0.2.0",
   "citizenship": "exactness.passed must be true before Agent-Rider register",
   "laws": {
     "suite-meter": "https://github.com/ceedot-rock/cuni/blob/master/examples/laws/suite-meter.cuni",
@@ -47,5 +51,22 @@
     "agent_rider": "https://agentrider.fly.dev/.well-known/agent.json",
     "mcp": "https://agentrider.fly.dev/api/mcp",
     "lab": "https://www.slidphilabs.com/api/agent"
+  },
+  "bank": {
+    "kind": "arm",
+    "note": "paste N, get X. ingest \u2192 emit \u2192 prove. v1 --from py|cuni. 144 langs remains cuni check on the deposit \u2014 not 144 ingest parsers.",
+    "paste": "POST https://cuni-studio.fly.dev/api/bank",
+    "ui": "https://cuni-studio.fly.dev/bank",
+    "law": "https://github.com/ceedot-rock/cuni/blob/master/docs/BANK.md",
+    "tag": "cuni-bank-0.1.0"
+  },
+  "citizen_pass": {
+    "kind": "studio_gate",
+    "note": "Exactness PASS/refuse for Rider pre-execute. Same py/go/js gate as /api/check. Does not fund.",
+    "pass": "POST https://cuni-studio.fly.dev/api/pass",
+    "alias": "POST https://cuni-studio.fly.dev/api/citizen/pass",
+    "publish_push": "POST /api/publish \u2192 Rider POST /api/v0/contracts with citizen_receipt when CUNI_RIDER_URL set",
+    "docs": "https://github.com/ceedot-rock/cuni/blob/master/docs/PASS_GATE.md",
+    "studio_marker": "called"
   }
 }
