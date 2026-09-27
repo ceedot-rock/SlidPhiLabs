@@ -34,7 +34,7 @@
       "Write once across 144 catalog languages",
       "Same stdout on every seat, or refuse",
       "Bank: paste N, get X",
-      "Exactness PASS before Agent Rider register",
+      "Studio /api/pass exactness gate (py / go / js) — PASS or refuse",
       "Studio free at https://cuni-studio.fly.dev/",
       "Protocol 1.1.1"
     ],
@@ -52,7 +52,7 @@
   <main class="spl-page" id="main">
     <p class="spl-kicker">CuNi · 144 languages · Studio free · install v0.2.0</p>
     <h1>Same program. Same output. Or refuse.</h1>
-    <p class="lede">Write once across the language catalog. Every supported seat prints the same stdout — or CuNi refuses the path. Prove exactness here, then execute on Rider seats.</p>
+    <p class="lede">Write once across the language catalog. Every supported seat prints the same stdout — or CuNi refuses the path. Studio can prove exactness; Rider seats are where you execute.</p>
     <p class="spl-actions">
       <a class="spl-btn spl-btn-dark" href="https://cuni-studio.fly.dev/">Open Studio</a>
       <a class="spl-btn spl-btn-line" href="https://cuni-studio.fly.dev/bank">Bank</a>
@@ -79,8 +79,8 @@
       </article>
       <article class="spl-card">
         <p class="spl-kicker">4</p>
-        <h3>Prove before agents</h3>
-        <p>Exactness PASS on the Studio gate (py / go / js) before Agent Rider register. Translate exactness → execute seats.</p>
+        <h3>Prove exactness</h3>
+        <p>Studio <code>/api/pass</code> is live on the py / go / js gate — PASS or refuse, no soft pass. Rider does not currently require that receipt (require-PASS is off).</p>
       </article>
     </div>
 
@@ -106,9 +106,13 @@
         <li>Write a <code>.cuni</code> program once.</li>
         <li>Check and emit across the catalog — same stdout, or refuse.</li>
         <li>Optional: Bank paste N → emit X → prove.</li>
-        <li>PASS on Studio (py / go / js), then execute on <a href="/rider">Rider seats</a>.</li>
+        <li>Optional: Studio <code>/api/pass</code> (py / go / js) — exactness PASS or refuse.</li>
+        <li>Execute on <a href="/rider">Rider seats</a> when you are ready (Rider does not currently require the PASS receipt).</li>
       </ol>
       <p>Native seats today: py, go, js, ts, c, cpp, rs, rb, lua, sol. Protocol: <a href="https://cuni-studio.fly.dev/.well-known/cuni-protocol.json">cuni-protocol.json</a> (v1.1.1 · install <code>v0.2.0</code> · 144 languages).</p>
+      <div class="spl-note">
+        <p><strong>Honesty:</strong> Studio PASS is live. Rider’s require-PASS env is off today — prove on CuNi when you want the receipt; execute on Rider either way.</p>
+      </div>
     </section>
 
     <div class="spl-prose spl-full">
@@ -120,7 +124,7 @@
     </div>
 
     <div class="spl-prose spl-full">
-      <p class="lede"><strong>Prove exactness. Then execute on Rider.</strong></p>
+      <p class="lede"><strong>Prove exactness on CuNi. Execute on Rider seats.</strong></p>
       <p class="spl-actions">
         <a class="spl-btn spl-btn-dark" href="https://cuni-studio.fly.dev/">Open Studio</a>
         <a class="spl-btn spl-btn-line" href="/rider">Rider seats</a>
