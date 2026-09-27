@@ -34,7 +34,7 @@
       "Write once across 144 catalog languages",
       "Same stdout on every seat, or refuse",
       "Bank: paste N, get X",
-      "Studio exactness check (py / go / js) — same stdout or refuse",
+      "Studio POST /api/pass exactness gate (py / go / js) — PASS or refuse",
       "Studio free at https://cuni-studio.fly.dev/",
       "Protocol 1.1.1"
     ],
@@ -63,6 +63,30 @@
       <p><strong>Shared Spine:</strong> Our compression doors share one TNSSRC Shared Spine (board stamp 43.72M). Cash face <a href="/pcc">/pcc</a> — PCC is the lossless compressor only. CuNi is exactness across languages, not a compression door.</p>
     </div>
 
+    <section class="spl-prose spl-full" id="rider-intertwine" aria-labelledby="rider-intertwine-h">
+      <h2 id="rider-intertwine-h">With Agent Rider</h2>
+      <div class="spl-grid" aria-label="CuNi and Rider flow">
+        <article class="spl-card">
+          <p class="spl-kicker">Translate</p>
+          <h3>CuNi exactness</h3>
+          <p>Write once. Same stdout on every seat — or refuse. Studio is free.</p>
+        </article>
+        <article class="spl-card">
+          <p class="spl-kicker">Fund</p>
+          <h3>Rider settle / XPay</h3>
+          <p>Spend and caps are on Rider seats (settle / XPay / Warrant). CuNi does not take payment for Execute.</p>
+        </article>
+        <article class="spl-card">
+          <p class="spl-kicker">Execute</p>
+          <h3>Rider seats</h3>
+          <p>Signed agents run under your rules. Start at <a href="/rider">/rider</a> or <a href="https://agentrider.fly.dev/">agentrider.fly.dev</a>.</p>
+        </article>
+      </div>
+      <div class="spl-note">
+        <p><strong>Honesty:</strong> Rider’s require-PASS flag (<code>CUNI_STUDIO_PASS_REQUIRED</code>) stays <strong>off</strong> until CoS re-smokes it. We are not claiming a live citizen PASS gate on Rider. Check exactness here when you want the proof; execute on Rider either way.</p>
+      </div>
+    </section>
+
     <h2>Four pillars</h2>
     <div class="spl-grid">
       <article class="spl-card">
@@ -78,12 +102,12 @@
       <article class="spl-card">
         <p class="spl-kicker">3</p>
         <h3>Bank: paste N, get X</h3>
-        <p>Deposit Python (v1 subset), emit another catalog id, then prove. Studio <a href="https://cuni-studio.fly.dev/bank">/bank</a>.</p>
+        <p>Paste N→X: deposit with <code>--from py|cuni</code>, emit another catalog id, then prove. Tag <code>cuni-bank-0.1.0</code>. UI <a href="https://cuni-studio.fly.dev/bank">/bank</a> · API <code>POST /api/bank</code>.</p>
       </article>
       <article class="spl-card">
         <p class="spl-kicker">4</p>
         <h3>Check exactness</h3>
-        <p>Studio checks py / go / js for the same stdout — or refuses. Use that proof when you want it; Rider seats are separate.</p>
+        <p>Studio <code>POST /api/pass</code> is live on the py / go / js gate — PASS or refuse, no soft pass. Rider require-PASS (<code>CUNI_STUDIO_PASS_REQUIRED</code>) is off today; seats still run either way.</p>
       </article>
     </div>
 
@@ -109,15 +133,18 @@
         <li>Write a <code>.cuni</code> program once.</li>
         <li>Check and emit across the catalog — same stdout, or refuse.</li>
         <li>Optional: Bank paste N → emit X → prove.</li>
-        <li>Optional: check on Studio (py / go / js) — same stdout or refuse.</li>
-        <li>Use the program on <a href="/rider">Rider seats</a> when you are ready.</li>
+        <li>Optional: Studio <code>POST /api/pass</code> (py / go / js) — exactness PASS or refuse.</li>
+        <li>Use the program on <a href="/rider">Rider seats</a> when you are ready (Rider does not currently require the PASS receipt).</li>
       </ol>
       <p>Native seats today: py, go, js, ts, c, cpp, rs, rb, lua, sol. Protocol: <a href="https://cuni-studio.fly.dev/.well-known/cuni-protocol.json">cuni-protocol.json</a> (v1.1.1 · install <code>v0.2.0</code> · 144 languages).</p>
+      <div class="spl-note">
+        <p><strong>Honesty:</strong> Studio <code>/api/pass</code> is live. Rider’s require-PASS env (<code>CUNI_STUDIO_PASS_REQUIRED</code>) is unset/off until Cos greens Fly — prove on CuNi when you want the receipt; execute on Rider either way.</p>
+      </div>
     </section>
 
     <div class="spl-prose spl-full">
       <h2>What it is</h2>
-      <p>A language of exactness. You write the program once. You emit Python, Go, JavaScript, TypeScript, C, C++, Rust, and the rest of the catalog. If stdout would drift, CuNi stops. Software already exists in more languages than teams can keep honest — CuNi sells the proof that they match.</p>
+      <p>A language of exactness. You write one <code>.cuni</code> source. Native seats today run native: py, go, js, ts, c, cpp, rs, rb, lua, and Solidity (<code>sol</code>). Other catalog ids emit and lower until that seat is native. If stdout would drift, CuNi refuses — no soft PASS, no approximate. Software already exists in more languages than teams can keep honest — CuNi sells the proof that they match.</p>
       <div class="spl-note">
         <p><strong>Future use (not live yet):</strong> a tiny runtime that lands on any OS and emits the local seat; pricing and license rules printed into every language a company ships; CI that fails when Go and Python would disagree.</p>
       </div>
