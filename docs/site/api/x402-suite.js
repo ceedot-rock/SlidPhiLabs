@@ -16,6 +16,10 @@
  *   NOTION_TOKEN         optional job log
  */
 import { computeQuote } from "./suite-pricing.js";
+import {
+  consumePaymentTx,
+  alreadyUsedResponse,
+} from "./lib/x402-spent-ledger.mjs";
 
 const DB = (
   process.env.NOTION_GROK_NOTES_DB ||
@@ -550,6 +554,14 @@ export default async function handler(req, res) {
   }
 
   const id = jobId();
+  const spent = consumePaymentTx(paymentResult.signature, {
+    endpoint: "x402-suite",
+    ref: id,
+    network: paymentResult.network || accept0?.network || null,
+  });
+  if (!spent.ok) {
+    return json(res, 409, alreadyUsedResponse(spent.prior, requirements));
+  }
   const title = `X402-JOB ${id} · ${op} · ${tool}`;
   const detail = [
     `Job: ${id}`,

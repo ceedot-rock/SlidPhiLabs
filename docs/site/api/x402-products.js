@@ -22,6 +22,10 @@
 
 import { signClaim } from "./lib/x402-claim.mjs";
 import {
+  consumePaymentTx,
+  alreadyUsedResponse,
+} from "./lib/x402-spent-ledger.mjs";
+import {
   buildDeliverable,
   normalizeSku as accessNormalizeSku,
 } from "./access-verify.js";
@@ -687,9 +691,20 @@ export default async function handler(req, res) {
     return json(res, 400, { error: "email must be valid if provided" });
   }
 
-  const id = orderId(sku);
   const net = paymentResult.network || accept0.network;
   const tx = paymentResult.signature || null;
+  const id = orderId(sku);
+
+  // Global consume-once: same txHash/signature cannot mint another order or suite job.
+  const spent = consumePaymentTx(tx, {
+    endpoint: "x402-products",
+    ref: id,
+    sku,
+    network: net,
+  });
+  if (!spent.ok) {
+    return json(res, 409, alreadyUsedResponse(spent.prior, requirements));
+  }
 
   const signed = signClaim({
     order_id: id,
