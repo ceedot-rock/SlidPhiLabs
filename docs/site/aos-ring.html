@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>aos-ring — optical memory · Slid Phi Labs</title>
+  <meta name="description" content="aos-ring stores bits as sustained laser interference patterns: bit-identical reads, similarity queries, delete by killing the pattern. Experimental service, live now."/>
+  <link rel="canonical" href="https://www.slidphilabs.com/aos-ring"/>
+  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
+  <meta property="og:title" content="aos-ring — optical memory"/>
+  <meta property="og:url" content="https://www.slidphilabs.com/aos-ring"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=38"/>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">aos-ring · the Ring · experimental · live now</p>
+    <h1>Bits stored as light.</h1>
+    <p class="lede">Write data as sustained laser interference patterns. Read it back bit-identical. Query by similarity. Delete by killing the pattern.</p>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="https://aos-ring.fly.dev">Open the Ring</a>
+      <a class="spl-btn spl-btn-line" href="https://github.com/ceedot-rock/aos-ring">Source on GitHub</a>
+    </p>
+    <div class="spl-prose spl-full">
+      <h2>What it is</h2>
+      <p>An optical memory service. Mirror angle is the address, laser color is the channel — wavelengths don't interfere, so channels stay orthogonal. Volatile by nature: storage is a sustained pattern, not a thing. Deletion decoheres the pattern, leaving no forensic remnant.</p>
+      <h2>Verified</h2>
+      <ul>
+        <li>Write → read: bit-identical.</li>
+        <li>Similarity query: a 20%-flipped query returns the correct address.</li>
+        <li>Delete: reads return zeros after the kill.</li>
+      </ul>
+      <h2>Honest state</h2>
+      <p>This is an experiment, not a product. The Ring is the future home of the lab's agent operating system work — machine-readable memory at light speed. Expect rough edges.</p>
+    </div>
+  </main>
+  <script src="/assets/chrome.js?v=40" defer></script>
+</body>
+</html>

@@ -24,7 +24,7 @@ rider-solo $13.31 · rider-bundle $19.31 · rider-crew $49 · rider-shop $199 ·
 - Chamber — two-key JSON seal — $9/mo · $99/yr — https://www.slidphilabs.com/chamber
 - Lab Pass — $490/yr — Chamber year + PCC Year — https://www.slidphilabs.com/lab-pass
 - Foundry+ — Lab Pass + TNSSRC grant + Rider Crew — all four doors plus a swarm
-- CuNi Studio — $0 — write once; 119 languages, same stdout or refuse — Bank: paste N get X — https://cuni-studio.fly.dev/bank
+- CuNi Studio — $0 — write once; 144 languages, same stdout or refuse — Bank: paste N get X — https://cuni-studio.fly.dev/bank
 - pulsar 2.5.0 — Door 4, free GPLv3 compressor you download — closed embed $390/yr — https://www.slidphilabs.com/pulsar
 - Pricing — https://www.slidphilabs.com/pricing.json
 - MCP — POST https://www.slidphilabs.com/mcp
