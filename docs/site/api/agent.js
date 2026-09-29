@@ -174,7 +174,7 @@ export default async function handler(req, res) {
         products: ["CDDG:Split", "Agent Governance", "kill-switch discipline", "cyber literacy"],
         urls: {
           cddg: "https://www.slidphilabs.com/#cddg-split",
-          truth: "https://www.slidphilabs.com/truth",
+          standings: "https://www.slidphilabs.com/standings",
           teach_cyber: "https://teachaid.fly.dev/?view=catalog",
           campus_gov: "https://teachaid.fly.dev",
         },

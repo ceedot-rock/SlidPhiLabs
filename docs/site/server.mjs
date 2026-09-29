@@ -197,8 +197,7 @@ const REWRITES = {
   "/grace": "/lab/ESSENCE_GUIDE_HUMANITY.json",
   "/web": "/web.html",
   "/web/": "/web.html",
-  "/truth": "/truth.html",
-  "/truth/": "/truth.html",
+
   "/ideas": "/ideas.html",
   "/ideas/": "/ideas.html",
   "/datacenters": "/datacenters.html",
@@ -500,7 +499,9 @@ const server = http.createServer(async (req, res) => {
       p === "/ideas.html" ||
       p.startsWith("/ideas/") ||
       p === "/truth" ||
-      p === "/truth.html"
+      p === "/truth/" ||
+      p === "/truth.html" ||
+      p.startsWith("/truth/")
     ) {
       notFound(res, "not_found");
       return;

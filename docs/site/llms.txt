@@ -1,5 +1,6 @@
 # Slid Phi Labs
-# Updated 2026-09-28
+# Updated 2026-09-29
+Platform booklets: https://www.slidphilabs.com/wiki — Rider and CuNi first. Previous homepage kept at /rcrc.
 > Slid Phi Labs: one Shared Spine, four doors — **PCC** (hosted lossless), **TNSSRC** (local; Silesia **43.72M**, beats xz-9), **TRUSTREAM** (live tiles; with PCC), **pulsar** (free demo). Product URL: `/pcc`. Agents: Rider (signed seats, DMs, JWKS) + Warrant. CuNi: exact multi-language or refuse.
 
 ## The one-liner

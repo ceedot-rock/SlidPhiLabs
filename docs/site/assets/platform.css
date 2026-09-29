@@ -1,0 +1,257 @@
+/* Agentic platform + SlidWiki. Existing pages keep chrome.css. */
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,560&display=swap");
+
+:root {
+  --bg: #f3f1ea;
+  --ink: #1c1915;
+  --muted: #5c574f;
+  --line: #d5d0c6;
+  --accent: #7f2a27;
+  --accent-ink: #fbf6f1;
+  --warn: #7a4e0f;
+  --band: #e4e0d6;
+  --max: 1120px;
+  --measure: 68ch;
+  --pad: 24px;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body.pf {
+  margin: 0;
+  overflow-x: clip;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  font-weight: 400;
+}
+a { color: inherit; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.pf-skip {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  transform: translateY(-150%);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.6rem 0.8rem;
+  z-index: 20;
+  font-family: system-ui, "Segoe UI", sans-serif;
+}
+.pf-skip:focus { transform: none; }
+
+.pf-top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.pf-bar {
+  max-width: var(--max);
+  margin: 0 auto;
+  min-height: 56px;
+  padding: 0 var(--pad);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.pf-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: system-ui, "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  min-height: 44px;
+}
+.pf-brand svg { width: 32px; height: 32px; display: block; }
+.pf-nav { display: flex; flex-wrap: wrap; gap: 0.15rem; margin-left: auto; font-family: system-ui, "Segoe UI", sans-serif; }
+.pf-nav a, .pf-menu a {
+  color: var(--ink);
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.7rem;
+}
+.pf-nav a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--accent); }
+.pf-menu { display: none; margin-left: auto; font-family: system-ui, "Segoe UI", sans-serif; }
+.pf-menu summary {
+  list-style: none;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  background: var(--bg);
+  cursor: pointer;
+  padding: 0 0.8rem;
+}
+.pf-menu summary::-webkit-details-marker { display: none; }
+.pf-menu[open] { position: relative; }
+.pf-menu-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  min-width: 14rem;
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.pf-wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad) 4rem; }
+.pf-kicker {
+  font-family: system-ui, "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+h1, h2, h3 {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-weight: 560;
+  letter-spacing: -0.02em;
+}
+h1 {
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  line-height: 1.08;
+  max-width: 22ch;
+  margin: 0 0 0.7rem;
+}
+h2 { font-size: 1.5rem; line-height: 1.2; margin: 0 0 0.55rem; scroll-margin-top: 72px; }
+h3 { font-size: 1.2rem; line-height: 1.25; margin: 0 0 0.3rem; }
+.pf-lede { color: var(--muted); max-width: 42ch; margin: 0 0 1rem; }
+.pf-prose { max-width: var(--measure); }
+.pf-prose p, .pf-prose li { max-width: var(--measure); }
+code, .pf-mono {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.pf-fact { color: var(--muted); font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 13px; font-variant-numeric: tabular-nums; }
+
+.pf-actions { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; margin: 0.5rem 0 1.25rem; }
+.pf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 2px;
+  text-decoration: none;
+  font-family: system-ui, "Segoe UI", sans-serif;
+  font-weight: 600;
+}
+.pf-btn-solid { background: var(--accent); color: var(--accent-ink); }
+.pf-btn-line { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; padding: 0; }
+
+.pf-hero { padding: 48px 0 28px; }
+.pf-lanes {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--line);
+  margin: 0.5rem 0 1.5rem;
+}
+.pf-lane { padding: 28px 0; border-bottom: 1px solid var(--line); }
+.pf-lane p { max-width: 36ch; margin: 0.35rem 0 0.5rem; }
+.pf-shelf {
+  margin: 1.5rem 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ink);
+  box-shadow: inset 0 4px 0 var(--bg), inset 0 5px 0 var(--ink);
+}
+.pf-shelf h2 { margin-top: 0.8rem; }
+.pf-engines { display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; }
+.pf-engines a { text-decoration: none; min-height: 44px; display: flex; flex-direction: column; justify-content: center; }
+.pf-engines a span { color: var(--muted); font-size: 1rem; }
+
+.pf-toc { margin: 0 0 1.25rem; font-family: system-ui, "Segoe UI", sans-serif; font-size: 0.95rem; }
+.pf-toc ol { list-style: none; padding: 0; margin: 0; }
+.pf-toc a {
+  text-decoration: none;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding-left: 0.7rem;
+  border-left: 2px solid transparent;
+}
+.pf-toc a:hover { color: var(--ink); }
+.pf-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 480px;
+  padding-top: 0.4rem;
+  margin-top: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+.pf-note {
+  border-left: 2px solid var(--accent);
+  padding: 0.2rem 0 0.2rem 0.9rem;
+  margin: 1rem 0;
+  max-width: var(--measure);
+}
+.pf-warn { border-left-color: var(--warn); color: var(--warn); }
+.pf-foot {
+  border-top: 1px solid var(--line);
+  padding: 1.25rem var(--pad) 2.5rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  color: var(--muted);
+  font-family: system-ui, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+}
+.pf-foot a { margin-right: 0.9rem; display: inline-flex; min-height: 44px; align-items: center; color: var(--ink); }
+.pf-index { display: grid; gap: 1.75rem; }
+.pf-index ul { list-style: none; padding: 0; margin: 0; }
+.pf-index li { border-top: 1px solid var(--line); }
+.pf-index a { display: flex; justify-content: space-between; gap: 1rem; min-height: 44px; align-items: center; text-decoration: none; padding: 0.35rem 0; }
+.pf-index a span { color: var(--muted); }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; max-width: var(--measure); }
+th, td { text-align: left; border-bottom: 1px solid var(--line); padding: 0.45rem 0.4rem; vertical-align: top; }
+
+@media (min-width: 800px) {
+  .pf-wrap { padding-left: 40px; padding-right: 40px; }
+  .pf-bar { padding-left: 40px; padding-right: 40px; }
+  .pf-hero { padding-top: 80px; }
+  .pf-lanes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pf-lane { padding: 28px 24px; border-bottom: 0; border-right: 1px solid var(--line); }
+  .pf-lane:last-child { border-right: 0; }
+}
+@media (max-width: 799px) {
+  .pf-nav { display: none; }
+  .pf-menu { display: block; }
+}
+@media (min-width: 960px) {
+  .pf-layout {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 68ch) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .pf-toc {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+    max-height: calc(100vh - 48px);
+    overflow: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

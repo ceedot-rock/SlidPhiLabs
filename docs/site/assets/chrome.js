@@ -1,14 +1,19 @@
 /** One header, ticker, footer, one logo — every page. */
 (function () {
   const NAV = [
+    ["/wiki", "Wiki"],
     ["/rider", "Rider"],
+    ["/cuni", "CuNi"],
     ["/pcc", "Compress"],
-    ["/toys", "Experiments"],
-    ["/docs", "Docs"],
-    ["/truth", "Status"],
+    ["/standings", "Standings"],
   ];
   const MORE = [
     ["/", "Home"],
+    ["/rcrc", "Previous home"],
+    ["/docs", "Docs"],
+    ["/toys", "Experiments"],
+    ["/tollkeeper", "Tollkeeper"],
+    ["/aos-ring", "Ring"],
     ["/silesia", "Board"],
     ["/pricing", "Pricing"],
     ["/chamber", "Chamber"],
@@ -127,6 +132,33 @@
       document.body.insertAdjacentHTML("beforeend", footer());
     }
     document.body.classList.add("spl-chrome");
+    const BOOK = {
+      "/rider": "/wiki/agent-rider",
+      "/cuni": "/wiki/cuni",
+      "/warrant": "/wiki/warrant",
+      "/tollkeeper": "/wiki/tollkeeper",
+      "/chamber": "/wiki/chamber",
+      "/aos-ring": "/wiki/aos-ring",
+      "/x402": "/wiki/x402",
+      "/awlpay": "/wiki/awlpay",
+      "/pcc": "/wiki/pcc",
+      "/trustream": "/wiki/trustream",
+      "/silesia": "/wiki/tnssrc",
+      "/pulsar": "/wiki/pulsar",
+      "/exactodds": "/wiki/exactodds",
+      "/quikgater": "/wiki/quikgater",
+      "/specialist": "/wiki/tru8",
+      "/lab-pass": "/wiki/lab-pass",
+      "/npm": "/wiki/packages",
+    };
+    const book = BOOK[path()];
+    const main = document.querySelector("main");
+    if (book && main && !main.querySelector(".spl-booklet")) {
+      const note = document.createElement("p");
+      note.className = "spl-note spl-booklet";
+      note.innerHTML = `<a href="${book}">Read the full booklet in SlidWiki</a>`;
+      main.appendChild(note);
+    }
     if (!document.querySelector('script[src*="lab-auth.js"]')) {
       const s = document.createElement("script");
       s.src = "/assets/lab-auth.js?v=3";

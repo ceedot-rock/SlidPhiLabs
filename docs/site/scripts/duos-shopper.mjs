@@ -38,7 +38,7 @@ const WEB_PATHS = [
   "/convert",
   "/standings",
   "/web",
-  "/truth",
+
   "/codex",
   "/access",
   "/join",
