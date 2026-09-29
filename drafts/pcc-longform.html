@@ -1,0 +1,9 @@
+<!-- DRAFT 2026-09-28 — long-form plain-language section for /pcc. Not live. Awaiting Corey's review. -->
+<section class="spl-prose spl-full" id="what-pcc" aria-labelledby="what-pcc-h">
+  <h2 id="what-pcc-h">What PCC is</h2>
+  <p>PCC is hosted compression for your files. You send a file; you get back the smallest faithful copy — and when you restore it, every single byte is identical to the original. A smaller file, guaranteed identical when unzipped.</p>
+  <p>Here is why that matters. Storage and bandwidth cost real money, and most files carry far more redundancy than they need to. PCC runs your file through a tournament of compression methods and keeps whichever one wins — then proves the win by decoding it and checking every byte. In one live receipt, a 51&nbsp;MB file came back as 16.7&nbsp;MB, every byte verified on restore.</p>
+  <p>Lossless is a promise, not a hope. If nothing can shrink your file, PCC stores it as-is — it never makes a file bigger. And the proof is public: on the standard Silesia benchmark set, PCC packed the corpus to 51,498,645 bytes, with machine receipts you can inspect.</p>
+  <p>It is hosted, so our machines do the work — you use it from the website, over HTTP, from npm, or through MCP. The first 2&nbsp;GB each month are free; after that it is 8&cent; per GB, with a $39-a-month Pro plan (200&nbsp;GB included), a $390 year plan, and a day pass for short runs.</p>
+  <p>Live log and telemetry compression rides on the same plan: TRUSTREAM packs your streams in small tiles while PCC handles your files. One meter, both doors.</p>
+</section>

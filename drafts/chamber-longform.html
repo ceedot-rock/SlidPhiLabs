@@ -1,0 +1,9 @@
+<!-- DRAFT 2026-09-28 — long-form plain-language section for /chamber. Not live. Awaiting Corey's review. -->
+<section class="spl-prose spl-full" id="what-chamber" aria-labelledby="what-chamber-h">
+  <h2 id="what-chamber-h">What Chamber is</h2>
+  <p>Chamber is a lockbox for secrets with a twist: it takes two keys to open. You seal structured secrets — API keys, webhook URLs, configuration, credentials — into a single encrypted package. Opening it requires two separate key shares, so no one person ever holds the whole secret alone.</p>
+  <p>Here is why that matters. Secrets usually live in one place: an env file, a password manager, one person's laptop. Whoever holds that copy can walk away with everything. Chamber splits the trust — one share can sit with one operator and the other with another, or one with a human and one in a vault. A secret only opens when both sides agree.</p>
+  <p>The sealed package is portable: you keep the encrypted blob wherever you like — your own storage, your own backups — because without both keys it is just noise. And the license is simple: you pay for the right to seal new secrets. Opening something you already sealed just takes the keys.</p>
+  <p>It is built for the cases where one person must not be able to act alone: agent wallets whose spending keys need two operators to unlock, escrow where buyer and seller each hold a share, production credentials that two engineers must join to decrypt.</p>
+  <p>Chamber is $9 a month or $99 a year, with a Python SDK on PyPI. Seal a secret once, and it stays sealed until both keys say otherwise.</p>
+</section>

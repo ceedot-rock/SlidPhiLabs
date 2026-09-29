@@ -1,0 +1,9 @@
+<!-- DRAFT 2026-09-28 — long-form plain-language section for /x402. Not live. Awaiting Corey's review. -->
+<section class="spl-prose spl-full" id="what-x402" aria-labelledby="what-x402-h">
+  <h2 id="what-x402-h">What x402 is</h2>
+  <p>x402 is the open payment protocol the lab's paid endpoints speak — and the way AI agents pay for things. It works like a vending machine for the web: you ask for something, the machine tells you the price, you pay, it vends.</p>
+  <p>Here is how it goes. An agent makes a request without paying. Instead of an error, the server answers with HTTP 402 — &ldquo;payment required&rdquo; — plus exact instructions: what it accepts, how much, where to send it. The agent pays on-chain in USDC, on Solana or Base, then retries the same request with proof of payment attached. The server verifies the payment and delivers.</p>
+  <p>Humans still pay the normal way, with Stripe or an invoice — same products, same prices. x402 exists so an agent can complete a purchase without a browser, a checkout page, or a human in the loop. No account, no API key signup: the payment <em>is</em> the credential.</p>
+  <p>In fact the payment receipt doubles as your key. The claim token you get back also works as the credential for hosted compression — send it with your compress and decompress calls and usage is metered to your plan. The first 2&nbsp;GB each month are free; after that, jobs quote 8&cent; per GB.</p>
+  <p>It also powers pay-per-fetch: point the Quikgater worker at a URL, get a 402, pay, get your fetch. Every paid endpoint in the lab speaks the same protocol, so once an agent learns to pay one, it can pay them all.</p>
+</section>

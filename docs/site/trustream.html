@@ -22,6 +22,14 @@
       <a class="spl-btn spl-btn-dark" href="/pcc">Included with PCC</a>
       <a class="spl-btn spl-btn-line" href="/docs">API</a>
     </p>
+<section class="spl-prose spl-full" id="what-trustream" aria-labelledby="what-trustream-h">
+  <h2 id="what-trustream-h">What TRUSTREAM is</h2>
+  <p>TRUSTREAM is compression for live data streams instead of files. Logs, traces, and telemetry flow through it in small 4&nbsp;KB tiles as they arrive. Quiet stretches — the long runs of zeros and repetition that fill most logs — pack down small. Busy stretches pass through untouched, so the stream stays honest. Playback gives you the original bytes, in order.</p>
+  <p>Here is why that matters. Log volume grows faster than disk prices fall, and most teams pay three times over: to ingest it, to index it, and to keep it. A stream packer turns retention from a cost cliff into a feature — keep everything, pay for the packed size. The archive your auditors and your models both need gets dramatically cheaper to own.</p>
+  <p>Each tile goes through a short pipeline: the easy patterns first, then the math, then phrase matching, then storage. The cheap wins are tried before the expensive ones, so the stream keeps up in real time. And because it is lossless, a replayed event is the exact event — byte for byte.</p>
+  <p>It rides your PCC plan: the first 2&nbsp;GB a month free, then 8&cent; per GB, or PCC Pro at $39 a month with 200&nbsp;GB included. One meter for your files and your streams.</p>
+  <p>It is aimed at agent fleets that log every tool call, observability stacks exporting packed telemetry, and on-device recorders — cars, drones, robots — that flush packed traces when they dock.</p>
+</section>
     <div class="spl-prose spl-full">
       <h2>What it is</h2>
       <p>A streaming compressor. Grain is 4 KiB. Pipeline on each tile: ZERO → MATH → PHRASE → STORE. Quiet tiles pack small. Busy tiles keep their size so the stream stays honest. Restore is the original bytes in order.</p>
