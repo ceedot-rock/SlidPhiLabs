@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Agents — PCC and the rest of the lab · Slid Phi Labs</title>
-  <meta name="description" content="Same products as the website. Lead product PCC. Discover GET /api/agent. Pay x402 USDC or send a human to Stripe."/>
+  <title>Agents — Rider, CuNi, and the lab · Slid Phi Labs</title>
+  <meta name="description" content="Rider gives an agent a signed name. CuNi checks the program. Warrant files the receipt. Start at GET /api/agent. Pay with x402 USDC, or send a person to Stripe."/>
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://www.slidphilabs.com/agents"/>
@@ -12,7 +12,7 @@
   <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent" title="Agent commerce discovery"/>
   <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
   <meta property="og:title" content="Agents — Slid Phi Labs"/>
-  <meta property="og:description" content="GET /api/agent. PCC first. x402 or Stripe."/>
+  <meta property="og:description" content="GET /api/agent. Rider and CuNi. x402 or Stripe."/>
   <meta property="og:url" content="https://www.slidphilabs.com/agents"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <link rel="stylesheet" href="/assets/chrome.css?v=35"/>
@@ -21,10 +21,30 @@
   <main class="spl-page" id="main">
     <p class="spl-kicker">For agents</p>
     <h1>Same lab. Machine checkout.</h1>
-    <p class="lede">Start at <a href="/api/agent"><code>GET /api/agent</code></a>. The lead product is PCC: hosted lossless compression. POST a file, get a smaller one, restore every byte. Humans use the website and Stripe. You can pay with x402 (USDC) or send a person to checkout.</p>
+    <p class="lede">Start at <a href="/api/agent"><code>GET /api/agent</code></a>. Rider mints a signed name for the agent. CuNi checks the program. Warrant files the receipt. TNSSRC compresses a file on the machine and restores every byte. PCC does that job on our machines. Humans use the website and Stripe. You pay with x402 (USDC), or you send a person to checkout.</p>
     <div class="spl-grid">
-      <a class="spl-card spl-lead" href="/pcc">
-        <p class="spl-kicker">Files</p>
+      <a class="spl-card spl-lead" href="/rider">
+        <p class="spl-kicker">Who</p>
+        <h3>Agent-Rider</h3>
+        <p>Signed credential so you can prove which agent acted. Official remote: https://agentrider.fly.dev/api/mcp</p>
+      </a>
+      <a class="spl-card" href="/cuni">
+        <p class="spl-kicker">Language · $0</p>
+        <h3>CuNi</h3>
+        <p>Write once. 144 languages. Same stdout or refuse. Bank arm: POST https://cuni-studio.fly.dev/api/bank</p>
+      </a>
+      <a class="spl-card" href="/warrant">
+        <p class="spl-kicker">What</p>
+        <h3>Warrant</h3>
+        <p>Mandate and receipts bound to a Rider. POST /api/warrant/issue (X-Agent-Rider).</p>
+      </a>
+      <a class="spl-card" href="/silesia">
+        <p class="spl-kicker">On the machine</p>
+        <h3>TNSSRC</h3>
+        <p>Compress a file where it sits and restore every byte. Silesia 43,724,575, 12 of 12 decoded.</p>
+      </a>
+      <a class="spl-card" href="/pcc">
+        <p class="spl-kicker">On our machines</p>
         <h3>PCC</h3>
         <p>Hosted lossless compression. POST /api/compress, POST /api/decompress. Dual-licensed public source, or a paid grant to ship closed.</p>
       </a>
@@ -38,21 +58,6 @@
         <h3>Chamber</h3>
         <p>Two-key JSON seal. You store the blob.</p>
       </a>
-      <a class="spl-card" href="/rider">
-        <p class="spl-kicker">Who</p>
-        <h3>Agent-Rider</h3>
-        <p>Signed credential so you can prove which agent acted. Official remote: https://agentrider.fly.dev/api/mcp</p>
-      </a>
-      <a class="spl-card" href="/warrant">
-        <p class="spl-kicker">What</p>
-        <h3>Warrant</h3>
-        <p>Mandate and receipts bound to a Rider. POST /api/warrant/issue (X-Agent-Rider).</p>
-      </a>
-      <a class="spl-card" href="/cuni">
-        <p class="spl-kicker">Language · $0</p>
-        <h3>CuNi</h3>
-        <p>Write once. 144 languages. Same stdout or refuse. Bank arm: POST https://cuni-studio.fly.dev/api/bank</p>
-      </a>
     </div>
     <div class="spl-prose">
       <p>Pay: <code>GET /api/x402-products</code>, then <code>POST /api/x402-products</code> with a sku. On HTTP 402, pay the quoted USDC and retry with <code>X-PAYMENT</code>. MCP: <code>POST /mcp</code>. Humans: <a href="/pay">/pay</a>.</p>
@@ -63,6 +68,6 @@
       <a class="spl-btn spl-btn-line" href="/llms.txt">llms.txt</a>
     </p>
   </main>
-  <script src="/assets/chrome.js?v=40" defer></script>
+  <script src="/assets/chrome.js?v=41" defer></script>
 </body>
 </html>
