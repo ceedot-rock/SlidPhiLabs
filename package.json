@@ -137,7 +137,7 @@
     }
   },
   "scripts": {
-    "test": "node --test test/",
+    "test": "node --test \"test/**/*.test.mjs\"",
     "mcp": "node mcp-shim.js"
   },
   "bin": {
