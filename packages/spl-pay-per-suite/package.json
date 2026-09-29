@@ -1,7 +1,7 @@
 {
   "name": "spl-pay-per-suite",
   "version": "1.2.3",
-  "description": "Dual-licensed hosted compression client, quotes, checkout, and MCP. Open license or a paid grant. First 2 GB/month free, then 8¢/GB.",
+  "description": "Dual-licensed hosted compression client, quotes, checkout, and MCP. Open license or a paid grant. First 2 GB/month free, then 8\u00a2/GB.",
   "type": "module",
   "main": "src/index.mjs",
   "exports": {
@@ -20,7 +20,8 @@
     "LICENSE",
     "LICENSE.AGPL-3.0",
     "LICENSE.COMMERCIAL",
-    "NOTICE"
+    "NOTICE",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "test": "node --test test/*.test.mjs",
@@ -55,7 +56,7 @@
     "usage-pricing"
   ],
   "author": "Slid Phi Labs",
-  "license": "AGPL-3.0-or-later",
+  "license": "(AGPL-3.0-or-later OR LicenseRef-SlidPhiLabs-Commercial)",
   "homepage": "https://www.slidphilabs.com",
   "repository": {
     "type": "git",
@@ -88,7 +89,7 @@
     "site": "https://www.slidphilabs.com",
     "llms_txt": "https://www.slidphilabs.com/llms.txt",
     "agents_json": "https://www.slidphilabs.com/agents.json",
-    "one_liner": "First 2 GB/month free, then 8¢/GB. zip() builds a .pcc. Pay: https://www.slidphilabs.com/pay · GET https://www.slidphilabs.com/api/agent",
+    "one_liner": "First 2 GB/month free, then 8\u00a2/GB. zip() builds a .pcc. Pay: https://www.slidphilabs.com/pay \u00b7 GET https://www.slidphilabs.com/api/agent",
     "agent_platform": {
       "cuni": "https://cuni-studio.fly.dev/",
       "agent_rider": "https://agentrider.fly.dev/",

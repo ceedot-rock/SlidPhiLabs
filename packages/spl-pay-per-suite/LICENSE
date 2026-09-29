@@ -5,7 +5,8 @@ spl-pay-per-suite is available under two licenses. You choose one.
 
 2. Slid Phi Labs Commercial License
    See LICENSE.COMMERCIAL
-   Use this to embed the quote/MCP helper in a closed agent without AGPL source-offer.
+   Use this to ship spl-pay-per-suite inside a closed commercial product, or to host it
+   without AGPL source-offer obligations.
 
 This grant never includes Combined GC, LBR1 / splb / ASMD,
 AWARE encoder source, Chamber kernel, or Agent-Rider signing keys

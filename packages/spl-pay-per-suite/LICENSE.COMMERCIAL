@@ -5,11 +5,12 @@ If you have a valid paid grant for spl-pay-per-suite,
 you may use, modify, and deploy spl-pay-per-suite in a product
 without copyleft source-offer obligations.
 
-A live AWARE or Lab Pass seat covers use of this helper against the lab host. Redistributing a closed fork as a competing quote/MCP service needs this commercial grant.
+You may ship spl-pay-per-suite in one closed product for the paid term.
 
-AWARE month $49 · Lab Pass $668 · https://www.slidphilabs.com/pricing
+Commercial terms for spl-pay-per-suite: contact Slid Phi Labs (corey@slidphilabs.com).
+SKU and pricing to be assigned before any public release.
 
-No trademark license for spl-pay-per-suite, Pay Per Suite, or Slid Phi Labs.
+No trademark license for spl-pay-per-suite, Code:uNiTY, or Slid Phi Labs.
 
 This grant never includes Combined GC, LBR1 / splb / ASMD,
 AWARE encoder source, Chamber kernel, or Agent-Rider signing keys
@@ -17,13 +18,3 @@ unless the invoice names them.
 
 Product terms: https://www.slidphilabs.com/licensing.json
 Copyright (c) 2026 Slid Phi Labs / Corey Tasz.
-
-Legal identity
-- Trade name: Slid Phi Labs
-- Public author / copyright: Corey Tasz
-- Legal name on manuscript: Corey Robert Ptaszenski
-
-Seats and current terms: https://www.slidphilabs.com/licensing.json
-Contact: corey@slidphilabs.com
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
