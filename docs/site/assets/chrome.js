@@ -4,7 +4,7 @@
     ["/wiki", "Wiki"],
     ["/rider", "Rider"],
     ["/cuni", "CuNi"],
-    ["/pcc", "Compress"],
+    ["/silesia", "TNSSRC"],
     ["/standings", "Standings"],
   ];
   const MORE = [

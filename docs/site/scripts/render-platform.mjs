@@ -7,7 +7,7 @@ import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const MARK = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true"><path d="M25 7H7v18h18" fill="none" stroke="currentColor" stroke-width="1.75"/><rect x="11" y="11" width="4" height="4"/><rect x="11" y="20.5" width="14" height="2.5"/></svg>`;
+const MARK = `<img src="/assets/logos/logo-slid-phi-labs.jpg?v=14" width="44" height="44" alt="">`;
 
 const NAV = [
   ["/", "Home"],
@@ -15,7 +15,7 @@ const NAV = [
   ["/rider", "Rider"],
   ["/cuni", "CuNi"],
   ["/warrant", "Warrant"],
-  ["/pcc", "Engines"],
+  ["/silesia", "TNSSRC"],
   ["/rcrc", "Previous home"],
 ];
 
@@ -105,7 +105,7 @@ function head({ title, desc, path }) {
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}"/>
-  <meta name="theme-color" content="#f3f1ea"/>
+  <meta name="theme-color" content="#0f1c2e"/>
   <link rel="canonical" href="${url}"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
   <meta property="og:title" content="${esc(title)}"/>
@@ -113,7 +113,7 @@ function head({ title, desc, path }) {
   <meta property="og:url" content="${url}"/>
   <meta property="og:type" content="article"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
-  <link rel="stylesheet" href="/assets/platform.css?v=1"/>
+  <link rel="stylesheet" href="/assets/platform.css?v=2"/>
 </head>
 <body class="pf">`;
 }
@@ -313,6 +313,23 @@ add({
 });
 
 add({
+  slug: "tnssrc", group: "Engines", door: "/silesia",
+  title: "TNSSRC",
+  kicker: "Local engine",
+  h1: "Compress the file where it sits. Restore every byte.",
+  lede: "TNSSRC runs on your machine. The products page stamps Silesia at 43,724,575 bytes, 12 of 12 decoded, with SHA-256.",
+  summary: "Local. 43,724,575 bytes. 12/12 decode.",
+  sections: [
+    S("is", "What it is", `<p>TNSSRC is TriNeural Shared Spine Row Compression. You run it where the bytes stay. The products page records Silesia at 43,724,575 bytes, 12 of 12 files decoded, with SHA-256. The hosted PCC stamp is a different measurement: 51,498,645. Each number belongs to its own engine. The board that shows both is <a href="/silesia">/silesia</a>.</p>`),
+    S("how", "How it works", `<ol><li>Read the Silesia board for the matrix you want to compare.</li><li>Run the local engine on the files you hold.</li><li>Decode and check the hash.</li><li>Use PCC when the file should be packed on the hosted seat instead.</li></ol>`),
+    S("get", "What you receive", `<p>You receive a local pack, a decode, and a published stamp: 43,724,575 bytes on that Silesia run, 12/12. The open path is AGPL. The grant is the paid license.</p>`),
+    S("price", "Price", `<p>AGPL at $0. Grant at $390 a year. A bake-off on a PCC seat is listed at $19.31 a month on the products page. Confirm on <a href="/products">/products</a>.</p>`),
+    S("with", "Works with", `<p><a href="/wiki/pcc">PCC</a> is the hosted seat. <a href="/wiki/pulsar">pulsar</a> is the free demo binary. <a href="/wiki/cuni">CuNi</a> checks that a pathway prints the same stdout on the languages it claims.</p>`),
+    S("open", "Open it", `<p><a href="/silesia">Board</a> · <a href="/products">Products</a> · <a href="/compare">Compare</a></p>`),
+  ],
+});
+
+add({
   slug: "pcc", group: "Engines", door: "/pcc",
   title: "PCC",
   kicker: "Hosted compression",
@@ -343,23 +360,6 @@ add({
     S("price", "Price", `<p>TRUSTREAM is included with PCC. The meter is the PCC meter on <a href="/pricing">/pricing</a>.</p>`),
     S("with", "Works with", `<p>Files go to <a href="/wiki/pcc">PCC</a>. The sender’s name is a <a href="/wiki/agent-rider">Rider</a>. A secret inside the log can be sealed with <a href="/wiki/chamber">Chamber</a> before it hits the stream.</p>`),
     S("open", "Open it", `<p><a href="/trustream">TRUSTREAM page</a> · <a href="/pcc">PCC</a></p>`),
-  ],
-});
-
-add({
-  slug: "tnssrc", group: "Engines", door: "/silesia",
-  title: "TNSSRC",
-  kicker: "Local engine",
-  h1: "The local engine, with its own Silesia stamp.",
-  lede: "TNSSRC runs on your machine. The products page stamps Silesia at 43,724,575 bytes, 12 of 12 decoded, with SHA-256.",
-  summary: "Local. 43,724,575 bytes. 12/12 decode.",
-  sections: [
-    S("is", "What it is", `<p>TNSSRC is TriNeural Shared Spine Row Compression, the local head of the spine. You run it where the bytes stay. The products page records Silesia at 43,724,575 bytes, 12 of 12 files decoded, with SHA-256. The hosted PCC stamp is a different measurement: 51,498,645. Each number belongs to its own engine. The board that shows both is <a href="/silesia">/silesia</a>.</p>`),
-    S("how", "How it works", `<ol><li>Read the Silesia board for the matrix you want to compare.</li><li>Run the local engine on the files you hold.</li><li>Decode and check the hash.</li><li>Use PCC when the file should be packed on the hosted seat instead.</li></ol>`),
-    S("get", "What you receive", `<p>You receive a local pack, a decode, and a published stamp: 43,724,575 bytes on that Silesia run, 12/12. The open path is AGPL. The grant is the paid license.</p>`),
-    S("price", "Price", `<p>AGPL at $0. Grant at $390 a year. A bake-off on a PCC seat is listed at $19.31 a month on the products page. Confirm on <a href="/products">/products</a>.</p>`),
-    S("with", "Works with", `<p><a href="/wiki/pcc">PCC</a> is the hosted seat. <a href="/wiki/pulsar">pulsar</a> is the free demo binary. <a href="/wiki/cuni">CuNi</a> checks that a pathway prints the same stdout on the languages it claims.</p>`),
-    S("open", "Open it", `<p><a href="/silesia">Board</a> · <a href="/products">Products</a> · <a href="/compare">Compare</a></p>`),
   ],
 });
 
@@ -501,15 +501,16 @@ ${foot()}
 function renderHome() {
   const html = `${head({
     title: "Slid Phi Labs — signed agents, exact programs",
-    desc: "Rider names the agent. CuNi checks the program. Warrant files the receipt. PCC and the other engines pack the bytes underneath.",
+    desc: "Rider gives an agent a signed name. CuNi checks that one program prints the same result in Python, Go, and JavaScript. Warrant writes the permission and the receipt.",
     path: "/",
   })}
 ${chrome("/")}
 <main class="pf-wrap" id="main">
   <section class="pf-hero">
+    <img class="pf-logo" src="/assets/logos/logo-slid-phi-labs.jpg?v=14" width="1024" height="1024" alt="Slid Phi Labs" fetchpriority="high">
     <p class="pf-kicker">Slid Phi Labs · Cherry Hill</p>
     <h1>Signed seats. Exact programs. Receipts.</h1>
-    <p class="pf-lede">Rider mints a 15-minute signed identity. CuNi checks that one program prints the same stdout on Python, Go, and JavaScript. Warrant writes the mandate and files the receipt. The compressors pack the bytes underneath.</p>
+    <p class="pf-lede">Rider gives an agent a signed name for about fifteen minutes. Anyone can check it on the public keys. CuNi takes one program and checks that Python, Go, and JavaScript print the same stdout. Warrant writes what the agent may do, then files the receipt when it does.</p>
     <p class="pf-actions">
       <a class="pf-btn pf-btn-solid" href="/wiki/agent-rider">Read Rider</a>
       <a class="pf-btn pf-btn-line" href="/wiki">Open SlidWiki</a>
@@ -563,12 +564,12 @@ ${chrome("/")}
     </div>
   </section>
   <section class="pf-shelf" id="engines">
-    <p class="pf-kicker">Engines</p>
-    <h2>Compression under the road.</h2>
+    <p class="pf-kicker">Compression</p>
+    <h2>Shrink the file. Get every byte back.</h2>
     <div class="pf-engines">
-      <a href="/wiki/pcc"><strong>PCC</strong><span>Hosted lossless. Official Silesia 51,498,645.</span></a>
-      <a href="/wiki/trustream"><strong>TRUSTREAM</strong><span>Live tiles on a PCC plan.</span></a>
-      <a href="/wiki/tnssrc"><strong>TNSSRC</strong><span>Local stamp 43,724,575.</span></a>
+      <a href="/wiki/tnssrc"><strong>TNSSRC</strong><span>On your machine. Silesia 43,724,575, 12 of 12 back.</span></a>
+      <a href="/wiki/pcc"><strong>PCC</strong><span>On our machines. Silesia 51,498,645.</span></a>
+      <a href="/wiki/trustream"><strong>TRUSTREAM</strong><span>A live log, packed as it is written.</span></a>
       <a href="/wiki/pulsar"><strong>pulsar</strong><span>Free binary you run yourself.</span></a>
       <a href="/wiki/tru8"><strong>TRU8</strong><span>A million zeros, eight bytes.</span></a>
     </div>
