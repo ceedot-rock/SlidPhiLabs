@@ -1,0 +1,84 @@
+compress	encode bytes into a shorter form
+decompress	restore the exact original bytes
+lossless	decode must match the source bit for bit
+lossy	decode may drop detail to save space
+entropy	lower bound on lossless bits per symbol
+shannon	entropy is the lossless limit
+huffman	prefix code from symbol frequencies
+arithmetic	code a whole message as one interval
+dictionary	replace repeats with pointers into a window
+lz77	sliding window copy of earlier bytes
+lz78	build a dictionary of seen phrases
+brotli	lz77 plus context modeling plus prefix codes
+gzip	deflate format, lz77 plus huffman
+deflate	lz77 matches plus huffman of literals and lengths
+zstd	fast lz77 with a trained dictionary option
+literal	a byte sent as itself, not a copy
+match	a copy of earlier bytes in the window
+ratio	original size over compressed size
+silesia	standard lossless corpus used in bakeoffs
+calgary	older small lossless corpus
+canterbury	another small lossless corpus
+pcc	hosted lossless path at the lab
+zrw	zero range wave integer coder at the lab
+tru8	eight byte zeros and fill gene at the lab
+codec	paired compress and decompress program
+bitstream	the packed output of a coder
+symbol	one unit the model assigns a probability
+model	the probabilities a coder uses
+context	nearby symbols that change the next probability
+residual	what is left after a prediction
+prediction	guess the next symbol before coding it
+kolmogorov	shortest program that prints the string
+redundancy	bits you can drop without losing the source
+algorithm	a finite procedure that always terminates
+complexity	how time or space grows with input size
+turing	a machine with tape, head, and finite control
+automata	machines that read strings and accept or reject
+grammar	rules that generate a language
+decidable	there exists an algorithm that always answers
+undecidable	no algorithm can answer every instance
+npcomplete	hardest problems in np under polytime reductions
+reduction	turn one problem into another to transfer hardness
+invariant	a fact that stays true through every step
+recursion	a function defined in terms of smaller cases
+induction	prove a base and a step that preserves the claim
+proof	a finite argument that a claim follows
+axiom	a claim taken without proof
+theorem	a claim that has a proof
+lemma	a small theorem used to prove a larger one
+asymptotic	growth rate as the input gets large
+bigoh	an upper bound on growth rate
+omega	a lower bound on growth rate
+theta	matching upper and lower growth bounds
+sort	put elements into a defined order
+search	find an element or report it missing
+graph	vertices joined by edges
+treealg	an acyclic connected graph
+heap	a tree that keeps the extreme value at the root
+stack	last in, first out store
+queue	first in, first out store
+pointer	an address of another value
+array	elements stored in contiguous slots
+hashmap	key to value via a hash into buckets
+cache	small fast memory that holds recent lines
+register	the fastest named storage in the cpu
+instruction	one operation the machine can execute
+compiler	translate source into machine code before run
+interpreter	execute source by walking it at run time
+lambda	an anonymous function of its arguments
+type	a constraint on which values a name may hold
+invariantloop	a claim true before and after each iteration
+correctness	the algorithm meets its specification
+specification	what the program must do, not how
+knuth	the art of computer programming, algorithms and analysis
+clrs	introduction to algorithms, cormen leiserson rivest stein
+sipser	introduction to the theory of computation
+cover	elements of information theory, cover and thomas
+mackay	information theory inference and learning algorithms
+sayood	introduction to data compression
+salomon	data compression the complete reference
+rissanen	minimum description length as a model pick
+mdl	choose the model that shortest-codes the data
+bits	binary digits, the unit of information
+byte	eight bits grouped as one addressable unit
