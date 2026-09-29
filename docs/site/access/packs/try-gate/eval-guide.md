@@ -12,7 +12,7 @@ You get **immediate** access to:
 
 1. **Free web compress** — https://www.slidphilabs.com/web  
 2. **Public standings** — https://www.slidphilabs.com/standings  
-3. **Truth table** — https://www.slidphilabs.com/truth  
+3. **Standings** — https://www.slidphilabs.com/standings  
 4. **Suite quote UI** — https://www.slidphilabs.com/pps (metered jobs; separate checkout)  
 5. **This entitlement record** (download JSON from Access after payment verify)
 

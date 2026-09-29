@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>x402 · SlidWiki</title>
+  <meta name="description" content="x402 is the agent checkout. Post a SKU, receive HTTP 402 with the USDC request, pay on Solana or Base, retry with the payment header."/>
+  <meta name="theme-color" content="#f3f1ea"/>
+  <link rel="canonical" href="https://www.slidphilabs.com/wiki/x402"/>
+  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
+  <meta property="og:title" content="x402 · SlidWiki"/>
+  <meta property="og:description" content="x402 is the agent checkout. Post a SKU, receive HTTP 402 with the USDC request, pay on Solana or Base, retry with the payment header."/>
+  <meta property="og:url" content="https://www.slidphilabs.com/wiki/x402"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <link rel="stylesheet" href="/assets/platform.css?v=1"/>
+</head>
+<body class="pf">
+<a class="pf-skip" href="#main">Skip to content</a>
+<header class="pf-top">
+  <div class="pf-bar">
+    <a class="pf-brand" href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true"><path d="M25 7H7v18h18" fill="none" stroke="currentColor" stroke-width="1.75"/><rect x="11" y="11" width="4" height="4"/><rect x="11" y="20.5" width="14" height="2.5"/></svg><span>Slid Phi Labs</span></a>
+    <nav class="pf-nav" aria-label="Primary"><a href="/">Home</a><a href="/wiki" aria-current="page">Wiki</a><a href="/rider">Rider</a><a href="/cuni">CuNi</a><a href="/warrant">Warrant</a><a href="/pcc">Engines</a><a href="/rcrc">Previous home</a></nav>
+    <details class="pf-menu">
+      <summary>Menu</summary>
+      <div class="pf-menu-panel"><a href="/">Home</a><a href="/wiki" aria-current="page">Wiki</a><a href="/rider">Rider</a><a href="/cuni">CuNi</a><a href="/warrant">Warrant</a><a href="/pcc">Engines</a><a href="/rcrc">Previous home</a></div>
+    </details>
+  </div>
+</header>
+<main class="pf-wrap" id="main">
+  <p class="pf-kicker">Agent pay · SlidWiki</p>
+  <div class="pf-layout">
+    <nav class="pf-toc" aria-label="On this page"><p class="pf-kicker">On this page</p><ol><li><a href="#is">What it is</a></li><li><a href="#how">How it works</a></li><li><a href="#get">What you receive</a></li><li><a href="#price">Price</a></li><li><a href="#with">Works with</a></li><li><a href="#open">Open it</a></li></ol></nav>
+    <article>
+      <h1>People use Stripe. Agents pay the 402.</h1>
+      <p class="pf-lede">x402 is the agent checkout. Post a SKU, receive HTTP 402 with the USDC request, pay on Solana or Base, retry with the payment header.</p>
+      <p class="pf-actions"><a class="pf-btn pf-btn-solid" href="/x402">Open the tool</a><a class="pf-btn pf-btn-line" href="/wiki">All booklets</a></p>
+      <section class="pf-section" id="is"><h2>What it is</h2><p>x402 is how an agent buys a lab SKU. The agent posts <code>{"sku":"..."}</code> to <code>/api/x402-products</code>. The lab answers 402 with the accepts list. The agent pays USDC on Solana or Base and retries with <code>X-PAYMENT</code>. The response carries a claim token and an <code>access_url</code>. People use the same catalog through <a href="/pay">Stripe</a>.</p></section>
+<section class="pf-section" id="how"><h2>How it works</h2><ol><li>Discover the lab at <a href="/api/agent">GET /api/agent</a>.</li><li>Post the SKU.</li><li>Read the 402 body and pay that USDC request.</li><li>Retry with <code>X-PAYMENT</code>.</li><li>Open <code>access_url</code> or <code>GET /api/access-verify</code>.</li></ol></section>
+<section class="pf-section" id="get"><h2>What you receive</h2><p>You receive a 402 you can pay, then a claim that opens the product you bought. The SKU list is the same one humans see on <a href="/pricing">/pricing</a>.</p></section>
+<section class="pf-section" id="price"><h2>Price</h2><p>Examples on the catalog: Rider Solo $13.31 a month, Warrant $29 a month or $290 a year, Chamber $9 or $99, CuNi closed-app $390 a year. PCC prices sit on the PCC page. The 402 body is the amount for that request.</p></section>
+<section class="pf-section" id="with"><h2>Works with</h2><p>The buyer can carry a <a href="/wiki/agent-rider">Rider</a>. A spend cap is a <a href="/wiki/warrant">Warrant</a>. One page, one fee, is <a href="/wiki/quikgater">Quikgater</a>. Quotes across assets are <a href="/wiki/awlpay">AwLPay</a>.</p></section>
+<section class="pf-section" id="open"><h2>Open it</h2><p><a href="/x402">x402 page</a> · <a href="/pay">Human pay</a> · <a href="/pricing">Pricing</a> · <a href="/api/agent">/api/agent</a></p></section>
+    </article>
+  </div>
+</main>
+<footer class="pf-foot"><a href="/wiki">SlidWiki</a><a href="/rcrc">Previous home</a><a href="/rider">Rider</a><a href="/cuni">CuNi</a><a href="/warrant">Warrant</a><a href="/tollkeeper">Tollkeeper</a><a href="/chamber">Chamber</a><a href="/aos-ring">Ring</a><a href="/x402">x402</a><a href="/pay">Pay</a><a href="/awlpay">AwLPay</a><a href="/pcc">PCC</a><a href="/trustream">TRUSTREAM</a><a href="/silesia">TNSSRC</a><a href="/pulsar">pulsar</a><a href="/exactodds">ExactOdds</a><a href="/quikgater">Quikgater</a><a href="/specialist">TRU8</a><a href="/agents">Agents</a><a href="/humans">Humans</a><a href="/products">Products</a><a href="/pricing">Pricing</a><a href="/docs">Docs</a><a href="/about">About</a><a href="/npm">npm</a><a href="/mcp-service">MCP</a><a href="/box">Try</a><a href="/bench">Bench</a><a href="/press">Press</a><a href="/blog">Blog</a><a href="/toys">Experiments</a><a href="/lab-pass">Lab Pass</a><a href="/license">License</a><a href="/compare">Compare</a><a href="/standings">Standings</a><a href="/demos">Demos</a><a href="/olympiad">Olympiad</a><a href="/archive">Archive</a><a href="/updates">Updates</a><a href="/pps">PPS</a><a href="/signup">Sign up</a><a href="/access">Access</a><a href="/llms.txt">llms.txt</a><a href="/ai.txt">ai.txt</a><a href="/agents.txt">agents.txt</a><a href="/SKILL.md">SKILL.md</a><a href="/CUNI-PROTOCOL.md">CuNi protocol</a><a href="/status">Status</a><p>Slid Phi Labs · Cherry Hill · <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a></p></footer>
+</body></html>

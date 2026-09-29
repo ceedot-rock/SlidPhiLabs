@@ -19,7 +19,7 @@ See `DISCOVERY.md`.
 | Action | Where | Why |
 |--------|-------|-----|
 | Free demo | /web | Zero-friction conviction |
-| Proof | /standings · /truth | Social + technical proof |
+| Proof | /standings | Social + technical proof |
 | Paid eval | /try ($9) | Serious buyers |
 | Bulk | /pps | Revenue + multi-GB story |
 | Partner | #connect · email | LOI / consulting |

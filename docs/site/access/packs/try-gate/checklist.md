@@ -4,7 +4,7 @@
 - [ ] Downloaded entitlement JSON from Access
 - [ ] Compressed something on https://www.slidphilabs.com/web
 - [ ] Opened https://www.slidphilabs.com/standings
-- [ ] Skimmed https://www.slidphilabs.com/truth
+- [ ] Skimmed https://www.slidphilabs.com/standings
 - [ ] Generated a suite quote on https://www.slidphilabs.com/pps (optional)
 - [ ] Read weekly blog: https://www.slidphilabs.com/blog
 - [ ] Followed https://x.com/slidphilabs (optional)
