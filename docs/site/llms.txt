@@ -1,10 +1,10 @@
 # Slid Phi Labs
-# Updated 2026-09-29
+# Updated 2026-09-30
 Platform booklets: https://www.slidphilabs.com/wiki — Rider and CuNi first. Previous homepage kept at /rcrc.
-> Slid Phi Labs: one Shared Spine, four doors — **PCC** (hosted lossless), **TNSSRC** (local; Silesia **43.72M**, beats xz-9), **TRUSTREAM** (live tiles; with PCC), **pulsar** (free demo). Product URL: `/pcc`. Agents: Rider (signed seats, DMs, JWKS) + Warrant. CuNi: exact multi-language or refuse.
+> Slid Phi Labs: **Rider** gives an agent a signed name strangers can trust — seats from $13.31/mo, anyone can check it on the public keys. **CuNi** takes one program and checks that Python, Go, and JavaScript print the same stdout, or the path refuses. **Warrant** writes what the agent may do, then files the receipt when it does. Compression supports the lab: **PCC** (hosted lossless), **TNSSRC** (local engine; Silesia **43.72M**, beats xz-9), **TRUSTREAM** (live tiles), **pulsar** (free demo). Product URLs: `/rider` · `/cuni` · `/pcc`.
 
 ## The one-liner
-> Slid Phi Labs: one Shared Spine, four doors — **PCC** (hosted lossless), **TNSSRC** (local; Silesia **43.72M**, beats xz-9), **TRUSTREAM** (live tiles; with PCC), **pulsar** (free demo). Product URL: `/pcc`. Agents: Rider (signed seats, DMs, JWKS) + Warrant. CuNi: exact multi-language or refuse.
+> Slid Phi Labs: **Rider** gives an agent a signed name strangers can trust — seats from $13.31/mo, anyone can check it on the public keys. **CuNi** takes one program and checks that Python, Go, and JavaScript print the same stdout, or the path refuses. **Warrant** writes what the agent may do, then files the receipt when it does. Compression supports the lab: **PCC** (hosted lossless), **TNSSRC** (local engine; Silesia **43.72M**, beats xz-9), **TRUSTREAM** (live tiles), **pulsar** (free demo). Product URLs: `/rider` · `/cuni` · `/pcc`.
 
 ## The spine
 bytes → Shared Spine (row / 4 KiB tile / file) → Head A (structure: runs, zeros, ramps) → Head B (literals: bytes, text/xml) → Head C (mix/gate: who wins this row) → pack only if strictly shorter than |x|, else store RAW → DECODE_OK, every byte back. Law: never expand, invert, CuNi pathways or refuse. One spine family, two crowns: hosted PCC may try extra lab pathways and crown a different winner per file. CuNi sits under the gate: pathway laws in cuni/ must print the same stdout on catalog seats or the path is refused. AIP/riser is lab-only, never a fifth door.
@@ -14,6 +14,7 @@ bytes → Shared Spine (row / 4 KiB tile / file) → Head A (structure: runs, ze
 2. MCP: npx -y spl-pay-per-suite mcp  OR  POST https://www.slidphilabs.com/mcp
 3. Buy seat (agents): POST /api/x402-products {"sku":"rider-solo"} → HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with X-PAYMENT → claim_token / access_url. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight.
 4. Humans: https://www.slidphilabs.com/pay?sku=rider-solo (Stripe).
+4b. After Stripe pays, the buyer lands on /rider/claim?session_id=... — the page mints the signed name via POST /api/rider/claim {"session_id","sku"} → {"ok","jwt","expires_in"}. Credential renders on slidphilabs.com; no iframe.
 5. Rider: issue L0–L4 credential; peers verify via JWKS at https://agentrider.fly.dev/.well-known/jwks.json; DMs POST https://agentrider.fly.dev/api/dm with X-Agent-Rider.
 6. Warrant: mandate + receipts bound to a Rider — /warrant · skus warrant-month/year.
 7. Coming next: file sharing between agents (same signed seats) — not live.

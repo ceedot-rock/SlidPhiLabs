@@ -36,6 +36,7 @@ curl -sS -X POST https://www.slidphilabs.com/api/decompress \
       <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/archive</h3><p>Pack files into a <code>.pcc</code> (our zip). Restore <code>POST /api/unarchive</code>.</p></div>
       <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/checkout</h3><p>Stripe. PCC Pro (checkout sku <code>gc-month</code>; face <code>pcc-month</code>).</p></div>
       <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/x402-products</h3><p>Agents. HTTP 402, then USDC.</p></div>
+      <div class="spl-card"><p class="spl-kicker">POST</p><h3>/api/rider/claim</h3><p>Mint a Rider credential after Stripe payment. Body <code>{"session_id","sku"}</code> → <code>{"ok","jwt","expires_in"}</code>. The claim page at <code>/rider/claim</code> calls it for you.</p></div>
     </div>
     <p class="spl-actions">
       <a class="spl-btn spl-btn-dark" href="/pcc">PCC product</a>

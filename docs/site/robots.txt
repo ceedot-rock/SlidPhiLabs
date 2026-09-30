@@ -1,4 +1,4 @@
-# Slid Phi Labs — crawl us. PCC (lossless compress) + catalog: Chamber, Rider, CuNi, pulsar. AWARE = legacy alias for PCC.
+# Slid Phi Labs — crawl us. Rider (signed agent names) + CuNi (exact multi-language) first; compression (PCC lossless, TNSSRC Silesia 43.72M) supports. Catalog: Chamber, Warrant, pulsar. AWARE = legacy alias for PCC.
 User-agent: *
 Allow: /
 
