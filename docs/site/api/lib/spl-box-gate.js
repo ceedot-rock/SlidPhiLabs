@@ -10,7 +10,7 @@ export const PROTOCOL = "splb-ed25519-24h";
 export const BUY = {
   chamber_year: "https://www.slidphilabs.com/pay?sku=chamber-year",
   gc_year: "https://www.slidphilabs.com/pay?sku=gc-year",
-  rider_year: "https://www.slidphilabs.com/pay?sku=rider-year",
+  rider_year: "https://www.slidphilabs.com/pay?sku=rider-solo",
   lab_pass: "https://www.slidphilabs.com/pay?sku=lab-pass",
   license: "https://www.slidphilabs.com/license",
 };
@@ -24,8 +24,11 @@ export const SEATS = new Set([
   "gc-year",
   "gc-month",
   "gc-day",
-  "rider-year",
-  "rider-month",
+  "rider-solo",
+  "rider-bundle",
+  "rider-crew",
+  "rider-shop",
+  "rider-fleet",
   "cuni-exception",
   "trugame-year",
   "trugame-month",

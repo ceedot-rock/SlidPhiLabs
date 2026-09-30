@@ -12,15 +12,15 @@
   "dual": {
     "chooser": "You pick copyleft or the commercial grant. Both are written.",
     "copyleft_or_commercial": [
-      { "name": "pulsar", "copyleft": "GPL-3.0-or-later", "sku": "pulsar-exception", "usd": 490, "page": "https://www.slidphilabs.com/pulsar" },
-      { "name": "PCC", "copyleft": "AGPL-3.0-or-later", "sku": "gc-month", "usd": 49, "page": "https://www.slidphilabs.com/pcc", "hosted": true },
-      { "name": "CuNi", "copyleft": "AGPL-3.0-or-later", "sku": "cuni-exception", "usd": 490, "page": "https://www.slidphilabs.com/cuni" },
+      { "name": "pulsar", "copyleft": "GPL-3.0-or-later", "sku": "pulsar-exception", "usd": 390, "page": "https://www.slidphilabs.com/pulsar" },
+      { "name": "PCC", "copyleft": "AGPL-3.0-or-later", "sku": "gc-month", "usd": 39, "page": "https://www.slidphilabs.com/pcc", "hosted": true },
+      { "name": "CuNi", "copyleft": "AGPL-3.0-or-later", "sku": "cuni-exception", "usd": 390, "page": "https://www.slidphilabs.com/cuni" },
       { "name": "Chamber SDK", "copyleft": "AGPL-3.0-or-later", "sku": "chamber-year", "usd": 99, "page": "https://www.slidphilabs.com/chamber" },
-      { "name": "Agent-Rider", "copyleft": "AGPL-3.0-or-later", "sku": "rider-year", "usd": 790, "page": "https://www.slidphilabs.com/rider" },
+      { "name": "Agent-Rider", "copyleft": "AGPL-3.0-or-later", "sku": "rider-crew", "usd": 49, "page": "https://www.slidphilabs.com/rider" },
       { "name": "Warrant", "copyleft": "AGPL-3.0-or-later", "sku": "warrant-year", "usd": 290, "page": "https://www.slidphilabs.com/warrant" },
-      { "name": "spl-pay-per-suite", "copyleft": "AGPL-3.0-or-later", "sku": "gc-month", "usd": 49, "page": "https://www.slidphilabs.com/docs" },
-      { "name": "TRU8 public zeros demo", "copyleft": "AGPL-3.0-or-later", "sku": "pulsar-exception", "usd": 490, "page": "https://www.slidphilabs.com/specialist" },
-      { "name": "Slid Phi Labs public site and clients", "copyleft": "AGPL-3.0-or-later", "sku": "gc-year", "usd": 490, "page": "https://www.slidphilabs.com/" }
+      { "name": "spl-pay-per-suite", "copyleft": "AGPL-3.0-or-later", "sku": "gc-month", "usd": 39, "page": "https://www.slidphilabs.com/docs" },
+      { "name": "TRU8 public zeros demo", "copyleft": "AGPL-3.0-or-later", "sku": "pulsar-exception", "usd": 390, "page": "https://www.slidphilabs.com/specialist" },
+      { "name": "Slid Phi Labs public site and clients", "copyleft": "AGPL-3.0-or-later", "sku": "gc-year", "usd": 390, "page": "https://www.slidphilabs.com/" }
     ],
     "operator_only": ["Agent-Rider signing keys", "Chamber kernel secrets", "AUTH_DIR customer data"]
   },
@@ -89,15 +89,15 @@
       "pay": "https://www.slidphilabs.com/pay?sku=pulsar-exception"
     },
     "cuni-exception": {
-      "usd": 490,
+      "usd": 390,
       "period": "year",
       "plain": "Pay $390/year to ship CuNi inside one closed product for one year. The public playground stays free.",
       "grants": "Written exception for one closed product using CuNi, one year.",
       "pay": "https://www.slidphilabs.com/pay?sku=cuni-exception"
     },
     "gc-day": { "usd": 9, "plain": "PCC hosted compressor, one day of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-day" },
-    "gc-month": { "usd": 49, "plain": "PCC hosted compressor, one month of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-month" },
-    "gc-year": { "usd": 490, "plain": "PCC hosted compressor, one year of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-year" },
+    "gc-month": { "usd": 39, "plain": "PCC hosted compressor, one month of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-month" },
+    "gc-year": { "usd": 390, "plain": "PCC hosted compressor, one year of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-year" },
     "lab-pass": { "usd": 490, "plain": "One year of Chamber + PCC for $490.", "pay": "https://www.slidphilabs.com/pay?sku=lab-pass", "includes": ["chamber", "pcc"], "excludes": ["rider"] },
     "oss-support": {
       "usd": 199,

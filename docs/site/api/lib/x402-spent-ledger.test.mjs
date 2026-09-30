@@ -34,7 +34,7 @@ test("first consume wins; second is already_used", () => {
   const a = consumePaymentTx(BASE_TX, {
     endpoint: "x402-products",
     ref: "ORDER-1",
-    sku: "rider-month",
+    sku: "rider-solo",
     network: "eip155:8453",
   });
   assert.equal(a.ok, true);

@@ -43,23 +43,15 @@
     },
     "gc-month": {
       "sku": "gc-month",
-      "price_usd": 49
+      "price_usd": 39
     },
     "gc-year": {
       "sku": "gc-year",
-      "price_usd": 490
-    },
-    "rider-month": {
-      "sku": "rider-month",
-      "price_usd": 79
-    },
-    "rider-year": {
-      "sku": "rider-year",
-      "price_usd": 790
+      "price_usd": 390
     },
     "lab-pass": {
       "sku": "lab-pass",
-      "price_usd": 668
+      "price_usd": 490
     },
     "cuni-exception": {
       "sku": "cuni-exception",
@@ -72,6 +64,26 @@
     "warrant-year": {
       "sku": "warrant-year",
       "price_usd": 290
+    },
+    "rider-solo": {
+      "sku": "rider-solo",
+      "price_usd": 13.31
+    },
+    "rider-bundle": {
+      "sku": "rider-bundle",
+      "price_usd": 19.31
+    },
+    "rider-crew": {
+      "sku": "rider-crew",
+      "price_usd": 49
+    },
+    "rider-shop": {
+      "sku": "rider-shop",
+      "price_usd": 199
+    },
+    "rider-fleet": {
+      "sku": "rider-fleet",
+      "price_usd": 631
     }
   },
   "default": {

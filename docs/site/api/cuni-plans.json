@@ -4,13 +4,16 @@
   "unit": "cents",
   "skus": {
     "aware-day": 900,
-    "aware-month": 4900,
-    "aware-year": 49000,
+    "aware-month": 3900,
+    "aware-year": 39000,
     "chamber-month": 900,
     "chamber-year": 9900,
-    "rider-month": 7900,
-    "rider-year": 79000,
     "cuni-studio": 0,
-    "cuni-exception": 49000
+    "cuni-exception": 39000,
+    "rider-solo": 1331,
+    "rider-bundle": 1931,
+    "rider-crew": 4900,
+    "rider-shop": 19900,
+    "rider-fleet": 63100
   }
 }

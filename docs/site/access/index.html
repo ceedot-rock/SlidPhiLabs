@@ -219,7 +219,7 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
   <div class="links">
     <a class="btn btn-gold" href="/pay?sku=chamber-year">Chamber Year · $99</a>
     <a class="btn btn-primary" href="/pay?sku=pcc-year">PCC Year · $390</a>
-    <a class="btn btn-teal" href="/pay?sku=rider-year">Rider · from $13.31/mo</a>
+    <a class="btn btn-teal" href="/pay?sku=rider-solo">Rider · from $13.31</a>
     <a class="btn btn-ghost" href="/pricing">Full price list</a>
   </div>
 
@@ -303,19 +303,40 @@ footer .legal img{width:28px;height:28px;border-radius:50%;object-fit:cover;bord
       buy: '/pay?sku=pcc-day',
       blurb: 'Compressor',
     },
-    'rider-year': {
-      name: 'Agent-Rider · annual team seat',
-      price: 'Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631',
+    'rider-solo': {
+      name: 'Rider · Solo',
+      price: '$13.31',
       champ: true,
-      deliver: 'Signed agent identity L0–L4 for one year. Not in Lab Pass.',
-      buy: '/pay?sku=rider-year',
+      deliver: 'Signed agent identity L0–L4. Solo tier.',
+      buy: '/pay?sku=rider-solo',
       blurb: 'Identity',
     },
-    'rider-month': {
-      name: 'Agent-Rider · monthly team seat',
-      price: 'Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631',
-      deliver: 'Signed agent identity L0–L4 for one calendar month.',
-      buy: '/pay?sku=rider-month',
+    'rider-bundle': {
+      name: 'Rider · Bundle',
+      price: '$19.31',
+      deliver: 'Signed agent identity L0–L4. Bundle tier.',
+      buy: '/pay?sku=rider-bundle',
+      blurb: 'Identity',
+    },
+    'rider-crew': {
+      name: 'Rider · Crew',
+      price: '$49',
+      deliver: 'Signed agent identity L0–L4. Crew tier.',
+      buy: '/pay?sku=rider-crew',
+      blurb: 'Identity',
+    },
+    'rider-shop': {
+      name: 'Rider · Shop',
+      price: '$199',
+      deliver: 'Signed agent identity L0–L4. Shop tier.',
+      buy: '/pay?sku=rider-shop',
+      blurb: 'Identity',
+    },
+    'rider-fleet': {
+      name: 'Rider · Fleet',
+      price: '$631',
+      deliver: 'Signed agent identity L0–L4. Fleet tier.',
+      buy: '/pay?sku=rider-fleet',
       blurb: 'Identity',
     },
     'lab-pass': {

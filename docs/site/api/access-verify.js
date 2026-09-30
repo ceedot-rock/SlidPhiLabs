@@ -8,9 +8,9 @@
  *
  * Primary SKUs (SoT: /pricing.json):
  *   Chamber: chamber-month $9 | chamber-year $99  (open is keys-only)
- *   AWARE:   gc-day $9 | gc-month $49 | gc-year $490
- *   Rider:   rider-month $79 | rider-year $790 · Ops $29/$290
- *   Lab Pass $668 (Chamber + AWARE; not Rider)
+ *   AWARE:   gc-day $9 | gc-month $39 | gc-year $390
+ *   Rider:   rider-solo $13.31 · rider-bundle $19.31 · rider-crew $49 · rider-shop $199 · rider-fleet $631 · Ops $29/$290
+ *   Lab Pass $490 (Chamber + AWARE; not Rider)
  *
  * One email only: corey@slidphilabs.com
  */
@@ -104,21 +104,51 @@ const SEATS = {
     includes: ["AWARE hosted compressor access"],
     does_not_include: ["engine source", "Chamber", "Agent-Rider"],
   },
-  "rider-month": {
-    name: "Agent-Rider · monthly team seat",
-    list_usd: 79,
-    unit: "calendar month",
-    amount_cents: 7900,
+  "rider-solo": {
+    name: "Rider · Solo seat",
+    list_usd: 13.31,
+    unit: "seat",
+    amount_cents: 1331,
     product: "rider",
     stack: "rider",
     includes: ["Agent-Rider signed identity L0–L4"],
     does_not_include: ["Chamber", "AWARE", "Lab Pass"],
   },
-  "rider-year": {
-    name: "Agent-Rider · annual team seat",
-    list_usd: 790,
-    unit: "calendar year",
-    amount_cents: 79000,
+  "rider-bundle": {
+    name: "Rider · Bundle seat",
+    list_usd: 19.31,
+    unit: "seat",
+    amount_cents: 1931,
+    product: "rider",
+    stack: "rider",
+    includes: ["Agent-Rider signed identity L0–L4"],
+    does_not_include: ["Chamber", "AWARE", "Lab Pass"],
+  },
+  "rider-crew": {
+    name: "Rider · Crew seat",
+    list_usd: 49,
+    unit: "seat",
+    amount_cents: 4900,
+    product: "rider",
+    stack: "rider",
+    includes: ["Agent-Rider signed identity L0–L4"],
+    does_not_include: ["Chamber", "AWARE", "Lab Pass"],
+  },
+  "rider-shop": {
+    name: "Rider · Shop seat",
+    list_usd: 199,
+    unit: "seat",
+    amount_cents: 19900,
+    product: "rider",
+    stack: "rider",
+    includes: ["Agent-Rider signed identity L0–L4"],
+    does_not_include: ["Chamber", "AWARE", "Lab Pass"],
+  },
+  "rider-fleet": {
+    name: "Rider · Fleet seat",
+    list_usd: 631,
+    unit: "seat",
+    amount_cents: 63100,
     product: "rider",
     stack: "rider",
     includes: ["Agent-Rider signed identity L0–L4"],
@@ -126,9 +156,9 @@ const SEATS = {
   },
   "cuni-exception": {
     name: "CuNi · closed-app exception",
-    list_usd: 490,
+    list_usd: 390,
     unit: "calendar year",
-    amount_cents: 49000,
+    amount_cents: 39000,
     product: "exception",
     stack: "exception",
     includes: ["Written exception for one closed product, one year"],
@@ -196,9 +226,9 @@ const SEATS = {
   },
   "lab-pass": {
     name: "Lab Pass · annual",
-    list_usd: 668,
+    list_usd: 490,
     unit: "calendar year",
-    amount_cents: 66800,
+    amount_cents: 49000,
     product: "seat",
     stack: "seat",
     includes: ["Chamber", "AWARE"],
@@ -352,13 +382,13 @@ export function normalizeSku(raw) {
     gc: "gc-year",
     aware: "gc-year",
     "combined-gc": "gc-year",
-    "rider-month": "rider-month",
-    "rider-year": "rider-year",
-    rider: "rider-year",
-    "agent-rider": "rider-year",
-    agentrider: "rider-year",
-    "rider-team-month": "rider-month",
-    "rider-team-year": "rider-year",
+    "rider-month": "rider-solo",
+    "rider-year": "rider-crew",
+    rider: "rider-solo",
+    "agent-rider": "rider-solo",
+    agentrider: "rider-solo",
+    "rider-team-month": "rider-crew",
+    "rider-team-year": "rider-crew",
     "lab-pass": "lab-pass",
     "lab-pass-year": "lab-pass",
     "cuni-exception": "cuni-exception",
@@ -627,7 +657,7 @@ export function buildDeliverable({ paid, sku, sessionId, email, amountTotal, cur
           n: 2,
           title: "Buy AWARE",
           href: "/pay?sku=gc-year",
-          detail: "Day $9 · Month $49 · Year $490.",
+          detail: "Day $9 · Month $39 · Year $390.",
         },
       ],
       next: "Download entitlement JSON, then consider a TRU8 or Chamber plan.",

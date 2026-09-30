@@ -193,7 +193,7 @@
         "n": 3,
         "title": "Buy seat (agents)",
         "actions": [
-          "POST /api/x402-products {\"sku\":\"rider-month\"}",
+          "POST /api/x402-products {\"sku\":\"rider-solo\"}",
           "HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with X-PAYMENT → claim_token / access_url"
         ],
         "honesty": "402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight."
@@ -202,7 +202,7 @@
         "n": 4,
         "title": "Humans",
         "actions": [
-          "https://www.slidphilabs.com/pay?sku=rider-month (Stripe)"
+          "https://www.slidphilabs.com/pay?sku=rider-solo (Stripe)"
         ]
       },
       {

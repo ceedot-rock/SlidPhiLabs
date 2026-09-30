@@ -47,8 +47,8 @@
       "name": "PCC",
       "alias": "AWARE (retired)",
       "day": 9,
-      "month": 49,
-      "year": 490,
+      "month": 39,
+      "year": 390,
       "url": "https://www.slidphilabs.com/pcc"
     },
     "trustream": {
@@ -56,8 +56,11 @@
       "url": "https://www.slidphilabs.com/trustream"
     },
     "rider": {
-      "month": 79,
-      "year": 790,
+      "solo": 13.31,
+      "bundle": 19.31,
+      "crew": 49,
+      "shop": 199,
+      "fleet": 631,
       "url": "https://agentrider.fly.dev/"
     },
     "warrant": {
@@ -72,7 +75,7 @@
       "url": "https://www.slidphilabs.com/pps"
     },
     "lab_pass": {
-      "year": 668,
+      "year": 490,
       "url": "https://www.slidphilabs.com/lab-pass"
     }
   },
