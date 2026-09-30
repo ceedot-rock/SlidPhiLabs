@@ -22,11 +22,15 @@
       <a class="spl-btn spl-btn-dark" href="/box">Try it — 24 hours free</a>
       <a class="spl-btn spl-btn-line" href="/pricing">View pricing</a>
     </p>
-    <aside class="spl-card" aria-label="Try PCC">
-      <p class="spl-kicker">Try it</p>
-      <p style="margin:0.4rem 0 0.6rem">Start a <strong>24-hour try</strong> on <a href="/box">/box</a> — no account, no card. Send a real file through the hosted compressor and check every byte on restore. After the day, buy a seat or it stops.</p>
-      <p class="spl-note" style="margin:0">Prefer the API? Same engine over HTTP, npm, or MCP — <a href="/docs">docs</a>.</p>
-    </aside>
+    <div data-file-drop style="margin:1rem 0">
+      <div class="pf-dropzone" data-drop-zone role="button" tabindex="0" aria-label="Drop a file to compress it">
+        <p><strong>Drop a file here</strong> or tap to browse</p>
+        <p class="pf-drop-hint">Free · up to 25 MB · no account</p>
+        <input type="file" hidden aria-hidden="true" tabindex="-1">
+      </div>
+      <div data-drop-out hidden></div>
+    </div>
+    <p class="spl-note" style="margin:0.4rem 0 0">Want the full engine for a day? <a href="/box">24-hour try</a> — no account, no card. Prefer the API? Same engine over HTTP, npm, or MCP — <a href="/docs">docs</a>.</p>
 <section class="spl-prose spl-full" id="what-pcc" aria-labelledby="what-pcc-h">
   <h2 id="what-pcc-h">What PCC is</h2>
   <p>PCC is hosted compression for your files. You send a file; you get back the smallest faithful copy — and when you restore it, every single byte is identical to the original. A smaller file, guaranteed identical when unzipped.</p>
@@ -64,5 +68,6 @@
     <p class="spl-note"><a href="/pricing">Pricing</a> · <a href="/docs">API</a> · <a href="/silesia">Silesia</a> · <a href="/npm">npm</a></p>
   </main>
   <script src="/assets/chrome.js?v=41" defer></script>
+  <script src="/assets/file-drop.js?v=1"></script>
 </body>
 </html>

@@ -271,3 +271,28 @@ th, td { text-align: left; border-bottom: 1px solid var(--line); padding: 0.45re
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* File drop — first-screen action */
+.pf-dropzone {
+  border: 2px dashed var(--line, #c9a227);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  margin: 1rem 0;
+  background: rgba(255,255,255,0.4);
+  transition: border-color 0.15s, background 0.15s;
+}
+.pf-dropzone:hover, .pf-dropzone.drag {
+  border-color: var(--gold, #c9a227);
+  background: rgba(201,162,39,0.08);
+}
+.pf-dropzone p { margin: 0; font-size: 1.05rem; }
+.pf-drop-hint { font-size: 0.85rem; opacity: 0.7; margin-top: 0.4rem !important; }
+.pf-drop-status, .pf-drop-line { font-size: 1.05rem; margin: 0.75rem 0; }
+.pf-drop-note { font-size: 0.9rem; opacity: 0.8; margin: 0.5rem 0; }
+.pf-drop-actions { margin: 0.9rem 0; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.pf-drop-upsell { font-size: 0.85rem; opacity: 0.75; margin: 0.5rem 0 0; }
+@media (max-width: 799px) {
+  .pf-dropzone { padding: 1.1rem 0.75rem; }
+}
