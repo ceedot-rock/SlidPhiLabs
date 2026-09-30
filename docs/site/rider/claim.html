@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Your Rider name · Slid Phi Labs</title>
+  <meta name="description" content="Your Rider seat is paid. Mint your agent's signed name here."/>
+  <meta name="theme-color" content="#0f1c2e"/>
+  <meta name="robots" content="noindex,nofollow"/>
+  <link rel="canonical" href="https://www.slidphilabs.com/rider/claim"/>
+  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=35"/>
+  <style>
+    .claim-box { max-width: 40rem; margin: 2rem auto; padding: 1.5rem; border: 1px solid var(--line); border-radius: 12px; background: var(--white); }
+    .claim-jwt { font-family: monospace; font-size: 0.75rem; word-break: break-all; background: #f6f4ec; padding: 1rem; border-radius: 8px; margin: 1rem 0; max-height: 10rem; overflow-y: auto; }
+    .claim-status { font-size: 1.05rem; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">Rider · your seat</p>
+    <h1>Your agent's signed name</h1>
+    <div class="claim-box" id="claimBox">
+      <p class="claim-status" id="claimStatus">Setting up your seat…</p>
+      <div id="claimOut"></div>
+    </div>
+    <p><a href="/rider">About Rider</a> · <a href="mailto:corey@slidphilabs.com">Ask Corey</a></p>
+  </main>
+  <script src="/assets/chrome.js?v=41" defer></script>
+  <script>
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var sessionId = params.get("session_id") || "";
+    var product = params.get("product") || "rider-solo";
+    var status = document.getElementById("claimStatus");
+    var out = document.getElementById("claimOut");
+
+    if (!sessionId) {
+      status.textContent = "No checkout found.";
+      out.innerHTML = '<p>Buy a seat first: <a href="/pay?sku=rider-solo">Get a name — $13.31/mo</a>.</p>';
+      return;
+    }
+
+    fetch("/api/rider/claim", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ session_id: sessionId, sku: product })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j.ok && j.jwt) {
+          status.innerHTML = "<strong>Your name is live.</strong> Fifteen minutes, then mint another.";
+          out.innerHTML =
+            '<div class="claim-jwt" id="jwtText">' + escapeHtml(j.jwt) + "</div>" +
+            '<p><button type="button" class="pf-btn pf-btn-solid" id="copyJwt">Copy credential</button> ' +
+            '<a class="pf-btn pf-btn-line" href="https://agentrider.fly.dev/verify">Verify it</a></p>' +
+            '<p class="spl-note">Send this as the <code>X-Agent-Rider</code> header. It expires in 15 minutes — come back here to mint a fresh one.</p>';
+          document.getElementById("copyJwt").addEventListener("click", function () {
+            navigator.clipboard.writeText(j.jwt).then(function () {
+              document.getElementById("copyJwt").textContent = "Copied";
+            });
+          });
+        } else {
+          status.innerHTML = "<strong>Seat paid.</strong> " + escapeHtml(j.message || "Your credential is being prepared.");
+          out.innerHTML = '<p class="spl-note">' + escapeHtml(j.detail || "Check back in a minute, or email corey@slidphilabs.com and Corey will sort it.") + "</p>";
+        }
+      })
+      .catch(function () {
+        status.innerHTML = "<strong>Seat paid.</strong> The mint did not answer — try refreshing in a moment.";
+        out.innerHTML = '<p class="spl-note">Or email <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> and Corey will sort it.</p>';
+      });
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+  })();
+  </script>
+</body>
+</html>

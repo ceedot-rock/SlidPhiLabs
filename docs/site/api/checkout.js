@@ -219,7 +219,7 @@ export default async function handler(req, res) {
         kind,
         note: String(body.note || "").slice(0, 200),
       },
-      successPath: "/access",
+      successPath: String(sku || "").startsWith("rider-") ? "/rider/claim" : "/access",
       cancelPath: "/pay?cancel=1",
     });
     return json(res, 200, {
