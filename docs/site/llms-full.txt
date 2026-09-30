@@ -1,21 +1,38 @@
 # Slid Phi Labs — full agent brief
 # Tools that check. Cherry Hill.
-# Public catalog: CuNi, Chamber, Agent-Rider, PCC, Suite, Lab Pass.
-# Updated 2026-09-21
+# Public catalog: Agent-Rider, CuNi, Warrant, PCC, Chamber, Lab Pass.
+# Updated 2026-09-30
 # Canonical site: https://www.slidphilabs.com
 # Prefer live GET /api/agent, /llms.txt, and /pricing.json over this file if they differ.
 
 ## Identity
 Name: Slid Phi Labs
 Public author: Corey Tasz
-Public catalog: PCC · TRUSTREAM · Chamber · Agent-Rider · Warrant · CuNi (Bank is an arm of CuNi)
+Public catalog: Agent-Rider · CuNi · Warrant · PCC · Chamber · Lab Pass
 Commercial: corey@slidphilabs.com
 Humans: https://www.slidphilabs.com/humans
 Agents: https://www.slidphilabs.com/agents
 
-One-liner: Slid Phi Labs: one Shared Spine, four doors — PCC (hosted lossless), TNSSRC (local; Silesia 43.72M, beats xz-9), TRUSTREAM (live tiles; with PCC), pulsar (free demo). Product URL: /pcc. Agents: Rider (signed seats, DMs, JWKS) + Warrant. CuNi: exact multi-language or refuse.
+One-liner: Slid Phi Labs: **Rider** gives an agent a signed name strangers can trust — seats from $13.31/mo, anyone can check it on the public keys. **CuNi** takes one program and checks that Python, Go, and JavaScript print the same stdout, or the path refuses. **Warrant** writes what the agent may do, then files the receipt when it does. Compression supports the lab: **PCC** (hosted lossless), **TNSSRC** (local engine; Silesia **43.72M**, beats xz-9), **TRUSTREAM** (live tiles), **pulsar** (free demo). Product URLs: `/rider` · `/cuni` · `/pcc`.
 
 ## Modules
+
+### Identity · Agent-Rider
+- Page: https://www.slidphilabs.com/rider
+- Live host: https://agentrider.fly.dev
+- Signed agent names (15-minute credentials). Anyone can check on the public keys.
+- Buy: https://www.slidphilabs.com/pay?sku=rider-solo — Solo $13.31/mo · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631
+- After Stripe: buyer lands on /rider/claim, credential mints via POST /api/rider/claim, renders on slidphilabs.com. No iframe.
+
+### Exactness · CuNi
+- Page: https://www.slidphilabs.com/cuni
+- One program, 144 languages in the catalog. Python, Go, and JavaScript print the same stdout, or the path refuses.
+- Studio is free.
+
+### Receipts · Warrant
+- Page: https://www.slidphilabs.com/warrant
+- Hosts, actions, spend, calls, expiry. Then a receipt with the hashes and the dollars.
+- $29/mo · $290/yr
 
 ### Compression · PCC
 - Page: https://www.slidphilabs.com/pcc
@@ -24,6 +41,7 @@ One-liner: Slid Phi Labs: one Shared Spine, four doors — PCC (hosted lossless)
 - Release: https://github.com/ceedot-rock/pulsar-best/releases/tag/v2.5.0
 - Silesia 55,745,438 / 211,938,580 DECODE_OK 12/12. Beats gzip-9. Loses to bzip2 and xz. Matches OSCB. Free local binary.
 - PCC on the same official 12: 51,498,645, DECODE_OK 12/12. champ 50,541,135 12/12. gzip-9 67,631,990. bzip2-9 54,506,769. xz-6 still ahead (~49.4M). Not a #1 claim. AWARE+XZ1 47.7M retired.
+- TNSSRC (local engine): Silesia 43,724,575, 12/12 back byte-identical. Beats xz-9.
 - Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc
 - Day $9 · Month $39 · Year $390. Access, not source.
 
@@ -40,6 +58,9 @@ One-liner: Slid Phi Labs: one Shared Spine, four doors — PCC (hosted lossless)
 https://www.slidphilabs.com/projects.json
 
 ## Wording
+- Rider = signed agent name. Seats from $13.31/mo. Anyone can check it on the public keys.
+- CuNi = exact multi-language or refuse. Studio free.
+- Warrant = mandate and receipts. $29/mo · $290/yr.
 - Chamber = cloak license. $9/mo · $99/yr. Open is keys-only.
 - PCC = hosted compressor. $9/day · $39/mo · $390/yr.
 - PCC meter = first 2 GB/month free, then 8¢/GB. Month plan includes 200 GB. Not a fifth product.
