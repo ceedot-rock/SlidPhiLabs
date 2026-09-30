@@ -1,12 +1,13 @@
 /** One header, ticker, footer, one logo — every page. */
 (function () {
   const NAV = [
-    ["/wiki", "Wiki"],
     ["/rider", "Rider"],
     ["/cuni", "CuNi"],
     ["/warrant", "Warrant"],
     ["/pcc", "Compress"],
-    ["/standings", "Standings"],
+    ["/silesia", "Silesia"],
+    ["/wiki", "Wiki"],
+    ["/pricing", "Pricing"],
   ];
   const MORE = [
     ["/", "Home"],

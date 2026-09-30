@@ -296,3 +296,5 @@ th, td { text-align: left; border-bottom: 1px solid var(--line); padding: 0.45re
 @media (max-width: 799px) {
   .pf-dropzone { padding: 1.1rem 0.75rem; }
 }
+.pf-proof { font-size: 0.9rem; opacity: 0.85; margin: 0.75rem 0 0; }
+.pf-proof a { font-weight: 600; }
