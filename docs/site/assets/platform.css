@@ -2,14 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,560&display=swap");
 
 :root {
-  --bg: #f3f1ea;
-  --ink: #1c1915;
-  --muted: #5c574f;
-  --line: #d5d0c6;
-  --accent: #7f2a27;
-  --accent-ink: #fbf6f1;
-  --warn: #7a4e0f;
-  --band: #e4e0d6;
+  --bg: #f6f5f2;
+  --ink: #122033;
+  --muted: #5c6570;
+  --line: #ddd9d1;
+  --accent: #0f6f73;
+  --accent-ink: #f7f5f1;
+  --warn: #9a7b2f;
+  --band: #efece6;
+  --navy: #0f1c2e;
   --max: 1120px;
   --measure: 68ch;
   --pad: 24px;
@@ -73,7 +74,21 @@ a:hover { text-decoration-thickness: 2px; }
   letter-spacing: 0.04em;
   min-height: 44px;
 }
-.pf-brand svg { width: 32px; height: 32px; display: block; }
+.pf-brand img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 42%;
+  display: block;
+}
+.pf-logo {
+  width: min(280px, 72vw);
+  height: auto;
+  display: block;
+  margin: 0 0 1.25rem;
+  border-radius: 16px;
+}
 .pf-nav { display: flex; flex-wrap: wrap; gap: 0.15rem; margin-left: auto; font-family: system-ui, "Segoe UI", sans-serif; }
 .pf-nav a, .pf-menu a {
   color: var(--ink);
@@ -158,7 +173,7 @@ code, .pf-mono {
   font-family: system-ui, "Segoe UI", sans-serif;
   font-weight: 600;
 }
-.pf-btn-solid { background: var(--accent); color: var(--accent-ink); }
+.pf-btn-solid { background: var(--navy); color: var(--accent-ink); }
 .pf-btn-line { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; padding: 0; }
 
 .pf-hero { padding: 48px 0 28px; }
