@@ -21,6 +21,61 @@
       <a class="spl-btn spl-btn-dark" href="/wiki/awlpay">Read the docs</a>
       <a class="spl-btn spl-btn-line" href="https://awlpay.fly.dev/healthz">Health check</a>
     </p>
+    <section class="spl-card" aria-label="Get a quote" style="margin-top:1.2rem">
+      <p class="spl-kicker">Try it · free quote</p>
+      <h2 style="margin:0.4rem 0 0.6rem">What would it cost to move money?</h2>
+      <p class="spl-note" style="margin:0 0 0.8rem">Type an amount and two tokens. The quote is free and live — it asks the real endpoint.</p>
+      <form id="quoteForm" style="display:grid;gap:0.6rem;max-width:26rem">
+        <label>Amount (USD)<br/><input id="qAmount" type="number" min="1" step="0.01" value="10" required style="width:100%;padding:0.5rem;border:1px solid var(--line);border-radius:6px;font:inherit"/></label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem">
+          <label>From chain<br/><input id="qFromChain" value="base" style="width:100%;padding:0.5rem;border:1px solid var(--line);border-radius:6px;font:inherit"/></label>
+          <label>From token<br/><input id="qFromToken" value="USDC" style="width:100%;padding:0.5rem;border:1px solid var(--line);border-radius:6px;font:inherit"/></label>
+          <label>To chain<br/><input id="qToChain" value="base" style="width:100%;padding:0.5rem;border:1px solid var(--line);border-radius:6px;font:inherit"/></label>
+          <label>To token<br/><input id="qToToken" value="USDC" style="width:100%;padding:0.5rem;border:1px solid var(--line);border-radius:6px;font:inherit"/></label>
+        </div>
+        <button type="submit" class="spl-btn spl-btn-dark" style="justify-self:start">Get quote</button>
+      </form>
+      <div id="quoteOut" class="spl-out" hidden style="margin-top:0.8rem;padding:0.8rem;border:1px solid var(--line);border-radius:8px;background:var(--white);font-size:0.9rem"></div>
+      <p class="spl-note" style="margin:0.8rem 0 0">Quote only — this page can't move money. Executing a payment needs a signed wallet flow that doesn't exist yet. When the math doesn't work, AwLPay refuses instead of giving a bad rate.</p>
+    </section>
+<script>
+(function(){
+  var form = document.getElementById("quoteForm");
+  var out = document.getElementById("quoteOut");
+  function money(c){ return "$" + (c/100).toFixed(2); }
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+    out.hidden = false;
+    out.textContent = "Asking…";
+    var cents = Math.round(parseFloat(document.getElementById("qAmount").value) * 100);
+    var body = {
+      amount_cents: cents,
+      from_chain: document.getElementById("qFromChain").value.trim(),
+      from_token: document.getElementById("qFromToken").value.trim().toUpperCase(),
+      to_chain: document.getElementById("qToChain").value.trim(),
+      to_token: document.getElementById("qToToken").value.trim().toUpperCase()
+    };
+    try {
+      var r = await fetch("https://awlpay.fly.dev/api/pay/quote", {
+        method: "POST",
+        headers: {"Content-Type": "text/plain"},
+        body: JSON.stringify(body)
+      });
+      var d = await r.json();
+      if (d.refused) {
+        out.innerHTML = "<strong>Refused.</strong> " + (d.detail || d.reason || "no reason given") + ".";
+        return;
+      }
+      var f = d.fees && d.fees.free ? d.fees.free : {};
+      var fee = f.fee_cents != null ? money(f.fee_cents) : "?";
+      var net = d.net_cents != null ? money(d.net_cents) : "?";
+      out.innerHTML = "<strong>" + money(d.amount_cents) + " in → " + net + " out.</strong><br/>Fee (Free tier): " + fee + ". Pro and L33t pay 0% under their caps.";
+    } catch (err) {
+      out.innerHTML = "<strong>Couldn't reach the quote endpoint.</strong> Try again, or check the <a href=\"https://awlpay.fly.dev/healthz\">health check</a>.";
+    }
+  });
+})();
+</script>
 <section class="spl-prose spl-full" id="what-awlpay" aria-labelledby="what-awlpay-h">
   <h2 id="what-awlpay-h">What it is</h2>
   <p>AwLPay is a payment product with no allowlist. It accepts any token on any chain — if the token has a verifiable price, it pays. You don't need to ask whether your chain or your coin is supported. If it has value, it works.</p>
