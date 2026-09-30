@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Refund policy · Slid Phi Labs</title>
+  <meta name="description" content="Refunds on Slid Phi Labs x402 services: 24-hour window, partial refunds, payer-only, paid from our own funds."/>
+  <link rel="canonical" href="https://www.slidphilabs.com/refund-policy"/>
+  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
+  <meta property="og:title" content="Refund policy — Slid Phi Labs"/>
+  <meta property="og:url" content="https://www.slidphilabs.com/refund-policy"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=38"/>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">Policy · refunds</p>
+    <h1>If we didn't earn it, it comes back.</h1>
+    <p class="lede">Payments made through our x402 endpoints can be refunded within 24 hours of settlement. The request must be signed by the wallet that paid.</p>
+    <section class="spl-prose spl-full">
+      <h2>The terms</h2>
+      <ul>
+        <li><strong>Window</strong> — 24 hours from the moment the payment settles on-chain.</li>
+        <li><strong>Partial refunds</strong> — yes. Ask for part of it; the rest stays settled.</li>
+        <li><strong>Only the payer</strong> — the refund request must carry a signature from the address that sent the original payment. Nobody else can claim it.</li>
+        <li><strong>Never more than settled</strong> — total refunds on a payment can't exceed what was paid.</li>
+        <li><strong>Paid from our funds</strong> — refunds come out of the lab's own wallet, not from other customers.</li>
+        <li><strong>One key, one refund</strong> — every request carries an idempotency key, so retries and double-clicks can't double-pay you.</li>
+      </ul>
+      <h2>How to ask</h2>
+      <p>POST a signed refund request to <code>/x402/refund</code> on the service you paid. You'll get a signed receipt back — proof the refund was issued, verifiable by anyone.</p>
+      <h2>When we say no</h2>
+      <p>Outside the 24-hour window, not signed by the payer, or more than was settled — the request is refused with the reason stated plainly. If something looks wrong beyond that, email <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> and a human reads it.</p>
+    </section>
+  </main>
+  <script src="/assets/chrome.js?v=40" defer></script>
+</body>
+</html>

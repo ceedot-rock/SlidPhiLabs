@@ -68,7 +68,7 @@ export default async function handler(req, res) {
     ok: true,
     name: "Slid Phi Labs — Platform Discovery",
     version: "1.22.1",
-    lead_product: "pcc",
+    lead_product: "rider",
     cash_product: "pcc-month",
     storefront: ["PCC", "TRUSTREAM", "Chamber", "Agent-Rider", "Warrant", "CuNi"],
     well_known_agent: "https://www.slidphilabs.com/.well-known/agent.json",

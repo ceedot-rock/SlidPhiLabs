@@ -4,6 +4,7 @@
     ["/wiki", "Wiki"],
     ["/rider", "Rider"],
     ["/cuni", "CuNi"],
+    ["/warrant", "Warrant"],
     ["/pcc", "Compress"],
     ["/standings", "Standings"],
   ];
