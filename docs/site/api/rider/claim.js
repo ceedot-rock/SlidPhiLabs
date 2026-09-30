@@ -2,8 +2,9 @@
  * POST /api/rider/claim — mint a Rider credential after Stripe payment.
  *
  * Body: { session_id, sku }
- * 1. GET https://agentrider.fly.dev/api/provision?session_id= → merchant key
- * 2. POST https://agentrider.fly.dev/api/rider/issue with X-Merchant-Key → JWT
+ * Uses X-Platform-Key (RIDER_PLATFORM_KEY env) to mint directly via
+ * POST https://agentrider.fly.dev/api/rider/issue — no dependency on
+ * the Rider host's Stripe account.
  * Returns { ok, jwt, expires_in } or { ok:false, message, detail }.
  */
 function json(res, status, body) {
@@ -49,46 +50,38 @@ export default async function handler(req, res) {
   const sku = String(body.sku || "rider-solo").trim();
   if (!sessionId) return json(res, 400, { ok: false, error: "session_id_required" });
 
-  // Step 1: provision lookup — session_id → merchant key
-  let provision;
-  try {
-    const r = await fetch(`${RIDER_HOST}/api/provision?session_id=${encodeURIComponent(sessionId)}`);
-    provision = await r.json();
-  } catch (e) {
-    return json(res, 502, {
-      ok: false,
-      message: "The Rider host did not answer.",
-      detail: "Your seat is paid. Try refreshing in a minute, or email corey@slidphilabs.com.",
-    });
-  }
-
-  const merchantKey = provision.merchant_key || provision.key || provision.merchant_live_;
-  if (!merchantKey) {
+  const platformKey = process.env.RIDER_PLATFORM_KEY;
+  if (!platformKey) {
     return json(res, 200, {
       ok: false,
-      message: "Your seat is paid, but the Rider host did not return a credential for this checkout.",
-      detail: provision.error
-        ? "The host said: " + String(provision.error)
-        : "Email corey@slidphilabs.com with your receipt and Corey will mint your name directly.",
+      message: "Your seat is paid. Credential minting is being connected.",
+      detail: "Email corey@slidphilabs.com with your receipt and Corey will mint your name directly.",
     });
   }
 
-  // Step 2: mint the credential
+  // Mint directly with the platform key — no Stripe lookup needed.
+  // The agent_id ties the credential to this purchase.
+  const agentId = `buyer-${sessionId.slice(-8)}`;
   let issued;
   try {
     const r = await fetch(`${RIDER_HOST}/api/rider/issue`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Merchant-Key": merchantKey,
+        "X-Platform-Key": platformKey,
       },
-      body: JSON.stringify({ sku }),
+      body: JSON.stringify({
+        agent_id: agentId,
+        operator_id: "slidphilabs-checkout",
+        level: "L1",
+        sku,
+      }),
     });
     issued = await r.json();
   } catch (e) {
     return json(res, 502, {
       ok: false,
-      message: "Your seat is paid and provisioned, but the mint did not answer.",
+      message: "Your seat is paid, but the mint did not answer.",
       detail: "Try refreshing in a minute, or email corey@slidphilabs.com.",
     });
   }
