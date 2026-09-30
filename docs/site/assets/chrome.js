@@ -5,7 +5,6 @@
     ["/rider", "Rider"],
     ["/cuni", "CuNi"],
     ["/warrant", "Warrant"],
-    ["/silesia", "TNSSRC"],
     ["/pcc", "Compress"],
     ["/standings", "Standings"],
   ];

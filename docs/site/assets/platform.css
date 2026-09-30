@@ -251,6 +251,7 @@ th, td { text-align: left; border-bottom: 1px solid var(--line); padding: 0.45re
 @media (max-width: 799px) {
   .pf-nav { display: none; }
   .pf-menu { display: block; }
+  .pf-logo { width: min(120px, 32vw); margin-bottom: 0.75rem; }
 }
 @media (min-width: 960px) {
   .pf-layout {
