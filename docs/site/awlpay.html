@@ -14,33 +14,28 @@
 </head>
 <body>
   <main class="spl-page" id="main">
-    <p class="spl-kicker">AwLPay · any chain · any token with value · live now</p>
+    <p class="spl-kicker">AwLPay · any chain · any token with value · API live</p>
     <h1>All chains. All tokens. If it has value, it pays.</h1>
     <p class="lede">ChainRelay plus a <code>hasValue()</code> price check: anything with verifiable value is accepted and converted across chains through CuNi — or the payment is refused.</p>
     <p class="spl-actions">
-      <a class="spl-btn spl-btn-dark" href="https://awlpay.fly.dev">Open AwLPay</a>
+      <a class="spl-btn spl-btn-dark" href="/wiki/awlpay">Read the docs</a>
       <a class="spl-btn spl-btn-line" href="https://awlpay.fly.dev/healthz">Health check</a>
     </p>
 <section class="spl-prose spl-full" id="what-awlpay" aria-labelledby="what-awlpay-h">
-  <h2 id="what-awlpay-h">What AwLPay is</h2>
+  <h2 id="what-awlpay-h">What it is</h2>
   <p>AwLPay is a payment product with no allowlist. It accepts any token on any chain — if the token has a verifiable price, it pays. You don't need to ask whether your chain or your coin is supported. If it has value, it works.</p>
-  <p>Here is why that matters. Paying with crypto today means navigating a maze: is this chain supported, is this token accepted, which bridge, what rate, what fee. AwLPay collapses that to a single question — does it have a verifiable price? — and handles the rest. Its converter turns anything into anything whenever a conversion path exists and the amount survives the fees.</p>
+  <p>Paying with crypto today means navigating a maze: is this chain supported, is this token accepted, which bridge, what rate, what fee. AwLPay collapses that to a single question — does it have a verifiable price? — and handles the rest. Its converter turns anything into anything whenever a conversion path exists and the amount survives the fees.</p>
   <p>And when the math doesn't work, it refuses the payment instead of giving you a bad rate. No silent slippage, no mystery haircut — a clean refusal beats a quietly unfair deal.</p>
-  <p>The Free tier costs 1.0% plus $0.25 per payment. Pro is $39 a month with no platform fee under the cap — $30,000 in volume or 500 transactions a month, whichever comes first. L33t is $799 a month, unlimited with a fair-use guard on compute.</p>
-  <p>It is live now. Under the hood it starts with an attested relayer and is designed to move toward trust-minimized proofs — pragmatic today, more trustless over time.</p>
+  <p>Right now AwLPay is an API, not a web app. The quote route is free; the execute route answers with a 402 and the payment terms. There is no signup page and no dashboard yet — the docs have the honest picture.</p>
+  <h2>Tiers</h2>
+  <ul>
+    <li><strong>Free</strong> — 1.0% + $0.25 per payment.</li>
+    <li><strong>Pro $39/mo</strong> — 0% platform fee under the cap (cap: $30k volume or 500 txs/mo); overage falls back to Free pricing.</li>
+    <li><strong>L33t $799/mo</strong> — unlimited with a fair-use compute guard.</li>
+  </ul>
+  <h2>Design</h2>
+  <p>Starts pragmatic — an attested relayer with Chamber signatures — and is designed to move toward trust-minimized light-client proofs. Signed agent identity and bounded spend boxes come from Rider; CuNi is the exact law on every conversion path.</p>
 </section>
-    <div class="spl-prose spl-full">
-      <h2>What it is</h2>
-      <p>A payment product with no allowlist. If the token has a verifiable price, it pays. The ConverterRouter converts anything to anything when a path exists and the amount survives fees — otherwise it refuses instead of guessing.</p>
-      <h2>Tiers</h2>
-      <ul>
-        <li><strong>Free</strong> — 1.0% + $0.25 per payment.</li>
-        <li><strong>Pro $39/mo</strong> — 0% platform fee under the cap (cap: $30k volume or 500 txs/mo); overage falls back to Free pricing.</li>
-        <li><strong>L33t $799/mo</strong> — unlimited with a fair-use compute guard.</li>
-      </ul>
-      <h2>Design</h2>
-      <p>Starts pragmatic — an attested relayer with Chamber signatures — and is designed to move toward trust-minimized light-client proofs. Signed agent identity and bounded spend boxes come from Rider; CuNi is the exact law on every conversion path.</p>
-    </div>
   </main>
   <script src="/assets/chrome.js?v=40" defer></script>
 </body>
