@@ -6,16 +6,50 @@
  * 2. Verifies the Stripe checkout session is real and paid (STRIPE_SECRET_KEY).
  * 3. Confirms the purchase is a Rider SKU, from server-set Stripe metadata only
  *    (the request body's sku is never trusted).
- * 4. Idempotency: each session_id mints once per instance (replay returns same result).
+ * 4. Idempotency: each session_id mints once. Results are cached in memory
+ *    AND persisted to AUTH_DIR/rider-claims.json (the /data volume), so a
+ *    restart or a second instance never re-mints for the same session.
  * 5. Uses X-Platform-Key (RIDER_PLATFORM_KEY env) to mint directly via
  *    POST https://agentrider.fly.dev/api/rider/issue — no dependency on
  *    the Rider host's Stripe account.
  * Returns { ok, jwt, expires_in } or { ok:false, message, detail }.
  */
 
-// In-memory guards (per instance; good enough for single-machine Fly).
+// In-memory guards (per instance). MINTED is additionally persisted to the
+// /data volume so idempotency survives restarts and multiple instances.
 const RATE = new Map(); // ip -> { count, windowStart }
 const MINTED = new Map(); // session_id -> { ok, jwt, expires_in } | { ok:false, ... }
+
+import fs from "node:fs";
+import path from "node:path";
+
+const DATA_DIR = process.env.AUTH_DIR || "/data";
+const CLAIMS_FILE = path.join(DATA_DIR, "rider-claims.json");
+
+function loadMinted() {
+  try {
+    const raw = fs.readFileSync(CLAIMS_FILE, "utf8");
+    const obj = JSON.parse(raw);
+    for (const [k, v] of Object.entries(obj)) MINTED.set(k, v);
+  } catch {
+    // No prior claims file — start empty. A missing/unreadable file must
+    // never block the endpoint; worst case is a re-mint attempt that the
+    // idempotency key on the mint call itself still guards.
+  }
+}
+
+function persistMinted() {
+  try {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+    const tmp = CLAIMS_FILE + ".tmp";
+    fs.writeFileSync(tmp, JSON.stringify(Object.fromEntries(MINTED)));
+    fs.renameSync(tmp, CLAIMS_FILE); // atomic: readers never see a half-write
+  } catch (e) {
+    console.error("claim persist failed:", e && e.message);
+  }
+}
+
+loadMinted();
 
 const RATE_LIMIT = 10; // max claims per IP per window
 const RATE_WINDOW_MS = 60 * 1000;
@@ -204,6 +238,7 @@ export default async function handler(req, res) {
         : "Email corey@slidphilabs.com with your receipt and Corey will mint your name directly.",
     };
     MINTED.set(sessionId, fail);
+    persistMinted();
     return json(res, 200, fail);
   }
 
@@ -213,5 +248,6 @@ export default async function handler(req, res) {
     expires_in: issued.expires_in || 900,
   };
   MINTED.set(sessionId, success);
+  persistMinted();
   return json(res, 200, success);
 }
