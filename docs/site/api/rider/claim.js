@@ -2,9 +2,11 @@
  * POST /api/rider/claim — mint a Rider credential after Stripe payment.
  *
  * Body: { session_id, sku }
- * Uses X-Platform-Key (RIDER_PLATFORM_KEY env) to mint directly via
- * POST https://agentrider.fly.dev/api/rider/issue — no dependency on
- * the Rider host's Stripe account.
+ * 1. Verifies the Stripe checkout session is real and paid (STRIPE_SECRET_KEY).
+ * 2. Confirms the purchase is a Rider SKU.
+ * 3. Uses X-Platform-Key (RIDER_PLATFORM_KEY env) to mint directly via
+ *    POST https://agentrider.fly.dev/api/rider/issue — no dependency on
+ *    the Rider host's Stripe account.
  * Returns { ok, jwt, expires_in } or { ok:false, message, detail }.
  */
 function json(res, status, body) {
@@ -59,7 +61,65 @@ export default async function handler(req, res) {
     });
   }
 
-  // Mint directly with the platform key — no Stripe lookup needed.
+  // Verify the Stripe session is real and paid before minting.
+  const stripeSecret =
+    process.env.STRIPE_SECRET_KEY || process.env.STRIPE_RESTRICTED_KEY || "";
+  if (!stripeSecret) {
+    return json(res, 200, {
+      ok: false,
+      message: "Payment verification is not configured yet.",
+      detail: "Email corey@slidphilabs.com with your receipt and Corey will mint your name directly.",
+    });
+  }
+
+  let session;
+  try {
+    const r = await fetch(
+      `https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(sessionId)}`,
+      {
+        headers: {
+          Authorization: `Bearer ${stripeSecret}`,
+        },
+      }
+    );
+    if (!r.ok) {
+      return json(res, 200, {
+        ok: false,
+        message: "We could not find that checkout session.",
+        detail: "If you just paid, wait a moment and refresh. Otherwise start a new checkout from /rider.",
+      });
+    }
+    session = await r.json();
+  } catch (e) {
+    return json(res, 502, {
+      ok: false,
+      message: "Payment verification did not answer.",
+      detail: "Try refreshing in a minute, or email corey@slidphilabs.com.",
+    });
+  }
+
+  if (session.payment_status !== "paid") {
+    return json(res, 200, {
+      ok: false,
+      message: "That checkout is not paid yet.",
+      detail: "Complete the payment first, then come back to claim your name.",
+    });
+  }
+
+  // The SKU must be a Rider seat.
+  const sessionSku = String(
+    (session.metadata && (session.metadata.sku || session.metadata.kind)) || ""
+  ).toLowerCase();
+  const effectiveSku = sessionSku.startsWith("rider-") ? sessionSku : sku;
+  if (!effectiveSku.startsWith("rider-")) {
+    return json(res, 200, {
+      ok: false,
+      message: "That purchase is not a Rider seat.",
+      detail: "Rider names are claimed from a Rider checkout at /rider.",
+    });
+  }
+
+  // Mint directly with the platform key — the payment is verified above.
   // The agent_id ties the credential to this purchase.
   const agentId = `buyer-${sessionId.slice(-8)}`;
   let issued;
@@ -74,7 +134,7 @@ export default async function handler(req, res) {
         agent_id: agentId,
         operator_id: "slidphilabs-checkout",
         level: "L1",
-        sku,
+        sku: effectiveSku,
       }),
     });
     issued = await r.json();
