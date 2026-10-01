@@ -2,13 +2,39 @@
  * POST /api/rider/claim — mint a Rider credential after Stripe payment.
  *
  * Body: { session_id, sku }
- * 1. Verifies the Stripe checkout session is real and paid (STRIPE_SECRET_KEY).
- * 2. Confirms the purchase is a Rider SKU.
- * 3. Uses X-Platform-Key (RIDER_PLATFORM_KEY env) to mint directly via
+ * 1. Rate-limits by IP (in-memory, per-instance).
+ * 2. Verifies the Stripe checkout session is real and paid (STRIPE_SECRET_KEY).
+ * 3. Confirms the purchase is a Rider SKU.
+ * 4. Idempotency: each session_id mints once per instance (replay returns same result).
+ * 5. Uses X-Platform-Key (RIDER_PLATFORM_KEY env) to mint directly via
  *    POST https://agentrider.fly.dev/api/rider/issue — no dependency on
  *    the Rider host's Stripe account.
  * Returns { ok, jwt, expires_in } or { ok:false, message, detail }.
  */
+
+// In-memory guards (per instance; good enough for single-machine Fly).
+const RATE = new Map(); // ip -> { count, windowStart }
+const MINTED = new Map(); // session_id -> { ok, jwt, expires_in } | { ok:false, ... }
+
+const RATE_LIMIT = 10; // max claims per IP per window
+const RATE_WINDOW_MS = 60 * 1000;
+
+function rateLimited(ip) {
+  const now = Date.now();
+  const entry = RATE.get(ip);
+  if (!entry || now - entry.windowStart > RATE_WINDOW_MS) {
+    RATE.set(ip, { count: 1, windowStart: now });
+    return false;
+  }
+  entry.count += 1;
+  return entry.count > RATE_LIMIT;
+}
+
+function clientIp(req) {
+  const fwd = req.headers["x-forwarded-for"];
+  if (fwd) return String(fwd).split(",")[0].trim();
+  return (req.socket && req.socket.remoteAddress) || "unknown";
+}
 function json(res, status, body) {
   res.statusCode = status;
   res.setHeader("Content-Type", "application/json; charset=utf-8");
@@ -51,6 +77,19 @@ export default async function handler(req, res) {
   const sessionId = String(body.session_id || "").trim();
   const sku = String(body.sku || "rider-solo").trim();
   if (!sessionId) return json(res, 400, { ok: false, error: "session_id_required" });
+
+  if (rateLimited(clientIp(req))) {
+    return json(res, 429, {
+      ok: false,
+      message: "Too many claim attempts. Wait a minute and try again.",
+    });
+  }
+
+  // Idempotency: same session_id returns the same result, never re-mints.
+  if (MINTED.has(sessionId)) {
+    const cached = MINTED.get(sessionId);
+    return json(res, 200, cached);
+  }
 
   const platformKey = process.env.RIDER_PLATFORM_KEY;
   if (!platformKey) {
@@ -148,18 +187,22 @@ export default async function handler(req, res) {
 
   const jwt = issued.rider || issued.jwt || issued.token || issued.credential;
   if (!jwt) {
-    return json(res, 200, {
+    const fail = {
       ok: false,
       message: "Your seat is paid and provisioned, but no credential came back.",
       detail: issued.error
         ? "The host said: " + String(issued.error)
         : "Email corey@slidphilabs.com with your receipt and Corey will mint your name directly.",
-    });
+    };
+    MINTED.set(sessionId, fail);
+    return json(res, 200, fail);
   }
 
-  return json(res, 200, {
+  const success = {
     ok: true,
     jwt,
     expires_in: issued.expires_in || 900,
-  });
+  };
+  MINTED.set(sessionId, success);
+  return json(res, 200, success);
 }
