@@ -4,7 +4,8 @@
  * Body: { session_id, sku }
  * 1. Rate-limits by IP (in-memory, per-instance).
  * 2. Verifies the Stripe checkout session is real and paid (STRIPE_SECRET_KEY).
- * 3. Confirms the purchase is a Rider SKU.
+ * 3. Confirms the purchase is a Rider SKU, from server-set Stripe metadata only
+ *    (the request body's sku is never trusted).
  * 4. Idempotency: each session_id mints once per instance (replay returns same result).
  * 5. Uses X-Platform-Key (RIDER_PLATFORM_KEY env) to mint directly via
  *    POST https://agentrider.fly.dev/api/rider/issue — no dependency on
@@ -75,7 +76,6 @@ export default async function handler(req, res) {
   catch { return json(res, 400, { ok: false, error: "bad_json" }); }
 
   const sessionId = String(body.session_id || "").trim();
-  const sku = String(body.sku || "rider-solo").trim();
   if (!sessionId) return json(res, 400, { ok: false, error: "session_id_required" });
 
   if (rateLimited(clientIp(req))) {
@@ -145,18 +145,27 @@ export default async function handler(req, res) {
     });
   }
 
-  // The SKU must be a Rider seat.
+  // The SKU must come from verified Stripe metadata — set server-side when the
+  // checkout session was created, never from the caller's request body.
+  // A paid non-Rider session must never mint a Rider credential.
+  const RIDER_SKUS = new Set([
+    "rider-solo",
+    "rider-bundle",
+    "rider-crew",
+    "rider-shop",
+    "rider-fleet",
+  ]);
   const sessionSku = String(
-    (session.metadata && (session.metadata.sku || session.metadata.kind)) || ""
+    (session.metadata && session.metadata.sku) || ""
   ).toLowerCase();
-  const effectiveSku = sessionSku.startsWith("rider-") ? sessionSku : sku;
-  if (!effectiveSku.startsWith("rider-")) {
+  if (!RIDER_SKUS.has(sessionSku)) {
     return json(res, 200, {
       ok: false,
       message: "That purchase is not a Rider seat.",
       detail: "Rider names are claimed from a Rider checkout at /rider.",
     });
   }
+  const effectiveSku = sessionSku;
 
   // Mint directly with the platform key — the payment is verified above.
   // The agent_id ties the credential to this purchase.
