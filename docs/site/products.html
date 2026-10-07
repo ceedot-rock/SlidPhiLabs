@@ -21,17 +21,17 @@
   <main class="spl-page" id="main">
     <p class="spl-kicker">Catalog</p>
     <h1>Name the agent. Check the program. Shrink the file.</h1>
-    <p class="lede">Rider gives an agent a signed name, so the receipt says which one did the work. CuNi takes one program and checks that Python, Go, and JavaScript print the same stdout. Warrant writes the hosts, the actions, and the spend, then files a receipt when the job runs. TNSSRC compresses a file on your machine and restores every byte. Silesia packs to 43,724,575 bytes, 12 of 12 decoded. PCC runs that job on our machines. TRUSTREAM packs a live log. pulsar is the free compressor you run yourself.</p>
+    <p class="lede">Rider gives an agent a signed name, so the receipt says which one did the work. CuNi takes one program and checks that Python, Go, and JavaScript print the same stdout. Warrant writes the hosts, the actions, and the spend, then files a receipt when the job runs. TNSSRC compresses a file on your machine and restores every byte. Silesia packs to 43,724,575 bytes (TNSSRC) and 43,669,635 bytes (PCC^beASt), 12 of 12 decoded. PCC runs that job on our machines. TRUSTREAM packs a live log. pulsar is the free compressor you run yourself.</p>
     <section class="spl-proof" aria-label="What each product does">
       <a class="spl-meter" href="/rider"><p class="spl-kicker">Rider</p><p class="spl-meter-val">who acted<span>signed name</span></p><p class="spl-stamp">X-Agent-Rider</p></a>
       <a class="spl-meter" href="/cuni"><p class="spl-kicker">CuNi</p><p class="spl-meter-val">same stdout<span>py · go · js</span></p><div class="spl-seats"><b>py</b><b>go</b><b>js</b></div></a>
       <a class="spl-meter" href="/warrant"><p class="spl-kicker">Warrant</p><p class="spl-meter-val">what they may do<span>mandate + receipt</span></p><p class="spl-stamp">X-Agent-Warrant</p></a>
       <a class="spl-meter" href="/silesia"><p class="spl-kicker">TNSSRC</p><p class="spl-meter-val">43,724,575<span>Silesia packed · DECODE_OK 12/12</span></p><div class="spl-bar" style="--fill:20.6%"><i></i></div></a>
-      <a class="spl-meter" href="/pcc"><p class="spl-kicker">PCC</p><p class="spl-meter-val">51,498,645<span>Silesia packed · DECODE_OK</span></p><div class="spl-bar" style="--fill:24.3%"><i></i></div></a>
+      <a class="spl-meter" href="/pcc"><p class="spl-kicker">PCC</p><p class="spl-meter-val">43,669,635<span>Silesia packed · DECODE_OK</span></p><div class="spl-bar" style="--fill:20.6%"><i></i></div></a>
       <a class="spl-meter" href="/trustream"><p class="spl-kicker">TRUSTREAM</p><p class="spl-meter-val">4 KiB tiles<span>empty shrinks</span></p><div class="spl-tiles" aria-hidden="true"><b data-k="empty"></b><b data-k="noise"></b><b data-k="empty"></b><b data-k="empty"></b><b data-k="noise"></b><b data-k="empty"></b><b data-k="noise"></b><b data-k="empty"></b></div></a>
       <a class="spl-meter" href="/pulsar"><p class="spl-kicker">pulsar</p><p class="spl-meter-val">free<span>GPLv3 · run it yourself</span></p><div class="spl-bar" style="--fill:26.3%"><i></i></div></a>
-      <a class="spl-meter" href="/chamber"><p class="spl-kicker">Chamber</p><p class="spl-meter-val">two keys<span>you keep the blob</span></p><div class="spl-keys"><span class="spl-key">A</span><span class="spl-key">B</span></div></a>
-      <a class="spl-meter" href="/awlpay"><p class="spl-kicker">AwLPay</p><p class="spl-meter-val">locked fee<span>quote, then hold the price</span></p><p class="spl-stamp">Stripe · x402</p></a>
+      <a class="spl-meter" href="/chamber"><p class="spl-kicker">Chamber</p><p class="spl-meter-val">attested signing<span>custody-stamped envelopes</span></p><div class="spl-keys"><span class="spl-key">A</span><span class="spl-key">B</span></div></a>
+      <a class="spl-meter" href="/awlpay"><p class="spl-kicker">AwLPay</p><p class="spl-meter-val">any chain, any token<span>hasValue() or refuse</span></p><p class="spl-stamp">x402</p></a>
       <a class="spl-meter" href="/aos-ring"><p class="spl-kicker">aos-ring</p><p class="spl-meter-val">bits as light<span>optical memory</span></p><p class="spl-stamp">experimental</p></a>
       <a class="spl-meter" href="/exactodds"><p class="spl-kicker">ExactOdds</p><p class="spl-meter-val">the dice can't lie<span>5-seat gate</span></p><p class="spl-stamp">open source</p></a>
     </section>
@@ -44,7 +44,7 @@
       <a class="spl-card" href="/cuni">
         <p class="spl-kicker">One program</p>
         <h3>CuNi</h3>
-        <p>Write one program. CuNi prints it into 144 languages. Same stdout or refuse. Native seats: Python, Go, JS, TS, C, C++, Rust. Bank arm: paste N, get X. Studio is free. Closed commercial embed is $390/year.</p>
+        <p>Write one program. CuNi emits a 53-entry catalog — the top 50 languages plus 3 onchain profiles, with emitters for ink!, Move, Vyper, Cairo, Clarity, and Cadence. Same stdout or refuse. <code>cuni audit</code> proves a foreign implementation matches byte-for-byte, filed as a signed Ed25519 receipt. Studio is free. Closed commercial embed is $390/year.</p>
       </a>
       <a class="spl-card" href="/warrant">
         <p class="spl-kicker">Permission and a receipt</p>
@@ -59,7 +59,7 @@
       <a class="spl-card" href="/chamber">
         <p class="spl-kicker">JSON secrets</p>
         <h3>Chamber</h3>
-        <p>Something in JSON that one person should not open alone. We split the key. You keep the file. We never hold it. Stop paying and old seals still open if you have both keys.</p>
+        <p>Attested signing for the lab's products. Keys live in 600-permission files; every envelope is stamped with its custody level. 33/33 tests green.</p>
       </a>
     </div>
     <h2>More from the lab</h2>
@@ -82,7 +82,7 @@
       <a class="spl-card" href="/awlpay">
         <p class="spl-kicker">A locked fee</p>
         <h3>AwLPay</h3>
-        <p>AwLPay reads a public last-trade print, quotes a fee, and locks that fee. Free 1% + $0.25 · Pro $39/mo · L33t $799/mo. Captured charges are Stripe and x402.</p>
+        <p>Any token on any chain with verifiable value — converted across chains through CuNi, or refused. Live rails: Tron USDT, Bitcoin, Lightning, Stellar XLM, BSC. SDK 0.1.0 on npm and PyPI. Free 1% + $0.25 · Pro $39/mo · L33t $799/mo.</p>
       </a>
       <a class="spl-card" href="/aos-ring">
         <p class="spl-kicker">Memory · experimental</p>
@@ -92,7 +92,7 @@
       <a class="spl-card" href="/exactodds">
         <p class="spl-kicker">Games · open source</p>
         <h3>ExactOdds</h3>
-        <p>The dice can't lie. Reference dice and coin-flip that pass the 5-seat gate: Python, JS, TS, C, and C++ print byte-identical results. Dual license AGPL-3.0 + commercial.</p>
+        <p>The dice can't lie. Provably-fair casino rule library: commit-reveal outcomes plus CuNi-proven identical game rules on every runtime — Python, JS, TS, C, and C++ print byte-identical results. Source-hash-named receipts. Dual license AGPL-3.0 + commercial.</p>
       </a>
     </div>
     <p class="spl-actions">

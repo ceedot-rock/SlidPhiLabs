@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>ExactOdds — provably fair games · Slid Phi Labs</title>
-  <meta name="description" content="ExactOdds reference dice and coin-flip pass the 5-seat gate: Python, JS, TS, C, and C++ print byte-identical results. Dual license AGPL-3.0 + commercial."/>
+  <meta name="description" content="ExactOdds is a provably-fair casino rule library: commit-reveal outcomes plus CuNi-proven identical game rules on every runtime, with source-hash-named receipts. npm package. Dual license AGPL-3.0 + commercial."/>
   <link rel="canonical" href="https://www.slidphilabs.com/exactodds"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
   <meta property="og:title" content="ExactOdds — provably fair games"/>
@@ -14,9 +14,9 @@
 </head>
 <body>
   <main class="spl-page" id="main">
-    <p class="spl-kicker">ExactOdds · provably fair · open source</p>
+    <p class="spl-kicker">ExactOdds · provably fair · npm package</p>
     <h1>The dice can't lie.</h1>
-    <p class="lede">Reference dice and coin-flip games that pass the 5-seat gate: Python, JavaScript, TypeScript, C, and C++ print byte-identical results — verified with <code>cmp</code>, not claimed.</p>
+    <p class="lede">A provably-fair casino rule library. Fair outcomes via commit-reveal, plus CuNi-proven identical game rules on every runtime — Python, JavaScript, TypeScript, C, and C++ print byte-identical results, verified with <code>cmp</code>, not claimed. Releases carry source-hash-named receipts for content-addressed verification.</p>
     <p class="spl-actions">
       <a class="spl-btn spl-btn-dark" href="https://github.com/ceedot-rock/exactodds">Source on GitHub</a>
       <a class="spl-btn spl-btn-line" href="https://github.com/ceedot-rock/exactodds/blob/main/PAPER.md">Read the paper</a>
@@ -26,12 +26,13 @@
   <p>ExactOdds makes dice that can't lie. It provides the core building blocks for games of chance — dice rolls, coin flips — with the math out in the open and every result verifiable. If a result can't be proven fair, it is refused.</p>
   <p>Here is why that matters. An online game runs the same code on many platforms — a phone, a browser, a server — and players have to trust that the house didn't tilt the odds on any one of them. ExactOdds removes the need for trust: the reference games are run through five programming languages — Python, JavaScript, TypeScript, C, and C++ — and all five must print byte-identical results, checked mechanically, not claimed.</p>
   <p>If five independent implementations agree down to the last byte, the game can't favor the house on one platform and rob it on another. A disagreement isn't smoothed over — it stops the line. The refusal is the guarantee.</p>
+  <p>Provably fair has two halves, and most products only sell one. Fair outcomes — nobody can rig the draw — come from commit-reveal: the house commits to the result before you play, then reveals. Identical rules on every runtime — the game can't favor the house on one platform and rob it on another — come from CuNi's exactness contract: the same program must produce the same output on every seat, or the path is refused. ExactOdds is the missing second half, packaged as a casino rule library.</p>
   <p>The code is open source on GitHub, with a paper in the repository describing the method and an operator one-pager for anyone running games. It is dual-licensed: free under AGPL-3.0, or a commercial license from the lab.</p>
   <p>Provably fair isn't a slogan here — it is a test the code has to pass, on every platform, every time.</p>
 </section>
     <div class="spl-prose spl-full">
       <h2>What it is</h2>
-      <p>Provably fair gaming primitives built on CuNi's exactness law: the same program must produce the same output on every seat, or the path is refused. If five languages agree byte-for-byte, the game can't favor the house on one platform and rob it on another.</p>
+      <p>Provably fair gaming primitives built on CuNi's exactness law: the same program must produce the same output on every seat, or the path is refused. Fair outcomes use commit-reveal; identical rules on every runtime use the exactness contract. Every release carries source-hash-named receipts, so a verifier can pin the exact code that was audited.</p>
       <h2>License</h2>
       <p>Dual license: AGPL-3.0 or Slid Phi Labs commercial. Operator one-pager in the repo.</p>
     </div>

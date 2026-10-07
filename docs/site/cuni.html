@@ -4,17 +4,17 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>CuNi — Same program. Same output. Or refuse. | Slid Phi Labs</title>
-  <meta name="description" content="CuNi is 144 languages. One program. Same stdout on every catalog seat, or it refuses. Bank: paste N, get X. Studio free. Install v0.3.0. Protocol 1.1.1."/>
+  <meta name="description" content="CuNi is a 53-entry language catalog. One program. Same stdout on every seat, or it refuses. Fixed-point decimals, int64 time, onchain emitters (ink!, Move, Vyper, Cairo, Clarity, Cadence). Studio free. Install v0.9.0."/>
   <link rel="canonical" href="https://www.slidphilabs.com/cuni"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="CuNi — Same program. Same output. Or refuse. | Slid Phi Labs"/>
-  <meta property="og:description" content="Write once across 144 languages. Same stdout on every catalog seat, or CuNi refuses. Bank: paste N, get X. Studio free. Install v0.3.0."/>
+  <meta property="og:description" content="Write once across a 53-entry catalog. Same stdout on every seat, or CuNi refuses. Fixed-point decimals, int64 time, onchain emitters. Studio free. Install v0.9.0."/>
   <meta property="og:url" content="https://www.slidphilabs.com/cuni"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Same program. Same output. Or refuse."/>
-  <meta name="twitter:description" content="CuNi is 144 languages. One program. Same stdout, or refuse. Bank: paste N, get X. Studio free. Install v0.3.0."/>
+  <meta name="twitter:description" content="CuNi is a 53-entry catalog. One program. Same stdout, or refuse. Fixed-point decimals, int64 time, onchain emitters. Studio free. Install v0.9.0."/>
   <meta name="keywords" content="CuNi, Code Unity, exactness, multi-language, catalog, Bank, Studio, Agent Rider, Slid Phi Labs"/>
   <script type="application/ld+json">
   {
@@ -24,19 +24,20 @@
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Web",
     "url": "https://www.slidphilabs.com/cuni",
-    "description": "144 languages. One program. Same stdout on every catalog seat, or refuse. Bank: paste N, get X. Studio free. Install v0.3.0. Protocol 1.1.1.",
-    "softwareVersion": "0.3.0",
+    "description": "53-entry language catalog. One program. Same stdout on every seat, or refuse. Fixed-point decimals, int64 time, onchain emitters. Studio free. Install v0.9.0.",
+    "softwareVersion": "0.9.0",
     "offers": [
       { "@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free", "description": "CuNi Studio" },
       { "@type": "Offer", "price": "390", "priceCurrency": "USD", "category": "subscription", "description": "Closed-app exception (cuni-exception) per year" }
     ],
     "featureList": [
-      "Write once across 144 catalog languages",
+      "Write once across a 53-entry catalog (top 50 languages + 3 onchain profiles)",
       "Same stdout on every seat, or refuse",
-      "Bank: paste N, get X",
-      "Studio POST /api/pass exactness gate (py / go / js) — PASS or refuse",
-      "Studio free at https://cuni-studio.fly.dev/",
-      "Protocol 1.1.1"
+      "`dec`: fixed-point decimals, scale 10^4, truncation toward zero",
+      "`time`: int64 unix epochs, UTC only, strict ISO-8601",
+      "Onchain emitters: ink!, Move, Vyper, Cairo, Clarity, Cadence",
+      "`cuni audit`: prove a foreign implementation matches byte-for-byte, file a signed Ed25519 receipt",
+      "Studio free at https://cuni-studio.fly.dev/"
     ],
     "provider": {
       "@type": "Organization",
@@ -50,7 +51,7 @@
 </head>
 <body>
   <main class="spl-page" id="main">
-    <p class="spl-kicker">CuNi · 144 languages · Studio free · install v0.3.0</p>
+    <p class="spl-kicker">CuNi · 53-entry catalog · Studio free · install v0.9.0</p>
     <h1>Same program. Same output. Or refuse.</h1>
     <p class="lede">Write once across the language catalog. Every supported seat prints the same stdout — or CuNi refuses the path. Studio can prove exactness; Rider seats are where you execute.</p>
     <p class="spl-actions">
@@ -63,7 +64,8 @@
       <h2 id="what-is-cuni-h">What CuNi is</h2>
       <p>CuNi is a programming language with one hard rule: write your code once, and it either behaves <em>exactly</em> the same in every language it builds for — or it refuses to build at all.</p>
       <p>Here is why that matters. A program written in Python and the &ldquo;same&rdquo; program rewritten in JavaScript are never quite the same program. Tiny differences creep in: how numbers round, how text is handled, what happens at the edges. Most of the time nobody notices. Then money or data is on the line, and a rounding difference becomes a real loss.</p>
-      <p>CuNi eliminates that whole class of problem. You write one source file. CuNi can turn it into 144 targets &mdash; Python, JavaScript, Rust, C, Go, even Solidity smart contracts that run on Ethereum. Before it hands you any of them, it proves they all produce identical output. If one target would behave even slightly differently, you don&rsquo;t get a subtly broken program. You get a refusal &mdash; and you fix the source.</p>
+      <p>CuNi eliminates that whole class of problem. You write one source file. CuNi can turn it into 53 catalog targets — the top 50 languages plus 3 onchain profiles, including Python, JavaScript, Rust, C, Go, and onchain emitters for ink!, Move, Vyper, Cairo, Clarity, and Cadence. Before it hands you any of them, <code>cuni check</code> emits and runs every target: byte-identical stdout, or it refuses the path.</p>
+      <p>Two types carry the exactness. <code>dec</code> is fixed-point decimals — scale 10^4, truncation toward zero, no float anywhere. <code>time</code> is int64 unix epochs, UTC only, strict ISO-8601. And <code>cuni audit</code> lets you state a money law once and prove a foreign implementation matches byte-for-byte; the proof files as a signed Ed25519 receipt.</p>
       <p>The refusal is the product. Other tools try to paper over differences. CuNi treats a difference as a failed build.</p>
       <p>This is why CuNi pairs with Agent Rider. Agents that write and run code across systems cannot tolerate &ldquo;close enough.&rdquo; Prove exactness on CuNi when you want the receipt; execute on open Rider seats either way. Rider&rsquo;s require-PASS gate is off today — seats still run without a citizen PASS.</p>
     </section>
@@ -100,7 +102,7 @@
       <article class="spl-card">
         <p class="spl-kicker">1</p>
         <h3>Write once</h3>
-        <p>One <code>.cuni</code> across 144 catalog languages. Native seats run native; others emit and lower until they are.</p>
+        <p>One <code>.cuni</code> across a 53-entry catalog. Native seats run native; others emit and lower until they are.</p>
       </article>
       <article class="spl-card">
         <p class="spl-kicker">2</p>
@@ -144,7 +146,7 @@
         <li>Optional: Studio <code>POST /api/pass</code> (py / go / js) — exactness PASS or refuse.</li>
         <li>Use the program on <a href="/rider">Rider seats</a> when you are ready (Rider does not currently require the PASS receipt).</li>
       </ol>
-      <p>Native seats today: py, go, js, ts, c, cpp, rs, rb, lua, sol. Protocol: <a href="https://cuni-studio.fly.dev/.well-known/cuni-protocol.json">cuni-protocol.json</a> (v1.1.1 · install <code>v0.3.0</code> · 144 languages).</p>
+      <p>Native seats today: py, go, js, ts, c, cpp, rs, rb, lua, sol. Protocol: <a href="https://cuni-studio.fly.dev/.well-known/cuni-protocol.json">cuni-protocol.json</a> (install <code>v0.9.0</code> · 53-entry catalog).</p>
       <div class="spl-note">
         <p><strong>Honesty:</strong> Studio <code>/api/pass</code> is live. Rider’s require-PASS env (<code>CUNI_STUDIO_PASS_REQUIRED</code>) is unset/off until CoS greens Fly — prove on CuNi when you want the receipt; execute on Rider either way.</p>
       </div>
@@ -152,7 +154,7 @@
 
     <div class="spl-prose spl-full">
       <h2>What it is</h2>
-      <p>A language of exactness. You write one <code>.cuni</code> source. Native seats today run native: py, go, js, ts, c, cpp, rs, rb, lua, and Solidity (<code>sol</code>). Other catalog ids emit and lower until that seat is native. If stdout would drift, CuNi refuses — no soft PASS, no approximate. Software already exists in more languages than teams can keep honest — CuNi sells the proof that they match.</p>
+      <p>A language of exactness. You write one <code>.cuni</code> source. The catalog holds 53 entries — the top 50 languages plus 3 onchain profiles — with emitters for ink!, Move, Vyper, Cairo, Clarity, and Cadence. If stdout would drift, CuNi refuses — no soft PASS, no approximate. Software already exists in more languages than teams can keep honest — CuNi sells the proof that they match.</p>
       <div class="spl-note">
         <p><strong>Future use (not live yet):</strong> a tiny runtime that lands on any OS and emits the local seat; pricing and license rules printed into every language a company ships; CI that fails when Go and Python would disagree.</p>
       </div>
