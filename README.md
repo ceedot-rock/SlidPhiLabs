@@ -1,5 +1,8 @@
 # Slid Phi Labs
 
+[![Audited checks](https://github.com/ceedot-rock/SlidPhiLabs/actions/workflows/audited-checks.yml/badge.svg)](https://github.com/ceedot-rock/SlidPhiLabs/actions/workflows/audited-checks.yml)
+[![License: AGPL-3.0-or-later / Commercial](https://img.shields.io/badge/license-AGPL--3.0--or--later%20%2F%20Commercial-blue)](LICENSE)
+
 AWARE is a retired alias for PCC (the hosted lossless compressor). TRU8 is not the current product lead.
 
 Hosted lossless compression, a two-key JSON seal, signed agent identity, and a small language that refuses to lie.
