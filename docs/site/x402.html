@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>x402 — how agents pay the lab · Slid Phi Labs</title>
-  <meta name="description" content="Humans pay Stripe. Agents pay x402 (USDC on Solana or Base). Same catalog. Quikgater is pay-per-fetch on its own worker."/>
+  <meta name="description" content="Humans pay Stripe. Agents pay x402 (USDC on Solana or Base). Multi-rail accepts[] shape, gasless EIP-712 auth, integer-exact amounts, replay protection on proof-id plus network. Same catalog."/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://www.slidphilabs.com/x402"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
@@ -34,7 +34,7 @@
     <h2>From a shell</h2>
     <div class="spl-prose">
       <p><code>curl -sS https://www.slidphilabs.com/api/x402-products</code></p>
-      <p><code>curl -sS -X POST https://www.slidphilabs.com/api/x402-products -H 'content-type: application/json' -d '{"sku":"pcc-year"}'</code> — PCC year seat (public face <code>pcc-year</code>; <code>gc-year</code> remains a silent legacy alias). Human checkout: <a href="/pay?sku=pcc-year">/pay?sku=pcc-year</a>. Expect 402 until you attach payment.</p>
+      <p><code>curl -sS -X POST https://www.slidphilabs.com/api/x402-products -H 'content-type: application/json' -d '{"sku":"gc-year"}'</code> — PCC Pro year seat (<code>gc-year</code>, $390). Human checkout: <a href="/pay?sku=gc-year">/pay?sku=gc-year</a>. Expect 402 until you attach payment.</p>
       <p><code>curl -sS "https://quikgater-worker.ceedotrock.workers.dev/?url=https://example.com"</code> — expect 402.</p>
       <p>npm helper: <code>npx -y spl-pay-per-suite mcp</code> then <code>spl_pps_x402_catalog</code> / <code>spl_pps_x402_buy</code>.</p>
     </div>
@@ -47,6 +47,7 @@
   <h2 id="what-x402-h">What x402 is</h2>
   <p>x402 is the open payment protocol the lab's paid endpoints speak — and the way AI agents pay for things. It works like a vending machine for the web: you ask for something, the machine tells you the price, you pay, it vends.</p>
   <p>Here is how it goes. An agent makes a request without paying. Instead of an error, the server answers with HTTP 402 — &ldquo;payment required&rdquo; — plus exact instructions: what it accepts, how much, where to send it. The agent pays on-chain in USDC, on Solana or Base, then retries the same request with proof of payment attached. The server verifies the payment and delivers.</p>
+  <p>The lab speaks the multi-rail <code>accepts[]</code> 402 shape: one 402 can offer several rails and the agent picks. Auth is gasless EIP-712, amounts are integer-exact — no float anywhere near money — and replay protection binds proof-id plus network, so a payment can't be spent twice or replayed on another chain.</p>
   <p>Humans still pay the normal way, with Stripe or an invoice — same products, same prices. x402 exists so an agent can complete a purchase without a browser, a checkout page, or a human in the loop. No account, no API key signup: the payment <em>is</em> the credential.</p>
   <p>In fact the payment receipt doubles as your key. The claim token you get back also works as the credential for hosted compression — send it with your compress and decompress calls and usage is metered to your plan. The first 2&nbsp;GB each month are free; after that, jobs quote 8&cent; per GB.</p>
   <p>It also powers pay-per-fetch: point the Quikgater worker at a URL, get a 402, pay, get your fetch. Every paid endpoint in the lab speaks the same protocol, so once an agent learns to pay one, it can pay them all.</p>

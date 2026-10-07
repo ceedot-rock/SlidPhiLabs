@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>AwLPay — pay anything, any chain · Slid Phi Labs</title>
-  <meta name="description" content="AwLPay accepts any token on any chain with verifiable value, converts across chains through CuNi, or refuses the payment. Free 1% + $0.25 · Pro $39/mo · L33t $799/mo."/>
+  <meta name="description" content="AwLPay accepts any token on any chain with verifiable value, converts across chains through CuNi, or refuses the payment. Live rails: Tron USDT, Bitcoin, Lightning, Stellar XLM, BSC. SDK 0.1.1 on npm, 0.1.0 on PyPI. Free 0.5%/tx, no fixed fee · Pro $39/mo · L33t $799/mo."/>
   <link rel="canonical" href="https://www.slidphilabs.com/awlpay"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
   <meta property="og:title" content="AwLPay — pay anything, any chain"/>
@@ -16,7 +16,7 @@
   <main class="spl-page" id="main">
     <p class="spl-kicker">AwLPay · any chain · any token with value · API live</p>
     <h1>All chains. All tokens. If it has value, it pays.</h1>
-    <p class="lede">ChainRelay plus a <code>hasValue()</code> price check: anything with verifiable value is accepted and converted across chains through CuNi — or the payment is refused.</p>
+    <p class="lede">ChainRelay plus a <code>hasValue()</code> price check: anything with verifiable value is accepted and converted across chains through CuNi — or the payment is refused. Live rails: Tron USDT, Bitcoin on-chain, Lightning, Stellar XLM, BSC. SDK 0.1.1 on npm, 0.1.0 on PyPI. $1 minimum send.</p>
     <p class="spl-actions">
       <a class="spl-btn spl-btn-dark" href="/wiki/awlpay">Read the docs</a>
       <a class="spl-btn spl-btn-line" href="https://awlpay.fly.dev/healthz">Health check</a>
@@ -80,11 +80,12 @@
   <h2 id="what-awlpay-h">What it is</h2>
   <p>AwLPay is a payment product with no allowlist. It accepts any token on any chain — if the token has a verifiable price, it pays. You don't need to ask whether your chain or your coin is supported. If it has value, it works.</p>
   <p>Paying with crypto today means navigating a maze: is this chain supported, is this token accepted, which bridge, what rate, what fee. AwLPay collapses that to a single question — does it have a verifiable price? — and handles the rest. Its converter turns anything into anything whenever a conversion path exists and the amount survives the fees.</p>
-  <p>And when the math doesn't work, it refuses the payment instead of giving you a bad rate. No silent slippage, no mystery haircut — a clean refusal beats a quietly unfair deal.</p>
+  <p>And when the math doesn't work, it refuses the payment instead of giving you a bad rate. No silent slippage, no mystery haircut — a clean refusal beats a quietly unfair deal. The ConverterRouter turns anything into anything whenever a conversion path exists and the amount survives the fees; otherwise it refuses.</p>
+  <p>Agents pay over the x402 multi-rail <code>accepts[]</code> 402 shape — gasless EIP-712 auth, integer-exact amounts, replay protection on proof-id plus network. The $1 minimum send keeps dust off the rails; sub-dollar amounts accrue as ledger credit.</p>
   <p>Right now AwLPay is an API, not a web app. The quote route is free; the execute route answers with a 402 and the payment terms. There is no signup page and no dashboard yet — the docs have the honest picture.</p>
   <h2>Tiers</h2>
   <ul>
-    <li><strong>Free</strong> — 1.0% + $0.25 per payment.</li>
+    <li><strong>Free</strong> — 0.5% per payment, no fixed fee.</li>
     <li><strong>Pro $39/mo</strong> — 0% platform fee under the cap (cap: $30k volume or 500 txs/mo); overage falls back to Free pricing.</li>
     <li><strong>L33t $799/mo</strong> — unlimited with a fair-use compute guard.</li>
   </ul>
