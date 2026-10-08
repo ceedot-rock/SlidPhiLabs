@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Rider Tollkeeper — Small tolls. Signed receipts. No surprises. · Slid Phi Labs</title>
-  <meta name="description" content="The seven tolls of the agentic economy: identity, discovery, machine money, delegated authority, exactness proof, bonds, and portable memory. Every toll metered, every toll receipted."/>
+  <meta name="description" content="The seven protection tolls of the agentic economy: identity, discovery, machine money, delegated authority, exactness proof, bonds, and portable memory. Plus ten live metered tools — compression, attestation, verifiable draws, and more. Every toll metered, every toll receipted."/>
   <link rel="canonical" href="https://www.slidphilabs.com/tollkeeper"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
   <meta property="og:type" content="website"/>
@@ -15,7 +15,7 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Rider Tollkeeper — small tolls, signed receipts"/>
   <meta name="twitter:description" content="Seven small tolls on the unavoidable chokepoints of the agentic economy. Metered. Receipted. Fail-closed."/>
-  <meta name="keywords" content="Rider Tollkeeper, agent economy, agent tolls, machine money, escrow, agent identity, capability discovery, delegated authority, Warrant, exactness, CuNi, agent bonds, portable memory, Slid Phi Labs"/>
+  <meta name="keywords" content="Rider Tollkeeper, agent economy, agent tolls, machine money, escrow, agent identity, capability discovery, delegated authority, Warrant, exactness, CuNi, agent bonds, portable memory, metered tools, PCC compression, attestation, ExactOdds, Slid Phi Labs"/>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -98,6 +98,71 @@
         <h3>Take your past with you</h3>
         <p class="spl-price">$0.02 <span class="spl-note">hosted transfer · format free</span></p>
         <p>Your agent's memory, exported in an open signed format you can carry anywhere — free forever. We charge only when we host the transfer.</p>
+      </article>
+    </div>
+
+    <h2>Ten metered tools</h2>
+    <p class="spl-prose spl-full">A separate shelf from the seven protection tolls: ten metered tools, live now on the Rider toll gates. Each one returns a signed ES256 toll receipt on pass <em>and</em> on refuse, every one is fail-closed, and every one can be tried with the sandbox bearer key <code>sk_sandbox_demo</code> — full validation, zero side effects. Pricing is machine-readable at <a href="https://agentrider.fly.dev/api/toll/schema">https://agentrider.fly.dev/api/toll/schema</a>.</p>
+    <div class="spl-grid" aria-label="The ten metered tools">
+      <article class="spl-card">
+        <p class="spl-kicker">Tool 1 · compression</p>
+        <h3>pcc-compress</h3>
+        <p class="spl-price">$0.01 <span class="spl-note">per MB in</span></p>
+        <p><code>/api/toll/tools/pcc-compress</code> — bytes in, PCC-compressed bytes out, with a signed receipt.</p>
+      </article>
+      <article class="spl-card">
+        <p class="spl-kicker">Tool 2 · verification</p>
+        <h3>pcc-verify</h3>
+        <p class="spl-price">$0.02 <span class="spl-note">per check</span></p>
+        <p><code>/api/toll/tools/pcc-verify</code> — decode plus SHA-256 proof of exact round-trip.</p>
+      </article>
+      <article class="spl-card">
+        <p class="spl-kicker">Tool 3 · attestation</p>
+        <h3>attest-notarize</h3>
+        <p class="spl-price">$0.01 <span class="spl-note">per notarization</span></p>
+        <p><code>/api/toll/tools/attest-notarize</code> — proof this payload existed at this time.</p>
+      </article>
+      <article class="spl-card">
+        <p class="spl-kicker">Tool 4 · exactness</p>
+        <h3>attest-exactness</h3>
+        <p class="spl-price">$0.05 <span class="spl-note">per check</span></p>
+        <p><code>/api/toll/tools/attest-exactness</code> — the v5 exactness path, attesting pass or refuse.</p>
+      </article>
+      <article class="spl-card">
+        <p class="spl-kicker">Tool 5 · randomness</p>
+        <h3>exactodds-draw</h3>
+        <p class="spl-price">$0.01 <span class="spl-note">per draw</span></p>
+        <p><code>/api/toll/tools/exactodds-draw</code> — a verifiable random draw, receipted.</p>
+      </article>
+      <article class="spl-card">
+        <p class="spl-kicker">Tool 6 · settlement</p>
+        <h3>exactodds-resolve</h3>
+        <p class="spl-price">$0.02 <span class="spl-note">per resolution</span></p>
+        <p><code>/api/toll/tools/exactodds-resolve</code> — fair game and bet settlement.</p>
+      </article>
+      <article class="spl-card">
+        <p class="spl-kicker">Tool 7 · proof</p>
+        <h3>cuni-proof</h3>
+        <p class="spl-price">$0.10 <span class="spl-note">per proof</span></p>
+        <p><code>/api/toll/tools/cuni-proof</code> — submit source, get a proof it behaves identically across targets, or a refusal.</p>
+      </article>
+      <article class="spl-card">
+        <p class="spl-kicker">Tool 8 · streams</p>
+        <h3>trustream-pack</h3>
+        <p class="spl-price">$0.01 <span class="spl-note">per MB in</span></p>
+        <p><code>/api/toll/tools/trustream-pack</code> — live stream tiles in, packed tiles out.</p>
+      </article>
+      <article class="spl-card">
+        <p class="spl-kicker">Tool 9 · sealing</p>
+        <h3>chamber-seal</h3>
+        <p class="spl-price">$0.02 <span class="spl-note">per seal</span></p>
+        <p><code>/api/toll/tools/chamber-seal</code> — bytes in, Chamber-signed sealed envelope out.</p>
+      </article>
+      <article class="spl-card">
+        <p class="spl-kicker">Tool 10 · pricing</p>
+        <h3>awlpay-quote</h3>
+        <p class="spl-price">$0.005 <span class="spl-note">per quote</span></p>
+        <p><code>/api/toll/tools/awlpay-quote</code> — an exact cross-rail payment cost quote.</p>
       </article>
     </div>
 
