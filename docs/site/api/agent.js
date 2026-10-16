@@ -25,7 +25,7 @@ const AUTH = {
 };
 
 const STANDING = [
-  { sku: "cuni-studio", name: "CuNi Studio", usd: "0", kind: "exactness", blurb: "Write once. 144 languages. Same stdout or refuse. Native seats: py/go/js/ts/c/cpp/rs." },
+  { sku: "cuni-studio", name: "CuNi Studio", usd: "0", kind: "exactness", blurb: "Write once. 53-entry catalog. Same stdout or refuse. 45 native seats." },
   { sku: "cuni-exception", name: "CuNi · closed-app exception", usd: "390", kind: "exception", blurb: "Ship CuNi inside one closed product for one year. Not the compressor." },
   { sku: "chamber-month", name: "Chamber · monthly cloak license", usd: "9", kind: "chamber", blurb: "License to seal new JSON for 30 days. Open already-sealed blobs with both keys." },
   { sku: "chamber-year", name: "Chamber · annual cloak license", usd: "99", kind: "chamber", blurb: "License to seal new JSON for a year. Stored secrets do not expire." },
@@ -43,7 +43,7 @@ const STANDING = [
   { sku: "rider-ops-year", name: "Rider Ops · annual fleet watch", usd: "290", kind: "rider-ops", blurb: "Year of fleet watch. Needs a Rider seat." },
   { sku: "warrant-month", name: "Warrant · monthly mandate seat", usd: "29", kind: "warrant", blurb: "Signed mandate + receipts for a Rider. Not identity. Pair X-Agent-Rider with X-Agent-Warrant." },
   { sku: "warrant-year", name: "Warrant · annual mandate seat", usd: "290", kind: "warrant", blurb: "Year of mandates and receipts. Needs a Rider token." },
-  { sku: "lab-pass", name: "Lab Pass · annual", usd: "490", kind: "seat", blurb: "Chamber + PCC, 365 days. Not Rider." },
+  { sku: "lab-pass", name: "Lab Pass · annual", usd: "369", kind: "seat", blurb: "Chamber + PCC, 365 days. Not Rider." },
   { sku: "quikgater", name: "Quikgater · pay-per-fact fetch", usd: "usage", kind: "usage", blurb: "Not a seat. Unpaid URL → HTTP 402. Worker: quikgater-worker.ceedotrock.workers.dev" },
   { sku: "oss-support", name: "OSS support", usd: "199.00", kind: "support-oss", blurb: OSS_BLURB },
   { sku: "consulting", name: "Consulting", usd: "250.00", kind: "service", blurb: "Two hours of lab time." },
@@ -144,7 +144,7 @@ export default async function handler(req, res) {
       { id: "chamber", name: "Chamber", url: "https://www.slidphilabs.com/chamber" },
       { id: "rider", name: "Agent-Rider", url: "https://agentrider.fly.dev/", mcp: "https://agentrider.fly.dev/api/mcp" },
       { id: "warrant", name: "Warrant", url: "https://www.slidphilabs.com/warrant" },
-      { id: "cuni", name: "CuNi", url: "https://cuni-studio.fly.dev/", protocol: "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json", public_install_tag: "v0.1.10" },
+      { id: "cuni", name: "CuNi", url: "https://cuni-studio.fly.dev/", protocol: "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json", public_install_tag: "v0.10.0" },
     ],
     team_mesh: {
       url: "https://spl-team-mesh.fly.dev",

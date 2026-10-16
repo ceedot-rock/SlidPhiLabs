@@ -6,7 +6,7 @@ export const CATALOGS = [
     id: "sku",
     title: "Prices",
     entries: [
-      { id: "cuni", name: "CuNi Studio", price: "$0", note: "Write once. Print many languages. Python, Go, and JS must match, or it refuses. Bank arm: paste N get X. Free playground. v0.1.10 + cuni-bank-0.1.0.", url: "https://cuni-studio.fly.dev/", related: ["license", "cuni"] },
+      { id: "cuni", name: "CuNi Studio", price: "$0", note: "Write once. Print many languages. Python, Go, and JS must match, or it refuses. Bank arm: paste N get X. Free playground. v0.10.0 + cuni-bank-0.1.0.", url: "https://cuni-studio.fly.dev/", related: ["license", "cuni"] },
       { id: "cuni-exception", name: "CuNi closed-app exception", price: "$390/yr", note: "Pay $390/year to ship CuNi inside one closed product. Public tree is AGPL-3.0-or-later.", url: SITE + "/pay?sku=cuni-exception", related: ["license"] },
       { id: "pulsar-exception", name: "pulsar closed-embed exception", price: "$390/yr", note: "Pay $390/year to embed pulsar in one closed product for one year. pulsar source stays GPLv3.", url: SITE + "/pay?sku=pulsar-exception", related: ["license", "pulsar"] },
       { id: "chamber-month", name: "Chamber month", price: "$9/mo", note: "Two-key JSON seal. License to seal new secrets. Open existing seals with both keys, no extra payment.", url: SITE + "/chamber", related: ["chamber", "box"] },
@@ -22,7 +22,7 @@ export const CATALOGS = [
       { id: "rider-ops-month", name: "Rider Ops month", price: "$29/mo", note: "Fleet watch when a signed agent goes quiet. Needs a Rider seat.", url: SITE + "/pay?sku=rider-ops-month", related: ["rider"] },
       { id: "rider-ops-year", name: "Rider Ops year", price: "$290/yr", note: "Fleet watch when a signed agent goes quiet. Needs a Rider seat.", url: SITE + "/pay?sku=rider-ops-year", related: ["rider"] },
       { id: "suite", name: "PCC metered jobs", price: "2 GB/mo free, then 8¢/GB", note: "First 2 GB each month free. Then 8¢ per GB. Month plan includes 200 GB. Compare: /compare. Quote: POST /api/ppp-quote.", url: SITE + "/compare", related: ["aware", "rail"] },
-      { id: "lab-pass", name: "Lab Pass", price: "$490/yr", note: "One year of Chamber + PCC for $490.", url: SITE + "/lab-pass", related: ["chamber", "aware"] },
+      { id: "lab-pass", name: "Lab Pass", price: "$369/yr", note: "One year of Chamber + PCC bundled for $369.", url: SITE + "/lab-pass", related: ["chamber", "aware"] },
       { id: "consulting", name: "Consulting", price: "$250", note: "Two hours of lab time.", url: SITE + "/pay?sku=consulting", related: ["sku"] },
       { id: "oss-support", name: "OSS support", price: "$199", note: "Help with an already-public GPLv3 library.", url: SITE + "/pay?sku=oss-support", related: ["npm"] },
     ],
