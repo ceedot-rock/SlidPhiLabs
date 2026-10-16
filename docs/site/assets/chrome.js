@@ -121,7 +121,7 @@
         <a href="/mcp">/mcp</a>
       </div>
     </div>
-    <p class="legal">© Slid Phi Labs · Cherry Hill · corey@slidphilabs.com</p>
+    <p class="legal">© Slid Phi Labs · Cherry Hill · corey@slidphilabs.com · © 2026 SLID PHI LABS LLC</p>
   </footer>`;
   }
 
