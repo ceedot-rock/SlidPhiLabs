@@ -64,7 +64,7 @@ https://www.slidphilabs.com/projects.json
 - Chamber = cloak license. $9/mo · $99/yr. Open is keys-only.
 - PCC = hosted compressor. $9/day · $39/mo · $390/yr.
 - PCC meter = first 2 GB/month free, then 8¢/GB. Month plan includes 200 GB. Not a fifth product.
-- Lab Pass = Chamber year + PCC Year, $490/yr. Not Rider.
+- Lab Pass = Chamber year + PCC Year bundled, $369/yr. Not Rider.
 - Access = entitlement claim. Not a codec dump.
 
 ## Scope

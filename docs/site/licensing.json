@@ -12,17 +12,76 @@
   "dual": {
     "chooser": "You pick copyleft or the commercial grant. Both are written.",
     "copyleft_or_commercial": [
-      { "name": "pulsar", "copyleft": "GPL-3.0-or-later", "sku": "pulsar-exception", "usd": 390, "page": "https://www.slidphilabs.com/pulsar" },
-      { "name": "PCC", "copyleft": "AGPL-3.0-or-later", "sku": "gc-month", "usd": 39, "page": "https://www.slidphilabs.com/pcc", "hosted": true },
-      { "name": "CuNi", "copyleft": "AGPL-3.0-or-later", "sku": "cuni-exception", "usd": 390, "page": "https://www.slidphilabs.com/cuni" },
-      { "name": "Chamber SDK", "copyleft": "AGPL-3.0-or-later", "sku": "chamber-year", "usd": 99, "page": "https://www.slidphilabs.com/chamber" },
-      { "name": "Agent-Rider", "copyleft": "AGPL-3.0-or-later", "sku": "rider-crew", "usd": 49, "page": "https://www.slidphilabs.com/rider" },
-      { "name": "Warrant", "copyleft": "AGPL-3.0-or-later", "sku": "warrant-year", "usd": 290, "page": "https://www.slidphilabs.com/warrant" },
-      { "name": "spl-pay-per-suite", "copyleft": "AGPL-3.0-or-later", "sku": "gc-month", "usd": 39, "page": "https://www.slidphilabs.com/docs" },
-      { "name": "TRU8 public zeros demo", "copyleft": "AGPL-3.0-or-later", "sku": "pulsar-exception", "usd": 390, "page": "https://www.slidphilabs.com/specialist" },
-      { "name": "Slid Phi Labs public site and clients", "copyleft": "AGPL-3.0-or-later", "sku": "gc-year", "usd": 390, "page": "https://www.slidphilabs.com/" }
+      {
+        "name": "pulsar",
+        "copyleft": "GPL-3.0-or-later",
+        "sku": "pulsar-exception",
+        "usd": 390,
+        "page": "https://www.slidphilabs.com/pulsar"
+      },
+      {
+        "name": "PCC",
+        "copyleft": "AGPL-3.0-or-later",
+        "sku": "gc-month",
+        "usd": 39,
+        "page": "https://www.slidphilabs.com/pcc",
+        "hosted": true
+      },
+      {
+        "name": "CuNi",
+        "copyleft": "AGPL-3.0-or-later",
+        "sku": "cuni-exception",
+        "usd": 390,
+        "page": "https://www.slidphilabs.com/cuni"
+      },
+      {
+        "name": "Chamber SDK",
+        "copyleft": "AGPL-3.0-or-later",
+        "sku": "chamber-year",
+        "usd": 99,
+        "page": "https://www.slidphilabs.com/chamber"
+      },
+      {
+        "name": "Agent-Rider",
+        "copyleft": "AGPL-3.0-or-later",
+        "sku": "rider-crew",
+        "usd": 49,
+        "page": "https://www.slidphilabs.com/rider"
+      },
+      {
+        "name": "Warrant",
+        "copyleft": "AGPL-3.0-or-later",
+        "sku": "warrant-year",
+        "usd": 290,
+        "page": "https://www.slidphilabs.com/warrant"
+      },
+      {
+        "name": "spl-pay-per-suite",
+        "copyleft": "AGPL-3.0-or-later",
+        "sku": "gc-month",
+        "usd": 39,
+        "page": "https://www.slidphilabs.com/docs"
+      },
+      {
+        "name": "TRU8 public zeros demo",
+        "copyleft": "AGPL-3.0-or-later",
+        "sku": "pulsar-exception",
+        "usd": 390,
+        "page": "https://www.slidphilabs.com/specialist"
+      },
+      {
+        "name": "Slid Phi Labs public site and clients",
+        "copyleft": "AGPL-3.0-or-later",
+        "sku": "gc-year",
+        "usd": 390,
+        "page": "https://www.slidphilabs.com/"
+      }
     ],
-    "operator_only": ["Agent-Rider signing keys", "Chamber kernel secrets", "AUTH_DIR customer data"]
+    "operator_only": [
+      "Agent-Rider signing keys",
+      "Chamber kernel secrets",
+      "AUTH_DIR customer data"
+    ]
   },
   "never_on_this_surface": [
     "Agent-Rider signing keys",
@@ -36,9 +95,9 @@
       "public_name": "zeros",
       "license": "public demo",
       "runs_here": true,
-      "plain": "Zeros demo. All-zero data → 8 bytes, and you get the original back. Free on POST /api/specialist. For real files, buy PCC.",
+      "plain": "Zeros demo. All-zero data \u2192 8 bytes, and you get the original back. Free on POST /api/specialist. For real files, buy PCC.",
       "commercial": "This demo is free. Everyday files use PCC.",
-      "flagship": "1e6 zero bytes → 8 B, round-trip"
+      "flagship": "1e6 zero bytes \u2192 8 B, round-trip"
     },
     "struct_text": {
       "occupant": "pulsar 2.5.0 + STR1",
@@ -59,8 +118,13 @@
       "runs_here": true,
       "engine": "PCC",
       "page": "https://www.slidphilabs.com/pcc",
-      "skus": ["gc-day", "gc-month", "gc-year", "lab-pass"],
-      "plain": "Hosted lossless compressor. $9/day · $39/mo (200 GB) · $390/yr (2 TB). Then 8¢/GB. First 2 GB/month free. Source is dual-licensed. PCC year is the closed-product grant. Official 12-file numbers live on /silesia.",
+      "skus": [
+        "gc-day",
+        "gc-month",
+        "gc-year",
+        "lab-pass"
+      ],
+      "plain": "Hosted lossless compressor. $9/day \u00b7 $39/mo (200 GB) \u00b7 $390/yr (2 TB). Then 8\u00a2/GB. First 2 GB/month free. Source is dual-licensed. PCC year is the closed-product grant. Official 12-file numbers live on /silesia.",
       "commercial": "AGPL in public. Closed-product grant is PCC year. Keys stay operator-only."
     },
     "general": {
@@ -74,7 +138,11 @@
       "occupant": "PCAQ + ZMX1 + NNC1",
       "license": "AGPL-3.0-or-later OR Commercial",
       "runs_here": true,
-      "house_caps": { "PCAQ": 262144, "ZMX1": 1048576, "NNC1": 262144 },
+      "house_caps": {
+        "PCAQ": 262144,
+        "ZMX1": 1048576,
+        "NNC1": 262144
+      },
       "plain": "Own mixers. PCAQ 256 KiB, ZMX1 1 MiB house, NNC1 256 KiB house. Not paq8px. Not cmix. Those stay GPL research opponents.",
       "commercial": "SKU gc-year. Hosted jobs over the mixer caps skip them."
     }
@@ -85,7 +153,11 @@
       "period": "year",
       "plain": "Pay $390/year to put pulsar inside one closed-source product for one year. pulsar source stays GPLv3.",
       "grants": "Written exception to distribute pulsar inside one closed-source product for one year. pulsar source stays GPL-3.0-or-later.",
-      "never_includes": ["PCC encoder source", "Chamber kernel", "Agent-Rider keys"],
+      "never_includes": [
+        "PCC encoder source",
+        "Chamber kernel",
+        "Agent-Rider keys"
+      ],
       "pay": "https://www.slidphilabs.com/pay?sku=pulsar-exception"
     },
     "cuni-exception": {
@@ -95,10 +167,33 @@
       "grants": "Written exception for one closed product using CuNi, one year.",
       "pay": "https://www.slidphilabs.com/pay?sku=cuni-exception"
     },
-    "gc-day": { "usd": 9, "plain": "PCC hosted compressor, one day of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-day" },
-    "gc-month": { "usd": 39, "plain": "PCC hosted compressor, one month of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-month" },
-    "gc-year": { "usd": 390, "plain": "PCC hosted compressor, one year of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-year" },
-    "lab-pass": { "usd": 490, "plain": "One year of Chamber + PCC for $490.", "pay": "https://www.slidphilabs.com/pay?sku=lab-pass", "includes": ["chamber", "pcc"], "excludes": ["rider"] },
+    "gc-day": {
+      "usd": 9,
+      "plain": "PCC hosted compressor, one day of access. No source.",
+      "pay": "https://www.slidphilabs.com/pay?sku=pcc-day"
+    },
+    "gc-month": {
+      "usd": 39,
+      "plain": "PCC hosted compressor, one month of access. No source.",
+      "pay": "https://www.slidphilabs.com/pay?sku=pcc-month"
+    },
+    "gc-year": {
+      "usd": 390,
+      "plain": "PCC hosted compressor, one year of access. No source.",
+      "pay": "https://www.slidphilabs.com/pay?sku=pcc-year"
+    },
+    "lab-pass": {
+      "usd": 369,
+      "plain": "One year of Chamber + PCC bundled for $369.",
+      "pay": "https://www.slidphilabs.com/pay?sku=lab-pass",
+      "includes": [
+        "chamber",
+        "pcc"
+      ],
+      "excludes": [
+        "rider"
+      ]
+    },
     "oss-support": {
       "usd": 199,
       "plain": "$199 for help with an already-public GPLv3 library.",

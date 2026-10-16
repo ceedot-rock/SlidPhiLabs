@@ -33,7 +33,7 @@ bytes → Shared Spine (row / 4 KiB tile / file) → Head A (structure: runs, ze
 | tnssrc-bakeoff | 19.31 | /pay?sku=tnssrc-bakeoff |
 | pulsar-exception | 390 | /pay?sku=pulsar-exception |
 | cuni-exception | 390 | /pay?sku=cuni-exception |
-| lab-pass | 490 | Chamber year + PCC Year · /pay?sku=lab-pass |
+| lab-pass | 369 | Chamber year + PCC Year · /pay?sku=lab-pass |
 | foundry-plus | — | Lab Pass + TNSSRC grant + Rider Crew · /pay?sku=foundry-plus |
 x402 resource = same sku via POST /api/x402-products.
 
@@ -59,7 +59,7 @@ Four doors onto one Shared Spine. What it is, then what you pay.
 - Agent-Rider — open ride + protection: signed identity + agent DMs (ES256 JWT L0–L4, local JWKS, `POST /api/dm`). Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. https://www.slidphilabs.com/rider · https://agentrider.fly.dev/llms.txt
 - Warrant — signed mandate + receipts bound to a Rider. Who is Rider; what they may do and proof they did it is Warrant. In bundle or Team. POST /api/warrant/issue (X-Agent-Rider). https://www.slidphilabs.com/warrant
 - CuNi — 144 languages. Same stdout on every catalog seat, or it refuses. Native seats: Python, Go, JavaScript, TypeScript, C, C++, Rust. Other ids emit+run via Python lowering. Playground $0. Closed-app exception $390/yr, SKU cuni-exception. Bank arm: paste N, get X (`cuni bank paste`, POST https://cuni-studio.fly.dev/api/bank). Protocol 1.1.0 · public tag v0.3.0 · Bank tag cuni-bank-0.1.0. https://www.slidphilabs.com/cuni · https://cuni-studio.fly.dev/bank
-- Lab Pass — $490/yr. Chamber year + PCC Year. Not Rider. https://www.slidphilabs.com/lab-pass
+- Lab Pass — $369/yr. Chamber year + PCC Year bundled. Not Rider. https://www.slidphilabs.com/lab-pass
 - Foundry+ — Lab Pass + TNSSRC closed grant + Rider Crew. One SKU: all four doors plus a swarm. SKU foundry-plus.
 
 Every product we bring forward is dual-licensed (open terms or a paid grant). Hosted compression uses all of those pathways. npm packages and MCP call the live host — they are clients, not stubs.
