@@ -1,72 +1,121 @@
 {
-  "name": "CuNi Protocol",
-  "id": "cuni-protocol",
-  "version": "1.1.1",
-  "spec": "https://cuni-studio.fly.dev/PROTOCOL.md",
-  "canonical": "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json",
-  "github": "https://github.com/ceedot-rock/cuni/blob/master/PROTOCOL.md",
-  "rule": "emit+run identical stdout on every catalog language, or refuse",
-  "catalog_languages": 144,
-  "native_seats": [
-    "py",
-    "go",
-    "js",
-    "ts",
-    "c",
-    "cpp",
-    "rs",
-    "rb",
-    "lua",
-    "sol"
-  ],
-  "studio_gate": [
-    "py",
-    "go",
-    "js"
-  ],
-  "commands": [
-    "check",
-    "run",
-    "ingest",
-    "bank",
-    "prove",
-    "emit-all"
-  ],
-  "run": {
-    "kind": "seat",
-    "note": "in-process evaluator. cuni check refuses if stdout diverges from catalog gold. Programs with ext skip this seat."
-  },
-  "public_install_tag": "v0.3.0",
-  "citizenship": "exactness.passed must be true before Agent-Rider register",
-  "laws": {
-    "suite-meter": "https://github.com/ceedot-rock/cuni/blob/master/examples/laws/suite-meter.cuni",
-    "catalog-plans": "https://github.com/ceedot-rock/cuni/blob/master/examples/laws/catalog-plans.cuni",
-    "rider-fee": "https://github.com/ceedot-rock/cuni/blob/master/examples/laws/rider-fee.cuni",
-    "spend-control": "https://github.com/ceedot-rock/cuni/blob/master/examples/laws/spend-control.cuni"
-  },
-  "discovery": {
-    "studio": "https://cuni-studio.fly.dev/",
-    "agents_json": "https://cuni-studio.fly.dev/agents.json",
-    "llms_txt": "https://cuni-studio.fly.dev/llms.txt",
-    "agent_rider": "https://agentrider.fly.dev/.well-known/agent.json",
-    "mcp": "https://agentrider.fly.dev/api/mcp",
-    "lab": "https://www.slidphilabs.com/api/agent"
-  },
-  "bank": {
-    "kind": "arm",
-    "note": "paste N, get X. ingest \u2192 emit \u2192 prove. v1 --from py|cuni. 144 langs remains cuni check on the deposit \u2014 not 144 ingest parsers.",
-    "paste": "POST https://cuni-studio.fly.dev/api/bank",
-    "ui": "https://cuni-studio.fly.dev/bank",
-    "law": "https://github.com/ceedot-rock/cuni/blob/master/docs/BANK.md",
-    "tag": "cuni-bank-0.1.0"
-  },
-  "citizen_pass": {
-    "kind": "studio_gate",
-    "note": "Exactness PASS/refuse for Rider pre-execute. Same py/go/js gate as /api/check. Does not fund.",
-    "pass": "POST https://cuni-studio.fly.dev/api/pass",
-    "alias": "POST https://cuni-studio.fly.dev/api/citizen/pass",
-    "publish_push": "POST /api/publish \u2192 Rider POST /api/v0/contracts with citizen_receipt when CUNI_RIDER_URL set",
-    "docs": "https://github.com/ceedot-rock/cuni/blob/master/docs/PASS_GATE.md",
-    "studio_marker": "called"
-  }
+ "name": "CuNi Protocol",
+ "id": "cuni-protocol",
+ "version": "1.1.1",
+ "spec": "https://cuni-studio.fly.dev/PROTOCOL.md",
+ "canonical": "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json",
+ "github": "https://github.com/ceedot-rock/cuni/blob/master/PROTOCOL.md",
+ "rule": "emit+run identical stdout on every catalog language, or refuse",
+ "catalog_languages": 53,
+ "native_seats": [
+  "py",
+  "go",
+  "js",
+  "ts",
+  "c",
+  "cpp",
+  "rs",
+  "rb",
+  "lua",
+  "sol",
+  "java",
+  "sql",
+  "php",
+  "r",
+  "ml",
+  "lisp",
+  "f90",
+  "pas",
+  "pl",
+  "zig",
+  "nim",
+  "cr",
+  "d",
+  "v",
+  "ada",
+  "asm",
+  "awk",
+  "clj",
+  "cob",
+  "cs",
+  "dart",
+  "erl",
+  "ex",
+  "fs",
+  "groovy",
+  "hs",
+  "hx",
+  "jl",
+  "kt",
+  "m-objc",
+  "pro",
+  "ps1",
+  "scala",
+  "sh",
+  "tcl"
+ ],
+ "studio_gate": [
+  "py",
+  "go",
+  "js"
+ ],
+ "commands": [
+  "check",
+  "run",
+  "ingest",
+  "bank",
+  "prove",
+  "emit-all"
+ ],
+ "run": {
+  "kind": "seat",
+  "note": "in-process evaluator. cuni check refuses if stdout diverges from catalog gold. Programs with ext skip this seat."
+ },
+ "public_install_tag": "v0.10.0",
+ "citizenship": "exactness.passed must be true before Agent-Rider register",
+ "laws": {
+  "suite-meter": "https://github.com/ceedot-rock/cuni/blob/master/examples/laws/suite-meter.cuni",
+  "catalog-plans": "https://github.com/ceedot-rock/cuni/blob/master/examples/laws/catalog-plans.cuni",
+  "rider-fee": "https://github.com/ceedot-rock/cuni/blob/master/examples/laws/rider-fee.cuni",
+  "spend-control": "https://github.com/ceedot-rock/cuni/blob/master/examples/laws/spend-control.cuni"
+ },
+ "discovery": {
+  "studio": "https://cuni-studio.fly.dev/",
+  "agents_json": "https://cuni-studio.fly.dev/agents.json",
+  "llms_txt": "https://cuni-studio.fly.dev/llms.txt",
+  "agent_rider": "https://agentrider.fly.dev/.well-known/agent.json",
+  "mcp": "https://agentrider.fly.dev/api/mcp",
+  "lab": "https://www.slidphilabs.com/api/agent"
+ },
+ "bank": {
+  "kind": "arm",
+  "note": "paste N, get X. ingest \u2192 emit \u2192 prove. v1 --from py|cuni. 53 seats remains cuni check on the deposit \u2014 not 53 ingest parsers.",
+  "paste": "POST https://cuni-studio.fly.dev/api/bank",
+  "ui": "https://cuni-studio.fly.dev/bank",
+  "law": "https://github.com/ceedot-rock/cuni/blob/master/docs/BANK.md",
+  "tag": "cuni-bank-0.1.0"
+ },
+ "citizen_pass": {
+  "kind": "studio_gate",
+  "note": "Exactness PASS/refuse for Rider pre-execute. Same py/go/js gate as /api/check. Does not fund.",
+  "pass": "POST https://cuni-studio.fly.dev/api/pass",
+  "alias": "POST https://cuni-studio.fly.dev/api/citizen/pass",
+  "publish_push": "POST /api/publish \u2192 Rider POST /api/v0/contracts with citizen_receipt when CUNI_RIDER_URL set",
+  "docs": "https://github.com/ceedot-rock/cuni/blob/master/docs/PASS_GATE.md",
+  "studio_marker": "called"
+ },
+ "lowered_seats": [
+  "m",
+  "vb",
+  "swift",
+  "hack",
+  "st"
+ ],
+ "onchain_profiles": [
+  "vy",
+  "move",
+  "cairo"
+ ],
+ "support_matrix": "https://www.slidphilabs.com/CUNI-SUPPORT-MATRIX.md",
+ "matrix_note": "45 native + 5 lowered + 3 onchain = 53. Refusal is per-construct, not per-language (0 refusal-only languages). Lowering seats never flip the verdict."
 }

@@ -55,7 +55,7 @@ When Stripe lands on `/?purchase=PRODUCT` or `/?purchase=…&session=…`:
 PCC — hosted lossless compression
 
 **Lede:**  
-One Shared Spine, three heads, four doors: PCC the hosted file job (Day $9 · Month $39 · Year $390), TNSSRC the local engine (43,724,575 Silesia), TRUSTREAM the live pipe on the PCC plan, pulsar the free demo. Chamber is a two-key JSON seal, $9/$99. Rider is signed agent identity, Solo $13.31–Fleet $631. Warrant is a signed mandate, in bundle or Team. CuNi is 144 languages, same stdout or refuse, Studio free. TRU8 packs all-zero data to 8 bytes. Suite meters jobs: first 2 GB/month free, then 8¢/GB.
+One Shared Spine, three heads, four doors: PCC the hosted file job (Day $9 · Month $39 · Year $390), TNSSRC the local engine (43,724,575 Silesia), TRUSTREAM the live pipe on the PCC plan, pulsar the free demo. Chamber is a two-key JSON seal, $9/$99. Rider is signed agent identity, Solo $13.31–Fleet $631. Warrant is a signed mandate, in bundle or Team. CuNi is 53-entry catalog, same stdout or refuse, Studio free. TRU8 packs all-zero data to 8 bytes. Suite meters jobs: first 2 GB/month free, then 8¢/GB.
 
 **CTAs:**  
 1. **See for yourself** → `/try` (teal)  
