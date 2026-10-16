@@ -234,11 +234,11 @@ export const PRODUCT_CATALOG = {
   },
   "lab-pass": {
     name: "Lab Pass · annual (Chamber + PCC)",
-    amount_cents: 49000,
+    amount_cents: 36900,
     stripe: "https://www.slidphilabs.com/pay?sku=lab-pass",
     kind: "seat",
     list: true,
-    blurb: "Chamber year $99 + PCC year $390.",
+    blurb: "Chamber year $99 + PCC year $390, bundled at $369.",
   },
   "trugame-month": parked(
     "TruGame · monthly (parked)",
