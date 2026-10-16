@@ -1,0 +1,1 @@
+{"adapters":["json-file@1.0","sqlite@1.0"],"docs":["https://www.slidphilabs.com/wiki/tollkeeper"],"feature":"portable-memory","format":"slidphi.memory","format_version":"1.0","hosted_billing_enabled":false,"hosted_transfer":"planned","limits":{"max_depth":10,"max_items":10000,"max_payload_bytes":1048576},"price_cents":2,"status":"beta"}
