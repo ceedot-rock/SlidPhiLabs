@@ -1,37 +1,27 @@
-# Slid Phi Labs — Wix Home (paste-ready)
+# Slid Phi Labs — Home (copy source of truth)
 
+**Hosting:** Fly app `slidphilabs` (`docs/site/`, deploys on push to `main`). Wix is retired; do not paste copy into Wix.
 **Canonical site:** https://www.slidphilabs.com  
-**Tagline:** Impressive Compression..... see for yourself  
+**Tagline:** Tools that check. Proof before praise.
 **Brand art:** https://raw.githubusercontent.com/ceedot-rock/splabs-brand/main/assets/brand/slid-phi-labs-master.jpg  
 **IP:** marketing + metrics only. No engine source, coefficients, or residual internals.  
 **Design pack:** `docs/site/` — `index.html`, `try.html`, `access.html` (source of truth for layout + links).
 
 ---
 
-## SEO (Wix Site Settings)
+## SEO (`index.html` head)
 
 | Field | Value |
 |--------|--------|
-| **Title** | Slid Phi Labs — Chamber unlock · TRU8 compression · Suite meter |
-| **Description** | Chamber unlocks JSON ($99/domain after 24h). TRU8 compresses (demos free). Suite meters jobs (6.9 GB / 3 h then ¢/GB). Not seats. |
-| **Keywords** | TRU8, slid phi labs, compression, residual, CDDG, suite |
+| **Title** | Slid Phi Labs — tools that check |
+| **Description** | Slid Phi Labs: hosted lossless compression (PCC), signed agent identity (Rider), exact programs (CuNi), agent payments (AwLPay), and the TEACHAiD teaching campus. Proof before praise. |
 | **Canonical** | https://www.slidphilabs.com/ |
-| **OG image** | Master poster (full, no crop of third-eye / banners) |
 
 ---
 
 ## Nav
 
-**Logo:** Slid Phi **Labs** (Labs in teal `#3dd6c6`)
-
-| Link | Target |
-|------|--------|
-| Champion | #champion |
-| ZRW | #zrw |
-| Packages | #packages |
-| Pricing | #pricing |
-| Access | /access |
-| **TRU8 / Demos** (teal button) | /demos |
+Home · Rider · CuNi · Warrant · Compress · Silesia · Wiki · Pricing
 
 ---
 
@@ -44,154 +34,73 @@ When Stripe lands on `/?purchase=PRODUCT` or `/?purchase=…&session=…`:
 
 ---
 
-## 1. Hero
+## Hero
 
-**Badge:** `TRU8 · PUBLIC DEMOS FREE · PRODUCTION LICENSED`
+**H1:**
+Tools that check.
 
-**Tagline:**  
-**Less is more. We dropped the E.**
+**Lede:**
+Hosted lossless compression, a two-key JSON seal, signed agent identity, and a small language that refuses to lie. Smaller or same size. Every byte back. Receipt.
 
-**H1:**  
-PCC — hosted lossless compression
+**Hero cards:**
+1. **Compress a file** — first 2 GB free
+2. **Name an agent** — $13.31/mo
+3. One person builds this — Corey Tasz. Plans from $9/mo.
 
-**Lede:**  
-One Shared Spine, three heads, four doors: PCC the hosted file job (Day $9 · Month $39 · Year $390), TNSSRC the local engine (43,724,575 Silesia), TRUSTREAM the live pipe on the PCC plan, pulsar the free demo. Chamber is a two-key JSON seal, $9/$99. Rider is signed agent identity, Solo $13.31–Fleet $631. Warrant is a signed mandate, in bundle or Team. CuNi is 53 targets, same stdout or refuse, Studio free. TRU8 packs all-zero data to 8 bytes. Suite meters jobs: first 2 GB/month free, then 8¢/GB.
-
-**CTAs:**  
-1. **See for yourself** → `/try` (teal)  
-2. **Residual Governance** → `#champion` (gold)  
-3. **The numbers** → `#proof` (blue)  
-4. **Pricing** → `#pricing` (ghost)
-
-**Meta:** Champion · CDDG + Mirrored Cost · Stub on public npm · Access after gate / purchase
+**Silesia strip:** TNSSRC 43,724,575 · PCC 51,498,645 — 12 of 12 back, byte-identical. Try your own file.
 
 ---
 
-## 2. Champion (`#champion`) — LEAD WITH THIS
+## 01 Shipped — live products
 
-**Section label:** LEAD PRODUCT · RESIDUAL GOVERNANCE  
-**Pill:** CHAMPION LOCKED
+Each one links to itself: docs, demo, or source.
 
-**H2:** Continuous Dark-Degree Geometry + Mirrored Cost
-
-**Body:**  
-Hierarchy is the attractor. Code only what remains. Residual Governance packages the closed-loop residual math for production — not a public dump of coefficients.
-
-**Axiom strip (mono):**  
-`ΔE + ΔC ≈ 0 · mirror_error → 0.000 · quality ~2.09× vs pure 360`
-
-| Metric | Value |
-|--------|--------|
-| Mirror error | **0.000** |
-| Quality vs 360 | **~2.09×** |
-| Phase align | **&lt;0.02°** |
-| Residual cut | **64–84%** |
-
-**CTAs:**  
-- **Buy Residual Governance · $199** → https://www.slidphilabs.com/pay?sku=consulting  
-- **After purchase → Access** → `/access?product=residual-governance`
+| Product | Line |
+|---------|------|
+| **PCC** | Hosted lossless compression. Send a file, get a smaller one back, restore every byte. Nothing to install. Silesia 51,498,645 · $9/day · $39/mo · 2 GB free |
+| **TNSSRC** | The local engine. Compress where the file sits, verify with decode plus SHA-256. 43,724,575 · 12/12 DECODE_OK · AGPL $0 |
+| **pulsar** | Free GPLv3 binary for your own machine. No account, no phone-home. Silesia 55,745,438 · $0 |
+| **TRUSTREAM** | The PCC plan for live logs — agent traces, SIEM, telemetry in 4 KiB tiles. Empty shrinks · never inflates · on a PCC seat |
+| **Agent-Rider** | Signed identity for AI agents — a name that lasts fifteen minutes and proves itself on public keys. Solo $13.31/mo · live at agentrider.fly.dev |
+| **Warrant** | Signed mandates — these hosts, these actions, this spend cap — plus a receipt when the job runs. In Rider Bundle and Team seats |
+| **Tollkeeper** | Ten live metered tools behind the lab meter. Call it, meter ticks, receipt files. Pay per call |
+| **CuNi** | One program, 53 targets. Python, Go, and JS must print the same stdout, or it refuses. Studio $0 · signed Ed25519 audit receipts |
+| **ExactOdds** | Provably-fair game rules — commit-reveal dice with identical rules on six runtimes. Open source · AGPL / commercial |
+| **AwLPay** | Any token, any chain, converted through checkable value — or refused. x402 rails. Tron · BTC · Lightning · XLM · BSC |
+| **Quikgater** | Pay-per-fact web fetching for agents. No subscription for a snippet. Pay per fetch |
+| **TEACHAiD** | Campus app with a personal teacher that cites the textbook, builds curriculum, and speaks it aloud. Live campus · teacher API moving to Llama |
+| **Chamber** | Two-key JSON seal. One share is useless; every envelope carries its custody stamp. $9/mo · $99/yr · 33/33 tests green |
 
 ---
 
-## 3. Proof (`#proof`)
+## 02 Building now
 
-**Section label:** RESULTS · PUBLIC BENCHES
-
-| Card | Big line |
-|------|----------|
-| Zeros × 1k | **8 B** packed |
-| Ramp × 1k | **~141×** vs brotli-class |
-| Walk series | **Crushing** vs gzip-class |
-| Stance | **#1** on shapes we target |
+Dated, in progress, no vapor. Private R&D is labeled as such. Current items (Oct 2026): Llama teacher rollout for TEACHAiD, x402 money rails, monorepo verse fusion, new instruments. Edit dates in `index.html`; do not let entries go stale.
 
 ---
 
-## 4. ZRW (`#zrw`)
+## 03 Proof
 
-**Buttons (exact Stripe):**  
-- See for yourself → `/try`  
-- npm stub → zero-range-wave-compression  
-- Starting Gate $79 → https://www.slidphilabs.com/pay?sku=gc-year  
-- Pro $249 → https://www.slidphilabs.com/pay?sku=gc-year  
-- l33t $699 → https://www.slidphilabs.com/pay?sku=gc-year  
+Public benches with numbers (Silesia scores, decode rates, test counts). Every claim links to its run. No claim without a receipt.
 
 ---
 
-## 5. Packages (`#packages`)
+## 04 From code
 
-| Card | Footer |
-|------|--------|
-| **residual-governance** (featured gold) | Buy $199 · Access |
-| **zero-range-wave-compression** | Starting Gate · Access |
-| **shard-zip · shard-tsdb · slid-phi** | Get access |
-
----
-
-## 6. How you get the engine (`#access-how`)
-
-1. **Try Gate or buy** — Stripe / free review  
-2. **Land on Access** — `/access?product=…&session=…`  
-3. **Private install** — signed URL / tarball. Interim: email subject **PACKAGE ACCESS**
-
----
-
-## 7. Pricing (`#pricing`) — full map
-
-### Champion & support
-
-| Product | Price | Checkout |
-|---------|------:|----------|
-| Residual Governance | $199 | https://www.slidphilabs.com/pay?sku=consulting |
-| Support + Integration | $199 | https://www.slidphilabs.com/pay?sku=consulting |
-| Blackjack | $199 | https://www.slidphilabs.com/pay?sku=oss-support |
-| shard-zip | $199 | https://www.slidphilabs.com/pay?sku=oss-support |
-| shard-tsdb | $199 | https://www.slidphilabs.com/pay?sku=oss-support |
-| slid-phi | $199 | https://www.slidphilabs.com/pay?sku=consulting |
-| GAO entry | $1 | https://www.slidphilabs.com/olympiad |
-| Consulting | $250 | https://www.slidphilabs.com/pay?sku=consulting |
-
-### ZRW gates
-
-| Product | Price | Checkout |
-|---------|------:|----------|
-| Starting Gate | $79 | https://www.slidphilabs.com/pay?sku=gc-year |
-| Pro Starter | $249 | https://www.slidphilabs.com/pay?sku=gc-year |
-| l33t Unlimited | $699 | https://www.slidphilabs.com/pay?sku=gc-year |
-
-### Fuel
-
-| Product | Price | Checkout |
-|---------|------:|----------|
-| Try Gate chip-in | $9 | https://www.slidphilabs.com/pps |
-| Sponsor | $29 | https://www.slidphilabs.com/pay?sku=sponsor |
-| Donate | $29.99 | https://www.slidphilabs.com/pay?sku=donate |
+Full catalog link-out. Keep counts in sync with `llms.txt` / `ai.txt`.
 
 ---
 
 ## Access page (`/access`)
 
-**Query params:**  
-- `product` — e.g. residual-governance, zrw-starting-gate, zrw-pro-starter, zrw-l33t-unlimited  
-- `session` — Stripe Checkout Session id (`cs_…`)
+**Query params:** `product` (e.g. residual-governance, zrw-starting-gate) · `session` (Stripe Checkout Session id `cs_…`).
 
-**When session present:**  
-Show “Checkout session received” + deliverable + mailto PACKAGE ACCESS prefilled with product + session.
+**When session present:** show “Checkout session received” + deliverable + mailto PACKAGE ACCESS prefilled with product + session.
+**When product only:** show buy CTA + already-paid email path.
 
-**When product only:**  
-Show buy CTA + already-paid email path.
-
-**Keyword:** **PACKAGE ACCESS** → corey@slidphilabs.com only
-
+**Keyword:** **PACKAGE ACCESS** → corey@slidphilabs.com only.
 **Do not** put the real engine on public npm or a permanent public URL.
-
-**Future (needs host secret):**  
-Server retrieve session → `payment_status === 'paid'` → signed download URL. Secret key never in browser.
-
----
-
-## Try Gate (`/try`)
-
-Unchanged paths A/B. Add nav Champion + link Residual Governance $199 for buyers who skip free gate.
+**Future (needs host secret):** server retrieve session → `payment_status === 'paid'` → signed download URL. Secret key never in browser.
 
 ---
 
@@ -211,8 +120,7 @@ From `splabs-brand` **BRAND.md**: *gold ornate metal · teal/cyan glow · lotus 
 | Eye blue | `#5ba8ff` | secondary buttons |
 
 **Type:** Cinzel (gold banners / brand) + IBM Plex Sans/Mono  
-**House mark:** `/assets/logos/logo-slid-phi-labs.jpg?v=13`  
-**Product marks:** `/assets/logos/logo-*.jpg`  
+**House mark:** `/assets/logos/logo-slid-phi-labs.jpg?v=14`  
 **Poster:** `https://www.slidphilabs.com/assets/now/og.jpg` (hero + footer strip)
 
 ---
@@ -221,8 +129,9 @@ From `splabs-brand` **BRAND.md**: *gold ornate metal · teal/cyan glow · lotus 
 
 | Do | Don’t |
 |----|--------|
-| Tagline + See for yourself → Try Gate | “Under Construction” |
-| Lead with CDDG + Mirrored Cost champion | Residual coefficients / hierarchy internals |
+| Tagline + proof-first ledger | “Under Construction” |
+| Every claim with a receipt | Residual coefficients / hierarchy internals |
 | Full Stripe map wired | Dead `*.vercel.app` links |
 | Stub honesty + /access delivery | “Download full source on npm” |
 | Master poster full-bleed | Crop third-eye or banners |
+| Date every Building-now entry | Undated vapor |
