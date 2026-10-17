@@ -62,7 +62,7 @@
     }
 
     function renderResult(j) {
-      if (!j.ok) { busy("It refused that file: " + escapeHtml(j.error || "unknown reason") + "."); return; }
+      if (!j.ok) { busy("It refused that file: " + escapeHtml(j.message || j.error || "unknown reason") + "."); return; }
       packedB64 = j.packed_b64;
       var raw = j.raw_bytes, packed = j.packed_bytes;
       var pct = raw > 0 ? Math.round((1 - packed / raw) * 100) : 0;
@@ -101,7 +101,7 @@
       })
         .then(function (r) { return r.json(); })
         .then(function (j) {
-          if (!j.ok) { busy("Restore failed: " + escapeHtml(j.error || "unknown") + "."); return; }
+          if (!j.ok) { busy("Restore failed: " + escapeHtml(j.message || j.error || "unknown") + "."); return; }
           var back = Uint8Array.from(atob(j.raw_b64), function (c) { return c.charCodeAt(0); });
           var same = back.length === originalBytes.length &&
             back.every(function (b, i) { return b === originalBytes[i]; });

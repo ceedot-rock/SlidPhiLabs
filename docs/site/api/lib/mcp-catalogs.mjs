@@ -77,7 +77,7 @@ export const CATALOGS = [
     id: "aware",
     title: "PCC (AWARE is a retired alias)",
     entries: [
-      { id: "engine", name: "PCC", note: "Hosted compressor. Files and live 4 KiB pipe, one seat. $9/day · $39/mo · $390/yr. Board stamp 51,498,645. Paid access, no source.", url: SITE + "/pcc" },
+      { id: "engine", name: "PCC", note: "Hosted compressor, tool-called only (MCP/API key, never browser uploads). Files and live 4 KiB pipe, one seat. $9/day · $39/mo · $390/yr. Board stamp 51,498,645. Paid access, no source.", url: SITE + "/pcc" },
       { id: "stream", name: "PCC stream", note: "4 KiB ZERO+STORE pipe for agent logs / SIEM. Same PCC seat.", url: SITE + "/trustream" },
       { id: "meter", name: "PCC meter", note: "First 2 GB each month free, then 8¢/GB.", url: SITE + "/pps" },
     ],

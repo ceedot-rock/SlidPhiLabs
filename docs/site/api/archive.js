@@ -8,6 +8,8 @@ import { packArchive, parseArchive, isPccz, crc32 } from "./lib/pccz.mjs";
 import { lbDecode } from "./lib/engines.mjs";
 import { meterSnapshot } from "./lib/usage-meter.mjs";
 import { codexStamp, codexHeaders } from "./lib/codex-key.js";
+import { applyClaimSeat, claimAuthError } from "./lib/claim-seat.mjs";
+import { toolGate, toolOnly402 } from "./lib/tool-gate.mjs";
 
 const MAX_MEMBERS = 64;
 const MAX_TOTAL = 16 * 1024 * 1024;
@@ -15,7 +17,7 @@ const MAX_TOTAL = 16 * 1024 * 1024;
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-API-Key");
   for (const [k, v] of Object.entries(codexHeaders())) res.setHeader(k, v);
 }
 
@@ -46,6 +48,15 @@ export default async function handler(req, res) {
     return json(res, 200, { ...CARD, usage: meterSnapshot(req), ...codexStamp({ half: "archive" }) });
   }
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "POST only" });
+
+  // Agent license bridge + tool gate: hosted compression serves tools only.
+  const seat = applyClaimSeat(req);
+  if (!seat.ok && seat.tokenPresent) {
+    return json(res, 401, claimAuthError(seat.reason));
+  }
+  if (!toolGate(req, seat).ok) {
+    return json(res, 402, toolOnly402());
+  }
 
   try {
     const j = req.body && typeof req.body === "object" && !Buffer.isBuffer(req.body) ? req.body : null;

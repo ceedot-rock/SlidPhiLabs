@@ -7,6 +7,7 @@ import { runHostedEncode } from "./lib/hosted-job.mjs";
 import { meterSnapshot } from "./lib/usage-meter.mjs";
 import { codexStamp, codexHeaders } from "./lib/codex-key.js";
 import { applyClaimSeat, claimAuthError } from "./lib/claim-seat.mjs";
+import { toolGate, toolOnly402 } from "./lib/tool-gate.mjs";
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -64,6 +65,10 @@ export default async function handler(req, res) {
   const seat = applyClaimSeat(req);
   if (!seat.ok && seat.tokenPresent) {
     return json(res, 401, claimAuthError(seat.reason));
+  }
+  // Tool-called only: hosted compression serves tools, not browser uploads.
+  if (!toolGate(req, seat).ok) {
+    return json(res, 402, toolOnly402());
   }
 
   try {
