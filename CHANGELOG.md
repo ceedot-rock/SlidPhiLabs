@@ -1,5 +1,10 @@
 # Changelog — Slid Phi Labs npm Packages
 
+Tag convention: `v2.x` moves with `slid-phi` (repo root), `v1.x` moves with
+`spl-pay-per-suite`. A `v*` tag push publishes both (see npm-publish.yml).
+`@slidphi/phi-rest` and `trugame-v0.4` are not in the publish matrix and do
+not take version bumps with releases.
+
 Version history for the npm packages published under the `cptasz13` npm account.
 
 All packages live on https://www.slidphilabs.com.
