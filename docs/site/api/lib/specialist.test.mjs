@@ -1,8 +1,20 @@
 import assert from "node:assert/strict";
+import { accessSync, constants } from "node:fs";
 import { classify, encodeFill, decodeFill, encodeHosted, decodeFrame, inputToRaw } from "./specialist.mjs";
+import { pulsarBin } from "./pulsar-host.mjs";
+import { lbBin } from "./engines.mjs";
 
-process.env.PULSAR_BIN = process.env.PULSAR_BIN || "/home/ceedotrock/projects/SlidPhiLabs/docs/site/bin/pulsar";
-process.env.LB_BIN = process.env.LB_BIN || "/home/ceedotrock/projects/SlidPhiLabs/docs/site/bin/lb";
+// Engine binaries resolve via PULSAR_BIN/LB_BIN or ./bin under cwd.
+// No stale home-directory defaults: an absent engine is a real state,
+// and "store" is then the correct answer, not a failure.
+const hasEngines = [pulsarBin(), lbBin()].every((p) => {
+  try {
+    accessSync(p, constants.X_OK);
+    return true;
+  } catch {
+    return false;
+  }
+});
 
 const z1e6 = Buffer.alloc(1_000_000);
 const e1 = encodeFill(z1e6);
@@ -16,8 +28,13 @@ assert.equal(classify(text).seat, "struct_text");
 const enc = await encodeHosted(text);
 assert.equal(enc.ok, true);
 assert.equal(enc.host_fallback, false);
-assert.ok(["pulsar", "lz", "paq", "lbr1", "aware", "repeat", "walk_lcg", "walk_d1"].includes(enc.method), enc.method);
-assert.ok(enc.packed_bytes < text.length);
+if (hasEngines) {
+  assert.ok(["pulsar", "lz", "paq", "lbr1", "aware", "repeat", "walk_lcg", "walk_d1"].includes(enc.method), enc.method);
+  assert.ok(enc.packed_bytes < text.length);
+} else {
+  assert.equal(enc.method, "store");
+  assert.equal(enc.packed_bytes, text.length);
+}
 const back = await decodeFrame(Buffer.from(enc.packed_b64, "base64"));
 assert.ok(back.equals(text), "hosted RT");
 
