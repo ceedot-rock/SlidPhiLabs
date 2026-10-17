@@ -1,0 +1,50 @@
+# Publishes GPR mirrors of the npm packages without renaming anything on npm.
+# Unscoped names cannot publish to GitHub Packages, so each package is
+# published here under @ceedot-rock/<base> (CI-checkout rename only; the
+# committed package.json files keep their npm names). Requires nothing but
+# the automatic GITHUB_TOKEN.
+#
+#   npm (canonical):  slid-phi, spl-pay-per-suite
+#   GPR (mirrors):    @ceedot-rock/slid-phi, @ceedot-rock/spl-pay-per-suite,
+#                     @ceedot-rock/phi-rest
+
+name: publish-gpr
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg:
+          - "."
+          - "packages/spl-pay-per-suite"
+          - "packages/phi-rest"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
+      - name: Mirror name to @ceedot-rock scope (CI checkout only)
+        working-directory: ${{ matrix.pkg }}
+        run: |
+          base="$(node -p "require('./package.json').name.split('/').pop()")"
+          npm pkg set "name=@ceedot-rock/$base"
+          npm pkg delete private
+          npm pkg set "publishConfig.registry=https://npm.pkg.github.com"
+          node -p "require('./package.json').name"
+      - run: npm publish
+        working-directory: ${{ matrix.pkg }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
