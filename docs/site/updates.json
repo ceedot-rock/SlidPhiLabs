@@ -1,13 +1,23 @@
 {
   "service": "Slid Phi Labs \u2014 Lab Feed",
-  "version": "1.2.2",
-  "updated": "2026-09-12",
+  "version": "1.2.3",
+  "updated": "2026-10-15",
   "social": {
     "x": "https://x.com/slidphilabs",
     "handle": "@slidphilabs"
   },
   "description": "Product updates, news, plans, and social pointers.",
   "items": [
+    {
+      "id": "u-catalog-2026-10-15",
+      "date": "2026-10-15",
+      "type": "product",
+      "title": "Catalog stamps: CuNi 0.10.0, Silesia board, AwLPay 0.5%",
+      "body": "CuNi CLI v0.10.0 checks 53 targets. Matching gate: Python, Go, and JavaScript. PCC board stamp 51,498,645. TNSSRC 43,724,575. Cite silesia.json. AwLPay free tier is 0.5% per payment, no fixed fee. Tollkeeper meters ten live tools. Current prices live in pricing.json.",
+      "href": "https://www.slidphilabs.com/llms.txt",
+      "href_label": "llms.txt",
+      "tags": ["catalog", "cuni", "silesia", "awlpay"]
+    },
     {
       "id": "u-catalog-six-2026-09-12",
       "date": "2026-09-12",

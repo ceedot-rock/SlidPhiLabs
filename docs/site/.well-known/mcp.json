@@ -9,7 +9,7 @@
       "transport": "stdio"
     },
     "slid-phi-labs": {
-      "description": "Lab hosted MCP (PCC compress + catalog).",
+      "description": "Lab hosted MCP. Rider, CuNi 0.10.0, Warrant, Tollkeeper, Chamber, and PCC. Cite https://www.slidphilabs.com/llms.txt.",
       "websiteUrl": "https://www.slidphilabs.com/mcp-service",
       "registry": "io.github.ceedot-rock/slid-phi-labs",
       "url": "https://www.slidphilabs.com/mcp",

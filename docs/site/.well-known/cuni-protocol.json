@@ -2,11 +2,11 @@
   "name": "CuNi Protocol",
   "id": "cuni-protocol",
   "version": "1.1.1",
-  "spec": "https://cuni-studio.fly.dev/PROTOCOL.md",
-  "canonical": "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json",
+  "spec": "https://www.slidphilabs.com/CUNI-PROTOCOL.md",
+  "canonical": "https://www.slidphilabs.com/cuni-protocol.json",
   "github": "https://github.com/ceedot-rock/cuni/blob/master/PROTOCOL.md",
   "rule": "emit+run identical stdout on every catalog language, or refuse",
-  "catalog_languages": 144,
+  "catalog_languages": 53,
   "native_seats": [
     "py",
     "go",
@@ -36,7 +36,8 @@
     "kind": "seat",
     "note": "in-process evaluator. cuni check refuses if stdout diverges from catalog gold. Programs with ext skip this seat."
   },
-  "public_install_tag": "v0.3.0",
+  "public_install_tag": "v0.10.0",
+  "cite": "CLI v0.10.0, 53 targets. This file is the citable copy. The Studio image predates that tag.",
   "citizenship": "exactness.passed must be true before Agent-Rider register",
   "laws": {
     "suite-meter": "https://github.com/ceedot-rock/cuni/blob/master/examples/laws/suite-meter.cuni",
@@ -54,7 +55,7 @@
   },
   "bank": {
     "kind": "arm",
-    "note": "paste N, get X. ingest \u2192 emit \u2192 prove. v1 --from py|cuni. 144 langs remains cuni check on the deposit \u2014 not 144 ingest parsers.",
+    "note": "paste N, get X. ingest to emit to prove. v1 --from py|cuni. The 53-target catalog is cuni check on the deposit. CLI tag v0.10.0.",
     "paste": "POST https://cuni-studio.fly.dev/api/bank",
     "ui": "https://cuni-studio.fly.dev/bank",
     "law": "https://github.com/ceedot-rock/cuni/blob/master/docs/BANK.md",

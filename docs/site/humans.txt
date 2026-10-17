@@ -2,14 +2,21 @@ Team: Slid Phi Labs
 From: Cherry Hill, NJ, US
 Contact: corey@slidphilabs.com
 Site: https://www.slidphilabs.com
+Updated: 2026-10-15
 
-PCC — hosted lossless compression — $9/day · $39/mo (200 GB) · $390/yr (2 TB) — then 8¢/GB — https://www.slidphilabs.com/pcc
+Agent-Rider — signed agent name — Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631 — https://www.slidphilabs.com/rider
+CuNi — CLI v0.10.0, 53 targets, same stdout or refuse — Studio $0 · closed-app exception $390/yr — https://www.slidphilabs.com/cuni
+Warrant — signed mandate and receipt — $29/mo · $290/yr — https://www.slidphilabs.com/warrant
+Tollkeeper — ten live metered tools on Rider — https://www.slidphilabs.com/tollkeeper
+PCC — hosted lossless compression — $9/day · $39/mo (200 GB) · $390/yr (2 TB) — then 8¢/GB — board stamp 51,498,645 — https://www.slidphilabs.com/pcc
+TNSSRC — local compressor — Silesia 43,724,575 — https://www.slidphilabs.com/silesia
 TRUSTREAM — live log pipe, same PCC plan — https://www.slidphilabs.com/trustream
+pulsar 2.5.0 — free GPLv3 compressor — Silesia 55,745,438 — closed embed $390/yr — https://www.slidphilabs.com/pulsar
 Chamber — two-key JSON — $9/mo · $99/yr — https://www.slidphilabs.com/chamber
-Agent-Rider — Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631 — https://www.slidphilabs.com/rider
-CuNi Studio — $0 — write once, print many languages; Python/Go/JS must match — https://cuni-studio.fly.dev/
-pulsar 2.5.0 — free open-source compressor — https://www.slidphilabs.com/pulsar
+AwLPay — free tier 0.5% per payment, no fixed fee · Pro $39/mo · L33t $799/mo — https://www.slidphilabs.com/awlpay
 Lab Pass — $490/yr (Chamber year + PCC Year; not Rider) — https://www.slidphilabs.com/lab-pass
-Compare — https://www.slidphilabs.com/compare
-Try 24h — https://www.slidphilabs.com/box
+TEACHAiD — campus rollout; teacher chat in the repo calls Meta Llama — https://www.slidphilabs.com/products
+Silesia board — https://www.slidphilabs.com/silesia.json
+Prices — https://www.slidphilabs.com/pricing.json
+Agents — https://www.slidphilabs.com/llms.txt
 MCP — https://www.slidphilabs.com/mcp

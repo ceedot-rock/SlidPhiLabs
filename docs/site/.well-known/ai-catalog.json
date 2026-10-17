@@ -2,8 +2,9 @@
   "specVersion": "1.0",
   "name": "Slid Phi Labs",
   "url": "https://www.slidphilabs.com",
-  "lead_product": "pcc",
-  "cash_product": "chamber",
+  "updated": "2026-10-15",
+  "lead_product": "rider",
+  "cash_product": "gc-year",
   "entries": [
     {
       "identifier": "urn:ai:slidphilabs.com:mcp:lab",

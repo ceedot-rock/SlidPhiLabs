@@ -1,11 +1,11 @@
 {
   "name": "Slid Phi Labs",
-  "version": "1.19.0",
-  "updated": "2026-09-12",
+  "version": "1.23.0",
+  "updated": "2026-10-15",
   "site": "https://www.slidphilabs.com",
-  "lead_product": "pcc",
+  "lead_product": "rider",
   "cash_product": "gc-year",
-  "one_liner": "PCC $9/$39/$390. TRUSTREAM included. Chamber $9/$99. Rider Solo $13.31-Fleet $631. Warrant/Ops in bundle or Team. CuNi $0. First 2 GB/month free, then 8\u00a2/GB.",
+  "one_liner": "Tools that check. Rider Solo $13.31–Fleet $631. CuNi 0.10.0, 53 targets, Studio $0. Warrant $29/$290. Tollkeeper meters ten live tools. PCC $9/$39/$390 (board 51,498,645). TNSSRC 43,724,575. Chamber $9/$99. AwLPay 0.5% with no fixed fee. Stripe / x402.",
   "protocols": [
     "x402"
   ],

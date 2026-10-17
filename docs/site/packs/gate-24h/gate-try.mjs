@@ -15,4 +15,4 @@ const r = await fetch(BASE + "/api/process", {
 });
 const j = await r.json();
 console.log("process", r.status, "zrw_bytes", j.zrw_bytes, "hours_left", g.hours_left);
-console.log("AWARE Year $490 → https://www.slidphilabs.com/pay?sku=gc-year");
+console.log("PCC Year $390 → https://www.slidphilabs.com/pay?sku=gc-year");

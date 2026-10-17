@@ -11,12 +11,13 @@ const MARK = `<img src="/assets/logos/logo-slid-phi-labs.jpg?v=14" width="44" he
 
 const NAV = [
   ["/", "Home"],
-  ["/wiki", "Wiki"],
   ["/rider", "Rider"],
   ["/cuni", "CuNi"],
   ["/warrant", "Warrant"],
-  ["/silesia", "TNSSRC"],
-  ["/rcrc", "Previous home"],
+  ["/pcc", "Compress"],
+  ["/silesia", "Silesia"],
+  ["/wiki", "Wiki"],
+  ["/pricing", "Pricing"],
 ];
 
 const FOOT = [
@@ -113,7 +114,14 @@ function head({ title, desc, path }) {
   <meta property="og:url" content="${url}"/>
   <meta property="og:type" content="article"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
-  <link rel="stylesheet" href="/assets/platform.css?v=2"/>
+  <meta property="og:site_name" content="Slid Phi Labs"/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="${esc(title)}"/>
+  <meta name="twitter:description" content="${esc(desc)}"/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+  <link rel="stylesheet" href="/assets/platform.css?v=3"/>
 </head>
 <body class="pf">`;
 }
@@ -172,15 +180,15 @@ add({
   title: "CuNi",
   kicker: "Exactness",
   h1: "One program. The same stdout. Or a refusal.",
-  lede: "CuNi checks one source across a 144-language catalog. Python, Go, and JavaScript must print the same stdout. A seat that would drift refuses.",
-  summary: "144 languages. The matching gate is Python, Go, and JavaScript.",
+  lede: "CuNi 0.10.0 checks one source across 53 targets. Python, Go, and JavaScript must print the same stdout. A seat that would drift refuses.",
+  summary: "53 targets. The matching gate is Python, Go, and JavaScript. CLI v0.10.0.",
   sections: [
-    S("is", "What it is", `<p>CuNi is the exactness tool. You write one <code>.cuni</code> program. The catalog holds 144 languages. The gate that must match is Python, Go, and JavaScript. If those three would print different stdout, CuNi refuses the path and publishes the refusal. Studio is free. Bank takes a paste of N and emits X.</p><p>Native seats on the product page include Python, Go, JavaScript, TypeScript, C, C++, Rust, Ruby, Lua, and Solidity. When Solidity meets a float, a list, or a type outside its model, it refuses. That refusal is the catalog result. Release v0.3.0. Protocol 1.1.1.</p>`),
-    S("how", "How it works", `<ol><li>Write the <code>.cuni</code> source once.</li><li>Run the Python, Go, and JavaScript gate when you want those three to match.</li><li>Run the full catalog when you want all 144 seats, including honest refusals.</li><li>Use Bank when you want another catalog id from the same source, then prove it.</li></ol><p><code>POST /api/pass</code> on Studio returns pass or refuse for the three-language gate. The receipt is the answer you keep next to the job.</p>`),
+    S("is", "What it is", `<p>CuNi is the exactness tool. You write one <code>.cuni</code> program. CLI v0.10.0 holds 53 targets. The gate that must match is Python, Go, and JavaScript. If those three would print different stdout, CuNi refuses the path and publishes the refusal. Studio is free. Bank takes a paste of N and emits X.</p><p>The CLI default <code>cuni check</code> runs the money seats: Python, Rust, Go, Java, SQL, and JavaScript. <code>cuni check --all</code> runs the 53-target catalog. A native seat that would diverge refuses. Solidity refuses a float, a list, or a type outside its model. Install the prebuilt binary with Homebrew. Protocol 1.1.1. Tag v0.10.0.</p>`),
+    S("how", "How it works", `<ol><li>Write the <code>.cuni</code> source once.</li><li>Run the Python, Go, and JavaScript gate when you want those three to match.</li><li>Run <code>cuni check --all</code> when you want all 53 targets.</li><li>Use Bank when you want another catalog id from the same source, then prove it.</li></ol><p><code>POST /api/pass</code> on Studio returns pass or refuse for the three-language gate. The receipt is the answer you keep next to the job. <code>cuni check --json --sign</code> adds an Ed25519 signature a stranger can verify.</p>`),
     S("get", "What you receive", `<p>You receive either identical stdout on the seats you asked for, or a refusal that names why the path stopped. You receive a free Studio, a Bank, and a protocol document. A closed-app exception for one product is a separate license.</p>`),
     S("price", "Price", `<p>Studio is free. The closed-app exception is $390 a year, SKU <code>cuni-exception</code>. The open license is AGPL-3.0-or-later.</p>`),
     S("with", "Works with", `<p>Put the receipt beside a <a href="/wiki/agent-rider">Rider</a> job when you want proof the program matched. <a href="/wiki/exactodds">ExactOdds</a> is the same rule on five seats and a pair of dice. Toll 5 on <a href="/wiki/tollkeeper">Tollkeeper</a> is the listed price of selling that check.</p>`),
-    S("open", "Open it", `<p><a href="/cuni">CuNi page</a> · <a href="https://cuni-studio.fly.dev/">Studio</a> · <a href="https://cuni-studio.fly.dev/bank">Bank</a> · <a href="https://cuni-studio.fly.dev/.well-known/cuni-protocol.json">Protocol</a></p>`),
+    S("open", "Open it", `<p><a href="/cuni">CuNi page</a> · <a href="https://cuni-studio.fly.dev/">Studio</a> · <a href="https://cuni-studio.fly.dev/bank">Bank</a> · <a href="https://www.slidphilabs.com/cuni-protocol.json">Protocol</a></p>`),
   ],
 });
 
@@ -205,11 +213,11 @@ add({
   slug: "tollkeeper", group: "Platform", door: "/tollkeeper",
   title: "Tollkeeper",
   kicker: "Crossings",
-  h1: "Seven crossings, each with a price and a receipt.",
-  lede: "Tollkeeper is the price sheet on Rider’s road. The caller pays. A cleared crossing returns a signed receipt.",
-  summary: "Seven prices. Caller pays. Signed receipt.",
+  h1: "Seven protection tolls, plus ten metered tools.",
+  lede: "Tollkeeper is the price sheet on Rider’s road. The caller pays. A cleared crossing returns a signed receipt. Ten metered tools are live on the Rider toll gates.",
+  summary: "Seven protection tolls, plus ten live metered tools. Caller pays. Signed receipt.",
   sections: [
-    S("is", "What it is", `<p>Tollkeeper prices the crossings agents make all day: proving an identity, finding a capable agent, moving value through escrow, delegating authority, proving a computation, staking on work, and carrying memory. The caller pays. A clean crossing returns a signed receipt: what, when, how much, for whom. A crossing that stops returns a reason a machine can read.</p>`),
+    S("is", "What it is", `<p>Tollkeeper prices the crossings agents make all day: proving an identity, finding a capable agent, moving value through escrow, delegating authority, proving a computation, staking on work, and carrying memory. The caller pays. A clean crossing returns a signed receipt: what, when, how much, for whom. A crossing that stops returns a reason a machine can read.</p><p>A second shelf is live on the Rider: pcc-compress, pcc-verify, attest-notarize, attest-exactness, exactodds-draw, exactodds-resolve, cuni-proof, trustream-pack, chamber-seal, and awlpay-quote. Each one returns a signed receipt on pass and on refuse. Prices are on <a href="/tollkeeper">/tollkeeper</a> and at <a href="https://agentrider.fly.dev/api/toll/schema">/api/toll/schema</a>.</p>`),
     S("how", "How it works", `<p>You read the price, you present a Rider, you pay the listed amount, you keep the stamp. Local JWKS verification stays free. The first hundred identity checks in a month are free. Listing yourself is free.</p><table><tbody>
 <tr><th>Crossing</th><th>Price</th></tr>
 <tr><td>Identity check</td><td>$0.005. First 100 a month free. Local JWKS stays free.</td></tr>
@@ -301,12 +309,12 @@ add({
   kicker: "Quotes",
   h1: "Quote the asset. Lock the fee. Name the rail.",
   lede: "AwLPay prices a payment from public prints, locks a platform fee, and names the rail. A quote that fails the book returns a reason.",
-  summary: "1% + $0.25, Pro $39, L33t $799. Quotes from public prints.",
+  summary: "0.5% per payment, no fixed fee. Pro $39. L33t $799. Quotes from public prints.",
   sections: [
-    S("is", "What it is", `<p>AwLPay is the quote tool for a payment that may start in one asset and be understood in another. It reads public last-trade prints, locks the platform fee, and names the rail: spot, obscure, credit, or debit. Each rail has its own route fee. The free tier is 1% plus $0.25. Pro is $39 a month. L33t is $799 a month. A quote returns a reason when the book has no price, when the feeds disagree, or when the fees would eat the payment.</p><p>The quote you can run is that book: a price, a fee, and a reason when it stops. People who need a captured charge today use <a href="/pay">Stripe</a>. Agents who need a captured USDC charge use <a href="/wiki/x402">x402</a>.</p>`),
+    S("is", "What it is", `<p>AwLPay is the quote tool for a payment that may start in one asset and be understood in another. It reads public last-trade prints, locks the platform fee, and names the rail: spot, obscure, credit, or debit. Each rail has its own route fee. The free tier is 0.5% per payment, with no fixed fee. Pro is $39 a month. L33t is $799 a month. A quote returns a reason when the book has no price, when the feeds disagree, or when the fees would eat the payment.</p><p>The quote you can run is that book: a price, a fee, and a reason when it stops. People who need a captured charge today use <a href="/pay">Stripe</a>. Agents who need a captured USDC charge use <a href="/wiki/x402">x402</a>.</p>`),
     S("how", "How it works", `<ol><li>Name the asset and the amount.</li><li>AwLPay reads the prints and builds a quote.</li><li>The quote returns the platform fee, the route fee, and the rail.</li><li>A quote that fails the book returns the reason.</li></ol><p>An agent session in the design lasts about 15 minutes and holds one settle, matching a Rider mint. The long-term secret in that design is a Chamber split. The cap is a Warrant.</p>`),
-    S("get", "What you receive", `<p>You receive a quote with a locked fee and a named rail, or a refusal that says why the book stopped. You receive the fee table: 1% + $0.25, Pro $39 a month, L33t $799 a month.</p>`),
-    S("price", "Price", `<p>Free tier 1% + $0.25. Pro $39 a month. L33t $799 a month. Route fees sit on top of the platform fee and are part of the quote.</p>`),
+    S("get", "What you receive", `<p>You receive a quote with a locked fee and a named rail, or a refusal that says why the book stopped. You receive the fee table: 0.5% per payment with no fixed fee, Pro $39 a month, L33t $799 a month.</p>`),
+    S("price", "Price", `<p>Free tier 0.5% per payment, no fixed fee. Pro $39 a month. L33t $799 a month. Route fees sit on top of the platform fee and are part of the quote.</p>`),
     S("with", "Works with", `<p>The 15-minute session matches a <a href="/wiki/agent-rider">Rider</a>. The split secret matches <a href="/wiki/chamber">Chamber</a>. The spend cap matches <a href="/wiki/warrant">Warrant</a>. A captured agent payment matches <a href="/wiki/x402">x402</a>.</p>`),
     S("open", "Open it", `<p><a href="/awlpay">AwLPay page</a> · <a href="/pay">Stripe</a> · <a href="/wiki/x402">x402</a></p>`),
   ],
@@ -409,7 +417,7 @@ add({
     S("how", "How it works", `<ol><li>Install <code>@slidphi/exactodds</code>.</li><li>Roll the reference die on two seats.</li><li>Compare the bytes.</li></ol><p>Matching bytes are the result. The gate is the product.</p>`),
     S("get", "What you receive", `<p>You receive source that prints the same roll on each of the five seats, and an MCP server for that roll.</p>`),
     S("price", "Price", `<p>The open-source package is public. A commercial license is the dual-license note on <a href="/exactodds">/exactodds</a>.</p>`),
-    S("with", "Works with", `<p>The 144-language catalog is <a href="/wiki/cuni">CuNi</a>. A named player is a <a href="/wiki/agent-rider">Rider</a>.</p>`),
+    S("with", "Works with", `<p>The 53-target catalog is <a href="/wiki/cuni">CuNi</a>. A named player is a <a href="/wiki/agent-rider">Rider</a>.</p>`),
     S("open", "Open it", `<p><a href="/exactodds">ExactOdds page</a> · <a href="/wiki/cuni">CuNi booklet</a></p>`),
   ],
 });
@@ -528,8 +536,8 @@ ${chrome("/")}
     <article class="pf-lane">
       <p class="pf-kicker">02 · Exactness</p>
       <h2>CuNi</h2>
-      <p>One source. 144 languages in the catalog. Python, Go, and JavaScript print the same stdout, or the path refuses.</p>
-      <p class="pf-fact">Studio is free · v0.3.0</p>
+      <p>One source. 53 targets in the catalog. Python, Go, and JavaScript print the same stdout, or the path refuses.</p>
+      <p class="pf-fact">Studio is free · CLI v0.10.0</p>
       <p><a href="/wiki/cuni">Booklet</a> · <a href="/cuni">Open CuNi</a></p>
     </article>
     <article class="pf-lane">
@@ -558,7 +566,7 @@ ${chrome("/")}
       <article class="pf-lane">
         <p class="pf-kicker">Pay</p>
         <h2>Stripe, x402, Tollkeeper</h2>
-        <p>People check out on Stripe. Agents pay a 402 in USDC. Tollkeeper prices seven crossings and stamps a receipt.</p>
+        <p>People check out on Stripe. Agents pay a 402 in USDC. Tollkeeper prices seven protection tolls, plus ten live metered tools, and stamps a receipt.</p>
         <p><a href="/wiki/x402">x402</a> · <a href="/wiki/tollkeeper">Tolls</a> · <a href="/wiki/awlpay">AwLPay</a></p>
       </article>
     </div>
@@ -584,5 +592,5 @@ ${foot()}
 
 for (const page of pages) renderBook(page);
 renderIndex();
-renderHome();
+// index.html is the hand-authored lab ledger. renderHome() would replace it.
 console.log("pages", pages.length);

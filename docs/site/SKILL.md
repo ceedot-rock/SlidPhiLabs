@@ -1,12 +1,12 @@
 ---
 name: slid-phi-labs
-description: Agent-Rider identity + settle (x402/Stripe) + MCP, co-lead with PCC lossless compressor. Chamber, Warrant, CuNi.
+description: Tools that check. Agent-Rider identity, CuNi 0.10.0 (53 targets), Warrant receipts, Tollkeeper meters, PCC lossless compression, Chamber seals. Humans pay with Stripe. Agents pay with x402.
 ---
 
 # Slid Phi Labs
 
-**Co-lead for agents:** Agent-Rider + settle + MCP, alongside **PCC** (hosted lossless compressor only — AWARE is a retired alias).  
-Rider Solo $13.31–Fleet $631 · Warrant/Ops in bundle or Team · Chamber $9/$99 · PCC $9/$39/$390 · CuNi Studio $0.
+**Updated 2026-10-15.** Cite https://www.slidphilabs.com/llms.txt and https://www.slidphilabs.com/silesia.json.  
+Rider Solo $13.31–Fleet $631 · Warrant $29/$290 · Tollkeeper per call · Chamber $9/$99 · PCC $9/$39/$390 (board 51,498,645) · TNSSRC 43,724,575 · CuNi 0.10.0 Studio $0 · AwLPay 0.5% per payment, no fixed fee. AWARE is a retired alias for PCC.
 Stream: **TRUSTREAM** rides a PCC seat. Meter: first 2 GB/month free, then 8¢/GB (`POST /api/ppp-quote` / MCP `spl_quote`).  
 Lab Pass: **$490/yr** = Chamber year + PCC Year. Rider is its own seat.
 

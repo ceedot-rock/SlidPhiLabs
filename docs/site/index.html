@@ -8,6 +8,7 @@
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://www.slidphilabs.com/"/>
+  <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Slid Phi Labs"/>
@@ -26,10 +27,50 @@
     "name": "Slid Phi Labs",
     "url": "https://www.slidphilabs.com/",
     "logo": "https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg?v=14",
-    "description": "Hosted lossless compression, a two-key JSON seal, signed agent identity, and a small language that refuses to lie.",
+    "description": "Tools that check: a signed agent name, an exact program across 53 targets, hosted lossless compression, a payment quote, and a teaching campus. Cherry Hill, NJ.",
     "founder": { "@type": "Person", "name": "Corey Tasz" },
     "address": { "@type": "PostalAddress", "addressLocality": "Cherry Hill", "addressRegion": "NJ", "addressCountry": "US" },
     "sameAs": ["https://x.com/slidphilabs", "https://github.com/ceedot-rock"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Slid Phi Labs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A computation lab in Cherry Hill, New Jersey, built by Corey Tasz. The public tools check a claim: a signed agent name, an exact program, a restore-safe file, a payment quote, and a receipt. Inbox corey@slidphilabs.com."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the official Silesia result?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Official Silesia 12 is 211,938,580 bytes in. TNSSRC packs to 43,724,575 bytes. PCC pcc-0.12.1 packs to 51,498,645 bytes. pulsar 2.5.0 packs to 55,745,438 bytes. All three restore 12 of 12 files. The board is https://www.slidphilabs.com/silesia.json."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is CuNi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CuNi 0.10.0 takes one program and checks 53 targets. Python, Go, and JavaScript must print the same stdout, or the path refuses. Studio is free. Install with brew tap ceedot-rock/cuni && brew install cuni."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does an agent buy a Rider seat?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "POST https://www.slidphilabs.com/api/x402-products with sku rider-solo. Pay the HTTP 402 in USDC on Solana or Base, then retry with the X-PAYMENT header. Humans use https://www.slidphilabs.com/pay?sku=rider-solo."
+        }
+      }
+    ]
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -59,7 +100,7 @@
       <a class="pf-btn pf-btn-line" href="/rider">Name an agent — $13.31/mo</a>
     </p>
     <p class="pf-fact">One person builds this — Corey Tasz. Plans from $9/mo.</p>
-    <p class="pf-proof"><a href="/silesia">TNSSRC 43,724,575 · PCC 43,669,635 on Silesia</a> — 12 of 12 back, byte-identical. <a href="/pcc">Try your own file</a>.</p>
+    <p class="pf-proof"><a href="/silesia">TNSSRC 43,724,575 · PCC 51,498,645 on Silesia</a> — 12 of 12 back, byte-identical. <a href="/pcc">Try your own file</a>.</p>
     <nav class="lb-jump" aria-label="On this page"><span>On this page:</span> <a href="#shipped">Shipped</a> <a href="#building">Building now</a> <a href="#proof">Proof</a> <a href="#code">From code</a></nav>
   </section>
 
@@ -73,7 +114,7 @@
       <li class="lb-row">
         <p class="lb-name"><a href="/pcc">PCC</a></p>
         <p class="lb-what">Hosted lossless compression. Send a file, get a smaller one back, restore every byte. Nothing to install.</p>
-        <p class="lb-proof">Silesia 43,669,635 · $9/day · $39/mo · 2 GB free</p>
+        <p class="lb-proof">Silesia 51,498,645 · $9/day · $39/mo · 2 GB free</p>
       </li>
       <li class="lb-row">
         <p class="lb-name"><a href="/silesia">TNSSRC</a></p>
@@ -196,7 +237,7 @@
       <thead><tr><th scope="col">Engine</th><th scope="col">Packed bytes</th><th scope="col">Decode</th></tr></thead>
       <tbody>
         <tr><th scope="row"><a href="/silesia">TNSSRC</a></th><td>43,724,575</td><td>12/12 OK</td></tr>
-        <tr><th scope="row"><a href="/pcc">PCC</a></th><td>43,669,635</td><td>12/12 OK</td></tr>
+        <tr><th scope="row"><a href="/pcc">PCC</a></th><td>51,498,645</td><td>12/12 OK</td></tr>
         <tr><th scope="row"><a href="/pulsar">pulsar</a></th><td>55,745,438</td><td>12/12 OK</td></tr>
       </tbody>
     </table>

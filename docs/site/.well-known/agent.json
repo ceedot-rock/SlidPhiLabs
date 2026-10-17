@@ -1,9 +1,10 @@
 {
   "name": "Slid Phi Labs",
-  "description": "PCC hosted lossless compression, TRUSTREAM, Chamber, Agent-Rider, Warrant, CuNi (Bank arm: paste N get X). AWARE is a retired alias for PCC. TRU8 is the zeros demo, not PCC.",
+  "description": "Tools that check. Rider, CuNi 0.10.0 (53 targets), Warrant, Tollkeeper, PCC (board stamp 51,498,645), TNSSRC (43,724,575), Chamber, AwLPay. AWARE is a retired alias for PCC. TRU8 is the zeros specialist.",
   "url": "https://www.slidphilabs.com/",
   "documentation": "https://www.slidphilabs.com/agents",
   "mcp": "https://www.slidphilabs.com/mcp",
-  "version": "1.20.2",
-  "products": ["pcc", "trustream", "chamber", "agent-rider", "warrant", "cuni"]
+  "version": "1.23.0",
+  "updated": "2026-10-15",
+  "products": ["agent-rider", "cuni", "warrant", "tollkeeper", "pcc", "tnssrc", "trustream", "pulsar", "chamber", "awlpay", "exactodds", "teachaid"]
 }

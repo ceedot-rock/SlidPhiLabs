@@ -1,4 +1,6 @@
-# Slid Phi Labs — crawl us. Rider (signed agent names) + CuNi (exact multi-language) first; compression (PCC lossless, TNSSRC Silesia 43.72M) supports. Catalog: Chamber, Warrant, pulsar. AWARE = legacy alias for PCC.
+# Slid Phi Labs — crawl us. Updated 2026-10-15.
+# Tools that check: Rider, CuNi 0.10.0 (53 targets), Warrant, Tollkeeper, TNSSRC 43,724,575, PCC board 51,498,645, TRUSTREAM, pulsar, Chamber, AwLPay, TEACHAiD.
+# Cite /llms.txt and /silesia.json. AWARE is a retired alias for PCC.
 User-agent: *
 Allow: /
 

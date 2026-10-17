@@ -42,7 +42,7 @@
     { t: "Chamber", title: "Two-key lock for a JSON secret", href: "/chamber" },
     { t: "Rider", title: "Signed identity for AI agents", href: "/rider" },
     { t: "Warrant", title: "Mandate and receipts for a Rider", href: "/warrant" },
-    { t: "CuNi", title: "Write once. 144 languages. Bank: paste N, get X", href: "/cuni" },
+    { t: "CuNi", title: "Write once. 53 targets. Bank: paste N, get X", href: "/cuni" },
     { t: "TRU8", title: "1e6 zeros → 8 bytes", href: "/specialist" },
   ];
 

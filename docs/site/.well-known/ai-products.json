@@ -1,9 +1,13 @@
 {
   "id": "slidphilabs-agent-store",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "updated": "2026-10-15",
   "lab": "Slid Phi Labs",
   "canonical": "https://www.slidphilabs.com/.well-known/ai-products.json",
   "store": "https://spl-lab-agent.fly.dev/",
+  "store_status": "suspended",
+  "live": "https://www.slidphilabs.com/cuni",
+  "note": "CLI v0.10.0, 53 targets. brew tap ceedot-rock/cuni && brew install cuni. The Fly app spl-lab-agent is not serving.",
   "license": "https://www.slidphilabs.com/licensing.json",
   "pay": "https://www.slidphilabs.com/api/agent",
   "verbs": ["check", "translate", "squeeze"],
@@ -13,7 +17,7 @@
       "name": "CuNi Check",
       "repo": "https://github.com/ceedot-rock/cuni",
       "post": "/v1/check",
-      "pin": "v0.1.10"
+      "pin": "v0.10.0"
     },
     {
       "id": "translate",

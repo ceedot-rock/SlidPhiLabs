@@ -25,7 +25,7 @@ const AUTH = {
 };
 
 const STANDING = [
-  { sku: "cuni-studio", name: "CuNi Studio", usd: "0", kind: "exactness", blurb: "Write once. 144 languages. Same stdout or refuse. Native seats: py/go/js/ts/c/cpp/rs." },
+  { sku: "cuni-studio", name: "CuNi Studio", usd: "0", kind: "exactness", blurb: "Write once. CLI v0.10.0, 53 targets. Same stdout or refuse. Matching gate: py/go/js." },
   { sku: "cuni-exception", name: "CuNi · closed-app exception", usd: "390", kind: "exception", blurb: "Ship CuNi inside one closed product for one year. Not the compressor." },
   { sku: "chamber-month", name: "Chamber · monthly cloak license", usd: "9", kind: "chamber", blurb: "License to seal new JSON for 30 days. Open already-sealed blobs with both keys." },
   { sku: "chamber-year", name: "Chamber · annual cloak license", usd: "99", kind: "chamber", blurb: "License to seal new JSON for a year. Stored secrets do not expire." },
@@ -67,10 +67,10 @@ export default async function handler(req, res) {
   const body = {
     ok: true,
     name: "Slid Phi Labs — Platform Discovery",
-    version: "1.22.1",
+    version: "1.23.0",
     lead_product: "rider",
     cash_product: "pcc-month",
-    storefront: ["PCC", "TRUSTREAM", "Chamber", "Agent-Rider", "Warrant", "CuNi"],
+    storefront: ["Agent-Rider", "CuNi", "Warrant", "Tollkeeper", "PCC", "TNSSRC", "TRUSTREAM", "pulsar", "Chamber", "AwLPay", "ExactOdds", "TEACHAiD"],
     well_known_agent: "https://www.slidphilabs.com/.well-known/agent.json",
     auth: AUTH,
     mcp: {
@@ -85,7 +85,7 @@ export default async function handler(req, res) {
       status: "/api/box",
       law: "Every product POST is 24h black box, then a paid seat.",
     },
-    updated: "2026-09-13",
+    updated: "2026-10-15",
     rails: {
       human: "POST /api/checkout { sku } or /pay?sku=",
       agent: "POST /api/x402-products { sku }",
@@ -144,7 +144,7 @@ export default async function handler(req, res) {
       { id: "chamber", name: "Chamber", url: "https://www.slidphilabs.com/chamber" },
       { id: "rider", name: "Agent-Rider", url: "https://agentrider.fly.dev/", mcp: "https://agentrider.fly.dev/api/mcp" },
       { id: "warrant", name: "Warrant", url: "https://www.slidphilabs.com/warrant" },
-      { id: "cuni", name: "CuNi", url: "https://cuni-studio.fly.dev/", protocol: "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json", public_install_tag: "v0.1.10" },
+      { id: "cuni", name: "CuNi", url: "https://cuni-studio.fly.dev/", protocol: "https://www.slidphilabs.com/cuni-protocol.json", public_install_tag: "v0.10.0" },
     ],
     team_mesh: {
       url: "https://spl-team-mesh.fly.dev",
@@ -160,7 +160,7 @@ export default async function handler(req, res) {
       "Public encode/decode compression leader on named domains (standings + RT). Pivot: Great Agentic Olympiad (gaming) + residual governance / agent security.",
     tagline: "Best encode & decode — gaming & security next.",
     flagship:
-      "PCC hosted lossless compressor. Official Silesia 12: PCC 51,498,645 · pulsar 55,745,438 · champ 50,541,135. Not a #1 claim. TRU8 zeros specialist is POST /api/specialist, not /api/compress.",
+      "Tools that check. Official Silesia 12: TNSSRC 43,724,575 · PCC pcc-0.12.1 51,498,645 · pulsar 55,745,438 · champ 50,541,135. Cite silesia.json. TRU8 zeros specialist is POST /api/specialist.",
     pivot: {
       gaming: {
         name: "Great Agentic Olympiad",

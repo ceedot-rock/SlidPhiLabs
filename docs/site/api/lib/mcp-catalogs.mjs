@@ -6,7 +6,7 @@ export const CATALOGS = [
     id: "sku",
     title: "Prices",
     entries: [
-      { id: "cuni", name: "CuNi Studio", price: "$0", note: "Write once. Print many languages. Python, Go, and JS must match, or it refuses. Bank arm: paste N get X. Free playground. v0.1.10 + cuni-bank-0.1.0.", url: "https://cuni-studio.fly.dev/", related: ["license", "cuni"] },
+      { id: "cuni", name: "CuNi Studio", price: "$0", note: "CLI v0.10.0. One program, 53 targets. Python, Go, and JS must match, or it refuses. Bank arm: paste N get X. Free playground.", url: "https://cuni-studio.fly.dev/", related: ["license", "cuni"] },
       { id: "cuni-exception", name: "CuNi closed-app exception", price: "$390/yr", note: "Pay $390/year to ship CuNi inside one closed product. Public tree is AGPL-3.0-or-later.", url: SITE + "/pay?sku=cuni-exception", related: ["license"] },
       { id: "pulsar-exception", name: "pulsar closed-embed exception", price: "$390/yr", note: "Pay $390/year to embed pulsar in one closed product for one year. pulsar source stays GPLv3.", url: SITE + "/pay?sku=pulsar-exception", related: ["license", "pulsar"] },
       { id: "chamber-month", name: "Chamber month", price: "$9/mo", note: "Two-key JSON seal. License to seal new secrets. Open existing seals with both keys, no extra payment.", url: SITE + "/chamber", related: ["chamber", "box"] },
@@ -33,7 +33,7 @@ export const CATALOGS = [
     entries: [
       { id: "gplv3", name: "Public licenses", note: "pulsar is GPLv3. CuNi is AGPL-3.0-or-later. Closed-product embed uses a paid exception.", url: SITE + "/licensing.json" },
       { id: "seat", name: "Hosted seat", note: "You buy the right to run PCC, Chamber, Rider, or Lab Pass. You do not get the production engine.", url: SITE + "/licensing.json" },
-      { id: "exception", name: "Closed-app exception", note: "Written license, $490/yr. CuNi: cuni-exception. pulsar: pulsar-exception. One closed product, one year.", url: SITE + "/COMMERCIAL-LICENSE.md" },
+      { id: "exception", name: "Closed-app exception", note: "Written license, $390/yr. CuNi: cuni-exception. pulsar: pulsar-exception. One closed product, one year.", url: SITE + "/COMMERCIAL-LICENSE.md" },
     ],
   },
   {
@@ -42,8 +42,8 @@ export const CATALOGS = [
     entries: [
       { id: "lab", name: "www.slidphilabs.com", url: SITE, note: "Public site, checkout, and APIs." },
       { id: "studio", name: "cuni-studio.fly.dev", url: "https://cuni-studio.fly.dev/", note: "Free CuNi playground. Write once, print many languages. Python, Go, and JS must match, or refuse. Bank: /bank." },
-      { id: "rider", name: "agentrider.fly.dev", url: "https://agentrider.fly.dev/", note: "Signed agent identity. $79/mo · $790/yr on the Labs seat." },
-      { id: "teachaid", name: "teachaid.fly.dev", url: "https://teachaid.fly.dev/", note: "Personal teacher surface." },
+      { id: "rider", name: "agentrider.fly.dev", url: "https://agentrider.fly.dev/", note: "Signed agent identity. Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631." },
+      { id: "teachaid", name: "teachaid.fly.dev", url: "https://www.slidphilabs.com/products", note: "Campus rollout. Teacher chat in the repository calls Meta Llama. The Fly app is stopped." },
       { id: "mcp", name: "/mcp", url: SITE + "/mcp", note: "This server. Catalog, prices, and quotes." },
     ],
   },
@@ -54,7 +54,7 @@ export const CATALOGS = [
       { id: "law", name: "Exactness law", note: "One program. Python, Go, and JS print the same thing, or it refuses to compile. Playground is free.", url: "https://cuni-studio.fly.dev/" },
       { id: "check", name: "cuni check", note: "The gate: nothing publishes on FAIL.", url: "https://github.com/ceedot-rock/cuni" },
       { id: "spend", name: "spend-control.cuni", note: "Flagship example loaded in the free Studio.", url: "https://cuni-studio.fly.dev/" },
-      { id: "bank", name: "CuNi Bank", note: "Arm of CuNi. Paste N, get X. Exactness or refuse. v1 from Python. POST /api/bank. Not 119 ingest parsers.", url: "https://cuni-studio.fly.dev/bank" },
+      { id: "bank", name: "CuNi Bank", note: "Arm of CuNi. Paste N, get X. Exactness or refuse. v1 from Python. POST /api/bank.", url: "https://cuni-studio.fly.dev/bank" },
     ],
   },
   {
@@ -69,7 +69,7 @@ export const CATALOGS = [
     id: "rider",
     title: "Agent-Rider",
     entries: [
-      { id: "issue", name: "Issue rider", note: "Issue a signed agent credential. POST /api/rider/issue with a merchant key. Team seat $79/mo · $790/yr.", url: "https://agentrider.fly.dev/docs" },
+      { id: "issue", name: "Issue rider", note: "Issue a signed agent credential. POST /api/rider/issue with a merchant key. Seats: Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631.", url: "https://agentrider.fly.dev/docs" },
       { id: "verify", name: "Verify rider", note: "Check a credential locally, free, no callback.", url: "https://agentrider.fly.dev/demo" },
     ],
   },
@@ -77,7 +77,7 @@ export const CATALOGS = [
     id: "aware",
     title: "PCC (AWARE is a retired alias)",
     entries: [
-      { id: "engine", name: "PCC", note: "Hosted compressor. Files and live 4 KiB pipe, one seat. $9/day · $49/mo · $490/yr. Paid access, no source.", url: SITE + "/pcc" },
+      { id: "engine", name: "PCC", note: "Hosted compressor. Files and live 4 KiB pipe, one seat. $9/day · $39/mo · $390/yr. Board stamp 51,498,645. Paid access, no source.", url: SITE + "/pcc" },
       { id: "stream", name: "PCC stream", note: "4 KiB ZERO+STORE pipe for agent logs / SIEM. Same PCC seat.", url: SITE + "/trustream" },
       { id: "meter", name: "PCC meter", note: "First 2 GB each month free, then 8¢/GB.", url: SITE + "/pps" },
     ],
@@ -86,8 +86,8 @@ export const CATALOGS = [
     id: "pulsar",
     title: "pulsar",
     entries: [
-      { id: "cousin", name: "Public compressor", note: "Free GPLv3 lossless compressor you run on your machine. Silesia 55,745,438. $490/yr to embed closed.", url: "https://github.com/ceedot-rock/pulsar-best" },
-      { id: "exception", name: "Closed-embed exception", note: "$490/yr. SKU pulsar-exception. One closed product, one year.", url: SITE + "/pay?sku=pulsar-exception" },
+      { id: "cousin", name: "Public compressor", note: "Free GPLv3 lossless compressor you run on your machine. Silesia 55,745,438. $390/yr to embed closed.", url: "https://github.com/ceedot-rock/pulsar-best" },
+      { id: "exception", name: "Closed-embed exception", note: "$390/yr. SKU pulsar-exception. One closed product, one year.", url: SITE + "/pay?sku=pulsar-exception" },
       { id: "silesia", name: "Silesia 2.5.0", note: "Measured size: 55,745,438 of 211,938,580 raw bytes. Proof, not a SKU.", url: SITE + "/" },
     ],
   },
@@ -95,8 +95,8 @@ export const CATALOGS = [
     id: "measure",
     title: "How pulsar compares",
     entries: [
-      { id: "silesia-gzip9", name: "gzip -9 Silesia", note: "Opponent size — 67,631,918 · 0.319." },
-      { id: "silesia-pulsar", name: "pulsar 2.5.0 Silesia", note: "Public GPLv3 compressor — 55,745,438 · 0.263. Free to build; $490/yr to embed closed." },
+      { id: "silesia-gzip9", name: "gzip -9 Silesia", note: "Opponent size — 67,631,990 · 0.319. Cite silesia.json." },
+      { id: "silesia-pulsar", name: "pulsar 2.5.0 Silesia", note: "Public GPLv3 compressor — 55,745,438 · 0.263. Free to build; $390/yr to embed closed." },
       { id: "silesia-xz6", name: "xz -6 Silesia", note: "Opponent size — 49,408,952 · 0.233." },
     ],
   },
@@ -123,7 +123,7 @@ export const CATALOGS = [
       { id: "spl-pay-per-suite", name: "spl-pay-per-suite", note: "Quote helper for metered PCC jobs. First 2 GB/month free, then 8¢/GB.", url: "https://www.npmjs.com/package/spl-pay-per-suite" },
       { id: "shard-zip", name: "shard-zip", note: "Public GPLv3 zip helper on npm.", url: "https://www.npmjs.com/package/shard-zip" },
       { id: "shard-tsdb", name: "shard-tsdb", note: "Public GPLv3 time-series helper on npm.", url: "https://www.npmjs.com/package/shard-tsdb" },
-      { id: "pulsar", name: "pulsar 2.5.0", note: "cargo/git GPLv3. Free to build; $490/yr to embed closed.", url: SITE + "/pulsar" },
+      { id: "pulsar", name: "pulsar 2.5.0", note: "cargo/git GPLv3. Free to build; $390/yr to embed closed.", url: SITE + "/pulsar" },
     ],
   },
   {

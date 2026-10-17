@@ -2,10 +2,10 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "Agents talk. Rider delivers. Discover MCP + settle Rider seats (x402 USDC or Stripe). Also PCC lossless compressor, Chamber, CuNi. AWARE is a retired PCC alias. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight. Coming next: file sharing between agents (same signed seats) — not live. No KYC verified claims.",
-  "version": "2.3.0",
-  "updated": "2026-09-24",
-  "lead_product": "pcc",
+  "description": "Tools that check. Rider names the agent (x402 USDC or Stripe). CuNi 0.10.0 checks 53 targets. Warrant files the receipt. Tollkeeper meters ten live tools. PCC is the hosted compressor (board stamp 51,498,645). TNSSRC is the local engine (43,724,575). AWARE is a retired PCC alias. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight. File sharing between agents is next and is not live.",
+  "version": "2.4.0",
+  "updated": "2026-10-15",
+  "lead_product": "rider",
   "cash_product": "pcc-month",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
@@ -81,9 +81,9 @@
       "name": "CuNi Studio",
       "role": "language",
       "url": "https://cuni-studio.fly.dev/",
-      "protocol": "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json",
+      "protocol": "https://www.slidphilabs.com/cuni-protocol.json",
       "price": "$0",
-      "note": "v0.1.10 + cuni-bank-0.1.0. 144 languages. Same stdout or refuse. Bank: paste N get X. Native seats: py/go/js/ts/c/cpp/rs. Protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json"
+      "note": "CLI v0.10.0. 53 targets. Same stdout or refuse. Matching gate py/go/js. Bank: paste N get X. Protocol: https://www.slidphilabs.com/cuni-protocol.json"
     },
     {
       "id": "chamber",

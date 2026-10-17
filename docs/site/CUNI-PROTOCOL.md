@@ -1,10 +1,10 @@
 # CuNi Protocol
 
-**Canonical JSON:** https://cuni-studio.fly.dev/.well-known/cuni-protocol.json  
-**This document:** https://cuni-studio.fly.dev/PROTOCOL.md  
+**Canonical JSON:** https://www.slidphilabs.com/cuni-protocol.json  
+**This document:** https://www.slidphilabs.com/CUNI-PROTOCOL.md  
 **Source:** https://github.com/ceedot-rock/cuni/blob/master/PROTOCOL.md
 
-CuNi is 144 languages. One program. Same stdout on every catalog seat, or the compiler refuses. That rule is the protocol.
+CuNi is 53 targets. CLI v0.10.0. One program. Same stdout on every catalog seat, or the compiler refuses. That rule is the protocol.
 
 ## 1. Exactness
 
@@ -12,7 +12,7 @@ A CuNi program with no `ext` blocks **emits and runs** on every language in the 
 
 `cuni run` evaluates in-process (no emit). That runner is a **seat**: `cuni check` also runs it and refuses if it diverges from catalog gold. Programs with `ext` skip the in-process seat (they already left the portable core).
 
-Native seats today: Python, Go, JavaScript, TypeScript, C, C++, Rust. Other catalog ids still emit+run (Python lowering until that seat is native). `--receipt` records `native` vs `lowering`.
+Native seats today: Python, Go, JavaScript, TypeScript, C, C++, Rust. `cuni check` runs Python, Rust, Go, Java, SQL, and JavaScript. `cuni check --all` runs the 53-target catalog. The matching gate is Python, Go, and JavaScript. Other catalog ids still emit+run (Python lowering until that seat is native). `--receipt` records `native` vs `lowering`.
 
 A citizen receipt (`cuni check --receipt`) carries `source_hash`: SHA-256 of the `.cuni` bytes. The program is that hash, not the path. Agent-Rider refuses register if a claimed hash does not match the source.
 
@@ -62,8 +62,8 @@ Formulas, fills, and order. House genes.
 | Surface | URL |
 |---------|-----|
 | Studio | https://cuni-studio.fly.dev/ |
-| Well-known | https://cuni-studio.fly.dev/.well-known/cuni-protocol.json |
-| Protocol (lab site) | https://www.slidphilabs.com/.well-known/cuni-protocol.json |
+| Canonical JSON | https://www.slidphilabs.com/cuni-protocol.json |
+| Site well-known | https://www.slidphilabs.com/.well-known/cuni-protocol.json |
 | Agent-Rider MCP | https://agentrider.fly.dev/api/mcp |
 | Agent-Rider card | https://agentrider.fly.dev/.well-known/agent.json |
 | GitHub | https://github.com/ceedot-rock/cuni |

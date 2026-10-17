@@ -1,9 +1,10 @@
 {
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "CuNi exactness, Chamber cash, Agent-Rider. MCP at /mcp. x402 auto-claim. One lab account.",
+  "description": "Tools that check. Rider, CuNi 0.10.0 (53 targets), Warrant, Tollkeeper, PCC, Chamber. MCP at /mcp. x402 for agents, Stripe for humans.",
   "url": "https://www.slidphilabs.com",
-  "version": "1.15.0",
+  "version": "1.23.0",
+  "updated": "2026-10-15",
   "provider": {
     "organization": "Slid Phi Labs",
     "url": "https://www.slidphilabs.com"
