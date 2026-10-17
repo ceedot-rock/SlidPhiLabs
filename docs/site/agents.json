@@ -3,8 +3,8 @@
   "ok": true,
   "name": "Slid Phi Labs",
   "description": "Tools that check. Rider names the agent (x402 USDC or Stripe). CuNi 0.10.0 checks 53 targets. Warrant files the receipt. Tollkeeper meters ten live tools. PCC is the hosted compressor (board stamp 51,498,645). TNSSRC is the local engine (43,724,575). AWARE is a retired PCC alias. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight. File sharing between agents is next and is not live.",
-  "version": "2.4.0",
-  "updated": "2026-10-15",
+  "version": "2.4.1",
+  "updated": "2026-10-17",
   "lead_product": "rider",
   "cash_product": "pcc-month",
   "auth": {
@@ -144,6 +144,27 @@
       "role": "mandate",
       "url": "https://www.slidphilabs.com/warrant",
       "price": "$29/mo · $290/yr. Needs a Rider."
+    },
+    {
+      "id": "exactodds",
+      "name": "ExactOdds",
+      "role": "gaming",
+      "url": "https://www.slidphilabs.com/exactodds",
+      "note": "Provably-fair commit-reveal dice, identical rules on six runtimes. Open source · AGPL / commercial."
+    },
+    {
+      "id": "awlpay",
+      "name": "AwLPay",
+      "role": "payments",
+      "url": "https://www.slidphilabs.com/awlpay",
+      "note": "Any token, any chain, converted through checkable value — or refused. x402 rails. Free tier 0.5% per payment."
+    },
+    {
+      "id": "teachaid",
+      "name": "TEACHAiD",
+      "role": "teaching",
+      "url": "https://www.slidphilabs.com/products",
+      "note": "Campus app with a personal teacher that cites the textbook. In rollout."
     }
   ],
   "agent_centerpiece": {
