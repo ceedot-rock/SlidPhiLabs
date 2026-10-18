@@ -16,6 +16,7 @@
  */
 
 import { verifyClaim } from "./lib/x402-claim.mjs";
+import { reportPurchase } from "./lib/ga4.mjs";
 
 const FULFILL_EMAIL = "corey@slidphilabs.com";
 const BASE = "https://www.slidphilabs.com";
@@ -755,6 +756,12 @@ export default async function handler(req, res) {
         ? new Date(v.payload.exp * 1000).toISOString()
         : null;
     }
+    void reportPurchase({
+      sku,
+      amountCents: v.payload.amount_cents,
+      currency: "usd",
+      orderId: v.payload.order_id,
+    });
     return res.status(200).json({
       ok: true,
       paid: true,
@@ -844,6 +851,14 @@ export default async function handler(req, res) {
       currency,
     });
 
+    if (paid) {
+      void reportPurchase({
+        sku,
+        amountCents: amountTotal,
+        currency,
+        orderId: body.id,
+      });
+    }
     return res.status(200).json({
       ok: true,
       paid,
