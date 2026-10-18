@@ -17,6 +17,7 @@
 
 import { verifyClaim } from "./lib/x402-claim.mjs";
 import { reportPurchase } from "./lib/ga4.mjs";
+import { recordSale } from "./lib/sales-ledger.mjs";
 
 const FULFILL_EMAIL = "corey@slidphilabs.com";
 const BASE = "https://www.slidphilabs.com";
@@ -762,6 +763,13 @@ export default async function handler(req, res) {
       currency: "usd",
       orderId: v.payload.order_id,
     });
+    void recordSale({
+      sku,
+      amountCents: v.payload.amount_cents,
+      currency: "usd",
+      orderId: v.payload.order_id,
+      rail: "x402",
+    });
     return res.status(200).json({
       ok: true,
       paid: true,
@@ -857,6 +865,13 @@ export default async function handler(req, res) {
         amountCents: amountTotal,
         currency,
         orderId: body.id,
+      });
+      void recordSale({
+        sku,
+        amountCents: amountTotal,
+        currency,
+        orderId: body.id,
+        rail: "stripe",
       });
     }
     return res.status(200).json({
