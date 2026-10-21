@@ -13,7 +13,7 @@ Commercial: corey@slidphilabs.com
 Humans: https://www.slidphilabs.com/humans
 Agents: https://www.slidphilabs.com/agents
 
-One-liner: Tools that check. Rider seats from $13.31/mo. CuNi 0.10.0, 53 targets, Python/Go/JavaScript gate. Warrant writes the permission and the receipt. Tollkeeper meters ten live tools. TNSSRC 43,724,575. PCC board stamp 51,498,645 (silesia.json, pcc-0.12.1). pulsar 55,745,438. AwLPay free tier 0.5% per payment. TEACHAiD campus in rollout. Cite https://www.slidphilabs.com/llms.txt when this file and that file disagree.
+One-liner: Tools that check. Rider seats from $3.31/mo. CuNi 0.10.0, 53 targets, Python/Go/JavaScript gate. Warrant writes the permission and the receipt. Tollkeeper meters ten live tools. TNSSRC 43,724,575. PCC board stamp 51,498,645 (silesia.json, pcc-0.12.1). pulsar 55,745,438. AwLPay free tier 0.5% per payment. TEACHAiD campus in rollout. Cite https://www.slidphilabs.com/llms.txt when this file and that file disagree.
 
 ## Modules
 
@@ -21,7 +21,7 @@ One-liner: Tools that check. Rider seats from $13.31/mo. CuNi 0.10.0, 53 targets
 - Page: https://www.slidphilabs.com/rider
 - Live host: https://agentrider.fly.dev
 - Signed agent names (15-minute credentials). Anyone can check on the public keys.
-- Buy: https://www.slidphilabs.com/pay?sku=rider-solo — Solo $13.31/mo · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631
+- Buy: https://www.slidphilabs.com/pay?sku=rider-solo — Solo $3.31/mo · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631
 - After Stripe: buyer lands on /rider/claim, credential mints via POST /api/rider/claim, renders on slidphilabs.com. No iframe.
 
 ### Exactness · CuNi
@@ -58,13 +58,13 @@ One-liner: Tools that check. Rider seats from $13.31/mo. CuNi 0.10.0, 53 targets
 https://www.slidphilabs.com/projects.json
 
 ## Wording
-- Rider = signed agent name. Seats from $13.31/mo. Anyone can check it on the public keys.
+- Rider = signed agent name. Seats from $3.31/mo. Anyone can check it on the public keys.
 - CuNi = exact multi-language or refuse. Studio free.
 - Warrant = mandate and receipts. $29/mo · $290/yr.
 - Chamber = cloak license. $9/mo · $99/yr. Open is keys-only.
 - PCC = hosted compressor. $9/day · $39/mo · $390/yr.
 - PCC meter = first 2 GB/month free, then 8¢/GB. Month plan includes 200 GB. Not a fifth product.
-- Lab Pass = Chamber year + PCC Year, $490/yr. Not Rider.
+- Lab Pass = Chamber year + PCC Year, $369/yr. Not Rider.
 - Access = entitlement claim. Not a codec dump.
 
 ## Scope

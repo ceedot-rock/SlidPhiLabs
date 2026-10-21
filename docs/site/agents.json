@@ -253,7 +253,7 @@
     "sku_cheat_sheet": [
       {
         "sku": "rider-solo",
-        "usd": 13.31,
+        "usd": 3.31,
         "human": "/pay?sku=rider-solo"
       },
       {
@@ -348,7 +348,7 @@
       },
       {
         "sku": "lab-pass",
-        "usd": 490,
+        "usd": 369,
         "human": "/pay?sku=lab-pass",
         "note": "Chamber year+PCC Year"
       },

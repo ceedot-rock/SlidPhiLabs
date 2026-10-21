@@ -44,7 +44,7 @@ Hosted lossless compression, a two-key JSON seal, signed agent identity, and a s
 
 **Hero cards:**
 1. **Compress a file** — first 2 GB free
-2. **Name an agent** — $13.31/mo
+2. **Name an agent** — $3.31/mo
 3. One person builds this — Corey Tasz. Plans from $9/mo.
 
 **Silesia strip:** TNSSRC 43,724,575 · PCC 51,498,645 — 12 of 12 back, byte-identical. Try your own file.
@@ -61,7 +61,7 @@ Each one links to itself: docs, demo, or source.
 | **TNSSRC** | The local engine. Compress where the file sits, verify with decode plus SHA-256. 43,724,575 · 12/12 DECODE_OK · AGPL $0 |
 | **pulsar** | Free GPLv3 binary for your own machine. No account, no phone-home. Silesia 55,745,438 · $0 |
 | **TRUSTREAM** | The PCC plan for live logs — agent traces, SIEM, telemetry in 4 KiB tiles. Empty shrinks · never inflates · on a PCC seat |
-| **Agent-Rider** | Signed identity for AI agents — a name that lasts fifteen minutes and proves itself on public keys. Solo $13.31/mo · live at agentrider.fly.dev |
+| **Agent-Rider** | Signed identity for AI agents — a name that lasts fifteen minutes and proves itself on public keys. Solo $3.31/mo · live at agentrider.fly.dev |
 | **Warrant** | Signed mandates — these hosts, these actions, this spend cap — plus a receipt when the job runs. In Rider Bundle and Team seats |
 | **Tollkeeper** | Ten live metered tools behind the lab meter. Call it, meter ticks, receipt files. Pay per call |
 | **CuNi** | One program, 53 targets. Python, Go, and JS must print the same stdout, or it refuses. Studio $0 · signed Ed25519 audit receipts |

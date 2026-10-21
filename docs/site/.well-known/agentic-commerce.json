@@ -5,7 +5,7 @@
   "site": "https://www.slidphilabs.com",
   "lead_product": "rider",
   "cash_product": "gc-year",
-  "one_liner": "Tools that check. Rider Solo $13.31–Fleet $631. CuNi 0.10.0, 53 targets, Studio $0. Warrant $29/$290. Tollkeeper meters ten live tools. PCC $9/$39/$390 (board 51,498,645). TNSSRC 43,724,575. Chamber $9/$99. AwLPay 0.5% with no fixed fee. Stripe / x402.",
+  "one_liner": "Tools that check. Rider Solo $3.31–Fleet $631. CuNi 0.10.0, 53 targets, Studio $0. Warrant $29/$290. Tollkeeper meters ten live tools. PCC $9/$39/$390 (board 51,498,645). TNSSRC 43,724,575. Chamber $9/$99. AwLPay 0.5% with no fixed fee. Stripe / x402.",
   "protocols": [
     "x402"
   ],
@@ -56,7 +56,7 @@
       "url": "https://www.slidphilabs.com/trustream"
     },
     "rider": {
-      "solo": 13.31,
+      "solo": 3.31,
       "bundle": 19.31,
       "crew": 49,
       "shop": 199,
@@ -75,7 +75,7 @@
       "url": "https://www.slidphilabs.com/pps"
     },
     "lab_pass": {
-      "year": 490,
+      "year": 369,
       "url": "https://www.slidphilabs.com/lab-pass"
     }
   },

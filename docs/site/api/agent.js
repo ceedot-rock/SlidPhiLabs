@@ -34,7 +34,7 @@ const STANDING = [
   { sku: "lab-check", name: "CuNi check", usd: "0.10", kind: "cuni", blurb: "One exactness check." },
   { sku: "lab-translate", name: "CuNi Bank paste", usd: "0.10", kind: "cuni", blurb: "One Bank paste." },
   { sku: "lab-squeeze", name: "PCCX squeeze", usd: "0.10", kind: "pccx", blurb: "One squeeze." },
-  { sku: "rider-solo", name: "Rider · Solo seat", usd: "13.31", kind: "rider", blurb: "Signed agent identity L0–L4. Solo tier." },
+  { sku: "rider-solo", name: "Rider · Solo seat", usd: "3.31", kind: "rider", blurb: "Signed agent identity L0–L4. Solo tier." },
   { sku: "rider-bundle", name: "Rider · Bundle seat", usd: "19.31", kind: "rider", blurb: "Signed agent identity L0–L4. Bundle tier." },
   { sku: "rider-crew", name: "Rider · Crew seat", usd: "49", kind: "rider", blurb: "Signed agent identity L0–L4. Crew tier." },
   { sku: "rider-shop", name: "Rider · Shop seat", usd: "199", kind: "rider", blurb: "Signed agent identity L0–L4. Shop tier." },
@@ -43,7 +43,7 @@ const STANDING = [
   { sku: "rider-ops-year", name: "Rider Ops · annual fleet watch", usd: "290", kind: "rider-ops", blurb: "Year of fleet watch. Needs a Rider seat." },
   { sku: "warrant-month", name: "Warrant · monthly mandate seat", usd: "29", kind: "warrant", blurb: "Signed mandate + receipts for a Rider. Not identity. Pair X-Agent-Rider with X-Agent-Warrant." },
   { sku: "warrant-year", name: "Warrant · annual mandate seat", usd: "290", kind: "warrant", blurb: "Year of mandates and receipts. Needs a Rider token." },
-  { sku: "lab-pass", name: "Lab Pass · annual", usd: "490", kind: "seat", blurb: "Chamber + PCC, 365 days. Not Rider." },
+  { sku: "lab-pass", name: "Lab Pass · annual", usd: "369", kind: "seat", blurb: "Chamber + PCC, 365 days. Not Rider." },
   { sku: "quikgater", name: "Quikgater · pay-per-fact fetch", usd: "usage", kind: "usage", blurb: "Not a seat. Unpaid URL → HTTP 402. Worker: quikgater-worker.ceedotrock.workers.dev" },
   { sku: "oss-support", name: "OSS support", usd: "199.00", kind: "support-oss", blurb: OSS_BLURB },
   { sku: "consulting", name: "Consulting", usd: "250.00", kind: "service", blurb: "Two hours of lab time." },
@@ -192,7 +192,7 @@ export default async function handler(req, res) {
       prove: "https://www.slidphilabs.com/standings.json",
     },
     one_liner:
-      "PCC $9/$39/$390. Chamber $9/mo · $99/yr. CuNi $0. Rider Solo $13.31–Fleet $631. First 2 GB/mo free, then 8¢/GB.",
+      "PCC $9/$39/$390. Chamber $9/mo · $99/yr. CuNi $0. Rider Solo $3.31–Fleet $631. First 2 GB/mo free, then 8¢/GB.",
     starter_path: "https://www.slidphilabs.com/pcc",
     suite_pricing: {
       free_cap_gb: 2,

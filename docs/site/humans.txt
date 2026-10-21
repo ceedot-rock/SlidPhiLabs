@@ -4,7 +4,7 @@ Contact: corey@slidphilabs.com
 Site: https://www.slidphilabs.com
 Updated: 2026-10-15
 
-Agent-Rider — signed agent name — Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631 — https://www.slidphilabs.com/rider
+Agent-Rider — signed agent name — Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631 — https://www.slidphilabs.com/rider
 CuNi — CLI v0.10.0, 53 targets, same stdout or refuse — Studio $0 · closed-app exception $390/yr — https://www.slidphilabs.com/cuni
 Warrant — signed mandate and receipt — $29/mo · $290/yr — https://www.slidphilabs.com/warrant
 Tollkeeper — ten live metered tools on Rider — https://www.slidphilabs.com/tollkeeper
@@ -14,7 +14,7 @@ TRUSTREAM — live log pipe, same PCC plan — https://www.slidphilabs.com/trust
 pulsar 2.5.0 — free GPLv3 compressor — Silesia 55,745,438 — closed embed $390/yr — https://www.slidphilabs.com/pulsar
 Chamber — two-key JSON — $9/mo · $99/yr — https://www.slidphilabs.com/chamber
 AwLPay — free tier 0.5% per payment, no fixed fee · Pro $39/mo · L33t $799/mo — https://www.slidphilabs.com/awlpay
-Lab Pass — $490/yr (Chamber year + PCC Year; not Rider) — https://www.slidphilabs.com/lab-pass
+Lab Pass — $369/yr (Chamber year + PCC Year; not Rider) — https://www.slidphilabs.com/lab-pass
 TEACHAiD — campus rollout; teacher chat in the repo calls Meta Llama — https://www.slidphilabs.com/products
 Silesia board — https://www.slidphilabs.com/silesia.json
 Prices — https://www.slidphilabs.com/pricing.json

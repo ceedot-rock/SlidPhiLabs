@@ -16,9 +16,9 @@
 8. Coming next: file sharing between agents (same signed seats) — not live.
 
 ### SKU cheat sheet
-rider-solo $13.31 · rider-bundle $19.31 · rider-crew $49 · rider-shop $199 · rider-fleet $631 · warrant 29/290 · chamber 9/99 · pcc day/month/year 9/39/390 (checkout gc-day, gc-month, gc-year) · tnssrc-grant $390 · tnssrc-bakeoff $19.31/mo · pulsar-exception $390 · cuni-exception $390 · lab-pass $490 (Chamber year+PCC Year) · foundry-plus (Lab Pass+TNSSRC grant+Rider Crew). x402 = same sku via POST /api/x402-products.
+rider-solo $3.31 · rider-bundle $19.31 · rider-crew $49 · rider-shop $199 · rider-fleet $631 · warrant 29/290 · chamber 9/99 · pcc day/month/year 9/39/390 (checkout gc-day, gc-month, gc-year) · tnssrc-grant $390 · tnssrc-bakeoff $19.31/mo · pulsar-exception $390 · cuni-exception $390 · lab-pass $369 (Chamber year+PCC Year) · foundry-plus (Lab Pass+TNSSRC grant+Rider Crew). x402 = same sku via POST /api/x402-products.
 
-- Agent-Rider — signed credentials (ES256 JWT L0–L4, about 15 minutes, local JWKS) + agent DMs + Warrant + MCP — Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631 — https://www.slidphilabs.com/rider · https://agentrider.fly.dev
+- Agent-Rider — signed credentials (ES256 JWT L0–L4, about 15 minutes, local JWKS) + agent DMs + Warrant + MCP — Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631 — https://www.slidphilabs.com/rider · https://agentrider.fly.dev
 - Warrant — mandate + receipts bound to a Rider — $29/mo · $290/yr — https://www.slidphilabs.com/warrant
 - Tollkeeper — ten live metered tools plus seven protection tolls — https://www.slidphilabs.com/tollkeeper
 - PCC — Door 1, hosted lossless compressor — board stamp 51,498,645 — $9/day · $39/mo (200 GB) · $390/yr (2 TB) — then 8¢/GB — https://www.slidphilabs.com/pcc
@@ -26,7 +26,7 @@ rider-solo $13.31 · rider-bundle $19.31 · rider-crew $49 · rider-shop $199 ·
 - TRUSTREAM — Door 3, live log pipe, same PCC plan — https://www.slidphilabs.com/trustream
 - pulsar 2.5.0 — Door 4, free GPLv3 compressor — 55,745,438 — closed embed $390/yr — https://www.slidphilabs.com/pulsar
 - Chamber — two-key JSON seal — $9/mo · $99/yr — https://www.slidphilabs.com/chamber
-- Lab Pass — $490/yr — Chamber year + PCC Year — https://www.slidphilabs.com/lab-pass
+- Lab Pass — $369/yr — Chamber year + PCC Year — https://www.slidphilabs.com/lab-pass
 - Foundry+ — Lab Pass + TNSSRC grant + Rider Crew
 - CuNi — CLI v0.10.0 — 53 targets, same stdout or refuse — Studio $0 — `brew tap ceedot-rock/cuni && brew install cuni` — https://www.slidphilabs.com/cuni
 - AwLPay — 0.5% per payment, no fixed fee — Pro $39/mo — L33t $799/mo — https://www.slidphilabs.com/awlpay
