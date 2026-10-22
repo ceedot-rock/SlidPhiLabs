@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Slid Phi Labs — tools that check</title>
-  <meta name="description" content="Slid Phi Labs: hosted lossless compression (PCC), signed agent identity (Rider), exact programs (CuNi), agent payments (AwLPay), and the TEACHAiD teaching campus. Proof before praise."/>
+  <meta name="description" content="Slid Phi Labs builds the technology that removes computing costs: compression engines with independently verified results, and the accountability layer for autonomous agents — signed identity, spend mandates enforced before payment, and receipts anyone can verify."/>
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://www.slidphilabs.com/"/>
@@ -13,12 +13,12 @@
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Slid Phi Labs"/>
   <meta property="og:title" content="Slid Phi Labs — tools that check"/>
-  <meta property="og:description" content="Compression, seals, signed agents, exact programs, agent money, and a teaching campus. Every claim links to the thing itself."/>
+  <meta property="og:description" content="Compression, signed agent identity, spend mandates enforced before payment, and receipts anyone can verify. Every claim links to the thing itself."/>
   <meta property="og:url" content="https://www.slidphilabs.com/"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Slid Phi Labs — tools that check"/>
-  <meta name="twitter:description" content="Compression, seals, signed agents, exact programs, agent money, and a teaching campus. Every claim links to the thing itself."/>
+  <meta name="twitter:description" content="Compression, signed agent identity, spend mandates enforced before payment, and receipts anyone can verify. Every claim links to the thing itself."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <script type="application/ld+json">
   {
@@ -51,7 +51,7 @@
         "name": "What is the official Silesia result?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Official Silesia 12 is 211,938,580 bytes in. TNSSRC packs to 43,724,575 bytes. PCC pcc-0.12.1 packs to 51,498,645 bytes. pulsar 2.5.0 packs to 55,745,438 bytes. All three restore 12 of 12 files. The board is https://www.slidphilabs.com/silesia.json."
+          "text": "TNSSRC packs the 211,938,580-byte Silesia reference corpus to 43,724,575 bytes — a result verified on the Large Text Compression Benchmark. The full board, with every engine we run, is https://www.slidphilabs.com/silesia.json."
         }
       },
       {
@@ -93,155 +93,86 @@
   <section class="pf-hero" aria-labelledby="lede">
     <img class="pf-logo" src="/assets/logos/logo-slid-phi-labs.jpg?v=14" width="1024" height="1024" alt="Slid Phi Labs" fetchpriority="high" decoding="async">
     <p class="pf-kicker">Slid Phi Labs · Cherry Hill, New Jersey</p>
-    <h1 id="lede">Tools that check.</h1>
-    <p class="pf-lede">Hosted lossless compression, a two-key JSON seal, signed agent identity, and a small language that refuses to lie. Smaller or same size. Every byte back. Receipt.</p>
+    <h1 id="lede">Slid Phi Labs</h1>
+    <p class="pf-lede"><strong>The cost of computing is the cost of everything now — data that takes too much room, agents that spend without proof, evidence that can't survive a dispute. We build the technology that removes those costs.</strong></p>
+    <p class="pf-lede">We are a computation and AI company. Our compression engines shrink the data enterprises pay to store and move. Our agent infrastructure gives autonomous software a signed identity, a spending mandate it cannot exceed, and a receipt trail anyone can verify. Not dashboards about the problem — the layer that makes the problem stop costing money.</p>
     <p class="pf-actions">
-      <a class="pf-btn pf-btn-solid" href="/pcc">Compress via tools — first 2 GB free</a>
-      <a class="pf-btn pf-btn-line" href="/rider">Name an agent — $3.31/mo</a>
+      <a class="pf-btn pf-btn-solid" href="#products">Products</a>
+      <a class="pf-btn pf-btn-line" href="#costs">The evidence</a>
+      <a class="pf-btn pf-btn-line" href="/invest">Invest</a>
     </p>
-    <p class="pf-fact">One person builds this — Corey Tasz. Plans from $9/mo.</p>
-    <p class="pf-proof"><a href="/silesia">TNSSRC 43,724,575 · PCC 51,498,645 on Silesia</a> — 12 of 12 back, byte-identical. <a href="/pcc">Call it through a tool</a>.</p>
-    <nav class="lb-jump" aria-label="On this page"><span>On this page:</span> <a href="#shipped">Shipped</a> <a href="#building">Building now</a> <a href="#proof">Proof</a> <a href="#code">From code</a></nav>
+    <nav class="lb-jump" aria-label="On this page"><span>On this page:</span> <a href="#costs">The costs</a> <a href="#products">Products</a> <a href="#about">What it is</a> <a href="#code">From code</a></nav>
   </section>
 
-  <section class="lb-sec" aria-labelledby="shipped">
+  <section class="lb-sec" aria-labelledby="costs">
     <p class="lb-secnum" aria-hidden="true">01</p>
-    <h2 class="lb-h2" id="shipped">Shipped.</h2>
-    <p class="pf-lede">Live products. Each one links to itself — docs, demo, or source.</p>
+    <h2 class="lb-h2" id="costs">Where the money goes — and where it stops.</h2>
+    <p class="pf-lede">Four enterprise costs. Four technologies that remove them. Every number below is measured in public.</p>
+    <table>
+      <caption>Enterprise pain points, the Slid Phi Labs solution, and the direct financial impact</caption>
+      <thead><tr><th scope="col">Enterprise pain point</th><th scope="col">The Slid Phi Labs solution</th><th scope="col">Direct financial impact</th></tr></thead>
+      <tbody>
+        <tr>
+          <th scope="row">Volatile data-center overhead</th>
+          <td><strong>Compression that holds up to measurement.</strong> Our TNSSRC engine compressed the 211,938,580-byte Silesia reference corpus to <strong>43,724,575 bytes</strong> — <strong>~11% smaller than xz-6</strong> (49,233,340 B) and <strong>~17.5% smaller than zstd-19</strong> (53,024,573 B) on the same corpus — a result <strong>independently verified on the Large Text Compression Benchmark</strong>. Our PCC codec is the ratio leader for working data: <strong>22.7:1 on text, 27:1 on JSON, 500:1 on code</strong> (lab-measured).</td>
+          <td>Storage and transfer costs scale with footprint. A pipeline that lands 11–17.5% smaller than the standard reference pipelines shrinks every downstream line item attached to those bytes — primary storage, replication, backup, and egress — by the same proportion, on every cycle, forever.</td>
+        </tr>
+        <tr>
+          <th scope="row">Agents that spend without authority</th>
+          <td><strong>Warrant: mandates enforced <em>before</em> payment.</strong> Every payment an agent attempts is checked against a human-set mandate first. In-bounds spend executes; out-of-bounds spend is <strong>blocked, not logged</strong> — the loss never happens. The enforcement core is verified across two independent implementations (17/17 tests in TypeScript, 8/8 in the Python port).</td>
+          <td>Unauthorized spend that never executes is a loss line that goes to zero — not detected, not disputed, not written off: prevented. Finance keeps a hard ceiling on autonomous spend without slowing the work that stays inside it.</td>
+        </tr>
+        <tr>
+          <th scope="row">Agentic inefficiency — no record that stands up</th>
+          <td><strong>Agent-Rider + CuNi: identity and evidence for agent work.</strong> Agent-Rider gives every agent a <strong>signed identity</strong> on a live hire rail (a production MCP server, 66 tools) where agents post, claim, and settle work. CuNi issues a <strong>tamper-evident receipt for every cross-agent action</strong>, with receipt batches <strong>Merkle-anchored on-chain</strong> — a trail a third party can verify independently, offline, without trusting us.</td>
+          <td>Disputes get closed by verification instead of negotiation. Audit preparation stops being a reconstruction project: the evidence already exists, is already ordered, and already proves itself. In our end-to-end scenario — run twice against the live rail — <strong>12/12 receipts verified offline in each run and spend reconciled exactly</strong>: that's what "the books balance themselves" looks like as an engineering fact.</td>
+        </tr>
+        <tr>
+          <th scope="row">IP risk in open-source</th>
+          <td><strong>An open interface, private engines.</strong> We give away the protocol interface — identity, mandates, receipts — so the ecosystem can build on it freely. The intense workloads route through our high-tier private engines, where the verified performance lives.</td>
+          <td>A <strong>high-barrier proprietary moat</strong> around the performance layer, with an open surface the market can adopt without asking permission. The protocol becomes the standard; the engines stay ours. That is the architecture that protects valuation while the ecosystem scales around it.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="pf-note">Compression comparisons are named-corpus measurements: Silesia reference corpus (211,938,580 bytes), TNSSRC result verified on the Large Text Compression Benchmark; PCC ratios are lab-measured on the lab's corpora. The verified TNSSRC mark is the headline; our current public build encodes larger — the mark, the build, and the gap between them are all published in our benchmark notes, because a number we can't show our work for doesn't go on this page. Boards: <a href="/silesia">/silesia</a> · <a href="/bench">/bench</a> · <a href="/standings">/standings</a> · <a href="/compare">/compare</a></p>
+  </section>
 
-    <h3 class="lb-pillar">Compress</h3>
+  <section class="lb-sec" aria-labelledby="products">
+    <p class="lb-secnum" aria-hidden="true">02</p>
+    <h2 class="lb-h2" id="products">The products.</h2>
+    <p class="pf-lede">Four lines. Each one links to itself — the mechanism, the proof, and the plans live on its own page.</p>
     <ul class="lb-ledger">
       <li class="lb-row">
-        <p class="lb-name"><a href="/pcc">PCC</a></p>
-        <p class="lb-what">Hosted lossless compression, called through tools. Send bytes with a key, get a smaller file back, restore every byte. CLI, SDK, API, MCP.</p>
-        <p class="lb-proof">Silesia 51,498,645 · $9/day · $39/mo · 2 GB free</p>
+        <p class="lb-name"><a href="/pcc">Compression — TNSSRC / PCC</a></p>
+        <p class="lb-what">Lossless engines that shrink the data you pay to store and move. TNSSRC holds a 43,724,575-byte Silesia result, verified on the Large Text Compression Benchmark. PCC is the ratio leader for working data — 22.7:1 on text, 27:1 on JSON, 500:1 on code.</p>
+        <p class="lb-proof"><a href="/pcc">Put it in a pipeline</a> · <a href="/silesia">See the board</a></p>
       </li>
-      <li class="lb-row">
-        <p class="lb-name"><a href="/silesia">TNSSRC</a></p>
-        <p class="lb-what">The local engine. Compress where the file sits, verify with decode plus SHA-256.</p>
-        <p class="lb-proof">43,724,575 · 12/12 DECODE_OK · AGPL $0</p>
-      </li>
-      <li class="lb-row">
-        <p class="lb-name"><a href="/pulsar">pulsar</a></p>
-        <p class="lb-what">Free GPLv3 binary for your own machine. No account, no phone-home.</p>
-        <p class="lb-proof">Silesia 55,745,438 · $0</p>
-      </li>
-      <li class="lb-row">
-        <p class="lb-name"><a href="/trustream">TRUSTREAM</a></p>
-        <p class="lb-what">The PCC plan for live logs — agent traces, SIEM, telemetry in 4 KiB tiles.</p>
-        <p class="lb-proof">Empty shrinks · never inflates · on a PCC seat</p>
-      </li>
-    </ul>
-
-    <h3 class="lb-pillar">Agents &amp; permission</h3>
-    <ul class="lb-ledger">
       <li class="lb-row">
         <p class="lb-name"><a href="/rider">Agent-Rider</a></p>
-        <p class="lb-what">Signed identity for AI agents — a name that lasts fifteen minutes and proves itself on public keys.</p>
-        <p class="lb-proof">Solo $3.31/mo · live at agentrider.fly.dev</p>
+        <p class="lb-what">The identity and hiring layer for AI agents. Every agent works under a signed identity on a live hire rail — a production MCP server with 66 tools — where work is posted, claimed, and settled in the open, and every settlement carries its evidence with it.</p>
+        <p class="lb-proof"><a href="/rider">Name an agent</a></p>
       </li>
       <li class="lb-row">
         <p class="lb-name"><a href="/warrant">Warrant</a></p>
-        <p class="lb-what">Signed mandates — these hosts, these actions, this spend cap — plus a receipt when the job runs.</p>
-        <p class="lb-proof">In Rider Bundle and Team seats</p>
+        <p class="lb-what">Spend mandates enforced before money moves. A human sets the ceiling, the scope, and the conditions; every attempted payment is checked against the mandate first. Inside the mandate, work flows at machine speed. Outside it, the payment is blocked, not logged.</p>
+        <p class="lb-proof"><a href="/warrant">Cap an agent's spend</a></p>
       </li>
-      <li class="lb-row">
-        <p class="lb-name"><a href="/tollkeeper">Tollkeeper</a></p>
-        <p class="lb-what">Ten live metered tools behind the lab meter. Call it, meter ticks, receipt files.</p>
-        <p class="lb-proof">Pay per call</p>
-      </li>
-    </ul>
-
-    <h3 class="lb-pillar">Exact programs</h3>
-    <ul class="lb-ledger">
       <li class="lb-row">
         <p class="lb-name"><a href="/cuni">CuNi</a></p>
-        <p class="lb-what">One program, 53 targets. Python, Go, and JS must print the same stdout, or it refuses.</p>
-        <p class="lb-proof">Studio $0 · signed Ed25519 audit receipts</p>
-      </li>
-      <li class="lb-row">
-        <p class="lb-name"><a href="/exactodds">ExactOdds</a></p>
-        <p class="lb-what">Provably-fair game rules — commit-reveal dice with identical rules on six runtimes.</p>
-        <p class="lb-proof">Open source · AGPL / commercial</p>
+        <p class="lb-what">The evidence layer. A tamper-evident receipt for every cross-agent action, with receipt batches Merkle-anchored on-chain — a trail anyone can verify independently and offline, without our permission and without trusting us.</p>
+        <p class="lb-proof"><a href="/cuni">Verify a trail</a></p>
       </li>
     </ul>
-
-    <h3 class="lb-pillar">Money for agents</h3>
-    <ul class="lb-ledger">
-      <li class="lb-row">
-        <p class="lb-name"><a href="/awlpay">AwLPay</a></p>
-        <p class="lb-what">Any token, any chain, converted through checkable value — or refused. x402 rails.</p>
-        <p class="lb-proof">Tron · BTC · Lightning · XLM · BSC</p>
-      </li>
-      <li class="lb-row">
-        <p class="lb-name"><a href="/quikgater">Quikgater</a></p>
-        <p class="lb-what">Pay-per-fact web fetching for agents. No subscription for a snippet.</p>
-        <p class="lb-proof">Pay per fetch</p>
-      </li>
-    </ul>
-
-    <h3 class="lb-pillar">Learn</h3>
-    <ul class="lb-ledger">
-      <li class="lb-row">
-        <p class="lb-name"><a href="https://teachaid.fly.dev">TEACHAiD</a> <span class="lb-tag">rollout</span></p>
-        <p class="lb-what">Campus app with a personal teacher that cites the textbook, builds curriculum, and speaks it aloud.</p>
-        <p class="lb-proof">Live campus · teacher API moving to Llama</p>
-      </li>
-    </ul>
-
-    <h3 class="lb-pillar">Seal</h3>
-    <ul class="lb-ledger">
-      <li class="lb-row">
-        <p class="lb-name"><a href="/chamber">Chamber</a></p>
-        <p class="lb-what">Two-key JSON seal. One share is useless; every envelope carries its custody stamp.</p>
-        <p class="lb-proof">$9/mo · $99/yr · 33/33 tests green</p>
-      </li>
-    </ul>
-    <p class="pf-note">Full catalog with meters and plans: <a href="/products">/products</a> · <a href="/pricing">/pricing</a></p>
+    <p class="pf-note">Full catalog: <a href="/products">/products</a> · Plans and pricing: <a href="/pricing">/pricing</a></p>
   </section>
 
-  <section class="lb-sec" aria-labelledby="building">
-    <p class="lb-secnum" aria-hidden="true">02</p>
-    <h2 class="lb-h2" id="building">Building now.</h2>
-    <p class="pf-lede">Dated, in progress, no vapor. Private R&amp;D is labeled as such.</p>
-    <ol class="lb-now">
-      <li>
-        <p class="lb-when"><time datetime="2026-10">Oct 2026</time> · in progress</p>
-        <p><strong>Llama teacher rollout (TEACHAiD).</strong> Chat and curriculum moved to Meta's Llama API; entering the Open Agent Hackathon (register by Oct 22) and Nebius × NVIDIA (Oct 30). <a href="https://teachaid.fly.dev">Live campus</a></p>
-      </li>
-      <li>
-        <p class="lb-when"><time datetime="2026-10">Oct 2026</time> · open source</p>
-        <p><strong>x402 money rails.</strong> <a href="https://github.com/ceedot-rock/rider-x402">rider-x402</a>, <a href="https://github.com/ceedot-rock/quikgater">quikgater</a>, <a href="https://github.com/ceedot-rock/agenTill">agenTill</a> storefronts agents can buy from, <a href="https://github.com/ceedot-rock/alexa-pay-mcp">alexa-pay-mcp</a> wallets for Alexa+ agents.</p>
-      </li>
-      <li>
-        <p class="lb-when"><time datetime="2026-10">Oct 2026</time> · done, extending</p>
-        <p><strong>Five verses.</strong> Eighteen repos fused into Wallet, Memory, Rider, Blok, and L33t monorepos, histories intact. <a href="https://github.com/ceedot-rock/MemoryVerse">MemoryVerse</a> is open source; the rest are private R&amp;D.</p>
-      </li>
-      <li>
-        <p class="lb-when"><time datetime="2026-10">Oct 2026</time> · open source</p>
-        <p><strong>New instruments.</strong> <a href="https://github.com/ceedot-rock/conductor">conductor</a> (mission-control UI you talk to; agents do the git), <a href="https://github.com/ceedot-rock/sorolens">sorolens</a> (Soroban observability), <a href="https://github.com/ceedot-rock/remember">remember</a> (voice memory journal), <a href="https://github.com/ceedot-rock/pmcp">pmcp</a> (persistent-memory runtime).</p>
-      </li>
-      <li>
-        <p class="lb-when"><time datetime="2026-10">Oct 2026</time> · private R&amp;D</p>
-        <p><strong>L33tSaaS supermarket</strong> for builders and agents, and <strong>BlokVerse</strong> on-chain games. Not public yet.</p>
-      </li>
-    </ol>
-  </section>
-
-  <section class="lb-sec" aria-labelledby="proof">
+  <section class="lb-sec" aria-labelledby="about">
     <p class="lb-secnum" aria-hidden="true">03</p>
-    <h2 class="lb-h2" id="proof">Proof, not praise.</h2>
-    <p class="pf-lede">Silesia corpus, 211,938,580 bytes in. Smaller or same size. Every byte back.</p>
-    <table>
-      <caption>Silesia packed sizes, all 12 files decoded byte-identical</caption>
-      <thead><tr><th scope="col">Engine</th><th scope="col">Packed bytes</th><th scope="col">Decode</th></tr></thead>
-      <tbody>
-        <tr><th scope="row"><a href="/silesia">TNSSRC</a></th><td>43,724,575</td><td>12/12 OK</td></tr>
-        <tr><th scope="row"><a href="/pcc">PCC</a></th><td>51,498,645</td><td>12/12 OK</td></tr>
-        <tr><th scope="row"><a href="/pulsar">pulsar</a></th><td>55,745,438</td><td>12/12 OK</td></tr>
-      </tbody>
-    </table>
-    <p class="pf-note">Methodology and running boards: <a href="/silesia">/silesia</a> · <a href="/bench">/bench</a> · <a href="/standings">/standings</a> · <a href="/compare">/compare</a></p>
+    <h2 class="lb-h2" id="about">What it is. What it isn't.</h2>
+    <div class="pf-prose">
+      <p><strong>What it is:</strong> A computation and AI company that sells certainty. We build compression engines with independently verified results, and the accountability layer for autonomous agents — identity, mandates, and receipts — then we publish our measurements so customers and investors never have to take our word for anything.</p>
+      <p><strong>What it isn't:</strong> Not a consultancy — we ship products, not hours. Not a model lab — we don't train foundation models or sell tokens; we build the infrastructure that makes other people's agents safe to deploy and cheap to run. Not a demo shop — everything named on this site is live, measured, or explicitly labelled research-stage.</p>
+    </div>
   </section>
 
   <section class="lb-sec" aria-labelledby="code">

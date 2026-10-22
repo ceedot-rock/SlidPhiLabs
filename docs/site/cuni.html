@@ -68,6 +68,8 @@
       <p>CuNi eliminates that whole class of problem. You write one source file. CuNi can turn it into 53 catalog targets — the top 50 languages plus 3 onchain profiles, including Python, JavaScript, Rust, C, Go, and onchain emitters for ink!, Move, Vyper, Cairo, Clarity, and Cadence. Before it hands you any of them, <code>cuni check</code> emits and runs every target: byte-identical stdout, or it refuses the path.</p>
       <p>Two types carry the exactness. <code>dec</code> is fixed-point decimals — scale 10^4, truncation toward zero, no float anywhere. <code>time</code> is int64 unix epochs, UTC only, strict ISO-8601. And <code>cuni audit</code> lets you state a money law once and prove a foreign implementation matches byte-for-byte; the proof files as a signed Ed25519 receipt.</p>
       <p>The refusal is the product. Other tools try to paper over differences. CuNi treats a difference as a failed build.</p>
+      <p><em>Logs are a claim. Receipts are proof.</em></p>
+      <p>When two companies' agents transact and the numbers don't match, each side produces its logs — and logs belong to whoever keeps them. They can be edited, re-ordered, or "lost," and everyone in the dispute knows it. CuNi replaces that standoff with evidence: a tamper-evident receipt for every cross-agent action, with receipt batches Merkle-anchored on-chain. Anyone holding the trail — a counterparty, an auditor, your own compliance team — can verify it independently, offline, without our permission and without trusting us. We proved the mechanism end-to-end: 19/19 receipt proofs verified against the anchored root, and in the full hire-to-settlement scenario, run twice on the live rail, 12/12 receipts verified in each run with spend reconciled exactly. Build your agent operations on a trail that ends arguments instead of starting them.</p>
       <p>This is why CuNi pairs with Agent Rider. Agents that write and run code across systems cannot tolerate &ldquo;close enough.&rdquo; Prove exactness on CuNi when you want the receipt; execute on open Rider seats either way. Rider&rsquo;s require-PASS gate is off today — seats still run without a citizen PASS.</p>
     </section>
     <div class="spl-note">
@@ -168,7 +170,12 @@
         <a class="spl-btn spl-btn-line" href="/rider">Rider seats</a>
       </p>
     </div>
-  </main>
+<section class="spl-prose spl-full" id="cuni-is-isnt" aria-labelledby="cuni-is-isnt-h">
+  <h2 id="cuni-is-isnt-h">What it is / what it isn't</h2>
+  <p><strong>What it is:</strong> The evidence layer. Every cross-agent action produces a tamper-evident receipt; batches are Merkle-anchored on-chain, so the whole trail can be verified independently and offline by anyone holding it — a counterparty, an auditor, a court — without access to our systems and without trusting us. (Proof completed on Base Sepolia: 19/19 receipt proofs verified against the anchored root.)</p>
+  <p><strong>What it isn't:</strong> Not a blockchain company and not a token — the chain is an anchor, not the product. Not a logging service: ordinary logs can be edited by whoever holds them; a CuNi trail proves it <em>wasn't</em>. And it isn't a black box — verification is the product, so verification is public by design.</p>
+</section>
+    </main>
   <script src="/assets/chrome.js?v=41" defer></script>
 </body>
 </html>

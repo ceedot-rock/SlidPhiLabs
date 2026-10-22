@@ -37,23 +37,25 @@ When Stripe lands on `/?purchase=PRODUCT` or `/?purchase=…&session=…`:
 ## Hero
 
 **H1:**
-Tools that check.
+Slid Phi Labs
 
 **Lede:**
-Hosted lossless compression, a two-key JSON seal, signed agent identity, and a small language that refuses to lie. Smaller or same size. Every byte back. Receipt.
+The cost of computing is the cost of everything now — data that takes too much room, agents that spend without proof, evidence that can't survive a dispute. We build the technology that removes those costs.
 
-**Hero cards:**
-1. **Compress a file** — first 2 GB free
-2. **Name an agent** — $3.31/mo
-3. One person builds this — Corey Tasz. Plans from $9/mo.
+**Second paragraph:**
+We are a computation and AI company. Our compression engines shrink the data enterprises pay to store and move. Our agent infrastructure gives autonomous software a signed identity, a spending mandate it cannot exceed, and a receipt trail anyone can verify. Not dashboards about the problem — the layer that makes the problem stop costing money.
 
-**Silesia strip:** TNSSRC 43,724,575 · PCC 51,498,645 — 12 of 12 back, byte-identical. Try your own file.
+**Hero actions:** Products (→ #products) · The evidence (→ #costs) · Invest (→ /invest)
+
+**Homepage rule (Corey, 2026-10-22): NO price figures anywhere on the homepage.** The homepage sells the tech and funnels to product pages and /pricing; prices live there, never here.
+
+**Sections:** 01 The costs (pain → solution → financial-impact table: data-center overhead / TNSSRC+PCC; agents spending without authority / Warrant; no record that stands up / Agent-Rider+CuNi; IP risk in open-source / open interface, private engines) · 02 The products (Compression, Agent-Rider, Warrant, CuNi — one sell line each, links to their pages) · 03 What it is. What it isn't. · 04 From code.
 
 ---
 
-## 01 Shipped — live products
+## Product catalog reference
 
-Each one links to itself: docs, demo, or source.
+The homepage no longer carries the full shipped ledger (it carries the four lines in §02 above); the full catalog lives on /products. This table remains the reference for product lines and where their prices appear (product pages and /pricing only — never the homepage).
 
 | Product | Line |
 |---------|------|
@@ -73,15 +75,15 @@ Each one links to itself: docs, demo, or source.
 
 ---
 
-## 02 Building now
+## Building now (retired from the homepage 2026-10-22)
 
-Dated, in progress, no vapor. Private R&D is labeled as such. Current items (Oct 2026): Llama teacher rollout for TEACHAiD, x402 money rails, monorepo verse fusion, new instruments. Edit dates in `index.html`; do not let entries go stale.
+Dated, in progress, no vapor. Private R&D is labeled as such. Current items (Oct 2026): Llama teacher rollout for TEACHAiD, x402 money rails, monorepo verse fusion, new instruments. The sell-the-tech homepage no longer carries this section; keep items current wherever they surface, and do not let entries go stale.
 
 ---
 
 ## 03 Proof
 
-Public benches with numbers (Silesia scores, decode rates, test counts). Every claim links to its run. No claim without a receipt.
+Public benches with numbers (Silesia scores, decode rates, test counts) now lead the homepage via the §01 costs table. Every claim links to its run. No claim without a receipt.
 
 ---
 
@@ -130,6 +132,7 @@ From `splabs-brand` **BRAND.md**: *gold ornate metal · teal/cyan glow · lotus 
 | Do | Don’t |
 |----|--------|
 | Tagline + proof-first ledger | “Under Construction” |
+| No price figures on the homepage; funnel to product pages + /pricing | Any price, plan, or per-unit figure on the homepage |
 | Every claim with a receipt | Residual coefficients / hierarchy internals |
 | Full Stripe map wired | Dead `*.vercel.app` links |
 | Stub honesty + /access delivery | “Download full source on npm” |
