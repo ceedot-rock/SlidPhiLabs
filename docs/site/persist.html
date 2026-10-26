@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PERsiST — 96.8% fewer tokens. Same work.</title>
+  <meta name="description" content="PERsiST is the compressed-heart engine for AI agents: psi (persistent memory), Warrant (spend mandates), CuNi (Ed25519 receipts), and spl-heart (2.93x LZMA + PCC-CAE) — measured 96.8% token reduction per agent turn. Every claim links to its own evidence."/>
+  <meta name="theme-color" content="#0f1c2e"/>
+  <meta name="robots" content="index,follow"/>
+  <link rel="canonical" href="https://persist.com/"/>
+  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="PERsiST by Slid Phi Labs"/>
+  <meta property="og:title" content="PERsiST — 96.8% fewer tokens. Same work."/>
+  <meta property="og:description" content="The compressed-heart engine for AI agents. Measured: 61,112 tok -> 1,976 tok per agent turn (96.8% reduction), 354/354 shards SHA-256 verified, 11/11 Ed25519 receipts, 2.93x compression ratio."/>
+  <meta property="og:url" content="https://persist.com/"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="PERsiST — 96.8% fewer tokens. Same work."/>
+  <meta name="twitter:description" content="The compressed-heart engine for AI agents. Measured: 61,112 tok -> 1,976 tok per agent turn (96.8% reduction), 354/354 shards verified, 11/11 Ed25519 receipts, 2.93x compression ratio."/>
+  <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "PERsiST",
+    "description": "The compressed-heart engine for AI agents: psi memory + Warrant governance + CuNi receipts + spl-heart compression. Measured 96.8% token reduction per agent turn.",
+    "brand": { "@type": "Brand", "name": "Slid Phi Labs" },
+    "offers": [
+      { "@type": "Offer", "price": "13.31", "priceCurrency": "USD", "name": "psi Solo (monthly)" },
+      { "@type": "Offer", "price": "39.00", "priceCurrency": "USD", "name": "psi Crew (monthly)" },
+      { "@type": "Offer", "price": "49.00", "priceCurrency": "USD", "name": "psi Team (monthly)" },
+      { "@type": "Offer", "price": "490.00", "priceCurrency": "USD", "name": "psi Lab Pass (annual)" }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="/assets/platform.css?v=3"/>
+</head>
+<body class="pf">
+<a class="pf-skip" href="#main">Skip to content</a>
+<header class="pf-top">
+  <div class="pf-bar">
+    <a class="pf-brand" href="/"><img src="/assets/logos/logo-slid-phi-labs.jpg?v=14" width="44" height="44" alt=""><span>PERsiST</span></a>
+    <nav class="pf-nav" aria-label="Primary"><a href="/" aria-current="page">Home</a><a href="#evidence">Evidence</a><a href="#savings">Savings</a><a href="#pricing">Pricing</a><a href="https://www.slidphilabs.com">Slid Phi Labs</a></nav>
+    <details class="pf-menu">
+      <summary>Menu</summary>
+      <div class="pf-menu-panel"><a href="/" aria-current="page">Home</a><a href="#evidence">Evidence</a><a href="#savings">Savings</a><a href="#pricing">Pricing</a><a href="https://www.slidphilabs.com">Slid Phi Labs</a></div>
+    </details>
+  </div>
+</header>
+<main class="pf-wrap" id="main">
+  <section class="pf-hero" aria-labelledby="lede">
+    <p class="pf-kicker">Slid Phi Labs · Cherry Hill, New Jersey</p>
+    <h1 id="lede">PERsiST</h1>
+    <p class="pf-lede"><strong>AI agents are burning 96.8% more tokens than they need to. We measured it, and we fixed it.</strong></p>
+    <p class="pf-lede">Every AI coding agent re-loads its entire knowledge corpus into context on every single turn — every rule, every past bug, every memory, every teammate. The context fills up. Attention dilutes. And the invoice compounds. PERsiST fixes that: the agent keeps a compressed heart on disk, inflates only the ~3% slice it needs, and verifies everything cryptographically.</p>
+    <p class="pf-actions">
+      <a class="pf-btn pf-btn-solid" href="#savings">See the savings</a>
+      <a class="pf-btn pf-btn-line" href="#evidence">The evidence</a>
+      <a class="pf-btn pf-btn-line" href="#pricing">Pricing</a>
+    </p>
+  </section>
+
+  <section class="lb-sec" aria-labelledby="headline-metric">
+    <p class="lb-secnum" aria-hidden="true">01</p>
+    <h2 class="lb-h2" id="headline-metric">96.8% fewer tokens. Same work. Measured, not claimed.</h2>
+    <p class="pf-lede">We did not estimate this. We measured it, on our own live agent fleet, today.</p>
+    <table>
+      <caption>Measured token cost per agent turn, before and after PERsiST (verified 2026-10-26)</caption>
+      <thead><tr><th scope="col">State</th><th scope="col">Tokens per agent turn</th><th scope="col">What the model actually sees</th></tr></thead>
+      <tbody>
+        <tr>
+          <th scope="row">Naive agent (every session re-loads full knowledge)</th>
+          <td><strong>61,112</strong></td>
+          <td>All 354 shards — psi rules, AgentBibleCodec chapters, and every task payload — injected into context on every single request, whether or not they are needed.</td>
+        </tr>
+        <tr>
+          <th scope="row"><strong>With PERsiST (compressed heart)</strong></th>
+          <td><strong>1,976</strong></td>
+          <td><strong>96.8% less context.</strong> Only the hot live board (~1,365 tokens) plus the exact ~3% slice the agent actually needs for the current task (e.g. 2,757 tokens for a Python testing task; 6,108 tokens for a web console task).</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="pf-note">Source: <code>~/.slidphi/heart-index.json</code> — verified <code>354/354</code> shards, <code>2.93x</code> compression ratio, <code>11/11</code> Ed25519 receipts (<code>sha256 4f23367eaa04b405afe1b6c4ad5cf6bd410ada872e44d9f0c839e4037cf2fae7</code>). Full methodology in the <a href="https://www.slidphilabs.com/psi">technical notes</a>.</p>
+  </section>
+
+  <section class="lb-sec" aria-labelledby="savings">
+    <p class="lb-secnum" aria-hidden="true">02</p>
+    <h2 class="lb-h2" id="savings">What 96.8% actually saves.</h2>
+    <p class="pf-lede">Pick your frontier-model pricing. The math is the same: fewer input tokens on every turn, on every seat, forever.</p>
+    <table>
+      <caption>Monthly token cost per agent seat (at ~$3 / 1M input tokens, a typical frontier-model rate)</caption>
+      <thead><tr><th scope="col">Agent turns / day</th><th scope="col">Naive monthly cost</th><th scope="col">PERsiST monthly cost</th><th scope="col">Monthly savings</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">7 turns/day</th><td>$38.60</td><td>$1.25</td><td><strong>$37.35</strong></td></tr>
+        <tr><th scope="row">30 turns/day</th><td>$165.45</td><td>$5.33</td><td><strong>$160.12</strong></td></tr>
+        <tr><th scope="row">100 turns/day (heavy CI)</th><td>$551.50</td><td>$17.78</td><td><strong>$533.72</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="pf-note">Math: (naive − actual) tokens × turns/day × 30 days × $3/1M. Exact tokens per turn are published in the <a href="https://www.slidphilabs.com/psi">technical notes</a>.PERsiST's <strong>psi Crew</strong> tier at $39/month already pays for itself at just ~7 turns per day — before you count any of the other benefits (fewer hallucinated edits, fewer pushes you have to revert).</p>
+  </section>
+
+  <section class="lb-sec" aria-labelledby="evidence">
+    <p class="lb-secnum" aria-hidden="true">03</p>
+    <h2 class="lb-h2" id="evidence">Every number here is a receipt, not a claim.</h2>
+    <p class="pf-lede">We built this for our own agents first. We did not ask a benchmark. We asked the agents to prove it, and they did — with Ed25519 signatures and SHA-256 hashes you can re-run yourself.</p>
+    <table>
+      <caption>PERsiST subsystems and their live measured receipts (2026-10-26)</caption>
+      <thead><tr><th scope="col">Subsystem</th><th scope="col">What it does</th><th scope="col">Live measured receipt</th></tr></thead>
+      <tbody>
+        <tr>
+          <th scope="row"><strong>psi — persistent memory</strong></th>
+          <td>116 executable mechanisms across memory, identity, proof, agents, and safety. An agent that starts every session blank cannot compound.</td>
+          <td><code>PSI-GREEN: quad complete, 116 wired</code> · <code>observations: 29 · surprises: 5 · near-misses: 3</code></td>
+        </tr>
+        <tr>
+          <th scope="row"><strong>spl-heart — compressed heart</strong></th>
+          <td>Folds all carried knowledge (354 shards) into a single <code>~/.slidphi/heart.cae</code> file and inflates only the ~3% slice needed for the current task.</td>
+          <td><code>244,451 B → 83,556 B</code> · <strong><code>2.93x</code></strong> compression · <code>354/354 shards</code> verified</td>
+        </tr>
+        <tr>
+          <th scope="row"><strong>Warrant — spend & push governance</strong></th>
+          <td>Every <code>git push</code>, <code>git revert</code>, and payment must be checked against a human-issued mandate before it executes. Fail-closed.</td>
+          <td><code>[WARRANT_DENIED] Mandatory approval gate blocked git.push</code> · live-blocked unapproved push, exit 1</td>
+        </tr>
+        <tr>
+          <th scope="row"><strong>CuNi — tamper-evident receipts</strong></th>
+          <td>Every gate decision (allow or deny) and every task completion gets a double-signed Ed25519 envelope, Merkle-anchored.</td>
+          <td><code>11/11 cuni_envelopes verified</code> · <code>sha256 4f23367eaa04b405...</code></td>
+        </tr>
+        <tr>
+          <th scope="row"><strong>AgentBibleCodec</strong></th>
+          <td>A complete coding bible, filtered per-task — only the language/domain ports an agent actually needs get inflated.</td>
+          <td><code>225 bible shards</code> · e.g. <code>P1-A</code> task inflates only 31/354 shards (<code>10.0%</code> active)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="pf-note">Re-run it yourself: <code>git clone https://github.com/ceedot-rock/psi</code> · <code>bash scripts/psi-doctor.sh</code> · <code>spl-heart fold && spl-heart verify</code>. Every metric on this page is reproducible from the <a href="https://www.slidphilabs.com">Slid Phi Labs</a> repo.</p>
+  </section>
+
+  <section class="lb-sec" aria-labelledby="pricing">
+    <p class="lb-secnum" aria-hidden="true">04</p>
+    <h2 class="lb-h2" id="pricing">Pricing.</h2>
+    <p class="pf-lede">PERsiST pays for itself at ~7 agent turns per day. The Crew tier is the most popular.</p>
+    <table>
+      <caption>PERsiST plans</caption>
+      <thead><tr><th scope="col">Plan</th><th scope="col">Price</th><th scope="col">Includes</th></tr></thead>
+      <tbody>
+        <tr>
+          <th scope="row">psi Solo</th>
+          <td>$13.31/mo · $99/yr</td>
+          <td>1 seat · 1 agent identity · local <code>spl-heart</code> engine · Warrant included · 10 GB PCC compression/mo</td>
+        </tr>
+        <tr>
+          <th scope="row"><strong>psi Crew</strong> (most popular)</th>
+          <td><strong>$39/mo</strong></td>
+          <td><strong>6 seats</strong> · shared <code>heart.cae</code> · shared <code>COMMS.md</code> board · 200 GB PCC</td>
+        </tr>
+        <tr>
+          <th scope="row">psi Team</th>
+          <td>$49/mo</td>
+          <td>Up to 10 seats · priority SLA · policy customization · SOC2/SIEM integration</td>
+        </tr>
+        <tr>
+          <th scope="row">psi Lab Pass</th>
+          <td>$490/yr</td>
+          <td>Chamber year + PCC year + psi Crew, bundled</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="pf-note">First 5,000 tokens/day folded via <code>spl-heart</code> are free with no plan. Agents buy with x402 (USDC on Solana or Base): <code>POST /api/x402-products {"sku":"psi-crew"}</code>. Full catalog: <a href="https://www.slidphilabs.com/pricing">/pricing</a>.</p>
+  </section>
+
+  <section class="lb-sec" aria-labelledby="how">
+    <p class="lb-secnum" aria-hidden="true">05</p>
+    <h2 class="lb-h2" id="how">How it works.</h2>
+    <div class="pf-prose">
+      <p><strong>SYSTOLE (at rest):</strong> All 354 shards (psi + AgentBibleCodec + COMMS) are folded into a single LZMA-9 + PCC-CAE compressed archive at <code>~/.slidphi/heart.cae</code>. Active context carries only the hot live board (~1,365 tokens).</p>
+      <p><strong>DIASTOLE (active slice):</strong> When an agent starts a task (e.g. <code>spl-claim P3-A</code>), only that task's ~3% slice is inflated into <code>/tmp/heart-active/<seat>/ACTIVE_CONTEXT.md</code>, with every shard SHA-256-verified against the index before the model sees it.</p>
+      <p><strong>Finish:</strong> When the agent finishes (e.g. <code>spl-finish P3-A "<note>"</code>), the note is logged, the heart re-folds back to <code>SYSTOLE</code> (wiping <code>/tmp/heart-active/</code>), and <code>spl-heart verify</code> re-audits all 354 shards and all Ed25519 receipts.</p>
+      <p><strong>Gate enforcement:</strong> Git <code>pre-push</code>, <code>post-commit</code>, <code>post-merge</code>, and <code>post-rewrite</code> hooks run <code>spl-heart verify</code> + <code>spl-git-gate</code> (Warrant check) automatically on every commit and push in every repo.</p>
+    </div>
+  </section>
+</main>
+<footer class="pf-foot"><a href="https://www.slidphilabs.com">Slid Phi Labs</a><a href="#evidence">Evidence</a><a href="#savings">Savings</a><a href="#pricing">Pricing</a><a href="https://www.slidphilabs.com/pricing">Full pricing</a><a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a><p>PERsiST by Slid Phi Labs · Cherry Hill, NJ</p></footer>
+</body>
+</html>
