@@ -13,12 +13,12 @@
 Not estimated. Not benchmarked against a synthetic corpus. Measured on our own live agent fleet, today, with a SHA-256-verified receipt trail anyone can re-run.
 
 ```
-Naive agent:   61,112 tokens / turn
-PERsiST:        1,976 tokens / turn
-Savings:       59,136 tokens (96.8%)
+Naive agent:   61,637 tokens / turn
+PERsiST:        1,981 tokens / turn
+Savings:       59,656 tokens (96.8%)
 ```
 
-Source: `~/.slidphi/heart-index.json` — verified `354/354` shards, `2.93x` compression ratio, `11/11` Ed25519 receipts, Merkle root `4f23367eaa04b405afe1b6c4ad5cf6bd410ada872e44d9f0c839e4037cf2fae7`.
+Source: `~/.slidphi/heart-index.json` — verified `355/355` shards, `2.93x` compression ratio, `20/20` Ed25519 receipts, Merkle root `277ab6b1818ff45c754432fbbb91190e61e63cd413a5ed7e9127cd15c782f2ff`.
 
 ---
 
@@ -38,16 +38,16 @@ Source: `~/.slidphi/heart-index.json` — verified `354/354` shards, `2.93x` com
 
 | State | Tokens per turn | What the model sees |
 |---|---:|---|
-| Naive | `61,112` | All 354 shards (psi rules + AgentBibleCodec chapters + task payloads) injected on every request, whether needed or not |
-| **With PERsiST** | **`1,976`** | **96.8% less context** — hot live board (`~1,365` tok) + exact slice needed (e.g. `2,757` tok for a Python testing task) |
+| Naive | `61,637` | All 355 shards (psi rules + AgentBibleCodec chapters + task payloads) injected on every request, whether needed or not |
+| **With PERsiST** | **`1,981`** | **96.8% less context** — hot live board (`~1,365` tok) + exact slice needed (e.g. `2,314` tok for a Python testing task) |
 
 **Dollar translation (at ~$3 / 1M input tokens):**
 
 | Turns/day | Naive monthly cost | PERsiST monthly cost | Monthly savings |
 |---:|---:|---:|---:|
-| 7 | $38.60 | $1.25 | **$37.35** |
-| 30 | $165.45 | $5.33 | **$160.12** |
-| 100 (heavy CI) | $551.50 | $17.78 | **$533.72** |
+| 7 | $38.83 | $1.25 | **$37.58** |
+| 30 | $166.42 | $5.35 | **$161.07** |
+| 100 (heavy CI) | $554.73 | $17.83 | **$536.90** |
 
 **Close:** `psi Crew` at $39/month already pays for itself at ~7 turns/day.
 
@@ -56,19 +56,21 @@ Source: `~/.slidphi/heart-index.json` — verified `354/354` shards, `2.93x` com
 | Subsystem | Live receipt |
 |---|---|
 | `psi` (persistent memory) | `PSI-GREEN: quad complete, 116 wired` |
-| `spl-heart` (compressed heart) | `244,451 B → 83,556 B` · `2.93x` · `354/354 shards verified` |
+| `spl-heart` (compressed heart) | `246,549 B → 84,224 B` · `2.93x` · `355/355 shards verified` |
 | `Warrant` (push/spend governance) | Live-blocked unapproved push: `[WARRANT_DENIED] exit 1` |
-| `CuNi` (Ed25519 receipts) | `11/11 cuni_envelopes verified` |
-| `AgentBibleCodec` | `P1-A` task inflates only `31/354` shards (`10.0%` active) |
+| `CuNi` (Ed25519 receipts) | `20/20 cuni_envelopes verified` |
+| `AgentBibleCodec` | `P1-A` task inflates only `24/355` shards (`8.2%` active) |
+| `SSAA` (self-adapting at birth) | `P3-A: 2,757 → 2,314 tok (-16.1%)` · `P1-A: 6,108 → 5,050 tok (-17.4%)` |
 
 **Close:** Re-run it yourself — `git clone github.com/ceedot-rock/psi && bash scripts/psi-doctor.sh && spl-heart fold && spl-heart verify`.
 
 ### Pillar 3: The Workflow (The Product Story)
 
-1. **SYSTOLE:** 354 shards folded into `~/.slidphi/heart.cae` (`2.93x` ratio). Context carries only `~1,365` tokens.
-2. **DIASTOLE:** `spl-claim <TASK_ID>` inflates only that task's slice, SHA-256 verified before the model sees it.
-3. **Finish:** `spl-finish <TASK_ID> "<note>"` re-folds to `SYSTOLE` and re-audits.
-4. **Gate:** Git `pre-push` + `post-commit` + `post-merge` + `post-rewrite` hooks run `spl-heart verify` + `spl-git-gate` automatically on every push in every repo.
+1. **SYSTOLE:** 355 shards folded into `~/.slidphi/heart.cae` (`2.93x` ratio). Context carries only `~1,365` tokens.
+2. **BIRTH (SSAA):** `spl-heart adapt` probes the host system — languages, GPU, repos, browser — and writes a birth profile (`psi:env-model.local` shard). Generic unfolds default to the detected bible ports; lean task slices auto-enable.
+3. **DIASTOLE:** `spl-claim <TASK_ID>` inflates only that task's lean slice (canonical Substance/Principle/Rule sections; illustrative fragments stay zipped), SHA-256 verified before the model sees it.
+4. **Finish:** `spl-finish <TASK_ID> "<note>"` re-folds to `SYSTOLE` and re-audits.
+5. **Gate:** Git `pre-push` + `post-commit` + `post-merge` + `post-rewrite` hooks run `spl-heart verify` + `spl-git-gate` automatically on every push in every repo.
 
 ---
 
@@ -87,11 +89,13 @@ Source: `~/.slidphi/heart-index.json` — verified `354/354` shards, `2.93x` com
 
 ## Social Proof / Ad Headlines (Ready to Deploy)
 
-1. **"We cut our AI agent's token bill by 96.8%. Here's the SHA-256 receipt."**
-2. **"Your AI agent re-reads 61,112 tokens it doesn't need, every single turn. PERsiST fixes that."**
-3. **"PERsiST: 96.8% fewer tokens, same work, Ed25519-verified."**
-4. **"$38 of every $39 you spend on agent context is waste. PERsiST keeps the $1."**
-5. **"Every AI agent needs a compressed heart. Ours is measured at 2.93x."**
+1. **"Use AI for absolutely anything? Like money? Then why aren't you pre-prompt saving with PERsiST mem systems?"**
+2. **"We cut our AI agent's token bill by 96.8%. Here's the SHA-256 receipt."**
+3. **"Your AI agent re-reads 61,637 tokens it doesn't need, every single turn. PERsiST fixes that."**
+4. **"PERsiST: 96.8% fewer tokens, same work, Ed25519-verified."**
+5. **"$38 of every $39 you spend on agent context is waste. PERsiST keeps the $1."**
+6. **"Every AI agent needs a compressed heart. Ours is measured at 2.93x."**
+7. **"It adapts to your machine the second it's born — then spends 96.8% fewer tokens doing your work."**
 
 ---
 

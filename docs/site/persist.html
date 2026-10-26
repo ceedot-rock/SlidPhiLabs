@@ -12,12 +12,12 @@
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="PERsiST by Slid Phi Labs"/>
   <meta property="og:title" content="PERsiST — 96.8% fewer tokens. Same work."/>
-  <meta property="og:description" content="The compressed-heart engine for AI agents. Measured: 61,112 tok -> 1,976 tok per agent turn (96.8% reduction), 354/354 shards SHA-256 verified, 11/11 Ed25519 receipts, 2.93x compression ratio."/>
+  <meta property="og:description" content="The compressed-heart engine for AI agents. Measured: 61,637 tok -> 1,981 tok per agent turn (96.8% reduction), 355/355 shards SHA-256 verified, 20/20 Ed25519 receipts, 2.93x compression ratio."/>
   <meta property="og:url" content="https://persist.com/"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="PERsiST — 96.8% fewer tokens. Same work."/>
-  <meta name="twitter:description" content="The compressed-heart engine for AI agents. Measured: 61,112 tok -> 1,976 tok per agent turn (96.8% reduction), 354/354 shards verified, 11/11 Ed25519 receipts, 2.93x compression ratio."/>
+  <meta name="twitter:description" content="The compressed-heart engine for AI agents. Measured: 61,637 tok -> 1,981 tok per agent turn (96.8% reduction), 355/355 shards verified, 20/20 Ed25519 receipts, 2.93x compression ratio."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <script type="application/ld+json">
   {
@@ -55,7 +55,7 @@
     <p class="pf-kicker">Slid Phi Labs · Cherry Hill, New Jersey</p>
     <h1 id="lede">PERsiST</h1>
     <p class="pf-lede"><strong>AI agents are burning 96.8% more tokens than they need to. We measured it, and we fixed it.</strong></p>
-    <p class="pf-lede">Every AI coding agent re-loads its entire knowledge corpus into context on every single turn — every rule, every past bug, every memory, every teammate. The context fills up. Attention dilutes. And the invoice compounds. PERsiST fixes that: the agent keeps a compressed heart on disk, inflates only the ~3% slice it needs, and verifies everything cryptographically.</p>
+    <p class="pf-lede">Use AI for absolutely anything? Like money? Then why aren't you pre-prompt saving with PERsiST mem systems? Every AI coding agent re-loads its entire knowledge corpus into context on every single turn — every rule, every past bug, every memory, every teammate. The context fills up. Attention dilutes. And the invoice compounds. PERsiST fixes that: the agent keeps a compressed heart on disk, inflates only the slice it needs, adapts itself to your system the moment it's born, and verifies everything cryptographically.</p>
     <p class="pf-actions">
       <a class="pf-btn pf-btn-solid" href="#savings">See the savings</a>
       <a class="pf-btn pf-btn-line" href="#evidence">The evidence</a>
@@ -73,17 +73,17 @@
       <tbody>
         <tr>
           <th scope="row">Naive agent (every session re-loads full knowledge)</th>
-          <td><strong>61,112</strong></td>
-          <td>All 354 shards — psi rules, AgentBibleCodec chapters, and every task payload — injected into context on every single request, whether or not they are needed.</td>
+          <td><strong>61,637</strong></td>
+          <td>All 355 shards — psi rules, AgentBibleCodec chapters, and every task payload — injected into context on every single request, whether or not they are needed.</td>
         </tr>
         <tr>
           <th scope="row"><strong>With PERsiST (compressed heart)</strong></th>
-          <td><strong>1,976</strong></td>
-          <td><strong>96.8% less context.</strong> Only the hot live board (~1,365 tokens) plus the exact ~3% slice the agent actually needs for the current task (e.g. 2,757 tokens for a Python testing task; 6,108 tokens for a web console task).</td>
+          <td><strong>1,981</strong></td>
+          <td><strong>96.8% less context.</strong> Only the hot live board (~1,365 tokens) plus the exact slice the agent actually needs for the current task (e.g. 2,314 tokens for a Python testing task; 5,050 tokens for a web console task).</td>
         </tr>
       </tbody>
     </table>
-    <p class="pf-note">Source: <code>~/.slidphi/heart-index.json</code> — verified <code>354/354</code> shards, <code>2.93x</code> compression ratio, <code>11/11</code> Ed25519 receipts (<code>sha256 4f23367eaa04b405afe1b6c4ad5cf6bd410ada872e44d9f0c839e4037cf2fae7</code>). Full methodology in the <a href="https://www.slidphilabs.com/psi">technical notes</a>.</p>
+    <p class="pf-note">Source: <code>~/.slidphi/heart-index.json</code> — verified <code>355/355</code> shards, <code>2.93x</code> compression ratio, <code>20/20</code> Ed25519 receipts (<code>sha256 277ab6b1818ff45c754432fbbb91190e61e63cd413a5ed7e9127cd15c782f2ff</code>). Full methodology in the <a href="https://www.slidphilabs.com/psi">technical notes</a>.</p>
   </section>
 
   <section class="lb-sec" aria-labelledby="savings">
@@ -94,9 +94,9 @@
       <caption>Monthly token cost per agent seat (at ~$3 / 1M input tokens, a typical frontier-model rate)</caption>
       <thead><tr><th scope="col">Agent turns / day</th><th scope="col">Naive monthly cost</th><th scope="col">PERsiST monthly cost</th><th scope="col">Monthly savings</th></tr></thead>
       <tbody>
-        <tr><th scope="row">7 turns/day</th><td>$38.60</td><td>$1.25</td><td><strong>$37.35</strong></td></tr>
-        <tr><th scope="row">30 turns/day</th><td>$165.45</td><td>$5.33</td><td><strong>$160.12</strong></td></tr>
-        <tr><th scope="row">100 turns/day (heavy CI)</th><td>$551.50</td><td>$17.78</td><td><strong>$533.72</strong></td></tr>
+        <tr><th scope="row">7 turns/day</th><td>$38.83</td><td>$1.25</td><td><strong>$37.58</strong></td></tr>
+        <tr><th scope="row">30 turns/day</th><td>$166.42</td><td>$5.35</td><td><strong>$161.07</strong></td></tr>
+        <tr><th scope="row">100 turns/day (heavy CI)</th><td>$554.73</td><td>$17.83</td><td><strong>$536.90</strong></td></tr>
       </tbody>
     </table>
     <p class="pf-note">Math: (naive − actual) tokens × turns/day × 30 days × $3/1M. Exact tokens per turn are published in the <a href="https://www.slidphilabs.com/psi">technical notes</a>.PERsiST's <strong>psi Crew</strong> tier at $39/month already pays for itself at just ~7 turns per day — before you count any of the other benefits (fewer hallucinated edits, fewer pushes you have to revert).</p>
@@ -117,8 +117,8 @@
         </tr>
         <tr>
           <th scope="row"><strong>spl-heart — compressed heart</strong></th>
-          <td>Folds all carried knowledge (354 shards) into a single <code>~/.slidphi/heart.cae</code> file and inflates only the ~3% slice needed for the current task.</td>
-          <td><code>244,451 B → 83,556 B</code> · <strong><code>2.93x</code></strong> compression · <code>354/354 shards</code> verified</td>
+          <td>Folds all carried knowledge (355 shards) into a single <code>~/.slidphi/heart.cae</code> file and inflates only the slice needed for the current task.</td>
+          <td><code>246,549 B → 84,224 B</code> · <strong><code>2.93x</code></strong> compression · <code>355/355 shards</code> verified</td>
         </tr>
         <tr>
           <th scope="row"><strong>Warrant — spend & push governance</strong></th>
@@ -128,12 +128,17 @@
         <tr>
           <th scope="row"><strong>CuNi — tamper-evident receipts</strong></th>
           <td>Every gate decision (allow or deny) and every task completion gets a double-signed Ed25519 envelope, Merkle-anchored.</td>
-          <td><code>11/11 cuni_envelopes verified</code> · <code>sha256 4f23367eaa04b405...</code></td>
+          <td><code>20/20 cuni_envelopes verified</code> · <code>sha256 277ab6b1818ff45c...</code></td>
         </tr>
         <tr>
           <th scope="row"><strong>AgentBibleCodec</strong></th>
           <td>A complete coding bible, filtered per-task — only the language/domain ports an agent actually needs get inflated.</td>
-          <td><code>225 bible shards</code> · e.g. <code>P1-A</code> task inflates only 31/354 shards (<code>10.0%</code> active)</td>
+          <td><code>225 bible shards</code> · e.g. <code>P1-A</code> task inflates only 24/355 shards (<code>8.2%</code> active)</td>
+        </tr>
+        <tr>
+          <th scope="row"><strong>SSAA — self-system autonomous adaptation</strong></th>
+          <td>At birth of process, PERsiST probes your machine (languages, GPU, repos, browser) and tailors itself: bible ports for your stack, lean slices for your tasks.</td>
+          <td><code>adapt → JS/Py/TS ports</code> · lean slices cut task tokens another <code>16–17%</code> (<code>P3-A: 2,757 → 2,314 tok</code>, <code>P1-A: 6,108 → 5,050 tok</code>)</td>
         </tr>
       </tbody>
     </table>

@@ -214,13 +214,21 @@
       "acronym": "compressed heart for AI agents",
       "engine": "psi + spl-heart (LZMA-9 + PCC-CAE) + Warrant + CuNi",
       "measured": {
-        "naive_tokens_per_turn": 61112,
-        "persist_tokens_per_turn": 1976,
+        "naive_tokens_per_turn": 61637,
+        "persist_tokens_per_turn": 1981,
         "reduction_pct": 96.8,
         "compression_ratio": 2.93,
-        "shards_verified": "354/354",
-        "ed25519_envelopes": "11/11",
-        "merkle_root_sha256": "4f23367eaa04b405afe1b6c4ad5cf6bd410ada872e44d9f0c839e4037cf2fae7"
+        "shards_verified": "355/355",
+        "ed25519_envelopes": "20/20",
+        "merkle_root_sha256": "277ab6b1818ff45c754432fbbb91190e61e63cd413a5ed7e9127cd15c782f2ff",
+        "ssaa": {
+          "adapt_command": "spl-heart adapt",
+          "bible_ports_detected": ["javascript", "python", "typescript"],
+          "lean_slice_improvement": {
+            "P1-A_tokens": "6108 -> 5050 (-17.4%)",
+            "P3-A_tokens": "2757 -> 2314 (-16.1%)"
+          }
+        }
       },
       "page": "https://www.slidphilabs.com/persist",
       "domain": "https://persist.com",
