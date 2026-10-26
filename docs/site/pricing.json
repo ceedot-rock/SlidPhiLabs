@@ -1,9 +1,9 @@
 {
-  "updated": "2026-10-15",
+  "updated": "2026-10-25",
   "inbox": "corey@slidphilabs.com",
   "site": "https://www.slidphilabs.com",
   "methods": "https://www.slidphilabs.com/METHODS.md",
-  "rule": "One Shared Spine, three heads, four doors. Never expand. DECODE_OK. Door 1 PCC: Day $9 · Pro $39/mo (200 GB) · Year $390. First 2 GB/month free, then 8¢/GB. TRUSTREAM rides the PCC seat. Door 2 TNSSRC: AGPL $0 · closed grant $390/yr · optional host bake-off $19.31/mo on a PCC seat. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. Door 3 TRUSTREAM: included with PCC. Door 4 pulsar: $0 GPLv3 · closed embed $390/yr. Rider: Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. Warrant/Ops in bundle or Team. Chamber $9/mo · $99/yr (open with keys). CuNi Studio $0 · closed-app $390/yr. Lab Pass $369 (Chamber year + PCC Year). Foundry+ = Lab Pass + TNSSRC grant + Rider Crew. Quikgater is pay-per-fetch. TRU8 is the zeros specialist. AWARE is a retired alias for PCC.",
+  "rule": "One Shared Spine, three heads, four doors. Never expand. DECODE_OK. Door 1 PCC: Day $9 · Pro $39/mo (200 GB) · Year $390. First 2 GB/month free, then 8¢/GB. TRUSTREAM rides the PCC seat. Door 2 TNSSRC: AGPL $0 · closed grant $390/yr · optional host bake-off $19.31/mo on a PCC seat. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. Door 3 TRUSTREAM: included with PCC. Door 4 pulsar: $0 GPLv3 · closed embed $390/yr. Door 5 PERsiST (compressed heart for agents): Solo $13.31 · Crew $39 · Team $49 · Lab Pass $490/yr. First 5,000 tokens/day folded free. Rider: Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. Warrant/Ops in bundle or Team. Chamber $9/mo · $99/yr (open with keys). CuNi Studio $0 · closed-app $390/yr. Lab Pass $369 (Chamber year + PCC Year). Foundry+ = Lab Pass + TNSSRC grant + Rider Crew. Quikgater is pay-per-fetch. TRU8 is the zeros specialist. AWARE is a retired alias for PCC.",
   "measured": {
     "silesia_raw": 211938580,
     "zpaq_m5": 39112870,
@@ -208,6 +208,77 @@
         "usd": 390
       },
       "page": "https://www.slidphilabs.com/cuni"
+    },
+    "persist": {
+      "name": "PERsiST",
+      "acronym": "compressed heart for AI agents",
+      "engine": "psi + spl-heart (LZMA-9 + PCC-CAE) + Warrant + CuNi",
+      "measured": {
+        "naive_tokens_per_turn": 61112,
+        "persist_tokens_per_turn": 1976,
+        "reduction_pct": 96.8,
+        "compression_ratio": 2.93,
+        "shards_verified": "354/354",
+        "ed25519_envelopes": "11/11",
+        "merkle_root_sha256": "4f23367eaa04b405afe1b6c4ad5cf6bd410ada872e44d9f0c839e4037cf2fae7"
+      },
+      "page": "https://www.slidphilabs.com/persist",
+      "domain": "https://persist.com",
+      "free": {
+        "tokens_folded_per_day": 5000,
+        "plain": "First 5,000 tokens/day folded via spl-heart are free, no plan."
+      },
+      "plans": {
+        "solo": {
+          "sku": "psi-solo",
+          "usd": 13.31,
+          "usd_year": 99,
+          "seats": 1,
+          "includes": [
+            "local spl-heart engine",
+            "psi memory (116 tweaks)",
+            "Warrant pre-push/pre-revert gate",
+            "CuNi Ed25519 receipts",
+            "10 GB PCC compression/month"
+          ],
+          "stripe": "https://www.slidphilabs.com/pay?sku=psi-solo"
+        },
+        "crew": {
+          "sku": "psi-crew",
+          "usd": 39,
+          "seats": 6,
+          "includes": [
+            "shared heart.cae",
+            "shared COMMS.md task board",
+            "shared AgentBibleCodec slice filtering",
+            "200 GB PCC compression/month",
+            "Warrant + CuNi receipts for all 6 seats"
+          ],
+          "stripe": "https://www.slidphilabs.com/pay?sku=psi-crew"
+        },
+        "team": {
+          "sku": "psi-team",
+          "usd": 49,
+          "seats": 10,
+          "includes": [
+            "priority SLA",
+            "policy customization (human/OVERRIDES.md templating)",
+            "SOC2/SIEM audit export",
+            "dedicated Warrant ledger"
+          ],
+          "stripe": "https://www.slidphilabs.com/pay?sku=psi-team"
+        },
+        "lab_pass": {
+          "sku": "psi-lab-pass",
+          "usd": 490,
+          "includes": [
+            "Chamber year",
+            "PCC year",
+            "psi Crew"
+          ],
+          "stripe": "https://www.slidphilabs.com/pay?sku=psi-lab-pass"
+        }
+      }
     }
   },
   "suite": {
@@ -221,7 +292,11 @@
       "gc-day": 10,
       "gc-month": 200,
       "gc-year": 2000,
-      "lab-pass": 2000
+      "lab-pass": 2000,
+      "psi-solo": 10,
+      "psi-crew": 200,
+      "psi-team": 200,
+      "psi-lab-pass": 2000
     },
     "page": "https://www.slidphilabs.com/pcc"
   },
@@ -232,6 +307,8 @@
     "gate-year": "gc-year",
     "zrw": "gc-year",
     "trustream": "gc-year",
+    "psi": "psi-crew",
+    "persist": "psi-crew",
     "cddg": "consulting",
     "support-integration": "consulting",
     "slid-phi": "consulting",
