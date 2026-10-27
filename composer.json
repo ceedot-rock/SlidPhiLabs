@@ -1,0 +1,8 @@
+{
+    "name": "slid-phi-labs/slid-phi",
+    "description": "Slid Phi Labs",
+    "type": "project",
+    "require": {
+        "symfony/reprise": "^1.3"
+    }
+}
