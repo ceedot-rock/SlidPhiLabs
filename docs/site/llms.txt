@@ -4,7 +4,7 @@
 Platform booklets: https://www.slidphilabs.com/wiki
 Previous homepage: https://www.slidphilabs.com/rcrc
 Homepage ledger: https://www.slidphilabs.com/
-Product homes: https://agentrider.slidphilabs.com/ (Rider) · https://cuni.slidphilabs.com/ (CuNi) · https://pcc.slidphilabs.com/ (PCC) · https://acp.slidphilabs.com/ (ACP) · https://psi.slidphilabs.com/ (PSI)
+Product homes: https://agentrider.slidphilabs.com/ (Rider) · https://cuni.slidphilabs.com/ (CuNi) · https://pcc.slidphilabs.com/ (PCC) · https://acp.slidphilabs.com/ (ACP) · https://psi.slidphilabs.com/ (PSI) · https://gitdepot.slidphilabs.com/ (GitDepot)
 
 > Slid Phi Labs builds tools that check. **Rider** gives an agent a signed name strangers can check on the public keys — seats from $3.31/mo. **CuNi 0.10.0** takes one program and checks 53 targets; Python, Go, and JavaScript must print the same stdout, or the path refuses. **Warrant** writes what the agent may do, then files the receipt. **Tollkeeper** meters ten live tools on that road. Compression: **TNSSRC** on your machine (Silesia 43,724,575), **PCC** on ours (board stamp 51,498,645), **TRUSTREAM** for live tiles, **pulsar** as the free demo (55,745,438). **AwLPay** prices a payment. **TEACHAiD** is the campus, in rollout.
 
@@ -35,6 +35,7 @@ bytes → Shared Spine (row / 4 KiB tile / file) → Head A (structure: runs, ze
 | warrant-month/year | 29/290 | /pay?sku=warrant-month · /pay?sku=warrant-year |
 | chamber-month/year | 9/99 | /pay?sku=chamber-month · /pay?sku=chamber-year |
 | pcc-day/month/year | 9/39/390 | PCC seats · checkout skus gc-day, gc-month, gc-year |
+| psi-meter/org | 19/79 | spend log: 124:1 mix, profiled pays ~1/5th, first audit free |
 | tnssrc-grant | 390 | /pay?sku=tnssrc-grant |
 | tnssrc-bakeoff | 19.31 | /pay?sku=tnssrc-bakeoff |
 | pulsar-exception | 390 | /pay?sku=pulsar-exception |

@@ -3,7 +3,7 @@
   "inbox": "corey@slidphilabs.com",
   "site": "https://www.slidphilabs.com",
   "methods": "https://www.slidphilabs.com/METHODS.md",
-  "rule": "One Shared Spine, three heads, four doors. Never expand. DECODE_OK. Door 1 PCC: Day $9 · Pro $39/mo (200 GB) · Year $390. First 2 GB/month free, then 8¢/GB. TRUSTREAM rides the PCC seat. Door 2 TNSSRC: AGPL $0 · closed grant $390/yr · optional host bake-off $19.31/mo on a PCC seat. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. Door 3 TRUSTREAM: included with PCC. Door 4 pulsar: $0 GPLv3 · closed embed $390/yr. Door 5 PERsiST (compressed heart for agents): Solo $13.31 · Crew $39 · Team $49 · Lab Pass $490/yr. First 5,000 tokens/day folded free. Rider: Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. Warrant/Ops in bundle or Team. Chamber $9/mo · $99/yr (open with keys). CuNi Studio $0 · closed-app $390/yr. Lab Pass $369 (Chamber year + PCC Year). Foundry+ = Lab Pass + TNSSRC grant + Rider Crew. Quikgater is pay-per-fetch. TRU8 is the zeros specialist. AWARE is a retired alias for PCC.",
+  "rule": "One Shared Spine, three heads, four doors. Never expand. DECODE_OK. Door 1 PCC: Day $9 · Pro $39/mo (200 GB) · Year $390. First 2 GB/month free, then 8¢/GB. TRUSTREAM rides the PCC seat. Door 2 TNSSRC: AGPL $0 · closed grant $390/yr · optional host bake-off $19.31/mo on a PCC seat. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. Door 3 TRUSTREAM: included with PCC. Door 4 pulsar: $0 GPLv3 · closed embed $390/yr. Door 5 PERsiST (compressed heart for agents): Solo $13.31 · Crew $39 · Team $49 · Lab Pass $490/yr. First 5,000 tokens/day folded free. Rider: Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. Warrant/Ops in bundle or Team. Chamber $9/mo · $99/yr (open with keys). CuNi Studio $0 · closed-app $390/yr. Lab Pass $369 (Chamber year + PCC Year). Foundry+ = Lab Pass + TNSSRC grant + Rider Crew. Quikgater is pay-per-fetch. TRU8 is the zeros specialist. AWARE is a retired alias for PCC. PSI Meter $19/mo, Org $79/mo: every model call tagged with hours, memories, dollars, tokens, carbon, time. First audit free. Measured Oct 2026: profiled sessions pay about one-fifth (124:1 mix, 94% cache-served).",
   "measured": {
     "silesia_raw": 211938580,
     "zpaq_m5": 39112870,
@@ -33,7 +33,9 @@
     "tnssrc_grant_year": 390,
     "tnssrc_bakeoff_month": 19.31,
     "pulsar_embed_year": 390,
-    "cuni_exception_year": 390
+    "cuni_exception_year": 390,
+    "psi_meter": 19,
+    "psi_org": 79
   },
   "products": {
     "pcc": {
@@ -208,6 +210,35 @@
         "usd": 390
       },
       "page": "https://www.slidphilabs.com/cuni"
+    },
+    "psi_spend": {
+      "name": "PSI Meter + Org",
+      "acronym": "spend log for agents",
+      "engine": "usage-line meter + 23-rule token economy + quarterly audits",
+      "measured": {
+        "input_output_ratio": "124:1",
+        "cache_share": 0.94,
+        "profiled_cost_fraction": 0.19,
+        "basis": "5 sessions, 787.7M in / 6.35M out, Oct 2026; live provider rates",
+        "marathon_example": "304M-token session about $116 profiled vs about $631 uncached (Sonnet-class rates)"
+      },
+      "page": "https://psi.slidphilabs.com/",
+      "free": {
+        "first_audit": true,
+        "plain": "First audit free: we meter your session logs and hand you the three biggest leaks."
+      },
+      "plans": {
+        "meter": {
+          "sku": "psi-meter",
+          "usd": 19,
+          "stripe": "https://www.slidphilabs.com/pay?sku=psi-meter"
+        },
+        "org": {
+          "sku": "psi-org",
+          "usd": 79,
+          "stripe": "https://www.slidphilabs.com/pay?sku=psi-org"
+        }
+      }
     },
     "persist": {
       "name": "PERsiST",

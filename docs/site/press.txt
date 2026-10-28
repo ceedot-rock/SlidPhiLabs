@@ -71,3 +71,24 @@ product is hosted lossless compression. This release does not claim a ranking
 against other compressors and does not report customer counts or revenue.
 
 ###
+
+---
+
+FOR IMMEDIATE RELEASE
+October 28, 2026
+Cherry Hill, New Jersey
+
+SLID PHI LABS PRICES LLM SPEND AT A FIFTH: PSI METER $19/MO, FIRST AUDIT FREE
+
+Slid Phi Labs today published measured LLM spend figures from five of its own agentic sessions (787.7M input / 6.35M output tokens, metered October 2026): a 124:1 input-to-output ratio with 94% of input cache-served. At live October rates across Anthropic, OpenAI, Google, xAI, and DeepSeek, that profile pays roughly one-fifth of unprofiled cost. A 304M-token marathon session costs about $116 profiled versus about $631 uncached at Sonnet-class rates.
+
+WHAT IT IS
+PSI tags every model call with hours, memories, dollars, tokens, carbon, and time, then names the three biggest leaks first. The 23-rule cut plan (cache defense, turn discipline, bounded reads, model routing) holds the cache share that the fifth depends on. Method and figures in psi/token-economy practice; per-provider arithmetic dated October 28, 2026.
+
+PRICE
+PSI Meter $19/month, PSI Org $79/month (team seats, quarterly audits, enforced caps). First audit free: send session logs, get your ratio, cache share, and three leaks. x402 and Stripe at https://www.slidphilabs.com/pricing .
+
+BOILERPLATE
+Slid Phi Labs is a computation lab in Cherry Hill, New Jersey. This release claims no percentage beyond the profiled-cost arithmetic stated above and reports no customer counts or revenue.
+
+###

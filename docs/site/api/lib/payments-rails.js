@@ -120,7 +120,23 @@ export const PRODUCT_CATALOG = {
     list: true,
     blurb: "Legacy year SKU. Same as 12 months of PCC Pro.",
   },
-  "lab-check": {
+    "psi-meter": {
+    name: "PSI Meter, monthly spend log",
+    amount_cents: 1900,
+    stripe: "https://www.slidphilabs.com/pay?sku=psi-meter",
+    kind: "psi",
+    list: true,
+    blurb: "Meter every model call: tokens, dollars, carbon, time. Plus the 23-rule cut plan. First audit free. Measured: profiled sessions pay about one-fifth.",
+  },
+  "psi-org": {
+    name: "PSI Org, monthly audits plus enforcement",
+    amount_cents: 7900,
+    stripe: "https://www.slidphilabs.com/pay?sku=psi-team",
+    kind: "psi",
+    list: true,
+    blurb: "Team seats, quarterly audits, enforced caps and cache discipline. First audit free.",
+  },
+"lab-check": {
     name: "CuNi check",
     amount_cents: 10,
     stripe: "https://www.slidphilabs.com/pay?sku=lab-check",
