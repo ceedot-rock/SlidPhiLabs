@@ -8,6 +8,22 @@ import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { parseCookies } from "./spl-box-gate.js";
 import { includedBytesForSku, FREE_GB, CENTS_PER_GB, computeQuote } from "../suite-pricing.js";
+import { seatFromClaimHeader } from "./claim-seat.mjs";
+import { isOwnerEmail } from "./owner-gratis.mjs";
+
+/** Owner quota: effectively unlimited, but usage is still COUNTED so the
+ *  ledger shows what the owner took for free (gratis recorded, never silent). */
+export const OWNER_INCLUDED_BYTES = Number.MAX_SAFE_INTEGER;
+
+export function ownerFromReq(req) {
+  try {
+    const s = seatFromClaimHeader(req);
+    if (s.ok && isOwnerEmail(s.payload && s.payload.email)) return true;
+  } catch {
+    /* fall through */
+  }
+  return false;
+}
 
 function rootDir() {
   const d = process.env.AUTH_DIR || "/data";
@@ -66,12 +82,13 @@ export function addUsage(key, n, month = monthKey()) {
 export function meterSnapshot(req, extraBytes = 0) {
   const id = identityFromReq(req);
   const used = readUsage(id.key);
-  const included = includedBytesForSku(id.sku);
+  const owner = ownerFromReq(req);
+  const included = owner ? OWNER_INCLUDED_BYTES : includedBytesForSku(id.sku);
   const projected = used.bytes + Math.max(0, Number(extraBytes) || 0);
   const remaining = Math.max(0, included - used.bytes);
   const quote = computeQuote({ bytes: extraBytes, used_bytes: used.bytes, sku: id.sku });
   return {
-    identity: id.key.startsWith("seat:") ? "paid" : id.key.startsWith("box:") ? "try" : "anon",
+    identity: owner ? "owner" : id.key.startsWith("seat:") ? "paid" : id.key.startsWith("box:") ? "try" : "anon",
     sku: id.sku || null,
     month: used.month,
     used_bytes: used.bytes,

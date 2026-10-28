@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.mjs",
     "dev": "node server.mjs",
-    "test": "node --test api/lib/warrant.test.mjs api/lib/specialist.test.mjs api/lib/walk-peel.test.mjs api/lib/repeat-peel.test.mjs api/lib/x402-spent-ledger.test.mjs api/lib/agc-ledger.test.mjs api/lib/owner-gratis.test.mjs api/lib/tool-gate.test.mjs api/lib/ga4.test.mjs api/lib/sales-ledger.test.mjs api/suite-pricing.test.mjs",
+    "test": "node --test api/lib/warrant.test.mjs api/lib/specialist.test.mjs api/lib/walk-peel.test.mjs api/lib/repeat-peel.test.mjs api/lib/x402-spent-ledger.test.mjs api/lib/agc-ledger.test.mjs api/lib/owner-gratis.test.mjs api/lib/tool-gate.test.mjs api/lib/ga4.test.mjs api/lib/sales-ledger.test.mjs api/suite-pricing.test.mjs api/lib/usage-owner.test.mjs",
     "seo-audit": "node scripts/seo-audit.cjs"
   },
   "engines": {
