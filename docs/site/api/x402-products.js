@@ -21,6 +21,7 @@
  */
 
 import { signClaim } from "./lib/x402-claim.mjs";
+import { isOwnerEmail } from "./lib/owner-gratis.mjs";
 import {
   consumePaymentTx,
   alreadyUsedResponse,
@@ -638,6 +639,7 @@ export default async function handler(req, res) {
 
   const email = clean(body.email, 120);
   const note = clean(body.note, 800);
+  const ownerOrder = isOwnerEmail(email);
   const p = CATALOG[sku];
   const requirements = buildAccepts(sku);
   const accept0 = requirements.accepts[0];
@@ -645,14 +647,15 @@ export default async function handler(req, res) {
   const devHdr = req.headers["x-payment-dev"] || req.headers["X-PAYMENT-DEV"];
   const paymentHdr = getPaymentHeader(req);
 
-  if (!paymentHdr && !(process.env.X402_DEV_BYPASS === "1" && devHdr === "ok")) {
+  if (!ownerOrder && !paymentHdr && !(process.env.X402_DEV_BYPASS === "1" && devHdr === "ok")) {
     const sol = solanaConfig();
     const base = baseConfig();
     if (!sol.enabled && !base.enabled && process.env.X402_DEV_BYPASS !== "1") {
       return json(res, 503, {
         error: "Agentic x402 not configured",
         hint: "Set X402_PAY_TO (Solana) and/or X402_PAY_TO_BASE (EVM 0x) on Vercel",
-        product: publicProduct(sku),
+        sku,
+      product: publicProduct(sku),
         human_stripe: p.stripe,
       });
     }
@@ -663,8 +666,10 @@ export default async function handler(req, res) {
     });
   }
 
-  let paymentResult = { ok: false };
-  if (process.env.X402_DEV_BYPASS === "1" && devHdr === "ok") {
+  let paymentResult = ownerOrder
+    ? { ok: true, signature: "owner-gratis", network: "owner" }
+    : { ok: false };
+  if (!ownerOrder && process.env.X402_DEV_BYPASS === "1" && devHdr === "ok") {
     paymentResult = { ok: true, signature: "dev-bypass", network: accept0.network };
   } else {
     const proof = decodePayment(paymentHdr);
@@ -696,7 +701,7 @@ export default async function handler(req, res) {
   const id = orderId(sku);
 
   // Global consume-once: same txHash/signature cannot mint another order or suite job.
-  const spent = consumePaymentTx(tx, {
+  const spent = ownerOrder ? { ok: true, owner: true } : consumePaymentTx(tx, {
     endpoint: "x402-products",
     ref: id,
     sku,
@@ -725,6 +730,7 @@ export default async function handler(req, res) {
   });
   if (deliverable.entitlement) {
     deliverable.entitlement.rail = "x402";
+    if (ownerOrder) deliverable.entitlement.gratis = "owner";
     deliverable.entitlement.order_id = id;
     deliverable.entitlement.tx = tx;
     deliverable.entitlement.network = net;
@@ -773,6 +779,8 @@ export default async function handler(req, res) {
       auto_claim: true,
       order_id: id,
       sku,
+      sku,
+      gratis: ownerOrder ? "owner" : undefined,
       product: publicProduct(sku),
       payment: paymentResponse,
       claim_token: claimToken,

@@ -6,6 +6,7 @@
 import { createHmac, createHash, randomBytes, timingSafeEqual } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import { isOwnerAgent } from "./owner-gratis.mjs";
 
 export const RIDER_VERIFY_URL =
   process.env.RIDER_VERIFY_URL || "https://agentrider.fly.dev/api/rider/verify";
@@ -179,7 +180,8 @@ export function issueWarrant({
   const operator_id = rider?.operator_id || (demo ? "demo" : "");
   if (!agent_id) return { ok: false, reason: "missing_agent" };
 
-  if (!paid && !demo) {
+  const owner = isOwnerAgent(agent_id);
+  if (!paid && !demo && !owner) {
     const m = takeMeter("issue", operator_id || agent_id, FREE_ISSUES_PER_DAY);
     if (!m.ok) return { ok: false, reason: "free_issue_cap", ...m, sku: "warrant-month" };
   }
@@ -253,7 +255,7 @@ export function fileReceipt({
   const cost = Math.max(0, Number(usd) || 0);
   if (cost > w.remaining_usd + 1e-9) return { ok: false, reason: "usd_exhausted", warrant: w };
 
-  if (!paid && !w.demo) {
+  if (!paid && !w.demo && !isOwnerAgent(w.agent_id)) {
     const m = takeMeter("receipt", w.operator_id || w.agent_id, FREE_RECEIPTS_PER_DAY);
     if (!m.ok) return { ok: false, reason: "free_receipt_cap", ...m, sku: "warrant-month" };
   }
