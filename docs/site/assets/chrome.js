@@ -114,6 +114,14 @@
         <a href="/about">About</a>
       </div>
       <div>
+        <h4>Network</h4>
+        <a href="https://agentrider.slidphilabs.com/">agentrider.slidphilabs.com</a>
+        <a href="https://cuni.slidphilabs.com/">cuni.slidphilabs.com</a>
+        <a href="https://pcc.slidphilabs.com/">pcc.slidphilabs.com</a>
+        <a href="https://acp.slidphilabs.com/">acp.slidphilabs.com</a>
+        <a href="https://psi.slidphilabs.com/">psi.slidphilabs.com</a>
+      </div>
+      <div>
         <h4>Agents</h4>
         <a href="/agents">For agents</a>
         <a href="/api/agent">/api/agent</a>
