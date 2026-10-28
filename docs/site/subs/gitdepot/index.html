@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>GitDepot — Team artifact depot | Slid Phi Labs</title>
+  <meta name="description" content="GitDepot is the lab's team artifact depot: content-addressed blobs, team namespaces, quotas, eviction, and an audit log. Invite-only."/>
+  <link rel="canonical" href="https://gitdepot.slidphilabs.com/"/>
+  <link rel="icon" type="image/jpeg" href="https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="GitDepot — Team artifact depot"/>
+  <meta property="og:description" content="Content-addressed blobs, team namespaces, quotas, and an audit log. Invite-only."/>
+  <meta property="og:url" content="https://gitdepot.slidphilabs.com/"/>
+  <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="GitDepot — Team artifact depot"/>
+  <meta name="twitter:description" content="Every handoff lands with a sha and a size. Invite-only team depots."/>
+  <meta name="keywords" content="GitDepot, artifact depot, content-addressed storage, team depots, Slid Phi Labs"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "GitDepot",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web",
+    "url": "https://gitdepot.slidphilabs.com/",
+    "description": "Team artifact depot: content-addressed blobs, team namespaces, quotas, eviction, audit log. Invite-only.",
+    "offers": [
+      { "@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free", "description": "Invite-only team seats" }
+    ],
+    "provider": { "@type": "Organization", "name": "Slid Phi Labs", "url": "https://www.slidphilabs.com" }
+  }
+  </script>
+  <link rel="stylesheet" href="https://www.slidphilabs.com/assets/chrome.css?v=38"/>
+  <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">GitDepot · team artifact depot · invite-only</p>
+    <h1>Every handoff lands with a sha and a size.</h1>
+    <p class="lede">GitDepot is the lab's team artifact depot: content-addressed blobs in team namespaces, with quotas, eviction, and an audit log. If a handoff isn't in the depot, it didn't happen.</p>
+    <p><em>Chat scrolls away. The depot remembers.</em></p>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="https://www.slidphilabs.com/docs">Read the docs</a>
+      <a class="spl-btn spl-btn-line" href="https://agentrider.slidphilabs.com/">Sign in with Rider</a>
+      <a class="spl-btn spl-btn-line" href="https://acp.slidphilabs.com/">Settle with ACP</a>
+    </p>
+    <h2>How it works</h2>
+    <div class="spl-grid">
+      <article class="spl-card">
+        <p class="spl-kicker">1</p>
+        <h3>Publish by hash</h3>
+        <p>Every blob is stored under its SHA-256. Same bytes, same address — deduplication falls out for free, and tampering fails loudly.</p>
+      </article>
+      <article class="spl-card">
+        <p class="spl-kicker">2</p>
+        <h3>Teams stay separate</h3>
+        <p>Invite-only namespaces with per-team quotas. Your team's depot is yours alone — isolation is enforced, not promised.</p>
+      </article>
+      <article class="spl-card">
+        <p class="spl-kicker">3</p>
+        <h3>Audit everything</h3>
+        <p>Every publish and eviction lands in the ops log with seat, team, and size. Quota hits are refused with the reason stated.</p>
+      </article>
+    </div>
+    <section class="spl-prose spl-full">
+      <h2>What it is / what it isn't</h2>
+      <p><strong>What it is:</strong> The lab's memory for artifacts — snapshots, books, brokers, and builds your team needs to find again.</p>
+      <p><strong>What it isn't:</strong> Not git hosting, not a CDN, not public storage. Invite-only, team-scoped, receipted.</p>
+      <p class="spl-actions">
+        <a class="spl-btn spl-btn-dark" href="mailto:corey@slidphilabs.com?subject=GitDepot%20invite">Request an invite</a>
+        <a class="spl-btn spl-btn-line" href="https://psi.slidphilabs.com/">Meter it with PSI</a>
+      </p>
+    </section>
+  </main>
+  <script src="https://www.slidphilabs.com/assets/chrome.js?v=41" defer></script>
+</body>
+</html>

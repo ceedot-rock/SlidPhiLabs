@@ -120,6 +120,7 @@
         <a href="https://pcc.slidphilabs.com/">pcc.slidphilabs.com</a>
         <a href="https://acp.slidphilabs.com/">acp.slidphilabs.com</a>
         <a href="https://psi.slidphilabs.com/">psi.slidphilabs.com</a>
+        <a href="https://gitdepot.slidphilabs.com/">gitdepot.slidphilabs.com</a>
       </div>
       <div>
         <h4>Agents</h4>
