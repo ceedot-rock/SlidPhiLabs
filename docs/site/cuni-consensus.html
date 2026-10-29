@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CuNi use case: consensus and blockchain execution | Slid Phi Labs</title>
+  <meta name="description" content="Consensus is agreement. CuNi proves one escrow law byte-identical on EVM, Rust, and Go, with six chain emitters. Logic cores proven; chain shells honestly delimited."/>
+  <link rel="canonical" href="https://www.slidphilabs.com/cuni-consensus"/>
+  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=38"/>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">CuNi use case · Proven (logic cores)</p>
+    <h1>Consensus: the same escrow law on every chain, or refuse</h1>
+    <p class="lede">Consensus <em>is</em> agreement. Every validator must compute the identical state transition from identical inputs, or the chain forks. Cross-chain work multiplies the problem — the same escrow logic, in different languages, on different VMs.</p>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="https://cuni-studio.fly.dev/">Open Studio</a>
+      <a class="spl-btn spl-btn-line" href="/cuni">Back to CuNi</a>
+    </p>
+    <section class="spl-prose spl-full">
+      <h2>The failure mode</h2>
+      <p>An escrow contract ported from Solidity to Rust for a second chain handles a boundary amount differently — one truncates, one rounds. Funds lock on one chain and release on the other. The bug is invisible to every test suite that only runs one chain's toolchain.</p>
+      <h2>What CuNi proves today: proven (logic cores)</h2>
+      <p>One escrow / transfer-validation law proven byte-identical on EVM (Solidity, compiled by real solc into a deployable contract), Rust, and Go. Six chain emitters — ink!, Move, Vyper, Cairo, Clarity, Cadence — each emit the proven logic core plus the chain shell in the chain's idiom, in delimited regions. The fee-schedule law runs byte-identical on all six.</p>
+      <h2>What it does not claim</h2>
+      <p>Logic cores are proven; chain <em>shells</em> are shape-asserted and snapshot-pinned, not compiled, where no chain toolchain exists on the check machine (Solana shell included). Nothing here is deployed to a live chain by the proof itself. Cross-chain <em>state</em> agreement — proving two deployed contracts converge, not just two logic cores — is not claimed.</p>
+      <h2>What is next</h2>
+      <p>Close the shell gap per chain as toolchains become available on the check machines, each closed shell a publishable milestone. Then: state-convergence proofs, where the deliverable is not "both cores agree" but "both deployed contracts, given the same transaction log, reach the same state."</p>
+    </section>
+    <section class="spl-prose spl-full">
+      <h2>More CuNi use cases</h2>
+      <ul>
+        <li><a href="/cuni-ffi-boundaries">FFI boundaries</a> — Python, Rust, C, one behavior.</li>
+        <li><a href="/cuni-codecs">Codecs: bit-exact decode</a> — never-expand and arithmetic-coding roundtrips.</li>
+        <li><a href="/cuni-money">Money: settlement and Warrant budget trees</a> — spend-control, rider-fee, suite-meter laws.</li>
+        <li><a href="/cuni-deterministic-builds">Deterministic builds and reproducible computation</a> — receipts anyone can re-run.</li>
+        <li><a href="/cuni-audit-source">CuNi as the audit source</a> — foreign implementations proven against a gold law, signed receipts filed.</li>
+        <li><a href="/cuni-agent-policy">Agent policy gate</a> — an agent's policy, proven before it runs.</li>
+        <li><a href="/cuni-stack-spine">One substrate, six surfaces</a> — how CuNi ties Rider, Warrant, Chamber, PCC, and billing together.</li>
+      </ul>
+      <p class="spl-actions">
+        <a class="spl-btn spl-btn-line" href="/cuni">CuNi overview</a>
+        <a class="spl-btn spl-btn-line" href="https://cuni-studio.fly.dev/">Open Studio</a>
+      </p>
+    </section>
+  </main>
+  <script src="/assets/chrome.js?v=41" defer></script>
+</body>
+</html>

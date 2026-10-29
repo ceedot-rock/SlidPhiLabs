@@ -98,7 +98,7 @@
     "gc-day": { "usd": 9, "plain": "PCC hosted compressor, one day of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-day" },
     "gc-month": { "usd": 39, "plain": "PCC hosted compressor, one month of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-month" },
     "gc-year": { "usd": 390, "plain": "PCC hosted compressor, one year of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-year" },
-    "lab-pass": { "usd": 490, "plain": "One year of Chamber + PCC for $490.", "pay": "https://www.slidphilabs.com/pay?sku=lab-pass", "includes": ["chamber", "pcc"], "excludes": ["rider"] },
+    "lab-pass": { "usd": 369, "plain": "One year of Chamber + PCC for $369.", "pay": "https://www.slidphilabs.com/pay?sku=lab-pass", "includes": ["chamber", "pcc"], "excludes": ["rider"] },
     "oss-support": {
       "usd": 199,
       "plain": "$199 for help with an already-public GPLv3 library.",

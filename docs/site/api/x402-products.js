@@ -360,7 +360,8 @@ async function verifyBasePayment(proof, expected) {
   const payTo = (expected.payTo || base.payTo).toLowerCase();
   const need = BigInt(expected.maxAmountRequired || "0");
 
-  const txHash =
+  const txHashes = [];
+  const single =
     proof?.payload?.transaction ||
     proof?.payload?.txHash ||
     proof?.payload?.tx ||
@@ -369,8 +370,17 @@ async function verifyBasePayment(proof, expected) {
     String(proof.payload.signature).length === 66
       ? proof.payload.signature
       : null);
+  if (single) txHashes.push(single);
+  const multi = proof?.payload?.transactions;
+  if (Array.isArray(multi)) {
+    for (const t of multi) {
+      if (typeof t === "string" && t.startsWith("0x") && !txHashes.includes(t)) {
+        txHashes.push(t);
+      }
+    }
+  }
 
-  if (!txHash || !String(txHash).startsWith("0x")) {
+  if (!txHashes.length) {
     return {
       ok: false,
       reason:
@@ -378,34 +388,39 @@ async function verifyBasePayment(proof, expected) {
     };
   }
 
-  let receipt = null;
-  for (let i = 0; i < 8; i++) {
-    receipt = await ethRpc(base.rpc, "eth_getTransactionReceipt", [txHash]);
-    if (receipt && receipt.status) break;
-    await new Promise((r) => setTimeout(r, 750));
-  }
-  if (!receipt) return { ok: false, reason: "tx not found on Base", signature: txHash };
-  if (receipt.status !== "0x1") return { ok: false, reason: "tx failed on Base", signature: txHash };
-
-  const toTopic = padAddressTopic(payTo);
-  const logs = receipt.logs || [];
   let paid = 0n;
-  for (const log of logs) {
-    if (String(log.address || "").toLowerCase() !== asset) continue;
-    if (!log.topics || log.topics[0]?.toLowerCase() !== TRANSFER_TOPIC) continue;
-    if ((log.topics[2] || "").toLowerCase() !== toTopic) continue;
-    paid += BigInt(log.data || "0x0");
+  const seenReceipts = [];
+  for (const txHash of txHashes) {
+    let receipt = null;
+    for (let i = 0; i < 8; i++) {
+      receipt = await ethRpc(base.rpc, "eth_getTransactionReceipt", [txHash]);
+      if (receipt && receipt.status) break;
+      await new Promise((r) => setTimeout(r, 750));
+    }
+    if (!receipt) return { ok: false, reason: "tx not found on Base", signature: txHash };
+    if (receipt.status !== "0x1") return { ok: false, reason: "tx failed on Base", signature: txHash };
+    seenReceipts.push(txHash);
+
+    const toTopic = padAddressTopic(payTo);
+    const logs = receipt.logs || [];
+    for (const log of logs) {
+      if (String(log.address || "").toLowerCase() !== asset) continue;
+      if (!log.topics || log.topics[0]?.toLowerCase() !== TRANSFER_TOPIC) continue;
+      if ((log.topics[2] || "").toLowerCase() !== toTopic) continue;
+      paid += BigInt(log.data || "0x0");
+    }
   }
+  const signature = seenReceipts.join(",");
   if (paid < need) {
     return {
       ok: false,
       reason: `USDC Transfer to payTo insufficient: got ${paid} need ${need}`,
-      signature: txHash,
+      signature,
     };
   }
   return {
     ok: true,
-    signature: txHash,
+    signature,
     network: BASE_NETWORK,
     payTo: base.payTo,
     asset: base.asset,

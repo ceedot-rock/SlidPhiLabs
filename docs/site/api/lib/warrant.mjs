@@ -20,6 +20,7 @@ function dataDir() {
   fs.mkdirSync(d, { recursive: true });
   fs.mkdirSync(path.join(d, "warrants"), { recursive: true });
   fs.mkdirSync(path.join(d, "receipts"), { recursive: true });
+  fs.mkdirSync(path.join(d, "reservations"), { recursive: true });
   return d;
 }
 
@@ -70,6 +71,9 @@ function warrantPath(id) {
 }
 function receiptPath(id) {
   return path.join(dataDir(), "receipts", `${id}.json`);
+}
+function reservationPath(id) {
+  return path.join(dataDir(), "reservations", `${id}.json`);
 }
 function meterPath() {
   return path.join(dataDir(), "meter.json");
@@ -204,9 +208,11 @@ export function issueWarrant({
   const record = {
     ...payload,
     remaining_usd: payload.max_usd,
+    reserved_usd: 0,
     remaining_calls: payload.max_calls,
     revoked: false,
     receipts: [],
+    reservations: [],
   };
   saveJson(warrantPath(id), record);
   return { ok: true, warrant: record, token, header_to_send: "X-Agent-Warrant" };
@@ -223,7 +229,7 @@ export function readWarrant(token) {
   return { ok: true, warrant: rec, payload: parsed.payload };
 }
 
-export function verifyWarrant(token, { host, action } = {}) {
+export function verifyWarrant(token, { host, action, usd } = {}) {
   const got = readWarrant(token);
   if (!got.ok) return got;
   const w = got.warrant;
@@ -234,7 +240,64 @@ export function verifyWarrant(token, { host, action } = {}) {
     return { ok: false, reason: "host_not_allowed", warrant: w };
   }
   if (w.remaining_calls <= 0) return { ok: false, reason: "calls_exhausted", warrant: w };
+  // Pre-spend dollar gate: when the caller states the expected cost, reject
+  // BEFORE the job runs instead of only at receipt time (after the spend).
+  // remaining_usd is already net of outstanding reservations.
+  if (usd !== undefined && usd !== null) {
+    const cost = Math.max(0, Number(usd) || 0);
+    if (cost > (w.remaining_usd || 0) + 1e-9) {
+      return { ok: false, reason: "usd_exhausted", warrant: w };
+    }
+  }
   return { ok: true, warrant: w };
+}
+
+// Reserve the expected cost BEFORE the job runs, so two concurrent checks
+// cannot both pass against the same remaining balance (TOCTOU). The reserve
+// deducts remaining_usd immediately; fileReceipt with the reservation id
+// settles it without deducting twice, and releaseReservation refunds it if
+// the job never runs. remaining_calls is only consumed at receipt time, so
+// a failed or cancelled job does not burn a call.
+export function reserveWarrant({ token, host, action, usd = 0 } = {}) {
+  const check = verifyWarrant(token, { host, action, usd });
+  if (!check.ok) return check;
+  const w = check.warrant;
+  const cost = Math.max(0, Number(usd) || 0);
+  const id = "rsv_" + randomBytes(8).toString("hex");
+  const reservation = {
+    v: 1,
+    id,
+    warrant_id: w.id,
+    agent_id: w.agent_id,
+    operator_id: w.operator_id,
+    action: String(action || "invoke").toLowerCase(),
+    host: String(host || "").toLowerCase(),
+    usd: cost,
+    settled: false,
+    released: false,
+    ts: new Date().toISOString(),
+  };
+  w.remaining_usd = Math.max(0, +(w.remaining_usd - cost).toFixed(6));
+  w.reserved_usd = +( (w.reserved_usd || 0) + cost ).toFixed(6);
+  w.reservations = [...(w.reservations || []), id];
+  saveJson(warrantPath(w.id), w);
+  saveJson(reservationPath(id), reservation);
+  return { ok: true, reservation, warrant: publicWarrant(w) };
+}
+
+export function releaseReservation(reservationId) {
+  const r = loadJson(reservationPath(String(reservationId || "")), null);
+  if (!r) return { ok: false, reason: "unknown_reservation" };
+  if (r.settled) return { ok: false, reason: "reservation_settled" };
+  if (r.released) return { ok: false, reason: "reservation_released" };
+  const w = loadJson(warrantPath(r.warrant_id), null);
+  if (!w) return { ok: false, reason: "unknown_warrant" };
+  r.released = true;
+  w.remaining_usd = +( (w.remaining_usd || 0) + r.usd ).toFixed(6);
+  w.reserved_usd = Math.max(0, +( (w.reserved_usd || 0) - r.usd ).toFixed(6));
+  saveJson(warrantPath(w.id), w);
+  saveJson(reservationPath(r.id), r);
+  return { ok: true, reservation: r, warrant: publicWarrant(w) };
 }
 
 export function fileReceipt({
@@ -242,6 +305,7 @@ export function fileReceipt({
   action,
   host,
   usd = 0,
+  reservation_id,
   request_sha256,
   result_sha256,
   note,
@@ -250,8 +314,26 @@ export function fileReceipt({
   const check = verifyWarrant(token, { host, action });
   if (!check.ok) return check;
   const w = check.warrant;
-  const cost = Math.max(0, Number(usd) || 0);
-  if (cost > w.remaining_usd + 1e-9) return { ok: false, reason: "usd_exhausted", warrant: w };
+  let cost = Math.max(0, Number(usd) || 0);
+  let reservation = null;
+  if (reservation_id) {
+    // Settling a pre-spend reservation: the cost was already deducted at
+    // reserve time, so it must NOT be deducted again here.
+    reservation = loadJson(reservationPath(String(reservation_id)), null);
+    if (!reservation) return { ok: false, reason: "unknown_reservation", warrant: w };
+    if (reservation.settled) return { ok: false, reason: "reservation_settled", warrant: w };
+    if (reservation.released) return { ok: false, reason: "reservation_released", warrant: w };
+    if (reservation.warrant_id !== w.id) return { ok: false, reason: "reservation_mismatch", warrant: w };
+    if (action && String(action).toLowerCase() !== reservation.action) {
+      return { ok: false, reason: "action_not_allowed", warrant: w };
+    }
+    if (host && String(host).toLowerCase() !== reservation.host) {
+      return { ok: false, reason: "host_not_allowed", warrant: w };
+    }
+    cost = reservation.usd;
+  } else if (cost > w.remaining_usd + 1e-9) {
+    return { ok: false, reason: "usd_exhausted", warrant: w };
+  }
 
   if (!paid && !w.demo) {
     const m = takeMeter("receipt", w.operator_id || w.agent_id, FREE_RECEIPTS_PER_DAY);
@@ -263,6 +345,7 @@ export function fileReceipt({
     v: 1,
     id,
     warrant_id: w.id,
+    reservation_id: reservation ? reservation.id : null,
     agent_id: w.agent_id,
     operator_id: w.operator_id,
     action: String(action || "invoke").toLowerCase(),
@@ -273,7 +356,13 @@ export function fileReceipt({
     note: note ? String(note).slice(0, 240) : null,
     ts: new Date().toISOString(),
   };
-  w.remaining_usd = Math.max(0, +(w.remaining_usd - cost).toFixed(6));
+  if (reservation) {
+    reservation.settled = true;
+    w.reserved_usd = Math.max(0, +( (w.reserved_usd || 0) - cost ).toFixed(6));
+    saveJson(reservationPath(reservation.id), reservation);
+  } else {
+    w.remaining_usd = Math.max(0, +(w.remaining_usd - cost).toFixed(6));
+  }
   w.remaining_calls -= 1;
   w.receipts.push(id);
   saveJson(warrantPath(w.id), w);
@@ -323,6 +412,7 @@ export function publicWarrant(w) {
     max_usd: w.max_usd,
     max_calls: w.max_calls,
     remaining_usd: w.remaining_usd,
+    reserved_usd: w.reserved_usd || 0,
     remaining_calls: w.remaining_calls,
     demo: !!w.demo,
     revoked: !!w.revoked,

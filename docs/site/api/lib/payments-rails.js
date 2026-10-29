@@ -146,7 +146,7 @@ export const PRODUCT_CATALOG = {
   },
   "rider-solo": {
     name: "Rider · Solo seat",
-    amount_cents: 1331,
+    amount_cents: 331,
     stripe: "https://www.slidphilabs.com/pay?sku=rider-solo",
     kind: "rider",
     list: true,

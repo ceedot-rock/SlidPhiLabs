@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CuNi use case: one substrate, six surfaces | Slid Phi Labs</title>
+  <meta name="description" content="Rider, Warrant, Chamber, PCC, pulsar, and x402 billing read as six separate tools. They are one system, and CuNi is the reason: one exactness guarantee with six surfaces."/>
+  <link rel="canonical" href="https://www.slidphilabs.com/cuni-stack-spine"/>
+  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=38"/>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">CuNi use case · The platform story</p>
+    <h1>One substrate, six surfaces</h1>
+    <p class="lede">The Slid Phi products read as six separate tools. They are one system, and CuNi is the reason it is one system instead of six: every boundary in the stack — language, chain, codec, ledger — answers to the same gate: <em>byte-identical, or refuse.</em></p>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="https://cuni-studio.fly.dev/">Open Studio</a>
+      <a class="spl-btn spl-btn-line" href="/cuni">Back to CuNi</a>
+    </p>
+    <section class="spl-prose spl-full">
+      <ul>
+        <li><strong>Agent-Rider (identity)</strong> runs on CuNi: an agent's policy must pass exactness before it is allowed to run — with the honesty note that Rider's require-PASS gate is off today. See <a href="/cuni-agent-policy">Agent policy gate</a> and <a href="/rider">/rider</a>.</li>
+        <li><strong>Warrant (spend mandates)</strong> is enforced by a CuNi law: <code>spend-control.cuni</code> (<code>amount &lt;= cap</code>) is the meaning of the gate, proven identical on every seat. See <a href="/warrant">/warrant</a> and <a href="/cuni-money">Money</a>.</li>
+        <li><strong>Chamber (two-key seal)</strong> seals JSON payloads; CuNi's canonical JSON is what makes "the same payload" a provable statement rather than a hope. A seal over non-canonical JSON is a seal over ambiguity.</li>
+        <li><strong>PCC / pulsar (compression)</strong> are where the codec laws live: never-expand, arithmetic-coding roundtrips, tile laws — the primitives of the product, proven across targets. See <a href="/cuni-codecs">Codecs</a> and <a href="/pcc">/pcc</a>.</li>
+        <li><strong>The x402 billing layer</strong> settles in integer cents against <code>dec</code> / <code>time</code> money types — the same types the fee and metering laws are written in. See <a href="/cuni-money">Money</a>.</li>
+      </ul>
+      <p>That is the platform story: not six products, but one exactness guarantee with six surfaces. Each surface's use case is its own page, linked below, with its status stated honestly — proven, partial, or roadmap.</p>
+    </section>
+    <section class="spl-prose spl-full">
+      <h2>All CuNi use cases</h2>
+      <ul>
+        <li><a href="/cuni-ffi-boundaries">FFI boundaries</a> — Python, Rust, C, one behavior. Proven.</li>
+        <li><a href="/cuni-consensus">Consensus and blockchain execution</a> — one escrow law, proven on EVM, Rust, and Go. Proven (logic cores).</li>
+        <li><a href="/cuni-codecs">Codecs: bit-exact decode</a> — never-expand and arithmetic-coding roundtrips. Proven (primitives).</li>
+        <li><a href="/cuni-money">Money: settlement and Warrant budget trees</a> — spend-control, rider-fee, suite-meter laws. In production use; chain accounting and x402 reconciliation are roadmap.</li>
+        <li><a href="/cuni-deterministic-builds">Deterministic builds and reproducible computation</a> — receipts anyone can re-run. Partial.</li>
+        <li><a href="/cuni-audit-source">CuNi as the audit source</a> — foreign implementations proven against a gold law, signed receipts filed. Lab operating model.</li>
+        <li><a href="/cuni-agent-policy">Agent policy gate</a> — an agent's policy, proven before it runs. Designed gate; Rider enforcement off today.</li>
+      </ul>
+      <p class="spl-actions">
+        <a class="spl-btn spl-btn-line" href="/cuni">CuNi overview</a>
+        <a class="spl-btn spl-btn-line" href="/rider">Rider seats</a>
+      </p>
+    </section>
+  </main>
+  <script src="/assets/chrome.js?v=41" defer></script>
+</body>
+</html>

@@ -1,11 +1,11 @@
 {
   "name": "Slid Phi Labs",
   "version": "1.19.0",
-  "updated": "2026-09-12",
+  "updated": "2026-10-29",
   "site": "https://www.slidphilabs.com",
   "lead_product": "pcc",
   "cash_product": "gc-year",
-  "one_liner": "PCC $9/$39/$390. TRUSTREAM included. Chamber $9/$99. Rider Solo $13.31-Fleet $631. Warrant/Ops in bundle or Team. CuNi $0. First 2 GB/month free, then 8\u00a2/GB.",
+  "one_liner": "PCC $9/$39/$390. TRUSTREAM included. Chamber $9/$99. Rider Solo $3.31-Fleet $631. Warrant/Ops in bundle or Team. CuNi $0. First 2 GB/month free, then 8¢/GB.",
   "protocols": [
     "x402"
   ],
@@ -56,7 +56,7 @@
       "url": "https://www.slidphilabs.com/trustream"
     },
     "rider": {
-      "solo": 13.31,
+      "solo": 3.31,
       "bundle": 19.31,
       "crew": 49,
       "shop": 199,
@@ -75,7 +75,7 @@
       "url": "https://www.slidphilabs.com/pps"
     },
     "lab_pass": {
-      "year": 490,
+      "year": 369,
       "url": "https://www.slidphilabs.com/lab-pass"
     }
   },

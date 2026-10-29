@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CuNi use case: deterministic builds and reproducible computation | Slid Phi Labs</title>
+  <meta name="description" content="Same inputs, same outputs, everywhere, every time. CuNi receipts already give reproducible verification; bit-identical build artifacts are a labeled roadmap milestone, not claimed."/>
+  <link rel="canonical" href="https://www.slidphilabs.com/cuni-deterministic-builds"/>
+  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=38"/>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">CuNi use case · Partial</p>
+    <h1>Deterministic builds: "it built on my machine" is not a proof</h1>
+    <p class="lede">"It built on my machine" is the industry's most expensive sentence. Security, science, and compliance all need the same guarantee: same inputs &rarr; same outputs, everywhere, every time.</p>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="https://cuni-studio.fly.dev/">Open Studio</a>
+      <a class="spl-btn spl-btn-line" href="/cuni">Back to CuNi</a>
+    </p>
+    <section class="spl-prose spl-full">
+      <h2>The failure mode</h2>
+      <p>A release artifact built on two CI runners differs by a timestamp embedded in the binary. The checksums don't match, the audit can't confirm what shipped, and the incident response starts from "which one is real?"</p>
+      <h2>What CuNi proves today: partial</h2>
+      <p>The receipt model already does half the job honestly: every <code>cuni check --receipt</code> records <code>source_hash</code> (SHA-256 of the <code>.cuni</code> bytes), <code>cuni_version</code> (pinned — a pass from one version is never read as a pass from another), and <code>stdout_hash</code> (SHA-256 of the gold stdout), optionally signed with Ed25519. That is reproducible <em>verification</em>: anyone can re-run the proof and compare hashes. Agent-Rider consumes these receipts to refuse stale or mismatched claims.</p>
+      <h2>What it does not claim</h2>
+      <p>Bit-identical <em>build artifacts</em> across machines and toolchains is not claimed. CuNi proves program <em>behavior</em> is identical; it does not currently prove that two separate compilations emit byte-identical binaries.</p>
+      <h2>What is next</h2>
+      <p>Extend the receipt model from behavior to artifacts: hash the emitted target sources per seat, pin toolchain versions in the receipt, and make <code>cuni verify-receipt</code> re-derivable by a stranger. The falsifiable milestone: two clean-room installs on different machines produce receipts with identical <code>source_hash</code> and <code>stdout_hash</code> for the full law suite.</p>
+    </section>
+    <section class="spl-prose spl-full">
+      <h2>More CuNi use cases</h2>
+      <ul>
+        <li><a href="/cuni-ffi-boundaries">FFI boundaries</a> — Python, Rust, C, one behavior.</li>
+        <li><a href="/cuni-consensus">Consensus and blockchain execution</a> — one escrow law, proven on EVM, Rust, and Go.</li>
+        <li><a href="/cuni-codecs">Codecs: bit-exact decode</a> — never-expand and arithmetic-coding roundtrips.</li>
+        <li><a href="/cuni-money">Money: settlement and Warrant budget trees</a> — spend-control, rider-fee, suite-meter laws.</li>
+        <li><a href="/cuni-audit-source">CuNi as the audit source</a> — foreign implementations proven against a gold law, signed receipts filed.</li>
+        <li><a href="/cuni-agent-policy">Agent policy gate</a> — an agent's policy, proven before it runs.</li>
+        <li><a href="/cuni-stack-spine">One substrate, six surfaces</a> — how CuNi ties Rider, Warrant, Chamber, PCC, and billing together.</li>
+      </ul>
+      <p class="spl-actions">
+        <a class="spl-btn spl-btn-line" href="/cuni">CuNi overview</a>
+        <a class="spl-btn spl-btn-line" href="/rider">Rider seats</a>
+      </p>
+    </section>
+  </main>
+  <script src="/assets/chrome.js?v=41" defer></script>
+</body>
+</html>

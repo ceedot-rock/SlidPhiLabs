@@ -1,10 +1,11 @@
 # Slid Phi Labs
-# Updated 2026-09-30
+# Updated 2026-10-29
+# Agent layer: start here, then /llms-full.txt for the full index. Prefer live GET /api/agent and /pricing.json if they differ.
 Platform booklets: https://www.slidphilabs.com/wiki — Rider and CuNi first. Previous homepage kept at /rcrc.
-> Slid Phi Labs: **Rider** gives an agent a signed name strangers can trust — seats from $13.31/mo, anyone can check it on the public keys. **CuNi** takes one program and checks that Python, Go, and JavaScript print the same stdout, or the path refuses. **Warrant** writes what the agent may do, then files the receipt when it does. Compression supports the lab: **PCC** (hosted lossless), **TNSSRC** (local engine; Silesia **43.72M**, beats xz-9), **TRUSTREAM** (live tiles), **pulsar** (free demo). Product URLs: `/rider` · `/cuni` · `/pcc`.
+> Slid Phi Labs: **Rider** gives an agent a signed name strangers can trust — seats from $3.31/mo, anyone can check it on the public keys. **CuNi** takes one program and checks that Python, Go, and JavaScript print the same stdout, or the path refuses. **Warrant** writes what the agent may do, then files the receipt when it does. Compression supports the lab: **PCC** (hosted lossless), **TNSSRC** (local engine; Silesia 43.72M Mahoney-listed, beats xz-9 at the listed figure — see Provenance below), **TRUSTREAM** (live tiles), **pulsar** (free demo). Product URLs: `/rider` · `/cuni` · `/pcc`.
 
 ## The one-liner
-> Slid Phi Labs: **Rider** gives an agent a signed name strangers can trust — seats from $13.31/mo, anyone can check it on the public keys. **CuNi** takes one program and checks that Python, Go, and JavaScript print the same stdout, or the path refuses. **Warrant** writes what the agent may do, then files the receipt when it does. Compression supports the lab: **PCC** (hosted lossless), **TNSSRC** (local engine; Silesia **43.72M**, beats xz-9), **TRUSTREAM** (live tiles), **pulsar** (free demo). Product URLs: `/rider` · `/cuni` · `/pcc`.
+> Slid Phi Labs: **Rider** gives an agent a signed name strangers can trust — seats from $3.31/mo, anyone can check it on the public keys. **CuNi** takes one program and checks that Python, Go, and JavaScript print the same stdout, or the path refuses. **Warrant** writes what the agent may do, then files the receipt when it does. Compression supports the lab: **PCC** (hosted lossless), **TNSSRC** (local engine; Silesia 43.72M Mahoney-listed, beats xz-9 at the listed figure — see Provenance below), **TRUSTREAM** (live tiles), **pulsar** (free demo). Product URLs: `/rider` · `/cuni` · `/pcc`.
 
 ## The spine
 bytes → Shared Spine (row / 4 KiB tile / file) → Head A (structure: runs, zeros, ramps) → Head B (literals: bytes, text/xml) → Head C (mix/gate: who wins this row) → pack only if strictly shorter than |x|, else store RAW → DECODE_OK, every byte back. Law: never expand, invert, CuNi pathways or refuse. One spine family, two crowns: hosted PCC may try extra lab pathways and crown a different winner per file. CuNi sits under the gate: pathway laws in cuni/ must print the same stdout on catalog seats or the path is refused. AIP/riser is lab-only, never a fifth door.
@@ -21,7 +22,7 @@ bytes → Shared Spine (row / 4 KiB tile / file) → Head A (structure: runs, ze
 
 ### SKU cheat sheet (live pricing.json)
 | sku | usd | human |
-| rider-solo | 13.31 | /pay?sku=rider-solo |
+| rider-solo | 3.31 | /pay?sku=rider-solo |
 | rider-bundle | 19.31 | /pay?sku=rider-bundle |
 | rider-crew | 49 | /pay?sku=rider-crew |
 | rider-shop | 199 | /pay?sku=rider-shop |
@@ -33,7 +34,7 @@ bytes → Shared Spine (row / 4 KiB tile / file) → Head A (structure: runs, ze
 | tnssrc-bakeoff | 19.31 | /pay?sku=tnssrc-bakeoff |
 | pulsar-exception | 390 | /pay?sku=pulsar-exception |
 | cuni-exception | 390 | /pay?sku=cuni-exception |
-| lab-pass | 490 | Chamber year + PCC Year · /pay?sku=lab-pass |
+| lab-pass | 369 | Chamber year + PCC Year · /pay?sku=lab-pass |
 | foundry-plus | — | Lab Pass + TNSSRC grant + Rider Crew · /pay?sku=foundry-plus |
 x402 resource = same sku via POST /api/x402-products.
 
@@ -41,7 +42,7 @@ x402 resource = same sku via POST /api/x402-products.
 - **Agent-Rider (centerpiece for agents)** — Open ride + protection. Any agent can register, mint, DM, and verify locally; we sell the protection layer (identity, discovery, settle, warrants, proof) — not a closed club. Signed seats, JWKS (ES256 JWT L0–L4), Warrant, MCP. Product: https://www.slidphilabs.com/rider · Host: https://agentrider.fly.dev · Manifest: https://agentrider.fly.dev/.well-known/agent.json · JWKS: https://agentrider.fly.dev/.well-known/jwks.json · MCP: https://agentrider.fly.dev/api/mcp · llms: https://agentrider.fly.dev/llms.txt · DMs: `POST /api/dm` with `X-Agent-Rider`
 - **Warrant** — mandate + receipts bound to a Rider. https://www.slidphilabs.com/warrant
 - Chamber — two-key JSON seal/open. stdio MCP: `npx -y json-chamber-mcp`. Manifest: https://www.slidphilabs.com/.well-known/mcp.json · product: https://www.slidphilabs.com/chamber · npm: json-chamber-mcp 1.2.0 · registry: io.github.ceedot-rock/json-chamber-mcp
-- CuNi Studio — 144 languages, same stdout or refuse. https://cuni-studio.fly.dev/ · protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json · llms: https://cuni-studio.fly.dev/llms.txt · tap: `brew tap ceedot-rock/cuni && brew install cuni` · source: https://github.com/ceedot-rock/cuni
+- CuNi Studio — 53 languages, same stdout or refuse. https://cuni-studio.fly.dev/ · protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json · llms: https://cuni-studio.fly.dev/llms.txt · tap: `brew tap ceedot-rock/cuni && brew install cuni` · source: https://github.com/ceedot-rock/cuni
 
 PCC = lossless compressor only; AWARE is a retired alias; TRU8 is not the current lead.
 
@@ -51,20 +52,20 @@ Slid Phi Labs. Corey Tasz. Site: https://www.slidphilabs.com  Agents: /agents  I
 ## Catalog
 Four doors onto one Shared Spine. What it is, then what you pay.
 - Door 1 · PCC — hosted file job. Upload / POST /api/compress / npm / MCP. Every owned pathway on lab machines; smallest restore-safe copy. $9/day · $39/mo (200 GB) · $390/yr (2 TB). First 2 GB/month free, then 8¢/GB. Product: https://www.slidphilabs.com/pcc · prices: https://www.slidphilabs.com/pricing
-- Door 2 · TNSSRC — TriNeural Shared Spine Row Compression. Local `npcc` + closed grant. "Compressor 2. Own C." Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256, beats xz-9. AGPL $0 · closed grant $390/yr (SKU tnssrc-grant) · optional host bake-off $19.31/mo on a PCC seat. Board: https://www.slidphilabs.com/silesia
+- Door 2 · TNSSRC — TriNeural Shared Spine Row Compression. Local `npcc` + closed grant. "Compressor 2. Own C." Silesia 43,724,575 bytes — Mahoney-listed best (listed on the Large Text Compression Benchmark under TNSSRC 0.1.0; the lab's locally reproduced TNSSRC 0.1.0 is 48,541,366 bytes, 12/12 decode+SHA-256). Beats xz-9 at the listed figure. The improved build's source is not in the lab's public tree, so the listed figure is NOT claimed as locally reproduced. AGPL $0 · closed grant $390/yr (SKU tnssrc-grant) · optional host bake-off $19.31/mo on a PCC seat. Board: https://www.slidphilabs.com/silesia
 - Door 3 · TRUSTREAM — live pipe, same spine, 4 KiB tiles: ZERO → MATH → PHRASE → STORE. Quiet tiles shrink; busy tiles stay put so the stream never inflates. Included with PCC, not a second bill. https://www.slidphilabs.com/trustream
 - Door 4 · pulsar — free GPLv3 binary demo you run on your own machine (Linux binary + source). Free proof on your machine — the demo door onto the Shared Spine. $0 · closed embed $390/yr, SKU pulsar-exception. https://www.slidphilabs.com/pulsar · https://www.slidphilabs.com/pay?sku=pulsar-exception
 - TRU8 — all-zero data → 8 bytes, round-trip. Free on POST /api/specialist.
 - Chamber — two-key JSON seal. $9/mo · $99/yr. License to seal new secrets; opening an already-sealed secret takes both keys, not another payment. https://www.slidphilabs.com/chamber
-- Agent-Rider — open ride + protection: signed identity + agent DMs (ES256 JWT L0–L4, local JWKS, `POST /api/dm`). Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. https://www.slidphilabs.com/rider · https://agentrider.fly.dev/llms.txt
+- Agent-Rider — open ride + protection: signed identity + agent DMs (ES256 JWT L0–L4, local JWKS, `POST /api/dm`). Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. https://www.slidphilabs.com/rider · https://agentrider.fly.dev/llms.txt
 - Warrant — signed mandate + receipts bound to a Rider. Who is Rider; what they may do and proof they did it is Warrant. In bundle or Team. POST /api/warrant/issue (X-Agent-Rider). https://www.slidphilabs.com/warrant
-- CuNi — 144 languages. Same stdout on every catalog seat, or it refuses. Native seats: Python, Go, JavaScript, TypeScript, C, C++, Rust. Other ids emit+run via Python lowering. Playground $0. Closed-app exception $390/yr, SKU cuni-exception. Bank arm: paste N, get X (`cuni bank paste`, POST https://cuni-studio.fly.dev/api/bank). Protocol 1.1.0 · public tag v0.3.0 · Bank tag cuni-bank-0.1.0. https://www.slidphilabs.com/cuni · https://cuni-studio.fly.dev/bank
-- Lab Pass — $490/yr. Chamber year + PCC Year. Not Rider. https://www.slidphilabs.com/lab-pass
+- CuNi — 53 languages. Same stdout on every catalog seat, or it refuses. Native seats: Python, Go, JavaScript, TypeScript, C, C++, Rust. Other ids emit+run via Python lowering. Playground $0. Closed-app exception $390/yr, SKU cuni-exception. Bank arm: paste N, get X (`cuni bank paste`, POST https://cuni-studio.fly.dev/api/bank). Protocol 1.1.0 · public tag v0.3.0 · Bank tag cuni-bank-0.1.0. https://www.slidphilabs.com/cuni · https://cuni-studio.fly.dev/bank
+- Lab Pass — $369/yr. Chamber year + PCC Year. Not Rider. https://www.slidphilabs.com/lab-pass
 - Foundry+ — Lab Pass + TNSSRC closed grant + Rider Crew. One SKU: all four doors plus a swarm. SKU foundry-plus.
 
 Every product we bring forward is dual-licensed (open terms or a paid grant). Hosted compression uses all of those pathways. npm packages and MCP call the live host — they are clients, not stubs.
 
-Official Silesia 12 (211,938,580 in, whole files, DECODE_OK): TNSSRC 0.1.0 43,724,575 (12/12 decode+SHA-256, beats xz-9) · pulsar 2.5.0 55,745,438 (matches OSCB, 12/12) · PCC 51,498,645 (12/12) · champ 50,541,135 (12/12). gzip-9 67,631,990. bzip2-9 54,506,769. xz-6 still ahead (~49.4M). Not a #1 claim. AWARE+XZ1 47.7M is retired (occupied host xz; not a product spec). Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/silesia.json · blog: https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc
+Official Silesia 12 (211,938,580 in, whole files, DECODE_OK): TNSSRC listed best 43,724,575 (Mahoney-listed, beats xz-9 at that figure; NOT locally reproduced) · TNSSRC 0.1.0 locally reproduced 48,541,366 (12/12 decode+SHA-256) · pulsar 2.5.0 55,745,438 (matches OSCB, 12/12) · PCC 51,498,645 (12/12) · champ 50,541,135 (12/12). gzip-9 67,631,990. bzip2-9 54,506,769. xz-6 still ahead (~49.4M). Not a #1 claim. AWARE+XZ1 47.7M is retired (occupied host xz; not a product spec). Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/silesia.json · blog: https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc
 Hosted bench (live POST /api/compress, gzip-9 and brotli-11 as opponents, 4 MiB cap, not official Silesia): https://www.slidphilabs.com/bench · https://www.slidphilabs.com/bench.json
 Public source: https://github.com/ceedot-rock/pulsar-best · https://github.com/ceedot-rock/lbr1 · https://github.com/ceedot-rock/cuni · https://github.com/ceedot-rock/Agent-Rider · https://github.com/ceedot-rock/SlidPhiLabs
 Agent-Rider MCP: https://agentrider.fly.dev/api/mcp
@@ -121,3 +122,29 @@ Try 24 hours: https://www.slidphilabs.com/box
 - Prices — https://www.slidphilabs.com/pricing.json
 - npm MCP helper — npx -y spl-pay-per-suite mcp
 - npm packages — https://www.slidphilabs.com/npm
+
+## Discovery index (every agent file in this tree)
+- Short brief: /llms.txt · Full brief + complete page index: /llms-full.txt
+- Agent files: /agents.txt · /ai.txt · /humans.txt · /agents.json
+- Well-known: /.well-known/agents.txt · /.well-known/agents.json · /.well-known/agent-card.json
+  · /.well-known/agentic-commerce.json · /.well-known/agent.json · /.well-known/mcp.json
+  · /.well-known/mcp/server-card.json · /.well-known/ai-catalog.json · /.well-known/ai-products.json
+  · /.well-known/cuni-protocol.json · /.well-known/security.txt
+- Maps and data: /platform.json · /metadata.json · /pricing.json · /projects.json · /licensing.json
+  · /openapi.yaml · /SKILL.md · /METHODS.md · /sitemap.xml · /robots.txt
+- MCP tools on /mcp: spl_discover, spl_lab_auth, spl_signup, spl_agent_key, spl_catalog,
+  spl_quote, spl_compress, spl_decompress, spl_zip, spl_unzip, spl_warrant_issue,
+  spl_warrant_verify, spl_warrant_receipt, spl_warrant_reserve, spl_warrant_release,
+  cuni_bank, aware_search, aware_get, pcc_search, pcc_get. Full list: /mcp-service.
+- Other standing SKUs: rider-ops-month $29 · rider-ops-year $290 · lab-check $0.10 ·
+  lab-translate $0.10 · lab-squeeze $0.10 · gao-entry $1 · quikgater (pay-per-fetch, usage).
+
+## What is NOT available (do not claim these)
+- Agent-to-agent file sharing on Rider seats: coming next, not live.
+- KYC blanket "verified" status for Rider seats: not offered. A signed credential is not KYC.
+- A public repository for the hosted PCC/TNSSRC engines or the improved TNSSRC build:
+  engines stay behind a seat; public cousins are pulsar (GPLv3) and CuNi.
+- A completed-debit guarantee for x402/XPay settlement: live settle is in flight.
+- Any customer, headcount, or traction number: none is claimed. Revenue $0; funds raised $0
+  ($400 friends-and-family pledged only, $0 received).
+- Rate limits: not published in this tree — do not quote a per-minute or per-hour number.

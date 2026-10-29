@@ -2,14 +2,14 @@
   "ok": true,
   "name": "Slid Phi Labs",
   "version": "2.0.0",
-  "updated": "2026-09-12",
+  "updated": "2026-10-29",
   "site": "https://www.slidphilabs.com",
   "mission": "Build tools that check: same result or refuse, sealed or not open, signed or not trusted, measured or not claimed.",
   "slogan": "Same result or refuse",
   "lead_product": "pcc",
   "cash_product": "gc-month",
   "pricing_sot": "https://www.slidphilabs.com/pricing.json",
-  "one_liner": "PCC $9/$39/$390 (200 GB/mo included, then 8\u00a2/GB). TRUSTREAM included. Chamber $9/$99. Rider Solo $13.31-Fleet $631. Warrant/Ops in bundle or Team. CuNi $0. Stripe / x402.",
+  "one_liner": "PCC $9/$39/$390 (200 GB/mo included, then 8¢/GB). TRUSTREAM included. Chamber $9/$99. Rider Solo $3.31-Fleet $631. Warrant/Ops in bundle or Team. CuNi $0. Stripe / x402.",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
     "login": "https://www.slidphilabs.com/login",
@@ -58,7 +58,7 @@
       },
       "pricing": {
         "trial": "24-hour try, then a cloak license",
-        "open_policy": "keys_only \u2014 already-sealed blobs do not expire",
+        "open_policy": "keys_only — already-sealed blobs do not expire",
         "chamber-month": "$9 / month cloak license",
         "chamber-year": "$99 / year cloak license"
       }

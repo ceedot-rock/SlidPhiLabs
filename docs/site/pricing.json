@@ -1,9 +1,9 @@
 {
-  "updated": "2026-09-24",
+  "updated": "2026-10-29",
   "inbox": "corey@slidphilabs.com",
   "site": "https://www.slidphilabs.com",
   "methods": "https://www.slidphilabs.com/METHODS.md",
-  "rule": "One Shared Spine, three heads, four doors. Never expand. DECODE_OK. Door 1 PCC: Day $9 · Pro $39/mo (200 GB) · Year $390. First 2 GB/month free, then 8¢/GB. TRUSTREAM rides the PCC seat. Door 2 TNSSRC: AGPL $0 · closed grant $390/yr · optional host bake-off $19.31/mo on a PCC seat. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. Door 3 TRUSTREAM: included with PCC. Door 4 pulsar: $0 GPLv3 · closed embed $390/yr. Rider: Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. Warrant/Ops in bundle or Team. Chamber $9/mo · $99/yr (open with keys). CuNi Studio $0 · closed-app $390/yr. Lab Pass $490 (Chamber year + PCC Year). Foundry+ = Lab Pass + TNSSRC grant + Rider Crew. Quikgater is pay-per-fetch. TRU8 is the zeros specialist. AWARE is a retired alias for PCC.",
+  "rule": "One Shared Spine, three heads, four doors. Never expand. DECODE_OK. Door 1 PCC: Day $9 · Pro $39/mo (200 GB) · Year $390. First 2 GB/month free, then 8¢/GB. TRUSTREAM rides the PCC seat. Door 2 TNSSRC: AGPL $0 · closed grant $390/yr · optional host bake-off $19.31/mo on a PCC seat. Silesia 43,724,575 bytes, Mahoney-listed (not locally reproduced; locally reproduced TNSSRC 0.1.0 is 48,541,366 bytes, 12/12 decode+SHA-256). Door 3 TRUSTREAM: included with PCC. Door 4 pulsar: $0 GPLv3 · closed embed $390/yr. Rider: Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. Warrant/Ops in bundle or Team. Chamber $9/mo · $99/yr (open with keys). CuNi Studio $0 · closed-app $390/yr. Lab Pass $369 (Chamber year + PCC Year). Foundry+ = Lab Pass + TNSSRC grant + Rider Crew. Quikgater is pay-per-fetch. TRU8 is the zeros specialist. AWARE is a retired alias for PCC.",
   "measured": {
     "silesia_raw": 211938580,
     "zpaq_m5": 39112870,
@@ -24,8 +24,8 @@
     "gc_day": 9,
     "gc_month": 39,
     "gc_year": 390,
-    "lab_pass_year": 490,
-    "rider_solo": 13.31,
+    "lab_pass_year": 369,
+    "rider_solo": 3.31,
     "rider_bundle": 19.31,
     "rider_crew": 49,
     "rider_shop": 199,
@@ -83,7 +83,7 @@
       "plans": {
         "solo": {
           "sku": "rider-solo",
-          "usd": 13.31,
+          "usd": 3.31,
           "stripe": "https://www.slidphilabs.com/pay?sku=rider-solo"
         },
         "bundle": {
@@ -159,7 +159,7 @@
     "lab_pass": {
       "name": "Lab Pass Year",
       "sku": "lab-pass",
-      "usd": 490,
+      "usd": 369,
       "stripe": "https://www.slidphilabs.com/pay?sku=lab-pass",
       "includes": [
         "chamber",

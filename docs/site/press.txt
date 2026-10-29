@@ -49,7 +49,7 @@ source). Closed-product embed: $390/year.
 
 ALSO ON THE CATALOG
   Chamber     two-key JSON seal                 $9/month · $99/year
-  Agent-Rider signed agent identity             Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631
+  Agent-Rider signed agent identity             Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631
   Warrant     mandate + receipts on a Rider     $29/month · $290/year
   CuNi        write once; Python/Go/JS match    studio $0 · exception $390/year
 

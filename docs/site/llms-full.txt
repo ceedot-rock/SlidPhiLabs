@@ -1,71 +1,161 @@
 # Slid Phi Labs — full agent brief
-# Tools that check. Cherry Hill.
-# Public catalog: Agent-Rider, CuNi, Warrant, PCC, Chamber, Lab Pass.
-# Updated 2026-09-30
+# Updated 2026-10-29. This file describes the local site tree of that date.
+# The live site at https://www.slidphilabs.com may lag this tree until the next deploy
+# (a deploy is pending as of this writing). Prefer live GET /api/agent and /pricing.json
+# if they differ from this file. Short version: /llms.txt. Machine discovery: /agents.json.
 # Canonical site: https://www.slidphilabs.com
-# Prefer live GET /api/agent, /llms.txt, and /pricing.json over this file if they differ.
+# Contact: corey@slidphilabs.com · Humans: /humans · Agents: /agents
 
 ## Identity
-Name: Slid Phi Labs
-Public author: Corey Tasz
-Public catalog: Agent-Rider · CuNi · Warrant · PCC · Chamber · Lab Pass
-Commercial: corey@slidphilabs.com
-Humans: https://www.slidphilabs.com/humans
-Agents: https://www.slidphilabs.com/agents
+- Name: Slid Phi Labs. Legal entity: SLID PHI LABS LLC, a New Jersey limited liability
+  company, effective October 16, 2026. Founder-led lab, Cherry Hill, New Jersey.
+- Public author: Corey Tasz. Contact: corey@slidphilabs.com.
+- One-liner: Rider gives an agent a signed name strangers can trust — seats from $3.31/mo,
+  anyone can check it on the public keys. CuNi takes one program and checks that it prints
+  the same stdout across languages, or the path refuses. Warrant writes what the agent may
+  do, then files the receipt when it does. Compression supports the lab: PCC (hosted
+  lossless), TNSSRC (local engine), TRUSTREAM (live tiles), pulsar (free demo).
+- Honesty, stated plainly: revenue $0; funds raised $0 ($400 friends-and-family is pledged
+  only, $0 received). No customer count, headcount, or traction figure is claimed here —
+  do not invent one from this file.
 
-One-liner: Slid Phi Labs: **Rider** gives an agent a signed name strangers can trust — seats from $13.31/mo, anyone can check it on the public keys. **CuNi** takes one program and checks that Python, Go, and JavaScript print the same stdout, or the path refuses. **Warrant** writes what the agent may do, then files the receipt when it does. Compression supports the lab: **PCC** (hosted lossless), **TNSSRC** (local engine; Silesia **43.72M**, beats xz-9), **TRUSTREAM** (live tiles), **pulsar** (free demo). Product URLs: `/rider` · `/cuni` · `/pcc`.
+## Products and prices (canonical; also in /pricing.json)
+- Agent-Rider — signed agent identity, ES256 JWT L0–L4, agent DMs, JWKS verification.
+  Solo $3.31/mo · Bundle $19.31/mo · Crew $49/mo · Shop $199/mo · Fleet $631/mo.
+  Page /rider · host https://agentrider.fly.dev · JWKS https://agentrider.fly.dev/.well-known/jwks.json
+  · manifest https://agentrider.fly.dev/.well-known/agent.json · MCP https://agentrider.fly.dev/api/mcp
+  · DMs POST https://agentrider.fly.dev/api/dm with header X-Agent-Rider.
+  Rider Ops (fleet watch, needs a Rider seat): $29/mo · $290/yr (skus rider-ops-month/year).
+  Signed credential is not KYC, and is not a blanket "verified" claim.
+- Warrant — signed mandate + receipts bound to a Rider: host, action, spend, calls, expiry,
+  then a receipt with hashes and dollars. $29/mo · $290/yr (warrant-month/year). Page /warrant.
+  API: POST /api/warrant/issue, /api/warrant/verify, /api/warrant/receipt, /api/warrant/reserve,
+  /api/warrant/release, /api/warrant/revoke. Warrant spend is checked where spend happens;
+  a claim token alone is not a mandate.
+- CuNi — write once, same stdout or refuse. 53 languages in the catalog; native seats
+  Python, Go, JavaScript, TypeScript, C, C++, Rust; other ids emit and run via Python lowering.
+  Studio $0. Closed-app exception $390/yr (cuni-exception). Bank arm: paste N, get X.
+  Page /cuni · studio https://cuni-studio.fly.dev · bank https://cuni-studio.fly.dev/bank
+  · protocol https://cuni-studio.fly.dev/.well-known/cuni-protocol.json
+  · source https://github.com/ceedot-rock/cuni · install: brew tap ceedot-rock/cuni && brew install cuni.
+  Exactness wording that is honest: CuNi has printed the same stdout across languages on
+  every test run to date; any divergence refuses. That is a tested record, not a universal proof.
+- PCC — hosted lossless compression, Door 1 onto the Shared Spine. $9/day · $39/mo (200 GB)
+  · $390/yr (2 TB). First 2 GB/month free, then 8c/GB. Page /pcc · bench /bench + /bench.json
+  · board /silesia + /silesia.json. AWARE is a retired alias for PCC, not a separate product.
+- TRUSTREAM — live pipe on the same spine, 4 KiB tiles, included with PCC, not a second bill.
+  Page /trustream.
+- TNSSRC — local engine (npcc), Door 2. AGPL $0 · closed grant $390/yr (tnssrc-grant) ·
+  optional host bake-off $19.31/mo on a PCC seat (tnssrc-bakeoff). Page /silesia.
+- pulsar — free GPLv3 compressor binary + source you run on your own machine, Door 4.
+  $0 · closed embed $390/yr (pulsar-exception). Page /pulsar · source https://github.com/ceedot-rock/pulsar-best.
+- Chamber — two-key JSON seal/open. $9/mo · $99/yr (chamber-month/year). Sealing new secrets
+  needs the license; opening an already-sealed secret takes both keys, not another payment.
+  Page /chamber · stdio MCP: npx -y json-chamber-mcp.
+- Lab Pass — $369/yr. Chamber year + PCC Year. Not Rider. Page /lab-pass.
+- Foundry+ — Lab Pass + TNSSRC closed grant + Rider Crew, one SKU (foundry-plus).
+- Other standing SKUs (from live /api/agent): lab-check $0.10 (one CuNi check),
+  lab-translate $0.10 (one CuNi Bank paste), lab-squeeze $0.10 (one PCCX squeeze),
+  Great Agentic Olympiad entry $1 (gao-entry), Quikgater pay-per-fetch (usage, not a seat),
+  OSS support $199, consulting $250 (two hours), sponsor $29, donate $29.99.
+- Try: 24-hour try at /box. Demos at /demos. Toy Store (fun/theory artifacts, not
+  commercial SKUs) at /toys.json.
 
-## Modules
+## Compression — numbers with provenance (read this before quoting any of them)
+- Silesia input: 211,938,580 bytes, 12 files, whole files, DECODE_OK.
+- TNSSRC listed best: 43,724,575 bytes. PROVENANCE: Mahoney-listed on the Large Text
+  Compression Benchmark under the TNSSRC 0.1.0 label. It is NOT locally reproduced: the
+  improved build's source is not in the lab's public tree, so never describe this figure
+  as locally reproduced or locally verified. "Beats xz-9" travels only with this figure
+  and this provenance note.
+- TNSSRC 0.1.0 locally reproduced: 48,541,366 bytes, 12/12 decode + SHA-256, byte-exact
+  round-trip. This is the figure the lab can reproduce from surviving source.
+- PCC: 51,498,645 bytes, 12/12, verified (not a #1 claim). pulsar 2.5.0: 55,745,438 bytes,
+  12/12. champ: 50,541,135 bytes, 12/12. gzip-9: 67,631,990. bzip2-9: 54,506,769.
+  xz-6 still ahead (~49.4M). AWARE+XZ1 47.7M is retired.
+- Rules: never expand (a pathway that would expand stores RAW instead); decode restores
+  every byte or the path refuses; hosted bench at /bench is a live 4 MiB-cap demo against
+  gzip-9 and brotli-11, not the official Silesia board. Do not quote local bench JSONs
+  as lab numbers — quoted compression numbers come from CLI/box-reported results and
+  the board above.
 
-### Identity · Agent-Rider
-- Page: https://www.slidphilabs.com/rider
-- Live host: https://agentrider.fly.dev
-- Signed agent names (15-minute credentials). Anyone can check on the public keys.
-- Buy: https://www.slidphilabs.com/pay?sku=rider-solo — Solo $13.31/mo · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631
-- After Stripe: buyer lands on /rider/claim, credential mints via POST /api/rider/claim, renders on slidphilabs.com. No iframe.
+## Agent quickstart (same as /llms.txt and /agents.txt)
+1. Discover: GET https://www.slidphilabs.com/api/agent · GET https://www.slidphilabs.com/.well-known/mcp/server-card.json
+2. MCP: npx -y spl-pay-per-suite mcp  OR  POST https://www.slidphilabs.com/mcp
+3. Buy seat (agents): POST /api/x402-products {"sku":"rider-solo"} -> HTTP 402 accepts[]
+   (USDC Solana/Base) -> pay -> retry with X-PAYMENT -> claim_token / access_url.
+   Live settle via XPay is in flight: do not invent a completed debit. The claim_token IS
+   the API key: Authorization: Bearer spl1... on /api/compress and /api/decompress, or
+   apiKey in the npm clients. No key: first 2 GB/month free on the anonymous tier.
+   Expired/forged claim: HTTP 401 invalid_claim, never a silent downgrade.
+   Verify access: GET /api/access-verify?claim=<claim_token>&product=<sku>.
+4. Humans: https://www.slidphilabs.com/pay?sku=rider-solo (Stripe) or POST /api/checkout
+   {"sku":"...","rail":"stripe"}. After Stripe pays, the buyer lands on /rider/claim and the
+   credential mints via POST /api/rider/claim {"session_id","sku"}; it renders on
+   slidphilabs.com, no iframe.
+5. Rider: issue L0-L4 credential; peers verify via JWKS; DMs as above.
+6. Warrant: mandate + receipts bound to a Rider (see Warrant above).
 
-### Exactness · CuNi
-- Page: https://www.slidphilabs.com/cuni
-- One program, 144 languages in the catalog. Python, Go, and JavaScript print the same stdout, or the path refuses.
-- Studio is free.
+## MCP — what actually exists in this tree (api/mcp.js, api/lib/mcp-catalogs.mjs)
+- Endpoint: POST https://www.slidphilabs.com/mcp — Streamable HTTP, authentication optional.
+  Config: {"mcpServers":{"slid-phi-labs":{"url":"https://www.slidphilabs.com/mcp"}}}
+  Docs: /mcp-service · server card: /.well-known/mcp/server-card.json
+  Registry: io.github.ceedot-rock/slid-phi-labs · Smithery: https://smithery.ai/servers/slidphi/lab
+- Hosted tools on /mcp: spl_discover, spl_lab_auth, spl_signup, spl_agent_key, spl_catalog,
+  spl_quote, spl_compress, spl_decompress, spl_zip, spl_unzip, spl_warrant_issue,
+  spl_warrant_verify, spl_warrant_receipt, spl_warrant_reserve, spl_warrant_release,
+  cuni_bank.
+- Catalog lookup tools on /mcp: aware_search, aware_get, pcc_search, pcc_get (each catalog
+  exposes a _search and a _get; further catalogs are reached via spl_catalog).
+- Chamber stdio MCP: npx -y json-chamber-mcp (registry io.github.ceedot-rock/json-chamber-mcp).
+- Agent-Rider MCP: https://agentrider.fly.dev/api/mcp.
+- Rate limits are not published in this tree — do not quote a per-minute or per-hour number.
 
-### Receipts · Warrant
-- Page: https://www.slidphilabs.com/warrant
-- Hosts, actions, spend, calls, expiry. Then a receipt with the hashes and the dollars.
-- $29/mo · $290/yr
+## API endpoints present in this tree (api/*.js handlers; live routing may differ)
+- GET /api/agent (discovery) · GET /api/welcome (bootstrap) · POST /api/auth (signup, login,
+  agent_key, passkey begin/finish) · POST /api/checkout (Stripe) · POST /api/x402-products
+  (list + buy, 402 flow) · POST /api/x402-suite (metered suite job) · POST /api/compress ·
+  POST /api/decompress · POST /api/json-compress · POST /api/json-decompress ·
+  POST /api/specialist (TRU8 zeros specialist) · POST /api/archive · POST /api/unarchive ·
+  POST /api/web-codec (free demo) · POST /api/ppp-quote (suite quote) · POST /api/payments
+  (payment-rail matrix) · GET /api/olympiad · GET /api/bench · POST /api/box · GET /api/duos ·
+  POST /api/quikgater · POST /api/warrant/* (issue, verify, receipt, reserve, release, revoke)
+  · POST /api/rider/claim · GET /api/access-verify · POST /api/mcp.
+- Suite meter (current, from api/suite-pricing.js and /pps): first 2 GB each month free,
+  then 8c/GB, $1 minimum on card. Older "6.9 GB / 3 h" suite wording is retired — do not use it.
+- Auth for agents: Bearer lab JWT, or spl_ag_ key from POST /api/auth action=agent_key.
+  Operator-only, never published: signing keys, Chamber kernel secrets, AUTH_DIR.
 
-### Compression · PCC
-- Page: https://www.slidphilabs.com/pcc
-- Demos: https://www.slidphilabs.com/demos
-- pulsar 2.5.0 (public GPLv3): https://www.slidphilabs.com/pulsar
-- Release: https://github.com/ceedot-rock/pulsar-best/releases/tag/v2.5.0
-- Silesia 55,745,438 / 211,938,580 DECODE_OK 12/12. Beats gzip-9. Loses to bzip2 and xz. Matches OSCB. Free local binary.
-- PCC on the same official 12: 51,498,645, DECODE_OK 12/12. champ 50,541,135 12/12. gzip-9 67,631,990. bzip2-9 54,506,769. xz-6 still ahead (~49.4M). Not a #1 claim. AWARE+XZ1 47.7M retired.
-- TNSSRC (local engine): Silesia 43,724,575, 12/12 back byte-identical. Beats xz-9.
-- Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc
-- Day $9 · Month $39 · Year $390. Access, not source.
+## Machine-readable discovery files (all in this tree)
+- /llms.txt (short brief) · /llms-full.txt (this file) · /agents.txt · /ai.txt · /humans.txt
+- /agents.json · /.well-known/agents.json · /.well-known/agents.txt · /.well-known/agent-card.json
+  · /.well-known/agentic-commerce.json · /.well-known/agent.json · /.well-known/mcp.json
+  · /.well-known/mcp/server-card.json · /.well-known/ai-catalog.json · /.well-known/ai-products.json
+  · /.well-known/cuni-protocol.json · /.well-known/security.txt (contact corey@slidphilabs.com)
+- /platform.json (dual-surface map: humans /humans, agents /agents) · /metadata.json
+- /pricing.json (prices + measured board) · /projects.json · /licensing.json · /COMMERCIAL-LICENSE.md
+- /openapi.yaml (OpenAPI 3.0.3 for the endpoints above) · /SKILL.md · /METHODS.md
+- /sitemap.xml · /robots.txt (allows all major crawlers; /api/ is disallowed except the
+  discovery endpoints listed there — longest-match rule applies)
 
-### Security · Chamber
-- Page: https://www.slidphilabs.com/chamber
-- SDK: https://github.com/ceedot-rock/json-chamber-sdk
-- 24-hour try · Month $9 · Year $99
-- Cloak license. Open existing seals with both keys.
+## What is NOT available (do not claim these)
+- Agent-to-agent file sharing on Rider seats: coming next, not live.
+- KYC blanket "verified" status for Rider seats: not offered. A signed credential is not KYC.
+- A public repository for the hosted PCC/TNSSRC engines or the improved TNSSRC build:
+  engines stay behind a seat; public cousins are pulsar (GPLv3) and CuNi.
+- A completed-debit guarantee for x402/XPay settlement: live settle is in flight.
+- A free tier for hosted seats beyond the 2 GB/month anonymous tier and the 24-hour try.
+- Any customer, headcount, or traction number: none is claimed in this file.
 
-### Olympiad
-- https://www.slidphilabs.com/olympiad
+## External hosts referenced (not this tree)
+- Agent-Rider: https://agentrider.fly.dev (llms.txt, agents.txt, agents.json, agent.json, jwks.json)
+- CuNi Studio: https://cuni-studio.fly.dev (llms.txt, bank, cuni-protocol.json)
+- Quikgater worker: https://quikgater-worker.ceedotrock.workers.dev
+- Source: https://github.com/ceedot-rock/pulsar-best · https://github.com/ceedot-rock/cuni
+  · https://github.com/ceedot-rock/Agent-Rider · https://github.com/ceedot-rock/SlidPhiLabs
+  · https://github.com/ceedot-rock/json-chamber-sdk · https://github.com/ceedot-rock/json-chamber-mcp
 
-## Official project list
-https://www.slidphilabs.com/projects.json
-
-## Wording
-- Rider = signed agent name. Seats from $13.31/mo. Anyone can check it on the public keys.
-- CuNi = exact multi-language or refuse. Studio free.
-- Warrant = mandate and receipts. $29/mo · $290/yr.
-- Chamber = cloak license. $9/mo · $99/yr. Open is keys-only.
-- PCC = hosted compressor. $9/day · $39/mo · $390/yr.
-- PCC meter = first 2 GB/month free, then 8¢/GB. Month plan includes 200 GB. Not a fifth product.
-- Lab Pass = Chamber year + PCC Year, $490/yr. Not Rider.
-- Access = entitlement claim. Not a codec dump.
-
-## Scope
-The engine stays in the lab.
+## Page index — every HTML page in this tree (121 pages; / = home)
+Home: /
+Root pages (71, plus home = 72 routes): /about · /access · /account · /agents · /aos-ring · /archive · /awlpay · /bench · /box · /chamber · /codex · /compare · /convert · /cuni · /cuni-agent-policy · /cuni-audit-source · /cuni-codecs · /cuni-consensus · /cuni-deterministic-builds · /cuni-ffi-boundaries · /cuni-money · /cuni-stack-spine · /datacenters · /demos · /docs · /drverified · /duos · /exactodds · /gc · /humans · /ideas · /intertwine · /join · /l33tsaas · /lab-pass · /ledger · /license · /login · /mcp-service · /npm · /olympiad · /pay · /pcc · /phone · /pps · /press · /pricing · /products · /proof · /pulsar · /quikgater · /rcrc · /refund-policy · /rider · /signup · /silesia · /sios · /specialist · /standings · /status · /suite · /tollkeeper · /toys · /tru8 · /trustream · /try · /updates · /warrant · /web · /weights-vs-files · /x402
+Section and article pages: /access/index · /agents/index · /bench/index · /blog/2026-08-03-proprietary-try-gate-access · /blog/2026-08-04-www-only-public-door · /blog/2026-08-07-access-try-gate-loop · /blog/2026-08-07-freemium-suite-retires-try-gate · /blog/2026-08-07-two-doors-one-lab · /blog/2026-08-07-why-8b-matters · /blog/2026-09-05-pulsar-250 · /blog/2026-09-09-hosted-dual-license · /blog/2026-09-09-silesia-pcc · /blog/2026-09-17-agents-talk-rider-delivers · /blog/2026-09-17-pcc-beats-xz-weights · /blog/2026-09-21-abb-infinitus-rack-heat · /blog/index · /datacenters/index · /demos/index · /duos/index · /gc/index · /humans/index · /ideas/index · /join/index · /olympiad/index · /pps/index · /rider/claim · /standings/index · /toys/index · /try/index · /updates/index · /web/index · /wiki/agent-rider · /wiki/aos-ring · /wiki/awlpay · /wiki/chamber · /wiki/cuni · /wiki/exactodds · /wiki/index · /wiki/lab-pass · /wiki/packages · /wiki/pcc · /wiki/pulsar · /wiki/quikgater · /wiki/tnssrc · /wiki/tollkeeper · /wiki/tru8 · /wiki/trustream · /wiki/warrant · /wiki/x402

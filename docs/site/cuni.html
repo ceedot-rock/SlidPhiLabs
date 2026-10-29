@@ -4,17 +4,17 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>CuNi — Same program. Same output. Or refuse. | Slid Phi Labs</title>
-  <meta name="description" content="CuNi is a 53-entry language catalog. One program. Same stdout on every seat, or it refuses. Fixed-point decimals, int64 time, onchain emitters (ink!, Move, Vyper, Cairo, Clarity, Cadence). Studio free. Install v0.9.0."/>
+  <meta name="description" content="CuNi is a 53-entry language catalog. One program. Same stdout on every seat, or it refuses. Fixed-point decimals, int64 time, onchain emitters (ink!, Move, Vyper, Cairo, Clarity, Cadence). Studio free. Install v0.10.0."/>
   <link rel="canonical" href="https://www.slidphilabs.com/cuni"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="CuNi — Same program. Same output. Or refuse. | Slid Phi Labs"/>
-  <meta property="og:description" content="Write once across a 53-entry catalog. Same stdout on every seat, or CuNi refuses. Fixed-point decimals, int64 time, onchain emitters. Studio free. Install v0.9.0."/>
+  <meta property="og:description" content="Write once across a 53-entry catalog. Same stdout on every seat, or CuNi refuses. Fixed-point decimals, int64 time, onchain emitters. Studio free. Install v0.10.0."/>
   <meta property="og:url" content="https://www.slidphilabs.com/cuni"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Same program. Same output. Or refuse."/>
-  <meta name="twitter:description" content="CuNi is a 53-entry catalog. One program. Same stdout, or refuse. Fixed-point decimals, int64 time, onchain emitters. Studio free. Install v0.9.0."/>
+  <meta name="twitter:description" content="CuNi is a 53-entry catalog. One program. Same stdout, or refuse. Fixed-point decimals, int64 time, onchain emitters. Studio free. Install v0.10.0."/>
   <meta name="keywords" content="CuNi, Code Unity, exactness, multi-language, catalog, Bank, Studio, Agent Rider, Slid Phi Labs"/>
   <script type="application/ld+json">
   {
@@ -24,7 +24,7 @@
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Web",
     "url": "https://www.slidphilabs.com/cuni",
-    "description": "53-entry language catalog. One program. Same stdout on every seat, or refuse. Fixed-point decimals, int64 time, onchain emitters. Studio free. Install v0.9.0.",
+    "description": "53-entry language catalog. One program. Same stdout on every seat, or refuse. Fixed-point decimals, int64 time, onchain emitters. Studio free. Install v0.10.0.",
     "softwareVersion": "0.9.0",
     "offers": [
       { "@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free", "description": "CuNi Studio" },
@@ -44,14 +44,15 @@
       "name": "Slid Phi Labs",
       "url": "https://www.slidphilabs.com"
     },
-    "documentation": "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json"
+    "documentation": "https://www.slidphilabs.com/cuni-protocol.json"
   }
   </script>
   <link rel="stylesheet" href="/assets/chrome.css?v=38"/>
+  <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
 </head>
 <body>
   <main class="spl-page" id="main">
-    <p class="spl-kicker">CuNi · 53-entry catalog · Studio free · install v0.9.0</p>
+    <p class="spl-kicker">CuNi · 53-entry catalog · Studio free · install v0.10.0</p>
     <h1>Same program. Same output. Or refuse.</h1>
     <p class="lede">Write once across the language catalog. Every supported seat prints the same stdout — or CuNi refuses the path. Studio can prove exactness; Rider seats are where you execute.</p>
     <p class="spl-actions">
@@ -67,6 +68,8 @@
       <p>CuNi eliminates that whole class of problem. You write one source file. CuNi can turn it into 53 catalog targets — the top 50 languages plus 3 onchain profiles, including Python, JavaScript, Rust, C, Go, and onchain emitters for ink!, Move, Vyper, Cairo, Clarity, and Cadence. Before it hands you any of them, <code>cuni check</code> emits and runs every target: byte-identical stdout, or it refuses the path.</p>
       <p>Two types carry the exactness. <code>dec</code> is fixed-point decimals — scale 10^4, truncation toward zero, no float anywhere. <code>time</code> is int64 unix epochs, UTC only, strict ISO-8601. And <code>cuni audit</code> lets you state a money law once and prove a foreign implementation matches byte-for-byte; the proof files as a signed Ed25519 receipt.</p>
       <p>The refusal is the product. Other tools try to paper over differences. CuNi treats a difference as a failed build.</p>
+      <p><em>Logs are a claim. Receipts are proof.</em></p>
+      <p>When two companies' agents transact and the numbers don't match, each side produces its logs — and logs belong to whoever keeps them. They can be edited, re-ordered, or "lost," and everyone in the dispute knows it. CuNi replaces that standoff with evidence: a tamper-evident receipt for every cross-agent action, with receipt batches Merkle-anchored on-chain. Anyone holding the trail — a counterparty, an auditor, your own compliance team — can verify it independently, offline, without our permission and without trusting us. We proved the mechanism end-to-end: 19/19 receipt proofs verified against the anchored root, and in the full hire-to-settlement scenario, run twice on the live rail, 12/12 receipts verified in each run with spend reconciled exactly. Build your agent operations on a trail that ends arguments instead of starting them.</p>
       <p>This is why CuNi pairs with Agent Rider. Agents that write and run code across systems cannot tolerate &ldquo;close enough.&rdquo; Prove exactness on CuNi when you want the receipt; execute on open Rider seats either way. Rider&rsquo;s require-PASS gate is off today — seats still run without a citizen PASS.</p>
     </section>
     <div class="spl-note">
@@ -146,7 +149,7 @@
         <li>Optional: Studio <code>POST /api/pass</code> (py / go / js) — exactness PASS or refuse.</li>
         <li>Use the program on <a href="/rider">Rider seats</a> when you are ready (Rider does not currently require the PASS receipt).</li>
       </ol>
-      <p>Native seats today: py, go, js, ts, c, cpp, rs, rb, lua, sol. Protocol: <a href="https://cuni-studio.fly.dev/.well-known/cuni-protocol.json">cuni-protocol.json</a> (install <code>v0.9.0</code> · 53-entry catalog).</p>
+      <p>Native seats today: py, go, js, ts, c, cpp, rs, rb, lua, sol. Protocol: <a href="https://www.slidphilabs.com/cuni-protocol.json">cuni-protocol.json</a> (install <code>v0.10.0</code> · 53 targets).</p>
       <div class="spl-note">
         <p><strong>Honesty:</strong> Studio <code>/api/pass</code> is live. Rider’s require-PASS env (<code>CUNI_STUDIO_PASS_REQUIRED</code>) is unset/off until CoS greens Fly — prove on CuNi when you want the receipt; execute on Rider either way.</p>
       </div>
@@ -167,7 +170,12 @@
         <a class="spl-btn spl-btn-line" href="/rider">Rider seats</a>
       </p>
     </div>
-  </main>
+<section class="spl-prose spl-full" id="cuni-is-isnt" aria-labelledby="cuni-is-isnt-h">
+  <h2 id="cuni-is-isnt-h">What it is / what it isn't</h2>
+  <p><strong>What it is:</strong> The evidence layer. Every cross-agent action produces a tamper-evident receipt; batches are Merkle-anchored on-chain, so the whole trail can be verified independently and offline by anyone holding it — a counterparty, an auditor, a court — without access to our systems and without trusting us. (Proof completed on Base Sepolia: 19/19 receipt proofs verified against the anchored root.)</p>
+  <p><strong>What it isn't:</strong> Not a blockchain company and not a token — the chain is an anchor, not the product. Not a logging service: ordinary logs can be edited by whoever holds them; a CuNi trail proves it <em>wasn't</em>. And it isn't a black box — verification is the product, so verification is public by design.</p>
+</section>
+    </main>
   <script src="/assets/chrome.js?v=41" defer></script>
 </body>
 </html>

@@ -1,4 +1,6 @@
-# Slid Phi Labs — crawl us. Rider (signed agent names) + CuNi (exact multi-language) first; compression (PCC lossless, TNSSRC Silesia 43.72M) supports. Catalog: Chamber, Warrant, pulsar. AWARE = legacy alias for PCC.
+# Slid Phi Labs — crawl us. Rider (signed agent names) + CuNi (exact, 53 languages) first; compression (PCC lossless, TNSSRC Silesia 43.72M Mahoney-listed) supports. Catalog: Chamber, Warrant, pulsar. AWARE = retired alias for PCC.
+# Agent start: /llms.txt, full brief + page index: /llms-full.txt, machine discovery: /agents.json and GET /api/agent.
+# Note: Allow lines for specific /api/ paths win over Disallow: /api/ by longest-match; other /api/ paths are disallowed.
 User-agent: *
 Allow: /
 
