@@ -32,15 +32,15 @@ bytes → Shared Spine (row / 4 KiB tile / file) → Head A (structure: runs, ze
 | rider-crew | 49 | /pay?sku=rider-crew |
 | rider-shop | 199 | /pay?sku=rider-shop |
 | rider-fleet | 631 | /pay?sku=rider-fleet |
-| warrant-month/year | 29/290 | /pay?sku=warrant-month · /pay?sku=warrant-year |
-| chamber-month/year | 9/99 | /pay?sku=chamber-month · /pay?sku=chamber-year |
-| pcc-day/month/year | 9/39/390 | PCC seats · checkout skus gc-day, gc-month, gc-year |
+| warrant-month/year | 37/369 | /pay?sku=warrant-month · /pay?sku=warrant-year |
+| chamber-month/year | 37/369 | /pay?sku=chamber-month · /pay?sku=chamber-year |
+| pcc-day/month/year | 9/37/369 | PCC seats · checkout skus gc-day, gc-month, gc-year |
 | psi-meter/org | 19/79 | spend log: 124:1 mix, profiled pays ~1/5th, first audit free |
-| tnssrc-grant | 390 | /pay?sku=tnssrc-grant |
+| tnssrc-grant | 369 | /pay?sku=tnssrc-grant |
 | tnssrc-bakeoff | 19.31 | /pay?sku=tnssrc-bakeoff |
-| pulsar-exception | 390 | /pay?sku=pulsar-exception |
-| cuni-exception | 390 | /pay?sku=cuni-exception |
-| lab-pass | 369 | Chamber year + PCC Year · /pay?sku=lab-pass |
+| pulsar-exception | 369 | /pay?sku=pulsar-exception |
+| cuni-exception | 369 | /pay?sku=cuni-exception |
+| lab-pass | 890 | Chamber year + PCC Year + psi seat · /pay?sku=lab-pass |
 | foundry-plus | — | Lab Pass + TNSSRC grant + Rider Crew · /pay?sku=foundry-plus |
 x402 resource = same sku via POST /api/x402-products.
 
@@ -63,21 +63,21 @@ Locality: Cherry Hill, New Jersey. No street address published.
 
 ## Catalog
 Four doors onto one Shared Spine. What it is, then what you pay.
-- Door 1 · PCC — hosted file job. Upload / POST /api/compress / npm / MCP. Every owned pathway on lab machines; smallest restore-safe copy. $9/day · $39/mo (200 GB, checkout sku `gc-month`) · $390/yr (2 TB, sku `gc-year`). First 2 GB/month free, then 8¢/GB. Product: https://www.slidphilabs.com/pcc · prices: https://www.slidphilabs.com/pricing
-- Door 2 · TNSSRC — TriNeural Shared Spine Row Compression. Local `npcc` + closed grant. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. AGPL $0 · closed grant $390/yr (SKU tnssrc-grant) · optional host bake-off $19.31/mo on a PCC seat. Board: https://www.slidphilabs.com/silesia
+- Door 1 · PCC — hosted file job. Upload / POST /api/compress / npm / MCP. Every owned pathway on lab machines; smallest restore-safe copy. $9/day · $37/mo (200 GB, checkout sku `gc-month`) · $369/yr (2 TB, sku `gc-year`). First 2 GB/month free, then 8¢/GB. Product: https://www.slidphilabs.com/pcc · prices: https://www.slidphilabs.com/pricing
+- Door 2 · TNSSRC — TriNeural Shared Spine Row Compression. Local `npcc` + closed grant. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. AGPL $0 · closed grant $369/yr (SKU tnssrc-grant) · optional host bake-off $19.31/mo on a PCC seat. Board: https://www.slidphilabs.com/silesia
 - Door 3 · TRUSTREAM — live pipe, same spine, 4 KiB tiles: ZERO → MATH → PHRASE → STORE. Quiet tiles shrink; busy tiles stay put so the stream never inflates. Included with PCC, not a second bill. https://www.slidphilabs.com/trustream
-- Door 4 · pulsar — free GPLv3 binary demo you run on your own machine (Linux binary + source). $0 · closed embed $390/yr, SKU pulsar-exception. https://www.slidphilabs.com/pulsar
+- Door 4 · pulsar — free GPLv3 binary demo you run on your own machine (Linux binary + source). $0 · closed embed $369/yr, SKU pulsar-exception. https://www.slidphilabs.com/pulsar
 - TRU8 — all-zero data → 8 bytes, round-trip. Free on POST /api/specialist.
-- Chamber — two-key JSON seal. AES-256-GCM. $9/mo · $99/yr. License to seal new secrets; opening an already-sealed secret takes both keys. https://www.slidphilabs.com/chamber
+- Chamber — two-key JSON seal. AES-256-GCM. $37/mo · $369/yr. License to seal new secrets; opening an already-sealed secret takes both keys. https://www.slidphilabs.com/chamber
 - Agent-Rider — signed identity + agent DMs (ES256 JWT L0–L4, about 15 minutes, local JWKS, `POST /api/dm`). Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. https://www.slidphilabs.com/rider · https://agentrider.fly.dev/llms.txt
-- Warrant — signed mandate + receipts bound to a Rider. $29/mo · $290/yr, also in bundle or Team. POST /api/warrant/issue (X-Agent-Rider). https://www.slidphilabs.com/warrant
+- Warrant — signed mandate + receipts bound to a Rider. $37/mo · $369/yr, also in bundle or Team. POST /api/warrant/issue (X-Agent-Rider). https://www.slidphilabs.com/warrant
 - Tollkeeper — caller pays. Ten live metered tools listed above. Seven protection tolls are the price sheet on /tollkeeper. https://www.slidphilabs.com/tollkeeper
-- CuNi — 53 targets on CLI v0.10.0. Same stdout or refuse. Matching gate: Python, Go, and JavaScript. Default `cuni check` also runs Rust, Java, and SQL. `cuni check --all` runs the catalog. `cuni check --json --sign` returns an Ed25519 receipt. Playground $0. Closed-app exception $390/yr, SKU cuni-exception. Bank arm: paste N, get X. https://www.slidphilabs.com/cuni · https://cuni-studio.fly.dev/bank
+- CuNi — 53 targets on CLI v0.10.0. Same stdout or refuse. Matching gate: Python, Go, and JavaScript. Default `cuni check` also runs Rust, Java, and SQL. `cuni check --all` runs the catalog. `cuni check --json --sign` returns an Ed25519 receipt. Playground $0. Closed-app exception $369/yr, SKU cuni-exception. Bank arm: paste N, get X. https://www.slidphilabs.com/cuni · https://cuni-studio.fly.dev/bank
 - ExactOdds — provably fair rules, commit-reveal, same rules on the published runtimes. https://www.slidphilabs.com/exactodds
 - AwLPay — free tier 0.5% per payment, no fixed fee. https://www.slidphilabs.com/awlpay
 - Quikgater — one fetch, one price. https://www.slidphilabs.com/quikgater
 - TEACHAiD — personal teacher that cites the textbook. Campus rollout at https://teachaid.fly.dev . Teacher chat in the repository calls Meta Llama.
-- Lab Pass — $369/yr. Chamber year + PCC Year. Not Rider. https://www.slidphilabs.com/lab-pass
+- Lab Pass — $890/yr. Chamber year + PCC Year + psi seat. Not Rider. https://www.slidphilabs.com/lab-pass
 - Foundry+ — Lab Pass + TNSSRC closed grant + Rider Crew. SKU foundry-plus.
 
 Every product we bring forward is dual-licensed (open terms or a paid grant). Hosted compression uses the pathways we own. npm packages and MCP call the live host — they are clients, not the encoder.
@@ -100,10 +100,10 @@ Q: What is Slid Phi Labs?
 A: A computation lab in Cherry Hill, New Jersey, built by Corey Tasz. The public tools check a claim before they praise it: a signed agent name, an exact program, a restore-safe file, a payment quote, a receipt. Site https://www.slidphilabs.com . Inbox corey@slidphilabs.com.
 
 Q: What is PCC?
-A: Door 1 onto the Shared Spine: hosted lossless compression. Send a file, restore every byte. $9/day · $39/mo · $390/yr. First 2 GB/month free, then 8¢/GB. Official Silesia board stamp: 51,498,645 bytes, 12/12 DECODE_OK, tag pcc-0.12.1, in silesia.json. PCC is the compressor. AWARE is a retired alias only.
+A: Door 1 onto the Shared Spine: hosted lossless compression. Send a file, restore every byte. $9/day · $37/mo · $369/yr. First 2 GB/month free, then 8¢/GB. Official Silesia board stamp: 51,498,645 bytes, 12/12 DECODE_OK, tag pcc-0.12.1, in silesia.json. PCC is the compressor. AWARE is a retired alias only.
 
 Q: What is TNSSRC?
-A: The local engine. Silesia 43,724,575 bytes, 12/12 decode plus SHA-256. AGPL, or a $390/year closed grant (tnssrc-grant).
+A: The local engine. Silesia 43,724,575 bytes, 12/12 decode plus SHA-256. AGPL, or a $369/year closed grant (tnssrc-grant).
 
 Q: What is TRU8?
 A: All-zero data → 8 bytes. Free at /specialist.
@@ -118,7 +118,7 @@ Q: Where is the lab?
 A: Cherry Hill, New Jersey. Corey Tasz. corey@slidphilabs.com.
 
 Q: What is CuNi?
-A: CLI v0.10.0. One program, 53 targets, same stdout or refuse. The matching gate is Python, Go, and JavaScript. Install with `brew tap ceedot-rock/cuni && brew install cuni`. Studio is free. Closed-app exception is $390/yr.
+A: CLI v0.10.0. One program, 53 targets, same stdout or refuse. The matching gate is Python, Go, and JavaScript. Install with `brew tap ceedot-rock/cuni && brew install cuni`. Studio is free. Closed-app exception is $369/yr.
 
 Q: What is CuNi Bank?
 A: Paste N, get X, same stdout. https://cuni-studio.fly.dev/bank

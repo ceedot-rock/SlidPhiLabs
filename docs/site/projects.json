@@ -7,7 +7,7 @@
       "name": "PCC",
       "status": "live",
       "role": "hosted lossless compressor",
-      "price": "Day $9 \u00b7 Month $39 \u00b7 Year $390",
+      "price": "Day $9 \u00b7 Month $37 \u00b7 Year $369",
       "url": "https://www.slidphilabs.com/pcc"
     },
     {
@@ -23,7 +23,7 @@
       "name": "Chamber",
       "status": "live",
       "role": "two-key JSON seal. 24-hour try, then a Chamber seat. Not a compressor.",
-      "price": "Cloak license $9/mo \u00b7 $99/yr. Open with keys.",
+      "price": "Cloak license $9/mo \u00b7 $369/yr. Open with keys.",
       "url": "https://www.slidphilabs.com/chamber"
     },
     {
@@ -47,7 +47,7 @@
       "name": "CuNi",
       "status": "live",
       "role": "one source, 53 targets, same stdout or refuse",
-      "price": "$0 (closed-app exception $390/yr)",
+      "price": "$0 (closed-app exception $369/yr)",
       "url": "https://www.slidphilabs.com/cuni"
     },
     {
@@ -55,7 +55,7 @@
       "name": "pulsar",
       "status": "live",
       "role": "free GPLv3 compressor you run on your own machine. Not a product card.",
-      "price": "Free \u00b7 $390/yr closed embed",
+      "price": "Free \u00b7 $369/yr closed embed",
       "url": "https://www.slidphilabs.com/pulsar"
     },
     {

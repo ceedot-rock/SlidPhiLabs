@@ -116,7 +116,7 @@ const TOOLS = [
         sku: {
           type: "string",
           description:
-            "chamber-year($99) | gc-year($490) | rider-year($790) | lab-pass($668) | consulting($250) | oss-support($199)",
+            "any catalog SKU: seats $37/mo and $369/yr, Lab Pass $890, exceptions and TNSSRC grant $369, Foundry+ $1490, consulting $250 (see spl_pps_x402_catalog)",
         },
         email: { type: "string" },
         note: { type: "string" },

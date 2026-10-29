@@ -15,7 +15,7 @@
       { "name": "pulsar", "copyleft": "GPL-3.0-or-later", "sku": "pulsar-exception", "usd": 390, "page": "https://www.slidphilabs.com/pulsar" },
       { "name": "PCC", "copyleft": "AGPL-3.0-or-later", "sku": "gc-month", "usd": 39, "page": "https://www.slidphilabs.com/pcc", "hosted": true },
       { "name": "CuNi", "copyleft": "AGPL-3.0-or-later", "sku": "cuni-exception", "usd": 390, "page": "https://www.slidphilabs.com/cuni" },
-      { "name": "Chamber SDK", "copyleft": "AGPL-3.0-or-later", "sku": "chamber-year", "usd": 99, "page": "https://www.slidphilabs.com/chamber" },
+      { "name": "Chamber SDK", "copyleft": "AGPL-3.0-or-later", "sku": "chamber-year", "usd": 369, "page": "https://www.slidphilabs.com/chamber" },
       { "name": "Agent-Rider", "copyleft": "AGPL-3.0-or-later", "sku": "rider-crew", "usd": 49, "page": "https://www.slidphilabs.com/rider" },
       { "name": "Warrant", "copyleft": "AGPL-3.0-or-later", "sku": "warrant-year", "usd": 290, "page": "https://www.slidphilabs.com/warrant" },
       { "name": "spl-pay-per-suite", "copyleft": "AGPL-3.0-or-later", "sku": "gc-month", "usd": 39, "page": "https://www.slidphilabs.com/docs" },
@@ -49,7 +49,7 @@
       "page": "https://www.slidphilabs.com/pulsar",
       "commercial_sku": "pulsar-exception",
       "silesia": "pulsar 2.5.0 official 55,745,438 / 211,938,580, 12/12 DECODE_OK",
-      "plain": "pulsar is the free GPLv3 compressor (OSCB 55,745,438). STR1 is our structure transform on the PCC machine. $390/yr (SKU pulsar-exception) to embed pulsar in one closed product.",
+      "plain": "pulsar is the free GPLv3 compressor (OSCB 55,745,438). STR1 is our structure transform on the PCC machine. $369/yr (SKU pulsar-exception) to embed pulsar in one closed product.",
       "commercial": "GPLv3 in public for pulsar. Closed-source embed needs a written exception. STR1 rides the PCC year grant."
     },
     "archive": {
@@ -60,7 +60,7 @@
       "engine": "PCC",
       "page": "https://www.slidphilabs.com/pcc",
       "skus": ["gc-day", "gc-month", "gc-year", "lab-pass"],
-      "plain": "Hosted lossless compressor. $9/day · $39/mo (200 GB) · $390/yr (2 TB). Then 8¢/GB. First 2 GB/month free. Source is dual-licensed. PCC year is the closed-product grant. Official 12-file numbers live on /silesia.",
+      "plain": "Hosted lossless compressor. $9/day · $37/mo (200 GB) · $369/yr (2 TB). Then 8¢/GB. First 2 GB/month free. Source is dual-licensed. PCC year is the closed-product grant. Official 12-file numbers live on /silesia.",
       "commercial": "AGPL in public. Closed-product grant is PCC year. Keys stay operator-only."
     },
     "general": {
@@ -79,11 +79,26 @@
       "commercial": "SKU gc-year. Hosted jobs over the mixer caps skip them."
     }
   },
+  "caps": {
+    "pcc": "10 GB day / 200 GB month / 2,000 GB year, then 8\u00a2/GB",
+    "suite": "first 2 GB/mo free, then 8\u00a2/GB; card charges start at $1",
+    "warrant": "3 warrants + 10 receipts/operator/day free, then seat",
+    "chamber": "automated fair-use rate limits; bulk moves to metered/enterprise",
+    "source_licenses": "no usage cap; one product, one term",
+    "minimums": "card charges start at $1; API amounts below $0.50 rejected",
+    "abuse": "credential sharing, seat resale, metering evasion terminate without refund"
+  },
+  "enterprise": {
+    "plain": "Volume seats (10+), private deploy, SLA production: priced on request.",
+    "contact": "corey@slidphilabs.com",
+    "subject": "Enterprise pricing",
+    "rails": ["invoice", "wire", "stripe"]
+  },
   "skus": {
     "pulsar-exception": {
-      "usd": 490,
+      "usd": 369,
       "period": "year",
-      "plain": "Pay $390/year to put pulsar inside one closed-source product for one year. pulsar source stays GPLv3.",
+      "plain": "Pay $369/year to put pulsar inside one closed-source product for one year. pulsar source stays GPLv3.",
       "grants": "Written exception to distribute pulsar inside one closed-source product for one year. pulsar source stays GPL-3.0-or-later.",
       "never_includes": ["PCC encoder source", "Chamber kernel", "Agent-Rider keys"],
       "pay": "https://www.slidphilabs.com/pay?sku=pulsar-exception"
@@ -91,19 +106,23 @@
     "cuni-exception": {
       "usd": 390,
       "period": "year",
-      "plain": "Pay $390/year to ship CuNi inside one closed product for one year. The public playground stays free.",
+      "plain": "Pay $369/year to ship CuNi inside one closed product for one year. The public playground stays free.",
       "grants": "Written exception for one closed product using CuNi, one year.",
       "pay": "https://www.slidphilabs.com/pay?sku=cuni-exception"
     },
     "gc-day": { "usd": 9, "plain": "PCC hosted compressor, one day of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-day" },
-    "gc-month": { "usd": 39, "plain": "PCC hosted compressor, one month of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-month" },
+    "gc-month": { "usd": 37, "plain": "PCC hosted compressor, one month of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-month" },
     "gc-year": { "usd": 390, "plain": "PCC hosted compressor, one year of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-year" },
-    "lab-pass": { "usd": 369, "plain": "One year of Chamber + PCC for $369.", "pay": "https://www.slidphilabs.com/pay?sku=lab-pass", "includes": ["chamber", "pcc"], "excludes": ["rider"] },
+    "lab-pass": { "usd": 890, "plain": "One year of Chamber + PCC + psi commercial seat for $890.", "pay": "https://www.slidphilabs.com/pay?sku=lab-pass", "includes": ["chamber", "pcc", "psi"], "excludes": ["rider"] },
     "oss-support": {
       "usd": 199,
       "plain": "$199 for help with an already-public GPLv3 library.",
       "grants": "Commercial support for an already-public GPLv3 library. Not an engine grant.",
       "pay": "https://www.slidphilabs.com/pay?sku=oss-support"
-    }
+    },
+    "psi-month": { "usd": 37, "plain": "psi commercial seat, 30 days. Use, modify, deploy psi closed. No redistribution.", "pay": "https://www.slidphilabs.com/pay?sku=psi-month" },
+    "psi-year": { "usd": 369, "plain": "psi commercial seat, 365 days. Use, modify, deploy psi closed. No redistribution.", "pay": "https://www.slidphilabs.com/pay?sku=psi-year" },
+    "tnssrc-grant": { "usd": 369, "plain": "TNSSRC closed grant, one year. Written grant, human-fulfilled.", "pay": "https://www.slidphilabs.com/pay?sku=tnssrc-grant" },
+    "foundry-plus": { "usd": 1490, "plain": "Lab Pass plus TNSSRC closed grant plus Rider Crew, one year. Bundle price.", "pay": "https://www.slidphilabs.com/pay?sku=foundry-plus" }
   }
 }

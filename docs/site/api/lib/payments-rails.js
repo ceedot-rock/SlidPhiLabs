@@ -82,7 +82,7 @@ function parked(name, blurb) {
 export const PRODUCT_CATALOG = {
   "chamber-month": {
     name: "Chamber · monthly cloak license",
-    amount_cents: 900,
+    amount_cents: 3700,
     stripe: "https://www.slidphilabs.com/pay?sku=chamber-month",
     kind: "chamber",
     list: true,
@@ -90,7 +90,7 @@ export const PRODUCT_CATALOG = {
   },
   "chamber-year": {
     name: "Chamber · annual cloak license",
-    amount_cents: 9900,
+    amount_cents: 36900,
     stripe: "https://www.slidphilabs.com/pay?sku=chamber-year",
     kind: "chamber",
     list: true,
@@ -102,11 +102,11 @@ export const PRODUCT_CATALOG = {
     stripe: "https://www.slidphilabs.com/pay?sku=gc-day",
     kind: "pcc",
     list: true,
-    blurb: "Legacy day SKU. Hosted PCC is Pro $39/mo or usage (first 2 GB free, then 8¢/GB).",
+    blurb: "Legacy day SKU. Hosted PCC is Pro $37/mo or usage (first 2 GB free, then 8¢/GB).",
   },
   "gc-month": {
     name: "PCC Pro · monthly",
-    amount_cents: 3900,
+    amount_cents: 3700,
     stripe: "https://www.slidphilabs.com/pay?sku=gc-month",
     kind: "pcc",
     list: true,
@@ -114,7 +114,7 @@ export const PRODUCT_CATALOG = {
   },
   "gc-year": {
     name: "PCC Pro · 12 months prepaid",
-    amount_cents: 39000,
+    amount_cents: 36900,
     stripe: "https://www.slidphilabs.com/pay?sku=gc-year",
     kind: "pcc",
     list: true,
@@ -135,6 +135,22 @@ export const PRODUCT_CATALOG = {
     kind: "psi",
     list: true,
     blurb: "Team seats, quarterly audits, enforced caps and cache discipline. First audit free.",
+  },
+  "psi-month": {
+    name: "psi commercial seat, monthly",
+    amount_cents: 3700,
+    stripe: "https://www.slidphilabs.com/pay?sku=psi-month",
+    kind: "psi",
+    list: true,
+    blurb: "Use, modify, and deploy psi in your products for 30 days. No redistribution of psi source. Repo access included.",
+  },
+  "psi-year": {
+    name: "psi commercial seat, yearly",
+    amount_cents: 36900,
+    stripe: "https://www.slidphilabs.com/pay?sku=psi-year",
+    kind: "psi",
+    list: true,
+    blurb: "Use, modify, and deploy psi in your products for 365 days. No redistribution of psi source. Repo access included.",
   },
 "lab-check": {
     name: "CuNi check",
@@ -202,7 +218,7 @@ export const PRODUCT_CATALOG = {
   },
   "rider-ops-month": {
     name: "Rider Ops · monthly fleet watch",
-    amount_cents: 2900,
+    amount_cents: 3700,
     stripe: "https://www.slidphilabs.com/pay?sku=rider-ops-month",
     kind: "rider-ops",
     list: true,
@@ -210,7 +226,7 @@ export const PRODUCT_CATALOG = {
   },
   "rider-ops-year": {
     name: "Rider Ops · annual fleet watch",
-    amount_cents: 29000,
+    amount_cents: 36900,
     stripe: "https://www.slidphilabs.com/pay?sku=rider-ops-year",
     kind: "rider-ops",
     list: true,
@@ -218,7 +234,7 @@ export const PRODUCT_CATALOG = {
   },
   "warrant-month": {
     name: "Warrant · monthly mandate seat",
-    amount_cents: 2900,
+    amount_cents: 3700,
     stripe: "https://www.slidphilabs.com/pay?sku=warrant-month",
     kind: "warrant",
     list: true,
@@ -226,7 +242,7 @@ export const PRODUCT_CATALOG = {
   },
   "warrant-year": {
     name: "Warrant · annual mandate seat",
-    amount_cents: 29000,
+    amount_cents: 36900,
     stripe: "https://www.slidphilabs.com/pay?sku=warrant-year",
     kind: "warrant",
     list: true,
@@ -234,7 +250,7 @@ export const PRODUCT_CATALOG = {
   },
   "cuni-exception": {
     name: "CuNi · closed-app exception (one product, one year)",
-    amount_cents: 39000,
+    amount_cents: 36900,
     stripe: "https://www.slidphilabs.com/pay?sku=cuni-exception",
     kind: "exception",
     list: true,
@@ -242,7 +258,7 @@ export const PRODUCT_CATALOG = {
   },
   "pulsar-exception": {
     name: "pulsar · closed-embed exception (one product, one year)",
-    amount_cents: 39000,
+    amount_cents: 36900,
     stripe: "https://www.slidphilabs.com/pay?sku=pulsar-exception",
     kind: "exception",
     list: true,
@@ -250,11 +266,35 @@ export const PRODUCT_CATALOG = {
   },
   "lab-pass": {
     name: "Lab Pass · annual (Chamber + PCC)",
-    amount_cents: 49000,
+    amount_cents: 89000,
     stripe: "https://www.slidphilabs.com/pay?sku=lab-pass",
     kind: "seat",
     list: true,
-    blurb: "Chamber year $99 + PCC year $390.",
+    blurb: "Chamber + PCC + psi commercial seat, one year.",
+  },
+  "tnssrc-grant": {
+    name: "TNSSRC closed grant, one year",
+    amount_cents: 36900,
+    stripe: "https://www.slidphilabs.com/pay?sku=tnssrc-grant",
+    kind: "exception",
+    list: true,
+    blurb: "Closed grant for TNSSRC for one year. Written grant, human-fulfilled.",
+  },
+  "tnssrc-bakeoff": {
+    name: "TNSSRC host bake-off, monthly",
+    amount_cents: 1931,
+    stripe: "https://www.slidphilabs.com/pay?sku=tnssrc-bakeoff",
+    kind: "seat",
+    list: true,
+    blurb: "Host bake-off per month, on a PCC seat. Human-scheduled.",
+  },
+  "foundry-plus": {
+    name: "Foundry+, Lab Pass plus grant plus crew",
+    amount_cents: 149000,
+    stripe: "https://www.slidphilabs.com/pay?sku=foundry-plus",
+    kind: "seat",
+    list: true,
+    blurb: "Lab Pass plus TNSSRC closed grant plus Rider Crew, one year. Bundle price.",
   },
   "trugame-month": parked(
     "TruGame · monthly (parked)",
@@ -364,6 +404,9 @@ export const PRODUCT_CATALOG = {
 };
 
 export const SKU_ALIASES = {
+  "psi-license": "psi-year",
+  "psi-commercial": "psi-year",
+  "psi-seat": "psi-year",
   residual: "consulting",
   "residual-governance": "consulting",
   twin: "consulting",

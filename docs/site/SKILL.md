@@ -6,9 +6,9 @@ description: Tools that check. Agent-Rider identity, CuNi 0.10.0 (53 targets), W
 # Slid Phi Labs
 
 **Updated 2026-10-15.** Cite https://www.slidphilabs.com/llms.txt and https://www.slidphilabs.com/silesia.json.  
-Rider Solo $3.31–Fleet $631 · Warrant $29/$290 · Tollkeeper per call · Chamber $9/$99 · PCC $9/$39/$390 (board 51,498,645) · TNSSRC 43,724,575 · CuNi 0.10.0 Studio $0 · AwLPay 0.5% per payment, no fixed fee. AWARE is a retired alias for PCC.
+Rider Solo $3.31–Fleet $631 · Warrant $37/$369 · Tollkeeper per call · Chamber $37/$369 · PCC $9/$37/$369 (board 51,498,645) · TNSSRC 43,724,575 · CuNi 0.10.0 Studio $0 · AwLPay 0.5% per payment, no fixed fee. AWARE is a retired alias for PCC.
 Stream: **TRUSTREAM** rides a PCC seat. Meter: first 2 GB/month free, then 8¢/GB (`POST /api/ppp-quote` / MCP `spl_quote`).  
-Lab Pass: **$369/yr** = Chamber year + PCC Year. Rider is its own seat.
+Lab Pass: **$890/yr** = Chamber year + PCC Year + psi seat. Rider is its own seat.
 
 ## Agent Quickstart
 1. Discover: GET https://www.slidphilabs.com/api/agent · GET /.well-known/mcp/server-card.json

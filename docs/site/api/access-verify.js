@@ -7,10 +7,10 @@
  *   x402    — HMAC claim token issued after X-PAYMENT verify
  *
  * Primary SKUs (SoT: /pricing.json):
- *   Chamber: chamber-month $9 | chamber-year $99  (open is keys-only)
- *   AWARE:   gc-day $9 | gc-month $39 | gc-year $390
- *   Rider:   rider-solo $3.31 · rider-bundle $19.31 · rider-crew $49 · rider-shop $199 · rider-fleet $631 · Ops $29/$290
- *   Lab Pass $369 (Chamber + AWARE; not Rider)
+ *   Chamber: chamber-month $9 | chamber-year $369  (open is keys-only)
+ *   AWARE:   gc-day $9 | gc-month $37 | gc-year $369
+ *   Rider:   rider-solo $3.31 · rider-bundle $19.31 · rider-crew $49 · rider-shop $199 · rider-fleet $631 · Ops $29/$369
+ *   Lab Pass $369 (Chamber + AWARE + psi seat; not Rider)
  *
  * One email only: corey@slidphilabs.com
  */
@@ -48,10 +48,10 @@ const SEATS = {
   },
   "chamber-month": {
     name: "Chamber · monthly seat",
-    list_usd: 9,
+    list_usd: 37,
     unit: "calendar month",
     valid_days: 30,
-    amount_cents: 900,
+    amount_cents: 3700,
     product: "chamber",
     stack: "chamber",
     includes: [
@@ -63,10 +63,10 @@ const SEATS = {
   },
   "chamber-year": {
     name: "Chamber · annual cloak license",
-    list_usd: 99,
+    list_usd: 369,
     unit: "calendar year",
     valid_days: 365,
-    amount_cents: 9900,
+    amount_cents: 36900,
     product: "chamber",
     stack: "chamber",
     includes: [
@@ -88,9 +88,9 @@ const SEATS = {
   },
   "gc-month": {
     name: "PCC · monthly compressor seat",
-    list_usd: 49,
+    list_usd: 37,
     unit: "calendar month",
-    amount_cents: 4900,
+    amount_cents: 3700,
     product: "pcc",
     stack: "pcc",
     includes: ["AWARE hosted compressor access"],
@@ -98,9 +98,9 @@ const SEATS = {
   },
   "gc-year": {
     name: "PCC · annual compressor seat",
-    list_usd: 490,
+    list_usd: 369,
     unit: "calendar year",
-    amount_cents: 49000,
+    amount_cents: 36900,
     product: "pcc",
     stack: "pcc",
     includes: ["AWARE hosted compressor access"],
@@ -158,9 +158,9 @@ const SEATS = {
   },
   "cuni-exception": {
     name: "CuNi · closed-app exception",
-    list_usd: 390,
+    list_usd: 369,
     unit: "calendar year",
-    amount_cents: 39000,
+    amount_cents: 36900,
     product: "exception",
     stack: "exception",
     includes: ["Written exception for one closed product, one year"],
@@ -168,9 +168,9 @@ const SEATS = {
   },
   "rider-ops-month": {
     name: "Rider Ops · monthly fleet watch",
-    list_usd: 29,
+    list_usd: 37,
     unit: "calendar month",
-    amount_cents: 2900,
+    amount_cents: 3700,
     product: "rider-ops",
     stack: "rider-ops",
     includes: ["Heartbeat ingest", "Alert when a signed Rider agent goes quiet"],
@@ -178,9 +178,9 @@ const SEATS = {
   },
   "warrant-month": {
     name: "Warrant · monthly mandate seat",
-    list_usd: 29,
+    list_usd: 37,
     unit: "calendar month",
-    amount_cents: 2900,
+    amount_cents: 3700,
     product: "warrant",
     stack: "warrant",
     includes: ["Issue warrants bound to a Rider", "File receipts", "Verify and revoke"],
@@ -188,9 +188,9 @@ const SEATS = {
   },
   "warrant-year": {
     name: "Warrant · annual mandate seat",
-    list_usd: 290,
+    list_usd: 369,
     unit: "calendar year",
-    amount_cents: 29000,
+    amount_cents: 36900,
     product: "warrant",
     stack: "warrant",
     includes: ["Issue warrants bound to a Rider", "File receipts", "Verify and revoke"],
@@ -198,9 +198,9 @@ const SEATS = {
   },
   "rider-ops-year": {
     name: "Rider Ops · annual fleet watch",
-    list_usd: 290,
+    list_usd: 369,
     unit: "calendar year",
-    amount_cents: 29000,
+    amount_cents: 36900,
     product: "rider-ops",
     stack: "rider-ops",
     includes: ["Heartbeat ingest", "Alert when a signed Rider agent goes quiet"],
@@ -228,12 +228,12 @@ const SEATS = {
   },
   "lab-pass": {
     name: "Lab Pass · annual",
-    list_usd: 369,
+    list_usd: 890,
     unit: "calendar year",
-    amount_cents: 36900,
+    amount_cents: 89000,
     product: "seat",
     stack: "seat",
-    includes: ["Chamber", "AWARE"],
+    includes: ["Chamber", "AWARE", "psi commercial seat"],
     does_not_include: ["Agent-Rider", "engine source"],
   },
   "tru8-day": {
@@ -659,15 +659,64 @@ export function buildDeliverable({ paid, sku, sessionId, email, amountTotal, cur
           n: 2,
           title: "Buy AWARE",
           href: "/pay?sku=gc-year",
-          detail: "Day $9 · Month $39 · Year $390.",
+          detail: "Day $9 · Month $37 · Year $369.",
         },
       ],
       next: "Download entitlement JSON, then consider a TRU8 or Chamber plan.",
     };
   }
 
+  // --- psi commercial seats: license grant, instant ---
+  if (product === "psi-month" || product === "psi-year") {
+    const seat_id = simpleSeatId(sessionId, product);
+    const title = product === "psi-year" ? "psi commercial seat, yearly" : "psi commercial seat, monthly";
+    const entitlement = {
+      type: "slid_phi_labs_entitlement",
+      version: "1.0",
+      sku: product,
+      name: title,
+      seat_id,
+      session_id: sessionId,
+      email: email || null,
+      paid: true,
+      amount_total: amountTotal,
+      currency: currency || "usd",
+      issued_at: new Date().toISOString(),
+      issuer: BASE,
+      unlocks: {
+        commercial_grant: "Use, modify, and deploy psi in your products without AGPL obligations for the paid term. No redistribution of psi source. No public competing persistent-agent service except under separate written deal.",
+        license_file: "https://github.com/ceedot-rock/psi/blob/main/LICENSE",
+        repo: "https://github.com/ceedot-rock/psi",
+        terms: "https://www.slidphilabs.com/licensing.json",
+      },
+      does_not_include: ["Redistribution of psi source", "Trademark license", "Signing keys, production data, private credentials", "Support unless invoiced"],
+      human_followup: { email: FULFILL_EMAIL, subject: "psi SEAT " + seat_id },
+    };
+    return {
+      state: "instant",
+      sku: product,
+      title,
+      instant: true,
+      seat_id,
+      summary: "Paid " + title + ". Private-repo invite follows; keep the claim token as license proof.",
+      entitlement,
+      downloads: [
+        { label: "LICENSE (commercial)", url: "https://github.com/ceedot-rock/psi/blob/main/LICENSE" },
+        { label: "Terms (licensing.json)", url: "https://www.slidphilabs.com/licensing.json" },
+      ],
+      steps: [
+        "Keep this claim token: it is the license proof.",
+        email ? "Private-repo invite follows at " + email + "."
+              : "Reply to " + FULFILL_EMAIL + " with the seat_id for the private-repo invite.",
+      ],
+      next: { receipt: "Open the access_url from your purchase response with your claim token.", repo: "https://github.com/ceedot-rock/psi" },
+    };
+  }
+
   // --- Full packages: paid confirmed; human-fulfilled ---
   const names = {
+    "psi-month": "psi commercial seat, monthly",
+    "psi-year": "psi commercial seat, yearly",
     "cddg-split": "CDDG:Split",
     "zrw-n00b": "ZRW N00b",
     "zrw-pro": "ZRW Pro",
@@ -848,7 +897,7 @@ export default async function handler(req, res) {
     if (!sku && paid && amountTotal === 190000) sku = "tru8-year";
     // legacy
     if (!sku && paid && amountTotal === 175000) sku = "tru8-year";
-    if (!sku && paid && amountTotal === 9900) sku = "chamber-year";
+    /* flat $369/yr: amounts no longer identify a SKU; Stripe metadata sku rules. */
 
     const deliverable = buildDeliverable({
       paid,

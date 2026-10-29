@@ -9,7 +9,7 @@ The license is the right to **cloak** (seal new JSON) for a term.
 |-----|-------|-------------|
 | Try | 24 hours | Box. Then a license, or new seals stop. |
 | `chamber-month` | $9 / 30 days | Cloak license for a month. SDK. |
-| `chamber-year` | $99 / 365 days | Cloak license for a year. SDK. |
+| `chamber-year` | $369 / 365 days | Cloak license for a year. SDK. |
 
 You keep the ciphertext. We do not host the blob. Not AWARE. Not Rider. Not the private Smart Box.
 

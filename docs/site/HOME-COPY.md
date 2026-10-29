@@ -59,7 +59,7 @@ The homepage no longer carries the full shipped ledger (it carries the four line
 
 | Product | Line |
 |---------|------|
-| **PCC** | Hosted lossless compression. Send a file, get a smaller one back, restore every byte. Nothing to install. Silesia 51,498,645 · $9/day · $39/mo · 2 GB free |
+| **PCC** | Hosted lossless compression. Send a file, get a smaller one back, restore every byte. Nothing to install. Silesia 51,498,645 · $9/day · $37/mo · 2 GB free |
 | **TNSSRC** | The local engine. Compress where the file sits, verify with decode plus SHA-256. 43,724,575 · 12/12 DECODE_OK · AGPL $0 |
 | **pulsar** | Free GPLv3 binary for your own machine. No account, no phone-home. Silesia 55,745,438 · $0 |
 | **TRUSTREAM** | The PCC plan for live logs — agent traces, SIEM, telemetry in 4 KiB tiles. Empty shrinks · never inflates · on a PCC seat |
@@ -71,7 +71,7 @@ The homepage no longer carries the full shipped ledger (it carries the four line
 | **AwLPay** | Any token, any chain, converted through checkable value — or refused. x402 rails. Tron · BTC · Lightning · XLM · BSC |
 | **Quikgater** | Pay-per-fact web fetching for agents. No subscription for a snippet. Pay per fetch |
 | **TEACHAiD** | Campus app with a personal teacher that cites the textbook, builds curriculum, and speaks it aloud. Live campus · teacher API moving to Llama |
-| **Chamber** | Two-key JSON seal. One share is useless; every envelope carries its custody stamp. $9/mo · $99/yr · 33/33 tests green |
+| **Chamber** | Two-key JSON seal. One share is useless; every envelope carries its custody stamp. $37/mo · $369/yr · 33/33 tests green |
 
 ---
 

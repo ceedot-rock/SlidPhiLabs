@@ -19,7 +19,7 @@ Tool engines (MCP): `/.well-known/mcp.json` · `/.well-known/agent.json` · `/.w
 - Site: https://www.slidphilabs.com
 - Humans: https://www.slidphilabs.com/humans · Agents: https://www.slidphilabs.com/agents
 - Catalog: Rider, CuNi 0.10.0 (53 targets), Warrant, Tollkeeper (ten live metered tools), PCC, TNSSRC, TRUSTREAM, pulsar, Chamber, AwLPay, ExactOdds, TEACHAiD (rollout)
-- PCC: $9/day · $39/mo (200 GB included, checkout sku `gc-month`) · $390/yr (2 TB). First 2 GB/month free, then 8¢/GB. Card charges start at $1. Encoder not in npm.
+- PCC: $9/day · $37/mo (200 GB included, checkout sku `gc-month`) · $369/yr (2 TB). First 2 GB/month free, then 8¢/GB. Card charges start at $1. Encoder not in npm.
 - AwLPay free tier: 0.5% per payment, no fixed fee. Pro $39/mo. L33t $799/mo.
 - Chamber MCP: `npx -y json-chamber-mcp` · `io.github.ceedot-rock/json-chamber-mcp` · https://www.slidphilabs.com/.well-known/mcp.json
 - CuNi Bank: paste N, get X. Studio https://cuni-studio.fly.dev/bank

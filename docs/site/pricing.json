@@ -1,9 +1,9 @@
 {
-  "updated": "2026-10-25",
+  "updated": "2026-10-28",
   "inbox": "corey@slidphilabs.com",
   "site": "https://www.slidphilabs.com",
   "methods": "https://www.slidphilabs.com/METHODS.md",
-  "rule": "One Shared Spine, three heads, four doors. Never expand. DECODE_OK. Door 1 PCC: Day $9 · Pro $39/mo (200 GB) · Year $390. First 2 GB/month free, then 8¢/GB. TRUSTREAM rides the PCC seat. Door 2 TNSSRC: AGPL $0 · closed grant $390/yr · optional host bake-off $19.31/mo on a PCC seat. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. Door 3 TRUSTREAM: included with PCC. Door 4 pulsar: $0 GPLv3 · closed embed $390/yr. Door 5 PERsiST (compressed heart for agents): Solo $13.31 · Crew $39 · Team $49 · Lab Pass $490/yr. First 5,000 tokens/day folded free. Rider: Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. Warrant/Ops in bundle or Team. Chamber $9/mo · $99/yr (open with keys). CuNi Studio $0 · closed-app $390/yr. Lab Pass $369 (Chamber year + PCC Year). Foundry+ = Lab Pass + TNSSRC grant + Rider Crew. Quikgater is pay-per-fetch. TRU8 is the zeros specialist. AWARE is a retired alias for PCC. PSI Meter $19/mo, Org $79/mo: every model call tagged with hours, memories, dollars, tokens, carbon, time. First audit free. Measured Oct 2026: profiled sessions pay about one-fifth (124:1 mix, 94% cache-served).",
+  "rule": "One Shared Spine, three heads, four doors. Never expand. DECODE_OK. Door 1 PCC: Day $9 · Pro $37/mo (200 GB) · Year $369. First 2 GB/month free, then 8¢/GB. TRUSTREAM rides the PCC seat. Door 2 TNSSRC: AGPL $0 · closed grant $369/yr · optional host bake-off $19.31/mo on a PCC seat. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. Door 3 TRUSTREAM: included with PCC. Door 4 pulsar: $0 GPLv3 · closed embed $369/yr. Door 5 PERsiST (compressed heart for agents): Solo $13.31 · Crew $39 · Team $49 · Lab Pass $490/yr. First 5,000 tokens/day folded free. Rider: Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. Warrant/Ops in bundle or Team. Chamber $37/mo · $369/yr (open with keys). CuNi Studio $0 · closed-app $369/yr. Lab Pass $890 (Chamber year + PCC Year + psi seat). Foundry+ = Lab Pass + TNSSRC grant + Rider Crew. Quikgater is pay-per-fetch. TRU8 is the zeros specialist. AWARE is a retired alias for PCC. PSI Meter $19/mo, Org $79/mo: every model call tagged with hours, memories, dollars, tokens, carbon, time. First audit free. Measured Oct 2026: profiled sessions pay about one-fifth (124:1 mix, 94% cache-served).",
   "measured": {
     "silesia_raw": 211938580,
     "zpaq_m5": 39112870,
@@ -19,21 +19,21 @@
     "bzip29": 54506769
   },
   "math": {
-    "chamber_month": 9,
-    "chamber_year": 99,
+    "chamber_month": 37,
+    "chamber_year": 369,
     "gc_day": 9,
-    "gc_month": 39,
-    "gc_year": 390,
-    "lab_pass_year": 369,
+    "gc_month": 37,
+    "gc_year": 369,
+    "lab_pass_year": 890,
     "rider_solo": 3.31,
     "rider_bundle": 19.31,
     "rider_crew": 49,
     "rider_shop": 199,
     "rider_fleet": 631,
-    "tnssrc_grant_year": 390,
+    "tnssrc_grant_year": 369,
     "tnssrc_bakeoff_month": 19.31,
-    "pulsar_embed_year": 390,
-    "cuni_exception_year": 390,
+    "pulsar_embed_year": 369,
+    "cuni_exception_year": 369,
     "psi_meter": 19,
     "psi_org": 79
   },
@@ -52,12 +52,12 @@
         },
         "month": {
           "sku": "gc-month",
-          "usd": 39,
+          "usd": 37,
           "stripe": "https://www.slidphilabs.com/pay?sku=gc-month"
         },
         "year": {
           "sku": "gc-year",
-          "usd": 390,
+          "usd": 369,
           "stripe": "https://www.slidphilabs.com/pay?sku=gc-year"
         }
       }
@@ -69,12 +69,12 @@
       "plans": {
         "month": {
           "sku": "chamber-month",
-          "usd": 9,
+          "usd": 37,
           "stripe": "https://www.slidphilabs.com/pay?sku=chamber-month"
         },
         "year": {
           "sku": "chamber-year",
-          "usd": 99,
+          "usd": 369,
           "stripe": "https://www.slidphilabs.com/pay?sku=chamber-year"
         }
       }
@@ -127,13 +127,13 @@
     "cuni_exception": {
       "name": "CuNi closed-app exception",
       "sku": "cuni-exception",
-      "usd": 390,
+      "usd": 369,
       "stripe": "https://www.slidphilabs.com/pay?sku=cuni-exception"
     },
     "pulsar_exception": {
       "name": "pulsar closed-embed exception",
       "sku": "pulsar-exception",
-      "usd": 390,
+      "usd": 369,
       "stripe": "https://www.slidphilabs.com/pay?sku=pulsar-exception",
       "grants": "One closed-source product, one year. pulsar stays GPLv3."
     },
@@ -147,7 +147,7 @@
       "agpl": 0,
       "grant": {
         "sku": "tnssrc-grant",
-        "usd": 390,
+        "usd": 369,
         "stripe": "https://www.slidphilabs.com/pay?sku=tnssrc-grant",
         "plain": "closed grant, one year"
       },
@@ -161,16 +161,17 @@
     "lab_pass": {
       "name": "Lab Pass Year",
       "sku": "lab-pass",
-      "usd": 369,
+      "usd": 890,
       "stripe": "https://www.slidphilabs.com/pay?sku=lab-pass",
       "includes": [
         "chamber",
-        "gc"
+        "gc",
+        "psi"
       ],
       "excludes": [
         "rider"
       ],
-      "note": "Lab Pass is Chamber year + PCC Year."
+      "note": "Lab Pass is Chamber year + PCC Year + psi commercial seat."
     },
     "foundry_plus": {
       "name": "Foundry+",
@@ -207,7 +208,7 @@
       "studio": 0,
       "exception": {
         "sku": "cuni-exception",
-        "usd": 390
+        "usd": 369
       },
       "page": "https://www.slidphilabs.com/cuni"
     },

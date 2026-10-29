@@ -34,7 +34,7 @@ We sell access to a hosted lossless compressor (PCC) and two adjacent seats: Cha
 
 ## How far along are you?
 
-Live site, live checkout, live MCP, live npm clients (2026-09). Hosted compression: POST /api/compress (pulsar 2.5.0 + zeros specialist). First 2 GB/month free, then 8¢/GB. PCC month $49 includes 200 GB. Public pulsar 2.5.0: Silesia 55,745,438 of 211,938,580; beats gzip-9, loses to xz-6. Zeros: 1e6 zeros → 8 bytes round-trip. Solo founder, Cherry Hill NJ. Revenue last 30 days: `[STRIPE — Host fills, or write $0]`.
+Live site, live checkout, live MCP, live npm clients (2026-09). Hosted compression: POST /api/compress (pulsar 2.5.0 + zeros specialist). First 2 GB/month free, then 8¢/GB. PCC month $37 includes 200 GB. Public pulsar 2.5.0: Silesia 55,745,438 of 211,938,580; beats gzip-9, loses to xz-6. Zeros: 1e6 zeros → 8 bytes round-trip. Solo founder, Cherry Hill NJ. Revenue last 30 days: `[STRIPE — Host fills, or write $0]`.
 
 ---
 

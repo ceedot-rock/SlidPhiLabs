@@ -26,9 +26,9 @@ const AUTH = {
 
 const STANDING = [
   { sku: "cuni-studio", name: "CuNi Studio", usd: "0", kind: "exactness", blurb: "Write once. CLI v0.10.0, 53 targets. Same stdout or refuse. Matching gate: py/go/js." },
-  { sku: "cuni-exception", name: "CuNi · closed-app exception", usd: "390", kind: "exception", blurb: "Ship CuNi inside one closed product for one year. Not the compressor." },
+  { sku: "cuni-exception", name: "CuNi · closed-app exception", usd: "369", kind: "exception", blurb: "Ship CuNi inside one closed product for one year. Not the compressor." },
   { sku: "chamber-month", name: "Chamber · monthly cloak license", usd: "9", kind: "chamber", blurb: "License to seal new JSON for 30 days. Open already-sealed blobs with both keys." },
-  { sku: "chamber-year", name: "Chamber · annual cloak license", usd: "99", kind: "chamber", blurb: "License to seal new JSON for a year. Stored secrets do not expire." },
+  { sku: "chamber-year", name: "Chamber · annual cloak license", usd: "369", kind: "chamber", blurb: "License to seal new JSON for a year. Stored secrets do not expire." },
   { sku: "gc-month", name: "PCC Pro · monthly", usd: "39", kind: "pcc", blurb: "Hosted lossless compression. 200 GB this month, then 8¢/GB." },
   { sku: "suite", name: "PCC usage", usd: "meter", kind: "pcc", blurb: "First 2 GB each month free, then 8¢/GB." },
   { sku: "lab-check", name: "CuNi check", usd: "0.10", kind: "cuni", blurb: "One exactness check." },
@@ -40,9 +40,9 @@ const STANDING = [
   { sku: "rider-shop", name: "Rider · Shop seat", usd: "199", kind: "rider", blurb: "Signed agent identity L0–L4. Shop tier." },
   { sku: "rider-fleet", name: "Rider · Fleet seat", usd: "631", kind: "rider", blurb: "Signed agent identity L0–L4. Fleet tier." },
   { sku: "rider-ops-month", name: "Rider Ops · monthly fleet watch", usd: "29", kind: "rider-ops", blurb: "Heartbeat + alert when a signed agent goes quiet. Needs a Rider seat." },
-  { sku: "rider-ops-year", name: "Rider Ops · annual fleet watch", usd: "290", kind: "rider-ops", blurb: "Year of fleet watch. Needs a Rider seat." },
+  { sku: "rider-ops-year", name: "Rider Ops · annual fleet watch", usd: "369", kind: "rider-ops", blurb: "Year of fleet watch. Needs a Rider seat." },
   { sku: "warrant-month", name: "Warrant · monthly mandate seat", usd: "29", kind: "warrant", blurb: "Signed mandate + receipts for a Rider. Not identity. Pair X-Agent-Rider with X-Agent-Warrant." },
-  { sku: "warrant-year", name: "Warrant · annual mandate seat", usd: "290", kind: "warrant", blurb: "Year of mandates and receipts. Needs a Rider token." },
+  { sku: "warrant-year", name: "Warrant · annual mandate seat", usd: "369", kind: "warrant", blurb: "Year of mandates and receipts. Needs a Rider token." },
   { sku: "lab-pass", name: "Lab Pass · annual", usd: "369", kind: "seat", blurb: "Chamber + PCC, 365 days. Not Rider." },
   { sku: "quikgater", name: "Quikgater · pay-per-fact fetch", usd: "usage", kind: "usage", blurb: "Not a seat. Unpaid URL → HTTP 402. Worker: quikgater-worker.ceedotrock.workers.dev" },
   { sku: "oss-support", name: "OSS support", usd: "199.00", kind: "support-oss", blurb: OSS_BLURB },
@@ -192,7 +192,7 @@ export default async function handler(req, res) {
       prove: "https://www.slidphilabs.com/standings.json",
     },
     one_liner:
-      "PCC $9/$39/$390. Chamber $9/mo · $99/yr. CuNi $0. Rider Solo $3.31–Fleet $631. First 2 GB/mo free, then 8¢/GB.",
+      "PCC $9/$37/$369. Chamber $37/mo · $369/yr. CuNi $0. Rider Solo $3.31–Fleet $631. First 2 GB/mo free, then 8¢/GB.",
     starter_path: "https://www.slidphilabs.com/pcc",
     suite_pricing: {
       free_cap_gb: 2,

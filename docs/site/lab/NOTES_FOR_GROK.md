@@ -23,7 +23,7 @@ Public product is **PCC**. AWARE is a retired alias. Combined GC 1.19.2 is a pri
 Meter: first **2 GB/month free**, then **8¢/GB**. Not 6.9 GB / 3 h / 5¢.
 Lab Pass: **$668/yr**. Not $1088.
 PCC seats: $9/day · $49/mo (200 GB) · $490/yr. SKUs remain `gc-day` / `gc-month` / `gc-year` as checkout ids only.
-Chamber $9/$99. Rider $79/$790. Warrant $29/$290. CuNi Studio $0.
+Chamber $9/$369. Rider $79/$790. Warrant $29/$369. CuNi Studio $0.
 
 ## Measured (do not invent)
 

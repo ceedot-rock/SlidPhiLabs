@@ -115,11 +115,11 @@
     "doc": "docs/NPM_PRICING.md",
     "skus": {
       "chamber-year": {
-        "usd": 99,
+        "usd": 369,
         "buy": "https://www.slidphilabs.com/pay?sku=chamber-year"
       },
       "gc-year": {
-        "usd": 490,
+        "usd": 369,
         "buy": "https://www.slidphilabs.com/pay?sku=gc-year"
       },
       "rider-year": {
@@ -127,7 +127,7 @@
         "buy": "https://www.slidphilabs.com/pay?sku=rider-year"
       },
       "lab-pass": {
-        "usd": 668,
+        "usd": 890,
         "buy": "https://www.slidphilabs.com/pay?sku=lab-pass"
       },
       "consulting": {

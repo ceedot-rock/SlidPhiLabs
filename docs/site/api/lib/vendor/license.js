@@ -87,7 +87,7 @@ export function assertLicense(_opts = {}) {
   const box = openLocalBox();
   if (box.open) return true;
   throw new Error(
-    `black box closed — buy a seat. Lab Pass $369 ${BUY.lab_pass} · AWARE Year $390 ${BUY.gc_year}`,
+    `black box closed — buy a seat. Lab Pass $369 ${BUY.lab_pass} · AWARE Year $369 ${BUY.gc_year}`,
   );
 }
 

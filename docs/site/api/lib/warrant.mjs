@@ -349,7 +349,7 @@ export function productCard() {
     receipt: "POST /api/warrant/receipt",
     header: "X-Agent-Warrant",
     pairs_with: "X-Agent-Rider",
-    price: { month: 29, year: 290, sku_month: "warrant-month", sku_year: "warrant-year" },
+    price: { month: 37, year: 369, sku_month: "warrant-month", sku_year: "warrant-year" },
     free: { issues_per_day: FREE_ISSUES_PER_DAY, receipts_per_day: FREE_RECEIPTS_PER_DAY },
   };
 }

@@ -24,9 +24,9 @@
 | rider-crew | 49 | /pay?sku=rider-crew |
 | rider-shop | 199 | /pay?sku=rider-shop |
 | rider-fleet | 631 | /pay?sku=rider-fleet |
-| warrant-month/year | 29/290 | /pay?sku=warrant-month · warrant-year |
-| chamber-month/year | 9/99 | /pay?sku=chamber-month · chamber-year |
-| pcc-day/month/year | 9/39/390 | PCC seats |
+| warrant-month/year | 37/369 | /pay?sku=warrant-month · warrant-year |
+| chamber-month/year | 37/369 | /pay?sku=chamber-month · chamber-year |
+| pcc-day/month/year | 9/37/369 | PCC seats |
 | tnssrc-grant | 390 | /pay?sku=tnssrc-grant |
 | tnssrc-bakeoff | 19.31 | /pay?sku=tnssrc-bakeoff |
 | pulsar-exception | 390 | /pay?sku=pulsar-exception |

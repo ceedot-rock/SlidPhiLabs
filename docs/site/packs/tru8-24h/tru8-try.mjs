@@ -42,4 +42,4 @@ if (!(zj.claim_check && zj.claim_check.matches_flagship_8b_on_10k)) {
 }
 console.log("hours_left", g.hours_left);
 console.log("Powered by TRU8 · Slid Phi Labs");
-console.log("PCC Year $390 → https://www.slidphilabs.com/pay?sku=gc-year");
+console.log("PCC Year $369 → https://www.slidphilabs.com/pay?sku=gc-year");

@@ -10,12 +10,12 @@ Four paid surfaces, one free playground:
 
 | Product | What it is | Price |
 |---------|------------|-------|
-| **CuNi** | One source → Python, Go, JS match or refuse | $0 |
-| **Chamber** | Two-key JSON seal | $9/mo · $99/yr |
-| **PCC** | Hosted lossless compressor. Engine stays in the lab. | $9/day · $49/mo · $490/yr |
-| **Agent-Rider** | Signed agent identity L0–L4 | $79/mo · $790/yr |
-| **Suite** | Metered PCC jobs | 6.9 GB / 3 h unpaid, then ~5¢/GB |
-| **Lab Pass** | Chamber + PCC + TruGame, 365 days. Not Rider. | $668/yr |
+| **CuNi** | One source → Python, Go, JS match or refuse | $0 Studio · $369/yr closed-app |
+| **Chamber** | Two-key JSON seal | $37/mo · $369/yr ($9 day) |
+| **PCC** | Hosted lossless compressor. Engine stays in the lab. | $9/day · $37/mo (200 GB) · $369/yr |
+| **Agent-Rider** | Signed agent identity | Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631 |
+| **Suite** | Metered PCC jobs | 2 GB/mo free, then 8¢/GB ($1 card floor) |
+| **Lab Pass** | Chamber year + PCC year + psi seat, 365 days. Not Rider. | $890/yr |
 
 Humans: Stripe. Agents: x402 (USDC, Solana or Base) + hosted MCP `https://www.slidphilabs.com/mcp`.
 
@@ -29,7 +29,7 @@ We do not claim #1 on Silesia. Combined GC (the hosted PCC engine) is not on Git
 
 ## Why this is a company
 
-Cloud egress is ~9¢/GB. We meter jobs at ~5¢/GB after a small unpaid cap. Agents already have a catalog and a 402. Identity (Rider) and secrets (Chamber) are seats, not blogs. The lab is one person with live checkout, not a slide.
+Cloud egress lists ~9¢/GB. We meter jobs at 8¢/GB after 2 GB free each month, inside hard plan allowances (PCC year: 2,000 GB). The compressor itself cuts the bytes we ship, which is where the margin lives. Agents already have a catalog and a 402. Identity (Rider) and secrets (Chamber) are seats, not blogs. The lab is one person with live checkout, not a slide.
 
 ## Ask
 
