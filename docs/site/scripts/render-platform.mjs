@@ -328,11 +328,11 @@ add({
   lede: "TNSSRC runs on your machine. The products page stamps Silesia at 43,724,575 bytes, 12 of 12 decoded, with SHA-256.",
   summary: "Local. 43,724,575 bytes. 12/12 decode.",
   sections: [
-    S("is", "What it is", `<p>TNSSRC is TriNeural Shared Spine Row Compression. You run it where the bytes stay. The products page records Silesia at 43,724,575 bytes, 12 of 12 files decoded, with SHA-256. The hosted PCC stamp is a different measurement: 51,498,645. Each number belongs to its own engine. The board that shows both is <a href="/silesia">/silesia</a>.</p>`),
-    S("how", "How it works", `<ol><li>Read the Silesia board for the matrix you want to compare.</li><li>Run the local engine on the files you hold.</li><li>Decode and check the hash.</li><li>Use PCC when the file should be packed on the hosted seat instead.</li></ol>`),
+    S("is", "What it is", `<p>TNSSRC is TriNeural Shared Spine Row Compression. You run it where the bytes stay. The products page records Silesia at 43,724,575 bytes, 12 of 12 files decoded, with SHA-256. The PCC stamp is a different measurement: 51,498,645. Each number belongs to its own engine. The board that shows both is <a href="/silesia">/silesia</a>.</p>`),
+    S("how", "How it works", `<ol><li>Read the Silesia board for the matrix you want to compare.</li><li>Run the local engine on the files you hold.</li><li>Decode and check the hash.</li><li>Use PCC when the file should be packed through your tools instead.</li></ol>`),
     S("get", "What you receive", `<p>You receive a local pack, a decode, and a published stamp: 43,724,575 bytes on that Silesia run, 12/12. The open path is AGPL. The grant is the paid license.</p>`),
     S("price", "Price", `<p>AGPL at $0. Grant at $369 a year. A bake-off on a PCC seat is listed at $19.31 a month on the products page. Confirm on <a href="/products">/products</a>.</p>`),
-    S("with", "Works with", `<p><a href="/wiki/pcc">PCC</a> is the hosted seat. <a href="/wiki/pulsar">pulsar</a> is the free demo binary. <a href="/wiki/cuni">CuNi</a> checks that a pathway prints the same stdout on the languages it claims.</p>`),
+    S("with", "Works with", `<p><a href="/wiki/pcc">PCC</a> is the service through your tools. <a href="/wiki/pulsar">pulsar</a> is the free demo binary. <a href="/wiki/cuni">CuNi</a> checks that a pathway prints the same stdout on the languages it claims.</p>`),
     S("open", "Open it", `<p><a href="/silesia">Board</a> · <a href="/products">Products</a> · <a href="/compare">Compare</a></p>`),
   ],
 });
@@ -340,14 +340,14 @@ add({
 add({
   slug: "pcc", group: "Engines", door: "/pcc",
   title: "PCC",
-  kicker: "Hosted compression",
+  kicker: "Compression through your tools",
   h1: "Send the file. Receive the smaller copy. Restore every byte.",
-  lede: "PCC is the hosted lossless compressor. Official Silesia 12 packs to 51,498,645 bytes. Decode returns the original.",
-  summary: "Hosted lossless. Silesia 51,498,645. Every byte back.",
+  lede: "PCC is lossless compression through your tools. Official Silesia 12 packs to 51,498,645 bytes. Decode returns the original.",
+  summary: "Lossless compression through your tools. Silesia 51,498,645. Every byte back.",
   sections: [
     S("is", "What it is", `<p>PCC takes a file and returns a smaller copy that restores the original. The spine packs a row only when the packed form is strictly shorter. Otherwise it stores the original raw. Decode returns every byte. On the official Silesia 12, the PCC packed size is 51,498,645. gzip-9 on that corpus is larger.</p><p>You reach it from the website, from <code>POST /api/compress</code> and <code>POST /api/decompress</code>, from <code>@slidphi/spl-pay-per-suite</code>, and from <code>POST /mcp</code> on this site. The specialist bench is <a href="/specialist">/specialist</a>.</p>`),
-    S("how", "How it works", `<ol><li>Send the bytes to the hosted compressor.</li><li>Keep the packed copy.</li><li>Decompress when you need the original.</li><li>Compare the restored bytes to the file you sent.</li></ol><p>A Rider, when you want a named caller, is minted separately and sent as <code>X-Agent-Rider</code>.</p>`),
-    S("get", "What you receive", `<p>You receive a packed file and a decode that restores the original. You receive the official Silesia number 51,498,645 as the hosted stamp. The local engine publishes its own stamp on the TNSSRC booklet.</p>`),
+    S("how", "How it works", `<ol><li>Send the bytes to PCC through your tools.</li><li>Keep the packed copy.</li><li>Decompress when you need the original.</li><li>Compare the restored bytes to the file you sent.</li></ol><p>A Rider, when you want a named caller, is minted separately and sent as <code>X-Agent-Rider</code>.</p>`),
+    S("get", "What you receive", `<p>You receive a packed file and a decode that restores the original. You receive the official Silesia number 51,498,645 as the PCC stamp. The local engine publishes its own stamp on the TNSSRC booklet.</p>`),
     S("price", "Price", `<p>The PCC page lists Pro and the usage meter. Humans pay on Stripe. Agents pay the x402 SKU. Read <a href="/pricing">/pricing</a> for the current numbers.</p>`),
     S("with", "Works with", `<p><a href="/wiki/trustream">TRUSTREAM</a> packs live tiles on the same plan. <a href="/wiki/tnssrc">TNSSRC</a> is the local engine. <a href="/wiki/pulsar">pulsar</a> is the free binary you run yourself. <a href="/wiki/tru8">TRU8</a> packs zeros. <a href="/wiki/lab-pass">Lab Pass</a> bundles a PCC year with Chamber.</p>`),
     S("open", "Open it", `<p><a href="/pcc">PCC page</a> · <a href="/silesia">Silesia board</a> · <a href="/bench">Bench</a> · <a href="/docs">API</a></p>`),
@@ -379,11 +379,11 @@ add({
   lede: "pulsar 2.5.0 ships as a Linux binary and source. You compress on your machine. You restore on your machine.",
   summary: "GPLv3. Linux binary and source.",
   sections: [
-    S("is", "What it is", `<p>pulsar is the free lossless compressor. Version 2.5.0 ships as a Linux binary and as source under GPLv3. You run it. The file stays on your machine. PCC is the hosted compressor when you want the lab to pack the file. pulsar is the one you pack yourself.</p>`),
+    S("is", "What it is", `<p>pulsar is the free lossless compressor. Version 2.5.0 ships as a Linux binary and as source under GPLv3. You run it. The file stays on your machine. PCC is compression through your tools when you want the lab to pack the file. pulsar is the one you pack yourself.</p>`),
     S("how", "How it works", `<ol><li>Download the binary from the pulsar page.</li><li>Compress a file you control.</li><li>Restore it and compare the bytes.</li></ol>`),
     S("get", "What you receive", `<p>You receive a packed file and a restore, with the source you can read. A closed embed is the paid exception listed on the product page.</p>`),
     S("price", "Price", `<p>The binary and source are free, GPLv3. The closed-embed price is the one printed on <a href="/pulsar">/pulsar</a>.</p>`),
-    S("with", "Works with", `<p>Hosted packs go to <a href="/wiki/pcc">PCC</a>. The local grant engine is <a href="/wiki/tnssrc">TNSSRC</a>.</p>`),
+    S("with", "Works with", `<p>Packs through your tools go to <a href="/wiki/pcc">PCC</a>. The local grant engine is <a href="/wiki/tnssrc">TNSSRC</a>.</p>`),
     S("open", "Open it", `<p><a href="/pulsar">pulsar page</a></p>`),
   ],
 });
@@ -430,11 +430,11 @@ add({
   lede: "The public packages live under the slidphi org. The older names still install and carry a moved-to note.",
   summary: "Scope @slidphi. Old names still install.",
   sections: [
-    S("is", "What it is", `<p>The npm org is <code>slidphi</code>. The publishing account is <code>cptasz13</code>. New installs use the scoped name. The packages you can install today:</p><ul><li><code>@slidphi/agent-rider</code> verifies a credential.</li><li><code>@slidphi/json-chamber-mcp</code> seals JSON.</li><li><code>@slidphi/exactodds</code> and <code>@slidphi/exactodds-mcp</code> roll the reference dice.</li><li><code>@slidphi/spl-pay-per-suite</code> calls hosted PCC.</li><li><code>@slidphi/tru8</code> packs zeros.</li><li><code>@slidphi/slidphilabs</code> is the lab client.</li><li><code>@slidphi/blackjack-compression</code>, <code>@slidphi/zero-range-wave-compression</code>, <code>@slidphi/shard-zip</code>, <code>@slidphi/shard-tsdb</code>, and <code>@slidphi/residual-governance</code> are the rest of the shelf.</li></ul><p><code>@slidphi/shard-zip</code> loads as CommonJS and round-trips an array. The zero-range and residual packages install as the public stubs and tell you the commercial engine stays licensed.</p>`),
+    S("is", "What it is", `<p>The npm org is <code>slidphi</code>. The publishing account is <code>cptasz13</code>. New installs use the scoped name. The packages you can install today:</p><ul><li><code>@slidphi/agent-rider</code> verifies a credential.</li><li><code>@slidphi/json-chamber-mcp</code> seals JSON.</li><li><code>@slidphi/exactodds</code> and <code>@slidphi/exactodds-mcp</code> roll the reference dice.</li><li><code>@slidphi/spl-pay-per-suite</code> calls PCC through your tools.</li><li><code>@slidphi/tru8</code> packs zeros.</li><li><code>@slidphi/slidphilabs</code> is the lab client.</li><li><code>@slidphi/blackjack-compression</code>, <code>@slidphi/zero-range-wave-compression</code>, <code>@slidphi/shard-zip</code>, <code>@slidphi/shard-tsdb</code>, and <code>@slidphi/residual-governance</code> are the rest of the shelf.</li></ul><p><code>@slidphi/shard-zip</code> loads as CommonJS and round-trips an array. The zero-range and residual packages install as the public stubs and tell you the commercial engine stays licensed.</p>`),
     S("how", "How it works", `<p class="pf-fact">npm install @slidphi/agent-rider</p><p>Use the scoped name in anything new. An old install keeps resolving. Its deprecation text points at the scoped package.</p>`),
     S("get", "What you receive", `<p>You receive a public package at the same version the old name published, under a name the org owns.</p>`),
     S("price", "Price", `<p>The packages are public. Seats and meters are the SKUs on <a href="/pricing">/pricing</a>.</p>`),
-    S("with", "Works with", `<p>Identity client: <a href="/wiki/agent-rider">Rider</a>. Seal client: <a href="/wiki/chamber">Chamber</a>. Hosted compressor client: <a href="/wiki/pcc">PCC</a>.</p>`),
+    S("with", "Works with", `<p>Identity client: <a href="/wiki/agent-rider">Rider</a>. Seal client: <a href="/wiki/chamber">Chamber</a>. Compression client: <a href="/wiki/pcc">PCC</a>.</p>`),
     S("open", "Open it", `<p><a href="/npm">npm page</a> · <a href="https://www.npmjs.com/package/@slidphi/agent-rider">@slidphi/agent-rider</a></p>`),
   ],
 });
@@ -449,7 +449,7 @@ add({
   sections: [
     S("is", "What it is", `<p>Lab Pass is the annual bundle. One payment covers a Chamber year and a PCC year. Chamber alone is $369 for the year. PCC’s year seat is listed on its own page. The pass puts them on one checkout: <a href="/pay?sku=lab-pass">/pay?sku=lab-pass</a>. A Rider seat stays its own purchase, from Solo at $3.31.</p>`),
     S("how", "How it works", `<ol><li>Open the Lab Pass page.</li><li>Pay the $890 year on Stripe.</li><li>Seal secrets with Chamber and pack files with PCC for the 365 days.</li></ol>`),
-    S("get", "What you receive", `<p>You receive a year of new Chamber seals and a year of hosted PCC. After the year, the pass page says the box closes.</p>`),
+    S("get", "What you receive", `<p>You receive a year of new Chamber seals and a year of PCC through your tools. After the year, the pass page says the box closes.</p>`),
     S("price", "Price", `<p>$890 a year. SKU <code>lab-pass</code>.</p>`),
     S("with", "Works with", `<p>The two tools inside the pass are <a href="/wiki/chamber">Chamber</a> and <a href="/wiki/pcc">PCC</a>. Add a <a href="/wiki/agent-rider">Rider</a> when you want a signed seat.</p>`),
     S("open", "Open it", `<p><a href="/lab-pass">Lab Pass page</a> · <a href="/pricing">Pricing</a></p>`),

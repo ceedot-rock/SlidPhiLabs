@@ -7,11 +7,11 @@ Public specialist machine: https://www.slidphilabs.com/specialist
 
 ## Plain English (read this first)
 
-Every product we bring forward is **dual-licensed**. You pick the open license, or you pay a commercial grant and ship closed. Hosted compression runs every pathway we own on that grant. npm and MCP call the live host.
+Every product we bring forward is **dual-licensed**. You pick the open license, or you pay a commercial grant and ship closed. Compression through your tools runs every pathway we own on that grant. npm and MCP are clients.
 
 pulsar is GPL-3.0-or-later, or SKU `pulsar-exception` at **$369/year** for one closed product, one year. CuNi is AGPL-3.0-or-later, or SKU `cuni-exception` at **$369/year**. Chamber SDK, Warrant, and Agent-Rider are AGPL-3.0-or-later, or their matching seat. Chooser files live in each repo as `LICENSE`.
 
-PCC is a **hosted** compressor. You buy a seat to run it ($9/day · $37/month · $369/year). You do **not** get the source.
+PCC is a compressor through your tools. You buy a seat to run it ($9/day · $37/month · $369/year). You do **not** get the source.
 
 Chamber ($37/month · $369/year), Agent-Rider (Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631), and Lab Pass ($890/year: Chamber year + PCC Year + psi seat, not Rider) are paid product seats. CuNi’s playground is free; shipping CuNi in a closed app is $369/year (SKU `cuni-exception`).
 
@@ -50,7 +50,7 @@ Without a matching invoice, you do not receive PCC encoder source, the Chamber k
 | Lab Pass year | `lab-pass` | $890 (Chamber year + PCC Year + psi seat; not Rider) |
 | Chamber month / year | `chamber-month` / `chamber-year` | $37 / $369 |
 
-Hosted compression: first 2 GB each month are free. After that, 8¢ per GB. Card charges start at $1. A PCC plan includes more (day 10 GB, month 200 GB, year 2,000 GB), then the same 8¢. That meter pays for the machines on the PCC plan.
+Compression through your tools: first 2 GB each month are free. After that, 8¢ per GB. Card charges start at $1. A PCC plan includes more (day 10 GB, month 200 GB, year 2,000 GB), then the same 8¢. That meter pays for the machines on the PCC plan.
 
 After Stripe, claim on https://www.slidphilabs.com/access.
 
@@ -60,7 +60,7 @@ After Stripe, claim on https://www.slidphilabs.com/access.
 
 - A file of zeros: compressed here, free demo, 8 bytes, original restored.
 - Text you want to run yourself: download pulsar, or pay `pulsar-exception` to put it in a closed app.
-- Everyday files: buy PCC. You run it on our machines. Source is dual-licensed; the PCC year seat is the closed-product grant and the hosted grant.
+- Everyday files: buy PCC. You run it on our machines. Source is dual-licensed; the PCC year seat is the closed-product grant and the PCC grant.
 
 gzip, brotli, xz, and bzip2 are other compressors we publish numbers against. They are not included in what you buy.
 

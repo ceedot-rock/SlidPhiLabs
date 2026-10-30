@@ -12,7 +12,7 @@ Product homes: https://agentrider.slidphilabs.com/ (Rider) · https://cuni.slidp
 > Slid Phi Labs builds tools that check. **Rider** gives an agent a signed name strangers can check on the public keys — seats from $3.31/mo. **CuNi 0.10.0** takes one program and checks 53 targets; Python, Go, and JavaScript must print the same stdout, or the path refuses. **Warrant** writes what the agent may do, then files the receipt. **Tollkeeper** meters ten live tools on that road. Compression: **TNSSRC** on your machine (Silesia 43,724,575), **PCC** on ours (board stamp 51,498,645), **TRUSTREAM** for live tiles, **pulsar** as the free demo (55,745,438). **AwLPay** prices a payment. **TEACHAiD** is the campus, in rollout.
 
 ## The spine
-bytes → Shared Spine (row / 4 KiB tile / file) → Head A (structure: runs, zeros, ramps) → Head B (literals: bytes, text/xml) → Head C (mix/gate: who wins this row) → pack only if strictly shorter than |x|, else store RAW → DECODE_OK, every byte back. Law: never expand, invert, CuNi pathways or refuse. One spine family, two crowns: hosted PCC may try extra lab pathways and crown a different winner per file. CuNi sits under the gate: pathway laws in cuni/ must print the same stdout on catalog seats or the path is refused. AIP/riser is lab-only, never a fifth door.
+bytes → Shared Spine (row / 4 KiB tile / file) → Head A (structure: runs, zeros, ramps) → Head B (literals: bytes, text/xml) → Head C (mix/gate: who wins this row) → pack only if strictly shorter than |x|, else store RAW → DECODE_OK, every byte back. Law: never expand, invert, CuNi pathways or refuse. One spine family, two crowns: PCC through your tools may try extra lab pathways and crown a different winner per file. CuNi sits under the gate: pathway laws in cuni/ must print the same stdout on catalog seats or the path is refused. AIP/riser is lab-only, never a fifth door.
 
 ## Agent Quickstart
 1. Discover: GET https://www.slidphilabs.com/api/agent · GET /.well-known/mcp/server-card.json · GET /llms.txt
@@ -63,7 +63,7 @@ Locality: Cherry Hill, New Jersey. No street address published.
 
 ## Catalog
 Four doors onto one Shared Spine. What it is, then what you pay.
-- Door 1 · PCC — hosted file job. Upload / POST /api/compress / npm / MCP. Every owned pathway on lab machines; smallest restore-safe copy. $9/day · $37/mo (200 GB, checkout sku `gc-month`) · $369/yr (2 TB, sku `gc-year`). First 2 GB/month free, then 8¢/GB. Product: https://www.slidphilabs.com/pcc · prices: https://www.slidphilabs.com/pricing
+- Door 1 · PCC — file job through your tools. Upload / POST /api/compress / npm / MCP. Every owned pathway on lab machines; smallest restore-safe copy. $9/day · $37/mo (200 GB, checkout sku `gc-month`) · $369/yr (2 TB, sku `gc-year`). First 2 GB/month free, then 8¢/GB. Product: https://www.slidphilabs.com/pcc · prices: https://www.slidphilabs.com/pricing
 - Door 2 · TNSSRC — TriNeural Shared Spine Row Compression. Local `npcc` + closed grant. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. AGPL $0 · closed grant $369/yr (SKU tnssrc-grant) · optional host bake-off $19.31/mo on a PCC seat. Board: https://www.slidphilabs.com/silesia
 - Door 3 · TRUSTREAM — live pipe, same spine, 4 KiB tiles: ZERO → MATH → PHRASE → STORE. Quiet tiles shrink; busy tiles stay put so the stream never inflates. Included with PCC, not a second bill. https://www.slidphilabs.com/trustream
 - Door 4 · pulsar — free GPLv3 binary demo you run on your own machine (Linux binary + source). $0 · closed embed $369/yr, SKU pulsar-exception. https://www.slidphilabs.com/pulsar
@@ -80,10 +80,10 @@ Four doors onto one Shared Spine. What it is, then what you pay.
 - Lab Pass — $890/yr. Chamber year + PCC Year + psi seat. Not Rider. https://www.slidphilabs.com/lab-pass
 - Foundry+ — Lab Pass + TNSSRC closed grant + Rider Crew. SKU foundry-plus.
 
-Every product we bring forward is dual-licensed (open terms or a paid grant). Hosted compression uses the pathways we own. npm packages and MCP call the live host — they are clients, not the encoder.
+Every product we bring forward is dual-licensed (open terms or a paid grant). Compression through your tools uses the pathways we own. npm packages and MCP are clients, not the encoder.
 
 Official Silesia 12 (211,938,580 in, whole files, DECODE_OK). Cite https://www.slidphilabs.com/silesia.json (measured 2026-09-11, PCC tag pcc-0.12.1): TNSSRC 0.1.0 43,724,575 (12/12 decode+SHA-256) · PCC 51,498,645 (12/12) · champ 50,541,135 (12/12) · pulsar 2.5.0 55,745,438 (12/12) · gzip-9 67,631,990 · bzip2-9 54,506,769 · xz-6 still ahead (~49.4M). Not a #1 claim. The citable PCC stamp is 51,498,645. Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/silesia.json
-Hosted bench (live POST /api/compress, gzip-9 and brotli-11 as opponents, 4 MiB cap, not official Silesia): https://www.slidphilabs.com/bench · https://www.slidphilabs.com/bench.json
+Live bench (live POST /api/compress, gzip-9 and brotli-11 as opponents, 4 MiB cap, not official Silesia): https://www.slidphilabs.com/bench · https://www.slidphilabs.com/bench.json
 Public source: https://github.com/ceedot-rock/pulsar-best · https://github.com/ceedot-rock/cuni · https://github.com/ceedot-rock/Agent-Rider · https://github.com/ceedot-rock/SlidPhiLabs · https://github.com/ceedot-rock/MemoryVerse · https://github.com/ceedot-rock/CuNIverse
 Agent-Rider MCP: https://agentrider.fly.dev/api/mcp
 Operator-only: signing keys, Chamber kernel secrets, AUTH_DIR.
@@ -100,7 +100,7 @@ Q: What is Slid Phi Labs?
 A: A computation lab in Cherry Hill, New Jersey, built by Corey Tasz. The public tools check a claim before they praise it: a signed agent name, an exact program, a restore-safe file, a payment quote, a receipt. Site https://www.slidphilabs.com . Inbox corey@slidphilabs.com.
 
 Q: What is PCC?
-A: Door 1 onto the Shared Spine: hosted lossless compression. Send a file, restore every byte. $9/day · $37/mo · $369/yr. First 2 GB/month free, then 8¢/GB. Official Silesia board stamp: 51,498,645 bytes, 12/12 DECODE_OK, tag pcc-0.12.1, in silesia.json. PCC is the compressor. AWARE is a retired alias only.
+A: Door 1 onto the Shared Spine: lossless compression through your tools. Send a file, restore every byte. $9/day · $37/mo · $369/yr. First 2 GB/month free, then 8¢/GB. Official Silesia board stamp: 51,498,645 bytes, 12/12 DECODE_OK, tag pcc-0.12.1, in silesia.json. PCC is the compressor. AWARE is a retired alias only.
 
 Q: What is TNSSRC?
 A: The local engine. Silesia 43,724,575 bytes, 12/12 decode plus SHA-256. AGPL, or a $369/year closed grant (tnssrc-grant).

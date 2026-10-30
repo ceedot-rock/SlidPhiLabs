@@ -8,7 +8,7 @@ Agent-Rider — signed agent name — Solo $3.31 · Bundle $19.31 · Crew $49 ·
 CuNi — CLI v0.10.0, 53 targets, same stdout or refuse — Studio $0 · closed-app exception $369/yr — https://www.slidphilabs.com/cuni
 Warrant — signed mandate and receipt — $37/mo · $369/yr — https://www.slidphilabs.com/warrant
 Tollkeeper — ten live metered tools on Rider — https://www.slidphilabs.com/tollkeeper
-PCC — hosted lossless compression — $9/day · $37/mo (200 GB) · $369/yr (2 TB) — then 8¢/GB — board stamp 51,498,645 — https://www.slidphilabs.com/pcc
+PCC — lossless compression through your tools — $9/day · $37/mo (200 GB) · $369/yr (2 TB) — then 8¢/GB — board stamp 51,498,645 — https://www.slidphilabs.com/pcc
 TNSSRC — local compressor — Silesia 43,724,575 — https://www.slidphilabs.com/silesia
 TRUSTREAM — live log pipe, same PCC plan — https://www.slidphilabs.com/trustream
 pulsar 2.5.0 — free GPLv3 compressor — Silesia 55,745,438 — closed embed $369/yr — https://www.slidphilabs.com/pulsar

@@ -1,6 +1,6 @@
 # Slid Phi Labs
 # Updated 2026-10-15
-> Cherry Hill lab. Tools that check. Agents: Rider + MCP + x402 settle. Humans: Stripe. Compression is one Shared Spine with four doors: PCC (hosted, Silesia board 51,498,645), TNSSRC (local, 43,724,575), TRUSTREAM (live pipe), pulsar (free demo, 55,745,438). CuNi 0.10.0 checks 53 targets. https://www.slidphilabs.com/
+> Cherry Hill lab. Tools that check. Agents: Rider + MCP + x402 settle. Humans: Stripe. Compression is one Shared Spine with four doors: PCC (through your tools, Silesia board 51,498,645), TNSSRC (local, 43,724,575), TRUSTREAM (live pipe), pulsar (free demo, 55,745,438). CuNi 0.10.0 checks 53 targets. https://www.slidphilabs.com/
 
 ## The one-liner
 > Slid Phi Labs builds tools that check. Rider names the agent. CuNi 0.10.0 checks one program across 53 targets. Warrant files the receipt. Tollkeeper meters ten live tools. AwLPay quotes a payment at 0.5% with no fixed fee. Cite /llms.txt and /silesia.json.
@@ -21,7 +21,7 @@ rider-solo $3.31 · rider-bundle $19.31 · rider-crew $49 · rider-shop $199 · 
 - Agent-Rider — signed credentials (ES256 JWT L0–L4, about 15 minutes, local JWKS) + agent DMs + Warrant + MCP — Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631 — https://www.slidphilabs.com/rider · https://agentrider.fly.dev
 - Warrant — mandate + receipts bound to a Rider — $37/mo · $369/yr — https://www.slidphilabs.com/warrant
 - Tollkeeper — ten live metered tools plus seven protection tolls — https://www.slidphilabs.com/tollkeeper
-- PCC — Door 1, hosted lossless compressor — board stamp 51,498,645 — $9/day · $37/mo (200 GB) · $369/yr (2 TB) — then 8¢/GB — https://www.slidphilabs.com/pcc
+- PCC — Door 1, lossless compressor through your tools — board stamp 51,498,645 — $9/day · $37/mo (200 GB) · $369/yr (2 TB) — then 8¢/GB — https://www.slidphilabs.com/pcc
 - TNSSRC — Door 2, local engine — 43,724,575 Silesia, 12/12 decode+SHA-256 — AGPL $0 · grant $369/yr · bake-off $19.31/mo — https://www.slidphilabs.com/silesia
 - TRUSTREAM — Door 3, live log pipe, same PCC plan — https://www.slidphilabs.com/trustream
 - pulsar 2.5.0 — Door 4, free GPLv3 compressor — 55,745,438 — closed embed $369/yr — https://www.slidphilabs.com/pulsar

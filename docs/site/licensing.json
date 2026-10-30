@@ -7,8 +7,8 @@
   "terms": "https://www.slidphilabs.com/COMMERCIAL-LICENSE.md",
   "machine": "https://www.slidphilabs.com/specialist",
   "api": "https://www.slidphilabs.com/api/specialist",
-  "plain": "Every product is dual-licensed and public: copyleft, or a paid grant to ship closed. Hosted compression runs every pathway we own and keeps the smallest file that still restores. Signing keys, Chamber kernel secrets, and live customer data stay operator-only.",
-  "rule": "Public source under dual license. Copyleft or a paid grant. Hosted compression uses every own pathway. Keys, kernel secrets, and AUTH_DIR stay operator-only.",
+  "plain": "Every product is dual-licensed and public: copyleft, or a paid grant to ship closed. Compression through your tools runs every pathway we own and keeps the smallest file that still restores. Signing keys, Chamber kernel secrets, and live customer data stay operator-only.",
+  "rule": "Public source under dual license. Copyleft or a paid grant. Compression through your tools uses every own pathway. Keys, kernel secrets, and AUTH_DIR stay operator-only.",
   "dual": {
     "chooser": "You pick copyleft or the commercial grant. Both are written.",
     "copyleft_or_commercial": [
@@ -60,15 +60,15 @@
       "engine": "PCC",
       "page": "https://www.slidphilabs.com/pcc",
       "skus": ["gc-day", "gc-month", "gc-year", "lab-pass"],
-      "plain": "Hosted lossless compressor. $9/day · $37/mo (200 GB) · $369/yr (2 TB). Then 8¢/GB. First 2 GB/month free. Source is dual-licensed. PCC year is the closed-product grant. Official 12-file numbers live on /silesia.",
+      "plain": "Lossless compressor through your tools. $9/day · $37/mo (200 GB) · $369/yr (2 TB). Then 8¢/GB. First 2 GB/month free. Source is dual-licensed. PCC year is the closed-product grant. Official 12-file numbers live on /silesia.",
       "commercial": "AGPL in public. Closed-product grant is PCC year. Keys stay operator-only."
     },
     "general": {
       "occupant": "LBR1 + LZW1 + LZM1",
       "license": "AGPL-3.0-or-later OR Commercial",
       "runs_here": true,
-      "plain": "LBR1, own LZ wrap (LZW1), and LZMA-style LZM1 run on the hosted PCC machine. Dual license: AGPL-3.0-or-later, or a PCC year seat. LZM1 is a reimplementation, not host xz.",
-      "commercial": "SKU gc-year. Hosted compression already uses this pathway."
+      "plain": "LBR1, own LZ wrap (LZW1), and LZMA-style LZM1 run on PCC through your tools. Dual license: AGPL-3.0-or-later, or a PCC year seat. LZM1 is a reimplementation, not host xz.",
+      "commercial": "SKU gc-year. Compression through your tools already uses this pathway."
     },
     "paq": {
       "occupant": "PCAQ + ZMX1 + NNC1",
@@ -110,9 +110,9 @@
       "grants": "Written exception for one closed product using CuNi, one year.",
       "pay": "https://www.slidphilabs.com/pay?sku=cuni-exception"
     },
-    "gc-day": { "usd": 9, "plain": "PCC hosted compressor, one day of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-day" },
-    "gc-month": { "usd": 37, "plain": "PCC hosted compressor, one month of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-month" },
-    "gc-year": { "usd": 390, "plain": "PCC hosted compressor, one year of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-year" },
+    "gc-day": { "usd": 9, "plain": "PCC compressor through your tools, one day of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-day" },
+    "gc-month": { "usd": 37, "plain": "PCC compressor through your tools, one month of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-month" },
+    "gc-year": { "usd": 390, "plain": "PCC compressor through your tools, one year of access. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-year" },
     "lab-pass": { "usd": 890, "plain": "One year of Chamber + PCC + psi commercial seat for $890.", "pay": "https://www.slidphilabs.com/pay?sku=lab-pass", "includes": ["chamber", "pcc", "psi"], "excludes": ["rider"] },
     "oss-support": {
       "usd": 199,

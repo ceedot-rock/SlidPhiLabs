@@ -44,7 +44,7 @@
       "specialists": [
         "TRU8"
       ],
-      "note": "PCC is the hosted compressor. TRUSTREAM is the same plan for live logs. pulsar is the public GPLv3 demo."
+      "note": "PCC is lossless compression through your tools. TRUSTREAM is the same plan for live logs. pulsar is the public GPLv3 demo."
     },
     "chamber": {
       "products": [

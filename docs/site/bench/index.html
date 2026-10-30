@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Hosted compression bench — live numbers · Slid Phi Labs</title>
-  <meta name="description" content="Live PCC hosted lossless compression vs gzip-9 and brotli-11 on the same bytes. 4 MiB cap. DECODE_OK. Not a ranking claim."/>
+  <title>Compression bench — live numbers · Slid Phi Labs</title>
+  <meta name="description" content="Live PCC compression through your tools vs gzip-9 and brotli-11 on the same bytes. 4 MiB cap. DECODE_OK. Not a ranking claim."/>
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://www.slidphilabs.com/bench"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
   <link rel="alternate" type="application/json" href="https://www.slidphilabs.com/bench.json"/>
-  <meta property="og:title" content="Hosted compression bench"/>
+  <meta property="og:title" content="Compression bench"/>
   <meta property="og:description" content="Live POST /api/compress numbers. gzip-9 and brotli-11 as opponents. Not official Silesia."/>
   <meta property="og:url" content="https://www.slidphilabs.com/bench"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
@@ -23,7 +23,7 @@
     .spl-note.err { color: #8a2f2f; }
   </style>
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Hosted compression bench"/>
+  <meta name="twitter:title" content="Compression bench"/>
   <meta name="twitter:description" content="Live POST /api/compress numbers. gzip-9 and brotli-11 as opponents. Not official Silesia."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
@@ -31,8 +31,8 @@
 <body>
   <main class="spl-page" id="main">
     <p class="spl-kicker">Bench · live host</p>
-    <h1>Hosted compression, measured.</h1>
-    <p class="lede">These numbers come from the live machine: <code>POST /api/compress</code>, then <code>POST /api/decompress</code>. Every keep restores. gzip-9 and brotli-11 ran on the same bytes as opponents — they are not what we ship. Hosted jobs are capped at 4 MiB. Silesia rows are the first N bytes of those files, not the official 12-file total. Not a #1 claim.</p>
+    <h1>Compression, measured.</h1>
+    <p class="lede">These numbers come from the live machine: <code>POST /api/compress</code>, then <code>POST /api/decompress</code>. Every keep restores. gzip-9 and brotli-11 ran on the same bytes as opponents — they are not what we ship. Requests are capped at 4 MiB. Silesia rows are the first N bytes of those files, not the official 12-file total. Not a #1 claim.</p>
     <p class="spl-note" id="meta">Loading <a href="/bench.json">bench.json</a>…</p>
     <div style="overflow-x:auto">
       <table class="spl-table" id="tbl">
@@ -51,7 +51,7 @@
         <tbody></tbody>
       </table>
     </div>
-    <p class="spl-note">Zeros become 8 bytes. Incompressible input is stored as-is so it does not grow. Full Silesia does not fit in one hosted request.</p>
+    <p class="spl-note">Zeros become 8 bytes. Incompressible input is stored as-is so it does not grow. Full Silesia does not fit in one request.</p>
     <p class="spl-actions">
       <a class="spl-btn spl-btn-dark" href="/pcc">PCC</a>
       <a class="spl-btn spl-btn-line" href="/bench.json">bench.json</a>

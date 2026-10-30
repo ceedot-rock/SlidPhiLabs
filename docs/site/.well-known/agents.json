@@ -2,7 +2,7 @@
   "$schema": "https://agents-txt.com/schema/agents-json/v1.0.json",
   "ok": true,
   "name": "Slid Phi Labs",
-  "description": "Tools that check. Rider names the agent (x402 USDC or Stripe). CuNi 0.10.0 checks 53 targets. Warrant files the receipt. Tollkeeper meters ten live tools. PCC is the hosted compressor (board stamp 51,498,645). TNSSRC is the local engine (43,724,575). AWARE is a retired PCC alias. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight. File sharing between agents is next and is not live.",
+  "description": "Tools that check. Rider names the agent (x402 USDC or Stripe). CuNi 0.10.0 checks 53 targets. Warrant files the receipt. Tollkeeper meters ten live tools. PCC is lossless compression through your tools (board stamp 51,498,645). TNSSRC is the local engine (43,724,575). AWARE is a retired PCC alias. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight. File sharing between agents is next and is not live.",
   "version": "2.4.0",
   "updated": "2026-10-15",
   "lead_product": "rider",

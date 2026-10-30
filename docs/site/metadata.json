@@ -13,7 +13,7 @@
     "CuNi": "language \u2014 write once, print 53 targets. Same stdout or refuse. Native seats: Python, Go, JS, TS, C, C++, Rust. Bank arm: paste N get X. Studio $0. Closed-app exception $369/yr. v0.10.0.",
     "Chamber": "two-key protocol for storing a JSON secret. Cloak license $37/mo \u00b7 $369/yr. Open existing seals with both keys.",
     "Agent-Rider": "signed agent identity L0\u2013L4. Solo $3.31 \u00b7 Bundle $19.31 \u00b7 Crew $49 \u00b7 Shop $199 \u00b7 Fleet $631. Not in Lab Pass.",
-    "PCC": "hosted lossless compressor. Day $9 \u00b7 Month $37 \u00b7 Year $369. Dual-licensed public source, or a paid grant to ship closed.",
+    "PCC": "lossless compressor through your tools. Day $9 \u00b7 Month $37 \u00b7 Year $369. Dual-licensed public source, or a paid grant to ship closed.",
     "TRUSTREAM": "live logs on the PCC plan.",
     "Suite": "PCC meter \u2014 first 2 GB/month free, then 8\u00a2/GB. Not a product card.",
     "Lab Pass": "Chamber year + PCC Year + psi seat for 365 days, $890. Not Rider.",
@@ -87,11 +87,11 @@
     }
   },
   "default": {
-    "title": "Slid Phi Labs — hosted lossless compression",
+    "title": "Slid Phi Labs — lossless compression through your tools",
     "description": "PCC: send a file, get a smaller one, restore every byte. TRUSTREAM, Chamber, Agent-Rider, Warrant, CuNi.",
-    "og_title": "Slid Phi Labs — hosted lossless compression",
-    "og_description": "PCC is hosted lossless compression. We run it. You restore every byte.",
-    "twitter_title": "Slid Phi Labs — hosted lossless compression",
+    "og_title": "Slid Phi Labs — lossless compression through your tools",
+    "og_description": "PCC is lossless compression through your tools. We run it. You restore every byte.",
+    "twitter_title": "Slid Phi Labs — lossless compression through your tools",
     "twitter_description": "PCC: send a file, restore every byte.",
     "og_image": "https://www.slidphilabs.com/assets/now/og.jpg",
     "canonical": "https://www.slidphilabs.com/",
@@ -150,7 +150,7 @@
       "product_line": "Chamber"
     },
     "/pcc": {
-      "title": "PCC \u2014 hosted lossless compressor \u00b7 Slid Phi Labs",
+      "title": "PCC \u2014 lossless compressor through your tools \u00b7 Slid Phi Labs",
       "description": "Buy a seat to run a lossless compressor. Day $9 \u00b7 Month $37 \u00b7 Year $369. Dual-licensed public source, or a paid grant to ship closed.",
       "canonical": "https://www.slidphilabs.com/pcc",
       "product_line": "PCC"

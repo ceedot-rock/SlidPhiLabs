@@ -28,7 +28,7 @@ One-liner: Tools that check. Rider seats from $3.31/mo. CuNi 0.10.0, 53 targets,
   12/12. champ: 50,541,135 bytes, 12/12. gzip-9: 67,631,990. bzip2-9: 54,506,769.
   xz-6 still ahead (~49.4M). AWARE+XZ1 47.7M is retired.
 - Rules: never expand (a pathway that would expand stores RAW instead); decode restores
-  every byte or the path refuses; hosted bench at /bench is a live 4 MiB-cap demo against
+  every byte or the path refuses; live bench at /bench is a live 4 MiB-cap demo against
   gzip-9 and brotli-11, not the official Silesia board. Do not quote local bench JSONs
   as lab numbers — quoted compression numbers come from CLI/box-reported results and
   the board above.
@@ -83,7 +83,7 @@ https://www.slidphilabs.com/projects.json
 - CuNi = exact multi-language or refuse. Studio free.
 - Warrant = mandate and receipts. $37/mo · $369/yr.
 - Chamber = cloak license. $37/mo · $369/yr. Open is keys-only.
-- PCC = hosted compressor. $9/day · $37/mo · $369/yr.
+- PCC = compression through your tools. $9/day · $37/mo · $369/yr.
 - PCC meter = first 2 GB/month free, then 8¢/GB. Month plan includes 200 GB. Not a fifth product.
 - Lab Pass = Chamber year + PCC Year + psi seat, $890/yr. Not Rider.
 - Access = entitlement claim. Not a codec dump.
