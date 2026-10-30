@@ -26,7 +26,7 @@ export const LIMITS = Object.freeze({
   [Tiers.GATE]: { label: "AWARE Year", priceUsd: 390, buyUrl: BUY.gc_year },
   [Tiers.TRU8]: { label: "AWARE Year", priceUsd: 390, buyUrl: BUY.gc_year },
   [Tiers.CHAMBER]: { label: "Chamber year license", priceUsd: 99, buyUrl: BUY.chamber_year },
-  [Tiers.LAB]: { label: "Lab Pass Year", priceUsd: 369, buyUrl: BUY.lab_pass },
+  [Tiers.LAB]: { label: "Lab Pass Year", priceUsd: 890, buyUrl: BUY.lab_pass },
 });
 
 const DIR = join(homedir(), ".slidphilabs");
@@ -87,7 +87,7 @@ export function assertLicense(_opts = {}) {
   const box = openLocalBox();
   if (box.open) return true;
   throw new Error(
-    `black box closed — buy a seat. Lab Pass $369 ${BUY.lab_pass} · AWARE Year $369 ${BUY.gc_year}`,
+    `black box closed — buy a seat. Lab Pass $890 ${BUY.lab_pass} · AWARE Year $369 ${BUY.gc_year}`,
   );
 }
 
