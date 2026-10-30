@@ -49,7 +49,7 @@ We are a computation and AI company. Our compression engines shrink the data ent
 
 **Homepage rule (Corey, 2026-10-22): NO price figures anywhere on the homepage.** The homepage sells the tech and funnels to product pages and /pricing; prices live there, never here.
 
-**Sections:** 01 The costs (pain → solution → financial-impact table: data-center overhead / TNSSRC+PCC; agents spending without authority / Warrant; no record that stands up / Agent-Rider+CuNi; IP risk in open-source / open interface, private engines) · 02 The products (Compression, Agent-Rider, Warrant, CuNi — one sell line each, links to their pages) · 03 What it is. What it isn't. · 04 From code.
+**Sections:** 01 The costs (pain → solution → financial-impact table: data-center overhead / TNSSRC+PCC; agents spending without authority / Warrant; no record that stands up / Agent-Rider+CuNi) · 02 The products (Compression, Agent-Rider, Warrant, CuNi — one sell line each, links to their pages) · 03 What it is. What it isn't. · 04 From code.
 
 ---
 
