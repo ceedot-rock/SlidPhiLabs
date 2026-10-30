@@ -3,7 +3,7 @@
   "inbox": "corey@slidphilabs.com",
   "site": "https://www.slidphilabs.com",
   "methods": "https://www.slidphilabs.com/METHODS.md",
-  "rule": "One Shared Spine, three heads, four doors. Never expand. DECODE_OK. Door 1 PCC: metered $0.25/GB of input, first 1 GB/month free; Pro $25/mo including 100 GB, then $0.20/GB; customer-set monthly spend cap (default $25), alert at 80% of cap/allowance; x402 per-call for agents, Stripe monthly for humans. TRUSTREAM rides the PCC plan. Door 2 TNSSRC: AGPL $0 · closed grant $490/product/year via the unified grant (TNSSRC 0.1.0 only) · founding $190 for the first 10 grants · 3+ products $390 each. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. Door 3 TRUSTREAM: included with PCC. Door 4 pulsar: $0 GPLv3 · closed embed $490/product/year via the unified grant. Door 5 PERsiST (compressed heart for agents): Solo $13.31 · Crew $39 · Team $49 · Lab Pass $490/yr. First 5,000 tokens/day folded free. Rider: Solo $12/mo ($120/yr, 1 identity, 500 verifications/month) · Team $49/mo ($490/yr, 10 identities, 5,000 verifications/month, Warrant included) · Fleet $199/mo ($1,990/yr, 100 identities, 50,000 verifications/month, Warrant + fleet watch included); overage $0.02 per verification, customer-set monthly cap (default 2× plan price), alert at 80%; free: 1 identity, 100 verifications/month, no L3/L4 attestation. Warrant: $8/month add-on to Solo ($80/year), included in Team and Fleet, no standalone SKU. Chamber $20/mo · $200/yr; 24-hour try; opening already-sealed blobs free forever; sealing not metered. CuNi Studio $0 · closed-app grant $490/app/year · per-check API: first 100 checks/month free, then $0.05 per check. Lab Pass $495/yr (Chamber 1 year + Rider Solo 1 year + PSI Meter 1 seat 1 year + Warrant add-on 1 year; parts sum $650; PCC/compression out; no monthly version; Foundry+ retired). Quikgater $0.02 per fetch; first 100 fetches/month free; customer-set monthly cap (default $10), alert at 80%. TRU8 is the zeros specialist. AWARE is a retired alias for PCC. PSI Meter $25/seat/mo, $250/seat/yr: 250,000 logged calls/month included, then $2 per additional 100,000 calls; free: 1 seat, 10,000 calls/month, 7-day retention. PSI Embed: unified grant $490/product/year; psi-month/psi-year retired. PSI Org $79/mo. GitDepot live and functional: $15/seat/mo, $150/seat/yr; 100 GB pooled storage included, then $0.10/GB/month overage; free: 1 team, 3 seats, 10 GB, 30-day audit retention; invite-only, contact corey@slidphilabs.com. ACP $0, open standard; ACP Conformant certification $990 one-time (3 free pilot certifications, assessment criteria published). TeachAid student $6/mo, $60/yr; free: 1 course, text-only cited answers, no voice; institutional pilot $2,500 per campus per semester, up to 500 students, onboarding included. Consulting $175/hour, 2-hour minimum, scoped SOW. OSS support $199/year per public library. Unified grant $490/product/year; founding $190 for the first 10 grants; 3+ products $390 each; written grant, human-fulfilled, one product + one year per grant, renewal at then-current schedule price. Every meter states its free allowance, a customer-set cap, and an 80% alert. Cap defaults are stated per meter where they apply (PCC $25, Rider 2x plan price, Quikgater $10).",
+  "rule": "One Shared Spine, three heads, four doors. Never expand. DECODE_OK. Door 1 PCC: metered $0.25/GB of input, first 1 GB/month free; Pro $25/mo including 100 GB, then $0.20/GB; customer-set monthly spend cap (default $25), alert at 80% of cap/allowance; x402 per-call for agents, Stripe monthly for humans. TRUSTREAM rides the PCC plan. Door 2 TNSSRC: AGPL $0 · closed grant $490/product/year via the unified grant (TNSSRC 0.1.0 only) · founding $190 for the first 10 grants · 3+ products $390 each. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. Door 3 TRUSTREAM: included with PCC. Door 4 pulsar: $0 GPLv3 · closed embed $490/product/year via the unified grant. Door 5 PERsiST (Persistent Super Intelligence; memory that starts at BASE): Solo $13.31 · Crew $39 · Team $49 · Lab Pass $490/yr. First 5,000 tokens/day folded free. Rider: Solo $12/mo ($120/yr, 1 identity, 500 verifications/month) · Team $49/mo ($490/yr, 10 identities, 5,000 verifications/month, Warrant included) · Fleet $199/mo ($1,990/yr, 100 identities, 50,000 verifications/month, Warrant + fleet watch included); overage $0.02 per verification, customer-set monthly cap (default 2× plan price), alert at 80%; free: 1 identity, 100 verifications/month, no L3/L4 attestation. Warrant: $8/month add-on to Solo ($80/year), included in Team and Fleet, no standalone SKU. Chamber $20/mo · $200/yr; 24-hour try; opening already-sealed blobs free forever; sealing not metered. CuNi Studio $0 · closed-app grant $490/app/year · per-check API: first 100 checks/month free, then $0.05 per check. Lab Pass $495/yr (Chamber 1 year + Rider Solo 1 year + PSI Meter 1 seat 1 year + Warrant add-on 1 year; parts sum $650; PCC/compression out; no monthly version; Foundry+ retired). Quikgater $0.02 per fetch; first 100 fetches/month free; customer-set monthly cap (default $10), alert at 80%. TRU8 is the zeros specialist. AWARE is a retired alias for PCC. PSI Meter $25/seat/mo, $250/seat/yr: 250,000 logged calls/month included, then $2 per additional 100,000 calls; free: 1 seat, 10,000 calls/month, 7-day retention. PSI Embed: unified grant $490/product/year; psi-month/psi-year retired. PSI Org $79/mo. GitDepot live and functional: $15/seat/mo, $150/seat/yr; 100 GB pooled storage included, then $0.10/GB/month overage; free: 1 team, 3 seats, 10 GB, 30-day audit retention; invite-only, contact corey@slidphilabs.com. ACP $0, open standard; ACP Conformant certification $990 one-time (3 free pilot certifications, assessment criteria published). TeachAid student $6/mo, $60/yr; free: 1 course, text-only cited answers, no voice; institutional pilot $2,500 per campus per semester, up to 500 students, onboarding included. Consulting $175/hour, 2-hour minimum, scoped SOW. OSS support $199/year per public library. Unified grant $490/product/year; founding $190 for the first 10 grants; 3+ products $390 each; written grant, human-fulfilled, one product + one year per grant, renewal at then-current schedule price. Every meter states its free allowance, a customer-set cap, and an 80% alert. Cap defaults are stated per meter where they apply (PCC $25, Rider 2x plan price, Quikgater $10).",
   "measured": {
     "silesia_raw": 211938580,
     "zpaq_m5": 39112870,
@@ -299,29 +299,8 @@
     },
     "persist": {
       "name": "PERsiST",
-      "acronym": "compressed heart for AI agents",
+      "acronym": "Persistent Super Intelligence",
       "engine": "psi + spl-heart (LZMA-9 + PCC-CAE) + Warrant + CuNi",
-      "measured": {
-        "naive_tokens_per_turn": 61637,
-        "persist_tokens_per_turn": 1981,
-        "reduction_pct": 96.8,
-        "compression_ratio": 2.93,
-        "shards_verified": "355/355",
-        "ed25519_envelopes": "20/20",
-        "merkle_root_sha256": "277ab6b1818ff45c754432fbbb91190e61e63cd413a5ed7e9127cd15c782f2ff",
-        "ssaa": {
-          "adapt_command": "spl-heart adapt",
-          "bible_ports_detected": [
-            "javascript",
-            "python",
-            "typescript"
-          ],
-          "lean_slice_improvement": {
-            "P1-A_tokens": "6108 -> 5050 (-17.4%)",
-            "P3-A_tokens": "2757 -> 2314 (-16.1%)"
-          }
-        }
-      },
       "page": "https://www.slidphilabs.com/persist",
       "domain": "https://persist.com",
       "free": {
@@ -336,9 +315,9 @@
           "seats": 1,
           "includes": [
             "local spl-heart engine",
-            "psi memory (116 tweaks)",
-            "Warrant pre-push/pre-revert gate",
-            "CuNi Ed25519 receipts",
+            "BASE-start memory built from a scan of your work",
+            "Warrant gate",
+            "CuNi receipts",
             "10 GB PCC compression/month"
           ],
           "stripe": "https://www.slidphilabs.com/pay?sku=psi-solo"
@@ -348,11 +327,10 @@
           "usd": 39,
           "seats": 6,
           "includes": [
-            "shared heart.cae",
-            "shared COMMS.md task board",
-            "shared AgentBibleCodec slice filtering",
-            "200 GB PCC compression/month",
-            "Warrant + CuNi receipts for all 6 seats"
+            "shared heart.cae built from the crew's shared work",
+            "slice loading per seat",
+            "Warrant + CuNi receipts for all 6 seats",
+            "200 GB PCC compression/month"
           ],
           "stripe": "https://www.slidphilabs.com/pay?sku=psi-crew"
         },
@@ -362,7 +340,7 @@
           "seats": 10,
           "includes": [
             "priority SLA",
-            "policy customization (human/OVERRIDES.md templating)",
+            "policy customization",
             "SOC2/SIEM audit export",
             "dedicated Warrant ledger"
           ],

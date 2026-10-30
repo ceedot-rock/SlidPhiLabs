@@ -101,7 +101,7 @@
       <a class="pf-btn pf-btn-line" href="#costs">The evidence</a>
       <a class="pf-btn pf-btn-line" href="/invest">Invest</a>
     </p>
-    <nav class="lb-jump" aria-label="On this page"><span>On this page:</span> <a href="#costs">The costs</a> <a href="#products">Products</a> <a href="#about">What it is</a> <a href="#code">From code</a> <a href="/persist">PERsiST — 96.8% fewer tokens</a></nav>
+    <nav class="lb-jump" aria-label="On this page"><span>On this page:</span> <a href="#costs">The costs</a> <a href="#products">Products</a> <a href="#about">What it is</a> <a href="#code">From code</a> <a href="/persist">PERsiST — memory that starts empty</a></nav>
   </section>
 
   <section class="lb-sec" aria-labelledby="costs">
@@ -113,9 +113,9 @@
       <thead><tr><th scope="col">Enterprise pain point</th><th scope="col">The Slid Phi Labs solution</th><th scope="col">Direct financial impact</th></tr></thead>
       <tbody>
         <tr>
-          <th scope="row">Agents that burn 96.8% more context than they need</th>
-          <td><strong>PERsiST — the compressed heart.</strong> Our agents fold all 354 shards of carried knowledge (psi rules + AgentBibleCodec chapters + task payloads) into a single LZMA-9 + PCC-CAE compressed archive, inflate only the ~3% slice each task actually needs, and verify every read cryptographically. <strong>Measured on our own fleet: 61,112 → 1,976 tokens per agent turn (96.8% reduction)</strong>, with `354/354` shards SHA-256-verified and `11/11` Ed25519 receipts.</td>
-          <td>AI context costs money on every turn, on every seat, forever. A 96.8% reduction at typical frontier-model rates ($3/1M) is roughly <strong>$37/month per seat at just 7 turns/day</strong> — before counting fewer hallucinated edits and fewer pushes you have to revert.</td>
+          <th scope="row">Agents that re-load everything they know on every turn</th>
+          <td><strong>PERsiST (Persistent Super Intelligence) — memory that starts empty.</strong> Every PERsiST starts at BASE. It scans your work — your repos, your tasks, your decisions — and builds its own folded memory from what it finds. Nothing of ours ships inside it. Each turn loads only the slice the task needs, and every read is verified.</td>
+          <td>Context is the bill. Loading only the slice each task needs means fewer tokens on every turn, on every seat, for as long as the agent runs. How much smaller depends on your work — PERsiST reports the tokens it loads, so the saving is measured on your system, not promised on ours.</td>
         </tr>
         <tr>
           <th scope="row">Volatile data-center overhead</th>
@@ -143,9 +143,9 @@
     <p class="pf-lede">Four lines. Each one links to itself — the mechanism, the proof, and the plans live on its own page.</p>
     <ul class="lb-ledger">
       <li class="lb-row">
-        <p class="lb-name"><a href="/persist">PERsiST — the compressed heart</a></p>
-        <p class="lb-what">96.8% fewer tokens per AI agent turn, measured on our own fleet. Folds psi memory + AgentBibleCodec + task payloads into one compressed archive, inflates only the slice each task needs, and verifies every read with SHA-256 and Ed25519. Live page: <a href="/persist">PERsiST</a>.</p>
-        <p class="lb-proof"><a href="/persist">See the 96.8% ledger</a> · <a href="/persist#pricing">Pricing</a></p>
+        <p class="lb-name"><a href="/persist">PERsiST — Persistent Super Intelligence</a></p>
+        <p class="lb-what">Memory that starts at BASE. Scans your work, builds its own folded memory, loads only the slice each task needs, verifies every read. Live page: <a href="/persist">PERsiST</a>.</p>
+        <p class="lb-proof"><a href="/persist">How BASE works</a> · <a href="/persist#pricing">Pricing</a></p>
       </li>
       <li class="lb-row">
         <p class="lb-name"><a href="/pcc">Compression — TNSSRC / PCC</a></p>
