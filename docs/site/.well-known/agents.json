@@ -29,7 +29,7 @@
     "pulsar"
   ],
   "suite": {
-    "plain": "First 2 GB each month free, then 8\u00a2/GB. PCC month includes 200 GB.",
+    "plain": "First 2 GB each month free, then 8¢/GB. PCC month includes 200 GB.",
     "unpaid_gb": 2,
     "window": "calendar_month",
     "usd_per_gb": 0.08,
@@ -39,7 +39,7 @@
     "compare": "https://www.slidphilabs.com/compare"
   },
   "flagship": {
-    "bench": "zeros\u00d710k int32",
+    "bench": "zeros×10k int32",
     "zrw": "8B",
     "gzip-9": "73B",
     "brotli-11": "13B",
@@ -133,7 +133,7 @@
       "name": "Warrant",
       "role": "mandate",
       "url": "https://www.slidphilabs.com/warrant",
-      "price": "$29/mo \u00b7 $290/yr. Needs a Rider."
+      "price": "$29/mo · $290/yr. Needs a Rider."
     }
   ]
 }

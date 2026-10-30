@@ -55,7 +55,7 @@
     },
     "cuni-exception": {
       "sku": "cuni-exception",
-      "price_usd": 490
+      "price_usd": 390
     },
     "warrant-month": {
       "sku": "warrant-month",
@@ -87,15 +87,15 @@
     }
   },
   "default": {
-    "title": "Slid Phi Labs \u2014 hosted lossless compression",
+    "title": "Slid Phi Labs — hosted lossless compression",
     "description": "PCC: send a file, get a smaller one, restore every byte. TRUSTREAM, Chamber, Agent-Rider, Warrant, CuNi.",
-    "og_title": "Slid Phi Labs \u2014 hosted lossless compression",
+    "og_title": "Slid Phi Labs — hosted lossless compression",
     "og_description": "PCC is hosted lossless compression. We run it. You restore every byte.",
-    "twitter_title": "Slid Phi Labs \u2014 hosted lossless compression",
+    "twitter_title": "Slid Phi Labs — hosted lossless compression",
     "twitter_description": "PCC: send a file, restore every byte.",
     "og_image": "https://www.slidphilabs.com/assets/now/og.jpg",
     "canonical": "https://www.slidphilabs.com/",
-    "product_line": "PCC \u00b7 TRUSTREAM \u00b7 Chamber \u00b7 Agent-Rider \u00b7 Warrant \u00b7 CuNi"
+    "product_line": "PCC · TRUSTREAM · Chamber · Agent-Rider · Warrant · CuNi"
   },
   "schema": {
     "organization": {
@@ -119,12 +119,12 @@
   },
   "routes": {
     "/": {
-      "title": "Slid Phi Labs \u2014 Lossless Compression, Verified",
+      "title": "Slid Phi Labs — Lossless Compression, Verified",
       "description": "Verified lossless compression, agent identity, and production infrastructure from Slid Phi Labs. Public proof, private performance, paid production.",
       "canonical": "https://www.slidphilabs.com/"
     },
     "/products": {
-      "title": "Products \u2014 what we actually sell \u00b7 Slid Phi Labs",
+      "title": "Products — what we actually sell · Slid Phi Labs",
       "description": "PCC, TRUSTREAM, Chamber, Agent-Rider, Warrant, CuNi.",
       "canonical": "https://www.slidphilabs.com/products"
     },
@@ -134,12 +134,12 @@
       "canonical": "https://www.slidphilabs.com/pricing"
     },
     "/pay": {
-      "title": "Checkout \u2014 Slid Phi Labs",
+      "title": "Checkout — Slid Phi Labs",
       "description": "Buy a lab seat on Stripe. Card. Apple Pay and Google Pay when available. Invoice for teams.",
       "canonical": "https://www.slidphilabs.com/pay"
     },
     "/box": {
-      "title": "Try for 24 hours \u2014 Slid Phi Labs",
+      "title": "Try for 24 hours — Slid Phi Labs",
       "description": "One-day try of Chamber or PCC. Then a seat, or it stops. CuNi is free. Rider is a team seat.",
       "canonical": "https://www.slidphilabs.com/box"
     },
@@ -156,7 +156,7 @@
       "product_line": "PCC"
     },
     "/rider": {
-      "title": "Agent-Rider \u2014 signed identity for AI agents \u00b7 Slid Phi Labs",
+      "title": "Agent-Rider — signed identity for AI agents · Slid Phi Labs",
       "description": "Public-facing signed agent identity: issue accountable credentials and verify them locally. Team plans are available separately from Lab Pass.",
       "canonical": "https://www.slidphilabs.com/rider",
       "product_line": "Agent-Rider"
@@ -178,47 +178,47 @@
       "canonical": "https://www.slidphilabs.com/license"
     },
     "/about": {
-      "title": "About the lab \u2014 Slid Phi Labs",
+      "title": "About the lab — Slid Phi Labs",
       "description": "Small computation lab in Cherry Hill. Tools that check: CuNi, Chamber, Agent-Rider, PCC.",
       "canonical": "https://www.slidphilabs.com/about"
     },
     "/pps": {
-      "title": "Suite \u2014 metered encode/decode \u00b7 Slid Phi Labs",
-      "description": "Pay per PCC job. First 2 GB each month free, then 8\u00a2/GB.",
+      "title": "Suite — metered encode/decode · Slid Phi Labs",
+      "description": "Pay per PCC job. First 2 GB each month free, then 8¢/GB.",
       "canonical": "https://www.slidphilabs.com/pps"
     },
     "/access": {
-      "title": "Access \u2014 claim a lab seat after payment \u00b7 Slid Phi Labs",
+      "title": "Access — claim a lab seat after payment · Slid Phi Labs",
       "description": "After Stripe or x402, this page opens the Chamber, PCC, Rider, or Lab Pass seat you bought.",
       "canonical": "https://www.slidphilabs.com/access"
     },
     "/agents": {
-      "title": "Agents \u2014 x402 and MCP \u00b7 Slid Phi Labs",
+      "title": "Agents — x402 and MCP · Slid Phi Labs",
       "description": "Same catalog as humans. Agents buy on x402. MCP at /mcp. Registry io.github.ceedot-rock/slid-phi-labs.",
       "canonical": "https://www.slidphilabs.com/agents"
     },
     "/humans": {
-      "title": "Humans \u2014 the lab in plain language \u00b7 Slid Phi Labs",
+      "title": "Humans — the lab in plain language · Slid Phi Labs",
       "description": "Who we are, what we sell, how to try it. CuNi, Chamber, Agent-Rider, PCC. Agents use /agents.",
       "canonical": "https://www.slidphilabs.com/humans"
     },
     "/docs": {
-      "title": "API \u2014 Slid Phi Labs",
+      "title": "API — Slid Phi Labs",
       "description": "Checkout, x402, MCP, and the human/agent doors. Same prices as /pricing.",
       "canonical": "https://www.slidphilabs.com/docs"
     },
     "/mcp-service": {
-      "title": "Slid Phi Labs MCP \u2014 public catalog tools over Streamable HTTP",
-      "description": "Connect a client to Slid Phi Labs\u2019 hosted MCP server for public catalog, documentation, and commerce discovery tools.",
+      "title": "Slid Phi Labs MCP — public catalog tools over Streamable HTTP",
+      "description": "Connect a client to Slid Phi Labs’ hosted MCP server for public catalog, documentation, and commerce discovery tools.",
       "canonical": "https://www.slidphilabs.com/mcp-service"
     },
     "/npm": {
-      "title": "Slid Phi Labs npm packages \u2014 clients, demos, and MCP tools",
+      "title": "Slid Phi Labs npm packages — clients, demos, and MCP tools",
       "description": "Install the public Slid Phi Labs client, quote, demo, and MCP helper packages. Private compression engines are not shipped in npm tarballs.",
       "canonical": "https://www.slidphilabs.com/npm"
     },
     "/demos": {
-      "title": "Historical compression demos \u00b7 Slid Phi Labs",
+      "title": "Historical compression demos · Slid Phi Labs",
       "description": "Old public demos. The compressor seat you buy today is PCC. pulsar is the public GPLv3 cousin.",
       "canonical": "https://www.slidphilabs.com/demos"
     }

@@ -31,12 +31,12 @@
       },
       {
         "uri": "https://www.slidphilabs.com/api/olympiad",
-        "description": "Great Agentic Olympiad \u2014 tryouts, entry, governance",
+        "description": "Great Agentic Olympiad — tryouts, entry, governance",
         "required": false
       },
       {
         "uri": "https://www.slidphilabs.com/toys.json",
-        "description": "Toy Store catalog \u2014 fun, theory, artifacts",
+        "description": "Toy Store catalog — fun, theory, artifacts",
         "required": false
       }
     ]
@@ -51,7 +51,7 @@
     {
       "id": "freemium-suite",
       "name": "Freemium suite job",
-      "description": "POST /api/x402-suite with bytes\u22641GB free; over free pay x402. Humans use /pps.",
+      "description": "POST /api/x402-suite with bytes≤1GB free; over free pay x402. Humans use /pps.",
       "tags": [
         "pricing",
         "suite",
@@ -65,7 +65,7 @@
     {
       "id": "choose-surface",
       "name": "Choose platform surface",
-      "description": "Humans \u2192 /humans. Agents \u2192 /agents or GET /api/agent. Map \u2192 /platform.json",
+      "description": "Humans → /humans. Agents → /agents or GET /api/agent. Map → /platform.json",
       "tags": [
         "platform",
         "discovery"
@@ -115,7 +115,7 @@
     {
       "id": "gao-olympiad",
       "name": "Great Agentic Olympiad",
-      "description": "World GAO. GET /api/olympiad. Public build: https://github.com/ceedot-rock/great-agentic-olympiad \u2014 help with events, harnesses, governance.",
+      "description": "World GAO. GET /api/olympiad. Public build: https://github.com/ceedot-rock/great-agentic-olympiad — help with events, harnesses, governance.",
       "tags": [
         "olympiad",
         "agents",
@@ -172,28 +172,25 @@
     },
     "starter_path": "https://www.slidphilabs.com/pps",
     "suite_pricing": {
-      "model": "freemium_suite_v4_undercut",
-      "free_cap_gb": 6.9,
-      "min_paid_usd": 0.05,
-      "usd_per_gb_after_free": 0.05,
-      "usd_per_gb_bulk": 0.04,
-      "first_paid_egress_ref_usd": 0.09,
-      "try_gate": "retired",
+      "model": "suite_current",
+      "free_cap_gb": 2,
+      "window": "calendar_month",
+      "usd_per_gb_after_free": 0.08,
+      "min_paid_usd": 1,
       "suite_url": "https://www.slidphilabs.com/pps",
-      "rule": "Unpaid 6.9 GB / 3 h, then ~5¢/GB"
+      "rule": "First 2 GB each month free, then 8c/GB"
     },
-    "try_gate": "retired",
     "product": "TRU8",
-    "x402_access_autoclaim": false
+    "x402_access_autoclaim": true
   },
   "products_url": "https://www.slidphilabs.com/api/x402-products",
   "agents_json": "https://www.slidphilabs.com/agents.json",
   "duos": "https://www.slidphilabs.com/duos",
-  "updated": "2026-08-12",
+  "updated": "2026-10-29",
   "liveness": {
     "checked": "2026-08-12",
-    "x402_access_autoclaim": false,
-    "x402_access_note": "Stripe session verify works on /access. x402 auto-claim is not wired; agents email proof or use /access?product= + order id.",
+    "note": "Liveness in this file is stale (last live check in the tree: 2026-08-12). Sister-host statuses below are as of that date and must be re-verified live before quoting; do not present them as current.",
+    "x402_access_autoclaim": true,
     "sisters": {
       "agent_rider": {
         "url": "https://agentrider.fly.dev/",
@@ -209,7 +206,7 @@
       "quikgater_worker": {
         "url": "https://quikgater-worker.ceedotrock.workers.dev",
         "status": "live",
-        "note": "2026-08-12: worker responds (bare GET 400 MISSING_URL_PARAM \u2014 expected)."
+        "note": "2026-08-12: worker responds (bare GET 400 MISSING_URL_PARAM — expected)."
       },
       "team_mesh": {
         "url": "https://spl-team-mesh.fly.dev",
@@ -221,14 +218,14 @@
   "legal": {
     "trade_name": "Slid Phi Labs",
     "public_author": "Corey Tasz",
-    "legal_name_manuscript": "Corey Robert Ptaszenski",
-    "entity_claimed": "none \u2014 no public LLC/Inc/Ltd filing is claimed",
+    "legal_name": "SLID PHI LABS LLC",
+    "entity": "New Jersey limited liability company, effective October 16, 2026",
     "roles": [
       "author",
+      "founder",
       "copyright holder",
       "inventor"
     ],
-    "not_a_title": "founder",
     "commercial_use": "written license required",
     "contact": {
       "humans": "corey@slidphilabs.com",
@@ -237,5 +234,5 @@
     },
     "site": "https://www.slidphilabs.com"
   },
-  "x402_access_autoclaim": false
+  "x402_access_autoclaim": true
 }

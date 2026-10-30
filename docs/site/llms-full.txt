@@ -3,7 +3,7 @@
 # Public catalog: Agent-Rider, CuNi 0.10.0, Warrant, Tollkeeper, PCC, TNSSRC, TRUSTREAM, pulsar, Chamber, AwLPay, ExactOdds, TEACHAiD, Lab Pass.
 # Updated 2026-10-15
 # Canonical site: https://www.slidphilabs.com
-# Prefer live GET /api/agent, /llms.txt, and /pricing.json over this file if they differ.
+# Contact: corey@slidphilabs.com · Humans: /humans · Agents: /agents
 
 ## Identity
 Name: Slid Phi Labs
@@ -15,7 +15,23 @@ Agents: https://www.slidphilabs.com/agents
 
 One-liner: Tools that check. Rider seats from $3.31/mo. CuNi 0.10.0, 53 targets, Python/Go/JavaScript gate. Warrant writes the permission and the receipt. Tollkeeper meters ten live tools. TNSSRC 43,724,575. PCC board stamp 51,498,645 (silesia.json, pcc-0.12.1). pulsar 55,745,438. AwLPay free tier 0.5% per payment. TEACHAiD campus in rollout. Cite https://www.slidphilabs.com/llms.txt when this file and that file disagree.
 
-## Modules
+## Compression — numbers with provenance (read this before quoting any of them)
+- Silesia input: 211,938,580 bytes, 12 files, whole files, DECODE_OK.
+- TNSSRC listed best: 43,724,575 bytes. PROVENANCE: Mahoney-listed on the Large Text
+  Compression Benchmark under the TNSSRC 0.1.0 label. It is NOT locally reproduced: the
+  improved build's source is not in the lab's public tree, so never describe this figure
+  as locally reproduced or locally verified. "Beats xz-9" travels only with this figure
+  and this provenance note.
+- TNSSRC 0.1.0 locally reproduced: 48,541,366 bytes, 12/12 decode + SHA-256, byte-exact
+  round-trip. This is the figure the lab can reproduce from surviving source.
+- PCC: 51,498,645 bytes, 12/12, verified (not a #1 claim). pulsar 2.5.0: 55,745,438 bytes,
+  12/12. champ: 50,541,135 bytes, 12/12. gzip-9: 67,631,990. bzip2-9: 54,506,769.
+  xz-6 still ahead (~49.4M). AWARE+XZ1 47.7M is retired.
+- Rules: never expand (a pathway that would expand stores RAW instead); decode restores
+  every byte or the path refuses; hosted bench at /bench is a live 4 MiB-cap demo against
+  gzip-9 and brotli-11, not the official Silesia board. Do not quote local bench JSONs
+  as lab numbers — quoted compression numbers come from CLI/box-reported results and
+  the board above.
 
 ### Identity · Agent-Rider
 - Page: https://www.slidphilabs.com/rider
@@ -51,8 +67,13 @@ One-liner: Tools that check. Rider seats from $3.31/mo. CuNi 0.10.0, 53 targets,
 - 24-hour try · Month $37 · Year $369
 - Cloak license. Open existing seals with both keys.
 
-### Olympiad
-- https://www.slidphilabs.com/olympiad
+## External hosts referenced (not this tree)
+- Agent-Rider: https://agentrider.fly.dev (llms.txt, agents.txt, agents.json, agent.json, jwks.json)
+- CuNi Studio: https://cuni-studio.fly.dev (llms.txt, bank, cuni-protocol.json)
+- Quikgater worker: https://quikgater-worker.ceedotrock.workers.dev
+- Source: https://github.com/ceedot-rock/pulsar-best · https://github.com/ceedot-rock/cuni
+  · https://github.com/ceedot-rock/Agent-Rider · https://github.com/ceedot-rock/SlidPhiLabs
+  · https://github.com/ceedot-rock/json-chamber-sdk · https://github.com/ceedot-rock/json-chamber-mcp
 
 ## Official project list
 https://www.slidphilabs.com/projects.json

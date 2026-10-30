@@ -98,3 +98,60 @@ test("tamper fails", () => {
   const v = verifyWarrant(bad);
   assert.equal(v.ok, false);
 });
+
+test("pre-spend cap: verify with usd + reserve/settle/release", async () => {
+  const { reserveWarrant, releaseReservation } = await import("./warrant.mjs");
+  const issued = issueWarrant({ demo: true, max_usd: 1, max_calls: 5, ttl_seconds: 120 });
+
+  // Verify alone states the cost but deducts nothing.
+  const over = verifyWarrant(issued.token, { host: "www.slidphilabs.com", action: "invoke", usd: 1.5 });
+  assert.equal(over.ok, false);
+  assert.equal(over.reason, "usd_exhausted");
+  const under = verifyWarrant(issued.token, { host: "www.slidphilabs.com", action: "invoke", usd: 0.4 });
+  assert.equal(under.ok, true);
+  assert.equal(under.warrant.remaining_usd, 1);
+
+  // Reserve over budget fails and deducts nothing.
+  const badReserve = reserveWarrant({ token: issued.token, host: "www.slidphilabs.com", action: "invoke", usd: 2 });
+  assert.equal(badReserve.ok, false);
+  assert.equal(badReserve.reason, "usd_exhausted");
+
+  // Reserve deducts immediately; a second reserve against the same balance fails.
+  const rsv = reserveWarrant({ token: issued.token, host: "www.slidphilabs.com", action: "invoke", usd: 0.7 });
+  assert.equal(rsv.ok, true);
+  assert.equal(rsv.warrant.remaining_usd, 0.3);
+  assert.equal(rsv.warrant.reserved_usd, 0.7);
+  const rsv2 = reserveWarrant({ token: issued.token, host: "www.slidphilabs.com", action: "invoke", usd: 0.4 });
+  assert.equal(rsv2.ok, false);
+
+  // Settle via receipt: no double-deduct, one call consumed.
+  const settled = fileReceipt({
+    token: issued.token,
+    action: "invoke",
+    host: "www.slidphilabs.com",
+    reservation_id: rsv.reservation.id,
+  });
+  assert.equal(settled.ok, true);
+  assert.equal(settled.receipt.usd, 0.7);
+  assert.equal(settled.warrant.remaining_usd, 0.3);
+  assert.equal(settled.warrant.reserved_usd, 0);
+  assert.equal(settled.warrant.remaining_calls, 4);
+
+  // Settled reservation cannot settle twice.
+  const twice = fileReceipt({
+    token: issued.token,
+    action: "invoke",
+    host: "www.slidphilabs.com",
+    reservation_id: rsv.reservation.id,
+  });
+  assert.equal(twice.ok, false);
+  assert.equal(twice.reason, "reservation_settled");
+
+  // Release refunds an unsettled reservation.
+  const rsv3 = reserveWarrant({ token: issued.token, host: "www.slidphilabs.com", action: "invoke", usd: 0.3 });
+  assert.equal(rsv3.ok, true);
+  const rel = releaseReservation(rsv3.reservation.id);
+  assert.equal(rel.ok, true);
+  assert.equal(rel.warrant.remaining_usd, 0.3);
+  assert.equal(rel.warrant.reserved_usd, 0);
+});

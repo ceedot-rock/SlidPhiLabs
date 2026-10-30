@@ -3,7 +3,7 @@
 # CuNi $0 · Chamber $9/$369 · Rider Solo $3.31–Fleet $631 · PCC $9/$37/$369 · Lab Pass $890 · 2 GB/mo then 8¢/GB
 
 Host: www.slidphilabs.com
-Rate: 60/min
+Rate limits: not published in this tree — do not quote a number; the live service may enforce fair use.
 Auth: Bearer lab JWT or spl_ag_ key from POST /api/auth action=agent_key
 
 Allow: GET /api/agent
