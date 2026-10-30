@@ -409,6 +409,16 @@ const server = http.createServer(async (req, res) => {
       });
       return res.end();
     }
+    // Product subdomains: <product>.slidphilabs.com/ serves that product's
+    // homepage (subs/<product>/index.html). API, MCP, healthz, and every
+    // other path behave exactly as on www.
+    const SUBS = { acp: 1, agentrider: 1, cuni: 1, gitdepot: 1, pcc: 1, psi: 1 };
+    const sub = host.endsWith(".slidphilabs.com")
+      ? host.slice(0, -".slidphilabs.com".length)
+      : "";
+    if (SUBS[sub] && (url.pathname === "/" || url.pathname === "/index.html")) {
+      url.pathname = `/subs/${sub}/index.html`;
+    }
     const p0 = url.pathname.replace(/\/$/, "") || "/";
     const gone = {
       "/gc": "/pcc",

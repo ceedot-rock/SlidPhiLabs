@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>PCC — Hosted lossless compression | Slid Phi Labs</title>
-  <meta name="description" content="Hosted lossless compression: Silesia benchmark 51,498,645 bytes, every win proven by decode plus SHA-256. Tool-called hosted compression. Call it with a key; restore every byte."/>
+  <title>PCC — Lossless compression through your tools | Slid Phi Labs</title>
+  <meta name="description" content="Lossless compression through your tools: Silesia benchmark 51,498,645 bytes, every win proven by decode plus SHA-256. Called through your tools. Call it with a key; restore every byte."/>
   <link rel="canonical" href="https://www.slidphilabs.com/pcc"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
-  <meta property="og:title" content="PCC — Hosted lossless compression | Slid Phi Labs"/>
-  <meta property="og:description" content="Hosted lossless compression: Silesia benchmark 51,498,645 bytes, every win proven by decode plus SHA-256. Tool-called hosted compression. Call it with a key; restore every byte."/>
+  <meta property="og:title" content="PCC — Lossless compression through your tools | Slid Phi Labs"/>
+  <meta property="og:description" content="Lossless compression through your tools: Silesia benchmark 51,498,645 bytes, every win proven by decode plus SHA-256. Called through your tools. Call it with a key; restore every byte."/>
   <meta property="og:url" content="https://www.slidphilabs.com/pcc"/>
   <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <link rel="stylesheet" href="/assets/chrome.css?v=38"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="PCC — Hosted lossless compression | Slid Phi Labs"/>
-  <meta name="twitter:description" content="Hosted lossless compression: Silesia benchmark 51,498,645 bytes, every win proven by decode plus SHA-256. Tool-called hosted compression. Call it with a key; restore every byte."/>
+  <meta name="twitter:title" content="PCC — Lossless compression through your tools | Slid Phi Labs"/>
+  <meta name="twitter:description" content="Lossless compression through your tools: Silesia benchmark 51,498,645 bytes, every win proven by decode plus SHA-256. Called through your tools. Call it with a key; restore every byte."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
 </head>
 <body>
   <main class="spl-page" id="main">
-    <p class="spl-kicker">PCC · hosted lossless compression</p>
+    <p class="spl-kicker">PCC · lossless compression through your tools</p>
     <h1>Compression through your tools. Every byte back.</h1>
-    <p class="lede">PCC is hosted lossless compression, called through tools. Your file runs a tournament of methods — solid-RLE, our own LZ, BWT-ANS, and the aware pathway — and we keep the smallest copy that still restores the original byte-for-byte, proven by decode plus SHA-256. Use it over HTTP with a key, from npm, or through MCP.</p>
+    <p class="lede">PCC is lossless compression, called through tools. Your file runs a tournament of methods — solid-RLE, our own LZ, BWT-ANS, and the aware pathway — and we keep the smallest copy that still restores the original byte-for-byte, proven by decode plus SHA-256. Use it over HTTP with a key, from npm, or through MCP.</p>
     <p><em>You are paying to store and move bytes you don't have to.</em></p>
     <p>Data-center economics are footprint economics: every byte is stored, replicated, backed up, and shipped at a rate, forever. Our engines attack the footprint itself — and unlike most compression claims, ours are published where they can be checked. TNSSRC compressed the 211,938,580-byte Silesia corpus to 43,724,575 bytes — <strong>independently verified on the Large Text Compression Benchmark</strong>, ~11% smaller than xz-6 and ~17.5% smaller than zstd-19 on identical input. For working data, PCC leads on ratio: 22.7:1 on text, 27:1 on JSON, 500:1 on code, lab-measured, fully lossless. Smaller archives, cheaper replication, lighter egress — a percentage point of footprint is a percentage point of every bill the footprint touches. And because the numbers are the pitch, we publish the caveats with them: the verified mark is TNSSRC's headline; our current public build encodes larger, and we say so. That's what compression marketing looks like when the vendor isn't afraid of the measurement.</p>
     <p class="spl-actions">
@@ -40,10 +40,10 @@
     <p class="spl-note" style="margin:0.4rem 0 0">Want the full engine for a day? <a href="/box">24-hour try</a> — no account, no card. Prefer the API? Same engine over HTTP with a key, npm, or MCP — <a href="/docs">docs</a>.</p>
 <section class="spl-prose spl-full" id="what-pcc" aria-labelledby="what-pcc-h">
   <h2 id="what-pcc-h">What PCC is</h2>
-  <p>PCC is hosted compression for your files, called through tools. Your tool sends a file; it gets back the smallest faithful copy — and when you restore it, every single byte is identical to the original. A smaller file, guaranteed identical when unzipped.</p>
+  <p>PCC is lossless compression for your files, called through tools. Your tool sends a file; it gets back the smallest faithful copy — and when you restore it, every single byte is identical to the original. A smaller file, guaranteed identical when unzipped.</p>
   <p>Here is why that matters. Storage and bandwidth cost real money, and most files carry far more redundancy than they need to. PCC runs your file through a tournament of compression methods and keeps whichever one wins — then proves the win by decoding it and checking every byte. In one live receipt, a 51&nbsp;MB file came back as 16.7&nbsp;MB, every byte verified on restore.</p>
   <p>Lossless is a promise, not a hope. If nothing can shrink your file, PCC stores it as-is — it never makes a file bigger. And the proof is public: on the standard Silesia benchmark set, PCC pcc-0.12.1 packed the corpus to 51,498,645 bytes, 12 of 12 decoded. The local TNSSRC stamp on the same corpus is 43,724,575. Both numbers are on the board at /silesia.</p>
-  <p>It is hosted, so our machines do the work — your tools call it over HTTP with a key, from npm, or through MCP. The first 2&nbsp;GB each month are free; after that it is 8&cent; per GB, with a $37-a-month Pro plan (200&nbsp;GB included), a $369 year plan, and a day pass for short runs.</p>
+  <p>Your tools call it over HTTP with a key, from npm, or through MCP — the pathways run on our machines. The first 2&nbsp;GB each month are free; after that it is 8&cent; per GB, with a $37-a-month Pro plan (200&nbsp;GB included), a $369 year plan, and a day pass for short runs.</p>
   <p>Live log and telemetry compression rides on the same plan: TRUSTREAM packs your streams in small tiles while PCC handles your files. One meter, both doors.</p>
 </section>
 
@@ -54,7 +54,7 @@
     </aside>
     <div class="spl-prose spl-full">
       <h2>What it is</h2>
-      <p>PCC is a compression service. Lossless means the file you restore is the file you sent. Hosted means our machines run the pathways; your seat buys access. If nothing shrinks the file, we store it as-is — same size you sent. Silesia total: 51,498,645 bytes packed (PCC pcc-0.12.1), decode plus SHA-256 verified.</p>
+      <p>PCC is a compression service. Lossless means the file you restore is the file you sent. The pathways run on our machines; your seat buys access. If nothing shrinks the file, we store it as-is — same size you sent. Silesia total: 51,498,645 bytes packed (PCC pcc-0.12.1), decode plus SHA-256 verified.</p>
       <h2>How a job runs</h2>
       <ol>
         <li>Send the file.</li>
@@ -74,7 +74,7 @@
     </div>
     <section class="spl-prose spl-full" id="compression-is-isnt" aria-labelledby="compression-is-isnt-h">
   <h2 id="compression-is-isnt-h">What it is / what it isn't</h2>
-  <p><strong>What it is:</strong> Lossless compression engines built to be measured in public. TNSSRC holds a 43,724,575-byte Silesia result, <strong>verified on the Large Text Compression Benchmark</strong> — ~11% smaller than xz-6 and ~17.5% smaller than zstd-19 on the same corpus. PCC is the ratio leader for working data — 22.7:1 on text, 27:1 on JSON, 500:1 on code (lab-measured) — hosted and ready to put in a pipeline. Our neural compression program is the research frontier behind them.</p>
+  <p><strong>What it is:</strong> Lossless compression engines built to be measured in public. TNSSRC holds a 43,724,575-byte Silesia result, <strong>verified on the Large Text Compression Benchmark</strong> — ~11% smaller than xz-6 and ~17.5% smaller than zstd-19 on the same corpus. PCC is the ratio leader for working data — 22.7:1 on text, 27:1 on JSON, 500:1 on code (lab-measured) — ready to put in a pipeline. Our neural compression program is the research frontier behind them.</p>
   <p><strong>What it isn't:</strong> Not lossy — every byte round-trips, bit for bit; a ratio bought by discarding data is not compression, it's deletion. Not a benchmark trick — the headline result is a named corpus, a named benchmark, and an independent listing; where our current public build differs from the verified mark, we say so in print. And the neural line isn't a product claim — it's research-stage, and its results get published when they're verified, not before.</p>
 </section>
     <p class="spl-note"><a href="/pricing">Pricing</a> · <a href="/docs">API</a> · <a href="/silesia">Silesia</a> · <a href="/npm">npm</a></p>
