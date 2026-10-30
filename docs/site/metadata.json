@@ -16,7 +16,7 @@
     "PCC": "hosted lossless compressor. Day $9 \u00b7 Month $37 \u00b7 Year $369. Dual-licensed public source, or a paid grant to ship closed.",
     "TRUSTREAM": "live logs on the PCC plan.",
     "Suite": "PCC meter \u2014 first 2 GB/month free, then 8\u00a2/GB. Not a product card.",
-    "Lab Pass": "Chamber year + PCC Year + psi seat for 365 days, $369. Not Rider.",
+    "Lab Pass": "Chamber year + PCC Year + psi seat for 365 days, $890. Not Rider.",
     "Access": "entitlement claim after Stripe or x402. Not a codec dump.",
     "pulsar": "free GPLv3 compressor you run on your own machine.",
     "Warrant": "signed mandate and receipts bound to a Rider. $37/mo \u00b7 $369/yr."
@@ -51,7 +51,7 @@
     },
     "lab-pass": {
       "sku": "lab-pass",
-      "price_usd": 369
+      "price_usd": 890
     },
     "cuni-exception": {
       "sku": "cuni-exception",
@@ -168,7 +168,7 @@
       "product_line": "CuNi"
     },
     "/lab-pass": {
-      "title": "Lab Pass \u2014 Chamber year + PCC Year + psi seat \u00b7 $369",
+      "title": "Lab Pass \u2014 Chamber year + PCC Year + psi seat \u00b7 $890",
       "description": "One year: Chamber, PCC. Not Agent-Rider.",
       "canonical": "https://www.slidphilabs.com/lab-pass"
     },

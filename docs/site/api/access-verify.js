@@ -10,7 +10,7 @@
  *   Chamber: chamber-month $9 | chamber-year $369  (open is keys-only)
  *   AWARE:   gc-day $9 | gc-month $37 | gc-year $369
  *   Rider:   rider-solo $3.31 · rider-bundle $19.31 · rider-crew $49 · rider-shop $199 · rider-fleet $631 · Ops $29/$369
- *   Lab Pass $369 (Chamber + AWARE + psi seat; not Rider)
+ *   Lab Pass $890 (Chamber + AWARE + psi seat; not Rider)
  *
  * One email only: corey@slidphilabs.com
  */
