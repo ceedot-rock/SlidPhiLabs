@@ -151,7 +151,7 @@
     "payment_header": "X-PAYMENT",
     "discovery": "https://www.slidphilabs.com/api/agent",
     "catalog": "https://www.slidphilabs.com/api/x402-products",
-    "one_liner": "CuNi $0. Chamber $9/mo · $369/yr. Rider Solo $3.31–Fleet $631/mo. PCC $9/$37/$369. Suite 6.9 GB / 3 h then ~5¢/GB.",
+    "one_liner": "CuNi $0. Chamber $20/mo · $200/yr. Rider Solo $12–Fleet $199/mo. PCC metered $0.25/GB of input, first 1 GB/month free; Pro $25/month.",
     "modules": {
       "compression": [
         "TRU8"
@@ -173,12 +173,14 @@
     "starter_path": "https://www.slidphilabs.com/pps",
     "suite_pricing": {
       "model": "suite_current",
-      "free_cap_gb": 2,
+      "free_cap_gb": 1,
       "window": "calendar_month",
-      "usd_per_gb_after_free": 0.08,
+      "usd_per_gb_after_free": 0.25,
       "min_paid_usd": 1,
+      "cap_default_usd": 25,
+      "alert_at_pct": 80,
       "suite_url": "https://www.slidphilabs.com/pps",
-      "rule": "First 2 GB each month free, then 8c/GB"
+      "rule": "First 1 GB each month free, then $0.25/GB of input; customer-set cap (default $25), alert at 80%"
     },
     "product": "TRU8",
     "x402_access_autoclaim": true

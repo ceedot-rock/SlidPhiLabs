@@ -63,7 +63,7 @@ export default async function handler(req, res) {
       api: "POST /api/join-work",
       asks: ["name", "one sentence of intent", "33-byte seed phrase"],
       seed: "exactly 33 UTF-8 bytes; hashed (sha256); seed never stored",
-      grants: "first 2 GB/month free then 8¢/GB.",
+      grants: "first 1 GB of input/month free then $0.25/GB.",
       never: "private Smart Box, residual coefficients, living shard names, fourth Trinity mouth",
     },
     next_30_seconds: {
@@ -102,7 +102,7 @@ export default async function handler(req, res) {
       security_txt: "https://www.slidphilabs.com/.well-known/security.txt",
     },
     one_liner:
-      "CuNi $0. Chamber cloak $9/mo · $369/yr. PCC $9/$37/$369. Rider Solo $3.31–Fleet $631. Lab Pass $890. GET /api/agent.",
+      "CuNi $0. Chamber cloak $20/mo · $200/yr. PCC metered $0.25/GB of input, first 1 GB/month free; Pro $25/month. Rider Solo $12–Fleet $199. Lab Pass $495. GET /api/agent.",
   };
 
   res.statusCode = 200;

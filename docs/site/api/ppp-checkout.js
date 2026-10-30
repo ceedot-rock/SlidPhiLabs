@@ -1,6 +1,6 @@
 /**
  * PPP checkout — POST /api/ppp-checkout
- * First 2 GB/month free. Then 8¢/GB, $1 card minimum → Stripe Checkout.
+ * First 1 GB of input/month free. Then $0.25/GB, $1 card minimum → Stripe Checkout.
  */
 import { computeQuote } from "./suite-pricing.js";
 
@@ -149,7 +149,7 @@ export default async function handler(req, res) {
         origin +
         "/access?product=suite-free&free=1&token=" +
         encodeURIComponent(token),
-      next: "First 2 GB each month are free — submit the job from /pps (no payment).",
+      next: "First 1 GB of input each month is free — submit the job from /pps (no payment).",
       instructions:
         "This quote is $0 (free showcase). Submit your project on the suite page without Stripe.",
     });

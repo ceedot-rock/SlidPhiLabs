@@ -79,11 +79,11 @@ const COMMERCE = [
   },
   {
     name: "spl_quote",
-    description: "Suite quote. First 2 GB/month free, then 8¢/GB, $1 card minimum. Args: bytes, product, op.",
+    description: "Suite quote. First 1 GB/month free, then $0.25/GB of input, $1 card minimum. Args: bytes, product, op.",
     inputSchema: {
       type: "object",
       properties: {
-        bytes: { type: "number", description: "Payload bytes. first 2 GB/month free." },
+        bytes: { type: "number", description: "Payload bytes. First 1 GB/month free." },
         product: { type: "string", description: "auto | zrw | blackjack | shard-zip | shard-tsdb | slid-phi" },
         op: { type: "string", description: "compress | decompress | roundtrip" },
         dataClass: { type: "string" },

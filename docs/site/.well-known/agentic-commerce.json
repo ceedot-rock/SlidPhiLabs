@@ -4,8 +4,8 @@
   "updated": "2026-10-15",
   "site": "https://www.slidphilabs.com",
   "lead_product": "rider",
-  "cash_product": "gc-year",
-  "one_liner": "Tools that check. Rider Solo $3.31–Fleet $631. CuNi 0.10.0, 53 targets, Studio $0. Warrant $29/$290. Tollkeeper meters ten live tools. PCC $9/$37/$369 (board 51,498,645). TNSSRC 43,724,575. Chamber $9/$369. AwLPay 0.5% with no fixed fee. Stripe / x402.",
+  "cash_product": "pcc-pro-year",
+  "one_liner": "Tools that check. Rider Solo $12–Fleet $199. CuNi 0.10.0, 53 targets, Studio $0. Warrant $8/$80 add-on. Tollkeeper meters ten live tools. PCC metered $0.25/GB, Pro $25/mo (board 51,498,645). TNSSRC 0.1.0. Chamber $20/$200. AwLPay 0.5% with no fixed fee. Stripe / x402.",
   "protocols": [
     "x402"
   ],
@@ -39,16 +39,17 @@
       "url": "https://cuni-studio.fly.dev/"
     },
     "chamber": {
-      "month": 9,
-      "year": 99,
+      "month": 20,
+      "year": 200,
       "url": "https://www.slidphilabs.com/chamber"
     },
     "pcc": {
       "name": "PCC",
       "alias": "AWARE (retired)",
-      "day": 9,
-      "month": 39,
-      "year": 390,
+      "meter_usd_per_gb": 0.25,
+      "free_gb_per_month": 1,
+      "pro_month": 25,
+      "pro_year": 250,
       "url": "https://www.slidphilabs.com/pcc"
     },
     "trustream": {
@@ -56,34 +57,67 @@
       "url": "https://www.slidphilabs.com/trustream"
     },
     "rider": {
-      "solo": 3.31,
-      "bundle": 19.31,
-      "crew": 49,
-      "shop": 199,
-      "fleet": 631,
+      "solo": 12,
+      "team": 49,
+      "fleet": 199,
       "url": "https://agentrider.fly.dev/"
     },
     "warrant": {
-      "month": 29,
-      "year": 290,
+      "addon_month": 8,
+      "addon_year": 80,
       "url": "https://www.slidphilabs.com/warrant"
     },
     "suite": {
-      "unpaid_gb": 2,
+      "unpaid_gb": 1,
       "window": "calendar_month",
-      "usd_per_gb": 0.08,
+      "usd_per_gb": 0.25,
+      "cap_default_usd": 25,
+      "alert_at_pct": 80,
       "url": "https://www.slidphilabs.com/pps"
     },
+    "cuni": {
+      "price": "$0",
+      "grant_per_app_year": 490,
+      "check_usd": 0.05,
+      "free_checks_per_month": 100,
+      "url": "https://www.slidphilabs.com/cuni"
+    },
+    "gitdepot": {
+      "seat_month": 15,
+      "seat_year": 150,
+      "invite_only": true,
+      "url": "https://gitdepot.slidphilabs.com/"
+    },
+    "quikgater": {
+      "usd_per_fetch": 0.02,
+      "free_fetches_per_month": 100,
+      "cap_default_usd": 10,
+      "alert_at_pct": 80,
+      "url": "https://www.slidphilabs.com/quikgater"
+    },
+    "acp": {
+      "price": 0,
+      "certification_usd": 990,
+      "url": "https://acp.slidphilabs.com/"
+    },
+    "teachaid": {
+      "student_month": 6,
+      "student_year": 60,
+      "pilot_per_campus_per_semester": 2500,
+      "url": "https://www.slidphilabs.com/teachaid"
+    },
     "lab_pass": {
-      "year": 890,
+      "year": 495,
       "url": "https://www.slidphilabs.com/lab-pass"
     }
   },
   "suite_pricing": {
-    "free_cap_gb": 2,
+    "free_cap_gb": 1,
     "window": "calendar_month",
-    "usd_per_gb_after_free": 0.08,
+    "usd_per_gb_after_free": 0.25,
     "min_paid_usd": 1,
+    "cap_default_usd": 25,
+    "alert_at_pct": 80,
     "suite_url": "https://www.slidphilabs.com/pps"
   },
   "x402_access_autoclaim": true

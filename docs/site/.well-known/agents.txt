@@ -1,6 +1,6 @@
 # agents.txt — what agents MAY do on this host
 # https://www.slidphilabs.com/.well-known/agents.txt
-# CuNi $0 · Chamber $9/$369 · Rider Solo $3.31–Fleet $631 · PCC $9/$37/$369 · Lab Pass $890 · 2 GB/mo then 8¢/GB
+# CuNi $0 · Chamber $20/$200 · Rider Solo $12–Fleet $199 · PCC metered $0.25/GB, Pro $25/mo · Lab Pass $495 · 1 GB/mo then $0.25/GB
 
 Host: www.slidphilabs.com
 Rate limits: not published in this tree — do not quote a number; the live service may enforce fair use.

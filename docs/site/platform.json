@@ -7,9 +7,9 @@
   "mission": "Build tools that check: same result or refuse, sealed or not open, signed or not trusted, measured or not claimed.",
   "slogan": "Same result or refuse",
   "lead_product": "rider",
-  "cash_product": "gc-month",
+  "cash_product": "pcc-pro",
   "pricing_sot": "https://www.slidphilabs.com/pricing.json",
-  "one_liner": "Tools that check. Rider Solo $3.31–Fleet $631. CuNi 0.10.0, 53 targets, Studio $0. Warrant $29/$290. Tollkeeper meters ten live tools. PCC $9/$37/$369 (board 51,498,645). TNSSRC 43,724,575. Chamber $9/$369. AwLPay 0.5% with no fixed fee. Stripe / x402.",
+  "one_liner": "Tools that check. Rider Solo $12–Fleet $199. CuNi 0.10.0, 53 targets, Studio $0. Warrant $8/$80 add-on. Tollkeeper meters ten live tools. PCC metered $0.25/GB, Pro $25/mo (board 51,498,645). TNSSRC 0.1.0. Chamber $20/$200. AwLPay 0.5% with no fixed fee. Stripe / x402.",
   "auth": {
     "signup": "https://www.slidphilabs.com/signup",
     "login": "https://www.slidphilabs.com/login",
@@ -59,8 +59,8 @@
       "pricing": {
         "trial": "24-hour try, then a cloak license",
         "open_policy": "keys_only \u2014 already-sealed blobs do not expire",
-        "chamber-month": "$37 / month cloak license",
-        "chamber-year": "$369 / year cloak license"
+        "chamber-month": "$20 / month cloak license",
+        "chamber-year": "$200 / year cloak license"
       }
     },
     "tru8": {

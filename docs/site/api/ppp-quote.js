@@ -1,6 +1,6 @@
 /**
  * Quote a compress job against this month's meter.
- * First 2 GB free, then tiered by op: 8¢/GB compress · 3.2¢/GB decompress · 9.2¢/GB roundtrip, $1 card minimum.
+ * First 1 GB of input free, then $0.25/GB. Pro plan: 100 GB included, then $0.20/GB. $1 card minimum.
  */
 import { computeQuote, FREE_BYTES, PRICING_EXAMPLES } from "./suite-pricing.js";
 import { meterSnapshot, identityFromReq, readUsage } from "./lib/usage-meter.mjs";
@@ -52,7 +52,7 @@ export default async function handler(req, res) {
 
   return json(res, 200, {
     ...quote,
-    pricing_model: "free_2gb_then_8c",
+    pricing_model: "free_1gb_then_25c",
     usage: meterSnapshot(req, Number(body.bytes) || 0),
     examples: PRICING_EXAMPLES,
   });

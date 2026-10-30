@@ -3,7 +3,7 @@
   "inbox": "corey@slidphilabs.com",
   "site": "https://www.slidphilabs.com",
   "methods": "https://www.slidphilabs.com/METHODS.md",
-  "rule": "One Shared Spine, three heads, four doors. Never expand. DECODE_OK. Door 1 PCC: Day $9 · Pro $37/mo (200 GB) · Year $369. First 2 GB/month free, then 8¢/GB. TRUSTREAM rides the PCC seat. Door 2 TNSSRC: AGPL $0 · closed grant $369/yr · optional host bake-off $19.31/mo on a PCC seat. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. Door 3 TRUSTREAM: included with PCC. Door 4 pulsar: $0 GPLv3 · closed embed $369/yr. Door 5 PERsiST (compressed heart for agents): Solo $13.31 · Crew $39 · Team $49 · Lab Pass $490/yr. First 5,000 tokens/day folded free. Rider: Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631. Warrant/Ops in bundle or Team. Chamber $37/mo · $369/yr (open with keys). CuNi Studio $0 · closed-app $369/yr. Lab Pass $890 (Chamber year + PCC Year + psi seat). Foundry+ = Lab Pass + TNSSRC grant + Rider Crew. Quikgater is pay-per-fetch. TRU8 is the zeros specialist. AWARE is a retired alias for PCC. PSI Meter $19/mo, Org $79/mo: every model call tagged with hours, memories, dollars, tokens, carbon, time. First audit free. Measured Oct 2026: profiled sessions pay about one-fifth (124:1 mix, 94% cache-served).",
+  "rule": "One Shared Spine, three heads, four doors. Never expand. DECODE_OK. Door 1 PCC: metered $0.25/GB of input, first 1 GB/month free; Pro $25/mo including 100 GB, then $0.20/GB; customer-set monthly spend cap (default $25), alert at 80% of cap/allowance; x402 per-call for agents, Stripe monthly for humans. TRUSTREAM rides the PCC plan. Door 2 TNSSRC: AGPL $0 · closed grant $490/product/year via the unified grant (TNSSRC 0.1.0 only) · founding $190 for the first 10 grants · 3+ products $390 each. Silesia 43,724,575 bytes, verified 12/12 decode+SHA-256. Door 3 TRUSTREAM: included with PCC. Door 4 pulsar: $0 GPLv3 · closed embed $490/product/year via the unified grant. Door 5 PERsiST (compressed heart for agents): Solo $13.31 · Crew $39 · Team $49 · Lab Pass $490/yr. First 5,000 tokens/day folded free. Rider: Solo $12/mo ($120/yr, 1 identity, 500 verifications/month) · Team $49/mo ($490/yr, 10 identities, 5,000 verifications/month, Warrant included) · Fleet $199/mo ($1,990/yr, 100 identities, 50,000 verifications/month, Warrant + fleet watch included); overage $0.02 per verification, customer-set monthly cap (default 2× plan price), alert at 80%; free: 1 identity, 100 verifications/month, no L3/L4 attestation. Warrant: $8/month add-on to Solo ($80/year), included in Team and Fleet, no standalone SKU. Chamber $20/mo · $200/yr; 24-hour try; opening already-sealed blobs free forever; sealing not metered. CuNi Studio $0 · closed-app grant $490/app/year · per-check API: first 100 checks/month free, then $0.05 per check. Lab Pass $495/yr (Chamber 1 year + Rider Solo 1 year + PSI Meter 1 seat 1 year + Warrant add-on 1 year; parts sum $650; PCC/compression out; no monthly version; Foundry+ retired). Quikgater $0.02 per fetch; first 100 fetches/month free; customer-set monthly cap (default $10), alert at 80%. TRU8 is the zeros specialist. AWARE is a retired alias for PCC. PSI Meter $25/seat/mo, $250/seat/yr: 250,000 logged calls/month included, then $2 per additional 100,000 calls; free: 1 seat, 10,000 calls/month, 7-day retention. PSI Embed: unified grant $490/product/year; psi-month/psi-year retired. PSI Org $79/mo. GitDepot live and functional: $15/seat/mo, $150/seat/yr; 100 GB pooled storage included, then $0.10/GB/month overage; free: 1 team, 3 seats, 10 GB, 30-day audit retention; invite-only, contact corey@slidphilabs.com. ACP $0, open standard; ACP Conformant certification $990 one-time (3 free pilot certifications, assessment criteria published). TeachAid student $6/mo, $60/yr; free: 1 course, text-only cited answers, no voice; institutional pilot $2,500 per campus per semester, up to 500 students, onboarding included. Consulting $175/hour, 2-hour minimum, scoped SOW. OSS support $199/year per public library. Unified grant $490/product/year; founding $190 for the first 10 grants; 3+ products $390 each; written grant, human-fulfilled, one product + one year per grant, renewal at then-current schedule price. Every meter states its free allowance, a customer-set cap, and an 80% alert. Cap defaults are stated per meter where they apply (PCC $25, Rider 2x plan price, Quikgater $10).",
   "measured": {
     "silesia_raw": 211938580,
     "zpaq_m5": 39112870,
@@ -19,46 +19,68 @@
     "bzip29": 54506769
   },
   "math": {
-    "chamber_month": 37,
-    "chamber_year": 369,
-    "gc_day": 9,
-    "gc_month": 37,
-    "gc_year": 369,
-    "lab_pass_year": 890,
-    "rider_solo": 3.31,
-    "rider_bundle": 19.31,
-    "rider_crew": 49,
-    "rider_shop": 199,
-    "rider_fleet": 631,
-    "tnssrc_grant_year": 369,
+    "chamber_month": 20,
+    "chamber_year": 200,
+    "pcc_pro_month": 25,
+    "pcc_meter_gb": 0.25,
+    "lab_pass_year": 495,
+    "rider_solo": 12,
+    "rider_team": 49,
+    "rider_fleet": 199,
+    "tnssrc_grant_year": 490,
     "tnssrc_bakeoff_month": 19.31,
-    "pulsar_embed_year": 369,
-    "cuni_exception_year": 369,
-    "psi_meter": 19,
-    "psi_org": 79
+    "pulsar_embed_year": 490,
+    "cuni_exception_year": 490,
+    "psi_meter_seat": 25,
+    "psi_org": 79,
+    "warrant_addon": 8,
+    "warrant_addon_year": 80,
+    "cuni_check": 0.05,
+    "quikgater_fetch": 0.02,
+    "gitdepot_seat": 15,
+    "teachaid_student": 6,
+    "teachaid_pilot": 2500,
+    "grant_year": 490,
+    "grant_founding": 190,
+    "grant_3plus": 390,
+    "consulting_hour": 175,
+    "oss_support_year": 199
   },
   "products": {
     "pcc": {
       "name": "PCC",
       "acronym": "lossless compressor",
-      "engine": "hosted",
+      "engine": "served",
       "version": "1.19.2",
       "page": "https://www.slidphilabs.com/pcc",
+      "meter": {
+        "usd_per_gb_input": 0.25,
+        "free_gb_per_month": 1,
+        "cap_default_usd": 25,
+        "alert_at_pct": 80,
+        "settlement": "x402 per-call for agents; Stripe monthly for humans"
+      },
       "plans": {
-        "day": {
-          "sku": "gc-day",
-          "usd": 9,
-          "stripe": "https://www.slidphilabs.com/pay?sku=gc-day"
+        "meter": {
+          "sku": "pcc-meter",
+          "usd_per_gb": 0.25,
+          "free_gb_per_month": 1,
+          "stripe": "https://www.slidphilabs.com/pps",
+          "plain": "Metered $0.25/GB of input, first 1 GB/month free. Customer-set monthly spend cap (default $25), alert at 80%."
         },
-        "month": {
-          "sku": "gc-month",
-          "usd": 37,
-          "stripe": "https://www.slidphilabs.com/pay?sku=gc-month"
+        "pro_month": {
+          "sku": "pcc-pro",
+          "usd": 25,
+          "included_gb": 100,
+          "overage_usd_per_gb": 0.2,
+          "stripe": "https://www.slidphilabs.com/pay?sku=pcc-pro"
         },
-        "year": {
-          "sku": "gc-year",
-          "usd": 369,
-          "stripe": "https://www.slidphilabs.com/pay?sku=gc-year"
+        "pro_year": {
+          "sku": "pcc-pro-year",
+          "usd": 250,
+          "included_gb_per_month": 100,
+          "overage_usd_per_gb": 0.2,
+          "stripe": "https://www.slidphilabs.com/pay?sku=pcc-pro-year"
         }
       }
     },
@@ -69,15 +91,16 @@
       "plans": {
         "month": {
           "sku": "chamber-month",
-          "usd": 37,
+          "usd": 20,
           "stripe": "https://www.slidphilabs.com/pay?sku=chamber-month"
         },
         "year": {
           "sku": "chamber-year",
-          "usd": 369,
+          "usd": 200,
           "stripe": "https://www.slidphilabs.com/pay?sku=chamber-year"
         }
-      }
+      },
+      "plain": "24-hour try. Opening already-sealed blobs free forever. Sealing not metered."
     },
     "rider": {
       "name": "Agent-Rider",
@@ -85,57 +108,81 @@
       "plans": {
         "solo": {
           "sku": "rider-solo",
-          "usd": 3.31,
+          "usd": 12,
+          "usd_year": 120,
+          "identities": 1,
+          "verifications_per_month": 500,
           "stripe": "https://www.slidphilabs.com/pay?sku=rider-solo"
         },
-        "bundle": {
-          "sku": "rider-bundle",
-          "usd": 19.31,
-          "stripe": "https://www.slidphilabs.com/pay?sku=rider-bundle"
-        },
-        "crew": {
-          "sku": "rider-crew",
+        "team": {
+          "sku": "rider-team",
           "usd": 49,
-          "stripe": "https://www.slidphilabs.com/pay?sku=rider-crew"
-        },
-        "shop": {
-          "sku": "rider-shop",
-          "usd": 199,
-          "stripe": "https://www.slidphilabs.com/pay?sku=rider-shop"
+          "usd_year": 490,
+          "identities": 10,
+          "verifications_per_month": 5000,
+          "warrant": "included",
+          "stripe": "https://www.slidphilabs.com/pay?sku=rider-team"
         },
         "fleet": {
           "sku": "rider-fleet",
-          "usd": 631,
+          "usd": 199,
+          "usd_year": 1990,
+          "identities": 100,
+          "verifications_per_month": 50000,
+          "warrant": "included",
+          "fleet_watch": "included",
           "stripe": "https://www.slidphilabs.com/pay?sku=rider-fleet"
         }
+      },
+      "overage": {
+        "usd_per_verification": 0.02,
+        "cap_default": "2x plan price",
+        "alert_at_pct": 80
+      },
+      "free": {
+        "identities": 1,
+        "verifications_per_month": 100,
+        "l3_l4_attestation": false
       }
     },
     "rider_ops": {
       "name": "Rider Ops",
       "needs": "rider",
       "page": "https://www.slidphilabs.com/rider",
-      "availability": "Included in Rider Bundle and Team seats. No standalone price.",
+      "availability": "Fleet watch included in Rider Fleet. No standalone price.",
       "plans": {}
     },
     "warrant": {
       "name": "Warrant",
       "needs": "rider",
       "page": "https://www.slidphilabs.com/warrant",
-      "availability": "Included in Rider Bundle and Team seats. No standalone price.",
-      "plans": {}
+      "availability": "Warrant add-on: $8/month to Rider Solo ($80/year). Included in Rider Team and Fleet. No standalone SKU.",
+      "plans": {
+        "addon_month": {
+          "sku": "warrant-addon",
+          "usd": 8,
+          "stripe": "https://www.slidphilabs.com/pay?sku=warrant-addon"
+        },
+        "addon_year": {
+          "sku": "warrant-addon",
+          "usd": 80,
+          "stripe": "https://www.slidphilabs.com/pay?sku=warrant-addon"
+        }
+      }
     },
     "cuni_exception": {
       "name": "CuNi closed-app exception",
       "sku": "cuni-exception",
-      "usd": 369,
-      "stripe": "https://www.slidphilabs.com/pay?sku=cuni-exception"
+      "usd": 490,
+      "stripe": "https://www.slidphilabs.com/pay?sku=cuni-exception",
+      "plain": "Unified grant $490/app/year. Written grant, human-fulfilled, one product + one year per grant."
     },
     "pulsar_exception": {
       "name": "pulsar closed-embed exception",
       "sku": "pulsar-exception",
-      "usd": 369,
+      "usd": 490,
       "stripe": "https://www.slidphilabs.com/pay?sku=pulsar-exception",
-      "grants": "One closed-source product, one year. pulsar stays GPLv3."
+      "grants": "One closed-source product, one year, via the unified grant ($490/product/year; founding $190 for the first 10 grants; 3+ products $390 each). pulsar stays GPLv3."
     },
     "tnssrc": {
       "name": "TNSSRC",
@@ -147,47 +194,34 @@
       "agpl": 0,
       "grant": {
         "sku": "tnssrc-grant",
-        "usd": 369,
+        "usd": 490,
         "stripe": "https://www.slidphilabs.com/pay?sku=tnssrc-grant",
-        "plain": "closed grant, one year"
-      },
-      "bakeoff": {
-        "sku": "tnssrc-bakeoff",
-        "usd": 19.31,
-        "stripe": "https://www.slidphilabs.com/pay?sku=tnssrc-bakeoff",
-        "plain": "optional host bake-off per month, on a PCC seat"
+        "plain": "Unified grant, one product, one year. TNSSRC 0.1.0 only. Written grant, human-fulfilled. Founding $190 for the first 10 grants; 3+ products $390 each; renewal at then-current schedule price."
       }
     },
     "lab_pass": {
       "name": "Lab Pass Year",
       "sku": "lab-pass",
-      "usd": 890,
+      "usd": 495,
       "stripe": "https://www.slidphilabs.com/pay?sku=lab-pass",
       "includes": [
         "chamber",
-        "gc",
-        "psi"
+        "rider-solo",
+        "psi-meter",
+        "warrant-addon"
       ],
       "excludes": [
-        "rider"
+        "pcc",
+        "compression"
       ],
-      "note": "Lab Pass is Chamber year + PCC Year + psi commercial seat."
-    },
-    "foundry_plus": {
-      "name": "Foundry+",
-      "sku": "foundry-plus",
-      "stripe": "https://www.slidphilabs.com/pay?sku=foundry-plus",
-      "includes": [
-        "lab-pass",
-        "tnssrc-grant",
-        "rider-crew"
-      ],
-      "note": "Lab Pass + TNSSRC closed grant + Rider Crew. One SKU: all four doors plus a swarm."
+      "parts_sum": 650,
+      "note": "Lab Pass is Chamber (1 year) + Rider Solo (1 year) + PSI Meter 1 seat (1 year) + Warrant add-on (1 year). Parts sum $650; bundle $495 (24% off). PCC/compression is out. No monthly version. Foundry+ retired."
     },
     "consulting": {
-      "name": "Lab consulting (2 hours)",
+      "name": "Lab consulting ($175/hour, 2-hour minimum, scoped SOW)",
       "sku": "consulting",
-      "usd": 250,
+      "usd_per_hour": 175,
+      "minimum_hours": 2,
       "stripe": "https://www.slidphilabs.com/pay?sku=consulting"
     },
     "quikgater": {
@@ -195,7 +229,12 @@
       "sku": "quikgater",
       "kind": "usage",
       "page": "https://www.slidphilabs.com/quikgater",
-      "x402": "https://quikgater-worker.ceedotrock.workers.dev/"
+      "x402": "https://quikgater-worker.ceedotrock.workers.dev/",
+      "usd_per_fetch": 0.02,
+      "free_fetches_per_month": 100,
+      "cap_default_usd": 10,
+      "alert_at_pct": 80,
+      "plain": "$0.02 per fetch; first 100 fetches/month free; customer-set monthly cap (default $10), alert at 80%."
     },
     "trustream": {
       "name": "TRUSTREAM",
@@ -208,9 +247,14 @@
       "studio": 0,
       "exception": {
         "sku": "cuni-exception",
-        "usd": 369
+        "usd": 490
       },
-      "page": "https://www.slidphilabs.com/cuni"
+      "page": "https://www.slidphilabs.com/cuni",
+      "per_check": {
+        "free_checks_per_month": 100,
+        "usd_per_check": 0.05,
+        "plain": "First 100 checks/month free, then $0.05 per check via x402."
+      }
     },
     "psi_spend": {
       "name": "PSI Meter + Org",
@@ -225,19 +269,31 @@
       },
       "page": "https://psi.slidphilabs.com/",
       "free": {
+        "seats": 1,
+        "calls_per_month": 10000,
+        "retention_days": 7,
         "first_audit": true,
-        "plain": "First audit free: we meter your session logs and hand you the three biggest leaks."
+        "plain": "Free: 1 seat, 10,000 calls/month, 7-day retention. First audit free."
       },
       "plans": {
         "meter": {
           "sku": "psi-meter",
-          "usd": 19,
+          "usd": 25,
+          "usd_year": 250,
+          "included_calls_per_month": 250000,
+          "overage_usd_per_100k_calls": 2,
           "stripe": "https://www.slidphilabs.com/pay?sku=psi-meter"
         },
         "org": {
           "sku": "psi-org",
           "usd": 79,
           "stripe": "https://www.slidphilabs.com/pay?sku=psi-org"
+        },
+        "embed_grant": {
+          "sku": "psi-embed-grant",
+          "usd": 490,
+          "stripe": "https://www.slidphilabs.com/pay?sku=psi-embed-grant",
+          "plain": "PSI Embed (shipped code): unified grant $490/product/year."
         }
       }
     },
@@ -255,7 +311,11 @@
         "merkle_root_sha256": "277ab6b1818ff45c754432fbbb91190e61e63cd413a5ed7e9127cd15c782f2ff",
         "ssaa": {
           "adapt_command": "spl-heart adapt",
-          "bible_ports_detected": ["javascript", "python", "typescript"],
+          "bible_ports_detected": [
+            "javascript",
+            "python",
+            "typescript"
+          ],
           "lean_slice_improvement": {
             "P1-A_tokens": "6108 -> 5050 (-17.4%)",
             "P3-A_tokens": "2757 -> 2314 (-16.1%)"
@@ -319,20 +379,102 @@
           "stripe": "https://www.slidphilabs.com/pay?sku=psi-lab-pass"
         }
       }
+    },
+    "unified_grant": {
+      "name": "Unified closed-use grant",
+      "sku": "unified-grant",
+      "usd": 490,
+      "founding_usd": 190,
+      "founding_count": 10,
+      "three_plus_usd_each": 390,
+      "plain": "$490/product/year; founding $190 for the first 10 grants; 3+ products $390 each. Written grant, human-fulfilled, one product + one year per grant, renewal at then-current schedule price. Build-named: TNSSRC grants cover 0.1.0 only.",
+      "covers": [
+        "TNSSRC",
+        "pulsar",
+        "CuNi",
+        "Chamber SDK",
+        "Agent-Rider source",
+        "Warrant source",
+        "PSI Embed"
+      ]
+    },
+    "gitdepot": {
+      "name": "GitDepot",
+      "status": "live and functional",
+      "invite_only": true,
+      "contact": "mailto:corey@slidphilabs.com",
+      "page": "https://gitdepot.slidphilabs.com/",
+      "plans": {
+        "seat_month": {
+          "sku": "gitdepot-seat",
+          "usd": 15,
+          "included_storage_gb_pooled": 100,
+          "overage_usd_per_gb_per_month": 0.1
+        },
+        "seat_year": {
+          "sku": "gitdepot-seat-year",
+          "usd": 150,
+          "included_storage_gb_pooled": 100,
+          "overage_usd_per_gb_per_month": 0.1
+        }
+      },
+      "free": {
+        "teams": 1,
+        "seats": 3,
+        "storage_gb": 10,
+        "audit_retention_days": 30
+      },
+      "plain": "$15/seat/month, $150/seat/year; 100 GB pooled storage included, then $0.10/GB/month overage. Free: 1 team, 3 seats, 10 GB, 30-day audit retention. Invite-only."
+    },
+    "acp": {
+      "name": "ACP (Agent Commerce Protocol)",
+      "price": 0,
+      "kind": "open standard",
+      "page": "https://acp.slidphilabs.com/",
+      "certification": {
+        "name": "ACP Conformant",
+        "usd": 990,
+        "kind": "one-time",
+        "plain": "$990 one-time, listed with test framing: 3 free pilot certifications, assessment criteria published."
+      },
+      "plain": "No direct price ($0, open standard). ACP Conformant certification $990 one-time."
+    },
+    "teachaid": {
+      "name": "TeachAid",
+      "page": "https://www.slidphilabs.com/teachaid",
+      "plans": {
+        "student_month": {
+          "usd": 6
+        },
+        "student_year": {
+          "usd": 60
+        },
+        "institutional_pilot": {
+          "usd": 2500,
+          "per": "campus per semester",
+          "max_students": 500,
+          "onboarding": "included"
+        }
+      },
+      "free": {
+        "courses": 1,
+        "answers": "text-only cited answers",
+        "voice": false
+      },
+      "plain": "Student $6/month, $60/year. Free: 1 course, text-only cited answers, no voice. Institutional pilot $2,500 per campus per semester, up to 500 students, onboarding included."
     }
   },
   "suite": {
-    "plain": "First 2 GB each month are free. After that, 8¢ per GB. Card charges start at $1.",
-    "free_cap_gb": 2,
+    "plain": "First 1 GB each month free, then $0.25 per GB of input. Customer-set monthly spend cap (default $25), alert at 80% of cap/allowance. Pro $25/month including 100 GB, then $0.20/GB. x402 per-call for agents; Stripe monthly for humans.",
+    "free_cap_gb": 1,
     "window": "calendar_month",
-    "usd_per_gb_after_free": 0.08,
+    "usd_per_gb_after_free": 0.25,
     "min_paid_usd": 1,
+    "cap_default_usd": 25,
+    "alert_at_pct": 80,
     "included_gb": {
-      "unpaid": 2,
-      "gc-day": 10,
-      "gc-month": 200,
-      "gc-year": 2000,
-      "lab-pass": 2000,
+      "unpaid": 1,
+      "pcc-pro": 100,
       "psi-solo": 10,
       "psi-crew": 200,
       "psi-team": 200,
@@ -341,12 +483,12 @@
     "page": "https://www.slidphilabs.com/pcc"
   },
   "aliases": {
-    "tru8": "gc-year",
-    "tru8-year": "gc-year",
-    "gate": "gc-year",
-    "gate-year": "gc-year",
-    "zrw": "gc-year",
-    "trustream": "gc-year",
+    "tru8": "pcc-pro-year",
+    "tru8-year": "pcc-pro-year",
+    "gate": "pcc-pro-year",
+    "gate-year": "pcc-pro-year",
+    "zrw": "pcc-pro-year",
+    "trustream": "pcc-pro-year",
     "psi": "psi-crew",
     "persist": "psi-crew",
     "cddg": "consulting",
@@ -355,9 +497,19 @@
     "chamber-week": "chamber-month",
     "chamber-day": "chamber-month",
     "lab-pass-year": "lab-pass",
-    "fleetpulse": "rider-bundle",
+    "fleetpulse": "rider-team",
     "fetchgate": "quikgater",
     "pulsar-closed": "pulsar-exception",
-    "pulsar-embed": "pulsar-exception"
+    "pulsar-embed": "pulsar-exception",
+    "rider-bundle": "rider-team",
+    "rider-crew": "rider-team",
+    "rider-shop": "rider-fleet",
+    "gc-month": "pcc-pro",
+    "gc-year": "pcc-pro-year",
+    "gc-day": "pcc-meter",
+    "warrant-month": "warrant-addon",
+    "warrant-year": "warrant-addon",
+    "psi-month": "psi-embed-grant",
+    "psi-year": "psi-embed-grant"
   }
 }

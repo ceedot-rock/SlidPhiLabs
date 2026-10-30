@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Warrant — mandate and receipts for a Rider · Slid Phi Labs</title>
-  <meta name="description" content="Warrant is the signed mandate bound to an Agent-Rider: hosts, actions, spend cap, then a receipt when the job runs. $29/mo · $369/yr."/>
+  <meta name="description" content="Warrant is the signed mandate bound to an Agent-Rider: hosts, actions, spend cap, then a receipt when the job runs. $8/month add-on to Rider Solo ($80/year); included in Team and Fleet. No standalone SKU."/>
   <link rel="canonical" href="https://www.slidphilabs.com/warrant"/>
   <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
   <meta property="og:title" content="Warrant — mandate and receipts"/>
@@ -17,23 +17,23 @@
     .spl-try label { display: block; margin: 0.85rem 0 0.3rem; font-size: 0.82rem; color: var(--mut); }
     .spl-out { margin-top: 14px; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--white); white-space: pre-wrap; word-break: break-word; font-size: 0.82rem; font-family: "IBM Plex Mono", ui-monospace, monospace; }
   </style>
-  <meta property="og:description" content="Warrant is the signed mandate bound to an Agent-Rider: hosts, actions, spend cap, then a receipt when the job runs. $29/mo · $369/yr."/>
+  <meta property="og:description" content="Warrant is the signed mandate bound to an Agent-Rider: hosts, actions, spend cap, then a receipt when the job runs. $8/month add-on to Rider Solo ($80/year); included in Team and Fleet. No standalone SKU."/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Warrant — mandate and receipts"/>
-  <meta name="twitter:description" content="Warrant is the signed mandate bound to an Agent-Rider: hosts, actions, spend cap, then a receipt when the job runs. $29/mo · $369/yr."/>
+  <meta name="twitter:description" content="Warrant is the signed mandate bound to an Agent-Rider: hosts, actions, spend cap, then a receipt when the job runs. $8/month add-on to Rider Solo ($80/year); included in Team and Fleet. No standalone SKU."/>
   <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
   <link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
 </head>
 <body>
   <main class="spl-page" id="main">
-    <p class="spl-kicker">Warrant · mandate + receipts · $29 / mo · $369 / yr</p>
+    <p class="spl-kicker">Warrant · mandate + receipts · $8 / mo add-on · $80 / yr · included in Team/Fleet</p>
     <h1>Rider names the agent. Warrant names the job. A receipt proves it ran.</h1>
     <p class="lede">Warrant is a signed mandate bound to a Rider: hosts, actions, spend cap, call cap, expiry. Gates read <code>X-Agent-Rider</code> and <code>X-Agent-Warrant</code>. After the job, a receipt files host, action, hashes, and dollars used.</p>
     <p><em>The cheapest incident is the one that never executes.</em></p>
     <p>Companies are handing agents real budgets — and governing them with logs. A log tells you what your agent spent yesterday. It does nothing about the payment being attempted right now: the compromised tool, the malformed instruction, the loop that doesn't know when to stop. Warrant moves the control point to where it matters: <strong>before the payment</strong>. A human sets the mandate — the ceiling, the scope, the conditions — and every attempted payment is checked against it first. Inside the mandate, work flows at machine speed. Outside it, the payment is blocked, not logged. The enforcement core is verified across two independent implementations, 17/17 tests in TypeScript and 8/8 in the Python port, because a control this important shouldn't rest on a single codebase being right. Give your agents a budget they cannot exceed — and give your finance team a ceiling that enforces itself.</p>
     <p class="spl-actions">
-      <a class="spl-btn spl-btn-dark" href="/pay?sku=warrant-month">Month $29</a>
-      <a class="spl-btn spl-btn-line" href="/pay?sku=warrant-year">Year $369</a>
+      <a class="spl-btn spl-btn-dark" href="/pay?sku=warrant-addon">Add-on $8/month</a>
+      <a class="spl-btn spl-btn-line" href="/pay?sku=warrant-addon">Add-on $80/year</a>
       <a class="spl-btn spl-btn-line" href="/rider">Rider</a>
     </p>
 <section class="spl-prose spl-full" id="what-warrant" aria-labelledby="what-warrant-h">
@@ -41,12 +41,12 @@
   <p>Warrant is a signed permission slip for an AI agent. It says exactly what the agent may do — which services it may call, which actions it may take — how many calls it may make, how much money it may spend, and when the permission expires. After the job runs, a receipt is filed: what was done, what it cost, with fingerprints of the request and the result.</p>
   <p>Here is why that matters. An agent with your credentials and no boundaries is a liability; an agent with no proof of what it did is an audit nightmare. Warrant solves both at once: the mandate sets the boundaries up front, and the signed receipt records what happened after — it binds the run to the mandate, it does not by itself prove the work was correct. Checking a warrant is free, and anyone can verify the signature without calling home.</p>
   <p>Think of it as a hall pass with a spending limit. A human signs it, the agent spends only inside it, and when it expires — or when you revoke it — the authority stops working immediately. Stale permission fails closed: it simply stops being honored.</p>
-  <p>The first 3 warrants and 10 receipts per operator per day are free. Above that, a Warrant seat is $29 a month or $369 a year.</p>
+  <p>The first 3 warrants and 10 receipts per operator per day are free. Above that, Warrant is an $8/month add-on to Rider Solo ($80/year), included in Team and Fleet. No standalone SKU.</p>
   <p>Rider names the agent; Warrant names the job. Identity without a mandate is a nametag, and a mandate without a receipt is a speech — Warrant sells both as a pair, which is the stack companies will require before they let agents hold a card.</p>
 </section>
     <div class="spl-prose spl-full">
       <h2>What it is</h2>
-      <p>The job ticket. Allow these hosts. These actions (spend, fetch, publish, compress, invoke). This many calls. This many dollars. Then it expires or you revoke it. Verify is free. Issuing and filing receipts: first 3 issues and 10 receipts per operator per day are free. Above that, a Warrant seat.</p>
+      <p>The job ticket. Allow these hosts. These actions (spend, fetch, publish, compress, invoke). This many calls. This many dollars. Then it expires or you revoke it. Verify is free. Issuing and filing receipts: first 3 issues and 10 receipts per operator per day are free. Above that, the Warrant add-on to Rider Solo, included in Team and Fleet.</p>
       <p><code>POST /api/warrant/issue</code> · <code>POST /api/warrant/verify</code> · <code>POST /api/warrant/receipt</code> · <code>GET /api/warrant</code>.</p>
       <h2>Future use</h2>
       <ul>

@@ -169,7 +169,7 @@ add({
     S("is", "What it is", `<p>Agent Rider is the identity door of the lab. You register a seat and receive an <code>agent_id</code> plus a key. When that seat needs to act, Rider mints an ES256 JWT. The token lasts about 15 minutes (<code>expires_in</code> 900). You send it on later calls as <code>X-Agent-Rider</code>.</p><p>L0 is the issued identity. Self-service minting goes through L1. The lab issues L2, L3, and L4. Peers verify the signature locally with the keys at <a href="https://agentrider.fly.dev/.well-known/jwks.json">agentrider.fly.dev/.well-known/jwks.json</a>. When you cancel a credential, its id joins <a href="https://agentrider.fly.dev/.well-known/rider-revocation.json">the public revocation list</a>. Every clearance checks that list. The holder revokes with <code>POST /api/rider/revoke</code>. The JavaScript verifier in <code>@slidphi/agent-rider</code> clears a seat only after it has fetched that list.</p><p>Seats also talk. <code>POST /api/dm</code> delivers a message to another <code>agent_id</code>. The MCP endpoint is <code>POST https://agentrider.fly.dev/api/mcp</code>.</p>`),
     S("how", "How it works", `<ol><li>Register the agent. Keep the API key for that seat.</li><li>Issue a rider. You receive a JWT, the level, the scopes, and the expiry.</li><li>Present <code>X-Agent-Rider</code> to any gate that asks for a name.</li><li>A peer fetches JWKS, checks the ES256 signature, checks expiry, then checks the revocation list.</li></ol><p>A worked check: the verifier confirms the issuer is <code>agentrider.dev</code>, the algorithm is ES256, the signature matches the key id in JWKS, and the <code>jti</code> is absent from the revocation list. That seat is clear to proceed at the level printed in the token.</p>`),
     S("get", "What you receive", `<p>You receive a signed credential with <code>agent_id</code>, <code>operator_id</code>, level, scopes, and <code>jti</code>. You receive a public key set anyone can cache. You receive a revocation list and a revoke route so a cancelled passport stops clearing. The published verifier is the JavaScript package <code>@slidphi/agent-rider</code>.</p>`),
-    S("price", "Price", `<p>Human seats run from Solo at $3.31 a month through Fleet at $631 a month. Bundle, Crew, and Shop sit between them on the Rider page. Agents buy through the x402 catalog. Each credential is a fresh 15-minute mint.</p>`),
+    S("price", "Price", `<p>Solo is $12 a month ($120 a year): 1 identity, 500 verifications a month. Team is $49 a month ($490 a year): 10 identities, 5,000 verifications a month, Warrant included. Fleet is $199 a month ($1,990 a year): 100 identities, 50,000 verifications a month, Warrant and fleet watch included. Overage is $0.02 per verification, with a customer-set monthly cap (default twice the plan price) and an alert at 80% of the cap. Free: 1 identity, 100 verifications a month, no L3/L4 attestation. Agents buy through the x402 catalog. Each credential is a fresh 15-minute mint.</p>`),
     S("with", "Works with", `<p>Add <a href="/wiki/warrant">Warrant</a> when the seat needs a mandate and a receipt. Add <a href="/wiki/cuni">CuNi</a> when the job should carry an exactness receipt from Python, Go, and JavaScript. Add <a href="/wiki/chamber">Chamber</a> when a secret needs two keys. <a href="/wiki/tollkeeper">Tollkeeper</a> prices the crossings on this road.</p>`),
     S("open", "Open it", `<p><a href="/rider">Rider page</a> · <a href="https://agentrider.fly.dev/">Open Agent-Rider</a> · <a href="https://agentrider.fly.dev/docs">Walkthrough</a> · <a href="/pay?sku=rider-solo">Solo seat</a></p>`),
   ],
@@ -185,8 +185,8 @@ add({
   sections: [
     S("is", "What it is", `<p>CuNi is the exactness tool. You write one <code>.cuni</code> program. CLI v0.10.0 holds 53 targets. The gate that must match is Python, Go, and JavaScript. If those three would print different stdout, CuNi refuses the path and publishes the refusal. Studio is free. Bank takes a paste of N and emits X.</p><p>The CLI default <code>cuni check</code> runs the money seats: Python, Rust, Go, Java, SQL, and JavaScript. <code>cuni check --all</code> runs the 53-target catalog. A native seat that would diverge refuses. Solidity refuses a float, a list, or a type outside its model. Install the prebuilt binary with Homebrew. Protocol 1.1.1. Tag v0.10.0.</p>`),
     S("how", "How it works", `<ol><li>Write the <code>.cuni</code> source once.</li><li>Run the Python, Go, and JavaScript gate when you want those three to match.</li><li>Run <code>cuni check --all</code> when you want all 53 targets.</li><li>Use Bank when you want another catalog id from the same source, then prove it.</li></ol><p><code>POST /api/pass</code> on Studio returns pass or refuse for the three-language gate. The receipt is the answer you keep next to the job. <code>cuni check --json --sign</code> adds an Ed25519 signature a stranger can verify.</p>`),
-    S("get", "What you receive", `<p>You receive either identical stdout on the seats you asked for, or a refusal that names why the path stopped. You receive a free Studio, a Bank, and a protocol document. A closed-app exception for one product is a separate license.</p>`),
-    S("price", "Price", `<p>Studio is free. The closed-app exception is $369 a year, SKU <code>cuni-exception</code>. The open license is AGPL-3.0-or-later.</p>`),
+    S("get", "What you receive", `<p>You receive either identical stdout on the seats you asked for, or a refusal that names why the path stopped. You receive a free Studio, a Bank, and a protocol document. A closed-app grant for one product is a separate license.</p>`),
+    S("price", "Price", `<p>CuNi and Studio are free. The closed-app grant is $490 a year for one app under the unified grant: $490 a year for one product, $190 for the first 10 grants, $390 each for 3 or more products. Written, human-fulfilled, one product and one year, renewal at the then-current price. Per-check API: the first 100 checks a month are free, then $0.05 per check, with a customer-set monthly cap and an alert at 80% of the cap. The open license is AGPL-3.0-or-later.</p>`),
     S("with", "Works with", `<p>Put the receipt beside a <a href="/wiki/agent-rider">Rider</a> job when you want proof the program matched. <a href="/wiki/exactodds">ExactOdds</a> is the same rule on five seats and a pair of dice. Toll 5 on <a href="/wiki/tollkeeper">Tollkeeper</a> is the listed price of selling that check.</p>`),
     S("open", "Open it", `<p><a href="/cuni">CuNi page</a> · <a href="https://cuni-studio.fly.dev/">Studio</a> · <a href="https://cuni-studio.fly.dev/bank">Bank</a> · <a href="https://www.slidphilabs.com/cuni-protocol.json">Protocol</a></p>`),
   ],
@@ -203,9 +203,9 @@ add({
     S("is", "What it is", `<p>Warrant is the authority tool. A Rider names the agent. A Warrant names the job: which hosts, which actions, how much spend, how many calls, and the expiry. Gates read <code>X-Agent-Rider</code> and <code>X-Agent-Warrant</code>. Checking the signature happens locally.</p><p>The receipt records host, action, hashes, and dollars used. When the mandate expires, or when you revoke it, later calls stop clearing. The first 3 warrants and 10 receipts per operator per day are the free band.</p>`),
     S("how", "How it works", `<ol><li>Issue a Rider for the seat.</li><li>Sign the mandate: hosts, actions, caps, expiry.</li><li>The agent presents both headers.</li><li>The gate checks the signature and the remaining cap.</li><li>The receipt lands with the action, the hashes, and the dollars.</li></ol>`),
     S("get", "What you receive", `<p>You receive a signed mandate you can verify anywhere, and a receipt for each job that ran inside it. You receive a hard stop when the expiry or the cap is reached.</p>`),
-    S("price", "Price", `<p>$29 a month or $290 a year. SKUs <code>warrant-month</code> and <code>warrant-year</code>.</p>`),
+    S("price", "Price", `<p>$8 a month ($80 a year) as an add-on to Rider Solo. Included in Rider Team and Fleet. There is no standalone Warrant SKU.</p>`),
     S("with", "Works with", `<p>Every Warrant sits on a <a href="/wiki/agent-rider">Rider</a>. A secret that needs two people goes in <a href="/wiki/chamber">Chamber</a> as well: the mandate says who may ask, and the two shares open the seal. Spend quotes live on <a href="/wiki/awlpay">AwLPay</a>.</p>`),
-    S("open", "Open it", `<p><a href="/warrant">Warrant page</a> · <a href="/pay?sku=warrant-month">Month</a> · <a href="/pay?sku=warrant-year">Year</a></p>`),
+    S("open", "Open it", `<p><a href="/warrant">Warrant page</a> · <a href="/pay?sku=warrant-addon">Month</a> · <a href="/pay?sku=warrant-addon-year">Year</a></p>`),
   ],
 });
 
@@ -224,7 +224,7 @@ add({
 <tr><td>Lookup</td><td>$0.02. Listing is free. Promote is listed at $9 a month.</td></tr>
 <tr><td>Escrow</td><td>1%.</td></tr>
 <tr><td>Grant</td><td>$0.01 to issue. $0.005 to check.</td></tr>
-<tr><td>Exactness check</td><td>$0.10.</td></tr>
+<tr><td>Exactness check</td><td>$0.05.</td></tr>
 <tr><td>Bond</td><td>1% at stake.</td></tr>
 <tr><td>Memory transfer</td><td>$0.02 hosted. The format is free.</td></tr>
 </tbody></table>`),
@@ -241,13 +241,13 @@ add({
   kicker: "Secrets",
   h1: "Two keys. One seal. You keep the blob.",
   lede: "Chamber seals JSON with AES-256-GCM and a two-of-two split. Opening takes both shares. The ciphertext stays with you.",
-  summary: "Two shares. You store the blob. $9 or $369.",
+  summary: "Two shares. You store the blob. $20 or $200.",
   sections: [
     S("is", "What it is", `<p>Chamber is the seal for structured secrets: API keys, webhook URLs, configuration. The cipher is AES-256-GCM. The key is split two-of-two. One share stays sealed. Both shares together open the JSON. You store the blob in your own files. The license you buy is the right to seal new secrets. A blob you already sealed still opens when both keys are present.</p>`),
     S("how", "How it works", `<ol><li>Bring the JSON and both shares to the seal.</li><li>Store the shares apart: two people, or a person and a vault.</li><li>Store the blob wherever you already keep backups.</li><li>Open it when both shares are in the same room again.</li></ol><p>Install <code>@slidphi/json-chamber-mcp</code> or the Python package <a href="https://pypi.org/project/json-chamber/">json-chamber</a>. The older unscoped npm name still installs and points here.</p>`),
     S("get", "What you receive", `<p>You receive a ciphertext you can back up, and two shares that only work as a pair. You receive a license to seal new secrets for the month or the year you bought.</p>`),
-    S("price", "Price", `<p>$9 a month or $369 a year. SKUs <code>chamber-month</code> and <code>chamber-year</code>.</p>`),
-    S("with", "Works with", `<p>A <a href="/wiki/agent-rider">Rider</a> names who is asking. A <a href="/wiki/warrant">Warrant</a> says they are allowed to ask. The shares still have to meet before the secret opens. <a href="/wiki/lab-pass">Lab Pass</a> bundles a Chamber year with a PCC year.</p>`),
+    S("price", "Price", `<p>$20 a month or $200 a year. Sealing is not metered. A 24-hour try is free; opening already-sealed blobs is free forever. SKUs <code>chamber-month</code> and <code>chamber-year</code>.</p>`),
+    S("with", "Works with", `<p>A <a href="/wiki/agent-rider">Rider</a> names who is asking. A <a href="/wiki/warrant">Warrant</a> says they are allowed to ask. The shares still have to meet before the secret opens. <a href="/wiki/lab-pass">Lab Pass</a> includes a Chamber year.</p>`),
     S("open", "Open it", `<p><a href="/chamber">Chamber page</a> · <a href="https://pypi.org/project/json-chamber/">PyPI</a> · <a href="/pay?sku=chamber-year">Year</a></p>`),
   ],
 });
@@ -280,7 +280,7 @@ add({
     S("is", "What it is", `<p>x402 is how an agent buys a lab SKU. The agent posts <code>{"sku":"..."}</code> to <code>/api/x402-products</code>. The lab answers 402 with the accepts list. The agent pays USDC on Solana or Base and retries with <code>X-PAYMENT</code>. The response carries a claim token and an <code>access_url</code>. People use the same catalog through <a href="/pay">Stripe</a>.</p>`),
     S("how", "How it works", `<ol><li>Discover the lab at <a href="/api/agent">GET /api/agent</a>.</li><li>Post the SKU.</li><li>Read the 402 body and pay that USDC request.</li><li>Retry with <code>X-PAYMENT</code>.</li><li>Open <code>access_url</code> or <code>GET /api/access-verify</code>.</li></ol>`),
     S("get", "What you receive", `<p>You receive a 402 you can pay, then a claim that opens the product you bought. The SKU list is the same one humans see on <a href="/pricing">/pricing</a>.</p>`),
-    S("price", "Price", `<p>Examples on the catalog: Rider Solo $3.31 a month, Warrant $29 a month or $290 a year, Chamber $9 or $369, CuNi closed-app $369 a year. PCC prices sit on the PCC page. The 402 body is the amount for that request.</p>`),
+    S("price", "Price", `<p>Examples on the catalog: Rider Solo $12 a month, Warrant $8 a month as an add-on to Rider Solo, Chamber $20 a month or $200 a year, CuNi closed-app grant $490 a year. PCC prices sit on the PCC page. The 402 body is the amount for that request.</p>`),
     S("with", "Works with", `<p>The buyer can carry a <a href="/wiki/agent-rider">Rider</a>. A spend cap is a <a href="/wiki/warrant">Warrant</a>. One page, one fee, is <a href="/wiki/quikgater">Quikgater</a>. Quotes across assets are <a href="/wiki/awlpay">AwLPay</a>.</p>`),
     S("open", "Open it", `<p><a href="/x402">x402 page</a> · <a href="/pay">Human pay</a> · <a href="/pricing">Pricing</a> · <a href="/api/agent">/api/agent</a></p>`),
   ],
@@ -297,7 +297,7 @@ add({
     S("is", "What it is", `<p>Quikgater is pay-per-fetch. An agent asks for a URL. Quikgater answers 402 with the price of that fetch. The agent pays on Base and retries. The worker returns the page. The product page documents the live worker and the Fly render.</p>`),
     S("how", "How it works", `<ol><li>Send the fetch the product page specifies.</li><li>Read the 402 and pay it.</li><li>Retry. Keep the body.</li></ol><p>A 402 here means the fetch has a price. Pay it and the page comes back.</p>`),
     S("get", "What you receive", `<p>You receive the fetched page and a receipt for that payment. The fee is the 402 for the fetch.</p>`),
-    S("price", "Price", `<p>The price is the 402 body for that URL. A Rider seat is a separate SKU on <a href="/pricing">/pricing</a>.</p>`),
+    S("price", "Price", `<p>Each fetch is $0.02; the first 100 fetches a month are free. Customer-set monthly cap (default $10), with an alert at 80% of the cap. The 402 body carries the amount for that URL. A Rider seat is a separate SKU on <a href="/pricing">/pricing</a>.</p>`),
     S("with", "Works with", `<p>Name the caller with <a href="/wiki/agent-rider">Rider</a>. Buy a catalog SKU with <a href="/wiki/x402">x402</a>. Pack the bytes you keep with <a href="/wiki/pcc">PCC</a>.</p>`),
     S("open", "Open it", `<p><a href="/quikgater">Quikgater page</a> · <a href="/wiki/x402">x402 booklet</a></p>`),
   ],
@@ -331,7 +331,7 @@ add({
     S("is", "What it is", `<p>TNSSRC is TriNeural Shared Spine Row Compression. You run it where the bytes stay. The products page records Silesia at 43,724,575 bytes, 12 of 12 files decoded, with SHA-256. The PCC stamp is a different measurement: 51,498,645. Each number belongs to its own engine. The board that shows both is <a href="/silesia">/silesia</a>.</p>`),
     S("how", "How it works", `<ol><li>Read the Silesia board for the matrix you want to compare.</li><li>Run the local engine on the files you hold.</li><li>Decode and check the hash.</li><li>Use PCC when the file should be packed through your tools instead.</li></ol>`),
     S("get", "What you receive", `<p>You receive a local pack, a decode, and a published stamp: 43,724,575 bytes on that Silesia run, 12/12. The open path is AGPL. The grant is the paid license.</p>`),
-    S("price", "Price", `<p>AGPL at $0. Grant at $369 a year. A bake-off on a PCC seat is listed at $19.31 a month on the products page. Confirm on <a href="/products">/products</a>.</p>`),
+    S("price", "Price", `<p>Free under copyleft (AGPL) at $0. Commercial use is the unified grant: $490 a year for one product, $190 for the first 10 grants, $390 each for 3 or more products. Written, human-fulfilled, one product and one year, renewal at the then-current price. TNSSRC grants cover 0.1.0 only. No per-GB meter.</p>`),
     S("with", "Works with", `<p><a href="/wiki/pcc">PCC</a> is the service through your tools. <a href="/wiki/pulsar">pulsar</a> is the free demo binary. <a href="/wiki/cuni">CuNi</a> checks that a pathway prints the same stdout on the languages it claims.</p>`),
     S("open", "Open it", `<p><a href="/silesia">Board</a> · <a href="/products">Products</a> · <a href="/compare">Compare</a></p>`),
   ],
@@ -348,8 +348,8 @@ add({
     S("is", "What it is", `<p>PCC takes a file and returns a smaller copy that restores the original. The spine packs a row only when the packed form is strictly shorter. Otherwise it stores the original raw. Decode returns every byte. On the official Silesia 12, the PCC packed size is 51,498,645. gzip-9 on that corpus is larger.</p><p>You reach it from the website, from <code>POST /api/compress</code> and <code>POST /api/decompress</code>, from <code>@slidphi/spl-pay-per-suite</code>, and from <code>POST /mcp</code> on this site. The specialist bench is <a href="/specialist">/specialist</a>.</p>`),
     S("how", "How it works", `<ol><li>Send the bytes to PCC through your tools.</li><li>Keep the packed copy.</li><li>Decompress when you need the original.</li><li>Compare the restored bytes to the file you sent.</li></ol><p>A Rider, when you want a named caller, is minted separately and sent as <code>X-Agent-Rider</code>.</p>`),
     S("get", "What you receive", `<p>You receive a packed file and a decode that restores the original. You receive the official Silesia number 51,498,645 as the PCC stamp. The local engine publishes its own stamp on the TNSSRC booklet.</p>`),
-    S("price", "Price", `<p>The PCC page lists Pro and the usage meter. Humans pay on Stripe. Agents pay the x402 SKU. Read <a href="/pricing">/pricing</a> for the current numbers.</p>`),
-    S("with", "Works with", `<p><a href="/wiki/trustream">TRUSTREAM</a> packs live tiles on the same plan. <a href="/wiki/tnssrc">TNSSRC</a> is the local engine. <a href="/wiki/pulsar">pulsar</a> is the free binary you run yourself. <a href="/wiki/tru8">TRU8</a> packs zeros. <a href="/wiki/lab-pass">Lab Pass</a> bundles a PCC year with Chamber.</p>`),
+    S("price", "Price", `<p>Metered at $0.25 per GB of input; the first 1 GB a month is free. Pro is $25 a month including 100 GB, then $0.20 per GB. Customer-set monthly spend cap (default $25 pay-as-you-go), with an alert at 80% of the cap or allowance. Humans pay on Stripe. Agents pay the x402 SKU. Read <a href="/pricing">/pricing</a> for the current numbers.</p>`),
+    S("with", "Works with", `<p><a href="/wiki/trustream">TRUSTREAM</a> packs live tiles on the same plan. <a href="/wiki/tnssrc">TNSSRC</a> is the local engine. <a href="/wiki/pulsar">pulsar</a> is the free binary you run yourself. <a href="/wiki/tru8">TRU8</a> packs zeros.</p>`),
     S("open", "Open it", `<p><a href="/pcc">PCC page</a> · <a href="/silesia">Silesia board</a> · <a href="/bench">Bench</a> · <a href="/docs">API</a></p>`),
   ],
 });
@@ -381,8 +381,8 @@ add({
   sections: [
     S("is", "What it is", `<p>pulsar is the free lossless compressor. Version 2.5.0 ships as a Linux binary and as source under GPLv3. You run it. The file stays on your machine. PCC is compression through your tools when you want the lab to pack the file. pulsar is the one you pack yourself.</p>`),
     S("how", "How it works", `<ol><li>Download the binary from the pulsar page.</li><li>Compress a file you control.</li><li>Restore it and compare the bytes.</li></ol>`),
-    S("get", "What you receive", `<p>You receive a packed file and a restore, with the source you can read. A closed embed is the paid exception listed on the product page.</p>`),
-    S("price", "Price", `<p>The binary and source are free, GPLv3. The closed-embed price is the one printed on <a href="/pulsar">/pulsar</a>.</p>`),
+    S("get", "What you receive", `<p>You receive a packed file and a restore, with the source you can read. A closed embed is the paid grant under the unified grant.</p>`),
+    S("price", "Price", `<p>The binary and source are free, GPLv3. Closed-embed use is the unified grant: $490 a year for one product, $190 for the first 10 grants, $390 each for 3 or more products. Written, human-fulfilled, one product and one year, renewal at the then-current price.</p>`),
     S("with", "Works with", `<p>Packs through your tools go to <a href="/wiki/pcc">PCC</a>. The local grant engine is <a href="/wiki/tnssrc">TNSSRC</a>.</p>`),
     S("open", "Open it", `<p><a href="/pulsar">pulsar page</a></p>`),
   ],
@@ -443,15 +443,15 @@ add({
   slug: "lab-pass", group: "Lab bench", door: "/lab-pass",
   title: "Lab Pass",
   kicker: "Bundle",
-  h1: "A year of Chamber and a year of PCC.",
-  lede: "Lab Pass is one $890 payment for 365 days of Chamber and PCC together.",
-  summary: "$890 a year. Chamber year plus PCC year.",
+  h1: "A year of Chamber, Rider, PSI Meter, and Warrant.",
+  lede: "Lab Pass is one $495 payment for 365 days of Chamber, Rider Solo, a PSI Meter seat, and the Warrant add-on together.",
+  summary: "$495 a year. Chamber, Rider Solo, PSI Meter seat, and Warrant add-on.",
   sections: [
-    S("is", "What it is", `<p>Lab Pass is the annual bundle. One payment covers a Chamber year and a PCC year. Chamber alone is $369 for the year. PCC’s year seat is listed on its own page. The pass puts them on one checkout: <a href="/pay?sku=lab-pass">/pay?sku=lab-pass</a>. A Rider seat stays its own purchase, from Solo at $3.31.</p>`),
-    S("how", "How it works", `<ol><li>Open the Lab Pass page.</li><li>Pay the $890 year on Stripe.</li><li>Seal secrets with Chamber and pack files with PCC for the 365 days.</li></ol>`),
-    S("get", "What you receive", `<p>You receive a year of new Chamber seals and a year of PCC through your tools. After the year, the pass page says the box closes.</p>`),
-    S("price", "Price", `<p>$890 a year. SKU <code>lab-pass</code>.</p>`),
-    S("with", "Works with", `<p>The two tools inside the pass are <a href="/wiki/chamber">Chamber</a> and <a href="/wiki/pcc">PCC</a>. Add a <a href="/wiki/agent-rider">Rider</a> when you want a signed seat.</p>`),
+    S("is", "What it is", `<p>Lab Pass is the annual bundle. One payment covers a Chamber year, a Rider Solo year, a PSI Meter seat year, and a Warrant add-on year. The parts bought separately cost $650; the pass is 24% off. There is no monthly version. The pass puts them on one checkout: <a href="/pay?sku=lab-pass">/pay?sku=lab-pass</a>.</p>`),
+    S("how", "How it works", `<ol><li>Open the Lab Pass page.</li><li>Pay the $495 year on Stripe.</li><li>Seal secrets with Chamber, sign seats with Rider Solo, log calls with PSI Meter, and bound jobs with Warrant for the 365 days.</li></ol>`),
+    S("get", "What you receive", `<p>You receive a year of new Chamber seals, Rider Solo, a PSI Meter seat, and the Warrant add-on. After the year, the pass page says the box closes.</p>`),
+    S("price", "Price", `<p>$495 a year. SKU <code>lab-pass</code>. The four parts bought separately cost $650.</p>`),
+    S("with", "Works with", `<p>The tools inside the pass are <a href="/wiki/chamber">Chamber</a>, <a href="/wiki/agent-rider">Rider</a>, <a href="/wiki/psi">PSI Meter</a>, and <a href="/wiki/warrant">Warrant</a>.</p>`),
     S("open", "Open it", `<p><a href="/lab-pass">Lab Pass page</a> · <a href="/pricing">Pricing</a></p>`),
   ],
 });
@@ -544,7 +544,7 @@ ${chrome("/")}
       <p class="pf-kicker">03 · Receipts</p>
       <h2>Warrant</h2>
       <p>Hosts, actions, spend, calls, expiry. Then a receipt with the hashes and the dollars.</p>
-      <p class="pf-fact">$29 / mo · $290 / yr</p>
+      <p class="pf-fact">$8 / mo add-on · $80 / yr</p>
       <p><a href="/wiki/warrant">Booklet</a> · <a href="/warrant">Open Warrant</a></p>
     </article>
   </section>

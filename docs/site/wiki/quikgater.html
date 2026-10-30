@@ -45,7 +45,7 @@
       <section class="pf-section" id="is"><h2>What it is</h2><p>Quikgater is pay-per-fetch. An agent asks for a URL. Quikgater answers 402 with the price of that fetch. The agent pays on Base and retries. The worker returns the page. The product page documents the live worker and the Fly render.</p></section>
 <section class="pf-section" id="how"><h2>How it works</h2><ol><li>Send the fetch the product page specifies.</li><li>Read the 402 and pay it.</li><li>Retry. Keep the body.</li></ol><p>A 402 here means the fetch has a price. Pay it and the page comes back.</p></section>
 <section class="pf-section" id="get"><h2>What you receive</h2><p>You receive the fetched page and a receipt for that payment. The fee is the 402 for the fetch.</p></section>
-<section class="pf-section" id="price"><h2>Price</h2><p>The price is the 402 body for that URL. A Rider seat is a separate SKU on <a href="/pricing">/pricing</a>.</p></section>
+<section class="pf-section" id="price"><h2>Price</h2><p>Each fetch is $0.02; the first 100 fetches a month are free. Customer-set monthly cap (default $10), with an alert at 80% of the cap. The 402 body carries the amount for that URL. A Rider seat is a separate SKU on <a href="/pricing">/pricing</a>.</p></section>
 <section class="pf-section" id="with"><h2>Works with</h2><p>Name the caller with <a href="/wiki/agent-rider">Rider</a>. Buy a catalog SKU with <a href="/wiki/x402">x402</a>. Pack the bytes you keep with <a href="/wiki/pcc">PCC</a>.</p></section>
 <section class="pf-section" id="open"><h2>Open it</h2><p><a href="/quikgater">Quikgater page</a> · <a href="/wiki/x402">x402 booklet</a></p></section>
     </article>

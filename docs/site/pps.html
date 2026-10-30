@@ -8,7 +8,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Pay Per Suite — metered encode/decode · Slid Phi Labs</title>
-<meta name="description" content="Suite meters encode/decode jobs. First 2 GB each month free, then 8¢/GB."/>
+<meta name="description" content="Suite meters encode/decode jobs. First 1 GB each month free, then $0.25/GB of input."/>
 <link rel="canonical" href="https://www.slidphilabs.com/pps"/>
 
 <!-- Agentic commerce discovery (machine-readable) -->
@@ -23,9 +23,9 @@
 <meta name="agent-networks" content="solana-mainnet-beta,eip155:8453"/>
 <meta name="agent-discovery" content="https://www.slidphilabs.com/api/agent"/>
 <meta name="agent-catalog" content="https://www.slidphilabs.com/api/x402-products"/>
-<meta name="agent-one-liner" content="CuNi $0 · Chamber $9/$369 · PCC $9/$37/$369 · Rider Solo $3.31–Fleet $631 · first 2 GB/mo then 8¢/GB · GET /api/agent"/>
+<meta name="agent-one-liner" content="CuNi $0 · Chamber $20/$200 · PCC metered $0.25/GB, Pro $25/mo · Rider Solo $12–Fleet $199 · first 1 GB/mo then $0.25/GB · GET /api/agent"/>
 <meta property="og:title" content="SPL Pay Per Suite — encode · decode · data folder"/>
-<meta property="og:description" content="On-site suite folder: encode, decode, download, recompress. First 2 GB/month free, then 8¢/GB."/>
+<meta property="og:description" content="On-site suite folder: encode, decode, download, recompress. First 1 GB/month free, then $0.25/GB of input."/>
 <meta property="og:url" content="https://www.slidphilabs.com/pps"/>
 <meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
 <meta property="og:type" content="website"/>
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@slidphilabs"/>
 <meta name="twitter:creator" content="@slidphilabs"/>
 <meta name="twitter:title" content="SPL Pay Per Suite — encode · decode · data folder"/>
-<meta name="twitter:description" content="On-site suite folder: encode, decode, download, recompress. First 2 GB/month free, then 8¢/GB."/>
+<meta name="twitter:description" content="On-site suite folder: encode, decode, download, recompress. First 1 GB/month free, then $0.25/GB of input."/>
 <meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
 <meta name="theme-color" content="#050b16"/>
 <meta name="robots" content="index,follow"/>
@@ -409,7 +409,7 @@ footer.suite-foot a{color:var(--teal-bright);font-weight:600}
     "@type": "Service",
     "name": "SPL Pay Per Suite",
     "provider": { "@type": "Organization", "name": "Slid Phi Labs", "url": "https://www.slidphilabs.com/" },
-    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "0", "description": "First 2 GB each month free, then 8¢/GB · encode/decode folder on site" }
+    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "0", "description": "First 1 GB each month free, then $0.25/GB of input · encode/decode folder on site" }
   }
 }
 </script>
@@ -433,7 +433,7 @@ footer.suite-foot a{color:var(--teal-bright);font-weight:600}
       <a href="/about">About</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-primary btn-sm" href="/pay?sku=chamber-year" target="_blank" rel="noopener">Chamber Year · $369</a>
+      <a class="btn btn-primary btn-sm" href="/pay?sku=chamber-year" target="_blank" rel="noopener">Chamber Year · $200</a>
       <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -444,10 +444,10 @@ footer.suite-foot a{color:var(--teal-bright);font-weight:600}
     <div class="suite-hero-top">
       <div class="suite-hero-copy">
         <div class="badge">Suite · metered jobs · not a TruChamber seat</div>
-        <p class="ribbon">Need a product seat? Chamber Year $369 → <a href="/chamber" style="color:inherit">/chamber</a>. PCC Year $369 → <a href="/pcc" style="color:inherit">/pcc</a>.</p>
+        <p class="ribbon">Need a product seat? Chamber Year $200 → <a href="/chamber" style="color:inherit">/chamber</a>. PCC Pro $25/month → <a href="/pcc" style="color:inherit">/pcc</a>.</p>
         <h1>Suite meters encode / decode jobs</h1>
         <p class="lede">
-          Suite meters jobs — first <strong>2 GB each month free</strong>, then 8¢/GB.
+          Suite meters jobs — first <strong>1 GB each month free</strong>, then $0.25/GB of input. Customer-set monthly spend cap (default $25), alert at 80%.
           Not a user seat. Not a Chamber unlock. Not a TRU8 production license.
           Browse the <strong>suite data folder</strong>, download samples, encode, decode, recompress.
         </p>
@@ -549,7 +549,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
       <div class="panel">
         <div class="quote-label">Live quote</div>
         <div class="quote-amt" id="quoteAmtEl">$<span id="amt">9.00</span><span class="cur">USD</span></div>
-        <p class="quote-sub" id="amtSub">First 2 GB each month free, then 8¢/GB. Card charges start at $1.</p>
+        <p class="quote-sub" id="amtSub">First 1 GB each month free, then $0.25/GB of input. Customer-set monthly spend cap (default $25), alert at 80%.</p>
         <div class="breakdown" id="breakdown"></div>
         <div class="cta-stack">
           <button type="button" class="btn btn-gold btn-lg btn-block" id="payBtn">Pay with Stripe →</button>
@@ -631,18 +631,10 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
 <script>
 (function () {
   const PPP_LINK = 'https://www.slidphilabs.com/pps';
-  /* Freemium usage — match api/suite-pricing.js */
-  const FREE_BYTES = 2 * 1024 * 1024 * 1024; // first 2 GB each month
-  const PRODUCT_ADD = {
-    auto: 0, zrw: 0, "cddg-split": 25, blackjack: 0,
-    "shard-zip": 0, "shard-tsdb": 0, "slid-phi": 0,
-  };
-  const DATA_MULT = {
-    zeros: 0.9, ramp: 0.95, walk: 1.0, mixed_ints: 1.05,
-    timeseries: 1.05, json_series: 1.0, binary: 1.1, unknown: 1.0,
-  };
-  const OP_MULT = { compress: 1.0, decompress: 0.75, roundtrip: 1.15 };
-  const MIN_PAID = 5, MAX = 1000000; // $0.05 min
+  /* Freemium usage — match api/suite-pricing.js: single $0.25/GB input rate, no op/data multipliers */
+  const FREE_BYTES = 1 * 1024 * 1024 * 1024; // first 1 GB of input each month
+  const CENTS_PER_GB = 25;
+  const MIN_PAID = 100, MAX = 1000000; // $1 card minimum, $10,000 cap
   const TOOLS = [
     { id: 'auto', label: 'Auto', logo: null },
     { id: 'zrw', label: 'ZRW', logo: '/assets/logos/logo-zero-range-wave.jpg?v=13' },
@@ -681,8 +673,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
   function usageFee(billableBytes) {
     const gb = Math.max(0, Number(billableBytes) || 0) / (1024 * 1024 * 1024);
     if (gb <= 0) return 0;
-    if (gb <= 100) return Math.round(gb * 5); // $0.05/GB under ~$0.09 egress
-    return Math.round(100 * 5 + (gb - 100) * 4); // $0.04/GB after
+    return Math.round(gb * CENTS_PER_GB); // $0.25/GB of input, single rate
   }
 
   function computeQuote() {
@@ -706,15 +697,13 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
       return lastQuote;
     }
     const size = usageFee(billable);
-    const add = PRODUCT_ADD[product] != null ? PRODUCT_ADD[product] : 0;
-    const mult = (DATA_MULT[dataClass] || 1) * (OP_MULT[op] || 1);
-    const cents = Math.min(MAX, Math.max(MIN_PAID, Math.round((size + add) * mult)));
+    const cents = Math.min(MAX, Math.max(MIN_PAID, size));
     lastQuote = {
       free: false,
       amount_cents: cents,
       amount_display: (cents / 100).toFixed(2),
       product, dataClass, op, bytes,
-      base: add, size, mult,
+      base: 0, size, mult: 1,
       free_bytes: FREE_BYTES,
       billable,
       mb: +(bytes / (1024 * 1024)).toFixed(4),
@@ -755,17 +744,16 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
     if (q.free) {
       $('breakdown').innerHTML =
         '<div><span>Free showcase</span><strong>$0.00</strong></div>' +
-        '<div><span>Free cap</span><strong>2 GB / month</strong></div>' +
+        '<div><span>Free cap</span><strong>1 GB / month</strong></div>' +
         '<div><span>Size · ' + fmtBytes(q.bytes) + '</span><strong>included</strong></div>' +
-        '<div><span>Then</span><strong>8¢/GB. Card charges start at $1.</strong></div>';
-      if ($('amtSub')) $('amtSub').textContent = 'FREE under 2 GB this month · no Stripe';
+        '<div><span>Then</span><strong>$0.25/GB of input. Card charges start at $1.</strong></div>';
+      if ($('amtSub')) $('amtSub').textContent = 'FREE under 1 GB this month · no Stripe';
     } else {
       $('breakdown').innerHTML =
-        '<div><span>First 2 GB this month</span><strong>$0.00</strong></div>' +
+        '<div><span>First 1 GB this month</span><strong>$0.00</strong></div>' +
         '<div><span>Usage · ' + fmtBytes(q.billable) + '</span><strong>$' + (q.size / 100).toFixed(2) + '</strong></div>' +
-        '<div><span>Product add</span><strong>$' + (q.base / 100).toFixed(2) + '</strong></div>' +
-        '<div><span>Data × op</span><strong>×' + q.mult.toFixed(2) + '</strong></div>';
-      if ($('amtSub')) $('amtSub').textContent = 'Usage · 8¢/GB after the free 2 GB · card charges start at $1';
+        '<div><span>Rate</span><strong>$0.25/GB of input</strong></div>';
+      if ($('amtSub')) $('amtSub').textContent = 'Usage · $0.25/GB of input after the free 1 GB · card charges start at $1';
     }
     const toolLabel = productEl.value === 'auto' && recommendedTool !== 'auto'
       ? 'auto → ' + recommendedTool
@@ -905,7 +893,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
     const btn = $('payBtn');
     if (!btn) return;
     if (q.free) {
-      btn.textContent = 'Continue free (under 2 GB this month) →';
+      btn.textContent = 'Continue free (under 1 GB this month) →';
       btn.classList.remove('btn-gold');
       btn.classList.add('btn-teal');
     } else {
@@ -943,8 +931,8 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
       if (data.mode === 'free_showcase' || data.free || q.free) {
         paid = true;
         show(payMsg, 'ok',
-          '<strong>Free showcase</strong> — under the 2 GB monthly free cap. No payment. Enter email and <strong>Submit project</strong>.');
-        showBanner('ok', 'Free tier active — first 2 GB this month is $0. Submit your job below.');
+          '<strong>Free showcase</strong> — under the 1 GB monthly free cap. No payment. Enter email and <strong>Submit project</strong>.');
+        showBanner('ok', 'Free tier active — first 1 GB of input this month is $0. Submit your job below.');
         setSteps();
         return;
       }
@@ -963,7 +951,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
     } catch (e) {
       if (q.free) {
         paid = true;
-        show(payMsg, 'ok', 'Free under 2 GB this month — submit project below.');
+        show(payMsg, 'ok', 'Free under 1 GB of input this month — submit project below.');
         setSteps();
       } else {
         show(payMsg, 'err', 'Checkout hiccup — opening Stripe…');

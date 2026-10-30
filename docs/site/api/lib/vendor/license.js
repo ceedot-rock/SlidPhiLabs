@@ -1,5 +1,11 @@
 /**
  * Product use-route: 24h try, then a real seat on /pay.
+ *
+ * Blank-slate pricing (2026-10-30): Lab Pass is Chamber + Rider Solo +
+ * PSI Meter + Warrant — it does NOT unlock PCC. Compression is metered
+ * separately ($0.25/GB input, first 1 GB/month free; Pro $25/mo). No tier
+ * in this file grants compression; the meter allowance lives in
+ * api/suite-pricing.js, where Lab Pass carries no included GB.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
@@ -7,8 +13,8 @@ import { join } from "node:path";
 
 export const Tiers = Object.freeze({
   BOX: "black-box-24h",
-  GATE: "gc-year",
-  TRU8: "gc-year",
+  GATE: "pcc-pro-year",
+  TRU8: "pcc-pro-year",
   CHAMBER: "chamber-year",
   LAB: "lab-pass",
 });
@@ -16,17 +22,17 @@ export const Tiers = Object.freeze({
 export const FREE_LICENSE_CAP = Infinity;
 export const BOX_MS = 24 * 3600 * 1000;
 export const BUY = {
-  gc_year: "https://www.slidphilabs.com/pay?sku=gc-year",
+  pcc_pro_year: "https://www.slidphilabs.com/pay?sku=pcc-pro-year",
   chamber_year: "https://www.slidphilabs.com/pay?sku=chamber-year",
   lab_pass: "https://www.slidphilabs.com/pay?sku=lab-pass",
 };
 
 export const LIMITS = Object.freeze({
   [Tiers.BOX]: { label: "24h try", priceUsd: 0, buyUrl: BUY.lab_pass },
-  [Tiers.GATE]: { label: "AWARE Year", priceUsd: 390, buyUrl: BUY.gc_year },
-  [Tiers.TRU8]: { label: "AWARE Year", priceUsd: 390, buyUrl: BUY.gc_year },
-  [Tiers.CHAMBER]: { label: "Chamber year license", priceUsd: 99, buyUrl: BUY.chamber_year },
-  [Tiers.LAB]: { label: "Lab Pass Year", priceUsd: 890, buyUrl: BUY.lab_pass },
+  [Tiers.GATE]: { label: "PCC Pro year", priceUsd: 250, buyUrl: BUY.pcc_pro_year },
+  [Tiers.TRU8]: { label: "PCC Pro year", priceUsd: 250, buyUrl: BUY.pcc_pro_year },
+  [Tiers.CHAMBER]: { label: "Chamber year license", priceUsd: 200, buyUrl: BUY.chamber_year },
+  [Tiers.LAB]: { label: "Lab Pass Year", priceUsd: 495, buyUrl: BUY.lab_pass },
 });
 
 const DIR = join(homedir(), ".slidphilabs");
@@ -87,7 +93,7 @@ export function assertLicense(_opts = {}) {
   const box = openLocalBox();
   if (box.open) return true;
   throw new Error(
-    `black box closed — buy a seat. Lab Pass $890 ${BUY.lab_pass} · AWARE Year $369 ${BUY.gc_year}`,
+    `black box closed — buy a seat. Lab Pass $495 ${BUY.lab_pass} · PCC Pro $25/mo https://www.slidphilabs.com/pay?sku=pcc-pro`,
   );
 }
 
