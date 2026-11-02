@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Slid Phi Labs — tools that check</title>
-  <meta name="description" content="Slid Phi Labs builds the technology that removes computing costs: compression engines with independently verified results, and the accountability layer for autonomous agents — signed identity, spend mandates enforced before payment, and receipts anyone can verify."/>
+  <meta name="description" content="Slid Phi Labs builds the technology that removes computing costs: compression engines (submitted result, listed on Matt Mahoney's Silesia benchmark as TNSSRC 0.1.0 at 43,724,575), and the accountability layer for autonomous agents — signed identity, spend mandates enforced before payment, and receipts anyone can verify."/>
   <meta name="theme-color" content="#0f1c2e"/>
   <meta name="robots" content="index,follow"/>
   <link rel="canonical" href="https://www.slidphilabs.com/"/>
@@ -51,7 +51,7 @@
         "name": "What is the official Silesia result?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "TNSSRC packs the 211,938,580-byte Silesia reference corpus to 43,724,575 bytes — a result verified on the Large Text Compression Benchmark. The full board, with every engine we run, is https://www.slidphilabs.com/silesia.json."
+          "text": "TNSSRC packs the 211,938,580-byte Silesia reference corpus to 43,724,575 bytes. Submitted result, listed on Matt Mahoney's Silesia benchmark as TNSSRC 0.1.0 at 43,724,575. The full board, with every engine we run, is https://www.slidphilabs.com/silesia.json."
         }
       },
       {
@@ -118,7 +118,7 @@
         </tr>
         <tr>
           <th scope="row">Volatile data-center overhead</th>
-          <td><strong>Compression that holds up to measurement.</strong> Our TNSSRC engine compressed the 211,938,580-byte Silesia reference corpus to <strong>43,724,575 bytes</strong> — <strong>~11% smaller than xz-6</strong> (49,233,340 B) and <strong>~17.5% smaller than zstd-19</strong> (53,024,573 B) on the same corpus — a result <strong>independently verified on the Large Text Compression Benchmark</strong>. Our PCC codec is the ratio leader for working data: <strong>22.7:1 on text, 27:1 on JSON, 500:1 on code</strong> (lab-measured).</td>
+          <td><strong>Compression that holds up to measurement.</strong> Our TNSSRC engine compressed the 211,938,580-byte Silesia reference corpus to <strong>43,724,575 bytes</strong> — <strong>~11% smaller than xz-6</strong> (49,233,340 B) and <strong>~17.5% smaller than zstd-19</strong> (53,024,573 B) on the same corpus. <strong>Submitted result, listed on Matt Mahoney's Silesia benchmark as TNSSRC 0.1.0 at 43,724,575.</strong> Our PCC codec is the ratio leader for working data: <strong>22.7:1 on text, 27:1 on JSON, 500:1 on code</strong> (lab-measured).</td>
           <td>Storage and transfer costs scale with footprint. A pipeline that lands 11–17.5% smaller than the standard reference pipelines shrinks every downstream line item attached to those bytes — primary storage, replication, backup, and egress — by the same proportion, on every cycle, forever.</td>
         </tr>
         <tr>
@@ -133,7 +133,7 @@
         </tr>
       </tbody>
     </table>
-    <p class="pf-note">Compression comparisons are named-corpus measurements: Silesia reference corpus (211,938,580 bytes), TNSSRC result verified on the Large Text Compression Benchmark; PCC ratios are lab-measured on the lab's corpora. The verified TNSSRC mark is the headline; our current public build encodes larger — the mark, the build, and the gap between them are all published in our benchmark notes, because a number we can't show our work for doesn't go on this page. Boards: <a href="/silesia">/silesia</a> · <a href="/bench">/bench</a> · <a href="/standings">/standings</a> · <a href="/compare">/compare</a></p>
+    <p class="pf-note">Compression comparisons are named-corpus measurements: Silesia reference corpus (211,938,580 bytes); TNSSRC: submitted result, listed on Matt Mahoney's Silesia benchmark as TNSSRC 0.1.0 at 43,724,575; PCC ratios are lab-measured on the lab's corpora. The submitted TNSSRC mark is the headline; our current public build encodes larger — the mark, the build, and the gap between them are all published in our benchmark notes, because a number we can't show our work for doesn't go on this page. Boards: <a href="/silesia">/silesia</a> · <a href="/bench">/bench</a> · <a href="/standings">/standings</a> · <a href="/compare">/compare</a></p>
   </section>
 
   <section class="lb-sec" aria-labelledby="products">
@@ -148,7 +148,7 @@
       </li>
       <li class="lb-row">
         <p class="lb-name"><a href="/pcc">Compression — TNSSRC / PCC</a></p>
-        <p class="lb-what">Lossless engines that shrink the data you pay to store and move. TNSSRC holds a 43,724,575-byte Silesia result, verified on the Large Text Compression Benchmark. PCC is the ratio leader for working data — 22.7:1 on text, 27:1 on JSON, 500:1 on code.</p>
+        <p class="lb-what">Lossless engines that shrink the data you pay to store and move. Submitted result, listed on Matt Mahoney's Silesia benchmark as TNSSRC 0.1.0 at 43,724,575. PCC is the ratio leader for working data — 22.7:1 on text, 27:1 on JSON, 500:1 on code.</p>
         <p class="lb-proof"><a href="/pcc">Put it in a pipeline</a> · <a href="/silesia">See the board</a></p>
       </li>
       <li class="lb-row">
@@ -174,7 +174,7 @@
     <p class="lb-secnum" aria-hidden="true">03</p>
     <h2 class="lb-h2" id="about">What it is. What it isn't.</h2>
     <div class="pf-prose">
-      <p><strong>What it is:</strong> A computation and AI company that sells certainty. We build compression engines with independently verified results, and the accountability layer for autonomous agents — identity, mandates, and receipts — then we publish our measurements so customers and investors never have to take our word for anything.</p>
+      <p><strong>What it is:</strong> A computation and AI company that sells certainty. We build compression engines (submitted result, listed on Matt Mahoney's Silesia benchmark as TNSSRC 0.1.0 at 43,724,575) and the accountability layer for autonomous agents — identity, mandates, and receipts — then we publish our measurements so customers and investors never have to take our word for anything.</p>
       <p><strong>What it isn't:</strong> Not a consultancy — we ship products, not hours. Not a model lab — we don't train foundation models or sell tokens; we build the infrastructure that makes other people's agents safe to deploy and cheap to run. Not a demo shop — everything named on this site is live, measured, or explicitly labelled research-stage.</p>
     </div>
   </section>
