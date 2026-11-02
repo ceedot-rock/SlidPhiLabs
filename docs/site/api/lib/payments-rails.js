@@ -303,7 +303,7 @@ export const PRODUCT_CATALOG = {
   },
   "tnssrc-grant": {
     name: "TNSSRC closed grant, one year",
-    amount_cents: 49000,
+    amount_cents: 36900,
     stripe: "https://www.slidphilabs.com/pay?sku=tnssrc-grant",
     kind: "exception",
     list: true,

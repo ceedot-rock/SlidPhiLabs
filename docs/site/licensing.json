@@ -129,6 +129,6 @@
       "pay": "https://www.slidphilabs.com/pay?sku=oss-support"
     },
     "psi-embed-grant": { "usd": 490, "period": "year", "plain": "PSI Embed (shipped code): unified grant $490/product/year. Use, modify, deploy psi closed. psi-month/psi-year SKUs retired.", "pay": "https://www.slidphilabs.com/pay?sku=psi-embed-grant" },
-    "tnssrc-grant": { "usd": 490, "plain": "TNSSRC closed grant, one year, TNSSRC 0.1.0 only. Written grant, human-fulfilled. Founding $190 for the first 10 grants; 3+ products $390 each; renewal at then-current schedule price.", "pay": "https://www.slidphilabs.com/pay?sku=tnssrc-grant" }
+    "tnssrc-grant": { "usd": 369, "plain": "TNSSRC closed grant, one year, TNSSRC 0.1.0 only. Written grant, human-fulfilled. Founding $190 for the first 10 grants; 3+ products $390 each; renewal at then-current schedule price.", "pay": "https://www.slidphilabs.com/pay?sku=tnssrc-grant" }
   }
 }

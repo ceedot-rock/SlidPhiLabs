@@ -131,7 +131,7 @@
       "name": "TNSSRC",
       "role": "compression",
       "url": "https://www.slidphilabs.com/silesia",
-      "price": "AGPL $0 · unified grant $490/product/year (TNSSRC 0.1.0 only)",
+      "price": "AGPL $0 · unified grant $369/product/year (TNSSRC 0.1.0 only)",
       "note": "Door 2. TriNeural Shared Spine Row Compression. Local npcc. 43,724,575 Silesia bytes, 12/12 decode+SHA-256."
     },
     {
@@ -324,7 +324,7 @@
       },
       {
         "sku": "tnssrc-grant",
-        "usd": 490,
+        "usd": 369,
         "human": "/pay?sku=tnssrc-grant",
         "note": "TNSSRC unified grant, 0.1.0 only"
       },

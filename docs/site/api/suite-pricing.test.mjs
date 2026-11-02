@@ -84,7 +84,7 @@ assert.equal(price("pcc-pro"), 2500);
 assert.equal(price("pcc-pro-year"), 25000);
 assert.equal(price("cuni-exception"), 49000);
 assert.equal(price("pulsar-exception"), 49000);
-assert.equal(price("tnssrc-grant"), 49000);
+assert.equal(price("tnssrc-grant"), 36900);
 assert.equal(price("psi-grant"), 49000);
 assert.equal(price("warrant-addon"), 800);
 assert.equal(price("warrant-addon-year"), 8000);

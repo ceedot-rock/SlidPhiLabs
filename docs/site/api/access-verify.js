@@ -345,10 +345,10 @@ const SEATS = {
   },
   "tnssrc-grant": {
     name: "TNSSRC closed grant, one year",
-    list_usd: 490,
+    list_usd: 369,
     unit: "calendar year",
     valid_days: 365,
-    amount_cents: 49000,
+    amount_cents: 36900,
     product: "exception",
     stack: "exception",
     includes: ["Written grant for TNSSRC 0.1.0 for one year. Covers build 0.1.0 only."],
