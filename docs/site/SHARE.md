@@ -27,7 +27,7 @@
 
 ```bash
 npm i slid-phi
-npm i spl-pay-per-suite
+npm i @slidphi/spl-pay-per-suite
 npm i blackjack-compression
 npm i @cptasz13/tru8
 ```

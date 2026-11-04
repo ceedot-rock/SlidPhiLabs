@@ -15,7 +15,7 @@ Canonical catalog: [GET /api/x402-products](https://www.slidphilabs.com/api/x402
 ## Install
 
 ```bash
-npm i spl-pay-per-suite
+npm i @slidphi/spl-pay-per-suite
 npx spl-pay-per-suite quote --bytes 500000000
 npx -y spl-pay-per-suite mcp
 ```
