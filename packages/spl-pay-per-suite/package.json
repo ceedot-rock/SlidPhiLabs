@@ -1,6 +1,7 @@
 {
   "name": "@slidphi/spl-pay-per-suite",
-  "version": "1.2.4",
+  "version": "1.2.5",
+  "mcpName": "io.github.ceedot-rock/spl-pay-per-suite",
   "description": "Dual-licensed hosted compression client, quotes, checkout, and MCP. Open license or a paid grant. First 2 GB/month free, then 8\u00a2/GB.",
   "type": "module",
   "main": "src/index.mjs",

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.ceedot-rock/spl-pay-per-suite",
+  "title": "SPL Pay Per Suite",
+  "description": "Hosted compression client with quotes, checkout, x402 purchase, and job submit. First 2 GB/month free, then 8c/GB. Stdio tools: spl_pps_quote, spl_pps_checkout, spl_pps_submit_job, spl_pps_classify, spl_pps_info, spl_pps_x402_info, spl_pps_x402_requirements, spl_pps_x402_submit.",
+  "version": "1.2.5",
+  "websiteUrl": "https://www.slidphilabs.com/pps",
+  "repository": {
+    "url": "https://github.com/ceedot-rock/SlidPhiLabs",
+    "source": "github",
+    "subfolder": "packages/spl-pay-per-suite"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@slidphi/spl-pay-per-suite",
+      "version": "1.2.5",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

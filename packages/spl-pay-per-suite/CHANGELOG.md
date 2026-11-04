@@ -1,5 +1,9 @@
 # spl-pay-per-suite Changelog
 
+## 1.2.5
+- MCP registry: added mcpName io.github.ceedot-rock/spl-pay-per-suite and
+  server.json manifest for the official MCP Registry.
+
 ## 1.2.4
 - Scoped name: package moved to @slidphi/spl-pay-per-suite to match the
   registry. Unscoped name stays deprecated and keeps resolving.

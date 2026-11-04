@@ -1,0 +1,20 @@
+name: publish-mcp
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install mcp-publisher
+        run: |
+          curl -fsSL -o pub.tgz https://github.com/modelcontextprotocol/registry/releases/download/v1.8.7/mcp-publisher_linux_amd64.tar.gz
+          tar xzf pub.tgz
+          ./mcp-publisher --help >/dev/null
+      - name: Publish suite MCP server
+        run: |
+          ./mcp-publisher login github-oidc
+          ./mcp-publisher publish packages/spl-pay-per-suite/server.json
