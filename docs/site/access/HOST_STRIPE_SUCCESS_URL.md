@@ -30,4 +30,4 @@ Aliases: `truchamber-*` → `tru8-*`.
 
 ## Env
 
-`STRIPE_SECRET_KEY` or `STRIPE_RESTRICTED_KEY` with `checkout.sessions` read on Fly app **slidphilabs**.
+`STRIPE_SECRET_KEY` or `STRIPE_RESTRICTED_KEY` with `checkout.sessions` read on Fly app **spl-slidphilabs**.

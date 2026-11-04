@@ -899,9 +899,8 @@ export async function createStripeCheckoutSession({
       String(description).slice(0, 500)
     );
   }
-  STRIPE_CHECKOUT_METHODS.forEach((m, i) => {
-    params.set(`payment_method_types[${i}]`, m);
-  });
+  // NOTE (2026-11-04): Stripe retired payment_method_types; enabled
+  // methods now come from Dashboard settings > payment methods.
   params.set("metadata[sku]", String(sku || "custom").slice(0, 40));
   params.set("metadata[source]", "spl_universal_checkout");
   for (const [k, v] of Object.entries(metadata)) {
@@ -929,9 +928,6 @@ export async function createStripeCheckoutSession({
       // wipe payment_method_types and set minimal
       const keys = [...fallback.keys()].filter((k) => k.startsWith("payment_method_types"));
       keys.forEach((k) => fallback.delete(k));
-      STRIPE_CHECKOUT_METHODS_FALLBACK.forEach((m, i) =>
-        fallback.set(`payment_method_types[${i}]`, m)
-      );
       const r2 = await fetch("https://api.stripe.com/v1/checkout/sessions", {
         method: "POST",
         headers: {
