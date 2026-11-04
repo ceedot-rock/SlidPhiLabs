@@ -94,3 +94,17 @@ Full records in `pulls.jsonl`. Rule in `README.md`.
 - FCPA settlements reach cartel bribes (A&O, Morgan Lewis, Paul Hastings) — corporate payments thread
 - Garcia Luna 38yr; Mexican fentanyl manufacturer guilty plea; TRM crypto-crime 2026
 - Forfeiture amounts still missing — PACER-direct needed, web search exhausted
+
+- B2B compression prospects merge (2026-11-03): 98 unique companies (20 SaaS/data + 18 media + 20 fin + 20 telecom/IoT + 20 enterprise; verizon.com + att.com media dupes folded into telecom rows) in [prospects-compression-top100.md](../lab-ledger/b2b/prospects-compression-top100.md); 322 scout Tavily pulls appended to pulls.jsonl.
+
+- B2B champion-contact deposit (2026-11-04): 96 Champion rows added to [prospects-compression-top100.md](../lab-ledger/b2b/prospects-compression-top100.md) from 5 hunter segments (19 saas + 17 media + 20 fintech + 20 telecom + 20 enterprise; palantir.com + unity.com unresolved, marked in-file); 229 hunter evidence lines appended to pulls.jsonl (champ-enterprise 20, champ-fintech 61, champ-media 40, champ-saas 40, champ-telecom 68).
+
+## ACN ideas pulls 2026-11-04 (36 records)
+
+- Agentic commerce 2026: consent flows, 6-10% lift stats, Google UCP, trust-as-feature, merchant comfort segments
+- x402 ecosystem: adoption spike vs demand lag, embedded wallets, Q4 gateway/directory/accounting targets, A2A-ledger paper
+- Agent spend: flights/API/inference catalog, pay-per-request wins, USDC default, contract-level caps, wallet architectures
+- MCP monetization: paid-server precedent, 4 models, per-tool mixed pricing, protocol-first multi-rail
+- Cross-chain: 3-cost transparency norm, arb/yield agent segment, CCTP rail candidate, deBridge agent courting
+- Identity: unscoped-tokens worst practice, act-for-vs-as gap, WebMCP trust thread, evidence-chain receipts gap
+

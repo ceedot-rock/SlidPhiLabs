@@ -89,6 +89,75 @@ test("conductor receipt verifies over run inputs", () => {
   assert.equal(bad.valid, false);
 });
 
+test("agentill map covers every stage", async () => {
+  const { AGENTILL_MAP } = await import("./agentic-platform.mjs");
+  for (const s of ["rider", "warrant", "tollkeeper", "quikgater", "pcc", "awlpay", "psi", "conductor"]) {
+    assert.ok(s in AGENTILL_MAP, "missing " + s);
+  }
+  assert.equal(AGENTILL_MAP.warrant.agentill, "core/grants");
+  assert.equal(AGENTILL_MAP.tollkeeper.agentill, "core/tolls");
+});
+
+const SWAP = {
+  from_chain: "base", from_token: "USDC", to_chain: "solana", to_token: "SOL",
+  amount_cents: 50, to_address: "TestAddr11111111111111111111111111111111",
+};
+const fakeQuote = async () => ({ amount_cents: 50, path: [{ chain: "base" }], fees: { free: { fee_cents: 0 } } });
+const fake402 = async () => ({ status: 402, body: { accepts: [{ network: "eip155:8453", amount: "10000", asset: "0xabc" }] } });
+const fakeGatedExec = async (swap, xPayment) => xPayment
+  ? ({ status: 200, body: { ok: true, receipt_id: "r1" } })
+  : ({ status: 402, body: { accepts: [{ network: "eip155:8453", amount: "10000", asset: "0xabc" }] } });
+const fakeDebridge = async () => ({ available: true, usdPriceImpact: -35.5 });
+
+test("awlpay plan is pure intent, run needs swap", async () => {
+  const p = planAgenticRun({ demo: true, action: "invoke", host: "h.test", rail: "awlpay", swap: SWAP });
+  assert.equal(p.ok, true);
+  assert.equal(p.platform, "ACN");
+  assert.equal(p.plan.settle.rail, "awlpay");
+  assert.equal(p.plan.settle.quoted, "live-at-run");
+  const r = await runAgenticRun({ demo: true, action: "invoke", host: "h.test", rail: "awlpay" });
+  assert.equal(r.ok, false);
+  assert.equal(r.reason, "missing_swap");
+});
+
+test("awlpay run stops at 402 with accepts and all-in math", async () => {
+  const r = await runAgenticRun(
+    { demo: true, action: "invoke", host: "h.test", rail: "awlpay", swap: SWAP, debridge: { srcChainId: "8453" } },
+    { awlpayQuoteFn: fakeQuote, awlpayExecuteFn: fake402, debridgeEstimateFn: fakeDebridge },
+  );
+  assert.equal(r.ok, false);
+  assert.equal(r.stage, "awlpay");
+  assert.equal(r.status, 402);
+  assert.equal(r.accepts.length, 1);
+  const fees = r.receipts.find((s) => s.stage === "awlpay-fees");
+  assert.equal(fees.all_in.usdPriceImpact, -35.5);
+  assert.match(fees.agentill, /ledger\/settle/);
+});
+
+test("awlpay run executes with payer proof", async () => {
+  const mem = [];
+  const r = await runAgenticRun(
+    { demo: true, action: "invoke", host: "h.test", rail: "awlpay", swap: SWAP, x_payment: "proof" },
+    { awlpayQuoteFn: fakeQuote, awlpayExecuteFn: fakeGatedExec, memorize: (e) => mem.push(e) },
+  );
+  assert.equal(r.ok, true);
+  assert.equal(r.platform, "ACN");
+  assert.equal(mem.length, 1);
+  const stages = r.receipts.map((s) => s.stage);
+  for (const s of ["awlpay-quote", "awlpay-fees", "awlpay", "psi", "conductor"]) {
+    assert.ok(stages.includes(s), "missing " + s);
+  }
+});
+
+test("awlpay run refuses bad quotes", async () => {
+  const r = await runAgenticRun(
+    { demo: true, action: "invoke", host: "h.test", rail: "awlpay", swap: SWAP },
+    { awlpayQuoteFn: async () => ({ refused: true, reason: "price_disagreement" }) },
+  );
+  assert.equal(r.ok, false);
+  assert.equal(r.reason, "quote_refused");
+});
+
 test("dispatch needs confirm and rejects unknown tools", async () => {
   const need = await dispatchAgentic("spl_agentic_run", { demo: true });
   assert.equal(need.needs, "confirm");

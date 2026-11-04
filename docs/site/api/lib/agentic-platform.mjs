@@ -16,6 +16,24 @@ import { computeQuote } from "../suite-pricing.js";
 export const AGENTIC_VERSION = "0.1.0";
 export const PLATFORM_NAME = "ACN";
 export const PLATFORM_FULL_NAME = "Agent Commerce Network";
+export const AWLPAY_BASE = "https://awlpay.fly.dev";
+
+/**
+ * agenTill counterpart map (read from WalletVerse source, no code copied).
+ * tolls: per-tool metering, integer cents, deterministic receipts, x402.
+ * grants: short-lived scoped grants, tools/scopes/exp, HMAC.
+ * settle: computes and marks platform fees, never moves money.
+ */
+export const AGENTILL_MAP = Object.freeze({
+  rider: { agentill: "core/identity", note: "signed agent identity" },
+  warrant: { agentill: "core/grants", note: "short-lived scoped grants: tools/scopes/exp, HMAC" },
+  tollkeeper: { agentill: "core/tolls", note: "per-tool metering, integer cents, deterministic receipts, x402" },
+  quikgater: { agentill: null, note: "no counterpart; pay-per-fetch stays ACN-side" },
+  pcc: { agentill: null, note: "byte metering stays ACN-side (suite meter)" },
+  awlpay: { agentill: "ledger/settle + core/platformFee", note: "fee computation and mark-collected ledger; ACN executes, agenTill accounts" },
+  psi: { agentill: null, note: "memory stays ACN-side" },
+  conductor: { agentill: "validator/preflight", note: "plan-time validation; run receipts mirror settle ledger entries" },
+});
 
 /** Seven protection tolls, per the Tollkeeper booklet. */
 export const CROSSINGS = Object.freeze([
@@ -62,9 +80,22 @@ export function sha256hex(text) {
  */
 export function settlePreview(amount, spec = {}) {
   const want = String(spec.rail || "auto").toLowerCase();
-  const rail = amount > 0
+  const rail = want === "awlpay" ? "awlpay" : amount > 0
     ? (want === "acp" ? "acp" : want === "stripe" ? "stripe" : want === "none" ? "none" : "x402")
     : "none";
+  if (rail === "awlpay") {
+    const s = spec.swap || {};
+    return {
+      rail,
+      quoted: "live-at-run",
+      from_chain: s.from_chain || null,
+      from_token: s.from_token || null,
+      to_chain: s.to_chain || null,
+      to_token: s.to_token || null,
+      agentill: AGENTILL_MAP.awlpay.agentill,
+      note: "Live AWLpay quote at run; fresh 402 accepts attached; payer signs X-PAYMENT. No keys on this side.",
+    };
+  }
   if (rail === "stripe") {
     return {
       rail,
@@ -188,6 +219,106 @@ export function planAgenticRun(spec = {}) {
  * The warrant paper trail (issue / verify / receipt) is the one disk writer,
  * matching existing spl_warrant_* server behavior.
  */
+/** Live AWLpay app calls. Quote is free; execute spends nothing without a
+ *  payer-signed X-PAYMENT. Defaults are overridable for offline tests. */
+export async function liveAwlpayQuote(swap) {
+  const r = await fetch(`${AWLPAY_BASE}/api/pay/quote`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      from_chain: swap.from_chain, from_token: swap.from_token,
+      to_chain: swap.to_chain, to_token: swap.to_token,
+      amount_cents: Math.max(0, Number(swap.amount_cents) || 0),
+      tier: 0, volume_used_cents: 0, txs_used: 0,
+      to_address: swap.to_address || null,
+    }),
+    signal: AbortSignal.timeout(30000),
+  });
+  return r.json();
+}
+
+export async function liveAwlpayExecute(swap, xPayment, idempotencyKey) {
+  const r = await fetch(`${AWLPAY_BASE}/api/pay/execute`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      ...(xPayment ? { "X-PAYMENT": xPayment } : {}),
+    },
+    body: JSON.stringify({
+      from_chain: swap.from_chain, from_token: swap.from_token,
+      to_chain: swap.to_chain, to_token: swap.to_token,
+      amount_cents: Math.max(0, Number(swap.amount_cents) || 0),
+      tier: 0, volume_used_cents: 0, txs_used: 0,
+      idempotency_key: idempotencyKey || null,
+      to_address: swap.to_address || null,
+    }),
+    signal: AbortSignal.timeout(60000),
+  });
+  return { status: r.status, body: await r.json().catch(() => null) };
+}
+
+/** Best-effort all-in estimate for cross-chain paths. Never throws. */
+export async function liveDebridgeEstimate(swap) {
+  try {
+    const q = new URLSearchParams({
+      srcChainId: String(swap.srcChainId || ""), srcChainTokenIn: swap.srcChainTokenIn || "",
+      srcChainTokenInAmount: String(swap.srcChainTokenInAmount || ""),
+      dstChainId: String(swap.dstChainId || ""), dstChainTokenOut: swap.dstChainTokenOut || "",
+      dstChainTokenOutAmount: "auto",
+    });
+    const r = await fetch(`https://dln.debridge.finance/v1.0/dln/order/create-tx?${q}`, { signal: AbortSignal.timeout(30000) });
+    const j = await r.json();
+    return { available: true, estimation: j.estimation || null, usdPriceImpact: j.usdPriceImpact ?? null };
+  } catch (e) {
+    return { available: false, reason: String((e && e.message) || e).slice(0, 120) };
+  }
+}
+
+/** Live awlpay settle: quote, fresh 402 accepts, all-in math, then execute
+ *  only with a payer-signed X-PAYMENT. Returns receipts plus a verdict. */
+export async function runAwlpaySettle(spec, adapters = {}) {
+  const {
+    awlpayQuoteFn = liveAwlpayQuote,
+    awlpayExecuteFn = liveAwlpayExecute,
+    debridgeEstimateFn = liveDebridgeEstimate,
+  } = adapters;
+  const receipts = [];
+  const swap = spec.swap || {};
+  for (const k of ["from_chain", "from_token", "to_chain", "to_token"]) {
+    if (!swap[k]) return { ok: false, fail: fail("awlpay", "missing_swap", { need: k }), receipts };
+  }
+  const quote = await awlpayQuoteFn({ ...swap, amount_cents: Math.max(0, Number(spec.bytes) || Number(swap.amount_cents) || 0) });
+  if (!quote || quote.refused) {
+    return { ok: false, fail: fail("awlpay", "quote_refused", { quote_reason: (quote && quote.reason) || null }), receipts };
+  }
+  receipts.push({ stage: "awlpay-quote", ok: true, path: quote.path || null, fees: quote.fees || null });
+
+  const probe = await awlpayExecuteFn({ ...swap, amount_cents: quote.amount_cents ?? 0 }, null, spec.idempotency_key || null);
+  const accepts = (probe && probe.body && probe.body.accepts) || null;
+  if (!probe || probe.status !== 402 || !accepts) {
+    return { ok: false, fail: fail("awlpay", "no_challenge", { status: probe ? probe.status : null }), receipts };
+  }
+  let allIn = { available: false, reason: "same-chain path; route price is the full cost" };
+  if (swap.from_chain !== swap.to_chain && spec.debridge) {
+    allIn = await debridgeEstimateFn(spec.debridge);
+  }
+  receipts.push({
+    stage: "awlpay-fees", ok: true,
+    route_price: "per 402 accepts below; flat chain fees included where listed",
+    accepts: accepts.map((a) => ({ network: a.network, amount: a.amount, asset: a.asset })),
+    all_in: allIn,
+    agentill: AGENTILL_MAP.awlpay.agentill,
+  });
+  if (!spec.x_payment) {
+    return { ok: false, fail: { ...fail("awlpay", "payment_required"), status: 402, accepts }, receipts };
+  }
+  const done = await awlpayExecuteFn({ ...swap, amount_cents: quote.amount_cents ?? 0 }, spec.x_payment, spec.idempotency_key || null);
+  if (!done || done.status !== 200 || !(done.body && done.body.ok)) {
+    return { ok: false, fail: fail("awlpay", "execute_failed", { status: done ? done.status : null, body: done ? done.body : null }), receipts };
+  }
+  return { ok: true, receipts, settled: done.body };
+}
+
 export async function runAgenticRun(spec = {}, adapters = {}) {
   const {
     verifyWarrantFn = verifyWarrant,
@@ -271,7 +402,12 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
   const amount = quote.amount_cents || 0;
   const instruction = settlePreview(amount, spec);
   let settled = null;
-  if (amount > 0 && typeof settleFn === "function") {
+  if (instruction.rail === "awlpay") {
+    const live = await runAwlpaySettle(spec, adapters);
+    receipts.push(...live.receipts);
+    if (!live.ok) return { ...live.fail, receipts, memory };
+    settled = live.settled;
+  } else if (amount > 0 && typeof settleFn === "function") {
     settled = await settleFn(instruction);
   } else if (amount > 0 && spec.paid !== true) {
     return { ...fail("awlpay", "payment_required"), status: 402, instruction, receipts, memory };
@@ -336,6 +472,7 @@ export const AGENTIC_TOOLS = Object.freeze([
         rider: { type: "string" },
         crossing: { type: "string" },
         rail: { type: "string" },
+        swap: { type: "object" },
       },
     },
   },
@@ -356,6 +493,9 @@ export const AGENTIC_TOOLS = Object.freeze([
         pay: { type: "boolean" },
         paid: { type: "boolean" },
         rail: { type: "string" },
+        swap: { type: "object" },
+        x_payment: { type: "string" },
+        debridge: { type: "object" },
         confirm: { type: "boolean" },
       },
     },
