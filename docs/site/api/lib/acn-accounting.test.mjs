@@ -1,3 +1,4 @@
+/** ACN. Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE. */
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {

@@ -1,5 +1,6 @@
 /**
  * ACN accounting export — receipts in, CSV out. Pure: no disk, no network.
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * Warrant receipts (usd) + awlpay attestations (amount/fee, accepts[]) +
  * conductor digests (cmd, digest) -> CSV lines + monthly per-operator rollup.
  * Compute-and-mark only: sums and collected flags in memory. Never moves

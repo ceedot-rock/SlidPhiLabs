@@ -5,6 +5,10 @@ If you have a valid paid grant for Slid Phi Labs public site and clients,
 you may use, modify, and deploy Slid Phi Labs public site and clients in a product
 without copyleft source-offer obligations.
 
+Covered works include the site, API, MCP tools, ACN platform runtime,
+Governor contracts, and docs. ACN platform use in closed products rides the
+same paid grant as other hosted API glue; no separate ACN seat exists yet.
+
 A live PCC, Chamber, Rider, Warrant, or Lab Pass seat covers use of the matching public surfaces. Competing hosted compression as a service needs a written commercial grant.
 
 See https://www.slidphilabs.com/pricing

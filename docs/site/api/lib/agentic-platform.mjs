@@ -1,5 +1,6 @@
 /**
  * ACN (Agent Commerce Network) — one runtime over the lab's agent pieces.
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * Rider says who acts. Warrant caps what they may do. Tollkeeper prices the
  * crossing and signs a receipt. Quikgater fetches on 402-then-pay. PCC packs
  * the bytes the suite meter quotes. AWLpay names the fee and the rail, x402
