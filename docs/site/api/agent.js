@@ -320,7 +320,7 @@ export default async function handler(req, res) {
       trade_name: "Slid Phi Labs",
       public_author: "Corey Tasz",
       legal_name_manuscript: "Corey Robert Ptaszenski",
-      entity_claimed: "SLID PHI LABS LLC — New Jersey limited liability company, effective October 16, 2026",
+      entity_claimed: "Slid Phi Labs, Inc. — Delaware corporation",
       roles: ["author", "founder", "copyright holder", "inventor"],
       commercial: "corey@slidphilabs.com",
       humans: "corey@slidphilabs.com",

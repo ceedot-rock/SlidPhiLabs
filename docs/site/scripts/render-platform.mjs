@@ -94,7 +94,7 @@ function chrome(here) {
 }
 
 function foot() {
-  return `<footer class="pf-foot">${FOOT.map(([h, l]) => `<a href="${h}">${l}</a>`).join("")}<p>Slid Phi Labs · Cherry Hill · <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> · © 2026 SLID PHI LABS LLC</p></footer>`;
+  return `<footer class="pf-foot">${FOOT.map(([h, l]) => `<a href="${h}">${l}</a>`).join("")}<p>Slid Phi Labs · Cherry Hill · <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> · © 2026 Slid Phi Labs, Inc</p></footer>`;
 }
 
 function head({ title, desc, path }) {

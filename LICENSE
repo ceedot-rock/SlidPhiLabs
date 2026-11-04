@@ -7,7 +7,7 @@ either grant; closed redistribution follows the grant you chose.
 1. GNU Affero General Public License v3.0 or later
    See LICENSE.AGPL-3.0
 
-2. SLID PHI LABS LLC Commercial License
+2. Slid Phi Labs, Inc Commercial License
    See LICENSE.COMMERCIAL
    Use this to run a closed fork of the public site, HTTP clients, or hosted API glue without AGPL source-offer.
 
@@ -15,11 +15,11 @@ This grant never includes Combined GC, LBR1 / splb / ASMD,
 AWARE encoder source, Chamber kernel, or Agent-Rider signing keys
 unless the invoice names them.
 
-Copyright (c) 2026 SLID PHI LABS LLC.
+Copyright (c) 2026 Slid Phi Labs, Inc.
 
 Legal identity
 - Trade name: Slid Phi Labs
-- Public author / copyright: SLID PHI LABS LLC
+- Public author / copyright: Slid Phi Labs, Inc
 - Legal name on manuscript: Corey Robert Ptaszenski
 
 Seats and current terms: https://www.slidphilabs.com/licensing.json
