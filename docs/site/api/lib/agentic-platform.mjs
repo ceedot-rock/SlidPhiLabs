@@ -10,6 +10,7 @@
  * server behavior (same as spl_warrant_issue / spl_warrant_receipt).
  */
 import { createHash } from "node:crypto";
+import fs from "node:fs";
 import { ACTIONS, cleanChain, fileReceipt, hostAllowed, issueWarrant, verifyWarrant } from "./warrant.mjs";
 import { computeQuote } from "../suite-pricing.js";
 
@@ -187,6 +188,53 @@ function checkBase(spec) {
   return { demo, rider, action, host, crossing, url };
 }
 
+/**
+ * PSI file sink factory. Returns a memorize() that appends observatory-shaped
+ * {d,c,o} lines to filePath. Opt-in only: the caller constructs it and passes
+ * it as the memorize adapter, so MCP and default runs can never write to disk.
+ */
+export function psiFileSink(filePath) {
+  const p = String(filePath || "");
+  if (!p) throw new Error("psiFileSink needs a path");
+  return (entry) => {
+    const line = JSON.stringify({ d: String(entry.d || ""), c: String(entry.c || ""), o: String(entry.o || "") });
+    fs.appendFileSync(p, line + "\n");
+  };
+}
+
+/** CuNi proof check: structural only. The caller ran the check (CLI Studio);
+ *  cryptographic Ed25519 verification belongs to whoever holds CuNi's pubkey.
+ *  Verdict must be pass or refuse; stdout digest recorded when provided. */
+export async function runCuniProof(spec, adapters = {}) {
+  const { cuniVerifyFn = null } = adapters;
+  const proof = spec.cuni || {};
+  const receipt = proof.receipt || null;
+  if (!receipt || typeof receipt !== "object") {
+    return { ok: false, fail: fail("cuni-proof", "missing_receipt"), receipts: [] };
+  }
+  const verdict = String(receipt.verdict || "").toLowerCase();
+  if (verdict !== "pass" && verdict !== "refuse") {
+    return { ok: false, fail: fail("cuni-proof", "bad_verdict", { verdict: receipt.verdict || null }), receipts: [] };
+  }
+  let verified = { structural: true };
+  if (typeof cuniVerifyFn === "function") {
+    verified = await cuniVerifyFn(receipt);
+    if (!verified || verified.ok !== true) {
+      return { ok: false, fail: fail("cuni-proof", "verify_failed", { body: verified || null }), receipts: [] };
+    }
+  }
+  const stdout = receipt.stdout != null ? String(receipt.stdout) : null;
+  return {
+    ok: true,
+    receipts: [{
+      stage: "cuni-proof", ok: true, verdict,
+      stdout_sha256: stdout != null ? sha256hex(stdout) : null,
+      signature_present: receipt.signature != null,
+      verified_by: typeof cuniVerifyFn === "function" ? "caller-adapter" : "structural-only",
+    }],
+  };
+}
+
 /** Offline 402 responder: unpaid URL answers 402, never fetches. */
 export async function planOnlyFetch(url) {
   return {
@@ -223,7 +271,9 @@ export function planAgenticRun(spec = {}) {
     version: AGENTIC_VERSION,
     platform: PLATFORM_NAME,
     plan: {
-      stages: ["rider", "warrant", "tollkeeper", "quikgater", "pcc", "awlpay", "psi", "conductor"],
+      stages: spec.cuni
+        ? ["rider", "warrant", "tollkeeper", "quikgater", "pcc", "cuni", "awlpay", "psi", "conductor"]
+        : ["rider", "warrant", "tollkeeper", "quikgater", "pcc", "awlpay", "psi", "conductor"],
       identity: base.demo ? "demo" : "rider",
       action: base.action,
       host: base.host,
@@ -512,6 +562,12 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
   const quote = computeQuote({ bytes, product: spec.product || "auto", op: spec.op || "compress" });
   receipts.push({ stage: "pcc", ok: true, bytes, amount_cents: quote.amount_cents, free: quote.free });
 
+  if (spec.cuni) {
+    const proof = await runCuniProof(spec, adapters);
+    receipts.push(...proof.receipts);
+    if (!proof.ok) return { ...proof.fail, receipts, memory };
+  }
+
   const amount = quote.amount_cents || 0;
   const instruction = settlePreview(amount, spec);
   let settled = null;
@@ -601,6 +657,7 @@ export const AGENTIC_TOOLS = Object.freeze([
         crossing: { type: "string" },
         rail: { type: "string" },
         swap: { type: "object" },
+        cuni: { type: "object" },
       },
     },
   },
@@ -628,6 +685,7 @@ export const AGENTIC_TOOLS = Object.freeze([
         actor: { type: "string" },
         delegation_mode: { type: "string" },
         parent_receipt: { type: "string" },
+        cuni: { type: "object" },
         confirm: { type: "boolean" },
       },
     },

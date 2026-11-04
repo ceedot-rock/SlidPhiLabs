@@ -312,3 +312,66 @@ test("chain rides verify, receipts, and conductor seals", async () => {
   const bad = verifyConductorReceipt({ action: "invoke", host: "h.test", bytes: 10, amount_cents: 0, chain: [{ actor: "demo" }, { actor: "agent-x" }] }, cond);
   assert.equal(bad.chain_valid, false);
 });
+
+
+test("cuni proof needs a well-formed receipt", async () => {
+  const { runCuniProof } = await import("./agentic-platform.mjs");
+  const missing = await runCuniProof({});
+  assert.equal(missing.ok, false);
+  assert.equal(missing.fail.reason, "missing_receipt");
+  const bad = await runCuniProof({ cuni: { receipt: { verdict: "maybe" } } });
+  assert.equal(bad.ok, false);
+  assert.equal(bad.fail.reason, "bad_verdict");
+  const nope = await runCuniProof(
+    { cuni: { receipt: { verdict: "pass", stdout: "42", signature: "sig" } } },
+    { cuniVerifyFn: async () => ({ ok: false, reason: "drift" }) },
+  );
+  assert.equal(nope.ok, false);
+  assert.equal(nope.fail.reason, "verify_failed");
+});
+
+test("cuni proof records pass with stdout digest", async () => {
+  const { runCuniProof, sha256hex } = await import("./agentic-platform.mjs");
+  const r = await runCuniProof(
+    { cuni: { receipt: { verdict: "pass", stdout: "42", signature: "sig" } } },
+    { cuniVerifyFn: async () => ({ ok: true }) },
+  );
+  assert.equal(r.ok, true);
+  assert.equal(r.receipts[0].stage, "cuni-proof");
+  assert.equal(r.receipts[0].stdout_sha256, sha256hex("42"));
+  assert.equal(r.receipts[0].signature_present, true);
+  assert.equal(r.receipts[0].verified_by, "caller-adapter");
+  const structural = await runCuniProof({ cuni: { receipt: { verdict: "refuse" } } });
+  assert.equal(structural.ok, true);
+  assert.equal(structural.receipts[0].verified_by, "structural-only");
+});
+
+test("cuni stage joins the run when spec carries one", async () => {
+  const p = planAgenticRun({ demo: true, action: "invoke", host: "h.test", cuni: { receipt: { verdict: "pass" } } });
+  assert.ok(p.plan.stages.includes("cuni"));
+  const r = await runAgenticRun(
+    { demo: true, action: "invoke", host: "h.test", bytes: 10, file_receipt: false, cuni: { receipt: { verdict: "pass" } } },
+  );
+  assert.equal(r.ok, true);
+  assert.ok(r.receipts.some((s) => s.stage === "cuni-proof"));
+});
+
+test("psi file sink appends observatory lines, opt-in only", async () => {
+  const { psiFileSink } = await import("./agentic-platform.mjs");
+  const fs = await import("node:fs");
+  const os = await import("node:os");
+  const path = await import("node:path");
+  const f = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "psi-")), "obs.jsonl");
+  const mem = [];
+  const r = await runAgenticRun(
+    { demo: true, action: "invoke", host: "h.test", bytes: 10, file_receipt: false },
+    { memorize: (e) => { mem.push(e); psiFileSink(f)(e); } },
+  );
+  assert.equal(r.ok, true);
+  const lines = fs.readFileSync(f, "utf8").trim().split("\n");
+  assert.equal(lines.length, 1);
+  const logged = JSON.parse(lines[0]);
+  assert.match(logged.d, /^\d{4}-\d{2}-\d{2}$/);
+  assert.equal(logged.c, "ship");
+  assert.throws(() => psiFileSink(""), /needs a path/);
+});
