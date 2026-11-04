@@ -98,3 +98,36 @@ test("tamper fails", () => {
   const v = verifyWarrant(bad);
   assert.equal(v.ok, false);
 });
+
+
+test("delegation chain issues, verifies, and files", () => {
+  const issued = issueWarrant({
+    demo: true,
+    ttl_seconds: 120,
+    chain: [{ actor: "demo", mode: "self" }, { actor: "agent-a", mode: "act-for" }],
+  });
+  assert.equal(issued.ok, true);
+  assert.equal(issued.warrant.chain.length, 2);
+  assert.equal(issued.warrant.chain[0].mode, "self");
+  const badRoot = issueWarrant({ demo: true, ttl_seconds: 120, chain: [{ actor: "someone-else" }] });
+  assert.equal(badRoot.ok, false);
+  assert.equal(badRoot.reason, "chain_root_mismatch");
+  const okA = verifyWarrant(issued.token, { host: "www.slidphilabs.com", action: "invoke", actor: "agent-a", delegation_mode: "act-for" });
+  assert.equal(okA.ok, true);
+  const wrongMode = verifyWarrant(issued.token, { host: "www.slidphilabs.com", action: "invoke", actor: "agent-a", delegation_mode: "act-as" });
+  assert.equal(wrongMode.ok, false);
+  assert.equal(wrongMode.reason, "mode_mismatch");
+  const stranger = verifyWarrant(issued.token, { host: "www.slidphilabs.com", action: "invoke", actor: "agent-x" });
+  assert.equal(stranger.ok, false);
+  assert.equal(stranger.reason, "actor_not_in_chain");
+  const legacy = verifyWarrant(issued.token, { host: "www.slidphilabs.com", action: "invoke" });
+  assert.equal(legacy.ok, true);
+  const r = fileReceipt({
+    token: issued.token, action: "invoke", host: "www.slidphilabs.com", usd: 0.1,
+    actor: "agent-a", evidence_ids: ["ev1"], parent_receipt: "rcp_parent",
+  });
+  assert.equal(r.ok, true);
+  assert.equal(r.receipt.actor, "agent-a");
+  assert.deepEqual(r.receipt.evidence_ids, ["ev1"]);
+  assert.equal(r.receipt.parent_receipt, "rcp_parent");
+});

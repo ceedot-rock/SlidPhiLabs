@@ -127,6 +127,41 @@ function cleanHosts(list) {
   return out.length ? out : ["www.slidphilabs.com"];
 }
 
+export const DELEGATION_MODES = Object.freeze(["self", "act-for", "act-as"]);
+export const MAX_CHAIN = 8;
+
+/** Normalize a delegation chain: [{ actor, mode }], root first. */
+export function cleanChain(list) {
+  const out = [];
+  for (const link of Array.isArray(list) ? list : []) {
+    if (out.length >= MAX_CHAIN) break;
+    const actor = String((link && link.actor) || "").trim().slice(0, 120);
+    if (!actor) continue;
+    const mode = String((link && link.mode) || "act-for").toLowerCase();
+    out.push({ actor, mode: DELEGATION_MODES.includes(mode) ? mode : "act-for" });
+    if (out.length === 1) out[0] = { actor: out[0].actor, mode: "self" };
+  }
+  return out;
+}
+
+/** Find the acting link for an actor, or null. */
+export function matchChain(chain, actor) {
+  const a = String(actor || "").trim();
+  if (!a) return null;
+  return (Array.isArray(chain) ? chain : []).find((l) => l && l.actor === a) || null;
+}
+
+/** Normalize evidence lineage ids: short strings, capped. */
+export function cleanEvidenceIds(list) {
+  const out = [];
+  for (const e of Array.isArray(list) ? list : []) {
+    const s = String(e || "").trim().slice(0, 64);
+    if (s && !out.includes(s)) out.push(s);
+    if (out.length >= 16) break;
+  }
+  return out;
+}
+
 export async function verifyRiderToken(token) {
   if (!token || typeof token !== "string") return { valid: false, reason: "missing_rider" };
   const ctrl = new AbortController();
@@ -173,12 +208,15 @@ export function issueWarrant({
   ttl_seconds = 3600,
   demo = false,
   paid = false,
+  chain: chainIn = [],
 } = {}) {
   const now = Math.floor(Date.now() / 1000);
   const ttl = Math.max(30, Math.min(Number(ttl_seconds) || 3600, 7 * 24 * 3600));
   const agent_id = rider?.agent_id || (demo ? "demo" : "");
   const operator_id = rider?.operator_id || (demo ? "demo" : "");
   if (!agent_id) return { ok: false, reason: "missing_agent" };
+  const chain = cleanChain(chainIn);
+  if (chain.length && chain[0].actor !== operator_id) return { ok: false, reason: "chain_root_mismatch" };
 
   const owner = isOwnerAgent(agent_id);
   if (!paid && !demo && !owner) {
@@ -196,6 +234,7 @@ export function issueWarrant({
     level: rider?.level || (demo ? "L0" : null),
     actions: demo ? ["invoke"] : cleanActions(actions),
     allow_hosts: demo ? ["www.slidphilabs.com", "slidphilabs.fly.dev"] : cleanHosts(allow_hosts),
+    chain,
     max_usd: Math.max(0, Number(max_usd) || 0),
     max_calls: Math.max(1, Math.min(Number(max_calls) || 20, 10000)),
     demo: !!demo,
@@ -225,7 +264,7 @@ export function readWarrant(token) {
   return { ok: true, warrant: rec, payload: parsed.payload };
 }
 
-export function verifyWarrant(token, { host, action } = {}) {
+export function verifyWarrant(token, { host, action, actor, delegation_mode } = {}) {
   const got = readWarrant(token);
   if (!got.ok) return got;
   const w = got.warrant;
@@ -234,6 +273,13 @@ export function verifyWarrant(token, { host, action } = {}) {
   }
   if (host && !hostAllowed(w.allow_hosts, host)) {
     return { ok: false, reason: "host_not_allowed", warrant: w };
+  }
+  if (actor && Array.isArray(w.chain) && w.chain.length) {
+    const link = matchChain(w.chain, actor);
+    if (!link) return { ok: false, reason: "actor_not_in_chain", warrant: w };
+    if (delegation_mode && link.mode !== String(delegation_mode).toLowerCase()) {
+      return { ok: false, reason: "mode_mismatch", warrant: w };
+    }
   }
   if (w.remaining_calls <= 0) return { ok: false, reason: "calls_exhausted", warrant: w };
   return { ok: true, warrant: w };
@@ -248,8 +294,11 @@ export function fileReceipt({
   result_sha256,
   note,
   paid = false,
+  actor,
+  evidence_ids,
+  parent_receipt,
 } = {}) {
-  const check = verifyWarrant(token, { host, action });
+  const check = verifyWarrant(token, { host, action, actor });
   if (!check.ok) return check;
   const w = check.warrant;
   const cost = Math.max(0, Number(usd) || 0);
@@ -273,6 +322,9 @@ export function fileReceipt({
     request_sha256: request_sha256 ? String(request_sha256) : null,
     result_sha256: result_sha256 ? String(result_sha256) : null,
     note: note ? String(note).slice(0, 240) : null,
+    actor: actor ? String(actor).slice(0, 120) : w.agent_id,
+    evidence_ids: cleanEvidenceIds(evidence_ids),
+    parent_receipt: parent_receipt ? String(parent_receipt).slice(0, 64) : null,
     ts: new Date().toISOString(),
   };
   w.remaining_usd = Math.max(0, +(w.remaining_usd - cost).toFixed(6));
@@ -322,6 +374,7 @@ export function publicWarrant(w) {
     level: w.level,
     actions: w.actions,
     allow_hosts: w.allow_hosts,
+    chain: Array.isArray(w.chain) ? w.chain : [],
     max_usd: w.max_usd,
     max_calls: w.max_calls,
     remaining_usd: w.remaining_usd,

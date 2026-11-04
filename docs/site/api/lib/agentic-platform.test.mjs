@@ -190,3 +190,125 @@ test("platform is ACN and acp rail is selectable", async () => {
   assert.equal(run.platform, "ACN");
   assert.equal(captured.rail, "acp");
 });
+
+const CCTP_SWAP = {
+  from_chain: "base", from_token: "USDC", to_chain: "solana", to_token: "USDC",
+  amount_cents: 50, to_address: "TestAddr11111111111111111111111111111111",
+};
+const fakeCctpDeposit = async (d) => {
+  fakeCctpDeposit.seen = d;
+  return { ok: true, txHash: "0xburntx", messageHash: "0xmsg" };
+};
+const fakeCctpAttest = async () => ({ status: "complete", message: "0xmsg", attestation: "0xatt" });
+const fakeCctpMint = async (m) => {
+  fakeCctpMint.seen = m;
+  return { ok: true, txHash: "sol-mint-tx" };
+};
+const cctpAdapters = () => ({ cctpDepositFn: fakeCctpDeposit, cctpAttestationFn: fakeCctpAttest, cctpMintFn: fakeCctpMint });
+
+test("cctp plan previews Base-Solana domains and iris attestations", () => {
+  const p = planAgenticRun({ demo: true, action: "invoke", host: "h.test", rail: "cctp", swap: CCTP_SWAP });
+  assert.equal(p.ok, true);
+  assert.equal(p.plan.settle.rail, "cctp");
+  assert.equal(p.plan.settle.protocol, "cctp-v2");
+  assert.equal(p.plan.settle.token, "USDC");
+  assert.equal(p.plan.settle.from_domain, 6);
+  assert.equal(p.plan.settle.to_domain, 5);
+  assert.equal(p.plan.settle.attestations, "iris-api");
+  assert.equal(p.plan.settle.quoted, "live-at-run");
+  const rev = planAgenticRun({ demo: true, action: "invoke", host: "h.test", rail: "cctp", swap: { ...CCTP_SWAP, from_chain: "solana", to_chain: "base", fast: true } });
+  assert.equal(rev.plan.settle.from_domain, 5);
+  assert.equal(rev.plan.settle.to_domain, 6);
+  assert.equal(rev.plan.settle.fast, true);
+});
+
+test("cctp run validates swap, USDC-only, and known domains", async () => {
+  const noSwap = await runAgenticRun({ demo: true, action: "invoke", host: "h.test", rail: "cctp" }, cctpAdapters());
+  assert.equal(noSwap.ok, false);
+  assert.equal(noSwap.reason, "missing_swap");
+  const wrapped = await runAgenticRun({ demo: true, action: "invoke", host: "h.test", rail: "cctp", swap: { ...CCTP_SWAP, to_token: "SOL" } }, cctpAdapters());
+  assert.equal(wrapped.ok, false);
+  assert.equal(wrapped.reason, "unsupported_token");
+  const unknown = await runAgenticRun({ demo: true, action: "invoke", host: "h.test", rail: "cctp", swap: { ...CCTP_SWAP, to_chain: "hyperliquid" } }, cctpAdapters());
+  assert.equal(unknown.ok, false);
+  assert.equal(unknown.reason, "unsupported_chain");
+});
+
+test("cctp run burns, attests, and mints with receipts", async () => {
+  const mem = [];
+  const r = await runAgenticRun(
+    { demo: true, action: "invoke", host: "h.test", rail: "cctp", swap: CCTP_SWAP },
+    { ...cctpAdapters(), memorize: (e) => mem.push(e) },
+  );
+  assert.equal(r.ok, true);
+  assert.equal(mem.length, 1);
+  const stages = r.receipts.map((s) => s.stage);
+  for (const s of ["cctp-deposit", "cctp-attestation", "cctp-mint", "awlpay", "psi", "conductor"]) {
+    assert.ok(stages.includes(s), "missing " + s);
+  }
+  assert.equal(fakeCctpDeposit.seen.from_domain, 6);
+  assert.equal(fakeCctpDeposit.seen.to_domain, 5);
+  assert.equal(fakeCctpMint.seen.attestation, "0xatt");
+  const settle = r.receipts.find((s) => s.stage === "awlpay");
+  assert.equal(settle.rail, "cctp");
+  assert.equal(settle.captured.tx, "sol-mint-tx");
+  const mint = r.receipts.find((s) => s.stage === "cctp-mint");
+  assert.match(mint.agentill, /ledger\/settle/);
+});
+
+test("cctp run surfaces pending attestation without minting", async () => {
+  let minted = false;
+  const r = await runAgenticRun(
+    { demo: true, action: "invoke", host: "h.test", rail: "cctp", swap: CCTP_SWAP },
+    { ...cctpAdapters(), cctpAttestationFn: async () => ({ status: "pending" }), cctpMintFn: async () => { minted = true; return { ok: true }; } },
+  );
+  assert.equal(r.ok, false);
+  assert.equal(r.reason, "attestation_pending");
+  assert.equal(minted, false);
+  assert.ok(r.receipts.some((s) => s.stage === "cctp-deposit"));
+});
+
+test("cctp fast transfer is gated per source chain", async () => {
+  const slow = await runAgenticRun(
+    { demo: true, action: "invoke", host: "h.test", rail: "cctp", swap: { ...CCTP_SWAP, from_chain: "polygon", fast: true } },
+    cctpAdapters(),
+  );
+  assert.equal(slow.ok, false);
+  assert.equal(slow.reason, "fast_unavailable");
+  // Solana source fails closed to standard flow: Circle marks Solana
+  // Upfront-fees=NO, so fast-from-Solana is not offered.
+  const sol = await runAgenticRun(
+    { demo: true, action: "invoke", host: "h.test", rail: "cctp", swap: { ...CCTP_SWAP, from_chain: "solana", to_chain: "base", fast: true } },
+    cctpAdapters(),
+  );
+  assert.equal(sol.ok, false);
+  assert.equal(sol.reason, "fast_unavailable");
+  const fast = await runAgenticRun(
+    { demo: true, action: "invoke", host: "h.test", rail: "cctp", swap: { ...CCTP_SWAP, fast: true } },
+    cctpAdapters(),
+  );
+  assert.equal(fast.ok, true);
+});
+
+test("cctp run needs deposit and mint adapters", async () => {
+  const r = await runAgenticRun(
+    { demo: true, action: "invoke", host: "h.test", rail: "cctp", swap: CCTP_SWAP },
+    { cctpAttestationFn: fakeCctpAttest },
+  );
+  assert.equal(r.ok, false);
+  assert.equal(r.reason, "adapter_required");
+});
+
+
+test("chain rides verify, receipts, and conductor seals", async () => {
+  const chain = [{ actor: "demo", mode: "self" }, { actor: "agent-a", mode: "act-for" }];
+  const r = await runAgenticRun({ demo: true, action: "invoke", host: "h.test", bytes: 10, actor: "agent-a", chain, file_receipt: false });
+  assert.equal(r.ok, true);
+  const cond = r.receipts.find((s) => s.stage === "conductor");
+  assert.deepEqual(cond.chain, [{ actor: "demo", mode: "self" }, { actor: "agent-a", mode: "act-for" }]);
+  const v = verifyConductorReceipt({ action: "invoke", host: "h.test", bytes: 10, amount_cents: 0, chain }, cond);
+  assert.equal(v.valid, true);
+  assert.equal(v.chain_valid, true);
+  const bad = verifyConductorReceipt({ action: "invoke", host: "h.test", bytes: 10, amount_cents: 0, chain: [{ actor: "demo" }, { actor: "agent-x" }] }, cond);
+  assert.equal(bad.chain_valid, false);
+});

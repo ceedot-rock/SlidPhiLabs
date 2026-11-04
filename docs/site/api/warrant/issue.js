@@ -62,6 +62,7 @@ export default async function handler(req, res) {
     ttl_seconds: body.ttl_seconds || (demo ? 600 : 3600),
     demo,
     paid,
+    chain: body.chain,
   });
   if (!out.ok) {
     const code = out.reason === "free_issue_cap" ? 402 : 400;

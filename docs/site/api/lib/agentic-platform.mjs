@@ -10,7 +10,7 @@
  * server behavior (same as spl_warrant_issue / spl_warrant_receipt).
  */
 import { createHash } from "node:crypto";
-import { ACTIONS, fileReceipt, hostAllowed, issueWarrant, verifyWarrant } from "./warrant.mjs";
+import { ACTIONS, cleanChain, fileReceipt, hostAllowed, issueWarrant, verifyWarrant } from "./warrant.mjs";
 import { computeQuote } from "../suite-pricing.js";
 
 export const AGENTIC_VERSION = "0.1.0";
@@ -73,14 +73,16 @@ export function sha256hex(text) {
 }
 
 /**
- * Settle preview shared by plan and run. Two rails: x402 captures agent USDC
- * for metered usage; acp opens an Agentic Checkout Session (OpenAI + Stripe:
+ * Settle preview shared by plan and run. Rails: x402 captures agent USDC
+ * for metered usage; cctp moves native USDC cross-chain (Base <-> Solana
+ * via Circle CCTP V2 burn-and-mint, Iris attestation, no wrapped tokens);
+ * acp opens an Agentic Checkout Session (OpenAI + Stripe:
  * POST checkout_sessions, scoped single-use payment token, merchant of
  * record stays the merchant) for SKU/seat purchases. Pure: no network.
  */
 export function settlePreview(amount, spec = {}) {
   const want = String(spec.rail || "auto").toLowerCase();
-  const rail = want === "awlpay" ? "awlpay" : amount > 0
+  const rail = want === "awlpay" ? "awlpay" : want === "cctp" ? "cctp" : amount > 0
     ? (want === "acp" ? "acp" : want === "stripe" ? "stripe" : want === "none" ? "none" : "x402")
     : "none";
   if (rail === "awlpay") {
@@ -94,6 +96,25 @@ export function settlePreview(amount, spec = {}) {
       to_token: s.to_token || null,
       agentill: AGENTILL_MAP.awlpay.agentill,
       note: "Live AWLpay quote at run; fresh 402 accepts attached; payer signs X-PAYMENT. No keys on this side.",
+    };
+  }
+  if (rail === "cctp") {
+    const s = spec.swap || {};
+    const from = String(s.from_chain || "").toLowerCase();
+    const to = String(s.to_chain || "").toLowerCase();
+    return {
+      rail,
+      protocol: "cctp-v2",
+      token: "USDC",
+      from_chain: from || null,
+      from_domain: from in CCTP_DOMAINS ? CCTP_DOMAINS[from] : null,
+      to_chain: to || null,
+      to_domain: to in CCTP_DOMAINS ? CCTP_DOMAINS[to] : null,
+      fast: s.fast === true,
+      attestations: "iris-api",
+      quoted: "live-at-run",
+      agentill: AGENTILL_MAP.awlpay.agentill,
+      note: "CCTP V2: USDC burns on the source chain and mints natively on the destination; Circle Iris attests the message before mint. No wrapped tokens, no keys on this side.",
     };
   }
   if (rail === "stripe") {
@@ -186,14 +207,17 @@ export function planAgenticRun(spec = {}) {
   const quote = computeQuote({ bytes, product: spec.product || "auto", op: spec.op || "compress" });
   const amount = quote.amount_cents || 0;
   const settle = settlePreview(amount, spec);
-  const canonical = JSON.stringify({
+  const planChain = cleanChain(spec.chain || []);
+  const planShape = {
     v: AGENTIC_VERSION,
     action: base.action,
     host: base.host,
     url: base.url ? base.url.href : null,
     bytes,
     amount_cents: amount,
-  });
+  };
+  if (planChain.length) planShape.chain = planChain;
+  const canonical = JSON.stringify(planShape);
   return {
     ok: true,
     version: AGENTIC_VERSION,
@@ -272,6 +296,95 @@ export async function liveDebridgeEstimate(swap) {
   } catch (e) {
     return { available: false, reason: String((e && e.message) || e).slice(0, 120) };
   }
+}
+
+/** CCTP V2 USDC domains (subset of the Circle supported-chains table).
+ *  Excluded fail closed: BNB Smart Chain (USYC only), Stellar (address
+ *  precision/encoding caveat), Sui/Aptos/Noble (V1-only per Circle). */
+export const CCTP_DOMAINS = Object.freeze({
+  ethereum: 0, avalanche: 1, optimism: 2, "op-mainnet": 2, arbitrum: 3,
+  solana: 5, base: 6, polygon: 7, unichain: 10, linea: 11,
+});
+
+/** Source chains where Fast Transfer beats standard attestation, per the
+ *  Circle supported-chains table (restricted to CCTP_DOMAINS keys).
+ *  Solana is deliberately excluded: Circle marks Solana source
+ *  Upfront-fees=NO, so fast-from-Solana fails closed to standard flow. */
+export const CCTP_FAST_SOURCES = Object.freeze([
+  "ethereum", "arbitrum", "optimism", "op-mainnet",
+  "base", "unichain", "linea",
+]);
+
+/** Live Circle Iris V2 attestation read. Pure GET, never signs. Returns a
+ *  normalized { status, message, attestation }; status === "complete"
+ *  means the destination mint may proceed. */
+export async function liveCctpAttestation({ source_domain, tx_hash }) {
+  const r = await fetch(`https://iris-api.circle.com/v2/messages/${source_domain}?transactionHash=${tx_hash}`, {
+    signal: AbortSignal.timeout(30000),
+  });
+  const body = await r.json().catch(() => null);
+  const msg = body && Array.isArray(body.messages) ? body.messages[0] : body;
+  return {
+    status: (msg && msg.status) || null,
+    message: (msg && msg.message) || null,
+    attestation: (msg && msg.attestation) || null,
+  };
+}
+
+/** CCTP V2 USDC settle: deposit-for-burn on the source chain, Circle Iris
+ *  attestation, then mint on the destination. Deposit/mint sign, so they
+ *  need caller adapters; attestation defaults to the live Iris read.
+ *  Pure except through the injected adapters. Returns receipts plus
+ *  a verdict, mirroring runAwlpaySettle. */
+export async function runCctpSettle(spec, adapters = {}) {
+  const {
+    cctpDepositFn = null,
+    cctpAttestationFn = liveCctpAttestation,
+    cctpMintFn = null,
+  } = adapters;
+  const receipts = [];
+  const swap = spec.swap || {};
+  for (const k of ["from_chain", "to_chain"]) {
+    if (!swap[k]) return { ok: false, fail: fail("cctp", "missing_swap", { need: k }), receipts };
+  }
+  const from = String(swap.from_chain).toLowerCase();
+  const to = String(swap.to_chain).toLowerCase();
+  if (!(from in CCTP_DOMAINS)) return { ok: false, fail: fail("cctp", "unsupported_chain", { chain: swap.from_chain }), receipts };
+  if (!(to in CCTP_DOMAINS)) return { ok: false, fail: fail("cctp", "unsupported_chain", { chain: swap.to_chain }), receipts };
+  const tokens = [swap.from_token, swap.to_token].filter(Boolean).map((t) => String(t).toUpperCase());
+  if (tokens.length > 0 && !tokens.every((t) => t === "USDC")) {
+    return { ok: false, fail: fail("cctp", "unsupported_token", { tokens }), receipts };
+  }
+  const amount_cents = Math.max(0, Number(swap.amount_cents) || 0);
+  if (amount_cents <= 0) return { ok: false, fail: fail("cctp", "missing_swap", { need: "amount_cents" }), receipts };
+  const fast = swap.fast === true;
+  if (fast && !CCTP_FAST_SOURCES.includes(from)) {
+    return { ok: false, fail: fail("cctp", "fast_unavailable", { chain: swap.from_chain }), receipts };
+  }
+  if (typeof cctpDepositFn !== "function" || typeof cctpMintFn !== "function") {
+    return { ok: false, fail: fail("cctp", "adapter_required", { need: "cctpDepositFn+cctpMintFn" }), receipts };
+  }
+  const from_domain = CCTP_DOMAINS[from];
+  const to_domain = CCTP_DOMAINS[to];
+  const deposit = await cctpDepositFn({
+    from_chain: from, from_domain, to_chain: to, to_domain,
+    token: "USDC", amount_cents, fast, to_address: swap.to_address || null,
+  });
+  if (!deposit || deposit.ok !== true || !deposit.txHash) {
+    return { ok: false, fail: fail("cctp", "deposit_failed", { body: deposit || null }), receipts };
+  }
+  receipts.push({ stage: "cctp-deposit", ok: true, from_domain, to_domain, token: "USDC", amount_cents, fast, tx: deposit.txHash });
+  const att = await cctpAttestationFn({ source_domain: from_domain, tx_hash: deposit.txHash });
+  if (!att || att.status !== "complete" || !att.attestation) {
+    return { ok: false, fail: fail("cctp", "attestation_pending", { status: att ? att.status : null, tx: deposit.txHash }), receipts };
+  }
+  receipts.push({ stage: "cctp-attestation", ok: true, via: "iris-api", tx: deposit.txHash });
+  const minted = await cctpMintFn({ to_chain: to, to_domain, message: att.message || null, attestation: att.attestation });
+  if (!minted || minted.ok !== true) {
+    return { ok: false, fail: fail("cctp", "mint_failed", { body: minted || null }), receipts };
+  }
+  receipts.push({ stage: "cctp-mint", ok: true, to_domain, tx: minted.txHash || null, agentill: AGENTILL_MAP.awlpay.agentill });
+  return { ok: true, receipts, settled: { tx: minted.txHash || null, to_domain, deposit_tx: deposit.txHash } };
 }
 
 /** Live awlpay settle: quote, fresh 402 accepts, all-in math, then execute
@@ -353,7 +466,7 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     warrant = issued.warrant;
   } else {
     if (!token) return { ...fail("warrant", "missing_warrant"), receipts, memory };
-    const v = verifyWarrantFn(token, { host: base.host, action: base.action });
+    const v = verifyWarrantFn(token, { host: base.host, action: base.action, actor: spec.actor, delegation_mode: spec.delegation_mode });
     if (!v.ok) return { ...fail("warrant", v.reason || "warrant_invalid"), receipts, memory };
     warrant = v.warrant;
   }
@@ -407,6 +520,11 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     receipts.push(...live.receipts);
     if (!live.ok) return { ...live.fail, receipts, memory };
     settled = live.settled;
+  } else if (instruction.rail === "cctp") {
+    const live = await runCctpSettle(spec, adapters);
+    receipts.push(...live.receipts);
+    if (!live.ok) return { ...live.fail, receipts, memory };
+    settled = live.settled;
   } else if (amount > 0 && typeof settleFn === "function") {
     settled = await settleFn(instruction);
   } else if (amount > 0 && spec.paid !== true) {
@@ -418,16 +536,19 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
   sink(entry);
   receipts.push({ stage: "psi", ok: true, logged: true });
 
-  const canonical = JSON.stringify({
+  const runShape = {
     v: AGENTIC_VERSION,
     action: base.action,
     host: base.host,
     url: base.url ? base.url.href : null,
     bytes,
     amount_cents: amount,
-  });
+  };
+  const chain = cleanChain(spec.chain || []);
+  if (chain.length) runShape.chain = chain;
+  const canonical = JSON.stringify(runShape);
   const digest = sha256hex(canonical);
-  receipts.push({ stage: "conductor", ok: true, cmd: "spl_agentic_run", seed: digest.slice(0, 16), digest });
+  receipts.push({ stage: "conductor", ok: true, cmd: "spl_agentic_run", seed: digest.slice(0, 16), digest, chain });
 
   if (token && spec.file_receipt !== false) {
     const r = fileReceiptFn({
@@ -438,6 +559,9 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
       request_sha256: digest,
       result_sha256: digest,
       note: "agentic-platform",
+      actor: spec.actor,
+      evidence_ids: [digest],
+      parent_receipt: spec.parent_receipt || null,
     });
     receipts.push({ stage: "warrant-receipt", ok: r.ok === true, reason: r.ok ? undefined : r.reason || null });
   }
@@ -446,15 +570,19 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
 
 /** Recompute a conductor receipt over the run inputs. */
 export function verifyConductorReceipt(runSpec, receipt) {
-  const canonical = JSON.stringify({
+  const norm = cleanChain(runSpec.chain || []);
+  const shape = {
     v: AGENTIC_VERSION,
     action: String(runSpec.action || "invoke").toLowerCase(),
     host: String(runSpec.host || "").trim(),
     url: runSpec.url ? String(runSpec.url) : null,
     bytes: Math.max(0, Number(runSpec.bytes) || 0),
     amount_cents: Number(runSpec.amount_cents) || 0,
-  });
-  return { valid: sha256hex(canonical) === (receipt ? receipt.digest : null), digest: sha256hex(canonical) };
+  };
+  if (norm.length) shape.chain = norm;
+  const canonical = JSON.stringify(shape);
+  const chainValid = !norm.length || JSON.stringify((receipt && receipt.chain) || null) === JSON.stringify(norm);
+  return { valid: sha256hex(canonical) === (receipt ? receipt.digest : null), chain_valid: chainValid, digest: sha256hex(canonical) };
 }
 
 export const AGENTIC_TOOLS = Object.freeze([
@@ -496,6 +624,10 @@ export const AGENTIC_TOOLS = Object.freeze([
         swap: { type: "object" },
         x_payment: { type: "string" },
         debridge: { type: "object" },
+        chain: { type: "array" },
+        actor: { type: "string" },
+        delegation_mode: { type: "string" },
+        parent_receipt: { type: "string" },
         confirm: { type: "boolean" },
       },
     },

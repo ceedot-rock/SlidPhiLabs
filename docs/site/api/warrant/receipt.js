@@ -39,6 +39,9 @@ export default function handler(req, res) {
     result_sha256: body.result_sha256,
     note: body.note,
     paid,
+    actor: body.actor,
+    evidence_ids: body.evidence_ids,
+    parent_receipt: body.parent_receipt,
   });
   if (!out.ok) {
     const code = out.reason === "free_receipt_cap" ? 402 : out.reason === "missing_warrant" || out.reason === "bad_signature" ? 401 : 400;
