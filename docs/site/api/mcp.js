@@ -6,6 +6,7 @@ import { signup, login, issueAgentKey } from "./lib/lab-auth.mjs";
 import { catalogTools, dispatchCatalog } from "./lib/mcp-catalogs.mjs";
 import { computeQuote } from "./suite-pricing.js";
 import { issueWarrant, verifyWarrant, fileReceipt, productCard as warrantCard } from "./lib/warrant.mjs";
+import { AGENTIC_TOOLS, dispatchAgentic } from "./lib/agentic-platform.mjs";
 import { encodeHosted, decodeFrame } from "./lib/specialist.mjs";
 import { packArchive, crc32 } from "./lib/pccz.mjs";
 import { unpackMembers } from "./archive.js";
@@ -134,6 +135,7 @@ const COMMERCE = [
       },
     },
   },
+  ...AGENTIC_TOOLS,
 ];
 
 export const SERVER_CARD = {
@@ -312,6 +314,9 @@ async function callTool(name, args = {}) {
       result_sha256: args.result_sha256,
       note: args.note,
     });
+  }
+  if (name === "spl_agentic_plan" || name === "spl_agentic_run") {
+    return dispatchAgentic(name, args);
   }
   throw new Error("Unknown tool: " + name);
 }
