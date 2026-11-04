@@ -5,7 +5,7 @@
  * Body: { name, intent, seed }
  * - seed must be exactly 33 UTF-8 bytes (Creator seal)
  * - seed is NEVER stored or returned — only SHA-256 hash → identity token
- * - grants: public unpaid cap only (codec, first 2 GB/month free)
+ * - grants: public unpaid cap only (codec, first 1 GB free once per IP)
  * - no Smart Box, no residual coeffs, no living shard names
  */
 import { createHash, randomUUID } from "node:crypto";
@@ -238,7 +238,7 @@ export default async function handler(req, res) {
     grants: grants(),
     next: [
       "Save your token offline",
-      "Open /pps for Suite (first 2 GB/month free)",
+      "Open /pps for Suite (first 1 GB free, once per IP)",
       "Open /standings for ZRW 8 B proof",
       "Open /web to compress",
       "Walk the lattice — do not seek private lab keys",

@@ -1,13 +1,13 @@
 /**
- * Monthly byte counter for the hosted compressor.
- * Identity: paid seat, else the 24h box cookie, else IP.
- * Stored on the Fly volume (AUTH_DIR) so it survives restarts.
+ * Byte counter for the hosted compressor.
+ * Paid seats reset monthly. Everyone else draws a 1 GB lifetime allowance
+ * keyed by IP (no monthly reset). Stored on the Fly volume (AUTH_DIR) so it survives restarts.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { parseCookies } from "./spl-box-gate.js";
-import { includedBytesForSku, FREE_GB, CENTS_PER_GB, computeQuote } from "../suite-pricing.js";
+import { includedBytesForSku, FREE_GB, FREE_WINDOW, CENTS_PER_GB, computeQuote } from "../suite-pricing.js";
 import { seatFromClaimHeader } from "./claim-seat.mjs";
 import { isOwnerEmail } from "./owner-gratis.mjs";
 
@@ -45,27 +45,31 @@ export function identityFromReq(req) {
   const h = req.headers || {};
   const sku = String(h["x-spl-seat"] || h["x-spl-sku"] || "").toLowerCase();
   const id = String(h["x-spl-seat-id"] || "");
-  if (sku && id) return { key: `seat:${sku}:${id}`, sku };
+  if (sku && id) return { key: `seat:${sku}:${id}`, sku, via: "seat" };
   const box = parseCookies(req).spl_box || String(h["x-spl-box"] || "");
-  if (box) return { key: `box:${box.split(".")[0]}`, sku: "" };
+  const hasBox = String(box).length > 0;
   const ip = String(h["x-forwarded-for"] || h["x-real-ip"] || "").split(",")[0].trim() || "anon";
-  return { key: `ip:${ip}`, sku: "" };
+  return { key: `ip:${ip}`, sku: "", via: hasBox ? "box" : "ip" };
 }
 
 function pathFor(key, month) {
-  const safe = String(key).replace(/[^a-zA-Z0-9:_-]/g, "_").slice(0, 120);
-  const dir = join(rootDir(), "usage", month);
+  const lifetime = !String(key).startsWith("seat:");
+  const safe = lifetime
+    ? String(key).replace(/[^a-zA-Z0-9_-]/g, "_").slice(0, 120)
+    : String(key).replace(/[^a-zA-Z0-9:_-]/g, "_").slice(0, 120);
+  const dir = join(rootDir(), "usage", lifetime ? "lifetime" : month);
   return { dir, file: join(dir, `${safe}.json`) };
 }
 
 export function readUsage(key, month = monthKey()) {
-  const { file } = pathFor(key, month);
-  if (!existsSync(file)) return { key, month, bytes: 0, jobs: 0 };
+  const bucket = String(key).startsWith("seat:") ? month : "lifetime";
+  const { file } = pathFor(key, bucket);
+  if (!existsSync(file)) return { key, month: bucket, bytes: 0, jobs: 0 };
   try {
     const j = JSON.parse(readFileSync(file, "utf8"));
-    return { key, month, bytes: Number(j.bytes) || 0, jobs: Number(j.jobs) || 0 };
+    return { key, month: bucket, bytes: Number(j.bytes) || 0, jobs: Number(j.jobs) || 0 };
   } catch {
-    return { key, month, bytes: 0, jobs: 0 };
+    return { key, month: bucket, bytes: 0, jobs: 0 };
   }
 }
 
@@ -74,7 +78,7 @@ export function addUsage(key, n, month = monthKey()) {
   const { dir, file } = pathFor(key, month);
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true, mode: 0o700 });
   const cur = readUsage(key, month);
-  const next = { key, month, bytes: cur.bytes + add, jobs: cur.jobs + (add ? 1 : 0) };
+  const next = { key, month: cur.month, bytes: cur.bytes + add, jobs: cur.jobs + (add ? 1 : 0) };
   writeFileSync(file, JSON.stringify(next), { mode: 0o600 });
   return next;
 }
@@ -88,9 +92,10 @@ export function meterSnapshot(req, extraBytes = 0) {
   const remaining = Math.max(0, included - used.bytes);
   const quote = computeQuote({ bytes: extraBytes, used_bytes: used.bytes, sku: id.sku });
   return {
-    identity: owner ? "owner" : id.key.startsWith("seat:") ? "paid" : id.key.startsWith("box:") ? "try" : "anon",
+    identity: owner ? "owner" : id.key.startsWith("seat:") ? "paid" : id.via === "box" ? "try" : "anon",
     sku: id.sku || null,
     month: used.month,
+    window: id.key.startsWith("seat:") ? "calendar_month" : FREE_WINDOW,
     used_bytes: used.bytes,
     jobs: used.jobs,
     included_bytes: included,

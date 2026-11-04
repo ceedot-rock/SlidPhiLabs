@@ -1,5 +1,5 @@
 /**
- * Served compression meter (blank-slate pricing, 2026-10-30).
+ * Served compression meter (blank-slate pricing, 2026-10-30; free tier lifetime-per-IP since 2026-11-04).
  * Single rate per GB of INPUT: $0.25/GB pay-as-you-go, first 1 GB each
  * month free. Pro plan $25/month includes 100 GB, then $0.20/GB.
  * Customer-set monthly spend cap (default $25 pay-as-you-go), alert at
@@ -11,6 +11,7 @@
  */
 export const FREE_GB = 1;
 export const FREE_BYTES = 1 * 1024 * 1024 * 1024;
+export const FREE_WINDOW = "lifetime";
 export const CENTS_PER_GB = 25;
 export const PRO_CENTS_PER_GB = 20;
 export const PRO_INCLUDED_GB = 100;
@@ -86,12 +87,12 @@ export function computeQuote({
     pro_usd_per_gb: PRO_CENTS_PER_GB / 100,
     applied_usd_per_gb: rate / 100,
     min_paid_usd: MIN_PAID_CENTS / 100,
-    window: "calendar_month",
+    window: FREE_WINDOW,
     cap_default_cents: DEFAULT_CAP_CENTS,
     alert_fraction: ALERT_FRACTION,
     alert_at_cents: Math.round(DEFAULT_CAP_CENTS * ALERT_FRACTION),
   };
-  const plain_free = `First ${FREE_GB} GB of input each month is free. After that, $${(CENTS_PER_GB / 100).toFixed(2)}/GB (Pro plan: 100 GB included, then $${(PRO_CENTS_PER_GB / 100).toFixed(2)}/GB). Card charges start at $1. Monthly spend cap default $${(DEFAULT_CAP_CENTS / 100).toFixed(0)}, alert at 80%.`;
+  const plain_free = `First ${FREE_GB} GB of input is free, once per IP address. After that, $${(CENTS_PER_GB / 100).toFixed(2)}/GB (Pro plan: 100 GB included, then $${(PRO_CENTS_PER_GB / 100).toFixed(2)}/GB). Card charges start at $1. Monthly spend cap default $${(DEFAULT_CAP_CENTS / 100).toFixed(0)}, alert at 80%.`;
   if (free) {
     return {
       ok: true,

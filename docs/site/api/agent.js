@@ -30,7 +30,7 @@ const STANDING = [
   { sku: "chamber-month", name: "Chamber · monthly cloak license", usd: "20", kind: "chamber", blurb: "License to seal new JSON for 30 days. 24-hour try. Open already-sealed blobs with both keys; opening is free forever." },
   { sku: "chamber-year", name: "Chamber · annual cloak license", usd: "200", kind: "chamber", blurb: "License to seal new JSON for a year. Stored secrets do not expire." },
   { sku: "pcc-pro", name: "PCC Pro · monthly", usd: "25", kind: "pcc", blurb: "Compression through your tools. 100 GB included this month, then $0.20/GB. Meter: first 1 GB/month free, then $0.25/GB of input; customer-set cap (default $25), alert at 80%." },
-  { sku: "suite", name: "PCC usage", usd: "meter", kind: "pcc", blurb: "First 1 GB each month free, then $0.25/GB of input. Customer-set monthly spend cap (default $25), alert at 80%." },
+  { sku: "suite", name: "PCC usage", usd: "meter", kind: "pcc", blurb: "First 1 GB free once per IP, then $0.25/GB of input. Customer-set monthly spend cap (default $25), alert at 80%." },
   { sku: "lab-check", name: "CuNi check", usd: "0.10", kind: "cuni", blurb: "One exactness check." },
   { sku: "lab-translate", name: "CuNi Bank paste", usd: "0.10", kind: "cuni", blurb: "One Bank paste." },
   { sku: "lab-squeeze", name: "PCCX squeeze", usd: "0.10", kind: "pccx", blurb: "One squeeze." },
@@ -194,7 +194,7 @@ export default async function handler(req, res) {
     starter_path: "https://www.slidphilabs.com/pcc",
     suite_pricing: {
       free_cap_gb: 1,
-      window: "calendar_month",
+      window: "lifetime",
       min_paid_usd: 1,
       usd_per_gb_after_free: 0.25,
       pro_usd_per_gb: 0.2,
@@ -205,7 +205,7 @@ export default async function handler(req, res) {
       try_gate: "retired",
       quote: "POST /api/ppp-quote",
       mcp_quote: "spl_quote on https://www.slidphilabs.com/mcp",
-      note: "First 1 GB of input each month free. Then $0.25 per GB. Pro plan: 100 GB included, then $0.20/GB. Card charges start at $1.",
+      note: "First 1 GB of input free, once per IP address. Then $0.25 per GB. Pro plan: 100 GB included, then $0.20/GB. Card charges start at $1.",
     },
     npm: {
       catalog: "https://www.slidphilabs.com/npm",

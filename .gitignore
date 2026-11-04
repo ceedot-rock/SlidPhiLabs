@@ -5,6 +5,7 @@ __pycache__/
 lab/benches/
 *.pt
 node_modules/
+vendor/
 docs/site/data/lab-users.json
 docs/site/data/auth-secret.txt
 

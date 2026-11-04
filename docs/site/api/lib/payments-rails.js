@@ -105,7 +105,7 @@ export const PRODUCT_CATALOG = {
     stripe: "https://www.slidphilabs.com/pay?sku=pcc-pro",
     kind: "pcc",
     list: true,
-    blurb: "Compression through your tools. 100 GB of input included each month, then $0.20/GB. Pay-as-you-go without a plan is $0.25/GB; first 1 GB/month free.",
+    blurb: "Compression through your tools. 100 GB of input included each month, then $0.20/GB. Pay-as-you-go without a plan is $0.25/GB; first 1 GB free once per IP.",
     meter: { unit: "GB input", included_gb: 100, overage_cents_per_gb: 20, alert_fraction: 0.8 },
   },
   "pcc-pro-year": {
@@ -343,7 +343,7 @@ export const PRODUCT_CATALOG = {
     sell: false,
     page: "https://www.slidphilabs.com/pps",
     x402: "POST https://www.slidphilabs.com/api/x402-suite",
-    blurb: "PCC meter: $0.25 per GB of input. First 1 GB each month free; Pro $25/month includes 100 GB, then $0.20/GB. Customer-set monthly cap (default $25), 80% alert. Agents: POST /api/x402-suite. Not a seat SKU.",
+    blurb: "PCC meter: $0.25 per GB of input. First 1 GB free once per IP; Pro $25/month includes 100 GB, then $0.20/GB. Customer-set monthly cap (default $25), 80% alert. Agents: POST /api/x402-suite. Not a seat SKU.",
     meter: { unit: "GB input", free_gb: 1, rate_cents: 25, pro_rate_cents: 20, pro_included_gb: 100, cap_default_cents: 2500, alert_fraction: 0.8 },
   },
   quikgater: {
@@ -812,6 +812,7 @@ export function buildPaymentsMatrix(req) {
       audience: ["humans", "agents"],
       configured: true,
       free_cap_gb: 1,
+      free_window: "lifetime",
       after_free_usd_per_gb: 0.25,
       human: `POST ${origin}/api/ppp-checkout`,
       agent: `POST ${origin}/api/x402-suite`,

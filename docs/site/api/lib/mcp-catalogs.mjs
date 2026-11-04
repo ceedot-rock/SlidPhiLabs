@@ -18,7 +18,7 @@ export const CATALOGS = [
       { id: "rider-fleet", name: "Rider Fleet", price: "$199/mo", note: "Signed identity for AI agents. 100 identities, 50,000 verifications/month.", url: "https://agentrider.fly.dev/", related: ["rider"] },
       { id: "rider-ops-month", name: "Rider Ops month", price: "$37/mo", note: "Fleet watch when a signed agent goes quiet. Needs a Rider seat.", url: SITE + "/pay?sku=rider-ops-month", related: ["rider"] },
       { id: "rider-ops-year", name: "Rider Ops year", price: "$369/yr", note: "Fleet watch when a signed agent goes quiet. Needs a Rider seat.", url: SITE + "/pay?sku=rider-ops-year", related: ["rider"] },
-      { id: "suite", name: "PCC metered jobs", price: "1 GB/mo free, then $0.25/GB", note: "First 1 GB of input each month free. Then $0.25 per GB. Pro plan: 100 GB included, then $0.20/GB. Compare: /compare. Quote: POST /api/ppp-quote.", url: SITE + "/compare", related: ["aware", "rail"] },
+      { id: "suite", name: "PCC metered jobs", price: "1 GB free once per IP, then $0.25/GB", note: "First 1 GB of input free, once per IP address. Then $0.25 per GB. Pro plan: 100 GB included, then $0.20/GB. Compare: /compare. Quote: POST /api/ppp-quote.", url: SITE + "/compare", related: ["aware", "rail"] },
       { id: "lab-pass", name: "Lab Pass", price: "$495/yr", note: "One year of Chamber + Rider Solo + PSI Meter seat + Warrant add-on for $495. No compression.", url: SITE + "/lab-pass", related: ["chamber", "aware"] },
       { id: "consulting", name: "Consulting", price: "$350", note: "Two hours of lab time, $175/hour, 2-hour minimum.", url: SITE + "/pay?sku=consulting", related: ["sku"] },
       { id: "oss-support", name: "OSS support", price: "$199", note: "Help with an already-public GPLv3 library.", url: SITE + "/pay?sku=oss-support", related: ["npm"] },
@@ -76,7 +76,7 @@ export const CATALOGS = [
     entries: [
       { id: "engine", name: "PCC", note: "Hosted compressor, tool-called only (MCP/API key, never browser uploads). Files and live 4 KiB pipe, one seat. Metered $0.25/GB of input, 1 GB/mo free. Pro $25/mo. Board stamp 51,498,645. Paid access, no source.", url: SITE + "/pcc" },
       { id: "stream", name: "PCC stream", note: "4 KiB ZERO+STORE pipe for agent logs / SIEM. Same PCC seat.", url: SITE + "/trustream" },
-      { id: "meter", name: "PCC meter", note: "First 1 GB of input each month free, then $0.25/GB.", url: SITE + "/pps" },
+      { id: "meter", name: "PCC meter", note: "First 1 GB of input free, once per IP address, then $0.25/GB.", url: SITE + "/pps" },
     ],
   },
   {

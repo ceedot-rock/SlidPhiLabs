@@ -2,7 +2,7 @@
   "name": "@slidphi/spl-pay-per-suite",
   "version": "1.2.5",
   "mcpName": "io.github.ceedot-rock/spl-pay-per-suite",
-  "description": "Dual-licensed hosted compression client, quotes, checkout, and MCP. Open license or a paid grant. First 2 GB/month free, then 8\u00a2/GB.",
+  "description": "Dual-licensed hosted compression client, quotes, checkout, and MCP. Open license or a paid grant. First 1 GB free (once per IP), then 25\u00a2/GB.",
   "type": "module",
   "main": "src/index.mjs",
   "exports": {
@@ -90,7 +90,7 @@
     "site": "https://www.slidphilabs.com",
     "llms_txt": "https://www.slidphilabs.com/llms.txt",
     "agents_json": "https://www.slidphilabs.com/agents.json",
-    "one_liner": "First 2 GB/month free, then 8\u00a2/GB. zip() builds a .pcc. Pay: https://www.slidphilabs.com/pay \u00b7 GET https://www.slidphilabs.com/api/agent",
+    "one_liner": "First 1 GB free (once per IP), then 25\u00a2/GB. zip() builds a .pcc. Pay: https://www.slidphilabs.com/pay \u00b7 GET https://www.slidphilabs.com/api/agent",
     "agent_platform": {
       "cuni": "https://cuni-studio.fly.dev/",
       "agent_rider": "https://agentrider.fly.dev/",
@@ -98,14 +98,14 @@
     },
     "suite": "https://www.slidphilabs.com/pps",
     "suite_pricing": {
-      "free_cap_gb": 2,
-      "free_window_hours": 0,
+      "free_cap_gb": 1,
+      "free_window": "lifetime-per-ip",
       "min_paid_usd": 1,
-      "usd_per_gb_after_free": 0.08,
-      "usd_per_gb_bulk": 0.08,
-      "window": "calendar_month",
+      "usd_per_gb_after_free": 0.25,
+      "usd_per_gb_bulk": 0.25,
+      "window": "lifetime",
       "try_gate": "retired",
-      "model": "calendar_month_2gb_8c"
+      "model": "lifetime_1gb_25c"
     },
     "welcome": "https://www.slidphilabs.com/api/welcome",
     "platform_json": "https://www.slidphilabs.com/platform.json",
@@ -135,10 +135,10 @@
     "pay_ui": "https://www.slidphilabs.com/pay",
     "doc": "https://www.slidphilabs.com/pps",
     "suite_pricing": {
-      "free_cap_gb": 2,
-      "free_window_hours": 0,
-      "usd_per_gb_after_free": 0.08,
-      "usd_per_gb_bulk": 0.08
+      "free_cap_gb": 1,
+      "free_window": "lifetime-per-ip",
+      "usd_per_gb_after_free": 0.25,
+      "usd_per_gb_bulk": 0.25
     }
   }
 }

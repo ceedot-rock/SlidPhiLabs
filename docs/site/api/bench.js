@@ -5,7 +5,7 @@
  * engines: SPL OmniWave · ZRW · gzip-9 · brotli-11
  * metrics: packed_bytes, ratio, encode_ms, decode_ms (where applicable)
  *
- * Suite: first 2 GB/month free, then 8¢/GB — this page proves method
+ * Suite: first 1 GB free once per IP, then 25¢/GB — this page proves method
  * on public synthetic slices so visitors verify before they pay.
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
@@ -428,7 +428,7 @@ async function handler(req, res) {
         engines: ["spl_omniwave", "zrw", "gzip-9", "brotli-11"],
         freemium: {
           first_gb: 100,
-          note: "Live paid jobs after the free 2 GB/month; this open bench uses public synthetic slices ≤512 KiB so proof is free and self-serve.",
+          note: "Live paid jobs after the free 1 GB (once per IP); this open bench uses public synthetic slices ≤512 KiB so proof is free and self-serve.",
         },
         stream: "GET /api/bench?stream=1&bytes=65536 → NDJSON events",
         json: "GET /api/bench?bytes=65536 → full JSON report",
@@ -491,7 +491,7 @@ async function handler(req, res) {
       })),
       cta: {
         suite: "https://www.slidphilabs.com/pps",
-        note: "First 2 GB/month free, then 8¢/GB — proof is above.",
+        note: "First 1 GB free once per IP, then 25¢/GB — proof is above.",
       },
     });
     return res.end();
@@ -513,7 +513,7 @@ async function handler(req, res) {
       wall_ms: +(nowMs() - tAll).toFixed(3),
       freemium: {
         first_gb: 100,
-        note: "Open bench = synthetic proof. Paid suite handles real jobs after the free 2 GB/month.",
+        note: "Open bench = synthetic proof. Paid suite handles real jobs after the free 1 GB (once per IP).",
       },
       classes: results,
       cta: {

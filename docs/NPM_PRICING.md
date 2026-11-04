@@ -33,9 +33,9 @@ Access after pay is an entitlement claim, not a private-engine dump. x402 auto-c
 
 | | |
 |--|--|
-| Unpaid | **6.9 GB and 3 hours** |
-| Then | **~$0.05 / GB** (first 100 paid GiB) |
-| Bulk | **$0.04 / GB** after that |
+| Unpaid | **1 GB, once per IP address (no reset)** |
+| Then | **$0.25 / GB** |
+| Bulk | Pro plan: 100 GB included, then **$0.20 / GB** |
 | Quote | `POST https://www.slidphilabs.com/api/ppp-quote` |
 | Checkout | Stripe or x402 suite |
 
@@ -66,7 +66,7 @@ Each commercial package should expose:
   "agentic": {
     "discovery": "https://www.slidphilabs.com/api/agent",
     "catalog": "https://www.slidphilabs.com/api/x402-products",
-    "suite_pricing": { "free_cap_gb": 6.9, "free_window_hours": 3, "usd_per_gb_after_free": 0.05, "usd_per_gb_bulk": 0.04 }
+    "suite_pricing": { "free_cap_gb": 1, "free_window": "lifetime-per-ip", "usd_per_gb_after_free": 0.25 }
   },
   "x402": {
     "discovery": "https://www.slidphilabs.com/api/agent",

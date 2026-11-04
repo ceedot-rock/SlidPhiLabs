@@ -1,0 +1,44 @@
+{
+  "name": "spl-model-pay",
+  "version": "0.1.0",
+  "description": "Model-based dynamic metering: op cost from live per-model rates, customer price capped at 19% markup. Remote card wins, pinned card falls back, every quote names its card.",
+  "type": "module",
+  "main": "src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./rates": "./src/rates.mjs"
+  },
+  "bin": {
+    "spl-model-quote": "src/cli.mjs"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE",
+    "LICENSE.AGPL-3.0",
+    "LICENSE.COMMERCIAL",
+    "NOTICE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "keywords": [
+    "slid-phi-labs",
+    "usage-metering",
+    "model-pricing",
+    "dynamic-rates",
+    "x402"
+  ],
+  "author": "SLID PHI LABS LLC",
+  "license": "(AGPL-3.0-or-later OR LicenseRef-SlidPhiLabs-Commercial)",
+  "homepage": "https://www.slidphilabs.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ceedot-rock/SlidPhiLabs.git",
+    "directory": "packages/spl-model-pay"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

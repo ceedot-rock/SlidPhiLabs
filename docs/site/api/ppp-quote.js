@@ -1,5 +1,5 @@
 /**
- * Quote a compress job against this month's meter.
+ * Quote a compress job against the lifetime-per-IP meter.
  * First 1 GB of input free, then $0.25/GB. Pro plan: 100 GB included, then $0.20/GB. $1 card minimum.
  */
 import { computeQuote, FREE_BYTES, PRICING_EXAMPLES } from "./suite-pricing.js";

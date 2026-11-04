@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slid Phi Labs — LexHack Fellowship Draft Deck</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, Helvetica, sans-serif; background: #111; color: #f2f2f2; }
+  .deck { max-width: 900px; margin: 0 auto; padding: 24px 16px 64px; }
+  .slide { display: none; background: #1c1c1c; border: 1px solid #333; border-radius: 12px; padding: 40px 44px; min-height: 420px; }
+  .slide.active { display: block; }
+  .slide h1 { font-size: 34px; margin-bottom: 16px; }
+  .slide h2 { font-size: 26px; margin-bottom: 16px; color: #ffd166; }
+  .slide p, .slide li { font-size: 18px; line-height: 1.55; }
+  .slide ul { padding-left: 24px; margin-top: 8px; }
+  .slide li { margin-bottom: 8px; }
+  .kicker { text-transform: uppercase; letter-spacing: 2px; font-size: 13px; color: #999; margin-bottom: 12px; }
+  .draft { display: inline-block; background: #ffd166; color: #111; font-size: 13px; font-weight: bold; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; color: #aaa; }
+  .nav button { background: #ffd166; border: none; border-radius: 8px; padding: 10px 22px; font-size: 16px; cursor: pointer; }
+  .src { margin-top: 18px; font-size: 13px; color: #888; }
+</style>
+</head>
+<body>
+<div class="deck">
+  <div class="slide active">
+    <div class="draft">DRAFT — 2026-11-03, do not submit as-is</div>
+    <div class="kicker">LexHack Builders Fellowship</div>
+    <h1>Slid Phi Labs — general lab products</h1>
+    <p>Dual-licensed compression, agent tooling, and metered billing. Copyleft or a paid grant. Every claim below matches lab evidence.</p>
+    <div class="src">Sources: lab ledger index; licensing.json (2026-09-09).</div>
+  </div>
+  <div class="slide">
+    <div class="kicker">Company</div>
+    <h2>Who we are</h2>
+    <ul>
+      <li>SLID PHI LABS LLC, Cherry Hill, New Jersey. Solo founder: Corey Tasz.</li>
+      <li>Pre-seed and bootstrapped. No VC. No employees.</li>
+      <li>Contact: corey@slidphilabs.com.</li>
+    </ul>
+  </div>
+  <div class="slide">
+    <div class="kicker">Problem</div>
+    <h2>Ship closed, risk the license</h2>
+    <ul>
+      <li>Teams that embed copyleft compression or agent tools face a hard choice: open-source their product or violate the license.</li>
+      <li>Hosted compression APIs are black boxes. No restore proof, no source, no commercial path.</li>
+      <li>Agent billing is all-or-nothing. No metered lane for real usage.</li>
+    </ul>
+  </div>
+  <div class="slide">
+    <div class="kicker">Products</div>
+    <h2>What the lab sells</h2>
+    <ul>
+      <li>PCC: hosted lossless compression, $369/yr. Runs every pathway, keeps the smallest file that still restores.</li>
+      <li>pulsar: free GPLv3 compressor, plus STR1 structure transform on the PCC machine.</li>
+      <li>Chamber SDK ($369), Agent-Rider ($49), Warrant receipts ($290/yr), metered suite client.</li>
+    </ul>
+  </div>
+  <div class="slide">
+    <div class="kicker">How it works</div>
+    <h2>Open source, paid escape hatch</h2>
+    <ul>
+      <li>Every product is dual-licensed: copyleft in public, or a written commercial grant to ship closed.</li>
+      <li>Signing keys, kernel secrets, and customer data stay operator-only. Never on the licensed surface.</li>
+      <li>Humans pay over Stripe. Agents pay over x402 (USDC). Enterprise can invoice or wire on request.</li>
+    </ul>
+  </div>
+  <div class="slide">
+    <div class="kicker">Traction — stated honestly</div>
+    <h2>Live, but pre-revenue</h2>
+    <ul>
+      <li>Site and Fly hosts serving today. Code public on GitHub.</li>
+      <li>Incoming revenue is $0 until the Stripe last-30-days fills. Zero trials running.</li>
+      <li>First external pipeline conversation opens this month. Details still being confirmed.</li>
+    </ul>
+  </div>
+  <div class="slide">
+    <div class="kicker">Economics</div>
+    <h2>Lean by design</h2>
+    <ul>
+      <li>Lean break-even near $800/mo. One price per SKU across Stripe and x402.</li>
+      <li>Plan: $500k YC or $750k seed over 18 months, per the lab's use of funds.</li>
+      <li>Milestones: public numbers, then repeat seats, then a named customer, then default-alive or a clean shutdown.</li>
+    </ul>
+  </div>
+  <div class="slide">
+    <div class="kicker">Why LexHack</div>
+    <h2>What the fellowship unlocks</h2>
+    <ul>
+      <li>Mentorship on distribution: which product to lead with, and to whom.</li>
+      <li>Scaling support: pricing validation and the path to first paid seats.</li>
+      <li>We bring working software, honest numbers, and a clean license story. You bring the pressure-test.</li>
+    </ul>
+  </div>
+  <div class="slide">
+    <div class="kicker">Ask</div>
+    <h2>A fellowship seat for the lab</h2>
+    <ul>
+      <li>We seek mentorship and scaling support for our post-hackathon products.</li>
+      <li>Next step after acceptance: name the pilot product and its first ten prospects together.</li>
+      <li>Contact: corey@slidphilabs.com. Deadline: November 20.</li>
+    </ul>
+    <div class="src">Before submitting: re-check prices against licensing.json and the ledger index. Known doc conflicts (suite free edge, PCC year) are recorded in the ledger — quote the canonical figures.</div>
+  </div>
+  <div class="nav">
+    <button id="prev">&larr; Prev</button>
+    <span id="count"></span>
+    <button id="next">Next &rarr;</button>
+  </div>
+</div>
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  function show(n) {
+    idx = (n + slides.length) % slides.length;
+    for (var i = 0; i < slides.length; i++) slides[i].classList.toggle('active', i === idx);
+    document.getElementById('count').textContent = (idx + 1) + ' / ' + slides.length;
+  }
+  document.getElementById('prev').onclick = function () { show(idx - 1); };
+  document.getElementById('next').onclick = function () { show(idx + 1); };
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') show(idx + 1);
+    if (e.key === 'ArrowLeft') show(idx - 1);
+  });
+  show(0);
+</script>
+</body>
+</html>
