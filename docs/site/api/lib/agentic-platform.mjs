@@ -62,6 +62,27 @@ export const TOLLHOUSE_TOOLS = Object.freeze([
   "awlpay-quote",
 ]);
 
+/**
+ * The seven verses as ACN stages, not absorption: each verse keeps its own
+ * repo and SKU; ACN only names the verse's primary crossing so a run can
+ * say { verse: "wallet" } instead of naming the crossing directly.
+ */
+export const VERSES = Object.freeze({
+  pcc: { repo: "https://github.com/ceedot-rock/PCCVerse", crossing: "pcc-compress", note: "the Breath: codecs, coders, demos" },
+  memory: { repo: "https://github.com/ceedot-rock/MemoryVerse", crossing: "carry-memory", note: "the Mind: persistent, sealed, provenanced memory" },
+  cuni: { repo: "https://github.com/ceedot-rock/CuNIverse", crossing: "cuni-proof", note: "exact on every target or refuse" },
+  rider: { repo: "https://github.com/ceedot-rock/RiderVerse", crossing: "prove-identity", note: "the Name: signed identity for agents" },
+  l33t: { repo: "https://github.com/ceedot-rock/L33tVerse", crossing: "find-agent", note: "the SaaS supermarket for builders and agents" },
+  blok: { repo: "https://github.com/ceedot-rock/BlokVerse", crossing: "stake", note: "play on-chain: the BLoK game universe" },
+  wallet: { repo: "https://github.com/ceedot-rock/WalletVerse", crossing: "escrow", note: "the Wallet: value in and out for agents" },
+});
+
+export function resolveVerse(name) {
+  const verse = String(name || "").trim().toLowerCase();
+  if (!(verse in VERSES)) return { error: fail("tollkeeper", "unknown_verse", { verse }) };
+  return { verse, crossing: VERSES[verse].crossing, repo: VERSES[verse].repo };
+}
+
 const DEFAULT_CROSSING = Object.freeze({
   fetch: "carry-memory",
   compress: "prove-compute",
@@ -171,7 +192,15 @@ function checkBase(spec) {
   if (!ACTIONS.includes(action)) return { error: fail("warrant", "action_not_allowed", { action }) };
   const host = String(spec.host || "").trim();
   if (!host) return { error: fail("warrant", "missing_host") };
-  const crossing = String(spec.crossing || DEFAULT_CROSSING[action] || "prove-compute");
+  let verse = null;
+  let verseCrossing = null;
+  if (spec.verse != null && String(spec.verse).trim() !== "") {
+    const r = resolveVerse(spec.verse);
+    if (r.error) return { error: r.error };
+    verse = r.verse;
+    verseCrossing = r.crossing;
+  }
+  const crossing = String(spec.crossing || verseCrossing || DEFAULT_CROSSING[action] || "prove-compute");
   if (!CROSSINGS.includes(crossing) && !TOLLHOUSE_TOOLS.includes(crossing)) {
     return { error: fail("tollkeeper", "unknown_crossing", { crossing }) };
   }
@@ -186,7 +215,7 @@ function checkBase(spec) {
       return { error: fail("quikgater", "bad_url", { url: String(spec.url) }) };
     }
   }
-  return { demo, rider, action, host, crossing, url };
+  return { demo, rider, action, host, crossing, url, verse };
 }
 
 /**
@@ -279,6 +308,7 @@ export function planAgenticRun(spec = {}) {
       action: base.action,
       host: base.host,
       crossing: base.crossing,
+      verse: base.verse,
       warrant: "verified at run",
       quote,
       settle,

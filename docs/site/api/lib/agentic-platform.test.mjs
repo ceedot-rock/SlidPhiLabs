@@ -16,6 +16,8 @@ const {
   dispatchAgentic,
   CROSSINGS,
   TOLLHOUSE_TOOLS,
+  VERSES,
+  resolveVerse,
 } = await import("./agentic-platform.mjs");
 
 test("toll tables match the booklets", () => {
@@ -37,6 +39,33 @@ test("plan rejects missing identity, bad action, bad crossing", () => {
   assert.equal(planAgenticRun({ demo: true, action: "hack", host: "h.test" }).reason, "action_not_allowed");
   assert.equal(planAgenticRun({ demo: true, action: "invoke", host: "h.test", crossing: "nope" }).reason, "unknown_crossing");
   assert.equal(planAgenticRun({ demo: true, action: "fetch", host: "h.test", url: "ftp://x" }).reason, "bad_url");
+});
+
+test("seven verses resolve to honest crossings", () => {
+  assert.deepEqual(Object.keys(VERSES), ["pcc", "memory", "cuni", "rider", "l33t", "blok", "wallet"]);
+  assert.equal(resolveVerse("wallet").crossing, "escrow");
+  assert.equal(resolveVerse("  PCC ").crossing, "pcc-compress");
+  assert.equal(resolveVerse("memory").crossing, "carry-memory");
+  assert.equal(resolveVerse("cuni").crossing, "cuni-proof");
+  assert.equal(resolveVerse("rider").crossing, "prove-identity");
+  assert.equal(resolveVerse("l33t").crossing, "find-agent");
+  assert.equal(resolveVerse("blok").crossing, "stake");
+  for (const v of Object.values(VERSES)) {
+    assert.match(v.repo, /^https:\/\/github\.com\/ceedot-rock\/\w+$/);
+    assert.ok(CROSSINGS.includes(v.crossing) || TOLLHOUSE_TOOLS.includes(v.crossing));
+  }
+  assert.equal(resolveVerse("nope").error.reason, "unknown_verse");
+});
+
+test("plan accepts verse, explicit crossing wins, unknown verse fails", () => {
+  const w = planAgenticRun({ demo: true, action: "spend", host: "awlpay.fly.dev", verse: "wallet" });
+  assert.equal(w.ok, true);
+  assert.equal(w.plan.crossing, "escrow");
+  assert.equal(w.plan.verse, "wallet");
+  const over = planAgenticRun({ demo: true, action: "spend", host: "awlpay.fly.dev", verse: "wallet", crossing: "delegate" });
+  assert.equal(over.plan.crossing, "delegate");
+  assert.equal(over.plan.verse, "wallet");
+  assert.equal(planAgenticRun({ demo: true, action: "spend", host: "h.test", verse: "nope" }).reason, "unknown_verse");
 });
 
 test("unpaid fetch answers 402 with receipts so far", async () => {
