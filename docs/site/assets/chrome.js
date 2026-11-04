@@ -1,4 +1,4 @@
-/** One header, ticker, footer, one logo — every page. */
+/** One header, footer, one logo — every page. */
 (function () {
   const NAV = [
     ["/rider", "Rider"],
@@ -32,19 +32,7 @@
     ["/agents", "Agents"],
     ["/products", "All products"],
   ];
-  const FALLBACK_NEWS = [
-    { t: "Press", title: "Dual-licensed hosted compression — npm clients call the live host", href: "/press" },
-    { t: "Silesia", title: "Official 12-file matrix — all pathways", href: "/silesia" },
-    { t: "Bench", title: "Live hosted compression vs gzip-9 and brotli-11", href: "/bench" },
-    { t: ".pcc", title: "Our archive, like zip — many files, our compression", href: "/archive" },
-    { t: "PCC", title: "Hosted lossless compression — send a file, restore every byte", href: "/pcc" },
-    { t: "TRUSTREAM", title: "Live logs on the same plan", href: "/trustream" },
-    { t: "Chamber", title: "Two-key lock for a JSON secret", href: "/chamber" },
-    { t: "Rider", title: "Signed identity for AI agents", href: "/rider" },
-    { t: "Warrant", title: "Mandate and receipts for a Rider", href: "/warrant" },
-    { t: "CuNi", title: "Write once. 53 targets. Bank: paste N, get X", href: "/cuni" },
-    { t: "TRU8", title: "1e6 zeros → 8 bytes", href: "/specialist" },
-  ];
+
 
   function path() {
     let p = location.pathname;
@@ -76,15 +64,6 @@
     </header>`;
   }
 
-  function ticker(items) {
-    const bits = items
-      .map((it) => `<a href="${it.href}"><b>${it.t}</b>${it.title}</a>`)
-      .join("");
-    return `<div class="spl-ticker" role="region" aria-label="Catalog">
-      <div class="spl-ticker-track">${bits}${bits}</div>
-    </div></div>`;
-  }
-
   function footer() {
     return `<footer class="spl-footer" role="contentinfo">
     <div class="inner">
@@ -98,7 +77,7 @@
       </div>
       <div>
         <h4>Compress</h4>
-        <a href="/pcc">Hosted compression</a>
+        <a href="/pcc">Compression through your tools</a>
         <a href="/compare">Compare prices</a>
         <a href="/bench">Bench</a>
         <a href="/docs">API</a>
@@ -136,8 +115,7 @@
 
   function inject() {
     if (document.body.classList.contains("spl-chrome")) return;
-    const news = FALLBACK_NEWS;
-    const top = header() + ticker(news);
+    const top = header();
     document.body.insertAdjacentHTML("afterbegin", top);
     if (!document.querySelector("footer.spl-footer")) {
       document.body.insertAdjacentHTML("beforeend", footer());

@@ -4,7 +4,7 @@ info:
   description: |
     Public discovery, commerce, and integration surface for Slid Phi Labs.
     Start with GET /api/agent for catalog discovery or connect an MCP client to POST /mcp.
-    Suite is a metered hosted service (6.9 GB / 3 h unpaid, then about 5¢/GB).
+    Suite is a metered hosted service (first 2 GB each month free, then 8c/GB, $1 minimum on card).
     Public API and MCP catalog access do not expose protected compression engines or customer operations.
   version: 1.7.1
   contact:
@@ -236,9 +236,9 @@ paths:
   /api/compress:
     post:
       tags: [compression]
-      summary: Hosted lossless compression on an authorized PCC seat
+      summary: Lossless compression through your tools on an authorized PCC seat
       operationId: hostedCompress
-      description: The protected encoder remains hosted. Authorization or an applicable paid access boundary is required.
+      description: The protected encoder remains on lab machines. Authorization or an applicable paid access boundary is required.
       requestBody:
         required: true
         content:

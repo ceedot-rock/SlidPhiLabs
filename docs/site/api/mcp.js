@@ -5,7 +5,7 @@
 import { signup, login, issueAgentKey } from "./lib/lab-auth.mjs";
 import { catalogTools, dispatchCatalog } from "./lib/mcp-catalogs.mjs";
 import { computeQuote } from "./suite-pricing.js";
-import { issueWarrant, verifyWarrant, fileReceipt, productCard as warrantCard } from "./lib/warrant.mjs";
+import { issueWarrant, verifyWarrant, fileReceipt, reserveWarrant, releaseReservation, productCard as warrantCard } from "./lib/warrant.mjs";
 import { AGENTIC_TOOLS, dispatchAgentic } from "./lib/agentic-platform.mjs";
 import { encodeHosted, decodeFrame } from "./lib/specialist.mjs";
 import { packArchive, crc32 } from "./lib/pccz.mjs";
@@ -80,11 +80,11 @@ const COMMERCE = [
   },
   {
     name: "spl_quote",
-    description: "Suite quote. First 2 GB/month free, then 8¢/GB, $1 card minimum. Args: bytes, product, op.",
+    description: "Suite quote. First 1 GB/month free, then $0.25/GB of input, $1 card minimum. Args: bytes, product, op.",
     inputSchema: {
       type: "object",
       properties: {
-        bytes: { type: "number", description: "Payload bytes. first 2 GB/month free." },
+        bytes: { type: "number", description: "Payload bytes. First 1 GB/month free." },
         product: { type: "string", description: "auto | zrw | blackjack | shard-zip | shard-tsdb | slid-phi" },
         op: { type: "string", description: "compress | decompress | roundtrip" },
         dataClass: { type: "string" },
@@ -109,13 +109,37 @@ const COMMERCE = [
   },
   {
     name: "spl_warrant_verify",
-    description: "Verify a Warrant token. Optional host and action.",
+    description: "Verify a Warrant token. Optional host, action, and expected usd cost — pass usd to enforce the spend cap BEFORE the job runs.",
     inputSchema: {
       type: "object",
       properties: {
         warrant: { type: "string" },
         host: { type: "string" },
         action: { type: "string" },
+        usd: { type: "number" },
+      },
+    },
+  },
+  {
+    name: "spl_warrant_reserve",
+    description: "Reserve the expected cost against a Warrant BEFORE the job runs (pre-spend cap enforcement). File the receipt with the reservation id to settle without double-deducting, or release it if the job never runs.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        warrant: { type: "string" },
+        host: { type: "string" },
+        action: { type: "string" },
+        usd: { type: "number" },
+      },
+    },
+  },
+  {
+    name: "spl_warrant_release",
+    description: "Refund an unsettled Warrant reservation (job never ran).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        reservation_id: { type: "string" },
       },
     },
   },
@@ -129,6 +153,7 @@ const COMMERCE = [
         action: { type: "string" },
         host: { type: "string" },
         usd: { type: "number" },
+        reservation_id: { type: "string" },
         request_sha256: { type: "string" },
         result_sha256: { type: "string" },
         note: { type: "string" },
@@ -301,8 +326,14 @@ async function callTool(name, args = {}) {
     });
   }
   if (name === "spl_warrant_verify") {
-    const out = verifyWarrant(args.warrant, { host: args.host, action: args.action });
+    const out = verifyWarrant(args.warrant, { host: args.host, action: args.action, usd: args.usd });
     return out.ok ? { valid: true, warrant: out.warrant } : { valid: false, reason: out.reason };
+  }
+  if (name === "spl_warrant_reserve") {
+    return reserveWarrant({ token: args.warrant, host: args.host, action: args.action, usd: args.usd });
+  }
+  if (name === "spl_warrant_release") {
+    return releaseReservation(args.reservation_id || args.reservation);
   }
   if (name === "spl_warrant_receipt") {
     return fileReceipt({
@@ -310,6 +341,7 @@ async function callTool(name, args = {}) {
       action: args.action,
       host: args.host,
       usd: args.usd,
+      reservation_id: args.reservation_id,
       request_sha256: args.request_sha256,
       result_sha256: args.result_sha256,
       note: args.note,

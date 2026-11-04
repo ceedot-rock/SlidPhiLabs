@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CuNi use case: money — settlement and Warrant budget trees | Slid Phi Labs</title>
+  <meta name="description" content="Money math must be identical on every seat. CuNi laws already in production use: spend-control, rider-fee, suite-meter. Warrant-chain accounting and x402 reconciliation are roadmap milestones, labeled as such."/>
+  <link rel="canonical" href="https://www.slidphilabs.com/cuni-money"/>
+  <link rel="icon" type="image/jpeg" href="/assets/logos/logo-slid-phi-labs.jpg?v=14"/>
+  <link rel="stylesheet" href="/assets/chrome.css?v=38"/>
+</head>
+<body>
+  <main class="spl-page" id="main">
+    <p class="spl-kicker">CuNi use case · Laws in production use</p>
+    <h1>Money: the same accounting on every seat, or refuse</h1>
+    <p class="lede">Money is where a rounding difference becomes a real loss. CuNi states the money law once — in <code>dec</code> fixed-point and <code>time</code> epochs, never floats — and proves it byte-identical on the money seats before anyone relies on it.</p>
+    <p class="spl-actions">
+      <a class="spl-btn spl-btn-dark" href="https://cuni-studio.fly.dev/">Open Studio</a>
+      <a class="spl-btn spl-btn-line" href="/cuni">Back to CuNi</a>
+    </p>
+    <section class="spl-prose spl-full">
+      <h2>Laws already in production use</h2>
+      <ul>
+        <li><strong>spend-control</strong> (<code>amount &lt;= cap</code>) — the law behind Warrant spend gating. See <a href="/warrant">Warrant</a>.</li>
+        <li><strong>rider-fee</strong> — the fee schedule an agent's seat settles against. See <a href="/rider">Rider</a>.</li>
+        <li><strong>suite-meter</strong> — metering for the lab's own suite of tools.</li>
+        <li><strong>catalog-plans</strong> — plan and pricing arithmetic, in the same money types.</li>
+      </ul>
+      <p>The attenuation rule in a Warrant chain — budgets only shrink down the chain — is exactly the kind of monotonic invariant CuNi laws are built to express.</p>
+      <h2>What is next, honestly labeled roadmap</h2>
+      <ul>
+        <li><strong>Warrant-chain accounting law:</strong> chain verification + ledger summation + <code>total &le; root</code> invariant, gated on the money seats. Milestone: a 3-level chain, 1,000-call ledger, total &le; root proven byte-identical on py/rs/go/java/sql/js; a tampered ledger refused on all seats.</li>
+        <li><strong>x402 settlement reconciliation:</strong> replay the live per-call ledger through the money laws and prove the settled totals match the law's accounting on every seat. Milestone: one week of mainnet x402 calls replayed through rider-fee + suite-meter, totals matching to the cent on all money seats.</li>
+      </ul>
+      <p>Neither milestone is claimed live today. When one lands, this page will say so, with the receipt.</p>
+    </section>
+    <section class="spl-prose spl-full">
+      <h2>More CuNi use cases</h2>
+      <ul>
+        <li><a href="/cuni-ffi-boundaries">FFI boundaries</a> — Python, Rust, C, one behavior.</li>
+        <li><a href="/cuni-consensus">Consensus and blockchain execution</a> — one escrow law, proven on EVM, Rust, and Go.</li>
+        <li><a href="/cuni-codecs">Codecs: bit-exact decode</a> — never-expand and arithmetic-coding roundtrips.</li>
+        <li><a href="/cuni-deterministic-builds">Deterministic builds and reproducible computation</a> — receipts anyone can re-run.</li>
+        <li><a href="/cuni-audit-source">CuNi as the audit source</a> — foreign implementations proven against a gold law, signed receipts filed.</li>
+        <li><a href="/cuni-agent-policy">Agent policy gate</a> — an agent's policy, proven before it runs.</li>
+        <li><a href="/cuni-stack-spine">One substrate, six surfaces</a> — how CuNi ties Rider, Warrant, Chamber, PCC, and billing together.</li>
+      </ul>
+      <p class="spl-actions">
+        <a class="spl-btn spl-btn-line" href="/cuni">CuNi overview</a>
+        <a class="spl-btn spl-btn-line" href="/warrant">Warrant</a>
+      </p>
+    </section>
+  </main>
+  <script src="/assets/chrome.js?v=41" defer></script>
+</body>
+</html>

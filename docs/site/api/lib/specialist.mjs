@@ -234,7 +234,7 @@ export async function encodeHosted(raw) {
   } else if (seated?.model === "walk_lcg") {
     plain = `Hosted walk_lcg priced the program {step:${seated.step},seed:${seated.seed}} — ${seated.aware_bytes} B aware pack (${payload.length} B LBHX frame) on ${b.length} B. Restore with POST /api/decompress.`;
   } else if (win) {
-    plain = `Hosted ${method} compressed this file from ${b.length} bytes to ${payload.length} bytes. Restore with POST /api/decompress. First 2 GB/month are free, then 8¢/GB.`;
+    plain = `Hosted ${method} compressed this file from ${b.length} bytes to ${payload.length} bytes. Restore with POST /api/decompress. First 1 GB of input/month is free, then $0.25/GB.`;
   } else {
     plain = `This file did not get smaller. We stored it as-is (our store path, not gzip). Restore with POST /api/decompress.`;
   }
@@ -296,7 +296,7 @@ export function machineCard() {
     ok: true,
     machine: "hosted-compression",
     job: "encode",
-    plain: "POST a file. Hosted lossless compression, dual-licensed. All-zero files become 8 bytes. Every pathway we own runs on this machine; we keep the smallest result that restores. First 2 GB each month are free, then 8¢/GB. npm: slid-phi. MCP: spl_compress.",
+    plain: "POST a file. Hosted lossless compression, dual-licensed. All-zero files become 8 bytes. Every pathway we own runs on this machine; we keep the smallest result that restores. First 1 GB of input each month is free, then $0.25/GB. npm: slid-phi. MCP: spl_compress.",
     never: NEVER,
     seats: {
       fill: { occupant: "zeros", runs_here: true, license: "public-demo" },
@@ -310,7 +310,7 @@ export function machineCard() {
     how: "POST raw bytes or JSON { corpus:'zeros', n:1000000 } or { text } or { data_b64 }. Decode: POST { op:'decode', data_b64 } or POST /api/decompress.",
     curl: `python3 -c "open('z.bin','wb').write(bytes(1000000))" && curl -sS -X POST https://www.slidphilabs.com/api/compress -H 'content-type: application/octet-stream' --data-binary @z.bin`,
     meter: {
-      plain: "First 2 GB each month are free. After that, 8¢ per GB. Card charges start at $1.",
+      plain: "First 1 GB of input each month is free. After that, $0.25 per GB. Card charges start at $1.",
       free_gb: 2,
       usd_per_gb: 0.08,
       min_paid_usd: 1,

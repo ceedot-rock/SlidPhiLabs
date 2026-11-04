@@ -35,6 +35,7 @@ export default function handler(req, res) {
     action: body.action,
     host: body.host,
     usd: body.usd,
+    reservation_id: body.reservation_id,
     request_sha256: body.request_sha256,
     result_sha256: body.result_sha256,
     note: body.note,

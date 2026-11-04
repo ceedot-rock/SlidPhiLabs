@@ -1,6 +1,6 @@
 /**
  * POST /api/residual-mint
- * Dual door. Suite meters first 2 GB/month free then 8¢/GB.
+ * Dual door. Suite meters first 1 GB of input/month free then $0.25/GB.
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
 
@@ -28,7 +28,7 @@ async function handler(req, res) {
     return json(res, 200, {
       service: "residual_mint",
       doors: {
-        suite: { free_gb: FREE_GB, then: "8¢/GB after free", path: SUITE },
+        suite: { free_gb: FREE_GB, then: "$0.25/GB after free", path: SUITE },
         chamber: { trial_h: 24, plans: CHAMBER, path: LICENSE },
       },
       post: { door: "suite|chamber", gb_used: 120.5, user_id: "…", plan: "year" },
