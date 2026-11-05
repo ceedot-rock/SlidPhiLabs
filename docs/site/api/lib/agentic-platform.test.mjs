@@ -405,3 +405,142 @@ test("psi file sink appends observatory lines, opt-in only", async () => {
   assert.equal(logged.c, "ship");
   assert.throws(() => psiFileSink(""), /needs a path/);
 });
+
+const ACN_ORDER = [
+  "rider", "warrant", "warrant-template", "standing-rider", "tollkeeper",
+  "reputation", "quikgater", "tool-registry", "agent-directory",
+  "agent-messaging", "context", "benchhaus", "private-bench", "pcc", "cuni",
+  "awlpay", "solana", "payout", "dispute", "audit-export", "ops-feed",
+  "async-runs", "sandbox", "psi", "conductor",
+];
+
+async function acnFixtures() {
+  const { createToolRegistry } = await import("./tool-registry.mjs");
+  const { createAgentDirectory } = await import("./agent-directory.mjs");
+  const { createOpsFeed } = await import("./ops-feed.mjs");
+  const { createRunManager } = await import("./async-runs.mjs");
+  const registry = createToolRegistry();
+  assert.equal(registry.register({ id: "pcc-compress", version: "1.0.0", price_cents: 5, endpoint: "https://tools.test/pcc" }).ok, true);
+  const directory = createAgentDirectory();
+  assert.equal(directory.register({ rider_id: "agent-1", endpoint: "https://agents.test/a1", score: 80 }).ok, true);
+  const payoutsDir = fs.mkdtempSync(path.join(os.tmpdir(), "acn-payouts-"));
+  const disputesDir = fs.mkdtempSync(path.join(os.tmpdir(), "acn-disputes-"));
+  const fixedNow = () => "2026-01-01T00:00:00.000Z";
+  return {
+    spec: {
+      demo: true, action: "invoke", host: "h.test", file_receipt: false,
+      url: "https://example.com/a", pay: true,
+      warrantTemplate: "compress",
+      standingRider: {
+        safeguards: { spendCapCents: 100, allowedCrossings: ["escrow"], velocityPerMin: 5, allowedTools: ["pcc-compress"] },
+        waiver: { accepted: true, version: "waiver-v1" },
+      },
+      reputation: "op1",
+      tool: { id: "pcc-compress", version: "1.0.0" },
+      agent: "agent-1",
+      message: { from_rider: "a", to_rider: "b", offer: { sku: "x", amount_cents: 5 }, nonce: "acn-n-1" },
+      context: { text: "hello world hello world hello", query: "hello" },
+      benchhaus: {},
+      privateBench: {},
+      cuni: { receipt: { verdict: "pass" } },
+      solana: { amount_cents: 50 },
+      payout: { rider_id: "op1", amount_cents: 100, rail: "base_evm", to: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913" },
+      dispute: { order_id: "ord-1", reason: "test dispute", amount_cents: 50 },
+      audit: "op1",
+      ops: { type: "run_completed", detail: {} },
+      asyncRun: { task: "demo" },
+      sandbox: { items: [{ name: "demo" }] },
+    },
+    adapters: {
+      standingRider: { store: new Map() },
+      reputation: { ledgerPath: path.join(fs.mkdtempSync(path.join(os.tmpdir(), "acn-rep-")), "rep.jsonl") },
+      toolRegistry: registry,
+      agentDirectory: directory,
+      privateBench: {
+        source: "test",
+        fixtures: {
+          plan: { passed: 1, n: 1 }, retrieval: { passed: 1, n: 1 },
+          state: { passed: 1, n: 1 }, refusal: { passed: 1, n: 1 },
+        },
+      },
+      solanaEnv: { X402_PAY_TO: "TestPayTo1111111111111111111111111111111" },
+      payouts: { dir: payoutsDir, now: fixedNow, id: () => "po_test1" },
+      disputes: { dir: disputesDir, now: fixedNow, id: () => "dp_test1" },
+      opsFeed: createOpsFeed({ now: fixedNow }),
+      runManager: createRunManager({ now: fixedNow }),
+      fetch402: async () => ({ status: 200, body: "hi" }),
+    },
+  };
+}
+
+test("optional acn stages join plan and run in order", async () => {
+  const { spec, adapters } = await acnFixtures();
+  const p = planAgenticRun(spec, adapters);
+  assert.equal(p.ok, true);
+  assert.deepEqual(p.plan.stages, ACN_ORDER);
+  assert.equal(p.plan.warrantTemplate.params.actions.join(","), "compress");
+  assert.match(p.plan.standingRider.safeguards_hash, /^[a-f0-9]{64}$/);
+  assert.equal(p.plan.privateBench.siascore, 100);
+  assert.equal(p.plan.solana.mode, "receive");
+  assert.equal(p.plan.sandbox.mode, "sandbox");
+  const r = await runAgenticRun(spec, adapters);
+  assert.equal(r.ok, true);
+  const wantReceipts = ACN_ORDER.map((s) => (s === "cuni" ? "cuni-proof" : s));
+  assert.deepEqual(r.receipts.map((s) => s.stage), wantReceipts);
+  const byStage = Object.fromEntries(r.receipts.map((s) => [s.stage, s]));
+  assert.equal(byStage["standing-rider"].mode, "issued");
+  assert.equal(byStage["standing-rider"].safeguards_hash, p.plan.standingRider.safeguards_hash);
+  assert.equal(byStage.reputation.score, 1);
+  assert.equal(byStage["tool-registry"].version, "1.0.0");
+  assert.equal(byStage["agent-directory"].score, 80);
+  assert.equal(byStage["agent-messaging"].kind, "draft");
+  assert.equal(byStage["private-bench"].provenance, "held-out:test");
+  assert.equal(byStage.solana.instruction.to, "TestPayTo1111111111111111111111111111111");
+  assert.equal(byStage.payout.intent_id, "po_test1");
+  assert.equal(byStage.payout.requires, "operator_signature");
+  assert.equal(byStage.dispute.dispute_id, "dp_test1");
+  assert.equal(byStage["audit-export"].spend_cents, 0);
+  assert.equal(byStage["ops-feed"].seq, 1);
+  assert.match(byStage["async-runs"].run_id, /^run_\d+$/);
+  assert.equal(byStage.sandbox.spend_cents, 0);
+  const pcc = byStage.pcc;
+  const cond = byStage.conductor;
+  const v = verifyConductorReceipt(
+    { action: "invoke", host: "h.test", url: byStage.quikgater.url, bytes: pcc.bytes, amount_cents: pcc.amount_cents },
+    cond,
+  );
+  assert.equal(v.valid, true);
+});
+
+test("optional acn stages fail closed", async () => {
+  const base = { demo: true, action: "invoke", host: "h.test", bytes: 10, file_receipt: false };
+  const { createOpsFeed } = await import("./ops-feed.mjs");
+  const { createToolRegistry } = await import("./tool-registry.mjs");
+  const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), "acn-fail-"));
+  const run = (spec, adapters = {}) => runAgenticRun({ ...base, ...spec }, adapters);
+
+  assert.equal((await run({ payout: { rider_id: "op1", amount_cents: 1, rail: "base_evm", to: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913" } })).reason, "below_minimum");
+  assert.equal((await run({ privateBench: {} })).reason, "no_public_fixture");
+  assert.equal((await run({ tool: { id: "nope" } })).reason, "adapter_required");
+  assert.equal((await run({ tool: { id: "nope" } }, { toolRegistry: createToolRegistry() })).reason, "unknown_tool");
+  assert.equal((await run({ agent: "ghost" })).reason, "adapter_required");
+  assert.equal((await run({ dispute: { order_id: "ord-x", reason: "r" } }, { disputes: { dir: tmp() } })).reason, "unknown_order");
+  assert.equal((await run({ message: { from_rider: "a" } })).reason, "bad_envelope");
+  assert.equal((await run({ sandbox: { items: [] } }, { sandbox: { settleFn: {} } })).reason, "sandbox_refuses_live_adapter");
+  assert.equal((await run({ solana: { amount_cents: 50 } }, { solanaEnv: {} })).reason, "rail_disabled");
+  assert.equal((await run({ standingRider: "sr_nope" })).reason, "unknown_rider");
+  assert.equal((await run({ reputation: 42 })).reason, "missing_rider_id");
+  assert.equal((await run({ ops: { type: "nope" } }, { opsFeed: createOpsFeed({}) })).reason, "unknown_event");
+  assert.equal((await run({ ops: { type: "run_completed" } })).reason, "adapter_required");
+  assert.equal((await run({ audit: 42 })).reason, "missing_identity");
+  assert.equal((await run({ asyncRun: "x" })).reason, "invalid_spec");
+  assert.equal((await run({ warrantTemplate: "nope" })).reason, "unknown_template");
+  assert.equal((await run({ warrantTemplate: { id: "compress", overrides: { max_usd: 999 } } })).reason, "widening_denied");
+});
+
+test("agentill map covers every wired stage", async () => {
+  const { AGENTILL_MAP } = await import("./agentic-platform.mjs");
+  for (const s of ACN_ORDER) {
+    assert.ok(s in AGENTILL_MAP, "missing " + s);
+  }
+});

@@ -15,7 +15,22 @@ import fs from "node:fs";
 import { ACTIONS, cleanChain, fileReceipt, hostAllowed, issueWarrant, verifyWarrant } from "./warrant.mjs";
 import { computeQuote, capStatus } from "../suite-pricing.js";
 import { compressContext, compressContextAsync, verifyCompression, CONTEXT_VERSION } from "./context-compress.mjs";
+import { defaultProductionRerankFn } from "./rerank-http.mjs";
 import { runBenchhaus, BENCHHAUS_VERSION } from "./benchhaus.mjs";
+import { issueStandingRider, verifyStandingRider, safeguardsHash, STANDING_RIDER_VERSION, STANDING_WAIVER_VERSION } from "./standing-rider.mjs";
+import { operatorReputation, REPUTATION_VERSION } from "./reputation-ledger.mjs";
+import { runPrivateBench, PRIVATE_BENCH_VERSION } from "./private-bench.mjs";
+import { quotePayout, PAYOUTS_VERSION } from "./operator-payouts.mjs";
+import { recordKnownOrder, openDispute, DISPUTES_VERSION } from "./refund-disputes.mjs";
+import { solanaRailConfig, buildReceiveInstruction, verifySolanaReceipt, RAIL_VERSION } from "./solana-rail.mjs";
+import { TOOL_REGISTRY_VERSION } from "./tool-registry.mjs";
+import { AGENT_DIRECTORY_VERSION } from "./agent-directory.mjs";
+import { expandTemplate, WARRANT_TEMPLATES_VERSION } from "./warrant-templates.mjs";
+import { createMessenger, digestEnvelope, MESSAGING_VERSION } from "./agent-messaging.mjs";
+import { createRunManager, submitRun as singletonSubmitRun } from "./async-runs.mjs";
+import { OPS_EVENTS } from "./ops-feed.mjs";
+import { buildAuditPack } from "./audit-export.mjs";
+import { dryRun, SANDBOX_MODE } from "./sandbox-mode.mjs";
 
 export const AGENTIC_VERSION = "0.1.0";
 export const PLATFORM_NAME = "ACN";
@@ -40,6 +55,20 @@ export const AGENTILL_MAP = Object.freeze({
   benchhaus: { agentill: null, note: "benchhaus eval stays ACN-side (suite meter)" },
   cuni: { agentill: null, note: "exactness proof stays ACN-side" },
   conductor: { agentill: "validator/preflight", note: "plan-time validation; run receipts mirror settle ledger entries" },
+  "warrant-template": { agentill: "core/grants", note: "prebuilt per-vertical bundles expand to issue params, narrow-only" },
+  "standing-rider": { agentill: "core/identity", note: "standing safeguards + waiver-gated rider issuance" },
+  reputation: { agentill: null, note: "operator reputation stays ACN-side (suite ledger)" },
+  "tool-registry": { agentill: null, note: "tool discovery stays ACN-side" },
+  "agent-directory": { agentill: null, note: "agent discovery stays ACN-side" },
+  "agent-messaging": { agentill: null, note: "agent negotiation envelopes stay ACN-side" },
+  "private-bench": { agentill: null, note: "held-out eval stays ACN-side (suite meter)" },
+  solana: { agentill: "ledger/settle + core/platformFee", note: "receive-only Solana USDC rail; ACN builds, operator signs" },
+  payout: { agentill: "ledger/settle + core/platformFee", note: "unsigned USDC payout intents; ACN quotes, operator signs" },
+  dispute: { agentill: "ledger/settle + core/platformFee", note: "disputes open against known orders; refunds unsigned" },
+  "audit-export": { agentill: null, note: "audit packs stay ACN-side" },
+  "ops-feed": { agentill: null, note: "ops event feed stays ACN-side" },
+  "async-runs": { agentill: null, note: "background run queue stays ACN-side" },
+  sandbox: { agentill: null, note: "sandbox dry-run previews stay ACN-side" },
 });
 
 /** Seven protection tolls, per the Tollkeeper booklet. */
@@ -354,15 +383,68 @@ export async function planOnlyFetch(url) {
  * Pure plan: no disk, no network. Shows the eight stages, the meter quote,
  * the settle preview, and the conductor digest before anything runs.
  */
-/** Stage list. Defaults are frozen by contract: context joins only on opt-in. */
+/** Stage list. Defaults are frozen by contract: every stage after rider/
+ *  warrant/tollkeeper/quikgater/pcc/awlpay/psi/conductor joins only on
+ *  opt-in (the matching spec field is present). */
 function planStages(spec = {}) {
-  const stages = ["rider", "warrant", "tollkeeper", "quikgater"];
+  const stages = ["rider", "warrant"];
+  if (spec.warrantTemplate) stages.push("warrant-template");
+  if (spec.standingRider) stages.push("standing-rider");
+  stages.push("tollkeeper");
+  if (spec.reputation) stages.push("reputation");
+  stages.push("quikgater");
+  if (spec.tool) stages.push("tool-registry");
+  if (spec.agent) stages.push("agent-directory");
+  if (spec.message) stages.push("agent-messaging");
   if (spec.context) stages.push("context");
   if (spec.benchhaus) stages.push("benchhaus");
+  if (spec.privateBench) stages.push("private-bench");
   stages.push("pcc");
   if (spec.cuni) stages.push("cuni");
-  stages.push("awlpay", "psi", "conductor");
+  stages.push("awlpay");
+  if (spec.solana) stages.push("solana");
+  if (spec.payout) stages.push("payout");
+  if (spec.dispute) stages.push("dispute");
+  if (spec.audit) stages.push("audit-export");
+  if (spec.ops) stages.push("ops-feed");
+  if (spec.asyncRun) stages.push("async-runs");
+  if (spec.sandbox) stages.push("sandbox");
+  stages.push("psi", "conductor");
   return stages;
+}
+
+/** Spec normalizers for the optional ACN stages. Each accepts the compact
+ *  scalar form or the object form; anything else normalizes to null and the
+ *  stage then fails closed at plan/run time. */
+function riderIdLike(v) {
+  if (typeof v === "string") {
+    const s = v.trim();
+    return s || null;
+  }
+  if (v && typeof v === "object") {
+    for (const k of ["rider_id", "operator", "operator_id"]) {
+      if (typeof v[k] === "string" && v[k].trim()) return v[k].trim();
+    }
+  }
+  return null;
+}
+
+function warrantTemplateSel(v) {
+  if (typeof v === "string") {
+    const id = v.trim();
+    return id ? { id, overrides: {} } : null;
+  }
+  if (v && typeof v === "object") {
+    const id = typeof v.id === "string" ? v.id.trim() : (typeof v.template === "string" ? v.template.trim() : "");
+    if (!id) return null;
+    const o = v.overrides;
+    return { id, overrides: o && typeof o === "object" ? o : {} };
+  }
+  return null;
+}
+
+function objLike(v) {
+  return v && typeof v === "object" && !Array.isArray(v) ? v : null;
 }
 
 /** Pure context preview for plan output. No disk, no network: forwards the
@@ -380,6 +462,136 @@ function planContextPreview(spec = {}) {
   });
   if (!c || c.ok !== true || c.refused) return { refused: true, reason: (c && c.reason) || "compress_failed" };
   return { refused: false, inTokens: c.inTokens, outTokens: c.outTokens, ratio: c.ratio, digest: c.digest, tool: "context-compress", toolVersion: CONTEXT_VERSION, reranker: c.reranker, rescored: c.rescored };
+}
+
+/** Pure previews for the optional ACN stages. No disk, no network: ledger
+ *  writers (payout/dispute), ledger readers (reputation/audit), and
+ *  registry lookups (tool/agent) preview as intent only; the pure
+ *  expand/hash/eval/dry-run helpers run inline. Never throws. */
+function planAcnPreviews(spec = {}, adapters = {}) {
+  const out = {};
+  if (spec.warrantTemplate) {
+    const sel = warrantTemplateSel(spec.warrantTemplate);
+    if (!sel) {
+      out.warrantTemplate = { tool: "warrant-templates", toolVersion: WARRANT_TEMPLATES_VERSION, refused: true, reason: "bad_template" };
+    } else {
+      const e = expandTemplate(sel.id, sel.overrides);
+      out.warrantTemplate = e && e.ok === true
+        ? { tool: "warrant-templates", toolVersion: WARRANT_TEMPLATES_VERSION, template: sel.id, params: e.params }
+        : { tool: "warrant-templates", toolVersion: WARRANT_TEMPLATES_VERSION, refused: true, reason: (e && e.reason) || "expand_failed" };
+    }
+  }
+  if (spec.standingRider) {
+    const s = objLike(spec.standingRider);
+    try {
+      if (s && s.safeguards && typeof s.safeguards === "object") {
+        out.standingRider = { tool: "standing-rider", toolVersion: STANDING_RIDER_VERSION, safeguards_hash: safeguardsHash(s.safeguards), waiver_version: STANDING_WAIVER_VERSION };
+      } else {
+        const id = riderIdLike(spec.standingRider);
+        out.standingRider = id
+          ? { tool: "standing-rider", toolVersion: STANDING_RIDER_VERSION, rider_id: id }
+          : { tool: "standing-rider", toolVersion: STANDING_RIDER_VERSION, refused: true, reason: "bad_standing_rider" };
+      }
+    } catch {
+      out.standingRider = { tool: "standing-rider", toolVersion: STANDING_RIDER_VERSION, refused: true, reason: "preview_failed" };
+    }
+  }
+  if (spec.reputation) {
+    const id = riderIdLike(spec.reputation);
+    out.reputation = id
+      ? { tool: "reputation-ledger", toolVersion: REPUTATION_VERSION, rider_id: id }
+      : { tool: "reputation-ledger", toolVersion: REPUTATION_VERSION, refused: true, reason: "bad_reputation" };
+  }
+  if (spec.tool) {
+    const t = objLike(spec.tool);
+    const id = t && typeof t.id === "string" ? t.id.trim() : "";
+    out.tool = id
+      ? { tool: "tool-registry", toolVersion: TOOL_REGISTRY_VERSION, id, version: typeof t.version === "string" ? t.version : null }
+      : { tool: "tool-registry", toolVersion: TOOL_REGISTRY_VERSION, refused: true, reason: "bad_tool" };
+  }
+  if (spec.agent) {
+    const id = riderIdLike(spec.agent);
+    out.agent = id
+      ? { tool: "agent-directory", toolVersion: AGENT_DIRECTORY_VERSION, rider_id: id }
+      : { tool: "agent-directory", toolVersion: AGENT_DIRECTORY_VERSION, refused: true, reason: "bad_agent" };
+  }
+  if (spec.message) {
+    const m = objLike(spec.message) || {};
+    const okShape = typeof m.from_rider === "string" && m.from_rider.trim()
+      && typeof m.to_rider === "string" && m.to_rider.trim()
+      && typeof m.nonce === "string" && m.nonce.trim()
+      && m.offer && typeof m.offer === "object";
+    try {
+      out.message = okShape
+        ? { tool: "agent-messaging", toolVersion: MESSAGING_VERSION, digest: digestEnvelope(m, typeof adapters.hashFn === "function" ? adapters.hashFn : undefined) }
+        : { tool: "agent-messaging", toolVersion: MESSAGING_VERSION, refused: true, reason: "bad_envelope" };
+    } catch {
+      out.message = { tool: "agent-messaging", toolVersion: MESSAGING_VERSION, refused: true, reason: "preview_failed" };
+    }
+  }
+  if (spec.privateBench) {
+    try {
+      const inner = objLike(spec.privateBench) || {};
+      const b = runPrivateBench(inner, objLike(adapters.privateBench) || {});
+      out.privateBench = b && b.ok === true
+        ? { tool: "private-bench", toolVersion: PRIVATE_BENCH_VERSION, siascore: b.siascore, coverage_pct: b.coverage_pct, provenance: b.provenance, digest: b.digest }
+        : { tool: "private-bench", toolVersion: PRIVATE_BENCH_VERSION, refused: true, reason: (b && b.reason) || "bench_failed" };
+    } catch {
+      out.privateBench = { tool: "private-bench", toolVersion: PRIVATE_BENCH_VERSION, refused: true, reason: "bench_failed" };
+    }
+  }
+  if (spec.solana) {
+    const s = objLike(spec.solana) || {};
+    try {
+      if (typeof s.tx === "string" && s.tx.trim()) {
+        out.solana = { tool: "solana-rail", toolVersion: RAIL_VERSION, mode: "verify" };
+      } else {
+        const cfg = solanaRailConfig(adapters.solanaEnv || process.env);
+        out.solana = { tool: "solana-rail", toolVersion: RAIL_VERSION, mode: "receive", enabled: cfg.enabled, network: cfg.network };
+      }
+    } catch {
+      out.solana = { tool: "solana-rail", toolVersion: RAIL_VERSION, refused: true, reason: "preview_failed" };
+    }
+  }
+  if (spec.payout) {
+    const p = objLike(spec.payout) || {};
+    out.payout = { tool: "operator-payouts", toolVersion: PAYOUTS_VERSION, rail: typeof p.rail === "string" ? p.rail : null, amount_cents: Number(p.amount_cents) || 0 };
+  }
+  if (spec.dispute) {
+    const d = objLike(spec.dispute) || {};
+    const id = typeof d.order_id === "string" ? d.order_id.trim() : "";
+    out.dispute = id
+      ? { tool: "refund-disputes", toolVersion: DISPUTES_VERSION, order_id: id }
+      : { tool: "refund-disputes", toolVersion: DISPUTES_VERSION, refused: true, reason: "bad_dispute" };
+  }
+  if (spec.audit) {
+    const id = riderIdLike(spec.audit);
+    out.audit = id
+      ? { tool: "audit-export", identity: id }
+      : { tool: "audit-export", refused: true, reason: "bad_audit" };
+  }
+  if (spec.ops) {
+    const o = objLike(spec.ops) || {};
+    out.ops = typeof o.type === "string" && o.type
+      ? { tool: "ops-feed", type: o.type }
+      : { tool: "ops-feed", refused: true, reason: "bad_ops" };
+  }
+  if (spec.asyncRun) {
+    out.asyncRun = objLike(spec.asyncRun)
+      ? { tool: "async-runs", staged: true }
+      : { tool: "async-runs", refused: true, reason: "bad_async_spec" };
+  }
+  if (spec.sandbox) {
+    try {
+      const d = dryRun(objLike(spec.sandbox) || {}, objLike(adapters.sandbox) || {});
+      out.sandbox = d && d.ok === true
+        ? { tool: "sandbox-mode", mode: SANDBOX_MODE, spend_cents: 0, would_be_cents: d.would_be_cents }
+        : { tool: "sandbox-mode", refused: true, reason: (d && d.error) || "dry_run_failed" };
+    } catch {
+      out.sandbox = { tool: "sandbox-mode", refused: true, reason: "dry_run_failed" };
+    }
+  }
+  return out;
 }
 
 export function planAgenticRun(spec = {}, adapters = {}) {
@@ -449,6 +661,7 @@ export function planAgenticRun(spec = {}, adapters = {}) {
       conductor: { cmd: "spl_agentic_run", digest: sha256hex(canonical) },
       ...(ctxPreview ? { context: ctxPreview } : {}),
       ...(benchPreview ? { benchhaus: benchPreview } : {}),
+      ...planAcnPreviews(spec, adapters),
       ...(spendGuard ? { spendGuard } : {}),
     },
   };
@@ -697,6 +910,42 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     remaining_calls: warrant.remaining_calls,
   });
 
+  if (spec.warrantTemplate) {
+    const sel = warrantTemplateSel(spec.warrantTemplate);
+    if (!sel) return { ...fail("warrant-template", "bad_template"), receipts, memory };
+    const e = expandTemplate(sel.id, sel.overrides);
+    if (!e || e.ok !== true) return { ...fail("warrant-template", (e && e.reason) || "expand_failed"), receipts, memory };
+    receipts.push({
+      stage: "warrant-template", ok: true, tool: "warrant-templates", toolVersion: WARRANT_TEMPLATES_VERSION,
+      template: sel.id, params: e.params,
+    });
+  }
+
+  if (spec.standingRider) {
+    const srAdapters = objLike(adapters.standingRider) || {};
+    const s = objLike(spec.standingRider);
+    let sr;
+    if (s && s.safeguards && typeof s.safeguards === "object") {
+      sr = issueStandingRider({ safeguards: s.safeguards, waiver: s.waiver }, srAdapters);
+      if (!sr || sr.ok !== true) return { ...fail("standing-rider", (sr && (sr.reason || sr.error)) || "issue_failed"), receipts, memory };
+      receipts.push({
+        stage: "standing-rider", ok: true, tool: "standing-rider", toolVersion: STANDING_RIDER_VERSION,
+        mode: "issued", rider_id: sr.receipt.rider_id,
+        safeguards_hash: sr.receipt.safeguards_hash, waiver_version: sr.receipt.waiver_version,
+      });
+    } else {
+      const id = riderIdLike(spec.standingRider);
+      if (!id) return { ...fail("standing-rider", "missing_rider_id"), receipts, memory };
+      sr = verifyStandingRider(id, srAdapters);
+      if (!sr || sr.ok !== true) return { ...fail("standing-rider", (sr && (sr.reason || sr.error)) || "verify_failed", { rider_id: id }), receipts, memory };
+      receipts.push({
+        stage: "standing-rider", ok: true, tool: "standing-rider", toolVersion: STANDING_RIDER_VERSION,
+        mode: "verified", rider_id: sr.rider_id,
+        safeguards_hash: sr.safeguards_hash, waiver_version: sr.waiver_version,
+      });
+    }
+  }
+
   const price = typeof tollPrice === "function" ? await tollPrice(base.crossing) : { listed: "at-toll-schema" };
   receipts.push({ stage: "tollkeeper", ok: true, crossing: base.crossing, price, receipt: "signed on pass" });
 
@@ -710,6 +959,22 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     if (early.fraction >= 1) {
       return { ...fail("tollkeeper", "cap_exceeded", { spent_cents: early.spent_cents, cap_cents: early.cap_cents, fraction: early.fraction }), receipts, memory };
     }
+  }
+
+  if (spec.reputation) {
+    const id = riderIdLike(spec.reputation);
+    if (!id) return { ...fail("reputation", "missing_rider_id"), receipts, memory };
+    let rep;
+    try {
+      rep = operatorReputation(id, objLike(adapters.reputation) || {});
+    } catch (e) {
+      return { ...fail("reputation", "ledger_read_failed", { error: String((e && e.message) || e).slice(0, 200) }), receipts, memory };
+    }
+    if (!rep || rep.ok !== true) return { ...fail("reputation", (rep && (rep.reason || rep.error)) || "lookup_failed", { rider_id: id }), receipts, memory };
+    receipts.push({
+      stage: "reputation", ok: true, tool: "reputation-ledger", toolVersion: REPUTATION_VERSION,
+      rider_id: rep.rider_id, runs: rep.runs, disputes: rep.disputes, refunds: rep.refunds, score: rep.score,
+    });
   }
 
   let fetchedBytes = 0;
@@ -742,11 +1007,60 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     receipts.push({ stage: "quikgater", ok: true, url: base.url.href, bytes: fetchedBytes, paid: spec.pay === true });
   }
 
+  if (spec.tool) {
+    const t = objLike(spec.tool) || {};
+    const id = typeof t.id === "string" ? t.id.trim() : "";
+    if (!id) return { ...fail("tool-registry", "bad_tool"), receipts, memory };
+    const registry = adapters.toolRegistry;
+    if (!registry || typeof registry.get !== "function") {
+      return { ...fail("tool-registry", "adapter_required", { need: "toolRegistry" }), receipts, memory };
+    }
+    const hit = registry.get(id, typeof t.version === "string" ? t.version : undefined);
+    if (!hit || hit.ok !== true) return { ...fail("tool-registry", (hit && hit.reason) || "unknown_tool", { id }), receipts, memory };
+    receipts.push({
+      stage: "tool-registry", ok: true, tool: "tool-registry", toolVersion: TOOL_REGISTRY_VERSION,
+      id: hit.tool.id, version: hit.tool.version, price_cents: hit.tool.price_cents, endpoint: hit.tool.endpoint,
+    });
+  }
+
+  if (spec.agent) {
+    const id = riderIdLike(spec.agent);
+    if (!id) return { ...fail("agent-directory", "missing_rider_id"), receipts, memory };
+    const directory = adapters.agentDirectory;
+    if (!directory || typeof directory.get !== "function") {
+      return { ...fail("agent-directory", "adapter_required", { need: "agentDirectory" }), receipts, memory };
+    }
+    const hit = directory.get(id);
+    if (!hit || hit.ok !== true) return { ...fail("agent-directory", (hit && hit.reason) || "unknown_agent", { rider_id: id }), receipts, memory };
+    receipts.push({
+      stage: "agent-directory", ok: true, tool: "agent-directory", toolVersion: AGENT_DIRECTORY_VERSION,
+      rider_id: hit.agent.rider_id, score: hit.agent.score, endpoint: hit.agent.endpoint,
+    });
+  }
+
+  if (spec.message) {
+    const m = objLike(spec.message);
+    if (!m) return { ...fail("agent-messaging", "bad_envelope"), receipts, memory };
+    const messenger = (adapters.messenger && typeof adapters.messenger.draft === "function" && typeof adapters.messenger.ack === "function")
+      ? adapters.messenger
+      : createMessenger(typeof adapters.hashFn === "function" ? { hashFn: adapters.hashFn } : undefined);
+    const out = m.ack === true ? messenger.ack(m) : messenger.draft(m);
+    if (!out || out.ok !== true) return { ...fail("agent-messaging", (out && out.reason) || "bad_envelope"), receipts, memory };
+    receipts.push({
+      stage: "agent-messaging", ok: true, tool: "agent-messaging", toolVersion: MESSAGING_VERSION,
+      kind: out.envelope.kind, digest: out.envelope.digest,
+    });
+  }
+
   let contextText = null;
   if (spec.context) {
     const input = typeof spec.context.text === "string" ? spec.context.text : (fetchedBody != null ? String(fetchedBody) : "");
     if (input) {
       const compressFn = typeof adapters.compressFn === "function" ? adapters.compressFn : (s) => compressContextAsync(s);
+      const prodRerankFn =
+        typeof spec.context.rerankFn === "function" || typeof adapters.rerankFn === "function"
+          ? null
+          : defaultProductionRerankFn();
       const c = await compressFn({
         text: input,
         query: spec.context.query || "",
@@ -754,6 +1068,7 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
         maxTokens: spec.context.maxTokens,
         reranker: spec.context.reranker,
         rerankTopK: spec.context.rerankTopK,
+        ...(prodRerankFn ? { rerankFn: prodRerankFn } : {}),
         ...(typeof spec.context.rerankFn === "function" ? { rerankFn: spec.context.rerankFn } : {}),
         ...(typeof adapters.rerankFn === "function" ? { rerankFn: adapters.rerankFn } : {}),
       });
@@ -783,6 +1098,24 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     receipts.push({
       stage: "benchhaus", ok: true, tool: "benchhaus", toolVersion: BENCHHAUS_VERSION,
       suites: b.suites, siascore: b.siascore, coverage_pct: b.coverage_pct, verified: true, digest: b.digest,
+    });
+  }
+
+  if (spec.privateBench) {
+    const pbAdapters = objLike(adapters.privateBench) || {};
+    const pbSpec = objLike(spec.privateBench) || {};
+    const runFn = typeof adapters.privateBenchFn === "function" ? adapters.privateBenchFn : (s) => runPrivateBench(s, pbAdapters);
+    let pb;
+    try {
+      pb = await runFn(pbSpec);
+    } catch (e) {
+      return { ...fail("private-bench", "bench_failed", { error: String((e && e.message) || e).slice(0, 200) }), receipts, memory };
+    }
+    if (!pb || pb.ok !== true) return { ...fail("private-bench", (pb && (pb.reason || pb.error)) || "bench_failed"), receipts, memory };
+    receipts.push({
+      stage: "private-bench", ok: true, tool: "private-bench", toolVersion: PRIVATE_BENCH_VERSION,
+      suites: pb.suites, siascore: pb.siascore, coverage_pct: pb.coverage_pct,
+      provenance: pb.provenance, verified: true, digest: pb.digest,
     });
   }
 
@@ -829,6 +1162,130 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     return { ...fail("awlpay", "payment_required"), status: 402, instruction, receipts, memory };
   }
   receipts.push({ stage: "awlpay", ok: true, ...instruction, captured: settled });
+
+  if (spec.solana) {
+    const s = objLike(spec.solana) || {};
+    if (typeof s.tx === "string" && s.tx.trim()) {
+      const vr = typeof adapters.verifySolanaReceiptFn === "function"
+        ? await adapters.verifySolanaReceiptFn({ tx: s.tx, expected: s.expected })
+        : await verifySolanaReceipt(
+          { tx: s.tx, expected: s.expected },
+          typeof adapters.verifyReceipt === "function" ? { verifyReceipt: adapters.verifyReceipt } : {},
+        );
+      if (!vr || vr.ok !== true) return { ...fail("solana", (vr && (vr.error || vr.reason)) || "verify_failed", { tx: s.tx }), receipts, memory };
+      receipts.push({
+        stage: "solana", ok: true, tool: "solana-rail", toolVersion: RAIL_VERSION,
+        mode: "verified", tx: s.tx,
+      });
+    } else {
+      const bi = buildReceiveInstruction({ amount_cents: s.amount_cents }, adapters.solanaEnv || process.env);
+      if (!bi || bi.ok !== true) return { ...fail("solana", (bi && (bi.error || bi.reason)) || "rail_disabled"), receipts, memory };
+      receipts.push({
+        stage: "solana", ok: true, tool: "solana-rail", toolVersion: RAIL_VERSION,
+        mode: "receive", instruction: bi.instruction,
+      });
+    }
+  }
+
+  if (spec.payout) {
+    const p = objLike(spec.payout);
+    if (!p) return { ...fail("payout", "bad_payout"), receipts, memory };
+    const q = quotePayout(
+      { rider_id: p.rider_id, amount_cents: p.amount_cents, rail: p.rail, to: p.to },
+      objLike(adapters.payouts) || {},
+    );
+    if (!q || q.ok !== true) return { ...fail("payout", (q && (q.error || q.reason)) || "quote_failed"), receipts, memory };
+    receipts.push({
+      stage: "payout", ok: true, tool: "operator-payouts", toolVersion: PAYOUTS_VERSION,
+      intent_id: q.intent.id, rail: q.intent.rail, chain: q.intent.chain,
+      amount_cents: q.intent.amount_cents, amount_raw: q.intent.amount_raw,
+      to: q.intent.to, requires: "operator_signature", status: q.intent.status,
+    });
+  }
+
+  if (spec.dispute) {
+    const d = objLike(spec.dispute);
+    if (!d) return { ...fail("dispute", "bad_dispute"), receipts, memory };
+    const dAdapters = objLike(adapters.disputes) || {};
+    if (d.amount_cents != null) {
+      const reg = recordKnownOrder(
+        { order_id: d.order_id, amount_cents: d.amount_cents, chain: d.chain ?? null, refund_to: d.refund_to ?? null, agent_id: d.agent_id ?? null },
+        dAdapters,
+      );
+      if (!reg || reg.ok !== true) return { ...fail("dispute", (reg && (reg.error || reg.reason)) || "order_failed", { order_id: d.order_id }), receipts, memory };
+    }
+    const opened = openDispute({ order_id: d.order_id, reason: d.reason }, dAdapters);
+    if (!opened || opened.ok !== true) return { ...fail("dispute", (opened && (opened.error || opened.reason)) || "open_failed", { order_id: d.order_id }), receipts, memory };
+    receipts.push({
+      stage: "dispute", ok: true, tool: "refund-disputes", toolVersion: DISPUTES_VERSION,
+      dispute_id: opened.dispute.id, order_id: opened.dispute.order_id, status: opened.dispute.status,
+    });
+  }
+
+  if (spec.audit) {
+    const id = riderIdLike(spec.audit);
+    if (!id) return { ...fail("audit-export", "missing_identity"), receipts, memory };
+    let pack;
+    try {
+      pack = await buildAuditPack({ rider_id: id }, { readers: objLike(adapters.auditReaders) || {} });
+    } catch (e) {
+      return { ...fail("audit-export", "reader_failed", { error: String((e && e.message) || e).slice(0, 200) }), receipts, memory };
+    }
+    if (!pack || pack.ok !== true) return { ...fail("audit-export", (pack && (pack.error || pack.reason)) || "reader_failed", { identity: id }), receipts, memory };
+    receipts.push({
+      stage: "audit-export", ok: true, tool: "audit-export",
+      identity: pack.pack.identity, spend_cents: pack.pack.spend_cents,
+      runs: pack.pack.runs.length, disputes: pack.pack.disputes.length,
+      receipts_digests: pack.pack.receipts_digests.length,
+    });
+  }
+
+  if (spec.ops) {
+    const o = objLike(spec.ops);
+    if (!o || typeof o.type !== "string" || !o.type) return { ...fail("ops-feed", "bad_ops"), receipts, memory };
+    const feed = adapters.opsFeed;
+    if (!feed || typeof feed.emit !== "function") {
+      return { ...fail("ops-feed", "adapter_required", { need: "opsFeed" }), receipts, memory };
+    }
+    const emitted = feed.emit(o.type, objLike(o.detail) || {});
+    if (!emitted || emitted.ok !== true) {
+      return { ...fail("ops-feed", (emitted && (emitted.error || emitted.reason)) || "unknown_event", { type: o.type }), receipts, memory };
+    }
+    receipts.push({
+      stage: "ops-feed", ok: true, tool: "ops-feed",
+      type: emitted.event.type, seq: emitted.event.seq, persisted: emitted.persisted,
+    });
+  }
+
+  if (spec.asyncRun) {
+    const q = objLike(spec.asyncRun);
+    if (!q) return { ...fail("async-runs", "invalid_spec"), receipts, memory };
+    const submit = adapters.runManager && typeof adapters.runManager.submitRun === "function"
+      ? (s) => adapters.runManager.submitRun(s)
+      : singletonSubmitRun;
+    const queued = submit(q);
+    if (!queued || queued.ok !== true) return { ...fail("async-runs", (queued && (queued.error || queued.reason)) || "queue_failed"), receipts, memory };
+    receipts.push({
+      stage: "async-runs", ok: true, tool: "async-runs",
+      run_id: queued.run_id, status: queued.status,
+    });
+  }
+
+  if (spec.sandbox) {
+    const s = objLike(spec.sandbox);
+    if (!s) return { ...fail("sandbox", "invalid_spec"), receipts, memory };
+    let sb;
+    try {
+      sb = dryRun(s, objLike(adapters.sandbox) || {});
+    } catch (e) {
+      return { ...fail("sandbox", "dry_run_failed", { error: String((e && e.message) || e).slice(0, 200) }), receipts, memory };
+    }
+    if (!sb || sb.ok !== true) return { ...fail("sandbox", (sb && (sb.error || sb.reason)) || "dry_run_failed"), receipts, memory };
+    receipts.push({
+      stage: "sandbox", ok: true, tool: "sandbox-mode",
+      mode: sb.mode, spend_cents: 0, would_be_cents: sb.would_be_cents,
+    });
+  }
 
   const entry = { d: today(), c: "ship", o: `agentic ${base.action} ${base.host} ${bytes}B rail=${instruction.rail}` };
   sink(entry);
@@ -886,7 +1343,7 @@ export function verifyConductorReceipt(runSpec, receipt) {
 export const AGENTIC_TOOLS = Object.freeze([
   {
     name: "spl_agentic_plan",
-    description: "Plan one ACN (Agent Commerce Network) run across Rider, Warrant, Tollkeeper, Quikgater, PCC, AWLpay, PSI, Conductor. Pure: no disk, no network.",
+    description: "Plan one ACN (Agent Commerce Network) run across Rider, Warrant, Tollkeeper, Quikgater, PCC, AWLpay, PSI, Conductor, plus optional stages (warrant-template, standing-rider, reputation, tool-registry, agent-directory, agent-messaging, private-bench, solana, payout, dispute, audit-export, ops-feed, async-runs, sandbox) when the matching spec field is present. Pure: no disk, no network.",
     inputSchema: {
       type: "object",
       properties: {
@@ -900,6 +1357,20 @@ export const AGENTIC_TOOLS = Object.freeze([
         rail: { type: "string" },
         swap: { type: "object" },
         cuni: { type: "object" },
+        warrantTemplate: { type: ["string", "object"] },
+        standingRider: { type: ["string", "object"] },
+        reputation: { type: ["string", "object"] },
+        tool: { type: "object" },
+        agent: { type: ["string", "object"] },
+        message: { type: "object" },
+        privateBench: { type: "object" },
+        solana: { type: "object" },
+        payout: { type: "object" },
+        dispute: { type: "object" },
+        audit: { type: ["string", "object"] },
+        ops: { type: "object" },
+        asyncRun: { type: "object" },
+        sandbox: { type: "object" },
       },
     },
   },
@@ -946,6 +1417,20 @@ export const AGENTIC_TOOLS = Object.freeze([
         delegation_mode: { type: "string" },
         parent_receipt: { type: "string" },
         cuni: { type: "object" },
+        warrantTemplate: { type: ["string", "object"] },
+        standingRider: { type: ["string", "object"] },
+        reputation: { type: ["string", "object"] },
+        tool: { type: "object" },
+        agent: { type: ["string", "object"] },
+        message: { type: "object" },
+        privateBench: { type: "object" },
+        solana: { type: "object" },
+        payout: { type: "object" },
+        dispute: { type: "object" },
+        audit: { type: ["string", "object"] },
+        ops: { type: "object" },
+        asyncRun: { type: "object" },
+        sandbox: { type: "object" },
         confirm: { type: "boolean" },
       },
     },
@@ -955,6 +1440,10 @@ export const AGENTIC_TOOLS = Object.freeze([
 export async function dispatchAgentic(name, args = {}, adapters = {}) {
   if (name === "spl_agentic_plan") return planAgenticRun(args);
   if (name === "spl_agentic_context") {
+    const prodRerankFn =
+      typeof args.rerankFn === "function" || typeof adapters.rerankFn === "function"
+        ? null
+        : defaultProductionRerankFn();
     const c = await compressContextAsync({
       text: args.text ?? "",
       query: args.query || "",
@@ -962,6 +1451,7 @@ export async function dispatchAgentic(name, args = {}, adapters = {}) {
       maxTokens: args.maxTokens,
       reranker: args.reranker,
       rerankTopK: args.rerankTopK,
+      ...(prodRerankFn ? { rerankFn: prodRerankFn } : {}),
       ...(typeof args.rerankFn === "function" ? { rerankFn: args.rerankFn } : {}),
       ...(typeof adapters.rerankFn === "function" ? { rerankFn: adapters.rerankFn } : {}),
     });
