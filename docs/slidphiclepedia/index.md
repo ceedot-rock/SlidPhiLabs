@@ -154,3 +154,30 @@ Full records in `pulls.jsonl`. Rule in `README.md`.
 - Cohere Rerank 3.5 (32k ctx, proprietary API-only, ~$2/1k searches) vs Voyage rerank-2.5 (+12.7% over Cohere on MAIR, 32k ctx, $0.05/MTok, API-only) — both excluded from self-host shortlist
 - mxbai-rerank-large-v2 (1.5B, 8k ctx, BEIR 57.49, Apache-2.0) — top self-host pick; v2-gemma latency datapoint 1050ms/100pairs on H100 — see pulls.jsonl survey=A-reranker-survey
 
+## Bitbucket git-product inventory pulls 2026-11-05 (6 records)
+
+- Cloud Free $0 (≤5 users): 1GB total repo storage + 1GB LFS + 50 build-min/mo (2025 cut to 1GB); Standard $3.65/u/mo; Premium $8/u/mo (was $7.25, +10% Oct 13 2026; annual-billing echoes $3.30/$6.60)
+- Pipelines: Free 50 min/mo; Standard 2500/u/mo pooled; Premium 3500/u/mo pooled; overage $10/1000min; self-hosted runners free to register ≤100, $15/mo per concurrent slot; failed builds consume minutes; unused allowance no rollover
+- Usage-based pricing Sep/Oct-Dec 2026: meters (build-min $10/1000, LFS $10/100GB, packages storage $0.35/GB/mo, network $0.70/GB/mo) move to Atlassian Admin, org-level pooling (monthly Oct 26 2026; annual Dec 3 2026); Standard drops 5-seat minimum
+- Secret scanning: native secret/dependency/IaC scanning bundled in Premium at no extra charge (no per-GB meter found); external Truffle scan found secrets across 2.6M public Bitbucket repos
+- Data Center annual tiers: $2300/25u, $4200/50u, $7600/100u, $15200/250u, $20200/500u, $30400/1000u, $303600/10000u (+$30300 per extra 1000u); TrustRadius cites ~$44000/yr per 500u band; FY25 DC hikes +15-25% by tier — see pulls.jsonl survey=bitbucket-inventory
+
+## Superforges inventory pulls 2026-11-05 (51 records)
+
+- Forgejo v15.0 LTS (to Jul 2027): community fork of Gitea (2022 governance split, hard fork early 2024), custodian Codeberg e.V.; Gitea = Gitea Ltd commercial, MIT; Forgejo now GPLv3+ copyleft; both: repos/LFS/issues/PRs/wiki/webhooks/Actions-compatible CI/package registry/REST, GitHub-action workflows portable
+- Self-host cost: ~512MB RAM footprint (8x gap vs GitLab CE); single Go binary + SQLite/Postgres; boring upgrades (image-tag bump); ballpark $4-6/mo VPS + S3 for LFS/packages; isolate runners, test full recovery (repos+metadata+LFS+packages+assets)
+- Codeberg.org: German e.V. nonprofit, free FLOSS-only hosting (public = OSI licence/CC0/Unlicense; ~100MB private allowance); no paid tier, donation/member funded, GDPR, no tracking; Pages via git-pages branch, Weblate, Woodpecker CI at ci.codeberg.org (request-gated, linux/amd64 shared best-effort) + Forgejo Actions alpha (tight-limit convenience runner, abuse-gated)
+- SourceHut (sr.ht): email-driven forge (git send-email + lists, per-list CI), 100% FOSS self-hostable, no-JS web; hosted pay-what-you-can tiers $2/5/10 per mo ($20/50/100 per yr, identical features); PGP mail, TOTP 2FA, audit logs, fine-grained OAuth; Git+Mercurial, builds/lists/trackers/wiki
+- Radicle: P2P sovereign forge on Git (Radicle Link replication + gossip, DIDs did:key/Ed25519 node IDs, self-hosted version per peer); no central entity; seed nodes need public static IP + modest hw (Iris/Rosa bootstrap nodes); FOSDEM 2026 talk; git-annex paper adjacents for blob scale
+- Secret scanning: NO native scanner/push-protection in Gitea/Forgejo/SourceHut/Radicle — wire Gitleaks (MIT, 150+ types, fast, CI-speed pick) or TruffleHog (entropy+verification, forensics pick) into Actions/Woodpecker/builds manifests; GitHub Advanced Security comparison only
+- Federation/licenses verify: Forgejo ActivityPub federation EXPERIMENTAL (May 2026 report; enabling may void future cross-software federation), GPL-3.0-or-later (AGPL variants debated); SourceHut suite AGPLv3 per Tavily answer; Radicle/heartwood license NOT confirmed in pulls (unresolved) — see pulls.jsonl notes=Superforges-inventory
+
+## GitLab git-product inventory pulls 2026-11-05 (8 records)
+
+- SaaS tiers (about.gitlab.com/pricing, verified live): Free $0 (5 users/top-level group, 400 compute-min/mo, 10GiB adjustable storage, SAST); Premium $29/u/mo billed annually ($348/u/yr; self-managed ~$19.80/u/mo per Vendr) incl 10,000 compute-min/mo + $12/u/mo GitLab Credits; Ultimate CUSTOM/quote-only (was $99/u/mo list) incl 50,000 compute-min/mo + $24/u/mo Credits
+- Access control: role ladder Guest < Reporter < Developer < Maintainer < Owner (+Auditor/Minimal Access on higher tiers); group/subgroup/project hierarchy, protected branches, MR approvals (Premium+), SAML/SCIM + IP allowlisting (higher tiers); granular PAT/project/deploy/group tokens
+- Registries (bundled, no separate meter): Container Registry (Guest pull / Developer push / Maintainer+ delete, dependency proxy, virtual registry), Package Registry (npm/Maven/PyPI/NuGet/Composer/Go/Conan/Helm/generic), Terraform Module Registry, ML Model Registry (Ultimate), Pages; storage counts against namespace quota
+- Secret scanning: pipeline secret detection runs ALL tiers incl Free on SaaS+self-managed+Dedicated (docs-verified Tier: Free/Premium/Ultimate); push protection blocks secret-bearing pushes; Ultimate-only extras: custom rulesets, vulnerability tracking, AI false-positive suppression (Duo add-on); SAST/DAST/dep/container/IaC scans gated Premium (SAST basic) / Ultimate (full AppSec)
+- Runners: GitLab-hosted SaaS runners consume compute minutes (Linux/Windows/macOS, GPU premium burn faster); self-hosted runners FREE to register, consume ZERO minutes (BYO infra, incl self-managed); extra compute $10/1000min, extra storage $5/mo per 10GiB; Credits $1/credit for Duo Agent Platform beyond bundle
+- 2025-2026 changes: Ultimate list price REMOVED → custom quote (mid-2026); "CI minutes" renamed "compute minutes"; Duo AI rebundled as metered GitLab Credits ($12/$24 incl, limited-time promo); Free tier capped 5 users/top-level group + storage enforcement; Premium storage quota cited 500GiB in 2026 roundups (verify per-namespace) — see pulls.jsonl survey=gitlab-inventory
+

@@ -411,7 +411,9 @@ const ACN_ORDER = [
   "reputation", "quikgater", "tool-registry", "agent-directory",
   "agent-messaging", "context", "benchhaus", "private-bench", "pcc", "cuni",
   "awlpay", "solana", "payout", "dispute", "audit-export", "ops-feed",
-  "async-runs", "sandbox", "psi", "conductor",
+  "async-runs", "sandbox", "depot-receipts", "depot-billing",
+  "conductor-tasks", "conductor-review", "mcp-catalog", "storefront-skills",
+  "psi", "conductor",
 ];
 
 async function acnFixtures() {
@@ -419,8 +421,12 @@ async function acnFixtures() {
   const { createAgentDirectory } = await import("./agent-directory.mjs");
   const { createOpsFeed } = await import("./ops-feed.mjs");
   const { createRunManager } = await import("./async-runs.mjs");
+  const { createMcpCatalog } = await import("./mcp-catalog.mjs");
   const registry = createToolRegistry();
   assert.equal(registry.register({ id: "pcc-compress", version: "1.0.0", price_cents: 5, endpoint: "https://tools.test/pcc" }).ok, true);
+  const mcpCatalog = createMcpCatalog({
+    seed: [{ name: "pcc_compress", version: "1.0.0", endpoint: "https://tools.test/mcp", price_cents: 25, protocol: "streamable-http", auth: "api-key" }],
+  });
   const directory = createAgentDirectory();
   assert.equal(directory.register({ rider_id: "agent-1", endpoint: "https://agents.test/a1", score: 80 }).ok, true);
   const payoutsDir = fs.mkdtempSync(path.join(os.tmpdir(), "acn-payouts-"));
@@ -450,6 +456,12 @@ async function acnFixtures() {
       ops: { type: "run_completed", detail: {} },
       asyncRun: { task: "demo" },
       sandbox: { items: [{ name: "demo" }] },
+      depotReceipt: { op: "publish", team: "acme", sha256: "ab".repeat(32), bytes: 100 },
+      depotBilling: { team: "acme", month: "2026-11", receipts: [], seats: 3 },
+      conductorTask: { prompt: "ship it" },
+      conductorReview: { diff: "+ hello\n" },
+      mcpTool: { name: "pcc_compress", version: "1.0.0" },
+      sku: "gitdepot",
     },
     adapters: {
       standingRider: { store: new Map() },
@@ -468,6 +480,7 @@ async function acnFixtures() {
       disputes: { dir: disputesDir, now: fixedNow, id: () => "dp_test1" },
       opsFeed: createOpsFeed({ now: fixedNow }),
       runManager: createRunManager({ now: fixedNow }),
+      mcpCatalog,
       fetch402: async () => ({ status: 200, body: "hi" }),
     },
   };
@@ -483,6 +496,12 @@ test("optional acn stages join plan and run in order", async () => {
   assert.equal(p.plan.privateBench.siascore, 100);
   assert.equal(p.plan.solana.mode, "receive");
   assert.equal(p.plan.sandbox.mode, "sandbox");
+  assert.equal(p.plan.depotReceipt.quoted_cents, 0);
+  assert.equal(p.plan.depotBilling.amount_cents, 0);
+  assert.equal(p.plan.conductorTask.prompt, "ship it");
+  assert.equal(p.plan.conductorReview.verdict, "approve");
+  assert.equal(p.plan.mcpTool.name, "pcc_compress");
+  assert.equal(p.plan.sku.amount_cents, 1500);
   const r = await runAgenticRun(spec, adapters);
   assert.equal(r.ok, true);
   const wantReceipts = ACN_ORDER.map((s) => (s === "cuni" ? "cuni-proof" : s));
@@ -503,6 +522,15 @@ test("optional acn stages join plan and run in order", async () => {
   assert.equal(byStage["ops-feed"].seq, 1);
   assert.match(byStage["async-runs"].run_id, /^run_\d+$/);
   assert.equal(byStage.sandbox.spend_cents, 0);
+  assert.equal(byStage["depot-receipts"].quoted_cents, 0);
+  assert.equal(byStage["depot-receipts"].bytes, 100);
+  assert.equal(byStage["depot-billing"].amount_cents, 0);
+  assert.match(byStage["conductor-tasks"].task_id, /^task_\d+$/);
+  assert.equal(byStage["conductor-tasks"].branch, "conductor/task-0001");
+  assert.equal(byStage["conductor-review"].verdict, "approve");
+  assert.equal(byStage["mcp-catalog"].version, "1.0.0");
+  assert.equal(byStage["mcp-catalog"].protocol, "streamable-http");
+  assert.equal(byStage["storefront-skills"].amount_cents, 1500);
   const pcc = byStage.pcc;
   const cond = byStage.conductor;
   const v = verifyConductorReceipt(
@@ -516,6 +544,7 @@ test("optional acn stages fail closed", async () => {
   const base = { demo: true, action: "invoke", host: "h.test", bytes: 10, file_receipt: false };
   const { createOpsFeed } = await import("./ops-feed.mjs");
   const { createToolRegistry } = await import("./tool-registry.mjs");
+  const { createMcpCatalog } = await import("./mcp-catalog.mjs");
   const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), "acn-fail-"));
   const run = (spec, adapters = {}) => runAgenticRun({ ...base, ...spec }, adapters);
 
@@ -536,6 +565,15 @@ test("optional acn stages fail closed", async () => {
   assert.equal((await run({ asyncRun: "x" })).reason, "invalid_spec");
   assert.equal((await run({ warrantTemplate: "nope" })).reason, "unknown_template");
   assert.equal((await run({ warrantTemplate: { id: "compress", overrides: { max_usd: 999 } } })).reason, "widening_denied");
+  assert.equal((await run({ depotReceipt: { op: "rm", team: "acme", sha256: "ab".repeat(32), bytes: 1 } })).reason, "bad_receipt");
+  assert.equal((await run({ depotBilling: { team: "acme", month: "nope", receipts: [] } })).reason, "bad_invoice");
+  assert.equal((await run({ conductorTask: { prompt: "" } })).reason, "bad_task");
+  assert.equal((await run({ conductorReview: { diff: 42 } })).reason, "invalid_diff");
+  assert.equal((await run({ mcpTool: { name: "pcc_compress", version: "1.0.0" } })).reason, "adapter_required");
+  assert.equal((await run({ mcpTool: { name: "ghost", version: "1.0.0" } }, { mcpCatalog: createMcpCatalog() })).reason, "unknown_tool");
+  assert.equal((await run({ mcpTool: { name: "pcc_compress" } })).reason, "bad_tool");
+  assert.equal((await run({ sku: "nope" })).reason, "unknown_sku");
+  assert.equal((await run({ sku: 42 })).reason, "bad_sku");
 });
 
 test("agentill map covers every wired stage", async () => {

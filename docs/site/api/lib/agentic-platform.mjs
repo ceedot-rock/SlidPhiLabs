@@ -31,6 +31,12 @@ import { createRunManager, submitRun as singletonSubmitRun } from "./async-runs.
 import { OPS_EVENTS } from "./ops-feed.mjs";
 import { buildAuditPack } from "./audit-export.mjs";
 import { dryRun, SANDBOX_MODE } from "./sandbox-mode.mjs";
+import { buildDepotReceipt } from "./depot-receipts.mjs";
+import { buildMonthlyInvoice, buildMonthlyInvoiceAsync } from "./depot-billing.mjs";
+import { createTaskManager, TASK_VERSION } from "./conductor-tasks.mjs";
+import { reviewChanges, reviewChangesAsync, REVIEW_VERSION } from "./conductor-review.mjs";
+import { MCP_CATALOG_VERSION } from "./mcp-catalog.mjs";
+import { createSkuCatalog, quoteSku as defaultQuoteSku, STOREFRONT_SKILLS_VERSION } from "./storefront-skills.mjs";
 
 export const AGENTIC_VERSION = "0.1.0";
 export const PLATFORM_NAME = "ACN";
@@ -69,6 +75,12 @@ export const AGENTILL_MAP = Object.freeze({
   "ops-feed": { agentill: null, note: "ops event feed stays ACN-side" },
   "async-runs": { agentill: null, note: "background run queue stays ACN-side" },
   sandbox: { agentill: null, note: "sandbox dry-run previews stay ACN-side" },
+  "depot-receipts": { agentill: null, note: "gitdepot storage receipts stay ACN-side (suite meter)" },
+  "depot-billing": { agentill: null, note: "gitdepot monthly invoices stay ACN-side (suite ledger)" },
+  "conductor-tasks": { agentill: "validator/preflight", note: "task lifecycle receipts mirror conductor preflight" },
+  "conductor-review": { agentill: "validator/preflight", note: "diff review gate stays ACN-side; verdict mirrors preflight" },
+  "mcp-catalog": { agentill: null, note: "version-pinned MCP discovery stays ACN-side" },
+  "storefront-skills": { agentill: null, note: "frozen SKU quotes stay ACN-side" },
 });
 
 /** Seven protection tolls, per the Tollkeeper booklet. */
@@ -409,6 +421,12 @@ function planStages(spec = {}) {
   if (spec.ops) stages.push("ops-feed");
   if (spec.asyncRun) stages.push("async-runs");
   if (spec.sandbox) stages.push("sandbox");
+  if (spec.depotReceipt) stages.push("depot-receipts");
+  if (spec.depotBilling) stages.push("depot-billing");
+  if (spec.conductorTask) stages.push("conductor-tasks");
+  if (spec.conductorReview) stages.push("conductor-review");
+  if (spec.mcpTool) stages.push("mcp-catalog");
+  if (spec.sku) stages.push("storefront-skills");
   stages.push("psi", "conductor");
   return stages;
 }
@@ -445,6 +463,33 @@ function warrantTemplateSel(v) {
 
 function objLike(v) {
   return v && typeof v === "object" && !Array.isArray(v) ? v : null;
+}
+
+/** conductorTask accepts a bare prompt string or { prompt }. */
+function conductorPromptLike(v) {
+  if (typeof v === "string") {
+    const s = v.trim();
+    return s || null;
+  }
+  if (v && typeof v === "object" && typeof v.prompt === "string" && v.prompt.trim()) {
+    return v.prompt.trim();
+  }
+  return null;
+}
+
+/** sku accepts a bare SKU string or { sku, qty }. */
+function skuSel(v) {
+  if (typeof v === "string") {
+    const s = v.trim();
+    return s ? { sku: s, qty: 1 } : null;
+  }
+  if (v && typeof v === "object") {
+    const sku = typeof v.sku === "string" ? v.sku.trim() : "";
+    if (!sku) return null;
+    const qty = v.qty == null ? 1 : Number(v.qty);
+    return { sku, qty };
+  }
+  return null;
 }
 
 /** Pure context preview for plan output. No disk, no network: forwards the
@@ -589,6 +634,69 @@ function planAcnPreviews(spec = {}, adapters = {}) {
         : { tool: "sandbox-mode", refused: true, reason: (d && d.error) || "dry_run_failed" };
     } catch {
       out.sandbox = { tool: "sandbox-mode", refused: true, reason: "dry_run_failed" };
+    }
+  }
+  if (spec.depotReceipt) {
+    try {
+      const priceOpts = typeof adapters.depotPriceFn === "function"
+        ? { priceFn: adapters.depotPriceFn }
+        : (objLike(adapters.depot) || {});
+      const r = buildDepotReceipt(objLike(spec.depotReceipt) || {}, priceOpts);
+      out.depotReceipt = r
+        ? { tool: "depot-receipts", op: r.op, bytes: r.bytes, quoted_cents: r.quoted_cents }
+        : { tool: "depot-receipts", refused: true, reason: "bad_receipt" };
+    } catch {
+      out.depotReceipt = { tool: "depot-receipts", refused: true, reason: "preview_failed" };
+    }
+  }
+  if (spec.depotBilling) {
+    try {
+      const inv = buildMonthlyInvoice(objLike(spec.depotBilling) || {}, objLike(adapters.depotBilling) || {});
+      out.depotBilling = inv
+        ? { tool: "depot-billing", team: inv.team, pooled_gb: inv.pooled_gb, overage_gb: inv.overage_gb, amount_cents: inv.amount_cents }
+        : { tool: "depot-billing", refused: true, reason: "bad_invoice" };
+    } catch {
+      out.depotBilling = { tool: "depot-billing", refused: true, reason: "preview_failed" };
+    }
+  }
+  if (spec.conductorTask) {
+    const prompt = conductorPromptLike(spec.conductorTask);
+    out.conductorTask = prompt
+      ? { tool: "conductor-tasks", toolVersion: TASK_VERSION, prompt }
+      : { tool: "conductor-tasks", toolVersion: TASK_VERSION, refused: true, reason: "bad_task" };
+  }
+  if (spec.conductorReview) {
+    try {
+      const rv = reviewChanges(objLike(spec.conductorReview) || {}, objLike(adapters.conductorReview) || {});
+      out.conductorReview = rv && rv.ok === true
+        ? { tool: "conductor-review", toolVersion: REVIEW_VERSION, verdict: rv.verdict, findings: rv.findings.length }
+        : { tool: "conductor-review", toolVersion: REVIEW_VERSION, refused: true, reason: (rv && rv.error) || "review_failed" };
+    } catch {
+      out.conductorReview = { tool: "conductor-review", toolVersion: REVIEW_VERSION, refused: true, reason: "preview_failed" };
+    }
+  }
+  if (spec.mcpTool) {
+    const t = objLike(spec.mcpTool) || {};
+    const name = typeof t.name === "string" ? t.name.trim() : "";
+    const version = typeof t.version === "string" ? t.version : null;
+    out.mcpTool = name && version
+      ? { tool: "mcp-catalog", toolVersion: MCP_CATALOG_VERSION, name, version }
+      : { tool: "mcp-catalog", toolVersion: MCP_CATALOG_VERSION, refused: true, reason: "bad_tool" };
+  }
+  if (spec.sku) {
+    try {
+      const sel = skuSel(spec.sku);
+      const catalog = (adapters.skuCatalog && typeof adapters.skuCatalog.quoteSku === "function")
+        ? adapters.skuCatalog
+        : (objLike(adapters.sku) ? createSkuCatalog(objLike(adapters.sku)) : null);
+      const q = catalog
+        ? catalog.quoteSku(sel ? sel.sku : "", sel || {})
+        : defaultQuoteSku(sel ? sel.sku : "", sel || {});
+      out.sku = q && q.ok === true
+        ? { tool: "storefront-skills", toolVersion: STOREFRONT_SKILLS_VERSION, ...q.quote }
+        : { tool: "storefront-skills", toolVersion: STOREFRONT_SKILLS_VERSION, refused: true, reason: (q && q.reason) || "quote_failed" };
+    } catch {
+      out.sku = { tool: "storefront-skills", toolVersion: STOREFRONT_SKILLS_VERSION, refused: true, reason: "preview_failed" };
     }
   }
   return out;
@@ -1287,6 +1395,85 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     });
   }
 
+  if (spec.depotReceipt) {
+    const priceOpts = typeof adapters.depotPriceFn === "function"
+      ? { priceFn: adapters.depotPriceFn }
+      : (objLike(adapters.depot) || {});
+    const r = buildDepotReceipt(objLike(spec.depotReceipt) || {}, priceOpts);
+    if (!r) return { ...fail("depot-receipts", "bad_receipt"), receipts, memory };
+    receipts.push({
+      stage: "depot-receipts", ok: true, tool: "depot-receipts",
+      op: r.op, team_sha: r.team_sha, blob_sha256: r.blob_sha256,
+      bytes: r.bytes, quoted_cents: r.quoted_cents,
+    });
+  }
+
+  if (spec.depotBilling) {
+    const bOpts = objLike(adapters.depotBilling) || {};
+    const inv = await buildMonthlyInvoiceAsync(objLike(spec.depotBilling) || {}, bOpts);
+    if (!inv) return { ...fail("depot-billing", "bad_invoice"), receipts, memory };
+    receipts.push({
+      stage: "depot-billing", ok: true, tool: "depot-billing",
+      team: inv.team, pooled_gb: inv.pooled_gb, overage_gb: inv.overage_gb, amount_cents: inv.amount_cents,
+    });
+  }
+
+  if (spec.conductorTask) {
+    const prompt = conductorPromptLike(spec.conductorTask);
+    if (!prompt) return { ...fail("conductor-tasks", "bad_task"), receipts, memory };
+    const manager = (adapters.taskManager && typeof adapters.taskManager.intentTask === "function")
+      ? adapters.taskManager
+      : createTaskManager(objLike(adapters.conductorTasks) || {});
+    const it = manager.intentTask({ prompt });
+    if (!it || it.ok !== true) return { ...fail("conductor-tasks", (it && it.error) || "intent_failed"), receipts, memory };
+    receipts.push({
+      stage: "conductor-tasks", ok: true, tool: "conductor-tasks", toolVersion: TASK_VERSION,
+      task_id: it.task_id, branch: it.branch, status: it.status, digest: it.digest,
+    });
+  }
+
+  if (spec.conductorReview) {
+    const rvOpts = objLike(adapters.conductorReview) || {};
+    const rv = await reviewChangesAsync(objLike(spec.conductorReview) || {}, rvOpts);
+    if (!rv || rv.ok !== true) return { ...fail("conductor-review", (rv && rv.error) || "review_failed"), receipts, memory };
+    receipts.push({
+      stage: "conductor-review", ok: true, tool: "conductor-review", toolVersion: REVIEW_VERSION,
+      verdict: rv.verdict, findings: rv.findings,
+    });
+  }
+
+  if (spec.mcpTool) {
+    const t = objLike(spec.mcpTool) || {};
+    const name = typeof t.name === "string" ? t.name.trim() : "";
+    const version = typeof t.version === "string" ? t.version : undefined;
+    if (!name || !version) return { ...fail("mcp-catalog", "bad_tool"), receipts, memory };
+    const catalog = adapters.mcpCatalog;
+    if (!catalog || typeof catalog.get !== "function") {
+      return { ...fail("mcp-catalog", "adapter_required", { need: "mcpCatalog" }), receipts, memory };
+    }
+    const hit = catalog.get(name, version);
+    if (!hit || hit.ok !== true) return { ...fail("mcp-catalog", (hit && hit.reason) || "unknown_tool", { name }), receipts, memory };
+    receipts.push({
+      stage: "mcp-catalog", ok: true, tool: "mcp-catalog", toolVersion: MCP_CATALOG_VERSION,
+      name: hit.tool.name, version: hit.tool.version, price_cents: hit.tool.price_cents,
+      endpoint: hit.tool.endpoint, protocol: hit.tool.protocol,
+    });
+  }
+
+  if (spec.sku) {
+    const sel = skuSel(spec.sku);
+    if (!sel) return { ...fail("storefront-skills", "bad_sku"), receipts, memory };
+    const catalog = (adapters.skuCatalog && typeof adapters.skuCatalog.quoteSku === "function")
+      ? adapters.skuCatalog
+      : (objLike(adapters.sku) ? createSkuCatalog(objLike(adapters.sku)) : { quoteSku: defaultQuoteSku });
+    const q = catalog.quoteSku(sel.sku, { qty: sel.qty });
+    if (!q || q.ok !== true) return { ...fail("storefront-skills", (q && q.reason) || "quote_failed", { sku: sel.sku }), receipts, memory };
+    receipts.push({
+      stage: "storefront-skills", ok: true, tool: "storefront-skills", toolVersion: STOREFRONT_SKILLS_VERSION,
+      sku: q.quote.sku, qty: q.quote.qty, unit_cents: q.quote.unit_cents, amount_cents: q.quote.amount_cents,
+    });
+  }
+
   const entry = { d: today(), c: "ship", o: `agentic ${base.action} ${base.host} ${bytes}B rail=${instruction.rail}` };
   sink(entry);
   receipts.push({ stage: "psi", ok: true, logged: true });
@@ -1343,7 +1530,7 @@ export function verifyConductorReceipt(runSpec, receipt) {
 export const AGENTIC_TOOLS = Object.freeze([
   {
     name: "spl_agentic_plan",
-    description: "Plan one ACN (Agent Commerce Network) run across Rider, Warrant, Tollkeeper, Quikgater, PCC, AWLpay, PSI, Conductor, plus optional stages (warrant-template, standing-rider, reputation, tool-registry, agent-directory, agent-messaging, private-bench, solana, payout, dispute, audit-export, ops-feed, async-runs, sandbox) when the matching spec field is present. Pure: no disk, no network.",
+    description: "Plan one ACN (Agent Commerce Network) run across Rider, Warrant, Tollkeeper, Quikgater, PCC, AWLpay, PSI, Conductor, plus optional stages (warrant-template, standing-rider, reputation, tool-registry, agent-directory, agent-messaging, private-bench, solana, payout, dispute, audit-export, ops-feed, async-runs, sandbox, depot-receipts, depot-billing, conductor-tasks, conductor-review, mcp-catalog, storefront-skills) when the matching spec field is present. Pure: no disk, no network.",
     inputSchema: {
       type: "object",
       properties: {
@@ -1371,6 +1558,12 @@ export const AGENTIC_TOOLS = Object.freeze([
         ops: { type: "object" },
         asyncRun: { type: "object" },
         sandbox: { type: "object" },
+        depotReceipt: { type: "object" },
+        depotBilling: { type: "object" },
+        conductorTask: { type: ["string", "object"] },
+        conductorReview: { type: "object" },
+        mcpTool: { type: "object" },
+        sku: { type: ["string", "object"] },
       },
     },
   },
@@ -1431,6 +1624,12 @@ export const AGENTIC_TOOLS = Object.freeze([
         ops: { type: "object" },
         asyncRun: { type: "object" },
         sandbox: { type: "object" },
+        depotReceipt: { type: "object" },
+        depotBilling: { type: "object" },
+        conductorTask: { type: ["string", "object"] },
+        conductorReview: { type: "object" },
+        mcpTool: { type: "object" },
+        sku: { type: ["string", "object"] },
         confirm: { type: "boolean" },
       },
     },
