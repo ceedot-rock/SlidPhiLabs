@@ -129,6 +129,15 @@ function takeU64(buf, i) {
   return { n: Number(buf.readBigUInt64LE(i)), i: i + 8 };
 }
 
+/**
+ * Parse + fail-closed verify. Stored members (packed == raw) have their
+ * crc32 checked against the packed bytes here -- a mismatch throws
+ * pcc crc and the whole archive is rejected, never partially trusted.
+ * Non-stored members carry the crc32 of the RAW bytes, which this
+ * container layer cannot check without the host codec: the host verifies
+ * it on unpack (see src/pccz.mjs unpackStored). Truncated members
+ * (packed bytes shorter than packedLen) throw pcc short.
+ */
 export function parseArchive(buf) {
   const b = Buffer.from(buf);
   if (!isPccz(b)) throw new Error("not pcc archive");
@@ -161,6 +170,10 @@ export function parseArchive(buf) {
     t = takeU16(b, j); const nloc = t.n; j = t.i;
     j += nloc + 4 + 2 + 8 + 8 + 4;
     const packed = b.subarray(j, j + packedLen);
+    if (packed.length !== packedLen) throw new Error("pcc short");
+    if (flags & FLAG_STORED) {
+      if (crc32(packed) !== (crc >>> 0)) throw new Error("pcc crc");
+    }
     entries.push({
       name,
       packed,

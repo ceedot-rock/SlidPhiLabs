@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createToolRegistry } from "./tool-registry.mjs";
+import { createToolRegistry, compareVersions } from "./tool-registry.mjs";
 
 const tool = (over = {}) => ({
   id: "spl_compress",
@@ -34,6 +34,21 @@ test("bad + duplicate register rejected", () => {
   assert.equal(r.register(tool({ price_cents: -1 })).ok, false);
   assert.equal(r.register(tool()).ok, true);
   assert.equal(r.register(tool()).reason, "duplicate_tool");
+});
+
+test("unpinned get returns top semver, not last registered", () => {
+  const r = createToolRegistry();
+  r.register(tool({ version: "2.0.0" }));
+  r.register(tool({ version: "1.0.0" }));
+  r.register(tool({ version: "1.10.0" }));
+  assert.equal(r.get("spl_compress").tool.version, "2.0.0");
+  const s = createToolRegistry();
+  s.register(tool({ version: "1.9.0" }));
+  s.register(tool({ version: "1.10.0" }));
+  assert.equal(s.get("spl_compress").tool.version, "1.10.0");
+  assert.ok(compareVersions("1.10.0", "1.9.0") > 0);
+  assert.ok(compareVersions("2.0.0", "10.0.0") < 0);
+  assert.equal(compareVersions("1.0.0", "1.0.0"), 0);
 });
 
 test("list returns copies sorted by id", () => {

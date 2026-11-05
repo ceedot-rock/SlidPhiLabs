@@ -6,6 +6,8 @@ import {
   reviewChangesAsync,
   diffStat,
   diffFiles,
+  shannonEntropy,
+  entropyFindings,
   REVIEW_VERSION,
   REVIEW_MAX_FILES,
   REVIEW_MAX_ADDITIONS,
@@ -91,6 +93,32 @@ test("async hook awaits and merges", async () => {
   assert.equal(r.verdict, "review");
   const dflt = await reviewChangesAsync({ diff: "+ ok\n" });
   assert.equal(dflt.verdict, "approve");
+});
+
+test("second-wave secret shapes block", () => {
+  const cases = [
+    ["secret_aws_secret", "+ aws_secret_access_key = EXAMPLE\n"],
+    ["secret_github_pat", "+ token = github_pat_ABCDEFGHIJKLMNOP\n"],
+    ["secret_slack", "+ hook = xoxb-123456789012-ABCDEFGHIJKL\n"],
+    ["secret_stripe", "+ key = sk_test_ABCDEFGHIJKLMNOP\n"],
+    ["secret_api_key", "+ api_key: ABCDEFGH12345678\n"],
+  ];
+  for (const [rule, diff] of cases) {
+    const r = reviewChanges({ diff });
+    assert.equal(r.verdict, "block", rule);
+    assert.ok(r.findings.some((f) => f.rule === rule), rule);
+  }
+});
+
+test("entropy tripwire blocks long random tokens, spares hex digests", () => {
+  assert.ok(shannonEntropy("k7Qz9mX2vB4nP8wL3jH6tY5rU1oI0eA9sD7fG2hJ") >= 4.2);
+  assert.ok(shannonEntropy("0123456789abcdef".repeat(4)) < 4.2);
+  const hot = reviewChanges({ diff: "+ bearer k7Qz9mX2vB4nP8wL3jH6tY5rU1oI0eA9sD7fG2hJ\n" });
+  assert.equal(hot.verdict, "block");
+  assert.ok(hot.findings.some((f) => f.rule === "secret_high_entropy"));
+  const cold = reviewChanges({ diff: "+ digest 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\n" });
+  assert.ok(!cold.findings.some((f) => f.rule === "secret_high_entropy"), JSON.stringify(cold.findings));
+  assert.deepEqual(entropyFindings(" context line with k7Qz9mX2vB4nP8wL3jH6tY5rU1oI0eA9sD7fG2hJ\n"), []);
 });
 
 test("diffStat skips file headers; diffFiles parses paths", () => {

@@ -1,5 +1,5 @@
 # Slid Phi Labs
-# Updated 2026-10-15
+# Updated 2026-11-05
 # Tools that check. Cherry Hill, New Jersey. Corey Tasz. corey@slidphilabs.com
 Platform booklets: https://www.slidphilabs.com/wiki
 Previous homepage: https://www.slidphilabs.com/rcrc
@@ -32,7 +32,7 @@ bytes → Shared Spine (row / 4 KiB tile / file) → Head A (structure: runs, ze
 | rider-fleet | 199 | /pay?sku=rider-fleet |
 | warrant-addon | 8/80 | /pay?sku=warrant-addon |
 | chamber-month/year | 20/200 | /pay?sku=chamber-month · /pay?sku=chamber-year |
-| pcc-meter | 0.25/GB | /pps · first 1 GB/month free, cap default $25, alert at 80% |
+| pcc-meter | 0.25/GB | /pps · first 1 GB free once per IP (lifetime, no monthly reset), cap default $25, alert at 80% |
 | pcc-pro/pro-year | 25/250 | /pay?sku=pcc-pro · /pay?sku=pcc-pro-year |
 | psi-meter | 25/250 | /pay?sku=psi-meter · 250,000 calls/month included, then $2 per additional 100,000; free 1 seat, 10,000 calls/month, 7-day retention |
 | psi-org | 79 | /pay?sku=psi-org |
@@ -69,7 +69,7 @@ Locality: Cherry Hill, New Jersey. No street address published.
 
 ## Catalog
 Four doors onto one Shared Spine. What it is, then what you pay.
-- Door 1 · PCC — file job through your tools. Upload / POST /api/compress / npm / MCP. Every owned pathway on lab machines; smallest restore-safe copy. Metered $0.25/GB of input, first 1 GB/month free; Pro $25/mo (100 GB included, then $0.20/GB, checkout sku `pcc-pro`; Pro annual $250, sku `pcc-pro-year`). Customer-set monthly spend cap (default $25), alert at 80%. x402 per-call for agents, Stripe monthly for humans. Product: https://www.slidphilabs.com/pcc · prices: https://www.slidphilabs.com/pricing
+- Door 1 · PCC — file job through your tools. Upload / POST /api/compress / npm / MCP. Every owned pathway on lab machines; smallest restore-safe copy. Metered $0.25/GB of input, first 1 GB free once per IP address (lifetime, no monthly reset); Pro $25/mo (100 GB included, then $0.20/GB, checkout sku `pcc-pro`; Pro annual $250, sku `pcc-pro-year`). Customer-set monthly spend cap (default $25), alert at 80%. x402 per-call for agents, Stripe monthly for humans. Product: https://www.slidphilabs.com/pcc · prices: https://www.slidphilabs.com/pricing
 - Door 2 · TNSSRC — TriNeural Shared Spine Row Compression. Local `npcc` + closed grant. AGPL $0 · unified grant $369/product/year (SKU tnssrc-grant; TNSSRC 0.1.0 only; founding $190 for the first 10 grants; 3+ products $390 each). Board: https://www.slidphilabs.com/silesia
 - Door 3 · TRUSTREAM — live pipe, same spine, 4 KiB tiles: ZERO → MATH → PHRASE → STORE. Quiet tiles shrink; busy tiles stay put so the stream never inflates. Included with PCC, not a second bill. https://www.slidphilabs.com/trustream
 - Door 4 · pulsar — free GPLv3 binary demo you run on your own machine (Linux binary + source). $0 · closed embed $490/yr, SKU pulsar-exception (unified grant). https://www.slidphilabs.com/pulsar
@@ -109,7 +109,7 @@ Q: What is Slid Phi Labs?
 A: A computation lab in Cherry Hill, New Jersey, built by Corey Tasz. The public tools check a claim before they praise it: a signed agent name, an exact program, a restore-safe file, a payment quote, a receipt. Site https://www.slidphilabs.com . Inbox corey@slidphilabs.com.
 
 Q: What is PCC?
-A: Door 1 onto the Shared Spine: lossless compression through your tools. Send a file, restore every byte. Metered $0.25/GB of input, first 1 GB/month free; Pro $25/mo (100 GB included, then $0.20/GB). Customer-set monthly spend cap (default $25), alert at 80%. Official Silesia board stamp: 51,498,645 bytes, 12/12 DECODE_OK, tag pcc-0.12.1, in silesia.json. PCC is the compressor. AWARE is a retired alias only.
+A: Door 1 onto the Shared Spine: lossless compression through your tools. Send a file, restore every byte. Metered $0.25/GB of input, first 1 GB free once per IP address (lifetime, no monthly reset); Pro $25/mo (100 GB included, then $0.20/GB). Customer-set monthly spend cap (default $25), alert at 80%. Official Silesia board stamp: 51,498,645 bytes, 12/12 DECODE_OK, tag pcc-0.12.1, in silesia.json. PCC is the compressor. AWARE is a retired alias only.
 
 Q: What is TNSSRC?
 A: The local engine. AGPL, or a $369/year unified grant (tnssrc-grant; TNSSRC 0.1.0 only).
@@ -121,7 +121,7 @@ Q: How do agents pay?
 A: POST /api/x402-products {sku} → HTTP 402 with Solana USDC and Base USDC. Pay, retry with X-PAYMENT → claim_token. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight. Humans use Stripe POST /api/checkout or /pay?sku=.
 
 Q: How does an agent use its claim_token with the npm packages?
-A: The claim_token IS the API key. Pass it as apiKey: compress(buf, { apiKey: "<claim_token>" }) sends Authorization: Bearer spl1.… — /api/compress and /api/decompress verify the claim and meter against the seat's included bytes (Pro 100 GB/month included, then $0.20/GB; meter: first 1 GB/month free, then $0.25/GB of input). No key: first 1 GB/month free on the anonymous tier. Expired/forged claim: HTTP 401 invalid_claim, never a silent downgrade.
+A: The claim_token IS the API key. Pass it as apiKey: compress(buf, { apiKey: "<claim_token>" }) sends Authorization: Bearer spl1.… — /api/compress and /api/decompress verify the claim and meter against the seat's included bytes (Pro 100 GB/month included, then $0.20/GB; meter: first 1 GB free once per IP, lifetime, then $0.25/GB of input). No key: first 1 GB free once per IP address (lifetime, no monthly reset) on the anonymous tier. Expired/forged claim: HTTP 401 invalid_claim, never a silent downgrade.
 
 Q: Where is the lab?
 A: Cherry Hill, New Jersey. Corey Tasz. corey@slidphilabs.com.

@@ -17,10 +17,11 @@
  * Intervals: "month" (30 days) and "year" (365 days), fixed ms windows so
  * next_due is deterministic and timezone-free.
  */
-import { existsSync, mkdirSync, writeFileSync, readFileSync, renameSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync, renameSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { randomBytes } from "node:crypto";
+import { loadJson, CorruptStoreError, isCorruptStoreError } from "./failclosed-store.mjs";
 
 export const SUBSCRIPTIONS_VERSION = "0.1.0";
 export const RIDER_RE = /^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/;
@@ -54,16 +55,30 @@ function blank() {
   return { version: SUBSCRIPTIONS_VERSION, subs: {} };
 }
 
+/**
+ * Shared fail-closed loader (lib/failclosed-store.mjs): a missing file is
+ * an empty book, but a corrupt file THROWS CorruptStoreError instead of
+ * returning a blank book — a blank book would silently forget active
+ * subscriptions and their next_due clock. Every public entry maps the
+ * throw to a fail-closed { ok:false, error:"corrupt_store" } envelope via
+ * loadOrCorrupt() and returns before any save, so a corrupt file is never
+ * overwritten. Proration math (prorateUpgrade) is unchanged.
+ */
 function load(dir) {
   const f = ledgerFile(dir);
-  if (!existsSync(f)) return blank();
+  const o = loadJson(f, blank);
+  if (!o || typeof o !== "object" || Array.isArray(o)) throw new CorruptStoreError(f, new Error("bad_shape"));
+  if (!o.subs || typeof o.subs !== "object") throw new CorruptStoreError(f, new Error("bad_shape"));
+  return o;
+}
+
+/** load() that returns a fail-closed envelope instead of throwing. */
+function loadOrCorrupt(dir) {
   try {
-    const o = JSON.parse(readFileSync(f, "utf8"));
-    if (!o || typeof o !== "object") return blank();
-    if (!o.subs || typeof o.subs !== "object") o.subs = {};
-    return o;
-  } catch {
-    return blank();
+    return { ok: true, store: load(dir) };
+  } catch (e) {
+    if (isCorruptStoreError(e)) return { ok: false, error: "corrupt_store" };
+    throw e;
   }
 }
 
@@ -108,7 +123,9 @@ export function createSubscription({ rider_id, sku, interval = "month", amount_c
   const id = adapters.id ? adapters.id() : defaultId();
   if (!SUB_RE.test(String(id))) return fail("bad_sub_id");
   const dir = subsDir(adapters.dir);
-  const store = load(dir);
+  const loaded = loadOrCorrupt(dir);
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   if (store.subs[id]) return { ok: true, duplicate: true, sub_id: id, next_due: store.subs[id].next_due, sub: store.subs[id] };
   const sub = {
     sub_id: String(id),
@@ -133,7 +150,9 @@ export function createSubscription({ rider_id, sku, interval = "month", amount_c
 /** Read one subscription. Fail-closed on miss. */
 export function getSubscription(sub_id, adapters = {}) {
   if (!SUB_RE.test(String(sub_id || ""))) return fail("bad_sub_id");
-  const store = load(subsDir(adapters.dir));
+  const loaded = loadOrCorrupt(subsDir(adapters.dir));
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const sub = store.subs[sub_id];
   if (!sub) return fail("unknown_sub");
   return { ok: true, sub };
@@ -143,7 +162,9 @@ export function getSubscription(sub_id, adapters = {}) {
 export function dueSubs(nowMs, adapters = {}) {
   const now = Math.floor(Number(nowMs));
   if (!Number.isSafeInteger(now) || now < 0) return fail("bad_now");
-  const store = load(subsDir(adapters.dir));
+  const loaded = loadOrCorrupt(subsDir(adapters.dir));
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const due = Object.values(store.subs)
     .filter((s) => s && s.status === "active" && Number.isSafeInteger(s.next_due) && s.next_due <= now)
     .sort((a, b) => a.next_due - b.next_due);
@@ -157,7 +178,9 @@ export function dueSubs(nowMs, adapters = {}) {
 export function recordRenewal({ sub_id }, adapters = {}) {
   if (!SUB_RE.test(String(sub_id || ""))) return fail("bad_sub_id");
   const dir = subsDir(adapters.dir);
-  const store = load(dir);
+  const loaded = loadOrCorrupt(dir);
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const sub = store.subs[sub_id];
   if (!sub) return fail("unknown_sub");
   if (sub.status !== "active") return fail("sub_not_active", { status: sub.status });

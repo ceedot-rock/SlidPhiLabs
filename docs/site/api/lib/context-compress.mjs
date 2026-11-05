@@ -22,6 +22,14 @@
  * 5. Priced on input bytes through the suite meter (computeQuote), same
  *    lifetime free tier as compression: the buyer pays for what they sent,
  *    keeps what the compressor saved.
+ *
+ * Route note (no direct public route, by design): compression is served
+ * only through the metered ACN stage (opt-in context block on
+ * planAgenticRun / runAgenticRun, dispatchAgentic spl_agentic_context).
+ * A direct /api route would bypass the input-byte meter, the spend-guard
+ * caps, and the refused-on-irrelevant fail-closed path that keeps buyers
+ * from paying for filler. Callers needing HTTP access go through the
+ * dispatch layer, never a raw compressContext import in a route file.
  */
 import { createHash } from "node:crypto";
 

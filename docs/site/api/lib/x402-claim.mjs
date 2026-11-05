@@ -1,12 +1,24 @@
 /**
  * Stateless x402 Access claim tokens (HMAC).
  * spl1.<base64url(payload)>.<base64url(hmac-sha256)>
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  *
  * Secret: X402_CLAIM_SECRET || STRIPE_SECRET_KEY || STRIPE_RESTRICTED_KEY
+ * TTL: X402_CLAIM_TTL_SEC seconds (default 45 days), read at sign time so
+ * operators can tune it without a redeploy. Deterministic apart from iat;
+ * offline, no network. Fail-closed envelopes throughout.
  */
 import crypto from "crypto";
 
-const TTL_SEC = 60 * 60 * 24 * 45; // 45 days
+export const X402_CLAIM_TTL_ENV = "X402_CLAIM_TTL_SEC";
+export const DEFAULT_TTL_SEC = 60 * 60 * 24 * 45; // 45 days
+
+/** Claim TTL in seconds: X402_CLAIM_TTL_SEC when a positive integer, else the 45-day default. Pure. */
+export function claimTtlSec(env = process.env) {
+  const src = env && typeof env === "object" ? env : {};
+  const n = Math.floor(Number(src[X402_CLAIM_TTL_ENV]));
+  return Number.isSafeInteger(n) && n > 0 ? n : DEFAULT_TTL_SEC;
+}
 
 export function claimSecret() {
   return (
@@ -43,9 +55,10 @@ function hmac(secret, body) {
  * @param {string|null} [fields.network]
  * @param {number} [fields.amount_cents]
  */
-export function signClaim(fields) {
+export function signClaim(fields, { env = process.env } = {}) {
   const secret = claimSecret();
   if (!secret) return { ok: false, error: "claim_secret_missing" };
+  const ttl = claimTtlSec(env);
   const iat = Math.floor(Date.now() / 1000);
   const payload = {
     v: 1,
@@ -58,7 +71,7 @@ export function signClaim(fields) {
     amount_cents:
       typeof fields.amount_cents === "number" ? fields.amount_cents : null,
     iat,
-    exp: iat + TTL_SEC,
+    exp: iat + ttl,
   };
   if (!payload.order_id || !payload.sku) {
     return { ok: false, error: "claim_fields_incomplete" };

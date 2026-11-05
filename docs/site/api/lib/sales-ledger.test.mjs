@@ -31,6 +31,18 @@ test("appends one line per sale", async () => {
   assert.equal(JSON.parse(lines[1]).order_id, "o2");
 });
 
+test("bad amounts fail closed, nothing appended", async () => {
+  const before = await readFile(LEDGER, "utf8");
+  for (const amountCents of [0, -5, NaN, Infinity, "nope", undefined]) {
+    const r = await recordSale({ sku: "a", amountCents, currency: "usd", orderId: "o-bad", rail: "stripe" });
+    assert.equal(r.ok, false);
+    assert.equal(r.error, "bad_amount");
+  }
+  assert.throws(() => saleLine({ sku: "a", amountCents: 0, orderId: "o-bad" }), /bad_amount/);
+  assert.throws(() => saleLine({ sku: "a", amountCents: "nope", orderId: "o-bad" }), /bad_amount/);
+  assert.equal(await readFile(LEDGER, "utf8"), before);
+});
+
 test("skips without order id", async () => {
   const r = await recordSale({ sku: "a", amountCents: 1, currency: "usd", orderId: "" });
   assert.equal(r.skipped, true);

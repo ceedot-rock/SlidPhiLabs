@@ -1,7 +1,7 @@
 /** Alert rules tests. Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE. */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { RULES, evaluate } from "./alert-rules.mjs";
+import { RULES, evaluate, resolveThresholds, DEFAULT_THRESHOLDS } from "./alert-rules.mjs";
 
 const NOW = 1_763_000_000_000;
 const snap = (extra = {}) => ({
@@ -13,8 +13,8 @@ const snap = (extra = {}) => ({
   ...extra,
 });
 
-test("rule table has cap_velocity, fail_rate, queue_stall", () => {
-  assert.deepEqual(RULES.map((r) => r.id), ["cap_velocity", "fail_rate", "queue_stall"]);
+test("rule table has cap_velocity, fail_rate, queue_stall, spend_velocity", () => {
+  assert.deepEqual(RULES.map((r) => r.id), ["cap_velocity", "fail_rate", "queue_stall", "spend_velocity"]);
   for (const r of RULES) {
     assert.ok(["high", "medium", "low"].includes(r.severity));
     assert.equal(typeof r.check, "function");
@@ -86,6 +86,47 @@ test("bad snapshot and unknown rule fail closed", () => {
   assert.equal(evaluate(null).error, "bad_snapshot");
   assert.equal(evaluate("nope").error, "bad_snapshot");
   assert.equal(evaluate(snap(), { rules: ["bogus"] }).error, "unknown_rule");
+});
+
+test("spend_velocity fires on spend_24h burn", () => {
+  const hot = evaluate(snap({ spend_24h: DEFAULT_THRESHOLDS.spend_velocity }), {
+    nowMs: () => NOW,
+    store: new Map(),
+    rules: ["spend_velocity"],
+  });
+  assert.equal(hot.alerts.length, 1);
+  assert.equal(hot.alerts[0].rule, "spend_velocity");
+  assert.equal(hot.alerts[0].severity, "high");
+  const cool = evaluate(snap({ spend_24h: DEFAULT_THRESHOLDS.spend_velocity - 1 }), {
+    nowMs: () => NOW,
+    store: new Map(),
+    rules: ["spend_velocity"],
+  });
+  assert.deepEqual(cool.alerts, []);
+});
+
+test("thresholds are env-tunable with fail-safe defaults", () => {
+  assert.deepEqual(resolveThresholds({}), DEFAULT_THRESHOLDS);
+  assert.equal(resolveThresholds({ ALERT_SPEND_24H_CENTS: "1000" }).spend_velocity, 1000);
+  assert.equal(resolveThresholds({ ALERT_QUEUE_STALL: "3" }).queue_stall, 3);
+  // Bad env never disables a rule: falls back to the default.
+  assert.equal(resolveThresholds({ ALERT_SPEND_24H_CENTS: "nope" }).spend_velocity, DEFAULT_THRESHOLDS.spend_velocity);
+  assert.equal(resolveThresholds({ ALERT_SPEND_24H_CENTS: "0" }).spend_velocity, DEFAULT_THRESHOLDS.spend_velocity);
+  assert.equal(resolveThresholds({ ALERT_SPEND_24H_CENTS: "-5" }).spend_velocity, DEFAULT_THRESHOLDS.spend_velocity);
+  // Per-call overrides tune one evaluation without env.
+  const tuned = evaluate(snap({ spend_24h: 50 }), {
+    nowMs: () => NOW,
+    store: new Map(),
+    rules: ["spend_velocity"],
+    thresholds: { spend_velocity: 50 },
+  });
+  assert.equal(tuned.alerts.length, 1);
+  const untuned = evaluate(snap({ spend_24h: 50 }), {
+    nowMs: () => NOW,
+    store: new Map(),
+    rules: ["spend_velocity"],
+  });
+  assert.deepEqual(untuned.alerts, []);
 });
 
 test("rule subset selection runs only chosen rules", () => {

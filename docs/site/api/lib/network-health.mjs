@@ -2,18 +2,19 @@
  * Network health 0.1.0 — self-check runner over registered stage probes.
  * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  *
- * createHealthChecker({ probes, nowMs, fs, tmpDir }) runs one probe per
+ * createHealthChecker({ probes, nowMs, fs, dataDir }) runs one probe per
  * stage and returns a health snapshot { ok, at, stages: [{ stage, ok,
  * ms, error? }] } for a future /healthz-style endpoint. Probes are
  * injectable (sync or async, (ctx) => { ok } or truthy) so tests stub
- * them; the offline defaults are ledger-writable (temp-file round trip
- * outside prod paths) and digests-verify (fixture digest determinism
- * via SHA-256). Fail-closed: a throwing probe records { ok:false,
- * error } and never aborts the remaining stages.
+ * them; the offline defaults are ledger-writable (a temp-file round trip
+ * against the live /data volume — the ledgers readers and writers
+ * actually use — never the OS tmpdir, which can be writable while /data
+ * is missing or read-only) and digests-verify (fixture digest
+ * determinism via SHA-256). Fail-closed: a throwing probe records
+ * { ok:false, error } and never aborts the remaining stages.
  */
 
 import { createHash } from "node:crypto";
-import { tmpdir } from "node:os";
 import { join } from "node:path";
 import nodeFs from "node:fs";
 
@@ -48,10 +49,18 @@ const DIGEST_FIXTURE = Object.freeze({
   at: "2026-11-05T00:00:00.000Z",
 });
 
-/** Default probe: temp-dir write/read/remove round trip (never /data). */
+/** Live ledger volume: explicit dataDir > DATA_DIR env > /data default. */
+export function resolveDataDir(ctx = {}) {
+  const fromCtx = typeof ctx.dataDir === "string" && ctx.dataDir ? ctx.dataDir : "";
+  const fromTmp = typeof ctx.tmpDir === "string" && ctx.tmpDir ? ctx.tmpDir : ""; // legacy alias
+  const fromEnv = typeof process.env.DATA_DIR === "string" ? process.env.DATA_DIR.trim() : "";
+  return fromCtx || fromEnv || fromTmp || "/data";
+}
+
+/** Default probe: /data-volume write/read/remove round trip (never tmpdir). */
 export function probeLedgerWritable(ctx = {}) {
   const fs = ctx.fs || nodeFs;
-  const dir = typeof ctx.tmpDir === "string" && ctx.tmpDir ? ctx.tmpDir : tmpdir();
+  const dir = resolveDataDir(ctx);
   const name = `health-${Date.now().toString(36)}-${Math.floor(Math.random() * 1e6)}.tmp`;
   const path = join(dir, name);
   fs.writeFileSync(path, "health", "utf8");
@@ -62,7 +71,7 @@ export function probeLedgerWritable(ctx = {}) {
     /* best-effort cleanup */
   }
   if (back !== "health") return { ok: false, error: "roundtrip_mismatch" };
-  return { ok: true };
+  return { ok: true, dir };
 }
 
 /** Default probe: SHA-256 fixture digests verify (stable + sensitive). */
@@ -85,15 +94,17 @@ export function defaultProbes() {
 
 /**
  * Create a health checker.
- * @param {object} [opts] { probes, nowMs, fs, tmpDir } — probes maps
+ * @param {object} [opts] { probes, nowMs, fs, dataDir } — probes maps
  *   stage name -> probe fn (ctx) => { ok } | truthy. Extra probes merge
  *   over (and may override) the defaults; pass { probes: {...}, } with
- *   a stage set to null to disable a default.
+ *   a stage set to null to disable a default. dataDir selects the volume
+ *   the ledger_writable probe exercises (default /data; tmpDir kept as a
+ *   legacy alias for the same slot).
  */
 export function createHealthChecker(opts = {}) {
   const o = isPlainObject(opts) ? opts : {};
   const nowMs = typeof o.nowMs === "function" ? o.nowMs : Date.now;
-  const ctx = { fs: o.fs || nodeFs, tmpDir: o.tmpDir };
+  const ctx = { fs: o.fs || nodeFs, dataDir: o.dataDir, tmpDir: o.tmpDir };
   const stages = new Map(Object.entries(defaultProbes()));
   if (isPlainObject(o.probes)) {
     for (const [stage, fn] of Object.entries(o.probes)) {

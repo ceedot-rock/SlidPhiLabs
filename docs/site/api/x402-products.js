@@ -655,6 +655,11 @@ export default async function handler(req, res) {
 
   const email = clean(body.email, 120);
   const note = clean(body.note, 800);
+  // Operator-only attributable path (see lib/owner-gratis.mjs): this email
+  // is SELF-ASSERTED from the request body, not signature-verified. It must
+  // never gate irrevocable fulfillment -- gratis stays RECORDED (gratis
+  // markers + ops log) so abuse is attributable. Value-moving routes must
+  // use resolveOwnerLane({ verifiedEmail }) from an HMAC-verified claim.
   const ownerOrder = isOwnerEmail(email);
   const p = CATALOG[sku];
   const requirements = buildAccepts(sku);

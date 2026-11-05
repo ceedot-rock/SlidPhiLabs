@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync } from "node:fs";
+import { mkdtempSync, writeFileSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
@@ -82,6 +82,19 @@ test("deny resolution produces reputation hook only", () => {
   assert.equal(r.dispute.status, "denied");
   assert.equal(r.refund_instruction, null);
   assert.equal(r.reputation_hook.event, "dispute_denied");
+});
+
+test("corrupt ledger fails closed with corrupt_store, never saved over", () => {
+  const d = isolate();
+  const f = join(d, "disputes.json");
+  writeFileSync(f, "not json{{{");
+  const a = stubs(["dp_c"]);
+  assert.equal(recordKnownOrder({ order_id: "ord-1", amount_cents: 100 }, a).error, "corrupt_store");
+  assert.equal(openDispute({ order_id: "ord-1", reason: "late" }, a).error, "corrupt_store");
+  assert.equal(resolveDispute({ dispute_id: "dp_c", decision: "deny" }, a).error, "corrupt_store");
+  assert.equal(getDispute("dp_c", {}).error, "corrupt_store");
+  assert.equal(listDisputes({}).error, "corrupt_store");
+  assert.equal(readFileSync(f, "utf8"), "not json{{{");
 });
 
 test("resolve is single-shot and validates input", () => {

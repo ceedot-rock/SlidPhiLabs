@@ -16,10 +16,11 @@
  * via adapters ({ dir, now, id }) so tests run hermetic. Every public
  * function returns a fail-closed envelope { ok, ... } / { ok:false, error }.
  */
-import { existsSync, mkdirSync, writeFileSync, readFileSync, renameSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync, renameSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { randomBytes } from "node:crypto";
+import { loadJson, CorruptStoreError, isCorruptStoreError } from "./failclosed-store.mjs";
 
 export const PAYOUTS_VERSION = "0.1.0";
 export const MIN_PAYOUT_CENTS = 100; // $1.00 minimum
@@ -64,13 +65,23 @@ function blank() {
 
 function load(dir) {
   const f = ledgerFile(dir);
-  if (!existsSync(f)) return blank();
+  const o = loadJson(f, blank);
+  if (!o || typeof o !== "object" || !o.intents || typeof o.intents !== "object") {
+    throw new CorruptStoreError(f, new Error("bad_shape"));
+  }
+  return o;
+}
+
+/**
+ * Load, mapping a corrupt store to a fail-closed envelope.
+ * Callers return early on !ok and NEVER save over the corrupt file.
+ */
+function loadOrCorrupt(dir) {
   try {
-    const o = JSON.parse(readFileSync(f, "utf8"));
-    if (!o || typeof o !== "object" || !o.intents || typeof o.intents !== "object") return blank();
-    return o;
-  } catch {
-    return blank(); // fail closed on read: treat as empty, never crash
+    return { ok: true, store: load(dir) };
+  } catch (e) {
+    if (isCorruptStoreError(e)) return { ok: false, error: "corrupt_store" };
+    throw e;
   }
 }
 
@@ -99,6 +110,12 @@ function fail(error, extra = {}) {
  * Quote an unsigned USDC payout. Records intent (status "quoted") and
  * returns the unsigned instruction for the operator to sign elsewhere.
  * Never holds keys. Adapters: { dir, now: () => ISO string, id: () => string }.
+ *
+ * Idempotency: the intent id is the idempotency key. Re-quoting the same
+ * key with identical (rider_id, amount_cents, rail, to) returns
+ * { ok:true, duplicate:true, intent } without writing. Re-quoting the
+ * same key with DIFFERENT terms fails closed with idempotency_conflict —
+ * a retried request is safe, a recycled key is not silently honored.
  */
 export function quotePayout({ rider_id, amount_cents, rail, to }, adapters = {}) {
   const riderId = String(rider_id || "");
@@ -112,11 +129,22 @@ export function quotePayout({ rider_id, amount_cents, rail, to }, adapters = {})
   const addrOk = rail === "base_evm" ? EVM_ADDR_RE.test(dest) : SOL_ADDR_RE.test(dest);
   if (!addrOk) return fail("bad_destination");
   const dir = payoutsDir(adapters.dir);
-  const store = load(dir);
+  const loaded = loadOrCorrupt(dir);
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const now = adapters.now ? adapters.now() : new Date().toISOString();
   const id = adapters.id ? adapters.id() : defaultId();
   if (!INTENT_RE.test(String(id))) return fail("bad_intent_id");
-  if (store.intents[id]) return { ok: true, duplicate: true, intent: store.intents[id] };
+  const prior = store.intents[id];
+  if (prior) {
+    const sameTerms =
+      prior.rider_id === riderId &&
+      prior.amount_cents === cents &&
+      prior.rail === rail &&
+      prior.to === dest;
+    if (sameTerms) return { ok: true, duplicate: true, intent: prior };
+    return fail("idempotency_conflict", { intent_id: String(id) });
+  }
   const intent = {
     id,
     rider_id: riderId,
@@ -150,7 +178,9 @@ export function quotePayout({ rider_id, amount_cents, rail, to }, adapters = {})
 export function claimPayout({ intent_id }, adapters = {}) {
   if (!INTENT_RE.test(String(intent_id || ""))) return fail("bad_intent_id");
   const dir = payoutsDir(adapters.dir);
-  const store = load(dir);
+  const loaded = loadOrCorrupt(dir);
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const intent = store.intents[intent_id];
   if (!intent) return fail("unknown_intent");
   if (intent.status === "claimed") return { ok: true, duplicate: true, claim: intent.claim };
@@ -181,7 +211,9 @@ export function recordExecuted({ intent_id, tx, signer }, adapters = {}) {
   if (!String(tx || "").trim()) return fail("bad_tx");
   if (!String(signer || "").trim()) return fail("bad_signer");
   const dir = payoutsDir(adapters.dir);
-  const store = load(dir);
+  const loaded = loadOrCorrupt(dir);
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const intent = store.intents[intent_id];
   if (!intent) return fail("unknown_intent");
   if (intent.status === "executed") return { ok: true, duplicate: true, intent };
@@ -201,7 +233,9 @@ export function recordExecuted({ intent_id, tx, signer }, adapters = {}) {
 /** Read one intent. Fail-closed null envelope on miss. */
 export function getIntent(intent_id, adapters = {}) {
   if (!INTENT_RE.test(String(intent_id || ""))) return { ok: false, error: "bad_intent_id" };
-  const store = load(payoutsDir(adapters.dir));
+  const loaded = loadOrCorrupt(payoutsDir(adapters.dir));
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const intent = store.intents[intent_id];
   if (!intent) return { ok: false, error: "unknown_intent" };
   return { ok: true, intent };
@@ -209,7 +243,9 @@ export function getIntent(intent_id, adapters = {}) {
 
 /** List all recorded intents, oldest first. */
 export function listIntents(adapters = {}) {
-  const store = load(payoutsDir(adapters.dir));
+  const loaded = loadOrCorrupt(payoutsDir(adapters.dir));
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const intents = Object.values(store.intents).sort((a, b) =>
     String(a.t_created).localeCompare(String(b.t_created)),
   );

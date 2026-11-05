@@ -470,6 +470,7 @@ async function acnFixtures() {
       agentDirectory: directory,
       privateBench: {
         source: "test",
+        attest: true,
         fixtures: {
           plan: { passed: 1, n: 1 }, retrieval: { passed: 1, n: 1 },
           state: { passed: 1, n: 1 }, refusal: { passed: 1, n: 1 },
@@ -509,11 +510,12 @@ test("optional acn stages join plan and run in order", async () => {
   const byStage = Object.fromEntries(r.receipts.map((s) => [s.stage, s]));
   assert.equal(byStage["standing-rider"].mode, "issued");
   assert.equal(byStage["standing-rider"].safeguards_hash, p.plan.standingRider.safeguards_hash);
-  assert.equal(byStage.reputation.score, 1);
+  assert.equal(byStage.reputation.score, 0.5); // unknown rider: neutral bootstrap prior, never 1.0
   assert.equal(byStage["tool-registry"].version, "1.0.0");
   assert.equal(byStage["agent-directory"].score, 80);
   assert.equal(byStage["agent-messaging"].kind, "draft");
   assert.equal(byStage["private-bench"].provenance, "held-out:test");
+  assert.equal(byStage["private-bench"].verified, true);
   assert.equal(byStage.solana.instruction.to, "TestPayTo1111111111111111111111111111111");
   assert.equal(byStage.payout.intent_id, "po_test1");
   assert.equal(byStage.payout.requires, "operator_signature");

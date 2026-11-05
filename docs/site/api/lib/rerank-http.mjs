@@ -32,6 +32,17 @@ export const RERANK_ENV_TOKEN = "RERANK_TOKEN";
 export const RERANK_ENV_TIMEOUT_MS = "RERANK_TIMEOUT_MS";
 export const RERANK_TIMEOUT_MS_DEFAULT = 8000;
 
+/**
+ * True when a live rerank endpoint is configured (RERANK_ENDPOINT set to a
+ * non-empty value). Pure, reads env at call time, never touches network.
+ * This is the gate to check before expecting live rescoring: when false,
+ * the adapter path stays on offline BM25 scores.
+ */
+export function isConfigured({ env = process.env } = {}) {
+  const src = env || {};
+  return String(src[RERANK_ENV_ENDPOINT] || "").trim().length > 0;
+}
+
 /** Read operator config from env (defaults to process.env). Pure. */
 export function rerankEnv({ env = process.env } = {}) {
   const src = env || {};
@@ -123,8 +134,9 @@ export function createHttpRerankFn({
  * fetchImpl override exists for tests; production omits it (global fetch).
  */
 export function defaultProductionRerankFn({ env = process.env, fetchImpl } = {}) {
+  if (!isConfigured({ env })) return null;
   const { endpoint, token, timeoutMs } = rerankEnv({ env });
-  if (!endpoint) return null;
+  if (!endpoint) return null; // unreachable when configured; kept fail-closed.
   return createHttpRerankFn({
     endpoint,
     token,

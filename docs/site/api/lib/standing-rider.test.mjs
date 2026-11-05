@@ -4,11 +4,15 @@
  */
 import test from "node:test";
 import assert from "node:assert/strict";
+import { mkdtempSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import {
   issueStandingRider,
   verifyStandingRider,
   revokeStandingRider,
   safeguardsHash,
+  createFileMapStore,
   STANDING_WAIVER_VERSION,
 } from "./standing-rider.mjs";
 
@@ -76,6 +80,24 @@ test("fail-closed when waiver is missing, declined, or unpinned", () => {
     assert.equal(r.ok, false);
     assert.equal(r.reason, "waiver_not_accepted");
   }
+});
+
+test("file-backed store persists issuance across instances", () => {
+  const file = join(mkdtempSync(join(tmpdir(), "sr-test-")), "riders.json");
+  const a = { store: createFileMapStore({ file }), nowMs: () => 1793805600000 };
+  const issued = issueStandingRider({ safeguards: { ...SAFEGUARDS }, waiver: { ...WAIVER } }, a);
+  assert.equal(issued.ok, true);
+  const b = { store: createFileMapStore({ file }), nowMs: () => 1793805600000 };
+  const v = verifyStandingRider(issued.receipt.rider_id, b);
+  assert.equal(v.ok, true);
+  assert.equal(v.safeguards_hash, issued.receipt.safeguards_hash);
+});
+
+test("file-backed store throws ledger_corrupt on a corrupt book, never blanks it", () => {
+  const file = join(mkdtempSync(join(tmpdir(), "sr-test-")), "riders.json");
+  writeFileSync(file, "not json");
+  assert.throws(() => createFileMapStore({ file }), /ledger_corrupt/);
+  assert.throws(() => createFileMapStore({}), /file path/);
 });
 
 test("verify roundtrip, unknown rider, revoke -> revoked", () => {

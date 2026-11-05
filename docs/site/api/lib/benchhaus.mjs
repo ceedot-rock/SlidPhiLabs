@@ -17,6 +17,15 @@
  * SiAi weights: plan 0.3, retrieval 0.25, state 0.25, refusal 0.2.
  * Missing/N-A suites are skipped and weights renormalized (NO imputation).
  * Tie rule: overlapping per-suite CIs = tie (see isTie).
+ *
+ * Route note (platform-only by design): full runs stay inside the metered
+ * ACN stage (opt-in benchhaus block on planAgenticRun / runAgenticRun) and
+ * the held-out benchx private-run — never a direct public run route. The
+ * fixtures above are PUBLIC-STATIC, so an open run endpoint would mint
+ * capability claims from memorizable bytes. benchx exposes only the
+ * read-only benchhaus-info action (version, weights, provenance, suite
+ * list — no fixtures, no scores); anything that grades runs server-side
+ * adapters only.
  */
 import { createHash } from "node:crypto";
 import { computeQuote } from "../suite-pricing.js";

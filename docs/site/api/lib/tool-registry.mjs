@@ -28,6 +28,38 @@ function cleanTool(t) {
   };
 }
 
+/**
+ * Compare version strings as dot-separated numeric semver. Numeric parts
+ * compare numerically; a version with more parts wins on a shared prefix;
+ * non-numeric remainders fall back to localeCompare. Deterministic pure.
+ */
+export function compareVersions(a, b) {
+  const pa = String(a ?? "").split(".");
+  const pb = String(b ?? "").split(".");
+  const n = Math.max(pa.length, pb.length);
+  for (let i = 0; i < n; i++) {
+    const xa = pa[i] ?? "";
+    const ya = pb[i] ?? "";
+    const na = /^\d+$/.test(xa) ? Number(xa) : null;
+    const nb = /^\d+$/.test(ya) ? Number(ya) : null;
+    if (na !== null && nb !== null) {
+      if (na !== nb) return na < nb ? -1 : 1;
+    } else if (xa !== ya) {
+      return xa < ya ? -1 : 1;
+    }
+  }
+  return 0;
+}
+
+/** Highest version in a non-empty tool list (top semver, never registration order). */
+export function latestOf(matches) {
+  let best = matches[0];
+  for (let i = 1; i < matches.length; i++) {
+    if (compareVersions(matches[i].version, best.version) > 0) best = matches[i];
+  }
+  return best;
+}
+
 /** Create an isolated in-memory tool registry. */
 export function createToolRegistry() {
   const tools = new Map(); // key: `${id}@${version}` -> tool
@@ -51,8 +83,8 @@ export function createToolRegistry() {
         if (!hit) return { ok: false, reason: "unknown_version" };
         return { ok: true, tool: { ...hit } };
       }
-      // Unpinned: deterministic latest = last registered wins.
-      const hit = matches[matches.length - 1];
+      // Unpinned: deterministic latest = top semver, never registration order.
+      const hit = latestOf(matches);
       return { ok: true, tool: { ...hit } };
     },
     list() {

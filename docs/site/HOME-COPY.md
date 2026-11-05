@@ -45,7 +45,7 @@ The cost of computing is the cost of everything now — data that takes too much
 **Second paragraph:**
 We are a computation and AI company. Our compression engines shrink the data enterprises pay to store and move. Our agent infrastructure gives autonomous software a signed identity, a spending mandate it cannot exceed, and a receipt trail anyone can verify. Not dashboards about the problem — the layer that makes the problem stop costing money.
 
-**Hero actions:** Products (→ #products) · The evidence (→ #costs) · Invest (→ /invest)
+**Hero actions:** Products (→ #products) · The evidence (→ #costs). No Invest action — there is no `/invest` route (checked `server.mjs` + `vercel.json` 2026-11-05); do not add one without a route.
 
 **Homepage rule (Corey, 2026-10-22): NO price figures anywhere on the homepage.** The homepage sells the tech and funnels to product pages and /pricing; prices live there, never here.
 
@@ -59,11 +59,11 @@ The homepage no longer carries the full shipped ledger (it carries the four line
 
 | Product | Line |
 |---------|------|
-| **PCC** | Hosted lossless compression. Send a file, get a smaller one back, restore every byte. Nothing to install. Silesia 51,498,645 · $9/day · $37/mo · 2 GB free |
+| **PCC** | Hosted lossless compression. Send a file, get a smaller one back, restore every byte. Nothing to install. Silesia 51,498,645 · metered $0.25/GB of input, first 1 GB free once per IP (lifetime, no monthly reset) · Pro $25/mo (100 GB included, then $0.20/GB) — per `pricing.json` |
 | **TNSSRC** | The local engine. Compress where the file sits, verify with decode plus SHA-256. 43,724,575 · 12/12 DECODE_OK · AGPL $0 |
 | **pulsar** | Free GPLv3 binary for your own machine. No account, no phone-home. Silesia 55,745,438 · $0 |
 | **TRUSTREAM** | The PCC plan for live logs — agent traces, SIEM, telemetry in 4 KiB tiles. Empty shrinks · never inflates · on a PCC seat |
-| **Agent-Rider** | Signed identity for AI agents — a name that lasts fifteen minutes and proves itself on public keys. Solo $3.31/mo · live at agentrider.fly.dev |
+| **Agent-Rider** | Signed identity for AI agents — a name that lasts fifteen minutes and proves itself on public keys. Solo $12/mo · Team $49/mo · Fleet $199/mo — per `pricing.json` · live at agentrider.fly.dev |
 | **Warrant** | Signed mandates — these hosts, these actions, this spend cap — plus a receipt when the job runs. In Rider Bundle and Team seats |
 | **Tollkeeper** | Ten live metered tools behind the lab meter. Call it, meter ticks, receipt files. Pay per call |
 | **CuNi** | One program, 53 targets. Python, Go, and JS must print the same stdout, or it refuses. Studio $0 · signed Ed25519 audit receipts |
@@ -71,7 +71,7 @@ The homepage no longer carries the full shipped ledger (it carries the four line
 | **AwLPay** | Any token, any chain, converted through checkable value — or refused. x402 rails. Tron · BTC · Lightning · XLM · BSC |
 | **Quikgater** | Pay-per-fact web fetching for agents. No subscription for a snippet. Pay per fetch |
 | **TEACHAiD** | Campus app with a personal teacher that cites the textbook, builds curriculum, and speaks it aloud. Live campus · teacher API moving to Llama |
-| **Chamber** | Two-key JSON seal. One share is useless; every envelope carries its custody stamp. $37/mo · $369/yr · 33/33 tests green |
+| **Chamber** | Two-key JSON seal. One share is useless; every envelope carries its custody stamp. $20/mo · $200/yr · 33/33 tests green — per `pricing.json` |
 
 ---
 

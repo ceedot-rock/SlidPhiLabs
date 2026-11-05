@@ -134,10 +134,12 @@ Job: ${id}`,
     notion = { ok: false, reason: String(e.message || e).slice(0, 200) };
   }
 
-  siosJob({ kind: "intake", bytes, ok: true, path: `ppp:${id}` });
+  const stamp = siosJob({ kind: "intake", bytes, ok: true, path: `ppp:${id}` });
+  const stampDigest = stamp && stamp.ok ? stamp.stamp.digest : null;
   return json(res, 200, {
     ok: true,
     job_id: id,
+    sios_digest: stampDigest,
     message:
       "Project received. We run the best available lab tool for your data class and email results to you.",
     notion: notion.ok,

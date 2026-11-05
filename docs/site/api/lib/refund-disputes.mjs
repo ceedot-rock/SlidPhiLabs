@@ -18,10 +18,11 @@
  * Deterministic offline defaults: no network, no models. I/O injectable
  * via adapters ({ dir, now, id, lookupOrder }). Fail-closed envelopes.
  */
-import { existsSync, mkdirSync, writeFileSync, readFileSync, renameSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync, renameSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { randomBytes } from "node:crypto";
+import { loadJson, CorruptStoreError, isCorruptStoreError } from "./failclosed-store.mjs";
 
 export const DISPUTES_VERSION = "0.1.0";
 export const ORDER_RE = /^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/;
@@ -52,17 +53,30 @@ function blank() {
   return { version: DISPUTES_VERSION, orders: {}, disputes: {} };
 }
 
+/**
+ * Shared fail-closed loader (lib/failclosed-store.mjs): a missing file is
+ * an empty book, but a corrupt file THROWS CorruptStoreError instead of
+ * returning a blank book — a blank book would silently forget paid orders
+ * and open disputes. Every public entry maps the throw to a fail-closed
+ * { ok:false, error:"corrupt_store" } envelope via loadOrCorrupt() and
+ * returns before any save, so a corrupt file is never overwritten.
+ */
 function load(dir) {
   const f = ledgerFile(dir);
-  if (!existsSync(f)) return blank();
+  const o = loadJson(f, blank);
+  if (!o || typeof o !== "object" || Array.isArray(o)) throw new CorruptStoreError(f, new Error("bad_shape"));
+  if (!o.orders || typeof o.orders !== "object") throw new CorruptStoreError(f, new Error("bad_shape"));
+  if (!o.disputes || typeof o.disputes !== "object") throw new CorruptStoreError(f, new Error("bad_shape"));
+  return o;
+}
+
+/** load() that returns a fail-closed envelope instead of throwing. */
+function loadOrCorrupt(dir) {
   try {
-    const o = JSON.parse(readFileSync(f, "utf8"));
-    if (!o || typeof o !== "object") return blank();
-    if (!o.orders || typeof o.orders !== "object") o.orders = {};
-    if (!o.disputes || typeof o.disputes !== "object") o.disputes = {};
-    return o;
-  } catch {
-    return blank();
+    return { ok: true, store: load(dir) };
+  } catch (e) {
+    if (isCorruptStoreError(e)) return { ok: false, error: "corrupt_store" };
+    throw e;
   }
 }
 
@@ -92,7 +106,9 @@ export function recordKnownOrder({ order_id, amount_cents, chain = null, refund_
   const cents = Math.floor(Number(amount_cents));
   if (!Number.isSafeInteger(cents) || cents <= 0) return fail("bad_amount");
   const dir = disputesDir(adapters.dir);
-  const store = load(dir);
+  const loaded = loadOrCorrupt(dir);
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   if (store.orders[order_id]) return { ok: true, duplicate: true, order: store.orders[order_id] };
   const order = {
     order_id: String(order_id),
@@ -133,7 +149,9 @@ export function openDispute({ order_id, reason }, adapters = {}) {
   const why = String(reason || "").trim().slice(0, MAX_REASON_LEN);
   if (!why) return fail("bad_reason");
   const dir = disputesDir(adapters.dir);
-  const store = load(dir);
+  const loaded = loadOrCorrupt(dir);
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const order = findOrder(store, orderId, adapters.lookupOrder);
   if (!order) return fail("unknown_order");
   const now = adapters.now ? adapters.now() : new Date().toISOString();
@@ -168,7 +186,9 @@ export function resolveDispute({ dispute_id, decision, resolved_by = null }, ada
   if (!DISPUTE_RE.test(String(dispute_id || ""))) return fail("bad_dispute_id");
   if (!DECISIONS.includes(decision)) return fail("bad_decision", { decisions: DECISIONS });
   const dir = disputesDir(adapters.dir);
-  const store = load(dir);
+  const loaded = loadOrCorrupt(dir);
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const dispute = store.disputes[dispute_id];
   if (!dispute) return fail("unknown_dispute");
   if (dispute.status !== "open") return fail("already_resolved", { status: dispute.status });
@@ -214,7 +234,9 @@ export function resolveDispute({ dispute_id, decision, resolved_by = null }, ada
 /** Read one dispute. Fail-closed on miss. */
 export function getDispute(dispute_id, adapters = {}) {
   if (!DISPUTE_RE.test(String(dispute_id || ""))) return { ok: false, error: "bad_dispute_id" };
-  const store = load(disputesDir(adapters.dir));
+  const loaded = loadOrCorrupt(disputesDir(adapters.dir));
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const dispute = store.disputes[dispute_id];
   if (!dispute) return { ok: false, error: "unknown_dispute" };
   return { ok: true, dispute };
@@ -222,7 +244,9 @@ export function getDispute(dispute_id, adapters = {}) {
 
 /** List all disputes, oldest first. */
 export function listDisputes(adapters = {}) {
-  const store = load(disputesDir(adapters.dir));
+  const loaded = loadOrCorrupt(disputesDir(adapters.dir));
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const disputes = Object.values(store.disputes).sort((a, b) =>
     String(a.t_opened).localeCompare(String(b.t_opened)),
   );

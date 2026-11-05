@@ -17,6 +17,18 @@ export const RUN_FAILED = "failed";
 
 const TERMINAL = new Set([RUN_COMPLETED, RUN_FAILED]);
 
+import { readFileSync, writeFileSync, renameSync, mkdirSync } from "node:fs";
+import { dirname } from "node:path";
+
+function defaultFileFs() {
+  return {
+    readFile: (p) => readFileSync(p, "utf8"),
+    writeFile: (p, s) => writeFileSync(p, s, "utf8"),
+    rename: (a, b) => renameSync(a, b),
+    mkdir: (d) => mkdirSync(d, { recursive: true }),
+  };
+}
+
 function isPlainObject(v) {
   return v !== null && typeof v === "object" && !Array.isArray(v);
 }
@@ -34,6 +46,75 @@ export function createMemoryStore() {
   return { next: 1, byId: new Map() };
 }
 
+/**
+ * File-backed store option: same { next, byId } shape plus save()/load(),
+ * persisted as one JSON file (atomic tmp + rename). Deterministic offline:
+ * the fs surface ({ readFile, writeFile, rename, mkdir }) is injectable so
+ * tests never touch disk. load() tolerates a missing file (fresh store);
+ * save() never throws — persistence faults return { ok:false } envelopes.
+ */
+export function createFileStore({ path, fs = null } = {}) {
+  if (typeof path !== "string" || path === "") throw new Error("async-runs: file store path required");
+  const io = fs || defaultFileFs();
+  const store = { next: 1, byId: new Map() };
+
+  function load() {
+    let raw;
+    try {
+      raw = io.readFile(path);
+    } catch (err) {
+      if (err && (err.code === "ENOENT" || /no such file/i.test(String(err && err.message)))) {
+        return { ok: true, loaded: 0 };
+      }
+      return { ok: false, error: "read_error" };
+    }
+    let parsed;
+    try {
+      parsed = JSON.parse(String(raw));
+    } catch {
+      return { ok: false, error: "corrupt_store" };
+    }
+    if (!parsed || typeof parsed !== "object" || !Array.isArray(parsed.runs)) {
+      return { ok: false, error: "corrupt_store" };
+    }
+    store.byId = new Map(parsed.runs.map((r) => [r.run_id, r]));
+    store.next = Number.isSafeInteger(parsed.next) && parsed.next >= 1
+      ? parsed.next
+      : store.byId.size + 1;
+    return { ok: true, loaded: store.byId.size };
+  }
+
+  function save() {
+    try {
+      try {
+        io.mkdir(dirname(path));
+      } catch {
+        /* best-effort: parent may already exist */
+      }
+      const raw = JSON.stringify({ next: store.next, runs: [...store.byId.values()] });
+      const tmp = `${path}.tmp`;
+      io.writeFile(tmp, raw);
+      io.rename(tmp, path);
+    } catch {
+      return { ok: false, error: "write_error" };
+    }
+    return { ok: true };
+  }
+
+  store.path = path;
+  store.load = load;
+  store.save = save;
+  return store;
+}
+
+function persist(store) {
+  try {
+    if (store && typeof store.save === "function") store.save();
+  } catch {
+    /* persistence is best-effort: the in-memory write already landed */
+  }
+}
+
 function fail(error) {
   return { ok: false, error };
 }
@@ -47,7 +128,14 @@ function fail(error) {
  *   (spec) => ({ receipts?: array, error?: string }).
  */
 export function createRunManager(opts = {}) {
-  const store = opts.store || createMemoryStore();
+  const store = opts.store || (opts.storePath ? createFileStore({ path: opts.storePath, fs: opts.fs || null }) : createMemoryStore());
+  if (typeof store.load === "function") {
+    try {
+      store.load();
+    } catch {
+      /* corrupt store surfaces on save; manager still serves memory */
+    }
+  }
   const now = opts.now || defaultNow;
   const executor = opts.executor || null;
   if (!store.byId) store.byId = new Map();
@@ -66,6 +154,7 @@ export function createRunManager(opts = {}) {
       updated_at: now(),
     };
     store.byId.set(run.run_id, run);
+    persist(store);
     return { ok: true, run_id: run.run_id, status: run.status };
   }
 
@@ -89,6 +178,7 @@ export function createRunManager(opts = {}) {
     run.receipts = copy(receipts);
     if (error !== "") run.error = String(error);
     run.updated_at = now();
+    persist(store);
     return { ok: true, run: copy(run) };
   }
 
@@ -109,6 +199,7 @@ export function createRunManager(opts = {}) {
     if (run.status !== RUN_QUEUED) return fail("not_queued");
     run.status = RUN_RUNNING;
     run.updated_at = now();
+    persist(store);
     let out;
     try {
       out = await executor(copy(run.spec));

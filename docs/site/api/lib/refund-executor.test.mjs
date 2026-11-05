@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync } from "node:fs";
+import { mkdtempSync, writeFileSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
@@ -64,6 +64,18 @@ test("settle adapter path settles immediately with receipt", () => {
   // Idempotent even on the settled path.
   const again = executeRefund({ dispute_id: "dp_live", instruction: INSTR }, a);
   assert.equal(again.duplicate, true);
+});
+
+test("corrupt ledger fails closed with corrupt_store, never saved over", () => {
+  const a = stubs(["rfx_c"]);
+  const f = join(a.dir, "refunds.json");
+  writeFileSync(f, "[broken");
+  assert.equal(executeRefund({ dispute_id: "dp_1", instruction: INSTR }, a).error, "corrupt_store");
+  assert.equal(claimRefund({ dispute_id: "dp_1" }, a).error, "corrupt_store");
+  assert.equal(recordSettled({ dispute_id: "dp_1", receipt: { tx: "0x1" } }, a).error, "corrupt_store");
+  assert.equal(getRefund("dp_1", a).error, "corrupt_store");
+  assert.equal(listQueued(a).error, "corrupt_store");
+  assert.equal(readFileSync(f, "utf8"), "[broken");
 });
 
 test("settle adapter failure fails closed; unknown reads fail", () => {

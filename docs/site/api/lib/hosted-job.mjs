@@ -1,3 +1,8 @@
+/**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
+ * Hosted encode job entry: meter-then-encode wrapper around specialist encode.
+ * Pure glue over injectable lib helpers; no network. Fail-closed envelopes.
+ */
 import { classify, encodeHosted, MAX_RAW } from "./specialist.mjs";
 import { addUsage, identityFromReq, meterSnapshot } from "./usage-meter.mjs";
 

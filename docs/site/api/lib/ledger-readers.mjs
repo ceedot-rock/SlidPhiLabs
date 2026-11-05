@@ -6,7 +6,9 @@
  * need, pointed at the real ledger defaults: sales, reputation, payouts,
  * disputes, and ops feed JSONL files. Paths resolve as
  * overrides > env > default. Reads are tolerant: missing files yield
- * empty results, blank or malformed lines are skipped, and no reader
+ * empty results, blank lines are skipped, malformed lines are skipped but
+ * COUNTED (malformedCount() exposes { malformed_count, by_path } so ops
+ * can see ledger rot instead of silently dropping it), and no reader
  * ever throws — every fault returns an empty list or zero, so a corrupt
  * line can never break a dashboard or audit pack. The raw file reader
  * is injectable ({ read }) so tests never touch prod paths.
@@ -95,6 +97,11 @@ export function createLedgerReaders(opts = {}) {
   const o = isPlainObject(opts) ? opts : {};
   const paths = resolvePaths(isPlainObject(o.paths) ? o.paths : o);
   const read = typeof o.read === "function" ? o.read : (p) => readFileSync(p, "utf8");
+  const malformedByPath = new Map();
+
+  function noteMalformed(path) {
+    malformedByPath.set(path, (malformedByPath.get(path) || 0) + 1);
+  }
 
   function readLines(path) {
     let raw;
@@ -111,10 +118,21 @@ export function createLedgerReaders(opts = {}) {
       try {
         out.push(JSON.parse(t));
       } catch {
-        /* skip malformed lines */
+        noteMalformed(path); // skipped but counted, never silent
       }
     }
     return out;
+  }
+
+  /** Malformed-line counters since this reader was created. */
+  function malformedCount() {
+    let malformed_count = 0;
+    const by_path = {};
+    for (const [p, n] of malformedByPath) {
+      by_path[p] = n;
+      malformed_count += n;
+    }
+    return { malformed_count, by_path };
   }
 
   function listSales() {
@@ -174,5 +192,5 @@ export function createLedgerReaders(opts = {}) {
     return { id: name, ...(isPlainObject(rep) ? rep : {}) };
   }
 
-  return { paths, listSales, listRuns, readSpend, listDisputes, listReceipts, tailFeed, readQueue, readIdentity };
+  return { paths, listSales, listRuns, readSpend, listDisputes, listReceipts, tailFeed, readQueue, readIdentity, malformedCount };
 }

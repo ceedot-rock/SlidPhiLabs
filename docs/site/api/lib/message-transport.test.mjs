@@ -1,6 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createMessageTransport } from "./message-transport.mjs";
+import { mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { createMessageTransport, createNodeFs } from "./message-transport.mjs";
 
 function transport(over = {}) {
   let n = 0;
@@ -39,6 +42,20 @@ test("bad message, bad recipient, unknown ack fail closed", () => {
   assert.equal(t.inbox("").reason, "bad_recipient");
   assert.equal(t.ack("missing").reason, "unknown_ack_id");
   assert.equal(t.ack("").reason, "bad_ack_id");
+});
+
+test("file-backed fs option survives a transport restart", () => {
+  const root = mkdtempSync(join(tmpdir(), "transport-test-"));
+  let n = 0;
+  const opts = { dir: "q", idFn: () => `ack-${++n}`, nowFn: () => 1000, routes: { alice: "bob" } };
+  const a = createMessageTransport({ ...opts, fs: createNodeFs(root) });
+  const { ack_id } = a.enqueue({ from: "alice", body: "persist me" });
+  assert.equal(a.deliver().delivered.length, 1);
+  const b = createMessageTransport({ ...opts, fs: createNodeFs(root) });
+  assert.equal(b.inbox("bob").messages[0].body, "persist me"); // inbox survived
+  assert.equal(b.deliver().delivered.length, 1); // outbox copy survived (at-least-once)
+  assert.equal(b.ack(ack_id).ok, true);
+  assert.equal(b.deliver().delivered.length, 0);
 });
 
 test("unrouted sender falls back to own inbox", () => {

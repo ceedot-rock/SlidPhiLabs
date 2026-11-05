@@ -12,6 +12,13 @@
  * Coverage rules mirror benchhaus: missing/N-A suites are skipped and
  * weights renormalized (NO imputation). Result provenance is always
  * "held-out:" + source.
+ *
+ * Attestation: `verified` is true ONLY when the adapter attests the run —
+ * pass `attest: true`, or an `attest(digest)` function returning truthy
+ * (it receives the result digest for countersigning). Without attestation
+ * the run still scores, but reports `verified: false` plus
+ * `attest_reason: "no_adapter_attestation"` — an unattested held-out run
+ * must never look verified.
  */
 import { createHash } from "node:crypto";
 
@@ -154,12 +161,29 @@ const GRADER_KEYS = Object.freeze({
 });
 
 /**
+/**
+ * Resolve adapter attestation for a result digest. `attest: true` (or any
+ * truthy non-function) attests directly; a function is called with the
+ * digest and must return truthy. Anything else (absent, false, throwing,
+ * falsy return) is unattested. Never throws.
+ */
+export function resolveAttestation(attest, digest) {
+  try {
+    if (typeof attest === "function") return !!attest(digest);
+    return !!attest;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Run the held-out suites. Fixtures come ONLY from adapters:
  * adapters = { source?: string, fixtures?: object,
  *   getFixtures?(source): object, gradePlan?, gradeRetrieval?,
- *   gradeState?, gradeRefusal? }.
+ *   gradeState?, gradeRefusal?, attest?: boolean | (digest) => truthy }.
  * spec = { suites?: string[] } (subset selector; fixtures in spec are
  * ignored). Refuses with no_public_fixture when no adapter fixtures exist.
+ * verified is true only when the adapter attests (see header note).
  */
 export function runPrivateBench(spec = {}, adapters = {}) {
   try {
@@ -227,6 +251,7 @@ export function runPrivateBench(spec = {}, adapters = {}) {
         provenance,
       })
     );
+    const attested = resolveAttestation(g.attest, digest);
     return {
       ok: true,
       stage: "private-bench",
@@ -238,7 +263,8 @@ export function runPrivateBench(spec = {}, adapters = {}) {
       cis: scoring.cis,
       provenance,
       digest,
-      verified: true,
+      verified: attested,
+      ...(attested ? {} : { attest_reason: "no_adapter_attestation" }),
       timings,
     };
   } catch (e) {

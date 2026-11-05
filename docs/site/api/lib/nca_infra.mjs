@@ -13,6 +13,12 @@
  * This module is the **portable coat** for every Fly app.
  * Dashboard automaton only — does not encode files. Not a Silesia gene.
  *
+ * Decorative-only status: this coat drives display seats/planes stamped onto
+ * process-report JSON and response headers. It is NOT a security boundary,
+ * NOT an encoder, and NOT a compression gene — it never accepts, stores, or
+ * gates on secrets, and its output must never be treated as an auth or
+ * integrity signal. Safe to stub or skip in tests and offline environments.
+ *
  * Seats (public labels):
  *   phi@p40 · grok@p100 · spl@p160 · zrw@p220 · suite@p280 · agentic@p340
  * Infra process seats:

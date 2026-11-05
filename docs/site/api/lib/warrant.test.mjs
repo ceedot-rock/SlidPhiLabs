@@ -188,3 +188,33 @@ test("pre-spend cap: verify with usd + reserve/settle/release", async () => {
   assert.equal(rel.warrant.remaining_usd, 0.3);
   assert.equal(rel.warrant.reserved_usd, 0);
 });
+
+test("verifyRiderToken uses the configurable URL adapter (no network in tests)", async () => {
+  const { verifyRiderToken } = await import("./warrant.mjs");
+  assert.deepEqual(await verifyRiderToken(null), { valid: false, reason: "missing_rider" });
+  assert.equal((await verifyRiderToken("tok", { verifyUrl: "" })).reason, "rider_verify_unconfigured");
+  let seen = null;
+  const ok = await verifyRiderToken("tok", {
+    verifyUrl: "https://verify.test/rider",
+    fetchImpl: async (url, init) => {
+      seen = { url, body: JSON.parse(init.body) };
+      return { ok: true, status: 200, json: async () => ({ valid: true, rider: { agent_id: "a" } }) };
+    },
+  });
+  assert.equal(ok.valid, true);
+  assert.deepEqual(ok.rider, { agent_id: "a" });
+  assert.equal(seen.url, "https://verify.test/rider");
+  assert.equal(seen.body.rider, "tok");
+  const denied = await verifyRiderToken("tok", {
+    verifyUrl: "https://verify.test/rider",
+    fetchImpl: async () => ({ ok: false, status: 401, json: async () => ({ valid: false, reason: "nope" }) }),
+  });
+  assert.equal(denied.valid, false);
+  assert.equal(denied.reason, "nope");
+  const down = await verifyRiderToken("tok", {
+    verifyUrl: "https://verify.test/rider",
+    fetchImpl: async () => { throw new Error("down"); },
+  });
+  assert.equal(down.valid, false);
+  assert.equal(down.reason, "rider_unreachable");
+});

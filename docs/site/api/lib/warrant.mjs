@@ -166,12 +166,24 @@ export function cleanEvidenceIds(list) {
   return out;
 }
 
-export async function verifyRiderToken(token) {
+/**
+ * Verify a rider token against the Rider verify endpoint. The URL is a
+ * configurable adapter: pass { verifyUrl } to point anywhere (tests inject
+ * a mock URL + fetchImpl and never touch the network); the default is null,
+ * which falls back to RIDER_VERIFY_URL (env RIDER_VERIFY_URL, else the
+ * hosted agentrider endpoint). fetchImpl is injectable (default
+ * globalThis.fetch). Fail-closed: timeouts, network errors, and bad bodies
+ * return { valid:false, reason }, never throw.
+ */
+export async function verifyRiderToken(token, { verifyUrl = null, fetchImpl = globalThis.fetch } = {}) {
   if (!token || typeof token !== "string") return { valid: false, reason: "missing_rider" };
+  const verifyEndpoint = verifyUrl === null || verifyUrl === undefined ? RIDER_VERIFY_URL : String(verifyUrl || "");
+  if (!verifyEndpoint) return { valid: false, reason: "rider_verify_unconfigured" };
+  if (typeof fetchImpl !== "function") return { valid: false, reason: "rider_unreachable" };
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), 8000);
   try {
-    const res = await fetch(RIDER_VERIFY_URL, {
+    const res = await fetchImpl(verifyEndpoint, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ rider: token }),

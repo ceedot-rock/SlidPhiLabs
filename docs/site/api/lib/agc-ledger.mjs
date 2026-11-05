@@ -12,9 +12,10 @@
  * PAYMENT_PATHS 410 reject.agc_removed); AGC is the closed-loop unit for
  * services: board tools, lab verbs, PCC/PSI metered work.
  */
-import { existsSync, mkdirSync, writeFileSync, readFileSync, renameSync, readdirSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync, renameSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
+import { loadJson, CorruptStoreError, isCorruptStoreError } from "./failclosed-store.mjs";
 
 export const AGC_PER_PACK = 1000; // agc-pack: $10.00 -> 1000 credits
 export const AGENT_RE = /^[0-9a-f]{16}$/i; // Rider agent_id shape
@@ -52,14 +53,21 @@ function blank(agentId) {
 
 function load(agentId) {
   const f = fileFor(agentId);
-  if (!existsSync(f)) return blank(agentId);
+  const o = loadJson(f, () => blank(agentId));
+  if (!o || typeof o !== "object" || typeof o.balance !== "number" || !o.orders || typeof o.orders !== "object") {
+    throw new CorruptStoreError(f, new Error("bad_shape"));
+  }
+  if (!Array.isArray(o.receipts)) o.receipts = [];
+  return o;
+}
+
+/** Load, mapping a corrupt store to a fail-closed envelope (never blank, never saved over). */
+function loadOrCorrupt(agentId) {
   try {
-    const o = JSON.parse(readFileSync(f, "utf8"));
-    if (!o || typeof o.balance !== "number" || !o.orders) return blank(agentId);
-    if (!Array.isArray(o.receipts)) o.receipts = [];
-    return o;
-  } catch {
-    return blank(agentId);
+    return { ok: true, store: load(agentId) };
+  } catch (e) {
+    if (isCorruptStoreError(e)) return { ok: false, error: "corrupt_store" };
+    throw e;
   }
 }
 
@@ -91,7 +99,9 @@ export function mintAgc({ agent_id, order_id, tx, network, credits = AGC_PER_PAC
   if (!ORDER_RE.test(String(order_id || ""))) return { ok: false, error: "bad_order_id" };
   const n = Math.floor(Number(credits));
   if (!Number.isSafeInteger(n) || n <= 0) return { ok: false, error: "bad_credits" };
-  const o = load(agentId);
+  const loaded = loadOrCorrupt(agentId);
+  if (!loaded.ok) return loaded;
+  const o = loaded.store;
   if (o.orders[order_id]) {
     return { ok: true, duplicate: true, balance: o.balance, receipt: o.orders[order_id].receipt };
   }
@@ -115,7 +125,9 @@ export function debitAgc({ agent_id, credits, ref, memo }) {
   const n = Math.floor(Number(credits));
   if (!Number.isSafeInteger(n) || n <= 0) return { ok: false, error: "bad_credits" };
   if (ref && !ORDER_RE.test(String(ref))) return { ok: false, error: "bad_ref" };
-  const o = load(agentId);
+  const loaded = loadOrCorrupt(agentId);
+  if (!loaded.ok) return loaded;
+  const o = loaded.store;
   if (ref) {
     const prior = o.receipts.find((r) => r.kind === "debit" && r.ref === ref);
     if (prior) return { ok: true, duplicate: true, balance: o.balance, receipt: prior };
@@ -133,7 +145,9 @@ export function debitAgc({ agent_id, credits, ref, memo }) {
 export function balanceAgc(agent_id) {
   const agentId = String(agent_id || "").toLowerCase();
   if (!AGENT_RE.test(agentId)) return { ok: false, error: "bad_agent_id" };
-  const o = load(agentId);
+  const loaded = loadOrCorrupt(agentId);
+  if (!loaded.ok) return loaded;
+  const o = loaded.store;
   return { ok: true, balance: o.balance, minted_total: o.minted_total, spent_total: o.spent_total };
 }
 
@@ -147,12 +161,14 @@ export function agentForOrder(order_id) {
     return null;
   }
   for (const f of files) {
+    let o;
     try {
-      const o = JSON.parse(readFileSync(join(ledgerDir(), f), "utf8"));
-      if (o && o.orders && o.orders[order_id]) return o.agent_id;
-    } catch {
-      /* skip corrupt */
+      o = loadJson(join(ledgerDir(), f), null);
+    } catch (e) {
+      if (!isCorruptStoreError(e)) throw e;
+      continue; /* skip corrupt: fail closed, resolve nothing from it */
     }
+    if (o && o.orders && o.orders[order_id]) return o.agent_id;
   }
   return null;
 }

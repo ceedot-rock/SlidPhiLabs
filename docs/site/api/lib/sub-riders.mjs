@@ -6,10 +6,16 @@
  * derivation of (parent_rider, canonical scope); no network, no clock in the
  * id path. Revoking a parent kills its whole subtree: verify walks to the
  * root and fails on any revoked ancestor. Storage is an injectable Map-like
- * store; the default is an in-memory Map.
+ * store ({ get, set, has }); the default is a process-memory Map — NOTHING
+ * persists across restarts unless the caller injects a store, so production
+ * routes must pass { store } explicitly. File-backed option:
+ * createFileMapStore from ./standing-rider.mjs (shared factory); tests
+ * inject `new Map()`.
  * Fail-closed envelopes: { ok:false, reason }.
  */
 import { createHash } from "node:crypto";
+
+export { createFileMapStore } from "./standing-rider.mjs";
 
 export const SUB_RIDERS_VERSION = "0.1.0";
 export const SUB_RIDER_PREFIX = "sub_";

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync } from "node:fs";
+import { mkdtempSync, writeFileSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
@@ -66,6 +66,17 @@ test("recordRenewal advances one interval; overdue restarts from now", () => {
   assert.equal(overdue.next_due, T0 + 11 * INTERVALS.month);
   assert.equal(recordRenewal({ sub_id: "sub_nope" }, a).error, "unknown_sub");
   assert.equal(getSubscription("sub_r", a).sub.next_due, T0 + 11 * INTERVALS.month);
+});
+
+test("corrupt ledger fails closed with corrupt_store, never saved over", () => {
+  const a = stubs(["sub_c"]);
+  const f = join(a.dir, "subs.json");
+  writeFileSync(f, "{oops");
+  assert.equal(createSubscription({ rider_id: "r1", sku: "s", amount_cents: 100 }, a).error, "corrupt_store");
+  assert.equal(getSubscription("sub_c", a).error, "corrupt_store");
+  assert.equal(dueSubs(T0, a).error, "corrupt_store");
+  assert.equal(recordRenewal({ sub_id: "sub_c" }, a).error, "corrupt_store");
+  assert.equal(readFileSync(f, "utf8"), "{oops");
 });
 
 test("prorateUpgrade math is exact integer cents", () => {

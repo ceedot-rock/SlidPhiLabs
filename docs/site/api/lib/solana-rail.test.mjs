@@ -5,6 +5,8 @@ import {
   buildReceiveInstruction,
   verifySolanaReceipt,
   verifySolanaReceiptSync,
+  requestKeystoreUnlock,
+  keystoreEnv,
   SOLANA_USDC_MAINNET,
   SOLANA_USDC_DEVNET,
   SOLANA_MAINNET,
@@ -81,6 +83,41 @@ test("verifier stub fails closed until signing material exists", async () => {
   assert.equal(bad.error, "bad_tx");
   const sync = verifySolanaReceiptSync({ tx: "deadbeef" });
   assert.equal(sync.error, "unimplemented_keystore_locked");
+});
+
+test("keystore unlock fails closed without password or adapter", async () => {
+  assert.equal((await requestKeystoreUnlock({})).error, "keystore_password_required");
+  assert.equal((await requestKeystoreUnlock({ password: "" })).error, "keystore_password_required");
+  assert.equal((await requestKeystoreUnlock()).error, "keystore_password_required");
+  const locked = await requestKeystoreUnlock({ password: "s3cret" });
+  assert.equal(locked.ok, false);
+  assert.equal(locked.error, "unimplemented_keystore_locked");
+});
+
+test("keystore unlock honors the injected unlock adapter, never leaks the password", async () => {
+  let seen = null;
+  const r = await requestKeystoreUnlock(
+    { password: "s3cret" },
+    { unlock: async (input) => { seen = input; return { handle: "h" }; } },
+    { SOLANA_KEYSTORE_PATH: "/run/keys/solana.json" },
+  );
+  assert.equal(r.ok, true);
+  assert.equal(r.unlocked, true);
+  assert.equal(r.password, undefined);
+  assert.equal(seen.password, "s3cret");
+  assert.equal(seen.keystore.path, "/run/keys/solana.json");
+  const bad = await requestKeystoreUnlock({ password: "x" }, { unlock: async () => null });
+  assert.equal(bad.error, "bad_unlock_material");
+  const boom = await requestKeystoreUnlock({ password: "x" }, { unlock: async () => { throw new Error("hsm down"); } });
+  assert.equal(boom.error, "unlock_failed");
+});
+
+test("keystoreEnv reports presence without reading the secret", () => {
+  assert.deepEqual(keystoreEnv({}), { path: "", has_password: false });
+  assert.deepEqual(
+    keystoreEnv({ SOLANA_KEYSTORE_PATH: "/k.json", SOLANA_KEYSTORE_PASSWORD: "pw" }),
+    { path: "/k.json", has_password: true },
+  );
 });
 
 test("injected verifier adapter is honored once provisioned", async () => {

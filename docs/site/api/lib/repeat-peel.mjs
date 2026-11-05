@@ -1,6 +1,10 @@
 /**
  * Hosted AWARE byte-repeat helpers — JS twin of lbr1 splb::poly MODEL_REPEAT.
  *
+ * Platform note (lib-internal by design — no ACN stage or HTTP route wires
+ * this module): pricing/inspection helpers for SKU metadata and tests only.
+ * Canonical seating is `lb aware` after Ship refreshes docs/site/bin/lb.
+ *
  * Metadata / pricing / tests only. Kolmogorov seating (33 B / 61 B aware crowns
  * on published periodic fixtures) rides rebuilt docs/site/bin/lb from
  * ceedot-rock/lbr1 main via `lb aware`. Do not claim the crown off this twin

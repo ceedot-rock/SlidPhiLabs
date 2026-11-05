@@ -19,10 +19,11 @@
  * Deterministic offline defaults: no network, no models. I/O injectable
  * via adapters ({ dir, now, id, settle }). Fail-closed envelopes.
  */
-import { existsSync, mkdirSync, writeFileSync, readFileSync, renameSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync, renameSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { randomBytes } from "node:crypto";
+import { loadJson, CorruptStoreError, isCorruptStoreError } from "./failclosed-store.mjs";
 
 export const REFUND_EXECUTOR_VERSION = "0.1.0";
 export const DISPUTE_RE = /^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/;
@@ -52,16 +53,30 @@ function blank() {
   return { version: REFUND_EXECUTOR_VERSION, records: {} };
 }
 
+/**
+ * Shared fail-closed loader (lib/failclosed-store.mjs): a missing file is
+ * an empty book, but a corrupt file THROWS CorruptStoreError instead of
+ * returning a blank book — a blank book would silently forget queued
+ * refunds and allow double settlement. Every public entry maps the throw
+ * to a fail-closed { ok:false, error:"corrupt_store" } envelope via
+ * loadOrCorrupt() and returns before any save, so a corrupt file is never
+ * overwritten.
+ */
 function load(dir) {
   const f = ledgerFile(dir);
-  if (!existsSync(f)) return blank();
+  const o = loadJson(f, blank);
+  if (!o || typeof o !== "object" || Array.isArray(o)) throw new CorruptStoreError(f, new Error("bad_shape"));
+  if (!o.records || typeof o.records !== "object") throw new CorruptStoreError(f, new Error("bad_shape"));
+  return o;
+}
+
+/** load() that returns a fail-closed envelope instead of throwing. */
+function loadOrCorrupt(dir) {
   try {
-    const o = JSON.parse(readFileSync(f, "utf8"));
-    if (!o || typeof o !== "object") return blank();
-    if (!o.records || typeof o.records !== "object") o.records = {};
-    return o;
-  } catch {
-    return blank();
+    return { ok: true, store: load(dir) };
+  } catch (e) {
+    if (isCorruptStoreError(e)) return { ok: false, error: "corrupt_store" };
+    throw e;
   }
 }
 
@@ -104,7 +119,9 @@ export function executeRefund({ dispute_id, instruction }, adapters = {}) {
   const checked = checkInstruction(instruction);
   if (!checked.ok) return checked;
   const dir = refundsDir(adapters.dir);
-  const store = load(dir);
+  const loaded = loadOrCorrupt(dir);
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const id = String(dispute_id);
   if (store.records[id]) return { ok: true, duplicate: true, record: store.records[id] };
   const now = adapters.now ? adapters.now() : new Date().toISOString();
@@ -159,7 +176,9 @@ export function executeRefund({ dispute_id, instruction }, adapters = {}) {
 export function claimRefund({ dispute_id }, adapters = {}) {
   if (!DISPUTE_RE.test(String(dispute_id || ""))) return fail("bad_dispute_id");
   const dir = refundsDir(adapters.dir);
-  const store = load(dir);
+  const loaded = loadOrCorrupt(dir);
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const record = store.records[String(dispute_id)];
   if (!record) return fail("unknown_refund");
   if (record.status === "claimed") return { ok: true, duplicate: true, record };
@@ -181,7 +200,9 @@ export function recordSettled({ dispute_id, receipt }, adapters = {}) {
   if (!DISPUTE_RE.test(String(dispute_id || ""))) return fail("bad_dispute_id");
   if (!receipt || typeof receipt !== "object") return fail("bad_receipt");
   const dir = refundsDir(adapters.dir);
-  const store = load(dir);
+  const loaded = loadOrCorrupt(dir);
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const record = store.records[String(dispute_id)];
   if (!record) return fail("unknown_refund");
   if (record.status === "settled") return { ok: true, duplicate: true, record };
@@ -201,7 +222,9 @@ export function recordSettled({ dispute_id, receipt }, adapters = {}) {
 /** Read one execution record. Fail-closed on miss. */
 export function getRefund(dispute_id, adapters = {}) {
   if (!DISPUTE_RE.test(String(dispute_id || ""))) return fail("bad_dispute_id");
-  const store = load(refundsDir(adapters.dir));
+  const loaded = loadOrCorrupt(refundsDir(adapters.dir));
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const record = store.records[String(dispute_id)];
   if (!record) return fail("unknown_refund");
   return { ok: true, record };
@@ -209,7 +232,9 @@ export function getRefund(dispute_id, adapters = {}) {
 
 /** List queued (unclaimed) refunds. Pure read. */
 export function listQueued(adapters = {}) {
-  const store = load(refundsDir(adapters.dir));
+  const loaded = loadOrCorrupt(refundsDir(adapters.dir));
+  if (!loaded.ok) return loaded;
+  const store = loaded.store;
   const queued = Object.values(store.records)
     .filter((r) => r && r.status === "queued")
     .sort((a, b) => String(a.t_queued || "").localeCompare(String(b.t_queued || "")));

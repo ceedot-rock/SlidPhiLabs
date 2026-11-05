@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { OWNER_EMAILS, OWNER_AGENT_IDS, normEmail, isOwnerEmail, isOwnerAgent } from "./owner-gratis.mjs";
+import { OWNER_EMAILS, OWNER_AGENT_IDS, normEmail, isOwnerEmail, isOwnerAgent, resolveOwnerLane } from "./owner-gratis.mjs";
 
 test("all three known owner emails match", () => {
   for (const e of ["corey@slidphilabs.com", "ceedotrock@gmail.com", "ptasz13@hotmail.com"]) {
@@ -22,6 +22,20 @@ test("owner agents: human seat only, workers stay metered", () => {
   }
   assert.equal(isOwnerAgent(""), false);
   assert.equal(isOwnerAgent(null), false);
+});
+
+test("resolveOwnerLane prefers signed claims over self-assertion", () => {
+  const signed = resolveOwnerLane({ email: "stranger@example.com", verifiedEmail: "Corey@SlidPhiLabs.COM" });
+  assert.deepEqual(signed, { ok: true, gratis: true, via: "signed-claim", email: "corey@slidphilabs.com" });
+  const asserted = resolveOwnerLane({ email: "ceedotrock@gmail.com" });
+  assert.equal(asserted.ok, true);
+  assert.equal(asserted.gratis, true);
+  assert.equal(asserted.via, "self-asserted");
+  assert.equal(asserted.warning, "operator-only-attributable");
+  assert.deepEqual(resolveOwnerLane({ email: "stranger@example.com" }), { ok: true, gratis: false, via: "none" });
+  assert.deepEqual(resolveOwnerLane(null), { ok: true, gratis: false, via: "none" });
+  assert.equal(resolveOwnerLane({ verifiedEmail: "corey@slidphilabs.com" }, { verifyEmail: () => false }).error, "owner_verify_failed");
+  assert.equal(resolveOwnerLane({ verifiedEmail: "corey@slidphilabs.com" }, { verifyEmail: () => { throw new Error("down"); } }).error, "owner_verify_failed");
 });
 
 test("lists are non-empty and stable", () => {

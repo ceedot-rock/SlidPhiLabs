@@ -1,4 +1,4 @@
-# Lab status — 2026-09-11
+# Lab status — 2026-11-05
 
 Canonical public sentence lives in README.md. If a page disagrees, the page is wrong.
 

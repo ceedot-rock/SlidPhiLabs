@@ -1,6 +1,18 @@
+/**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
+ * Tests for lib/agent-messaging.mjs — deterministic, no network.
+ */
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createMessenger, digestEnvelope } from "./agent-messaging.mjs";
+import { mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import {
+  createMessenger,
+  createFileNonceStore,
+  digestEnvelope,
+  signDigest,
+} from "./agent-messaging.mjs";
 
 const fields = () => ({
   from_rider: "rider-a",
@@ -15,6 +27,7 @@ test("draft/quote carry digest, ack verifies", () => {
   assert.equal(d.ok, true);
   assert.equal(d.envelope.kind, "draft");
   assert.equal(d.envelope.digest, digestEnvelope(fields()));
+  assert.equal("sig" in d.envelope, false);
   const q = m.quote({ ...fields(), nonce: "n-2" });
   assert.equal(q.envelope.kind, "quote");
   const ack = m.ack(d.envelope);
@@ -49,4 +62,35 @@ test("injectable store + hashFn adapters", () => {
   assert.equal(m.ack(d).ok, true);
   assert.equal(mem.has("n-1"), true);
   assert.equal(m.ack(d).reason, "replay");
+});
+
+test("HMAC keys authenticate the sender; forgeries fail closed", () => {
+  const keys = new Map([["rider-a", "k-a-secret"]]);
+  const m = createMessenger({ keys });
+  const d = m.draft(fields());
+  assert.equal(d.ok, true);
+  assert.equal(d.envelope.sig, signDigest(d.envelope.digest, "k-a-secret"));
+  assert.equal(m.ack(d.envelope).ok, true);
+  // Forged sig on a fresh nonce fails with bad_signature, not replay.
+  const forged = { ...m.draft({ ...fields(), nonce: "n-9" }).envelope, sig: "0".repeat(64) };
+  const r = m.ack(forged);
+  assert.equal(r.ok, false);
+  assert.equal(r.reason, "bad_signature");
+  // Unknown sender never silently downgrades to digest-only.
+  const stranger = createMessenger({ keys });
+  assert.equal(stranger.draft({ ...fields(), from_rider: "rider-?", nonce: "n-x" }).reason, "unknown_rider");
+});
+
+test("file-backed nonce store rejects replays across restarts", () => {
+  const dir = mkdtempSync(join(tmpdir(), "msg-nonce-"));
+  const storePath = join(dir, "nonces.json");
+  const m1 = createMessenger({ storePath });
+  const d = m1.draft(fields()).envelope;
+  assert.equal(m1.ack(d).ok, true);
+  // A fresh messenger on the same file still remembers the nonce.
+  const m2 = createMessenger({ storePath });
+  assert.equal(m2.ack(d).reason, "replay");
+  const store = createFileNonceStore(storePath);
+  assert.equal(store.size(), 1);
+  assert.equal(store.has("n-1"), true);
 });

@@ -5,6 +5,13 @@
  * conductor digests (cmd, digest) -> CSV lines + monthly per-operator rollup.
  * Compute-and-mark only: sums and collected flags in memory. Never moves
  * money, never calls a rail, never writes disk.
+ *
+ * Input verification: verifyReceipt() rejects explicit negative or NaN
+ * amounts (amount_cents, platform_fee_cents, fee_cents, usd) fail-closed;
+ * receiptToRow() maps rejected receipts to null (skipped, same as unknown
+ * shapes). Missing amounts default to 0. Missing timestamps default to
+ * now (ISO string) — receipts without at/ts/t are stamped at normalize
+ * time, so rollup months always derive from a real instant.
  */
 
 export const ACN_CSV_HEADER = "type,id,operator,route,amount_cents,fee_cents,at,ref";
@@ -38,10 +45,29 @@ function acceptsRoute(accepts) {
 }
 
 /**
- * Normalize one ACN receipt to a flat row. Unknown shapes -> null (skipped).
+ * Fail-closed amount check: explicit negative or NaN amounts reject the
+ * receipt. Missing amount fields are fine (they default to 0 downstream).
+ */
+export function verifyReceipt(r) {
+  if (!r || typeof r !== "object") return { ok: false, error: "bad_receipt" };
+  for (const field of ["amount_cents", "platform_fee_cents", "fee_cents", "usd"]) {
+    const v = r[field];
+    if (v === undefined || v === null) continue;
+    const n = Number(v);
+    if (!Number.isFinite(n)) return { ok: false, error: "bad_amount", field };
+    if (n < 0) return { ok: false, error: "negative_amount", field };
+  }
+  return { ok: true };
+}
+
+/**
+ * Normalize one ACN receipt to a flat row. Unknown shapes and receipts
+ * with rejected amounts -> null (skipped). Missing at/ts/t defaults to
+ * now (ISO string, documented above).
  */
 export function receiptToRow(r) {
   if (!r || typeof r !== "object") return null;
+  if (!verifyReceipt(r).ok) return null;
   const operator = text(r.operator_id || r.operator || r.agent_id) || "unknown";
   const at = text(r.at || r.ts || r.t) || new Date().toISOString();
   if (r.stage === "conductor" || (r.digest != null && r.usd == null && r.amount_cents == null)) {

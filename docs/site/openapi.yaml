@@ -4,7 +4,7 @@ info:
   description: |
     Public discovery, commerce, and integration surface for Slid Phi Labs.
     Start with GET /api/agent for catalog discovery or connect an MCP client to POST /mcp.
-    Suite is a metered hosted service (first 2 GB each month free, then 8c/GB, $1 minimum on card).
+    Suite is a metered hosted service (first 1 GB free once per IP address, lifetime with no monthly reset, then $0.25/GB of input; Pro $25/mo includes 100 GB, then $0.20/GB; customer-set monthly spend cap default $25, alert at 80%). Source of truth: /pricing.json.
     Public API and MCP catalog access do not expose protected compression engines or customer operations.
   version: 1.7.1
   contact:

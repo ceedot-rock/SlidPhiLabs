@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync } from "node:fs";
+import { mkdtempSync, writeFileSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
@@ -91,6 +91,28 @@ test("bad inputs fail closed", () => {
   assert.equal(quotePayout({ rider_id: "r", amount_cents: 100, rail: "base_evm", to: SOL_TO }, a).error, "bad_destination");
 });
 
+test("duplicate quotes are idempotent on same terms, conflict on recycled keys", () => {
+  isolate();
+  const args = { rider_id: "rider-1", amount_cents: 100, rail: "base_evm", to: EVM_TO };
+  const first = quotePayout(args, stubs(["po_same"]));
+  assert.equal(first.ok, true);
+  const retry = quotePayout(args, stubs(["po_same"]));
+  assert.equal(retry.ok, true);
+  assert.equal(retry.duplicate, true);
+  assert.equal(retry.intent.id, "po_same");
+  for (const changed of [
+    { ...args, amount_cents: 200 },
+    { ...args, to: "0x0000000000000000000000000000000000000001" },
+    { ...args, rider_id: "rider-2" },
+  ]) {
+    const clash = quotePayout(changed, stubs(["po_same"]));
+    assert.equal(clash.ok, false, JSON.stringify(changed));
+    assert.equal(clash.error, "idempotency_conflict");
+  }
+  // The original intent is untouched by the conflicts.
+  assert.equal(getIntent("po_same", {}).intent.amount_cents, 100);
+});
+
 test("claim flow requires operator signature, never signs", () => {
   isolate();
   const a = stubs(["po_claim"]);
@@ -123,6 +145,28 @@ test("execute records operator execution, only after claim", () => {
   assert.equal(dup.duplicate, true);
   assert.equal(recordExecuted({ intent_id: "po_exec", tx: "", signer: "0xop" }, a).error, "bad_tx");
   assert.equal(recordExecuted({ intent_id: "nope-never", tx: "0x1", signer: "0xop" }, a).error, "unknown_intent");
+});
+
+test("corrupt ledger fails closed with corrupt_store, never saved over", () => {
+  const d = isolate();
+  quotePayout(
+    { rider_id: "rider-c", amount_cents: 100, rail: "base_evm", to: EVM_TO },
+    stubs(["po_c"]),
+  );
+  const f = join(d, "payouts.json");
+  writeFileSync(f, "{corrupt");
+  assert.equal(
+    quotePayout(
+      { rider_id: "rider-c", amount_cents: 100, rail: "base_evm", to: EVM_TO },
+      stubs(["po_c2"]),
+    ).error,
+    "corrupt_store",
+  );
+  assert.equal(claimPayout({ intent_id: "po_c" }, {}).error, "corrupt_store");
+  assert.equal(recordExecuted({ intent_id: "po_c", tx: "0x1", signer: "0xop" }, {}).error, "corrupt_store");
+  assert.equal(getIntent("po_c", {}).error, "corrupt_store");
+  assert.equal(listIntents({}).error, "corrupt_store");
+  assert.equal(readFileSync(f, "utf8"), "{corrupt");
 });
 
 test("intents persist to ledger file, misses fail closed", () => {

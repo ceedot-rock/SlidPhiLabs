@@ -4,12 +4,16 @@
  */
 import test from "node:test";
 import assert from "node:assert/strict";
+import { mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import {
   issueSubRider,
   verifySubRider,
   revokeSubRider,
   deriveSubRiderId,
   scopeHash,
+  createFileMapStore,
   SUB_RIDER_PREFIX,
 } from "./sub-riders.mjs";
 
@@ -83,6 +87,17 @@ test("revoking a parent kills the whole subtree", () => {
   // The untouched sibling subtree still verifies.
   const c3 = issueSubRider({ parent_rider: "sr_root", scope: { spendCapCents: 50, crossings: ["fetch"] } }, a);
   assert.equal(verifySubRider(c3.receipt.rider_id, a).ok, true);
+});
+
+test("file-backed store option persists the subtree across instances", () => {
+  const file = join(mkdtempSync(join(tmpdir(), "sub-test-")), "subs.json");
+  const a = { store: createFileMapStore({ file }) };
+  const c1 = issueSubRider({ parent_rider: "sr_root", scope: { ...SCOPE } }, a);
+  assert.equal(c1.ok, true);
+  const b = { store: createFileMapStore({ file }) };
+  const v = verifySubRider(c1.receipt.rider_id, b);
+  assert.equal(v.ok, true);
+  assert.equal(v.root, "sr_root");
 });
 
 test("verify fails closed on unknown and missing ids", () => {

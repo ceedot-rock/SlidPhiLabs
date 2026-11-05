@@ -34,10 +34,18 @@ test("recordRun rejects bad input fail-closed", () => {
   assert.equal(operatorReputation("", a).reason, "missing_rider_id");
 });
 
-test("empty ledger scores a fresh operator 1 with zero runs", () => {
+test("empty ledger scores a fresh operator at the 0.5 bootstrap prior", () => {
   const a = isolate("empty");
   const r = operatorReputation("sr_fresh", a);
-  assert.deepEqual(r, { ok: true, rider_id: "sr_fresh", runs: 0, disputes: 0, refunds: 0, score: 1 });
+  assert.deepEqual(r, { ok: true, rider_id: "sr_fresh", runs: 0, disputes: 0, refunds: 0, score: 0.5 });
+});
+
+test("unknown rider matches the bootstrap prior, never 1.0", async () => {
+  const a = isolate("prior");
+  assert.equal(operatorReputation("sr_ghost", a).score, 0.5);
+  const { BOOTSTRAP_STARTING_SCORE } = await import("./reputation-bootstrap.mjs");
+  const { UNKNOWN_RIDER_SCORE } = await import("./reputation-ledger.mjs");
+  assert.equal(UNKNOWN_RIDER_SCORE, BOOTSTRAP_STARTING_SCORE);
 });
 
 test("runs, disputes, refunds, and score accumulate deterministically", () => {

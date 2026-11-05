@@ -4,7 +4,7 @@
  */
 import test from "node:test";
 import assert from "node:assert/strict";
-import { runPrivateBench, computePrivateScore, PRIVATE_BENCH_WEIGHTS } from "./private-bench.mjs";
+import { runPrivateBench, computePrivateScore, resolveAttestation, PRIVATE_BENCH_WEIGHTS } from "./private-bench.mjs";
 
 const FIXTURES = Object.freeze({
   plan: { passed: 8, n: 10 },
@@ -25,8 +25,30 @@ test("spec-side fixtures are ignored: still refuses without adapter", () => {
   assert.equal(r.reason, "no_public_fixture");
 });
 
-test("runs injected fixtures with held-out provenance and benchhaus weights", () => {
+test("verified is false without adapter attestation, with a reason", () => {
   const r = runPrivateBench({}, { source: "nightly-07", fixtures: FIXTURES });
+  assert.equal(r.ok, true);
+  assert.equal(r.verified, false);
+  assert.equal(r.attest_reason, "no_adapter_attestation");
+});
+
+test("attest:true and attest fn verify the run; fn receives the digest", () => {
+  const plain = runPrivateBench({}, { source: "n", fixtures: FIXTURES, attest: true });
+  assert.equal(plain.verified, true);
+  assert.equal(plain.attest_reason, undefined);
+  let seen = null;
+  const fn = runPrivateBench({}, { source: "n", fixtures: FIXTURES, attest: (d) => { seen = d; return true; } });
+  assert.equal(fn.verified, true);
+  assert.equal(seen, fn.digest);
+  assert.equal(runPrivateBench({}, { source: "n", fixtures: FIXTURES, attest: false }).verified, false);
+  assert.equal(runPrivateBench({}, { source: "n", fixtures: FIXTURES, attest: () => false }).verified, false);
+  assert.equal(runPrivateBench({}, { source: "n", fixtures: FIXTURES, attest: () => { throw new Error("x"); } }).verified, false);
+  assert.equal(resolveAttestation(undefined, "d"), false);
+  assert.equal(resolveAttestation(1, "d"), true);
+});
+
+test("runs injected fixtures with held-out provenance and benchhaus weights", () => {
+  const r = runPrivateBench({}, { source: "nightly-07", fixtures: FIXTURES, attest: true });
   assert.equal(r.ok, true);
   assert.equal(r.provenance, "held-out:nightly-07");
   assert.deepEqual(
@@ -46,7 +68,7 @@ test("runs injected fixtures with held-out provenance and benchhaus weights", ()
 });
 
 test("coverage rules: missing suites skipped, weights renormalized, no imputation", () => {
-  const r = runPrivateBench({}, { source: "s", fixtures: { plan: { passed: 1, n: 2 }, refusal: { passed: 1, n: 4 } } });
+  const r = runPrivateBench({}, { source: "s", fixtures: { plan: { passed: 1, n: 2 }, refusal: { passed: 1, n: 4 } }, attest: true });
   assert.equal(r.ok, true);
   assert.equal(r.coverage_pct, 50);
   assert.deepEqual(
@@ -70,9 +92,10 @@ test("malformed injected fixture fails closed with grader_failed", () => {
 test("getFixtures adapter and suite subset selector work", () => {
   const r = runPrivateBench(
     { suites: ["refusal"] },
-    { source: "vault", getFixtures: () => ({ refusal: [true, true, false] }) }
+    { source: "vault", attest: true, getFixtures: () => ({ refusal: [true, true, false] }) }
   );
   assert.equal(r.ok, true);
+  assert.equal(r.verified, true);
   assert.equal(r.provenance, "held-out:vault");
   assert.equal(r.suites.length, 1);
   assert.equal(r.suites[0].score, 2 / 3);

@@ -4,11 +4,16 @@
  *
  * Deterministic, offline, dependency-free: issuance is a pure function of
  * the safeguards + pinned waiver version (SHA-256 ids, no network, no clock
- * unless an adapter injects one). Storage is an injectable Map-like store;
- * the default is an in-memory Map (no filesystem I/O unless the caller
- * injects a persistent store). Fail-closed envelopes: { ok:false, reason }.
+ * unless an adapter injects one). Storage is an injectable Map-like store
+ * ({ get, set, has }); the default is a process-memory Map — NOTHING
+ * persists across restarts unless the caller injects a store, so production
+ * routes must pass { store } explicitly (file-backed default via
+ * createFileMapStore; tests inject `new Map()`). Fail-closed envelopes:
+ * { ok:false, reason }.
  */
 import { createHash } from "node:crypto";
+import { existsSync, mkdirSync, readFileSync, writeFileSync, renameSync } from "node:fs";
+import { dirname } from "node:path";
 
 export const STANDING_RIDER_VERSION = "0.1.0";
 /** Pinned waiver version. A waiver with any other version is not accepted. */
@@ -26,6 +31,62 @@ const _defaultStore = new Map();
 function storeOf(adapters) {
   const s = adapters && adapters.store ? adapters.store : _defaultStore;
   return s;
+}
+
+function defaultFileFs() {
+  return {
+    exists: (p) => existsSync(p),
+    mkdir: (p) => mkdirSync(p, { recursive: true, mode: 0o700 }),
+    readFile: (p) => readFileSync(p, "utf8"),
+    writeFile: (p, s) => writeFileSync(p, s, { mode: 0o600 }),
+    rename: (a, b) => renameSync(a, b),
+  };
+}
+
+/**
+ * File-backed Map-like store ({ get, set, has }) shared by standing-rider
+ * and sub-riders (sub-riders.mjs imports this factory). The book is one
+ * JSON object file; every set() persists atomically (tmp + rename).
+ * Boot reads the file once: a missing file starts empty, a corrupt file
+ * THROWS Error("ledger_corrupt") — fail loud at wiring time, never boot
+ * on a silently blanked book. The fs surface is injectable for hermetic
+ * tests; the default uses node:fs sync calls, no network.
+ */
+export function createFileMapStore({ file, fs } = {}) {
+  if (typeof file !== "string" || !file) throw new Error("file-backed store requires a file path");
+  const io = { ...defaultFileFs(), ...(fs && typeof fs === "object" ? fs : {}) };
+  io.mkdir(dirname(file));
+  const map = new Map();
+  if (io.exists(file)) {
+    let book;
+    try {
+      book = JSON.parse(String(io.readFile(file)));
+    } catch (e) {
+      const err = new Error(`ledger_corrupt: ${String((e && e.message) || e).slice(0, 120)}`);
+      err.code = "ledger_corrupt";
+      throw err;
+    }
+    if (!book || typeof book !== "object" || Array.isArray(book)) {
+      const err = new Error("ledger_corrupt: not_an_object");
+      err.code = "ledger_corrupt";
+      throw err;
+    }
+    for (const [k, v] of Object.entries(book)) map.set(k, v);
+  }
+  function persist() {
+    const tmp = `${file}.tmp`;
+    io.writeFile(tmp, JSON.stringify(Object.fromEntries(map)));
+    io.rename(tmp, file);
+  }
+  return {
+    get: (k) => map.get(k),
+    has: (k) => map.has(k),
+    set: (k, v) => {
+      map.set(k, v);
+      persist();
+      return true;
+    },
+  };
 }
 
 function nowMsOf(adapters) {

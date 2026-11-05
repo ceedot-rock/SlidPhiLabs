@@ -62,11 +62,18 @@ export async function lbAware(raw, { timeoutMs = 45_000 } = {}) {
 
 export async function lbDecode(blob, { timeoutMs = 45_000 } = {}) {
   return withTemp(blob, async (inn, out) => {
-    await execFileP(lbBin(), ["decode", inn, out], {
-      timeout: timeoutMs,
-      maxBuffer: 16 * 1024 * 1024,
-    });
-    return readFile(out);
+    try {
+      await execFileP(lbBin(), ["decode", inn, out], {
+        timeout: timeoutMs,
+        maxBuffer: 16 * 1024 * 1024,
+      });
+      return readFile(out);
+    } catch (e) {
+      const msg = String(e.stderr || e.message || e);
+      if (/expand-or-fail|ENOENT/i.test(msg)) return null;
+      if (e.killed || e.signal === "SIGTERM") return null;
+      throw e;
+    }
   });
 }
 

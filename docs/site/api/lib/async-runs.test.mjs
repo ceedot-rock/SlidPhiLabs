@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import {
   createRunManager,
   createMemoryStore,
+  createFileStore,
   submitRun,
   pollRun,
   completeRun,
@@ -112,6 +113,58 @@ test("singleton shortcuts share the default store", () => {
   const c = completeRun(s.run_id, { receipts: [] });
   assert.equal(c.ok, true);
   assert.ok(Array.isArray(c.run.receipts));
+});
+
+test("file-backed store persists across managers via injectable fs", () => {
+  const files = new Map();
+  const fs = {
+    readFile: (p) => {
+      if (!files.has(p)) {
+        const err = new Error(`ENOENT: ${p}`);
+        err.code = "ENOENT";
+        throw err;
+      }
+      return files.get(p);
+    },
+    writeFile: (p, s) => {
+      files.set(p, String(s));
+    },
+    rename: (a, b) => {
+      files.set(b, files.get(a));
+      files.delete(a);
+    },
+    mkdir: () => {},
+  };
+  const a = createRunManager({ store: createFileStore({ path: "runs/runs.json", fs }), now: fixedClock });
+  const sub = a.submitRun({ task: "persist-me" });
+  assert.equal(sub.ok, true);
+  a.completeRun(sub.run_id, { receipts: [{ id: "r1" }] });
+  assert.ok([...files.keys()].some((k) => k.endsWith("runs.json")), `persisted: ${[...files.keys()]}`);
+  const b = createRunManager({ store: createFileStore({ path: "runs/runs.json", fs }), now: fixedClock });
+  const polled = b.pollRun(sub.run_id);
+  assert.equal(polled.ok, true);
+  assert.equal(polled.run.status, RUN_COMPLETED);
+  assert.deepEqual(polled.run.receipts, [{ id: "r1" }]);
+  const cont = b.submitRun({ task: "next" });
+  assert.equal(cont.run_id, "run_0002"); // counter survived the restart
+});
+
+test("file store load tolerates missing file, rejects corrupt JSON", () => {
+  const missing = createFileStore({
+    path: "x.json",
+    fs: {
+      readFile: () => { const e = new Error("gone"); e.code = "ENOENT"; throw e; },
+      writeFile: () => {},
+      rename: () => {},
+      mkdir: () => {},
+    },
+  });
+  assert.equal(missing.load().loaded, 0);
+  const corrupt = createFileStore({
+    path: "x.json",
+    fs: { readFile: () => "{{{", writeFile: () => {}, rename: () => {}, mkdir: () => {} },
+  });
+  assert.equal(corrupt.load().error, "corrupt_store");
 });
 
 test("injected store isolates managers", () => {

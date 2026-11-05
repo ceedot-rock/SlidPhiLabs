@@ -12,8 +12,44 @@
  * tests need no disk. All methods return envelopes and fail closed.
  */
 import { createHash } from "node:crypto";
+import { readdirSync, readFileSync, writeFileSync, renameSync, unlinkSync, mkdirSync } from "node:fs";
+import { join } from "node:path";
 
 export const MESSAGE_TRANSPORT_VERSION = "0.1.0";
+
+/**
+ * File-backed fs adapter option for createMessageTransport({ fs }).
+ * Maps the transport's fs surface onto node:fs under root so outbox/inbox
+ * queues survive restarts. Missing directories read as empty (ENOENT ->
+ * []), matching the in-memory default's behavior. Deterministic offline:
+ * no network, sync calls only.
+ */
+export function createNodeFs(root) {
+  const base = String(root || "queue-data");
+  const full = (p) => join(base, String(p).split("/").filter((s) => s && s !== "." && s !== "..").join("/"));
+  const ensureDir = (dir) => mkdirSync(full(dir), { recursive: true });
+  return {
+    readdir: (dir) => {
+      try {
+        return readdirSync(full(dir)).sort();
+      } catch (err) {
+        if (err && (err.code === "ENOENT" || /no such file/i.test(String(err && err.message)))) return [];
+        throw err;
+      }
+    },
+    readFile: (p) => readFileSync(full(p), "utf8"),
+    writeFile: (p, s) => {
+      const rel = String(p);
+      ensureDir(rel.split("/").slice(0, -1).join("/"));
+      writeFileSync(full(rel), String(s), "utf8");
+    },
+    rename: (a, b) => {
+      ensureDir(String(b).split("/").slice(0, -1).join("/"));
+      renameSync(full(a), full(b));
+    },
+    unlink: (p) => unlinkSync(full(p)),
+  };
+}
 
 function text(v) {
   return v == null ? "" : String(v).trim();

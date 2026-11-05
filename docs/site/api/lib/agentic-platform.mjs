@@ -1223,7 +1223,9 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     receipts.push({
       stage: "private-bench", ok: true, tool: "private-bench", toolVersion: PRIVATE_BENCH_VERSION,
       suites: pb.suites, siascore: pb.siascore, coverage_pct: pb.coverage_pct,
-      provenance: pb.provenance, verified: true, digest: pb.digest,
+      provenance: pb.provenance, verified: pb.verified === true,
+      ...(pb.verified === true ? {} : { attest_reason: pb.attest_reason || "no_adapter_attestation" }),
+      digest: pb.digest,
     });
   }
 

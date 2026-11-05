@@ -7,7 +7,24 @@
  * ({ protocol: "streamable-http" | "stdio", auth }) and every lookup is
  * version-pinned — a missing version, unknown name, or unknown version
  * fails closed ({ ok:false }), never null/throw.
+ *
+ * Process-ephemeral by default: the index lives in a Map and dies with
+ * the process — restarts, redeploys, and serverless cold starts lose
+ * every registration, which is the safe offline default (no prod paths
+ * touched, no stale tools resurrected). Pass { path } for the file-backed
+ * option: entries persist as JSONL (atomic appends) and reload on create;
+ * the fs surface ({ readFile, appendFile }) is injectable so tests never
+ * touch disk.
  */
+
+import { readFileSync, appendFileSync } from "node:fs";
+
+function defaultFileFs() {
+  return {
+    readFile: (p) => readFileSync(p, "utf8"),
+    appendFile: (p, s) => appendFileSync(p, s, "utf8"),
+  };
+}
 
 export const MCP_CATALOG_VERSION = "0.1.0";
 export const MCP_PROTOCOLS = ["streamable-http", "stdio"];
@@ -33,17 +50,53 @@ function cleanEntry(t) {
 /**
  * Create an isolated in-memory MCP tool catalog.
  * Adapters (all optional, offline defaults): { seed: entries[] } to
- * pre-register, { clock: () => isoString } stamp for registered_at.
+ * pre-register, { clock: () => isoString } stamp for registered_at,
+ * { path, fs } for the file-backed option (JSONL persistence + reload).
  */
-export function createMcpCatalog({ seed = [], clock = null } = {}) {
+export function createMcpCatalog({ seed = [], clock = null, path = null, fs = null } = {}) {
   const tools = new Map(); // key: `${name}@${version}` -> entry
   const now = typeof clock === "function" ? clock : () => new Date().toISOString();
+  const file = typeof path === "string" && path ? path : null;
+  const io = file ? fs || defaultFileFs() : null;
+  let fileError = null;
+  if (file) {
+    let raw = null;
+    try {
+      raw = io.readFile(file);
+    } catch (err) {
+      if (err && (err.code === "ENOENT" || /no such file/i.test(String(err && err.message)))) {
+        raw = null; // fresh file: start empty
+      } else {
+        fileError = "read_error"; // fail-closed below, never half-loaded
+      }
+    }
+    if (typeof raw === "string") {
+      for (const line of raw.split("\n")) {
+        const t = line.trim();
+        if (!t) continue;
+        try {
+          const clean = cleanEntry(JSON.parse(t));
+          if (clean) tools.set(`${clean.name}@${clean.version}`, { ...clean, registered_at: now() });
+        } catch {
+          /* skip corrupt lines: fail-closed lookups still hold */
+        }
+      }
+    }
+  }
   const catalog = {
     register(tool) {
+      if (fileError) return { ok: false, reason: fileError };
       const clean = cleanEntry(tool);
       if (!clean) return { ok: false, reason: "bad_tool" };
       const key = `${clean.name}@${clean.version}`;
       if (tools.has(key)) return { ok: false, reason: "duplicate_tool" };
+      if (file) {
+        try {
+          io.appendFile(file, `${JSON.stringify(clean)}\n`);
+        } catch {
+          return { ok: false, reason: "write_error" };
+        }
+      }
       tools.set(key, { ...clean, registered_at: now() });
       return { ok: true, tool: { ...tools.get(key) } };
     },

@@ -2,9 +2,14 @@
  * Alert rules 0.1.0 — threshold table + cooldown-gated evaluator.
  * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  *
- * RULES ({ cap_velocity, fail_rate, queue_stall }) declares one row per
- * rule: { id, severity, threshold, window, cooldownMs, check }. evaluate()
- * runs every row against a dashboard snapshot and returns alerts[].
+ * RULES ({ cap_velocity, fail_rate, queue_stall, spend_velocity }) declares
+ * one row per rule: { id, severity, threshold, window, cooldownMs, check }.
+ * evaluate() runs every row against a dashboard snapshot and returns
+ * alerts[]. spend_velocity watches snapshot.spend_24h (cents) so burn
+ * alerts fire even when no caps trip. Thresholds are env-tunable
+ * (resolveThresholds): ALERT_CAP_VELOCITY, ALERT_FAIL_RATE,
+ * ALERT_QUEUE_STALL, ALERT_SPEND_24H_CENTS override the compiled defaults;
+ * unparseable env values fall back to defaults (fail-safe, never 0).
  * Cooldown is injectable ({ nowMs, store }): a rule that fired within
  * cooldownMs is suppressed until the window lapses. Deterministic
  * offline defaults: Date.now clock, fresh in-memory Map store (no
@@ -53,34 +58,86 @@ function checkQueueStall(rule, snapshot) {
   return null;
 }
 
+function checkSpendVelocity(rule, snapshot) {
+  const spend = num(snapshot.spend_24h);
+  if (spend >= rule.threshold) {
+    return `spend_24h ${spend} >= ${rule.threshold} in ${rule.window}`;
+  }
+  return null;
+}
+
+/** Compiled default thresholds. Env overrides via resolveThresholds(). */
+export const DEFAULT_THRESHOLDS = Object.freeze({
+  cap_velocity: 3,
+  fail_rate: 0.2,
+  queue_stall: 10,
+  spend_velocity: 50000, // cents per 24h ($500)
+});
+
+const THRESHOLD_ENV = Object.freeze({
+  cap_velocity: "ALERT_CAP_VELOCITY",
+  fail_rate: "ALERT_FAIL_RATE",
+  queue_stall: "ALERT_QUEUE_STALL",
+  spend_velocity: "ALERT_SPEND_24H_CENTS",
+});
+
+/**
+ * Resolve rule thresholds: numeric env values win, anything missing or
+ * unparseable falls back to the compiled default (never 0, never NaN).
+ */
+export function resolveThresholds(env = process.env) {
+  const src = env && typeof env === "object" ? env : {};
+  const out = { ...DEFAULT_THRESHOLDS };
+  for (const [id, name] of Object.entries(THRESHOLD_ENV)) {
+    const raw = src[name];
+    if (raw === undefined || raw === null || String(raw).trim() === "") continue;
+    const n = Number(raw);
+    if (Number.isFinite(n) && n > 0) out[id] = n;
+  }
+  return out;
+}
+
 /** Rule table: id, severity, threshold, window, cooldownMs, check fn. */
-export const RULES = Object.freeze([
-  Object.freeze({
-    id: "cap_velocity",
-    severity: "high",
-    threshold: 3,
-    window: "24h",
-    cooldownMs: 3_600_000,
-    check: checkCapVelocity,
-  }),
-  Object.freeze({
-    id: "fail_rate",
-    severity: "high",
-    threshold: 0.2,
-    minRuns: 5,
-    window: "24h",
-    cooldownMs: 3_600_000,
-    check: checkFailRate,
-  }),
-  Object.freeze({
-    id: "queue_stall",
-    severity: "medium",
-    threshold: 10,
-    window: "snapshot",
-    cooldownMs: 900_000,
-    check: checkQueueStall,
-  }),
-]);
+export const RULES = Object.freeze(
+  (() => {
+    const t = resolveThresholds();
+    return [
+      Object.freeze({
+        id: "cap_velocity",
+        severity: "high",
+        threshold: t.cap_velocity,
+        window: "24h",
+        cooldownMs: 3_600_000,
+        check: checkCapVelocity,
+      }),
+      Object.freeze({
+        id: "fail_rate",
+        severity: "high",
+        threshold: t.fail_rate,
+        minRuns: 5,
+        window: "24h",
+        cooldownMs: 3_600_000,
+        check: checkFailRate,
+      }),
+      Object.freeze({
+        id: "queue_stall",
+        severity: "medium",
+        threshold: t.queue_stall,
+        window: "snapshot",
+        cooldownMs: 900_000,
+        check: checkQueueStall,
+      }),
+      Object.freeze({
+        id: "spend_velocity",
+        severity: "high",
+        threshold: t.spend_velocity,
+        window: "24h",
+        cooldownMs: 3_600_000,
+        check: checkSpendVelocity,
+      }),
+    ];
+  })(),
+);
 
 function ruleById(id) {
   return RULES.find((r) => r.id === id) || null;
@@ -117,8 +174,10 @@ function storeSet(store, key, value) {
 /**
  * Evaluate the rule table against a dashboard snapshot.
  * @param {object} snapshot dashboard snapshot (spend_24h, runs_by_status, ...).
- * @param {object} [opts] { nowMs, store, rules } — rules: array of rule ids
- *   to run (default: all). store: Map or plain object for cooldown state.
+ * @param {object} [opts] { nowMs, store, rules, thresholds } — rules: array
+ *   of rule ids to run (default: all). store: Map or plain object for
+ *   cooldown state. thresholds: per-call { ruleId: number } overrides
+ *   (same fail-safe parsing as resolveThresholds).
  */
 export function evaluate(snapshot, opts = {}) {
   if (!isPlainObject(snapshot)) return { ok: false, error: "bad_snapshot" };
@@ -126,14 +185,22 @@ export function evaluate(snapshot, opts = {}) {
   const nowMs = typeof o.nowMs === "function" ? o.nowMs : Date.now;
   const store = o.store !== undefined ? o.store : new Map();
   const now = num(nowMs());
+  const tuned = resolveThresholds();
+  if (isPlainObject(o.thresholds)) {
+    for (const [id, raw] of Object.entries(o.thresholds)) {
+      const n = Number(raw);
+      if (id in tuned && Number.isFinite(n) && n > 0) tuned[id] = n;
+    }
+  }
+  const withTuning = (row) => ({ ...row, threshold: tuned[row.id] ?? row.threshold });
 
-  let rows = RULES;
+  let rows = RULES.map(withTuning);
   if (Array.isArray(o.rules)) {
     rows = [];
     for (const id of o.rules) {
       const row = ruleById(String(id));
       if (!row) return { ok: false, error: "unknown_rule" };
-      rows.push(row);
+      rows.push(withTuning(row));
     }
   }
 

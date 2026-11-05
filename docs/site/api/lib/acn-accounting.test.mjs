@@ -10,6 +10,7 @@ import {
   rollupByOperatorMonth,
   rollupToCsv,
   markCollected,
+  verifyReceipt,
 } from "./acn-accounting.mjs";
 
 const WARRANT = {
@@ -146,6 +147,30 @@ test("markCollected flags copies, never mutates, never moves money", () => {
   assert.equal(marked[0].amount_cents, 40);
   assert.ok(!("collected" in WARRANT));
   assert.ok(!("collected" in AWL));
+});
+
+test("verifyReceipt rejects negative/NaN amounts, allows missing", () => {
+  assert.equal(verifyReceipt(null).ok, false);
+  assert.equal(verifyReceipt({ ...AWL, amount_cents: -5 }).error, "negative_amount");
+  assert.equal(verifyReceipt({ ...AWL, amount_cents: Number.NaN }).error, "bad_amount");
+  assert.equal(verifyReceipt({ ...AWL, platform_fee_cents: -1 }).error, "negative_amount");
+  assert.equal(verifyReceipt({ ...WARRANT, usd: Number.NaN }).error, "bad_amount");
+  assert.equal(verifyReceipt({ ...WARRANT, usd: -0.4 }).error, "negative_amount");
+  assert.equal(verifyReceipt(AWL).ok, true);
+  assert.equal(verifyReceipt(FEES).ok, true); // missing amounts default to 0
+  assert.equal(receiptToRow({ ...AWL, amount_cents: -5 }), null);
+  assert.equal(receiptToRow({ ...WARRANT, usd: Number.NaN }), null);
+});
+
+test("missing timestamps default to now (ISO), documented", () => {
+  const { at, ...noAt } = AWL;
+  void at;
+  const row = receiptToRow(noAt);
+  assert.ok(row);
+  assert.ok(!Number.isNaN(Date.parse(row.at)), `default at parses: ${row.at}`);
+  const groups = rollupByOperatorMonth([noAt]);
+  assert.equal(groups.length, 1);
+  assert.match(groups[0].month, /^\d{4}-\d{2}$/);
 });
 
 test("empty input stays empty", () => {

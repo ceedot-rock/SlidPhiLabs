@@ -8,8 +8,15 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { BOOTSTRAP_STARTING_SCORE } from "./reputation-bootstrap.mjs";
 
-export const REPUTATION_VERSION = "0.1.0";
+export const REPUTATION_VERSION = "0.1.1";
+/**
+ * Score for a rider with no observed runs: the neutral bootstrap prior
+ * (maximum uncertainty), NOT 1.0 — an unknown rider must never look
+ * exemplary. Matches BOOTSTRAP_STARTING_SCORE in reputation-bootstrap.mjs.
+ */
+export const UNKNOWN_RIDER_SCORE = BOOTSTRAP_STARTING_SCORE;
 export const DEFAULT_LEDGER_PATH = "/data/reputation.jsonl";
 
 /** Resolve the ledger path: adapter > LEDGER_PATH env > default. */
@@ -84,7 +91,8 @@ export function recordRun(input = {}, adapters = {}) {
 /**
  * Read the ledger and summarize one operator.
  * disputes = runs with ok:false or dispute:true. refunds = refund:true.
- * score = runs ? (runs - disputes - 0.5*refunds)/runs : 1, clamped 0..1.
+ * score = runs ? (runs - disputes - 0.5*refunds)/runs : UNKNOWN_RIDER_SCORE (0.5),
+ * clamped 0..1.
  */
 export function operatorReputation(riderId, adapters = {}) {
   const id = typeof riderId === "string" ? riderId : riderId && riderId.rider_id;
@@ -98,7 +106,7 @@ export function operatorReputation(riderId, adapters = {}) {
     raw = f.readFileSync(ledgerPath, "utf8");
   } catch (e) {
     if (e && (e.code === "ENOENT" || /no such file/i.test(String(e.message)))) {
-      return { ok: true, rider_id: id, runs: 0, disputes: 0, refunds: 0, score: 1 };
+      return { ok: true, rider_id: id, runs: 0, disputes: 0, refunds: 0, score: UNKNOWN_RIDER_SCORE };
     }
     return { ok: false, reason: "ledger_read_failed", detail: String((e && e.message) || e).slice(0, 200) };
   }
@@ -119,6 +127,6 @@ export function operatorReputation(riderId, adapters = {}) {
     if (rec.ok === false || rec.dispute === true) disputes++;
     if (rec.refund === true) refunds++;
   }
-  const score = runs === 0 ? 1 : clamp01((runs - disputes - 0.5 * refunds) / runs);
+  const score = runs === 0 ? UNKNOWN_RIDER_SCORE : clamp01((runs - disputes - 0.5 * refunds) / runs);
   return { ok: true, rider_id: id, runs, disputes, refunds, score };
 }

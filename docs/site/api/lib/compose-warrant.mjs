@@ -9,8 +9,25 @@
  * params ({ tool, params, cap_cents, depends_on }) whose per-step caps
  * must sum to <= the total cap; overspend fails closed (over_budget).
  * Unknown tools fail closed via an injectable existsTool adapter.
+ * Deny-by-default: with no existsTool injected, every tool is unknown
+ * (unknown_tool) — the caller must pass an allowlist adapter from
+ * createAllowlistExistsTool() (or their own registry lookup). There is
+ * no allow-all default; silently compiling chains for unregistered tools
+ * would mint staged warrants against tools that do not exist.
  */
 export const COMPOSE_WARRANT_VERSION = "0.1.0";
+
+/**
+ * Allowlist existsTool adapter: only the named tools compile.
+ * @param {Iterable<string>} tools allowed tool names.
+ * @returns {(tool: string) => boolean}
+ */
+export function createAllowlistExistsTool(tools) {
+  const allowed = new Set(
+    [...(tools || [])].map((t) => String(t).trim()).filter(Boolean),
+  );
+  return (tool) => allowed.has(String(tool).trim());
+}
 
 function text(v) {
   return v == null ? "" : String(v).trim();
@@ -36,10 +53,10 @@ function cleanStep(step, i) {
 
 /**
  * Compile a chain. opts: { chain, total_cap_cents, existsTool?, baseParams? }.
- * existsTool(tool) defaults to () => true; inject a registry lookup to
- * reject unknown tools. Returns { ok:true, stages, total_cap_cents } or
- * { ok:false, reason } with reason bad_chain | unknown_tool |
- * over_budget | bad_cap.
+ * existsTool(tool) defaults to deny-all; inject createAllowlistExistsTool()
+ * or a registry lookup to admit known tools. Returns { ok:true, stages,
+ * total_cap_cents } or { ok:false, reason } with reason bad_chain |
+ * unknown_tool | over_budget | bad_cap.
  */
 export function compileChain(opts = {}) {
   if (!Array.isArray(opts.chain) || !opts.chain.length) {
@@ -47,7 +64,7 @@ export function compileChain(opts = {}) {
   }
   const total = Number(opts.total_cap_cents);
   if (!Number.isSafeInteger(total) || total < 0) return { ok: false, reason: "bad_cap" };
-  const existsTool = typeof opts.existsTool === "function" ? opts.existsTool : () => true;
+  const existsTool = typeof opts.existsTool === "function" ? opts.existsTool : () => false;
   const baseParams = opts.baseParams && typeof opts.baseParams === "object" ? opts.baseParams : {};
 
   const steps = [];

@@ -47,6 +47,19 @@ test("listSales skips malformed and blank lines", () => {
   assert.equal(r.listSales().length, 2);
 });
 
+test("malformed lines are counted, not silently dropped", () => {
+  const r = readers({ s: SALES });
+  assert.deepEqual(r.malformedCount(), { malformed_count: 0, by_path: {} });
+  r.listSales();
+  assert.equal(r.malformedCount().malformed_count, 1);
+  assert.equal(r.malformedCount().by_path.s, 1);
+  r.listSales(); // re-reads recount: 1 more malformed line observed
+  assert.equal(r.malformedCount().malformed_count, 2);
+  const clean = readers({ s: JSON.stringify({ amount_cents: 1 }) });
+  clean.listSales();
+  assert.deepEqual(clean.malformedCount(), { malformed_count: 0, by_path: {} });
+});
+
 test("missing files yield empty results, never throw", () => {
   const r = readers({});
   assert.deepEqual(r.listSales(), []);

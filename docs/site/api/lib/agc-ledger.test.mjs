@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync } from "node:fs";
+import { mkdtempSync, writeFileSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { mintAgc, debitAgc, balanceAgc, agentForOrder, AGC_PER_PACK } from "./agc-ledger.mjs";
@@ -69,4 +69,16 @@ test("agentForOrder resolves mint order, misses unknown", () => {
   assert.equal(agentForOrder("nope-never"), null);
   mintAgc({ agent_id: AGENT, order_id: "ord-find", tx: "tF" });
   assert.equal(agentForOrder("ord-find"), AGENT.toLowerCase());
+});
+
+test("corrupt ledger fails closed with corrupt_store, never saved over", () => {
+  isolate();
+  mintAgc({ agent_id: AGENT, order_id: "ord-c", tx: "tC" });
+  const f = join(process.env.AUTH_DIR, "agc-ledger", `agc_${AGENT.toLowerCase()}.json`);
+  writeFileSync(f, "{corrupt");
+  assert.equal(mintAgc({ agent_id: AGENT, order_id: "ord-c2", tx: "tC2" }).error, "corrupt_store");
+  assert.equal(debitAgc({ agent_id: AGENT, credits: 1, ref: "r-c" }).error, "corrupt_store");
+  assert.equal(balanceAgc(AGENT).error, "corrupt_store");
+  assert.equal(agentForOrder("ord-c"), null);
+  assert.equal(readFileSync(f, "utf8"), "{corrupt");
 });

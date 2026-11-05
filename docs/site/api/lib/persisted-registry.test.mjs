@@ -64,6 +64,57 @@ test("load rebuilds index; corrupt entry fails closed", () => {
   assert.equal(c.load().reason, "corrupt_entry");
 });
 
+test("unpinned get resolves top semver, not registration order", () => {
+  const r = createPersistedRegistry({ path: "s.jsonl", fs: memFs() });
+  r.register(tool({ version: "2.0.0" }));
+  r.register(tool({ version: "1.10.0" }));
+  r.register(tool({ version: "1.9.0" }));
+  assert.equal(r.get("spl_compress").tool.version, "2.0.0");
+});
+
+function lockingFs() {
+  const fs = memFs();
+  const held = new Set();
+  return {
+    ...fs,
+    files: fs.files,
+    lock: (p) => {
+      if (held.has(p)) {
+        const e = new Error(`EEXIST: ${p}.lock`);
+        e.code = "EEXIST";
+        throw e;
+      }
+      held.add(p);
+      fs.files.set(`${p}.lock`, "pid");
+    },
+    unlock: (p) => {
+      held.delete(p);
+      fs.files.delete(`${p}.lock`);
+    },
+    held,
+  };
+}
+
+test("register and compact hold the lockfile around read-modify-write", () => {
+  const fs = lockingFs();
+  const r = createPersistedRegistry({ path: "r.jsonl", fs });
+  assert.equal(r.register(tool()).ok, true);
+  assert.equal(fs.files.has("r.jsonl.lock"), false);
+  assert.equal(r.compact().ok, true);
+  assert.equal(fs.files.has("r.jsonl.lock"), false);
+});
+
+test("held lock fails closed with lock_busy and writes nothing", () => {
+  const fs = lockingFs();
+  const r = createPersistedRegistry({ path: "r.jsonl", fs });
+  fs.lock("r.jsonl");
+  assert.equal(r.register(tool()).reason, "lock_busy");
+  assert.equal(r.compact().reason, "lock_busy");
+  assert.equal(r.size(), 0);
+  fs.unlock("r.jsonl");
+  assert.equal(r.register(tool()).ok, true);
+});
+
 test("compact rewrites atomically via tmp+rename", () => {
   const seen = [];
   const fs = memFs();

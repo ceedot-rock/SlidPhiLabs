@@ -14,6 +14,17 @@
  * bad input.
  */
 import { createHash } from "node:crypto";
+import { readFileSync, writeFileSync, renameSync, mkdirSync } from "node:fs";
+import { dirname } from "node:path";
+
+function defaultFileFs() {
+  return {
+    readFile: (p) => readFileSync(p, "utf8"),
+    writeFile: (p, s) => writeFileSync(p, s, "utf8"),
+    rename: (a, b) => renameSync(a, b),
+    mkdir: (d) => mkdirSync(d, { recursive: true }),
+  };
+}
 
 export const TASK_INTENT = "intent";
 export const TASK_PUSHED = "pushed";
@@ -47,6 +58,75 @@ export function createMemoryStore() {
   return { next: 1, byId: new Map() };
 }
 
+/**
+ * File-backed store option: same { next, byId } shape plus save()/load(),
+ * persisted as one JSON file (atomic tmp + rename). Deterministic offline:
+ * the fs surface ({ readFile, writeFile, rename, mkdir }) is injectable so
+ * tests never touch disk. load() tolerates a missing file (fresh store);
+ * save() never throws — persistence faults return { ok:false } envelopes.
+ */
+export function createFileStore({ path, fs = null } = {}) {
+  if (typeof path !== "string" || path === "") throw new Error("conductor-tasks: file store path required");
+  const io = fs || defaultFileFs();
+  const store = { next: 1, byId: new Map() };
+
+  function load() {
+    let raw;
+    try {
+      raw = io.readFile(path);
+    } catch (err) {
+      if (err && (err.code === "ENOENT" || /no such file/i.test(String(err && err.message)))) {
+        return { ok: true, loaded: 0 };
+      }
+      return { ok: false, error: "read_error" };
+    }
+    let parsed;
+    try {
+      parsed = JSON.parse(String(raw));
+    } catch {
+      return { ok: false, error: "corrupt_store" };
+    }
+    if (!parsed || typeof parsed !== "object" || !Array.isArray(parsed.tasks)) {
+      return { ok: false, error: "corrupt_store" };
+    }
+    store.byId = new Map(parsed.tasks.map((t) => [t.task_id, t]));
+    store.next = Number.isSafeInteger(parsed.next) && parsed.next >= 1
+      ? parsed.next
+      : store.byId.size + 1;
+    return { ok: true, loaded: store.byId.size };
+  }
+
+  function save() {
+    try {
+      try {
+        io.mkdir(dirname(path));
+      } catch {
+        /* best-effort: parent may already exist */
+      }
+      const raw = JSON.stringify({ next: store.next, tasks: [...store.byId.values()] });
+      const tmp = `${path}.tmp`;
+      io.writeFile(tmp, raw);
+      io.rename(tmp, path);
+    } catch {
+      return { ok: false, error: "write_error" };
+    }
+    return { ok: true };
+  }
+
+  store.path = path;
+  store.load = load;
+  store.save = save;
+  return store;
+}
+
+function persist(store) {
+  try {
+    if (store && typeof store.save === "function") store.save();
+  } catch {
+    /* persistence is best-effort: the in-memory write already landed */
+  }
+}
+
 function fail(error) {
   return { ok: false, error };
 }
@@ -69,7 +149,14 @@ export function transitionDigest({ task_id, from, to, seq, detail }) {
  * @param {function} [opts.branchFor] injectable adapter (task_id) => branch.
  */
 export function createTaskManager(opts = {}) {
-  const store = opts.store || createMemoryStore();
+  const store = opts.store || (opts.storePath ? createFileStore({ path: opts.storePath, fs: opts.fs || null }) : createMemoryStore());
+  if (typeof store.load === "function") {
+    try {
+      store.load();
+    } catch {
+      /* corrupt store surfaces on save; manager still serves memory */
+    }
+  }
   const now = opts.now || defaultNow;
   const branchFor = opts.branchFor || slugBranch;
   if (!store.byId) store.byId = new Map();
@@ -117,6 +204,7 @@ export function createTaskManager(opts = {}) {
     };
     appendReceipt(task, "none", TASK_INTENT, { prompt });
     store.byId.set(task_id, task);
+    persist(store);
     return { ok: true, task_id, branch, status: task.status, digest: task.digest };
   }
 
@@ -128,6 +216,7 @@ export function createTaskManager(opts = {}) {
     if (task.status !== TASK_INTENT) return fail("invalid_transition");
     const receipt = appendReceipt(task, task.status, TASK_PUSHED, detail);
     task.status = TASK_PUSHED;
+    persist(store);
     void receipt;
     return { ok: true, task_id: task.task_id, status: task.status, digest: task.digest };
   }
@@ -143,6 +232,7 @@ export function createTaskManager(opts = {}) {
     const detail = { verdict, notes: input.notes === undefined ? "" : String(input.notes) };
     appendReceipt(task, task.status, TASK_IN_REVIEW, detail);
     task.status = TASK_IN_REVIEW;
+    persist(store);
     task.review_verdict = verdict;
     return { ok: true, task_id: task.task_id, status: task.status, verdict, digest: task.digest };
   }
@@ -155,6 +245,7 @@ export function createTaskManager(opts = {}) {
     if (task.status !== TASK_IN_REVIEW) return fail("invalid_transition");
     appendReceipt(task, task.status, TASK_APPROVED, detail);
     task.status = TASK_APPROVED;
+    persist(store);
     return { ok: true, task_id: task.task_id, status: task.status, digest: task.digest };
   }
 
@@ -167,6 +258,7 @@ export function createTaskManager(opts = {}) {
     const detail = { reason: input.reason === undefined ? "" : String(input.reason) };
     appendReceipt(task, task.status, TASK_REJECTED, detail);
     task.status = TASK_REJECTED;
+    persist(store);
     return { ok: true, task_id: task.task_id, status: task.status, digest: task.digest };
   }
 

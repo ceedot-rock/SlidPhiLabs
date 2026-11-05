@@ -69,6 +69,64 @@ export function diffFiles(diff) {
   return [...files];
 }
 
+/**
+ * Second-wave secret shapes: cloud key ids, fine-grained PATs, chatops
+ * tokens, payment keys, and generic api_key assignments. Combined with
+ * SECRET_PATTERNS above, the gate blocks on ten named shapes plus the
+ * entropy tripwire below.
+ */
+const EXTRA_SECRET_PATTERNS = [
+  { name: "secret_aws_secret", re: /aws[_-]?secret[_-]?access[_-]?key/i },
+  { name: "secret_github_pat", re: /github_pat_[A-Za-z0-9_]{8,}/ },
+  { name: "secret_slack", re: /xox[baprs]-[A-Za-z0-9-]{8,}/ },
+  { name: "secret_stripe", re: /(?:sk|rk|whsec)_(?:live|test)_[A-Za-z0-9]{8,}/ },
+  { name: "secret_api_key", re: /api[_-]?key\s*[:=]\s*['"]?[A-Za-z0-9_.\-]{8,}/i },
+];
+
+/** Minimum token length and Shannon entropy (bits/char) for the tripwire. */
+export const ENTROPY_TOKEN_MIN_LEN = 40;
+export const ENTROPY_BITS_PER_CHAR = 4.2;
+
+/** Shannon entropy in bits per character. Pure. */
+export function shannonEntropy(s) {
+  const str = String(s || "");
+  if (!str) return 0;
+  const freq = new Map();
+  for (const ch of str) freq.set(ch, (freq.get(ch) || 0) + 1);
+  let h = 0;
+  for (const count of freq.values()) {
+    const p = count / str.length;
+    h -= p * Math.log2(p);
+  }
+  return h;
+}
+
+/**
+ * Scan added lines for long high-entropy tokens (probable bearer/key
+ * material with no known prefix). Hex digests (<= 4 bits/char) pass;
+ * random base62/base64 tokens (~5-6 bits/char) trip. Returns findings.
+ */
+export function entropyFindings(diff) {
+  const findings = [];
+  const seen = new Set();
+  for (const line of String(diff ?? "").split(/\r?\n/)) {
+    if (!line.startsWith("+") || line.startsWith("+++")) continue;
+    const toks = line.match(/[A-Za-z0-9+/=_-]{40,}/g) || [];
+    for (const tok of toks) {
+      if (tok.length < ENTROPY_TOKEN_MIN_LEN || seen.has(tok)) continue;
+      seen.add(tok);
+      if (shannonEntropy(tok) >= ENTROPY_BITS_PER_CHAR) {
+        findings.push({
+          rule: "secret_high_entropy",
+          severity: "block",
+          message: `possible high-entropy token (${tok.length} chars, ${shannonEntropy(tok).toFixed(2)} bits/char)`,
+        });
+      }
+    }
+  }
+  return findings;
+}
+
 function rank(v) {
   if (v === REVIEW_BLOCK) return 2;
   if (v === REVIEW_REVIEW) return 1;
@@ -134,7 +192,7 @@ function heuristicFindings({ diff, files, additions, deletions }) {
     });
   }
 
-  for (const { name, re } of SECRET_PATTERNS) {
+  for (const { name, re } of [...SECRET_PATTERNS, ...EXTRA_SECRET_PATTERNS]) {
     if (re.test(text)) {
       verdict = REVIEW_BLOCK;
       findings.push({
@@ -143,6 +201,11 @@ function heuristicFindings({ diff, files, additions, deletions }) {
         message: `possible secret pattern (${name})`,
       });
     }
+  }
+
+  for (const finding of entropyFindings(diff)) {
+    verdict = REVIEW_BLOCK;
+    findings.push(finding);
   }
 
   return { verdict, findings };

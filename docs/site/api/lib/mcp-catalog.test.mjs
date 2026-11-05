@@ -59,6 +59,33 @@ test("duplicate register rejected; list returns sorted copies", () => {
   assert.equal(c.get("a-tool", "1.0.0").tool.name, "a-tool");
 });
 
+test("file-backed option persists across catalogs via injectable fs", () => {
+  let file = null;
+  const fs = {
+    readFile: (p) => {
+      if (file === null || p !== "mcp.jsonl") {
+        const err = new Error(`ENOENT: ${p}`);
+        err.code = "ENOENT";
+        throw err;
+      }
+      return file;
+    },
+    appendFile: (p, s) => {
+      file = (file || "") + String(s);
+    },
+  };
+  const a = createMcpCatalog({ path: "mcp.jsonl", fs });
+  assert.equal(a.register(tool()).ok, true);
+  const b = createMcpCatalog({ path: "mcp.jsonl", fs });
+  assert.equal(b.get("pcc_compress", "1.0.0").ok, true);
+  assert.equal(b.register(tool()).reason, "duplicate_tool"); // reloaded, not re-registered
+  const broken = createMcpCatalog({
+    path: "mcp.jsonl",
+    fs: { readFile: () => { throw new Error("EACCES"); }, appendFile: () => {} },
+  });
+  assert.equal(broken.register(tool()).reason, "read_error");
+});
+
 test("seed adapter pre-registers offline", () => {
   const c = createMcpCatalog({ seed: [tool({ name: "seeded" })] });
   assert.equal(c.get("seeded", "1.0.0").ok, true);

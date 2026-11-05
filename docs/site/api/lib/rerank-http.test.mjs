@@ -3,7 +3,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  createHttpRerankFn, defaultProductionRerankFn, rerankEnv,
+  createHttpRerankFn, defaultProductionRerankFn, rerankEnv, isConfigured,
   RERANK_ENDPOINT_URL, RERANK_TIMEOUT_MS_DEFAULT,
 } from "./rerank-http.mjs";
 import { rerankDocsAsync } from "./context-compress.mjs";
@@ -103,6 +103,14 @@ test("endpoint scores reorder docs end to end", async () => {
   assert.deepEqual(r.ranked.map((x) => x.score), [0.9, 0.5, 0.1]);
 });
 
+test("isConfigured gates on RERANK_ENDPOINT presence (pure, no network)", () => {
+  assert.equal(isConfigured({ env: {} }), false);
+  assert.equal(isConfigured({ env: { RERANK_ENDPOINT: "" } }), false);
+  assert.equal(isConfigured({ env: { RERANK_ENDPOINT: "   " } }), false);
+  assert.equal(isConfigured({ env: { RERANK_ENDPOINT: ENDPOINT } }), true);
+  assert.equal(isConfigured({ env: null }), false);
+});
+
 test("production default is null offline, an adapter when RERANK_ENDPOINT is set", () => {
   const keep = {
     endpoint: process.env.RERANK_ENDPOINT,
@@ -113,6 +121,7 @@ test("production default is null offline, an adapter when RERANK_ENDPOINT is set
     delete process.env.RERANK_ENDPOINT;
     delete process.env.RERANK_TOKEN;
     delete process.env.RERANK_TIMEOUT_MS;
+    assert.equal(isConfigured(), false);
     assert.equal(defaultProductionRerankFn(), null);
     assert.deepEqual(
       rerankEnv(),
@@ -121,6 +130,7 @@ test("production default is null offline, an adapter when RERANK_ENDPOINT is set
     process.env.RERANK_ENDPOINT = ENDPOINT;
     process.env.RERANK_TOKEN = "sek";
     process.env.RERANK_TIMEOUT_MS = "1500";
+    assert.equal(isConfigured(), true);
     const fn = defaultProductionRerankFn();
     assert.equal(typeof fn, "function");
     assert.deepEqual(rerankEnv(), { endpoint: ENDPOINT, token: "sek", timeoutMs: 1500 });

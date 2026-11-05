@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { searchRegistry } from "./registry-search.mjs";
+import { searchRegistry, tokenize } from "./registry-search.mjs";
 
 const tools = [
   { id: "spl_compress", description: "shrink context windows", tags: ["nlp"] },
@@ -34,6 +34,37 @@ test("thunk readers work; bad query/reader/limit fail closed", () => {
   assert.equal(searchRegistry({ query: "  " }).reason, "bad_query");
   assert.equal(searchRegistry({ query: "x", tools: null, agents: [] }).reason, "bad_reader");
   assert.equal(searchRegistry({ query: "x", tools, agents, limit: 0 }).reason, "bad_limit");
+});
+
+test("tokenize splits on non-alnum runs", () => {
+  assert.deepEqual(tokenize("shrink, WINDOWS!"), ["shrink", "windows"]);
+  assert.deepEqual(tokenize("compress-bot"), ["compress", "bot"]);
+  assert.deepEqual(tokenize("  "), []);
+  assert.deepEqual(tokenize(null), []);
+});
+
+test("prefix token matches when no substring hit exists", () => {
+  const res = searchRegistry({
+    query: "comp",
+    tools: [{ id: "spl_compress", description: "shrink bytes", tags: [] }],
+    agents: [],
+  });
+  assert.equal(res.ok, true);
+  assert.equal(res.results[0].id, "spl_compress");
+});
+
+test("multi-token query matches across words", () => {
+  const res = searchRegistry({
+    query: "shrink, windows!",
+    tools,
+    agents: [],
+  });
+  assert.equal(res.ok, true);
+  assert.equal(res.results[0].id, "spl_compress");
+});
+
+test("punctuation-only query fails closed", () => {
+  assert.equal(searchRegistry({ query: "!!!", tools, agents }).reason, "bad_query");
 });
 
 test("limit caps results", () => {

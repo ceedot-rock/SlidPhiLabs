@@ -5,6 +5,7 @@ import {
   createHealthChecker,
   probeDigestsVerify,
   probeLedgerWritable,
+  resolveDataDir,
 } from "./network-health.mjs";
 
 let tick = 1_000;
@@ -21,7 +22,7 @@ test("default probes pass offline", async () => {
       delete writes[p];
     },
   };
-  const h = createHealthChecker({ nowMs, fs, tmpDir: "/tmp" });
+  const h = createHealthChecker({ nowMs, fs, dataDir: "/data" });
   const r = await h.check();
   assert.equal(r.ok, true);
   assert.deepEqual(
@@ -34,7 +35,7 @@ test("default probes pass offline", async () => {
   }
 });
 
-test("probeLedgerWritable round-trips through injectable fs", () => {
+test("probeLedgerWritable exercises the live volume, not tmpdir", () => {
   const mem = {};
   const fs = {
     writeFileSync: (p, s) => {
@@ -43,11 +44,23 @@ test("probeLedgerWritable round-trips through injectable fs", () => {
     readFileSync: (p) => mem[p],
     unlinkSync: () => {},
   };
-  assert.equal(probeLedgerWritable({ fs, tmpDir: "/tmp" }).ok, true);
+  const probed = probeLedgerWritable({ fs, dataDir: "/data" });
+  assert.equal(probed.ok, true);
+  assert.equal(probed.dir, "/data");
+  assert.ok(
+    Object.keys(mem).every((p) => p.replace(/\\/g, "/").startsWith("/data/")),
+    JSON.stringify(Object.keys(mem)),
+  );
   assert.equal(
-    probeLedgerWritable({ fs: { ...fs, readFileSync: () => "corrupt" }, tmpDir: "/tmp" }).ok,
+    probeLedgerWritable({ fs: { ...fs, readFileSync: () => "corrupt" }, dataDir: "/data" }).ok,
     false,
   );
+});
+
+test("resolveDataDir prefers dataDir, then DATA_DIR env, then /data", () => {
+  assert.equal(resolveDataDir({ dataDir: "/vol" }), "/vol");
+  assert.equal(resolveDataDir({ tmpDir: "/legacy" }), "/legacy");
+  assert.equal(resolveDataDir({}), "/data");
 });
 
 test("probeDigestsVerify checks stability and sensitivity", () => {

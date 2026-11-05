@@ -4,11 +4,31 @@
  *
  * Deterministic, offline, in-memory: no disk, no network. list() sorts by
  * score desc (ties by rider_id asc) so discovery always ranks best first.
+ *
+ * Score verification: finite scores are clamped to 0..100 (benchhaus SiAi
+ * scale; 0..1-scale callers pass through unchanged). Unknown scores
+ * (missing, null, blank, or unparseable) map to AGENT_SCORE_PRIOR — a
+ * neutral 50 that never outranks a measured agent. Unknown is never 1.0
+ * (or 100): an unmeasured agent must not rank as perfect.
  */
 export const AGENT_DIRECTORY_VERSION = "0.1.0";
 
+/** Neutral prior for unknown scores: mid-scale, never perfect. */
+export const AGENT_SCORE_PRIOR = 50;
+export const AGENT_SCORE_MIN = 0;
+export const AGENT_SCORE_MAX = 100;
+
 function text(v) {
   return v == null ? "" : String(v).trim();
+}
+
+/** Verify one raw score: clamp finite values to 0..100, map unknown to the prior. */
+export function verifyScore(raw) {
+  if (raw === undefined || raw === null) return AGENT_SCORE_PRIOR;
+  if (typeof raw === "string" && raw.trim() === "") return AGENT_SCORE_PRIOR;
+  const n = Number(raw);
+  if (!Number.isFinite(n)) return AGENT_SCORE_PRIOR;
+  return Math.min(AGENT_SCORE_MAX, Math.max(AGENT_SCORE_MIN, n));
 }
 
 function cleanAgent(a) {
@@ -17,8 +37,7 @@ function cleanAgent(a) {
   const endpoint = text(a.endpoint);
   if (!rider_id || !endpoint) return null;
   const rawScore = a.score ?? a.benchhaus_score ?? a.benchhaus;
-  const score = Number(rawScore);
-  if (!Number.isFinite(score) || score < 0) return null;
+  const score = verifyScore(rawScore);
   const specialties = Array.isArray(a.specialties)
     ? [...new Set(a.specialties.map(text).filter(Boolean))].sort()
     : [];
