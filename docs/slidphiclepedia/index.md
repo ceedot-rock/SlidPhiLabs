@@ -99,6 +99,10 @@ Full records in `pulls.jsonl`. Rule in `README.md`.
 
 - B2B champion-contact deposit (2026-11-04): 96 Champion rows added to [prospects-compression-top100.md](../lab-ledger/b2b/prospects-compression-top100.md) from 5 hunter segments (19 saas + 17 media + 20 fintech + 20 telecom + 20 enterprise; palantir.com + unity.com unresolved, marked in-file); 229 hunter evidence lines appended to pulls.jsonl (champ-enterprise 20, champ-fintech 61, champ-media 40, champ-saas 40, champ-telecom 68).
 
+## Survey A prompt-compression pulls 2026-11-04 (10 records)
+
+- LLMLingua/LongLLMLingua/LLMLingua-2; RECOMP; selective-context/CPC/TCRA; gist/AutoCompressor/500x; RAPTOR; reranker+query-aware summarizer/SmartChunk/Perplexity; commercial APIs SuperCompress/Token Co/Kong — see pulls.jsonl survey=A-prompt-compression
+
 ## ACN ideas pulls 2026-11-04 (36 records)
 
 - Agentic commerce 2026: consent flows, 6-10% lift stats, Google UCP, trust-as-feature, merchant comfort segments
@@ -107,4 +111,39 @@ Full records in `pulls.jsonl`. Rule in `README.md`.
 - MCP monetization: paid-server precedent, 4 models, per-tool mixed pricing, protocol-first multi-rail
 - Cross-chain: 3-cost transparency norm, arb/yield agent segment, CCTP rail candidate, deBridge agent courting
 - Identity: unscoped-tokens worst practice, act-for-vs-as gap, WebMCP trust thread, evidence-chain receipts gap
+
+## Survey B lossy-semantic-theory pulls 2026-11-05 (8 records)
+
+- Semantic rate-distortion (arXiv 2509.10061; PMC task-specific R-D; RDP theory; Radio LLM quantization) — min-rate-for-distortion coding theorems, task-specific divergences
+- Kolmogorov vs practical compressors (Brudno/Markov entropy convergence; gzip-as-K(x) upper bound; MDL/universal coding) — K uncomputable, compressors are the working bound
+- Semantic entropy (Kuhn et al. 2023/2024 Nature; NLI-clustered entropy over meanings) — hallucination/uncertainty probe; paraphrase-invariant where token entropy is not
+- Attention as information bottleneck (PDE+IB unified framework; MBT latent attention bottleneck; IB-in-attention mutual-info estimators) — compress WHERE: bottleneck layers/tokens
+- Gist tokens (2304.08467: 26x compression, 40% FLOPs cut; AutoCompressor 30k ctx; Shopify 2026 4:1 serving TTFT 438→354ms) — compress HOW at token level with learned soft tokens
+- Summarization fidelity (ACL 2020: entailment |rs| 0.40-0.59 faithful vs ROUGE weak; BERTScore moderate; QA metrics; SummaC/BARTScore) — verify with entailment+QA, not overlap
+- Language-modeling-is-compression (DeepMind 2309.10668: Chinchilla 70B beats PNG/FLAC; BPC as lower bound; prediction=compression) — cross-entropy verifiably bounds losslessness
+- Tokens vs embeddings (token-level keeps discrete structure, risks dropped constraints; embedding-level keeps meaning, risks drift; semantic entropy Hs over equivalence classes) — WHERE matrix + HOW-verify rule
+
+## Survey B scoring-theory pulls 2026-11-05 (3 records)
+
+- Normalization methods (min-max X'=(X-Xmin)/(Xmax-Xmin) 0-1, outlier-fragile; z-score Z=(X-mu)/sigma, unbounded; percentile ranks; Elo/Bradley-Terry pairwise; AA PersonalityBench Elo z-scores→percentile 1-100; BenchLM reference-weight categories) — see pulls.jsonl survey=B-scoring-theory
+- Weighting/gaming/missing/CI/contamination/cost (AA Intelligence Index rebuild w/ private held-out + rotation vs gaming; PeerBench decentralized validators; NIST 2026 statistical CIs: generalized-accuracy CI wider than benchmark CI; cost-per-task Pareto frontier shared Anthropic/OpenAI/Meta/Z AI) — see pulls.jsonl survey=B-scoring-theory
+- Composite attempts (Open LLM Lb v2: 6-task normalized avg, random=0/perfect=100, repro disputes on IFEval bounds; LMSYS Arena Elo/BT + extended online/batch arena scores for agents; Artificial Analysis Intelligence Index weighted cost-per-task) — see pulls.jsonl survey=B-scoring-theory
+
+## Survey A agentic-benchmark pulls 2026-11-05 (18 records)
+
+- SWE-bench (2294 full / Verified 500 / Lite 300, 12 Python repos; % Resolved; Docker harness; open-source) + Multimodal 517 — patch-fixes-issue graded by test suite
+- GAIA (466 Q: 146/245/75 L1-3; exact-match accuracy; open) — reasoning+browsing+multimodal+file+tool general assistants
+- OSWorld (369 Ubuntu) / WindowsAgentArena (154 Windows; OSWorld-framework extension) — multimodal OS control, open
+- WebArena (812 tasks, 5 sandbox sites) / VisualWebArena (910, Classifieds/Shopping/Reddit, human ~89%) — web agents, open
+- AgentBench (1360 tasks, 8 envs: OS/DB/KG/cards/puzzles/household/shop/browse; OA score /10) — multi-env LLM agents, open
+- tau-bench (165 tasks, retail+airline+telecom tau2; pass^k reliability; open Sierra) — tool-use dialogue agents, DB-state checked
+- MLE-bench (75 Kaggle comps; medal/above-median/human-rank/AUP/Elo; open) — ML-engineering agents
+- SWE-Lancer (1400+ Upwork tasks, $1M payouts; Diamond $500.8k split; end-to-end tests) — freelance coding + manager-choice
+- BIRD-SQL (12751 Q-SQL pairs, 95 DBs, 33.4GB; EX + VES; human 92.96%) — text-to-SQL execution accuracy, open
+- Aider-polyglot (225 Exercism, C++/Go/Java/JS/Python/Rust; correctness+edit-format) — code-editing, open leaderboard
+- LM-Eval-Harness (EleutherAI, open) / Inspect AI (UK AISI, Python lib MIT, py3.10+, prebuilt web/bash/tools) — eval frameworks, both open
+- METR RE-Bench (7 ML-research envs, 71x8h attempts by 61 experts; Hawk-on-Inspect; Task Standard) + time-horizons suite — autonomous R&D, open
+- ARC-AGI (interactive fluid-reasoning; humans ~100%, frontier <1% on AGI-3; pass@2 exact-grid; 1430-team prize) / BIG-bench (204 tasks, 442+ authors, 132 institutions; <20% avg) — generalization, open
+- MLPerf inference (Llama3.1-405B TTFT 6s/TPOT 175ms; Llama2-70B 450ms/40ms; Llama3.1-8B ≤2s/≤100ms; server+interactive scenarios) — latency/throughput, open MLCommons
+- Flaws meta (contamination everywhere; exploit-demos hit 100% on Verified/WebArena via hooks/trojans; scores≠production; no cost/safety/tail-failure) + harness meta (Python/GitHub norm) — see pulls.jsonl survey=A-benchmark-survey
 

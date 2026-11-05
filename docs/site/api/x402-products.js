@@ -1,4 +1,5 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * x402 agentic commerce — all standing Slid Phi Labs products
  *
  * GET  /api/x402-products           → full catalog (sku, price, stripe human link)

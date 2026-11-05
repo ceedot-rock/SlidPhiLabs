@@ -1,4 +1,5 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * Agent license bridge: an x402 claim token doubles as the API credential.
  *
  * Agents buy a seat machine-to-machine via POST /api/x402-products and receive

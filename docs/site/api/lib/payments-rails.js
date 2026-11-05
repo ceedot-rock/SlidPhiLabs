@@ -1,4 +1,5 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * Universal payment rails for Slid Phi Labs.
  * Humans → Stripe Checkout (card, wallets, bank, BNPL when Stripe enables them) + invoice/wire.
  * Agents → x402 (Solana USDC + Base USDC).

@@ -13,8 +13,9 @@
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import { ACTIONS, cleanChain, fileReceipt, hostAllowed, issueWarrant, verifyWarrant } from "./warrant.mjs";
-import { computeQuote } from "../suite-pricing.js";
+import { computeQuote, capStatus } from "../suite-pricing.js";
 import { compressContext, verifyCompression, CONTEXT_VERSION } from "./context-compress.mjs";
+import { runBenchhaus, BENCHHAUS_VERSION } from "./benchhaus.mjs";
 
 export const AGENTIC_VERSION = "0.1.0";
 export const PLATFORM_NAME = "ACN";
@@ -36,6 +37,8 @@ export const AGENTILL_MAP = Object.freeze({
   awlpay: { agentill: "ledger/settle + core/platformFee", note: "fee computation and mark-collected ledger; ACN executes, agenTill accounts" },
   psi: { agentill: null, note: "memory stays ACN-side" },
   context: { agentill: null, note: "context compression stays ACN-side (suite meter)" },
+  benchhaus: { agentill: null, note: "benchhaus eval stays ACN-side (suite meter)" },
+  cuni: { agentill: null, note: "exactness proof stays ACN-side" },
   conductor: { agentill: "validator/preflight", note: "plan-time validation; run receipts mirror settle ledger entries" },
 });
 
@@ -186,6 +189,77 @@ function fail(stage, reason, extra = {}) {
   return { ok: false, stage, reason, ...extra };
 }
 
+/**
+ * Tollbooth spend-guard. The module holds no cross-run ledger:
+ * cumulative spend arrives caller-supplied via spec ({ spend:
+ * { spent_cents, cap_cents } } or top-level spent_cents / cap_cents)
+ * or via adapters ({ spendFn(spec) } or { getSpend(spec) }), the same
+ * injectable pattern as compressFn/settleFn. spendStatus() adds the
+ * current quote amount to prior spend and runs capStatus on the total.
+ * Fraction >= 1.0 fails closed (cap_exceeded); >= 0.8 trips a
+ * velocity_exceeded warning receipt without failing.
+ */
+export const SPEND_ALERT_FRACTION = 0.8;
+
+function spendFromSpec(spec = {}) {
+  if (spec && typeof spec.spend === "object" && spec.spend !== null) {
+    return { spent_cents: spec.spend.spent_cents, cap_cents: spec.spend.cap_cents };
+  }
+  if (spec && (spec.spent_cents != null || spec.cap_cents != null)) {
+    return { spent_cents: spec.spent_cents, cap_cents: spec.cap_cents };
+  }
+  return null;
+}
+
+function spendAdapterFn(adapters = {}) {
+  if (!adapters || typeof adapters !== "object") return null;
+  if (typeof adapters.spendFn === "function") return adapters.spendFn;
+  if (typeof adapters.getSpend === "function") return adapters.getSpend;
+  return null;
+}
+
+export function spendStatus(spend, amount_cents) {
+  const spent = Math.max(0, Number(spend.spent_cents) || 0);
+  const cumulative = spent + Math.max(0, Number(amount_cents) || 0);
+  const status = spend.cap_cents != null
+    ? capStatus({ spent_cents: cumulative, cap_cents: Number(spend.cap_cents) })
+    : capStatus({ spent_cents: cumulative });
+  return { ...status, spent_cents: cumulative };
+}
+
+/** Sync spend resolve for planAgenticRun (plan is pure/sync: async
+ *  adapter results are skipped here and enforced at run). */
+function resolveSpendSync(spec, adapters = {}) {
+  const f = spendAdapterFn(adapters);
+  if (f) {
+    try {
+      const s = f(spec);
+      if (s && typeof s.then === "function") return null;
+      if (s && typeof s === "object") return { spent_cents: s.spent_cents, cap_cents: s.cap_cents, source: "adapter" };
+    } catch (e) {
+      return { error: String((e && e.message) || e).slice(0, 200) };
+    }
+  }
+  const s = spendFromSpec(spec);
+  if (s) return { ...s, source: "spec" };
+  return null;
+}
+
+async function resolveSpend(spec, adapters = {}) {
+  const f = spendAdapterFn(adapters);
+  if (f) {
+    try {
+      const s = await f(spec);
+      if (s && typeof s === "object") return { spent_cents: s.spent_cents, cap_cents: s.cap_cents, source: "adapter" };
+    } catch (e) {
+      return { error: String((e && e.message) || e).slice(0, 200) };
+    }
+  }
+  const s = spendFromSpec(spec);
+  if (s) return { ...s, source: "spec" };
+  return null;
+}
+
 function checkBase(spec) {
   const demo = spec.demo === true;
   const rider = typeof spec.rider === "string" ? spec.rider.trim() : "";
@@ -284,6 +358,7 @@ export async function planOnlyFetch(url) {
 function planStages(spec = {}) {
   const stages = ["rider", "warrant", "tollkeeper", "quikgater"];
   if (spec.context) stages.push("context");
+  if (spec.benchhaus) stages.push("benchhaus");
   stages.push("pcc");
   if (spec.cuni) stages.push("cuni");
   stages.push("awlpay", "psi", "conductor");
@@ -303,11 +378,30 @@ function planContextPreview(spec = {}) {
   return { refused: false, inTokens: c.inTokens, outTokens: c.outTokens, ratio: c.ratio, digest: c.digest, tool: "context-compress", toolVersion: CONTEXT_VERSION };
 }
 
-export function planAgenticRun(spec = {}) {
+export function planAgenticRun(spec = {}, adapters = {}) {
   const base = checkBase(spec);
   if (base.error) return base.error;
   const bytes = Math.max(0, Number(spec.bytes) || 0);
   const quote = computeQuote({ bytes, product: spec.product || "auto", op: spec.op || "compress" });
+  const spendSync = resolveSpendSync(spec, adapters);
+  if (spendSync && spendSync.error) {
+    return { ...fail("tollkeeper", "cap_exceeded", { error: "spend_adapter_failed", detail: spendSync.error }) };
+  }
+  let spendGuard = null;
+  if (spendSync) {
+    const st = spendStatus(spendSync, quote.amount_cents || 0);
+    if (st.fraction >= 1) {
+      return { ...fail("tollkeeper", "cap_exceeded", { spent_cents: st.spent_cents, cap_cents: st.cap_cents, fraction: st.fraction }) };
+    }
+    spendGuard = {
+      spent_cents: st.spent_cents,
+      cap_cents: st.cap_cents,
+      fraction: st.fraction,
+      remaining_cents: st.remaining_cents,
+      alert: st.alert,
+      warning: st.fraction >= SPEND_ALERT_FRACTION ? "velocity_exceeded" : null,
+    };
+  }
   const amount = quote.amount_cents || 0;
   const settle = settlePreview(amount, spec);
   const planChain = cleanChain(spec.chain || []);
@@ -322,6 +416,18 @@ export function planAgenticRun(spec = {}) {
   if (planChain.length) planShape.chain = planChain;
   const canonical = JSON.stringify(planShape);
   const ctxPreview = planContextPreview(spec);
+  let benchPreview = null;
+  if (spec.benchhaus) {
+    try {
+      const inner = spec.benchhaus && typeof spec.benchhaus === "object" ? { benchhaus: spec.benchhaus } : {};
+      const b = runBenchhaus(inner);
+      benchPreview = b && b.ok === true
+        ? { tool: "benchhaus", toolVersion: BENCHHAUS_VERSION, siascore: b.siascore, coverage_pct: b.coverage_pct, digest: b.digest }
+        : { tool: "benchhaus", toolVersion: BENCHHAUS_VERSION, refused: true, reason: (b && b.reason) || "bench_failed" };
+    } catch {
+      benchPreview = { tool: "benchhaus", toolVersion: BENCHHAUS_VERSION, refused: true, reason: "bench_failed" };
+    }
+  }
   return {
     ok: true,
     version: AGENTIC_VERSION,
@@ -338,6 +444,8 @@ export function planAgenticRun(spec = {}) {
       settle,
       conductor: { cmd: "spl_agentic_run", digest: sha256hex(canonical) },
       ...(ctxPreview ? { context: ctxPreview } : {}),
+      ...(benchPreview ? { benchhaus: benchPreview } : {}),
+      ...(spendGuard ? { spendGuard } : {}),
     },
   };
 }
@@ -547,6 +655,7 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     tollPrice = null,
     settleFn = null,
     memorize = null,
+    benchhausFn = null,
   } = adapters;
   const base = checkBase(spec);
   if (base.error) return { ...base.error, receipts: [], memory: [] };
@@ -586,6 +695,18 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
 
   const price = typeof tollPrice === "function" ? await tollPrice(base.crossing) : { listed: "at-toll-schema" };
   receipts.push({ stage: "tollkeeper", ok: true, crossing: base.crossing, price, receipt: "signed on pass" });
+
+  const spend = await resolveSpend(spec, adapters);
+  if (spend && spend.error) {
+    return { ...fail("tollkeeper", "cap_exceeded", { error: "spend_adapter_failed", detail: spend.error }), receipts, memory };
+  }
+  if (spend) {
+    const estQuote = computeQuote({ bytes: Math.max(0, Number(spec.bytes) || 0), product: spec.product || "auto", op: spec.op || "compress" });
+    const early = spendStatus(spend, estQuote.amount_cents || 0);
+    if (early.fraction >= 1) {
+      return { ...fail("tollkeeper", "cap_exceeded", { spent_cents: early.spent_cents, cap_cents: early.cap_cents, fraction: early.fraction }), receipts, memory };
+    }
+  }
 
   let fetchedBytes = 0;
   let fetchedBody = null;
@@ -641,6 +762,22 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     }
   }
 
+  if (spec.benchhaus) {
+    const runFn = typeof benchhausFn === "function" ? benchhausFn : (s) => runBenchhaus(s);
+    const bhSpec = spec.benchhaus && typeof spec.benchhaus === "object" ? spec.benchhaus : {};
+    let b;
+    try {
+      b = await runFn(bhSpec);
+    } catch (e) {
+      return { ...fail("benchhaus", "bench_failed", { error: String((e && e.message) || e).slice(0, 200) }), receipts, memory };
+    }
+    if (!b || b.ok !== true) return { ...fail("benchhaus", (b && b.reason) || "bench_failed"), receipts, memory };
+    receipts.push({
+      stage: "benchhaus", ok: true, tool: "benchhaus", toolVersion: BENCHHAUS_VERSION,
+      suites: b.suites, siascore: b.siascore, coverage_pct: b.coverage_pct, verified: true, digest: b.digest,
+    });
+  }
+
   const rawBytes = Math.max(fetchedBytes, Math.max(0, Number(spec.bytes) || 0));
   const bytes = contextText != null ? Buffer.byteLength(contextText) : rawBytes;
   const quote = computeQuote({ bytes, product: spec.product || "auto", op: spec.op || "compress" });
@@ -654,6 +791,19 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
 
   const amount = quote.amount_cents || 0;
   const instruction = settlePreview(amount, spec);
+  if (spend && !spend.error) {
+    const late = spendStatus(spend, amount);
+    if (late.fraction >= 1) {
+      return { ...fail("awlpay", "cap_exceeded", { spent_cents: late.spent_cents, cap_cents: late.cap_cents, fraction: late.fraction }), receipts, memory };
+    }
+    if (late.fraction >= SPEND_ALERT_FRACTION) {
+      receipts.push({
+        stage: "tollkeeper", ok: true, warning: "velocity_exceeded",
+        spent_cents: late.spent_cents, cap_cents: late.cap_cents,
+        fraction: late.fraction, remaining_cents: late.remaining_cents,
+      });
+    }
+  }
   let settled = null;
   if (instruction.rail === "awlpay") {
     const live = await runAwlpaySettle(spec, adapters);

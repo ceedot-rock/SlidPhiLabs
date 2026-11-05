@@ -1,4 +1,5 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * GET /api/agent — full agentic commerce discovery
  * Standing products (x402) + suite jobs (x402) + human Stripe
  * NCA coat attached at discovery (infra process point).
@@ -29,9 +30,9 @@ const STANDING = [
   { sku: "cuni-exception", name: "CuNi · closed-app grant", usd: "490", kind: "exception", blurb: "Unified grant $490/app/year: ship CuNi inside one closed product for one year. Not the compressor." },
   { sku: "chamber-month", name: "Chamber · monthly cloak license", usd: "20", kind: "chamber", blurb: "License to seal new JSON for 30 days. 24-hour try. Open already-sealed blobs with both keys; opening is free forever." },
   { sku: "chamber-year", name: "Chamber · annual cloak license", usd: "200", kind: "chamber", blurb: "License to seal new JSON for a year. Stored secrets do not expire." },
-  { sku: "pcc-pro", name: "PCC Pro · monthly", usd: "25", kind: "pcc", blurb: "Compression through your tools. 100 GB included this month, then $0.20/GB. Meter: first 1 GB/month free, then $0.25/GB of input; customer-set cap (default $25), alert at 80%." },
+  { sku: "pcc-pro", name: "PCC Pro · monthly", usd: "25", kind: "pcc", blurb: "Compression through your tools. 100 GB included this month, then $0.20/GB. Meter: first 1 GB free once per IP, then $0.25/GB of input; customer-set cap (default $25), alert at 80%." },
   { sku: "suite", name: "PCC usage", usd: "meter", kind: "pcc", blurb: "First 1 GB free once per IP, then $0.25/GB of input. Customer-set monthly spend cap (default $25), alert at 80%." },
-  { sku: "lab-check", name: "CuNi check", usd: "0.10", kind: "cuni", blurb: "One exactness check." },
+  { sku: "lab-check", name: "CuNi check", usd: "0.05", kind: "cuni", blurb: "One exactness check. First 100 checks/month free, then $0.05 per check." },
   { sku: "lab-translate", name: "CuNi Bank paste", usd: "0.10", kind: "cuni", blurb: "One Bank paste." },
   { sku: "lab-squeeze", name: "PCCX squeeze", usd: "0.10", kind: "pccx", blurb: "One squeeze." },
   { sku: "rider-solo", name: "Rider · Solo seat", usd: "12", kind: "rider", blurb: "Signed agent identity L0–L4. 1 identity, 500 verifications/month. $120/year." },
@@ -44,7 +45,7 @@ const STANDING = [
   { sku: "lab-pass", name: "Lab Pass · annual", usd: "495", kind: "seat", blurb: "Chamber (1 year) + Rider Solo (1 year) + PSI Meter 1 seat (1 year) + Warrant add-on (1 year). Parts sum $650; bundle $495. PCC/compression out. No monthly version." },
   { sku: "quikgater", name: "Quikgater · pay-per-fact fetch", usd: "usage", kind: "usage", blurb: "$0.02 per fetch; first 100 fetches/month free; customer-set monthly cap (default $10), alert at 80%. Not a seat. Unpaid URL → HTTP 402. Worker: quikgater-worker.ceedotrock.workers.dev" },
   { sku: "oss-support", name: "OSS support", usd: "199.00", kind: "support-oss", blurb: OSS_BLURB },
-  { sku: "consulting", name: "Consulting", usd: "175.00", kind: "service", blurb: "$175/hour, 2-hour minimum, scoped SOW." },
+  { sku: "consulting", name: "Consulting", usd: "350.00", kind: "service", blurb: "$175/hour, 2-hour minimum, scoped SOW." },
   { sku: "sponsor", name: "Sponsor", usd: "29.00", kind: "support" },
   { sku: "donate", name: "Donate", usd: "29.99", kind: "support" },
   { sku: "gao-entry", name: "Great Agentic Olympiad Entry", usd: "1.00", kind: "olympiad" },
@@ -190,7 +191,7 @@ export default async function handler(req, res) {
       prove: "https://www.slidphilabs.com/standings.json",
     },
     one_liner:
-      "PCC metered $0.25/GB of input, first 1 GB/month free; Pro $25/month including 100 GB, then $0.20/GB. Chamber $20/mo · $200/yr. CuNi $0; closed-app grant $490/app/year. Rider Solo $12–Fleet $199/month. Lab Pass $495/year.",
+      "PCC metered $0.25/GB of input, first 1 GB free once per IP; Pro $25/month including 100 GB, then $0.20/GB. Chamber $20/mo · $200/yr. CuNi $0; closed-app grant $490/app/year. Rider Solo $12–Fleet $199/month. Lab Pass $495/year.",
     starter_path: "https://www.slidphilabs.com/pcc",
     suite_pricing: {
       free_cap_gb: 1,
@@ -453,7 +454,7 @@ export default async function handler(req, res) {
       "POST /api/x402-products { sku, email? } → 402 + accepts[]",
       "Pay maxAmountRequired (SPL) via x402-client payFetch",
       "Retry with X-PAYMENT → 200 + order_id + claim_token + entitlement + access_url",
-      "claim_token is the API key: send as Authorization: Bearer <claim_token> on POST /api/compress and POST /api/decompress (or apiKey in the npm clients) — verified server-side, metered to the seat; no key = 1 GB/month free tier",
+      "claim_token is the API key: send as Authorization: Bearer <claim_token> on POST /api/compress and POST /api/decompress (or apiKey in the npm clients) — verified server-side, metered to the seat; no key = 1 GB free-once-per-IP tier",
       "GET /api/access-verify?claim=<claim_token>&product=<sku> → Access deliverable",
     ],
     flow_suite_job: [

@@ -1,4 +1,5 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * GET|POST /api/bench — open self-serve compression proof
  *
  * Streams (NDJSON) or returns JSON: structured · float · mixed
@@ -427,7 +428,7 @@ async function handler(req, res) {
         classes: ["structured", "float", "mixed"],
         engines: ["spl_omniwave", "zrw", "gzip-9", "brotli-11"],
         freemium: {
-          first_gb: 100,
+          first_gb: 1,
           note: "Live paid jobs after the free 1 GB (once per IP); this open bench uses public synthetic slices ≤512 KiB so proof is free and self-serve.",
         },
         stream: "GET /api/bench?stream=1&bytes=65536 → NDJSON events",
@@ -474,7 +475,7 @@ async function handler(req, res) {
       bytes_per_class: opts.size,
       classes: opts.classes,
       engines: ["spl_omniwave", "zrw", "gzip-9", "brotli-11"],
-      freemium_gb: 100,
+      freemium_gb: 1,
       at: new Date().toISOString(),
     });
     const results = [];
@@ -512,7 +513,7 @@ async function handler(req, res) {
       bytes_per_class: opts.size,
       wall_ms: +(nowMs() - tAll).toFixed(3),
       freemium: {
-        first_gb: 100,
+        first_gb: 1,
         note: "Open bench = synthetic proof. Paid suite handles real jobs after the free 1 GB (once per IP).",
       },
       classes: results,

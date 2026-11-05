@@ -1,4 +1,5 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * Byte counter for the hosted compressor.
  * Paid seats reset monthly. Everyone else draws a 1 GB lifetime allowance
  * keyed by IP (no monthly reset). Stored on the Fly volume (AUTH_DIR) so it survives restarts.

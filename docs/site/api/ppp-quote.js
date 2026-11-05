@@ -1,4 +1,5 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * Quote a compress job against the lifetime-per-IP meter.
  * First 1 GB of input free, then $0.25/GB. Pro plan: 100 GB included, then $0.20/GB. $1 card minimum.
  */

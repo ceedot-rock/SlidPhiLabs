@@ -1,4 +1,5 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * Owner-gratis lane: Corey's known emails (and his human seat) never pay.
  *
  * RULES

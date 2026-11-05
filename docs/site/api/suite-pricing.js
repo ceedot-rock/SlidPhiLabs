@@ -1,7 +1,9 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * Served compression meter (blank-slate pricing, 2026-10-30; free tier lifetime-per-IP since 2026-11-04).
- * Single rate per GB of INPUT: $0.25/GB pay-as-you-go, first 1 GB each
- * month free. Pro plan $25/month includes 100 GB, then $0.20/GB.
+ * Single rate per GB of INPUT: $0.25/GB pay-as-you-go, first 1 GB free
+ * once per IP (lifetime, no monthly reset).
+ * Pro plan $25/month includes 100 GB, then $0.20/GB.
  * Customer-set monthly spend cap (default $25 pay-as-you-go), alert at
  * 80% of the cap and of the included allowance. $1 minimum when a card
  * charge is due (Stripe's fee eats smaller ones).
@@ -21,7 +23,7 @@ export const MAX_CENTS = 1_000_000;
 export const DEFAULT_CAP_CENTS = 2500;
 export const ALERT_FRACTION = 0.8;
 
-/** Included GB per month by plan SKU. Lab Pass and retired SKUs: free cap only. */
+/** Included GB by plan SKU. Pro seats reset monthly; the free cap is lifetime-per-IP. Lab Pass and retired SKUs: free cap only. */
 export const INCLUDED_GB = Object.freeze({
   "": FREE_GB,
   env: FREE_GB,

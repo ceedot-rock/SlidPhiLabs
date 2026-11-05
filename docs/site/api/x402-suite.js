@@ -1,4 +1,5 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * SPL Pay Per Suite — agentic commerce (x402)
  *
  * Humans: Stripe on /pps
@@ -480,7 +481,7 @@ export default async function handler(req, res) {
   const accept0 = requirements.accepts?.[0];
   const { payTo } = networkConfig();
 
-  // Free showcase — first 1 GB/month, no x402 payment
+  // Free showcase — first 1 GB free once per IP, no x402 payment
   if (quote.free || quote.amount_cents === 0) {
     const jobId = "free_" + Date.now().toString(36);
     return json(res, 200, {
@@ -490,7 +491,7 @@ export default async function handler(req, res) {
       job_id: jobId,
       quote,
       message:
-        "First 1 GB of input each month is free — no payment. Job accepted for lab intake.",
+        "First 1 GB of input is free once per IP — no payment. Job accepted for lab intake.",
       access_url: "https://www.slidphilabs.com/access?product=suite-free&free=1",
     });
   }

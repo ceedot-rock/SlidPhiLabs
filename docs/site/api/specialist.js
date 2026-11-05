@@ -1,4 +1,5 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * GET  /api/specialist — how to call hosted compression
  * POST /api/specialist — encode (zeros or pulsar) or decode
  */

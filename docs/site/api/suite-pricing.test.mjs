@@ -1,3 +1,4 @@
+/** Suite pricing tests. Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE. */
 import assert from "node:assert/strict";
 import {
   computeQuote, FREE_BYTES, CENTS_PER_GB, PRO_CENTS_PER_GB, MIN_PAID_CENTS,

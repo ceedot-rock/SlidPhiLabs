@@ -1,4 +1,5 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * GET /api/access-verify?session=cs_...&product=tru8-year
  * GET /api/access-verify?claim=spl1....&product=chamber-year
  *
@@ -8,7 +9,7 @@
  *
  * Primary SKUs (SoT: /pricing.json; blank-slate pricing 2026-10-30):
  *   Chamber: chamber-month $20 | chamber-year $200  (open is keys-only)
- *   PCC: metered $0.25/GB input, 1 GB/mo free · Pro $25/mo (100 GB incl., then $0.20/GB)
+ *   PCC: metered $0.25/GB input, 1 GB free once per IP · Pro $25/mo (100 GB incl., then $0.20/GB)
  *   Rider: Solo $12 · Team $49 · Fleet $199 (per month; annual 10x) · Ops $37/$369 (unchanged)
  *   Lab Pass $495 (Chamber + Rider Solo + PSI Meter seat + Warrant add-on; NO compression)
  *   Legacy gc-day/month/year, tru8, and old-rider entries stay below for old receipts only.

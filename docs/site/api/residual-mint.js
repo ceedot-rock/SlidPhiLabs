@@ -1,6 +1,7 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * POST /api/residual-mint
- * Dual door. Suite meters first 1 GB of input/month free then $0.25/GB.
+ * Dual door. Suite meters first 1 GB of input free once per IP then $0.25/GB.
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
 

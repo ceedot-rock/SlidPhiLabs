@@ -367,7 +367,8 @@ async function handleApi(req, res, url) {
     body = raw;
   }
   const query = Object.fromEntries(url.searchParams.entries());
-  const vercelReq = Object.assign(req, { query, body, url: url.pathname + url.search });
+  // rawBody: exact request bytes (Stripe webhooks must verify HMAC over these).
+  const vercelReq = Object.assign(req, { query, body, rawBody: raw, url: url.pathname + url.search });
   const vercelRes = makeRes(res);
   try {
     await handler(vercelReq, vercelRes);

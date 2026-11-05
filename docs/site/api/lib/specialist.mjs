@@ -1,4 +1,5 @@
 /**
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
  * Hosted compression on this machine. Every own pathway is a candidate:
  * zeros, pulsar, PCC. Smallest DECODE_OK wins.
  * PCC programs (repeat / affine_i32 / walk_lcg / walk_d1): price via peel helpers; Kolmogorov
@@ -234,7 +235,7 @@ export async function encodeHosted(raw) {
   } else if (seated?.model === "walk_lcg") {
     plain = `Hosted walk_lcg priced the program {step:${seated.step},seed:${seated.seed}} — ${seated.aware_bytes} B aware pack (${payload.length} B LBHX frame) on ${b.length} B. Restore with POST /api/decompress.`;
   } else if (win) {
-    plain = `Hosted ${method} compressed this file from ${b.length} bytes to ${payload.length} bytes. Restore with POST /api/decompress. First 1 GB of input/month is free, then $0.25/GB.`;
+    plain = `Hosted ${method} compressed this file from ${b.length} bytes to ${payload.length} bytes. Restore with POST /api/decompress. First 1 GB of input is free, once per IP address, then $0.25/GB.`;
   } else {
     plain = `This file did not get smaller. We stored it as-is (our store path, not gzip). Restore with POST /api/decompress.`;
   }

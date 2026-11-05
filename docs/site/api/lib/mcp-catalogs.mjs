@@ -1,4 +1,7 @@
-/** Public lab catalogs for hosted MCP. No engine bytes. */
+/**
+ * Public lab catalogs for hosted MCP. No engine bytes.
+ * Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. See /LICENSE.
+ */
 const SITE = "https://www.slidphilabs.com";
 
 export const CATALOGS = [
@@ -74,7 +77,7 @@ export const CATALOGS = [
     id: "aware",
     title: "PCC (AWARE is a retired alias)",
     entries: [
-      { id: "engine", name: "PCC", note: "Hosted compressor, tool-called only (MCP/API key, never browser uploads). Files and live 4 KiB pipe, one seat. Metered $0.25/GB of input, 1 GB/mo free. Pro $25/mo. Board stamp 51,498,645. Paid access, no source.", url: SITE + "/pcc" },
+      { id: "engine", name: "PCC", note: "Hosted compressor, tool-called only (MCP/API key, never browser uploads). Files and live 4 KiB pipe, one seat. Metered $0.25/GB of input, 1 GB free once per IP. Pro $25/mo. Board stamp 51,498,645. Paid access, no source.", url: SITE + "/pcc" },
       { id: "stream", name: "PCC stream", note: "4 KiB ZERO+STORE pipe for agent logs / SIEM. Same PCC seat.", url: SITE + "/trustream" },
       { id: "meter", name: "PCC meter", note: "First 1 GB of input free, once per IP address, then $0.25/GB.", url: SITE + "/pps" },
     ],
@@ -117,7 +120,7 @@ export const CATALOGS = [
     title: "npm / public packages",
     entries: [
       { id: "slid-phi", name: "slid-phi", note: "HTTP client + discovery stub. No compressor engine.", url: "https://www.npmjs.com/package/slid-phi" },
-      { id: "spl-pay-per-suite", name: "spl-pay-per-suite", note: "Quote helper for metered PCC jobs. First 1 GB/month free, then $0.25/GB.", url: "https://www.npmjs.com/package/spl-pay-per-suite" },
+      { id: "spl-pay-per-suite", name: "spl-pay-per-suite", note: "Quote helper for metered PCC jobs. First 1 GB free once per IP, then $0.25/GB.", url: "https://www.npmjs.com/package/spl-pay-per-suite" },
       { id: "shard-zip", name: "shard-zip", note: "Public GPLv3 zip helper on npm.", url: "https://www.npmjs.com/package/shard-zip" },
       { id: "shard-tsdb", name: "shard-tsdb", note: "Public GPLv3 time-series helper on npm.", url: "https://www.npmjs.com/package/shard-tsdb" },
       { id: "pulsar", name: "pulsar 2.5.0", note: "cargo/git GPLv3. Free to build; $490/yr to embed closed.", url: SITE + "/pulsar" },
