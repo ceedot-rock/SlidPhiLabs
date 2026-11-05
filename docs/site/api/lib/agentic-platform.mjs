@@ -14,6 +14,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import { ACTIONS, cleanChain, fileReceipt, hostAllowed, issueWarrant, verifyWarrant } from "./warrant.mjs";
 import { computeQuote } from "../suite-pricing.js";
+import { compressContext, verifyCompression, CONTEXT_VERSION } from "./context-compress.mjs";
 
 export const AGENTIC_VERSION = "0.1.0";
 export const PLATFORM_NAME = "ACN";
@@ -34,6 +35,7 @@ export const AGENTILL_MAP = Object.freeze({
   pcc: { agentill: null, note: "byte metering stays ACN-side (suite meter)" },
   awlpay: { agentill: "ledger/settle + core/platformFee", note: "fee computation and mark-collected ledger; ACN executes, agenTill accounts" },
   psi: { agentill: null, note: "memory stays ACN-side" },
+  context: { agentill: null, note: "context compression stays ACN-side (suite meter)" },
   conductor: { agentill: "validator/preflight", note: "plan-time validation; run receipts mirror settle ledger entries" },
 });
 
@@ -278,6 +280,29 @@ export async function planOnlyFetch(url) {
  * Pure plan: no disk, no network. Shows the eight stages, the meter quote,
  * the settle preview, and the conductor digest before anything runs.
  */
+/** Stage list. Defaults are frozen by contract: context joins only on opt-in. */
+function planStages(spec = {}) {
+  const stages = ["rider", "warrant", "tollkeeper", "quikgater"];
+  if (spec.context) stages.push("context");
+  stages.push("pcc");
+  if (spec.cuni) stages.push("cuni");
+  stages.push("awlpay", "psi", "conductor");
+  return stages;
+}
+
+/** Pure context preview for plan output. No disk, no network. */
+function planContextPreview(spec = {}) {
+  if (!spec.context || typeof spec.context.text !== "string") return null;
+  const c = compressContext({
+    text: spec.context.text,
+    query: spec.context.query || "",
+    targetRatio: spec.context.targetRatio,
+    maxTokens: spec.context.maxTokens,
+  });
+  if (!c || c.ok !== true || c.refused) return { refused: true, reason: (c && c.reason) || "compress_failed" };
+  return { refused: false, inTokens: c.inTokens, outTokens: c.outTokens, ratio: c.ratio, digest: c.digest, tool: "context-compress", toolVersion: CONTEXT_VERSION };
+}
+
 export function planAgenticRun(spec = {}) {
   const base = checkBase(spec);
   if (base.error) return base.error;
@@ -296,14 +321,13 @@ export function planAgenticRun(spec = {}) {
   };
   if (planChain.length) planShape.chain = planChain;
   const canonical = JSON.stringify(planShape);
+  const ctxPreview = planContextPreview(spec);
   return {
     ok: true,
     version: AGENTIC_VERSION,
     platform: PLATFORM_NAME,
     plan: {
-      stages: spec.cuni
-        ? ["rider", "warrant", "tollkeeper", "quikgater", "pcc", "cuni", "awlpay", "psi", "conductor"]
-        : ["rider", "warrant", "tollkeeper", "quikgater", "pcc", "awlpay", "psi", "conductor"],
+      stages: planStages(spec),
       identity: base.demo ? "demo" : "rider",
       action: base.action,
       host: base.host,
@@ -313,6 +337,7 @@ export function planAgenticRun(spec = {}) {
       quote,
       settle,
       conductor: { cmd: "spl_agentic_run", digest: sha256hex(canonical) },
+      ...(ctxPreview ? { context: ctxPreview } : {}),
     },
   };
 }
@@ -563,17 +588,20 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
   receipts.push({ stage: "tollkeeper", ok: true, crossing: base.crossing, price, receipt: "signed on pass" });
 
   let fetchedBytes = 0;
+  let fetchedBody = null;
   if (base.url) {
     const first = await fetch402(base.url.href, { paid: false });
     let body = null;
     if (first && first.status === 200) {
       body = first.body;
+      fetchedBody = body;
     } else if (first && first.status === 402 && spec.pay === true) {
       const second = await fetch402(base.url.href, { paid: true, payment: first.price || null });
       if (!second || second.status !== 200) {
         return { ...fail("quikgater", "fetch_failed", { status: second ? second.status : null }), receipts, memory };
       }
       body = second.body;
+      fetchedBody = body;
     } else {
       return {
         ...fail("quikgater", "payment_required"),
@@ -589,7 +617,32 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     receipts.push({ stage: "quikgater", ok: true, url: base.url.href, bytes: fetchedBytes, paid: spec.pay === true });
   }
 
-  const bytes = Math.max(fetchedBytes, Math.max(0, Number(spec.bytes) || 0));
+  let contextText = null;
+  if (spec.context) {
+    const input = typeof spec.context.text === "string" ? spec.context.text : (fetchedBody != null ? String(fetchedBody) : "");
+    if (input) {
+      const compressFn = typeof adapters.compressFn === "function" ? adapters.compressFn : (s) => compressContext(s);
+      const c = await compressFn({
+        text: input,
+        query: spec.context.query || "",
+        targetRatio: spec.context.targetRatio,
+        maxTokens: spec.context.maxTokens,
+      });
+      if (!c || c.ok !== true) return { ...fail("context", "compress_failed"), receipts, memory };
+      if (c.refused) return { ...fail("context", c.reason || "refused"), receipts, memory };
+      const v = verifyCompression({ input, output: c.output, query: spec.context.query || "" });
+      if (!v.ok) return { ...fail("context", "verify_failed", { checks: v.checks }), receipts, memory };
+      contextText = c.output;
+      receipts.push({
+        stage: "context", ok: true, tool: "context-compress", toolVersion: CONTEXT_VERSION,
+        inTokens: c.inTokens, outTokens: c.outTokens, ratio: c.ratio,
+        kept: c.kept.length, dropped: c.dropped.length, verified: true, digest: c.digest,
+      });
+    }
+  }
+
+  const rawBytes = Math.max(fetchedBytes, Math.max(0, Number(spec.bytes) || 0));
+  const bytes = contextText != null ? Buffer.byteLength(contextText) : rawBytes;
   const quote = computeQuote({ bytes, product: spec.product || "auto", op: spec.op || "compress" });
   receipts.push({ stage: "pcc", ok: true, bytes, amount_cents: quote.amount_cents, free: quote.free });
 
@@ -693,6 +746,22 @@ export const AGENTIC_TOOLS = Object.freeze([
     },
   },
   {
+    name: "spl_agentic_context",
+    description: "Compress LLM context extractively (query-aware filter + dedup), verify by construction, quote on input bytes. Pure: no disk, no network.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        text: { type: "string" },
+        query: { type: "string" },
+        targetRatio: { type: "number" },
+        maxTokens: { type: "number" },
+        used_bytes: { type: "number" },
+        sku: { type: "string" },
+      },
+      required: ["text"],
+    },
+  },
+  {
     name: "spl_agentic_run",
     description: "Run one ACN (Agent Commerce Network) run. Needs confirm:true plus demo:true or a rider+warrant pair. Unpaid steps answer 402.",
     inputSchema: {
@@ -725,6 +794,25 @@ export const AGENTIC_TOOLS = Object.freeze([
 
 export async function dispatchAgentic(name, args = {}, adapters = {}) {
   if (name === "spl_agentic_plan") return planAgenticRun(args);
+  if (name === "spl_agentic_context") {
+    const c = compressContext({
+      text: args.text ?? "",
+      query: args.query || "",
+      targetRatio: args.targetRatio,
+      maxTokens: args.maxTokens,
+    });
+    if (!c || c.ok !== true || c.refused) {
+      return { ok: false, stage: "context", reason: (c && c.reason) || "compress_failed" };
+    }
+    const v = verifyCompression({ input: args.text ?? "", output: c.output, query: args.query || "" });
+    const quote = computeQuote({
+      bytes: Buffer.byteLength(String(args.text ?? "")),
+      product: "auto", op: "compress",
+      ...(args.used_bytes != null ? { used_bytes: args.used_bytes } : {}),
+      ...(args.sku ? { sku: args.sku } : {}),
+    });
+    return { ok: v.ok, stage: "context", tool: "context-compress", toolVersion: CONTEXT_VERSION, ...c, verified: v.ok, checks: v.checks, quote };
+  }
   if (name === "spl_agentic_run") {
     if (args.confirm !== true) {
       return { ok: false, needs: "confirm", hint: "re-call with confirm:true plus demo:true or a rider+warrant pair" };
