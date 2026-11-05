@@ -14,7 +14,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import { ACTIONS, cleanChain, fileReceipt, hostAllowed, issueWarrant, verifyWarrant } from "./warrant.mjs";
 import { computeQuote, capStatus } from "../suite-pricing.js";
-import { compressContext, verifyCompression, CONTEXT_VERSION } from "./context-compress.mjs";
+import { compressContext, compressContextAsync, verifyCompression, CONTEXT_VERSION } from "./context-compress.mjs";
 import { runBenchhaus, BENCHHAUS_VERSION } from "./benchhaus.mjs";
 
 export const AGENTIC_VERSION = "0.1.0";
@@ -365,7 +365,8 @@ function planStages(spec = {}) {
   return stages;
 }
 
-/** Pure context preview for plan output. No disk, no network. */
+/** Pure context preview for plan output. No disk, no network: forwards the
+ *  reranker tier/topK but never a model adapter (plan stays offline). */
 function planContextPreview(spec = {}) {
   if (!spec.context || typeof spec.context.text !== "string") return null;
   const c = compressContext({
@@ -373,9 +374,12 @@ function planContextPreview(spec = {}) {
     query: spec.context.query || "",
     targetRatio: spec.context.targetRatio,
     maxTokens: spec.context.maxTokens,
+    reranker: spec.context.reranker,
+    rerankTopK: spec.context.rerankTopK,
+    ...(typeof spec.context.rerankFn === "function" ? { rerankFn: spec.context.rerankFn } : {}),
   });
   if (!c || c.ok !== true || c.refused) return { refused: true, reason: (c && c.reason) || "compress_failed" };
-  return { refused: false, inTokens: c.inTokens, outTokens: c.outTokens, ratio: c.ratio, digest: c.digest, tool: "context-compress", toolVersion: CONTEXT_VERSION };
+  return { refused: false, inTokens: c.inTokens, outTokens: c.outTokens, ratio: c.ratio, digest: c.digest, tool: "context-compress", toolVersion: CONTEXT_VERSION, reranker: c.reranker, rescored: c.rescored };
 }
 
 export function planAgenticRun(spec = {}, adapters = {}) {
@@ -742,12 +746,16 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
   if (spec.context) {
     const input = typeof spec.context.text === "string" ? spec.context.text : (fetchedBody != null ? String(fetchedBody) : "");
     if (input) {
-      const compressFn = typeof adapters.compressFn === "function" ? adapters.compressFn : (s) => compressContext(s);
+      const compressFn = typeof adapters.compressFn === "function" ? adapters.compressFn : (s) => compressContextAsync(s);
       const c = await compressFn({
         text: input,
         query: spec.context.query || "",
         targetRatio: spec.context.targetRatio,
         maxTokens: spec.context.maxTokens,
+        reranker: spec.context.reranker,
+        rerankTopK: spec.context.rerankTopK,
+        ...(typeof spec.context.rerankFn === "function" ? { rerankFn: spec.context.rerankFn } : {}),
+        ...(typeof adapters.rerankFn === "function" ? { rerankFn: adapters.rerankFn } : {}),
       });
       if (!c || c.ok !== true) return { ...fail("context", "compress_failed"), receipts, memory };
       if (c.refused) return { ...fail("context", c.reason || "refused"), receipts, memory };
@@ -756,7 +764,7 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
       contextText = c.output;
       receipts.push({
         stage: "context", ok: true, tool: "context-compress", toolVersion: CONTEXT_VERSION,
-        inTokens: c.inTokens, outTokens: c.outTokens, ratio: c.ratio,
+        inTokens: c.inTokens, outTokens: c.outTokens, ratio: c.ratio, reranker: c.reranker, rescored: c.rescored,
         kept: c.kept.length, dropped: c.dropped.length, verified: true, digest: c.digest,
       });
     }
@@ -897,7 +905,7 @@ export const AGENTIC_TOOLS = Object.freeze([
   },
   {
     name: "spl_agentic_context",
-    description: "Compress LLM context extractively (query-aware filter + dedup), verify by construction, quote on input bytes. Pure: no disk, no network.",
+    description: "Compress LLM context extractively (BM25-lite filter + cross-encoder rerank + dedup), verify by construction, quote on input bytes. Pure: no disk, no network.",
     inputSchema: {
       type: "object",
       properties: {
@@ -905,6 +913,8 @@ export const AGENTIC_TOOLS = Object.freeze([
         query: { type: "string" },
         targetRatio: { type: "number" },
         maxTokens: { type: "number" },
+        reranker: { type: "string" },
+        rerankTopK: { type: "number" },
         used_bytes: { type: "number" },
         sku: { type: "string" },
       },
@@ -945,11 +955,15 @@ export const AGENTIC_TOOLS = Object.freeze([
 export async function dispatchAgentic(name, args = {}, adapters = {}) {
   if (name === "spl_agentic_plan") return planAgenticRun(args);
   if (name === "spl_agentic_context") {
-    const c = compressContext({
+    const c = await compressContextAsync({
       text: args.text ?? "",
       query: args.query || "",
       targetRatio: args.targetRatio,
       maxTokens: args.maxTokens,
+      reranker: args.reranker,
+      rerankTopK: args.rerankTopK,
+      ...(typeof args.rerankFn === "function" ? { rerankFn: args.rerankFn } : {}),
+      ...(typeof adapters.rerankFn === "function" ? { rerankFn: adapters.rerankFn } : {}),
     });
     if (!c || c.ok !== true || c.refused) {
       return { ok: false, stage: "context", reason: (c && c.reason) || "compress_failed" };

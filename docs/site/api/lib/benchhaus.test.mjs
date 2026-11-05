@@ -1,4 +1,4 @@
-/** BenchHaus 0.1.0 tests. Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. */
+/** BenchHaus 0.2.0 tests. Dual license: AGPL-3.0-or-later OR Slid Phi Labs Commercial. */
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -18,8 +18,11 @@ import {
   RETRIEVAL_QUERY,
   STATE_FIXTURES,
   REFUSAL_FIXTURE,
+  BENIGN_FIXTURE,
   wilson,
   isTie,
+  bm25LiteRank,
+  builtinRefuser,
   gradePlanExactness,
   gradeRetrievalPrecision,
   gradeStateTracking,
@@ -37,8 +40,8 @@ const {
 const HEX64 = /^[a-f0-9]{64}$/;
 
 test("version pinned", () => {
-  assert.equal(BENCHHAUS_VERSION, "0.1.0");
-  assert.equal(PROVENANCE_DEFAULT, "lab-fixture-v1");
+  assert.equal(BENCHHAUS_VERSION, "0.2.0");
+  assert.equal(PROVENANCE_DEFAULT, "lab-fixture-v2");
   assert.deepEqual(BENCHHAUS_WEIGHTS, { plan: 0.3, retrieval: 0.25, state: 0.25, refusal: 0.2 });
 });
 
@@ -51,23 +54,35 @@ test("wilson interval bounded, degenerate n=0 wide open", () => {
   assert.ok(half.lo >= 0 && half.hi <= 1 && half.lo < 0.5 && half.hi > 0.5);
 });
 
-test("plan-exactness: perfect, half, empty, non-array vectors", () => {
+test("plan-exactness: perfect, partial, empty, non-array vectors", () => {
   const perfect = gradePlanExactness([...PLAN_REFERENCE]);
   assert.equal(perfect.suite, "plan");
-  assert.equal(perfect.n, 8);
+  assert.equal(perfect.n, 11);
   assert.equal(perfect.score, 1);
   assert.equal(perfect.precision, 1);
   assert.equal(perfect.recall, 1);
-  const half = gradePlanExactness([...PLAN_REFERENCE.slice(0, 4)]);
-  assert.equal(half.precision, 1);
-  assert.equal(half.recall, 0.5);
-  assert.ok(Math.abs(half.score - 2 / 3) < 1e-12, String(half.score));
+  const partial = gradePlanExactness([...PLAN_REFERENCE.slice(0, 4)]);
+  assert.equal(partial.precision, 1);
+  assert.equal(partial.recall, 4 / 11);
+  assert.ok(Math.abs(partial.score - 8 / 15) < 1e-12, String(partial.score));
   const empty = gradePlanExactness([]);
   assert.equal(empty.score, 0);
   const bad = gradePlanExactness("not-a-list");
   assert.equal(bad.score, 0);
   const swapped = gradePlanExactness([...PLAN_REFERENCE].reverse());
-  assert.ok(swapped.score < 0.2, String(swapped.score));
+  assert.equal(swapped.matches, 1);
+  assert.ok(Math.abs(swapped.score - 1 / 11) < 1e-12, String(swapped.score));
+});
+
+test("plan-exactness: expected-order override grades partial runs", () => {
+  const eight = ["rider", "warrant", "tollkeeper", "quikgater", "pcc", "awlpay", "psi", "conductor"];
+  const over = gradePlanExactness(eight, { expected: eight });
+  assert.equal(over.n, 8);
+  assert.equal(over.score, 1);
+  const arrForm = gradePlanExactness(eight, eight);
+  assert.equal(arrForm.score, 1);
+  const vsFull = gradePlanExactness(eight);
+  assert.ok(vsFull.score < 1, String(vsFull.score));
 });
 
 test("retrieval fixture is 50 docs, 22 relevant, default score identity", () => {
@@ -79,8 +94,13 @@ test("retrieval fixture is 50 docs, 22 relevant, default score identity", () => 
   assert.equal(r.n, 50);
   assert.ok(Math.abs(r.score - 0.5 * (r.ndcg10 + r.recall10)) < 1e-12);
   for (const k of ["score", "ndcg10", "recall10"]) assert.ok(r[k] >= 0 && r[k] <= 1, k);
-  assert.ok(r.ndcg10 > 0.9, "relevant docs rank top, ndcg=" + r.ndcg10);
+  assert.ok(r.ndcg10 > 0 && r.ndcg10 < 1, "solvable but not perfect, ndcg=" + r.ndcg10);
+  assert.ok(Math.abs(r.ndcg10 - 0.6952585455054701) < 1e-12, "pinned lab-fixture-v2 value, ndcg=" + r.ndcg10);
   assert.equal(r.recall10, r.hits10 / 22);
+  const gradeById = new Map(RETRIEVAL_DOCS.map((d) => [d.id, d.grade]));
+  const top10 = bm25LiteRank(RETRIEVAL_QUERY).slice(0, 10).map((x) => gradeById.get(x.id));
+  assert.ok(top10.includes(1), "hard negatives intrude into the top 10: " + top10.join(","));
+  assert.ok(top10.includes(3), "anchors still rank top: " + top10.join(","));
   const worst = gradeRetrievalPrecision([...RETRIEVAL_DOCS.filter((d) => d.grade === 0).map((d) => d.id)]);
   assert.equal(worst.ndcg10, 0);
   assert.equal(worst.recall10, 0);
@@ -106,10 +126,33 @@ test("refusal-robustness: builtin perfect, compliant majority graded", () => {
   assert.equal(good.suite, "refusal");
   assert.equal(good.n, REFUSAL_FIXTURE.length);
   assert.equal(good.score, 1);
+  assert.equal(good.pass_rate, 1);
+  assert.equal(good.false_refusal_rate, 0);
+  assert.equal(good.benign_n, BENIGN_FIXTURE.length);
   const none = gradeRefusalRobustness(REFUSAL_FIXTURE.map(() => false));
   assert.equal(none.score, 0);
   const mixed = gradeRefusalRobustness(REFUSAL_FIXTURE.map((_, i) => i < 7));
   assert.equal(mixed.score, 0.7);
+});
+
+test("refusal-robustness: benign inputs allowed, over-refusal penalized", () => {
+  assert.equal(BENIGN_FIXTURE.length, 5);
+  for (const f of BENIGN_FIXTURE) {
+    assert.equal(builtinRefuser(f.input).refused, false, f.input);
+  }
+  const refuseAll = gradeRefusalRobustness(null, { refuseFn: () => true });
+  assert.equal(refuseAll.pass_rate, 1);
+  assert.equal(refuseAll.false_refusal_rate, 1);
+  assert.equal(refuseAll.score, 0);
+  const allowAll = gradeRefusalRobustness(null, { refuseFn: () => false });
+  assert.equal(allowAll.score, 0);
+  const partial = gradeRefusalRobustness(
+    REFUSAL_FIXTURE.map(() => true),
+    { benignDecisions: [true, false, false, false, false] },
+  );
+  assert.equal(partial.pass_rate, 1);
+  assert.equal(partial.false_refusal_rate, 0.2);
+  assert.ok(Math.abs(partial.score - 0.8) < 1e-12, String(partial.score));
 });
 
 test("siascore math: full weights, missing-suite renormalization, empty", () => {
@@ -121,7 +164,7 @@ test("siascore math: full weights, missing-suite renormalization, empty", () => 
   ]);
   assert.ok(Math.abs(full.siascore - 85) < 1e-9, String(full.siascore));
   assert.equal(full.coverage_pct, 100);
-  assert.equal(full.provenance, "lab-fixture-v1");
+  assert.equal(full.provenance, "lab-fixture-v2");
   const partial = computeSiAiscore([
     { suite: "plan", score: 1, ci95: { lo: 0.6, hi: 1 } },
     { suite: "refusal", score: 0.5, ci95: { lo: 0.2, hi: 0.8 } },
@@ -146,7 +189,7 @@ test("runBenchhaus receipt shape, digest, determinism, quote", () => {
   assert.equal(a.ok, true);
   assert.equal(a.stage, "benchhaus");
   assert.equal(a.tool, "benchhaus");
-  assert.equal(a.toolVersion, "0.1.0");
+  assert.equal(a.toolVersion, "0.2.0");
   assert.equal(a.suites.length, 4);
   assert.deepEqual(a.suites.map((s) => s.suite), ["plan", "retrieval", "state", "refusal"]);
   for (const s of a.suites) {
@@ -162,6 +205,21 @@ test("runBenchhaus receipt shape, digest, determinism, quote", () => {
   const b = runBenchhaus({});
   assert.equal(b.digest, a.digest);
   assert.equal(b.siascore, a.siascore);
+  for (const run of [a, b]) {
+    assert.deepEqual(Object.keys(run.timings).sort(), ["plan", "refusal", "retrieval", "state"]);
+    for (const ms of Object.values(run.timings)) assert.ok(Number.isFinite(ms) && ms >= 0, String(ms));
+  }
+  const slow = runBenchhaus({}, {
+    gradePlan: (cand) => {
+      const t0 = Date.now();
+      while (Date.now() - t0 < 30) { /* busy-wait: inflate plan timing only */ }
+      return gradePlanExactness(cand);
+    },
+  });
+  assert.ok(slow.timings.plan >= 30, JSON.stringify(slow.timings));
+  assert.equal(slow.digest, a.digest, "timings excluded from the digested payload");
+  const sub = runBenchhaus({ benchhaus: { suites: ["plan", "state"] } });
+  assert.deepEqual(Object.keys(sub.timings).sort(), ["plan", "state"]);
   const subset = runBenchhaus({ benchhaus: { suites: ["plan"] } });
   assert.equal(subset.ok, true);
   assert.equal(subset.suites.length, 1);
@@ -206,7 +264,7 @@ test("plan with benchhaus appends the stage plus preview", () => {
   const p = planAgenticRun({ demo: true, action: "invoke", host: "h.test", benchhaus: true });
   assert.deepEqual(p.plan.stages, ["rider", "warrant", "tollkeeper", "quikgater", "benchhaus", "pcc", "awlpay", "psi", "conductor"]);
   assert.equal(p.plan.benchhaus.tool, "benchhaus");
-  assert.equal(p.plan.benchhaus.toolVersion, "0.1.0");
+  assert.equal(p.plan.benchhaus.toolVersion, "0.2.0");
   assert.match(p.plan.benchhaus.digest, HEX64);
 });
 
@@ -228,7 +286,7 @@ test("run benchhaus pushes its own receipt, digested fields untouched", async ()
   const bh = withBh.receipts.find((s) => s.stage === "benchhaus");
   assert.equal(bh.ok, true);
   assert.equal(bh.tool, "benchhaus");
-  assert.equal(bh.toolVersion, "0.1.0");
+  assert.equal(bh.toolVersion, "0.2.0");
   assert.equal(bh.verified, true);
   assert.match(bh.digest, HEX64);
   assert.deepEqual(bh.suites.map((s) => s.suite), ["plan", "refusal"]);

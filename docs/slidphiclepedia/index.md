@@ -147,3 +147,10 @@ Full records in `pulls.jsonl`. Rule in `README.md`.
 - MLPerf inference (Llama3.1-405B TTFT 6s/TPOT 175ms; Llama2-70B 450ms/40ms; Llama3.1-8B ≤2s/≤100ms; server+interactive scenarios) — latency/throughput, open MLCommons
 - Flaws meta (contamination everywhere; exploit-demos hit 100% on Verified/WebArena via hooks/trojans; scores≠production; no cost/safety/tail-failure) + harness meta (Python/GitHub norm) — see pulls.jsonl survey=A-benchmark-survey
 
+## Survey A cross-encoder-reranker pulls 2026-11-05 (9 records)
+
+- BGE v1 base/large (278M/560M XLM-RoBERTa, 512 tok, MIT) + v2-m3 (568M, 8k arch/1k tuned, BEIR 55.36) + v2-gemma (2.51B, BEIR 60.71, Apache-2.0 per HF commits; 9B-note conflicts, verify) + v2.5-gemma2-lightweight (fast deploy, license unverified)
+- Jina v2-base-multilingual (278M, 1024 tok, CC-BY-NC-4.0 research-only, API for commercial) vs v3 (Qwen3-0.6B, 131k ctx, BEIR 61.94, Apache-2.0) vs m0 (10.2k tok, Apache-2.0)
+- Cohere Rerank 3.5 (32k ctx, proprietary API-only, ~$2/1k searches) vs Voyage rerank-2.5 (+12.7% over Cohere on MAIR, 32k ctx, $0.05/MTok, API-only) — both excluded from self-host shortlist
+- mxbai-rerank-large-v2 (1.5B, 8k ctx, BEIR 57.49, Apache-2.0) — top self-host pick; v2-gemma latency datapoint 1050ms/100pairs on H100 — see pulls.jsonl survey=A-reranker-survey
+
