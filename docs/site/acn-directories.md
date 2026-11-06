@@ -52,6 +52,14 @@ sequences (11-100) ride free; past sequence 100 the window is closed.
 No adapter means the stage refuses fail-closed with adapter_required and
 zero network. Keys travel via adapters only, never in specs or receipts.
 
+## Canonical rails
+
+AWLpay is the settlement solution: ACN executes, agenTill accounts. The
+WalletVerse sample points here. Rider identity pairs with x402 in the
+rider-paid-call stage (Rider JWT plus txHash proof, Base USDC). The
+supported client is `@slidphi/spl-acn`; the old docs-only listing is a
+read-only pointer.
+
 ## Login continuity (.dSF pointer file)
 
 Bulk stays on the rider's own disk: ledgers under `~/.acn/` (founding

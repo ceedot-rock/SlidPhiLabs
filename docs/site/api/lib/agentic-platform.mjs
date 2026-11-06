@@ -41,6 +41,7 @@ import { createTokenBudget, memoizedCompress, TOKEN_BUDGET_VERSION } from "./tok
 import { createDepotStore, DEPOT_STORE_VERSION } from "./depot-store.mjs";
 import { sealEnvelope, openEnvelope, CHAMBER_SEAL_VERSION } from "./chamber-seal.mjs";
 import { foundingStatus, checkGrantSpend, FOUNDING_GRANTS_VERSION } from "./founding-grants.mjs";
+import { verifyPaidCall, RIDER_PAID_CALL_VERSION } from "./rider-paid-call.mjs";
 
 export const AGENTIC_VERSION = "0.1.0";
 export const PLATFORM_NAME = "ACN";
@@ -89,6 +90,7 @@ export const AGENTILL_MAP = Object.freeze({
   "depot-store": { agentill: null, note: "live gitdepot blob publish/retrieve stays ACN-side (adapter, no network by default)" },
   "chamber-seal": { agentill: null, note: "two-key JSON seals for run artifacts stay ACN-side" },
   membership: { agentill: null, note: "founding-grant tier check stays ACN-side (suite ledger)" },
+  "rider-paid-call": { agentill: "ledger/settle + core/platformFee", note: "rider identity plus x402 proof in one envelope; ACN checks, chain settles" },
 });
 
 /** Seven protection tolls, per the Tollkeeper booklet. */
@@ -439,6 +441,7 @@ function planStages(spec = {}) {
   if (spec.depotStore) stages.push("depot-store");
   if (spec.chamberSeal) stages.push("chamber-seal");
   if (spec.membership) stages.push("membership");
+  if (spec.riderPaidCall) stages.push("rider-paid-call");
   stages.push("psi", "conductor");
   return stages;
 }
@@ -607,6 +610,14 @@ function planAcnPreviews(spec = {}, adapters = {}) {
     out.membership = Number.isSafeInteger(seq) && seq >= 1
       ? { tool: "founding-grants", toolVersion: FOUNDING_GRANTS_VERSION, tier: "founding", grant_seq: seq }
       : { tool: "founding-grants", toolVersion: FOUNDING_GRANTS_VERSION, tier: "free" };
+  }
+  if (spec.riderPaidCall) {
+    const rpc = objLike(spec.riderPaidCall) || {};
+    const hasRider = riderIdLike(rpc.rider == null ? rpc.rider_id : rpc.rider) != null;
+    const hasPayment = objLike(rpc.payment) != null;
+    out.riderPaidCall = hasRider && hasPayment
+      ? { tool: "rider-paid-call", toolVersion: RIDER_PAID_CALL_VERSION }
+      : { tool: "rider-paid-call", toolVersion: RIDER_PAID_CALL_VERSION, refused: true, reason: "bad_envelope" };
   }
   if (spec.tool) {
     const t = objLike(spec.tool);
@@ -1617,6 +1628,25 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     }
   }
 
+  if (spec.riderPaidCall) {
+    const rpc = objLike(spec.riderPaidCall) || {};
+    const rpcOpts = objLike(adapters.riderPaidCall) || {};
+    const paid = await verifyPaidCall(
+      { rider: rpc.rider == null ? rpc.rider_id : rpc.rider, payment: rpc.payment },
+      {
+        ...(typeof rpcOpts.verifyRider === "function" ? { verifyRider: rpcOpts.verifyRider } : {}),
+        ...(typeof rpcOpts.verifyChain === "function" ? { verifyChain: rpcOpts.verifyChain } : {}),
+      },
+    );
+    if (!paid || paid.ok !== true) {
+      return { ...fail("rider-paid-call", (paid && paid.reason) || "call_rejected"), receipts, memory };
+    }
+    receipts.push({
+      stage: "rider-paid-call", ok: true, tool: "rider-paid-call", toolVersion: RIDER_PAID_CALL_VERSION,
+      rider_id: paid.rider_id, tx: paid.tx, rail: paid.rail, amount_cents: paid.amount_cents,
+    });
+  }
+
   if (spec.conductorTask) {
     const prompt = conductorPromptLike(spec.conductorTask);
     if (!prompt) return { ...fail("conductor-tasks", "bad_task"), receipts, memory };
@@ -1735,7 +1765,7 @@ export function verifyConductorReceipt(runSpec, receipt) {
 export const AGENTIC_TOOLS = Object.freeze([
   {
     name: "spl_agentic_plan",
-    description: "Plan one ACN (Agent Commerce Network) run across Rider, Warrant, Tollkeeper, Quikgater, PCC, AWLpay, PSI, Conductor, plus optional stages (warrant-template, standing-rider, reputation, tool-registry, agent-directory, agent-messaging, private-bench, solana, payout, dispute, audit-export, ops-feed, async-runs, sandbox, depot-receipts, depot-billing, conductor-tasks, conductor-review, mcp-catalog, storefront-skills, token-budget, depot-store, chamber-seal, membership) when the matching spec field is present. Pure: no disk, no network.",
+    description: "Plan one ACN (Agent Commerce Network) run across Rider, Warrant, Tollkeeper, Quikgater, PCC, AWLpay, PSI, Conductor, plus optional stages (warrant-template, standing-rider, reputation, tool-registry, agent-directory, agent-messaging, private-bench, solana, payout, dispute, audit-export, ops-feed, async-runs, sandbox, depot-receipts, depot-billing, conductor-tasks, conductor-review, mcp-catalog, storefront-skills, token-budget, depot-store, chamber-seal, membership, rider-paid-call) when the matching spec field is present. Pure: no disk, no network.",
     inputSchema: {
       type: "object",
       properties: {
@@ -1773,6 +1803,7 @@ export const AGENTIC_TOOLS = Object.freeze([
         depotStore: { type: "object" },
         chamberSeal: { type: "object" },
         membership: { type: "object" },
+        riderPaidCall: { type: "object" },
       },
     },
   },
@@ -1843,6 +1874,7 @@ export const AGENTIC_TOOLS = Object.freeze([
         depotStore: { type: "object" },
         chamberSeal: { type: "object" },
         membership: { type: "object" },
+        riderPaidCall: { type: "object" },
         confirm: { type: "boolean" },
       },
     },

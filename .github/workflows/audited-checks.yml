@@ -26,6 +26,10 @@ jobs:
         run: |
           cd packages/spl-pay-per-suite
           npm test
+      - name: spl-acn tests
+        run: |
+          cd packages/spl-acn
+          npm test
 
   secrets-scan:
     name: Secret scan

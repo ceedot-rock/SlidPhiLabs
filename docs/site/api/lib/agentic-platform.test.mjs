@@ -695,3 +695,29 @@ test("membership resolves the founding tier and refuses the spent grant", async 
   assert.equal(free.ok, true);
   assert.equal(free.receipts.find((s) => s.stage === "membership").tier, "free");
 });
+
+test("rider-paid-call plans the envelope and completes with adapters", async () => {
+  const tx = "0x" + "ab".repeat(32);
+  const sig = "0x" + "cd".repeat(65);
+  const payment = { txHash: tx, payerSig: sig, amount_cents: 25, rail: "base" };
+  const adapters = {
+    riderPaidCall: {
+      verifyRider: () => ({ ok: true, rider_id: "rider-1" }),
+      verifyChain: () => ({ ok: true, tx, rail: "base", paid_cents: 25 }),
+    },
+  };
+  const spec = { demo: true, action: "invoke", host: "h.test", riderPaidCall: { rider: "rider-1", payment } };
+  const p = planAgenticRun(spec, adapters);
+  assert.equal(p.ok, true);
+  assert.ok(p.plan.stages.includes("rider-paid-call"));
+  assert.equal(p.plan.riderPaidCall.tool, "rider-paid-call");
+  const r = await runAgenticRun(spec, adapters);
+  assert.equal(r.ok, true);
+  const hit = r.receipts.find((s) => s.stage === "rider-paid-call");
+  assert.equal(hit.rider_id, "rider-1");
+  assert.equal(hit.tx, tx);
+  const denied = await runAgenticRun(spec, {});
+  assert.equal(denied.ok, false);
+  assert.equal(denied.stage, "rider-paid-call");
+  assert.equal(denied.reason, "adapter_required");
+});

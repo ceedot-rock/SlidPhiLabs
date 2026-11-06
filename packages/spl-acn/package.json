@@ -1,0 +1,48 @@
+{
+  "name": "@slidphi/spl-acn",
+  "version": "0.1.0",
+  "mcpName": "io.github.ceedot-rock/spl-acn",
+  "description": "SPL:ACN MCP API SDK — hosted Agent Commerce Network client: server card, tool calls, claim auth, x402-aware errors.",
+  "type": "module",
+  "main": "src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./client": "./src/client.mjs"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE",
+    "LICENSE.AGPL-3.0",
+    "LICENSE.COMMERCIAL",
+    "NOTICE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "keywords": [
+    "slid-phi-labs",
+    "spl",
+    "acn",
+    "agent-commerce",
+    "mcp",
+    "x402",
+    "agentic"
+  ],
+  "author": "Slid Phi Labs, Inc",
+  "license": "(AGPL-3.0-or-later OR LicenseRef-SlidPhiLabs-Commercial)",
+  "homepage": "https://www.slidphilabs.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ceedot-rock/SlidPhiLabs.git",
+    "directory": "packages/spl-acn"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://www.slidphilabs.com/pay"
+  }
+}
