@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "description": "φ-rest — after fire, rest. Open once, serve from RAM.",
+  "scripts": {
+    "test": "node --test test/"
+  },
   "exports": {
     ".": "./src/phi_rest.mjs",
     "./vite": "./src/vite-plugin.mjs",

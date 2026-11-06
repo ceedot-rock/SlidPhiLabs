@@ -44,7 +44,7 @@ import {
 } from "./index.mjs";
 
 const SUITE_LINE =
-  "First 2 GB each month free · then 8¢/GB compress · 3.2¢/GB decompress · 9.2¢/GB roundtrip · $1 card minimum.";
+  "First 1 GB free, once per IP · then $0.25/GB of input · Pro: 100 GB included, then $0.20/GB · $1 card minimum.";
 
 const TOOLS = [
   {
@@ -64,7 +64,7 @@ const TOOLS = [
   {
     name: "spl_compress",
     description:
-      "Hosted lossless compression. Every dual-licensed pathway on the lab machine. Args: data_b64. Returns packed_b64. First 2 GB/month free, then 8¢/GB compress.",
+      "Hosted lossless compression. Every dual-licensed pathway on the lab machine. Args: data_b64. Returns packed_b64. First 1 GB free once per IP, then $0.25/GB.",
     inputSchema: {
       type: "object",
       properties: { data_b64: { type: "string", description: "Base64 of the file to shrink" } },
@@ -91,13 +91,13 @@ const TOOLS = [
     description:
       "SPL Pay Per Suite overview: " +
       SUITE_LINE +
-      " Stripe (humans) + x402 (agents). Seats: Chamber $9/$99 · PCC $9/$49/$490 · Rider $79/$790 · Lab Pass $668 · consulting $250.",
+      " Stripe (humans) + x402 (agents). Seats: Chamber $20/$200 · PCC Pro $25/$250 · Rider Solo $12 Team $49 Fleet $199 · Lab Pass $495 · consulting $350.",
     inputSchema: { type: "object", properties: {} },
   },
   {
     name: "spl_pps_x402_info",
     description:
-      "Agentic commerce discovery: standing product catalog + freemium suite jobs (free under 2 GB/month), headers, flow. Stripe remains for humans.",
+      "Agentic commerce discovery: standing product catalog + freemium suite jobs (free first 1 GB once per IP), headers, flow. Stripe remains for humans.",
     inputSchema: { type: "object", properties: {} },
   },
   {
@@ -116,7 +116,7 @@ const TOOLS = [
         sku: {
           type: "string",
           description:
-            "any catalog SKU: seats $37/mo and $369/yr, Lab Pass $890, exceptions and TNSSRC grant $369, Foundry+ $1490, consulting $250 (see spl_pps_x402_catalog)",
+            "any catalog SKU: PCC Pro $25/mo $250/yr, Rider Solo $12 Team $49 Fleet $199, Lab Pass $495, TNSSRC grant $369, unified grant $490, consulting $350 (see spl_pps_x402_catalog)",
         },
         email: { type: "string" },
         note: { type: "string" },
@@ -129,7 +129,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_requirements",
     description:
-      "Probe POST /api/x402-suite. Free under 2 GB/month (no pay). Over free → 402 accepts[] for usage (8¢/GB compress · 3.2¢/GB decompress · 9.2¢/GB roundtrip · $1 card minimum).",
+      "Probe POST /api/x402-suite. Free first 1 GB once per IP (no pay). Over free → 402 accepts[] for usage ($0.25/GB of input · $1 card minimum).",
     inputSchema: {
       type: "object",
       properties: {
@@ -138,7 +138,7 @@ const TOOLS = [
         op: { type: "string" },
         bytes: {
           type: "number",
-          description: "Payload bytes (≤2 GB unpaid cap; over cap requires payment)",
+          description: "Payload bytes (1 GB lifetime free per IP; over cap requires payment)",
         },
         email: { type: "string" },
         note: { type: "string" },
@@ -148,7 +148,7 @@ const TOOLS = [
   {
     name: "spl_pps_x402_submit",
     description:
-      "Submit freemium suite job via x402. Under 2 GB/month free (no paymentHeader). Over free: pass paymentHeader after paying, or devBypass for staging.",
+      "Submit freemium suite job via x402. First 1 GB free once per IP (no paymentHeader). Over free: pass paymentHeader after paying, or devBypass for staging.",
     inputSchema: {
       type: "object",
       properties: {
@@ -161,7 +161,7 @@ const TOOLS = [
         fileName: { type: "string" },
         paymentHeader: {
           type: "string",
-          description: "Base64 X-PAYMENT proof (only if over free 2 GB/month cap)",
+          description: "Base64 X-PAYMENT proof (only if over the free 1 GB lifetime cap)",
         },
         devBypass: { type: "boolean", description: "Staging only if server allows" },
       },
@@ -170,7 +170,7 @@ const TOOLS = [
   {
     name: "spl_pps_quote",
     description:
-      "Instant quote: free first 2 GB/month ($0), then 8¢/GB compress · 3.2¢/GB decompress · 9.2¢/GB roundtrip · $1 card minimum. Inputs: product, dataClass, op, bytes.",
+      "Instant quote: free first 1 GB once per IP ($0), then $0.25/GB of input · $1 card minimum. Inputs: product, dataClass, op, bytes.",
     inputSchema: {
       type: "object",
       properties: {
@@ -186,7 +186,7 @@ const TOOLS = [
         op: { type: "string", description: "compress | decompress | roundtrip" },
         bytes: {
           type: "number",
-          description: "Payload size in bytes (≤2 GB unpaid = $0)",
+          description: "Payload size in bytes (1 GB lifetime free per IP = $0)",
         },
         remote: { type: "boolean", description: "If true, use live site API" },
       },
@@ -195,7 +195,7 @@ const TOOLS = [
   {
     name: "spl_pps_checkout",
     description:
-      "Checkout for suite quote. Under 2 GB/month returns free_showcase (no Stripe). Over free returns Stripe Checkout URL.",
+      "Checkout for suite quote. First 1 GB once per IP returns free_showcase (no Stripe). Over free returns Stripe Checkout URL.",
     inputSchema: {
       type: "object",
       properties: {
@@ -210,7 +210,7 @@ const TOOLS = [
   {
     name: "spl_pps_submit_job",
     description:
-      "Submit a Pay Per Suite job (free under 2 GB/month after free_showcase, or after paid). Lab runs best tool and emails results. Requires email.",
+      "Submit a Pay Per Suite job (free for the first 1 GB once per IP after free_showcase, or after paid). Lab runs best tool and emails results. Requires email.",
     inputSchema: {
       type: "object",
       properties: {
@@ -294,19 +294,22 @@ async function callTool(name, args = {}) {
         site: SITE_PPS,
         pricing: { ...SUITE_PRICING, free_cap_bytes: FREE_BYTES, min_paid_cents: MIN_PAID_CENTS },
         standing_skus_usd: {
-          "chamber-month": 9,
-          "chamber-year": 99,
-          "gc-day": 9,
-          "gc-month": 49,
-          "gc-year": 490,
-          "rider-month": 79,
-          "rider-year": 790,
-          "rider-ops-month": 29,
-          "rider-ops-year": 290,
-          "lab-pass": 668,
+          "chamber-month": 20,
+          "chamber-year": 200,
+          "pcc-pro": 25,
+          "pcc-pro-year": 250,
+          "rider-solo": 12,
+          "rider-team": 49,
+          "rider-fleet": 199,
+          "rider-solo-year": 120,
+          "rider-team-year": 490,
+          "rider-fleet-year": 1990,
+          "rider-ops-month": 37,
+          "rider-ops-year": 369,
+          "lab-pass": 495,
           "trugame-month": 0, // parked — not sold
           "trugame-year": 0, // parked — not sold
-          consulting: 250,
+          consulting: 350,
           "oss-support": 199,
         },
         catalog: X402_PRODUCTS_URL,

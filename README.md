@@ -24,7 +24,7 @@ Door line: Smaller or same size. Every byte back. Receipt.
 
 | Product | What it is | Price |
 |---------|------------|-------|
-| **PCC** | Hosted lossless compression. Dual-licensed. Send a file, get a smaller file back, restore every byte. | $9/day · $39/mo (200 GB) · $390/yr, then 8¢/GB |
+| **PCC** | Hosted lossless compression. Dual-licensed. Send a file, get a smaller file back, restore every byte. | $0.25/GB · first 1 GB free once per IP · Pro $25/mo (100 GB, then $0.20/GB) |
 | **TRUSTREAM** | The same plan, for live logs. | Included with PCC |
 | **Chamber** | Two-key JSON seal. One share is useless. You store the blob. | $9/mo · $99/yr |
 | **Agent-Rider** | Signed identity so you know which agent acted. | Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631 |
@@ -33,7 +33,7 @@ Door line: Smaller or same size. Every byte back. Receipt.
 | **pulsar** | Free GPLv3 compressor you run on your own machine (binary + source). | Free · $390/yr to embed in a closed product |
 | **Lab Pass** | Chamber year + PCC Year. | $490/yr |
 
-First 2 GB each month are free with no plan. Compare: https://www.slidphilabs.com/compare
+First 1 GB free once per IP (lifetime, no reset) with no plan. Compare: https://www.slidphilabs.com/compare
 
 ## npm
 
@@ -53,10 +53,10 @@ See [STATUS.md](STATUS.md) · [CHANGELOG.md](CHANGELOG.md) · [SECURITY.md](SECU
 
 Two legal ways to use the npm clients. Pick one.
 
-1. **Free — AGPL-3.0-or-later.** Install and use. No key, no payment. Hosted compression: first 2 GB/month free, then 8¢/GB.
-2. **Paid grant — buy a PCC seat.** A live seat covers commercial use of the surface (LICENSE.COMMERCIAL): Day $9 → usage, Month $39 → 200 GB, Year $390. $39 is an access grant (license + API + TRUSTREAM), not a volume discount versus the 8¢ meter.
+1. **Free — AGPL-3.0-or-later.** Install and use. No key, no payment. Hosted compression: first 1 GB free once per IP, then $0.25/GB.
+2. **Paid grant — buy a PCC seat.** A live seat covers commercial use of the surface (LICENSE.COMMERCIAL): PCC Pro $25/mo (100 GB/mo included, then $0.20/GB) or PCC Pro $250/yr. Legacy gc-* seats are retired; the meter is $0.25/GB of input after the 1 GB lifetime allowance.
 
-Agents buy machine-to-machine with x402 (USDC on Solana or Base): `POST /api/x402-products {"sku":"gc-day"}` → HTTP 402 says where to pay → retry with `X-PAYMENT` → `claim_token` (`spl1.…`, 45 days). (`gc-day` is the legacy Stripe/x402 checkout token; the product is PCC.) The claim token **is** the API key: `compress(buf, { apiKey: claim })`. Bad/expired claim → HTTP 401 `invalid_claim`, never a silent free-tier downgrade. Live settle via XPay is in flight — do not invent a completed debit.
+Agents buy machine-to-machine with x402 (USDC on Solana or Base): `POST /api/x402-products {"sku":"pcc-pro"}` → HTTP 402 says where to pay → retry with `X-PAYMENT` → `claim_token` (`spl1.…`, 45 days). (legacy `gc-*` SKUs are retired and map to PCC Pro / the meter.) The claim token **is** the API key: `compress(buf, { apiKey: claim })`. Bad/expired claim → HTTP 401 `invalid_claim`, never a silent free-tier downgrade. Live settle via XPay is in flight — do not invent a completed debit.
 
 ## License
 

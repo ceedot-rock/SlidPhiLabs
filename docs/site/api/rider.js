@@ -13,9 +13,12 @@
  * actions, wrong methods, and lib failures never throw.
  * Offline-safe: file ledgers use an in-memory fs adapter by default;
  * LEDGER_PATH / STAKE_LEDGER_PATH env still resolve the path.
- * Rider stores (standing + sub) are file-backed by default
- * (RIDER_STORE_DIR or AUTH_DIR, else the OS tmpdir); set
- * RIDER_STORE=memory to opt back into process memory. A corrupt store
+ * Rider stores (standing + sub + rotation receipts) are file-backed by
+ * default (RIDER_STORE_DIR or AUTH_DIR, else the OS tmpdir); set
+ * RIDER_STORE=memory to opt back into process memory. Rotation secrets
+ * stay on the module default (auto-seed): only receipts need to survive
+ * restarts for verify-rotation, and an injected secrets registry would
+ * fail new riders closed instead of seeding. A corrupt store
  * file fails every rider action closed with ledger_corrupt — never a
  * silent memory fallback.
  * No key material in code (env only).
@@ -118,6 +121,7 @@ function getRiderStores() {
       ok: true,
       standing: { store: build("standing-riders.json") },
       subs: { store: build("sub-riders.json") },
+      rotation: { store: build("rotation-receipts.json") },
     };
   } catch (e) {
     riderStores = {
@@ -217,10 +221,11 @@ export default async function handler(req, res) {
   const RIDER_ACTIONS = new Set([
     "issue-standing", "verify-standing", "revoke-standing",
     "issue-sub", "revoke-sub", "verify-sub",
+    "rotate-key", "verify-rotation",
   ]);
   try {
-    // Standing/sub rider actions always run against the injected store
-    // adapter (file-backed default); nothing uses process-memory fallback.
+    // Standing/sub/rotation rider actions always run against the injected
+    // store adapter (file-backed default); nothing uses process-memory fallback.
     let stores = null;
     if (RIDER_ACTIONS.has(action)) {
       stores = getRiderStores();
@@ -234,9 +239,9 @@ export default async function handler(req, res) {
       case "revoke-standing":
         return out(res, revokeStandingRider(input, stores.standing));
       case "rotate-key":
-        return out(res, rotateRiderKey(input));
+        return out(res, rotateRiderKey(input, stores.rotation));
       case "verify-rotation":
-        return out(res, verifyRotation(input));
+        return out(res, verifyRotation(input, stores.rotation));
       case "issue-sub":
         return out(res, issueSubRider(input, stores.subs));
       case "revoke-sub":

@@ -5,15 +5,15 @@ import { computeQuote } from "../src/quote.mjs";
 
 const GiB = 1024 ** 3;
 
-/** Same cases as cuni/examples/laws/suite-meter.cuni — the user's bill. */
+/** Lifetime meter gold — the user's bill: 1 GB free once per IP, then 25¢/GB, $1 floor. */
 const CASES = [
   { bytes: 0, expect: 0 },
-  { bytes: 2 * GiB, expect: 0 },
-  { bytes: 3 * GiB, expect: 100 },
-  { bytes: 20 * GiB, expect: 144 },
+  { bytes: 1 * GiB, expect: 0 },
+  { bytes: 2 * GiB, expect: 100 },
+  { bytes: 20 * GiB, expect: 475 },
 ];
 
-test("JS quote matches CuNi suite-meter gold", () => {
+test("JS quote matches lifetime meter gold", () => {
   const got = CASES.map((c) => computeQuote({ bytes: c.bytes }).amount_cents);
   assert.deepEqual(got, CASES.map((c) => c.expect));
 });
