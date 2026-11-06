@@ -1,0 +1,27 @@
+{
+  "standard": "llm/STANDARD.md",
+  "updated": "2026-11-06",
+  "products": [
+    { "product": "pcc", "pack": "llm/packs/pcc.md", "actions": ["compress", "decompress", "zip", "unzip", "quote"], "via": "endpoint", "auth": "x402 per-call for agents; Stripe monthly for humans", "sku": "pcc-meter", "status": "live" },
+    { "product": "chamber", "pack": "llm/packs/chamber.md", "actions": ["seal", "open"], "via": "sdk", "auth": "chamber keys", "sku": "chamber-year", "status": "beta" },
+    { "product": "rider", "pack": "llm/packs/rider.md", "actions": ["hire", "call"], "via": "sdk", "auth": "rider token + x402", "sku": null, "status": "beta" },
+    { "product": "rider_ops", "pack": "llm/packs/rider_ops.md", "actions": ["operate"], "via": "sdk", "auth": "rider token", "sku": null, "status": "beta" },
+    { "product": "warrant", "pack": "llm/packs/warrant.md", "actions": ["issue", "verify"], "via": "sdk", "auth": "warrant key", "sku": "warrant-addon", "status": "beta" },
+    { "product": "cuni_exception", "pack": "llm/packs/cuni_exception.md", "actions": ["request"], "via": "site", "auth": "human review", "sku": null, "status": "beta" },
+    { "product": "pulsar_exception", "pack": "llm/packs/pulsar_exception.md", "actions": ["request"], "via": "site", "auth": "human review", "sku": null, "status": "beta" },
+    { "product": "tnssrc", "pack": "llm/packs/tnssrc.md", "actions": ["run"], "via": "sdk", "auth": "license key", "sku": null, "status": "beta" },
+    { "product": "lab_pass", "pack": "llm/packs/lab_pass.md", "actions": ["activate"], "via": "site", "auth": "Stripe purchase", "sku": null, "status": "beta" },
+    { "product": "consulting", "pack": "llm/packs/consulting.md", "actions": ["book"], "via": "site", "auth": "scoped SOW", "sku": null, "status": "beta" },
+    { "product": "quikgater", "pack": "llm/packs/quikgater.md", "actions": ["gate"], "via": "sdk", "auth": "license key", "sku": null, "status": "beta" },
+    { "product": "trustream", "pack": "llm/packs/trustream.md", "actions": ["stream"], "via": "endpoint", "auth": "token", "sku": null, "status": "beta" },
+    { "product": "cuni", "pack": "llm/packs/cuni.md", "actions": ["query"], "via": "sdk", "auth": "license key", "sku": null, "status": "beta" },
+    { "product": "psi_spend", "pack": "llm/packs/psi_spend.md", "actions": ["meter"], "via": "sdk", "auth": "org key", "sku": null, "status": "beta" },
+    { "product": "persist", "pack": "llm/packs/persist.md", "actions": ["persist", "restore"], "via": "sdk", "auth": "depot pointer", "sku": null, "status": "beta" },
+    { "product": "unified_grant", "pack": "llm/packs/unified_grant.md", "actions": ["request"], "via": "site", "auth": "human review", "sku": null, "status": "beta" },
+    { "product": "gitdepot", "pack": "llm/packs/gitdepot.md", "actions": ["store", "fetch"], "via": "endpoint", "auth": "depot token", "sku": null, "status": "beta" },
+    { "product": "acp", "pack": "llm/packs/acp.md", "actions": ["card", "catalog", "call"], "via": "cli", "auth": "x402 per-call for agents", "sku": null, "status": "live" },
+    { "product": "teachaid", "pack": "llm/packs/teachaid.md", "actions": ["teach"], "via": "sdk", "auth": "license key", "sku": null, "status": "beta" },
+    { "product": "agentic_chat", "pack": "llm/packs/agentic_chat.md", "actions": ["create_room", "validate", "post", "read", "share_file"], "via": "endpoint", "auth": "chamber token hashes", "sku": null, "status": "beta" },
+    { "product": "tru8", "pack": "llm/packs/tru8.md", "actions": ["compress", "decompress", "zip", "unzip"], "via": "cli", "auth": "free local zeros; claim token for hosted", "sku": "gc-day", "status": "live" }
+  ]
+}
