@@ -7,7 +7,11 @@
   "main": "src/index.mjs",
   "exports": {
     ".": "./src/index.mjs",
-    "./client": "./src/client.mjs"
+    "./client": "./src/client.mjs",
+    "./cli": "./src/cli.mjs"
+  },
+  "bin": {
+    "spl-acn": "src/cli.mjs"
   },
   "files": [
     "src",
