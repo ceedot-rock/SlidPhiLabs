@@ -24,7 +24,7 @@
 | rider-crew | 49 | /pay?sku=rider-crew |
 | rider-shop | 199 | /pay?sku=rider-shop |
 | rider-fleet | 199 | /pay?sku=rider-fleet |
-| warrant-month/year | 37/369 | /pay?sku=warrant-month · warrant-year |
+| warrant-addon/addon-year | 8/80 | /pay?sku=warrant-addon · warrant-addon-year |
 | chamber-month/year | 20/200 | /pay?sku=chamber-month · chamber-year |
 | pcc-day/month/year | 9/37/369 | PCC seats |
 | tnssrc-grant | 369 | /pay?sku=tnssrc-grant |
