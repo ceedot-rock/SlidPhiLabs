@@ -629,3 +629,69 @@ test("token-budget run fails closed over cap", async () => {
   assert.equal(r.stage, "token-budget");
   assert.equal(r.reason, "budget_exceeded");
 });
+
+test("depot-store plans and publishes through the adapter", async () => {
+  const seen = [];
+  const fetchFn = async (url, opts = {}) => {
+    seen.push({ url, method: (opts && opts.method) || "GET" });
+    return { ok: true, status: 200, json: async () => ({ published: "run-1", sha256: "ab".repeat(32), size: 4, team: "lab" }) };
+  };
+  const adapters = { depotStore: { endpoint: "https://depot.example", key: "k", fetchFn } };
+  const spec = { demo: true, action: "invoke", host: "h.test", depotStore: { op: "publish", name: "run-1", bytes: "abcd" } };
+  const p = planAgenticRun(spec, adapters);
+  assert.equal(p.ok, true);
+  assert.ok(p.plan.stages.includes("depot-store"));
+  assert.equal(p.plan.depotStore.op, "publish");
+  const r = await runAgenticRun(spec, adapters);
+  assert.equal(r.ok, true);
+  const hit = r.receipts.find((s) => s.stage === "depot-store");
+  assert.equal(hit.op, "publish");
+  assert.equal(hit.name, "run-1");
+  const denied = await runAgenticRun(spec, {});
+  assert.equal(denied.ok, false);
+  assert.equal(denied.stage, "depot-store");
+  assert.equal(denied.reason, "adapter_required");
+});
+
+test("chamber-seal plans and seals through the adapter key", async () => {
+  const keyHex = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
+  const adapters = { chamberSeal: { keyHex } };
+  const spec = { demo: true, action: "invoke", host: "h.test", chamberSeal: { seal: { sku: "chamber-year", usd: 200 } } };
+  const p = planAgenticRun(spec, adapters);
+  assert.equal(p.ok, true);
+  assert.ok(p.plan.stages.includes("chamber-seal"));
+  assert.equal(p.plan.chamberSeal.mode, "seal");
+  const r = await runAgenticRun(spec, adapters);
+  assert.equal(r.ok, true);
+  const hit = r.receipts.find((s) => s.stage === "chamber-seal");
+  assert.equal(hit.mode, "sealed");
+  assert.match(hit.sha256, /^[0-9a-f]{64}$/);
+  const denied = await runAgenticRun(spec, {});
+  assert.equal(denied.ok, false);
+  assert.equal(denied.stage, "chamber-seal");
+  assert.equal(denied.reason, "adapter_required");
+});
+
+test("membership resolves the founding tier and refuses the spent grant", async () => {
+  const { issueFoundingGrant } = await import("./founding-grants.mjs");
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "acn-member-"));
+  const issued = issueFoundingGrant({ seq: 1, rider_id: "rider-1" }, { dir });
+  assert.equal(issued.ok, true);
+  const adapters = { membership: { dir } };
+  const p = planAgenticRun({ demo: true, action: "invoke", host: "h.test", membership: { grant_seq: 1 } }, adapters);
+  assert.equal(p.ok, true);
+  assert.ok(p.plan.stages.includes("membership"));
+  assert.equal(p.plan.membership.tier, "founding");
+  const r = await runAgenticRun({ demo: true, action: "invoke", host: "h.test", membership: { grant_seq: 1, spent_cents: 100 } }, adapters);
+  assert.equal(r.ok, true);
+  const hit = r.receipts.find((s) => s.stage === "membership");
+  assert.equal(hit.tier, "founding");
+  assert.equal(hit.remaining_cents, 2400);
+  const over = await runAgenticRun({ demo: true, action: "invoke", host: "h.test", membership: { grant_seq: 1, spent_cents: 99999 } }, adapters);
+  assert.equal(over.ok, false);
+  assert.equal(over.stage, "membership");
+  assert.equal(over.reason, "cap_exceeded");
+  const free = await runAgenticRun({ demo: true, action: "invoke", host: "h.test", membership: {} }, adapters);
+  assert.equal(free.ok, true);
+  assert.equal(free.receipts.find((s) => s.stage === "membership").tier, "free");
+});

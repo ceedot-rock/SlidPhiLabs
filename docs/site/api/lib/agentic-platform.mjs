@@ -38,6 +38,9 @@ import { reviewChanges, reviewChangesAsync, REVIEW_VERSION } from "./conductor-r
 import { MCP_CATALOG_VERSION } from "./mcp-catalog.mjs";
 import { createSkuCatalog, quoteSku as defaultQuoteSku, STOREFRONT_SKILLS_VERSION } from "./storefront-skills.mjs";
 import { createTokenBudget, memoizedCompress, TOKEN_BUDGET_VERSION } from "./token-budget.mjs";
+import { createDepotStore, DEPOT_STORE_VERSION } from "./depot-store.mjs";
+import { sealEnvelope, openEnvelope, CHAMBER_SEAL_VERSION } from "./chamber-seal.mjs";
+import { foundingStatus, checkGrantSpend, FOUNDING_GRANTS_VERSION } from "./founding-grants.mjs";
 
 export const AGENTIC_VERSION = "0.1.0";
 export const PLATFORM_NAME = "ACN";
@@ -83,6 +86,9 @@ export const AGENTILL_MAP = Object.freeze({
   "mcp-catalog": { agentill: null, note: "version-pinned MCP discovery stays ACN-side" },
   "storefront-skills": { agentill: null, note: "frozen SKU quotes stay ACN-side" },
   "token-budget": { agentill: null, note: "per-agent token budgets + memo receipts stay ACN-side (suite meter)" },
+  "depot-store": { agentill: null, note: "live gitdepot blob publish/retrieve stays ACN-side (adapter, no network by default)" },
+  "chamber-seal": { agentill: null, note: "two-key JSON seals for run artifacts stay ACN-side" },
+  membership: { agentill: null, note: "founding-grant tier check stays ACN-side (suite ledger)" },
 });
 
 /** Seven protection tolls, per the Tollkeeper booklet. */
@@ -430,6 +436,9 @@ function planStages(spec = {}) {
   if (spec.mcpTool) stages.push("mcp-catalog");
   if (spec.sku) stages.push("storefront-skills");
   if (spec.tokenBudget) stages.push("token-budget");
+  if (spec.depotStore) stages.push("depot-store");
+  if (spec.chamberSeal) stages.push("chamber-seal");
+  if (spec.membership) stages.push("membership");
   stages.push("psi", "conductor");
   return stages;
 }
@@ -577,6 +586,27 @@ function planAcnPreviews(spec = {}, adapters = {}) {
     out.tokenBudget = sel
       ? { tool: "token-budget", toolVersion: TOKEN_BUDGET_VERSION, key: sel.key, cap_tokens: sel.cap_tokens }
       : { tool: "token-budget", toolVersion: TOKEN_BUDGET_VERSION, refused: true, reason: "bad_budget" };
+  }
+  if (spec.depotStore) {
+    const ds = objLike(spec.depotStore) || {};
+    const op = typeof ds.op === "string" ? ds.op : "";
+    out.depotStore = ["publish", "retrieve", "list"].includes(op)
+      ? { tool: "depot-store", toolVersion: DEPOT_STORE_VERSION, op }
+      : { tool: "depot-store", toolVersion: DEPOT_STORE_VERSION, refused: true, reason: "bad_op" };
+  }
+  if (spec.chamberSeal) {
+    const cs = objLike(spec.chamberSeal) || {};
+    const mode = "seal" in cs ? "seal" : ("open" in cs ? "open" : null);
+    out.chamberSeal = mode
+      ? { tool: "chamber-seal", toolVersion: CHAMBER_SEAL_VERSION, mode }
+      : { tool: "chamber-seal", toolVersion: CHAMBER_SEAL_VERSION, refused: true, reason: "bad_spec" };
+  }
+  if (spec.membership) {
+    const ms = objLike(spec.membership) || {};
+    const seq = Number(ms.grant_seq);
+    out.membership = Number.isSafeInteger(seq) && seq >= 1
+      ? { tool: "founding-grants", toolVersion: FOUNDING_GRANTS_VERSION, tier: "founding", grant_seq: seq }
+      : { tool: "founding-grants", toolVersion: FOUNDING_GRANTS_VERSION, tier: "free" };
   }
   if (spec.tool) {
     const t = objLike(spec.tool);
@@ -1489,6 +1519,104 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     });
   }
 
+  if (spec.depotStore) {
+    const ds = objLike(spec.depotStore) || {};
+    const op = typeof ds.op === "string" ? ds.op : "";
+    const storeOpts = objLike(adapters.depotStore) || {};
+    if (!storeOpts.endpoint || !storeOpts.key) {
+      return { ...fail("depot-store", "adapter_required", { need: "depotStore.endpoint+key" }), receipts, memory };
+    }
+    const store = createDepotStore({
+      endpoint: storeOpts.endpoint,
+      key: storeOpts.key,
+      ...(typeof storeOpts.fetchFn === "function" ? { fetchFn: storeOpts.fetchFn } : {}),
+    });
+    if (op === "publish") {
+      const r = await store.publish(ds);
+      if (!r || r.ok !== true) return { ...fail("depot-store", (r && r.reason) || "publish_failed"), receipts, memory };
+      receipts.push({
+        stage: "depot-store", ok: true, tool: "depot-store", toolVersion: DEPOT_STORE_VERSION,
+        op: "publish", name: r.name, sha256: r.sha256, size: r.size,
+      });
+    } else if (op === "retrieve") {
+      const r = await store.retrieve(ds.sha256);
+      if (!r || r.ok !== true) return { ...fail("depot-store", (r && r.reason) || "retrieve_failed"), receipts, memory };
+      receipts.push({
+        stage: "depot-store", ok: true, tool: "depot-store", toolVersion: DEPOT_STORE_VERSION,
+        op: "retrieve", sha256: r.sha256, size: r.size,
+      });
+    } else if (op === "list") {
+      const r = await store.list();
+      if (!r || r.ok !== true) return { ...fail("depot-store", (r && r.reason) || "list_failed"), receipts, memory };
+      receipts.push({
+        stage: "depot-store", ok: true, tool: "depot-store", toolVersion: DEPOT_STORE_VERSION,
+        op: "list", count: r.depots.length,
+      });
+    } else {
+      return { ...fail("depot-store", "bad_op"), receipts, memory };
+    }
+  }
+
+  if (spec.chamberSeal) {
+    const cs = objLike(spec.chamberSeal) || {};
+    const csOpts = objLike(adapters.chamberSeal) || {};
+    const keyHex = typeof csOpts.keyHex === "string" ? csOpts.keyHex : null;
+    if (!keyHex) {
+      return { ...fail("chamber-seal", "adapter_required", { need: "chamberSeal.keyHex" }), receipts, memory };
+    }
+    if ("seal" in cs) {
+      const env = sealEnvelope(cs.seal, { keyHex });
+      if (!env) return { ...fail("chamber-seal", "bad_payload"), receipts, memory };
+      receipts.push({
+        stage: "chamber-seal", ok: true, tool: "chamber-seal", toolVersion: CHAMBER_SEAL_VERSION,
+        mode: "sealed", sha256: env.sha256,
+      });
+    } else if ("open" in cs) {
+      const opened = openEnvelope(cs.open, { keyHex });
+      if (!opened || opened.ok !== true) {
+        return { ...fail("chamber-seal", (opened && opened.reason) || "open_failed"), receipts, memory };
+      }
+      receipts.push({
+        stage: "chamber-seal", ok: true, tool: "chamber-seal", toolVersion: CHAMBER_SEAL_VERSION,
+        mode: "opened",
+      });
+    } else {
+      return { ...fail("chamber-seal", "bad_spec"), receipts, memory };
+    }
+  }
+
+  if (spec.membership) {
+    const ms = objLike(spec.membership) || {};
+    const grantOpts = objLike(adapters.membership) || {};
+    const grantAdapters = {
+      ...(grantOpts.dir ? { dir: grantOpts.dir } : {}),
+      ...(typeof grantOpts.nowMs === "function" ? { nowMs: grantOpts.nowMs } : {}),
+    };
+    if (ms.grant_seq == null) {
+      receipts.push({
+        stage: "membership", ok: true, tool: "founding-grants", toolVersion: FOUNDING_GRANTS_VERSION,
+        tier: "free",
+      });
+    } else {
+      const st = foundingStatus({ seq: Number(ms.grant_seq) }, grantAdapters);
+      if (!st.ok) return { ...fail("membership", st.error || "grant_check_failed"), receipts, memory };
+      if (!st.active) return { ...fail("membership", "grant_expired"), receipts, memory };
+      let remaining = st.caps.monthly_cap_cents;
+      if (ms.spent_cents != null) {
+        const chk = checkGrantSpend(
+          { seq: Number(ms.grant_seq), spent_cents: ms.spent_cents }, grantAdapters,
+        );
+        if (!chk.ok) return { ...fail("membership", chk.error || "spend_check_failed"), receipts, memory };
+        remaining = chk.remaining_cents;
+      }
+      receipts.push({
+        stage: "membership", ok: true, tool: "founding-grants", toolVersion: FOUNDING_GRANTS_VERSION,
+        tier: "founding", grant_seq: st.seq, rider_id: st.rider_id,
+        remaining_ms: st.remaining_ms, remaining_cents: remaining,
+      });
+    }
+  }
+
   if (spec.conductorTask) {
     const prompt = conductorPromptLike(spec.conductorTask);
     if (!prompt) return { ...fail("conductor-tasks", "bad_task"), receipts, memory };
@@ -1607,7 +1735,7 @@ export function verifyConductorReceipt(runSpec, receipt) {
 export const AGENTIC_TOOLS = Object.freeze([
   {
     name: "spl_agentic_plan",
-    description: "Plan one ACN (Agent Commerce Network) run across Rider, Warrant, Tollkeeper, Quikgater, PCC, AWLpay, PSI, Conductor, plus optional stages (warrant-template, standing-rider, reputation, tool-registry, agent-directory, agent-messaging, private-bench, solana, payout, dispute, audit-export, ops-feed, async-runs, sandbox, depot-receipts, depot-billing, conductor-tasks, conductor-review, mcp-catalog, storefront-skills, token-budget) when the matching spec field is present. Pure: no disk, no network.",
+    description: "Plan one ACN (Agent Commerce Network) run across Rider, Warrant, Tollkeeper, Quikgater, PCC, AWLpay, PSI, Conductor, plus optional stages (warrant-template, standing-rider, reputation, tool-registry, agent-directory, agent-messaging, private-bench, solana, payout, dispute, audit-export, ops-feed, async-runs, sandbox, depot-receipts, depot-billing, conductor-tasks, conductor-review, mcp-catalog, storefront-skills, token-budget, depot-store, chamber-seal, membership) when the matching spec field is present. Pure: no disk, no network.",
     inputSchema: {
       type: "object",
       properties: {
@@ -1642,6 +1770,9 @@ export const AGENTIC_TOOLS = Object.freeze([
         mcpTool: { type: "object" },
         sku: { type: ["string", "object"] },
         tokenBudget: { type: "object" },
+        depotStore: { type: "object" },
+        chamberSeal: { type: "object" },
+        membership: { type: "object" },
       },
     },
   },
@@ -1709,6 +1840,9 @@ export const AGENTIC_TOOLS = Object.freeze([
         mcpTool: { type: "object" },
         sku: { type: ["string", "object"] },
         tokenBudget: { type: "object" },
+        depotStore: { type: "object" },
+        chamberSeal: { type: "object" },
+        membership: { type: "object" },
         confirm: { type: "boolean" },
       },
     },

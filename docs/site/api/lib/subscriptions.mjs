@@ -19,7 +19,23 @@
  */
 import { existsSync, mkdirSync, writeFileSync, renameSync } from "node:fs";
 import { join } from "node:path";
-import { tmpdir } from "node:os";
+import { homedir, tmpdir } from "node:os";
+
+/**
+ * User-local persistent home for the subs ledger. Subscriptions must
+ * survive reboots and logins on boxes with no AUTH_DIR, so the last
+ * fallback is ~/.acn — never the temp dir (entries there evaporate and
+ * paid seats would be forgotten).
+ */
+function userLocalSubsDir() {
+  try {
+    const home = homedir();
+    if (home) return join(home, ".acn", "subs");
+  } catch {
+    // fall through to tmp
+  }
+  return join(tmpdir(), "spl-subs");
+}
 import { randomBytes } from "node:crypto";
 import { loadJson, CorruptStoreError, isCorruptStoreError } from "./failclosed-store.mjs";
 
@@ -41,7 +57,7 @@ function subsDir(adapterDir) {
   const base =
     process.env.AUTH_DIR ||
     (existsSync("/data") ? "/data" : null) ||
-    join(tmpdir(), "spl-subs");
+    userLocalSubsDir();
   const dir = join(String(base), "subs");
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true, mode: 0o700 });
   return dir;
