@@ -19,19 +19,19 @@
 
 ### SKU cheat sheet
 | sku | usd | human |
-| rider-solo | 3.31 | /pay?sku=rider-solo |
+| rider-solo | 12 | /pay?sku=rider-solo |
 | rider-bundle | 19.31 | /pay?sku=rider-bundle |
 | rider-crew | 49 | /pay?sku=rider-crew |
 | rider-shop | 199 | /pay?sku=rider-shop |
-| rider-fleet | 631 | /pay?sku=rider-fleet |
+| rider-fleet | 199 | /pay?sku=rider-fleet |
 | warrant-month/year | 37/369 | /pay?sku=warrant-month · warrant-year |
-| chamber-month/year | 37/200 | /pay?sku=chamber-month · chamber-year |
+| chamber-month/year | 20/200 | /pay?sku=chamber-month · chamber-year |
 | pcc-day/month/year | 9/37/369 | PCC seats |
 | tnssrc-grant | 369 | /pay?sku=tnssrc-grant |
 | tnssrc-bakeoff | 19.31 | /pay?sku=tnssrc-bakeoff |
-| pulsar-exception | 390 | /pay?sku=pulsar-exception |
-| cuni-exception | 390 | /pay?sku=cuni-exception |
-| lab-pass | 890 | Chamber year+PCC Year |
+| pulsar-exception | 490 | /pay?sku=pulsar-exception |
+| cuni-exception | 490 | /pay?sku=cuni-exception |
+| lab-pass | 495 | Chamber+Rider Solo+PSI Meter+Warrant |
 | foundry-plus | — | Lab Pass+TNSSRC grant+Rider Crew |
 x402 resource = same sku via POST /api/x402-products.
 
