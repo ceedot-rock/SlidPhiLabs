@@ -3,8 +3,10 @@
  *
  * Dispatches by `action` (query for GET, body or query for POST):
  *   GET  task-get | tasks-list | diff-stat
+ *        | pipeline-get | runs-list | run-get | checks
  *   POST task-intent | task-push | task-review | task-approve | task-reject
- *        | review
+ *        | review | pipeline-define | run-start | runner-register
+ *        | runner-heartbeat | job-claim | job-complete | run-rerun
  *
  * Vercel-style default export(req, res). JSON envelope
  * { ok:true, ... } / { ok:false, error }. Fail-closed throughout;
@@ -21,8 +23,21 @@ import {
   listTasks,
 } from "./lib/conductor-tasks.mjs";
 import { reviewChanges, diffStat, diffFiles } from "./lib/conductor-review.mjs";
+import {
+  definePipeline,
+  getPipeline,
+  startRun,
+  registerRunner,
+  heartbeat,
+  claimJob,
+  completeJob,
+  getRun,
+  listRuns,
+  statusChecks,
+  rerunFailed,
+} from "./lib/ci-pipelines.mjs";
 
-const READ = new Set(["task-get", "tasks-list", "diff-stat"]);
+const READ = new Set(["task-get", "tasks-list", "diff-stat", "pipeline-get", "runs-list", "run-get", "checks"]);
 const WRITE = new Set([
   "task-intent",
   "task-push",
@@ -30,6 +45,13 @@ const WRITE = new Set([
   "task-approve",
   "task-reject",
   "review",
+  "pipeline-define",
+  "run-start",
+  "runner-register",
+  "runner-heartbeat",
+  "job-claim",
+  "job-complete",
+  "run-rerun",
 ]);
 
 function cors(res) {
@@ -133,6 +155,28 @@ export default async function handler(req, res) {
         const diff = typeof input.diff === "string" ? input.diff : "";
         return send(res, 200, { ok: true, ...diffStat(diff), files: diffFiles(diff) });
       }
+      case "pipeline-define":
+        return out(res, definePipeline(input.pipeline || input));
+      case "pipeline-get":
+        return out(res, getPipeline(input.pipeline ?? input.name));
+      case "run-start":
+        return out(res, startRun(input.run || input));
+      case "runner-register":
+        return out(res, registerRunner(input.runner || input));
+      case "runner-heartbeat":
+        return out(res, heartbeat(input.runner_id ?? input.runner ?? input));
+      case "job-claim":
+        return out(res, claimJob(input.runner_id ?? input.runner ?? input));
+      case "job-complete":
+        return out(res, completeJob(input.job || input));
+      case "run-get":
+        return out(res, getRun(input.run_id ?? input.run ?? input));
+      case "runs-list":
+        return send(res, 200, { ok: true, runs: listRuns() });
+      case "checks":
+        return out(res, statusChecks(input));
+      case "run-rerun":
+        return out(res, rerunFailed(input.run_id ?? input.run ?? input));
       default:
         return fail(res, 400, "unknown_action");
     }

@@ -2,8 +2,9 @@
  * GET|POST /api/depot — gitdepot receipt route.
  *
  * Dispatches by `action` (query for GET, body or query for POST):
- *   GET  verify | price
- *   POST issue | verify
+ *   GET  verify | price | repo-get | repos-list | pr-get | prs-list | blame
+ *   POST issue | verify | repo-create | branch-create | commit-record
+ *        | pr-open | pr-review | pr-merge
  *
  * Vercel-style default export(req, res). JSON envelope
  * { ok:true, ... } / { ok:false, error|reason }. Fail-closed: issue
@@ -15,9 +16,31 @@ import {
   verifyDepotReceipt,
   defaultDepotPrice,
 } from "./lib/depot-receipts.mjs";
+import {
+  createRepo,
+  getRepo,
+  listRepos,
+  createBranch,
+  recordCommit,
+  openPr,
+  getPr,
+  listPrs,
+  reviewPr,
+  mergePr,
+  blame,
+} from "./lib/gitforge.mjs";
 
-const READ = new Set(["verify", "price"]);
-const WRITE = new Set(["issue", "verify"]);
+const READ = new Set(["verify", "price", "repo-get", "repos-list", "pr-get", "prs-list", "blame"]);
+const WRITE = new Set([
+  "issue",
+  "verify",
+  "repo-create",
+  "branch-create",
+  "commit-record",
+  "pr-open",
+  "pr-review",
+  "pr-merge",
+]);
 
 function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -34,6 +57,31 @@ function send(res, status, body) {
 
 function fail(res, status, error, extra) {
   send(res, status, { ok: false, error, ...(extra || {}) });
+}
+
+function statusFor(r) {
+  const code = String((r && (r.error || r.reason)) || "");
+  if (code === "not_found" || code.endsWith("_not_found") || code.startsWith("unknown_")) return 404;
+  return 400;
+}
+
+function out(res, r) {
+  if (r && r.ok) {
+    const { ok, ...rest } = r;
+    return send(res, 200, { ok: true, ...rest });
+  }
+  const rest = {};
+  if (r) {
+    for (const [k, v] of Object.entries(r)) {
+      if (k !== "ok" && k !== "error" && k !== "reason") rest[k] = v;
+    }
+  }
+  return fail(
+    res,
+    statusFor(r || {}),
+    (r && (r.error || r.reason)) || "request_failed",
+    rest,
+  );
 }
 
 function readInput(req) {
@@ -92,6 +140,30 @@ export default async function handler(req, res) {
         if (!Number.isSafeInteger(bytes) || bytes < 0) return fail(res, 400, "bad_bytes");
         return send(res, 200, { ok: true, bytes, quoted_cents: defaultDepotPrice(bytes) });
       }
+      case "repo-create":
+        return out(res, createRepo(input.repo && typeof input.repo === "object" ? input.repo : input));
+      case "branch-create":
+        return out(res, createBranch(input.branch && typeof input.branch === "object" ? input.branch : input));
+      case "commit-record":
+        return out(res, recordCommit(input.commit || input));
+      case "pr-open":
+        return out(res, openPr(input.pr || input));
+      case "pr-review":
+        return out(res, reviewPr(input));
+      case "pr-merge":
+        return out(res, mergePr(input));
+      case "repo-get":
+        return out(res, getRepo(input.repo ?? input.full ?? input.ref ?? input.name));
+      case "repos-list":
+        return send(res, 200, { ok: true, repos: listRepos() });
+      case "pr-get":
+        return out(res, getPr(input));
+      case "prs-list": {
+        if (input.repo) return out(res, listPrs(input.repo));
+        return send(res, 200, { ok: true, prs: listPrs() });
+      }
+      case "blame":
+        return out(res, blame(input.blame || input));
       default:
         return fail(res, 400, "unknown_action");
     }

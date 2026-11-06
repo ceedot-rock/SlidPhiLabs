@@ -37,6 +37,7 @@ import { createTaskManager, TASK_VERSION } from "./conductor-tasks.mjs";
 import { reviewChanges, reviewChangesAsync, REVIEW_VERSION } from "./conductor-review.mjs";
 import { MCP_CATALOG_VERSION } from "./mcp-catalog.mjs";
 import { createSkuCatalog, quoteSku as defaultQuoteSku, STOREFRONT_SKILLS_VERSION } from "./storefront-skills.mjs";
+import { createTokenBudget, memoizedCompress, TOKEN_BUDGET_VERSION } from "./token-budget.mjs";
 
 export const AGENTIC_VERSION = "0.1.0";
 export const PLATFORM_NAME = "ACN";
@@ -81,6 +82,7 @@ export const AGENTILL_MAP = Object.freeze({
   "conductor-review": { agentill: "validator/preflight", note: "diff review gate stays ACN-side; verdict mirrors preflight" },
   "mcp-catalog": { agentill: null, note: "version-pinned MCP discovery stays ACN-side" },
   "storefront-skills": { agentill: null, note: "frozen SKU quotes stay ACN-side" },
+  "token-budget": { agentill: null, note: "per-agent token budgets + memo receipts stay ACN-side (suite meter)" },
 });
 
 /** Seven protection tolls, per the Tollkeeper booklet. */
@@ -427,6 +429,7 @@ function planStages(spec = {}) {
   if (spec.conductorReview) stages.push("conductor-review");
   if (spec.mcpTool) stages.push("mcp-catalog");
   if (spec.sku) stages.push("storefront-skills");
+  if (spec.tokenBudget) stages.push("token-budget");
   stages.push("psi", "conductor");
   return stages;
 }
@@ -492,6 +495,28 @@ function skuSel(v) {
   return null;
 }
 
+/** tokenBudget accepts a bare cap number or { cap_tokens, key, charge_tokens, text?, query?, digest? }. */
+function tokenBudgetSel(v) {
+  if (typeof v === "number" && Number.isFinite(v) && v >= 0) {
+    return { cap_tokens: v, key: "anon", charge_tokens: 0, query: "" };
+  }
+  const o = objLike(v);
+  if (!o) return null;
+  const cap = o.cap_tokens == null ? 0 : Number(o.cap_tokens);
+  if (!Number.isFinite(cap) || cap < 0) return null;
+  const charge = o.charge_tokens == null ? 0 : Number(o.charge_tokens);
+  if (!Number.isFinite(charge) || charge < 0) return null;
+  const out = {
+    cap_tokens: cap,
+    key: typeof o.key === "string" && o.key.trim() ? o.key.trim() : "anon",
+    charge_tokens: Math.floor(charge),
+    query: typeof o.query === "string" ? o.query : "",
+  };
+  if (typeof o.text === "string") out.text = o.text;
+  if (typeof o.digest === "string" && o.digest) out.digest = o.digest;
+  return out;
+}
+
 /** Pure context preview for plan output. No disk, no network: forwards the
  *  reranker tier/topK but never a model adapter (plan stays offline). */
 function planContextPreview(spec = {}) {
@@ -546,6 +571,12 @@ function planAcnPreviews(spec = {}, adapters = {}) {
     out.reputation = id
       ? { tool: "reputation-ledger", toolVersion: REPUTATION_VERSION, rider_id: id }
       : { tool: "reputation-ledger", toolVersion: REPUTATION_VERSION, refused: true, reason: "bad_reputation" };
+  }
+  if (spec.tokenBudget) {
+    const sel = tokenBudgetSel(spec.tokenBudget);
+    out.tokenBudget = sel
+      ? { tool: "token-budget", toolVersion: TOKEN_BUDGET_VERSION, key: sel.key, cap_tokens: sel.cap_tokens }
+      : { tool: "token-budget", toolVersion: TOKEN_BUDGET_VERSION, refused: true, reason: "bad_budget" };
   }
   if (spec.tool) {
     const t = objLike(spec.tool);
@@ -1193,6 +1224,44 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     }
   }
 
+  if (spec.tokenBudget) {
+    const sel = tokenBudgetSel(spec.tokenBudget);
+    if (!sel) return { ...fail("token-budget", "bad_budget"), receipts, memory };
+    const tbAdapter = objLike(adapters.tokenBudget);
+    const tb = tbAdapter && typeof tbAdapter.charge === "function" && typeof tbAdapter.status === "function"
+      ? tbAdapter
+      : createTokenBudget({
+        capTokens: sel.cap_tokens,
+        ...(objLike(adapters.tokenBudgetStore) ? { store: adapters.tokenBudgetStore } : {}),
+      });
+    let memoHit = false;
+    let digest = sel.digest || null;
+    let tokens = sel.charge_tokens;
+    if (typeof sel.text === "string") {
+      const m = memoizedCompress(
+        { text: sel.text, query: sel.query, ...(sel.digest ? { digest: sel.digest } : {}) },
+        {
+          ...(adapters.tokenMemo ? { memo: adapters.tokenMemo } : {}),
+          ...(typeof adapters.tokenCompressFn === "function" ? { compressFn: adapters.tokenCompressFn } : {}),
+        },
+      );
+      if (!m.ok) return { ...fail("token-budget", m.error, { detail: m.detail }), receipts, memory };
+      memoHit = m.hit;
+      digest = m.digest;
+      tokens = m.recompute_tokens;
+    }
+    const ch = tb.charge(sel.key, tokens);
+    if (!ch.ok) {
+      return { ...fail("token-budget", "budget_exceeded", { key: ch.key, used_tokens: ch.used_tokens, cap_tokens: ch.cap_tokens, wanted_tokens: ch.wanted_tokens }), receipts, memory };
+    }
+    receipts.push({
+      stage: "token-budget", ok: true, tool: "token-budget", toolVersion: TOKEN_BUDGET_VERSION,
+      key: ch.key, charged_tokens: tokens, used_tokens: ch.used_tokens, cap_tokens: ch.cap_tokens,
+      fraction: ch.fraction, ...(ch.warn ? { warn: true } : {}), memo_hit: memoHit,
+      ...(digest ? { digest } : {}),
+    });
+  }
+
   if (spec.benchhaus) {
     const runFn = typeof benchhausFn === "function" ? benchhausFn : (s) => runBenchhaus(s);
     const bhSpec = spec.benchhaus && typeof spec.benchhaus === "object" ? spec.benchhaus : {};
@@ -1509,7 +1578,13 @@ export async function runAgenticRun(spec = {}, adapters = {}) {
     });
     receipts.push({ stage: "warrant-receipt", ok: r.ok === true, reason: r.ok ? undefined : r.reason || null });
   }
-  return { ok: true, platform: PLATFORM_NAME, receipts, memory };
+  const metered = receipts.filter((s) => s.stage === "token-budget" && s.ok);
+  const usage = {
+    stages_metered: metered.length,
+    charged_tokens_est: metered.reduce((n, s) => n + (Number(s.charged_tokens) || 0), 0),
+    memo_hits: metered.filter((s) => s.memo_hit === true).length,
+  };
+  return { ok: true, platform: PLATFORM_NAME, receipts, memory, usage };
 }
 
 /** Recompute a conductor receipt over the run inputs. */
@@ -1532,7 +1607,7 @@ export function verifyConductorReceipt(runSpec, receipt) {
 export const AGENTIC_TOOLS = Object.freeze([
   {
     name: "spl_agentic_plan",
-    description: "Plan one ACN (Agent Commerce Network) run across Rider, Warrant, Tollkeeper, Quikgater, PCC, AWLpay, PSI, Conductor, plus optional stages (warrant-template, standing-rider, reputation, tool-registry, agent-directory, agent-messaging, private-bench, solana, payout, dispute, audit-export, ops-feed, async-runs, sandbox, depot-receipts, depot-billing, conductor-tasks, conductor-review, mcp-catalog, storefront-skills) when the matching spec field is present. Pure: no disk, no network.",
+    description: "Plan one ACN (Agent Commerce Network) run across Rider, Warrant, Tollkeeper, Quikgater, PCC, AWLpay, PSI, Conductor, plus optional stages (warrant-template, standing-rider, reputation, tool-registry, agent-directory, agent-messaging, private-bench, solana, payout, dispute, audit-export, ops-feed, async-runs, sandbox, depot-receipts, depot-billing, conductor-tasks, conductor-review, mcp-catalog, storefront-skills, token-budget) when the matching spec field is present. Pure: no disk, no network.",
     inputSchema: {
       type: "object",
       properties: {
@@ -1566,6 +1641,7 @@ export const AGENTIC_TOOLS = Object.freeze([
         conductorReview: { type: "object" },
         mcpTool: { type: "object" },
         sku: { type: ["string", "object"] },
+        tokenBudget: { type: "object" },
       },
     },
   },
@@ -1632,6 +1708,7 @@ export const AGENTIC_TOOLS = Object.freeze([
         conductorReview: { type: "object" },
         mcpTool: { type: "object" },
         sku: { type: ["string", "object"] },
+        tokenBudget: { type: "object" },
         confirm: { type: "boolean" },
       },
     },

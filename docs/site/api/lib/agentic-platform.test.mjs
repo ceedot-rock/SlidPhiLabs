@@ -584,3 +584,48 @@ test("agentill map covers every wired stage", async () => {
     assert.ok(s in AGENTILL_MAP, "missing " + s);
   }
 });
+
+test("token-budget plans as opt-in stage with preview", () => {
+  const p = planAgenticRun({ demo: true, action: "invoke", host: "h.test", tokenBudget: { cap_tokens: 100, key: "demo" } });
+  assert.equal(p.ok, true);
+  assert.ok(p.plan.stages.includes("token-budget"));
+  assert.equal(p.plan.tokenBudget.tool, "token-budget");
+  assert.equal(p.plan.tokenBudget.cap_tokens, 100);
+  const bad = planAgenticRun({ demo: true, action: "invoke", host: "h.test", tokenBudget: { cap_tokens: -1 } });
+  assert.equal(bad.plan.tokenBudget.reason, "bad_budget");
+});
+
+test("token-budget run charges, memoizes, and reports usage", async () => {
+  const memo = {};
+  const store = {
+    lookup: (d) => (d in memo ? memo[d] : null),
+    record: (d, r) => { memo[d] = r; },
+  };
+  const compressFn = ({ text }) => ({ ok: true, output: text.slice(0, 4) });
+  const spec = {
+    demo: true, action: "invoke", host: "h.test",
+    tokenBudget: { cap_tokens: 1000, key: "demo", text: "hello world hello", query: "q" },
+  };
+  const first = await runAgenticRun(spec, { tokenMemo: store, tokenCompressFn: compressFn });
+  assert.equal(first.ok, true);
+  const tb1 = first.receipts.find((s) => s.stage === "token-budget");
+  assert.equal(tb1.memo_hit, false);
+  assert.ok(tb1.charged_tokens > 0);
+  const second = await runAgenticRun(spec, { tokenMemo: store, tokenCompressFn: compressFn });
+  const tb2 = second.receipts.find((s) => s.stage === "token-budget");
+  assert.equal(tb2.memo_hit, true);
+  assert.equal(tb2.charged_tokens, 0);
+  assert.equal(second.usage.stages_metered, 1);
+  assert.equal(second.usage.memo_hits, 1);
+  assert.equal(second.usage.charged_tokens_est, 0);
+});
+
+test("token-budget run fails closed over cap", async () => {
+  const r = await runAgenticRun({
+    demo: true, action: "invoke", host: "h.test",
+    tokenBudget: { cap_tokens: 2, key: "demo", charge_tokens: 50 },
+  });
+  assert.equal(r.ok, false);
+  assert.equal(r.stage, "token-budget");
+  assert.equal(r.reason, "budget_exceeded");
+});

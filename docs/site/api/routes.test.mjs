@@ -170,6 +170,22 @@ const dep = await sample(depot, { method: "POST", body: { action: "issue", op: "
 await sample(depot, { method: "POST", body: { action: "verify", receipt: dep.json.receipt } }, [200], true);
 await sample(depot, { query: { action: "price", bytes: "100" } }, [200], true);
 await sample(depot, { method: "POST", body: { action: "issue" } }, [400], false);
+// gitforge via depot.js
+const GF_SHA = "d".repeat(40);
+await sample(depot, { method: "POST", body: { action: "repo-create", name: "smoke-repo", owner: "smoke" } }, [200], true);
+await sample(depot, { method: "POST", body: { action: "repo-create" } }, [400], false);
+await sample(depot, { query: { action: "repo-get", repo: "smoke/smoke-repo" } }, [200], true);
+await sample(depot, { query: { action: "repo-get", repo: "smoke/nope" } }, [404], false);
+await sample(depot, { query: { action: "repos-list" } }, [200], true);
+await sample(depot, { method: "POST", body: { action: "branch-create", repo: "smoke/smoke-repo", branch: "feat" } }, [200], true);
+await sample(depot, { method: "POST", body: { action: "commit-record", repo: "smoke/smoke-repo", branch: "feat", sha: GF_SHA, author: "smoke", message: "init", lines: [{ file: "a.txt", added: 2, removed: 0 }] } }, [200], true);
+const gfpr = await sample(depot, { method: "POST", body: { action: "pr-open", repo: "smoke/smoke-repo", head: "feat", base: "main", title: "smoke pr" } }, [200], true);
+await sample(depot, { query: { action: "pr-get", pr_id: gfpr.json.pr_id } }, [200], true);
+await sample(depot, { query: { action: "prs-list", repo: "smoke/smoke-repo" } }, [200], true);
+await sample(depot, { method: "POST", body: { action: "pr-review", pr_id: gfpr.json.pr_id, decision: "approve" } }, [200], true);
+await sample(depot, { method: "POST", body: { action: "pr-merge", pr_id: gfpr.json.pr_id } }, [200], true);
+await sample(depot, { query: { action: "blame", repo: "smoke/smoke-repo", file: "a.txt", branch: "main" } }, [200], true);
+await sample(depot, { method: "GET", query: { action: "pr-open" } }, [405], false);
 
 // ---------- conductor.js ----------
 await sample(conductor, { query: { action: "tasks-list" } }, [200], true);
@@ -177,6 +193,22 @@ await sample(conductor, { query: { action: "task-get", task_id: "task_9999" } },
 await sample(conductor, { method: "POST", body: { action: "review", diff: "+++ b/f\n+line\n" } }, [200, 400], true).catch(() => null);
 await sample(conductor, { query: { action: "diff-stat", diff: "+a\n-b\n" } }, [200], true);
 await sample(conductor, { method: "POST", body: { action: "task-intent" } }, [400], false);
+// ci-pipelines via conductor.js
+const CI_SHA = "c".repeat(40);
+await sample(conductor, { method: "POST", body: { action: "pipeline-define", name: "smoke", jobs: [{ id: "lint", "runs-on": "linux", steps: ["s"] }] } }, [200], true);
+await sample(conductor, { method: "POST", body: { action: "pipeline-define" } }, [400], false);
+await sample(conductor, { query: { action: "pipeline-get", pipeline: "smoke" } }, [200], true);
+await sample(conductor, { query: { action: "pipeline-get", pipeline: "nope" } }, [404, 400], false);
+const cirun = await sample(conductor, { method: "POST", body: { action: "run-start", pipeline: "smoke", sha: CI_SHA, branch: "main" } }, [200], true);
+await sample(conductor, { method: "POST", body: { action: "run-start", pipeline: "nope", sha: CI_SHA, branch: "main" } }, [400, 404], false);
+const cirunner = await sample(conductor, { method: "POST", body: { action: "runner-register", name: "smoke-r", labels: ["linux"] } }, [200], true);
+const ciclaim = await sample(conductor, { method: "POST", body: { action: "job-claim", runner_id: cirunner.json.runner_id } }, [200], true);
+await sample(conductor, { method: "POST", body: { action: "job-complete", job_id: ciclaim.json.job.job_id, conclusion: "success" } }, [200], true);
+await sample(conductor, { query: { action: "run-get", run_id: cirun.json.run_id } }, [200], true);
+await sample(conductor, { query: { action: "runs-list" } }, [200], true);
+await sample(conductor, { query: { action: "checks", sha: CI_SHA } }, [200], true);
+await sample(conductor, { method: "POST", body: { action: "run-rerun", run_id: cirun.json.run_id } }, [400], false);
+await sample(conductor, { method: "GET", query: { action: "run-start", pipeline: "smoke" } }, [405], false);
 
 // ---------- catalog.js ----------
 await sample(catalog, { method: "POST", body: { action: "mcp-register", tool: { name: "smoke-mcp", version: "1.0.0", endpoint: "https://example.com/mcp", price_cents: 0, protocol: "streamable-http", auth: "none" } } }, [200], true);
