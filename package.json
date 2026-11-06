@@ -116,7 +116,7 @@
     "doc": "docs/NPM_PRICING.md",
     "skus": {
       "chamber-year": {
-        "usd": 369,
+        "usd": 200,
         "buy": "https://www.slidphilabs.com/pay?sku=chamber-year"
       },
       "gc-year": {
