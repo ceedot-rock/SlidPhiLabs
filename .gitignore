@@ -24,3 +24,6 @@ docs/site/assets/logos/*.orig.jpg
 
 # Host-only engine binaries — Fly deploy context, not public git
 docs/site/bin/
+
+# Live warrant paper trail - runtime state, never public git
+data/warrant/secret.txt
