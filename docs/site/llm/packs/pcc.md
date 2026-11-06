@@ -23,12 +23,20 @@ default $25 cap, alert 80%). Pro $25/month or $250/year, 100 GB included,
 $0.20/GB over. Card charges start at $1. Paid calls answer
 `payment_required` with `accepts` — pay, retry unchanged.
 
-## Honest benchmark note (2026-11-06)
+## Honest benchmark note (2026-11-06, engines fixed)
 
-On the 1.86 MB judicial XML corpus every product pathway round-tripped
-exactly but stored (ratio 1.0000) where gzip -9 reaches 10.22% and xz -6
-reaches 4.81%. Do not pitch compression ratios to pilots until a pathway
-beats the `.acn/bench/BENCH-REPORT.md` baselines on a real corpus. What is
-live today: the call path, the metering, and lossless round-trip.
+| corpus | PCC | gzip -9 | xz -6 |
+|---|---|---|---|
+| medical 98 MB | 13.52% | 9.92% | 7.30% |
+| financial 12 MB | 18.66% | 20.85% | 15.68% |
+| judicial 1.86 MB | 5.92% | 10.22% | 4.81% |
 
-Page: https://www.slidphilabs.com/pcc — status live (call path verified).
+PCC beats gzip on financial and judicial, loses medical, trails xz
+everywhere. Pitch beating gzip on log/financial-type data (verified);
+do not claim xz parity. Full table: `.acn/bench/BENCH-REPORT.md`.
+
+Earlier the endpoint stored everything (missing engine binaries in the
+deploy) — fixed: pulsar 2.5.0 + lb 1.0.1 bake into the image, both doors
+verified live.
+
+Page: https://www.slidphilabs.com/pcc — status live (verified end-to-end).
