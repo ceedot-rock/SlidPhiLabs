@@ -1,5 +1,5 @@
 # Slid Phi Labs
-# Updated 2026-11-05
+# Updated 2026-11-06
 # Tools that check. Cherry Hill, New Jersey. Corey Tasz. corey@slidphilabs.com
 Platform booklets: https://www.slidphilabs.com/wiki
 Previous homepage: https://www.slidphilabs.com/rcrc
@@ -149,6 +149,20 @@ A: Five monorepos from October 2026, histories kept. MemoryVerse is open source.
 
 Q: What is TEACHAiD?
 A: The campus app. A personal teacher that cites the textbook. Student $6/month, $60/year. Free: 1 course, text-only cited answers, no voice. Institutional pilot $2,500 per campus per semester, up to 500 students, onboarding included. The teacher chat in the repository calls Meta Llama. https://teachaid.fly.dev
+
+## ACN (Agent Commerce Network)
+
+One network where agents work, trade, and talk: Rider identity, Warrant
+spend mandates, Chamber two-key seals, Depot blob storage, Conductor
+review, MCP tools, x402 settlement (AWLpay executes). Runs are staged
+and receipted; unpaid steps answer 402.
+- SDK: `npx github:ceedot-rock/spl-acn card|catalog|call` (npm
+  `@slidphi/spl-acn` once published); claim-token seats via bearer.
+- MCP: POST https://www.slidphilabs.com/mcp (card GET /api/mcp).
+- Membership: free tier (1 GB lifetime per IP), founding seats
+  (seq 1-10 of the first 100 signups: 6 months, 10 GiB/mo, $25/mo
+  ceiling), paid claim-token SKUs.
+- Plan/run: spl_agentic_plan + spl_agentic_run (confirm:true).
 
 ## Checkout
 Humans: POST /api/checkout { "sku": "chamber-year", "rail": "stripe" } → Stripe card session.
