@@ -14,15 +14,15 @@ export const CATALOGS = [
       { id: "pulsar-exception", name: "pulsar closed-embed grant", price: "$490/yr", note: "Pay $490/year to embed pulsar in one closed product for one year. pulsar source stays GPLv3.", url: SITE + "/pay?sku=pulsar-exception", related: ["license", "pulsar"] },
       { id: "chamber-month", name: "Chamber month", price: "$20/mo", note: "Two-key JSON seal. License to seal new secrets. Open existing seals with both keys, no extra payment.", url: SITE + "/chamber", related: ["chamber", "box"] },
       { id: "chamber-year", name: "Chamber year", price: "$200/yr", note: "Two-key JSON seal. License to seal new secrets for a year. Open existing seals with both keys.", url: SITE + "/pay?sku=chamber-year", related: ["chamber"] },
-      { id: "pcc-pro", name: "PCC Pro", price: "$25/mo", note: "Compression through your tools. 100 GB of input included each month, then $0.20/GB. Paid access, no source.", url: SITE + "/pcc", related: ["aware"] },
-      { id: "pcc-pro-year", name: "PCC Pro year", price: "$250/yr", note: "Compression through your tools. 100 GB of input included each month, then $0.20/GB. Paid access, no source.", url: SITE + "/pcc", related: ["aware", "pulsar"] },
+      { id: "pcc-pro", name: "PCC Pro", price: "$25/mo", note: "Compression through your tools. 100 GB of input included each month, then $0.20/GB. Paid access, no source.", url: SITE + "/pcc", related: ["pcc"] },
+      { id: "pcc-pro-year", name: "PCC Pro year", price: "$250/yr", note: "Compression through your tools. 100 GB of input included each month, then $0.20/GB. Paid access, no source.", url: SITE + "/pcc", related: ["pcc", "pulsar"] },
       { id: "rider-solo", name: "Rider Solo", price: "$12/mo", note: "Signed identity for AI agents. 1 identity, 500 verifications/month.", url: "https://agentrider.fly.dev/", related: ["rider"] },
       { id: "rider-team", name: "Rider Team", price: "$49/mo", note: "Signed identity for AI agents. 10 identities, 5,000 verifications/month.", url: "https://agentrider.fly.dev/", related: ["rider"] },
       { id: "rider-fleet", name: "Rider Fleet", price: "$199/mo", note: "Signed identity for AI agents. 100 identities, 50,000 verifications/month.", url: "https://agentrider.fly.dev/", related: ["rider"] },
       { id: "rider-ops-month", name: "Rider Ops month", price: "$37/mo", note: "Fleet watch when a signed agent goes quiet. Needs a Rider seat.", url: SITE + "/pay?sku=rider-ops-month", related: ["rider"] },
       { id: "rider-ops-year", name: "Rider Ops year", price: "$369/yr", note: "Fleet watch when a signed agent goes quiet. Needs a Rider seat.", url: SITE + "/pay?sku=rider-ops-year", related: ["rider"] },
-      { id: "suite", name: "PCC metered jobs", price: "1 GB free once per IP, then $0.25/GB", note: "First 1 GB of input free, once per IP address. Then $0.25 per GB. Pro plan: 100 GB included, then $0.20/GB. Compare: /compare. Quote: POST /api/ppp-quote.", url: SITE + "/compare", related: ["aware", "rail"] },
-      { id: "lab-pass", name: "Lab Pass", price: "$495/yr", note: "One year of Chamber + Rider Solo + PSI Meter seat + Warrant add-on for $495. No compression.", url: SITE + "/lab-pass", related: ["chamber", "aware"] },
+      { id: "suite", name: "PCC metered jobs", price: "1 GB free once per IP, then $0.25/GB", note: "First 1 GB of input free, once per IP address. Then $0.25 per GB. Pro plan: 100 GB included, then $0.20/GB. Compare: /compare. Quote: POST /api/ppp-quote.", url: SITE + "/compare", related: ["pcc", "rail"] },
+      { id: "lab-pass", name: "Lab Pass", price: "$495/yr", note: "One year of Chamber + Rider Solo + PSI Meter seat + Warrant add-on for $495. No compression.", url: SITE + "/lab-pass", related: ["chamber", "pcc"] },
       { id: "consulting", name: "Consulting", price: "$350", note: "Two hours of lab time, $175/hour, 2-hour minimum.", url: SITE + "/pay?sku=consulting", related: ["sku"] },
       { id: "oss-support", name: "OSS support", price: "$199", note: "Help with an already-public GPLv3 library.", url: SITE + "/pay?sku=oss-support", related: ["npm"] },
     ],
@@ -74,8 +74,8 @@ export const CATALOGS = [
     ],
   },
   {
-    id: "aware",
-    title: "PCC (AWARE is a retired alias)",
+    id: "pcc",
+    title: "PCC",
     entries: [
       { id: "engine", name: "PCC", note: "Hosted compressor, tool-called only (MCP/API key, never browser uploads). Files and live 4 KiB pipe, one seat. Metered $0.25/GB of input, 1 GB free once per IP. Pro $25/mo. Board stamp 51,498,645. Paid access, no source.", url: SITE + "/pcc" },
       { id: "stream", name: "PCC stream", note: "4 KiB ZERO+STORE pipe for agent logs / SIEM. Same PCC seat.", url: SITE + "/trustream" },
@@ -168,36 +168,67 @@ export function getCatalog(id, entryId) {
   return { catalog: id, title: cat.title, ...e };
 }
 
+/**
+ * What each catalog holds, in one line per catalog, so the generated
+ * search/get descriptions name real contents instead of boilerplate.
+ * `examples` are real entry ids from the catalog above.
+ */
+const CATALOG_COPY = {
+  sku: { about: "PCC Pro, Chamber, Rider seats, Lab Pass, consulting, and OSS support", examples: "pcc-pro, chamber-month, rider-team" },
+  license: { about: "public licenses (GPLv3, AGPL), hosted seats, and closed-app exceptions", examples: "gplv3, seat, exception" },
+  surface: { about: "where to use lab products — the public site, CuNi Studio, Agent-Rider, TeachAid, and this MCP server", examples: "rider, studio, mcp" },
+  cuni: { about: "CuNi exactness — the law, the check gate, the spend-control example, and CuNi Bank", examples: "bank, law, check" },
+  chamber: { about: "Chamber two-key JSON seals and the 24-hour try box", examples: "seal, try24" },
+  rider: { about: "Agent-Rider signed identity — issuing and verifying agent credentials", examples: "issue, verify" },
+  pcc: { about: "PCC hosted compression — the engine, the 4 KiB stream pipe, and the meter", examples: "engine, stream, meter" },
+  pulsar: { about: "pulsar, the free GPLv3 compressor, its closed-embed exception, and the Silesia measurement", examples: "cousin, exception, silesia" },
+  measure: { about: "how pulsar compares on Silesia — gzip -9, pulsar 2.5.0, and xz -6 sizes", examples: "silesia-pulsar, silesia-gzip9, silesia-xz6" },
+  rail: { about: "how to pay — Stripe for humans, x402 USDC for agents", examples: "stripe, x402" },
+  box: { about: "the 24-hour try box", examples: "law" },
+  npm: { about: "public npm packages — slid-phi, spl-pay-per-suite, shard-zip, shard-tsdb, and pulsar", examples: "spl-pay-per-suite, slid-phi, pulsar" },
+  docs: { about: "lab docs — SKILL.md, llms.txt, the MCP server card, platform discovery, pricing, and licensing", examples: "card, skill, pricing" },
+};
+
+/** Catalog reads are pure local lookups: no state change, no network. */
+const READ_ONLY = Object.freeze({
+  readOnlyHint: true,
+  destructiveHint: false,
+  idempotentHint: true,
+  openWorldHint: false,
+});
+
 export function catalogTools() {
   const tools = [];
   for (const c of CATALOGS) {
+    const copy = CATALOG_COPY[c.id] || { about: c.title, examples: "" };
     tools.push({
       name: c.id + "_search",
-      description: c.title + " — what it is, what you get, what you pay. Free text or code.",
-      inputSchema: { type: "object", properties: { q: { type: "string" } } },
+      description: `Search the ${c.title} catalog by free text — ${copy.about}. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use ${c.id}_get when you already know the entry id.`,
+      inputSchema: {
+        type: "object",
+        properties: {
+          q: { type: "string", description: "Free-text query matched against entry id, name, notes, price, and URL. Omit or send an empty string to list every entry in the catalog." },
+        },
+      },
+      annotations: READ_ONLY,
     });
     tools.push({
       name: c.id + "_get",
-      description: c.title + " — one entry with notes, price, and links.",
-      inputSchema: { type: "object", properties: { id: { type: "string" } }, required: ["id"] },
+      description: `Retrieve one ${c.title} catalog entry by its id, e.g. ${copy.examples}. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use ${c.id}_search to find an id by keyword. An unknown id returns an error listing the known ids.`,
+      inputSchema: {
+        type: "object",
+        properties: {
+          id: { type: "string", description: `Entry id within the ${c.title} catalog, e.g. ${copy.examples}. Get the id list from ${c.id}_search with an empty query; an unknown id returns an error listing the known ids.` },
+        },
+        required: ["id"],
+      },
+      annotations: READ_ONLY,
     });
   }
-  tools.push({
-    name: "pcc_search",
-    description: "PCC — what it is, what you get, what you pay. Free text or code. Prefer this. aware_search is a retired alias.",
-    inputSchema: { type: "object", properties: { q: { type: "string" } } },
-  });
-  tools.push({
-    name: "pcc_get",
-    description: "PCC — one entry with notes, price, and links. Prefer this. aware_get is a retired alias.",
-    inputSchema: { type: "object", properties: { id: { type: "string" } }, required: ["id"] },
-  });
   return tools;
 }
 
 export function dispatchCatalog(name, args = {}) {
-  if (name === "pcc_search") name = "aware_search";
-  if (name === "pcc_get") name = "aware_get";
   if (name.endsWith("_search")) return searchCatalog(name.slice(0, -7), args.q || args.query || args.code);
   if (name.endsWith("_get")) return getCatalog(name.slice(0, -4), args.id || args.code || args.entry);
   return null;

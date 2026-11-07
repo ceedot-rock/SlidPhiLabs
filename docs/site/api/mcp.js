@@ -13,153 +13,192 @@ import { packArchive, crc32 } from "./lib/pccz.mjs";
 import { unpackMembers } from "./archive.js";
 
 const SITE = "https://www.slidphilabs.com";
-const MCP_VERSION = "1.20.2";
+const MCP_VERSION = "1.21.0";
 
 const COMMERCE = [
   {
     name: "cuni_bank",
     description:
-      "CuNi Bank: paste N, get X. Ingest → emit → prove, or refuse. v1 from Python. Args: source, from (py|cuni), to (catalog id, e.g. js). POSTs to cuni-studio /api/bank.",
+      "Run a CuNi program through CuNi Bank: submit source in Python or .cuni and get the exact output in the target language, or a refusal when the languages disagree. Read-only computation — no state is stored. Calls the CuNi Studio service (cuni-studio.fly.dev). Use for exactness checks and cross-language proofs; use spl_compress for byte compression, not program translation.",
     inputSchema: {
       type: "object",
       properties: {
-        source: { type: "string", description: "Source program (Python v1 subset or .cuni)" },
-        from: { type: "string", description: "py | cuni" },
-        to: { type: "string", description: "catalog id: py, go, js, ts, …" },
+        source: { type: "string", description: "Source program to run: a Python v1-subset program or .cuni source text." },
+        from: { type: "string", description: "Source language: py for a Python v1-subset program, cuni for .cuni source. Defaults to py." },
+        to: { type: "string", description: "Target language for the output, e.g. js, go, ts, py. Required." },
       },
       required: ["source", "to"],
     },
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true },
   },
-  { name: "spl_discover", description: "Lead product, cash product, auth, MCP, x402." },
-  { name: "spl_lab_auth", description: "How to mint a lab account or agent API key." },
-  { name: "spl_signup", description: "Create a human lab account (email + password)." },
-  { name: "spl_agent_key", description: "Mint an agent API key (no password)." },
-  { name: "spl_catalog", description: "Standing SKUs agents can buy via x402." },
+  { name: "spl_discover", description: "List the lab's lead and cash products, auth endpoints, and entry points (site, CuNi Studio, Agent-Rider, Chamber, MCP, x402, SKILL.md). Read-only; returns a static discovery map. Takes no arguments. Use as the first call when orienting an agent; use the *_search catalog tools for prices and details.", annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false } },
+  { name: "spl_lab_auth", description: "Explain how to mint a lab account or agent API key: the human signup/login flow and the agent_key call. Read-only; returns instructions only and creates nothing. Takes no arguments. Use to learn the auth flow; use spl_signup to create a human account or spl_agent_key to mint a key.", annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false } },
   {
-    name: "spl_compress",
-    description: "Hosted lossless compression. Every dual-licensed pathway on this machine. Args: data_b64.",
+    name: "spl_signup",
+    description: "Create a human lab account with an email and password. Mutating: stores a salted password hash and returns a signed session token. Email must be a valid address, password at least 8 characters; duplicate emails are rejected. Use for a human seat; use spl_agent_key for a passwordless agent key.",
     inputSchema: {
       type: "object",
-      properties: { data_b64: { type: "string" } },
+      properties: {
+        email: { type: "string", description: "Account email address. Must be a valid email; duplicates are rejected with email_taken." },
+        password: { type: "string", description: "Account password, at least 8 characters. Stored as a salted hash, never in plain text." },
+        name: { type: "string", description: "Display name, up to 80 characters. Defaults to the part of the email before @." },
+      },
+      required: ["email", "password"],
+    },
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
+  },
+  {
+    name: "spl_agent_key",
+    description: "Mint a passwordless agent API key (spl_ag_*) for a named agent. Mutating: creates an agent account and returns the key once — store it, it cannot be retrieved again. Use for agent seats; use spl_signup for a human account with email and password.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        name: { type: "string", description: "Agent name, up to 80 characters. Defaults to agent." },
+      },
+    },
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
+  },
+  { name: "spl_catalog", description: "List the standing SKUs agents can buy via x402 (live product list from /api/x402-products). Read-only; returns current prices and payment rails. Takes no arguments. Use for live purchase options; use sku_search and sku_get for the catalog's price notes and links.", annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true } },
+  {
+    name: "spl_compress",
+    description: "Compress bytes with the hosted lossless engine (PCC and sibling codecs). Accepts base64 input; returns base64 packed bytes, sizes, and the method used. Read-only computation — nothing is stored. Metered: first 1 GB free once per IP, then $0.25/GB; a paid seat or x402 payment may be required (402). Use to shrink data; use spl_decompress to restore it, spl_zip to pack files.",
+    inputSchema: {
+      type: "object",
+      properties: { data_b64: { type: "string", description: "Base64-encoded bytes to compress. Must be valid base64." } },
       required: ["data_b64"],
     },
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true },
   },
   {
     name: "spl_decompress",
-    description: "Restore bytes packed by spl_compress. Args: packed_b64.",
+    description: "Restore bytes packed by spl_compress. Accepts the base64 packed output; returns the original bytes as base64 plus their length. Read-only computation — nothing is stored. Use only on output from spl_compress; use spl_unzip for .pcc archives.",
     inputSchema: {
       type: "object",
-      properties: { packed_b64: { type: "string" } },
+      properties: { packed_b64: { type: "string", description: "Base64-encoded packed bytes previously returned by spl_compress." } },
       required: ["packed_b64"],
     },
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true },
   },
   {
     name: "spl_zip",
-    description: "Pack files into a .pcc archive (our zip). Args: files: [{path, data_b64}]. Returns packed_b64.",
+    description: "Pack files into a .pcc archive (the lab's zip). Each file is compressed with the hosted engine; returns the archive as base64 plus packed size and member count. Read-only computation — nothing is stored. Use to bundle multiple files; use spl_compress for a single blob, spl_unzip to restore.",
     inputSchema: {
       type: "object",
       properties: {
         files: {
           type: "array",
+          description: "Files to pack. Each item: path (archive path), data_b64 (base64 file bytes; omit for directories), dir (true for a directory entry).",
           items: {
             type: "object",
-            properties: { path: { type: "string" }, data_b64: { type: "string" }, dir: { type: "boolean" } },
+            properties: {
+              path: { type: "string", description: "Path inside the archive, e.g. notes/readme.txt." },
+              data_b64: { type: "string", description: "Base64-encoded file bytes. Omit for directory entries." },
+              dir: { type: "boolean", description: "True when this entry is a directory (no bytes). Defaults to false." },
+            },
           },
         },
       },
       required: ["files"],
     },
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true },
   },
   {
     name: "spl_unzip",
-    description: "Restore files from a .pcc archive. Args: packed_b64. Returns files: [{path, data_b64}].",
+    description: "Restore files from a .pcc archive made by spl_zip. Accepts the archive as base64; returns each file with path and base64 bytes plus the member count. Read-only computation — nothing is stored. Use only on .pcc archives; use spl_decompress for single blobs from spl_compress.",
     inputSchema: {
       type: "object",
-      properties: { packed_b64: { type: "string" } },
+      properties: { packed_b64: { type: "string", description: "Base64-encoded .pcc archive previously returned by spl_zip." } },
       required: ["packed_b64"],
     },
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true },
   },
   {
     name: "spl_quote",
-    description: "Suite quote. First 1 GB free once per IP, then $0.25/GB of input, $1 card minimum. Args: bytes, product, op.",
+    description: "Quote a metered PCC job before running it: price in USD for the given byte count, product, and operation. Read-only and free; returns the quote without charging or reserving anything. First 1 GB free once per IP, then $0.25/GB of input, $1 card minimum. Use before spl_compress on large inputs; use spl_catalog for standing SKUs.",
     inputSchema: {
       type: "object",
       properties: {
         bytes: { type: "number", description: "Payload bytes. First 1 GB free once per IP." },
-        product: { type: "string", description: "auto | zrw | blackjack | shard-zip | shard-tsdb | slid-phi" },
-        op: { type: "string", description: "compress | decompress | roundtrip" },
-        dataClass: { type: "string" },
+        product: { type: "string", description: "Product to price: auto, zrw, blackjack, shard-zip, shard-tsdb, or slid-phi. Defaults to auto." },
+        op: { type: "string", description: "Operation: compress, decompress, or roundtrip. Defaults to compress." },
+        dataClass: { type: "string", description: "Data class of the payload (e.g. text, logs, json) when known; used to pick the best product. Defaults to unknown." },
       },
     },
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
   },
   {
     name: "spl_warrant_issue",
-    description: "Issue a Warrant (mandate) for a Rider identity. Pass rider JWT, or demo:true for a 10-minute shape check. Complements Agent-Rider.",
+    description: "Issue a Warrant (spend mandate) for an Agent-Rider identity, capping what an agent may spend, where, and for how long. Mutating: mints a signed token. Pass a Rider JWT, or demo:true for a 10-minute shape check that issues nothing billable. Use to authorize an agent's spending before it acts; use spl_warrant_verify to check a token, spl_warrant_reserve to hold funds, spl_warrant_receipt to settle.",
     inputSchema: {
       type: "object",
       properties: {
-        rider: { type: "string", description: "X-Agent-Rider JWT" },
-        demo: { type: "boolean" },
-        actions: { type: "array", items: { type: "string" } },
-        allow_hosts: { type: "array", items: { type: "string" } },
-        max_usd: { type: "number" },
-        max_calls: { type: "number" },
-        ttl_seconds: { type: "number" },
+        rider: { type: "string", description: "Agent-Rider JWT proving the identity the Warrant is issued for. Required unless demo is true." },
+        demo: { type: "boolean", description: "True for a 10-minute shape check without a Rider token. Defaults to false." },
+        actions: { type: "array", items: { type: "string" }, description: "Allowed action names, e.g. [\"compress\", \"quote\"]. Omit for no action restriction." },
+        allow_hosts: { type: "array", items: { type: "string" }, description: "Allowed hostnames the agent may call. Omit for no host restriction." },
+        max_usd: { type: "number", description: "Maximum spend in USD across the Warrant's life. Omit for no cap." },
+        max_calls: { type: "number", description: "Maximum number of calls under this Warrant. Omit for no cap." },
+        ttl_seconds: { type: "number", description: "Lifetime in seconds. Demo defaults to 600 (10 minutes)." },
       },
     },
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
   },
   {
     name: "spl_warrant_verify",
-    description: "Verify a Warrant token. Optional host, action, and expected usd cost — pass usd to enforce the spend cap BEFORE the job runs.",
+    description: "Verify a Warrant token and check it against an optional host, action, and USD cost — pass usd to enforce the spend cap BEFORE the job runs. Read-only; verifies locally and changes nothing. Returns valid true/false with the Warrant or a reason. Use before running a job under a Warrant; use spl_warrant_issue to mint one.",
     inputSchema: {
       type: "object",
       properties: {
-        warrant: { type: "string" },
-        host: { type: "string" },
-        action: { type: "string" },
-        usd: { type: "number" },
+        warrant: { type: "string", description: "Warrant token string to verify. Required." },
+        host: { type: "string", description: "Hostname the job will call; checked against the Warrant's allow list when given." },
+        action: { type: "string", description: "Action name the job will perform; checked against the Warrant's allowed actions when given." },
+        usd: { type: "number", description: "Expected USD cost of the job; checked against the remaining spend cap when given." },
       },
     },
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
   },
   {
     name: "spl_warrant_reserve",
-    description: "Reserve the expected cost against a Warrant BEFORE the job runs (pre-spend cap enforcement). File the receipt with the reservation id to settle without double-deducting, or release it if the job never runs.",
+    description: "Reserve the expected cost against a Warrant BEFORE the job runs (pre-spend cap enforcement). Mutating: holds funds and returns a reservation id. File the receipt with that id to settle without double-deducting, or release it if the job never runs. Use after verify and before the job; use spl_warrant_receipt to settle, spl_warrant_release to refund.",
     inputSchema: {
       type: "object",
       properties: {
-        warrant: { type: "string" },
-        host: { type: "string" },
-        action: { type: "string" },
-        usd: { type: "number" },
+        warrant: { type: "string", description: "Warrant token to reserve against. Required." },
+        host: { type: "string", description: "Hostname the job will call; checked against the Warrant's allow list when given." },
+        action: { type: "string", description: "Action name the job will perform; checked against the Warrant's allowed actions when given." },
+        usd: { type: "number", description: "USD cost to hold. Required for the reservation." },
       },
     },
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
   },
   {
     name: "spl_warrant_release",
-    description: "Refund an unsettled Warrant reservation (job never ran).",
+    description: "Refund an unsettled Warrant reservation when the job never ran. Mutating: frees the held funds; the reservation cannot be used afterward. Use only for reservations that will never settle; use spl_warrant_receipt to settle a completed job.",
     inputSchema: {
       type: "object",
       properties: {
-        reservation_id: { type: "string" },
+        reservation_id: { type: "string", description: "Reservation id returned by spl_warrant_reserve. Required." },
       },
     },
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
   },
   {
     name: "spl_warrant_receipt",
-    description: "File a receipt against a Warrant after an action.",
+    description: "File a receipt against a Warrant after an action, settling the spend. Mutating: deducts the USD cost — pass the reservation id from spl_warrant_reserve to settle against the reservation instead of deducting twice. Use after a job completes; use spl_warrant_reserve before it runs.",
     inputSchema: {
       type: "object",
       properties: {
-        warrant: { type: "string" },
-        action: { type: "string" },
-        host: { type: "string" },
-        usd: { type: "number" },
-        reservation_id: { type: "string" },
-        request_sha256: { type: "string" },
-        result_sha256: { type: "string" },
-        note: { type: "string" },
+        warrant: { type: "string", description: "Warrant token the receipt is filed against. Required." },
+        action: { type: "string", description: "Action name that ran, e.g. compress." },
+        host: { type: "string", description: "Hostname that was called." },
+        usd: { type: "number", description: "USD cost to deduct. Required for settlement." },
+        reservation_id: { type: "string", description: "Reservation id from spl_warrant_reserve, when the cost was pre-reserved. Settles against the reservation instead of deducting twice." },
+        request_sha256: { type: "string", description: "SHA-256 hex of the request body, for the audit trail." },
+        result_sha256: { type: "string", description: "SHA-256 hex of the result body, for the audit trail." },
+        note: { type: "string", description: "Free-text note attached to the receipt." },
       },
     },
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
   },
   ...AGENTIC_TOOLS,
 ];
@@ -191,6 +230,7 @@ const TOOLS = [
     name: t.name,
     description: t.description,
     inputSchema: t.inputSchema || { type: "object", properties: {}, additionalProperties: true },
+    ...(t.annotations ? { annotations: t.annotations } : {}),
   })),
   ...catalogTools(),
 ];

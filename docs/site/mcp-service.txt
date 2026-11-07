@@ -13,7 +13,7 @@ Hosted tools on /mcp (from api/mcp.js in this tree):
   spl_warrant_issue, spl_warrant_verify, spl_warrant_receipt, spl_warrant_reserve,
   spl_warrant_release, cuni_bank.
 Catalog lookup tools on /mcp (from api/lib/mcp-catalogs.mjs):
-  aware_search, aware_get, pcc_search, pcc_get.
+  pcc_search, pcc_get.
 Each catalog exposes a _search (free text or code) and a _get (one entry with notes,
 child codes and cross-references). Further catalogs are reached via spl_catalog.
 SKU succession works the same way year-over-year questions work on a coding catalog:

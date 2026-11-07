@@ -33,9 +33,9 @@ test("error: unknown catalog and unknown entry envelopes", () => {
   assert.ok(Array.isArray(r.known) && r.known.length > 0);
 });
 
-test("happy: catalogTools exposes search+get per catalog plus pcc aliases", () => {
+test("happy: catalogTools exposes search+get per catalog, no aware alias pair", () => {
   const tools = catalogTools();
-  assert.equal(tools.length, CATALOGS.length * 2 + 2);
+  assert.equal(tools.length, CATALOGS.length * 2);
   const names = tools.map((t) => t.name);
   for (const c of CATALOGS) {
     assert.ok(names.includes(`${c.id}_search`), `missing ${c.id}_search`);
@@ -43,20 +43,31 @@ test("happy: catalogTools exposes search+get per catalog plus pcc aliases", () =
   }
   assert.ok(names.includes("pcc_search"));
   assert.ok(names.includes("pcc_get"));
-  for (const t of tools) assert.equal(t.inputSchema.type, "object");
+  assert.ok(!names.includes("aware_search"), "retired aware_search must be gone");
+  assert.ok(!names.includes("aware_get"), "retired aware_get must be gone");
+  for (const t of tools) {
+    assert.equal(t.inputSchema.type, "object");
+    assert.ok(t.description && t.description.length > 40, `${t.name} needs a full description`);
+    assert.equal(t.annotations.readOnlyHint, true);
+    for (const [p, schema] of Object.entries(t.inputSchema.properties || {})) {
+      assert.ok(schema.description, `${t.name}.${p} needs a schema description`);
+    }
+  }
 });
 
-test("happy: dispatchCatalog routes search/get and pcc alias", () => {
+test("happy: dispatchCatalog routes search/get; pcc is a catalog, not an alias", () => {
   const s = dispatchCatalog("sku_search", { q: "rider" });
   assert.equal(s.catalog, "sku");
   assert.ok(s.n >= 1);
   const g = dispatchCatalog("rail_get", { id: "stripe" });
   assert.equal(g.id, "stripe");
-  const alias = dispatchCatalog("pcc_search", { q: "meter" });
-  assert.equal(alias.catalog, "aware");
-  const aliasGet = dispatchCatalog("pcc_get", { id: "meter" });
-  assert.equal(aliasGet.catalog, "aware");
-  assert.equal(aliasGet.id, "meter");
+  const pcc = dispatchCatalog("pcc_search", { q: "meter" });
+  assert.equal(pcc.catalog, "pcc");
+  const pccGet = dispatchCatalog("pcc_get", { id: "meter" });
+  assert.equal(pccGet.catalog, "pcc");
+  assert.equal(pccGet.id, "meter");
+  assert.equal(dispatchCatalog("aware_search", { q: "meter" }).error, "unknown catalog");
+  assert.equal(dispatchCatalog("aware_get", { id: "meter" }).error, "unknown catalog");
 });
 
 test("error: dispatchCatalog unknown tool returns null", () => {
