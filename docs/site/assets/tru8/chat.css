@@ -94,6 +94,18 @@
   font-size: 1.1rem;
   line-height: 1;
 }
+.tru8-chat-talk {
+  height: 32px;
+  padding: 0 12px;
+  margin-right: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(55, 214, 122, 0.55);
+  background: transparent;
+  color: #7be2a8;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
 .tru8-chat-msgs {
   flex: 1;
   overflow-y: auto;

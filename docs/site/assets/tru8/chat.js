@@ -22,6 +22,7 @@
           <h2>TRU<span>8</span> guide</h2>
           <p>LiveKit voice + Nebius · public product facts only</p>
         </div>
+        <button type="button" class="tru8-chat-talk" id="tru8ChatTalk" aria-label="Talk to the voice guide">Talk</button>
         <button type="button" class="tru8-chat-close" aria-label="Close">×</button>
       </div>
       <div class="tru8-chat-msgs" id="tru8ChatMsgs"></div>
@@ -79,6 +80,15 @@
     else open();
   });
   closeBtn.addEventListener("click", close);
+  const talkBtn = root.querySelector("#tru8ChatTalk");
+  talkBtn.addEventListener("click", () => {
+    close();
+    if (window.Tru8Voice) { window.Tru8Voice.startTalk(); return; }
+    const s = document.createElement("script");
+    s.src = "/assets/voice/voice.js?v=1";
+    s.onload = () => window.Tru8Voice && window.Tru8Voice.startTalk();
+    document.body.appendChild(s);
+  });
 
   const SUGGEST = [
     "What is T_ZERO?",
