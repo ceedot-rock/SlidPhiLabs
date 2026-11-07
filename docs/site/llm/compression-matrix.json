@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-06",
+  "method": "every cell is a real compress -> decompress -> byte-compare round-trip on this machine or the lab host; harness exits nonzero on mismatch",
+  "corpora": {
+    "judicial-xml": { "file": "40 govinfo BILLSTATUS XML", "bytes": 1861035 },
+    "financial-csv": { "file": "Binance BTCUSDT 1s klines 2024-06-03", "bytes": 12172818 },
+    "medical-csv": { "file": "OWID covid-19 full history", "bytes": 98391483 },
+    "medical-head": { "file": "first 8MB of medical-csv (slow algos only)", "bytes": 8388522 }
+  },
+  "cells": [
+    { "algo": "gzip-9", "judicial": 0.1022, "financial": 0.2085, "medical": 0.0992 },
+    { "algo": "xz-6", "judicial": 0.0481, "financial": 0.1568, "medical": 0.073 },
+    { "algo": "tnssrc-npcc-0.1.0", "judicial": 0.0453, "financial": 0.1786, "medical": 0.0937, "via": "host binary, grant-gated" },
+    { "algo": "pcc-served", "judicial": 0.0592, "financial": 0.1866, "medical": 0.1352, "via": "spl_compress bake-off", "note": "medical measured under host load; bake-off floor is best pathway" },
+    { "algo": "pulsar-2.5.0", "judicial": 0.0592, "financial": 0.1865, "medical": 0.098, "via": "local binary, GPLv3" },
+    { "algo": "swarm-nca", "judicial": 0.1341, "financial": 0.306, "medical_head": 0.1523, "note": "research; slow (minutes per MB)" },
+    { "algo": "trustream", "judicial": 1.0007, "financial": 1.0007, "medical": 1.0013, "note": "4KiB tiles; stores non-tile data by design; never expands past framing" },
+    { "algo": "zrw-v5", "judicial": 4.78, "financial": 4.4, "medical_head": 2.52, "note": "INTEGER codec; expands byte data; use only for int sequences" }
+  ],
+  "best_for": {
+    "legal_xml_archives": "tnssrc (4.53%, beats xz)",
+    "market_ticks": "xz if free required, else tnssrc (17.86%), else served PCC (18.66%, beats gzip)",
+    "medical_ehr_tables": "tnssrc (9.36%), xz close free second (7.30%)",
+    "live_streams": "trustream only (never expands)",
+    "integer_telemetry": "zrw",
+    "zero_fill": "t-zero (8 bytes)"
+  }
+}
