@@ -160,7 +160,11 @@ async function handler(req, res) {
     let modelUsed = MODEL;
     const via = "nebius.chat.completions";
 
-    const chatRes = await fetch(`${NEBIUS_BASE}/chat/completions`, {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 25000);
+    let chatRes;
+    try {
+      chatRes = await fetch(`${NEBIUS_BASE}/chat/completions`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${key}`,
@@ -172,7 +176,14 @@ async function handler(req, res) {
         temperature: 0.4,
         max_tokens: 700,
       }),
+      signal: ctl.signal,
     });
+    } catch (e) {
+      clearTimeout(timer);
+      console.error("[tru8-chat] nebius timeout/unreachable");
+      return json(res, 502, { ok: false, error: "llm_upstream", status: "timeout" });
+    }
+    clearTimeout(timer);
 
     if (!chatRes.ok) {
       const errText = await chatRes.text();
