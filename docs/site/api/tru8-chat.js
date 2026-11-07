@@ -1,13 +1,13 @@
 /**
  * POST /api/tru8-chat
- * TRU8 product guide — SpaceXAI / xAI (OpenAI-compatible).
- * Env: XAI_API_KEY (server-side only). Model: grok-4.6
+ * TRU8 product guide - Nebius-hosted open models (OpenAI-compatible).
+ * Env: NEBIUS_API_KEY (server-side only). Model: NEBIUS_MODEL override.
  * Public product facts only — no residual / production IP.
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
 
-const XAI_BASE = "https://api.x.ai/v1";
-const MODEL = process.env.XAI_MODEL || "grok-4.6";
+const NEBIUS_BASE = "https://api.studio.nebius.com/v1";
+const MODEL = process.env.NEBIUS_MODEL || "meta-llama/Llama-3.3-70B-Instruct";
 const MAX_MSG = 1200;
 const MAX_HISTORY = 8;
 const RATE_WINDOW_MS = 60_000;
@@ -43,7 +43,7 @@ TNSSRC is grant-gated ($369/yr, sku tnssrc-grant) — quote it, never serve it f
 Hard rules:
 - Keep answers short. Prices and demos first.
 - If asked for production source: point to commercial license.
-- You are powered by SpaceXAI (xAI Grok) — if asked about the AI stack, say SpaceXAI via xAI API.
+- You run on LiveKit for voice and Nebius-hosted open models for text — if asked about the AI stack, say LiveKit + Nebius.
 - Tone: confident, minimal, residual-honest. No hype stacks.`;
 
 function cors(res) {
@@ -99,13 +99,13 @@ async function handler(req, res) {
     return json(res, 200, {
       ok: true,
       service: "tru8-chat",
-      provider: "SpaceXAI",
-      api: "xAI OpenAI-compatible",
+      provider: "Nebius",
+      api: "Nebius OpenAI-compatible",
+      base: NEBIUS_BASE,
       model: MODEL,
-      base: XAI_BASE,
       endpoint: "POST /api/tru8-chat",
       body: { message: "string", history: "[{role,content}] optional" },
-      note: "Public TRU8 product guide. Server-side XAI_API_KEY required.",
+      note: "Public TRU8 product guide. Server-side NEBIUS_API_KEY required.",
     });
   }
 
@@ -113,12 +113,12 @@ async function handler(req, res) {
     return json(res, 405, { ok: false, error: "method_not_allowed" });
   }
 
-  const key = process.env.XAI_API_KEY;
+  const key = process.env.NEBIUS_API_KEY;
   if (!key) {
     return json(res, 503, {
       ok: false,
-      error: "xai_unconfigured",
-      message: "XAI_API_KEY not set on server",
+      error: "llm_unconfigured",
+      message: "NEBIUS_API_KEY not set on server",
     });
   }
 
@@ -155,12 +155,12 @@ async function handler(req, res) {
   ];
 
   try {
-    // Chat Completions (OpenAI-compatible). Responses API available as fallback.
+    // Chat Completions via Nebius (OpenAI-compatible).
     let reply = null;
     let modelUsed = MODEL;
-    let via = "chat.completions";
+    const via = "nebius.chat.completions";
 
-    const chatRes = await fetch(`${XAI_BASE}/chat/completions`, {
+    const chatRes = await fetch(`${NEBIUS_BASE}/chat/completions`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${key}`,
@@ -174,44 +174,18 @@ async function handler(req, res) {
       }),
     });
 
-    if (chatRes.ok) {
-      const data = await chatRes.json();
-      reply = data.choices?.[0]?.message?.content || null;
-      modelUsed = data.model || MODEL;
-    } else {
-      via = "responses";
-      const respRes = await fetch(`${XAI_BASE}/responses`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${key}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: MODEL,
-          input: message,
-          instructions: SYSTEM,
-        }),
+    if (!chatRes.ok) {
+      const errText = await chatRes.text();
+      console.error("[tru8-chat] nebius error", chatRes.status, errText.slice(0, 400));
+      return json(res, 502, {
+        ok: false,
+        error: "llm_upstream",
+        status: chatRes.status,
       });
-      if (!respRes.ok) {
-        const errText = await respRes.text();
-        console.error("[tru8-chat] xai error", chatRes.status, errText.slice(0, 400));
-        return json(res, 502, {
-          ok: false,
-          error: "xai_upstream",
-          status: respRes.status || chatRes.status,
-        });
-      }
-      const data = await respRes.json();
-      reply =
-        data.output_text ||
-        (Array.isArray(data.output)
-          ? data.output
-              .flatMap((o) => o.content || [])
-              .map((c) => c.text || c)
-              .filter(Boolean)
-              .join("")
-          : null);
     }
+    const data = await chatRes.json();
+    reply = data.choices?.[0]?.message?.content || null;
+    modelUsed = data.model || MODEL;
 
     if (!reply) {
       return json(res, 502, { ok: false, error: "empty_reply" });
@@ -221,7 +195,7 @@ async function handler(req, res) {
       ok: true,
       reply: String(reply).trim(),
       model: modelUsed,
-      provider: "SpaceXAI",
+      provider: "Nebius",
       via,
       product: "TRU8",
     });

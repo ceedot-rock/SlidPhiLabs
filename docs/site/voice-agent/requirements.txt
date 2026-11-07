@@ -1,0 +1,5 @@
+# pinned 2026-11-07; re-pin on first install if resolver disagrees
+livekit-agents>=1.2,<2
+livekit-plugins-openai>=1.2,<2
+livekit-plugins-silero>=1.2,<2
+python-dotenv>=1.0

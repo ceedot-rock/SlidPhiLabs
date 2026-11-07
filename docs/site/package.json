@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.mjs",
     "dev": "node server.mjs",
-    "test": "node --test api/lib/warrant.test.mjs api/lib/specialist.test.mjs api/lib/walk-peel.test.mjs api/lib/repeat-peel.test.mjs api/lib/x402-spent-ledger.test.mjs api/lib/agc-ledger.test.mjs api/lib/owner-gratis.test.mjs api/lib/tool-gate.test.mjs api/lib/ga4.test.mjs api/lib/sales-ledger.test.mjs api/suite-pricing.test.mjs api/lib/usage-owner.test.mjs api/lib/agentic-platform.test.mjs api/lib/acn-accounting.test.mjs api/lib/claim-seat.test.mjs api/lib/lab-auth.test.mjs api/lib/lab-passkeys.test.mjs api/lib/mcp-catalogs.test.mjs api/lib/nca_infra.test.mjs api/lib/hosted-job.test.mjs api/lib/pulsar-host.test.mjs api/lib/engines.test.mjs api/lib/standing-rider.test.mjs api/lib/sub-riders.test.mjs api/lib/rider-recovery.test.mjs api/rider/claim.test.js api/routes.test.mjs",
+    "test": "node --test api/lib/warrant.test.mjs api/lib/specialist.test.mjs api/lib/walk-peel.test.mjs api/lib/repeat-peel.test.mjs api/lib/x402-spent-ledger.test.mjs api/lib/agc-ledger.test.mjs api/lib/owner-gratis.test.mjs api/lib/tool-gate.test.mjs api/lib/ga4.test.mjs api/lib/sales-ledger.test.mjs api/suite-pricing.test.mjs api/lib/usage-owner.test.mjs api/lib/agentic-platform.test.mjs api/lib/acn-accounting.test.mjs api/lib/claim-seat.test.mjs api/lib/lab-auth.test.mjs api/lib/lab-passkeys.test.mjs api/lib/mcp-catalogs.test.mjs api/lib/nca_infra.test.mjs api/lib/hosted-job.test.mjs api/lib/pulsar-host.test.mjs api/lib/engines.test.mjs api/lib/standing-rider.test.mjs api/lib/sub-riders.test.mjs api/lib/rider-recovery.test.mjs api/rider/claim.test.js api/routes.test.mjs api/livekit-token.test.mjs",
     "seo-audit": "node scripts/seo-audit.cjs"
   },
   "engines": {

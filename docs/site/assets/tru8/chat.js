@@ -1,5 +1,5 @@
 /**
- * TRU8 AI guide widget — talks to POST /api/tru8-chat (SpaceXAI / xAI)
+ * TRU8 AI guide widget - talks to POST /api/tru8-chat (LiveKit voice + Nebius text)
  */
 (() => {
   "use strict";
@@ -20,7 +20,7 @@
       <div class="tru8-chat-head">
         <div>
           <h2>TRU<span>8</span> guide</h2>
-          <p>SpaceXAI · public product facts only</p>
+          <p>LiveKit voice + Nebius · public product facts only</p>
         </div>
         <button type="button" class="tru8-chat-close" aria-label="Close">×</button>
       </div>
@@ -119,8 +119,8 @@
         const err =
           data.error === "rate_limited"
             ? "Rate limit — try again in a minute."
-            : data.error === "xai_unconfigured"
-              ? "AI guide offline (XAI_API_KEY not configured)."
+            : data.error === "llm_unconfigured"
+              ? "AI guide offline (NEBIUS_API_KEY not configured)."
               : "Could not reach the guide. Try again.";
         addMsg("bot", err, "error");
         return;

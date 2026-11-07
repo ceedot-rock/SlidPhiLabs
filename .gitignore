@@ -27,3 +27,7 @@ docs/site/bin/
 
 # Live warrant paper trail - runtime state, never public git
 data/warrant/secret.txt
+
+# Project-local Python envs (voice-agent/.venv)
+.venv/
+.env
