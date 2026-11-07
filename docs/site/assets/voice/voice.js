@@ -9,7 +9,7 @@
 
   var TOKEN_URL = "/api/livekit-token";
   var ROOM = "tru8-guide";
-  var LK_CLIENT = "https://cdn.jsdelivr.net/npm/livekit-client@2.9.4/dist/livekit-client.esm.min.js";
+  var LK_CLIENT = "/assets/voice/livekit-client.esm.mjs";
 
   var state = "boot"; // boot | live | down | talk
   var room = null;
