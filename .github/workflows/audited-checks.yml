@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   tests:
-    name: Unit tests (root + spl-pay-per-suite)
+    name: Unit tests (root + site + spl-pay-per-suite)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,6 +22,8 @@ jobs:
         run: |
           npm ci
           npm test
+      - name: Site/API tests
+        run: npm run test:site
       - name: spl-pay-per-suite tests
         run: |
           cd packages/spl-pay-per-suite

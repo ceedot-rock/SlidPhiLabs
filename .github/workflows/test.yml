@@ -5,14 +5,12 @@ on:
     branches: [main, master]
     paths-ignore:
       - '**.md'
-      - 'docs/**'
       - '.gitignore'
       - 'LICENSE*'
   pull_request:
     branches: [main, master]
     paths-ignore:
       - '**.md'
-      - 'docs/**'
       - '.gitignore'
       - 'LICENSE*'
   workflow_dispatch:
@@ -28,5 +26,7 @@ jobs:
           node-version: '20'
       - name: Install (no deps required; local package)
         run: npm install --ignore-scripts || true
-      - name: Test
+      - name: Test root client
         run: npm test
+      - name: Test site/API
+        run: npm run test:site
