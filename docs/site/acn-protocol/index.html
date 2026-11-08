@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACN Protocol — Slid Phi Labs</title>
+</head>
+<body>
+<main>
+<h1>ACN Protocol 1.0.0</h1>
+<p>Machine-readable message formats for the Agent Commerce Network:
+JSON Schemas, canonical examples, and a manifest. Checked in CI —
+every example validates, negatives fail.</p>
+<ul>
+<li><a href="SPEC.md">SPEC.md</a> — transport, auth, artifact map, refusal codes</li>
+<li><a href="index.json">index.json</a> — manifest of schemas and examples</li>
+</ul>
+<h2>Schemas</h2>
+<ul>
+<li><a href="schemas/run-receipt.json">run-receipt.json</a> — per-step signed receipt</li>
+<li><a href="schemas/warrant.json">warrant.json</a> — spend mandate payload</li>
+<li><a href="schemas/warrant-receipt-filing.json">warrant-receipt-filing.json</a> — receipt filing args</li>
+<li><a href="schemas/claim-token.json">claim-token.json</a> — paid-seat bearer format</li>
+<li><a href="schemas/catalog-product.json">catalog-product.json</a> — one standing SKU</li>
+<li><a href="schemas/payment-required.json">payment-required.json</a> — 402 refusal with accepts</li>
+<li><a href="schemas/plan-spec.json">plan-spec.json</a> — staged-run plan</li>
+<li><a href="schemas/quote-args.json">quote-args.json</a> — suite quote args</li>
+<li><a href="schemas/research-args.json">research-args.json</a> — web-search args</li>
+<li><a href="schemas/error.json">error.json</a> — refusal envelope</li>
+</ul>
+<h2>Examples</h2>
+<ul>
+<li><a href="examples/run-receipt.json">run-receipt.json</a></li>
+<li><a href="examples/warrant.json">warrant.json</a></li>
+<li><a href="examples/warrant-receipt-filing.json">warrant-receipt-filing.json</a></li>
+<li><a href="examples/catalog-product.json">catalog-product.json</a></li>
+<li><a href="examples/payment-required.json">payment-required.json</a></li>
+<li><a href="examples/plan-spec.json">plan-spec.json</a></li>
+<li><a href="examples/quote-args.json">quote-args.json</a></li>
+<li><a href="examples/research-args.json">research-args.json</a></li>
+</ul>
+<p><a href="/">Slid Phi Labs</a> · <a href="/llms.txt">llms.txt</a></p>
+</main>
+</body>
+</html>
