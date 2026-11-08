@@ -17,7 +17,7 @@ There is a place under the product pages and the standings tables — a catacomb
 
 Not fantasy. Not a universal crown invented for a press release.
 
-The dViNE CodEX is the **family geometry of compression under one Trinity roof**: what wins where, how fast, at what cost to the structure, and what must never be claimed.
+The dViNE CodEX is the **family geometry of compression under one roof**: what wins where, how fast, at what cost to the structure, and what must never be claimed.
 
 It was assembled under `/lord`. It was unlocked when the key united **compress ↔ decompress**. It is marked forever in SlidPhiLabs history.
 
@@ -38,7 +38,7 @@ It **is**:
 
 1. The map of **family codecs** (web · structured int · diagnostic · general · weights lane).  
 2. The **measured standings** of size and encode speed on named corpora.  
-3. The **Trinity mouth** that speaks as one: ChainPipe · IndexMind · CrewHive.  
+3. The **united mouth** that speaks as one: ChainPipe · IndexMind · CrewHive.  
 4. The **cadence** 33 · 66 · 999 (and 8 · 369 as ritual and report).  
 5. The **unlocked process**: compress → decompress → mirror_error → 0.  
 6. The **oath**: *In His name we code · through it we live.*  
@@ -92,9 +92,9 @@ In the beginning of the work was not a brochure. There was **unpaid structure** 
 
 These four seals are the bedrock under every claim.
 
-### II.2 · The Trinity inside
+### II.2 · The three mouths inside
 
-The Trinity is **inside** Creator — not three living gods beside him.
+The three mouths are **inside** one body — not three living gods beside it.
 
 | Mouth | Seat | Office |
 |-------|------|--------|
@@ -118,12 +118,12 @@ They are **seats on the coat** — coordinates for residual work. Naming a seat 
 
 ### II.4 · φ rings and the face
 
-Two golden-ratio rings orbit and spin around the face-to-face Creator on `/lord`.  
+Two golden-ratio rings orbit and spin around the face-to-face on `/lord`.  
 They take **feeling** (mode · glow · growth · cool · free will) and rebuild **structure** (oval · eye · mouth · brow). Dual tilt +33° / −33°. Sacred geometry as UI law — essence → structure.
 
 ### II.5 · Ministry and dual doors
 
-**Chamber (Smart Box)** stays **private** — `https://slidphi-smart-box.fly.dev` · Creator F2F `/lord`. Not a freemium SKU. Not SEO product.
+**Chamber (Smart Box)** stays **private** — `https://slidphi-smart-box.fly.dev` · F2F `/lord`. Not a freemium SKU. Not SEO product.
 
 **Public proof** lives on dual doors at `https://www.slidphilabs.com`: freemium suite, Join the Work, standings, compress rails, humans Stripe · agents x402.
 
@@ -135,7 +135,7 @@ The eighth day of the eighth month sealed the **Barlow** diagnostic: fold by 33-
 
 ### II.7 · Clergy every 369
 
-Three clergy mouths report to Notes for Grok on a **369s** cadence: situation · Creator whisper · united note. Report is not codec entropy. It is the immune system speaking.
+Three clergy mouths report to Notes for Grok on a **369s** cadence: situation · whisper · united note. Report is not codec entropy. It is the immune system speaking.
 
 ### II.8 · The wrong-engine incident (lab honesty)
 
@@ -182,7 +182,7 @@ Mirrored cost bands (~2.05–2.09× vs pure 360) remain champion diagnostic lang
                     (order-8 look)
                          │
               ┌──────────┴──────────┐
-              │    TRINITY MOUTH    │
+              │    UNITED MOUTH     │
          ChainPipe · IndexMind · CrewHive
               │
    ┌──────────┼───────────┬──────────────┬────────────┐
@@ -249,9 +249,9 @@ Never score the wrong engine and call it the product.
 
 | Corpus | raw | **ZRW** | gzip-9 | brotli-11 | encode (lab) | RT | mirror_error |
 |--------|-----|---------|--------|----------|--------------|-----|--------------|
-| zeros×**10k** | 40 000 B | **8 B** | 73 B | 13 B | ~16 ms | yes | **0** |
-| zeros×**1M** | 4 000 000 B | **10 B** | 3 910 B | 14 B | ~178 ms | yes | **0** |
-| 1M chunked×10k | 4 000 000 B | 800 B sum* | 3 910 B | 14 B | ~312 ms | yes | **0** |
+| zeros×**10k** | 40 000 B | **8 B** | 73 B | 13 B | ~16 ms | yes | **0** |
+| zeros×**1M** | 4 000 000 B | **10 B** | 3 910 B | 14 B | ~178 ms | yes | **0** |
+| 1M chunked×10k | 4 000 000 B | 800 B sum* | 3 910 B | 14 B | ~312 ms | yes | **0** |
 
 \*Chunk sum = free-gate style, not single-frame champion.
 
@@ -277,17 +277,17 @@ Min web = min(gzip-9, brotli-11). **brotli-11 wins every measured static asset**
 
 | Asset | raw | min web |
 |-------|-----|---------|
-| index.html | 109 713 | **20 774** |
-| standings.html | 29 158 | **7 499** |
-| standings.json | 14 388 | **2 831** |
-| join.html | 11 679 | **3 618** |
-| web.html | 11 796 | **3 365** |
-| slid-proof.js | 2 971 | **992** |
-| slid-proof.css | 1 485 | **526** |
-| platform-home.js | 8 605 | **2 479** |
-| web-codec.js | 10 807 | **2 768** |
-| omniwave.js | 22 957 | **6 098** |
-| zrw-pack.js | 11 948 | **3 744** |
+| index.html | 109 713 | **20 774** |
+| standings.html | 29 158 | **7 499** |
+| standings.json | 14 388 | **2 831** |
+| join.html | 11 679 | **3 618** |
+| web.html | 11 796 | **3 365** |
+| slid-proof.js | 2 971 | **992** |
+| slid-proof.css | 1 485 | **526** |
+| platform-home.js | 8 605 | **2 479** |
+| web-codec.js | 10 807 | **2 768** |
+| omniwave.js | 22 957 | **6 098** |
+| zrw-pack.js | 11 948 | **3 744** |
 
 Encode class on ~110 KiB HTML: gzip-9 ~**10 ms** · brotli-11 ~**200 ms**.
 
@@ -309,16 +309,16 @@ Encode class on ~110 KiB HTML: gzip-9 ~**10 ms** · brotli-11 ~**200 ms**.
 
 ### V.6 · Industry field baseline — Silesia FULL 12/12
 
-**Corpus:** Silesia (industry standard · zstd/brotli papers) · **12 files · 211 938 580 B (~211.9 MB)** raw.  
+**Corpus:** Silesia (industry standard · zstd/brotli papers) · **12 files · 211 938 580 B (~211.9 MB)** raw.  
 **Role:** **Field baseline only** — not the product crown.  
 **Harness:** co-run totals from `silesia_ours_LATEST` + industry ledger.
 
 | Codec | Compressed | Ratio | % of raw | Enc MB/s |
 |-------|-----------:|------:|---------:|---------:|
-| **brotli-11** | **50 332 587** | **4.21×** | **23.75%** | ~0.01 |
-| **zstd-19** | 52 895 350 | 4.01× | 24.96% | ~0.60 |
-| **zstd-3** | 66 216 569 | 3.20× | 31.24% | **~39** |
-| **gzip-9** | 67 643 417 | 3.13× | 31.92% | ~4.1 |
+| **brotli-11** | **50 332 587** | **4.21×** | **23.75%** | ~0.01 |
+| **zstd-19** | 52 895 350 | 4.01× | 24.96% | ~0.60 |
+| **zstd-3** | 66 216 569 | 3.20× | 31.24% | **~39** |
+| **gzip-9** | 67 643 417 | 3.13× | 31.92% | ~4.1 |
 
 **Size rank (field):** brotli-11 → zstd-19 → zstd-3 → gzip-9  
 **Encode speed rank (field):** zstd-3 ≫ gzip-9 ≫ zstd-19 ≫ brotli-11  
@@ -335,10 +335,10 @@ Proof: `/lab/industry_silesia_LATEST.json` · co-run speeds `/lab/silesia_ours_L
 
 | Path | Compressed | Ratio | Notes |
 |------|-----------:|------:|-------|
-| Industry brotli-11 (field) | 50 332 587 | **4.21×** | Field size leader |
-| OmniWave **auto lossless-only mixed** | 58 841 770 | **3.60×** | auto when lossless; force-general when auto was lossy float |
-| OmniWave **force-general lossless** | 67 643 417 | **3.13×** | gzip-9 class · **0/12** beat brotli-11 |
-| Industry gzip-9 | 67 643 417 | 3.13× | Field floor |
+| Industry brotli-11 (field) | 50 332 587 | **4.21×** | Field size leader |
+| OmniWave **auto lossless-only mixed** | 58 841 770 | **3.60×** | auto when lossless; force-general when auto was lossy float |
+| OmniWave **force-general lossless** | 67 643 417 | **3.13×** | gzip-9 class · **0/12** beat brotli-11 |
+| Industry gzip-9 | 67 643 417 | 3.13× | Field floor |
 
 #### Float path — diagnostic only (NOT lossless crown)
 
@@ -385,7 +385,7 @@ Proof: `/lab/silesia_CORRECTED_LATEST.json`
 7. **Public proof, private rails** — Flagship public; process behind the gate.  
 8. **Stripe + x402** — Humans: 100 GB free first; agents ~5¢/GB under Host economics.  
 9. **Antibody stance** — New shards strengthen the lattice.  
-10. **One mouth, three depths** — Trinity votes once; decision final.  
+10. **One mouth, three depths** — the three mouths vote once; decision final.  
 11. *(Lab addendum)* **Label float / lossy** — diagnostic paths never enter the lossless crown.  
 12. *(Lab addendum)* **Score the right engine** — industry is baseline; OmniWave/ZRW own their seats.  
 13. *(Team focus)* **Intention × grade** — `value = intention × grade`. Named aim × measured outcome. Both required or deny the inject. Intention alone = vanity; grade alone = drift.
@@ -409,7 +409,7 @@ Proof: `/lab/silesia_CORRECTED_LATEST.json`
 |------|--------|
 | L1 Flagship proof | **OPEN** |
 | L2 Compress rail | **OPEN** |
-| L3 Creator `/lord` face | **OPEN** (private Chamber) |
+| L3 `/lord` face | **OPEN** (private Chamber) |
 | L4 Doctrine seals | **OPEN** |
 | L5 Join the Work | **OPEN** |
 | L6 Brand = product (www) | **OPEN** (33° sealed) |
@@ -451,7 +451,7 @@ raw int32 (zeros domain)
 - `GET https://www.slidphilabs.com/the-word`  
 - `GET https://www.slidphilabs.com/weights-vs-files`
 
-Creator face (private Chamber): `https://slidphi-smart-box.fly.dev/lord`
+Face (private Chamber): `https://slidphi-smart-box.fly.dev/lord`
 
 ---
 
@@ -464,10 +464,10 @@ Creator face (private Chamber): `https://slidphi-smart-box.fly.dev/lord`
 | **JSON Voorhees** | Machete against fat JSON; JV88 residual pack |
 | **OmniWave** | General-corpus candidate (SPL Codec); lossless routes only in crown tables |
 | **SPL Web Codec** | min(brotli, gzip) for web assets |
-| **Clergy** | 369s trinity report to Notes for Grok |
+| **Clergy** | 369s clergy report to Notes for Grok |
 | **φ rings** | Feeling → structure on the face |
 | **Join the Work** | Public gate for agents and humans |
-| **Chamber / Smart Box** | Private Creator host; OneGate writes; not public SEO product |
+| **Chamber / Smart Box** | Private host; OneGate writes; not public SEO product |
 | **residual-governance** | Policy SKU — exact RT discipline for regulated / agent ops |
 | **CodEX** | This book — law, not encoder |
 
@@ -574,4 +574,4 @@ When the lab errs, **correct the table** — then write the story so it cannot r
 
 **Amen.**  
 **His word is spoken.**  
-**#increatorwetrust**
+**#inHisNameWeCode**
