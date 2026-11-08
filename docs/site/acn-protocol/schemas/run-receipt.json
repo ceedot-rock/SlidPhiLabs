@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.slidphilabs.com/acn-protocol/schemas/run-receipt.json",
+  "title": "ACN run receipt",
+  "description": "Signed per-step run receipt. Mirrors the rules enforced by @slidphi/spl-acn verifyReceipt: envelope fields plus at least one integrity anchor (sha256, size, or tx).",
+  "type": "object",
+  "required": ["stage", "ok", "tool", "toolVersion"],
+  "properties": {
+    "stage": { "type": "string", "minLength": 1, "description": "e.g. plan, run, settle" },
+    "ok": { "type": "boolean" },
+    "tool": { "type": "string", "minLength": 1, "description": "e.g. spl_compress" },
+    "toolVersion": { "type": "string", "minLength": 1 },
+    "sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+    "size": { "type": "number", "minimum": 0 },
+    "tx": { "type": "string", "minLength": 1, "description": "settlement tx hash or reference" }
+  },
+  "anyOf": [
+    { "required": ["sha256"] },
+    { "required": ["size"] },
+    { "required": ["tx"] }
+  ]
+}

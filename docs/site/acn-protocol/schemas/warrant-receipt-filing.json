@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.slidphilabs.com/acn-protocol/schemas/warrant-receipt-filing.json",
+  "title": "ACN warrant receipt filing (spl_warrant_receipt args)",
+  "description": "Arguments for filing a receipt against a warrant. Mirrors api/lib/warrant.mjs fileReceipt.",
+  "type": "object",
+  "required": ["token", "action"],
+  "properties": {
+    "token": { "type": "string", "minLength": 1 },
+    "action": { "type": "string", "minLength": 1 },
+    "host": { "type": "string" },
+    "usd": { "type": "number", "minimum": 0 },
+    "reservation_id": { "type": "string" },
+    "request_sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+    "result_sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+    "note": { "type": "string" }
+  }
+}

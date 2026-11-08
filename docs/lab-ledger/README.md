@@ -23,7 +23,7 @@ One index + three areas. Each area holds one file per project.
 | tnssrc | Closed grant $369/yr | `docs/site/licensing.json` |
 | tollkeeper | Metered protection tools | wiki + git log |
 | quikgater | Named face, no product yet | git log |
-| teachaid | School product, suspended | residual ledger |
+| teachaid | School product, live 200 verified 2026-11-07 (Fly app spl-teachaid stopped; serving backend TBD) | residual ledger |
 
 ## Lab timeline (money + rails)
 
@@ -43,6 +43,21 @@ One index + three areas. Each area holds one file per project.
 - 2026-11-03: Nebius tokens + other credits issued to the lab (amounts TBD).
   First external pipeline: meeting with Eficens people later this month on
   product development (date, attendees, scope TBD).
+- 2026-11-07 (verified from inbox + dashboards): Nebius AI Builder ACCEPTED
+  (welcome Nov 2); $25 Token Factory promo dYcJqjcTbAGKrCdJ thru 2026-12-31;
+  partner credits LangSmith $100 / Tavily $25 / Toloka $50 / Tandem $50;
+  compute-grant verdict pending, nudge sent to John Marini. LiveKit Startups
+  APPROVED Nov 5: $17k credits + 1yr Scale, code SP-5883-993D-CA3E, claim
+  needs card (Corey). Cartesia grant Nov 6: 12mo free (96M chars/yr +
+  $300/mo agent credits), claim needs card + logo + social post (Corey).
+  LISC/Verizon $10k grant application received; OpenMined + Apart entries live.
+  Brex approved (terms TBD). Stripe dashboard live = $0, test mode, activation
+  needs business verification (Corey). npm token expired 401 (needs OTP).
+  Tavily vaulted key dead; fresh gmail workspace has 1,000 free credits,
+  onboarding unfinished. Mongo Atlas reachable, vaulted user lacks
+  listDatabases. Kaggle CLI 2.2.5 installed, auth pending (Corey).
+  AWS slidphi expired; SSO cache points at 955519187352 vs profile
+  755434485688 — unresolved, config backed up, no overwrite (Corey).
 
 ## Lab-wide truths (do not re-derive per file)
 
@@ -54,8 +69,9 @@ One index + three areas. Each area holds one file per project.
 - Rails: humans Stripe, agents x402 (USDC Solana/Base), enterprise
   invoice/wire on request only. Contact corey@slidphilabs.com.
 - Infra: Fly hosts live; Vercel lab hosts dead; RunPod $0 (all EXITED);
-  MongoDB $500 plan delivered, awaiting go. 2026-11-03: Nebius tokens +
-  other credits issued (vendors/amounts TBD) — extends bench/GPU runway.
+  MongoDB $500 plan delivered, awaiting go. Grant credits ledgered 2026-11-07
+  (timeline): Nebius accepted + partners, LiveKit $17k (card-blocked),
+  Cartesia 12mo (card-blocked) — extends bench/GPU runway once claimed.
 - Pipeline: first external conversation = Eficens meeting, this month,
   product development (details TBD). Everything else: 0 leads, 0 trials.
 

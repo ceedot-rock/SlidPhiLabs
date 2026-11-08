@@ -1,0 +1,7 @@
+{
+  "stage": "run",
+  "ok": true,
+  "tool": "spl_compress",
+  "toolVersion": "1.20.2",
+  "sha256": "a26eeb229ae764f18bddf35fecf6ac07c66ae165fd2769dd4425466d95203fd5"
+}

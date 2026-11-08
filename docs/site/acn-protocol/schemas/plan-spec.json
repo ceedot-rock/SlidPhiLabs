@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.slidphilabs.com/acn-protocol/schemas/plan-spec.json",
+  "title": "ACN agentic plan spec (spl_agentic_plan args)",
+  "description": "Base fields every staged run plans from, plus optional stage keys (each stage validates its own key; unknown keys are ignored by stages that do not need them). Mirrors checkBase in api/lib/agentic-platform.mjs.",
+  "type": "object",
+  "properties": {
+    "action": { "type": "string", "enum": ["spend", "fetch", "publish", "compress", "invoke"] },
+    "host": { "type": "string" },
+    "verse": { "type": "string" },
+    "crossing": { "type": "string" },
+    "url": { "type": "string" },
+    "bytes": { "type": "number", "minimum": 0 },
+    "product": { "type": "string" },
+    "op": { "type": "string" },
+    "demo": { "type": "boolean" },
+    "rider": { "type": "string" },
+    "chain": { "type": "array" },
+    "benchhaus": { "type": "object" },
+    "depotStore": { "type": "object" },
+    "chamberSeal": { "type": "object" },
+    "membership": { "type": "object" }
+  },
+  "additionalProperties": true
+}

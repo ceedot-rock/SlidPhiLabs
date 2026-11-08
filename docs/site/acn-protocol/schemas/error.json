@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.slidphilabs.com/acn-protocol/schemas/error.json",
+  "title": "ACN refusal envelope",
+  "description": "Every refusal is ok:false with a machine reason. The codebase uses two field names historically (error on HTTP endpoints, reason on SDK/tool results); exactly one is required so both dialects validate.",
+  "type": "object",
+  "required": ["ok"],
+  "properties": {
+    "ok": { "const": false },
+    "error": { "type": "string" },
+    "reason": { "type": "string" },
+    "message": { "type": "string" },
+    "code": { "type": "number" },
+    "status": { "type": "number" }
+  },
+  "anyOf": [
+    { "required": ["error"] },
+    { "required": ["reason"] }
+  ]
+}

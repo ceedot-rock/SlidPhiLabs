@@ -26,7 +26,8 @@ with publisher creds pastes these; nothing here auto-posts.
 - Registry: io.github.ceedot-rock/slid-phi-labs
 - Client: @slidphi/spl-acn (npm, once published) / github:ceedot-rock/spl-acn
 - Tools: spl_discover, spl_catalog, spl_quote, spl_compress/decompress/zip,
-  spl_warrant_issue/verify/receipt, spl_agentic_plan/run, sku_*/license_*
+  spl_warrant_issue/verify/receipt, spl_research (default Tavily web
+  search), spl_agentic_plan/run, sku_*/license_*
 
 ## Freshness rule
 

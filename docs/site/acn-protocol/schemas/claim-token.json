@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.slidphilabs.com/acn-protocol/schemas/claim-token.json",
+  "title": "ACN claim token",
+  "description": "Paid-seat bearer: spl1.<base64url(payload)>.<base64url(hmac-sha256)>. Sent as Authorization: Bearer. See api/lib/x402-claim.mjs.",
+  "type": "string",
+  "pattern": "^spl1\\.[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+$"
+}

@@ -1,0 +1,9 @@
+{
+  "token": "wrt_demo_a1b2c3d4e5f60718.signed-payload-placeholder",
+  "action": "invoke",
+  "host": "www.slidphilabs.com",
+  "usd": 0.02,
+  "request_sha256": "421ef4708b13640d036423e297fc3324368812693e4a5abde0312d2f9e5d5f20",
+  "result_sha256": "bc10edd32f9b348009d366965a8cb25d8a06d00ef054d33b25ebb5ad66dd94c0",
+  "note": "demo filing"
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.slidphilabs.com/acn-protocol/schemas/warrant.json",
+  "title": "ACN warrant (mandate) payload",
+  "description": "Signed spend mandate issued by spl_warrant_issue. Field set mirrors api/lib/warrant.mjs issueWarrant.",
+  "type": "object",
+  "required": ["v", "id", "agent_id", "operator_id", "actions", "allow_hosts", "max_usd", "max_calls", "iat", "exp"],
+  "properties": {
+    "v": { "type": "integer", "const": 1 },
+    "id": { "type": "string", "pattern": "^wrt(_demo)?_[0-9a-f]+$" },
+    "agent_id": { "type": "string", "minLength": 1 },
+    "operator_id": { "type": "string", "minLength": 1 },
+    "rider_jti": { "type": ["string", "null"] },
+    "level": { "type": ["string", "null"] },
+    "actions": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["spend", "fetch", "publish", "compress", "invoke"] }
+    },
+    "allow_hosts": { "type": "array", "items": { "type": "string" } },
+    "chain": { "type": "array" },
+    "max_usd": { "type": "number", "minimum": 0 },
+    "max_calls": { "type": "integer", "minimum": 1 },
+    "demo": { "type": "boolean" },
+    "iat": { "type": "integer", "minimum": 0 },
+    "exp": { "type": "integer", "minimum": 0 }
+  }
+}

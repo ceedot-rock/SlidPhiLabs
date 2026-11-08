@@ -8,6 +8,7 @@ import { catalogTools, dispatchCatalog } from "./lib/mcp-catalogs.mjs";
 import { computeQuote } from "./suite-pricing.js";
 import { issueWarrant, verifyWarrant, fileReceipt, reserveWarrant, releaseReservation, productCard as warrantCard } from "./lib/warrant.mjs";
 import { AGENTIC_TOOLS, dispatchAgentic } from "./lib/agentic-platform.mjs";
+import { searchTavily } from "./lib/tavily.mjs";
 import { encodeHosted, decodeFrame } from "./lib/specialist.mjs";
 import { packArchive, crc32 } from "./lib/pccz.mjs";
 import { unpackMembers } from "./archive.js";
@@ -125,6 +126,21 @@ const COMMERCE = [
       },
     },
     annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
+  },
+  {
+    name: "spl_research",
+    description:
+      "Default web search (Tavily). Fresh sources for any agent run. Args: query (required), max_results (1-10, default 5), search_depth (basic|advanced, default basic), include_answer (default false). Lab-metered; refuses closed when TAVILY_API_KEY is unset.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        query: { type: "string", description: "Search query" },
+        max_results: { type: "number", description: "1-10, default 5" },
+        search_depth: { type: "string", description: "basic | advanced" },
+        include_answer: { type: "boolean" },
+      },
+      required: ["query"],
+    },
   },
   {
     name: "spl_warrant_issue",
@@ -349,6 +365,14 @@ async function callTool(name, args = {}) {
       dataClass: args.dataClass || args.data_class || "unknown",
       op: args.op || "compress",
       bytes: args.bytes || 0,
+    });
+  }
+  if (name === "spl_research") {
+    return searchTavily({
+      query: args.query,
+      max_results: args.max_results,
+      search_depth: args.search_depth,
+      include_answer: args.include_answer,
     });
   }
   if (name === "spl_warrant_issue") {

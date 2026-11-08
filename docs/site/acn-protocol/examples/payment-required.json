@@ -1,0 +1,22 @@
+{
+  "ok": false,
+  "reason": "payment_required",
+  "accepts": [
+    {
+      "scheme": "exact",
+      "network": "solana-mainnet-beta",
+      "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "payTo": "ZHq1SCjyr2fReu9VmtpmZwDEbo1uzbrZMqPuY2ivb9V",
+      "decimals": 6,
+      "chain": "solana"
+    },
+    {
+      "scheme": "exact",
+      "network": "eip155:8453",
+      "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "payTo": "0xAd3dB8e2b1A311701E6233f17F6d648e4A52287c",
+      "decimals": 6,
+      "chain": "base"
+    }
+  ]
+}

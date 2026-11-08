@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.slidphilabs.com/acn-protocol/schemas/research-args.json",
+  "title": "ACN web research args (spl_research)",
+  "description": "Default web search (Tavily). Cost control is structural: basic depth and no answer unless asked, max_results hard-capped at 10.",
+  "type": "object",
+  "required": ["query"],
+  "properties": {
+    "query": { "type": "string", "minLength": 1 },
+    "max_results": { "type": "number", "minimum": 1, "maximum": 10 },
+    "search_depth": { "type": "string", "enum": ["basic", "advanced"] },
+    "include_answer": { "type": "boolean" }
+  }
+}

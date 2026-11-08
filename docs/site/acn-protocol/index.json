@@ -1,0 +1,28 @@
+{
+  "name": "acn-protocol",
+  "version": "1.0.0",
+  "title": "Agent Commerce Network protocol",
+  "spec": "SPEC.md",
+  "schemas": {
+    "run-receipt": "schemas/run-receipt.json",
+    "warrant": "schemas/warrant.json",
+    "warrant-receipt-filing": "schemas/warrant-receipt-filing.json",
+    "claim-token": "schemas/claim-token.json",
+    "catalog-product": "schemas/catalog-product.json",
+    "payment-required": "schemas/payment-required.json",
+    "plan-spec": "schemas/plan-spec.json",
+    "quote-args": "schemas/quote-args.json",
+    "research-args": "schemas/research-args.json",
+    "error": "schemas/error.json"
+  },
+  "examples": {
+    "run-receipt": "examples/run-receipt.json",
+    "warrant": "examples/warrant.json",
+    "warrant-receipt-filing": "examples/warrant-receipt-filing.json",
+    "catalog-product": "examples/catalog-product.json",
+    "payment-required": "examples/payment-required.json",
+    "plan-spec": "examples/plan-spec.json",
+    "quote-args": "examples/quote-args.json",
+    "research-args": "examples/research-args.json"
+  }
+}

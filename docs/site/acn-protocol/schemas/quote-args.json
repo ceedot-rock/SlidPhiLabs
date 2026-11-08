@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.slidphilabs.com/acn-protocol/schemas/quote-args.json",
+  "title": "ACN suite quote args (spl_quote)",
+  "description": "Price a payload before compressing. First 1 GB free once per IP.",
+  "type": "object",
+  "properties": {
+    "bytes": { "type": "number", "minimum": 0 },
+    "product": { "type": "string" },
+    "op": { "type": "string" },
+    "dataClass": { "type": "string" }
+  }
+}

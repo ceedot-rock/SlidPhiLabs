@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.slidphilabs.com/acn-protocol/schemas/catalog-product.json",
+  "title": "ACN catalog product (SKU)",
+  "description": "One standing SKU as served by spl_catalog. Price arrives in exactly one of the amount forms (live servers use amount_usd strings).",
+  "type": "object",
+  "required": ["sku", "name"],
+  "properties": {
+    "sku": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "amount_usd": { "type": ["string", "number"] },
+    "amount_cents": { "type": "integer", "minimum": 0 },
+    "usd": { "type": ["string", "number"] },
+    "usd_per_gb": { "type": "number", "minimum": 0 },
+    "usd_per_check": { "type": "number", "minimum": 0 },
+    "usd_per_fetch": { "type": "number", "minimum": 0 },
+    "usd_per_hour": { "type": "number", "minimum": 0 },
+    "kind": { "type": "string" },
+    "blurb": { "type": "string" },
+    "human_stripe": { "type": ["string", "null"] },
+    "agent_buy": { "type": "string" },
+    "access": { "type": "string" }
+  },
+  "additionalProperties": true
+}

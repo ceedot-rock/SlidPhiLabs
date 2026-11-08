@@ -1,0 +1,11 @@
+{
+  "sku": "chamber-year",
+  "name": "Chamber · annual cloak license",
+  "amount_usd": "200.00",
+  "amount_cents": 20000,
+  "kind": "chamber",
+  "blurb": "License to seal new JSON for a year. Stored secrets do not expire.",
+  "human_stripe": "https://www.slidphilabs.com/pay?sku=chamber-year",
+  "agent_buy": "POST /api/x402-products",
+  "access": "https://www.slidphilabs.com/access?product=chamber-year"
+}

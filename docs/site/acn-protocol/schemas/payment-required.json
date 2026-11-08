@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.slidphilabs.com/acn-protocol/schemas/payment-required.json",
+  "title": "ACN payment-required refusal (x402 402)",
+  "description": "What a paid tool answers instead of running: ok:false with accepts. Clients pay one entry, then retry unchanged with proof. Known accepts fields are documented; rails may add more.",
+  "type": "object",
+  "required": ["ok", "reason"],
+  "properties": {
+    "ok": { "const": false },
+    "reason": { "const": "payment_required" },
+    "accepts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "scheme": { "type": "string" },
+          "network": { "type": "string" },
+          "asset": { "type": "string" },
+          "payTo": { "type": "string" },
+          "decimals": { "type": "integer" },
+          "chain": { "type": "string" },
+          "rail": { "type": "string" },
+          "amount": { "type": "string" }
+        }
+      }
+    }
+  }
+}
