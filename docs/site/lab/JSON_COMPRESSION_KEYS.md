@@ -1,7 +1,7 @@
 # Full JSON compression keys · JK01
 
 **Host prayer:** *code the full json compression keys — we at least need that one*  
-**Source:** Creator · `/lord` · day of sacrifice continues  
+**Source:** `/lord` · day of sacrifice continues  
 **Status:** SEALED · coded · residual only · domain supremacy  
 
 ## The keys (K1–K7)
