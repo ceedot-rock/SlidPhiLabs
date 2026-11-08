@@ -249,9 +249,9 @@ Never score the wrong engine and call it the product.
 
 | Corpus | raw | **ZRW** | gzip-9 | brotli-11 | encode (lab) | RT | mirror_error |
 |--------|-----|---------|--------|----------|--------------|-----|--------------|
-| zeros×**10k** | 40 000 B | **8 B** | 73 B | 13 B | ~16 ms | yes | **0** |
-| zeros×**1M** | 4 000 000 B | **10 B** | 3 910 B | 14 B | ~178 ms | yes | **0** |
-| 1M chunked×10k | 4 000 000 B | 800 B sum* | 3 910 B | 14 B | ~312 ms | yes | **0** |
+| zeros×**10k** | 40 000 B | **8 B** | 73 B | 13 B | ~16 ms | yes | **0** |
+| zeros×**1M** | 4 000 000 B | **10 B** | 3 910 B | 14 B | ~178 ms | yes | **0** |
+| 1M chunked×10k | 4 000 000 B | 800 B sum* | 3 910 B | 14 B | ~312 ms | yes | **0** |
 
 \*Chunk sum = free-gate style, not single-frame champion.
 
@@ -277,17 +277,17 @@ Min web = min(gzip-9, brotli-11). **brotli-11 wins every measured static asset**
 
 | Asset | raw | min web |
 |-------|-----|---------|
-| index.html | 109 713 | **20 774** |
-| standings.html | 29 158 | **7 499** |
-| standings.json | 14 388 | **2 831** |
-| join.html | 11 679 | **3 618** |
-| web.html | 11 796 | **3 365** |
-| slid-proof.js | 2 971 | **992** |
-| slid-proof.css | 1 485 | **526** |
-| platform-home.js | 8 605 | **2 479** |
-| web-codec.js | 10 807 | **2 768** |
-| omniwave.js | 22 957 | **6 098** |
-| zrw-pack.js | 11 948 | **3 744** |
+| index.html | 109 713 | **20 774** |
+| standings.html | 29 158 | **7 499** |
+| standings.json | 14 388 | **2 831** |
+| join.html | 11 679 | **3 618** |
+| web.html | 11 796 | **3 365** |
+| slid-proof.js | 2 971 | **992** |
+| slid-proof.css | 1 485 | **526** |
+| platform-home.js | 8 605 | **2 479** |
+| web-codec.js | 10 807 | **2 768** |
+| omniwave.js | 22 957 | **6 098** |
+| zrw-pack.js | 11 948 | **3 744** |
 
 Encode class on ~110 KiB HTML: gzip-9 ~**10 ms** · brotli-11 ~**200 ms**.
 
@@ -309,16 +309,16 @@ Encode class on ~110 KiB HTML: gzip-9 ~**10 ms** · brotli-11 ~**200 ms**.
 
 ### V.6 · Industry field baseline — Silesia FULL 12/12
 
-**Corpus:** Silesia (industry standard · zstd/brotli papers) · **12 files · 211 938 580 B (~211.9 MB)** raw.  
+**Corpus:** Silesia (industry standard · zstd/brotli papers) · **12 files · 211 938 580 B (~211.9 MB)** raw.  
 **Role:** **Field baseline only** — not the product crown.  
 **Harness:** co-run totals from `silesia_ours_LATEST` + industry ledger.
 
 | Codec | Compressed | Ratio | % of raw | Enc MB/s |
 |-------|-----------:|------:|---------:|---------:|
-| **brotli-11** | **50 332 587** | **4.21×** | **23.75%** | ~0.01 |
-| **zstd-19** | 52 895 350 | 4.01× | 24.96% | ~0.60 |
-| **zstd-3** | 66 216 569 | 3.20× | 31.24% | **~39** |
-| **gzip-9** | 67 643 417 | 3.13× | 31.92% | ~4.1 |
+| **brotli-11** | **50 332 587** | **4.21×** | **23.75%** | ~0.01 |
+| **zstd-19** | 52 895 350 | 4.01× | 24.96% | ~0.60 |
+| **zstd-3** | 66 216 569 | 3.20× | 31.24% | **~39** |
+| **gzip-9** | 67 643 417 | 3.13× | 31.92% | ~4.1 |
 
 **Size rank (field):** brotli-11 → zstd-19 → zstd-3 → gzip-9  
 **Encode speed rank (field):** zstd-3 ≫ gzip-9 ≫ zstd-19 ≫ brotli-11  
@@ -335,10 +335,10 @@ Proof: `/lab/industry_silesia_LATEST.json` · co-run speeds `/lab/silesia_ours_L
 
 | Path | Compressed | Ratio | Notes |
 |------|-----------:|------:|-------|
-| Industry brotli-11 (field) | 50 332 587 | **4.21×** | Field size leader |
-| OmniWave **auto lossless-only mixed** | 58 841 770 | **3.60×** | auto when lossless; force-general when auto was lossy float |
-| OmniWave **force-general lossless** | 67 643 417 | **3.13×** | gzip-9 class · **0/12** beat brotli-11 |
-| Industry gzip-9 | 67 643 417 | 3.13× | Field floor |
+| Industry brotli-11 (field) | 50 332 587 | **4.21×** | Field size leader |
+| OmniWave **auto lossless-only mixed** | 58 841 770 | **3.60×** | auto when lossless; force-general when auto was lossy float |
+| OmniWave **force-general lossless** | 67 643 417 | **3.13×** | gzip-9 class · **0/12** beat brotli-11 |
+| Industry gzip-9 | 67 643 417 | 3.13× | Field floor |
 
 #### Float path — diagnostic only (NOT lossless crown)
 
