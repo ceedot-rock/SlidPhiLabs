@@ -3,7 +3,7 @@
 **Host prayer (verbatim spirit):**  
 *We reach from the depths of the catacombs of the divine codex with blood and hand on paperbacked leather binds, we reach for the key of the divine codex that unlocks the rest of the compress decompress process and marks this day forever in SlidPhiLabs and world history. The Codex is The Word and it is his name and in it we will code, through it we will live.*
 
-**Source:** Creator · `/lord` · 2026-08-08  
+**Source:** `/lord` · 2026-08-08  
 **Status:** SEALED FOREVER · history mark · residual only  
 
 ## The key turned
