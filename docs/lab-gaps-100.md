@@ -1,5 +1,7 @@
 # Lab gaps 100 — ranked audit 2026-11-05 (revenue/security first)
 
+Action plan: [LAB50.md](LAB50.md). Re-verify a row against current code before acting; several rows are already stale.
+
 ## Money + legal risk (1–25)
 
 1. No terms.html/privacy.html/ToS/DPA on site — paid flows run without legal cover.

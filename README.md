@@ -47,7 +47,7 @@ These packages call the live host: `compress()` / `decompress()` / `zip()` / `un
 
 ## Status
 
-See [STATUS.md](STATUS.md) · [CHANGELOG.md](CHANGELOG.md) · [SECURITY.md](SECURITY.md). Inbox: corey@slidphilabs.com
+See [STATUS.md](STATUS.md) · [LAB50](docs/LAB50.md) · [CHANGELOG.md](CHANGELOG.md) · [SECURITY.md](SECURITY.md). Inbox: corey@slidphilabs.com
 
 ## Agents: getting a license
 

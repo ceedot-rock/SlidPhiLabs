@@ -9,6 +9,7 @@
 ## Checks
 
 - [ ] `npm test` passes (root: pccz archive suite)
+- [ ] `npm run test:site` passes (site/API suites)
 - [ ] `cd packages/spl-pay-per-suite && npm test` passes, if that package was touched
 - [ ] LICENSE / LICENSE.AGPL-3.0 / LICENSE.COMMERCIAL untouched (dual-license grant)
 - [ ] No secrets, keys, or tokens committed

@@ -1,5 +1,7 @@
 # Lab status — 2026-11-05
 
+Viability plan: [docs/LAB50.md](docs/LAB50.md) — 50 ordered steps; 1–6 done 2026-11-08.
+
 Canonical public sentence lives in README.md. If a page disagrees, the page is wrong.
 
 ## Surfaces
