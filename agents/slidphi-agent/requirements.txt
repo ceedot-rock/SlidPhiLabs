@@ -1,0 +1,3 @@
+livekit-agents==1.8.11
+livekit-plugins-openai
+tavily-python
