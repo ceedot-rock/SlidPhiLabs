@@ -61,6 +61,7 @@ async def entrypoint(ctx: JobContext) -> None:
         llm=openai_plugin.LLM(
             model=os.environ.get("LLM_MODEL", "gpt-4o-mini"),
             base_url=os.environ.get("LLM_BASE_URL") or None,
+            api_key=os.environ.get("OPENAI_API_KEY", "local"),
         )
     )
     await session.start(room=ctx.room, agent=LabAssistant())
