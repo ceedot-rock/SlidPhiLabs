@@ -3,6 +3,7 @@
  * Static samples live under /suite-folder/ (served as static files).
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
+import { logInternal } from "./lib/http-fail.mjs";
 
 import fs from "fs";
 import path from "path";
@@ -41,7 +42,7 @@ async function handler(req, res) {
   } catch (e) {
     res.statusCode = 500;
     res.setHeader("Content-Type", "application/json");
-    res.end(JSON.stringify({ ok: false, error: String(e.message || e) }));
+    res.end(JSON.stringify({ ok: false, error: "internal", request_id: logInternal(req, "suite-folder", e) }));
   }
 }
 

@@ -13,6 +13,7 @@
  * No key material in code (env only).
  */
 import { createMcpCatalog } from "./lib/mcp-catalog.mjs";
+import { logInternal } from "./lib/http-fail.mjs";
 import { getSku, quoteSku, createSkuCatalog } from "./lib/storefront-skills.mjs";
 import {
   buildReleaseReceipt,
@@ -135,6 +136,6 @@ export default async function handler(req, res) {
         return fail(res, 400, "unknown_action");
     }
   } catch (e) {
-    return fail(res, 500, "internal", { detail: String((e && e.message) || e).slice(0, 200) });
+    return fail(res, 500, "internal", { request_id: logInternal(req, "catalog", e) });
   }
 }

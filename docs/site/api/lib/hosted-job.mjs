@@ -4,13 +4,15 @@
  * Pure glue over injectable lib helpers; no network. Fail-closed envelopes.
  */
 import { classify, encodeHosted, MAX_RAW } from "./specialist.mjs";
-import { addUsage, identityFromReq, meterSnapshot } from "./usage-meter.mjs";
+import { addUsage, identityFromReq, meterSnapshot, quotaCheck } from "./usage-meter.mjs";
 
 export async function runHostedEncode(req, raw) {
   if (!raw || !raw.length) return { status: 400, body: { ok: false, error: "empty_body" } };
   if (raw.length > MAX_RAW) {
     return { status: 413, body: { ok: false, error: "too_large", max_raw: MAX_RAW } };
   }
+  const gate = quotaCheck(req);
+  if (!gate.allowed) return { status: gate.status, body: gate.body };
   const cls = classify(raw);
   const fill = cls.seat === "fill";
   const usage = meterSnapshot(req, fill ? 0 : raw.length);

@@ -15,6 +15,7 @@
  * network, no keys, and no arbitrary code execution over HTTP.
  */
 import { createRunManager } from "./lib/async-runs.mjs";
+import { logInternal } from "./lib/http-fail.mjs";
 import { createRunExecutor } from "./lib/run-executor.mjs";
 import { policyFor, getPolicy, listPolicies } from "./lib/run-policies.mjs";
 import { createScheduleStore } from "./lib/scheduled-runs.mjs";
@@ -171,6 +172,6 @@ export default async function handler(req, res) {
         return fail(res, 400, "unknown_action");
     }
   } catch (e) {
-    return fail(res, 500, "internal", { detail: String((e && e.message) || e).slice(0, 200) });
+    return fail(res, 500, "internal", { request_id: logInternal(req, "runs", e) });
   }
 }

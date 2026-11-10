@@ -20,6 +20,7 @@
 import { verifyClaim } from "./lib/x402-claim.mjs";
 import { reportPurchase } from "./lib/ga4.mjs";
 import { recordSale, hasOrderId } from "./lib/sales-ledger.mjs";
+import { paidCors } from "./lib/cors.mjs";
 
 const FULFILL_EMAIL = "corey@slidphilabs.com";
 const BASE = "https://www.slidphilabs.com";
@@ -530,10 +531,9 @@ const SEATS = {
 };
 const TRUCHAMBER = SEATS;
 
-function cors(res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+function cors(req, res) {
+  paidCors(req, res, "GET, OPTIONS");
+
 }
 
 function simpleSeatId(sessionId, sku) {
@@ -996,7 +996,7 @@ function q(req, name) {
 }
 
 export default async function handler(req, res) {
-  cors(res);
+  cors(req, res);
   if (req.method === "OPTIONS") return res.status(204).end();
   if (req.method !== "GET") {
     return res.status(405).json({ ok: false, error: "method_not_allowed" });

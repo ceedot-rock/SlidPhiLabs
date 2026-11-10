@@ -6,6 +6,7 @@
  * Returns: packed_b64, meta, keys, publish_delta
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
+import { paidCors } from "./lib/cors.mjs";
 
 import {
   compressJsonKeys,
@@ -15,12 +16,9 @@ import {
   canonicalBytes,
 } from "../lab/json_residual/json_keys.mjs";
 
-function cors(res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.setHeader("X-Json-Keys", "JK01");
-  res.setHeader("X-Codex", "dViNE CodEX");
+function cors(req, res) {
+  paidCors(req, res, "GET, POST, OPTIONS", "Content-Type", { "X-Json-Keys": "JK01", "X-Codex": "dViNE CodEX" });
+
 }
 
 function json(res, status, body) {
@@ -72,7 +70,7 @@ function parseInput(body) {
 }
 
 async function handler(req, res) {
-  cors(res);
+  cors(req, res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
     return res.end();

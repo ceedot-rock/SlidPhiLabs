@@ -4,6 +4,7 @@
  * Also: GET /api/duos?surface=web|agent
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
+import { logInternal } from "./lib/http-fail.mjs";
 
 import fs from "fs";
 import path from "path";
@@ -131,7 +132,7 @@ async function handler(req, res) {
         ui: "/duos",
       });
     } catch (e) {
-      return send(res, 500, { ok: false, error: String(e.message || e) });
+      return send(res, 500, { ok: false, error: "internal", request_id: logInternal(req, "duos", e) });
     }
   }
 

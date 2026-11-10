@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "description": "φ-rest — after fire, rest. Open once, serve from RAM.",
+  "license": "(AGPL-3.0-or-later OR LicenseRef-SlidPhiLabs-Commercial)",
   "scripts": {
     "test": "node --test test/"
   },

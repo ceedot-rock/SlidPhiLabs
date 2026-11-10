@@ -23,13 +23,34 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
       - name: Install flyctl
         uses: superfly/flyctl-actions/setup-flyctl@1.6
         with:
           version: 0.4.121
 
+      - name: Pre-deploy test gate
+        run: |
+          npm ci
+          npm run test:site
       - name: Deploy existing Fly app
         working-directory: docs/site
         run: flyctl deploy --remote-only --config fly.toml --app slidphilabs
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: Post-deploy smoke gate
+        working-directory: docs/site
+        run: |
+          for i in $(seq 1 12); do
+            if node scripts/smoke.mjs https://slidphilabs.fly.dev; then
+              exit 0
+            fi
+            echo "smoke attempt $i/12 failed; waiting 20s for rollout..."
+            sleep 20
+          done
+          echo "smoke gate FAILED after 12 attempts"
+          exit 1

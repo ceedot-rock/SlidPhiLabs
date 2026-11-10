@@ -10,6 +10,7 @@ import path from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import { attachNca, ncaBindApp, ncaHeaders, ncaReport } from "./lib/nca_infra.mjs";
 import { bootRest, fromRest, fromRestGzip } from "./lib/phi_rest.mjs";
+import { sweep, realFs } from "./api/lib/log-rotate.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = __dirname;
@@ -543,7 +544,21 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
+// Daily log rotation sweep (LAB50 step 36): money ledgers snapshotted, never
+// truncated; operational logs rotated; archives older than 90d deleted.
+const LOG_DIR = process.env.AUTH_DIR || "/data";
+function sweepLogs() {
+  try {
+    for (const r of sweep(LOG_DIR, realFs())) {
+      if (r.action !== "keep") console.log(`[slidphilabs] log-rotate ${r.file}: ${r.action} (${r.reason || ""})`);
+    }
+  } catch (e) {
+    console.error(`[slidphilabs] log-rotate failed: ${String((e && e.message) || e)}`);
+  }
+}
 const rest = bootRest(ROOT);
 server.listen(PORT, HOST, () => {
   console.log(`[slidphilabs] fly host http://${HOST}:${PORT} root=${ROOT} phi-rest=${rest.n}/${rest.bytes}`);
+  sweepLogs();
+  setInterval(sweepLogs, 24 * 3600 * 1000).unref();
 });

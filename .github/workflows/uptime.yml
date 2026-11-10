@@ -35,3 +35,22 @@ jobs:
             --title "Uptime probe failed $(date -u +%FT%TZ)" \
             --body "Hourly sweep failed. See run ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}. <5min alerting needs the external monitor in UPTIME.md plus SMTP secrets." \
             --label "incident" || true
+
+  canonical:
+    name: Canonical host + certificate
+    runs-on: ubuntu-latest
+    steps:
+      - name: www serves, apex redirects, cert validates
+        run: |
+          set -e
+          www=$(curl -s -o /dev/null -w "%{http_code}" --max-time 25 https://www.slidphilabs.com/)
+          test "$www" = "200"
+          echo "www -> 200 (TLS verified by curl)"
+          code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 25 https://slidphilabs.com/)
+          redir=$(curl -s -o /dev/null -w "%{redirect_url}" --max-time 25 https://slidphilabs.com/)
+          echo "apex -> $code $redir"
+          test "$code" = "301" -o "$code" = "308"
+          case "$redir" in https://www.slidphilabs.com/*) ;; *) exit 1;; esac
+          fly=$(curl -s -o /dev/null -w "%{http_code}" --max-time 25 https://slidphilabs.fly.dev/api/health) || fly="000"
+          echo "fly.dev alternate -> $fly (informational)"
+          echo "canonical host checks passed"
