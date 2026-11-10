@@ -1,0 +1,8 @@
+{
+  "campaign": "teachaid-launch",
+  "issued_by": "Corey",
+  "issued_at": "2026-11-10",
+  "allows": ["draft", "schedule", "publish-with-approval"],
+  "denies": ["spend", "new-channel", "new-claim", "impersonation"],
+  "note": "Publish requires approvals/<draft-id>.json signed by a human. Organic channels only."
+}
