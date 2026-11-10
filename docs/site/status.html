@@ -105,5 +105,56 @@ a { color:#58a6ff; }</style>
     Contact <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> for incidents.
   </footer>
 </div>
+<script>
+(function () {
+  // LAB50 step 9: badges below are overwritten by live probes with
+  // checked_at + source URL. Hand-painted badges are fallback only.
+  var rows = [
+    { name: "PCC", probe: "/api/health", same: true },
+    { name: "TRUSTREAM", probe: "/api/health", same: true },
+    { name: "Agent-Rider", probe: "https://agentrider.fly.dev/", same: false },
+    { name: "CuNi Studio", probe: "https://cuni-studio.fly.dev/api/health", same: false }
+  ];
+  function paint(svc, cls, text, url) {
+    var badge = svc.querySelector(".badge");
+    if (badge) { badge.className = "badge " + cls; badge.textContent = text; }
+    var m = svc.querySelector(".meta");
+    if (m && !m.querySelector("[data-live]")) {
+      var s = document.createElement("span");
+      s.setAttribute("data-live", "1");
+      s.textContent = " · live " + new Date().toISOString() + " via " + url;
+      m.appendChild(s);
+    }
+  }
+  rows.forEach(function (row) {
+    var svc = Array.prototype.find.call(
+      document.querySelectorAll(".svc"),
+      function (el) {
+        var n = el.querySelector(".svc-name");
+        return n && n.textContent.trim() === row.name;
+      }
+    );
+    if (!svc) return;
+    if (row.same) {
+      fetch(row.probe, { cache: "no-store" }).then(function (r) {
+        if (r.status === 200) return r.json().then(function (j) {
+          paint(svc, j && j.ok ? "ok" : "down",
+            j && j.ok ? "Operational — live" : "Outage — live", row.probe);
+        });
+        paint(svc, r.status >= 500 ? "down" : "warn",
+          (r.status >= 500 ? "Outage" : "Degraded") + " — live HTTP " + r.status, row.probe);
+      }).catch(function () {
+        paint(svc, "down", "Outage — live (unreachable)", row.probe);
+      });
+    } else {
+      fetch(row.probe, { mode: "no-cors", cache: "no-store" }).then(function () {
+        paint(svc, "ok", "Reachable — shallow live check", row.probe);
+      }).catch(function () {
+        paint(svc, "down", "Outage — live (unreachable)", row.probe);
+      });
+    }
+  });
+})();
+</script>
 </body>
 </html>

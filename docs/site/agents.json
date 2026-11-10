@@ -29,7 +29,7 @@
     "pulsar"
   ],
   "suite": {
-    "plain": "First 1 GB each month free, then $0.25/GB of input. Pro $25/month includes 100 GB, then $0.20/GB. Customer-set monthly spend cap (default $25), alert at 80%.",
+    "plain": "First 1 GB free once per IP address (lifetime, no monthly reset), then $0.25/GB of input. Pro $25/month includes 100 GB, then $0.20/GB. Customer-set monthly spend cap (default $25), alert at 80%.",
     "unpaid_gb": 1,
     "window": "calendar_month",
     "usd_per_gb": 0.25,
@@ -99,7 +99,7 @@
       "name": "PCC",
       "role": "compression",
       "url": "https://www.slidphilabs.com/pcc",
-      "price": "Metered $0.25/GB of input, first 1 GB/month free; Pro $25/month including 100 GB, then $0.20/GB",
+      "price": "Metered $0.25/GB of input, first 1 GB free once per IP (lifetime, no monthly reset); Pro $25/month including 100 GB, then $0.20/GB",
       "note": "Door 1 onto the Shared Spine. PCC = lossless compressor only. AWARE is a retired alias."
     },
     {
@@ -123,7 +123,7 @@
       "name": "PCC",
       "role": "compression",
       "url": "https://www.slidphilabs.com/pcc",
-      "price": "Metered $0.25/GB of input, first 1 GB/month free; Pro $25/month including 100 GB, then $0.20/GB",
+      "price": "Metered $0.25/GB of input, first 1 GB free once per IP (lifetime, no monthly reset); Pro $25/month including 100 GB, then $0.20/GB",
       "note": "Door 1 onto the Shared Spine. lossless compressor only (not payment)"
     },
     {
@@ -308,7 +308,7 @@
         "sku": "pcc-meter",
         "usd": 0.25,
         "human": "/pps",
-        "note": "PCC meter: $0.25/GB of input, first 1 GB/month free"
+        "note": "PCC meter: $0.25/GB of input, first 1 GB free once per IP (lifetime, no monthly reset)"
       },
       {
         "sku": "pcc-pro",

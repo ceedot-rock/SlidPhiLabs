@@ -19,7 +19,7 @@
 
 import { verifyClaim } from "./lib/x402-claim.mjs";
 import { reportPurchase } from "./lib/ga4.mjs";
-import { recordSale } from "./lib/sales-ledger.mjs";
+import { recordSale, hasOrderId } from "./lib/sales-ledger.mjs";
 
 const FULFILL_EMAIL = "corey@slidphilabs.com";
 const BASE = "https://www.slidphilabs.com";
@@ -1040,13 +1040,18 @@ export default async function handler(req, res) {
       currency: "usd",
       orderId: v.payload.order_id,
     });
-    void recordSale({
-      sku,
-      amountCents: v.payload.amount_cents,
-      currency: "usd",
-      orderId: v.payload.order_id,
-      rail: "x402",
-    });
+    // Dedupe is best-effort here: on ledger-unreadable, record anyway —
+    // the deliverable below is granted regardless, and a duplicate line
+    // (detectable by order_id) beats an invisible missing sale.
+    if (!(await hasOrderId(v.payload.order_id).catch(() => false))) {
+      await recordSale({
+        sku,
+        amountCents: v.payload.amount_cents,
+        currency: "usd",
+        orderId: v.payload.order_id,
+        rail: "x402",
+      });
+    }
     return res.status(200).json({
       ok: true,
       paid: true,
@@ -1143,13 +1148,19 @@ export default async function handler(req, res) {
         currency,
         orderId: body.id,
       });
-      void recordSale({
-        sku,
-        amountCents: amountTotal,
-        currency,
-        orderId: body.id,
-        rail: "stripe",
-      });
+      // Same best-effort dedupe as the x402 path above: the webhook is the
+      // authoritative recorder (fail-closed with retries); this backstop
+      // records only when the order is absent, and records anyway when the
+      // ledger cannot be read.
+      if (!(await hasOrderId(body.id).catch(() => false))) {
+        await recordSale({
+          sku,
+          amountCents: amountTotal,
+          currency,
+          orderId: body.id,
+          rail: "stripe",
+        });
+      }
     }
     return res.status(200).json({
       ok: true,

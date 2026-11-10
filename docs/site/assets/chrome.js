@@ -108,6 +108,13 @@
         <a href="/llms.txt">llms.txt</a>
         <a href="/mcp">/mcp</a>
       </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/dpa">DPA</a>
+        <a href="/refund-policy">Refunds</a>
+      </div>
     </div>
     <p class="legal">© Slid Phi Labs · Cherry Hill · corey@slidphilabs.com · © 2026 Slid Phi Labs, Inc</p>
   </footer>`;
