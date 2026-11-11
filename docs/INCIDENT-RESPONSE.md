@@ -71,7 +71,8 @@ monitor), one action item with an owner. Append to the drill log below.
   `prod-guard.test.mjs`, 3/3); `stripe` CLI present with the Slid Phi Labs
   profile in config (observed `stripe --version 1.55.8`; no live API call
   made); Depot revoke route live-tested (`test_depot.py`, 10/10).
-  Gaps found: (1) off-Fly restore undrilled (step 32 open) — card states it
-  explicitly rather than implying coverage; (2) no `fly` CLI on this box, so
+  Gaps found: (1) restore procedure drilled 2026-11-10 (receipt in
+  RELIABILITY.md) but the live Fly volume copy still needs an equipped box —
+  do not promise a recovery point; (2) no `fly` CLI on this box, so
   Fly-side revocation is dashboard-only until the CLI is installed where
   deploys run.

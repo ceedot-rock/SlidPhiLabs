@@ -16,7 +16,7 @@ import { unpackMembers } from "./archive.js";
 const SITE = "https://www.slidphilabs.com";
 const MCP_VERSION = "1.21.0";
 
-const COMMERCE = [
+export const COMMERCE = [
   {
     name: "cuni_bank",
     description:
@@ -241,7 +241,7 @@ export const SERVER_CARD = {
   tools: [...COMMERCE, ...catalogTools().map((t) => ({ name: t.name, description: t.description }))],
 };
 
-const TOOLS = [
+export const TOOLS = [
   ...COMMERCE.map((t) => ({
     name: t.name,
     description: t.description,

@@ -22,6 +22,7 @@
     "chamber_month": 20,
     "chamber_year": 200,
     "pcc_pro_month": 25,
+    "pcc_pro_overage_gb": 0.2,
     "pcc_meter_gb": 0.25,
     "lab_pass_year": 495,
     "rider_solo": 12,

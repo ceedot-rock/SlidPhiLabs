@@ -1,7 +1,7 @@
 {
   "name": "slid-phi-labs",
   "title": "Slid Phi Labs",
-  "description": "Hosted Streamable HTTP MCP for the Slid Phi Labs catalog. Rider seats, CuNi 0.10.0, Warrant, Tollkeeper, Chamber, and PCC (first 1 GB/month free, then $0.25/GB of input). Cite https://www.slidphilabs.com/llms.txt. The encoder stays protected.",
+  "description": "Hosted Streamable HTTP MCP for Slid Phi Labs public catalog and commerce discovery. Lookup is public; engines and customer operations remain protected.",
   "version": "1.21.0",
   "websiteUrl": "https://www.slidphilabs.com",
   "documentationUrl": "https://www.slidphilabs.com/mcp-service",
@@ -19,5 +19,1004 @@
     "type": "optional",
     "human": "https://www.slidphilabs.com/api/auth",
     "agent_key": "POST /api/auth {\"action\":\"agent_key\",\"name\":\"my-agent\"}"
-  }
+  },
+  "tools": [
+    {
+      "name": "cuni_bank",
+      "description": "Run a CuNi program through CuNi Bank: submit source in Python or .cuni and get the exact output in the target language, or a refusal when the languages disagree. Read-only computation — no state is stored. Calls the CuNi Studio service (cuni-studio.fly.dev). Use for exactness checks and cross-language proofs; use spl_compress for byte compression, not program translation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Source program to run: a Python v1-subset program or .cuni source text."
+          },
+          "from": {
+            "type": "string",
+            "description": "Source language: py for a Python v1-subset program, cuni for .cuni source. Defaults to py."
+          },
+          "to": {
+            "type": "string",
+            "description": "Target language for the output, e.g. js, go, ts, py. Required."
+          }
+        },
+        "required": [
+          "source",
+          "to"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_discover",
+      "description": "List the lab's lead and cash products, auth endpoints, and entry points (site, CuNi Studio, Agent-Rider, Chamber, MCP, x402, SKILL.md). Read-only; returns a static discovery map. Takes no arguments. Use as the first call when orienting an agent; use the *_search catalog tools for prices and details.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_lab_auth",
+      "description": "Explain how to mint a lab account or agent API key: the human signup/login flow and the agent_key call. Read-only; returns instructions only and creates nothing. Takes no arguments. Use to learn the auth flow; use spl_signup to create a human account or spl_agent_key to mint a key.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_signup",
+      "description": "Create a human lab account with an email and password. Mutating: stores a salted password hash and returns a signed session token. Email must be a valid address, password at least 8 characters; duplicate emails are rejected. Use for a human seat; use spl_agent_key for a passwordless agent key.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Account email address. Must be a valid email; duplicates are rejected with email_taken."
+          },
+          "password": {
+            "type": "string",
+            "description": "Account password, at least 8 characters. Stored as a salted hash, never in plain text."
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name, up to 80 characters. Defaults to the part of the email before @."
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_agent_key",
+      "description": "Mint a passwordless agent API key (spl_ag_*) for a named agent. Mutating: creates an agent account and returns the key once — store it, it cannot be retrieved again. Use for agent seats; use spl_signup for a human account with email and password.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Agent name, up to 80 characters. Defaults to agent."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_catalog",
+      "description": "List the standing SKUs agents can buy via x402 (live product list from /api/x402-products). Read-only; returns current prices and payment rails. Takes no arguments. Use for live purchase options; use sku_search and sku_get for the catalog's price notes and links.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_compress",
+      "description": "Compress bytes with the hosted lossless engine (PCC and sibling codecs). Accepts base64 input; returns base64 packed bytes, sizes, and the method used. Read-only computation — nothing is stored. Metered: first 1 GB free once per IP, then $0.25/GB; a paid seat or x402 payment may be required (402). Use to shrink data; use spl_decompress to restore it, spl_zip to pack files.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "data_b64": {
+            "type": "string",
+            "description": "Base64-encoded bytes to compress. Must be valid base64."
+          }
+        },
+        "required": [
+          "data_b64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_decompress",
+      "description": "Restore bytes packed by spl_compress. Accepts the base64 packed output; returns the original bytes as base64 plus their length. Read-only computation — nothing is stored. Use only on output from spl_compress; use spl_unzip for .pcc archives.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "packed_b64": {
+            "type": "string",
+            "description": "Base64-encoded packed bytes previously returned by spl_compress."
+          }
+        },
+        "required": [
+          "packed_b64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_zip",
+      "description": "Pack files into a .pcc archive (the lab's zip). Each file is compressed with the hosted engine; returns the archive as base64 plus packed size and member count. Read-only computation — nothing is stored. Use to bundle multiple files; use spl_compress for a single blob, spl_unzip to restore.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "description": "Files to pack. Each item: path (archive path), data_b64 (base64 file bytes; omit for directories), dir (true for a directory entry).",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "Path inside the archive, e.g. notes/readme.txt."
+                },
+                "data_b64": {
+                  "type": "string",
+                  "description": "Base64-encoded file bytes. Omit for directory entries."
+                },
+                "dir": {
+                  "type": "boolean",
+                  "description": "True when this entry is a directory (no bytes). Defaults to false."
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "files"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_unzip",
+      "description": "Restore files from a .pcc archive made by spl_zip. Accepts the archive as base64; returns each file with path and base64 bytes plus the member count. Read-only computation — nothing is stored. Use only on .pcc archives; use spl_decompress for single blobs from spl_compress.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "packed_b64": {
+            "type": "string",
+            "description": "Base64-encoded .pcc archive previously returned by spl_zip."
+          }
+        },
+        "required": [
+          "packed_b64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_quote",
+      "description": "Quote a metered PCC job before running it: price in USD for the given byte count, product, and operation. Read-only and free; returns the quote without charging or reserving anything. First 1 GB free once per IP, then $0.25/GB of input, $1 card minimum. Use before spl_compress on large inputs; use spl_catalog for standing SKUs.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "bytes": {
+            "type": "number",
+            "description": "Payload bytes. First 1 GB free once per IP."
+          },
+          "product": {
+            "type": "string",
+            "description": "Product to price: auto, zrw, blackjack, shard-zip, shard-tsdb, or slid-phi. Defaults to auto."
+          },
+          "op": {
+            "type": "string",
+            "description": "Operation: compress, decompress, or roundtrip. Defaults to compress."
+          },
+          "dataClass": {
+            "type": "string",
+            "description": "Data class of the payload (e.g. text, logs, json) when known; used to pick the best product. Defaults to unknown."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_research",
+      "description": "Default web search (Tavily). Fresh sources for any agent run. Args: query (required), max_results (1-10, default 5), search_depth (basic|advanced, default basic), include_answer (default false). Lab-metered; refuses closed when TAVILY_API_KEY is unset.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Search query"
+          },
+          "max_results": {
+            "type": "number",
+            "description": "1-10, default 5"
+          },
+          "search_depth": {
+            "type": "string",
+            "description": "basic | advanced"
+          },
+          "include_answer": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "name": "spl_warrant_issue",
+      "description": "Issue a Warrant (spend mandate) for an Agent-Rider identity, capping what an agent may spend, where, and for how long. Mutating: mints a signed token. Pass a Rider JWT, or demo:true for a 10-minute shape check that issues nothing billable. Use to authorize an agent's spending before it acts; use spl_warrant_verify to check a token, spl_warrant_reserve to hold funds, spl_warrant_receipt to settle.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "rider": {
+            "type": "string",
+            "description": "Agent-Rider JWT proving the identity the Warrant is issued for. Required unless demo is true."
+          },
+          "demo": {
+            "type": "boolean",
+            "description": "True for a 10-minute shape check without a Rider token. Defaults to false."
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Allowed action names, e.g. [\"compress\", \"quote\"]. Omit for no action restriction."
+          },
+          "allow_hosts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Allowed hostnames the agent may call. Omit for no host restriction."
+          },
+          "max_usd": {
+            "type": "number",
+            "description": "Maximum spend in USD across the Warrant's life. Omit for no cap."
+          },
+          "max_calls": {
+            "type": "number",
+            "description": "Maximum number of calls under this Warrant. Omit for no cap."
+          },
+          "ttl_seconds": {
+            "type": "number",
+            "description": "Lifetime in seconds. Demo defaults to 600 (10 minutes)."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_warrant_verify",
+      "description": "Verify a Warrant token and check it against an optional host, action, and USD cost — pass usd to enforce the spend cap BEFORE the job runs. Read-only; verifies locally and changes nothing. Returns valid true/false with the Warrant or a reason. Use before running a job under a Warrant; use spl_warrant_issue to mint one.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token string to verify. Required."
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname the job will call; checked against the Warrant's allow list when given."
+          },
+          "action": {
+            "type": "string",
+            "description": "Action name the job will perform; checked against the Warrant's allowed actions when given."
+          },
+          "usd": {
+            "type": "number",
+            "description": "Expected USD cost of the job; checked against the remaining spend cap when given."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_warrant_reserve",
+      "description": "Reserve the expected cost against a Warrant BEFORE the job runs (pre-spend cap enforcement). Mutating: holds funds and returns a reservation id. File the receipt with that id to settle without double-deducting, or release it if the job never runs. Use after verify and before the job; use spl_warrant_receipt to settle, spl_warrant_release to refund.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token to reserve against. Required."
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname the job will call; checked against the Warrant's allow list when given."
+          },
+          "action": {
+            "type": "string",
+            "description": "Action name the job will perform; checked against the Warrant's allowed actions when given."
+          },
+          "usd": {
+            "type": "number",
+            "description": "USD cost to hold. Required for the reservation."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_warrant_release",
+      "description": "Refund an unsettled Warrant reservation when the job never ran. Mutating: frees the held funds; the reservation cannot be used afterward. Use only for reservations that will never settle; use spl_warrant_receipt to settle a completed job.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "reservation_id": {
+            "type": "string",
+            "description": "Reservation id returned by spl_warrant_reserve. Required."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_warrant_receipt",
+      "description": "File a receipt against a Warrant after an action, settling the spend. Mutating: deducts the USD cost — pass the reservation id from spl_warrant_reserve to settle against the reservation instead of deducting twice. Use after a job completes; use spl_warrant_reserve before it runs.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token the receipt is filed against. Required."
+          },
+          "action": {
+            "type": "string",
+            "description": "Action name that ran, e.g. compress."
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname that was called."
+          },
+          "usd": {
+            "type": "number",
+            "description": "USD cost to deduct. Required for settlement."
+          },
+          "reservation_id": {
+            "type": "string",
+            "description": "Reservation id from spl_warrant_reserve, when the cost was pre-reserved. Settles against the reservation instead of deducting twice."
+          },
+          "request_sha256": {
+            "type": "string",
+            "description": "SHA-256 hex of the request body, for the audit trail."
+          },
+          "result_sha256": {
+            "type": "string",
+            "description": "SHA-256 hex of the result body, for the audit trail."
+          },
+          "note": {
+            "type": "string",
+            "description": "Free-text note attached to the receipt."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_agentic_plan",
+      "description": "Plan one Agent Commerce Network (ACN) run without executing it: validate the run shape across Rider, Warrant, Tollkeeper, Quikgater, PCC, AWLpay, PSI, and Conductor, plus any optional stage whose spec field is present. Pure and read-only — no disk, no network, nothing is charged or started. Returns the planned stages, quote, and settlement preview. Use to dry-run a run before spl_agentic_run; use spl_agentic_context to shrink the context a run will carry.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "Run action or stage name, e.g. plan, compress, or a stage key. Determines which stages the plan includes."
+          },
+          "host": {
+            "type": "string",
+            "description": "Target hostname for the run."
+          },
+          "url": {
+            "type": "string",
+            "description": "Target URL for the run."
+          },
+          "bytes": {
+            "type": "number",
+            "description": "Input byte count the run will process; used for the quote."
+          },
+          "demo": {
+            "type": "boolean",
+            "description": "True to plan or run a demo with no payment and no Rider token."
+          },
+          "rider": {
+            "type": "string",
+            "description": "Agent-Rider JWT identifying the acting agent. Required for live runs unless demo is true."
+          },
+          "crossing": {
+            "type": "string",
+            "description": "Crossing or bridge identifier when the run moves between systems."
+          },
+          "rail": {
+            "type": "string",
+            "description": "Payment rail: stripe for humans, x402 for agents."
+          },
+          "swap": {
+            "type": "object",
+            "description": "Swap details for a cross-chain step (from/to chain, token, amount)."
+          },
+          "cuni": {
+            "type": "object",
+            "description": "CuNi program or exactness input for the run."
+          },
+          "warrantTemplate": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Warrant template to apply to the run; string id or object."
+          },
+          "standingRider": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Standing Rider credential for the run; string id or object."
+          },
+          "reputation": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Reputation input for the run; string id or object."
+          },
+          "tool": {
+            "type": "object",
+            "description": "Tool call spec for the run."
+          },
+          "agent": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Agent spec for the run; string id or object."
+          },
+          "message": {
+            "type": "object",
+            "description": "Message payload for an agent-messaging stage."
+          },
+          "privateBench": {
+            "type": "object",
+            "description": "Private benchmark input for the run."
+          },
+          "solana": {
+            "type": "object",
+            "description": "Solana transaction input for the run."
+          },
+          "payout": {
+            "type": "object",
+            "description": "Payout details for the run."
+          },
+          "dispute": {
+            "type": "object",
+            "description": "Dispute details for the run."
+          },
+          "audit": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Audit or audit-export input; string id or object."
+          },
+          "ops": {
+            "type": "object",
+            "description": "Ops-feed input for the run."
+          },
+          "asyncRun": {
+            "type": "object",
+            "description": "Async run spec for the run."
+          },
+          "sandbox": {
+            "type": "object",
+            "description": "Sandbox spec for an isolated step."
+          },
+          "depotReceipt": {
+            "type": "object",
+            "description": "Depot receipt input for the run."
+          },
+          "depotBilling": {
+            "type": "object",
+            "description": "Depot billing input for the run."
+          },
+          "conductorTask": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Conductor task spec; string id or object."
+          },
+          "conductorReview": {
+            "type": "object",
+            "description": "Conductor review input for the run."
+          },
+          "mcpTool": {
+            "type": "object",
+            "description": "MCP tool call spec for the run."
+          },
+          "sku": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "SKU to buy or price; string id or object."
+          },
+          "tokenBudget": {
+            "type": "object",
+            "description": "Token budget for the run; string id or object."
+          },
+          "depotStore": {
+            "type": "object",
+            "description": "Depot store input for the run."
+          },
+          "chamberSeal": {
+            "type": "object",
+            "description": "Chamber seal input for the run."
+          },
+          "membership": {
+            "type": "object",
+            "description": "Membership input for the run."
+          },
+          "riderPaidCall": {
+            "type": "object",
+            "description": "Paid Rider call input for the run."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_agentic_context",
+      "description": "Shrink LLM context extractively before a run: BM25-lite filtering, cross-encoder reranking, and dedup, verified by construction, with a quote on input bytes. Read-only computation; the text is not stored. Use to fit a long context into a run's budget; use spl_agentic_plan to shape the run itself.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Full text to compress. Required."
+          },
+          "query": {
+            "type": "string",
+            "description": "Query the kept context must answer; guides the reranker. Omit to keep the most central passages."
+          },
+          "targetRatio": {
+            "type": "number",
+            "description": "Target compression ratio between 0.01 and 1, e.g. 0.25 keeps roughly a quarter of the input. Omit for the default."
+          },
+          "maxTokens": {
+            "type": "number",
+            "description": "Maximum tokens per chunk and in the compressed output."
+          },
+          "reranker": {
+            "type": "string",
+            "description": "Reranker tier: MiniLM-L-6-v2 by default, bge-reranker-v2-gemma as the opt-in quality tier."
+          },
+          "rerankTopK": {
+            "type": "number",
+            "description": "How many top BM25 candidates the reranker rescores. Omit to rescore every candidate."
+          },
+          "used_bytes": {
+            "type": "number",
+            "description": "Bytes already consumed, counted toward the quote."
+          },
+          "sku": {
+            "type": "string",
+            "description": "SKU to quote the context work against."
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_agentic_run",
+      "description": "Execute one Agent Commerce Network (ACN) run. Mutating: runs paid and unpaid steps; unpaid steps answer 402 (payment required) instead of running. Requires confirm:true plus demo:true or a Rider + Warrant pair. Use after spl_agentic_plan validates the shape; use spl_agentic_context first when the context is large.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "Run action or stage name, e.g. plan, compress, or a stage key. Determines which stages the plan includes."
+          },
+          "host": {
+            "type": "string",
+            "description": "Target hostname for the run."
+          },
+          "url": {
+            "type": "string",
+            "description": "Target URL for the run."
+          },
+          "bytes": {
+            "type": "number",
+            "description": "Input byte count the run will process; used for the quote."
+          },
+          "demo": {
+            "type": "boolean",
+            "description": "True to plan or run a demo with no payment and no Rider token."
+          },
+          "rider": {
+            "type": "string",
+            "description": "Agent-Rider JWT identifying the acting agent. Required for live runs unless demo is true."
+          },
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token authorizing the run's spending. Required for live runs unless demo is true."
+          },
+          "crossing": {
+            "type": "string",
+            "description": "Crossing or bridge identifier when the run moves between systems."
+          },
+          "pay": {
+            "type": "boolean",
+            "description": "True to pay for paid steps when they are reached."
+          },
+          "paid": {
+            "type": "boolean",
+            "description": "True when payment was already made for this run."
+          },
+          "rail": {
+            "type": "string",
+            "description": "Payment rail: stripe for humans, x402 for agents."
+          },
+          "swap": {
+            "type": "object",
+            "description": "Swap details for a cross-chain step (from/to chain, token, amount)."
+          },
+          "x_payment": {
+            "type": "string",
+            "description": "X-PAYMENT header value for x402 settlement."
+          },
+          "debridge": {
+            "type": "object",
+            "description": "deBridge swap input for a cross-chain step."
+          },
+          "chain": {
+            "type": "array",
+            "description": "Receipt chain for the run; array of prior receipts."
+          },
+          "actor": {
+            "type": "string",
+            "description": "Actor identity executing the run."
+          },
+          "delegation_mode": {
+            "type": "string",
+            "description": "Delegation mode for the run."
+          },
+          "parent_receipt": {
+            "type": "string",
+            "description": "Parent receipt id when this run continues another run."
+          },
+          "cuni": {
+            "type": "object",
+            "description": "CuNi program or exactness input for the run."
+          },
+          "warrantTemplate": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Warrant template to apply to the run; string id or object."
+          },
+          "standingRider": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Standing Rider credential for the run; string id or object."
+          },
+          "reputation": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Reputation input for the run; string id or object."
+          },
+          "tool": {
+            "type": "object",
+            "description": "Tool call spec for the run."
+          },
+          "agent": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Agent spec for the run; string id or object."
+          },
+          "message": {
+            "type": "object",
+            "description": "Message payload for an agent-messaging stage."
+          },
+          "privateBench": {
+            "type": "object",
+            "description": "Private benchmark input for the run."
+          },
+          "solana": {
+            "type": "object",
+            "description": "Solana transaction input for the run."
+          },
+          "payout": {
+            "type": "object",
+            "description": "Payout details for the run."
+          },
+          "dispute": {
+            "type": "object",
+            "description": "Dispute details for the run."
+          },
+          "audit": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Audit or audit-export input; string id or object."
+          },
+          "ops": {
+            "type": "object",
+            "description": "Ops-feed input for the run."
+          },
+          "asyncRun": {
+            "type": "object",
+            "description": "Async run spec for the run."
+          },
+          "sandbox": {
+            "type": "object",
+            "description": "Sandbox spec for an isolated step."
+          },
+          "depotReceipt": {
+            "type": "object",
+            "description": "Depot receipt input for the run."
+          },
+          "depotBilling": {
+            "type": "object",
+            "description": "Depot billing input for the run."
+          },
+          "conductorTask": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Conductor task spec; string id or object."
+          },
+          "conductorReview": {
+            "type": "object",
+            "description": "Conductor review input for the run."
+          },
+          "mcpTool": {
+            "type": "object",
+            "description": "MCP tool call spec for the run."
+          },
+          "sku": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "SKU to buy or price; string id or object."
+          },
+          "tokenBudget": {
+            "type": "object",
+            "description": "Token budget for the run; string id or object."
+          },
+          "depotStore": {
+            "type": "object",
+            "description": "Depot store input for the run."
+          },
+          "chamberSeal": {
+            "type": "object",
+            "description": "Chamber seal input for the run."
+          },
+          "membership": {
+            "type": "object",
+            "description": "Membership input for the run."
+          },
+          "riderPaidCall": {
+            "type": "object",
+            "description": "Paid Rider call input for the run."
+          },
+          "confirm": {
+            "type": "boolean",
+            "description": "True to execute the run. Required — without it the run is refused."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "sku_search",
+      "description": "Search the Prices catalog by free text — PCC Pro, Chamber, Rider seats, Lab Pass, consulting, and OSS support. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use sku_get when you already know the entry id."
+    },
+    {
+      "name": "sku_get",
+      "description": "Retrieve one Prices catalog entry by its id, e.g. pcc-pro, chamber-month, rider-team. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use sku_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "license_search",
+      "description": "Search the License catalog by free text — public licenses (GPLv3, AGPL), hosted seats, and closed-app exceptions. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use license_get when you already know the entry id."
+    },
+    {
+      "name": "license_get",
+      "description": "Retrieve one License catalog entry by its id, e.g. gplv3, seat, exception. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use license_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "surface_search",
+      "description": "Search the Where to use them catalog by free text — where to use lab products — the public site, CuNi Studio, Agent-Rider, TeachAid, and this MCP server. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use surface_get when you already know the entry id."
+    },
+    {
+      "name": "surface_get",
+      "description": "Retrieve one Where to use them catalog entry by its id, e.g. rider, studio, mcp. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use surface_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "cuni_search",
+      "description": "Search the CuNi catalog by free text — CuNi exactness — the law, the check gate, the spend-control example, and CuNi Bank. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use cuni_get when you already know the entry id."
+    },
+    {
+      "name": "cuni_get",
+      "description": "Retrieve one CuNi catalog entry by its id, e.g. bank, law, check. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use cuni_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "chamber_search",
+      "description": "Search the Chamber catalog by free text — Chamber two-key JSON seals and the 24-hour try box. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use chamber_get when you already know the entry id."
+    },
+    {
+      "name": "chamber_get",
+      "description": "Retrieve one Chamber catalog entry by its id, e.g. seal, try24. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use chamber_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "rider_search",
+      "description": "Search the Agent-Rider catalog by free text — Agent-Rider signed identity — issuing and verifying agent credentials. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use rider_get when you already know the entry id."
+    },
+    {
+      "name": "rider_get",
+      "description": "Retrieve one Agent-Rider catalog entry by its id, e.g. issue, verify. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use rider_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "pcc_search",
+      "description": "Search the PCC catalog by free text — PCC hosted compression — the engine, the 4 KiB stream pipe, and the meter. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use pcc_get when you already know the entry id."
+    },
+    {
+      "name": "pcc_get",
+      "description": "Retrieve one PCC catalog entry by its id, e.g. engine, stream, meter. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use pcc_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "pulsar_search",
+      "description": "Search the pulsar catalog by free text — pulsar, the free GPLv3 compressor, its closed-embed exception, and the Silesia measurement. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use pulsar_get when you already know the entry id."
+    },
+    {
+      "name": "pulsar_get",
+      "description": "Retrieve one pulsar catalog entry by its id, e.g. cousin, exception, silesia. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use pulsar_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "measure_search",
+      "description": "Search the How pulsar compares catalog by free text — how pulsar compares on Silesia — gzip -9, pulsar 2.5.0, and xz -6 sizes. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use measure_get when you already know the entry id."
+    },
+    {
+      "name": "measure_get",
+      "description": "Retrieve one How pulsar compares catalog entry by its id, e.g. silesia-pulsar, silesia-gzip9, silesia-xz6. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use measure_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "rail_search",
+      "description": "Search the How to pay catalog by free text — how to pay — Stripe for humans, x402 USDC for agents. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use rail_get when you already know the entry id."
+    },
+    {
+      "name": "rail_get",
+      "description": "Retrieve one How to pay catalog entry by its id, e.g. stripe, x402. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use rail_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "box_search",
+      "description": "Search the Try catalog by free text — the 24-hour try box. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use box_get when you already know the entry id."
+    },
+    {
+      "name": "box_get",
+      "description": "Retrieve one Try catalog entry by its id, e.g. law. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use box_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "npm_search",
+      "description": "Search the npm / public packages catalog by free text — public npm packages — slid-phi, spl-pay-per-suite, shard-zip, shard-tsdb, and pulsar. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use npm_get when you already know the entry id."
+    },
+    {
+      "name": "npm_get",
+      "description": "Retrieve one npm / public packages catalog entry by its id, e.g. spl-pay-per-suite, slid-phi, pulsar. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use npm_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "docs_search",
+      "description": "Search the Docs catalog by free text — lab docs — SKILL.md, llms.txt, the MCP server card, platform discovery, pricing, and licensing. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use docs_get when you already know the entry id."
+    },
+    {
+      "name": "docs_get",
+      "description": "Retrieve one Docs catalog entry by its id, e.g. card, skill, pricing. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use docs_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    }
+  ]
 }

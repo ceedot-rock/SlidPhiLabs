@@ -18,17 +18,20 @@ drilled. See also [INCIDENT-RESPONSE.md](INCIDENT-RESPONSE.md).
   (`fly scale count 2` or a standby in `fly.toml`). That is a spend go —
   requested, not taken.
 
-## 32. Off-Fly backup: OPEN, drill defined, destination needed
+## 32. Off-Fly backup: procedure drilled 2026-11-10, Fly-volume copy pending access
 
-- Today: Fly volume snapshots exist (provider schedule); no off-Fly copy, no
-  restore drill. Recovery point is unproven — the incident card says so.
-- Drill when a destination is approved:
-  1. Copy `/data` (auth DB, ledger) plus the sales-ledger export off-Fly
-     (owner box or object storage — needs the per-item go).
-  2. Restore into a clean volume.
-  3. Done when the restored ledger reproduces a known SHA-256 (step 32's
-     check), receipted here with the date.
-- Until then: do not promise a recovery point.
+- Today: Fly volume snapshots exist (provider schedule). The restore
+  procedure is proven by `docs/site/scripts/backup-drill.mjs` (seed labeled
+  DRILL records via the real `recordSale` writer → copy off-volume with a
+  SHA-256 manifest → restore into a clean directory → hashes must match).
+- Drill receipt 2026-11-10 (owner-box destination, zero spend, temp dirs):
+  3 DRILL records, 417 bytes, known SHA-256
+  `ae7fa915da87a9e93f13fcc498fff5aef72ac92a27fc4b72357300595535e459` —
+  restored copy reproduces it exactly. Drill PASSED.
+- Remaining: run the same script against the live Fly volume (`fly ssh
+  console` or a volume fork) with `--source/--backup/--restore` pointing at
+  real paths. That step needs Fly access from an equipped box, not new code.
+- Until the live-volume run lands: do not promise a recovery point.
 
 ## 37. Depot data (tracks step 37)
 
