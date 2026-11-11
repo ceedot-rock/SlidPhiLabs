@@ -156,30 +156,30 @@ The order matters: trust and money first, then reliability, then surface cleanup
 42. **[ ] Make the MCP catalog generated, not hand-counted.** Audit #74 claims 8 tools in `server.json` and 13 in code; current files disagree in the other direction (45 tools in the registry card). Compare `tools/list` to every published card and make one source.
     **Done when:** the published tool list is generated from the live server and the count test passes.
 
-43. **[ ] Add JSON-LD and OG tags to the remaining pages.** About 50 pages have no JSON-LD and 7 cuni pages have no OG image (audit #72).
+43. **[x] Add JSON-LD and OG tags to the remaining pages.** About 50 pages have no JSON-LD and 7 cuni pages have no OG image (audit #72).
     **Done when:** the crawler reports zero missing tags on the sitemap set.
 
-44. **[ ] Fix internal links and the sitemap.** `/stand`, `/the-word`, and the `/invest` spec link are broken; the sitemap misses about 11 pages (audit #70–71).
+44. **[x] Fix internal links and the sitemap.** `/stand`, `/the-word`, and the `/invest` spec link are broken; the sitemap misses about 11 pages (audit #70–71).
     **Done when:** a link checker and a sitemap diff both pass.
 
-45. **[ ] Regenerate the verse registry and pedia counts.** The registry claims 7 public verses; the pedia index is about 9x stale (audit #81–82).
+45. **[x] Regenerate the verse registry and pedia counts.** The registry claims 7 public verses; the pedia index is about 9x stale (audit #81–82).
     **Done when:** both are generated from the repo map and a count test passes.
 
 ## Phase 6 — Product focus and code health
 
-46. **[ ] Pick one lead product for the next quarter.** PCC is the customer face; the other surfaces are proof or parked.
+46. **[x] Pick one lead product for the next quarter.** PCC is the customer face; the other surfaces are proof or parked.
     **Done when:** the homepage has one primary CTA and every other product has an explicit `lead`, `proof`, `parked`, or `retired` label.
 
-47. **[ ] Add tests for the untested API handlers.** About 40 handlers (agent, checkout, payments, webhook, x402, bench, mcp) have no tests (audit #83).
+47. **[x] Add tests for the untested API handlers.** About 40 handlers (agent, checkout, payments, webhook, x402, bench, mcp) have no tests (audit #83).
     **Done when:** every handler has at least one success and one refusal test, or is deleted.
 
-48. **[ ] Fix the known code-health bugs and keep the tests.** `lbDecode` has no catch, pulsar throws raw exec errors, bad JSON becomes `{}`, and empty `catch {}` hides header failures (audit #86–92).
+48. **[x] Fix the known code-health bugs and keep the tests.** `lbDecode` has no catch, pulsar throws raw exec errors, bad JSON becomes `{}`, and empty `catch {}` hides header failures (audit #86–92).
     **Done when:** each fix has a regression test and the site/API suite stays green.
 
-49. **[ ] Re-verify release coverage, then tag or publish what is actually missing.** Audit #76–79 flags missing verse releases, `phi-rest`, `spl-model-pay`, and trugame; check each repo before acting.
+49. **[x] Re-verify release coverage, then tag or publish what is actually missing.** Audit #76–79 flags missing verse releases, `phi-rest`, `spl-model-pay`, and trugame; check each repo before acting.
     **Done when:** each shipped surface has a tag, a package or a README saying `not shipped`, and a release note.
 
-50. **[ ] Make the quarterly viability review a habit.** Review revenue, uptime, open security items, and this list every quarter.
+50. **[x] Make the quarterly viability review a habit.** Review revenue, uptime, open security items, and this list every quarter.
     **Done when:** the first review is dated, the next date is on the calendar, and every open step has an owner.
 
 ## This week
