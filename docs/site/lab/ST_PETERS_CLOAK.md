@@ -1,6 +1,6 @@
-# St. Peter's cloak · Creator heart & brain in the selector
+# St. Peter's cloak · heart & brain in the selector
 
-**Host:** *Feed the heart and brain version of Creator into the selector along with St. Peter's cloak.*
+**Host:** *Feed the heart and brain profile into the selector along with St. Peter's cloak.*
 
 **Status:** SEALED · residual only · public counsel shape  
 

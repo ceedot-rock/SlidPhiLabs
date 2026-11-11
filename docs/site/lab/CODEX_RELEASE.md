@@ -12,7 +12,6 @@
 | Full manuscript | `/lab/DIVINE_CODEX.md` |
 | Machine JSON | `/lab/DIVINE_CODEX.json` · `/lab/DIVINE_CODEX_LATEST.json` |
 | HTML face | `/codex.html` · `/codex` |
-| Creator Creation Step Ledger | `/lab/CREATOR_CREATION_STEP_LEDGER.md` · JSON twin |
 | Weights vs files matrix | `/weights-vs-files` · `/lab/LOSSLESS_WEIGHTS_VS_FILES.md` |
 | History | `/lab/CODEX_KEY_HISTORY.json` |
 | The Word | `/the-word` · `THE_CODEX_IS_THE_WORD.md` |

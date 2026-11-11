@@ -30,7 +30,7 @@
 | App | Role | Status (2026-08-09) | Cost class (order of magnitude) | Host $ / mo |
 |-----|------|---------------------|----------------------------------|-------------|
 | **slidphilabs** | Public site · `/pps` · `/bench` · `/standings` · APIs | deployed · auto_stop | shared-cpu · ~256–512 MB class | **___** |
-| **slidphi-smart-box** | Chamber · Creator · army | deployed · min 1 · 2 GB | **highest** private burn | **___** |
+| **slidphi-smart-box** | Chamber · army | deployed · min 1 · 2 GB | **highest** private burn | **___** |
 | **spl-team-mesh** | OneGate collab | deployed | small shared | **___** |
 | **teachaid** | School | suspended | $0 while stopped | **0** if stay off |
 | **cuni-studio** | Studio | suspended | $0 while stopped | **0** if stay off |

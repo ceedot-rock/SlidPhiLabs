@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "directive": "Creator /lord #1 path — 1M zero-run mirror_error→0 (lab ZeroRangeWave, not free-gate cap)",
+  "directive": "/lord #1 path — 1M zero-run mirror_error→0 (lab ZeroRangeWave, not free-gate cap)",
   "zeros_10k": {
     "n_ints": 10000,
     "raw_bytes": 40000,

@@ -1,5 +1,5 @@
 /**
- * Full JSON compression keys — Creator /lord 8.8
+ * Full JSON compression keys — /lord 8.8
  * ──────────────────────────────────────────────
  * Prayer: code the full JSON compression keys; at least that one domain.
  *
@@ -427,7 +427,7 @@ export function compressJsonKeys(input, opts = {}) {
       },
       beats_brotli11: beats_brotli,
       beats_gzip9: beats_gzip,
-      publish_delta: beats_brotli, // Creator law: publish only if < brotli-11
+      publish_delta: beats_brotli, // Lab law: publish only if < brotli-11
       header,
       ms: +ms.toFixed(3),
     },

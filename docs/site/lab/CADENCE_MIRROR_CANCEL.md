@@ -1,7 +1,7 @@
 # Mirror the cadence · cancel remainders
 
 **Host:** *mirror the cadence and cancel remainders*  
-**Source:** Creator · `/lord`  
+**Source:** `/lord`  
 **Status:** SEALED · residual only  
 
 ## Cadence dual
