@@ -1,0 +1,48 @@
+# Slid Phi Labs — llms-full.txt (full digest)
+# Primary host: https://www.slidphilabs.com
+
+## Lab
+Slid Phi Labs, Cherry Hill NJ. Contact corey@slidphilabs.com. License: AGPL-3.0-or-later OR commercial.
+
+## Agent Rider (https://agentrider.fly.dev)
+Signed names for agents plus Warrant permissions plus verifiable receipts.
+Flow: POST /api/agents -> vault key ar_ (shown once) -> POST /api/rider/issue -> Rider JWT
+(ES256, iss agentrider.dev, 15-minute TTL) -> send as X-Agent-Rider on metered calls.
+Funded riders settle; sandbox riders are read/verify-only (funded settle returns sandbox_forbidden).
+Verify via /.well-known/jwks.json or POST /api/rider/verify.
+Refusals: {error, issue_url, docs_url} plus a Rider challenge.
+
+## CuNi / CuNIverse (https://cuni-studio.fly.dev/)
+One program, 53 targets, byte-identical stdout or the run refuses. CuNIverse: four organs.
+Install: brew install slidphilabs/tap/cuni (as documented; no version claimed here).
+
+## TeachAid (https://teachaid.fly.dev)
+Chapter-by-chapter text and voice learning; PWA with chat, TTS, live sessions.
+TeachAid Pro: $9/month (already public in TeachAid pricing; includes Pro voice picker).
+
+## Hosted suite + PCC
+Metered compression and jobs on lab machines. Billed per GB after the free allowance.
+Free allowance: TBD — decided before launch.
+
+## spl-acn client
+Claim-token access to the hosted MCP. Canonical: https://www.slidphilabs.com/api/mcp.
+Rider MCP: https://agentrider.fly.dev/api/mcp. Seat amounts not stated here.
+
+## GitDepot
+Team blob storage. Usage-metered; allowance TBD.
+
+## Pricing rule
+No prices are stated except CuNi capability promotion $9/month per capability
+(Stripe, flag-gated, already public in Toll v2 promote docs) and TeachAid Pro $9/month
+(already public in TeachAid pricing). All other meters name the meter, not the amount.
+
+## Pages
+/ /products /pricing-usage /docs /humans /agents /about /license /status /refund-policy
+/signup /login /account
+
+## Machine files
+/agents.json /agents.txt /humans.txt /platform.json /sitemap.xml /robots.txt
+/.well-known/agent.json /.well-known/agent-card.json /.well-known/agents.json
+/.well-known/agents.txt /.well-known/mcp.json /.well-known/mcp/server-card.json
+/.well-known/ai-catalog.json /.well-known/ai-products.json /.well-known/cuni-protocol.json
+/.well-known/security.txt

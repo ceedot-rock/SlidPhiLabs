@@ -1,0 +1,3 @@
+Slid Phi Labs — agents
+Card: https://www.slidphilabs.com/.well-known/agent-card.json
+MCP: https://www.slidphilabs.com/api/mcp

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PERsiST Machine — Persisting Super Intelligence on AcN for GovCloud</title>
+<meta name="description" content="Interactive capability machine: 8 mission arms, 40 audited government use cases running on PERsiST and the Agent Communication Network. Every action leaves a receipt.">
+<style>
+  :root{
+    --bg:#0e141b; --panel:#151e28; --panel2:#1a2531; --ink:#e8edf2; --mut:#9aa7b4;
+    --line:#2b3947; --gold:#c9a227; --teal:#3fa796; --rust:#c96a3b; --sage:#8aa860;
+    --slate:#6b8cae; --ochre:#c99a3b; --forest:#5d8a6b; --navy:#4a6fa5; --rose:#b0526b;
+    --ok:#57b26a; --focus:#e8c33a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  header{border-bottom:1px solid var(--line);padding:26px 28px 20px}
+  header .kicker{color:var(--gold);letter-spacing:.18em;font-size:12px;font-weight:700}
+  header h1{margin:6px 0 4px;font-size:30px}
+  header h1 .acn{color:var(--teal)}
+  header p{margin:6px 0 0;color:var(--mut);max-width:70ch}
+  .wrap{display:flex;gap:18px;padding:18px 28px;align-items:flex-start}
+  .stage{flex:1 1 auto;min-width:0}
+  #machine{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+  aside{flex:0 0 340px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+  aside h2{font-size:15px;margin:0 0 4px;color:var(--gold);letter-spacing:.06em}
+  #detail{min-height:220px}
+  #detail .num{color:var(--mut);font-size:12px;letter-spacing:.1em}
+  #detail h3{margin:4px 0 8px;font-size:19px}
+  #detail dl{margin:0 0 10px}
+  #detail dt{font-size:11px;letter-spacing:.12em;color:var(--mut);margin-top:8px}
+  #detail dd{margin:2px 0 0}
+  #detail ul{margin:6px 0;padding-left:20px}
+  #detail li{margin:3px 0;cursor:pointer}
+  #detail li:hover{color:var(--focus)}
+  .btn{display:inline-block;background:var(--gold);border:0;color:#14100a;font-weight:700;border-radius:6px;padding:8px 12px;cursor:pointer;margin-top:8px}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .toolbar{display:flex;gap:10px;align-items:center;margin:0 0 12px;flex-wrap:wrap}
+  .toolbar input{flex:1 1 220px;background:#0b1117;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:8px 10px}
+  #scope{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+  #scopeList{margin:6px 0;padding-left:20px;font-size:13.5px}
+  #ticker{border-top:1px solid var(--line);background:#0b1117;padding:10px 28px;font-family:Consolas,Menlo,monospace;font-size:12.5px;color:var(--teal);min-height:120px}
+  #ticker .t-mut{color:var(--mut)}
+  section.plan{padding:18px 28px 40px;max-width:100ch}
+  section.plan h2{color:var(--gold);letter-spacing:.06em;font-size:17px}
+  section.plan ol li{margin:6px 0}
+  footer{padding:14px 28px;color:var(--mut);font-size:12.5px;border-top:1px solid var(--line)}
+  .node{cursor:pointer}
+  .node.dim,.arm.dim{opacity:.12}
+  .node circle.halo{fill:none;stroke:var(--focus);stroke-width:2;display:none}
+  .node.sel circle.halo{display:block}
+  text{user-select:none}
+  @media (max-width:1000px){.wrap{flex-direction:column}aside{flex-basis:auto;width:100%}}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">SLID PHI LABS &mdash; GOVCLOUD SHOWCASE</div>
+  <h1>The PERsiST Machine <span class="acn">on AcN</span></h1>
+  <p><strong>PERsiST (Persisting Super Intelligence)</strong> keeps the intelligence. <strong>AcN (Agent Communication Network)</strong> moves it. Every agent action lands in GovCloud with a signed receipt an auditor can replay. Eight mission arms, forty use cases, zero black boxes. Click any station to inspect it, and add stations to a pilot scope.</p>
+  <p><strong>Clean install. No outside influence.</strong> PERsiST is built from inside your boundary: no outside models, no outside data, no outside dependencies phoning home. What runs in your GovCloud tenant was built there, and the receipts prove it.</p>
+</header>
+<div style="background:var(--gold);color:#14100a;font-weight:700;letter-spacing:.08em;font-size:13px;padding:8px 28px">CLEAN INSTALL &middot; NO OUTSIDE INFLUENCE &middot; BUILT FROM INSIDE</div>
+<div class="wrap">
+  <div class="stage">
+    <div class="toolbar">
+      <input id="q" type="search" placeholder="Filter stations, e.g. audit, FOIA, clearance, NARA&hellip;" aria-label="Filter stations">
+      <button class="btn ghost" id="reset">Reset view</button>
+    </div>
+    <svg id="machine" viewBox="-70 -90 1340 980" role="img" aria-label="Radial machine with eight arms and forty use-case stations"></svg>
+  </div>
+  <aside>
+    <h2>INSPECTOR</h2>
+    <div id="detail"><p style="color:var(--mut)">Select a category hub or any of the 40 stations on the machine.</p></div>
+    <div id="scope">
+      <h2>PILOT SCOPE (<span id="scopeCount">0</span>)</h2>
+      <ol id="scopeList"></ol>
+      <button class="btn" id="copyScope">Copy scope summary</button>
+      <button class="btn ghost" id="clearScope">Clear</button>
+    </div>
+  </aside>
+</div>
+<div id="ticker" aria-label="Live receipt feed"><span class="t-mut">PERsiST receipt feed (simulated) &mdash; hover to pause&hellip;</span><br></div>
+<section class="plan">
+  <h2>GOVCLOUD SHOWCASE PLAN</h2>
+  <ol>
+    <li>Deploy a read-only demo tenant on the GovCloud server: AcN endpoint plus a PERsiST receipt explorer seeded with one mission scenario.</li>
+    <li>Hand evaluators a one-click red-team script: they inject a bad instruction, then watch the receipt chain catch it.</li>
+    <li>Publish a machine-readable capability manifest (endpoints, schemas, retention) so agency integrators can evaluate without a meeting.</li>
+    <li>Run the side-by-side demo: the same task with receipts on and off, showing what an unaudited agent hides.</li>
+    <li>Offer a 30-day isolated pilot tenancy per agency, torn down afterward with a signed destruction receipt.</li>
+  </ol>
+</section>
+<footer>Slid Phi Labs &mdash; PERsiST (Persisting Super Intelligence) on AcN. Clean install, no outside influence, built from inside. Demo artifact: every station maps to a receipted pilot. No data leaves GovCloud.</footer>
+<script>
+"use strict";
+const CATS = [
+{ name:"Acquisition & Contracting", short:"ACQUIRE", color:"#4a6fa5", blurb:"Buying right, with proof.",
+  cases:[
+   {t:"Bid-protest defense packets", b:"Contracting officers, agency counsel", r:"Receipt chain of every evaluation step, exportable as the protest file."},
+   {t:"SOW drift monitors", b:"Program managers, CORs", r:"Vendor deliverable vs SOW diff log, flagged the week it drifts."},
+   {t:"Sole-source justification drafts", b:"Contracting officers", r:"Market-research query log attached to every justification."},
+   {t:"FOIA response assembly", b:"FOIA officers, OGC", r:"Per-redaction exemption citation plus reviewer identity."},
+   {t:"Grant disbursement trails", b:"Grants officers", r:"Per-dollar obligation attestation from award to outlay."}]},
+{ name:"Oversight & Audit", short:"OVERSEE", color:"#c9a227", blurb:"Auditability is the product.",
+  cases:[
+   {t:"IG audit prep mapping", b:"IG teams, CFO shops", r:"Systems pre-mapped to controls with evidence cited per control."},
+   {t:"Improper-payment flags", b:"Payment integrity teams", r:"Full provenance on every flag, built for appeal review."},
+   {t:"Travel voucher pre-audit", b:"Finance centers", r:"Every policy check receipted before a human signs."},
+   {t:"Purchase-card monitors", b:"Agency program coordinators", r:"The case file builds itself as the flag fires."},
+   {t:"Finding remediation trackers", b:"Audit liaisons", r:"Corrective actions proven with tool logs, not memos."}]},
+{ name:"Security & Incident Response", short:"DEFEND", color:"#c96a3b", blurb:"Respond fast, prove everything.",
+  cases:[
+   {t:"Phishing triage", b:"SOCs", r:"Chain of custody preserved from inbox to verdict."},
+   {t:"Disclosure intake", b:"Product security teams", r:"Timestamped, deduplicated routing that never loses reporter context."},
+   {t:"ATO evidence collectors", b:"ISSOs, authorizing officials", r:"Control artifacts refreshed continuously, not quarterly."},
+   {t:"Personnel-data query reviews", b:"Insider-threat teams", r:"Every query of personnel data is itself receipted."},
+   {t:"Build attestation verifiers", b:"Supply-chain risk teams", r:"Per-artifact verification log from source to binary."}]},
+{ name:"Records & Knowledge", short:"REMEMBER", color:"#8aa860", blurb:"Nothing the mission knew is lost.",
+  cases:[
+   {t:"NARA retention enforcers", b:"Records officers", r:"Disposition decisions receipted against the schedule."},
+   {t:"Declassification queues", b:"Review teams", r:"Exemption claim tracked per paragraph, releasable lines flow."},
+   {t:"Retiring-staff knowledge capture", b:"Workforce planners", r:"Source interviews preserved, not summarized away."},
+   {t:"Decision ledgers", b:"Chiefs of staff", r:"Action items bound to the transcript moment that created them."},
+   {t:"Policy diff briefers", b:"Field offices", r:"Exactly what changed, why, and who signed, in one brief."}]},
+{ name:"Field & Operations", short:"OPERATE", color:"#3fa796", blurb:"The mission edge, receipted.",
+  cases:[
+   {t:"Disaster resource matching", b:"Emergency managers, state partners", r:"Per-allocation fairness receipts ready for after-action review."},
+   {t:"Inspection route optimizers", b:"Field inspection forces", r:"Coverage plan plus the rationale for every stop."},
+   {t:"Constituent correspondence", b:"Public affairs, casework teams", r:"Dialect and reading-level controls logged per draft."},
+   {t:"Permit triage explainers", b:"Permitting offices", r:"Plain-language approvals and denials with rule citations."},
+   {t:"Rulemaking comment analysis", b:"Rulemaking teams", r:"Clusters and counts with zero invented sentiment."}]},
+{ name:"Workforce & HR", short:"STAFF", color:"#6b8cae", blurb:"People operations with proof.",
+  cases:[
+   {t:"Clearance status trackers", b:"Security offices", r:"Sponsors nudged before investigations lapse, all logged."},
+   {t:"Onboarding orchestrators", b:"HR shared services", r:"Training and access grants proven complete per employee."},
+   {t:"Watchbill planners", b:"24/7 operations centers", r:"Fatigue-rule compliance receipted per schedule."},
+   {t:"Skills-gap mappers", b:"Workforce planners", r:"Training spend linked to mission capability shortfalls."},
+   {t:"Accommodation coordinators", b:"HR, EEO offices", r:"Privacy-bounded audit trail on every request."}]},
+{ name:"Data & Infrastructure", short:"CARRY", color:"#c99a3b", blurb:"Heavy data, light bandwidth, full custody.",
+  cases:[
+   {t:"Legacy code translation", b:"Modernization teams", r:"Source link kept on every transformed paragraph."},
+   {t:"Data-sharing MOU monitors", b:"Data stewards, privacy officers", r:"Each cross-boundary query logged against the MOU."},
+   {t:"Field sensor compression", b:"Field IT, comms teams", r:"Byte-exact codec receipts for bandwidth-starved sites."},
+   {t:"Air-gapped update couriers", b:"Disconnected operations", r:"Update bundles hashed, manifested, and verified."},
+   {t:"Shared-resource schedulers", b:"Facility and spectrum managers", r:"Allocation fairness receipted across tenants."}]},
+{ name:"Trust & Intergovernmental", short:"ASSURE", color:"#5d8a6b", blurb:"Trust between governments, on record.",
+  cases:[
+   {t:"Grant-report validators", b:"State and local grantees", r:"Submissions pre-checked before federal review."},
+   {t:"Tribal consultation trackers", b:"Tribal liaison offices", r:"The full government-to-government record, preserved."},
+   {t:"Election logistics helpers", b:"Election officials", r:"Staffing plans plus equipment chain of custody."},
+   {t:"Benefit pre-screen explainers", b:"Benefits agencies", r:"Applicants see exactly which rule decided."},
+   {t:"Whistleblower intake routers", b:"OIG hotlines", r:"Identity separated from allegation by construction."}]}
+];
+const NS = "http://www.w3.org/2000/svg";
+const CX = 600, CY = 400;
+const svg = document.getElementById("machine");
+const detail = document.getElementById("detail");
+function el(tag, attrs, parent){ const e = document.createElementNS(NS, tag); for(const k in attrs) e.setAttribute(k, attrs[k]); if(parent) parent.appendChild(e); return e; }
+function pt(r, deg){ const a = (deg-90)*Math.PI/180; return [CX + r*Math.cos(a), CY + r*Math.sin(a)]; }
+// Core: GovCloud base, AcN ring, PERsiST heart
+el("circle",{cx:CX,cy:CY,r:104,fill:"#0b1117",stroke:"#2b3947","stroke-width":2},svg);
+el("circle",{cx:CX,cy:CY,r:88,fill:"none",stroke:"#3fa796","stroke-width":3,"stroke-dasharray":"10 6"},svg);
+el("circle",{cx:CX,cy:CY,r:64,fill:"#1a2531",stroke:"#c9a227","stroke-width":2},svg);
+const coreT = el("text",{x:CX,y:CY-6,"text-anchor":"middle",fill:"#e8edf2","font-size":21,"font-weight":800},svg); coreT.textContent = "PERsiST";
+const coreS = el("text",{x:CX,y:CY+18,"text-anchor":"middle",fill:"#9aa7b4","font-size":12},svg); coreS.textContent = "Persisting Super Intelligence";
+const coreG = el("text",{x:CX,y:CY+36,"text-anchor":"middle",fill:"#3fa796","font-size":11},svg); coreG.textContent = "AcN · GovCloud";
+// Arms
+const nodeEls = [];
+CATS.forEach((cat, i) => {
+  const deg = i*45;
+  const g = el("g",{class:"arm","data-cat":i},svg);
+  const [x1,y1] = pt(104,deg), [x2,y2] = pt(300,deg);
+  el("line",{x1,y1,x2,y2,stroke:cat.color,"stroke-width":5,"stroke-linecap":"round",opacity:.85},g);
+  const radii = [140,180,220,260,300];
+  cat.cases.forEach((c, j) => {
+    const [nx,ny] = pt(radii[j],deg);
+    const n = el("g",{class:"node","data-cat":i,"data-case":j,tabindex:0,role:"button","aria-label":c.t},g);
+    el("circle",{cx:nx,cy:ny,r:17,fill:"#0b1117",stroke:cat.color,"stroke-width":2},n);
+    el("circle",{class:"halo",cx:nx,cy:ny,r:22},n);
+    const nt = el("text",{x:nx,y:ny+5,"text-anchor":"middle",fill:"#e8edf2","font-size":12,"font-weight":700},n); nt.textContent = (i*5+j+1);
+    n.addEventListener("click", ev => { ev.stopPropagation(); selectStation(i,j); });
+    n.addEventListener("keydown", ev => { if(ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); selectStation(i,j); }});
+    nodeEls.push(n);
+  });
+  // Hub label at rail end
+  const [hx,hy] = pt(352,deg);
+  const hub = el("g",{class:"node hub","data-cat":i,tabindex:0,role:"button","aria-label":cat.name},g);
+  el("circle",{cx:hx,cy:hy,r:30,fill:cat.color},hub);
+  el("circle",{class:"halo",cx:hx,cy:hy,r:36},hub);
+  const ht = el("text",{x:hx,y:hy+5,"text-anchor":"middle",fill:"#0e141b","font-size":9,"font-weight":800},hub); ht.textContent = cat.short;
+  const vertical = (deg === 0 || deg === 180);
+  let lattrs;
+  if(vertical){
+    lattrs = deg === 0 ? {x:CX, y:CY-418, "text-anchor":"middle"}
+                       : {x:CX, y:CY+428, "text-anchor":"middle"};
+  } else {
+    const [lx,ly] = pt(398,deg);
+    const flip = (deg > 90 && deg <= 270);
+    lattrs = {x:lx, y:ly+5, "text-anchor":flip?"end":"start",
+      transform:`rotate(${flip?deg+90:deg-90} ${lx} ${ly})`};
+  }
+  const lt = el("text",Object.assign({fill:"#e8edf2","font-size":13,"font-weight":600},lattrs),g);
+  lt.textContent = cat.name;
+  hub.addEventListener("click", ev => { ev.stopPropagation(); showCat(i); });
+  hub.addEventListener("keydown", ev => { if(ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); showCat(i); }});
+});
+function clearSel(){ svg.querySelectorAll(".node.sel").forEach(n=>n.classList.remove("sel")); }
+function selectStation(i,j){
+  clearSel();
+  svg.querySelector(`.node[data-cat="${i}"][data-case="${j}"]`).classList.add("sel");
+  showCase(i,j);
+}
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+function showCat(i){
+  clearSel();
+  svg.querySelector(`.hub[data-cat="${i}"]`).classList.add("sel");
+  const cat = CATS[i];
+  let h = `<div class="num">ARM ${i+1} OF 8 · ${esc(cat.short)}</div><h3>${esc(cat.name)}</h3><p style="color:var(--mut)">${esc(cat.blurb)}</p><ul>`;
+  cat.cases.forEach((c,j)=>{ h += `<li data-cat="${i}" data-case="${j}"><strong>${i*5+j+1}.</strong> ${esc(c.t)}</li>`; });
+  detail.innerHTML = h + "</ul>";
+  detail.querySelectorAll("li").forEach(li=>li.addEventListener("click",()=>selectStation(+li.dataset.cat,+li.dataset.case)));
+}
+function showCase(i,j){
+  const cat = CATS[i], c = cat.cases[j], n = i*5+j+1;
+  const inScope = scope.has(i+"-"+j);
+  detail.innerHTML =
+    `<div class="num">STATION ${n} OF 40 · ${esc(cat.name).toUpperCase()}</div>`+
+    `<h3>${esc(c.t)}</h3>`+
+    `<dl><dt>LIKELY BUYER</dt><dd>${esc(c.b)}</dd><dt>RECEIPT ANGLE</dt><dd>${esc(c.r)}</dd></dl>`+
+    `<button class="btn" id="addScope" ${inScope?"disabled":""}>${inScope?"In pilot scope ✓":"Add to pilot scope"}</button> `+
+    `<button class="btn ghost" id="viewArm">View full arm</button>`;
+  document.getElementById("viewArm").addEventListener("click",()=>showCat(i));
+  if(!inScope) document.getElementById("addScope").addEventListener("click",()=>addScope(i,j));
+}
+// Filter
+const q = document.getElementById("q");
+q.addEventListener("input",()=>{
+  const s = q.value.trim().toLowerCase();
+  svg.querySelectorAll(".arm").forEach(g=>{
+    const i = +g.dataset.cat, cat = CATS[i];
+    const catHit = !s || cat.name.toLowerCase().includes(s);
+    let hit = catHit;
+    g.querySelectorAll(".node[data-case]").forEach(n=>{
+      const c = cat.cases[+n.dataset.case];
+      const m = catHit || c.t.toLowerCase().includes(s) || c.b.toLowerCase().includes(s);
+      n.classList.toggle("dim", !m);
+      if(m) hit = true;
+    });
+    g.classList.toggle("dim", !hit);
+  });
+});
+document.getElementById("reset").addEventListener("click",()=>{ q.value=""; q.dispatchEvent(new Event("input")); clearSel();
+  detail.innerHTML = "<p style='color:var(--mut)'>Select a category hub or any of the 40 stations on the machine.</p>"; });
+// Pilot scope builder
+const scope = new Set();
+function renderScope(){
+  const list = document.getElementById("scopeList"); list.innerHTML = "";
+  document.getElementById("scopeCount").textContent = scope.size;
+  [...scope].sort().forEach(key=>{
+    const [i,j] = key.split("-").map(Number);
+    const li = document.createElement("li");
+    li.textContent = `${CATS[i].cases[j].t} (${CATS[i].short}, station ${i*5+j+1})`;
+    list.appendChild(li);
+  });
+}
+function addScope(i,j){ scope.add(i+"-"+j); renderScope(); showCase(i,j); }
+document.getElementById("clearScope").addEventListener("click",()=>{ scope.clear(); renderScope(); });
+document.getElementById("copyScope").addEventListener("click",()=>{
+  if(!scope.size) return;
+  const lines = ["PERsiST on AcN — GovCloud pilot scope ("+scope.size+" stations):"];
+  [...scope].sort().forEach(key=>{ const [i,j]=key.split("-").map(Number);
+    lines.push(`- [${i*5+j+1}] ${CATS[i].cases[j].t} | buyer: ${CATS[i].cases[j].b} | proof: ${CATS[i].cases[j].r}`); });
+  lines.push("All stations run receipted on the GovCloud showcase tenant: clean install, no outside influence, built from inside. 30-day isolated pilot, signed destruction receipt at teardown.");
+  const txt = lines.join("\n");
+  if(navigator.clipboard) navigator.clipboard.writeText(txt).then(()=>alert("Scope copied."),()=>alert(txt));
+  else alert(txt);
+});
+// Simulated PERsiST receipt ticker
+const ticker = document.getElementById("ticker");
+const FEED = [
+  ["acn.task.approved","arm:OVERSEE","voucher pre-audit passed 14/14 checks","sig:9f2c"],
+  ["persist.seal","arm:REMEMBER","decision ledger bound 3 actions to transcript","sig:41ab"],
+  ["acn.tool.call","arm:DEFEND","phishing verdict: malicious, custody intact","sig:77e0"],
+  ["persist.replay","arm:ACQUIRE","protest packet replayed, 22/22 steps verified","sig:b3d9"],
+  ["acn.agent.spawn","arm:OPERATE","relief matcher allocated 41 loads, fairness ok","sig:50f1"],
+  ["persist.seal","arm:ASSURE","consultation record appended, identities sealed","sig:aa74"],
+  ["acn.review.flag","arm:OVERSEE","purchase-card anomaly, case file opened","sig:12c8"],
+  ["persist.seal","arm:CARRY","bundle hashed sha256, manifest signed","sig:e6b2"]
+];
+let fi = 0, paused = false;
+ticker.addEventListener("mouseenter",()=>paused=true);
+ticker.addEventListener("mouseleave",()=>paused=false);
+function tick(){
+  if(paused) return;
+  const [ev,arm,msg,sig] = FEED[fi % FEED.length]; fi++;
+  const d = document.createElement("div");
+  const ts = new Date().toISOString().slice(11,19) + "Z";
+  d.innerHTML = `<span class="t-mut">${ts}</span> ${ev} <span class="t-mut">${arm}</span> ${msg} <span class="t-mut">${sig}</span>`;
+  ticker.appendChild(d);
+  while(ticker.children.length > 9) ticker.removeChild(ticker.children[2]);
+}
+if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){ tick(); setInterval(tick, 2600); }
+</script>
+</body>
+</html>

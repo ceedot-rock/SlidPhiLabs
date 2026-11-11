@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sign up — Slid Phi Labs</title>
+<meta name="description" content="Create one lab account. The same login opens every Slid Phi Labs product."/>
+<link rel="canonical" href="https://www.slidphilabs.com/signup"/>
+<meta name="robots" content="index,follow"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Sign up — Slid Phi Labs"/>
+<meta property="og:description" content="One lab account for every product."/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+<meta property="og:url" content="https://www.slidphilabs.com/signup"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Sign up — Slid Phi Labs"/>
+<meta name="twitter:description" content="One lab account for every product."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+<link rel="stylesheet" href="/assets/site.css"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Sign up — Slid Phi Labs","description":"Create one lab account.","url":"https://www.slidphilabs.com/signup","isPartOf":{"@type":"WebSite","name":"Slid Phi Labs","url":"https://www.slidphilabs.com/"},"inLanguage":"en"}</script>
+</head>
+<body>
+<main class="spl-page" id="main" style="max-width:28rem">
+<p class="spl-kicker">One account</p>
+<h1>Sign up</h1>
+<p style="color:#5c6570">Name, email, password. Then every door uses this login.</p>
+<form id="f" class="spl-form">
+<label>Name<input name="name" autocomplete="name" required/></label>
+<label>Email<input name="email" type="email" autocomplete="email" required/></label>
+<label>Password (8+)<input name="password" type="password" autocomplete="new-password" minlength="8" required/></label>
+<button type="submit">Create account</button>
+</form>
+<p id="err" class="err"></p>
+<p>Already have one? <a id="login-link" href="/login.html">Log in</a></p>
+<footer class="spl-foot">
+<p>Hosted at www.slidphilabs.com (primary). License: AGPL-3.0-or-later OR commercial.</p>
+<nav><a href="/llms.txt">llms.txt</a><a href="/agents.json">agents.json</a><a href="/platform.json">platform.json</a><a href="/sitemap.xml">sitemap.xml</a></nav>
+</footer>
+</main>
+<script src="/assets/lab-auth.js"></script>
+<script>
+(function () {
+  var q = location.search;
+  document.getElementById("login-link").href = "/login.html" + q;
+  document.getElementById("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var fd = new FormData(e.target);
+    var err = document.getElementById("err");
+    err.textContent = "";
+    SPLAuth.signup({ name: fd.get("name"), email: fd.get("email"), password: fd.get("password") }).then(function (j) {
+      if (!j.ok) {
+        err.textContent = j.error === "email_taken" ? "That email is already in. Log in." : (j.error || "Could not sign up");
+        return;
+      }
+      SPLAuth.goAfter(j.token);
+    });
+  });
+})();
+</script>
+</body>
+</html>

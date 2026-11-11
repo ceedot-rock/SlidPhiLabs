@@ -1,0 +1,8 @@
+{
+  "name": "Slid Phi Labs",
+  "url": "https://www.slidphilabs.com",
+  "agents_page": "https://www.slidphilabs.com/agents",
+  "mcp": "https://www.slidphilabs.com/api/mcp",
+  "auth": "https://www.slidphilabs.com/api/auth",
+  "license": "AGPL-3.0-or-later OR commercial"
+}

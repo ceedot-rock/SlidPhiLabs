@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.slidphilabs.com/</loc></url>
+  <url><loc>https://www.slidphilabs.com/products</loc></url>
+  <url><loc>https://www.slidphilabs.com/pricing-usage</loc></url>
+  <url><loc>https://www.slidphilabs.com/docs</loc></url>
+  <url><loc>https://www.slidphilabs.com/signup</loc></url>
+  <url><loc>https://www.slidphilabs.com/login</loc></url>
+  <url><loc>https://www.slidphilabs.com/account</loc></url>
+  <url><loc>https://www.slidphilabs.com/humans</loc></url>
+  <url><loc>https://www.slidphilabs.com/agents</loc></url>
+  <url><loc>https://www.slidphilabs.com/about</loc></url>
+  <url><loc>https://www.slidphilabs.com/license</loc></url>
+  <url><loc>https://www.slidphilabs.com/status</loc></url>
+  <url><loc>https://www.slidphilabs.com/refund-policy</loc></url>
+  <url><loc>https://www.slidphilabs.com/llms.txt</loc></url>
+  <url><loc>https://www.slidphilabs.com/llms-full.txt</loc></url>
+  <url><loc>https://www.slidphilabs.com/agents.txt</loc></url>
+  <url><loc>https://www.slidphilabs.com/humans.txt</loc></url>
+  <url><loc>https://www.slidphilabs.com/agents.json</loc></url>
+  <url><loc>https://www.slidphilabs.com/platform.json</loc></url>
+  <url><loc>https://www.slidphilabs.com/.well-known/agent.json</loc></url>
+  <url><loc>https://www.slidphilabs.com/.well-known/agent-card.json</loc></url>
+  <url><loc>https://www.slidphilabs.com/.well-known/agents.json</loc></url>
+  <url><loc>https://www.slidphilabs.com/.well-known/mcp.json</loc></url>
+  <url><loc>https://www.slidphilabs.com/.well-known/ai-catalog.json</loc></url>
+  <url><loc>https://www.slidphilabs.com/.well-known/ai-products.json</loc></url>
+</urlset>

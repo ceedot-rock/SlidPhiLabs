@@ -1,0 +1,12 @@
+# Slid Phi Labs — robots.txt
+User-agent: *
+Allow: /
+Allow: /api/agent
+Allow: /mcp
+Disallow: /account
+Disallow: /login
+Disallow: /signup
+Disallow: /pay
+Disallow: /access
+
+Sitemap: https://www.slidphilabs.com/sitemap.xml

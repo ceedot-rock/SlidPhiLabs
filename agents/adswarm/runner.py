@@ -13,6 +13,11 @@ import time
 
 import adapters
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "common"))
+import acn
+import psi
+import tavily
+
 HOME = os.environ.get("ADSWARM_HOME") or os.path.dirname(os.path.abspath(__file__))
 
 
@@ -122,6 +127,8 @@ def publish(camp_name, draft_id):
     receipt = adapters.publish(HOME, channel, {"id": draft_id, "body": body})
     if not receipt.get("ok"):
         ledger("publisher", "publish-failed", draft_id)
+        psi.remember(HOME, "publish failed", "%s via %s" % (draft_id, channel),
+                     receipt.get("error", "adapter failed")[:200])
         return False, receipt.get("error", "adapter failed")
     meta["status"] = "published"
     write_draft(draft_id, meta, body)
@@ -152,6 +159,20 @@ def main(argv):
         print("usage: runner.py review|critic|approve|publish|schedule|ledger <campaign> [id] [--by NAME]")
         return 2
     cmd = argv[1]
+    if cmd == "lookup":
+        if len(argv) < 3:
+            print("usage: lookup <query...>")
+            return 2
+        ok, out = tavily.search(" ".join(argv[2:]))
+        print(out)
+        return 0 if ok else 1
+    if cmd == "seat":
+        print(acn.status(HOME))
+        return 0
+    if cmd == "recall":
+        n = int(argv[2]) if len(argv) > 2 else 5
+        print(psi.formatted(HOME, n))
+        return 0
     if cmd == "ledger":
         n = int(argv[2]) if len(argv) > 2 else 10
         try:

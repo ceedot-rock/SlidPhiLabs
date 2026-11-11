@@ -1,0 +1,66 @@
+{
+  "ok": true,
+  "name": "Slid Phi Labs",
+  "version": "1.0.0",
+  "updated": "2026-11-09",
+  "site": "https://www.slidphilabs.com",
+  "mission": "Tools that check: same result or refuse, signed or not trusted, measured or not claimed.",
+  "one_liner": "Tools that check. Signed agent names, byte-identical programs across 53 targets, metered usage behind one Rider credential.",
+  "auth": {
+    "signup": "https://www.slidphilabs.com/signup",
+    "login": "https://www.slidphilabs.com/login",
+    "account": "https://www.slidphilabs.com/account",
+    "api": "https://www.slidphilabs.com/api/auth"
+  },
+  "products": [
+    {
+      "name": "Agent Rider",
+      "url": "https://agentrider.fly.dev",
+      "note": "Signed names, Warrant permissions, receipts."
+    },
+    {
+      "name": "CuNi / CuNIverse",
+      "url": "https://cuni-studio.fly.dev/",
+      "note": "One program, 53 targets, byte-identical stdout or refuse."
+    },
+    {
+      "name": "TeachAid",
+      "url": "https://teachaid.fly.dev",
+      "note": "Chapter-by-chapter text and voice learning."
+    },
+    {
+      "name": "Hosted suite + PCC",
+      "note": "Metered jobs; free allowance TBD."
+    },
+    {
+      "name": "spl-acn client",
+      "note": "Claim-token access to the hosted MCP."
+    },
+    {
+      "name": "GitDepot",
+      "note": "Team blob storage; usage-metered."
+    }
+  ],
+  "pricing": {
+    "model": "metered usage, not seats",
+    "free_allowance": "TBD",
+    "already_public": [
+      "CuNi capability promotion: $9/month per capability (Stripe subscription; flag-gated)",
+      "TeachAid Pro: $9/month"
+    ]
+  },
+  "rider_gating": {
+    "register": "POST /api/agents -> vault key ar_ (shown once)",
+    "issue": "POST /api/rider/issue -> Rider JWT (ES256, iss agentrider.dev, 15-minute TTL)",
+    "header": "X-Agent-Rider",
+    "verify": "POST /api/rider/verify or /.well-known/jwks.json",
+    "refusal_shape": "{error, issue_url, docs_url} plus Rider challenge"
+  },
+  "discovery": {
+    "mcp": "https://www.slidphilabs.com/api/mcp",
+    "rider_mcp": "https://agentrider.fly.dev/api/mcp",
+    "llms_txt": "https://www.slidphilabs.com/llms.txt",
+    "agents_json": "https://www.slidphilabs.com/agents.json"
+  },
+  "license": "AGPL-3.0-or-later OR commercial"
+}

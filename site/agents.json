@@ -1,0 +1,31 @@
+{
+  "name": "Slid Phi Labs",
+  "site": "https://www.slidphilabs.com",
+  "agents_page": "https://www.slidphilabs.com/agents",
+  "docs": "https://www.slidphilabs.com/docs",
+  "llms_txt": "https://www.slidphilabs.com/llms.txt",
+  "mcp": [
+    "https://www.slidphilabs.com/api/mcp",
+    "https://agentrider.fly.dev/api/mcp"
+  ],
+  "rider": {
+    "register": "https://agentrider.fly.dev/api/agents",
+    "issue": "https://agentrider.fly.dev/api/rider/issue",
+    "verify": "https://agentrider.fly.dev/api/rider/verify",
+    "jwks": "https://agentrider.fly.dev/.well-known/jwks.json",
+    "header": "X-Agent-Rider",
+    "token": "Rider JWT (ES256, iss agentrider.dev, 15-minute TTL)",
+    "vault_key_prefix": "ar_",
+    "refusal_shape": "{error, issue_url, docs_url} plus Rider challenge"
+  },
+  "products": [
+    { "name": "Agent Rider", "url": "https://agentrider.fly.dev" },
+    { "name": "CuNi Studio", "url": "https://cuni-studio.fly.dev/" },
+    { "name": "TeachAid", "url": "https://teachaid.fly.dev" }
+  ],
+  "discovery": [
+    "https://www.slidphilabs.com/.well-known/agent-card.json",
+    "https://www.slidphilabs.com/.well-known/mcp.json",
+    "https://www.slidphilabs.com/platform.json"
+  ]
+}

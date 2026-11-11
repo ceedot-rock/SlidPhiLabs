@@ -1,0 +1,13 @@
+{
+  "name": "Slid Phi Labs",
+  "url": "https://www.slidphilabs.com",
+  "description": "Tools that check: signed agent names, byte-identical programs, metered usage.",
+  "mcp": "https://www.slidphilabs.com/api/mcp",
+  "rider_mcp": "https://agentrider.fly.dev/api/mcp",
+  "auth": {
+    "signup": "https://www.slidphilabs.com/signup",
+    "login": "https://www.slidphilabs.com/login",
+    "api": "https://www.slidphilabs.com/api/auth"
+  },
+  "catalog": "https://www.slidphilabs.com/.well-known/ai-catalog.json"
+}

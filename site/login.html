@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Log in — Slid Phi Labs</title>
+<meta name="description" content="Log in to your Slid Phi Labs account. One login for every product."/>
+<link rel="canonical" href="https://www.slidphilabs.com/login"/>
+<meta name="robots" content="index,follow"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Log in — Slid Phi Labs"/>
+<meta property="og:description" content="One lab login for every product."/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+<meta property="og:url" content="https://www.slidphilabs.com/login"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Log in — Slid Phi Labs"/>
+<meta name="twitter:description" content="One lab login for every product."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+<link rel="stylesheet" href="/assets/site.css"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Log in — Slid Phi Labs","description":"Log in to your lab account.","url":"https://www.slidphilabs.com/login","isPartOf":{"@type":"WebSite","name":"Slid Phi Labs","url":"https://www.slidphilabs.com/"},"inLanguage":"en"}</script>
+</head>
+<body>
+<main class="spl-page" id="main" style="max-width:28rem">
+<h1>Log in</h1>
+<form id="f" class="spl-form">
+<label>Email<input name="email" type="email" autocomplete="email" required/></label>
+<label>Password<input name="password" type="password" autocomplete="current-password" required/></label>
+<button type="submit">Log in</button>
+<button type="button" id="pk" style="background:#1a1a1a">Passkey</button>
+</form>
+<p id="err" class="err"></p>
+<p>New here? <a id="su" href="/signup.html">Sign up</a></p>
+<footer class="spl-foot">
+<p>Hosted at www.slidphilabs.com (primary). License: AGPL-3.0-or-later OR commercial.</p>
+<nav><a href="/llms.txt">llms.txt</a><a href="/agents.json">agents.json</a><a href="/platform.json">platform.json</a><a href="/sitemap.xml">sitemap.xml</a></nav>
+</footer>
+</main>
+<script src="/assets/lab-auth.js"></script>
+<script>
+document.getElementById("su").href = "/signup.html" + location.search;
+document.getElementById("f").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var fd = new FormData(e.target);
+  var err = document.getElementById("err");
+  err.textContent = "";
+  SPLAuth.login({ email: fd.get("email"), password: fd.get("password") }).then(function (j) {
+    if (!j.ok) { err.textContent = "Email or password did not match."; return; }
+    SPLAuth.goAfter(j.token);
+  });
+});
+document.getElementById("pk").addEventListener("click", function () {
+  var err = document.getElementById("err");
+  err.textContent = "";
+  try {
+    var email = document.querySelector("[name=email]").value;
+    SPLAuth.passkeyLogin(email).then(function (j) {
+      if (!j.ok) { err.textContent = "Passkey did not match."; return; }
+      SPLAuth.goAfter(j.token);
+    }).catch(function () { err.textContent = "Passkey cancelled or not available."; });
+  } catch (e) { err.textContent = "Passkey cancelled or not available."; }
+});
+</script>
+</body>
+</html>

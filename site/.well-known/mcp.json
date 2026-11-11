@@ -1,0 +1,10 @@
+{
+  "name": "Slid Phi Labs MCP",
+  "endpoint": "https://www.slidphilabs.com/api/mcp",
+  "rider_endpoint": "https://agentrider.fly.dev/api/mcp",
+  "auth_header": "X-Agent-Rider",
+  "token": "Rider JWT (ES256, iss agentrider.dev, 15-minute TTL)",
+  "register": "POST https://agentrider.fly.dev/api/agents",
+  "issue": "POST https://agentrider.fly.dev/api/rider/issue",
+  "verify": "POST https://agentrider.fly.dev/api/rider/verify"
+}

@@ -1,0 +1,1 @@
+{"allows": ["read", "lookup", "draft"], "domain": "builder-law", "owns": ["briefs/"], "reads": ["LICENSE", "LICENSE.AGPL-3.0", "LICENSE.COMMERCIAL", "NOTICE", "CITATION.cff", "docs/"]}

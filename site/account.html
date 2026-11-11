@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Your lab account — Slid Phi Labs</title>
+<meta name="description" content="Your Slid Phi Labs account. One login opens every product door."/>
+<link rel="canonical" href="https://www.slidphilabs.com/account"/>
+<meta name="robots" content="noindex,follow"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Your lab account — Slid Phi Labs"/>
+<meta property="og:description" content="One account. Every product door."/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+<meta property="og:url" content="https://www.slidphilabs.com/account"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Your lab account — Slid Phi Labs"/>
+<meta name="twitter:description" content="One account. Every product door."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+<link rel="stylesheet" href="/assets/site.css"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Your lab account — Slid Phi Labs","description":"Your Slid Phi Labs account. One login opens every product door.","url":"https://www.slidphilabs.com/account","isPartOf":{"@type":"WebSite","name":"Slid Phi Labs","url":"https://www.slidphilabs.com/"},"inLanguage":"en"}</script>
+</head>
+<body>
+<main class="spl-page" id="main" style="max-width:36rem">
+<h1>You&rsquo;re in</h1>
+<p id="who" style="color:#5c6570"></p>
+<p>Same login on every door (opens already signed in):</p>
+<ul id="doors" style="line-height:1.9"></ul>
+<h2>Change password</h2>
+<form id="pw" class="spl-form">
+<input name="old_password" type="password" placeholder="Current password" required/>
+<input name="new_password" type="password" placeholder="New password (8+)" minlength="8" required/>
+<button type="submit">Update password</button>
+</form>
+<p id="pwerr" class="err"></p>
+<h2>Agent key</h2>
+<p>Your caller-pays key starts with <code>spl_ag_</code> and covers server-side calls.</p>
+<p><button type="button" id="pk">Add a passkey</button> <span id="pkerr"></span></p>
+<p><button type="button" id="out">Log out</button></p>
+<footer class="spl-foot">
+<p>Hosted at www.slidphilabs.com (primary). License: AGPL-3.0-or-later OR commercial.</p>
+<nav><a href="/llms.txt">llms.txt</a><a href="/agents.json">agents.json</a><a href="/platform.json">platform.json</a><a href="/sitemap.xml">sitemap.xml</a></nav>
+</footer>
+</main>
+<script src="/assets/lab-auth.js"></script>
+<script>
+(function () {
+  SPLAuth.me().then(function (u) {
+    if (!u) { location.href = "/login.html?next=/account.html"; return; }
+    document.getElementById("who").textContent = u.name + " · " + u.email;
+    var labels = { studio: "CuNi Studio", rider: "Agent-Rider", chamber: "Chamber", box: "24-hour try", teachaid: "TeachAid" };
+    var tok = SPLAuth.token();
+    document.getElementById("doors").innerHTML = Object.entries(u.doors || {}).map(function (kv) {
+      return '<li><a href="' + SPLAuth.withToken(kv[1], tok) + '">' + (labels[kv[0]] || kv[0]) + "</a></li>";
+    }).join("");
+    document.getElementById("out").onclick = function () { SPLAuth.logout(); };
+    document.getElementById("pk").onclick = function () {
+      var el = document.getElementById("pkerr");
+      el.textContent = "";
+      SPLAuth.passkeyRegister().then(function (j) {
+        el.textContent = j.ok ? "Passkey saved." : (j.error || "Could not add passkey");
+      }).catch(function () { el.textContent = "Passkey cancelled or not available."; });
+    };
+    document.getElementById("pw").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var fd = new FormData(e.target);
+      var err = document.getElementById("pwerr");
+      err.textContent = "";
+      fetch("https://www.slidphilabs.com/api/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: "Bearer " + SPLAuth.token() },
+        body: JSON.stringify({ action: "change_password", old_password: fd.get("old_password"), new_password: fd.get("new_password") })
+      }).then(function (r) { return r.json(); }).then(function (j) {
+        err.textContent = j.ok ? "Password updated." : (j.error || "Could not update password");
+      }).catch(function () { err.textContent = "Could not update password"; });
+    });
+  });
+})();
+</script>
+</body>
+</html>

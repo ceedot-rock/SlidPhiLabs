@@ -1,0 +1,1 @@
+{"allows": ["read", "edit", "verify"], "domain": "compression", "meter": {"bulk_usd_per_gb": 0.2, "free_gb": 1, "free_window": "lifetime-once-per-IP", "usd_per_gb": 0.25}, "owns": ["src/", "packages/", "test/pccz.test.mjs", "docs/site/pricing.json"], "verify": ["node --test test/pccz.test.mjs", "node --test src/consolidator.test.mjs"]}

@@ -1,0 +1,1 @@
+{"allows": ["spl_catalog", "spl_quote"], "cap_usd": 0, "key_env": "SPL_ACN_KEY", "network": "https://www.slidphilabs.com/api/mcp", "seat": "advisor"}

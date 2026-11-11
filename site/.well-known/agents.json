@@ -1,0 +1,9 @@
+{
+  "agents": [
+    {
+      "name": "Slid Phi Labs",
+      "url": "https://www.slidphilabs.com",
+      "card": "https://www.slidphilabs.com/.well-known/agent-card.json"
+    }
+  ]
+}

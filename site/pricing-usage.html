@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pricing is usage — Slid Phi Labs</title>
+<meta name="description" content="SlidPhiLabs sells metered usage, not seats. Free allowance TBD. Gated calls refuse with a machine-readable payment-required error."/>
+<link rel="canonical" href="https://www.slidphilabs.com/pricing-usage"/>
+<meta name="robots" content="index,follow"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Pricing is usage — Slid Phi Labs"/>
+<meta property="og:description" content="Metered usage, not seats. Free allowance: TBD."/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+<meta property="og:url" content="https://www.slidphilabs.com/pricing-usage"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Pricing is usage — Slid Phi Labs"/>
+<meta name="twitter:description" content="Metered usage, not seats. Free allowance: TBD."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+<link rel="stylesheet" href="/assets/site.css"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Pricing is usage — Slid Phi Labs","description":"Metered usage, not seats. Free allowance TBD.","url":"https://www.slidphilabs.com/pricing-usage","isPartOf":{"@type":"WebSite","name":"Slid Phi Labs","url":"https://www.slidphilabs.com/"},"inLanguage":"en"}</script>
+</head>
+<body>
+<main class="spl-page" id="main">
+<p class="spl-kicker">Pricing</p>
+<h1>Pricing is usage.</h1>
+<p class="lede">SlidPhiLabs sells metered usage, not seats. Paid calls are gated: without a valid credential the call is refused with a machine-readable payment-required error — free paths are never silently metered.</p>
+<section>
+<p class="sec-no">01 — Free allowance</p>
+<h2>Current allowance: TBD.</h2>
+<p>Each metered product includes a free allowance. Current allowance: TBD — decided before launch. This page will state it when fixed.</p>
+</section>
+<section>
+<p class="sec-no">02 — Already-public prices</p>
+<h2>Only these two amounts appear here.</h2>
+<table class="meters">
+<tr><th>Item</th><th>Amount</th><th>Note</th></tr>
+<tr><td>CuNi capability promotion</td><td>$9/month per capability</td><td>Stripe subscription; already public in Toll v2 promote docs; flag-gated.</td></tr>
+<tr><td>TeachAid Pro</td><td>$9/month</td><td>Already public in TeachAid pricing; includes Pro voice picker.</td></tr>
+</table>
+<p>Trial, submit-a-class, and chaternity lines live only on TeachAid's own pricing page, not repeated here.</p>
+</section>
+<section>
+<p class="sec-no">03 — Meters, not amounts</p>
+<h2>Everything else names the meter.</h2>
+<table class="meters">
+<tr><th>Meter</th><th>Billed</th></tr>
+<tr><td>Suite / PCC compression</td><td>Per GB after the free allowance</td></tr>
+<tr><td>Discovery / lookup / verify / check / escrow / bond</td><td>Per call or percent — amounts published with the Docs/Press + CoS green light, not here</td></tr>
+<tr><td>Claim-token seats (spl-acn)</td><td>Per seat — not stated here</td></tr>
+<tr><td>GitDepot storage</td><td>Per usage after the free allowance</td></tr>
+</table>
+</section>
+<section>
+<p class="sec-no">04 — Rider-token gating</p>
+<h2>One Rider credential gates metered usage.</h2>
+<p>Register (<code>POST /api/agents</code>) → you hold a vault key (<code>ar_</code>, shown once) → exchange it (<code>POST /api/rider/issue</code>) for a short-lived Rider JWT (ES256, iss agentrider.dev, 15-minute TTL) → send it as <code>X-Agent-Rider</code> on metered calls. Funded riders settle; sandbox riders are read/verify-only (funded settle returns <code>sandbox_forbidden</code>). Verify via <code>/.well-known/jwks.json</code> or <code>POST /api/rider/verify</code>. Refusals carry <code>{error, issue_url, docs_url}</code> plus a Rider challenge — agents can self-serve the fix. Caller-pays keys (merchant/platform) cover server-side calls.</p>
+<pre>curl -X POST https://agentrider.fly.dev/api/agents \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"my-agent","type":"human"}'
+# -&gt; {"api_key":"ar_... (shown once)","agent_id":"..."}
+
+curl -X POST https://agentrider.fly.dev/api/rider/issue \
+  -H "Authorization: Bearer ar_..." \
+# -&gt; short-lived Rider JWT (ES256, 15-minute TTL)
+
+curl https://agentrider.fly.dev/api/mcp \
+  -H 'Content-Type: application/json' \
+  -H "X-Agent-Rider: &lt;rider-jwt&gt;" \
+  -d '{"method":"tools/list"}'</pre>
+</section>
+<footer class="spl-foot">
+<p>Hosted at www.slidphilabs.com (primary). License: AGPL-3.0-or-later OR commercial.</p>
+<nav><a href="/llms.txt">llms.txt</a><a href="/agents.json">agents.json</a><a href="/platform.json">platform.json</a><a href="/sitemap.xml">sitemap.xml</a></nav>
+<p data-spl-auth></p>
+</footer>
+</main>
+<script src="/assets/lab-auth.js" defer></script>
+</body>
+</html>
