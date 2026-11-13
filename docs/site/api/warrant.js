@@ -43,6 +43,16 @@ export default function handler(req, res) {
         verify: "POST /api/warrant/verify",
         receipt: "POST /api/warrant/receipt",
         revoke: "POST /api/warrant/revoke",
+        reserve: "POST /api/warrant/reserve",
+        release: "POST /api/warrant/release",
+      },
+      v1: {
+        issue: "POST /v1/warrant/issue",
+        verify: "POST /v1/warrant/verify",
+        receipt: "POST /v1/warrant/receipt",
+        revoke: "POST /v1/warrant/revoke",
+        reserve: "POST /v1/warrant/reserve",
+        release: "POST /v1/warrant/release",
       },
     };
   }

@@ -11,6 +11,7 @@ import { fileURLToPath, pathToFileURL } from "url";
 import { attachNca, ncaBindApp, ncaHeaders, ncaReport } from "./lib/nca_infra.mjs";
 import { bootRest, fromRest, fromRestGzip } from "./lib/phi_rest.mjs";
 import { sweep, realFs } from "./api/lib/log-rotate.mjs";
+import { siteRewrite, TOLL_TOOLS, tollUrl } from "./api/lib/call-doors.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = __dirname;
@@ -443,14 +444,72 @@ const server = http.createServer(async (req, res) => {
       });
       return res.end();
     }
-    if (
-      url.pathname === "/v1/check" ||
-      url.pathname === "/v1/translate" ||
-      url.pathname === "/v1/squeeze" ||
-      url.pathname === "/v1/deposit" ||
-      url.pathname === "/v1/replicate" ||
-      url.pathname.startsWith("/v1/deposit/")
-    ) {
+    const rewritten = siteRewrite(url.pathname);
+    if (rewritten) {
+      url.pathname = rewritten;
+      await handleApi(req, res, url);
+      return;
+    }
+    const tollName = url.pathname.startsWith("/v1/") ? url.pathname.slice(4) : "";
+    if (TOLL_TOOLS.includes(tollName)) {
+      const chunks = [];
+      for await (const c of req) chunks.push(c);
+      const raw = Buffer.concat(chunks);
+      const hopIn = {};
+      for (const name of [
+        "content-type",
+        "authorization",
+        "x-merchant-key",
+        "payment-signature",
+        "x-payment",
+        "x-agent-rider",
+        "x-agent-warrant",
+      ]) {
+        if (req.headers[name]) hopIn[name] = req.headers[name];
+      }
+      if (!hopIn["content-type"]) hopIn["content-type"] = "application/json";
+      let up;
+      try {
+        up = await fetch(tollUrl(tollName), {
+          method: req.method,
+          headers: hopIn,
+          body: req.method === "POST" ? raw : undefined,
+          signal: AbortSignal.timeout(90000),
+        });
+      } catch (err) {
+        res.writeHead(502, { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" });
+        res.end(JSON.stringify({ ok: false, error: "upstream_unreachable", tool: tollName, detail: String(err.message || err) }));
+        return;
+      }
+      const buf = Buffer.from(await up.arrayBuffer());
+      const hop = {
+        "Content-Type": up.headers.get("content-type") || "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "no-store",
+      };
+      for (const name of ["payment-required", "x-payment-required", "payment-response", "x-payment-response"]) {
+        const value = up.headers.get(name);
+        if (value) hop[name] = value;
+      }
+      res.writeHead(up.status, hop);
+      res.end(buf);
+      return;
+    }
+    const labVerbs = [
+      "/v1/check",
+      "/v1/translate",
+      "/v1/ingest",
+      "/v1/audit",
+      "/v1/money",
+      "/v1/time",
+      "/v1/chain",
+      "/v1/ship",
+      "/v1/parity",
+      "/v1/squeeze",
+      "/v1/deposit",
+      "/v1/replicate",
+    ];
+    if (labVerbs.includes(url.pathname) || url.pathname.startsWith("/v1/deposit/")) {
       const store = (process.env.LAB_AGENT_URL || "https://spl-lab-agent.fly.dev").replace(/\/$/, "");
       const chunks = [];
       for await (const c of req) chunks.push(c);
@@ -466,11 +525,16 @@ const server = http.createServer(async (req, res) => {
         signal: AbortSignal.timeout(90000),
       });
       const buf = Buffer.from(await up.arrayBuffer());
-      res.writeHead(up.status, {
+      const hop = {
         "Content-Type": up.headers.get("content-type") || "application/json",
         "Access-Control-Allow-Origin": "*",
         ...ncaHeaders(),
-      });
+      };
+      for (const name of ["payment-required", "x-payment-required", "payment-response", "x-payment-response"]) {
+        const value = up.headers.get(name);
+        if (value) hop[name] = value;
+      }
+      res.writeHead(up.status, hop);
       res.end(buf);
       return;
     }

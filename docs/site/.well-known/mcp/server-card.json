@@ -2,7 +2,7 @@
   "name": "slid-phi-labs",
   "title": "Slid Phi Labs",
   "description": "Hosted Streamable HTTP MCP for Slid Phi Labs public catalog and commerce discovery. Lookup is public; engines and customer operations remain protected.",
-  "version": "1.21.0",
+  "version": "1.22.0",
   "websiteUrl": "https://www.slidphilabs.com",
   "documentationUrl": "https://www.slidphilabs.com/mcp-service",
   "registry": "io.github.ceedot-rock/slid-phi-labs",
@@ -23,7 +23,7 @@
   "tools": [
     {
       "name": "cuni_bank",
-      "description": "Run a CuNi program through CuNi Bank: submit source in Python or .cuni and get the exact output in the target language, or a refusal when the languages disagree. Read-only computation — no state is stored. Calls the CuNi Studio service (cuni-studio.fly.dev). Use for exactness checks and cross-language proofs; use spl_compress for byte compression, not program translation.",
+      "description": "CuNi translate, legacy name cuni_bank. Paste N, get X, or refuse. POST /v1/translate. SKU lab-translate $0.10. Pass payment or the lab returns 402. The Studio playground stays free. Use spl_compress for byte compression.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -38,11 +38,274 @@
           "to": {
             "type": "string",
             "description": "Target language for the output, e.g. js, go, ts, py. Required."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT header. Omit it and the lab answers 402."
           }
         },
         "required": [
           "source",
           "to"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "check",
+      "description": "CuNi check. Exact stdout or refuse. POST /v1/check. SKU lab-check $0.05, first 100 a month free. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "translate",
+      "description": "CuNi translate. Paste N, get X, or refuse. POST /v1/translate. SKU lab-translate $0.10. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          },
+          "from": {
+            "type": "string",
+            "description": "py or cuni. Default py."
+          },
+          "to": {
+            "type": "string",
+            "description": "Catalog id. Default js."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "ingest",
+      "description": "CuNi ingest. Foreign source to .cuni, or refuse. POST /v1/ingest. SKU lab-ingest $0.10. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          },
+          "from": {
+            "type": "string",
+            "description": "py, go, js, ts, c, cpp, rs, awk, pl, sh, sql, wat. Default py."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "audit",
+      "description": "CuNi audit. A money law against a foreign implementation. POST /v1/audit. SKU lab-audit $1.00. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          },
+          "against": {
+            "type": "string",
+            "description": "Foreign implementation source."
+          },
+          "against_ext": {
+            "type": "string",
+            "description": "py, js, mjs, go, rs, java, sql. Default py."
+          }
+        },
+        "required": [
+          "source",
+          "against"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "money",
+      "description": "CuNi money. Decimal seats py, rs, go, java, sql. POST /v1/money. SKU lab-money $0.25. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "time",
+      "description": "CuNi time. Time law. POST /v1/time. SKU lab-time $0.25. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "chain",
+      "description": "CuNi chain. Solidity, Solana, ink!, Move, Vyper, Cairo, Clarity, Cadence, then the Python seat. POST /v1/chain. SKU lab-chain $0.50. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          },
+          "to": {
+            "type": "string",
+            "description": "Comma list: sol,solana,ink,move,vyper,cairo,clarity,cadence. Default all."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "ship",
+      "description": "CuNi ship. Firmware gate on C and Rust, or nothing ships. POST /v1/ship. SKU lab-ship $0.50. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "parity",
+      "description": "CuNi parity. One kernel across py, rs, c, go, sql. POST /v1/parity. SKU lab-parity $0.25. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          }
+        },
+        "required": [
+          "source"
         ]
       },
       "annotations": {
@@ -470,6 +733,1030 @@
         "destructiveHint": false,
         "idempotentHint": false,
         "openWorldHint": false
+      }
+    },
+    {
+      "name": "compress",
+      "description": "PCC compress. POST /v1/compress. Same engine as spl_compress. First 1 GB free once per IP, then $0.25/GB. A tool credential is required on the HTTP door. This is not Tollkeeper pcc-compress.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "data_b64": {
+            "type": "string",
+            "description": "Base64 bytes to compress."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "data_b64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "decompress",
+      "description": "PCC decompress. POST /v1/decompress. Restores bytes from compress. Same door as spl_decompress.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "packed_b64": {
+            "type": "string",
+            "description": "Base64 packed bytes from compress."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "packed_b64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "zip",
+      "description": "PCC zip. POST /v1/zip. Packs files into a .pcc archive. Same door as spl_zip and POST /api/archive.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "description": "Files: path, data_b64, dir."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "files"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "unzip",
+      "description": "PCC unzip. POST /v1/unzip. Restores a .pcc archive. Same door as spl_unzip and POST /api/unarchive.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "packed_b64": {
+            "type": "string",
+            "description": "Base64 .pcc archive from zip."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "packed_b64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "quote",
+      "description": "PCC quote. POST /v1/quote. Free. First 1 GB free once per IP, then $0.25/GB, $1 card minimum. Same price function as spl_quote.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "bytes": {
+            "type": "number",
+            "description": "Payload bytes."
+          },
+          "product": {
+            "type": "string",
+            "description": "auto, zrw, blackjack, shard-zip, shard-tsdb, or slid-phi."
+          },
+          "op": {
+            "type": "string",
+            "description": "compress, decompress, or roundtrip."
+          },
+          "dataClass": {
+            "type": "string",
+            "description": "Data class, when known."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "research",
+      "description": "Lab web search. POST /v1/research. Same door as spl_research. Refuses when TAVILY_API_KEY is unset. No per-call SKU on this door.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Search query."
+          },
+          "max_results": {
+            "type": "number",
+            "description": "1-10, default 5."
+          },
+          "search_depth": {
+            "type": "string",
+            "description": "basic or advanced."
+          },
+          "include_answer": {
+            "type": "boolean"
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "warrant_issue",
+      "description": "Warrant issue. POST /v1/warrant/issue. Same door as spl_warrant_issue. The Warrant add-on is the seat. This door adds no per-issue fee.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "rider": {
+            "type": "string",
+            "description": "Agent-Rider JWT. Required unless demo is true."
+          },
+          "demo": {
+            "type": "boolean",
+            "description": "Shape check. Issues nothing billable."
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "allow_hosts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "max_usd": {
+            "type": "number",
+            "description": "Spend cap in USD."
+          },
+          "max_calls": {
+            "type": "number",
+            "description": "Call cap."
+          },
+          "ttl_seconds": {
+            "type": "number",
+            "description": "Lifetime in seconds."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "warrant_verify",
+      "description": "Warrant verify. POST /v1/warrant/verify. Same door as spl_warrant_verify. Read-only.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token."
+          },
+          "host": {
+            "type": "string",
+            "description": "Host to check."
+          },
+          "action": {
+            "type": "string",
+            "description": "Action to check."
+          },
+          "usd": {
+            "type": "number",
+            "description": "USD to check against the remaining cap."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "warrant"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "warrant_reserve",
+      "description": "Warrant reserve. POST /v1/warrant/reserve. Same door as spl_warrant_reserve.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token."
+          },
+          "host": {
+            "type": "string",
+            "description": "Host."
+          },
+          "action": {
+            "type": "string",
+            "description": "Action."
+          },
+          "usd": {
+            "type": "number",
+            "description": "USD to hold."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "warrant"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "warrant_release",
+      "description": "Warrant release. POST /v1/warrant/release. Same door as spl_warrant_release.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "reservation_id": {
+            "type": "string",
+            "description": "Reservation id from warrant_reserve."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "reservation_id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "warrant_receipt",
+      "description": "Warrant receipt. POST /v1/warrant/receipt. Same door as spl_warrant_receipt.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token."
+          },
+          "action": {
+            "type": "string",
+            "description": "Action that ran."
+          },
+          "host": {
+            "type": "string",
+            "description": "Host that was called."
+          },
+          "usd": {
+            "type": "number",
+            "description": "USD to settle."
+          },
+          "reservation_id": {
+            "type": "string",
+            "description": "Reservation id, when one was held."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "warrant"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "warrant_revoke",
+      "description": "Warrant revoke. POST /v1/warrant/revoke. Same handler as POST /api/warrant/revoke.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token to revoke."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "warrant"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "seal",
+      "description": "Chamber seal. POST /v1/seal. Library door. Adds no per-seal price. Anonymous HTTP gets 402 until a key or claim. Seats already on the catalog: chamber-month, chamber-year. The metered crossing is chamber-seal at $0.02.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "obj": {
+            "type": "object",
+            "description": "JSON value to seal. At least 8 bytes once serialized."
+          },
+          "key_hex": {
+            "type": "string",
+            "description": "64 hex characters. Never echoed back."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "obj",
+          "key_hex"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "open",
+      "description": "Chamber open. POST /v1/open. Free once both keys meet. Wrong key, tampering, and a bad envelope refuse.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "envelope": {
+            "type": "object",
+            "description": "Envelope from seal or chamber-seal."
+          },
+          "key_hex": {
+            "type": "string",
+            "description": "64 hex characters. Never echoed back."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "envelope",
+          "key_hex"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "fetch",
+      "description": "Quikgater fetch. POST /v1/fetch. $0.02 per fetch, first 100 a month free, cap default $10. The worker answers 402 when the URL is unpaid.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "http or https URL to fetch."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "squeeze",
+      "description": "PCCX squeeze. POST /v1/squeeze. SKU lab-squeeze $0.10. Same door as pccx_encode. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "data_b64": {
+            "type": "string",
+            "description": "Base64 payload."
+          },
+          "source": {
+            "type": "string",
+            "description": "UTF-8 text when data_b64 is omitted."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "pcc-compress",
+      "description": "Tollkeeper pcc-compress. POST /v1/pcc-compress proxies Rider /api/toll/tools/pcc-compress. $0.01 per MB of input, minimum $0.001. Not the suite compress meter.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "data_base64": {
+            "type": "string",
+            "description": "Raw input, base64. Max 8MB decoded."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "data_base64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "pcc-verify",
+      "description": "Tollkeeper pcc-verify. POST /v1/pcc-verify. $0.02 per verification.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "blob_base64": {
+            "type": "string",
+            "description": "Compressed blob, base64."
+          },
+          "orig_size": {
+            "type": "number",
+            "description": "Original byte size."
+          },
+          "expected_sha256": {
+            "type": "string",
+            "description": "Hex SHA-256 of the original bytes."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "blob_base64",
+          "orig_size",
+          "expected_sha256"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "attest-notarize",
+      "description": "Tollkeeper attest-notarize. POST /v1/attest-notarize. $0.01 per notarization.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "payload": {
+            "type": "object",
+            "description": "Payload to notarize."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "payload"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "attest-exactness",
+      "description": "Tollkeeper attest-exactness. POST /v1/attest-exactness. $0.05 per check.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "artifact": {
+            "type": "object",
+            "description": "Code artifact."
+          },
+          "claim": {
+            "type": "object",
+            "description": "Claimed exact output. Requires stdout."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "artifact",
+          "claim"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "exactodds-draw",
+      "description": "ExactOdds draw. POST /v1/exactodds-draw. $0.01 per draw.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "game_id": {
+            "type": "string",
+            "description": "coin-flip, dice, roulette, or crash."
+          },
+          "draw_id": {
+            "type": "string",
+            "description": "Optional idempotency key."
+          },
+          "count": {
+            "type": "number",
+            "description": "1 to 100. Default 1."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "game_id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "exactodds-resolve",
+      "description": "ExactOdds resolve. POST /v1/exactodds-resolve. $0.02 per resolution.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "game_id": {
+            "type": "string",
+            "description": "Game id."
+          },
+          "draw_id": {
+            "type": "string",
+            "description": "Draw to resolve."
+          },
+          "stake_cents": {
+            "type": "number",
+            "description": "Optional integer cents."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "game_id",
+          "draw_id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "cuni-proof",
+      "description": "Tollkeeper cuni-proof. POST /v1/cuni-proof. $0.10 per proof. The lab check door is POST /v1/check at $0.05. These are different calls.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "CuNi source. Max 64KB."
+          },
+          "seats": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional seat ids."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "trustream-pack",
+      "description": "TRUSTREAM pack. POST /v1/trustream-pack. $0.01 per MB of input, minimum $0.001. TNSSRC encode stays parked. The grant stays a purchase.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "data_base64": {
+            "type": "string",
+            "description": "Raw stream bytes, base64. Max 8MB decoded."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "data_base64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "chamber-seal",
+      "description": "Tollkeeper chamber-seal. POST /v1/chamber-seal. $0.02 per seal. The library door POST /v1/seal adds no per-seal price. The seat is chamber-month or chamber-year.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "payload": {
+            "type": "object",
+            "description": "Payload to seal."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "payload"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "awlpay-quote",
+      "description": "AwLPay quote. POST /v1/awlpay-quote. $0.005 per quote. The 0.5% payment rail is not a separate verb.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "amount_uusdc": {
+            "type": "number",
+            "description": "Integer micro-USDC. 1 USDC = 1000000."
+          },
+          "rail": {
+            "type": "string",
+            "description": "tron, bitcoin, lightning, stellar, bsc, or base."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "amount_uusdc",
+          "rail"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
       }
     },
     {

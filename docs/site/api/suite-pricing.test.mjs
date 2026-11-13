@@ -135,6 +135,13 @@ assert.equal(price("rider-fleet-year"), price("rider-fleet") * 10);
 
 // Untouched SKUs keep their prices
 assert.equal(price("lab-translate"), 10);
+assert.equal(price("lab-ingest"), 10);
+assert.equal(price("lab-money"), 25);
+assert.equal(price("lab-time"), 25);
+assert.equal(price("lab-parity"), 25);
+assert.equal(price("lab-chain"), 50);
+assert.equal(price("lab-ship"), 50);
+assert.equal(price("lab-audit"), 100);
 assert.equal(price("lab-squeeze"), 10);
 assert.equal(price("rider-ops-month"), 3700);
 assert.equal(price("rider-ops-year"), 36900);
