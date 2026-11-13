@@ -1,0 +1,27 @@
+{
+  "v": 1,
+  "id": "wrt_demo_3c184e6952c87732",
+  "agent_id": "demo",
+  "operator_id": "demo",
+  "rider_jti": null,
+  "level": "L0",
+  "actions": [
+    "invoke"
+  ],
+  "allow_hosts": [
+    "www.slidphilabs.com",
+    "slidphilabs.fly.dev"
+  ],
+  "chain": [],
+  "max_usd": 1,
+  "max_calls": 20,
+  "demo": true,
+  "iat": 1793916411,
+  "exp": 1793917311,
+  "remaining_usd": 1,
+  "reserved_usd": 0,
+  "remaining_calls": 20,
+  "revoked": false,
+  "receipts": [],
+  "reservations": []
+}

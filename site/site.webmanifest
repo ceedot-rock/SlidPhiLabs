@@ -1,0 +1,11 @@
+{
+  "name": "Slid Phi Labs",
+  "short_name": "SlidPhiLabs",
+  "description": "Tools that check: signed agent names, byte-identical programs, metered usage.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#faf9f7",
+  "theme_color": "#0f5f5c",
+  "icons": []
+}

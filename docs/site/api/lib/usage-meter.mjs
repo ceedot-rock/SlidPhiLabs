@@ -134,12 +134,12 @@ function pathFor(key, month) {
 export function readUsage(key, month = monthKey()) {
   const bucket = String(key).startsWith("seat:") ? month : "lifetime";
   const { file } = pathFor(key, bucket);
-  if (!existsSync(file)) return { key, month: bucket, bytes: 0, jobs: 0 };
+  if (!existsSync(file)) return { key, month: bucket, bytes: 0, jobs: 0, refusals: 0 };
   try {
     const j = JSON.parse(readFileSync(file, "utf8"));
-    return { key, month: bucket, bytes: Number(j.bytes) || 0, jobs: Number(j.jobs) || 0 };
+    return { key, month: bucket, bytes: Number(j.bytes) || 0, jobs: Number(j.jobs) || 0, refusals: Number(j.refusals) || 0 };
   } catch {
-    return { key, month: bucket, bytes: 0, jobs: 0 };
+    return { key, month: bucket, bytes: 0, jobs: 0, refusals: 0 };
   }
 }
 
@@ -148,9 +148,49 @@ export function addUsage(key, n, month = monthKey()) {
   const { dir, file } = pathFor(key, month);
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true, mode: 0o700 });
   const cur = readUsage(key, month);
-  const next = { key, month: cur.month, bytes: cur.bytes + add, jobs: cur.jobs + (add ? 1 : 0) };
+  const next = { key, month: cur.month, bytes: cur.bytes + add, jobs: cur.jobs + (add ? 1 : 0), refusals: cur.refusals };
   writeFileSync(file, JSON.stringify(next), { mode: 0o600 });
   return next;
+}
+
+/** Headerless-abuse job cap: requests per UTC day for the shared anon bucket.
+ *  IP and paid identities are byte-capped (402 paywall), not job-capped. */
+export const ANON_JOB_CAP = 20;
+
+/** Record a refused request in the identity's bucket; returns the new count. */
+export function recordRefusal(key, month = monthKey()) {
+  const { dir, file } = pathFor(key, month);
+  if (!existsSync(dir)) mkdirSync(dir, { recursive: true, mode: 0o700 });
+  const cur = readUsage(key, month);
+  const next = { key, month: cur.month, bytes: cur.bytes, jobs: cur.jobs, refusals: cur.refusals + 1 };
+  writeFileSync(file, JSON.stringify(next), { mode: 0o600 });
+  return next.refusals;
+}
+
+/**
+ * Enforce the headerless-abuse job cap. Returns { allowed: true } or
+ * { allowed: false, status: 429, body } with the refusal recorded in the
+ * meter. IP and paid identities are byte-capped (402), never job-capped.
+ */
+export function quotaCheck(req) {
+  const id = identityFromReq(req);
+  if (id.key !== ANON_KEY) return { allowed: true, identity: id };
+  const used = readUsage(id.key);
+  if (used.jobs < ANON_JOB_CAP) return { allowed: true, identity: id };
+  const refusals = recordRefusal(id.key);
+  return {
+    allowed: false,
+    status: 429,
+    body: {
+      ok: false,
+      error: "quota_exceeded",
+      quota: "anon_jobs_per_day",
+      job_cap: ANON_JOB_CAP,
+      jobs: used.jobs,
+      refusals,
+      retry_after_s: 3600,
+    },
+  };
 }
 
 export function meterSnapshot(req, extraBytes = 0) {
@@ -172,6 +212,8 @@ export function meterSnapshot(req, extraBytes = 0) {
     window: id.key.startsWith("seat:") ? "calendar_month" : id.key === ANON_KEY ? FREE_WINDOW : "daily",
     used_bytes: used.bytes,
     jobs: used.jobs,
+    refusals: used.refusals,
+    job_cap: id.key === ANON_KEY ? ANON_JOB_CAP : null,
     included_bytes: included,
     remaining_bytes: remaining,
     remaining_gb: +(remaining / (1024 * 1024 * 1024)).toFixed(3),

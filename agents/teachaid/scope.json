@@ -1,0 +1,1 @@
+{"allows": ["read", "edit", "verify", "deploy-with-approval"], "audit": ["node scripts/curriculum-audit.js"], "deploy": {"teachaid": "fly deploy"}, "domain": "teachaid", "live": "https://teachaid.fly.dev", "plan": "TeachAid Pro $9/mo", "repo_dir": "C:/Users/ptasz/teachaid", "verify": ["npm test"]}

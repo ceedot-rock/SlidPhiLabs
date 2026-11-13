@@ -1,0 +1,26 @@
+# Slid Phi Labs — llms.txt
+# Primary host: https://www.slidphilabs.com
+
+> Tools that check. Signed agent names, byte-identical programs across 53 targets,
+> chapter-by-chapter learning, metered usage behind one Rider credential.
+
+## Products
+- [Agent Rider](https://agentrider.fly.dev): signed agent names, Warrant permissions, receipts. Register POST /api/agents, issue POST /api/rider/issue, verify POST /api/rider/verify.
+- [CuNi / CuNIverse](https://cuni-studio.fly.dev/): one program, 53 targets, byte-identical stdout or refuse. Tap install.
+- [TeachAid](https://teachaid.fly.dev): chapter-by-chapter text and voice learning.
+- Hosted suite + PCC: metered jobs. Free allowance: TBD.
+- spl-acn client: claim-token access to https://www.slidphilabs.com/api/mcp
+- GitDepot: team blob storage.
+
+## Usage
+- [Pricing is usage](https://www.slidphilabs.com/pricing-usage): metered usage, not seats. Free allowance: TBD.
+- Gating: Rider JWT (ES256, 15-minute TTL) sent as X-Agent-Rider. Refusals carry {error, issue_url, docs_url}.
+
+## Doors
+- [Docs](https://www.slidphilabs.com/docs) · [Humans](https://www.slidphilabs.com/humans) · [Agents](https://www.slidphilabs.com/agents)
+- [Sign up](https://www.slidphilabs.com/signup) · [Log in](https://www.slidphilabs.com/login)
+
+## Machine
+- Full digest: /llms-full.txt
+- Agent door: /agents.json · /agents.txt · /.well-known/agent-card.json · /.well-known/mcp.json
+- Discovery: /platform.json · /sitemap.xml

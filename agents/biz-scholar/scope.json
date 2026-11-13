@@ -1,0 +1,1 @@
+{"allows": ["read", "lookup", "draft"], "domain": "software-business", "owns": ["briefs/"], "reads": ["docs/site/pricing.json", "package.json", "README.md", "docs/lab-ledger/"]}

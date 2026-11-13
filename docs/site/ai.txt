@@ -1,5 +1,5 @@
 # Slid Phi Labs
-# Updated 2026-10-15
+# Updated 2026-11-13
 > Cherry Hill lab. Tools that check. Agents: Rider + MCP + x402 settle. Humans: Stripe. Compression is one Shared Spine with four doors: PCC (through your tools, Silesia board 51,498,645), TNSSRC (local, 43,724,575), TRUSTREAM (live pipe), pulsar (free demo, 55,745,438). CuNi 0.10.0 checks 53 targets. https://www.slidphilabs.com/
 
 ## The one-liner
@@ -21,14 +21,15 @@ rider-solo $12 · rider-bundle $19.31 · rider-crew $49 · rider-shop $199 · ri
 - Agent-Rider — signed credentials (ES256 JWT L0–L4, about 15 minutes, local JWKS) + agent DMs + Warrant + MCP — Solo $12 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $199 — https://www.slidphilabs.com/rider · https://agentrider.fly.dev
 - Warrant — mandate + receipts bound to a Rider — $8/mo · $80/yr add-on to Solo, in Team/Fleet — https://www.slidphilabs.com/warrant
 - Tollkeeper — ten live metered tools plus seven protection tolls — https://www.slidphilabs.com/tollkeeper
-- PCC — Door 1, lossless compressor through your tools — board stamp 51,498,645 — $9/day · $37/mo (200 GB) · $369/yr (2 TB) — then 8¢/GB — https://www.slidphilabs.com/pcc
+- PCC — Door 1, lossless compressor through your tools — board stamp 51,498,645 — first 1 GB free once per IP (lifetime), then $0.25/GB · Pro $25/mo (100 GB included, then $0.20/GB) — https://www.slidphilabs.com/pcc
 - TNSSRC — Door 2, local engine — 43,724,575 Silesia, 12/12 decode+SHA-256 — AGPL $0 · grant $369/yr · bake-off $19.31/mo — https://www.slidphilabs.com/silesia
 - TRUSTREAM — Door 3, live log pipe, same PCC plan — https://www.slidphilabs.com/trustream
 - pulsar 2.5.0 — Door 4, free GPLv3 compressor — 55,745,438 — closed embed $369/yr — https://www.slidphilabs.com/pulsar
 - Chamber — two-key JSON seal — $20/mo · $200/yr — https://www.slidphilabs.com/chamber
 - Lab Pass — $495/yr — Chamber year + Rider Solo year + PSI Meter 1 seat year + Warrant add-on year — https://www.slidphilabs.com/lab-pass
 - Foundry+ — Lab Pass + TNSSRC grant + Rider Crew
-- CuNi — CLI v0.10.0 — 53 targets, same stdout or refuse — Studio $0 — `brew tap ceedot-rock/cuni && brew install cuni` — https://www.slidphilabs.com/cuni
+- CuNi — nine hosted calls at POST /v1/<name> — check $0.05 (first 100/month free), translate $0.10, ingest $0.10, money $0.25, time $0.25, parity $0.25, chain $0.50, ship $0.50, audit $1.00 — Studio $0 — keeper https://github.com/ceedot-rock/CuNIverse — https://www.slidphilabs.com/cuni
+- Calls — same short name on /v1, MCP, and the Python client. PCC compress/decompress/zip/unzip/quote. squeeze $0.10. fetch $0.02. seal and open. Warrant under /v1/warrant/. Tollkeeper names under /v1/<name>. Card: 81 tools. https://www.slidphilabs.com/llms.txt
 - AwLPay — 0.5% per payment, no fixed fee — Pro $39/mo — L33t $799/mo — https://www.slidphilabs.com/awlpay
 - Quikgater — pay per fetch — https://www.slidphilabs.com/quikgater
 - ExactOdds — provably fair rules — https://www.slidphilabs.com/exactodds

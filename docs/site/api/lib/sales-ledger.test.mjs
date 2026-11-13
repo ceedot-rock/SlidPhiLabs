@@ -2,11 +2,11 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { mkdtemp, readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 
 const LEDGER = join(await mkdtemp(join(tmpdir(), "sales-")), "sales.jsonl");
 process.env.SALES_LEDGER_PATH = LEDGER;
-const { saleLine, recordSale } = await import("./sales-ledger.mjs");
+const { saleLine, recordSale, hasOrderId, auditWebhookIgnored } = await import("./sales-ledger.mjs");
 
 test("line carries money facts, never email", () => {
   const line = saleLine({ sku: "gc-month", amountCents: 3900, currency: "USD", orderId: "cs_1", rail: "stripe" });
@@ -46,4 +46,29 @@ test("bad amounts fail closed, nothing appended", async () => {
 test("skips without order id", async () => {
   const r = await recordSale({ sku: "a", amountCents: 1, currency: "usd", orderId: "" });
   assert.equal(r.skipped, true);
+});
+
+test("hasOrderId finds lines and misses absent ones", async () => {
+  assert.equal(await hasOrderId("o1"), true);
+  assert.equal(await hasOrderId("nope"), false);
+});
+
+test("hasOrderId is false on a missing ledger, throws on other I/O errors", async () => {
+  process.env.SALES_LEDGER_PATH = join(tmpdir(), "sales-no-such-dir-xyz", "sales.jsonl");
+  assert.equal(await hasOrderId("o1"), false);
+  const dir = await mkdtemp(join(tmpdir(), "salesdir-"));
+  process.env.SALES_LEDGER_PATH = dir;
+  await assert.rejects(hasOrderId("o1"), /ledger_unreadable/);
+  process.env.SALES_LEDGER_PATH = LEDGER;
+});
+
+test("auditWebhookIgnored logs beside the ledger, never in it", async () => {
+  const before = await readFile(LEDGER, "utf8");
+  const r = await auditWebhookIgnored({ reason: "unhandled_type", event_type: "charge.refunded" });
+  assert.equal(r.ok, true);
+  assert.equal(await readFile(LEDGER, "utf8"), before);
+  const audit = await readFile(join(dirname(LEDGER), "webhook-audit.jsonl"), "utf8");
+  const last = JSON.parse(audit.trim().split("\n").pop());
+  assert.equal(last.kind, "webhook_ignored");
+  assert.equal(last.reason, "unhandled_type");
 });

@@ -2,6 +2,7 @@
  * POST /api/decompress — inverse of /api/compress (SPLS / pulsar / zeros / legacy SPL1).
  */
 import { decode as splDecode, MAGIC as SPL_MAGIC } from "./lib/spl-codec.mjs";
+import { paidCors } from "./lib/cors.mjs";
 import { decodeFrame, MAGIC as SPLS } from "./lib/specialist.mjs";
 import { looksPulsar } from "./lib/pulsar-host.mjs";
 import { isPccz } from "./lib/pccz.mjs";
@@ -9,11 +10,9 @@ import { codexStamp, codexHeaders } from "./lib/codex-key.js";
 import { applyClaimSeat, claimAuthError } from "./lib/claim-seat.mjs";
 import { toolGate, toolOnly402 } from "./lib/tool-gate.mjs";
 
-function cors(res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  for (const [k, v] of Object.entries(codexHeaders())) res.setHeader(k, v);
+function cors(req, res) {
+  paidCors(req, res, "GET, POST, OPTIONS", "Content-Type, Authorization", codexHeaders());
+
 }
 
 function json(res, status, body) {
@@ -62,7 +61,7 @@ async function decodeAny(packed) {
 }
 
 export default async function handler(req, res) {
-  cors(res);
+  cors(req, res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
     return res.end();

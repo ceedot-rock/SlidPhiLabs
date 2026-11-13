@@ -62,6 +62,18 @@ test("happy path intent -> push -> review -> approve with digests", () => {
   assert.ok(v.checks.every((c) => c.ok));
 });
 
+test("approve refuses legacy in-review tasks with no recorded verdict", () => {
+  const store = createMemoryStore();
+  store.byId.set("task_0001", {
+    task_id: "task_0001", branch: "conductor/task-0001", status: TASK_IN_REVIEW,
+    prompt: "legacy", receipts: [], digest: "", created_at: TICK, updated_at: TICK,
+  });
+  const m = createTaskManager({ now: fixedClock, store });
+  const out = m.approveTask("task_0001");
+  assert.equal(out.ok, false);
+  assert.equal(out.error, "not_reviewed");
+});
+
 test("reject path records reason and ends terminal", () => {
   const m = createTaskManager({ now: fixedClock });
   const { task_id } = m.intentTask({ prompt: "risky" });

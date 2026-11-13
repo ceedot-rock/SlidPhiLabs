@@ -243,6 +243,7 @@ export function createTaskManager(opts = {}) {
     if (!isPlainObject(detail)) return fail("invalid_detail");
     if (TERMINAL.has(task.status)) return fail("already_terminal");
     if (task.status !== TASK_IN_REVIEW) return fail("invalid_transition");
+    if (typeof task.review_verdict !== "string" || task.review_verdict === "") return fail("not_reviewed");
     appendReceipt(task, task.status, TASK_APPROVED, detail);
     task.status = TASK_APPROVED;
     persist(store);

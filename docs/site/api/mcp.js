@@ -6,32 +6,45 @@
 import { signup, login, issueAgentKey } from "./lib/lab-auth.mjs";
 import { catalogTools, dispatchCatalog } from "./lib/mcp-catalogs.mjs";
 import { computeQuote } from "./suite-pricing.js";
-import { issueWarrant, verifyWarrant, fileReceipt, reserveWarrant, releaseReservation, productCard as warrantCard } from "./lib/warrant.mjs";
+import { issueWarrant, verifyWarrant, fileReceipt, reserveWarrant, releaseReservation, revokeWarrant, productCard as warrantCard } from "./lib/warrant.mjs";
 import { AGENTIC_TOOLS, dispatchAgentic } from "./lib/agentic-platform.mjs";
 import { searchTavily } from "./lib/tavily.mjs";
 import { encodeHosted, decodeFrame } from "./lib/specialist.mjs";
+import { runHostedEncode } from "./lib/hosted-job.mjs";
+import { sealEnvelope, openEnvelope } from "./lib/chamber-seal.mjs";
 import { packArchive, crc32 } from "./lib/pccz.mjs";
 import { unpackMembers } from "./archive.js";
+import { CUNI_TOOLS, cuniVerb, dispatchCuni } from "./lib/cuni-calls.mjs";
+import {
+  CALL_TOOLS,
+  aliasTool,
+  TOLL_TOOLS,
+  dispatchToll,
+  dispatchFetch,
+  dispatchSqueeze,
+} from "./lib/call-doors.mjs";
 
 const SITE = "https://www.slidphilabs.com";
-const MCP_VERSION = "1.21.0";
+const MCP_VERSION = "1.22.0";
 
-const COMMERCE = [
+export const COMMERCE = [
   {
     name: "cuni_bank",
     description:
-      "Run a CuNi program through CuNi Bank: submit source in Python or .cuni and get the exact output in the target language, or a refusal when the languages disagree. Read-only computation — no state is stored. Calls the CuNi Studio service (cuni-studio.fly.dev). Use for exactness checks and cross-language proofs; use spl_compress for byte compression, not program translation.",
+      "CuNi translate, legacy name cuni_bank. Paste N, get X, or refuse. POST /v1/translate. SKU lab-translate $0.10. Pass payment or the lab returns 402. The Studio playground stays free. Use spl_compress for byte compression.",
     inputSchema: {
       type: "object",
       properties: {
         source: { type: "string", description: "Source program to run: a Python v1-subset program or .cuni source text." },
         from: { type: "string", description: "Source language: py for a Python v1-subset program, cuni for .cuni source. Defaults to py." },
         to: { type: "string", description: "Target language for the output, e.g. js, go, ts, py. Required." },
+        payment: { type: "string", description: "x402 X-PAYMENT header. Omit it and the lab answers 402." },
       },
       required: ["source", "to"],
     },
     annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true },
   },
+  ...CUNI_TOOLS,
   { name: "spl_discover", description: "List the lab's lead and cash products, auth endpoints, and entry points (site, CuNi Studio, Agent-Rider, Chamber, MCP, x402, SKILL.md). Read-only; returns a static discovery map. Takes no arguments. Use as the first call when orienting an agent; use the *_search catalog tools for prices and details.", annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false } },
   { name: "spl_lab_auth", description: "Explain how to mint a lab account or agent API key: the human signup/login flow and the agent_key call. Read-only; returns instructions only and creates nothing. Takes no arguments. Use to learn the auth flow; use spl_signup to create a human account or spl_agent_key to mint a key.", annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false } },
   {
@@ -216,6 +229,7 @@ const COMMERCE = [
     },
     annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
   },
+  ...CALL_TOOLS,
   ...AGENTIC_TOOLS,
 ];
 
@@ -241,7 +255,7 @@ export const SERVER_CARD = {
   tools: [...COMMERCE, ...catalogTools().map((t) => ({ name: t.name, description: t.description }))],
 };
 
-const TOOLS = [
+export const TOOLS = [
   ...COMMERCE.map((t) => ({
     name: t.name,
     description: t.description,
@@ -264,13 +278,33 @@ function err(id, code, message) {
   return { jsonrpc: "2.0", id: id ?? null, error: { code, message } };
 }
 
-async function callTool(name, args = {}) {
+async function callTool(name, args = {}, req) {
+  const aliased = aliasTool(name);
+  if (aliased) name = aliased;
   const cat = dispatchCatalog(name, args);
   if (cat) return cat;
+  if (name === "squeeze" || name === "pccx_encode") return dispatchSqueeze(args);
+  if (TOLL_TOOLS.includes(name)) return dispatchToll(name, args);
+  if (name === "fetch") return dispatchFetch(args);
+  if (name === "seal") {
+    let obj = args.obj != null ? args.obj : args.payload;
+    if (typeof obj === "string") {
+      try {
+        obj = JSON.parse(obj);
+      } catch {
+        return { ok: false, error: "seal_refused" };
+      }
+    }
+    const envelope = sealEnvelope(obj, { keyHex: String(args.key_hex || args.keyHex || "") });
+    if (!envelope) return { ok: false, error: "seal_refused" };
+    return { ok: true, envelope };
+  }
+  if (name === "open") return openEnvelope(args.envelope, { keyHex: String(args.key_hex || args.keyHex || "") });
+  if (name === "warrant_revoke") return revokeWarrant(String(args.warrant || args.token || ""));
   if (name === "spl_compress") {
     const raw = Buffer.from(String(args.data_b64 || ""), "base64");
-    const j = await encodeHosted(raw);
-    return { ok: true, packed_b64: j.packed_b64, packed_bytes: j.packed_bytes, raw_bytes: j.raw_bytes, method: j.method };
+    const job = await runHostedEncode(req || { headers: {} }, raw);
+    return { status: job.status, ...job.body };
   }
   if (name === "spl_decompress") {
     const packed = Buffer.from(String(args.packed_b64 || ""), "base64");
@@ -307,20 +341,8 @@ async function callTool(name, args = {}) {
     const files = await unpackMembers(packed);
     return { ok: true, ext: ".pcc", files, members: files.length };
   }
-  if (name === "cuni_bank") {
-    const body = {
-      source: String(args.source || ""),
-      from: String(args.from || "py"),
-      to: String(args.to || "js"),
-    };
-    const r = await fetch("https://cuni-studio.fly.dev/api/bank", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(body),
-      signal: AbortSignal.timeout(60000),
-    });
-    const j = await r.json().catch(() => ({}));
-    return { status: r.status, studio: "https://cuni-studio.fly.dev/bank", ...j };
+  if (cuniVerb(name)) {
+    return dispatchCuni(name, args);
   }
   if (name === "spl_discover") {
     return {
@@ -418,7 +440,7 @@ async function callTool(name, args = {}) {
   throw new Error("Unknown tool: " + name);
 }
 
-async function handleRpc(msg) {
+async function handleRpc(msg, req) {
   const { id, method, params } = msg || {};
   if (method === "initialize") {
     const supported = ["2024-11-05", "2025-03-26", "2025-11-25"];
@@ -435,7 +457,7 @@ async function handleRpc(msg) {
   if (method === "tools/list" || method === "list_tools") return ok(id, { tools: TOOLS });
   if (method === "tools/call" || method === "call_tool") {
     try {
-      const result = await callTool(params?.name || params?.tool, params?.arguments || params?.args || {});
+      const result = await callTool(params?.name || params?.tool, params?.arguments || params?.args || {}, req);
       return ok(id, {
         content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
         structuredContent: result,
@@ -478,7 +500,7 @@ export default async function handler(req, res) {
   const msgs = Array.isArray(body) ? body : [body];
   const out = [];
   for (const m of msgs) {
-    const r = await handleRpc(m);
+    const r = await handleRpc(m, req);
     if (r) out.push(r);
   }
   res.statusCode = 200;

@@ -1,0 +1,56 @@
+name: uptime
+
+# LAB50 step 10. Hourly reachability sweep (a */5 schedule would burn
+# ~8,600 Actions minutes a month — past the free quota — so the <5min
+# alert leg belongs to a free external monitor, see UPTIME.md).
+on:
+  schedule:
+    - cron: "7 * * * *"
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe health surfaces
+        id: probe
+        run: |
+          fail=0
+          check() {
+            code=$(curl -s -o /tmp/body -w "%{http_code}" --max-time 25 "$1") || code="000"
+            echo "$2 -> HTTP $code"
+            if [ "$code" != "200" ]; then fail=1; fi
+          }
+          check "https://www.slidphilabs.com/api/health" "health"
+          check "https://www.slidphilabs.com/api/ops?action=health" "ops-health"
+          if grep -q '"ok":false' /tmp/body; then echo "health reports ok:false"; fail=1; fi
+          echo "fail=$fail" >> "$GITHUB_OUTPUT"
+          exit $fail
+      - name: File incident issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create --repo "${{ github.repository }}" \
+            --title "Uptime probe failed $(date -u +%FT%TZ)" \
+            --body "Hourly sweep failed. See run ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}. <5min alerting needs the external monitor in UPTIME.md plus SMTP secrets." \
+            --label "incident" || true
+
+  canonical:
+    name: Canonical host + certificate
+    runs-on: ubuntu-latest
+    steps:
+      - name: www serves, apex redirects, cert validates
+        run: |
+          set -e
+          www=$(curl -s -o /dev/null -w "%{http_code}" --max-time 25 https://www.slidphilabs.com/)
+          test "$www" = "200"
+          echo "www -> 200 (TLS verified by curl)"
+          code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 25 https://slidphilabs.com/)
+          redir=$(curl -s -o /dev/null -w "%{redirect_url}" --max-time 25 https://slidphilabs.com/)
+          echo "apex -> $code $redir"
+          test "$code" = "301" -o "$code" = "308"
+          case "$redir" in https://www.slidphilabs.com/*) ;; *) exit 1;; esac
+          fly=$(curl -s -o /dev/null -w "%{http_code}" --max-time 25 https://slidphilabs.fly.dev/api/health) || fly="000"
+          echo "fly.dev alternate -> $fly (informational)"
+          echo "canonical host checks passed"

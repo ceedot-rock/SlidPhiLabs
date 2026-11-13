@@ -24,6 +24,7 @@ import {
   getIntent,
   listIntents,
 } from "./lib/operator-payouts.mjs";
+import { logInternal } from "./lib/http-fail.mjs";
 import {
   recordKnownOrder,
   openDispute,
@@ -221,6 +222,6 @@ export default async function handler(req, res) {
         return fail(res, 400, "unknown_action");
     }
   } catch (e) {
-    return fail(res, 500, "internal", { detail: String((e && e.message) || e).slice(0, 200) });
+    return fail(res, 500, "internal", { request_id: logInternal(req, "money", e) });
   }
 }

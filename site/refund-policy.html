@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Refund policy — Slid Phi Labs</title>
+<meta name="description" content="Refunds on Slid Phi Labs metered services: 24-hour window, partial refunds, payer-only, paid from our own funds."/>
+<link rel="canonical" href="https://www.slidphilabs.com/refund-policy"/>
+<meta name="robots" content="index,follow"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Refund policy — Slid Phi Labs"/>
+<meta property="og:description" content="Refunds on metered services: 24-hour window, partial refunds, payer-only, paid from our own funds."/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+<meta property="og:url" content="https://www.slidphilabs.com/refund-policy"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Refund policy — Slid Phi Labs"/>
+<meta name="twitter:description" content="Refunds on metered services: 24-hour window, partial refunds, payer-only."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+<link rel="stylesheet" href="/assets/site.css"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Refund policy — Slid Phi Labs","description":"Refunds on metered services: 24-hour window, partial refunds, payer-only.","url":"https://www.slidphilabs.com/refund-policy","isPartOf":{"@type":"WebSite","name":"Slid Phi Labs","url":"https://www.slidphilabs.com/"},"inLanguage":"en"}</script>
+</head>
+<body>
+<main class="spl-page" id="main">
+<p class="spl-kicker">Policy · refunds</p>
+<h1>If we didn't earn it, it comes back.</h1>
+<p class="lede">Payments made through our metered endpoints can be refunded within 24 hours of settlement. The request must be signed by the wallet that paid.</p>
+<section>
+<p class="sec-no">01 — Terms</p>
+<ul>
+<li><strong>Window</strong> — 24 hours from the moment the payment settles.</li>
+<li><strong>Partial refunds</strong> — yes. Ask for part of it; the rest stays settled.</li>
+<li><strong>Only the payer</strong> — the refund request must carry a signature from the address that sent the original payment. Nobody else can claim it.</li>
+<li><strong>Never more than settled</strong> — total refunds on a payment can't exceed what was paid.</li>
+<li><strong>Paid from our funds</strong> — refunds come out of the lab's own wallet, not from other customers.</li>
+<li><strong>One key, one refund</strong> — every request carries an idempotency key, so retries and double-clicks can't double-pay you.</li>
+</ul>
+</section>
+<section>
+<p class="sec-no">02 — How to ask</p>
+<p>POST a signed refund request to the service you paid. You'll get a signed receipt back — proof the refund was issued, verifiable by anyone.</p>
+</section>
+<section>
+<p class="sec-no">03 — When we say no</p>
+<p>Outside the 24-hour window, not signed by the payer, or more than was settled — the request is refused with the reason stated plainly. If something looks wrong beyond that, email <a href="mailto:corey@slidphilabs.com">corey@slidphilabs.com</a> and a human reads it.</p>
+</section>
+<footer class="spl-foot">
+<p>Hosted at www.slidphilabs.com (primary). License: AGPL-3.0-or-later OR commercial.</p>
+<nav><a href="/llms.txt">llms.txt</a><a href="/agents.json">agents.json</a><a href="/platform.json">platform.json</a><a href="/sitemap.xml">sitemap.xml</a></nav>
+<p data-spl-auth></p>
+</footer>
+</main>
+<script src="/assets/lab-auth.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>For agents — Slid Phi Labs</title>
+<meta name="description" content="Machine-readable how-to-call: MCP endpoints, Rider JWT gating, discovery files, refusal shape."/>
+<link rel="canonical" href="https://www.slidphilabs.com/agents"/>
+<meta name="robots" content="index,follow"/>
+<meta property="og:site_name" content="Slid Phi Labs"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="For agents — Slid Phi Labs"/>
+<meta property="og:description" content="Endpoints, tokens, discovery files, refusal shape."/>
+<meta property="og:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+<meta property="og:url" content="https://www.slidphilabs.com/agents"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="For agents — Slid Phi Labs"/>
+<meta name="twitter:description" content="Endpoints, tokens, discovery files, refusal shape."/>
+<meta name="twitter:image" content="https://www.slidphilabs.com/assets/now/og.jpg"/>
+<link rel="alternate" type="application/json" href="https://www.slidphilabs.com/api/agent"/>
+<link rel="alternate" type="text/plain" href="https://www.slidphilabs.com/llms.txt" title="llms.txt"/>
+<link rel="stylesheet" href="/assets/site.css"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"For agents — Slid Phi Labs","description":"Machine-readable how-to-call for agents.","url":"https://www.slidphilabs.com/agents","isPartOf":{"@type":"WebSite","name":"Slid Phi Labs","url":"https://www.slidphilabs.com/"},"inLanguage":"en"}</script>
+</head>
+<body>
+<main class="spl-page" id="main">
+<p class="spl-kicker">Agents</p>
+<h1>How to call the lab.</h1>
+<section>
+<p class="sec-no">01 — Endpoints</p>
+<pre>POST https://www.slidphilabs.com/api/mcp   # canonical MCP
+POST https://agentrider.fly.dev/api/mcp     # Rider MCP
+POST https://agentrider.fly.dev/api/agents  # register -&gt; {api_key: "ar_...", agent_id}
+POST https://agentrider.fly.dev/api/rider/issue   # ar_ -&gt; Rider JWT
+POST https://agentrider.fly.dev/api/rider/verify  # check a token
+GET  https://agentrider.fly.dev/.well-known/jwks.json</pre>
+</section>
+<section>
+<p class="sec-no">02 — Rider-token gating</p>
+<h2>One Rider credential gates metered usage.</h2>
+<p>Register (<code>POST /api/agents</code>) → you hold a vault key (<code>ar_</code>, shown once) → exchange it (<code>POST /api/rider/issue</code>) for a short-lived Rider JWT (ES256, iss agentrider.dev, 15-minute TTL) → send it as <code>X-Agent-Rider</code> on metered calls. Funded riders settle; sandbox riders are read/verify-only (funded settle returns <code>sandbox_forbidden</code>). Verify via <code>/.well-known/jwks.json</code> or <code>POST /api/rider/verify</code>. Refusals carry <code>{error, issue_url, docs_url}</code> plus a Rider challenge — agents can self-serve the fix. Caller-pays keys (merchant/platform) cover server-side calls.</p>
+</section>
+<section>
+<p class="sec-no">03 — Refusals</p>
+<p>Without a valid credential, paid calls refuse with a machine-readable payment-required error: <code>{error, issue_url, docs_url}</code> plus a Rider challenge. Free paths are never silently metered.</p>
+</section>
+<section>
+<p class="sec-no">04 — Discovery</p>
+<pre>GET https://www.slidphilabs.com/llms.txt
+GET https://www.slidphilabs.com/agents.json
+GET https://www.slidphilabs.com/platform.json
+GET https://www.slidphilabs.com/.well-known/agent-card.json
+GET https://www.slidphilabs.com/.well-known/mcp.json</pre>
+</section>
+<footer class="spl-foot">
+<p>Hosted at www.slidphilabs.com (primary). License: AGPL-3.0-or-later OR commercial.</p>
+<nav><a href="/llms.txt">llms.txt</a><a href="/agents.json">agents.json</a><a href="/platform.json">platform.json</a><a href="/sitemap.xml">sitemap.xml</a></nav>
+<p data-spl-auth></p>
+</footer>
+</main>
+<script src="/assets/lab-auth.js" defer></script>
+</body>
+</html>

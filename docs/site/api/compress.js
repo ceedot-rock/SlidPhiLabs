@@ -3,17 +3,16 @@
  * Zeros → 8 B. Else min() of every own pathway on this host (or store).
  */
 import { inputToRaw, machineCard, MAX_RAW } from "./lib/specialist.mjs";
+import { paidCors } from "./lib/cors.mjs";
 import { runHostedEncode } from "./lib/hosted-job.mjs";
 import { meterSnapshot } from "./lib/usage-meter.mjs";
 import { codexStamp, codexHeaders } from "./lib/codex-key.js";
 import { applyClaimSeat, claimAuthError } from "./lib/claim-seat.mjs";
 import { toolGate, toolOnly402 } from "./lib/tool-gate.mjs";
 
-function cors(res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  for (const [k, v] of Object.entries(codexHeaders())) res.setHeader(k, v);
+function cors(req, res) {
+  paidCors(req, res, "GET, POST, OPTIONS", "Content-Type, Authorization", codexHeaders());
+
 }
 
 function json(res, status, body) {
@@ -41,7 +40,7 @@ function readBody(req) {
 }
 
 export default async function handler(req, res) {
-  cors(res);
+  cors(req, res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
     return res.end();

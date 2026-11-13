@@ -1,0 +1,6 @@
+{
+  "name": "Slid Phi Labs MCP server",
+  "endpoint": "https://www.slidphilabs.com/api/mcp",
+  "auth_header": "X-Agent-Rider",
+  "refusal_shape": "{error, issue_url, docs_url}"
+}

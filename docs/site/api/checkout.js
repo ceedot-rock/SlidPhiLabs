@@ -15,11 +15,12 @@ import {
   siteOrigin,
   contactEmail,
 } from "./lib/payments-rails.js";
+import { paidCors } from "./lib/cors.mjs";
+import { logInternal } from "./lib/http-fail.mjs";
 
-function cors(res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS, GET");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+function cors(req, res) {
+  paidCors(req, res, "POST, OPTIONS, GET");
+
 }
 
 function json(res, status, body) {
@@ -29,7 +30,7 @@ function json(res, status, body) {
 }
 
 export default async function handler(req, res) {
-  cors(res);
+  cors(req, res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
     return res.end();
@@ -245,14 +246,15 @@ export default async function handler(req, res) {
         ok: true,
         mode: "payment_link_fallback",
         url: payment_link,
-        warning: String(e.message || e),
+        warning: "provider_session_failed",
+        request_id: logInternal(req, "checkout", e),
         sku,
         amount_cents,
       });
     }
     return json(res, 502, {
-      error: String(e.message || e),
-      code: e.code || "checkout_failed",
+      error: "checkout_failed",
+      request_id: logInternal(req, "checkout", e),
     });
   }
 }

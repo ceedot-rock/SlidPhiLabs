@@ -21,6 +21,11 @@ to stay anonymous.
 - The hosted encoder and lab machine internals
 - Social engineering, spam, or denial-of-service against hosted demos
 
+## Incident response
+
+One-page card: [docs/INCIDENT-RESPONSE.md](docs/INCIDENT-RESPONSE.md) — triage,
+revoke/rotate table, billing stops, restore limits, drill log.
+
 ## Standing rules
 
 - Do not commit `sk_`, `rk_`, `whsec_`, or service-role keys.

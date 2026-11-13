@@ -3,6 +3,7 @@
  * PKCE verifier embedded in signed `state` (no cookie — survives X redirect).
  */
 import crypto from "crypto";
+import { logInternal } from "./lib/http-fail.mjs";
 
 const AUTH = "https://x.com/i/oauth2/authorize";
 const SCOPES = "tweet.read tweet.write users.read offline.access";
@@ -49,7 +50,9 @@ export default async function handler(req, res) {
   if (!clientId) {
     res.statusCode = 500;
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
-    return res.end("X_CLIENT_ID missing on Vercel");
+    logInternal(req, "x-oauth-start", new Error("X_CLIENT_ID missing"));
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    return res.end(JSON.stringify({ ok: false, error: "oauth_unavailable" }));
   }
 
   const verifier = b64url(crypto.randomBytes(32));

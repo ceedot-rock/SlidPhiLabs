@@ -1,0 +1,5 @@
+{
+  "name": "CuNi protocol",
+  "canonical": "https://cuni-studio.fly.dev/.well-known/cuni-protocol.json",
+  "note": "One program, 53 targets, byte-identical stdout or refuse."
+}

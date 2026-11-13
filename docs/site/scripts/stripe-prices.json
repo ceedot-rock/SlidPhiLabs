@@ -1,0 +1,3 @@
+{
+  "_note": "SKU -> live Stripe Price ID. Empty: no site-catalog Price IDs exist yet (checkout builds ad-hoc price_data). Create Prices in the Stripe dashboard, fill this map, rerun sku-price-map.mjs. TeachAid IDs in that repo's PRO_STRIPE.md are a different namespace — do not copy them here."
+}

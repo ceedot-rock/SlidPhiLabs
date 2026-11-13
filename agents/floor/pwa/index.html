@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d1117">
+<title>SlidPhiFloor — lab in your pocket</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<style>
+:root { color-scheme: dark; --bg:#0d1117; --panel:#161b22; --line:#30363d;
+  --txt:#e6edf3; --dim:#8b949e; --gold:#d4a72c; --green:#3fb950; --red:#f85149; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--txt);
+  font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+header { position:sticky; top:0; background:var(--panel); border-bottom:1px solid var(--line);
+  padding:.6rem .8rem; display:flex; gap:.5rem; align-items:center; z-index:5; }
+header h1 { font-size:1rem; margin:0 auto 0 0; }
+select, input[type=text], input[type=password] { background:var(--bg); color:var(--txt);
+  border:1px solid var(--line); border-radius:.5rem; padding:.55rem; font-size:1rem; }
+button { background:var(--gold); color:#111; border:0; border-radius:.5rem;
+  padding:.55rem .8rem; font-size:1rem; font-weight:600; }
+button.ghost { background:transparent; color:var(--txt); border:1px solid var(--line); }
+button.danger { background:var(--red); color:#fff; }
+button[aria-disabled="true"] { opacity:.5; }
+#motions { padding:.5rem .8rem; color:var(--gold); font-size:.9rem; }
+#msgs { list-style:none; margin:0; padding:.5rem .8rem 7rem; display:flex; flex-direction:column; gap:.5rem; }
+#msgs li { background:var(--panel); border:1px solid var(--line); border-radius:.6rem;
+  padding:.5rem .7rem; max-width:44rem; }
+#msgs li.me { align-self:flex-end; border-color:var(--gold); }
+#msgs li .who { color:var(--dim); font-size:.8rem; }
+#msgs li pre { white-space:pre-wrap; margin:.3rem 0 0; font-size:.85rem; color:var(--dim); }
+footer { position:fixed; inset-inline:0; bottom:0; background:var(--panel);
+  border-top:1px solid var(--line); padding:.6rem .8rem calc(.6rem + env(safe-area-inset-bottom));
+  display:flex; gap:.5rem; }
+footer input { flex:1; }
+nav { display:flex; gap:.5rem; padding:.5rem .8rem; flex-wrap:wrap; }
+dialog:modal { overscroll-behavior:contain; }
+dialog::backdrop { overflow:hidden; overscroll-behavior:contain; background:rgba(0,0,0,.6); }
+dialog { background:var(--panel); color:var(--txt); border:1px solid var(--line); border-radius:.7rem; max-width:26rem; }
+dialog form { display:flex; gap:.5rem; justify-content:flex-end; margin-top:1rem; }
+dialog h2 { font-size:1.1rem; margin:.2rem 0 .5rem; }
+#status { padding:.3rem .8rem; color:var(--dim); font-size:.85rem; min-height:1.4em; }
+</style>
+</head>
+<body>
+<header>
+<h1>SlidPhiFloor</h1>
+<button id="installBtn" type="button" class="ghost" hidden>Install</button>
+<button id="actBtn" type="button" class="ghost">Act</button>
+<button id="noteBtn" type="button" class="ghost">Notes</button>
+</header>
+<div id="motions" role="status"></div>
+<main>
+<label class="who" for="seat">Seat</label>
+<select id="seat" aria-label="Employee seat"></select>
+<ul id="msgs" aria-live="polite"></ul>
+</main>
+<nav id="actions" hidden></nav>
+<div id="status" role="status"></div>
+<footer>
+<input id="in" type="text" placeholder="Talk to @advisor…" autocomplete="off" aria-label="Message">
+<button id="mic" type="button" class="ghost" aria-label="Voice input">🎙</button>
+<button id="send" type="button">Send</button>
+</footer>
+
+<dialog id="confirm" aria-labelledby="confirm-title">
+<h2 id="confirm-title">Run this action?</h2>
+<p id="confirm-preview"></p>
+<form method="dialog">
+<button value="no" autofocus>Cancel</button>
+<button value="yes" class="danger">Yes, run it</button>
+</form>
+</dialog>
+
+<dialog id="tokenDlg" aria-labelledby="token-title">
+<h2 id="token-title">Floor token</h2>
+<p>Paste the <code>FLOOR_TOKEN</code> from the Legion console. It stays in this browser only.</p>
+<input id="tokenIn" type="password" autocomplete="off" aria-label="Floor token">
+<form method="dialog">
+<button value="cancel" autofocus>Cancel</button>
+<button value="save">Save</button>
+</form>
+</dialog>
+
+<script src="/app.js"></script>
+</body>
+</html>

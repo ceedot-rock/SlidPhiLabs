@@ -13,6 +13,7 @@
  * size caps. Vercel-style default export(req, res). No network, no keys.
  */
 import { runPrivateBench } from "./lib/private-bench.mjs";
+import { logInternal } from "./lib/http-fail.mjs";
 import {
   BENCHHAUS_VERSION,
   BENCHHAUS_WEIGHTS,
@@ -26,15 +27,16 @@ import {
 } from "./lib/fixture-seeds.mjs";
 
 const READ = new Set(["private-info", "pack-path-check", "benchhaus-info"]);
+import { paidCors } from "./lib/cors.mjs";
+
 const WRITE = new Set(["private-run", "pack-manifest", "pack-verify"]);
 
 const MAX_PACK_FILES = 32;
 const MAX_PACK_BYTES = 256 * 1024;
 
-function cors(res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+function cors(req, res) {
+  paidCors(req, res, "GET, POST, OPTIONS");
+
 }
 
 function send(res, status, body) {
@@ -97,7 +99,7 @@ function inlineReader(files) {
 }
 
 export default async function handler(req, res) {
-  cors(res);
+  cors(req, res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
     return res.end();
@@ -160,6 +162,6 @@ export default async function handler(req, res) {
         return fail(res, 400, "unknown_action");
     }
   } catch (e) {
-    return fail(res, 500, "internal", { detail: String((e && e.message) || e).slice(0, 200) });
+    return fail(res, 500, "internal", { request_id: logInternal(req, "benchx", e) });
   }
 }

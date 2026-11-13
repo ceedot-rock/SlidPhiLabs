@@ -1,0 +1,10 @@
+{
+  "products": [
+    { "name": "Agent Rider", "url": "https://agentrider.fly.dev", "live": true },
+    { "name": "CuNi Studio", "url": "https://cuni-studio.fly.dev/", "live": true },
+    { "name": "TeachAid", "url": "https://teachaid.fly.dev", "live": true },
+    { "name": "Hosted suite + PCC", "live": true },
+    { "name": "spl-acn client", "live": true },
+    { "name": "GitDepot", "live": true }
+  ]
+}

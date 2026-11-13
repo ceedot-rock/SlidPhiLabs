@@ -1,0 +1,19 @@
+{
+  "campaign": "teachaid-launch",
+  "product": "TEACHAiD — AI study companion that teaches from your textbooks",
+  "home": "https://teachaid.fly.dev",
+  "pricing": "https://teachaid.fly.dev/pricing.html",
+  "claims": [
+    "Teaches chapter by chapter from provided textbooks and uploads",
+    "Chapter unlocks are teacher-gated; certificates need 91+ on the final",
+    "Progress stays on-device unless explicitly exported",
+    "Basic tier is free with full built-in curriculum",
+    "Pro is $9/month; 7-day trial is $0.99; class submit is $3",
+    "43 built-in books covering all 10 required GE buckets (repo audit)"
+  ],
+  "banned": ["best", "guaranteed", "#1", "world-first", "revolutionary", "mind-blowing"],
+  "audiences": ["college students", "self-learners", "homeschool parents", "indie hackers in edtech"],
+  "channels": ["dev.to", "hashnode", "x", "reddit", "lab-blog"],
+  "limits": { "x": 280, "dev.to": 10000, "hashnode": 10000, "reddit": 8000, "lab-blog": 20000 },
+  "cadence": ["2026-11-12T15:00:00Z", "2026-11-14T15:00:00Z", "2026-11-17T15:00:00Z"]
+}

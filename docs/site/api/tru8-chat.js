@@ -5,6 +5,7 @@
  * Public product facts only — no residual / production IP.
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
+import { logInternal } from "./lib/http-fail.mjs";
 
 const NEBIUS_BASE = "https://api.studio.nebius.com/v1";
 const MODEL = process.env.NEBIUS_MODEL || "meta-llama/Llama-3.3-70B-Instruct";
@@ -212,7 +213,7 @@ async function handler(req, res) {
     });
   } catch (e) {
     console.error("[tru8-chat]", e);
-    return json(res, 500, { ok: false, error: "chat_failed", message: String(e.message || e) });
+    return json(res, 500, { ok: false, error: "chat_failed", request_id: logInternal(req, "tru8-chat", e) });
   }
 }
 

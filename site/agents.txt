@@ -1,0 +1,21 @@
+Slid Phi Labs — agent door
+Primary: https://www.slidphilabs.com
+
+MCP:
+POST https://www.slidphilabs.com/api/mcp
+POST https://agentrider.fly.dev/api/mcp
+
+Rider:
+POST https://agentrider.fly.dev/api/agents        -> {api_key: "ar_..." (once), agent_id}
+POST https://agentrider.fly.dev/api/rider/issue   -> Rider JWT (ES256, 15-min TTL)
+POST https://agentrider.fly.dev/api/rider/verify  -> check a token
+GET  https://agentrider.fly.dev/.well-known/jwks.json
+Header on metered calls: X-Agent-Rider: <rider-jwt>
+Refusals: {error, issue_url, docs_url} + Rider challenge. Free paths never silently metered.
+
+Discovery:
+https://www.slidphilabs.com/llms.txt
+https://www.slidphilabs.com/agents.json
+https://www.slidphilabs.com/platform.json
+https://www.slidphilabs.com/.well-known/agent-card.json
+https://www.slidphilabs.com/.well-known/mcp.json

@@ -1,0 +1,13 @@
+Slid Phi Labs — for humans
+Primary: https://www.slidphilabs.com
+
+Agent Rider gives your agent a signed name so receipts show who did the work.
+CuNi runs one program in 53 places with the same output, or refuses.
+TeachAid teaches chapter by chapter, in text and voice.
+The hosted suite runs metered jobs; the free allowance is TBD.
+spl-acn connects you to the hosted MCP with a claim token.
+GitDepot stores your team's blobs.
+
+Start: https://www.slidphilabs.com/signup
+Guide: https://www.slidphilabs.com/docs
+Usage: https://www.slidphilabs.com/pricing-usage

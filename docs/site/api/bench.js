@@ -10,6 +10,8 @@
  * on public synthetic slices so visitors verify before they pay.
  */
 import { withProductBox } from "./lib/spl-box-gate.js";
+import { logInternal } from "./lib/http-fail.mjs";
+import { paidCors } from "./lib/cors.mjs";
 
 import zlib from "zlib";
 import fs from "fs";
@@ -35,11 +37,9 @@ const BROTLI_OPTS = {
   },
 };
 
-function cors(res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  for (const [k, v] of Object.entries(codexHeaders())) res.setHeader(k, v);
+function cors(req, res) {
+  paidCors(req, res, "GET, POST, OPTIONS", "Content-Type", codexHeaders());
+
 }
 
 function nowMs() {
@@ -393,7 +393,7 @@ function parseOpts(req, url) {
 }
 
 async function handler(req, res) {
-  cors(res);
+  cors(req, res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
     return res.end();
@@ -412,7 +412,7 @@ async function handler(req, res) {
     } catch (e) {
       res.statusCode = 500;
       res.setHeader("Content-Type", "application/json; charset=utf-8");
-      return res.end(JSON.stringify({ ok: false, error: String(e.message || e) }));
+      return res.end(JSON.stringify({ ok: false, error: "internal", request_id: logInternal(req, "bench", e) }));
     }
   }
 

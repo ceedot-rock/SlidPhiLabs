@@ -6,6 +6,7 @@
   "host": "linux x86_64",
   "lb": "pcc-0.12.1",
   "pulsar": "2.5.0",
+  "tnssrc": "0.1.0",
   "plain": "Official Silesia 12 whole files. DECODE_OK required. gzip/bzip2/xz are opponents. gzip-9 67,631,990. bzip2-9 54,506,769. xz-6 still ahead (~49.4M). champ 50,541,135 12/12. Not a #1 claim. Not the 4 MiB hosted API.",
   "source": {
     "pulsar": "https://github.com/ceedot-rock/pulsar-best",
@@ -27,6 +28,11 @@
     },
     "champ": {
       "packed_bytes": 50541135,
+      "decode_ok": 12,
+      "n": 12
+    },
+    "tnssrc": {
+      "packed_bytes": 43724575,
       "decode_ok": 12,
       "n": 12
     },

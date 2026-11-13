@@ -16,7 +16,9 @@
  *   X402_DEV_BYPASS      if "1", accept X-PAYMENT-DEV: ok for dry-run (staging only)
  *   NOTION_TOKEN         optional job log
  */
+import "./lib/prod-guard.mjs";
 import { computeQuote } from "./suite-pricing.js";
+import { paidCors } from "./lib/cors.mjs";
 import {
   consumePaymentTx,
   alreadyUsedResponse,
@@ -40,9 +42,9 @@ const BASE_NETWORK = "eip155:8453";
 const TRANSFER_TOPIC =
   "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef";
 
-function cors(res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+function cors(req, res) {
+  paidCors(req, res, "GET, POST, OPTIONS");
+
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Content-Type, X-PAYMENT, PAYMENT-SIGNATURE, X-PAYMENT-DEV, Authorization"
@@ -362,7 +364,6 @@ function discovery() {
   };
 }
 
-
 function padAddressTopic(addr) {
   const a = String(addr || "").toLowerCase().replace(/^0x/, "");
   return "0x" + a.padStart(64, "0");
@@ -449,7 +450,7 @@ async function verifyPayment(proof, requirements) {
 }
 
 export default async function handler(req, res) {
-  cors(res);
+  cors(req, res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
     return res.end();

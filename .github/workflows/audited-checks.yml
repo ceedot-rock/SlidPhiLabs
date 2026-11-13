@@ -38,6 +38,21 @@ jobs:
         run: |
           set -e
           echo "Scanning for common secret patterns..."
+          # Excluded files hold canonical FAKE fixtures for the review
+          # scanner's own tests (redacted/example tokens that must match
+          # scanner patterns to prove blocking). Real secrets are never
+          # committed; see docs/SECRET-ROTATION.md.
           ! grep -rnE "AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{20,}|gho_[A-Za-z0-9]{20,}|BEGIN [A-Z ]*PRIVATE KEY|sk_(live|test)_[A-Za-z0-9]+|xox[bap]-[A-Za-z0-9-]+|-----BEGIN" \
-            --include="*.py" --include="*.html" --include="*.txt" --include="*.md" --include="*.yml" --include="*.mjs" --include="*.js" --exclude="audited-checks.yml" .
+            --include="*.py" --include="*.html" --include="*.txt" --include="*.md" --include="*.yml" --include="*.mjs" --include="*.js" --include="*.toml" --include="*.sh" --include="*.env" --include="*.json" --exclude="audited-checks.yml" --exclude="conductor-review.test.mjs" --exclude="claim.test.js" .
           echo "No secrets found."
+      - name: Prove the scan catches every covered file type
+        run: |
+          set -e
+          tmp=$(mktemp -d)
+          trap 'rm -rf "$tmp"' EXIT
+          for ext in py html txt md yml mjs js toml sh env json; do
+            printf 'probe = "sk_test_4eC2JG6hIAZ7r9x3mQp"\n' > "$tmp/probe.$ext"
+          done
+          hits=$(grep -rlE "sk_(live|test)_[A-Za-z0-9]+" --include="*.py" --include="*.html" --include="*.txt" --include="*.md" --include="*.yml" --include="*.mjs" --include="*.js" --include="*.toml" --include="*.sh" --include="*.env" --include="*.json" "$tmp" | wc -l)
+          test "$hits" -eq 11
+          echo "Probe caught in all 11 file types."

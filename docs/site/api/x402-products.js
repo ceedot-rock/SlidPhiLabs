@@ -21,7 +21,9 @@
  *   X402_CLAIM_SECRET  optional HMAC for Access claim (falls back to STRIPE_* keys)
  */
 
+import "./lib/prod-guard.mjs";
 import { signClaim } from "./lib/x402-claim.mjs";
+import { paidCors } from "./lib/cors.mjs";
 import { isOwnerEmail } from "./lib/owner-gratis.mjs";
 import {
   consumePaymentTx,
@@ -62,9 +64,9 @@ function enrich(p, sku) {
   return out;
 }
 
-function cors(res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+function cors(req, res) {
+  paidCors(req, res, "GET, POST, OPTIONS");
+
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Content-Type, X-PAYMENT, PAYMENT-SIGNATURE, X-PAYMENT-DEV, Authorization"
@@ -561,7 +563,7 @@ function catalogResponse() {
 }
 
 export default async function handler(req, res) {
-  cors(res);
+  cors(req, res);
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
     return res.end();

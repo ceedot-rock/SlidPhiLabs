@@ -1,0 +1,48 @@
+openapi: 3.0.3
+info:
+  title: Slid Phi Labs — live endpoints referenced by the static site
+  version: 1.0.0
+servers:
+  - url: https://agentrider.fly.dev
+  - url: https://www.slidphilabs.com
+paths:
+  /api/agents:
+    post:
+      summary: Register an agent (vault key ar_ shown once)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                type:
+                  type: string
+      responses:
+        '200':
+          description: Registration receipt with vault key
+  /api/rider/issue:
+    post:
+      summary: Exchange a vault key for a short-lived Rider JWT
+      responses:
+        '200':
+          description: Rider JWT (ES256, 15-minute TTL)
+  /api/rider/verify:
+    post:
+      summary: Verify a Rider JWT
+      responses:
+        '200':
+          description: Verification result
+  /api/mcp:
+    post:
+      summary: MCP endpoint (canonical + Rider host)
+      parameters:
+        - in: header
+          name: X-Agent-Rider
+          schema:
+            type: string
+      responses:
+        '200':
+          description: MCP response or payment-required refusal

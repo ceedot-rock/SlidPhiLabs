@@ -5,7 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import { runHostedEncode } from "./hosted-job.mjs";
 import { MAX_RAW } from "./specialist.mjs";
-import { addUsage, readUsage, identityFromReq } from "./usage-meter.mjs";
+import { addUsage, readUsage, identityFromReq, quotaCheck, ANON_KEY, ANON_JOB_CAP } from "./usage-meter.mjs";
 
 // Deterministic offline: isolated meter store + missing engine binaries so
 // encodeHosted always takes the pure-JS store path (no pulsar/lb on PATH).
@@ -65,4 +65,21 @@ test("error: exhausted lifetime allowance returns the 402 paywall, never encodes
   assert.ok(r.body.plain);
   assert.ok(r.body.usage);
   assert.ok(r.body.buy.gc_month);
+});
+
+test("quota: headerless anon jobs over cap get 429 and record the refusal", async () => {
+  const anon = { headers: {} };
+  assert.equal(quotaCheck(anon).allowed, true);
+  for (let i = 0; i < ANON_JOB_CAP; i++) addUsage(ANON_KEY, 1);
+  const r = await runHostedEncode(anon, Buffer.from("anon over-cap probe"));
+  assert.equal(r.status, 429);
+  assert.equal(r.body.ok, false);
+  assert.equal(r.body.error, "quota_exceeded");
+  assert.equal(r.body.refusals, 1);
+  assert.equal(readUsage(ANON_KEY).refusals, 1);
+});
+
+test("quota: IP identities are never job-capped, only byte-capped", async () => {
+  const r = await runHostedEncode(req("10.7.0.6"), Buffer.from("ip probe"));
+  assert.notEqual(r.status, 429);
 });
