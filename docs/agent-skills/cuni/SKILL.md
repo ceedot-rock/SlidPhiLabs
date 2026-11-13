@@ -1,34 +1,47 @@
 ---
 name: cuni
-description: Use CuNi exactness and CuNi Bank. One .cuni program, 144 languages, same stdout or refuse. Bank paste N get X. Studio, cuni check, lab-agent /v1/check and /v1/translate. Use when translating code losslessly, proving identical output, or writing portable agent policy.
+description: Use the nine CuNi calls — check, translate, ingest, audit, money, time, chain, ship, parity. Same name on the CLI, POST /v1, MCP, and the Python SDK. Hosted calls bill the lab. Use when proving identical output, translating a program, or shipping a money, time, chain, firmware, or parity proof.
 version: 1.0.0
 ---
 
 # CuNi
 
-Write one program. Emit many languages. **Same stdout on every catalog seat, or it refuses.** There is no best-effort mode.
+Write one program. **Same stdout, or it refuses.**
 
-Studio: https://cuni-studio.fly.dev/  
-Product: https://www.slidphilabs.com/cuni  
-Protocol: https://cuni-studio.fly.dev/.well-known/cuni-protocol.json  
-Repo: https://github.com/ceedot-rock/cuni  tags `v0.1.10` · `cuni-bank-0.1.0`  
-Install: `cargo install --git https://github.com/ceedot-rock/cuni --tag cuni-bank-0.1.0`
+Nine calls: `check` `translate` `ingest` `audit` `money` `time` `chain` `ship` `parity`.
 
-Native seats: Python, Go, JavaScript, TypeScript, C, C++, Rust. Other catalog ids emit and run via Python lowering. `cuni check` is the proof.
+| Call | CLI | POST | USD |
+|---|---|---|---|
+| check | `cuni check` | `/v1/check` | 0.05, first 100/month free |
+| translate | `cuni translate` (`cuni bank` is the same call) | `/v1/translate` | 0.10 |
+| ingest | `cuni ingest` | `/v1/ingest` | 0.10 |
+| money | `cuni money` | `/v1/money` | 0.25 |
+| time | `cuni time` | `/v1/time` | 0.25 |
+| parity | `cuni parity` | `/v1/parity` | 0.25 |
+| chain | `cuni chain` | `/v1/chain` | 0.50 |
+| ship | `cuni ship` | `/v1/ship` | 0.50 |
+| audit | `cuni audit` | `/v1/audit` | 1.00 |
+
+Keeper: https://github.com/ceedot-rock/CuNIverse  
+Studio (free playground): https://cuni-studio.fly.dev/  
+Lab (the meter): https://www.slidphilabs.com/v1/check  
+Python: `from cuni_exactness import check, translate, money` — HTTP 402 raises `PaymentRequired`.
+
+Pass an x402 `X-PAYMENT` header or the lab answers 402. The local binary is unmetered.
 
 ## Bank
 
-Paste N, get X, prove or refuse. Ingest is Python subset or `.cuni` — not 119 ingest parsers. 144 langs = `cuni check` after ingest.
+Paste N, get X, prove or refuse. `cuni translate` is this call. `cuni bank paste` still works.
 
 ```bash
 cuni bank paste examples/bank/add.py --from py --to c
 ```
 
-Studio bank: https://cuni-studio.fly.dev/bank  
-Lab: POST https://spl-lab-agent.fly.dev/v1/check  SKU `lab-check` $0.10  
-Lab: POST https://spl-lab-agent.fly.dev/v1/translate  SKU `lab-translate` $0.10  
+Studio bank stays free: https://cuni-studio.fly.dev/bank  
+Metered translate: POST https://www.slidphilabs.com/v1/translate  SKU `lab-translate` $0.10  
+Metered check: POST https://www.slidphilabs.com/v1/check  SKU `lab-check` $0.05  
 
-Receipt fields: `verb`, `ok`, `source_hash`, `pin`.
+Receipt fields: `verb`, `ok`, `source_hash`, `pin`. A 402 body also carries `sku` and `accepts`.
 
 ## Pay
 

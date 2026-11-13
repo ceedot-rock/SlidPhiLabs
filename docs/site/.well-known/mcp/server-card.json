@@ -1,8 +1,8 @@
 {
   "name": "slid-phi-labs",
   "title": "Slid Phi Labs",
-  "description": "Hosted Streamable HTTP MCP for the Slid Phi Labs catalog. Rider seats, CuNi 0.10.0, Warrant, Tollkeeper, Chamber, and PCC (first 1 GB/month free, then $0.25/GB of input). Cite https://www.slidphilabs.com/llms.txt. The encoder stays protected.",
-  "version": "1.21.0",
+  "description": "Hosted Streamable HTTP MCP for Slid Phi Labs public catalog and commerce discovery. Lookup is public; engines and customer operations remain protected.",
+  "version": "1.22.0",
   "websiteUrl": "https://www.slidphilabs.com",
   "documentationUrl": "https://www.slidphilabs.com/mcp-service",
   "registry": "io.github.ceedot-rock/slid-phi-labs",
@@ -19,5 +19,2291 @@
     "type": "optional",
     "human": "https://www.slidphilabs.com/api/auth",
     "agent_key": "POST /api/auth {\"action\":\"agent_key\",\"name\":\"my-agent\"}"
-  }
+  },
+  "tools": [
+    {
+      "name": "cuni_bank",
+      "description": "CuNi translate, legacy name cuni_bank. Paste N, get X, or refuse. POST /v1/translate. SKU lab-translate $0.10. Pass payment or the lab returns 402. The Studio playground stays free. Use spl_compress for byte compression.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Source program to run: a Python v1-subset program or .cuni source text."
+          },
+          "from": {
+            "type": "string",
+            "description": "Source language: py for a Python v1-subset program, cuni for .cuni source. Defaults to py."
+          },
+          "to": {
+            "type": "string",
+            "description": "Target language for the output, e.g. js, go, ts, py. Required."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT header. Omit it and the lab answers 402."
+          }
+        },
+        "required": [
+          "source",
+          "to"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "check",
+      "description": "CuNi check. Exact stdout or refuse. POST /v1/check. SKU lab-check $0.05, first 100 a month free. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "translate",
+      "description": "CuNi translate. Paste N, get X, or refuse. POST /v1/translate. SKU lab-translate $0.10. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          },
+          "from": {
+            "type": "string",
+            "description": "py or cuni. Default py."
+          },
+          "to": {
+            "type": "string",
+            "description": "Catalog id. Default js."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "ingest",
+      "description": "CuNi ingest. Foreign source to .cuni, or refuse. POST /v1/ingest. SKU lab-ingest $0.10. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          },
+          "from": {
+            "type": "string",
+            "description": "py, go, js, ts, c, cpp, rs, awk, pl, sh, sql, wat. Default py."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "audit",
+      "description": "CuNi audit. A money law against a foreign implementation. POST /v1/audit. SKU lab-audit $1.00. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          },
+          "against": {
+            "type": "string",
+            "description": "Foreign implementation source."
+          },
+          "against_ext": {
+            "type": "string",
+            "description": "py, js, mjs, go, rs, java, sql. Default py."
+          }
+        },
+        "required": [
+          "source",
+          "against"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "money",
+      "description": "CuNi money. Decimal seats py, rs, go, java, sql. POST /v1/money. SKU lab-money $0.25. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "time",
+      "description": "CuNi time. Time law. POST /v1/time. SKU lab-time $0.25. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "chain",
+      "description": "CuNi chain. Solidity, Solana, ink!, Move, Vyper, Cairo, Clarity, Cadence, then the Python seat. POST /v1/chain. SKU lab-chain $0.50. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          },
+          "to": {
+            "type": "string",
+            "description": "Comma list: sol,solana,ink,move,vyper,cairo,clarity,cadence. Default all."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "ship",
+      "description": "CuNi ship. Firmware gate on C and Rust, or nothing ships. POST /v1/ship. SKU lab-ship $0.50. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "parity",
+      "description": "CuNi parity. One kernel across py, rs, c, go, sql. POST /v1/parity. SKU lab-parity $0.25. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Program text. CuNi source, except ingest which takes the foreign source."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 payment header (X-PAYMENT). Omit it and the lab answers 402."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_discover",
+      "description": "List the lab's lead and cash products, auth endpoints, and entry points (site, CuNi Studio, Agent-Rider, Chamber, MCP, x402, SKILL.md). Read-only; returns a static discovery map. Takes no arguments. Use as the first call when orienting an agent; use the *_search catalog tools for prices and details.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_lab_auth",
+      "description": "Explain how to mint a lab account or agent API key: the human signup/login flow and the agent_key call. Read-only; returns instructions only and creates nothing. Takes no arguments. Use to learn the auth flow; use spl_signup to create a human account or spl_agent_key to mint a key.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_signup",
+      "description": "Create a human lab account with an email and password. Mutating: stores a salted password hash and returns a signed session token. Email must be a valid address, password at least 8 characters; duplicate emails are rejected. Use for a human seat; use spl_agent_key for a passwordless agent key.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Account email address. Must be a valid email; duplicates are rejected with email_taken."
+          },
+          "password": {
+            "type": "string",
+            "description": "Account password, at least 8 characters. Stored as a salted hash, never in plain text."
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name, up to 80 characters. Defaults to the part of the email before @."
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_agent_key",
+      "description": "Mint a passwordless agent API key (spl_ag_*) for a named agent. Mutating: creates an agent account and returns the key once — store it, it cannot be retrieved again. Use for agent seats; use spl_signup for a human account with email and password.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Agent name, up to 80 characters. Defaults to agent."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_catalog",
+      "description": "List the standing SKUs agents can buy via x402 (live product list from /api/x402-products). Read-only; returns current prices and payment rails. Takes no arguments. Use for live purchase options; use sku_search and sku_get for the catalog's price notes and links.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_compress",
+      "description": "Compress bytes with the hosted lossless engine (PCC and sibling codecs). Accepts base64 input; returns base64 packed bytes, sizes, and the method used. Read-only computation — nothing is stored. Metered: first 1 GB free once per IP, then $0.25/GB; a paid seat or x402 payment may be required (402). Use to shrink data; use spl_decompress to restore it, spl_zip to pack files.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "data_b64": {
+            "type": "string",
+            "description": "Base64-encoded bytes to compress. Must be valid base64."
+          }
+        },
+        "required": [
+          "data_b64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_decompress",
+      "description": "Restore bytes packed by spl_compress. Accepts the base64 packed output; returns the original bytes as base64 plus their length. Read-only computation — nothing is stored. Use only on output from spl_compress; use spl_unzip for .pcc archives.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "packed_b64": {
+            "type": "string",
+            "description": "Base64-encoded packed bytes previously returned by spl_compress."
+          }
+        },
+        "required": [
+          "packed_b64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_zip",
+      "description": "Pack files into a .pcc archive (the lab's zip). Each file is compressed with the hosted engine; returns the archive as base64 plus packed size and member count. Read-only computation — nothing is stored. Use to bundle multiple files; use spl_compress for a single blob, spl_unzip to restore.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "description": "Files to pack. Each item: path (archive path), data_b64 (base64 file bytes; omit for directories), dir (true for a directory entry).",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "Path inside the archive, e.g. notes/readme.txt."
+                },
+                "data_b64": {
+                  "type": "string",
+                  "description": "Base64-encoded file bytes. Omit for directory entries."
+                },
+                "dir": {
+                  "type": "boolean",
+                  "description": "True when this entry is a directory (no bytes). Defaults to false."
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "files"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_unzip",
+      "description": "Restore files from a .pcc archive made by spl_zip. Accepts the archive as base64; returns each file with path and base64 bytes plus the member count. Read-only computation — nothing is stored. Use only on .pcc archives; use spl_decompress for single blobs from spl_compress.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "packed_b64": {
+            "type": "string",
+            "description": "Base64-encoded .pcc archive previously returned by spl_zip."
+          }
+        },
+        "required": [
+          "packed_b64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_quote",
+      "description": "Quote a metered PCC job before running it: price in USD for the given byte count, product, and operation. Read-only and free; returns the quote without charging or reserving anything. First 1 GB free once per IP, then $0.25/GB of input, $1 card minimum. Use before spl_compress on large inputs; use spl_catalog for standing SKUs.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "bytes": {
+            "type": "number",
+            "description": "Payload bytes. First 1 GB free once per IP."
+          },
+          "product": {
+            "type": "string",
+            "description": "Product to price: auto, zrw, blackjack, shard-zip, shard-tsdb, or slid-phi. Defaults to auto."
+          },
+          "op": {
+            "type": "string",
+            "description": "Operation: compress, decompress, or roundtrip. Defaults to compress."
+          },
+          "dataClass": {
+            "type": "string",
+            "description": "Data class of the payload (e.g. text, logs, json) when known; used to pick the best product. Defaults to unknown."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_research",
+      "description": "Default web search (Tavily). Fresh sources for any agent run. Args: query (required), max_results (1-10, default 5), search_depth (basic|advanced, default basic), include_answer (default false). Lab-metered; refuses closed when TAVILY_API_KEY is unset.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Search query"
+          },
+          "max_results": {
+            "type": "number",
+            "description": "1-10, default 5"
+          },
+          "search_depth": {
+            "type": "string",
+            "description": "basic | advanced"
+          },
+          "include_answer": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "name": "spl_warrant_issue",
+      "description": "Issue a Warrant (spend mandate) for an Agent-Rider identity, capping what an agent may spend, where, and for how long. Mutating: mints a signed token. Pass a Rider JWT, or demo:true for a 10-minute shape check that issues nothing billable. Use to authorize an agent's spending before it acts; use spl_warrant_verify to check a token, spl_warrant_reserve to hold funds, spl_warrant_receipt to settle.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "rider": {
+            "type": "string",
+            "description": "Agent-Rider JWT proving the identity the Warrant is issued for. Required unless demo is true."
+          },
+          "demo": {
+            "type": "boolean",
+            "description": "True for a 10-minute shape check without a Rider token. Defaults to false."
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Allowed action names, e.g. [\"compress\", \"quote\"]. Omit for no action restriction."
+          },
+          "allow_hosts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Allowed hostnames the agent may call. Omit for no host restriction."
+          },
+          "max_usd": {
+            "type": "number",
+            "description": "Maximum spend in USD across the Warrant's life. Omit for no cap."
+          },
+          "max_calls": {
+            "type": "number",
+            "description": "Maximum number of calls under this Warrant. Omit for no cap."
+          },
+          "ttl_seconds": {
+            "type": "number",
+            "description": "Lifetime in seconds. Demo defaults to 600 (10 minutes)."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_warrant_verify",
+      "description": "Verify a Warrant token and check it against an optional host, action, and USD cost — pass usd to enforce the spend cap BEFORE the job runs. Read-only; verifies locally and changes nothing. Returns valid true/false with the Warrant or a reason. Use before running a job under a Warrant; use spl_warrant_issue to mint one.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token string to verify. Required."
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname the job will call; checked against the Warrant's allow list when given."
+          },
+          "action": {
+            "type": "string",
+            "description": "Action name the job will perform; checked against the Warrant's allowed actions when given."
+          },
+          "usd": {
+            "type": "number",
+            "description": "Expected USD cost of the job; checked against the remaining spend cap when given."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_warrant_reserve",
+      "description": "Reserve the expected cost against a Warrant BEFORE the job runs (pre-spend cap enforcement). Mutating: holds funds and returns a reservation id. File the receipt with that id to settle without double-deducting, or release it if the job never runs. Use after verify and before the job; use spl_warrant_receipt to settle, spl_warrant_release to refund.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token to reserve against. Required."
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname the job will call; checked against the Warrant's allow list when given."
+          },
+          "action": {
+            "type": "string",
+            "description": "Action name the job will perform; checked against the Warrant's allowed actions when given."
+          },
+          "usd": {
+            "type": "number",
+            "description": "USD cost to hold. Required for the reservation."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_warrant_release",
+      "description": "Refund an unsettled Warrant reservation when the job never ran. Mutating: frees the held funds; the reservation cannot be used afterward. Use only for reservations that will never settle; use spl_warrant_receipt to settle a completed job.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "reservation_id": {
+            "type": "string",
+            "description": "Reservation id returned by spl_warrant_reserve. Required."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_warrant_receipt",
+      "description": "File a receipt against a Warrant after an action, settling the spend. Mutating: deducts the USD cost — pass the reservation id from spl_warrant_reserve to settle against the reservation instead of deducting twice. Use after a job completes; use spl_warrant_reserve before it runs.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token the receipt is filed against. Required."
+          },
+          "action": {
+            "type": "string",
+            "description": "Action name that ran, e.g. compress."
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname that was called."
+          },
+          "usd": {
+            "type": "number",
+            "description": "USD cost to deduct. Required for settlement."
+          },
+          "reservation_id": {
+            "type": "string",
+            "description": "Reservation id from spl_warrant_reserve, when the cost was pre-reserved. Settles against the reservation instead of deducting twice."
+          },
+          "request_sha256": {
+            "type": "string",
+            "description": "SHA-256 hex of the request body, for the audit trail."
+          },
+          "result_sha256": {
+            "type": "string",
+            "description": "SHA-256 hex of the result body, for the audit trail."
+          },
+          "note": {
+            "type": "string",
+            "description": "Free-text note attached to the receipt."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "compress",
+      "description": "PCC compress. POST /v1/compress. Same engine as spl_compress. First 1 GB free once per IP, then $0.25/GB. A tool credential is required on the HTTP door. This is not Tollkeeper pcc-compress.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "data_b64": {
+            "type": "string",
+            "description": "Base64 bytes to compress."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "data_b64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "decompress",
+      "description": "PCC decompress. POST /v1/decompress. Restores bytes from compress. Same door as spl_decompress.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "packed_b64": {
+            "type": "string",
+            "description": "Base64 packed bytes from compress."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "packed_b64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "zip",
+      "description": "PCC zip. POST /v1/zip. Packs files into a .pcc archive. Same door as spl_zip and POST /api/archive.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "description": "Files: path, data_b64, dir."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "files"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "unzip",
+      "description": "PCC unzip. POST /v1/unzip. Restores a .pcc archive. Same door as spl_unzip and POST /api/unarchive.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "packed_b64": {
+            "type": "string",
+            "description": "Base64 .pcc archive from zip."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "packed_b64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "quote",
+      "description": "PCC quote. POST /v1/quote. Free. First 1 GB free once per IP, then $0.25/GB, $1 card minimum. Same price function as spl_quote.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "bytes": {
+            "type": "number",
+            "description": "Payload bytes."
+          },
+          "product": {
+            "type": "string",
+            "description": "auto, zrw, blackjack, shard-zip, shard-tsdb, or slid-phi."
+          },
+          "op": {
+            "type": "string",
+            "description": "compress, decompress, or roundtrip."
+          },
+          "dataClass": {
+            "type": "string",
+            "description": "Data class, when known."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "research",
+      "description": "Lab web search. POST /v1/research. Same door as spl_research. Refuses when TAVILY_API_KEY is unset. No per-call SKU on this door.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Search query."
+          },
+          "max_results": {
+            "type": "number",
+            "description": "1-10, default 5."
+          },
+          "search_depth": {
+            "type": "string",
+            "description": "basic or advanced."
+          },
+          "include_answer": {
+            "type": "boolean"
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "warrant_issue",
+      "description": "Warrant issue. POST /v1/warrant/issue. Same door as spl_warrant_issue. The Warrant add-on is the seat. This door adds no per-issue fee.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "rider": {
+            "type": "string",
+            "description": "Agent-Rider JWT. Required unless demo is true."
+          },
+          "demo": {
+            "type": "boolean",
+            "description": "Shape check. Issues nothing billable."
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "allow_hosts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "max_usd": {
+            "type": "number",
+            "description": "Spend cap in USD."
+          },
+          "max_calls": {
+            "type": "number",
+            "description": "Call cap."
+          },
+          "ttl_seconds": {
+            "type": "number",
+            "description": "Lifetime in seconds."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "warrant_verify",
+      "description": "Warrant verify. POST /v1/warrant/verify. Same door as spl_warrant_verify. Read-only.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token."
+          },
+          "host": {
+            "type": "string",
+            "description": "Host to check."
+          },
+          "action": {
+            "type": "string",
+            "description": "Action to check."
+          },
+          "usd": {
+            "type": "number",
+            "description": "USD to check against the remaining cap."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "warrant"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "warrant_reserve",
+      "description": "Warrant reserve. POST /v1/warrant/reserve. Same door as spl_warrant_reserve.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token."
+          },
+          "host": {
+            "type": "string",
+            "description": "Host."
+          },
+          "action": {
+            "type": "string",
+            "description": "Action."
+          },
+          "usd": {
+            "type": "number",
+            "description": "USD to hold."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "warrant"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "warrant_release",
+      "description": "Warrant release. POST /v1/warrant/release. Same door as spl_warrant_release.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "reservation_id": {
+            "type": "string",
+            "description": "Reservation id from warrant_reserve."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "reservation_id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "warrant_receipt",
+      "description": "Warrant receipt. POST /v1/warrant/receipt. Same door as spl_warrant_receipt.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token."
+          },
+          "action": {
+            "type": "string",
+            "description": "Action that ran."
+          },
+          "host": {
+            "type": "string",
+            "description": "Host that was called."
+          },
+          "usd": {
+            "type": "number",
+            "description": "USD to settle."
+          },
+          "reservation_id": {
+            "type": "string",
+            "description": "Reservation id, when one was held."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "warrant"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "warrant_revoke",
+      "description": "Warrant revoke. POST /v1/warrant/revoke. Same handler as POST /api/warrant/revoke.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token to revoke."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "warrant"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "seal",
+      "description": "Chamber seal. POST /v1/seal. Library door. Adds no per-seal price. Anonymous HTTP gets 402 until a key or claim. Seats already on the catalog: chamber-month, chamber-year. The metered crossing is chamber-seal at $0.02.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "obj": {
+            "type": "object",
+            "description": "JSON value to seal. At least 8 bytes once serialized."
+          },
+          "key_hex": {
+            "type": "string",
+            "description": "64 hex characters. Never echoed back."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "obj",
+          "key_hex"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "open",
+      "description": "Chamber open. POST /v1/open. Free once both keys meet. Wrong key, tampering, and a bad envelope refuse.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "envelope": {
+            "type": "object",
+            "description": "Envelope from seal or chamber-seal."
+          },
+          "key_hex": {
+            "type": "string",
+            "description": "64 hex characters. Never echoed back."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "envelope",
+          "key_hex"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "fetch",
+      "description": "Quikgater fetch. POST /v1/fetch. $0.02 per fetch, first 100 a month free, cap default $10. The worker answers 402 when the URL is unpaid.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "http or https URL to fetch."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "squeeze",
+      "description": "PCCX squeeze. POST /v1/squeeze. SKU lab-squeeze $0.10. Same door as pccx_encode. Pass payment or the lab returns 402.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "data_b64": {
+            "type": "string",
+            "description": "Base64 payload."
+          },
+          "source": {
+            "type": "string",
+            "description": "UTF-8 text when data_b64 is omitted."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "pcc-compress",
+      "description": "Tollkeeper pcc-compress. POST /v1/pcc-compress proxies Rider /api/toll/tools/pcc-compress. $0.01 per MB of input, minimum $0.001. Not the suite compress meter.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "data_base64": {
+            "type": "string",
+            "description": "Raw input, base64. Max 8MB decoded."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "data_base64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "pcc-verify",
+      "description": "Tollkeeper pcc-verify. POST /v1/pcc-verify. $0.02 per verification.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "blob_base64": {
+            "type": "string",
+            "description": "Compressed blob, base64."
+          },
+          "orig_size": {
+            "type": "number",
+            "description": "Original byte size."
+          },
+          "expected_sha256": {
+            "type": "string",
+            "description": "Hex SHA-256 of the original bytes."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "blob_base64",
+          "orig_size",
+          "expected_sha256"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "attest-notarize",
+      "description": "Tollkeeper attest-notarize. POST /v1/attest-notarize. $0.01 per notarization.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "payload": {
+            "type": "object",
+            "description": "Payload to notarize."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "payload"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "attest-exactness",
+      "description": "Tollkeeper attest-exactness. POST /v1/attest-exactness. $0.05 per check.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "artifact": {
+            "type": "object",
+            "description": "Code artifact."
+          },
+          "claim": {
+            "type": "object",
+            "description": "Claimed exact output. Requires stdout."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "artifact",
+          "claim"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "exactodds-draw",
+      "description": "ExactOdds draw. POST /v1/exactodds-draw. $0.01 per draw.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "game_id": {
+            "type": "string",
+            "description": "coin-flip, dice, roulette, or crash."
+          },
+          "draw_id": {
+            "type": "string",
+            "description": "Optional idempotency key."
+          },
+          "count": {
+            "type": "number",
+            "description": "1 to 100. Default 1."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "game_id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "exactodds-resolve",
+      "description": "ExactOdds resolve. POST /v1/exactodds-resolve. $0.02 per resolution.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "game_id": {
+            "type": "string",
+            "description": "Game id."
+          },
+          "draw_id": {
+            "type": "string",
+            "description": "Draw to resolve."
+          },
+          "stake_cents": {
+            "type": "number",
+            "description": "Optional integer cents."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "game_id",
+          "draw_id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "cuni-proof",
+      "description": "Tollkeeper cuni-proof. POST /v1/cuni-proof. $0.10 per proof. The lab check door is POST /v1/check at $0.05. These are different calls.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "CuNi source. Max 64KB."
+          },
+          "seats": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional seat ids."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "trustream-pack",
+      "description": "TRUSTREAM pack. POST /v1/trustream-pack. $0.01 per MB of input, minimum $0.001. TNSSRC encode stays parked. The grant stays a purchase.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "data_base64": {
+            "type": "string",
+            "description": "Raw stream bytes, base64. Max 8MB decoded."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "data_base64"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "chamber-seal",
+      "description": "Tollkeeper chamber-seal. POST /v1/chamber-seal. $0.02 per seal. The library door POST /v1/seal adds no per-seal price. The seat is chamber-month or chamber-year.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "payload": {
+            "type": "object",
+            "description": "Payload to seal."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "payload"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "awlpay-quote",
+      "description": "AwLPay quote. POST /v1/awlpay-quote. $0.005 per quote. The 0.5% payment rail is not a separate verb.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "amount_uusdc": {
+            "type": "number",
+            "description": "Integer micro-USDC. 1 USDC = 1000000."
+          },
+          "rail": {
+            "type": "string",
+            "description": "tron, bitcoin, lightning, stellar, bsc, or base."
+          },
+          "payment": {
+            "type": "string",
+            "description": "x402 X-PAYMENT. Omit it and a paid door answers 402."
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Bearer key or raw key when the door requires a tool credential."
+          },
+          "authorization": {
+            "type": "string",
+            "description": "Authorization header when the door is a Tollkeeper tool (Bearer ar_…)."
+          }
+        },
+        "required": [
+          "amount_uusdc",
+          "rail"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_agentic_plan",
+      "description": "Plan one Agent Commerce Network (ACN) run without executing it: validate the run shape across Rider, Warrant, Tollkeeper, Quikgater, PCC, AWLpay, PSI, and Conductor, plus any optional stage whose spec field is present. Pure and read-only — no disk, no network, nothing is charged or started. Returns the planned stages, quote, and settlement preview. Use to dry-run a run before spl_agentic_run; use spl_agentic_context to shrink the context a run will carry.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "Run action or stage name, e.g. plan, compress, or a stage key. Determines which stages the plan includes."
+          },
+          "host": {
+            "type": "string",
+            "description": "Target hostname for the run."
+          },
+          "url": {
+            "type": "string",
+            "description": "Target URL for the run."
+          },
+          "bytes": {
+            "type": "number",
+            "description": "Input byte count the run will process; used for the quote."
+          },
+          "demo": {
+            "type": "boolean",
+            "description": "True to plan or run a demo with no payment and no Rider token."
+          },
+          "rider": {
+            "type": "string",
+            "description": "Agent-Rider JWT identifying the acting agent. Required for live runs unless demo is true."
+          },
+          "crossing": {
+            "type": "string",
+            "description": "Crossing or bridge identifier when the run moves between systems."
+          },
+          "rail": {
+            "type": "string",
+            "description": "Payment rail: stripe for humans, x402 for agents."
+          },
+          "swap": {
+            "type": "object",
+            "description": "Swap details for a cross-chain step (from/to chain, token, amount)."
+          },
+          "cuni": {
+            "type": "object",
+            "description": "CuNi program or exactness input for the run."
+          },
+          "warrantTemplate": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Warrant template to apply to the run; string id or object."
+          },
+          "standingRider": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Standing Rider credential for the run; string id or object."
+          },
+          "reputation": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Reputation input for the run; string id or object."
+          },
+          "tool": {
+            "type": "object",
+            "description": "Tool call spec for the run."
+          },
+          "agent": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Agent spec for the run; string id or object."
+          },
+          "message": {
+            "type": "object",
+            "description": "Message payload for an agent-messaging stage."
+          },
+          "privateBench": {
+            "type": "object",
+            "description": "Private benchmark input for the run."
+          },
+          "solana": {
+            "type": "object",
+            "description": "Solana transaction input for the run."
+          },
+          "payout": {
+            "type": "object",
+            "description": "Payout details for the run."
+          },
+          "dispute": {
+            "type": "object",
+            "description": "Dispute details for the run."
+          },
+          "audit": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Audit or audit-export input; string id or object."
+          },
+          "ops": {
+            "type": "object",
+            "description": "Ops-feed input for the run."
+          },
+          "asyncRun": {
+            "type": "object",
+            "description": "Async run spec for the run."
+          },
+          "sandbox": {
+            "type": "object",
+            "description": "Sandbox spec for an isolated step."
+          },
+          "depotReceipt": {
+            "type": "object",
+            "description": "Depot receipt input for the run."
+          },
+          "depotBilling": {
+            "type": "object",
+            "description": "Depot billing input for the run."
+          },
+          "conductorTask": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Conductor task spec; string id or object."
+          },
+          "conductorReview": {
+            "type": "object",
+            "description": "Conductor review input for the run."
+          },
+          "mcpTool": {
+            "type": "object",
+            "description": "MCP tool call spec for the run."
+          },
+          "sku": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "SKU to buy or price; string id or object."
+          },
+          "tokenBudget": {
+            "type": "object",
+            "description": "Token budget for the run; string id or object."
+          },
+          "depotStore": {
+            "type": "object",
+            "description": "Depot store input for the run."
+          },
+          "chamberSeal": {
+            "type": "object",
+            "description": "Chamber seal input for the run."
+          },
+          "membership": {
+            "type": "object",
+            "description": "Membership input for the run."
+          },
+          "riderPaidCall": {
+            "type": "object",
+            "description": "Paid Rider call input for the run."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "spl_agentic_context",
+      "description": "Shrink LLM context extractively before a run: BM25-lite filtering, cross-encoder reranking, and dedup, verified by construction, with a quote on input bytes. Read-only computation; the text is not stored. Use to fit a long context into a run's budget; use spl_agentic_plan to shape the run itself.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Full text to compress. Required."
+          },
+          "query": {
+            "type": "string",
+            "description": "Query the kept context must answer; guides the reranker. Omit to keep the most central passages."
+          },
+          "targetRatio": {
+            "type": "number",
+            "description": "Target compression ratio between 0.01 and 1, e.g. 0.25 keeps roughly a quarter of the input. Omit for the default."
+          },
+          "maxTokens": {
+            "type": "number",
+            "description": "Maximum tokens per chunk and in the compressed output."
+          },
+          "reranker": {
+            "type": "string",
+            "description": "Reranker tier: MiniLM-L-6-v2 by default, bge-reranker-v2-gemma as the opt-in quality tier."
+          },
+          "rerankTopK": {
+            "type": "number",
+            "description": "How many top BM25 candidates the reranker rescores. Omit to rescore every candidate."
+          },
+          "used_bytes": {
+            "type": "number",
+            "description": "Bytes already consumed, counted toward the quote."
+          },
+          "sku": {
+            "type": "string",
+            "description": "SKU to quote the context work against."
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "spl_agentic_run",
+      "description": "Execute one Agent Commerce Network (ACN) run. Mutating: runs paid and unpaid steps; unpaid steps answer 402 (payment required) instead of running. Requires confirm:true plus demo:true or a Rider + Warrant pair. Use after spl_agentic_plan validates the shape; use spl_agentic_context first when the context is large.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "Run action or stage name, e.g. plan, compress, or a stage key. Determines which stages the plan includes."
+          },
+          "host": {
+            "type": "string",
+            "description": "Target hostname for the run."
+          },
+          "url": {
+            "type": "string",
+            "description": "Target URL for the run."
+          },
+          "bytes": {
+            "type": "number",
+            "description": "Input byte count the run will process; used for the quote."
+          },
+          "demo": {
+            "type": "boolean",
+            "description": "True to plan or run a demo with no payment and no Rider token."
+          },
+          "rider": {
+            "type": "string",
+            "description": "Agent-Rider JWT identifying the acting agent. Required for live runs unless demo is true."
+          },
+          "warrant": {
+            "type": "string",
+            "description": "Warrant token authorizing the run's spending. Required for live runs unless demo is true."
+          },
+          "crossing": {
+            "type": "string",
+            "description": "Crossing or bridge identifier when the run moves between systems."
+          },
+          "pay": {
+            "type": "boolean",
+            "description": "True to pay for paid steps when they are reached."
+          },
+          "paid": {
+            "type": "boolean",
+            "description": "True when payment was already made for this run."
+          },
+          "rail": {
+            "type": "string",
+            "description": "Payment rail: stripe for humans, x402 for agents."
+          },
+          "swap": {
+            "type": "object",
+            "description": "Swap details for a cross-chain step (from/to chain, token, amount)."
+          },
+          "x_payment": {
+            "type": "string",
+            "description": "X-PAYMENT header value for x402 settlement."
+          },
+          "debridge": {
+            "type": "object",
+            "description": "deBridge swap input for a cross-chain step."
+          },
+          "chain": {
+            "type": "array",
+            "description": "Receipt chain for the run; array of prior receipts."
+          },
+          "actor": {
+            "type": "string",
+            "description": "Actor identity executing the run."
+          },
+          "delegation_mode": {
+            "type": "string",
+            "description": "Delegation mode for the run."
+          },
+          "parent_receipt": {
+            "type": "string",
+            "description": "Parent receipt id when this run continues another run."
+          },
+          "cuni": {
+            "type": "object",
+            "description": "CuNi program or exactness input for the run."
+          },
+          "warrantTemplate": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Warrant template to apply to the run; string id or object."
+          },
+          "standingRider": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Standing Rider credential for the run; string id or object."
+          },
+          "reputation": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Reputation input for the run; string id or object."
+          },
+          "tool": {
+            "type": "object",
+            "description": "Tool call spec for the run."
+          },
+          "agent": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Agent spec for the run; string id or object."
+          },
+          "message": {
+            "type": "object",
+            "description": "Message payload for an agent-messaging stage."
+          },
+          "privateBench": {
+            "type": "object",
+            "description": "Private benchmark input for the run."
+          },
+          "solana": {
+            "type": "object",
+            "description": "Solana transaction input for the run."
+          },
+          "payout": {
+            "type": "object",
+            "description": "Payout details for the run."
+          },
+          "dispute": {
+            "type": "object",
+            "description": "Dispute details for the run."
+          },
+          "audit": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Audit or audit-export input; string id or object."
+          },
+          "ops": {
+            "type": "object",
+            "description": "Ops-feed input for the run."
+          },
+          "asyncRun": {
+            "type": "object",
+            "description": "Async run spec for the run."
+          },
+          "sandbox": {
+            "type": "object",
+            "description": "Sandbox spec for an isolated step."
+          },
+          "depotReceipt": {
+            "type": "object",
+            "description": "Depot receipt input for the run."
+          },
+          "depotBilling": {
+            "type": "object",
+            "description": "Depot billing input for the run."
+          },
+          "conductorTask": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Conductor task spec; string id or object."
+          },
+          "conductorReview": {
+            "type": "object",
+            "description": "Conductor review input for the run."
+          },
+          "mcpTool": {
+            "type": "object",
+            "description": "MCP tool call spec for the run."
+          },
+          "sku": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "SKU to buy or price; string id or object."
+          },
+          "tokenBudget": {
+            "type": "object",
+            "description": "Token budget for the run; string id or object."
+          },
+          "depotStore": {
+            "type": "object",
+            "description": "Depot store input for the run."
+          },
+          "chamberSeal": {
+            "type": "object",
+            "description": "Chamber seal input for the run."
+          },
+          "membership": {
+            "type": "object",
+            "description": "Membership input for the run."
+          },
+          "riderPaidCall": {
+            "type": "object",
+            "description": "Paid Rider call input for the run."
+          },
+          "confirm": {
+            "type": "boolean",
+            "description": "True to execute the run. Required — without it the run is refused."
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "sku_search",
+      "description": "Search the Prices catalog by free text — PCC Pro, Chamber, Rider seats, Lab Pass, consulting, and OSS support. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use sku_get when you already know the entry id."
+    },
+    {
+      "name": "sku_get",
+      "description": "Retrieve one Prices catalog entry by its id, e.g. pcc-pro, chamber-month, rider-team. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use sku_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "license_search",
+      "description": "Search the License catalog by free text — public licenses (GPLv3, AGPL), hosted seats, and closed-app exceptions. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use license_get when you already know the entry id."
+    },
+    {
+      "name": "license_get",
+      "description": "Retrieve one License catalog entry by its id, e.g. gplv3, seat, exception. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use license_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "surface_search",
+      "description": "Search the Where to use them catalog by free text — where to use lab products — the public site, CuNi Studio, Agent-Rider, TeachAid, and this MCP server. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use surface_get when you already know the entry id."
+    },
+    {
+      "name": "surface_get",
+      "description": "Retrieve one Where to use them catalog entry by its id, e.g. rider, studio, mcp. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use surface_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "cuni_search",
+      "description": "Search the CuNi catalog by free text — CuNi exactness — the law, the check gate, the spend-control example, and CuNi Bank. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use cuni_get when you already know the entry id."
+    },
+    {
+      "name": "cuni_get",
+      "description": "Retrieve one CuNi catalog entry by its id, e.g. bank, law, check. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use cuni_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "chamber_search",
+      "description": "Search the Chamber catalog by free text — Chamber two-key JSON seals and the 24-hour try box. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use chamber_get when you already know the entry id."
+    },
+    {
+      "name": "chamber_get",
+      "description": "Retrieve one Chamber catalog entry by its id, e.g. seal, try24. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use chamber_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "rider_search",
+      "description": "Search the Agent-Rider catalog by free text — Agent-Rider signed identity — issuing and verifying agent credentials. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use rider_get when you already know the entry id."
+    },
+    {
+      "name": "rider_get",
+      "description": "Retrieve one Agent-Rider catalog entry by its id, e.g. issue, verify. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use rider_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "pcc_search",
+      "description": "Search the PCC catalog by free text — PCC hosted compression — the engine, the 4 KiB stream pipe, and the meter. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use pcc_get when you already know the entry id."
+    },
+    {
+      "name": "pcc_get",
+      "description": "Retrieve one PCC catalog entry by its id, e.g. engine, stream, meter. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use pcc_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "pulsar_search",
+      "description": "Search the pulsar catalog by free text — pulsar, the free GPLv3 compressor, its closed-embed exception, and the Silesia measurement. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use pulsar_get when you already know the entry id."
+    },
+    {
+      "name": "pulsar_get",
+      "description": "Retrieve one pulsar catalog entry by its id, e.g. cousin, exception, silesia. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use pulsar_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "measure_search",
+      "description": "Search the How pulsar compares catalog by free text — how pulsar compares on Silesia — gzip -9, pulsar 2.5.0, and xz -6 sizes. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use measure_get when you already know the entry id."
+    },
+    {
+      "name": "measure_get",
+      "description": "Retrieve one How pulsar compares catalog entry by its id, e.g. silesia-pulsar, silesia-gzip9, silesia-xz6. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use measure_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "rail_search",
+      "description": "Search the How to pay catalog by free text — how to pay — Stripe for humans, x402 USDC for agents. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use rail_get when you already know the entry id."
+    },
+    {
+      "name": "rail_get",
+      "description": "Retrieve one How to pay catalog entry by its id, e.g. stripe, x402. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use rail_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "box_search",
+      "description": "Search the Try catalog by free text — the 24-hour try box. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use box_get when you already know the entry id."
+    },
+    {
+      "name": "box_get",
+      "description": "Retrieve one Try catalog entry by its id, e.g. law. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use box_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "npm_search",
+      "description": "Search the npm / public packages catalog by free text — public npm packages — slid-phi, spl-pay-per-suite, shard-zip, shard-tsdb, and pulsar. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use npm_get when you already know the entry id."
+    },
+    {
+      "name": "npm_get",
+      "description": "Retrieve one npm / public packages catalog entry by its id, e.g. spl-pay-per-suite, slid-phi, pulsar. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use npm_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    },
+    {
+      "name": "docs_search",
+      "description": "Search the Docs catalog by free text — lab docs — SKILL.md, llms.txt, the MCP server card, platform discovery, pricing, and licensing. Read-only; returns matching entries with name, price, notes, and links. Use to find an entry by keyword; use docs_get when you already know the entry id."
+    },
+    {
+      "name": "docs_get",
+      "description": "Retrieve one Docs catalog entry by its id, e.g. card, skill, pricing. Read-only; returns the entry's name, price, notes, and links. Use when you know the exact entry id; use docs_search to find an id by keyword. An unknown id returns an error listing the known ids."
+    }
+  ]
 }

@@ -16,6 +16,16 @@
  *   SPL_PPS_API, SPL_PPS_SITE, SPL_PPS_PAYMENT_LINK, X402_DEV_BYPASS
  */
 import readline from "node:readline";
+import { dispatchCuni, CUNI_TOOLS } from "./cuni-calls.mjs";
+import {
+  CALL_TOOLS,
+  aliasTool,
+  TOLL_TOOLS,
+  dispatchToll,
+  dispatchFetch,
+  dispatchSqueeze,
+  dispatchPublic,
+} from "./call-doors.mjs";
 import {
   computeQuote,
   classifyBytes,
@@ -35,6 +45,8 @@ import {
   STRIPE_PAYMENT_LINK,
   compress,
   decompress,
+  zip,
+  unzip,
   PRODUCT_BASE,
   DATA_MULT,
   OP_MULT,
@@ -61,6 +73,8 @@ const TOOLS = [
       required: ["source", "to"],
     },
   },
+  ...CUNI_TOOLS,
+  ...CALL_TOOLS,
   {
     name: "spl_compress",
     description:
@@ -254,29 +268,60 @@ function err(id, code, message) {
 }
 
 async function callTool(name, args = {}) {
-  switch (name) {
-    case "cuni_bank": {
-      const r = await fetch("https://cuni-studio.fly.dev/api/bank", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          source: String(args.source || ""),
-          from: String(args.from || "py"),
-          to: String(args.to || "js"),
-        }),
-        signal: AbortSignal.timeout(60000),
-      });
-      const j = await r.json().catch(() => ({}));
-      return { status: r.status, studio: "https://cuni-studio.fly.dev/bank", ...j };
-    }
+  if (name === "squeeze" || name === "pccx_encode") return dispatchSqueeze(args);
+  if (TOLL_TOOLS.includes(name)) return dispatchToll(name, args);
+  if (name === "fetch") return dispatchFetch(args);
+  if (name === "seal" || name === "open" || name === "research" || name === "spl_research" || name.startsWith("warrant_")) {
+    return dispatchPublic(name === "spl_research" ? "research" : name, args);
+  }
+  const routed = aliasTool(name) || name;
+  switch (routed) {
+    case "cuni_bank":
+    case "check":
+    case "translate":
+    case "ingest":
+    case "audit":
+    case "money":
+    case "time":
+    case "chain":
+    case "ship":
+    case "parity":
+      return dispatchCuni(name, args);
     case "spl_compress": {
       const raw = Buffer.from(String(args.data_b64 || ""), "base64");
-      const j = await compress(raw);
+      const j = await compress(raw, { apiKey: args.api_key || args.apiKey });
       return { ok: true, packed_b64: j.packed_b64, packed_bytes: j.packed_bytes, raw_bytes: j.raw_bytes, method: j.method };
     }
     case "spl_decompress": {
-      const j = await decompress({ packed_b64: args.packed_b64 });
+      const j = await decompress({ packed_b64: args.packed_b64 }, { apiKey: args.api_key || args.apiKey });
       return { ok: true, raw_b64: j.raw_b64, raw_bytes: j.raw_bytes };
+    }
+    case "spl_zip": {
+      const files = (Array.isArray(args.files) ? args.files : []).map((f) => ({
+        path: f.path || f.name,
+        dir: Boolean(f.dir),
+        data: f.dir ? Buffer.alloc(0) : Buffer.from(String(f.data_b64 || ""), "base64"),
+      }));
+      const j = await zip(files, { apiKey: args.api_key || args.apiKey });
+      return { ok: true, ext: j.ext, packed_b64: j.packed_b64, members: j.members };
+    }
+    case "spl_unzip": {
+      const packed = Buffer.from(String(args.packed_b64 || ""), "base64");
+      const j = await unzip(packed, { apiKey: args.api_key || args.apiKey });
+      return {
+        ok: true,
+        ext: ".pcc",
+        members: j.files.length,
+        files: j.files.map((f) => ({ path: f.path, dir: f.dir, data_b64: f.data.toString("base64") })),
+      };
+    }
+    case "spl_quote": {
+      return computeQuote({
+        product: args.product || "auto",
+        dataClass: args.dataClass || args.data_class || "unknown",
+        op: args.op || "compress",
+        bytes: args.bytes || 0,
+      });
     }
     case "spl_lab_auth":
       return {

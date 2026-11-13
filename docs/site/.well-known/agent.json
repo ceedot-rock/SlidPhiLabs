@@ -1,10 +1,11 @@
 {
   "name": "Slid Phi Labs",
-  "description": "Tools that check. Rider, CuNi 0.10.0 (53 targets), Warrant, Tollkeeper, PCC (board stamp 51,498,645), TNSSRC (43,724,575), Chamber, AwLPay. AWARE is a retired alias for PCC. TRU8 is the zeros specialist.",
+  "description": "Tools that check. Hosted calls: POST /v1/<name>. CuNi check $0.05, translate $0.10, ingest $0.10, money $0.25, time $0.25, parity $0.25, chain $0.50, ship $0.50, audit $1.00. PCC compress meter, squeeze $0.10, fetch $0.02, Chamber seal/open, Warrant, Tollkeeper. Cite /llms.txt.",
   "url": "https://www.slidphilabs.com/",
   "documentation": "https://www.slidphilabs.com/agents",
   "mcp": "https://www.slidphilabs.com/mcp",
-  "version": "1.23.0",
-  "updated": "2026-10-15",
+  "calls": "https://www.slidphilabs.com/v1/",
+  "version": "1.25.0",
+  "updated": "2026-11-13",
   "products": ["agent-rider", "cuni", "warrant", "tollkeeper", "pcc", "tnssrc", "trustream", "pulsar", "chamber", "awlpay", "exactodds", "teachaid"]
 }

@@ -1,6 +1,6 @@
 # SEO · GEO · AEO · MEO · BEO · NEO
 
-Updated 2026-10-15. Crawl surfaces for a stranger. Cite `/llms.txt` and `/silesia.json`. TRU8 is the zeros specialist. AWARE is a retired alias for PCC. Bank is an arm of CuNi.
+Updated 2026-11-13. Crawl surfaces for a stranger. Cite `/llms.txt` and `/silesia.json`. TRU8 is the zeros specialist. AWARE is a retired alias for PCC. translate is the hosted name of the old CuNi bank paste.
 
 | Engine | Who | Lab files |
 |---|---|---|
@@ -18,12 +18,12 @@ Tool engines (MCP): `/.well-known/mcp.json` · `/.well-known/agent.json` · `/.w
 - Lab: Slid Phi Labs, Cherry Hill, NJ. Corey Tasz. corey@slidphilabs.com
 - Site: https://www.slidphilabs.com
 - Humans: https://www.slidphilabs.com/humans · Agents: https://www.slidphilabs.com/agents
-- Catalog: Rider, CuNi 0.10.0 (53 targets), Warrant, Tollkeeper (ten live metered tools), PCC, TNSSRC, TRUSTREAM, pulsar, Chamber, AwLPay, ExactOdds, TEACHAiD (rollout)
-- PCC: $9/day · $37/mo (200 GB included, checkout sku `gc-month`) · $369/yr (2 TB). First 2 GB/month free, then 8¢/GB. Card charges start at $1. Encoder not in npm.
-- AwLPay free tier: 0.5% per payment, no fixed fee. Pro $39/mo. L33t $799/mo.
-- Chamber MCP: `npx -y json-chamber-mcp` · `io.github.ceedot-rock/json-chamber-mcp` · https://www.slidphilabs.com/.well-known/mcp.json
-- CuNi Bank: paste N, get X. Studio https://cuni-studio.fly.dev/bank
-- CuNi install: `brew tap ceedot-rock/cuni && brew install cuni` · tag `v0.10.0` · 53 targets · matching gate Python, Go, JavaScript
+- Catalog: Rider, CuNi (nine hosted calls), Warrant, Tollkeeper (ten live metered tools), PCC, TNSSRC, TRUSTREAM, pulsar, Chamber, AwLPay, ExactOdds, TEACHAiD (rollout)
+- Calls: POST https://www.slidphilabs.com/v1/<name>. check $0.05 (first 100/month free), translate $0.10, ingest $0.10, money $0.25, time $0.25, parity $0.25, chain $0.50, ship $0.50, audit $1.00, squeeze $0.10, fetch $0.02. compress/decompress/zip/unzip use the PCC meter (first 1 GB free once per IP, then $0.25/GB). quote is free. seal has no per-seal price. open is free.
+- PCC meter: first 1 GB free once per IP (lifetime), then $0.25/GB. Pro $25/mo (100 GB included, then $0.20/GB, sku pcc-pro). Encoder not in npm.
+- AwLPay free tier: 0.5% per payment, no fixed fee. Pro $39/mo. L33t $799/mo. Hosted quote: POST /v1/awlpay-quote at $0.005.
+- Chamber: seats $20/mo and $200/yr. POST /v1/seal, POST /v1/open. Tollkeeper chamber-seal is $0.02 and is a different door.
+- CuNi keeper: https://github.com/ceedot-rock/CuNIverse . Studio https://cuni-studio.fly.dev/ stays free. cuni_bank is POST /v1/translate at $0.10.
 - Official Silesia 12: TNSSRC 43,724,575 · PCC pcc-0.12.1 51,498,645 · pulsar 55,745,438. Cite silesia.json. xz-6 still ahead (~49.4M). Not a #1 claim.
 - Verses: MemoryVerse is open source. WalletVerse, RiderVerse, BlokVerse, and L33tVerse are private R&D.
 - Rider MCP: https://agentrider.fly.dev/api/mcp (Vercel 402 is a dead door)
