@@ -3,42 +3,40 @@
 Arithmetic of the public price book, not a demand forecast. Until Stripe
 last-30-days is filled, treat incoming as $0 (per `USE_OF_FUNDS.md`).
 
-## Unit economics (public prices, Oct 2026)
+## Unit economics (public prices, 2026-11-13)
 
-| Unit | Math | Value |
-|---|---|---|
-| License seat, yearly | $369 / 12 | **$30.75/mo** effective |
-| License seat, monthly | $369 / 10 house grammar | **$37/mo** |
-| Lab Pass | $890 / 12 | **$74.17/mo** effective |
-| Metered overage | — | 8¢/GB after allowance; $1 card floor; API amounts under $0.50 rejected |
-| Plan allowances (loss caps) | — | PCC 10 GB day / 200 GB month / 2,000 GB year; Suite 2 GB/mo free; Warrant 3 + 10 receipts/operator/day free |
+The live book is https://www.slidphilabs.com/pricing.json. The October seat ladder ($37/mo, Lab Pass $890, 8¢/GB) is retired.
 
-## Seat ladders (pure license seats, no mix)
+| Unit | Price |
+|---|---|
+| CuNi check | $0.05, first 100 a month free |
+| CuNi translate, ingest | $0.10 |
+| CuNi money, time, parity | $0.25 |
+| CuNi chain, ship | $0.50 |
+| CuNi audit | $1.00 |
+| CuNi closed-app grant | $490/yr |
+| PCC meter | first 1 GB free once per address, then $0.25/GB. Card charges start at $1 |
+| PCC Pro | $25/mo (100 GB, then $0.20/GB) · $250/yr |
+| Chamber | $20/mo · $200/yr |
+| Rider | Solo $12/mo · Team $49/mo · Fleet $199/mo |
+| Warrant | $8/mo · $80/yr on Solo. Included in Team and Fleet |
+| Lab Pass | $495/yr. Parts sum $650. PCC is out |
+| Quikgater | $0.02 per fetch, first 100 a month free |
+| TNSSRC closed grant | $369/yr (tnssrc-grant, TNSSRC 0.1.0 only) |
+| Rider Ops | $37/mo · $369/yr. Fleet includes the watch |
 
-| Seats | ARR | MRR-equivalent |
-|---|---|---|
-| 100 | $36,900 | $3,075 |
-| 500 | $184,500 | $15,375 |
-| 1,000 | $369,000 | $30,750 |
-| 3,252 | $1,199,988 | ~$100,000 |
+## Seat ladders
 
-$100k/mo on seats alone takes ~3,252 licenses. The faster path is mix:
-1,000 seats ($30.75k) + 200 Lab Passes ($14.8k) + enterprise/overage
-($54k) — enterprise is priced on request above allowances, which is
-where seven-figure months come from, not from seat volume alone.
+The October table (100 seats at $36,900 ARR, and the rows under it) used the retired $369 license. It is not a forecast. Enterprise above the published meters is priced on request.
 
 ## Break-even
 
 | Mode | Monthly nut | Seats to cover |
 |---|---|---|
-| Funded (salary $10k + compute $3.3k + ops ~$1.7k) | ~$15,000 | ~490 |
-| Lean (compute ~$500 + fees, no draw) | ~$800 | ~27 |
+| Funded (salary $10k + compute $3.3k + ops ~$1.7k) | ~$15,000 | The old "~490 seats" count used the retired $37 seat |
+| Lean (compute ~$500 + fees, no draw) | ~$800 | The old "~27 seats" count used the retired $37 seat |
 
-Compute budget: $60k / 18 mo from `USE_OF_FUNDS.md`. Overage margin:
-sticker egress lists ~9¢/GB against our 8¢/GB meter — realized margin
-comes from the compression ratio itself (fewer bytes shipped) inside
-hard allowances; anything above allowances is enterprise-priced. That
-is the never-lose-money rule, written into `COMMERCIAL-LICENSE.md`.
+Compute budget: $60k / 18 mo from `USE_OF_FUNDS.md`. The PCC meter is $0.25/GB of input after the first 1 GB once per address. Pro overage is $0.20/GB. Card charges start at $1.
 
 ## Milestone mapping (18 mo, per USE_OF_FUNDS.md)
 

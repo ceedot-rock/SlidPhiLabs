@@ -6,7 +6,7 @@ Updated 2026-11-02. Source: `licensing.json`, residual ledger.
 - Smart-box is the highest private burn (min 1, 2 GB). Watch idle burn.
 - Fair-use rate limits automated; bulk moves to metered/enterprise.
 - Revenue to date: $0.
-- Next money step: Lab Pass sale (Chamber + PCC + psi, $890/yr).
+- Next money step: Lab Pass is $495/yr (Chamber year + Rider Solo year + PSI Meter seat + Warrant add-on year). PCC is out. Chamber itself is $20/mo or $200/yr.
 
 ## History
 

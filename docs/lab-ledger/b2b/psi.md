@@ -2,7 +2,7 @@
 
 Updated 2026-11-02. Source: SELL-KIT.md, licensing.json.
 
-- Buyer: solo devs / agent teams. Self-serve seat ($37/mo, $369/yr).
+- Buyer: solo devs / agent teams. PSI Meter is $25/seat/mo or $250/seat/yr.
 - Enterprise: on request only (invoice/wire/Stripe). None quoted yet.
 - Channels: HN Show HN drafted (unposted); dev.to/Hashnode/X/Reddit need
   owner accounts + keys (see CONNECTIONS.md missing list).

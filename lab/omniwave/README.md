@@ -76,4 +76,4 @@ Private house: `house_best.py` **combines the private encoder with** those genes
 
 ## Pricing note
 
-Public meter: first 2 GB/month free, then 8¢/GB. Independent of this lab codec. OmniWave is **capability**; suite is **commerce**.
+Public meter: first 1 GB free once per address, then $0.25/GB. Independent of this lab codec. OmniWave is **capability**; the hosted meter is **commerce**.

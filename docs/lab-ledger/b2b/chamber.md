@@ -2,7 +2,7 @@
 
 Updated 2026-11-02. Source: licensing.json, residual ledger.
 
-- Sells inside Lab Pass ($890/yr) and Foundry Plus ($1,490/yr).
+- Sells at $20/mo or $200/yr, and inside Lab Pass at $495/yr. Foundry Plus is retired.
 - Standalone SDK grant: chamber-year $369.
 - Access packs + fulfillment are the enterprise motion; exercise end to end.
 - Pipeline: 0 passes sold.

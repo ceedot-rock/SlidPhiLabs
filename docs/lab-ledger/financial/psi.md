@@ -2,8 +2,8 @@
 
 Updated 2026-11-02. Source: `~/psi/SELL-KIT.md`, `licensing.json` SKUs.
 
-- Seat: **$37/mo** (`psi-month`), **$369/yr** (`psi-year`). No redistribution.
-- In Lab Pass $890/yr and Foundry Plus $1,490/yr bundles.
+- PSI Meter is **$25/seat/mo** or **$250/seat/yr** (250,000 logged calls included, then $2 per 100,000). `psi-month` and `psi-year` are retired.
+- Lab Pass is $495/yr and includes one PSI Meter seat. Foundry Plus is retired.
 - Revenue to date: $0. No seats sold. HN Show HN drafted, unposted.
 - Cost to carry: ~4k tokens/session load; prevents 0.1–1M-token dead ends.
 - Cost-basis savings metered 83.71% (assumptions on file); plan-22 0.05%.

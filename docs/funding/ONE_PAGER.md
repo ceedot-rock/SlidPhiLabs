@@ -10,12 +10,13 @@ Four paid surfaces, one free playground:
 
 | Product | What it is | Price |
 |---------|------------|-------|
-| **CuNi** | One source → Python, Go, JS match or refuse | $0 Studio · $369/yr closed-app |
-| **Chamber** | Two-key JSON seal | $37/mo · $369/yr ($9 day) |
-| **PCC** | Hosted lossless compressor. Engine stays in the lab. | $9/day · $37/mo (200 GB) · $369/yr |
-| **Agent-Rider** | Signed agent identity | Solo $3.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631 |
-| **Suite** | Metered PCC jobs | 2 GB/mo free, then 8¢/GB ($1 card floor) |
-| **Lab Pass** | Chamber year + PCC year + psi seat, 365 days. Not Rider. | $890/yr |
+| **CuNi** | One source → Python, Go, JS match or refuse. Nine hosted calls. | Studio $0. check $0.05 (first 100/month free), translate and ingest $0.10, money, time, and parity $0.25, chain and ship $0.50, audit $1. Closed-app grant $490/yr |
+| **Chamber** | Two-key JSON seal. Open is free once both keys meet. | $20/mo · $200/yr |
+| **PCC** | Hosted lossless compressor. Engine stays in the lab. | First 1 GB free once per address, then $0.25/GB. Pro $25/mo (100 GB, then $0.20/GB) · $250/yr |
+| **Agent-Rider** | Signed agent identity | Solo $12/mo · Team $49/mo · Fleet $199/mo |
+| **Warrant** | Mandate and receipt on a Rider | $8/mo · $80/yr on Solo. Included in Team and Fleet |
+| **Quikgater** | Fetch | $0.02 per fetch, first 100/month free |
+| **Lab Pass** | Chamber year + Rider Solo year + PSI Meter seat + Warrant add-on year. PCC is out. Parts sum $650. | $495/yr |
 
 Humans: Stripe. Agents: x402 (USDC, Solana or Base) + hosted MCP `https://www.slidphilabs.com/mcp`.
 
@@ -29,7 +30,7 @@ We do not claim #1 on Silesia. Combined GC (the hosted PCC engine) is not on Git
 
 ## Why this is a company
 
-Cloud egress lists ~9¢/GB. We meter jobs at 8¢/GB after 2 GB free each month, inside hard plan allowances (PCC year: 2,000 GB). The compressor itself cuts the bytes we ship, which is where the margin lives. Agents already have a catalog and a 402. Identity (Rider) and secrets (Chamber) are seats, not blogs. The lab is one person with live checkout, not a slide.
+The PCC meter is $0.25 per GB of input after the first 1 GB, once per address. Pro is $25 a month for 100 GB, then $0.20 per GB. Agents already have a catalog and a 402. Identity (Rider) and secrets (Chamber) are seats. The lab is one person with live checkout. The price book is https://www.slidphilabs.com/pricing.json.
 
 ## Ask
 

@@ -20,7 +20,7 @@ No engine handover. No private code in the pilot. Dryad keeps the report whateve
 ## Why us
 
 - We build metering and lossless compression for a living: hosted compressor (PCC),
-  metered jobs at 8¢/GB, agent pay rails over x402.
+  metered jobs at $0.25/GB after the first 1 GB once per address, agent pay rails over x402.
 - Public proof, honestly stated: `pulsar` 2.5.0 (GPLv3) scores **55.7M / 211.9M on Silesia**
   with 12/12 DECODE_OK — beats gzip-9, loses to xz-6. We publish the losses too.
 - One person, live checkout, no slideware: https://www.slidphilabs.com

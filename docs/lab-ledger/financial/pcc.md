@@ -2,12 +2,9 @@
 
 Updated 2026-11-02. Source: `licensing.json`, funding figures, STATUS.md.
 
-- Hosted: **$9/day** (`gc-day`), **$37/mo** (`gc-month`, 200 GB),
-  **$369/yr page price** vs **$390 `gc-year` SKU** — conflict, quote $369.
-- Meter: 8¢/GB after allowance. Caps: 10 GB day / 200 GB mo / 2,000 GB yr.
-  First 2 GB/mo free. Card floor $1, sub-$0.50 API amounts rejected.
-- Margin rule: sticker egress ~9¢/GB vs 8¢/GB meter; real margin is the
-  compression ratio inside hard allowances. Above allowances: enterprise.
+- Meter: first 1 GB free once per address, then **$0.25/GB**. Card charges start at $1.
+- Pro: **$25/mo** (`pcc-pro`, 100 GB, then $0.20/GB). Year **$250** (`pcc-pro-year`).
+- The day/month/year ladder at $9/$37/$369 is retired.
 - Revenue to date: $0. Public face leads with PCC on /compress.
 - Next money step: bake-off win on a customer corpus, then seat + overage.
 
