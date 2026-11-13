@@ -1,0 +1,17 @@
+{
+  "name": "slidphilabs",
+  "tools": [
+    {"name": "check", "description": "CuNi check. Exact stdout or refuse. POST /v1/check. SKU lab-check $0.05."},
+    {"name": "translate", "description": "CuNi translate. Paste N, get X, or refuse. POST /v1/translate. SKU lab-translate $0.10."},
+    {"name": "ingest", "description": "CuNi ingest. Foreign source to .cuni, or refuse. POST /v1/ingest. SKU lab-ingest $0.10."},
+    {"name": "audit", "description": "CuNi audit. Money law against a foreign implementation. POST /v1/audit. SKU lab-audit $1.00."},
+    {"name": "money", "description": "CuNi money. Decimal seats. POST /v1/money. SKU lab-money $0.25."},
+    {"name": "time", "description": "CuNi time. Time law. POST /v1/time. SKU lab-time $0.25."},
+    {"name": "chain", "description": "CuNi chain. Eight chain emitters. POST /v1/chain. SKU lab-chain $0.50."},
+    {"name": "ship", "description": "CuNi ship. Firmware gate. POST /v1/ship. SKU lab-ship $0.50."},
+    {"name": "parity", "description": "CuNi parity. py, rs, c, go, sql. POST /v1/parity. SKU lab-parity $0.25."},
+    {"name": "cuni_check", "description": "Alias of check"},
+    {"name": "bank_paste", "description": "Alias of translate"},
+    {"name": "pccx_encode", "description": "PCCX squeeze. POST /v1/squeeze."}
+  ]
+}

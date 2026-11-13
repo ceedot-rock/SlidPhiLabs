@@ -1,0 +1,22 @@
+{
+  "id": "slidphilabs-agent-store",
+  "version": "0.2.0",
+  "lab": "Slid Phi Labs",
+  "canonical": "https://www.slidphilabs.com/.well-known/ai-products.json",
+  "store": "https://spl-lab-agent.fly.dev/",
+  "license": "https://www.slidphilabs.com/licensing.json",
+  "pay": "https://www.slidphilabs.com/api/agent",
+  "verbs": ["check", "translate", "ingest", "audit", "money", "time", "chain", "ship", "parity", "squeeze"],
+  "products": [
+    {"id": "check", "name": "CuNi check", "post": "/v1/check", "sku": "lab-check", "usd": "0.05", "pin": "v0.1.10"},
+    {"id": "translate", "name": "CuNi translate", "post": "/v1/translate", "sku": "lab-translate", "usd": "0.10", "pin": "cuni-bank-0.1.0"},
+    {"id": "ingest", "name": "CuNi ingest", "post": "/v1/ingest", "sku": "lab-ingest", "usd": "0.10", "pin": "0.10.0"},
+    {"id": "money", "name": "CuNi money", "post": "/v1/money", "sku": "lab-money", "usd": "0.25", "pin": "0.10.0"},
+    {"id": "time", "name": "CuNi time", "post": "/v1/time", "sku": "lab-time", "usd": "0.25", "pin": "0.10.0"},
+    {"id": "parity", "name": "CuNi parity", "post": "/v1/parity", "sku": "lab-parity", "usd": "0.25", "pin": "0.10.0"},
+    {"id": "chain", "name": "CuNi chain", "post": "/v1/chain", "sku": "lab-chain", "usd": "0.50", "pin": "0.10.0"},
+    {"id": "ship", "name": "CuNi ship", "post": "/v1/ship", "sku": "lab-ship", "usd": "0.50", "pin": "0.10.0"},
+    {"id": "audit", "name": "CuNi audit", "post": "/v1/audit", "sku": "lab-audit", "usd": "1.00", "pin": "0.10.0"},
+    {"id": "squeeze", "name": "PCCX", "repo": "https://github.com/ceedot-rock/pccx", "post": "/v1/squeeze", "sku": "lab-squeeze", "usd": "0.10", "pin": "e72528b"}
+  ]
+}

@@ -1,0 +1,32 @@
+app = "spl-lab-agent2"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  HOST = "0.0.0.0"
+  PORT = "8788"
+  PIN_CHECK = "v0.1.10"
+  PIN_BANK = "cuni-bank-0.1.0"
+  PIN_PCCX = "e72528b"
+  LAB_REQUIRE_PAY = "1"
+
+[http_service]
+  internal_port = 8788
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "20s"
+    method = "GET"
+    path = "/readyz"
+
+[[vm]]
+  memory = "2gb"
+  cpu_kind = "shared"
+  cpus = 1
