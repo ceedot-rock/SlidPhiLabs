@@ -6,6 +6,8 @@ node_modules
 !README.md
 !COMMERCIAL-LICENSE.md
 !CUNI-PROTOCOL.md
+!DISCOVERY.md
+!llms-full.txt
 scripts/amp
 assets/intro
 **/HOST_*.md

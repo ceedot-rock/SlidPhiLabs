@@ -167,7 +167,7 @@
     },
     "/pcc": {
       "title": "PCC \u2014 lossless compressor through your tools \u00b7 Slid Phi Labs",
-      "description": "Metered $0.25/GB of input, first 1 GB/month free; Pro $25/month (100 GB included, then $0.20/GB). Dual-licensed public source, or a paid grant to ship closed.",
+      "description": "POST /v1/compress. First 1 GB free once per address, then $0.25/GB. Pro $25/month, 100 GB included, then $0.20/GB.",
       "canonical": "https://www.slidphilabs.com/pcc",
       "product_line": "PCC"
     },
@@ -179,7 +179,7 @@
     },
     "/cuni": {
       "title": "CuNi \u2014 write once, print many languages \u00b7 Slid Phi Labs",
-      "description": "53 targets. Same stdout or refuse. Native seats: Python, Go, JS, TS, C, C++, Rust. Playground is free. Closed-app grant $490/year per product.",
+      "description": "Nine hosted calls at /v1: check $0.05 (first 100 a month free), translate $0.10, ingest $0.10, money $0.25, time $0.25, parity $0.25, chain $0.50, ship $0.50, audit $1.00. Studio is free. Closed-app grant $490/year.",
       "canonical": "https://www.slidphilabs.com/cuni",
       "product_line": "CuNi"
     },
