@@ -236,7 +236,7 @@ function sendFile(res, filePath, req) {
       ? "no-store"
       : base === "index.html"
         ? "no-cache, max-age=0, must-revalidate"
-      : ext === ".html"
+      : ext === ".html" || ext === ".txt" || ext === ".md" || ext === ".json"
         ? "public, max-age=60"
         : "public, max-age=3600";
   const via = gz ? "open-gzip" : rested ? "open" : "disk";
