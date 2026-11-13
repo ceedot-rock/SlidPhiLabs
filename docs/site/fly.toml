@@ -14,6 +14,8 @@ primary_region = "iad"
   PORT = "8080"
   HOST = "0.0.0.0"
   AUTH_DIR = "/data"
+  RIDER_URL = "https://spl-agentrider.fly.dev"
+  LAB_AGENT_URL = "https://spl-lab-agent2.fly.dev"
 
 [http_service]
   internal_port = 8080

@@ -54,7 +54,7 @@ export const TOLL_USD = Object.freeze({
 });
 
 export function riderOrigin() {
-  return (process.env.RIDER_URL || "https://agentrider.fly.dev").replace(/\/$/, "");
+  return (process.env.RIDER_URL || "https://spl-agentrider.fly.dev").replace(/\/$/, "");
 }
 
 export function labOrigin() {
