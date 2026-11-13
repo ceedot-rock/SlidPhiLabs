@@ -3,7 +3,7 @@
 # App URL: https://slidphilabs.fly.dev
 # Custom domain: fly certs add www.slidphilabs.com  (after DNS)
 
-app = "spl-slidphilabs"
+app = "slidphilabs"
 primary_region = "iad"
 
 [build]
