@@ -495,22 +495,12 @@ const server = http.createServer(async (req, res) => {
       res.end(buf);
       return;
     }
-    const labVerbs = [
-      "/v1/check",
-      "/v1/translate",
-      "/v1/ingest",
-      "/v1/audit",
-      "/v1/money",
-      "/v1/time",
-      "/v1/chain",
-      "/v1/ship",
-      "/v1/parity",
-      "/v1/squeeze",
-      "/v1/deposit",
-      "/v1/replicate",
-    ];
-    if (labVerbs.includes(url.pathname) || url.pathname.startsWith("/v1/deposit/")) {
-      const store = (process.env.LAB_AGENT_URL || "https://spl-lab-agent.fly.dev").replace(/\/$/, "");
+    const classicVerbs = ["/v1/check", "/v1/translate", "/v1/squeeze", "/v1/deposit", "/v1/replicate"];
+    const callVerbs = ["/v1/ingest", "/v1/audit", "/v1/money", "/v1/time", "/v1/chain", "/v1/ship", "/v1/parity"];
+    if (classicVerbs.includes(url.pathname) || callVerbs.includes(url.pathname) || url.pathname.startsWith("/v1/deposit/")) {
+      const classicStore = (process.env.LAB_AGENT_URL || "https://spl-lab-agent.fly.dev").replace(/\/$/, "");
+      const callStore = (process.env.LAB_CALLS_URL || "https://spl-lab-agent2.fly.dev").replace(/\/$/, "");
+      const store = callVerbs.includes(url.pathname) ? callStore : classicStore;
       const chunks = [];
       for await (const c of req) chunks.push(c);
       const raw = Buffer.concat(chunks);

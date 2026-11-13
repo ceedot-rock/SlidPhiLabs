@@ -8,15 +8,12 @@ ARG CUNI_REPO=https://github.com/ceedot-rock/CuNIverse.git
 ARG CUNI_REF=chore/dependabot-codeowners
 RUN git clone --depth 1 --branch "$CUNI_REF" "$CUNI_REPO" /src/cuni \
     && cd /src/cuni && cargo build --release --bin cuni
-RUN git clone --depth 1 https://github.com/ceedot-rock/pccx.git /src/pccx \
-    && cd /src/pccx && cargo build --release --bin pccx
 
 FROM debian:bookworm-slim
 RUN apt-get update && apt-get install -y --no-install-recommends \
       ca-certificates python3 golang-go nodejs gcc g++ rustc sqlite3 default-jdk-headless \
     && rm -rf /var/lib/apt/lists/*
 COPY --from=build /src/cuni/target/release/cuni /usr/local/bin/cuni
-COPY --from=build /src/pccx/target/release/pccx /usr/local/bin/pccx
 WORKDIR /app
 COPY .well-known ./.well-known
 COPY mcp ./mcp

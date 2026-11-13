@@ -534,7 +534,7 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
         path = urlparse(self.path).path
         if path in ("/", "/health", "/healthz", "/readyz"):
-            ready = Path(CUNI).is_file() and Path(PCCX).is_file()
+            ready = Path(CUNI).is_file()
             return self._send(
                 200 if path != "/readyz" or ready else 503,
                 {

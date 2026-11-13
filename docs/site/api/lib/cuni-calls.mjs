@@ -3,7 +3,7 @@
  * The lab bills these. The AGPL binary does not.
  */
 const STORE = () =>
-  (process.env.LAB_AGENT_URL || "https://spl-lab-agent.fly.dev").replace(/\/$/, "");
+  (process.env.LAB_CALLS_URL || process.env.LAB_AGENT_URL || "https://spl-lab-agent2.fly.dev").replace(/\/$/, "");
 
 export const CUNI_VERBS = [
   "check",
