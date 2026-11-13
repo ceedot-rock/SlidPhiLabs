@@ -37,7 +37,7 @@ One-liner: Tools that check. Hosted calls are POST /v1/<name>. CuNi: check $0.05
 - Page: https://www.slidphilabs.com/rider
 - Live host: https://agentrider.fly.dev
 - Signed agent names (15-minute credentials). Anyone can check on the public keys.
-- Buy: https://www.slidphilabs.com/pay?sku=rider-solo — Solo $3.31/mo · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631
+- Buy: https://www.slidphilabs.com/pay?sku=rider-solo — Solo $12/mo · Team $49/mo · Fleet $199/mo
 - After Stripe: buyer lands on /rider/claim, credential mints via POST /api/rider/claim, renders on slidphilabs.com. No iframe.
 
 ### Exactness · CuNi
@@ -50,7 +50,7 @@ One-liner: Tools that check. Hosted calls are POST /v1/<name>. CuNi: check $0.05
 ### Receipts · Warrant
 - Page: https://www.slidphilabs.com/warrant
 - Hosts, actions, spend, calls, expiry. Then a receipt with the hashes and the dollars.
-- $37/mo · $369/yr
+- $8/mo add-on to Solo · $80/yr · included in Team and Fleet
 
 ### Compression · PCC
 - Page: https://www.slidphilabs.com/pcc
@@ -61,12 +61,12 @@ One-liner: Tools that check. Hosted calls are POST /v1/<name>. CuNi: check $0.05
 - PCC on the same official 12: 51,498,645, DECODE_OK 12/12. champ 50,541,135 12/12. gzip-9 67,631,990. bzip2-9 54,506,769. xz-6 still ahead (~49.4M). Not a #1 claim. AWARE+XZ1 47.7M retired.
 - TNSSRC (local engine): Silesia 43,724,575, 12/12 back byte-identical. Beats xz-9.
 - Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc
-- Day $9 · Month $37 · Year $369. Access, not source.
+- Meter $0.25/GB after 1 GB once per address · Pro $25/mo · $250/yr. Access, not source.
 
 ### Security · Chamber
 - Page: https://www.slidphilabs.com/chamber
 - SDK: https://github.com/ceedot-rock/json-chamber-sdk
-- 24-hour try · Month $37 · Year $369
+- 24-hour try · $20/mo · $200/yr. Open already-sealed blobs with both keys. Sealing is not metered.
 - Cloak license. Open existing seals with both keys.
 
 ## External hosts referenced (not this tree)
@@ -81,13 +81,13 @@ One-liner: Tools that check. Hosted calls are POST /v1/<name>. CuNi: check $0.05
 https://www.slidphilabs.com/projects.json
 
 ## Wording
-- Rider = signed agent name. Seats from $3.31/mo. Anyone can check it on the public keys.
+- Rider = signed agent name. Seats from $12/mo. Anyone can check it on the public keys.
 - CuNi = nine hosted calls at /v1, or refuse. Studio free. cuni_bank is translate at $0.10.
-- Warrant = mandate and receipts. $37/mo · $369/yr.
-- Chamber = cloak license. $37/mo · $369/yr. Open is keys-only.
-- PCC = compression through your tools. $9/day · $37/mo · $369/yr.
-- PCC meter = first 2 GB/month free, then 8¢/GB. Month plan includes 200 GB. Not a fifth product.
-- Lab Pass = Chamber year + PCC Year + psi seat, $890/yr. Not Rider.
+- Warrant = mandate and receipts. $8/mo on Solo, $80/yr, included in Team and Fleet.
+- Chamber = cloak license. $20/mo · $200/yr. Open is keys-only.
+- PCC = compression through your tools. meter $0.25/GB after 1 GB once per address · Pro $25/mo · $250/yr.
+- PCC meter = first 1 GB free once per address (lifetime), then $0.25/GB. Pro is $25/mo with 100 GB, then $0.20/GB. Not a fifth product.
+- Lab Pass = Chamber year + Rider Solo year + PSI Meter 1 seat + Warrant add-on year, $495/yr. Parts sum $650. PCC is out.
 - Access = entitlement claim. Not a codec dump.
 
 ## Scope

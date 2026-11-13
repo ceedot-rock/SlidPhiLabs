@@ -53,7 +53,7 @@
       "date": "2026-09-09",
       "type": "product",
       "title": "Press: dual-licensed hosted compression + npm clients",
-      "body": "PCC is live under a dual license. slid-phi 2.3.1, spl-pay-per-suite 1.2.2, blackjack-compression 1.6.1, and @cptasz13/tru8 0.2.1 call the live host. First 2 GB/month free, then 8\u00a2/GB.",
+      "body": "PCC is live under a dual license. slid-phi 2.3.1, spl-pay-per-suite 1.2.2, blackjack-compression 1.6.1, and @cptasz13/tru8 0.2.1 call the live host. First 1 GB free once per address, then 8\u00a2/GB.",
       "href": "https://www.slidphilabs.com/press",
       "href_label": "Press release",
       "tags": [
@@ -82,7 +82,7 @@
       "date": "2026-09-02",
       "type": "product",
       "title": "Lab catalog: CuNi, Chamber, Rider, PCC",
-      "body": "Public seats: CuNi $0, Chamber $9/$99, Agent-Rider $79/$790, PCC $9/$49/$490, Lab Pass $668, Rider Ops $29/$290, Quikgater x402 per fetch.",
+      "body": "Public seats: CuNi Studio $0, hosted calls $0.05 to $1.00, Chamber $20/$200, Rider Solo $12 / Team $49 / Fleet $199, PCC meter $0.25/GB and Pro $25/$250, Lab Pass $495, Warrant $8/$80, Quikgater $0.02 per fetch.",
       "href": "https://www.slidphilabs.com/products",
       "href_label": "Products",
       "tags": [
@@ -111,7 +111,7 @@
       "date": "2026-08-14",
       "type": "product",
       "title": "Chamber cloak + PCC compressor",
-      "body": "Chamber cloak $9/mo \u00b7 $99/yr. PCC $9/$49/$490. Suite meters jobs. SoT pricing.json.",
+      "body": "Chamber $20/mo · $200/yr. PCC meter $0.25/GB after 1 GB once per address, Pro $25/mo. Suite meters jobs. SoT pricing.json.",
       "href": "https://www.slidphilabs.com/license",
       "href_label": "Prices",
       "tags": [

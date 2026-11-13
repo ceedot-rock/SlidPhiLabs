@@ -85,7 +85,7 @@ for (const name of ["PCC", "TRUSTREAM"]) {
   const i = st.indexOf(`<span class="svc-name">${name}</span>`);
   const j = st.indexOf(`<span class="badge ok">Operational</span>`, i);
   if (i >= 0 && j >= 0 && j - i < 500) {
-    st = st.slice(0, j) + `<span class="badge down">Outage — 1 of last 6 monitored days up</span>` + st.slice(j + `<span class="badge ok">Operational</span>`.length);
+    st = st.slice(0, j) + `<span class="badge down">Chart ended 2026-09-27</span>` + st.slice(j + `<span class="badge ok">Operational</span>`.length);
     badgeFix++;
   }
 }

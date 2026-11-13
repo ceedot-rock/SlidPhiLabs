@@ -497,6 +497,36 @@ const server = http.createServer(async (req, res) => {
     }
     const classicVerbs = ["/v1/check", "/v1/translate", "/v1/squeeze", "/v1/deposit", "/v1/replicate"];
     const callVerbs = ["/v1/ingest", "/v1/audit", "/v1/money", "/v1/time", "/v1/chain", "/v1/ship", "/v1/parity"];
+    const verbCard = {
+      "/v1/check": ["0.05", "First 100 a month free."],
+      "/v1/translate": ["0.10", "Hosted translate. The Studio paste stays free."],
+      "/v1/ingest": ["0.10", ""],
+      "/v1/money": ["0.25", ""],
+      "/v1/time": ["0.25", ""],
+      "/v1/parity": ["0.25", ""],
+      "/v1/chain": ["0.50", ""],
+      "/v1/ship": ["0.50", ""],
+      "/v1/audit": ["1.00", ""],
+      "/v1/squeeze": ["0.10", "One call. Separate from the PCC gigabyte meter."],
+    };
+    if ((classicVerbs.includes(url.pathname) || callVerbs.includes(url.pathname)) && req.method !== "POST") {
+      const card = verbCard[url.pathname] || [null, ""];
+      res.writeHead(405, {
+        Allow: "POST",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "no-store",
+      });
+      res.end(JSON.stringify({
+        ok: false,
+        refuse: "use POST",
+        method: "POST",
+        path: url.pathname,
+        usd: card[0],
+        note: card[1],
+      }));
+      return;
+    }
     if (classicVerbs.includes(url.pathname) || callVerbs.includes(url.pathname) || url.pathname.startsWith("/v1/deposit/")) {
       const classicStore = (process.env.LAB_AGENT_URL || "https://spl-lab-agent.fly.dev").replace(/\/$/, "");
       const callStore = (process.env.LAB_CALLS_URL || "https://spl-lab-agent2.fly.dev").replace(/\/$/, "");

@@ -11,7 +11,7 @@ Every product we bring forward is **dual-licensed**. You pick the open license, 
 
 pulsar is GPL-3.0-or-later, or SKU `pulsar-exception` at **$490/year** for one closed product, one year, via the unified grant. CuNi is AGPL-3.0-or-later, or SKU `cuni-exception` at **$490/app/year** via the unified grant. Chamber SDK, Warrant, and Agent-Rider source are AGPL-3.0-or-later, or the unified grant at **$490/product/year**. Chooser files live in each repo as `LICENSE`.
 
-PCC is a compressor through your tools. You pay the meter ($0.25 per GB of input; first 1 GB/month free) or buy Pro ($25/month including 100 GB, then $0.20/GB). Every meter has a customer-set monthly spend cap (default $25 pay-as-you-go) with an alert at 80% of cap/allowance. Agents settle per call with x402; humans pay monthly with Stripe. You do **not** get the source.
+PCC is a compressor through your tools. You pay the meter ($0.25 per GB of input; first 1 GB free once per IP address (lifetime, no monthly reset)) or buy Pro ($25/month including 100 GB, then $0.20/GB). Every meter has a customer-set monthly spend cap (default $25 pay-as-you-go) with an alert at 80% of cap/allowance. Agents settle per call with x402; humans pay monthly with Stripe. You do **not** get the source.
 
 Chamber ($20/month · $200/year; 24-hour try; opening already-sealed blobs free forever; sealing not metered), Agent-Rider (Solo $12/month, 1 identity, 500 verifications/month · Team $49/month, 10 identities, 5,000 verifications/month, Warrant included · Fleet $199/month, 100 identities, 50,000 verifications/month, Warrant + fleet watch included; overage $0.02 per verification, customer-set monthly cap default 2× plan price, alert at 80%), and Lab Pass ($495/year: Chamber year + Rider Solo year + PSI Meter 1 seat year + Warrant add-on year; parts sum $650; PCC/compression out; no monthly version) are paid product seats. CuNi’s playground is free; shipping CuNi in a closed app is $490/app/year (SKU `cuni-exception`).
 
@@ -50,7 +50,7 @@ Without a matching invoice, you do not receive PCC encoder source, the Chamber k
 
 | Product | SKU | Price |
 |---|---|---|
-| PCC meter | `pcc-meter` | $0.25 / GB of input (first 1 GB/month free; cap default $25, alert at 80%) |
+| PCC meter | `pcc-meter` | $0.25 / GB of input (first 1 GB free once per IP address (lifetime, no monthly reset); cap default $25, alert at 80%) |
 | PCC Pro | `pcc-pro` | $25 / month (100 GB included, then $0.20/GB) |
 | PCC Pro year | `pcc-pro-year` | $250 / year |
 | Lab Pass year | `lab-pass` | $495 (Chamber year + Rider Solo year + PSI Meter 1 seat year + Warrant add-on year; PCC out) |
@@ -81,8 +81,8 @@ product, one term, as written above.
 
 | Product | Allowance | Overage |
 |---|---|---|
-| PCC meter / Pro | first 1 GB/mo free; Pro 100 GB/mo included | $0.25/GB of input; Pro overage $0.20/GB; cap default $25, alert at 80% |
-| Suite meter | first 1 GB/mo free | $0.25/GB of input; cap default $25, alert at 80% |
+| PCC meter / Pro | first 1 GB free once per IP address (lifetime, no monthly reset); Pro 100 GB/mo included | $0.25/GB of input; Pro overage $0.20/GB; cap default $25, alert at 80% |
+| Suite meter | first 1 GB free once per IP address (lifetime, no monthly reset) | $0.25/GB of input; cap default $25, alert at 80% |
 | Warrant | 3 warrants + 10 receipts/operator/day free | Warrant add-on required above free tier |
 | Chamber | automated fair-use rate limits | sustained bulk use moves to metered/enterprise |
 | Rider identity | per-seat issuance | extra seats per tier |

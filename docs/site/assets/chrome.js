@@ -1,36 +1,30 @@
 /** One header, footer, one logo — every page. */
 (function () {
   const NAV = [
-    ["/rider", "Rider"],
-    ["/cuni", "CuNi"],
-    ["/warrant", "Warrant"],
-    ["/pcc", "Compress"],
-    ["/silesia", "Silesia"],
-    ["/wiki", "Wiki"],
+    ["/", "Shop"],
+    ["/#calls", "Calls"],
+    ["/products", "Products"],
     ["/pricing", "Pricing"],
+    ["/pay", "Buy"],
   ];
   const MORE = [
-    ["/", "Home"],
-    ["/rcrc", "Previous home"],
-    ["/docs", "Docs"],
-    ["/toys", "Experiments"],
-    ["/tollkeeper", "Tollkeeper"],
-    ["/aos-ring", "Ring"],
-    ["/silesia", "Board"],
-    ["/pricing", "Pricing"],
-    ["/chamber", "Chamber"],
     ["/cuni", "CuNi"],
-    ["/trustream", "TRUSTREAM logs"],
+    ["/pcc", "PCC"],
+    ["/chamber", "Chamber"],
+    ["/rider", "Rider"],
     ["/warrant", "Warrant"],
-    ["/archive", ".pcc archive"],
-    ["/pulsar", "pulsar"],
-    ["/box", "Try"],
-    ["/pay", "Pay"],
-    ["/press", "Press"],
+    ["/quikgater", "Quikgater"],
+    ["/tollkeeper", "Tollkeeper"],
+    ["/lab-pass", "Lab Pass"],
+    ["/silesia", "Silesia"],
+    ["/wiki", "Wiki"],
+    ["/mcp-service", "MCP"],
+    ["/llms.txt", "Price list"],
     ["/about", "About"],
-    ["/humans", "Humans"],
+    ["/docs", "Docs"],
+    ["/press", "Press"],
     ["/agents", "Agents"],
-    ["/products", "All products"],
+    ["/humans", "Humans"],
   ];
 
 
@@ -55,7 +49,7 @@
     <header class="spl-header" role="banner">
       <div class="bar">
         <a class="spl-brand" href="/" aria-label="Slid Phi Labs home">
-          <img src="/assets/logos/logo-slid-phi-labs.jpg?v=14" width="36" height="36" alt=""/>
+          <img src="/assets/logos/logo-slid-phi-labs.jpg?v=15" width="36" height="36" alt=""/>
           <span>Slid Phi Labs</span>
         </a>
         <button class="spl-nav-toggle" type="button" aria-expanded="false" aria-label="Menu"></button>
@@ -93,13 +87,13 @@
         <a href="/about">About</a>
       </div>
       <div>
-        <h4>Network</h4>
-        <a href="https://agentrider.slidphilabs.com/">agentrider.slidphilabs.com</a>
-        <a href="https://cuni.slidphilabs.com/">cuni.slidphilabs.com</a>
-        <a href="https://pcc.slidphilabs.com/">pcc.slidphilabs.com</a>
-        <a href="https://acp.slidphilabs.com/">acp.slidphilabs.com</a>
-        <a href="https://psi.slidphilabs.com/">psi.slidphilabs.com</a>
-        <a href="https://gitdepot.slidphilabs.com/">gitdepot.slidphilabs.com</a>
+        <h4>Shop</h4>
+        <a href="/">Shop</a>
+        <a href="/#calls">Calls</a>
+        <a href="/pay">Buy</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/quikgater">Quikgater</a>
+        <a href="/lab-pass">Lab Pass</a>
       </div>
       <div>
         <h4>Agents</h4>

@@ -4,7 +4,7 @@ Invite-only git hosting with receipted operations. $15/seat/month
 (sku `gitdepot-seat`), $150/seat/year (sku `gitdepot-seat-year`); 100 GB
 pooled storage included, then $0.10/GB/month. Free: 1 team, 3 seats,
 10 GB, 30-day audit retention. Invite: mailto:corey@slidphilabs.com.
-Page: https://gitdepot.slidphilabs.com/
+Page: https://www.slidphilabs.com/products
 
 Call path is the depot receipt route (`GET|POST /api/depot`), dispatched
 by `action`, JSON envelope `{ok:true,...}` / `{ok:false,...}`, fail-closed:

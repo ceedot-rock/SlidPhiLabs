@@ -5,7 +5,7 @@ audits. Free: 1 seat, 10,000 calls/month, 7-day retention, first audit free.
 Meter $25/month ($250/year, 250k calls/month included, $2 per 100k over,
 sku `psi-meter`); Org $79/month (sku `psi-org`). Shipped-code embedding
 needs the $490/product/year grant (sku `psi-embed-grant`).
-Meter: https://psi.slidphilabs.com/
+Meter: https://www.slidphilabs.com/products
 Buy: https://www.slidphilabs.com/pay?sku=psi-meter
 
 Local metering works today with no account:

@@ -4,7 +4,7 @@
 Platform booklets: https://www.slidphilabs.com/wiki
 Previous homepage: https://www.slidphilabs.com/rcrc
 Homepage ledger: https://www.slidphilabs.com/
-Product homes: https://agentrider.slidphilabs.com/ (Rider) · https://cuni.slidphilabs.com/ (CuNi) · https://pcc.slidphilabs.com/ (PCC) · https://acp.slidphilabs.com/ (ACP) · https://psi.slidphilabs.com/ (PSI) · https://gitdepot.slidphilabs.com/ (GitDepot)
+Product homes: https://www.slidphilabs.com/rider (Rider) · https://www.slidphilabs.com/cuni (CuNi) · https://www.slidphilabs.com/pcc (PCC) · https://www.slidphilabs.com/products (ACP) · https://www.slidphilabs.com/products (PSI) · https://www.slidphilabs.com/products (GitDepot)
 
 > Slid Phi Labs builds tools that check. **Rider** gives an agent a signed name strangers can check on the public keys — seats from $12/mo (Solo) to $199/mo (Fleet). **CuNi 0.10.0** takes one program and checks 53 targets; Python, Go, and JavaScript must print the same stdout, or the path refuses. **Warrant** writes what the agent may do, then files the receipt. **Tollkeeper** meters ten live tools on that road. Compression: **TNSSRC** on your machine (TNSSRC 0.1.0), **PCC** on ours (board stamp 51,498,645), **TRUSTREAM** for live tiles, **pulsar** as the free demo (55,745,438). **AwLPay** prices a payment. **TEACHAiD** is the campus, in rollout.
 
@@ -114,9 +114,9 @@ Four doors onto one Shared Spine. What it is, then what you pay.
 - Quikgater — POST /v1/fetch. $0.02 per fetch; first 100 fetches/month free; customer-set monthly cap (default $10), alert at 80%. https://www.slidphilabs.com/quikgater
 - TEACHAiD — personal teacher that cites the textbook. Student $6/month, $60/year. Free: 1 course, text-only cited answers, no voice. Institutional pilot $2,500 per campus per semester, up to 500 students, onboarding included. Campus rollout at https://teachaid.fly.dev . Teacher chat in the repository calls Meta Llama.
 - Lab Pass — $495/yr. Chamber year + Rider Solo year + PSI Meter 1 seat year + Warrant add-on year. Parts sum $650 (24% off). PCC/compression out. No monthly version. https://www.slidphilabs.com/lab-pass
-- GitDepot — live and functional team artifact depot. $15/seat/month, $150/seat/year; 100 GB pooled storage included, then $0.10/GB/month overage. Free: 1 team, 3 seats, 10 GB, 30-day audit retention. Invite-only: mailto:corey@slidphilabs.com. https://gitdepot.slidphilabs.com/
-- ACP — $0, open standard. ACP Conformant certification $990 one-time, listed with test framing: 3 free pilot certifications, assessment criteria published. https://acp.slidphilabs.com/
-- PSI Meter — $25/seat/month, $250/seat/year; 250,000 logged calls/month included, then $2 per additional 100,000 calls. Free: 1 seat, 10,000 calls/month, 7-day retention. PSI Embed (shipped code): unified grant $490/product/year. https://psi.slidphilabs.com/
+- GitDepot — live and functional team artifact depot. $15/seat/month, $150/seat/year; 100 GB pooled storage included, then $0.10/GB/month overage. Free: 1 team, 3 seats, 10 GB, 30-day audit retention. Invite-only: mailto:corey@slidphilabs.com. https://www.slidphilabs.com/products
+- ACP — $0, open standard. ACP Conformant certification $990 one-time, listed with test framing: 3 free pilot certifications, assessment criteria published. https://www.slidphilabs.com/products
+- PSI Meter — $25/seat/month, $250/seat/year; 250,000 logged calls/month included, then $2 per additional 100,000 calls. Free: 1 seat, 10,000 calls/month, 7-day retention. PSI Embed (shipped code): unified grant $490/product/year. https://www.slidphilabs.com/products
 - Consulting — $175/hour, 2-hour minimum, scoped SOW. OSS support $199/year per public library.
 
 Every product we bring forward is dual-licensed (open terms or a paid grant). Compression through your tools uses the pathways we own. npm packages and MCP are clients, not the encoder.

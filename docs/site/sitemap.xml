@@ -8,15 +8,15 @@
     <loc>https://www.slidphilabs.com/blog/2026-09-17-agents-talk-rider-delivers</loc>
     <lastmod>2026-09-30</lastmod>
   </url>
-<url><loc>https://www.slidphilabs.com/</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.slidphilabs.com/llms.txt</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+<url><loc>https://www.slidphilabs.com/</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.slidphilabs.com/llms.txt</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://www.slidphilabs.com/ai.txt</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
   <url><loc>https://www.slidphilabs.com/.well-known/mcp/server-card.json</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
   <url><loc>https://www.slidphilabs.com/.well-known/ai-products.json</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://www.slidphilabs.com/x402</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.70</priority></url>
   <url><loc>https://www.slidphilabs.com/pcc</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.98</priority></url>
   <url><loc>https://www.slidphilabs.com/products</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.96</priority></url>
-  <url><loc>https://www.slidphilabs.com/pricing</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.slidphilabs.com/pricing</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://www.slidphilabs.com/trustream</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
   <url><loc>https://www.slidphilabs.com/chamber</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
   <url><loc>https://www.slidphilabs.com/rider</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
@@ -76,7 +76,7 @@
   <url><loc>https://www.slidphilabs.com/.well-known/agents.json</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
   <url><loc>https://www.slidphilabs.com/.well-known/ai-catalog.json</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://www.slidphilabs.com/.well-known/agentic-commerce.json</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://www.slidphilabs.com/humans.txt</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://www.slidphilabs.com/humans.txt</loc><lastmod>2026-11-13</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
   <url><loc>https://www.slidphilabs.com/updates.json</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.70</priority></url>
   <url><loc>https://www.slidphilabs.com/status</loc><lastmod>2026-11-05</lastmod><changefreq>daily</changefreq><priority>0.75</priority></url>
   <url><loc>https://www.slidphilabs.com/refund-policy</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.60</priority></url>

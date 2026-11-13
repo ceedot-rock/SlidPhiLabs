@@ -60,7 +60,7 @@
       "engine": "PCC",
       "page": "https://www.slidphilabs.com/pcc",
       "skus": ["pcc-meter", "pcc-pro", "pcc-pro-year", "lab-pass"],
-      "plain": "Lossless compressor through your tools. Metered $0.25/GB of input, first 1 GB/month free; Pro $25/mo (100 GB included, then $0.20/GB). Customer-set monthly spend cap (default $25), alert at 80%. Source is dual-licensed. Official 12-file numbers live on /silesia.",
+      "plain": "Lossless compressor through your tools. Metered $0.25/GB of input, first 1 GB free once per IP address (lifetime, no monthly reset); Pro $25/mo (100 GB included, then $0.20/GB). Customer-set monthly spend cap (default $25), alert at 80%. Source is dual-licensed. Official 12-file numbers live on /silesia.",
       "commercial": "AGPL in public. Shipped-code grants follow the unified grant schedule. Keys stay operator-only."
     },
     "general": {
@@ -80,8 +80,8 @@
     }
   },
   "caps": {
-    "pcc": "first 1 GB/month free, then $0.25/GB of input; Pro includes 100 GB/month, then $0.20/GB; customer-set cap (default $25), alert at 80%",
-    "suite": "first 1 GB/mo free, then $0.25/GB of input; customer-set cap (default $25), alert at 80%",
+    "pcc": "first 1 GB free once per IP address (lifetime, no monthly reset), then $0.25/GB of input; Pro includes 100 GB/month, then $0.20/GB; customer-set cap (default $25), alert at 80%",
+    "suite": "first 1 GB free once per IP address (lifetime, no monthly reset), then $0.25/GB of input; customer-set cap (default $25), alert at 80%",
     "warrant": "3 warrants + 10 receipts/operator/day free, then the Warrant add-on to Rider Solo (included in Team and Fleet)",
     "chamber": "automated fair-use rate limits; bulk moves to metered/enterprise",
     "source_licenses": "no usage cap; one product, one term",
@@ -117,7 +117,7 @@
       "grants": "Written exception for one closed product using CuNi, one year.",
       "pay": "https://www.slidphilabs.com/pay?sku=cuni-exception"
     },
-    "pcc-meter": { "usd": 0.25, "plain": "PCC meter: $0.25/GB of input, first 1 GB/month free. Customer-set monthly spend cap (default $25), alert at 80%. No source.", "pay": "https://www.slidphilabs.com/pps" },
+    "pcc-meter": { "usd": 0.25, "plain": "PCC meter: $0.25/GB of input, first 1 GB free once per IP address (lifetime, no monthly reset). Customer-set monthly spend cap (default $25), alert at 80%. No source.", "pay": "https://www.slidphilabs.com/pps" },
     "pcc-pro": { "usd": 25, "plain": "PCC Pro through your tools, one month of access, 100 GB included, then $0.20/GB. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-pro" },
     "pcc-pro-year": { "usd": 250, "plain": "PCC Pro through your tools, one year of access, 100 GB/month included, then $0.20/GB. No source.", "pay": "https://www.slidphilabs.com/pay?sku=pcc-pro-year" },
     "unified-grant": { "usd": 490, "period": "year", "plain": "Unified closed-use grant: $490/product/year; founding $190 for the first 10 grants; 3+ products $390 each. Written grant, human-fulfilled, one product + one year per grant, renewal at then-current schedule price. Build-named: TNSSRC grants cover 0.1.0 only.", "pay": "https://www.slidphilabs.com/pay?sku=unified-grant" },

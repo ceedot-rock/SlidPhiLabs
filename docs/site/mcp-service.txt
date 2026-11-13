@@ -20,7 +20,7 @@ SKU succession works the same way year-over-year questions work on a coding cata
 what changed, and which SKU succeeded it.
 
 Catalogs are public law. Engines stay behind a seat.
-Suite meter (current): first 2 GB each month free, then 8c/GB, $1 minimum on card.
+Suite meter (current): first 1 GB free once per IP address (lifetime), then $0.25/GB. Card charges start at $1.
 Older "6.9 GB / 3 h" suite wording is retired — do not use it.
 
 Config:

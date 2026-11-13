@@ -40,7 +40,7 @@ Integer cents, same gold on every native seat:
 
 | Law | Protects |
 |-----|----------|
-| `examples/laws/suite-meter.cuni` | 2 GiB free / month, then 8¢/GiB, $1 min |
+| `examples/laws/suite-meter.cuni` | first 1 GB free once per IP (lifetime), then $0.25/GB, $1 card minimum |
 | `examples/laws/catalog-plans.cuni` | Public SKU list prices |
 | `examples/laws/rider-fee.cuni` | Rider 5% task fee |
 | `examples/laws/spend-control.cuni` | Agent spend cap |

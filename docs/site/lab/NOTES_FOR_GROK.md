@@ -20,10 +20,10 @@ Public product is **PCC**. AWARE is a retired alias. Combined GC 1.19.2 is a pri
 | Methods | `docs/site/METHODS.md` |
 | Discovery | https://www.slidphilabs.com/llms.txt |
 
-Meter: first **2 GB/month free**, then **8¢/GB**. Not 6.9 GB / 3 h / 5¢.
+Meter: first **1 GB once per address free**, then **$0.25/GB**. Not 6.9 GB / 3 h / 5¢.
 Lab Pass: **$668/yr**. Not $1088.
-PCC seats: $9/day · $49/mo (200 GB) · $490/yr. SKUs remain `gc-day` / `gc-month` / `gc-year` as checkout ids only.
-Chamber $9/$369. Rider $79/$790. Warrant $29/$369. CuNi Studio $0.
+PCC meter: first 1 GB free once per address, then $0.25/GB. Pro $25/mo (100 GB, then $0.20/GB) or $250/yr. Checkout SKUs: pcc-pro, pcc-pro-year.
+Chamber $20/$200. Rider Solo $12, Team $49, Fleet $199. Warrant $8/$80. CuNi Studio $0. Closed-app grant $490/yr.
 
 ## Measured (do not invent)
 

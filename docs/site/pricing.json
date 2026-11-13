@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-28",
+  "updated": "2026-11-13",
   "inbox": "corey@slidphilabs.com",
   "site": "https://www.slidphilabs.com",
   "methods": "https://www.slidphilabs.com/METHODS.md",
@@ -161,7 +161,7 @@
       "name": "Rider Ops",
       "needs": "rider",
       "page": "https://www.slidphilabs.com/rider",
-      "availability": "Fleet watch included in Rider Fleet. No standalone price.",
+      "availability": "Fleet includes the watch. Standalone year SKU rider-ops-year is $369 when the seat is not Fleet.",
       "plans": {}
     },
     "warrant": {
@@ -279,7 +279,7 @@
         "basis": "5 sessions, 787.7M in / 6.35M out, Oct 2026; live provider rates",
         "marathon_example": "304M-token session about $116 profiled vs about $631 uncached (Sonnet-class rates)"
       },
-      "page": "https://psi.slidphilabs.com/",
+      "page": "https://www.slidphilabs.com/products",
       "free": {
         "seats": 1,
         "calls_per_month": 10000,
@@ -393,7 +393,7 @@
       "status": "live and functional",
       "invite_only": true,
       "contact": "mailto:corey@slidphilabs.com",
-      "page": "https://gitdepot.slidphilabs.com/",
+      "page": "https://www.slidphilabs.com/products",
       "plans": {
         "seat_month": {
           "sku": "gitdepot-seat",
@@ -420,7 +420,7 @@
       "name": "ACP (Agent Commerce Protocol)",
       "price": 0,
       "kind": "open standard",
-      "page": "https://acp.slidphilabs.com/",
+      "page": "https://www.slidphilabs.com/products",
       "certification": {
         "name": "ACP Conformant",
         "usd": 990,

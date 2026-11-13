@@ -86,7 +86,7 @@
       "seat_month": 15,
       "seat_year": 150,
       "invite_only": true,
-      "url": "https://gitdepot.slidphilabs.com/"
+      "url": "https://www.slidphilabs.com/products"
     },
     "quikgater": {
       "usd_per_fetch": 0.02,
@@ -98,7 +98,7 @@
     "acp": {
       "price": 0,
       "certification_usd": 990,
-      "url": "https://acp.slidphilabs.com/"
+      "url": "https://www.slidphilabs.com/products"
     },
     "teachaid": {
       "student_month": 6,

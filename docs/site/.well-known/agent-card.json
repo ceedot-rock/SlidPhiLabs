@@ -151,7 +151,7 @@
     "payment_header": "X-PAYMENT",
     "discovery": "https://www.slidphilabs.com/api/agent",
     "catalog": "https://www.slidphilabs.com/api/x402-products",
-    "one_liner": "CuNi $0. Chamber $20/mo · $200/yr. Rider Solo $12–Fleet $199/mo. PCC metered $0.25/GB of input, first 1 GB/month free; Pro $25/month.",
+    "one_liner": "CuNi $0. Chamber $20/mo · $200/yr. Rider Solo $12–Fleet $199/mo. PCC metered $0.25/GB of input, first 1 GB free once per IP address (lifetime, no monthly reset); Pro $25/month.",
     "modules": {
       "compression": [
         "TRU8"

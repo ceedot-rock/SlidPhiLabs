@@ -21,5 +21,5 @@ pay exactly that, then retry the identical call once. A second
 KEY` (env `SPL_ACN_ENDPOINT`, `SPL_ACN_KEY`).
 
 Certification: "ACP Conformant", $990 one-time (3 free pilot
-certifications, criteria published). Page: https://acp.slidphilabs.com/
+certifications, criteria published). Page: https://www.slidphilabs.com/products
 Status live: CLI verified end-to-end this session.
