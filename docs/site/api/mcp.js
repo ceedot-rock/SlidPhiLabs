@@ -255,7 +255,7 @@ export const SERVER_CARD = {
   tools: [...COMMERCE, ...catalogTools().map((t) => ({ name: t.name, description: t.description }))],
 };
 
-const TOOLS = [
+export const TOOLS = [
   ...COMMERCE.map((t) => ({
     name: t.name,
     description: t.description,
