@@ -17,7 +17,6 @@ primary_region = "iad"
   RIDER_URL = "https://spl-agentrider.fly.dev"
   LAB_AGENT_URL = "https://spl-lab-agent.fly.dev"
   LAB_CALLS_URL = "https://spl-lab-agent2.fly.dev"
-  LAB_AGENT_URL = "https://spl-lab-agent2.fly.dev"
 
 [http_service]
   internal_port = 8080
