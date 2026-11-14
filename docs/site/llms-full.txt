@@ -72,7 +72,7 @@ One-liner: Tools that check. Agent Rider gives any agent a signed name strangers
 - Quikgater worker: https://quikgater-worker.ceedotrock.workers.dev
 - Public source: https://github.com/ceedot-rock/pulsar-best · https://github.com/Slid-Phi-Labs/cuni
   · https://github.com/Slid-Phi-Labs/SlidPhiLabs · https://github.com/ceedot-rock/json-chamber-sdk
-  · https://github.com/Slid-Phi-Labs/json-chamber-mcp · Agent Rider protocol notes: https://github.com/Agentrider-protocol/ARP
+  · https://github.com/Slid-Phi-Labs/json-chamber-mcp
 - Agent Rider's hosted service is at https://www.slidphilabs.com/rider. Its implementation is not in a public repo.
 
 ## Official project list

@@ -122,8 +122,8 @@ Every product we bring forward is dual-licensed (open terms or a paid grant). Co
 
 Official Silesia 12 (211,938,580 in, whole files, DECODE_OK). Cite https://www.slidphilabs.com/silesia.json (measured 2026-09-11, PCC tag pcc-0.12.1): TNSSRC 0.1.0 43,724,575 (12/12 decode+SHA-256) · PCC 51,498,645 (12/12) · champ 50,541,135 (12/12) · pulsar 2.5.0 55,745,438 (12/12) · gzip-9 67,631,990 · bzip2-9 54,506,769 · xz-6 about 49.4M (ahead of PCC, behind TNSSRC). Not a #1 claim. The citable PCC stamp is 51,498,645. Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/silesia.json
 Live bench (live POST /api/compress, gzip-9 and brotli-11 as opponents, 4 MiB cap, not official Silesia): https://www.slidphilabs.com/bench · https://www.slidphilabs.com/bench.json
-Public source: https://github.com/ceedot-rock/pulsar-best · https://github.com/ceedot-rock/CuNIverse (CuNi keeper) · https://github.com/Agentrider-protocol/ARP (Agent Rider protocol notes; the hosted service is not open source) · https://github.com/Slid-Phi-Labs/SlidPhiLabs · https://github.com/ceedot-rock/MemoryVerse
-Agent-Rider MCP: https://agentrider.fly.dev/api/mcp
+Public source: https://github.com/ceedot-rock/pulsar-best · https://github.com/ceedot-rock/CuNIverse (CuNi keeper) · https://github.com/Slid-Phi-Labs/SlidPhiLabs · https://github.com/ceedot-rock/MemoryVerse
+Agent Rider's hosted service is at https://www.slidphilabs.com/rider; its code is not in a public repo. Agent Rider MCP: https://agentrider.fly.dev/api/mcp
 Operator-only: signing keys, Chamber kernel secrets, AUTH_DIR.
 .pcc archive (our zip): https://www.slidphilabs.com/archive · POST /api/archive · POST /api/unarchive · npm zip()/unzip()
 npm: slid-phi 2.3.1 · spl-pay-per-suite · json-chamber-mcp. Hosted MCP: POST https://www.slidphilabs.com/mcp. Chamber stdio: npx -y json-chamber-mcp.
