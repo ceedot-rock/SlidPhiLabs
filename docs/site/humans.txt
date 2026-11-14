@@ -5,7 +5,7 @@ Site: https://www.slidphilabs.com
 Updated: 2026-11-13
 
 Agent-Rider — signed agent name — Solo $12/mo · Team $49/mo · Fleet $199/mo — https://www.slidphilabs.com/rider
-CuNi — CLI v0.10.0, 53 targets, same stdout or refuse — Studio $0 · hosted calls $0.05 to $1.00 · closed-app exception $490/yr — https://www.slidphilabs.com/cuni
+CuNi — CLI v0.10.1, 53 targets, same stdout or refuse — Studio $0 · hosted calls $0.05 to $1.00 · closed-app exception $490/yr — https://www.slidphilabs.com/cuni
 Warrant — signed mandate and receipt — $8/mo · $80/yr on Solo, included in Team and Fleet — https://www.slidphilabs.com/warrant
 Tollkeeper — ten live metered tools on Rider — https://www.slidphilabs.com/tollkeeper
 PCC — lossless compression through your tools — first 1 GB free once per IP (lifetime), then $0.25/GB · Pro $25/mo (100 GB included, then $0.20/GB) — board stamp 51,498,645 — https://www.slidphilabs.com/pcc
@@ -15,7 +15,7 @@ pulsar 2.5.0 — free GPLv3 compressor — Silesia 55,745,438 — closed embed $
 Chamber — two-key JSON — $20/mo · $200/yr — https://www.slidphilabs.com/chamber
 AwLPay — free tier 0.5% per payment, no fixed fee · Pro $39/mo · L33t $799/mo — https://www.slidphilabs.com/awlpay
 Lab Pass — $495/yr (Chamber year + Rider Solo year + PSI Meter seat + Warrant add-on year; parts sum $650; PCC is out) — https://www.slidphilabs.com/lab-pass
-TEACHAiD — campus rollout; teacher chat in the repo calls Meta Llama — https://www.slidphilabs.com/products
+TEACHAiD — campus app, live; teacher chat runs on Meta's Llama — https://www.slidphilabs.com/products
 Silesia board — https://www.slidphilabs.com/silesia.json
 Prices — https://www.slidphilabs.com/pricing.json
 Agents — https://www.slidphilabs.com/llms.txt

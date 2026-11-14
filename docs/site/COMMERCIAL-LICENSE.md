@@ -58,7 +58,7 @@ Without a matching invoice, you do not receive PCC encoder source, the Chamber k
 | Agent-Rider Solo / Team / Fleet | `rider-solo` / `rider-team` / `rider-fleet` | $12 / $49 / $199 per month |
 | Warrant add-on | `warrant-addon` | $8 / month to Solo ($80/year); included in Team and Fleet |
 
-Compression through your tools: first 1 GB each month is free. After that, $0.25 per GB of input. Pro includes 100 GB each month, then $0.20/GB. Every meter has a customer-set monthly spend cap (default $25 pay-as-you-go) with an alert at 80% of cap/allowance. That meter pays for the machines on the PCC plan.
+Compression through your tools: the first 1 GB is free once per address, for life (it does not reset monthly). After that, $0.25 per GB of input. Pro includes 100 GB each month, then $0.20/GB. Every meter has a customer-set monthly spend cap (default $25 pay-as-you-go) with an alert at 80% of cap/allowance. That meter pays for the machines on the PCC plan.
 
 After Stripe, claim on https://www.slidphilabs.com/access.
 

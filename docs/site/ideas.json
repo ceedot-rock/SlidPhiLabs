@@ -831,10 +831,6 @@
       "pursued_approx": false,
       "links": [
         {
-          "label": "GitHub",
-          "href": "https://github.com/ceedot-rock/quikgater"
-        },
-        {
           "label": "Worker",
           "href": "https://quikgater-worker.ceedotrock.workers.dev"
         }

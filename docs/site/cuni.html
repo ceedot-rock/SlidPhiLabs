@@ -25,7 +25,7 @@
     "operatingSystem": "Web",
     "url": "https://www.slidphilabs.com/cuni",
     "description": "Nine hosted calls at /v1: check, translate, ingest, money, time, parity, chain, ship, audit. Same stdout or refuse. Studio free.",
-    "softwareVersion": "0.10.0",
+    "softwareVersion": "0.10.1",
     "offers": [
       { "@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free", "description": "CuNi Studio" },
       { "@type": "Offer", "price": "490", "priceCurrency": "USD", "category": "subscription", "description": "Closed-app grant (cuni-exception) per app per year" },
@@ -142,7 +142,7 @@
         <p class="spl-kicker">Closed-app</p>
         <h3>Exception</h3>
         <p class="spl-price">$490 / yr</p>
-        <p>SKU <code>cuni-exception</code>: $490/year. Hosted calls: check $0.05 (first 100/month free), translate and ingest $0.10, money, time, and parity $0.25, chain and ship $0.50, audit $1.00. <code>cuni_bank</code> is translate.</p>
+        <p>SKU <code>cuni-exception</code>: $490/year. Hosted calls: check $0.05 (first 100/month free), translate and ingest $0.10, money, time, and parity $0.25, chain and ship $0.50, audit $1.00. translate is the hosted call; it used to be called Bank.</p>
       </a>
     </div>
 
@@ -155,7 +155,7 @@
         <li>Optional: Studio <code>POST /api/pass</code> (py / go / js) — exactness PASS or refuse.</li>
         <li>Use the program on <a href="/rider">Rider seats</a> when you are ready (Rider does not currently require the PASS receipt).</li>
       </ol>
-      <p>Native seats today: py, go, js, ts, c, cpp, rs, rb, lua, sol. Protocol: <a href="https://www.slidphilabs.com/cuni-protocol.json">cuni-protocol.json</a> (install <code>v0.10.0</code> · 53 targets).</p>
+      <p>Native seats today: py, go, js, ts, c, cpp, rs, rb, lua, sol. Protocol: <a href="https://www.slidphilabs.com/cuni-protocol.json">cuni-protocol.json</a> (install <code>v0.10.1</code> · 53 targets).</p>
       <div class="spl-note">
         <p><strong>Honesty:</strong> Studio <code>/api/pass</code> is live. Rider’s require-PASS env (<code>CUNI_STUDIO_PASS_REQUIRED</code>) is unset/off until CoS greens Fly — prove on CuNi when you want the receipt; execute on Rider either way.</p>
       </div>

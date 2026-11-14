@@ -1,18 +1,17 @@
 # Slid Phi Labs
-# Updated 2026-11-13
+# Updated 2026-11-14
 # Tools that check. Cherry Hill, New Jersey. Corey Tasz. corey@slidphilabs.com
 Platform booklets: https://www.slidphilabs.com/wiki
-Previous homepage: https://www.slidphilabs.com/rcrc
 Homepage ledger: https://www.slidphilabs.com/
 Product homes: https://www.slidphilabs.com/rider (Rider) · https://www.slidphilabs.com/cuni (CuNi) · https://www.slidphilabs.com/pcc (PCC) · https://www.slidphilabs.com/products (ACP) · https://www.slidphilabs.com/products (PSI) · https://www.slidphilabs.com/products (GitDepot)
 
-> Slid Phi Labs builds tools that check. **Rider** gives an agent a signed name strangers can check on the public keys — seats from $12/mo (Solo) to $199/mo (Fleet). **CuNi 0.10.0** takes one program and checks 53 targets; Python, Go, and JavaScript must print the same stdout, or the path refuses. **Warrant** writes what the agent may do, then files the receipt. **Tollkeeper** meters ten live tools on that road. Compression: **TNSSRC** on your machine (TNSSRC 0.1.0), **PCC** on ours (board stamp 51,498,645), **TRUSTREAM** for live tiles, **pulsar** as the free demo (55,745,438). **AwLPay** prices a payment. **TEACHAiD** is the campus, in rollout.
+> Slid Phi Labs builds tools that check. **Agent Rider** gives any agent a signed name strangers can check on the public keys. It is an open ride with protection, not a private club. Seats run from $12/mo (Solo) to $199/mo (Fleet). **CuNi 0.10.1** takes one program and checks it on 53 targets; Python, Go, and JavaScript must print the same output, or it refuses. **Warrant** writes down what the agent may do, then files the receipt. **Tollkeeper** meters ten live tools on that road. Compression has four public doors on one shared method: **TNSSRC** on your machine (Silesia 43.72M, 43,724,575 bytes, beats xz-9, not a #1 claim), **PCC** hosted on ours, **TRUSTREAM** for live tiles, and **pulsar** as the free demo. The place to buy hosted compression is /pcc. **AwLPay** prices a payment. **TEACHAiD** is the campus app, live at teachaid.fly.dev.
 
 ## The one-liner
-> Slid Phi Labs builds tools that check. **Rider** gives an agent a signed name strangers can check on the public keys — seats from $12/mo (Solo) to $199/mo (Fleet). **CuNi 0.10.0** takes one program and checks 53 targets; Python, Go, and JavaScript must print the same stdout, or the path refuses. **Warrant** writes what the agent may do, then files the receipt. **Tollkeeper** meters ten live tools on that road. Compression: **TNSSRC** on your machine (TNSSRC 0.1.0), **PCC** on ours (board stamp 51,498,645), **TRUSTREAM** for live tiles, **pulsar** as the free demo (55,745,438). **AwLPay** prices a payment. **TEACHAiD** is the campus, in rollout.
+> Slid Phi Labs builds tools that check. **Agent Rider** gives any agent a signed name strangers can check on the public keys. It is an open ride with protection, not a private club. Seats run from $12/mo (Solo) to $199/mo (Fleet). **CuNi 0.10.1** takes one program and checks it on 53 targets; Python, Go, and JavaScript must print the same output, or it refuses. **Warrant** writes down what the agent may do, then files the receipt. **Tollkeeper** meters ten live tools on that road. Compression has four public doors on one shared method: **TNSSRC** on your machine (Silesia 43.72M, 43,724,575 bytes, beats xz-9, not a #1 claim), **PCC** hosted on ours, **TRUSTREAM** for live tiles, and **pulsar** as the free demo. The place to buy hosted compression is /pcc. **AwLPay** prices a payment. **TEACHAiD** is the campus app, live at teachaid.fly.dev.
 
-## The spine
-bytes → Shared Spine (row / 4 KiB tile / file) → Head A (structure: runs, zeros, ramps) → Head B (literals: bytes, text/xml) → Head C (mix/gate: who wins this row) → pack only if strictly shorter than |x|, else store RAW → DECODE_OK, every byte back. Law: never expand, invert, CuNi pathways or refuse. One spine family, two crowns: PCC through your tools may try extra lab pathways and crown a different winner per file. CuNi sits under the gate: pathway laws in cuni/ must print the same stdout on catalog seats or the path is refused. AIP/riser is lab-only, never a fifth door.
+## How compression works
+There are four public compression doors on one shared method: PCC hosted on our machines, TNSSRC on yours (Silesia 43.72M), TRUSTREAM for live tiles, and pulsar as the free demo. There is no fifth compression door. A file is packed only if it gets smaller, and every byte has to come back, or we store it as-is.
 
 ## Agent Quickstart
 1. Discover: GET https://www.slidphilabs.com/api/agent · GET /.well-known/mcp/server-card.json · GET /llms.txt
@@ -88,10 +87,10 @@ x402 resource = same sku via POST /api/x402-products.
 - CuNi — nine hosted calls: check $0.05 (first 100/month free), translate $0.10, ingest $0.10, money $0.25, time $0.25, parity $0.25, chain $0.50, ship $0.50, audit $1.00. Keeper: https://github.com/ceedot-rock/CuNIverse · Studio free: https://cuni-studio.fly.dev/ · calls: https://www.slidphilabs.com/v1/ · protocol: https://www.slidphilabs.com/cuni-protocol.json · catalog still cites 53 targets. cuni_bank is translate.
 - **AwLPay** — quote a payment across rails, or refuse. Free tier 0.5% per payment, no fixed fee. Pro $39/mo. L33t $799/mo. https://www.slidphilabs.com/awlpay · repo: https://github.com/ceedot-rock/awlpay
 - **Quikgater** — pay-per-fact fetch. https://www.slidphilabs.com/quikgater
-- **TEACHAiD** — campus app. Teacher chat in the repo calls Meta Llama. Rollout: https://teachaid.fly.dev
+- **TEACHAiD** — campus app with a teacher that cites the textbook. Live: https://teachaid.fly.dev
 - **Verses** (October 2026) — eighteen repos fused into five monorepos, histories intact. MemoryVerse is open source: https://github.com/ceedot-rock/MemoryVerse . WalletVerse, RiderVerse, BlokVerse, and L33tVerse are private R&D. CuNIverse is a public exactness monorepo: https://github.com/ceedot-rock/CuNIverse
 
-PCC = lossless compressor only; AWARE is a retired alias; TRU8 is the zeros specialist.
+PCC = lossless compressor only (it used to be called AWARE; that name is retired). TRU8 is the zeros specialist.
 
 ## Who
 Slid Phi Labs. Corey Tasz. Site: https://www.slidphilabs.com  Agents: /agents  Inbox: corey@slidphilabs.com
@@ -112,7 +111,7 @@ Four doors onto one Shared Spine. What it is, then what you pay.
 - ExactOdds — provably fair rules, commit-reveal, same rules on the published runtimes. https://www.slidphilabs.com/exactodds
 - AwLPay — free tier 0.5% per payment, no fixed fee. https://www.slidphilabs.com/awlpay
 - Quikgater — POST /v1/fetch. $0.02 per fetch; first 100 fetches/month free; customer-set monthly cap (default $10), alert at 80%. https://www.slidphilabs.com/quikgater
-- TEACHAiD — personal teacher that cites the textbook. Student $6/month, $60/year. Free: 1 course, text-only cited answers, no voice. Institutional pilot $2,500 per campus per semester, up to 500 students, onboarding included. Campus rollout at https://teachaid.fly.dev . Teacher chat in the repository calls Meta Llama.
+- TEACHAiD — personal teacher that cites the textbook. Student $6/month, $60/year. Free: 1 course, text-only cited answers, no voice. Institutional pilot $2,500 per campus per semester, up to 500 students, onboarding included. Live campus: https://teachaid.fly.dev . Teacher chat runs on Meta's Llama.
 - Lab Pass — $495/yr. Chamber year + Rider Solo year + PSI Meter 1 seat year + Warrant add-on year. Parts sum $650 (24% off). PCC/compression out. No monthly version. https://www.slidphilabs.com/lab-pass
 - GitDepot — live and functional team artifact depot. $15/seat/month, $150/seat/year; 100 GB pooled storage included, then $0.10/GB/month overage. Free: 1 team, 3 seats, 10 GB, 30-day audit retention. Invite-only: mailto:corey@slidphilabs.com. https://www.slidphilabs.com/products
 - ACP — $0, open standard. ACP Conformant certification $990 one-time, listed with test framing: 3 free pilot certifications, assessment criteria published. https://www.slidphilabs.com/products
@@ -121,10 +120,10 @@ Four doors onto one Shared Spine. What it is, then what you pay.
 
 Every product we bring forward is dual-licensed (open terms or a paid grant). Compression through your tools uses the pathways we own. npm packages and MCP are clients, not the encoder.
 
-Official Silesia 12 (211,938,580 in, whole files, DECODE_OK). Cite https://www.slidphilabs.com/silesia.json (measured 2026-09-11, PCC tag pcc-0.12.1): TNSSRC 0.1.0 43,724,575 (12/12 decode+SHA-256) · PCC 51,498,645 (12/12) · champ 50,541,135 (12/12) · pulsar 2.5.0 55,745,438 (12/12) · gzip-9 67,631,990 · bzip2-9 54,506,769 · xz-6 still ahead (~49.4M). Not a #1 claim. The citable PCC stamp is 51,498,645. Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/silesia.json
+Official Silesia 12 (211,938,580 in, whole files, DECODE_OK). Cite https://www.slidphilabs.com/silesia.json (measured 2026-09-11, PCC tag pcc-0.12.1): TNSSRC 0.1.0 43,724,575 (12/12 decode+SHA-256) · PCC 51,498,645 (12/12) · champ 50,541,135 (12/12) · pulsar 2.5.0 55,745,438 (12/12) · gzip-9 67,631,990 · bzip2-9 54,506,769 · xz-6 about 49.4M (ahead of PCC, behind TNSSRC). Not a #1 claim. The citable PCC stamp is 51,498,645. Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/silesia.json
 Live bench (live POST /api/compress, gzip-9 and brotli-11 as opponents, 4 MiB cap, not official Silesia): https://www.slidphilabs.com/bench · https://www.slidphilabs.com/bench.json
-Public source: https://github.com/ceedot-rock/pulsar-best · https://github.com/ceedot-rock/CuNIverse (CuNi keeper) · https://github.com/ceedot-rock/Agent-Rider · https://github.com/Slid-Phi-Labs/SlidPhiLabs · https://github.com/ceedot-rock/MemoryVerse
-Agent-Rider MCP: https://agentrider.fly.dev/api/mcp
+Public source: https://github.com/ceedot-rock/pulsar-best · https://github.com/ceedot-rock/CuNIverse (CuNi keeper) · https://github.com/Slid-Phi-Labs/SlidPhiLabs · https://github.com/ceedot-rock/MemoryVerse
+Agent Rider's hosted service is at https://www.slidphilabs.com/rider; its code is not in a public repo. Agent Rider MCP: https://agentrider.fly.dev/api/mcp
 Operator-only: signing keys, Chamber kernel secrets, AUTH_DIR.
 .pcc archive (our zip): https://www.slidphilabs.com/archive · POST /api/archive · POST /api/unarchive · npm zip()/unzip()
 npm: slid-phi 2.3.1 · spl-pay-per-suite · json-chamber-mcp. Hosted MCP: POST https://www.slidphilabs.com/mcp. Chamber stdio: npx -y json-chamber-mcp.
@@ -139,7 +138,7 @@ Q: What is Slid Phi Labs?
 A: A computation lab in Cherry Hill, New Jersey, built by Corey Tasz. The public tools check a claim before they praise it: a signed agent name, an exact program, a restore-safe file, a payment quote, a receipt. Site https://www.slidphilabs.com . Inbox corey@slidphilabs.com.
 
 Q: What is PCC?
-A: Door 1 onto the Shared Spine: lossless compression through your tools. Send a file, restore every byte. Metered $0.25/GB of input, first 1 GB free once per IP address (lifetime, no monthly reset); Pro $25/mo (100 GB included, then $0.20/GB). Customer-set monthly spend cap (default $25), alert at 80%. Official Silesia board stamp: 51,498,645 bytes, 12/12 DECODE_OK, tag pcc-0.12.1, in silesia.json. PCC is the compressor. AWARE is a retired alias only.
+A: Door 1 onto the Shared Spine: lossless compression through your tools. Send a file, restore every byte. Metered $0.25/GB of input, first 1 GB free once per IP address (lifetime, no monthly reset); Pro $25/mo (100 GB included, then $0.20/GB). Customer-set monthly spend cap (default $25), alert at 80%. Official Silesia board stamp: 51,498,645 bytes, 12/12 DECODE_OK, tag pcc-0.12.1, in silesia.json. PCC is the compressor.
 
 Q: What is TNSSRC?
 A: The local engine. AGPL, or a $369/year unified grant (tnssrc-grant; TNSSRC 0.1.0 only).

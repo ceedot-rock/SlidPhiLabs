@@ -200,7 +200,7 @@
     },
     "/pps": {
       "title": "Suite — metered encode/decode · Slid Phi Labs",
-      "description": "Pay per PCC job. First 1 GB each month free, then $0.25/GB of input.",
+      "description": "Pay per PCC job. First 1 GB free once per address (lifetime, no monthly reset), then $0.25/GB of input.",
       "canonical": "https://www.slidphilabs.com/pps"
     },
     "/access": {

@@ -95,7 +95,7 @@ export default async function handler(req, res) {
       cuni: "https://cuni-studio.fly.dev/",
       agent_rider: "https://agentrider.fly.dev/",
       agent_rider_status: "paused",
-      quikgater: "https://github.com/ceedot-rock/quikgater",
+      quikgater: "https://www.slidphilabs.com/quikgater",
     },
     contact: {
       email: "corey@slidphilabs.com",

@@ -8,7 +8,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Pay Per Suite — metered encode/decode · Slid Phi Labs</title>
-<meta name="description" content="Suite meters encode/decode jobs. First 1 GB each month free, then $0.25/GB of input."/>
+<meta name="description" content="Suite meters encode/decode jobs. First 1 GB free once per address (lifetime, no monthly reset), then $0.25/GB of input."/>
 <link rel="canonical" href="https://www.slidphilabs.com/pps"/>
 
 <!-- Agentic commerce discovery (machine-readable) -->
@@ -409,7 +409,7 @@ footer.suite-foot a{color:var(--teal-bright);font-weight:600}
     "@type": "Service",
     "name": "SPL Pay Per Suite",
     "provider": { "@type": "Organization", "name": "Slid Phi Labs", "url": "https://www.slidphilabs.com/" },
-    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "0", "description": "First 1 GB each month free, then $0.25/GB of input · encode/decode folder on site" }
+    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "0", "description": "First 1 GB free once per address (lifetime, no monthly reset), then $0.25/GB of input · encode/decode folder on site" }
   }
 }
 </script>
@@ -447,7 +447,7 @@ footer.suite-foot a{color:var(--teal-bright);font-weight:600}
         <p class="ribbon">Need a product seat? Chamber Year $200 → <a href="/chamber" style="color:inherit">/chamber</a>. PCC Pro $25/month → <a href="/pcc" style="color:inherit">/pcc</a>.</p>
         <h1>Suite meters encode / decode jobs</h1>
         <p class="lede">
-          Suite meters jobs — first <strong>1 GB each month free</strong>, then $0.25/GB of input. Customer-set monthly spend cap (default $25), alert at 80%.
+          Suite meters jobs — first <strong>1 GB free once per address</strong> (lifetime, no monthly reset), then $0.25/GB of input. Customer-set monthly spend cap (default $25), alert at 80%.
           Not a user seat. Not a Chamber unlock. Not a TRU8 production license.
           Browse the <strong>suite data folder</strong>, download samples, encode, decode, recompress.
         </p>
@@ -549,7 +549,7 @@ npx spl-pps x402-req --bytes 1e6 --class zeros</pre>
       <div class="panel">
         <div class="quote-label">Live quote</div>
         <div class="quote-amt" id="quoteAmtEl">$<span id="amt">9.00</span><span class="cur">USD</span></div>
-        <p class="quote-sub" id="amtSub">First 1 GB each month free, then $0.25/GB of input. Customer-set monthly spend cap (default $25), alert at 80%.</p>
+        <p class="quote-sub" id="amtSub">First 1 GB free once per address (lifetime, no monthly reset), then $0.25/GB of input. Customer-set monthly spend cap (default $25), alert at 80%.</p>
         <div class="breakdown" id="breakdown"></div>
         <div class="cta-stack">
           <button type="button" class="btn btn-gold btn-lg btn-block" id="payBtn">Pay with Stripe →</button>

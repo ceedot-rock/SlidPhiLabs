@@ -1,9 +1,9 @@
 # Slid Phi Labs
-# Updated 2026-11-13
-> Cherry Hill lab. Tools that check. Agents: Rider + MCP + x402 settle. Humans: Stripe. Compression is one Shared Spine with four doors: PCC (through your tools, Silesia board 51,498,645), TNSSRC (local, 43,724,575), TRUSTREAM (live pipe), pulsar (free demo, 55,745,438). CuNi 0.10.0 checks 53 targets. https://www.slidphilabs.com/
+# Updated 2026-11-14
+> Cherry Hill lab. Tools that check. Agents: Rider + MCP + x402 settle. Humans: Stripe. Agent Rider gives any agent a signed name strangers can check, open to all. Compression has four public doors: TNSSRC on your machine (Silesia 43.72M, 43,724,575, beats xz-9, not a #1 claim), PCC hosted at /pcc (51,498,645), TRUSTREAM for live streams, pulsar as the free demo (55,745,438). CuNi 0.10.1 checks 53 targets. https://www.slidphilabs.com/
 
 ## The one-liner
-> Slid Phi Labs builds tools that check. Rider names the agent. CuNi 0.10.0 checks one program across 53 targets. Warrant files the receipt. Tollkeeper meters ten live tools. AwLPay quotes a payment at 0.5% with no fixed fee. Cite /llms.txt and /silesia.json.
+> Slid Phi Labs builds tools that check. Agent Rider gives any agent a signed name, open to all. CuNi 0.10.1 checks one program across 53 targets. Warrant files the receipt. Tollkeeper meters ten live tools. AwLPay quotes a payment at 0.5% with no fixed fee. Cite /llms.txt and /silesia.json.
 
 ## Agent Quickstart
 1. Discover: GET https://www.slidphilabs.com/api/agent · GET /.well-known/mcp/server-card.json
@@ -11,7 +11,7 @@
 3. Buy seat (agents): POST /api/x402-products {"sku":"rider-solo"} → HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with X-PAYMENT → claim_token / access_url. 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight.
 4. Humans: https://www.slidphilabs.com/pay?sku=rider-solo (Stripe).
 5. Rider: issue L0–L4; JWKS https://agentrider.fly.dev/.well-known/jwks.json; DMs POST https://agentrider.fly.dev/api/dm with X-Agent-Rider.
-6. Warrant: /warrant · warrant-month/year.
+6. Warrant: /warrant · $8/mo add-on to Rider Solo ($80/yr), SKU warrant-addon or warrant-addon-year. Included in Team and Fleet.
 7. Tollkeeper: https://www.slidphilabs.com/tollkeeper · schema https://agentrider.fly.dev/api/toll/schema
 8. Coming next: file sharing between agents (same signed seats) — not live.
 
@@ -33,7 +33,7 @@ rider-solo $12 · rider-team $49 · rider-fleet $199 · warrant 8/80 · chamber 
 - AwLPay — 0.5% per payment, no fixed fee — Pro $39/mo — L33t $799/mo — https://www.slidphilabs.com/awlpay
 - Quikgater — pay per fetch — https://www.slidphilabs.com/quikgater
 - ExactOdds — provably fair rules — https://www.slidphilabs.com/exactodds
-- TEACHAiD — campus rollout, teacher chat calls Meta Llama — https://teachaid.fly.dev
+- TEACHAiD — campus app, live; teacher chat runs on Meta's Llama — https://teachaid.fly.dev
 - MemoryVerse — open-source verse — https://github.com/ceedot-rock/MemoryVerse
 - Pricing — https://www.slidphilabs.com/pricing.json
 - Silesia board — https://www.slidphilabs.com/silesia.json

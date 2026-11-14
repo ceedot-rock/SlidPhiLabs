@@ -1,11 +1,11 @@
 {
   "name": "Slid Phi Labs",
   "version": "1.23.0",
-  "updated": "2026-10-15",
+  "updated": "2026-11-14",
   "site": "https://www.slidphilabs.com",
   "lead_product": "rider",
   "cash_product": "pcc-pro-year",
-  "one_liner": "Tools that check. Rider Solo $12–Fleet $199. CuNi 0.10.0, 53 targets, Studio $0. Warrant $8/$80 add-on. Tollkeeper meters ten live tools. PCC metered $0.25/GB, Pro $25/mo (board 51,498,645). TNSSRC 0.1.0. Chamber $20/$200. AwLPay 0.5% with no fixed fee. Stripe / x402.",
+  "one_liner": "Tools that check. Agent Rider gives any agent a signed name strangers can check: Solo $12 to Fleet $199. CuNi 0.10.0, 53 targets, Studio $0. Warrant $8/$80 add-on. Tollkeeper meters ten live tools. TNSSRC 43.72M (43,724,575) on Silesia, on your machine; PCC is the hosted door at /pcc, $0.25/GB after the first free 1 GB, Pro $25/mo. Chamber $20/$200. AwLPay 0.5% with no fixed fee. Stripe / x402.",
   "protocols": [
     "x402"
   ],
@@ -45,9 +45,9 @@
     },
     "pcc": {
       "name": "PCC",
-      "alias": "AWARE (retired)",
       "meter_usd_per_gb": 0.25,
-      "free_gb_per_month": 1,
+      "free_gb_once_per_address": 1,
+      "free_window": "lifetime",
       "pro_month": 25,
       "pro_year": 250,
       "url": "https://www.slidphilabs.com/pcc"
@@ -69,7 +69,7 @@
     },
     "suite": {
       "unpaid_gb": 1,
-      "window": "calendar_month",
+      "window": "lifetime",
       "usd_per_gb": 0.25,
       "cap_default_usd": 25,
       "alert_at_pct": 80,
@@ -113,7 +113,7 @@
   },
   "suite_pricing": {
     "free_cap_gb": 1,
-    "window": "calendar_month",
+    "window": "lifetime",
     "usd_per_gb_after_free": 0.25,
     "min_paid_usd": 1,
     "cap_default_usd": 25,

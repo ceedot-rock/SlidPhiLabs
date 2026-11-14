@@ -74,7 +74,7 @@
       "url": "https://www.slidphilabs.com/blog/2026-09-09-hosted-dual-license",
       "summary": "AWARE is live under a dual license. slid-phi 2.3.1, spl-pay-per-suite 1.2.2, blackjack-compression 1.6.1, and @cptasz13/tru8 0.2.1 call POST /api/compress. First 1 GB free once per address, then 8\u00a2/GB.",
       "tags": [
-        "aware",
+        "pcc",
         "release",
         "npm",
         "license"
@@ -87,7 +87,7 @@
       "title": "pulsar 2.5.0 is tagged",
       "slug": "2026-09-05-pulsar-250",
       "url": "https://www.slidphilabs.com/blog/2026-09-05-pulsar-250",
-      "summary": "Public GPLv3 compressor on GitHub Releases. Silesia 55,745,438 / 211,938,580, DECODE_OK 12/12. Beats gzip-9. Loses to xz-6. Not AWARE.",
+      "summary": "Public GPLv3 compressor on GitHub Releases. Silesia 55,745,438 / 211,938,580, DECODE_OK 12/12. Beats gzip-9. Loses to xz-6.",
       "tags": [
         "pulsar",
         "release",

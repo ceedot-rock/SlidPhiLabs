@@ -28,7 +28,7 @@
     "name": "Slid Phi Labs",
     "url": "https://www.slidphilabs.com/",
     "logo": "https://www.slidphilabs.com/assets/logos/logo-slid-phi-labs.jpg?v=15",
-    "description": "Hosted calls and seats. CuNi, PCC, Chamber, Warrant, Rider, Quikgater.",
+    "description": "Tools that check. Agent Rider gives any agent a signed name strangers can check. CuNi makes one program print the same result everywhere, or refuses. Hosted compression at /pcc.",
     "address": { "@type": "PostalAddress", "addressLocality": "Cherry Hill", "addressRegion": "NJ", "addressCountry": "US" }
   }
   </script>
@@ -53,11 +53,13 @@
     <div class="wrap hero-grid">
       <img class="mark" src="/assets/logos/logo-slid-phi-labs.jpg?v=15" width="152" height="152" alt="Slid Phi Labs mark: winged eye, gold type, teal lotus">
       <div>
-        <p class="kicker">Cherry Hill · the shop</p>
-        <h1>Buy the tool. Know the job it does.</h1>
-        <p class="lede">Every product on this floor names the problem it removes, who it helps, and the price before you pay. Hosted calls use one short name on the command line, on POST /v1/&lt;name&gt;, on MCP, and in the Python client. A local copy and the Studio playground stay free. The call list is on <a href="/cuni">CuNi</a>.</p>
+        <p class="kicker">Cherry Hill · tools that check</p>
+        <h1>A name your agent can prove. A program that gives one answer.</h1>
+        <p class="lede"><a href="/rider">Agent Rider</a> gives any agent a signed name strangers can check. It is an open road with protection, not a private club. <a href="/cuni">CuNi</a> checks that one program prints the same result in every language you name, or it refuses. Hosted compression is at <a href="/pcc">/pcc</a> if you need it.</p>
+        <p class="lede">Every product here names the problem it removes, who it helps, and the price before you pay. Hosted calls use one short name on the command line, on POST /v1/&lt;name&gt;, on MCP, and in the Python client. A local copy and the Studio playground stay free. The call list is on <a href="/cuni">CuNi</a>.</p>
         <div class="actions">
-          <a class="btn btn-solid" href="#calls">See the calls</a>
+          <a class="btn btn-solid" href="/rider">Meet Agent Rider</a>
+          <a class="btn btn-line" href="/cuni">Try CuNi</a>
           <a class="btn btn-line" href="/pay">Buy a seat</a>
         </div>
       </div>
@@ -100,34 +102,10 @@
     <p class="section-lead">Each card is one purchase. The heading opens the product. The gold button is the checkout.</p>
     <div class="shelf-grid">
       <article class="card">
-        <h3><a class="card-link" href="/pcc">PCC compress</a></h3>
-        <div class="body">
-          <p><span class="label">The problem</span> Storage and transfer bills grow because files are larger than they need to be, and a restore that fails is worse than no savings.</p>
-          <p><span class="label">Why it pays</span> You send bytes in and get a smaller restore-safe copy. The first 1 GB is free once per address. After that the meter is $0.25 per GB. Pro is $25 a month for 100 GB, then $0.20 per GB.</p>
-          <p class="price">$0.25/GB after 1 GB</p>
-        </div>
-        <footer>
-          <a class="btn btn-solid" href="/pay?sku=pcc-pro">Buy Pro · $25/mo</a>
-          <a href="/pcc">How compress works</a>
-        </footer>
-      </article>
-      <article class="card">
-        <h3><a class="card-link" href="/chamber">Chamber</a></h3>
-        <div class="body">
-          <p><span class="label">The problem</span> A secret in a shared system can be opened by anyone who gets one key, or it can be locked so tightly the owner cannot get it back.</p>
-          <p><span class="label">Why it pays</span> Two keys seal a JSON secret. Opening stays free once both keys meet. A business buys the seat so new seals are licensed. A person keeps the envelope and both keys.</p>
-          <p class="price">$20/mo · $200/yr</p>
-        </div>
-        <footer>
-          <a class="btn btn-solid" href="/pay?sku=chamber-month">Buy a month</a>
-          <a href="/pay?sku=chamber-year">Buy a year</a>
-        </footer>
-      </article>
-      <article class="card">
-        <h3><a class="card-link" href="/rider">Agent-Rider</a></h3>
+        <h3><a class="card-link" href="/rider">Agent Rider</a></h3>
         <div class="body">
           <p><span class="label">The problem</span> An agent that can spend has no name a counterparty can check, so every call is an anonymous risk.</p>
-          <p><span class="label">Why it pays</span> Rider issues a signed identity. Solo is the seat for one operator. Team and Fleet are the seats for a group. The hire rail is where that identity posts and settles work.</p>
+          <p><span class="label">Why it pays</span> Rider issues a signed name any agent can carry, and anyone can check it. It is open to every agent, not a closed club. Solo is the seat for one operator. Team and Fleet are the seats for a group. The hire rail is where that identity posts and settles work.</p>
           <p class="price">Solo $12 · Team $49 · Fleet $199</p>
         </div>
         <footer>
@@ -145,6 +123,18 @@
         <footer>
           <a class="btn btn-solid" href="/pay?sku=warrant-addon">Buy the add-on</a>
           <a href="/warrant">What a warrant holds</a>
+        </footer>
+      </article>
+      <article class="card">
+        <h3><a class="card-link" href="/chamber">Chamber</a></h3>
+        <div class="body">
+          <p><span class="label">The problem</span> A secret in a shared system can be opened by anyone who gets one key, or it can be locked so tightly the owner cannot get it back.</p>
+          <p><span class="label">Why it pays</span> Two keys seal a JSON secret. Opening stays free once both keys meet. A business buys the seat so new seals are licensed. A person keeps the envelope and both keys.</p>
+          <p class="price">$20/mo · $200/yr</p>
+        </div>
+        <footer>
+          <a class="btn btn-solid" href="/pay?sku=chamber-month">Buy a month</a>
+          <a href="/pay?sku=chamber-year">Buy a year</a>
         </footer>
       </article>
       <article class="card">
@@ -181,6 +171,18 @@
         <footer>
           <a class="btn btn-solid" href="/pay?sku=lab-pass">Buy the pass</a>
           <a href="/lab-pass">What is in the bundle</a>
+        </footer>
+      </article>
+      <article class="card">
+        <h3><a class="card-link" href="/pcc">PCC compress</a></h3>
+        <div class="body">
+          <p><span class="label">The problem</span> Storage and transfer bills grow because files are larger than they need to be, and a restore that fails is worse than no savings.</p>
+          <p><span class="label">Why it pays</span> You send bytes in and get a smaller restore-safe copy. The first 1 GB is free once per address. After that the meter is $0.25 per GB. Pro is $25 a month for 100 GB, then $0.20 per GB.</p>
+          <p class="price">$0.25/GB after 1 GB</p>
+        </div>
+        <footer>
+          <a class="btn btn-solid" href="/pay?sku=pcc-pro">Buy Pro · $25/mo</a>
+          <a href="/pcc">How compress works</a>
         </footer>
       </article>
       <article class="card">
