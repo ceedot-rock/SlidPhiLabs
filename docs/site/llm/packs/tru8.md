@@ -1,6 +1,6 @@
 # TRU8 — LLM prompt pack (live)
 
-Demo compression client (`@slidphi/tru8` on npm, repo `ceedot-rock/TRU8`).
+Demo compression client (`@slidphi/tru8` on npm).
 Two tiers, enforced in code — not on trust:
 
 - **Local, free forever:** all-zero input packs to 8 bytes and round-trips

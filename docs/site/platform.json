@@ -71,7 +71,6 @@
       "urls": {
         "page": "https://www.slidphilabs.com/tru8",
         "specialist": "https://www.slidphilabs.com/specialist",
-        "github": "https://github.com/ceedot-rock/TRU8",
         "npm": "https://www.npmjs.com/package/@cptasz13/tru8"
       },
       "claim": "1 000 000 zeros → 8 B, round-trip",

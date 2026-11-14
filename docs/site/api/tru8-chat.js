@@ -27,7 +27,7 @@ Public facts you MAY discuss:
 - T_SPARSE (0x03): residual path — licensed, do not invent coefficients.
 - Public demos free with required credit: "Powered by TRU8 · Slid Phi Labs"
 - Commercial residual / Continuous-1088 Strong: licensed. Contact corey@slidphilabs.com
-- GitHub public demo: https://github.com/ceedot-rock/TRU8
+- npm demo: https://www.npmjs.com/package/@slidphi/tru8
 - Site: https://www.slidphilabs.com/ · /demos · /license · /about
 - Agents: GET https://www.slidphilabs.com/api/agent
 

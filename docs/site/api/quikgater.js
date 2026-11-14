@@ -48,7 +48,6 @@ export default async function handler(req, res) {
       },
       expect: "missing URL → 400 · URL without payment → 402",
       page: "https://www.slidphilabs.com/quikgater",
-      source: "https://github.com/ceedot-rock/quikgater",
     }),
   );
 }
