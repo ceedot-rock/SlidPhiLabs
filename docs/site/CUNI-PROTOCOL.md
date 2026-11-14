@@ -4,7 +4,7 @@
 **This document:** https://www.slidphilabs.com/CUNI-PROTOCOL.md  
 **Source:** https://github.com/ceedot-rock/cuni/blob/master/PROTOCOL.md
 
-CuNi is 53 targets. CLI v0.10.0. One program. Same stdout on every catalog seat, or the compiler refuses. That rule is the protocol.
+CuNi is 53 targets. CLI v0.10.1. One program. Same stdout on every catalog seat, or the compiler refuses. That rule is the protocol.
 
 ## 1. Exactness
 

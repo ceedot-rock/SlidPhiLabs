@@ -26,7 +26,7 @@ const AUTH = {
 };
 
 const STANDING = [
-  { sku: "cuni-studio", name: "CuNi Studio", usd: "0", kind: "exactness", blurb: "Write once. CLI v0.10.0, 53 targets. Same stdout or refuse. Matching gate: py/go/js." },
+  { sku: "cuni-studio", name: "CuNi Studio", usd: "0", kind: "exactness", blurb: "Write once. CLI v0.10.1, 53 targets. Same stdout or refuse. Matching gate: py/go/js." },
   { sku: "cuni-exception", name: "CuNi · closed-app grant", usd: "490", kind: "exception", blurb: "Unified grant $490/app/year: ship CuNi inside one closed product for one year. Not the compressor." },
   { sku: "chamber-month", name: "Chamber · monthly cloak license", usd: "20", kind: "chamber", blurb: "License to seal new JSON for 30 days. 24-hour try. Open already-sealed blobs with both keys; opening is free forever." },
   { sku: "chamber-year", name: "Chamber · annual cloak license", usd: "200", kind: "chamber", blurb: "License to seal new JSON for a year. Stored secrets do not expire." },
@@ -150,7 +150,7 @@ export default async function handler(req, res) {
       { id: "chamber", name: "Chamber", url: "https://www.slidphilabs.com/chamber" },
       { id: "rider", name: "Agent-Rider", url: "https://agentrider.fly.dev/", mcp: "https://agentrider.fly.dev/api/mcp" },
       { id: "warrant", name: "Warrant", url: "https://www.slidphilabs.com/warrant" },
-      { id: "cuni", name: "CuNi", url: "https://cuni-studio.fly.dev/", protocol: "https://www.slidphilabs.com/cuni-protocol.json", public_install_tag: "v0.10.0" },
+      { id: "cuni", name: "CuNi", url: "https://cuni-studio.fly.dev/", protocol: "https://www.slidphilabs.com/cuni-protocol.json", public_install_tag: "v0.10.1" },
     ],
     team_mesh: {
       url: "https://spl-team-mesh.fly.dev",

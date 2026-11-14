@@ -9,7 +9,7 @@ export const CATALOGS = [
     id: "sku",
     title: "Prices",
     entries: [
-      { id: "cuni", name: "CuNi Studio", price: "$0", note: "CLI v0.10.0. One program, 53 targets. Python, Go, and JS must match, or it refuses. Bank arm: paste N get X. Free playground.", url: "https://cuni-studio.fly.dev/", related: ["license", "cuni"] },
+      { id: "cuni", name: "CuNi Studio", price: "$0", note: "CLI v0.10.1. One program, 53 targets. Python, Go, and JS must match, or it refuses. Bank arm: paste N get X. Free playground.", url: "https://cuni-studio.fly.dev/", related: ["license", "cuni"] },
       { id: "cuni-exception", name: "CuNi closed-app grant", price: "$490/yr", note: "Pay $490/year to ship CuNi inside one closed product. Public tree is AGPL-3.0-or-later.", url: SITE + "/pay?sku=cuni-exception", related: ["license"] },
       { id: "pulsar-exception", name: "pulsar closed-embed grant", price: "$490/yr", note: "Pay $490/year to embed pulsar in one closed product for one year. pulsar source stays GPLv3.", url: SITE + "/pay?sku=pulsar-exception", related: ["license", "pulsar"] },
       { id: "chamber-month", name: "Chamber month", price: "$20/mo", note: "Two-key JSON seal. License to seal new secrets. Open existing seals with both keys, no extra payment.", url: SITE + "/chamber", related: ["chamber", "box"] },

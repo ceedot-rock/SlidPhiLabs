@@ -180,10 +180,10 @@ add({
   title: "CuNi",
   kicker: "Exactness",
   h1: "One program. The same stdout. Or a refusal.",
-  lede: "CuNi 0.10.0 checks one source across 53 targets. Python, Go, and JavaScript must print the same stdout. A seat that would drift refuses.",
-  summary: "53 targets. The matching gate is Python, Go, and JavaScript. CLI v0.10.0.",
+  lede: "CuNi 0.10.1 checks one source across 53 targets. Python, Go, and JavaScript must print the same stdout. A seat that would drift refuses.",
+  summary: "53 targets. The matching gate is Python, Go, and JavaScript. CLI v0.10.1.",
   sections: [
-    S("is", "What it is", `<p>CuNi is the exactness tool. You write one <code>.cuni</code> program. CLI v0.10.0 holds 53 targets. The gate that must match is Python, Go, and JavaScript. If those three would print different stdout, CuNi refuses the path and publishes the refusal. Studio is free. Bank takes a paste of N and emits X.</p><p>The CLI default <code>cuni check</code> runs the money seats: Python, Rust, Go, Java, SQL, and JavaScript. <code>cuni check --all</code> runs the 53-target catalog. A native seat that would diverge refuses. Solidity refuses a float, a list, or a type outside its model. Install the prebuilt binary with Homebrew. Protocol 1.1.1. Tag v0.10.0.</p>`),
+    S("is", "What it is", `<p>CuNi is the exactness tool. You write one <code>.cuni</code> program. CLI v0.10.1 holds 53 targets. The gate that must match is Python, Go, and JavaScript. If those three would print different stdout, CuNi refuses the path and publishes the refusal. Studio is free. Bank takes a paste of N and emits X.</p><p>The CLI default <code>cuni check</code> runs the money seats: Python, Rust, Go, Java, SQL, and JavaScript. <code>cuni check --all</code> runs the 53-target catalog. A native seat that would diverge refuses. Solidity refuses a float, a list, or a type outside its model. Install the prebuilt binary with Homebrew. Protocol 1.1.1. Tag v0.10.1.</p>`),
     S("how", "How it works", `<ol><li>Write the <code>.cuni</code> source once.</li><li>Run the Python, Go, and JavaScript gate when you want those three to match.</li><li>Run <code>cuni check --all</code> when you want all 53 targets.</li><li>Use Bank when you want another catalog id from the same source, then prove it.</li></ol><p><code>POST /api/pass</code> on Studio returns pass or refuse for the three-language gate. The receipt is the answer you keep next to the job. <code>cuni check --json --sign</code> adds an Ed25519 signature a stranger can verify.</p>`),
     S("get", "What you receive", `<p>You receive either identical stdout on the seats you asked for, or a refusal that names why the path stopped. You receive a free Studio, a Bank, and a protocol document. A closed-app grant for one product is a separate license.</p>`),
     S("price", "Price", `<p>CuNi and Studio are free. The closed-app grant is $490 a year for one app under the unified grant: $490 a year for one product, $190 for the first 10 grants, $390 each for 3 or more products. Written, human-fulfilled, one product and one year, renewal at the then-current price. Per-check API: the first 100 checks a month are free, then $0.05 per check, with a customer-set monthly cap and an alert at 80% of the cap. The open license is AGPL-3.0-or-later.</p>`),
@@ -537,7 +537,7 @@ ${chrome("/")}
       <p class="pf-kicker">02 · Exactness</p>
       <h2>CuNi</h2>
       <p>One source. 53 targets in the catalog. Python, Go, and JavaScript print the same stdout, or the path refuses.</p>
-      <p class="pf-fact">Studio is free · CLI v0.10.0</p>
+      <p class="pf-fact">Studio is free · CLI v0.10.1</p>
       <p><a href="/wiki/cuni">Booklet</a> · <a href="/cuni">Open CuNi</a></p>
     </article>
     <article class="pf-lane">

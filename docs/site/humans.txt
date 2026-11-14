@@ -5,7 +5,7 @@ Site: https://www.slidphilabs.com
 Updated: 2026-11-13
 
 Agent-Rider — signed agent name — Solo $12/mo · Team $49/mo · Fleet $199/mo — https://www.slidphilabs.com/rider
-CuNi — CLI v0.10.0, 53 targets, same stdout or refuse — Studio $0 · hosted calls $0.05 to $1.00 · closed-app exception $490/yr — https://www.slidphilabs.com/cuni
+CuNi — CLI v0.10.1, 53 targets, same stdout or refuse — Studio $0 · hosted calls $0.05 to $1.00 · closed-app exception $490/yr — https://www.slidphilabs.com/cuni
 Warrant — signed mandate and receipt — $8/mo · $80/yr on Solo, included in Team and Fleet — https://www.slidphilabs.com/warrant
 Tollkeeper — ten live metered tools on Rider — https://www.slidphilabs.com/tollkeeper
 PCC — lossless compression through your tools — first 1 GB free once per IP (lifetime), then $0.25/GB · Pro $25/mo (100 GB included, then $0.20/GB) — board stamp 51,498,645 — https://www.slidphilabs.com/pcc
