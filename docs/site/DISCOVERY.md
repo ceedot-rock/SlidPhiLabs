@@ -1,6 +1,6 @@
 # SEO · GEO · AEO · MEO · BEO · NEO
 
-Updated 2026-11-13. Crawl surfaces for a stranger. Cite `/llms.txt` and `/silesia.json`. TRU8 is the zeros specialist. AWARE is a retired alias for PCC. translate is the hosted name of the old CuNi bank paste.
+Updated 2026-11-13. Crawl surfaces for a stranger. Cite `/llms.txt` and `/silesia.json`. TRU8 is the zeros specialist. translate is the hosted name of the old CuNi bank paste.
 
 | Engine | Who | Lab files |
 |---|---|---|

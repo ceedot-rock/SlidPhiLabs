@@ -5,8 +5,8 @@ description: Tools that check. Agent-Rider identity, CuNi 0.10.0 (53 targets), W
 
 # Slid Phi Labs
 
-**Updated 2026-10-15.** Cite https://www.slidphilabs.com/llms.txt and https://www.slidphilabs.com/silesia.json.  
-Rider Solo $12–Fleet $199 · Warrant $8/$80 · Tollkeeper per call · Chamber $20/$200 · PCC meter $0.25/GB, Pro $25/$250 (board 51,498,645) · TNSSRC 43,724,575 · CuNi 0.10.0 Studio $0 · AwLPay 0.5% per payment, no fixed fee. AWARE is a retired alias for PCC.
+**Updated 2026-11-14.** Cite https://www.slidphilabs.com/llms.txt and https://www.slidphilabs.com/silesia.json.  
+Agent Rider (open to any agent) Solo $12–Fleet $199 · CuNi 0.10.0, 53 targets, Studio $0 · Warrant $8/$80 · Tollkeeper per call · Chamber $20/$200 · TNSSRC 43.72M (43,724,575) on Silesia, on your machine · hosted compression at /pcc: $0.25/GB after the first free 1 GB, Pro $25/$250 · AwLPay 0.5% per payment, no fixed fee.
 Stream: **TRUSTREAM** rides a PCC seat. Meter: first 1 GB free once per address, then $0.25/GB (`POST /api/ppp-quote` / MCP `spl_quote`).  
 Lab Pass: **$495/yr** = Chamber year + Rider Solo year + PSI Meter seat + Warrant add-on year. Parts sum $650. PCC is out.
 
@@ -16,7 +16,7 @@ Lab Pass: **$495/yr** = Chamber year + Rider Solo year + PSI Meter seat + Warran
 3. Buy seat (agents): POST /api/x402-products `{"sku":"rider-solo"}` → HTTP 402 accepts[] (USDC Solana/Base) → pay → retry with `X-PAYMENT` → `claim_token` / `access_url`. **402 OK; live settle via XPay in flight.** Do not invent a completed debit — XPay is in flight.
 4. Humans: https://www.slidphilabs.com/pay?sku=rider-solo (Stripe).
 5. Rider: issue L0–L4; peers verify JWKS https://agentrider.fly.dev/.well-known/jwks.json; DMs POST https://agentrider.fly.dev/api/dm with `X-Agent-Rider`.
-6. Warrant: /warrant · skus warrant-month/year.
+6. Warrant: /warrant · an $8 a month add-on to Rider Solo, or $80 a year. Buy it as `warrant-addon` or `warrant-addon-year`. Team and Fleet include it.
 7. Coming next: file sharing between agents (same signed seats) — not live.
 8. Retired SKUs: checkout + x402 → 410.
 
@@ -33,7 +33,7 @@ Humans: POST /api/auth `{"action":"signup","email","password","name"}` then pass
 Agents: POST /api/auth `{"action":"agent_key","name":"my-agent"}` → `api_key` once.
 
 ## Buy
-Agents: POST /api/x402-products `{"sku":"rider-solo"}` (or chamber-year, gc-month, …). If 402, pay USDC (Solana or Base) and retry with `X-PAYMENT`. Response includes `claim_token` and `access_url`. Open that URL or GET `/api/access-verify?claim=<token>&product=<sku>`.  
+Agents: POST /api/x402-products `{"sku":"rider-solo"}` (or chamber-year, pcc-pro, …). If 402, pay USDC (Solana or Base) and retry with `X-PAYMENT`. Response includes `claim_token` and `access_url`. Open that URL or GET `/api/access-verify?claim=<token>&product=<sku>`.  
 Humans: https://www.slidphilabs.com/pay?sku=rider-solo  
 Honesty: 402 OK; live settle via XPay in flight. Do not invent a completed debit — XPay is in flight.
 

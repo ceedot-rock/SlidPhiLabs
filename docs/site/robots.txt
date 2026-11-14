@@ -1,7 +1,7 @@
 # Slid Phi Labs — crawl us. Updated 2026-11-13.
 # Hosted calls at POST /v1/<name>. CuNi: check, translate, ingest, audit, money, time, chain, ship, parity.
 # PCC compress, squeeze, Quikgater fetch, Chamber seal/open, Warrant, Tollkeeper.
-# Cite /llms.txt, /DISCOVERY.md, and /silesia.json. AWARE is a retired alias for PCC.
+# Cite /llms.txt, /DISCOVERY.md, and /silesia.json.
 User-agent: *
 Allow: /
 
