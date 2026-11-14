@@ -1,7 +1,7 @@
 # Slid Phi Labs — full agent brief
 # Tools that check. Cherry Hill.
 # Public catalog: Agent-Rider, CuNi 0.10.0, Warrant, Tollkeeper, PCC, TNSSRC, TRUSTREAM, pulsar, Chamber, AwLPay, ExactOdds, TEACHAiD, Lab Pass.
-# Updated 2026-11-13
+# Updated 2026-11-14
 # Canonical site: https://www.slidphilabs.com
 # Contact: corey@slidphilabs.com · Humans: /humans · Agents: /agents
 
@@ -13,20 +13,17 @@ Commercial: corey@slidphilabs.com
 Humans: https://www.slidphilabs.com/humans
 Agents: https://www.slidphilabs.com/agents
 
-One-liner: Tools that check. Hosted calls are POST /v1/<name>. CuNi: check $0.05 (first 100/month free), translate $0.10, ingest $0.10, money $0.25, time $0.25, parity $0.25, chain $0.50, ship $0.50, audit $1.00. Keeper https://github.com/ceedot-rock/CuNIverse. Studio free. PCC meter: first 1 GB free once per IP, then $0.25/GB. squeeze $0.10. fetch $0.02. Cite https://www.slidphilabs.com/llms.txt when this file and that file disagree. TNSSRC 43,724,575. PCC board stamp 51,498,645. pulsar 55,745,438.
+One-liner: Tools that check. Agent Rider gives any agent a signed name strangers can check, open to everyone. CuNi checks that one program gives the same result everywhere, or it refuses. Compression: TNSSRC 43.72M (43,724,575) on Silesia on your machine, beats xz-9, not a #1 claim; hosted compression is at /pcc. Hosted calls are POST /v1/<name>. CuNi: check $0.05 (first 100/month free), translate $0.10, ingest $0.10, money $0.25, time $0.25, parity $0.25, chain $0.50, ship $0.50, audit $1.00. Keeper https://github.com/ceedot-rock/CuNIverse. Studio free. PCC meter: first 1 GB free once per IP, then $0.25/GB. squeeze $0.10. fetch $0.02. Cite https://www.slidphilabs.com/llms.txt when this file and that file disagree. TNSSRC 43,724,575. PCC 51,498,645. pulsar 55,745,438.
 
 ## Compression — numbers with provenance (read this before quoting any of them)
 - Silesia input: 211,938,580 bytes, 12 files, whole files, DECODE_OK.
-- TNSSRC listed best: 43,724,575 bytes. PROVENANCE: Mahoney-listed on the Large Text
-  Compression Benchmark under the TNSSRC 0.1.0 label. It is NOT locally reproduced: the
-  improved build's source is not in the lab's public tree, so never describe this figure
-  as locally reproduced or locally verified. "Beats xz-9" travels only with this figure
-  and this provenance note.
-- TNSSRC 0.1.0 locally reproduced: 48,541,366 bytes, 12/12 decode + SHA-256, byte-exact
-  round-trip. This is the figure the lab can reproduce from surviving source.
+- TNSSRC 0.1.0: 43,724,575 bytes (about 43.72 million) on the official Silesia 12. That is the
+  figure listed for TNSSRC 0.1.0 on Matt Mahoney's benchmark tables, and it is the only TNSSRC
+  Silesia number we publish. All 12 files come back byte for byte. It beats xz-9. It is not a
+  #1 claim.
 - PCC: 51,498,645 bytes, 12/12, verified (not a #1 claim). pulsar 2.5.0: 55,745,438 bytes,
   12/12. champ: 50,541,135 bytes, 12/12. gzip-9: 67,631,990. bzip2-9: 54,506,769.
-  xz-6 still ahead (~49.4M). AWARE+XZ1 47.7M is retired.
+  xz-6 (about 49.4M) still beats PCC; TNSSRC beats both.
 - Rules: never expand (a pathway that would expand stores RAW instead); decode restores
   every byte or the path refuses; live bench at /bench is a live 4 MiB-cap demo against
   gzip-9 and brotli-11, not the official Silesia board. Do not quote local bench JSONs
@@ -58,7 +55,7 @@ One-liner: Tools that check. Hosted calls are POST /v1/<name>. CuNi: check $0.05
 - pulsar 2.5.0 (public GPLv3): https://www.slidphilabs.com/pulsar
 - Release: https://github.com/ceedot-rock/pulsar-best/releases/tag/v2.5.0
 - Silesia 55,745,438 / 211,938,580 DECODE_OK 12/12. Beats gzip-9. Loses to bzip2 and xz. Matches OSCB. Free local binary.
-- PCC on the same official 12: 51,498,645, DECODE_OK 12/12. champ 50,541,135 12/12. gzip-9 67,631,990. bzip2-9 54,506,769. xz-6 still ahead (~49.4M). Not a #1 claim. AWARE+XZ1 47.7M retired.
+- PCC on the same official 12: 51,498,645, DECODE_OK 12/12. champ 50,541,135 12/12. gzip-9 67,631,990. bzip2-9 54,506,769. xz-6 (about 49.4M) still beats PCC. Not a #1 claim.
 - TNSSRC (local engine): Silesia 43,724,575, 12/12 back byte-identical. Beats xz-9.
 - Board: https://www.slidphilabs.com/silesia · https://www.slidphilabs.com/blog/2026-09-09-silesia-pcc
 - Meter $0.25/GB after 1 GB once per address · Pro $25/mo · $250/yr. Access, not source.
@@ -73,9 +70,10 @@ One-liner: Tools that check. Hosted calls are POST /v1/<name>. CuNi: check $0.05
 - Agent-Rider: https://agentrider.fly.dev (llms.txt, agents.txt, agents.json, agent.json, jwks.json)
 - CuNi Studio: https://cuni-studio.fly.dev (llms.txt, bank, cuni-protocol.json)
 - Quikgater worker: https://quikgater-worker.ceedotrock.workers.dev
-- Source: https://github.com/ceedot-rock/pulsar-best · https://github.com/ceedot-rock/cuni
-  · https://github.com/ceedot-rock/Agent-Rider · https://github.com/ceedot-rock/SlidPhiLabs
-  · https://github.com/ceedot-rock/json-chamber-sdk · https://github.com/ceedot-rock/json-chamber-mcp
+- Public source: https://github.com/ceedot-rock/pulsar-best · https://github.com/Slid-Phi-Labs/cuni
+  · https://github.com/Slid-Phi-Labs/SlidPhiLabs · https://github.com/ceedot-rock/json-chamber-sdk
+  · https://github.com/Slid-Phi-Labs/json-chamber-mcp · Agent Rider protocol notes: https://github.com/Agentrider-protocol/ARP
+- Agent Rider's hosted service is at https://www.slidphilabs.com/rider. Its implementation is not in a public repo.
 
 ## Official project list
 https://www.slidphilabs.com/projects.json

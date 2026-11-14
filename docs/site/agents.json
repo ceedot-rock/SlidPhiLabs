@@ -168,7 +168,7 @@
       "name": "TEACHAiD",
       "role": "teaching",
       "url": "https://www.slidphilabs.com/products",
-      "note": "Campus app with a personal teacher that cites the textbook. Student $6/month, $60/year. Free: 1 course, text-only cited answers, no voice. Institutional pilot $2,500 per campus per semester, up to 500 students, onboarding included. In rollout."
+      "note": "Campus app with a personal teacher that cites the textbook. Student $6/month, $60/year. Free: 1 course, text-only cited answers, no voice. Institutional pilot $2,500 per campus per semester, up to 500 students, onboarding included. Live at https://teachaid.fly.dev."
     }
   ],
   "agent_centerpiece": {

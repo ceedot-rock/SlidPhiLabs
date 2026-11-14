@@ -29,9 +29,9 @@
     "pulsar"
   ],
   "suite": {
-    "plain": "First 1 GB each month free, then $0.25/GB of input. Pro $25/month includes 100 GB, then $0.20/GB. Customer-set cap (default $25), alert at 80%.",
+    "plain": "First 1 GB free once per address (lifetime, no monthly reset), then $0.25/GB of input. Pro $25/month includes 100 GB, then $0.20/GB. Customer-set cap (default $25), alert at 80%.",
     "unpaid_gb": 1,
-    "window": "calendar_month",
+    "window": "lifetime",
     "usd_per_gb": 0.25,
     "min_paid_usd": 1,
     "quote": "POST /api/ppp-quote",

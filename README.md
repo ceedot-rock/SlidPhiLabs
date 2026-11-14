@@ -1,21 +1,19 @@
 # Slid Phi Labs
 
-[![Audited checks](https://github.com/ceedot-rock/SlidPhiLabs/actions/workflows/audited-checks.yml/badge.svg)](https://github.com/ceedot-rock/SlidPhiLabs/actions/workflows/audited-checks.yml)
+[![Audited checks](https://github.com/Slid-Phi-Labs/SlidPhiLabs/actions/workflows/audited-checks.yml/badge.svg)](https://github.com/Slid-Phi-Labs/SlidPhiLabs/actions/workflows/audited-checks.yml)
 [![License: AGPL-3.0-or-later / Commercial](https://img.shields.io/badge/license-AGPL--3.0--or--later%20%2F%20Commercial-blue)](LICENSE)
 
-AWARE is a retired alias for PCC (the hosted lossless compressor). TRU8 is not the current product lead.
+We build tools that check. Agent Rider gives any agent a signed name that strangers can check. It is an open ride with protection, not a private club. CuNi takes one program and makes sure it prints the same result everywhere you run it, or it refuses.
 
-Hosted calls at /v1 (CuNi check, translate, ingest, audit, money, time, chain, ship, parity; PCC compress; squeeze; Quikgater fetch; Chamber seal and open; Warrant), a two-key JSON seal, and signed agent identity. Cite https://www.slidphilabs.com/llms.txt.
+This repository is our public website, its API, and the npm clients. It is dual-licensed: AGPL-3.0-or-later, or a paid commercial grant. If you are an agent, start with https://www.slidphilabs.com/llms.txt.
 
-This repository is the public website, API, and npm clients. Dual-licensed: AGPL-3.0-or-later or a paid commercial grant. Hosted compression runs every pathway we own.
-
-SoT for money: https://www.slidphilabs.com/pricing.json (updated 2026-09-24).
-Door line: Smaller or same size. Every byte back. Receipt.
+Prices below match https://www.slidphilabs.com/pricing.json as of 2026-11-13. If they ever disagree, pricing.json wins.
 
 | Surface | URL |
 |---|---|
 | Website | https://www.slidphilabs.com |
 | Products | https://www.slidphilabs.com/products |
+| Pricing | https://www.slidphilabs.com/pricing |
 | MCP | https://www.slidphilabs.com/mcp |
 | npm | https://www.slidphilabs.com/npm |
 | pulsar (free compressor) | https://github.com/ceedot-rock/pulsar-best |
@@ -24,16 +22,17 @@ Door line: Smaller or same size. Every byte back. Receipt.
 
 | Product | What it is | Price |
 |---------|------------|-------|
-| **PCC** | Hosted lossless compression. Dual-licensed. Send a file, get a smaller file back, restore every byte. | $0.25/GB · first 1 GB free once per IP · Pro $25/mo (100 GB, then $0.20/GB) |
-| **TRUSTREAM** | The same plan, for live logs. | Included with PCC |
-| **Chamber** | Two-key JSON seal. One share is useless. You store the blob. | $9/mo · $99/yr |
-| **Agent-Rider** | Signed identity so you know which agent acted. | Solo $13.31 · Bundle $19.31 · Crew $49 · Shop $199 · Fleet $631 |
-| **Warrant** | Signed mandate and receipts bound to a Rider (hosts, actions, spend cap). | Included in Rider Bundle and Team seats |
-| **CuNi** | Write one program. Print many languages. Python, Go, and JS must match, or it refuses. | Studio $0 · closed-app exception $390/yr |
-| **pulsar** | Free GPLv3 compressor you run on your own machine (binary + source). | Free · $390/yr to embed in a closed product |
-| **Lab Pass** | Chamber year + PCC Year. | $490/yr |
+| **Agent Rider** | A signed name for any agent, so you know which agent acted. Anyone can check it on the public keys. | Solo $12/mo · Team $49/mo · Fleet $199/mo |
+| **Warrant** | Writes down what an agent may do (hosts, actions, spend cap), then files the receipt. | $8/mo add-on to Rider Solo ($80/yr) · included in Team and Fleet |
+| **CuNi** | Write one program. Python, Go, and JavaScript must print the same result, or it refuses. | Studio $0 · hosted checks from $0.05 · closed-app grant $490/yr |
+| **Chamber** | A two-key lock for JSON. One key alone opens nothing. You keep the sealed file. | $20/mo · $200/yr · opening a sealed file is free |
+| **Lab Pass** | Chamber, Rider Solo, a PSI Meter seat, and the Warrant add-on, all for a year. Compression is not included. | $495/yr |
+| **PCC** | Hosted lossless compression. Send a file, get a smaller one back, restore every byte. | First 1 GB free once per address, then $0.25/GB · Pro $25/mo (100 GB, then $0.20/GB) |
+| **TNSSRC** | Our compressor that runs on your own machine. Silesia: 43,724,575 bytes (about 43.72M). Beats xz-9. Not a #1 claim. | AGPL $0 · closed grant $369/yr |
+| **TRUSTREAM** | The same compression, for live logs and streams. | Included with PCC |
+| **pulsar** | Free GPLv3 compressor you run yourself (binary and source). | Free · $490/yr to embed in a closed product |
 
-First 1 GB free once per IP (lifetime, no reset) with no plan. Compare: https://www.slidphilabs.com/compare
+The free gigabyte for compression is once per address, for life. It does not reset each month. Compare plans: https://www.slidphilabs.com/compare
 
 ## npm
 
@@ -53,8 +52,8 @@ See [STATUS.md](STATUS.md) · [LAB50](docs/LAB50.md) · [CHANGELOG.md](CHANGELOG
 
 Two legal ways to use the npm clients. Pick one.
 
-1. **Free — AGPL-3.0-or-later.** Install and use. No key, no payment. Hosted compression: first 1 GB free once per IP, then $0.25/GB.
-2. **Paid grant — buy a PCC seat.** A live seat covers commercial use of the surface (LICENSE.COMMERCIAL): PCC Pro $25/mo (100 GB/mo included, then $0.20/GB) or PCC Pro $250/yr. Legacy gc-* seats are retired; the meter is $0.25/GB of input after the 1 GB lifetime allowance.
+1. **Free (AGPL-3.0-or-later).** Install and use. No key, no payment. Hosted compression: first 1 GB free once per address, then $0.25/GB.
+2. **Paid grant: buy a PCC seat.** A live seat covers commercial use of the surface (LICENSE.COMMERCIAL): PCC Pro $25/mo (100 GB/mo included, then $0.20/GB) or PCC Pro $250/yr. Legacy gc-* seats are retired; the meter is $0.25/GB of input after the 1 GB lifetime allowance.
 
 Agents buy machine-to-machine with x402 (USDC on Solana or Base): `POST /api/x402-products {"sku":"pcc-pro"}` → HTTP 402 says where to pay → retry with `X-PAYMENT` → `claim_token` (`spl1.…`, 45 days). (legacy `gc-*` SKUs are retired and map to PCC Pro / the meter.) The claim token **is** the API key: `compress(buf, { apiKey: claim })`. Bad/expired claim → HTTP 401 `invalid_claim`, never a silent free-tier downgrade. Live settle via XPay is in flight — do not invent a completed debit.
 

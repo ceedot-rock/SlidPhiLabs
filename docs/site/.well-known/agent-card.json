@@ -174,7 +174,7 @@
     "suite_pricing": {
       "model": "suite_current",
       "free_cap_gb": 1,
-      "window": "calendar_month",
+      "window": "lifetime",
       "usd_per_gb_after_free": 0.25,
       "min_paid_usd": 1,
       "cap_default_usd": 25,

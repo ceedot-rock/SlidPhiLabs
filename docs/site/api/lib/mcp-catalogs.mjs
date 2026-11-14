@@ -43,7 +43,7 @@ export const CATALOGS = [
       { id: "lab", name: "www.slidphilabs.com", url: SITE, note: "Public site, checkout, and APIs." },
       { id: "studio", name: "cuni-studio.fly.dev", url: "https://cuni-studio.fly.dev/", note: "Free CuNi playground. Write once, print many languages. Python, Go, and JS must match, or refuse. Bank: /bank." },
       { id: "rider", name: "agentrider.fly.dev", url: "https://agentrider.fly.dev/", note: "Signed agent identity. Solo $12/mo · Team $49/mo · Fleet $199/mo." },
-      { id: "teachaid", name: "teachaid.fly.dev", url: "https://www.slidphilabs.com/products", note: "Campus rollout. Teacher chat in the repository calls Meta Llama. The Fly app is stopped." },
+      { id: "teachaid", name: "teachaid.fly.dev", url: "https://teachaid.fly.dev/", note: "Campus app with a teacher that cites the textbook. Live. Teacher chat runs on Meta's Llama." },
       { id: "mcp", name: "/mcp", url: SITE + "/mcp", note: "This server. Catalog, prices, and quotes." },
     ],
   },

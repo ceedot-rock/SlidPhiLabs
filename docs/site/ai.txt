@@ -33,7 +33,7 @@ rider-solo $12 · rider-team $49 · rider-fleet $199 · warrant 8/80 · chamber 
 - AwLPay — 0.5% per payment, no fixed fee — Pro $39/mo — L33t $799/mo — https://www.slidphilabs.com/awlpay
 - Quikgater — pay per fetch — https://www.slidphilabs.com/quikgater
 - ExactOdds — provably fair rules — https://www.slidphilabs.com/exactodds
-- TEACHAiD — campus rollout, teacher chat calls Meta Llama — https://teachaid.fly.dev
+- TEACHAiD — campus app, live; teacher chat runs on Meta's Llama — https://teachaid.fly.dev
 - MemoryVerse — open-source verse — https://github.com/ceedot-rock/MemoryVerse
 - Pricing — https://www.slidphilabs.com/pricing.json
 - Silesia board — https://www.slidphilabs.com/silesia.json
